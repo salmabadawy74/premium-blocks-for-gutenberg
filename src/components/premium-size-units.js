@@ -10,7 +10,7 @@ export default function PremiumSizeUnits(props) {
     }
 
     return (
-        <ul className="kmt-slider-units">
+        <ul className="premium-slider-units">
             {sizeUnits.map((unit, index) => (
                 <li
 

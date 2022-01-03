@@ -1,6 +1,5 @@
 import classnames from 'classnames'
 import onChangeVideoURL from "./index";
-import hexToRgba from "../../components/hex-to-rgba"
 
 const save = props => {
 
@@ -113,9 +112,7 @@ const save = props => {
                         top: playStyles[0].playTop + "%",
                         left: playLeft + "%",
                         color: playStyles[0].playColor,
-                        backgroundColor: playStyles[0].playBack
-                            ? hexToRgba(playStyles[0].playBack, playStyles[0].playOpacity)
-                            : "transparent",
+                        backgroundColor: playStyles[0].playBack,
                         borderStyle: playStyles[0].playBorderType,
                         borderWidth: playStyles[0].borderPlayUpdated
                             ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
@@ -138,9 +135,7 @@ const save = props => {
                     className={`premium-video-box__desc`}
                     style={{
                         color: descStyles[0].videoDescColor,
-                        backgroundColor: descStyles[0].videoDescBack
-                            ? hexToRgba(descStyles[0].videoDescBack, descStyles[0].videoDescOpacity)
-                            : "transparent",
+                        backgroundColor: descStyles[0].videoDescBack,
                         padding: descStyles[0].videoDescPadding,
                         borderRadius: descStyles[0].videoDescBorderRadius,
                         top: descStyles[0].descTop + "%",

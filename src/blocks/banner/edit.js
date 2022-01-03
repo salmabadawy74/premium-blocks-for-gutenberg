@@ -90,7 +90,6 @@ export class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
-            classMigrate,
             borderWidth,
             borderTop,
             borderRight,

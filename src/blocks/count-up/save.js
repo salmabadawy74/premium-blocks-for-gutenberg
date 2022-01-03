@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import hexToRgba from "../../components/hex-to-rgba"
 
 const save = props => {
 
@@ -57,9 +56,7 @@ const save = props => {
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
-                backgroundColor: containerStyles[0].containerBack
-                    ? hexToRgba(containerStyles[0].containerBack, containerStyles[0].containerOpacity)
-                    : "transparent",
+                backgroundColor: containerStyles[0].containerBack,
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px rgba(${containerStyles[0].shadowColor.r},${containerStyles[0].shadowColor.g},${containerStyles[0].shadowColor.b}, ${containerStyles[0].shadowColor.a}) ${containerStyles[0].shadowPosition}`,
                 backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,

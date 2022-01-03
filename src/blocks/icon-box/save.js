@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import hexToRgba from "../../components/hex-to-rgba"
 
 const { RichText } = wp.blockEditor;
 
@@ -13,7 +12,6 @@ const save = props => {
         btnBorderIconBox,
         align,
         iconImage,
-        iconImgId,
         iconImgUrl,
         hoverEffect,
         iconChecked,
@@ -36,7 +34,6 @@ const save = props => {
         btnText,
         btnLink,
         btnHoverBorder,
-        classMigrate,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -94,9 +91,7 @@ const save = props => {
                 paddingBottom: paddingB + containerStyles[0].paddingU,
                 paddingLeft: paddingL + containerStyles[0].paddingU,
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                backgroundColor: containerStyles[0].backColor
-                    ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
-                    : "transparent",
+                backgroundColor: containerStyles[0].backColor,
                 backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -134,12 +129,7 @@ const save = props => {
                             className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                             style={{
                                 color: iconColor,
-                                backgroundColor: iconBackColor
-                                    ? hexToRgba(
-                                        iconBackColor,
-                                        iconOpacity
-                                    )
-                                    : "transparent",
+                                backgroundColor: iconBackColor,
                                 fontSize: iconSize
                             }}
                         />
@@ -222,9 +212,7 @@ const save = props => {
                             value={btnText}
                             style={{
                                 color: btnStyles[0].btnColor,
-                                backgroundColor: btnStyles[0].btnBack
-                                    ? hexToRgba(btnStyles[0].btnBack, btnStyles[0].btnOpacity)
-                                    : "transparent",
+                                backgroundColor: btnStyles[0].btnBack,
                                 letterSpacing: btnStyles[0].btnLetter + "px",
                                 textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
                                 fontStyle: btnStyles[0].btnStyle,

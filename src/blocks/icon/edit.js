@@ -9,7 +9,6 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
-import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -21,8 +20,6 @@ const {
     Toolbar,
     SelectControl,
     ToggleControl,
-    Dropdown,
-    Button
 } = wp.components;
 
 const { InspectorControls, URLInput } = wp.blockEditor;
@@ -81,31 +78,31 @@ const edit = props => {
     const EFFECTS = [
         {
             value: "none",
-            label: __("None")
+            label: __("None", 'premium-block-for-gutenberg')
         },
         {
             value: "pulse",
-            label: __("Pulse")
+            label: __("Pulse", 'premium-block-for-gutenberg')
         },
         {
             value: "rotate",
-            label: __("Rotate")
+            label: __("Rotate", 'premium-block-for-gutenberg')
         },
         {
             value: "drotate",
-            label: __("3D Rotate")
+            label: __("3D Rotate", 'premium-block-for-gutenberg')
         },
         {
             value: "buzz",
-            label: __("Buzz")
+            label: __("Buzz", 'premium-block-for-gutenberg')
         },
         {
             value: "drop",
-            label: __("Drop Shadow")
+            label: __("Drop Shadow", 'premium-block-for-gutenberg')
         },
         {
             value: "wobble",
-            label: __("Wobble")
+            label: __("Wobble", 'premium-block-for-gutenberg')
         }
     ];
 
@@ -141,35 +138,26 @@ const edit = props => {
         isSelected && (
             <InspectorControls key={"inspector"}>
                 <PanelBody
-                    title={__("Icon")}
+                    title={__("Icon", 'premium-block-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <p className="premium-editor-paragraph">{__("Select Icon")}</p>
+                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-block-for-gutenberg')}</p>
                     <FontIconPicker
                         icons={iconsList}
                         onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
                         value={selectedIcon}
                         isMulti={false}
                         appendTo="body"
-                        noSelectedPlaceholder={__("Select Icon")}
-                    />
-                    <AdvancedPopColorControl
-                        label={__('Icon Hover Color', '')}
-                        colorValue={iconStyles[0].iconColor}
-                        colorDefault={''}
-                        onColorChange={newValue =>
-                            saveIconStyle({
-                                iconColor: newValue
-                            })}
+                        noSelectedPlaceholder={__("Select Icon", 'premium-block-for-gutenberg')}
                     />
                     <SelectControl
-                        label={__("Hover Effect")}
+                        label={__("Hover Effect", 'premium-block-for-gutenberg')}
                         options={EFFECTS}
                         value={hoverEffect}
                         onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                     />
-                    <p>{__("Align")}</p>
+                    <p>{__("Align", 'premium-block-for-gutenberg')}</p>
                     <Toolbar
                         controls={ALIGNS.map(iconAlign => ({
                             icon: "editor-align" + iconAlign,
@@ -178,25 +166,25 @@ const edit = props => {
                         }))}
                     />
                     <ToggleControl
-                        label={__("Link")}
+                        label={__("Link", 'premium-block-for-gutenberg')}
                         checked={urlCheck}
                         onChange={newValue => setAttributes({ urlCheck: newValue })}
                     />
                     {urlCheck && (
                         <ToggleControl
-                            label={__("Open link in new tab")}
+                            label={__("Open link in new tab", 'premium-block-for-gutenberg')}
                             checked={target}
                             onChange={newValue => setAttributes({ target: newValue })}
                         />
                     )}
                 </PanelBody>
                 <PanelBody
-                    title={__("Icon Style")}
+                    title={__("Icon Style", 'premium-block-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
                     <PremiumRangeControl
-                        label={__("Size")}
+                        label={__("Size", 'premium-block-for-gutenberg')}
                         value={iconStyles[0].iconSize}
                         onChange={newValue => saveIconStyle({ iconSize: newValue })}
                         units={['px', 'em', 'rem']}
@@ -208,7 +196,7 @@ const edit = props => {
                         unit={iconStyles[0].iconSizeUnit}
                     />
                     <AdvancedPopColorControl
-                        label={__("Icon Color", '')}
+                        label={__("Icon Color", 'premium-block-for-gutenberg')}
                         colorValue={iconStyles[0].iconColor}
                         colorDefault={''}
                         onColorChange={value =>
@@ -218,7 +206,7 @@ const edit = props => {
                         }
                     />
                     <AdvancedPopColorControl
-                        label={__("Background Color", 'kadence-blocks')}
+                        label={__("Background Color", 'premium-block-for-gutenberg')}
                         colorValue={iconStyles[0].iconBack}
                         colorDefault={''}
                         onColorChange={value =>
@@ -330,7 +318,7 @@ const edit = props => {
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__("Container Style")}
+                    title={__("Container Style", 'premium-block-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
@@ -506,9 +494,7 @@ const edit = props => {
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                backgroundColor: containerStyles[0].backgroundColor
-                    ? hexToRgba(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity)
-                    : "transparent",
+                backgroundColor: containerStyles[0].backgroundColor,
                 backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : "none",
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -544,8 +530,6 @@ const edit = props => {
                     style={{
                         color: iconStyles[0].iconColor || "#6ec1e4",
                         backgroundColor: iconStyles[0].iconBack,
-                        // ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
-                        // : "transparent",
                         fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,

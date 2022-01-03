@@ -270,7 +270,6 @@ const attributes = {
                 borderType: 'none',
                 borderWidth: 1,
                 borderRadius: 0,
-
                 tableShadowColor: '',
                 tableShadowBlur: '0',
                 tableShadowHorizontal: '0',

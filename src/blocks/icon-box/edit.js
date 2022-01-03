@@ -10,7 +10,6 @@ import PremiumTextShadow from "../../components/premium-text-shadow"
 import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBackground from "../../components/premium-background"
 import PremiumMediaUpload from "../../components/premium-media-upload"
-import hexToRgba from "../../components/hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -20,7 +19,6 @@ const { __ } = wp.i18n;
 const {
     PanelBody,
     Toolbar,
-    RangeControl,
     SelectControl,
     ToggleControl,
     TabPanel
@@ -142,7 +140,6 @@ class edit extends Component {
             btnText,
             btnLink,
             btnHoverBorder,
-            classMigrate,
             hideDesktop,
             hideTablet,
             hideMobile,
@@ -320,24 +317,24 @@ class edit extends Component {
                             onChange={newValue => setAttributes({ titleChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Description")}
+                            label={__("Description", 'premium-block-for-gutenberg')}
                             checked={descChecked}
                             onChange={newValue => setAttributes({ descChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Button")}
+                            label={__("Button", 'premium-block-for-gutenberg')}
                             checked={btnChecked}
                             onChange={newValue => setAttributes({ btnChecked: newValue })}
                         />
                     </PanelBody>
                     {iconChecked && (
                         <PanelBody
-                            title={__("Icon")}
+                            title={__("Icon", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
-                                label={__("Icon Position")}
+                                label={__("Icon Position", 'premium-block-for-gutenberg')}
                                 options={ICON_POS}
                                 value={iconPos}
                                 onChange={newValue => setAttributes({ iconPos: newValue })}
@@ -345,13 +342,13 @@ class edit extends Component {
                             {"inline" === iconPos && (
                                 <Fragment>
                                     <SelectControl
-                                        label={__("Horizontal Position")}
+                                        label={__("Horizontal Position", 'premium-block-for-gutenberg')}
                                         options={ICON_HPOS}
                                         value={iconHPos}
                                         onChange={newValue => setAttributes({ iconHPos: newValue })}
                                     />
                                     <SelectControl
-                                        label={__("Vertical Position")}
+                                        label={__("Vertical Position", 'premium-block-for-gutenberg')}
                                         options={ICON_VPOS}
                                         value={iconVPos}
                                         onChange={newValue => setAttributes({ iconVPos: newValue })}
@@ -359,21 +356,21 @@ class edit extends Component {
                                 </Fragment>
                             )}
                             <SelectControl
-                                label={__("Icon Type")}
+                                label={__("Icon Type", 'premium-block-for-gutenberg')}
                                 options={imgIcon}
                                 value={iconImage}
                                 onChange={newType => setAttributes({ iconImage: newType })}
                             />
                             {"icon" === iconImage && (
                                 <Fragment>
-                                    <p className="premium-editor-paragraph">{__("Select Icon")}</p>
+                                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-block-for-gutenberg')}</p>
                                     <FontIconPicker
                                         icons={iconsList}
                                         onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
                                         value={selectedIcon}
                                         isMulti={false}
                                         appendTo="body"
-                                        noSelectedPlaceholder={__("Select Icon")}
+                                        noSelectedPlaceholder={__("Select Icon", 'premium-block-for-gutenberg')}
                                     />
                                 </Fragment>
                             )}
@@ -397,7 +394,7 @@ class edit extends Component {
                                         }
                                     />
                                     <PremiumRangeControl
-                                        label={__("Border Radius (PX)")}
+                                        label={__("Border Radius (PX)", 'premium-block-for-gutenberg')}
                                         value={iconRadius}
                                         onChange={newValue =>
                                             setAttributes({ iconRadius: newValue || 0 })
@@ -408,13 +405,13 @@ class edit extends Component {
                                 </Fragment>
                             )}
                             <SelectControl
-                                label={__("Hover Effect")}
+                                label={__("Hover Effect", 'premium-block-for-gutenberg')}
                                 options={EFFECTS}
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
                             <PremiumRangeControl
-                                label={__("Size (PX)")}
+                                label={__("Size (PX)", 'premium-block-for-gutenberg')}
                                 value={iconSize}
                                 min="10"
                                 max="200"
@@ -426,11 +423,11 @@ class edit extends Component {
                     )}
                     {titleChecked && (
                         <PanelBody
-                            title={__("Title")}
+                            title={__("Title", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <p>{__("Title")}</p>
+                            <p>{__("Title", 'premium-block-for-gutenberg')}</p>
                             <Toolbar
                                 controls={"123456".split("").map(tag => ({
                                     icon: "heading",
@@ -452,19 +449,19 @@ class edit extends Component {
                                 setAttributes={saveTitleStyle}
                                 fontSizeType={{
                                     value: titleStyles[0].titleSizeUnit,
-                                    label: __("titleSizeUnit"),
+                                    label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSize={{
                                     value: titleStyles[0].titleSize,
-                                    label: __("titleSize"),
+                                    label: __("titleSize", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeMobile={{
                                     value: titleStyles[0].titleSizeMobile,
-                                    label: __("titleSizeMobile"),
+                                    label: __("titleSizeMobile", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeTablet={{
                                     value: titleStyles[0].titleSizeTablet,
-                                    label: __("titleSizeTablet"),
+                                    label: __("titleSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 weight={titleStyles[0].titleWeight}
                                 style={titleStyles[0].titleStyle}
@@ -524,7 +521,7 @@ class edit extends Component {
                     )}
                     {descChecked && (
                         <PanelBody
-                            title={__("Description")}
+                            title={__("Description", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -534,19 +531,19 @@ class edit extends Component {
                                 setAttributes={saveDescriptionStyle}
                                 fontSizeType={{
                                     value: descStyles[0].descSizeUnit,
-                                    label: __("descSizeUnit"),
+                                    label: __("descSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSize={{
                                     value: descStyles[0].descSize,
-                                    label: __("descSize"),
+                                    label: __("descSize", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeMobile={{
                                     value: descStyles[0].descSizeMobile,
-                                    label: __("descSizeMobile"),
+                                    label: __("descSizeMobile", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeTablet={{
                                     value: descStyles[0].descSizeTablet,
-                                    label: __("descSizeTablet"),
+                                    label: __("descSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 fontFamily={descStyles[0].descFont}
                                 weight={descStyles[0].descWeight}
@@ -577,26 +574,26 @@ class edit extends Component {
 
                     {btnChecked && (
                         <PanelBody
-                            title={__("Button")}
+                            title={__("Button", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
                                 options={BTN_EFFECTS}
-                                label={__("Hover Effect")}
+                                label={__("Hover Effect", 'premium-block-for-gutenberg')}
                                 value={btnEffect}
                                 onChange={newValue => setAttributes({ btnEffect: newValue })}
                             />
                             {"slide" === btnEffect && (
                                 <SelectControl
                                     options={DIRECTION}
-                                    label={__("Direction")}
+                                    label={__("Direction", 'premium-block-for-gutenberg')}
                                     value={effectDir}
                                     onChange={newValue => setAttributes({ effectDir: newValue })}
                                 />
                             )}
                             <ToggleControl
-                                label={__("Open link in new tab")}
+                                label={__("Open link in new tab", 'premium-block-for-gutenberg')}
                                 checked={btnTarget}
                                 onChange={newValue => setAttributes({ btnTarget: newValue })}
                             />
@@ -606,19 +603,19 @@ class edit extends Component {
                                 setAttributes={saveButtonStyle}
                                 fontSizeType={{
                                     value: btnStyles[0].btnSizeUnit,
-                                    label: __("btnSizeUnit"),
+                                    label: __("btnSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSize={{
                                     value: btnStyles[0].btnSize,
-                                    label: __("btnSize"),
+                                    label: __("btnSize", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeMobile={{
                                     value: btnStyles[0].btnSizeMobile,
-                                    label: __("btnSizeMobile"),
+                                    label: __("btnSizeMobile", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeTablet={{
                                     value: btnStyles[0].btnSizeTablet,
-                                    label: __("btnSizeTablet"),
+                                    label: __("btnSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 weight={btnStyles[0].btnWeight}
                                 style={btnStyles[0].btnStyle}
@@ -696,7 +693,7 @@ class edit extends Component {
                                 }
                             />
                             <PremiumRangeControl
-                                label={__("Padding")}
+                                label={__("Padding", 'premium-block-for-gutenberg')}
                                 value={btnStyles[0].btnPadding}
                                 onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
                                 showUnit={true}
@@ -724,7 +721,7 @@ class edit extends Component {
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Container")}
+                        title={__("Container", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -936,7 +933,7 @@ class edit extends Component {
                                             {iconChecked && (
                                                 <Fragment>
                                                     <AdvancedPopColorControl
-                                                        label={__("Icon Color", '')}
+                                                        label={__("Icon Color", 'premium-block-for-gutenberg')}
                                                         colorValue={iconColor}
                                                         colorDefault={''}
                                                         onColorChange={newValue =>
@@ -1108,9 +1105,7 @@ class edit extends Component {
                     paddingBottom: paddingB + containerStyles[0].paddingU,
                     paddingLeft: paddingL + containerStyles[0].paddingU,
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                    // backgroundColor: containerStyles[0].backColor
-                    //     ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
-                    //     : "transparent",
+                    backgroundColor: containerStyles[0].backColor,
                     backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
                     backgroundRepeat: containerStyles[0].backgroundRepeat,
                     backgroundPosition: containerStyles[0].backgroundPosition,
@@ -1155,12 +1150,7 @@ class edit extends Component {
                                         className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                                         style={{
                                             color: iconColor,
-                                            backgroundColor: iconBackColor
-                                                ? hexToRgba(
-                                                    iconBackColor,
-                                                    iconOpacity
-                                                )
-                                                : "transparent",
+                                            backgroundColor: iconBackColor,
                                             fontSize: iconSize
                                         }}
                                     />
@@ -1254,9 +1244,7 @@ class edit extends Component {
                                 style={{
                                     fontSize: `${buttonFontSize}${btnStyles[0].btnSizeUnit}`,
                                     color: btnStyles[0].btnColor,
-                                    backgroundColor: btnStyles[0].btnBack
-                                        ? hexToRgba(btnStyles[0].btnBack, btnStyles[0].btnOpacity)
-                                        : "transparent",
+                                    backgroundColor: btnStyles[0].btnBack,
                                     letterSpacing: btnStyles[0].btnLetter + "px",
                                     textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyles[0].btnStyle,

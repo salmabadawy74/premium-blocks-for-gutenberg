@@ -74,7 +74,7 @@ const attributes = {
                 paddingR: '',
                 paddingB: '',
                 paddingL: '',
-                paddingU: ''
+                paddingU: 'px'
             }
         ]
     },

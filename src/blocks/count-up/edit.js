@@ -6,7 +6,6 @@ import PremiumBackground from "../../components/premium-background"
 import PremiumBorder from "../../components/premium-border"
 import PremiumPadding from "../../components/premium-padding"
 import PremiumMediaUpload from "../../components/premium-media-upload"
-import hexToRgba from "../../components/hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -19,7 +18,6 @@ const {
     Toolbar,
     SelectControl,
     TextControl,
-    RangeControl,
     ToggleControl
 } = wp.components;
 
@@ -114,7 +112,7 @@ class edit extends Component {
             },
             {
                 value: "row-reverse",
-                label: __("Reversed Row")
+                label: __("Reversed Row", 'premium-block-for-gutenberg')
             },
             {
                 value: "column",
@@ -229,7 +227,7 @@ class edit extends Component {
                             label={__("Counting Time", 'premium-block-for-gutenberg')}
                             value={time}
                             onChange={value => setAttributes({ time: value })}
-                            help={__("Set counting time in milliseconds, for example: 1000")}
+                            help={__("Set counting time in milliseconds, for example: 1000", 'premium-block-for-gutenberg')}
                         />
                         <TextControl
                             label={__("Delay", 'premium-block-for-gutenberg')}
@@ -323,7 +321,7 @@ class edit extends Component {
                                         label={__("Icon Class", 'premium-block-for-gutenberg')}
                                         value={faIcon}
                                         help={[
-                                            __("Get icon class from"),
+                                            __("Get icon class from", 'premium-block-for-gutenberg'),
                                             <a
                                                 href={
                                                     "fa" === iconType
@@ -333,7 +331,7 @@ class edit extends Component {
                                                 target="_blank"
                                             >
                                                 &nbsp;
-                                                {__("here")}
+                                                {__("here", 'premium-block-for-gutenberg')}
                                             </a>,
                                             __(" , for example: ", 'premium-block-for-gutenberg'),
                                             "fa" === iconType ? "address-book" : "dashicons-admin-site"
@@ -362,7 +360,7 @@ class edit extends Component {
                                 />
                             )}
                             <PremiumRangeControl
-                                label={__("Size")}
+                                label={__("Size", 'premium-block-for-gutenberg')}
                                 value={iconSize}
                                 onChange={newValue => setAttributes({ iconSize: newValue })}
                                 showUnit={false}
@@ -602,12 +600,12 @@ class edit extends Component {
                                 }
                             />
                             <PanelBody
-                                title={__("Spacings")}
+                                title={__("Spacings", 'premium-block-for-gutenberg')}
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
                             >
                                 <PremiumRangeControl
-                                    label={__("Margin Top")}
+                                    label={__("Margin Top", 'premium-block-for-gutenberg')}
                                     value={titleStyles[0].titleT}
                                     onChange={newValue => saveTitleStyles({ titleT: newValue })}
                                     showUnit={false}
@@ -615,7 +613,7 @@ class edit extends Component {
                                 />
 
                                 <PremiumRangeControl
-                                    label={__("Margin Bottom")}
+                                    label={__("Margin Bottom", 'premium-block-for-gutenberg')}
                                     value={titleStyles[0].titleB}
                                     onChange={newValue => saveTitleStyles({ titleB: newValue })}
                                     showUnit={false}
@@ -625,27 +623,23 @@ class edit extends Component {
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Container")}
+                        title={__("Container", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <Fragment>
-                            <p>{__("Background Color")}</p>
-                            <PremiumBackground
-                                type="color"
-                                colorValue={containerStyles[0].containerBack}
-                                onChangeColor={newValue =>
-                                    saveContainerStyle({
-                                        containerBack: newValue,
-                                    })
-                                }
-                                opacityValue={containerStyles[0].containerOpacity}
-                                onChangeOpacity={value =>
-                                    saveContainerStyle({ containerOpacity: value })
-                                }
-                            />
-                        </Fragment>
-
+                        <PremiumBackground
+                            type="color"
+                            colorValue={containerStyles[0].containerBack}
+                            onChangeColor={newValue =>
+                                saveContainerStyle({
+                                    containerBack: newValue,
+                                })
+                            }
+                            opacityValue={containerStyles[0].containerOpacity}
+                            onChangeOpacity={value =>
+                                saveContainerStyle({ containerOpacity: value })
+                            }
+                        />
                         <PremiumBackground
                             imageID={containerStyles[0].backgroundImageID}
                             imageURL={containerStyles[0].backgroundImageURL}
@@ -785,7 +779,7 @@ class edit extends Component {
             <div>
                 {iconType === "fa" && 1 != FontAwesomeEnabled && iconCheck && (
                     <p className={`premium-countup__alert`}>
-                        {__("Please Enable Font Awesome Icons from Plugin settings")}
+                        {__("Please Enable Font Awesome Icons from Plugin settings", 'premium-block-for-gutenberg')}
                     </p>
                 )}
             </div>,
@@ -795,9 +789,7 @@ class edit extends Component {
                 style={{
                     justifyContent: align,
                     flexDirection: flexDir,
-                    backgroundColor: containerStyles[0].containerBack
-                        ? hexToRgba(containerStyles[0].containerBack, containerStyles[0].containerOpacity)
-                        : "transparent",
+                    backgroundColor: containerStyles[0].containerBack,
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px rgba(${containerStyles[0].shadowColor.r},${containerStyles[0].shadowColor.g},${containerStyles[0].shadowColor.b}, ${containerStyles[0].shadowColor.a}) ${containerStyles[0].shadowPosition}`,
                     backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
                     backgroundRepeat: containerStyles[0].backgroundRepeat,

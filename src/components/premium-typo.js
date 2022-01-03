@@ -1,4 +1,3 @@
-import PremiumResponsive from "./premium-responsive";
 import googleFonts from "./premium-fonts";
 import WebFont from 'webfontloader';
 import Select from "react-select";
@@ -122,9 +121,7 @@ export default class PremiumTypo extends Component {
                     })
                 }
             }
-
         }
-
         return (
             <div className="premium-control-toggle">
                 <strong>{__("Typography")}</strong>
@@ -151,35 +148,25 @@ export default class PremiumTypo extends Component {
                                 />
                             )}
                             {components.includes("responsiveSize") && (
-                                <PremiumResponsive
-                                    type={this.props.fontSizeType}
-                                    typeLabel={this.props.fontSizeType.label}
-                                    sizeMobile={this.props.fontSizeMobile}
-                                    sizeMobileLabel={this.props.fontSizeMobile.label}
-                                    sizeTablet={this.props.fontSizeTablet}
-                                    sizeTabletLabel={this.props.fontSizeTablet.label}
-                                    size={this.props.fontSize}
-                                    sizeLabel={this.props.fontSize.label}
-                                    sizeMobileText={
-                                        !this.props.fontSizeLabel
-                                            ? __("Font Size")
-                                            : this.props.fontSizeLabel
-                                    }
-                                    sizeTabletText={
-                                        !this.props.fontSizeLabel
-                                            ? __("Font Size")
-                                            : this.props.fontSizeLabel
-                                    }
-                                    sizeText={
-                                        !this.props.fontSizeLabel
-                                            ? __("Font Size")
-                                            : this.props.fontSizeLabel
-                                    }
-                                    steps={0.1}
-                                    onResetClick={onResetClick}
-                                    {...this.props}
+                                <PremiumRangeControl
+                                    label={__("Font Size", 'premium-block-for-gutenberg')}
+                                    responsive={true}
+                                    value={{
+                                        'desktop': this.props.fontSize.value,
+                                        "tablet": this.props.fontSizeTablet.value,
+                                        'mobile': this.props.fontSizeMobile.value
+                                    }}
+                                    onChange={value => setAttributes({ [this.props.fontSize.label]: value })}
+                                    onChangeTablet={value => setAttributes({ [this.props.fontSizeTablet.label]: value })}
+                                    onChangeMobile={value => setAttributes({ [this.props.fontSizeMobile.label]: value })}
+                                    showUnit={true}
+                                    defaultValue={''}
+                                    unit={this.props.fontSizeType.value}
+                                    onChangeUnit={key => setAttributes({ [this.props.fontSizeType.label]: key })}
+                                    units={["px", "em"]}
                                 />
                             )}
+
                             {components.includes('family') && (
                                 <Select
                                     options={fonts}

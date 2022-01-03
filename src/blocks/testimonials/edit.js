@@ -7,7 +7,6 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import hexToRgba from "../../components/hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -34,7 +33,6 @@ const {
 
 const { Fragment, Component } = wp.element;
 const { withSelect } = wp.data
-
 
 class edit extends Component {
     constructor() {
@@ -67,7 +65,6 @@ class edit extends Component {
         const { isSelected, className, setAttributes } = this.props;
         const {
             block_id,
-            classMigrate,
             align,
             authorImgId,
             authorImgUrl,
@@ -77,7 +74,6 @@ class edit extends Component {
             imgBorderColor,
             author,
             authorStyles,
-
             text,
             authorCom,
             hideDesktop,
@@ -96,15 +92,15 @@ class edit extends Component {
         const RADIUS = [
             {
                 value: "0",
-                label: __("Square")
+                label: __("Square", 'premium-block-for-gutenberg')
             },
             {
                 value: "50%",
-                label: __("Circle")
+                label: __("Circle", 'premium-block-for-gutenberg')
             },
             {
                 value: "15px",
-                label: __("Rounded")
+                label: __("Rounded", 'premium-block-for-gutenberg')
             }
         ];
 
@@ -185,16 +181,16 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Author")}
+                        title={__("Author", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={true}
                     >
                         <PanelBody
-                            title={__("Image")}
+                            title={__("Image", 'premium-block-for-gutenberg')}
                             className="premium-panel-body-inner"
                             initialOpen={false}
                         >
-                            <p>{__("Author Image")}</p>
+                            <p>{__("Author Image", 'premium-block-for-gutenberg')}</p>
                             {!authorImgUrl && <DefaultImage />}
                             <PremiumMediaUpload
                                 type="image"
@@ -216,7 +212,7 @@ class edit extends Component {
                             />
                             {authorImgUrl && (
                                 <SelectControl
-                                    label={__("Image Style")}
+                                    label={__("Image Style", 'premium-block-for-gutenberg')}
                                     options={RADIUS}
                                     value={imgRadius}
                                     onChange={newWeight => setAttributes({ imgRadius: newWeight })}
@@ -224,7 +220,7 @@ class edit extends Component {
                             )}
                             {authorImgUrl && (
                                 <PremiumRangeControl
-                                    label={__("Size")}
+                                    label={__("Size", 'premium-block-for-gutenberg')}
                                     value={imgSize}
                                     max="200"
                                     onChange={newSize => setAttributes({ imgSize: newSize })}
@@ -234,7 +230,7 @@ class edit extends Component {
                             )}
                             {authorImgUrl && (
                                 <PremiumRangeControl
-                                    label={__("Border Width (PX)")}
+                                    label={__("Border Width (PX)", 'premium-block-for-gutenberg')}
                                     value={imgBorder}
                                     onChange={newSize => setAttributes({ imgBorder: newSize })}
                                     showUnit={false}
@@ -243,7 +239,7 @@ class edit extends Component {
                             )}
                             {authorImgUrl && (
                                 <AdvancedPopColorControl
-                                    label={__("Border Color", '')}
+                                    label={__("Border Color", 'premium-block-for-gutenberg')}
                                     colorValue={imgBorderColor}
                                     colorDefault={''}
                                     onColorChange={newValue =>
@@ -254,7 +250,7 @@ class edit extends Component {
                                 />
                             )}
                         </PanelBody>
-                        <p>{__("Author HTML Tag")}</p>
+                        <p>{__("Author HTML Tag", 'premium-block-for-gutenberg')}</p>
                         <Toolbar
                             controls={"123456".split("").map(tag => ({
                                 icon: "heading",
@@ -268,19 +264,19 @@ class edit extends Component {
                             setAttributes={saveAuthorStyle}
                             fontSizeType={{
                                 value: authorStyles[0].authorSizeUnit,
-                                label: __("authorSizeUnit"),
+                                label: __("authorSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: authorStyles[0].authorSize,
-                                label: __("authorSize"),
+                                label: __("authorSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: authorStyles[0].authorSizeMobile,
-                                label: __("authorSizeMobile"),
+                                label: __("authorSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: authorStyles[0].authorSizeTablet,
-                                label: __("authorSizeTablet"),
+                                label: __("authorSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             onChangeSize={newSize => saveAuthorStyle({ authorSize: newSize })}
                             weight={authorStyles[0].authorWeight}
@@ -297,7 +293,7 @@ class edit extends Component {
                             onChangeUpper={check => saveAuthorStyle({ authorUpper: check })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Color", '')}
+                            label={__("Color", 'premium-block-for-gutenberg')}
                             colorValue={authorStyles[0].authorColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -308,7 +304,7 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Content")}
+                        title={__("Content", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -317,25 +313,25 @@ class edit extends Component {
                             setAttributes={saveContentStyle}
                             fontSizeType={{
                                 value: contentStyle[0].bodySizeUnit,
-                                label: __("bodySizeUnit"),
+                                label: __("bodySizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: contentStyle[0].bodySize,
-                                label: __("bodySize"),
+                                label: __("bodySize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: contentStyle[0].bodySizeMobile,
-                                label: __("bodySizeMobile"),
+                                label: __("bodySizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: contentStyle[0].bodySizeTablet,
-                                label: __("bodySizeTablet"),
+                                label: __("bodySizeTablet", 'premium-block-for-gutenberg'),
                             }}
                             line={contentStyle[0].bodyLine}
                             onChangeLine={newWeight => saveContentStyle({ bodyLine: newWeight })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Color", '')}
+                            label={__("Color", 'premium-block-for-gutenberg')}
                             colorValue={contentStyle[0].bodyColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -345,14 +341,14 @@ class edit extends Component {
                             }
                         />
                         <PremiumRangeControl
-                            label={__("Margin Top (PX)")}
+                            label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
                             value={contentStyle[0].bodyTop}
                             onChange={newSize => saveContentStyle({ bodyTop: newSize })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <PremiumRangeControl
-                            label={__("Margin Bottom (PX)")}
+                            label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
                             value={contentStyle[0].bodyBottom}
                             onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
                             showUnit={false}
@@ -360,11 +356,11 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Company")}
+                        title={__("Company", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("HTML Tag")}</p>
+                        <p>{__("HTML Tag", 'premium-block-for-gutenberg')}</p>
                         <Toolbar
                             controls={"123456".split("").map(tag => ({
                                 icon: "heading",
@@ -378,23 +374,23 @@ class edit extends Component {
                             setAttributes={saveCompanyStyle}
                             fontSizeType={{
                                 value: companyStyles[0].authorComSizeUnit,
-                                label: __("authorComSizeUnit"),
+                                label: __("authorComSizeUnit", 'premium-block-for-gutenberg'),
                             }}
                             fontSize={{
                                 value: companyStyles[0].authorComSize,
-                                label: __("authorComSize"),
+                                label: __("authorComSize", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeMobile={{
                                 value: companyStyles[0].authorComSizeMobile,
-                                label: __("authorComSizeMobile"),
+                                label: __("authorComSizeMobile", 'premium-block-for-gutenberg'),
                             }}
                             fontSizeTablet={{
                                 value: companyStyles[0].authorComSizeTablet,
-                                label: __("authorComSizeTablet"),
+                                label: __("authorComSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                         />
                         <div className="premium-control-toggle">
-                            <strong>{__("Colors")}</strong>
+                            <strong>{__("Colors", 'premium-block-for-gutenberg')}</strong>
                             <Dropdown
                                 className="premium-control-toggle-btn"
                                 contentClassName="premium-control-toggle-content"
@@ -408,7 +404,7 @@ class edit extends Component {
                                     <Fragment>
 
                                         <AdvancedPopColorControl
-                                            label={__("Text Color", '')}
+                                            label={__("Text Color", 'premium-block-for-gutenberg')}
                                             colorValue={companyStyles[0].authorComColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
@@ -418,7 +414,7 @@ class edit extends Component {
                                             }
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Dash Color", '')}
+                                            label={__("Dash Color", 'premium-block-for-gutenberg')}
                                             colorValue={companyStyles[0].dashColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
@@ -432,32 +428,32 @@ class edit extends Component {
                             />
                         </div>
                         <ToggleControl
-                            label={__("URL")}
+                            label={__("URL", 'premium-block-for-gutenberg')}
                             checked={companyStyles[0].urlCheck}
                             onChange={newCheck => saveCompanyStyle({ urlCheck: newCheck })}
                         />
                         {companyStyles[0].urlCheck && (
                             <TextControl
-                                label={__("URL")}
+                                label={__("URL", 'premium-block-for-gutenberg')}
                                 value={companyStyles[0].urlText}
                                 onChange={newURL => saveCompanyStyle({ urlText: newURL })}
                             />
                         )}
                         {companyStyles[0].urlCheck && (
                             <ToggleControl
-                                label={__("Open Link in a New Tab")}
+                                label={__("Open Link in a New Tab", 'premium-block-for-gutenberg')}
                                 checked={companyStyles[0].urlTarget}
                                 onChange={newCheck => saveCompanyStyle({ urlTarget: newCheck })}
                             />
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Quotations")}
+                        title={__("Quotations", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <PremiumRangeControl
-                            label={__("Size (EM)")}
+                            label={__("Size (EM)", 'premium-block-for-gutenberg')}
                             value={quoteStyles[0].quotSize}
                             min="1"
                             max="12"
@@ -466,7 +462,7 @@ class edit extends Component {
                             defaultValue={0}
                         />
                         <AdvancedPopColorControl
-                            label={__("Quotations Color", '')}
+                            label={__("Quotations Color", 'premium-block-for-gutenberg')}
                             colorValue={quoteStyles[0].quotColor}
                             colorDefault={''}
                             onColorChange={newValue =>
@@ -476,7 +472,7 @@ class edit extends Component {
                             }
                         />
                         <PremiumRangeControl
-                            label={__("Opacity")}
+                            label={__("Opacity", 'premium-block-for-gutenberg')}
                             min="0"
                             max="100"
                             value={quoteStyles[0].quotOpacity}
@@ -486,12 +482,11 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Container")}
+                        title={__("Container", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <Fragment>
-                            <p>{__("Background Color")}</p>
                             <PremiumBackground
                                 type="color"
                                 colorValue={containerStyles[0].backColor}
@@ -613,9 +608,7 @@ class edit extends Component {
                 className={`${mainClasses}__wrap premium-testimonial-${block_id}`}
                 style={{
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                    backgroundColor: containerStyles[0].backColor
-                        ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
-                        : "transparent",
+                    backgroundColor: containerStyles[0].backColor,
                     backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
                     backgroundRepeat: containerStyles[0].backgroundRepeat,
                     backgroundPosition: containerStyles[0].backgroundPosition,

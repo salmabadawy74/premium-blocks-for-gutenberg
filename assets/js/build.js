@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 124);
+/******/ 	return __webpack_require__(__webpack_require__.s = 123);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -329,65 +329,29 @@ process.umask = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = hexToRGBA;
-/**
- * function to return string with capital letter.
- * @param {string} hex the color hex.
- * @param {number} alpha the alpha number.
- * @returns {string} rgba color.
- */
-function hexToRGBA(hex, alpha) {
-    if (null === hex) {
-        return '';
-    }
 
-    /**
-     * Detect CSS variables in form of var(--color) and get their current
-     * values from the :root selector.
-     */
-    if (hex.indexOf('var(') > -1) {
-        hex = window.getComputedStyle(document.documentElement).getPropertyValue(hex.replace('var(', '').replace(')', '')) || '#fff';
-    }
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-    hex = hex.replace('#', '');
-    var r = parseInt(hex.length === 3 ? hex.slice(0, 1).repeat(2) : hex.slice(0, 2), 16);
-    var g = parseInt(hex.length === 3 ? hex.slice(1, 2).repeat(2) : hex.slice(2, 4), 16);
-    var b = parseInt(hex.length === 3 ? hex.slice(2, 3).repeat(2) : hex.slice(4, 6), 16);
-    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
-}
+exports.default = PremiumRangeControl;
 
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = undefined;
-
-var _responsive = __webpack_require__(129);
+var _responsive = __webpack_require__(128);
 
 var _responsive2 = _interopRequireDefault(_responsive);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(37);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var useState = wp.element.useState;
 var RangeControl = wp.components.RangeControl;
 var useInstanceId = wp.compose.useInstanceId;
-/**
- * Build the Measure controls
- * @returns {object} Measure settings.
- */
-
 function PremiumRangeControl(_ref) {
     var label = _ref.label,
-        _onChange = _ref.onChange,
+        onChange = _ref.onChange,
+        onChangeTablet = _ref.onChangeTablet,
+        onChangeMobile = _ref.onChangeMobile,
         _ref$value = _ref.value,
         value = _ref$value === undefined ? '' : _ref$value,
         _ref$className = _ref.className,
@@ -413,32 +377,44 @@ function PremiumRangeControl(_ref) {
 
     var onChangInput = function onChangInput(event) {
         if (event.target.value === '') {
-            _onChange(undefined);
+            onChange(undefined);
             return;
         }
         var newValue = Number(event.target.value);
         if (newValue === '') {
-            _onChange(undefined);
+            onChange(undefined);
             return;
         }
         if (min < -0.1) {
             if (newValue > max) {
-                _onChange(max);
+                onChange(max);
             } else if (newValue < min && newValue !== '-') {
-                _onChange(min);
+                onChange(min);
             } else {
-                _onChange(newValue);
+                onChange(newValue);
             }
         } else {
             if (newValue > max) {
-                _onChange(max);
+                onChange(max);
             } else if (newValue < -0.1) {
-                _onChange(min);
+                onChange(min);
             } else {
-                _onChange(newValue);
+                onChange(newValue);
             }
         }
     };
+
+    var _useState = useState('desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        setDevice = _useState2[1];
+
+    var sliderValue = responsive ? value[device] : value;
+
+    var updateValue = function updateValue(value) {
+        device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
+    };
+
     var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
     return React.createElement(
         'div',
@@ -448,14 +424,17 @@ function PremiumRangeControl(_ref) {
             null,
             React.createElement(
                 'div',
-                { className: 'kmt-slider-title-wrap' },
-                responsive ? React.createElement(_responsive2.default, { label: label }) : React.createElement(
+                { className: 'premium-slider-title-wrap' },
+                responsive ? React.createElement(_responsive2.default, { label: label, onChange: function onChange(value) {
+                        return setDevice(value);
+                    } }) : React.createElement(
                     'span',
-                    { className: 'customize-control-title kmt-control-title' },
+                    { className: 'customize-control-title premium-control-title' },
                     label
                 )
             ),
             showUnit && React.createElement(_premiumSizeUnits2.default, {
+                units: units,
                 activeUnit: unit,
                 onChangeSizeUnit: function onChangeSizeUnit(newValue) {
                     return onChangeUnit(newValue);
@@ -470,22 +449,22 @@ function PremiumRangeControl(_ref) {
                 { className: 'input-field-wrapper active' },
                 React.createElement(RangeControl, {
                     beforeIcon: beforeIcon,
-                    value: value,
+                    value: sliderValue,
                     onChange: function onChange(newVal) {
-                        return _onChange(newVal);
+                        return updateValue(newVal);
                     },
                     min: min,
                     max: max,
                     step: step,
                     help: help,
                     withInputField: false,
-                    className: 'kmt-range-value-input'
+                    className: 'premium-range-value-input'
                 }),
                 React.createElement(
                     'div',
                     { className: 'kemet_range_value' },
                     React.createElement('input', {
-                        value: value,
+                        value: sliderValue,
                         onChange: onChangInput,
                         min: min,
                         max: max,
@@ -496,31 +475,30 @@ function PremiumRangeControl(_ref) {
                     })
                 )
             ),
-            React.createElement('button', { className: 'kmt-slider-reset', disabled: value === defaultValue, onClick: function onClick(e) {
+            React.createElement('button', { className: 'premium-slider-reset', disabled: value === defaultValue, onClick: function onClick(e) {
                     e.preventDefault();
-                    _onChange(defaultValue);
+                    onChange(defaultValue);
                 } })
         )
     );
 }
-exports.default = PremiumRangeControl;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(127);
+  module.exports = __webpack_require__(126);
 } else {
-  module.exports = __webpack_require__(128);
+  module.exports = __webpack_require__(127);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -572,7 +550,7 @@ var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
 exports.FontAwesomeEnabled = FontAwesomeEnabled;
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -618,6 +596,233 @@ var PbgIcon = function (_wp$element$Component) {
 }(wp.element.Component);
 
 exports.default = PbgIcon;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = __webpack_require__(87);
+
+var _get2 = _interopRequireDefault(_get);
+
+var _map = __webpack_require__(188);
+
+var _map2 = _interopRequireDefault(_map);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
+var Component = wp.element.Component;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    Popover = _wp$components.Popover,
+    ColorIndicator = _wp$components.ColorIndicator,
+    ColorPicker = _wp$components.ColorPicker,
+    Tooltip = _wp$components.Tooltip;
+var withSelect = wp.data.withSelect;
+
+var AdvancedColorControl = function (_Component) {
+    _inherits(AdvancedColorControl, _Component);
+
+    function AdvancedColorControl() {
+        _classCallCheck(this, AdvancedColorControl);
+
+        var _this = _possibleConstructorReturn(this, (AdvancedColorControl.__proto__ || Object.getPrototypeOf(AdvancedColorControl)).apply(this, arguments));
+
+        _this.state = {
+            isVisible: false,
+            colors: [],
+            classSat: 'first',
+            currentColor: '',
+            defaultColor: ''
+        };
+        return _this;
+    }
+
+    _createClass(AdvancedColorControl, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            if ('transparent' === this.props.colorDefault) {
+                this.setState({ currentColor: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue });
+                this.setState({ defaultColor: '' });
+            } else {
+                this.setState({ currentColor: undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue });
+                this.setState({ defaultColor: this.props.colorDefault });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var toggleVisible = function toggleVisible() {
+                if ('transparent' === _this2.props.colorDefault) {
+                    _this2.setState({ currentColor: undefined === _this2.props.colorValue || '' === _this2.props.colorValue || 'transparent' === _this2.props.colorValue ? '' : _this2.props.colorValue });
+                } else {
+                    _this2.setState({ currentColor: undefined === _this2.props.colorValue || '' === _this2.props.colorValue ? _this2.props.colorDefault : _this2.props.colorValue });
+                }
+                _this2.setState({ classSat: 'first' });
+                _this2.setState({ isVisible: true });
+            };
+            var toggleClose = function toggleClose() {
+                if (_this2.state.isVisible === true) {
+                    _this2.setState({ isVisible: false });
+                }
+            };
+
+            return React.createElement(
+                'div',
+                { className: 'premium-color-popover-container' },
+                React.createElement(
+                    'div',
+                    { className: 'premium-advanced-color-container' },
+                    this.props.label && React.createElement(
+                        'h2',
+                        { className: 'premium-color-label' },
+                        this.props.label
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'premium-color-wrapper' },
+                        this.state.isVisible && React.createElement(
+                            Popover,
+                            { position: 'bottom left', className: 'premium-popover-color', onClose: toggleClose },
+                            this.props.colors && React.createElement(
+                                'div',
+                                { className: 'premium-color-picker-top' },
+                                React.createElement(
+                                    'ul',
+                                    { className: 'premium-color-picker-skins' },
+                                    (0, _map2.default)(this.props.colors, function (_ref) {
+                                        var color = _ref.color,
+                                            slug = _ref.slug,
+                                            name = _ref.name;
+
+                                        return React.createElement(
+                                            'li',
+                                            { key: color, className: (0, _classnames2.default)('kmt-color-picker-single', {
+                                                    'active': _this2.props.colorValue === color
+                                                }),
+                                                style: { backgroundColor: color },
+                                                onClick: function onClick() {
+                                                    _this2.setState({ currentColor: color });
+                                                    _this2.props.onColorChange(color);
+                                                    if (_this2.props.onColorClassChange) {
+                                                        _this2.props.onColorClassChange(slug);
+                                                    }
+                                                    if ('third' === _this2.state.classSat) {
+                                                        _this2.setState({ classSat: 'second' });
+                                                    } else {
+                                                        _this2.setState({ classSat: 'third' });
+                                                    }
+                                                }
+                                            },
+                                            React.createElement(
+                                                'div',
+                                                { className: 'premium-tooltip-top' },
+                                                name || sprintf(__('Color code: %s'), color)
+                                            )
+                                        );
+                                    })
+                                )
+                            ),
+                            this.state.classSat === 'first' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
+                                color: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
+                                onChangeComplete: function onChangeComplete(color) {
+                                    _this2.setState({ currentColor: color.hex });
+                                    if (color.rgb) {
+                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
+                                    }
+                                    if (_this2.props.onColorClassChange) {
+                                        _this2.props.onColorClassChange('');
+                                    }
+                                }
+                            }),
+                            !this.props.disableCustomColors && this.state.classSat !== 'first' && React.createElement(ColorPicker, {
+                                color: undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor,
+                                onChangeComplete: function onChangeComplete(color) {
+                                    _this2.setState({ currentColor: color.hex });
+                                    if (color.rgb) {
+
+                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
+                                    }
+                                    if (_this2.props.onColorClassChange) {
+                                        _this2.props.onColorClassChange('');
+                                    }
+                                }
+                            })
+                        ),
+                        this.state.isVisible && React.createElement(
+                            Tooltip,
+                            { text: __('Select Color') },
+                            React.createElement(
+                                Button,
+                                { className: 'premium-color-picker-single ' + ('' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleClose },
+                                React.createElement(ColorIndicator, { className: 'premium-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
+                            )
+                        ),
+                        !this.state.isVisible && React.createElement(
+                            Tooltip,
+                            { text: __('Select Color') },
+                            React.createElement(
+                                Button,
+                                { className: 'premium-color-picker-single ' + ('' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleVisible },
+                                React.createElement(ColorIndicator, { className: 'premium-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'premium-color-btn-reset-wrap' },
+                        React.createElement('button', {
+                            className: 'premium-reset-btn',
+                            disabled: this.state.currentColor === this.props.colorDefault,
+                            onClick: function onClick() {
+                                _this2.setState({ currentColor: _this2.props.colorDefault });
+                                _this2.props.onColorChange(undefined);
+                                if (_this2.props.onColorClassChange) {
+                                    _this2.props.onColorClassChange('');
+                                }
+                            } })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AdvancedColorControl;
+}(Component);
+
+exports.default = withSelect(function (select, ownProps) {
+    var settings = select('core/block-editor').getSettings();
+    var colors = (0, _get2.default)(settings, ['colors'], []);
+    var disableCustomColors = ownProps.disableCustomColors === undefined ? settings.disableCustomColors : ownProps.disableCustomColors;
+    return {
+        colors: colors,
+        disableCustomColors: disableCustomColors
+    };
+})(AdvancedColorControl);
 
 /***/ }),
 /* 7 */
@@ -685,9 +890,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -950,29 +1155,23 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumResponsive = __webpack_require__(130);
-
-var _premiumResponsive2 = _interopRequireDefault(_premiumResponsive);
-
-var _premiumFonts = __webpack_require__(215);
+var _premiumFonts = __webpack_require__(129);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _webfontloader = __webpack_require__(216);
+var _webfontloader = __webpack_require__(130);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
-var _reactSelect = __webpack_require__(98);
+var _reactSelect = __webpack_require__(80);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -1108,7 +1307,6 @@ var PremiumTypo = function (_Component) {
                     }
                 }
             };
-
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle" },
@@ -1145,21 +1343,31 @@ var PremiumTypo = function (_Component) {
                                 onChange: onChangeSize,
                                 showUnit: false
                             }),
-                            components.includes("responsiveSize") && React.createElement(_premiumResponsive2.default, _extends({
-                                type: _this2.props.fontSizeType,
-                                typeLabel: _this2.props.fontSizeType.label,
-                                sizeMobile: _this2.props.fontSizeMobile,
-                                sizeMobileLabel: _this2.props.fontSizeMobile.label,
-                                sizeTablet: _this2.props.fontSizeTablet,
-                                sizeTabletLabel: _this2.props.fontSizeTablet.label,
-                                size: _this2.props.fontSize,
-                                sizeLabel: _this2.props.fontSize.label,
-                                sizeMobileText: !_this2.props.fontSizeLabel ? __("Font Size") : _this2.props.fontSizeLabel,
-                                sizeTabletText: !_this2.props.fontSizeLabel ? __("Font Size") : _this2.props.fontSizeLabel,
-                                sizeText: !_this2.props.fontSizeLabel ? __("Font Size") : _this2.props.fontSizeLabel,
-                                steps: 0.1,
-                                onResetClick: onResetClick
-                            }, _this2.props)),
+                            components.includes("responsiveSize") && React.createElement(_premiumRangeControl2.default, {
+                                label: __("Font Size", 'premium-block-for-gutenberg'),
+                                responsive: true,
+                                value: {
+                                    'desktop': _this2.props.fontSize.value,
+                                    "tablet": _this2.props.fontSizeTablet.value,
+                                    'mobile': _this2.props.fontSizeMobile.value
+                                },
+                                onChange: function onChange(value) {
+                                    return setAttributes(_defineProperty({}, _this2.props.fontSize.label, value));
+                                },
+                                onChangeTablet: function onChangeTablet(value) {
+                                    return setAttributes(_defineProperty({}, _this2.props.fontSizeTablet.label, value));
+                                },
+                                onChangeMobile: function onChangeMobile(value) {
+                                    return setAttributes(_defineProperty({}, _this2.props.fontSizeMobile.label, value));
+                                },
+                                showUnit: true,
+                                defaultValue: '',
+                                unit: _this2.props.fontSizeType.value,
+                                onChangeUnit: function onChangeUnit(key) {
+                                    return setAttributes(_defineProperty({}, _this2.props.fontSizeType.label, key));
+                                },
+                                units: ["px", "em"]
+                            }),
                             components.includes('family') && React.createElement(_reactSelect2.default, {
                                 options: fonts,
                                 value: { value: _this2.props.fontFamily, label: __("" + _this2.props.fontFamily), weight: fontWeightObj },
@@ -1227,16 +1435,16 @@ exports.default = PremiumTypo;
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(100);
+  var ReactIs = __webpack_require__(82);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(234)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(148)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(235)();
+  module.exports = __webpack_require__(149)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -1259,7 +1467,7 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(85);
+var freeGlobal = __webpack_require__(90);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -1281,11 +1489,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBackground;
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -1502,46 +1710,12 @@ function PremiumBackground(props) {
 "use strict";
 
 
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-module.exports = isArray;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = PremiumTextShadow;
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -1639,6 +1813,40 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+module.exports = isArray;
+
+/***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1650,7 +1858,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBoxShadow;
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -1779,11 +1987,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(37);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1893,13 +2101,13 @@ var PremiumPadding = function (_Component) {
 
             return _react2.default.createElement(
                 "div",
-                { className: "kmt-spacing-responsive" },
+                { className: "premium-spacing-responsive" },
                 _react2.default.createElement(
                     "header",
                     { className: "premium-control-label-container" },
                     _react2.default.createElement(
                         "div",
-                        { className: "kmt-slider-title-wrap" },
+                        { className: "premium-slider-title-wrap" },
                         __("Padding")
                     ),
                     showUnits && _react2.default.createElement(_premiumSizeUnits2.default, {
@@ -1911,74 +2119,74 @@ var PremiumPadding = function (_Component) {
                 ),
                 _react2.default.createElement(
                     "div",
-                    { className: "kmt-spacing-responsive-outer-wrapper" },
+                    { className: "premium-spacing-responsive-outer-wrapper" },
                     _react2.default.createElement(
                         "div",
-                        { className: "input-wrapper kmt-spacing-responsive-wrapper" },
+                        { className: "input-wrapper premium-spacing-responsive-wrapper" },
                         _react2.default.createElement(
                             "ul",
-                            { className: "kmt-spacing-wrapper" },
+                            { className: "premium-spacing-wrapper" },
                             _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "top",
                                     value: top || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     __("Top")
                                 )
                             ),
                             _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "right",
                                     value: right || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     __('Right')
                                 )
                             ),
                             _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "bottom",
                                     value: bottom || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     __('Bottom')
                                 )
                             ),
                             _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "left",
                                     value: left || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     __('Left')
                                 )
                             ),
@@ -1986,7 +2194,7 @@ var PremiumPadding = function (_Component) {
                                 "li",
                                 null,
                                 _react2.default.createElement("button", {
-                                    className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links connected" : "editor-unlink disconnected"),
+                                    className: "linked-btn is-button dashicons dashicons-" + (isLinked ? "admin-links connected" : "editor-unlink disconnected"),
                                     onClick: this.onButtonClick
                                 })
                             )
@@ -1994,9 +2202,9 @@ var PremiumPadding = function (_Component) {
                     ),
                     _react2.default.createElement(
                         "div",
-                        { className: "kmt-spacing-btn-reset-wrap" },
+                        { className: "premium-spacing-btn-reset-wrap" },
                         _react2.default.createElement("button", {
-                            className: "kmt-reset-btn ",
+                            className: "premium-reset-btn ",
                             disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                             onClick: function onClick(e) {
                                 e.preventDefault();
@@ -2034,59 +2242,11 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumSizeUnits;
-function PremiumSizeUnits(props) {
-    var activeUnit = props.activeUnit,
-        units = props.units,
-        _props$onChangeSizeUn = props.onChangeSizeUnit,
-        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
-
-
-    var sizeUnits = ["px", "em", "%"];
-
-    if (undefined !== units) {
-        sizeUnits = units;
-    }
-
-    return React.createElement(
-        "ul",
-        { className: "kmt-slider-units" },
-        sizeUnits.map(function (unit, index) {
-            return React.createElement(
-                "li",
-                {
-
-                    className: "single-unit " + (unit === activeUnit && "active"),
-                    onClick: function onClick() {
-                        return onChangeSizeUnit(unit);
-                    }
-                },
-                React.createElement(
-                    "span",
-                    { className: "unit-text" },
-                    " ",
-                    unit
-                )
-            );
-        })
-    );
-}
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var global = __webpack_require__(18);
 var core = __webpack_require__(11);
-var ctx = __webpack_require__(112);
-var hide = __webpack_require__(27);
-var has = __webpack_require__(23);
+var ctx = __webpack_require__(111);
+var hide = __webpack_require__(26);
+var has = __webpack_require__(22);
 var PROTOTYPE = 'prototype';
 
 var $export = function $export(type, name, source) {
@@ -2149,18 +2309,18 @@ $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var anObject = __webpack_require__(37);
-var IE8_DOM_DEFINE = __webpack_require__(113);
+var anObject = __webpack_require__(36);
+var IE8_DOM_DEFINE = __webpack_require__(112);
 var toPrimitive = __webpack_require__(66);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(22) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(21) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -2173,21 +2333,21 @@ exports.f = __webpack_require__(22) ? Object.defineProperty : function definePro
 };
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(29)(function () {
+module.exports = !__webpack_require__(28)(function () {
   return Object.defineProperty({}, 'a', { get: function get() {
       return 7;
     } }).a != 7;
 });
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2199,32 +2359,7 @@ module.exports = function (it, key) {
 };
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsNative = __webpack_require__(144),
-    getValue = __webpack_require__(149);
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-module.exports = getNative;
-
-/***/ }),
-/* 25 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2259,14 +2394,39 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(225);
+  module.exports = __webpack_require__(139);
 } else {
-  module.exports = __webpack_require__(228);
+  module.exports = __webpack_require__(142);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 26 */
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsNative = __webpack_require__(168),
+    getValue = __webpack_require__(171);
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+module.exports = getNative;
+
+/***/ }),
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2354,15 +2514,15 @@ function PremiumMediaUpload(props) {
 }
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var dP = __webpack_require__(21);
+var dP = __webpack_require__(20);
 var createDesc = __webpack_require__(47);
-module.exports = __webpack_require__(22) ? function (object, key, value) {
+module.exports = __webpack_require__(21) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -2370,7 +2530,7 @@ module.exports = __webpack_require__(22) ? function (object, key, value) {
 };
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2383,7 +2543,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2398,21 +2558,21 @@ module.exports = function (exec) {
 };
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(116);
+var IObject = __webpack_require__(115);
 var defined = __webpack_require__(67);
 module.exports = function (it) {
   return IObject(defined(it));
 };
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2430,7 +2590,7 @@ var $exports = module.exports = function (name) {
 $exports.store = store;
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2526,15 +2686,45 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(40),
-    getRawTag = __webpack_require__(145),
-    objectToString = __webpack_require__(146);
+var _Symbol = __webpack_require__(39),
+    getRawTag = __webpack_require__(160),
+    objectToString = __webpack_require__(161);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -2568,26 +2758,35 @@ module.exports = baseGetTag;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
 }
 
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
+module.exports = isObjectLike;
 
 /***/ }),
 /* 35 */
@@ -2637,37 +2836,11 @@ module.exports = isObject;
 "use strict";
 
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
-}
-
-module.exports = isObjectLike;
+var isObject = __webpack_require__(27);
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+  return it;
+};
 
 /***/ }),
 /* 37 */
@@ -2676,11 +2849,46 @@ module.exports = isObjectLike;
 "use strict";
 
 
-var isObject = __webpack_require__(28);
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumSizeUnits;
+function PremiumSizeUnits(props) {
+    var activeUnit = props.activeUnit,
+        units = props.units,
+        _props$onChangeSizeUn = props.onChangeSizeUnit,
+        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+
+
+    var sizeUnits = ["px", "em", "%"];
+
+    if (undefined !== units) {
+        sizeUnits = units;
+    }
+
+    return React.createElement(
+        "ul",
+        { className: "premium-slider-units" },
+        sizeUnits.map(function (unit, index) {
+            return React.createElement(
+                "li",
+                {
+
+                    className: "single-unit " + (unit === activeUnit && "active"),
+                    onClick: function onClick() {
+                        return onChangeSizeUnit(unit);
+                    }
+                },
+                React.createElement(
+                    "span",
+                    { className: "unit-text" },
+                    " ",
+                    unit
+                )
+            );
+        })
+    );
+}
 
 /***/ }),
 /* 38 */
@@ -2689,11 +2897,77 @@ module.exports = function (it) {
 "use strict";
 
 
-var listCacheClear = __webpack_require__(134),
-    listCacheDelete = __webpack_require__(135),
-    listCacheGet = __webpack_require__(136),
-    listCacheHas = __webpack_require__(137),
-    listCacheSet = __webpack_require__(138);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var baseGetTag = __webpack_require__(33),
+    isObjectLike = __webpack_require__(34);
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
+}
+
+module.exports = isSymbol;
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var root = __webpack_require__(12);
+
+/** Built-in value references. */
+var _Symbol = root.Symbol;
+
+module.exports = _Symbol;
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getNative = __webpack_require__(24);
+
+/* Built-in method references that are verified to be native. */
+var nativeCreate = getNative(Object, 'create');
+
+module.exports = nativeCreate;
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var listCacheClear = __webpack_require__(176),
+    listCacheDelete = __webpack_require__(177),
+    listCacheGet = __webpack_require__(178),
+    listCacheHas = __webpack_require__(179),
+    listCacheSet = __webpack_require__(180);
 
 /**
  * Creates an list cache object.
@@ -2723,13 +2997,13 @@ ListCache.prototype.set = listCacheSet;
 module.exports = ListCache;
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var eq = __webpack_require__(83);
+var eq = __webpack_require__(93);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -2752,41 +3026,13 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var root = __webpack_require__(12);
-
-/** Built-in value references. */
-var _Symbol = root.Symbol;
-
-module.exports = _Symbol;
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getNative = __webpack_require__(24);
-
-/* Built-in method references that are verified to be native. */
-var nativeCreate = getNative(Object, 'create');
-
-module.exports = nativeCreate;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isKeyable = __webpack_require__(158);
+var isKeyable = __webpack_require__(182);
 
 /**
  * Gets the data for `map`.
@@ -2804,7 +3050,36 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 43 */
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isSymbol = __webpack_require__(38);
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0;
+
+/**
+ * Converts `value` to a string key if it's not a string or symbol.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @returns {string|symbol} Returns the key.
+ */
+function toKey(value) {
+  if (typeof value == 'string' || isSymbol(value)) {
+    return value;
+  }
+  var result = value + '';
+  return result == '0' && 1 / value == -INFINITY ? '-0' : result;
+}
+
+module.exports = toKey;
+
+/***/ }),
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2834,73 +3109,6 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var baseGetTag = __webpack_require__(33),
-    isObjectLike = __webpack_require__(36);
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
-}
-
-module.exports = isSymbol;
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isSymbol = __webpack_require__(44);
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0;
-
-/**
- * Converts `value` to a string key if it's not a string or symbol.
- *
- * @private
- * @param {*} value The value to inspect.
- * @returns {string|symbol} Returns the key.
- */
-function toKey(value) {
-  if (typeof value == 'string' || isSymbol(value)) {
-    return value;
-  }
-  var result = value + '';
-  return result == '0' && 1 / value == -INFINITY ? '-0' : result;
-}
-
-module.exports = toKey;
-
-/***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2911,25 +3119,25 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(295);
+var _edit = __webpack_require__(294);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(296);
+var _save = __webpack_require__(295);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(297);
+var _deprecated = __webpack_require__(296);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(298);
+var _attributes = __webpack_require__(297);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -3008,7 +3216,7 @@ module.exports = function (bitmap, value) {
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(115);
+var $keys = __webpack_require__(114);
 var enumBugKeys = __webpack_require__(71);
 
 module.exports = Object.keys || function keys(O) {
@@ -3170,13 +3378,24 @@ module.exports = ReactPropTypesSecret;
 "use strict";
 
 
-var getNative = __webpack_require__(24),
-    root = __webpack_require__(12);
+var _CSSTransition = _interopRequireDefault(__webpack_require__(153));
 
-/* Built-in method references that are verified to be native. */
-var Map = getNative(root, 'Map');
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(158));
 
-module.exports = Map;
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(86));
+
+var _Transition = _interopRequireDefault(__webpack_require__(83));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+module.exports = {
+  Transition: _Transition.default,
+  TransitionGroup: _TransitionGroup.default,
+  ReplaceTransition: _ReplaceTransition.default,
+  CSSTransition: _CSSTransition.default
+};
 
 /***/ }),
 /* 55 */
@@ -3185,11 +3404,48 @@ module.exports = Map;
 "use strict";
 
 
-var mapCacheClear = __webpack_require__(150),
-    mapCacheDelete = __webpack_require__(157),
-    mapCacheGet = __webpack_require__(159),
-    mapCacheHas = __webpack_require__(160),
-    mapCacheSet = __webpack_require__(161);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var isArray = __webpack_require__(15),
+    isSymbol = __webpack_require__(38);
+
+/** Used to match property names within property paths. */
+var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
+    reIsPlainProp = /^\w*$/;
+
+/**
+ * Checks if `value` is a property name and not a property path.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {Object} [object] The object to query keys on.
+ * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
+ */
+function isKey(value, object) {
+  if (isArray(value)) {
+    return false;
+  }
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  if (type == 'number' || type == 'symbol' || type == 'boolean' || value == null || isSymbol(value)) {
+    return true;
+  }
+  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) || object != null && value in Object(object);
+}
+
+module.exports = isKey;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var mapCacheClear = __webpack_require__(165),
+    mapCacheDelete = __webpack_require__(181),
+    mapCacheGet = __webpack_require__(183),
+    mapCacheHas = __webpack_require__(184),
+    mapCacheSet = __webpack_require__(185);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -3219,15 +3475,30 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayLikeKeys = __webpack_require__(179),
-    baseKeys = __webpack_require__(186),
-    isArrayLike = __webpack_require__(58);
+var getNative = __webpack_require__(24),
+    root = __webpack_require__(12);
+
+/* Built-in method references that are verified to be native. */
+var Map = getNative(root, 'Map');
+
+module.exports = Map;
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var arrayLikeKeys = __webpack_require__(214),
+    baseKeys = __webpack_require__(221),
+    isArrayLike = __webpack_require__(60);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -3264,7 +3535,7 @@ function keys(object) {
 module.exports = keys;
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3306,14 +3577,14 @@ function isLength(value) {
 module.exports = isLength;
 
 /***/ }),
-/* 58 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isFunction = __webpack_require__(84),
-    isLength = __webpack_require__(57);
+var isFunction = __webpack_require__(91),
+    isLength = __webpack_require__(59);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -3347,69 +3618,6 @@ function isArrayLike(value) {
 module.exports = isArrayLike;
 
 /***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var isArray = __webpack_require__(14),
-    isSymbol = __webpack_require__(44);
-
-/** Used to match property names within property paths. */
-var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
-    reIsPlainProp = /^\w*$/;
-
-/**
- * Checks if `value` is a property name and not a property path.
- *
- * @private
- * @param {*} value The value to check.
- * @param {Object} [object] The object to query keys on.
- * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
- */
-function isKey(value, object) {
-  if (isArray(value)) {
-    return false;
-  }
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  if (type == 'number' || type == 'symbol' || type == 'boolean' || value == null || isSymbol(value)) {
-    return true;
-  }
-  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) || object != null && value in Object(object);
-}
-
-module.exports = isKey;
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _CSSTransition = _interopRequireDefault(__webpack_require__(239));
-
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(244));
-
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(104));
-
-var _Transition = _interopRequireDefault(__webpack_require__(101));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-module.exports = {
-  Transition: _Transition.default,
-  TransitionGroup: _TransitionGroup.default,
-  ReplaceTransition: _ReplaceTransition.default,
-  CSSTransition: _CSSTransition.default
-};
-
-/***/ }),
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3421,7 +3629,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumFilters;
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -3539,11 +3747,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(37);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -3667,13 +3875,13 @@ var PremiumMargin = function (_Component) {
 
             return _react2.default.createElement(
                 "div",
-                { className: "kmt-spacing-responsive" },
+                { className: "premium-spacing-responsive" },
                 _react2.default.createElement(
                     "header",
                     { className: "premium-control-label-container" },
                     _react2.default.createElement(
                         "div",
-                        { className: "kmt-slider-title-wrap" },
+                        { className: "premium-slider-title-wrap" },
                         __("Margin")
                     ),
                     showUnits && _react2.default.createElement(_premiumSizeUnits2.default, {
@@ -3685,74 +3893,74 @@ var PremiumMargin = function (_Component) {
                 ),
                 _react2.default.createElement(
                     "div",
-                    { className: "kmt-spacing-responsive-outer-wrapper" },
+                    { className: "premium-spacing-responsive-outer-wrapper" },
                     _react2.default.createElement(
                         "div",
-                        { className: "input-wrapper kmt-spacing-responsive-wrapper" },
+                        { className: "input-wrapper premium-spacing-responsive-wrapper" },
                         _react2.default.createElement(
                             "ul",
-                            { className: "kmt-spacing-wrapper" },
+                            { className: "premium-spacing-wrapper" },
                             (directions.includes("all") || directions.includes("top")) && _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "top",
                                     value: top || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     "Top"
                                 )
                             ),
                             (directions.includes("all") || directions.includes("right")) && _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "right",
                                     value: right || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     "Right"
                                 )
                             ),
                             (directions.includes("all") || directions.includes("bottom")) && _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "bottom",
                                     value: bottom || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     "Bottom"
                                 )
                             ),
                             (directions.includes("all") || directions.includes("left")) && _react2.default.createElement(
                                 "li",
-                                { className: "kmt-spacing-input-item" },
+                                { className: "premium-spacing-input-item" },
                                 _react2.default.createElement("input", {
                                     type: "number",
                                     name: "left",
                                     value: left || 0,
                                     onChange: this.onInputChange,
-                                    className: "kmt-spacing-input"
+                                    className: "premium-spacing-input"
                                 }),
                                 _react2.default.createElement(
                                     "span",
-                                    { className: "kmt-spacing-title" },
+                                    { className: "premium-spacing-title" },
                                     "Left"
                                 )
                             ),
@@ -3760,7 +3968,7 @@ var PremiumMargin = function (_Component) {
                                 "li",
                                 null,
                                 _react2.default.createElement("button", {
-                                    className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
+                                    className: "linked-btn  is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
                                     onClick: this.onButtonClick
                                 })
                             )
@@ -3768,9 +3976,9 @@ var PremiumMargin = function (_Component) {
                     ),
                     _react2.default.createElement(
                         "div",
-                        { className: "kmt-spacing-btn-reset-wrap" },
+                        { className: "premium-spacing-btn-reset-wrap" },
                         _react2.default.createElement("button", {
-                            className: "kmt-reset-btn ",
+                            className: "premium-reset-btn ",
                             disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                             onClick: function onClick(e) {
                                 e.preventDefault();
@@ -3977,7 +4185,7 @@ exports.default = PremiumUpperQuote;
 
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(28);
+var isObject = __webpack_require__(27);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -4098,8 +4306,8 @@ module.exports = {};
 
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(37);
-var dPs = __webpack_require__(353);
+var anObject = __webpack_require__(36);
+var dPs = __webpack_require__(352);
 var enumBugKeys = __webpack_require__(71);
 var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -4108,13 +4316,13 @@ var PROTOTYPE = 'prototype';
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var _createDict = function createDict() {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(114)('iframe');
+  var iframe = __webpack_require__(113)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(354).appendChild(iframe);
+  __webpack_require__(353).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -4147,9 +4355,9 @@ module.exports = Object.create || function create(O, Properties) {
 "use strict";
 
 
-var def = __webpack_require__(21).f;
-var has = __webpack_require__(23);
-var TAG = __webpack_require__(31)('toStringTag');
+var def = __webpack_require__(20).f;
+var has = __webpack_require__(22);
+var TAG = __webpack_require__(30)('toStringTag');
 
 module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -4162,7 +4370,7 @@ module.exports = function (it, tag, stat) {
 "use strict";
 
 
-exports.f = __webpack_require__(31);
+exports.f = __webpack_require__(30);
 
 /***/ }),
 /* 78 */
@@ -4175,7 +4383,7 @@ var global = __webpack_require__(18);
 var core = __webpack_require__(11);
 var LIBRARY = __webpack_require__(49);
 var wksExt = __webpack_require__(77);
-var defineProperty = __webpack_require__(21).f;
+var defineProperty = __webpack_require__(20).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -4197,705 +4405,6 @@ module.exports = __webpack_amd_options__;
 "use strict";
 
 
-var arrayMap = __webpack_require__(81),
-    baseIteratee = __webpack_require__(131),
-    baseMap = __webpack_require__(209),
-    isArray = __webpack_require__(14);
-
-/**
- * Creates an array of values by running each element in `collection` thru
- * `iteratee`. The iteratee is invoked with three arguments:
- * (value, index|key, collection).
- *
- * Many lodash methods are guarded to work as iteratees for methods like
- * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
- *
- * The guarded methods are:
- * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
- * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
- * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
- * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- * @example
- *
- * function square(n) {
- *   return n * n;
- * }
- *
- * _.map([4, 8], square);
- * // => [16, 64]
- *
- * _.map({ 'a': 4, 'b': 8 }, square);
- * // => [16, 64] (iteration order is not guaranteed)
- *
- * var users = [
- *   { 'user': 'barney' },
- *   { 'user': 'fred' }
- * ];
- *
- * // The `_.property` iteratee shorthand.
- * _.map(users, 'user');
- * // => ['barney', 'fred']
- */
-function map(collection, iteratee) {
-  var func = isArray(collection) ? arrayMap : baseMap;
-  return func(collection, baseIteratee(iteratee, 3));
-}
-
-module.exports = map;
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A specialized version of `_.map` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function arrayMap(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      result = Array(length);
-
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-
-module.exports = arrayMap;
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var ListCache = __webpack_require__(38),
-    stackClear = __webpack_require__(139),
-    stackDelete = __webpack_require__(140),
-    stackGet = __webpack_require__(141),
-    stackHas = __webpack_require__(142),
-    stackSet = __webpack_require__(143);
-
-/**
- * Creates a stack cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Stack(entries) {
-  var data = this.__data__ = new ListCache(entries);
-  this.size = data.size;
-}
-
-// Add methods to `Stack`.
-Stack.prototype.clear = stackClear;
-Stack.prototype['delete'] = stackDelete;
-Stack.prototype.get = stackGet;
-Stack.prototype.has = stackHas;
-Stack.prototype.set = stackSet;
-
-module.exports = Stack;
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
-function eq(value, other) {
-  return value === other || value !== value && other !== other;
-}
-
-module.exports = eq;
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGetTag = __webpack_require__(33),
-    isObject = __webpack_require__(35);
-
-/** `Object#toString` result references. */
-var asyncTag = '[object AsyncFunction]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
-    proxyTag = '[object Proxy]';
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction(value) {
-    if (!isObject(value)) {
-        return false;
-    }
-    // The use of `Object#toString` avoids issues with the `typeof` operator
-    // in Safari 9 which returns 'object' for typed arrays and other constructors.
-    var tag = baseGetTag(value);
-    return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
-}
-
-module.exports = isFunction;
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
-
-module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to convert.
- * @returns {string} Returns the source code.
- */
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString.call(func);
-    } catch (e) {}
-    try {
-      return func + '';
-    } catch (e) {}
-  }
-  return '';
-}
-
-module.exports = toSource;
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsEqualDeep = __webpack_require__(162),
-    isObjectLike = __webpack_require__(36);
-
-/**
- * The base implementation of `_.isEqual` which supports partial comparisons
- * and tracks traversed objects.
- *
- * @private
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @param {boolean} bitmask The bitmask flags.
- *  1 - Unordered comparison
- *  2 - Partial comparison
- * @param {Function} [customizer] The function to customize comparisons.
- * @param {Object} [stack] Tracks traversed `value` and `other` objects.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- */
-function baseIsEqual(value, other, bitmask, customizer, stack) {
-  if (value === other) {
-    return true;
-  }
-  if (value == null || other == null || !isObjectLike(value) && !isObjectLike(other)) {
-    return value !== value && other !== other;
-  }
-  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
-}
-
-module.exports = baseIsEqual;
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SetCache = __webpack_require__(163),
-    arraySome = __webpack_require__(166),
-    cacheHas = __webpack_require__(167);
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1,
-    COMPARE_UNORDERED_FLAG = 2;
-
-/**
- * A specialized version of `baseIsEqualDeep` for arrays with support for
- * partial deep comparisons.
- *
- * @private
- * @param {Array} array The array to compare.
- * @param {Array} other The other array to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} stack Tracks traversed `array` and `other` objects.
- * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
- */
-function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
-      arrLength = array.length,
-      othLength = other.length;
-
-  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
-    return false;
-  }
-  // Check that cyclic values are equal.
-  var arrStacked = stack.get(array);
-  var othStacked = stack.get(other);
-  if (arrStacked && othStacked) {
-    return arrStacked == other && othStacked == array;
-  }
-  var index = -1,
-      result = true,
-      seen = bitmask & COMPARE_UNORDERED_FLAG ? new SetCache() : undefined;
-
-  stack.set(array, other);
-  stack.set(other, array);
-
-  // Ignore non-index properties.
-  while (++index < arrLength) {
-    var arrValue = array[index],
-        othValue = other[index];
-
-    if (customizer) {
-      var compared = isPartial ? customizer(othValue, arrValue, index, other, array, stack) : customizer(arrValue, othValue, index, array, other, stack);
-    }
-    if (compared !== undefined) {
-      if (compared) {
-        continue;
-      }
-      result = false;
-      break;
-    }
-    // Recursively compare arrays (susceptible to call stack limits).
-    if (seen) {
-      if (!arraySome(other, function (othValue, othIndex) {
-        if (!cacheHas(seen, othIndex) && (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
-          return seen.push(othIndex);
-        }
-      })) {
-        result = false;
-        break;
-      }
-    } else if (!(arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
-      result = false;
-      break;
-    }
-  }
-  stack['delete'](array);
-  stack['delete'](other);
-  return result;
-}
-
-module.exports = equalArrays;
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsArguments = __webpack_require__(181),
-    isObjectLike = __webpack_require__(36);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Built-in value references. */
-var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-/**
- * Checks if `value` is likely an `arguments` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- *  else `false`.
- * @example
- *
- * _.isArguments(function() { return arguments; }());
- * // => true
- *
- * _.isArguments([1, 2, 3]);
- * // => false
- */
-var isArguments = baseIsArguments(function () {
-    return arguments;
-}()) ? baseIsArguments : function (value) {
-    return isObjectLike(value) && hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
-};
-
-module.exports = isArguments;
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var root = __webpack_require__(12),
-    stubFalse = __webpack_require__(182);
-
-/** Detect free variable `exports`. */
-var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule = freeExports && ( false ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
-
-/** Built-in value references. */
-var Buffer = moduleExports ? root.Buffer : undefined;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
-
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */
-var isBuffer = nativeIsBuffer || stubFalse;
-
-module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** Used to detect unsigned integer values. */
-var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
-function isIndex(value, length) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  length = length == null ? MAX_SAFE_INTEGER : length;
-
-  return !!length && (type == 'number' || type != 'symbol' && reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
-}
-
-module.exports = isIndex;
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsTypedArray = __webpack_require__(183),
-    baseUnary = __webpack_require__(184),
-    nodeUtil = __webpack_require__(185);
-
-/* Node.js helper references. */
-var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
-
-/**
- * Checks if `value` is classified as a typed array.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- * @example
- *
- * _.isTypedArray(new Uint8Array);
- * // => true
- *
- * _.isTypedArray([]);
- * // => false
- */
-var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-
-module.exports = isTypedArray;
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isObject = __webpack_require__(35);
-
-/**
- * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` if suitable for strict
- *  equality comparisons, else `false`.
- */
-function isStrictComparable(value) {
-  return value === value && !isObject(value);
-}
-
-module.exports = isStrictComparable;
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A specialized version of `matchesProperty` for source values suitable
- * for strict equality comparisons, i.e. `===`.
- *
- * @private
- * @param {string} key The key of the property to get.
- * @param {*} srcValue The value to match.
- * @returns {Function} Returns the new spec function.
- */
-function matchesStrictComparable(key, srcValue) {
-  return function (object) {
-    if (object == null) {
-      return false;
-    }
-    return object[key] === srcValue && (srcValue !== undefined || key in Object(object));
-  };
-}
-
-module.exports = matchesStrictComparable;
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGet = __webpack_require__(96);
-
-/**
- * Gets the value at `path` of `object`. If the resolved value is
- * `undefined`, the `defaultValue` is returned in its place.
- *
- * @static
- * @memberOf _
- * @since 3.7.0
- * @category Object
- * @param {Object} object The object to query.
- * @param {Array|string} path The path of the property to get.
- * @param {*} [defaultValue] The value returned for `undefined` resolved values.
- * @returns {*} Returns the resolved value.
- * @example
- *
- * var object = { 'a': [{ 'b': { 'c': 3 } }] };
- *
- * _.get(object, 'a[0].b.c');
- * // => 3
- *
- * _.get(object, ['a', '0', 'b', 'c']);
- * // => 3
- *
- * _.get(object, 'a.b.c', 'default');
- * // => 'default'
- */
-function get(object, path, defaultValue) {
-  var result = object == null ? undefined : baseGet(object, path);
-  return result === undefined ? defaultValue : result;
-}
-
-module.exports = get;
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var castPath = __webpack_require__(97),
-    toKey = __webpack_require__(45);
-
-/**
- * The base implementation of `_.get` without support for default values.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Array|string} path The path of the property to get.
- * @returns {*} Returns the resolved value.
- */
-function baseGet(object, path) {
-  path = castPath(path, object);
-
-  var index = 0,
-      length = path.length;
-
-  while (object != null && index < length) {
-    object = object[toKey(path[index++])];
-  }
-  return index && index == length ? object : undefined;
-}
-
-module.exports = baseGet;
-
-/***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isArray = __webpack_require__(14),
-    isKey = __webpack_require__(59),
-    stringToPath = __webpack_require__(197),
-    toString = __webpack_require__(200);
-
-/**
- * Casts `value` to a path array if it's not one.
- *
- * @private
- * @param {*} value The value to inspect.
- * @param {Object} [object] The object to query keys on.
- * @returns {Array} Returns the cast property path array.
- */
-function castPath(value, object) {
-  if (isArray(value)) {
-    return value;
-  }
-  return isKey(value, object) ? [value] : stringToPath(toString(value));
-}
-
-module.exports = castPath;
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -4903,31 +4412,31 @@ exports.defaultTheme = exports.mergeStyles = exports.components = exports.makeAn
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _memoizeOne = __webpack_require__(217);
+var _memoizeOne = __webpack_require__(131);
 
 var _memoizeOne2 = _interopRequireDefault(_memoizeOne);
 
-var _emotion = __webpack_require__(218);
+var _emotion = __webpack_require__(132);
 
-var _reactDom = __webpack_require__(25);
+var _reactDom = __webpack_require__(23);
 
 var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _raf = __webpack_require__(236);
+var _raf = __webpack_require__(150);
 
 var _raf2 = _interopRequireDefault(_raf);
 
-var _reactInputAutosize = __webpack_require__(238);
+var _reactInputAutosize = __webpack_require__(152);
 
 var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 
-var _reactTransitionGroup = __webpack_require__(60);
+var _reactTransitionGroup = __webpack_require__(54);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10236,35 +9745,35 @@ exports.mergeStyles = mergeStyles;
 exports.defaultTheme = defaultTheme;
 
 /***/ }),
-/* 99 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(226);
+  module.exports = __webpack_require__(140);
 } else {
-  module.exports = __webpack_require__(227);
+  module.exports = __webpack_require__(141);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 100 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(232);
+  module.exports = __webpack_require__(146);
 } else {
-  module.exports = __webpack_require__(233);
+  module.exports = __webpack_require__(147);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 101 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10275,13 +9784,13 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
-var _reactDom = _interopRequireDefault(__webpack_require__(25));
+var _reactDom = _interopRequireDefault(__webpack_require__(23));
 
-var _reactLifecyclesCompat = __webpack_require__(102);
+var _reactLifecyclesCompat = __webpack_require__(84);
 
-var _PropTypes = __webpack_require__(103);
+var _PropTypes = __webpack_require__(85);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -10904,7 +10413,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 102 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11039,7 +10548,7 @@ function polyfill(Component) {
 exports.polyfill = polyfill;
 
 /***/ }),
-/* 103 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11076,7 +10585,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 104 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11087,11 +10596,11 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
-var _reactLifecyclesCompat = __webpack_require__(102);
+var _reactLifecyclesCompat = __webpack_require__(84);
 
-var _ChildMapping = __webpack_require__(245);
+var _ChildMapping = __webpack_require__(159);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -11313,7 +10822,645 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 105 */
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGet = __webpack_require__(88);
+
+/**
+ * Gets the value at `path` of `object`. If the resolved value is
+ * `undefined`, the `defaultValue` is returned in its place.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.7.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the property to get.
+ * @param {*} [defaultValue] The value returned for `undefined` resolved values.
+ * @returns {*} Returns the resolved value.
+ * @example
+ *
+ * var object = { 'a': [{ 'b': { 'c': 3 } }] };
+ *
+ * _.get(object, 'a[0].b.c');
+ * // => 3
+ *
+ * _.get(object, ['a', '0', 'b', 'c']);
+ * // => 3
+ *
+ * _.get(object, 'a.b.c', 'default');
+ * // => 'default'
+ */
+function get(object, path, defaultValue) {
+  var result = object == null ? undefined : baseGet(object, path);
+  return result === undefined ? defaultValue : result;
+}
+
+module.exports = get;
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var castPath = __webpack_require__(89),
+    toKey = __webpack_require__(44);
+
+/**
+ * The base implementation of `_.get` without support for default values.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the property to get.
+ * @returns {*} Returns the resolved value.
+ */
+function baseGet(object, path) {
+  path = castPath(path, object);
+
+  var index = 0,
+      length = path.length;
+
+  while (object != null && index < length) {
+    object = object[toKey(path[index++])];
+  }
+  return index && index == length ? object : undefined;
+}
+
+module.exports = baseGet;
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isArray = __webpack_require__(15),
+    isKey = __webpack_require__(55),
+    stringToPath = __webpack_require__(162),
+    toString = __webpack_require__(186);
+
+/**
+ * Casts `value` to a path array if it's not one.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @param {Object} [object] The object to query keys on.
+ * @returns {Array} Returns the cast property path array.
+ */
+function castPath(value, object) {
+  if (isArray(value)) {
+    return value;
+  }
+  return isKey(value, object) ? [value] : stringToPath(toString(value));
+}
+
+module.exports = castPath;
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
+
+module.exports = freeGlobal;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGetTag = __webpack_require__(33),
+    isObject = __webpack_require__(35);
+
+/** `Object#toString` result references. */
+var asyncTag = '[object AsyncFunction]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    proxyTag = '[object Proxy]';
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+    if (!isObject(value)) {
+        return false;
+    }
+    // The use of `Object#toString` avoids issues with the `typeof` operator
+    // in Safari 9 which returns 'object' for typed arrays and other constructors.
+    var tag = baseGetTag(value);
+    return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
+}
+
+module.exports = isFunction;
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used for built-in method references. */
+var funcProto = Function.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to convert.
+ * @returns {string} Returns the source code.
+ */
+function toSource(func) {
+  if (func != null) {
+    try {
+      return funcToString.call(func);
+    } catch (e) {}
+    try {
+      return func + '';
+    } catch (e) {}
+  }
+  return '';
+}
+
+module.exports = toSource;
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || value !== value && other !== other;
+}
+
+module.exports = eq;
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var ListCache = __webpack_require__(41),
+    stackClear = __webpack_require__(192),
+    stackDelete = __webpack_require__(193),
+    stackGet = __webpack_require__(194),
+    stackHas = __webpack_require__(195),
+    stackSet = __webpack_require__(196);
+
+/**
+ * Creates a stack cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Stack(entries) {
+  var data = this.__data__ = new ListCache(entries);
+  this.size = data.size;
+}
+
+// Add methods to `Stack`.
+Stack.prototype.clear = stackClear;
+Stack.prototype['delete'] = stackDelete;
+Stack.prototype.get = stackGet;
+Stack.prototype.has = stackHas;
+Stack.prototype.set = stackSet;
+
+module.exports = Stack;
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsEqualDeep = __webpack_require__(197),
+    isObjectLike = __webpack_require__(34);
+
+/**
+ * The base implementation of `_.isEqual` which supports partial comparisons
+ * and tracks traversed objects.
+ *
+ * @private
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @param {boolean} bitmask The bitmask flags.
+ *  1 - Unordered comparison
+ *  2 - Partial comparison
+ * @param {Function} [customizer] The function to customize comparisons.
+ * @param {Object} [stack] Tracks traversed `value` and `other` objects.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ */
+function baseIsEqual(value, other, bitmask, customizer, stack) {
+  if (value === other) {
+    return true;
+  }
+  if (value == null || other == null || !isObjectLike(value) && !isObjectLike(other)) {
+    return value !== value && other !== other;
+  }
+  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
+}
+
+module.exports = baseIsEqual;
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SetCache = __webpack_require__(198),
+    arraySome = __webpack_require__(201),
+    cacheHas = __webpack_require__(202);
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/**
+ * A specialized version of `baseIsEqualDeep` for arrays with support for
+ * partial deep comparisons.
+ *
+ * @private
+ * @param {Array} array The array to compare.
+ * @param {Array} other The other array to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} stack Tracks traversed `array` and `other` objects.
+ * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
+ */
+function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
+  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+      arrLength = array.length,
+      othLength = other.length;
+
+  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
+    return false;
+  }
+  // Check that cyclic values are equal.
+  var arrStacked = stack.get(array);
+  var othStacked = stack.get(other);
+  if (arrStacked && othStacked) {
+    return arrStacked == other && othStacked == array;
+  }
+  var index = -1,
+      result = true,
+      seen = bitmask & COMPARE_UNORDERED_FLAG ? new SetCache() : undefined;
+
+  stack.set(array, other);
+  stack.set(other, array);
+
+  // Ignore non-index properties.
+  while (++index < arrLength) {
+    var arrValue = array[index],
+        othValue = other[index];
+
+    if (customizer) {
+      var compared = isPartial ? customizer(othValue, arrValue, index, other, array, stack) : customizer(arrValue, othValue, index, array, other, stack);
+    }
+    if (compared !== undefined) {
+      if (compared) {
+        continue;
+      }
+      result = false;
+      break;
+    }
+    // Recursively compare arrays (susceptible to call stack limits).
+    if (seen) {
+      if (!arraySome(other, function (othValue, othIndex) {
+        if (!cacheHas(seen, othIndex) && (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
+          return seen.push(othIndex);
+        }
+      })) {
+        result = false;
+        break;
+      }
+    } else if (!(arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
+      result = false;
+      break;
+    }
+  }
+  stack['delete'](array);
+  stack['delete'](other);
+  return result;
+}
+
+module.exports = equalArrays;
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsArguments = __webpack_require__(216),
+    isObjectLike = __webpack_require__(34);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */
+var isArguments = baseIsArguments(function () {
+    return arguments;
+}()) ? baseIsArguments : function (value) {
+    return isObjectLike(value) && hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
+};
+
+module.exports = isArguments;
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var root = __webpack_require__(12),
+    stubFalse = __webpack_require__(217);
+
+/** Detect free variable `exports`. */
+var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && ( false ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Built-in value references. */
+var Buffer = moduleExports ? root.Buffer : undefined;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
+
+/**
+ * Checks if `value` is a buffer.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+ * @example
+ *
+ * _.isBuffer(new Buffer(2));
+ * // => true
+ *
+ * _.isBuffer(new Uint8Array(2));
+ * // => false
+ */
+var isBuffer = nativeIsBuffer || stubFalse;
+
+module.exports = isBuffer;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  length = length == null ? MAX_SAFE_INTEGER : length;
+
+  return !!length && (type == 'number' || type != 'symbol' && reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
+}
+
+module.exports = isIndex;
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsTypedArray = __webpack_require__(218),
+    baseUnary = __webpack_require__(219),
+    nodeUtil = __webpack_require__(220);
+
+/* Node.js helper references. */
+var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+/**
+ * Checks if `value` is classified as a typed array.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ * @example
+ *
+ * _.isTypedArray(new Uint8Array);
+ * // => true
+ *
+ * _.isTypedArray([]);
+ * // => false
+ */
+var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
+
+module.exports = isTypedArray;
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isObject = __webpack_require__(35);
+
+/**
+ * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` if suitable for strict
+ *  equality comparisons, else `false`.
+ */
+function isStrictComparable(value) {
+  return value === value && !isObject(value);
+}
+
+module.exports = isStrictComparable;
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * A specialized version of `matchesProperty` for source values suitable
+ * for strict equality comparisons, i.e. `===`.
+ *
+ * @private
+ * @param {string} key The key of the property to get.
+ * @param {*} srcValue The value to match.
+ * @returns {Function} Returns the new spec function.
+ */
+function matchesStrictComparable(key, srcValue) {
+  return function (object) {
+    if (object == null) {
+      return false;
+    }
+    return object[key] === srcValue && (srcValue !== undefined || key in Object(object));
+  };
+}
+
+module.exports = matchesStrictComparable;
+
+/***/ }),
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11545,7 +11692,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11571,7 +11718,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(4), __webpack_require__(0), __webpack_require__(25), __webpack_require__(60)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(4), __webpack_require__(0), __webpack_require__(25), __webpack_require__(60)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(10), __webpack_require__(3), __webpack_require__(0), __webpack_require__(23), __webpack_require__(54)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(10), __webpack_require__(3), __webpack_require__(0), __webpack_require__(23), __webpack_require__(54)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -12113,7 +12260,24 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var iconsList = {
+    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+};
+
+exports.default = iconsList;
 
 /***/ }),
 /* 107 */
@@ -12125,26 +12289,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var iconsList = {
-  Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-  "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
-};
-
-exports.default = iconsList;
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.default = _unsupportedIterableToArray;
 
-var _arrayLikeToArray = __webpack_require__(109);
+var _arrayLikeToArray = __webpack_require__(108);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -12160,7 +12307,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 109 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12181,7 +12328,7 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 110 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12207,7 +12354,7 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 111 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12226,14 +12373,14 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 112 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(333);
+var aFunction = __webpack_require__(332);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -12257,26 +12404,26 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = !__webpack_require__(21) && !__webpack_require__(28)(function () {
+  return Object.defineProperty(__webpack_require__(113)('div'), 'a', { get: function get() {
+      return 7;
+    } }).a != 7;
+});
+
+/***/ }),
 /* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = !__webpack_require__(22) && !__webpack_require__(29)(function () {
-  return Object.defineProperty(__webpack_require__(114)('div'), 'a', { get: function get() {
-      return 7;
-    } }).a != 7;
-});
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isObject = __webpack_require__(28);
+var isObject = __webpack_require__(27);
 var document = __webpack_require__(18).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -12285,15 +12432,15 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 115 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var has = __webpack_require__(23);
-var toIObject = __webpack_require__(30);
-var arrayIndexOf = __webpack_require__(335)(false);
+var has = __webpack_require__(22);
+var toIObject = __webpack_require__(29);
+var arrayIndexOf = __webpack_require__(334)(false);
 var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -12312,21 +12459,21 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 116 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(117);
+var cof = __webpack_require__(116);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 117 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12339,14 +12486,14 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 118 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(23);
+var has = __webpack_require__(22);
 var toObject = __webpack_require__(73);
 var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 var ObjectProto = Object.prototype;
@@ -12360,7 +12507,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 };
 
 /***/ }),
-/* 119 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12370,11 +12517,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(348);
+var _iterator = __webpack_require__(347);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(359);
+var _symbol = __webpack_require__(358);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -12395,21 +12542,21 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var LIBRARY = __webpack_require__(49);
-var $export = __webpack_require__(20);
-var redefine = __webpack_require__(121);
-var hide = __webpack_require__(27);
+var $export = __webpack_require__(19);
+var redefine = __webpack_require__(120);
+var hide = __webpack_require__(26);
 var Iterators = __webpack_require__(74);
-var $iterCreate = __webpack_require__(352);
+var $iterCreate = __webpack_require__(351);
 var setToStringTag = __webpack_require__(76);
-var getPrototypeOf = __webpack_require__(118);
-var ITERATOR = __webpack_require__(31)('iterator');
+var getPrototypeOf = __webpack_require__(117);
+var ITERATOR = __webpack_require__(30)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -12483,13 +12630,28 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(26);
+
+/***/ }),
 /* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(27);
+// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
+var $keys = __webpack_require__(114);
+var hiddenKeys = __webpack_require__(71).concat('length', 'prototype');
+
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return $keys(O, hiddenKeys);
+};
 
 /***/ }),
 /* 122 */
@@ -12498,30 +12660,15 @@ module.exports = __webpack_require__(27);
 "use strict";
 
 
-// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(115);
-var hiddenKeys = __webpack_require__(71).concat('length', 'prototype');
-
-exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return $keys(O, hiddenKeys);
-};
-
-/***/ }),
-/* 123 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var pIE = __webpack_require__(51);
 var createDesc = __webpack_require__(47);
-var toIObject = __webpack_require__(30);
+var toIObject = __webpack_require__(29);
 var toPrimitive = __webpack_require__(66);
-var has = __webpack_require__(23);
-var IE8_DOM_DEFINE = __webpack_require__(113);
+var has = __webpack_require__(22);
+var IE8_DOM_DEFINE = __webpack_require__(112);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(21) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -12531,68 +12678,68 @@ exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O
 };
 
 /***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(124);
+
+__webpack_require__(248);
+
+__webpack_require__(253);
+
+__webpack_require__(258);
+
+__webpack_require__(263);
+
+__webpack_require__(268);
+
+__webpack_require__(273);
+
+__webpack_require__(278);
+
+__webpack_require__(279);
+
+__webpack_require__(284);
+
+__webpack_require__(289);
+
+__webpack_require__(46);
+
+__webpack_require__(298);
+
+__webpack_require__(323);
+
+__webpack_require__(379);
+
+/***/ }),
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(125);
+var _settings = __webpack_require__(4);
 
-__webpack_require__(249);
-
-__webpack_require__(254);
-
-__webpack_require__(259);
-
-__webpack_require__(263);
-
-__webpack_require__(268);
-
-__webpack_require__(274);
-
-__webpack_require__(279);
-
-__webpack_require__(280);
-
-__webpack_require__(285);
-
-__webpack_require__(290);
-
-__webpack_require__(46);
-
-__webpack_require__(299);
-
-__webpack_require__(324);
-
-__webpack_require__(380);
-
-/***/ }),
-/* 125 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _settings = __webpack_require__(5);
-
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(126);
+var _edit = __webpack_require__(125);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(246);
+var _save = __webpack_require__(245);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(247);
+var _attributes = __webpack_require__(246);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(248);
+var _deprecated = __webpack_require__(247);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -12617,7 +12764,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12647,15 +12794,15 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -12674,9 +12821,7 @@ var __ = wp.i18n.__;
 var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    SelectControl = _wp$components.SelectControl;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     RichText = _wp$blockEditor.RichText,
@@ -12736,7 +12881,6 @@ var PremiumAccordion = function (_Component) {
             var _props2 = this.props,
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
-                clientId = _props2.clientId,
                 className = _props2.className;
             var _props$attributes = this.props.attributes,
                 accordionId = _props$attributes.accordionId,
@@ -12747,7 +12891,6 @@ var PremiumAccordion = function (_Component) {
                 arrowStyles = _props$attributes.arrowStyles,
                 descStyles = _props$attributes.descStyles,
                 contentType = _props$attributes.contentType,
-                titleEditBorder = _props$attributes.titleEditBorder,
                 textShadowColor = _props$attributes.textShadowColor,
                 textShadowBlur = _props$attributes.textShadowBlur,
                 textShadowHorizontal = _props$attributes.textShadowHorizontal,
@@ -12835,12 +12978,10 @@ var PremiumAccordion = function (_Component) {
 
             var onAccordionChange = function onAccordionChange(attr, value, index) {
                 var items = repeaterItems;
-
                 return items.map(function (item, currIndex) {
                     if (index == currIndex) {
                         item[attr] = value;
                     }
-
                     return item;
                 });
             };
@@ -13027,7 +13168,7 @@ var PremiumAccordion = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Text Color", ''),
+                            label: __("Text Color", 'premium-block-for-gutenberg'),
                             colorValue: titleStyles[0].titleColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(value) {
@@ -13401,7 +13542,7 @@ var PremiumAccordion = function (_Component) {
 exports.default = PremiumAccordion;
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13418,7 +13559,7 @@ exports.default = PremiumAccordion;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var k = __webpack_require__(32),
+var k = __webpack_require__(31),
     n = "function" === typeof Symbol && Symbol.for,
     p = n ? Symbol.for("react.element") : 60103,
     q = n ? Symbol.for("react.portal") : 60106,
@@ -13585,7 +13726,7 @@ var X = { Children: { map: function map(a, b, d) {
     Z = Y && X || Y;module.exports = Z.default || Z;
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13606,7 +13747,7 @@ if (process.env.NODE_ENV !== "production") {
   (function () {
     'use strict';
 
-    var _assign = __webpack_require__(32);
+    var _assign = __webpack_require__(31);
     var checkPropTypes = __webpack_require__(52);
 
     // TODO: this is special because it gets imported during build.
@@ -15488,7 +15629,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15500,7 +15641,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -15511,11 +15652,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var __ = wp.i18n.__;
-// import kmtEvents from './events';
-
-var Fragment = wp.element.Fragment;
 
 var Responsive = function (_Component) {
     _inherits(Responsive, _Component);
@@ -15528,7 +15664,6 @@ var Responsive = function (_Component) {
         _this.state = {
             view: 'desktop'
         };
-        // this.linkResponsiveButtons();
         return _this;
     }
 
@@ -15542,7 +15677,7 @@ var Responsive = function (_Component) {
             var devices = ['desktop', 'tablet', 'mobile'];
             var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
             return _react2.default.createElement(
-                Fragment,
+                _react.Fragment,
                 null,
                 label ? _react2.default.createElement(
                     'span',
@@ -15557,7 +15692,7 @@ var Responsive = function (_Component) {
                         var icon = device === 'mobile' ? 'smartphone' : device;
                         return _react2.default.createElement(
                             'li',
-                            { className: '' + device + activeClass },
+                            { key: key, className: '' + device + activeClass },
                             _react2.default.createElement(
                                 'button',
                                 { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
@@ -15584,13 +15719,6 @@ var Responsive = function (_Component) {
             }
             this.props.onChange(device);
         }
-        // linkResponsiveButtons() {
-        //     let self = this;
-        //     kmtEvents.on('KemetChangedRepsonsivePreview', function (e) {
-        //         self.changeViewType(e.detail);
-        //     })
-        // }
-
     }]);
 
     return Responsive;
@@ -15599,2988 +15727,7 @@ var Responsive = function (_Component) {
 exports.default = Responsive;
 
 /***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _map = __webpack_require__(80);
-
-var _map2 = _interopRequireDefault(_map);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    RangeControl = _wp$components.RangeControl,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button,
-    TabPanel = _wp$components.TabPanel,
-    Dashicon = _wp$components.Dashicon;
-
-// Extend component
-
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-
-/**
- * Internal dependencies
- */
-
-function PremiumResponsive(props) {
-
-    var sizeTypes = void 0;
-
-    if ("sizeTypes" in props) {
-        sizeTypes = props.sizeTypes;
-    } else {
-        sizeTypes = [{ key: "px", name: __("px") }, { key: "em", name: __("em") }];
-    }
-
-    var sizeTypesControls = React.createElement(
-        ButtonGroup,
-        { className: "premium-size-type-field", "aria-label": __("Size Type") },
-        (0, _map2.default)(sizeTypes, function (_ref) {
-            var name = _ref.name,
-                key = _ref.key;
-            return React.createElement(
-                Button,
-                {
-                    key: key,
-                    className: "premium-size-btn",
-                    isSmall: true,
-                    isPrimary: props.type.value === key,
-                    "aria-pressed": props.type.value === key,
-                    onClick: function onClick() {
-                        return props.setAttributes(_defineProperty({}, props.typeLabel, key));
-                    }
-                },
-                name
-            );
-        })
-    );
-
-    return React.createElement(
-        TabPanel,
-        { className: "premium-size-type-field-tabs", activeClass: "active-tab",
-            tabs: [{
-                name: "desktop",
-                title: React.createElement(Dashicon, { icon: "desktop" }),
-                className: "premium-desktop-tab premium-responsive-tabs"
-            }, {
-                name: "tablet",
-                title: React.createElement(Dashicon, { icon: "tablet" }),
-                className: "premium-tablet-tab premium-responsive-tabs"
-            }, {
-                name: "mobile",
-                title: React.createElement(Dashicon, { icon: "smartphone" }),
-                className: "premium-mobile-tab premium-responsive-tabs"
-            }] },
-        function (tab) {
-            var tabout = void 0;
-
-            if ("mobile" === tab.name) {
-                tabout = React.createElement(
-                    Fragment,
-                    null,
-                    sizeTypesControls,
-                    React.createElement(RangeControl, {
-                        label: __(props.sizeMobileText),
-                        value: props.sizeMobile.value,
-                        onChange: function onChange(value) {
-                            return props.setAttributes(_defineProperty({}, props.sizeMobileLabel, value));
-                        },
-                        min: props.min || 0,
-                        max: props.max || 200,
-                        step: props.steps,
-                        beforeIcon: "editor-textcolor",
-                        allowReset: true,
-                        initialPosition: 30
-                    })
-                );
-            } else if ("tablet" === tab.name) {
-                tabout = React.createElement(
-                    Fragment,
-                    null,
-                    sizeTypesControls,
-                    React.createElement(RangeControl, {
-                        label: __(props.sizeTabletText),
-                        value: props.sizeTablet.value,
-                        onChange: function onChange(value) {
-                            return props.setAttributes(_defineProperty({}, props.sizeTabletLabel, value));
-                        },
-                        min: props.min || 0,
-                        max: props.max || 200,
-                        step: props.steps,
-                        beforeIcon: "editor-textcolor",
-                        allowReset: true,
-                        initialPosition: 30
-                    })
-                );
-            } else {
-                tabout = React.createElement(
-                    Fragment,
-                    null,
-                    sizeTypesControls,
-                    React.createElement(RangeControl, {
-                        label: __(props.sizeText),
-                        value: props.size.value,
-                        onChange: function onChange(value) {
-                            return props.setAttributes(_defineProperty({}, props.sizeLabel, value));
-                        },
-                        min: props.min || 0,
-                        max: props.max || 200,
-                        step: props.steps,
-                        beforeIcon: "editor-textcolor",
-                        allowReset: true,
-                        initialPosition: 30
-                    })
-                );
-            }
-
-            return React.createElement(
-                "div",
-                null,
-                tabout
-            );
-        }
-    );
-}
-
-exports.default = PremiumResponsive;
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var baseMatches = __webpack_require__(132),
-    baseMatchesProperty = __webpack_require__(196),
-    identity = __webpack_require__(205),
-    isArray = __webpack_require__(14),
-    property = __webpack_require__(206);
-
-/**
- * The base implementation of `_.iteratee`.
- *
- * @private
- * @param {*} [value=_.identity] The value to convert to an iteratee.
- * @returns {Function} Returns the iteratee.
- */
-function baseIteratee(value) {
-  // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
-  // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
-  if (typeof value == 'function') {
-    return value;
-  }
-  if (value == null) {
-    return identity;
-  }
-  if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object') {
-    return isArray(value) ? baseMatchesProperty(value[0], value[1]) : baseMatches(value);
-  }
-  return property(value);
-}
-
-module.exports = baseIteratee;
-
-/***/ }),
-/* 132 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsMatch = __webpack_require__(133),
-    getMatchData = __webpack_require__(195),
-    matchesStrictComparable = __webpack_require__(94);
-
-/**
- * The base implementation of `_.matches` which doesn't clone `source`.
- *
- * @private
- * @param {Object} source The object of property values to match.
- * @returns {Function} Returns the new spec function.
- */
-function baseMatches(source) {
-  var matchData = getMatchData(source);
-  if (matchData.length == 1 && matchData[0][2]) {
-    return matchesStrictComparable(matchData[0][0], matchData[0][1]);
-  }
-  return function (object) {
-    return object === source || baseIsMatch(object, source, matchData);
-  };
-}
-
-module.exports = baseMatches;
-
-/***/ }),
-/* 133 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Stack = __webpack_require__(82),
-    baseIsEqual = __webpack_require__(87);
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1,
-    COMPARE_UNORDERED_FLAG = 2;
-
-/**
- * The base implementation of `_.isMatch` without support for iteratee shorthands.
- *
- * @private
- * @param {Object} object The object to inspect.
- * @param {Object} source The object of property values to match.
- * @param {Array} matchData The property names, values, and compare flags to match.
- * @param {Function} [customizer] The function to customize comparisons.
- * @returns {boolean} Returns `true` if `object` is a match, else `false`.
- */
-function baseIsMatch(object, source, matchData, customizer) {
-  var index = matchData.length,
-      length = index,
-      noCustomizer = !customizer;
-
-  if (object == null) {
-    return !length;
-  }
-  object = Object(object);
-  while (index--) {
-    var data = matchData[index];
-    if (noCustomizer && data[2] ? data[1] !== object[data[0]] : !(data[0] in object)) {
-      return false;
-    }
-  }
-  while (++index < length) {
-    data = matchData[index];
-    var key = data[0],
-        objValue = object[key],
-        srcValue = data[1];
-
-    if (noCustomizer && data[2]) {
-      if (objValue === undefined && !(key in object)) {
-        return false;
-      }
-    } else {
-      var stack = new Stack();
-      if (customizer) {
-        var result = customizer(objValue, srcValue, key, object, source, stack);
-      }
-      if (!(result === undefined ? baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG, customizer, stack) : result)) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-module.exports = baseIsMatch;
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Removes all key-value entries from the list cache.
- *
- * @private
- * @name clear
- * @memberOf ListCache
- */
-function listCacheClear() {
-  this.__data__ = [];
-  this.size = 0;
-}
-
-module.exports = listCacheClear;
-
-/***/ }),
-/* 135 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var assocIndexOf = __webpack_require__(39);
-
-/** Used for built-in method references. */
-var arrayProto = Array.prototype;
-
-/** Built-in value references. */
-var splice = arrayProto.splice;
-
-/**
- * Removes `key` and its value from the list cache.
- *
- * @private
- * @name delete
- * @memberOf ListCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function listCacheDelete(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    return false;
-  }
-  var lastIndex = data.length - 1;
-  if (index == lastIndex) {
-    data.pop();
-  } else {
-    splice.call(data, index, 1);
-  }
-  --this.size;
-  return true;
-}
-
-module.exports = listCacheDelete;
-
-/***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var assocIndexOf = __webpack_require__(39);
-
-/**
- * Gets the list cache value for `key`.
- *
- * @private
- * @name get
- * @memberOf ListCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function listCacheGet(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  return index < 0 ? undefined : data[index][1];
-}
-
-module.exports = listCacheGet;
-
-/***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var assocIndexOf = __webpack_require__(39);
-
-/**
- * Checks if a list cache value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf ListCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function listCacheHas(key) {
-  return assocIndexOf(this.__data__, key) > -1;
-}
-
-module.exports = listCacheHas;
-
-/***/ }),
-/* 138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var assocIndexOf = __webpack_require__(39);
-
-/**
- * Sets the list cache `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf ListCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the list cache instance.
- */
-function listCacheSet(key, value) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    ++this.size;
-    data.push([key, value]);
-  } else {
-    data[index][1] = value;
-  }
-  return this;
-}
-
-module.exports = listCacheSet;
-
-/***/ }),
-/* 139 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var ListCache = __webpack_require__(38);
-
-/**
- * Removes all key-value entries from the stack.
- *
- * @private
- * @name clear
- * @memberOf Stack
- */
-function stackClear() {
-  this.__data__ = new ListCache();
-  this.size = 0;
-}
-
-module.exports = stackClear;
-
-/***/ }),
-/* 140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Removes `key` and its value from the stack.
- *
- * @private
- * @name delete
- * @memberOf Stack
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function stackDelete(key) {
-  var data = this.__data__,
-      result = data['delete'](key);
-
-  this.size = data.size;
-  return result;
-}
-
-module.exports = stackDelete;
-
-/***/ }),
-/* 141 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Gets the stack value for `key`.
- *
- * @private
- * @name get
- * @memberOf Stack
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function stackGet(key) {
-  return this.__data__.get(key);
-}
-
-module.exports = stackGet;
-
-/***/ }),
-/* 142 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Checks if a stack value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Stack
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function stackHas(key) {
-  return this.__data__.has(key);
-}
-
-module.exports = stackHas;
-
-/***/ }),
-/* 143 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var ListCache = __webpack_require__(38),
-    Map = __webpack_require__(54),
-    MapCache = __webpack_require__(55);
-
-/** Used as the size to enable large array optimizations. */
-var LARGE_ARRAY_SIZE = 200;
-
-/**
- * Sets the stack `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Stack
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the stack cache instance.
- */
-function stackSet(key, value) {
-  var data = this.__data__;
-  if (data instanceof ListCache) {
-    var pairs = data.__data__;
-    if (!Map || pairs.length < LARGE_ARRAY_SIZE - 1) {
-      pairs.push([key, value]);
-      this.size = ++data.size;
-      return this;
-    }
-    data = this.__data__ = new MapCache(pairs);
-  }
-  data.set(key, value);
-  this.size = data.size;
-  return this;
-}
-
-module.exports = stackSet;
-
-/***/ }),
-/* 144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isFunction = __webpack_require__(84),
-    isMasked = __webpack_require__(147),
-    isObject = __webpack_require__(35),
-    toSource = __webpack_require__(86);
-
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */
-var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-/** Used to detect host constructors (Safari). */
-var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype,
-    objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to detect if a method is native. */
-var reIsNative = RegExp('^' + funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&').replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
-
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */
-function baseIsNative(value) {
-  if (!isObject(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
-}
-
-module.exports = baseIsNative;
-
-/***/ }),
-/* 145 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Symbol = __webpack_require__(40);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Built-in value references. */
-var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-module.exports = getRawTag;
-
-/***/ }),
-/* 146 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-module.exports = objectToString;
-
-/***/ }),
-/* 147 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var coreJsData = __webpack_require__(148);
-
-/** Used to detect methods masquerading as native. */
-var maskSrcKey = function () {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? 'Symbol(src)_1.' + uid : '';
-}();
-
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */
-function isMasked(func) {
-  return !!maskSrcKey && maskSrcKey in func;
-}
-
-module.exports = isMasked;
-
-/***/ }),
-/* 148 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var root = __webpack_require__(12);
-
-/** Used to detect overreaching core-js shims. */
-var coreJsData = root['__core-js_shared__'];
-
-module.exports = coreJsData;
-
-/***/ }),
-/* 149 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */
-function getValue(object, key) {
-  return object == null ? undefined : object[key];
-}
-
-module.exports = getValue;
-
-/***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Hash = __webpack_require__(151),
-    ListCache = __webpack_require__(38),
-    Map = __webpack_require__(54);
-
-/**
- * Removes all key-value entries from the map.
- *
- * @private
- * @name clear
- * @memberOf MapCache
- */
-function mapCacheClear() {
-  this.size = 0;
-  this.__data__ = {
-    'hash': new Hash(),
-    'map': new (Map || ListCache)(),
-    'string': new Hash()
-  };
-}
-
-module.exports = mapCacheClear;
-
-/***/ }),
-/* 151 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var hashClear = __webpack_require__(152),
-    hashDelete = __webpack_require__(153),
-    hashGet = __webpack_require__(154),
-    hashHas = __webpack_require__(155),
-    hashSet = __webpack_require__(156);
-
-/**
- * Creates a hash object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Hash(entries) {
-    var index = -1,
-        length = entries == null ? 0 : entries.length;
-
-    this.clear();
-    while (++index < length) {
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
-}
-
-// Add methods to `Hash`.
-Hash.prototype.clear = hashClear;
-Hash.prototype['delete'] = hashDelete;
-Hash.prototype.get = hashGet;
-Hash.prototype.has = hashHas;
-Hash.prototype.set = hashSet;
-
-module.exports = Hash;
-
-/***/ }),
-/* 152 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var nativeCreate = __webpack_require__(41);
-
-/**
- * Removes all key-value entries from the hash.
- *
- * @private
- * @name clear
- * @memberOf Hash
- */
-function hashClear() {
-  this.__data__ = nativeCreate ? nativeCreate(null) : {};
-  this.size = 0;
-}
-
-module.exports = hashClear;
-
-/***/ }),
-/* 153 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Removes `key` and its value from the hash.
- *
- * @private
- * @name delete
- * @memberOf Hash
- * @param {Object} hash The hash to modify.
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function hashDelete(key) {
-  var result = this.has(key) && delete this.__data__[key];
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-module.exports = hashDelete;
-
-/***/ }),
-/* 154 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var nativeCreate = __webpack_require__(41);
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Gets the hash value for `key`.
- *
- * @private
- * @name get
- * @memberOf Hash
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function hashGet(key) {
-  var data = this.__data__;
-  if (nativeCreate) {
-    var result = data[key];
-    return result === HASH_UNDEFINED ? undefined : result;
-  }
-  return hasOwnProperty.call(data, key) ? data[key] : undefined;
-}
-
-module.exports = hashGet;
-
-/***/ }),
-/* 155 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var nativeCreate = __webpack_require__(41);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Checks if a hash value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Hash
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function hashHas(key) {
-  var data = this.__data__;
-  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
-}
-
-module.exports = hashHas;
-
-/***/ }),
-/* 156 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var nativeCreate = __webpack_require__(41);
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/**
- * Sets the hash `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Hash
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the hash instance.
- */
-function hashSet(key, value) {
-  var data = this.__data__;
-  this.size += this.has(key) ? 0 : 1;
-  data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
-  return this;
-}
-
-module.exports = hashSet;
-
-/***/ }),
-/* 157 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getMapData = __webpack_require__(42);
-
-/**
- * Removes `key` and its value from the map.
- *
- * @private
- * @name delete
- * @memberOf MapCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function mapCacheDelete(key) {
-  var result = getMapData(this, key)['delete'](key);
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-module.exports = mapCacheDelete;
-
-/***/ }),
-/* 158 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is suitable for use as unique object key.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
- */
-function isKeyable(value) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean' ? value !== '__proto__' : value === null;
-}
-
-module.exports = isKeyable;
-
-/***/ }),
-/* 159 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getMapData = __webpack_require__(42);
-
-/**
- * Gets the map value for `key`.
- *
- * @private
- * @name get
- * @memberOf MapCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function mapCacheGet(key) {
-  return getMapData(this, key).get(key);
-}
-
-module.exports = mapCacheGet;
-
-/***/ }),
-/* 160 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getMapData = __webpack_require__(42);
-
-/**
- * Checks if a map value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf MapCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function mapCacheHas(key) {
-  return getMapData(this, key).has(key);
-}
-
-module.exports = mapCacheHas;
-
-/***/ }),
-/* 161 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getMapData = __webpack_require__(42);
-
-/**
- * Sets the map `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf MapCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the map cache instance.
- */
-function mapCacheSet(key, value) {
-  var data = getMapData(this, key),
-      size = data.size;
-
-  data.set(key, value);
-  this.size += data.size == size ? 0 : 1;
-  return this;
-}
-
-module.exports = mapCacheSet;
-
-/***/ }),
-/* 162 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Stack = __webpack_require__(82),
-    equalArrays = __webpack_require__(88),
-    equalByTag = __webpack_require__(168),
-    equalObjects = __webpack_require__(172),
-    getTag = __webpack_require__(190),
-    isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(90),
-    isTypedArray = __webpack_require__(92);
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1;
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]',
-    arrayTag = '[object Array]',
-    objectTag = '[object Object]';
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * A specialized version of `baseIsEqual` for arrays and objects which performs
- * deep comparisons and tracks traversed objects enabling objects with circular
- * references to be compared.
- *
- * @private
- * @param {Object} object The object to compare.
- * @param {Object} other The other object to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} [stack] Tracks traversed `object` and `other` objects.
- * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
- */
-function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
-  var objIsArr = isArray(object),
-      othIsArr = isArray(other),
-      objTag = objIsArr ? arrayTag : getTag(object),
-      othTag = othIsArr ? arrayTag : getTag(other);
-
-  objTag = objTag == argsTag ? objectTag : objTag;
-  othTag = othTag == argsTag ? objectTag : othTag;
-
-  var objIsObj = objTag == objectTag,
-      othIsObj = othTag == objectTag,
-      isSameTag = objTag == othTag;
-
-  if (isSameTag && isBuffer(object)) {
-    if (!isBuffer(other)) {
-      return false;
-    }
-    objIsArr = true;
-    objIsObj = false;
-  }
-  if (isSameTag && !objIsObj) {
-    stack || (stack = new Stack());
-    return objIsArr || isTypedArray(object) ? equalArrays(object, other, bitmask, customizer, equalFunc, stack) : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
-  }
-  if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
-    var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
-        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
-
-    if (objIsWrapped || othIsWrapped) {
-      var objUnwrapped = objIsWrapped ? object.value() : object,
-          othUnwrapped = othIsWrapped ? other.value() : other;
-
-      stack || (stack = new Stack());
-      return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
-    }
-  }
-  if (!isSameTag) {
-    return false;
-  }
-  stack || (stack = new Stack());
-  return equalObjects(object, other, bitmask, customizer, equalFunc, stack);
-}
-
-module.exports = baseIsEqualDeep;
-
-/***/ }),
-/* 163 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var MapCache = __webpack_require__(55),
-    setCacheAdd = __webpack_require__(164),
-    setCacheHas = __webpack_require__(165);
-
-/**
- *
- * Creates an array cache object to store unique values.
- *
- * @private
- * @constructor
- * @param {Array} [values] The values to cache.
- */
-function SetCache(values) {
-    var index = -1,
-        length = values == null ? 0 : values.length;
-
-    this.__data__ = new MapCache();
-    while (++index < length) {
-        this.add(values[index]);
-    }
-}
-
-// Add methods to `SetCache`.
-SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
-SetCache.prototype.has = setCacheHas;
-
-module.exports = SetCache;
-
-/***/ }),
-/* 164 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/**
- * Adds `value` to the array cache.
- *
- * @private
- * @name add
- * @memberOf SetCache
- * @alias push
- * @param {*} value The value to cache.
- * @returns {Object} Returns the cache instance.
- */
-function setCacheAdd(value) {
-  this.__data__.set(value, HASH_UNDEFINED);
-  return this;
-}
-
-module.exports = setCacheAdd;
-
-/***/ }),
-/* 165 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Checks if `value` is in the array cache.
- *
- * @private
- * @name has
- * @memberOf SetCache
- * @param {*} value The value to search for.
- * @returns {number} Returns `true` if `value` is found, else `false`.
- */
-function setCacheHas(value) {
-  return this.__data__.has(value);
-}
-
-module.exports = setCacheHas;
-
-/***/ }),
-/* 166 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A specialized version of `_.some` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} predicate The function invoked per iteration.
- * @returns {boolean} Returns `true` if any element passes the predicate check,
- *  else `false`.
- */
-function arraySome(array, predicate) {
-  var index = -1,
-      length = array == null ? 0 : array.length;
-
-  while (++index < length) {
-    if (predicate(array[index], index, array)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-module.exports = arraySome;
-
-/***/ }),
-/* 167 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Checks if a `cache` value for `key` exists.
- *
- * @private
- * @param {Object} cache The cache to query.
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function cacheHas(cache, key) {
-  return cache.has(key);
-}
-
-module.exports = cacheHas;
-
-/***/ }),
-/* 168 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Symbol = __webpack_require__(40),
-    Uint8Array = __webpack_require__(169),
-    eq = __webpack_require__(83),
-    equalArrays = __webpack_require__(88),
-    mapToArray = __webpack_require__(170),
-    setToArray = __webpack_require__(171);
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1,
-    COMPARE_UNORDERED_FLAG = 2;
-
-/** `Object#toString` result references. */
-var boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    mapTag = '[object Map]',
-    numberTag = '[object Number]',
-    regexpTag = '[object RegExp]',
-    setTag = '[object Set]',
-    stringTag = '[object String]',
-    symbolTag = '[object Symbol]';
-
-var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag = '[object DataView]';
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto = _Symbol ? _Symbol.prototype : undefined,
-    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
-
-/**
- * A specialized version of `baseIsEqualDeep` for comparing objects of
- * the same `toStringTag`.
- *
- * **Note:** This function only supports comparing values with tags of
- * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
- *
- * @private
- * @param {Object} object The object to compare.
- * @param {Object} other The other object to compare.
- * @param {string} tag The `toStringTag` of the objects to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} stack Tracks traversed `object` and `other` objects.
- * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
- */
-function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
-  switch (tag) {
-    case dataViewTag:
-      if (object.byteLength != other.byteLength || object.byteOffset != other.byteOffset) {
-        return false;
-      }
-      object = object.buffer;
-      other = other.buffer;
-
-    case arrayBufferTag:
-      if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
-        return false;
-      }
-      return true;
-
-    case boolTag:
-    case dateTag:
-    case numberTag:
-      // Coerce booleans to `1` or `0` and dates to milliseconds.
-      // Invalid dates are coerced to `NaN`.
-      return eq(+object, +other);
-
-    case errorTag:
-      return object.name == other.name && object.message == other.message;
-
-    case regexpTag:
-    case stringTag:
-      // Coerce regexes to strings and treat strings, primitives and objects,
-      // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
-      // for more details.
-      return object == other + '';
-
-    case mapTag:
-      var convert = mapToArray;
-
-    case setTag:
-      var isPartial = bitmask & COMPARE_PARTIAL_FLAG;
-      convert || (convert = setToArray);
-
-      if (object.size != other.size && !isPartial) {
-        return false;
-      }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(object);
-      if (stacked) {
-        return stacked == other;
-      }
-      bitmask |= COMPARE_UNORDERED_FLAG;
-
-      // Recursively compare objects (susceptible to call stack limits).
-      stack.set(object, other);
-      var result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
-      stack['delete'](object);
-      return result;
-
-    case symbolTag:
-      if (symbolValueOf) {
-        return symbolValueOf.call(object) == symbolValueOf.call(other);
-      }
-  }
-  return false;
-}
-
-module.exports = equalByTag;
-
-/***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var root = __webpack_require__(12);
-
-/** Built-in value references. */
-var Uint8Array = root.Uint8Array;
-
-module.exports = Uint8Array;
-
-/***/ }),
-/* 170 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Converts `map` to its key-value pairs.
- *
- * @private
- * @param {Object} map The map to convert.
- * @returns {Array} Returns the key-value pairs.
- */
-function mapToArray(map) {
-  var index = -1,
-      result = Array(map.size);
-
-  map.forEach(function (value, key) {
-    result[++index] = [key, value];
-  });
-  return result;
-}
-
-module.exports = mapToArray;
-
-/***/ }),
-/* 171 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Converts `set` to an array of its values.
- *
- * @private
- * @param {Object} set The set to convert.
- * @returns {Array} Returns the values.
- */
-function setToArray(set) {
-  var index = -1,
-      result = Array(set.size);
-
-  set.forEach(function (value) {
-    result[++index] = value;
-  });
-  return result;
-}
-
-module.exports = setToArray;
-
-/***/ }),
-/* 172 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getAllKeys = __webpack_require__(173);
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1;
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * A specialized version of `baseIsEqualDeep` for objects with support for
- * partial deep comparisons.
- *
- * @private
- * @param {Object} object The object to compare.
- * @param {Object} other The other object to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} stack Tracks traversed `object` and `other` objects.
- * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
- */
-function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
-      objProps = getAllKeys(object),
-      objLength = objProps.length,
-      othProps = getAllKeys(other),
-      othLength = othProps.length;
-
-  if (objLength != othLength && !isPartial) {
-    return false;
-  }
-  var index = objLength;
-  while (index--) {
-    var key = objProps[index];
-    if (!(isPartial ? key in other : hasOwnProperty.call(other, key))) {
-      return false;
-    }
-  }
-  // Check that cyclic values are equal.
-  var objStacked = stack.get(object);
-  var othStacked = stack.get(other);
-  if (objStacked && othStacked) {
-    return objStacked == other && othStacked == object;
-  }
-  var result = true;
-  stack.set(object, other);
-  stack.set(other, object);
-
-  var skipCtor = isPartial;
-  while (++index < objLength) {
-    key = objProps[index];
-    var objValue = object[key],
-        othValue = other[key];
-
-    if (customizer) {
-      var compared = isPartial ? customizer(othValue, objValue, key, other, object, stack) : customizer(objValue, othValue, key, object, other, stack);
-    }
-    // Recursively compare objects (susceptible to call stack limits).
-    if (!(compared === undefined ? objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack) : compared)) {
-      result = false;
-      break;
-    }
-    skipCtor || (skipCtor = key == 'constructor');
-  }
-  if (result && !skipCtor) {
-    var objCtor = object.constructor,
-        othCtor = other.constructor;
-
-    // Non `Object` object instances with different constructors are not equal.
-    if (objCtor != othCtor && 'constructor' in object && 'constructor' in other && !(typeof objCtor == 'function' && objCtor instanceof objCtor && typeof othCtor == 'function' && othCtor instanceof othCtor)) {
-      result = false;
-    }
-  }
-  stack['delete'](object);
-  stack['delete'](other);
-  return result;
-}
-
-module.exports = equalObjects;
-
-/***/ }),
-/* 173 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGetAllKeys = __webpack_require__(174),
-    getSymbols = __webpack_require__(176),
-    keys = __webpack_require__(56);
-
-/**
- * Creates an array of own enumerable property names and symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names and symbols.
- */
-function getAllKeys(object) {
-  return baseGetAllKeys(object, keys, getSymbols);
-}
-
-module.exports = getAllKeys;
-
-/***/ }),
-/* 174 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var arrayPush = __webpack_require__(175),
-    isArray = __webpack_require__(14);
-
-/**
- * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
- * `keysFunc` and `symbolsFunc` to get the enumerable property names and
- * symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Function} keysFunc The function to get the keys of `object`.
- * @param {Function} symbolsFunc The function to get the symbols of `object`.
- * @returns {Array} Returns the array of property names and symbols.
- */
-function baseGetAllKeys(object, keysFunc, symbolsFunc) {
-  var result = keysFunc(object);
-  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
-}
-
-module.exports = baseGetAllKeys;
-
-/***/ }),
-/* 175 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Appends the elements of `values` to `array`.
- *
- * @private
- * @param {Array} array The array to modify.
- * @param {Array} values The values to append.
- * @returns {Array} Returns `array`.
- */
-function arrayPush(array, values) {
-  var index = -1,
-      length = values.length,
-      offset = array.length;
-
-  while (++index < length) {
-    array[offset + index] = values[index];
-  }
-  return array;
-}
-
-module.exports = arrayPush;
-
-/***/ }),
-/* 176 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var arrayFilter = __webpack_require__(177),
-    stubArray = __webpack_require__(178);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Built-in value references. */
-var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeGetSymbols = Object.getOwnPropertySymbols;
-
-/**
- * Creates an array of the own enumerable symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of symbols.
- */
-var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
-  if (object == null) {
-    return [];
-  }
-  object = Object(object);
-  return arrayFilter(nativeGetSymbols(object), function (symbol) {
-    return propertyIsEnumerable.call(object, symbol);
-  });
-};
-
-module.exports = getSymbols;
-
-/***/ }),
-/* 177 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A specialized version of `_.filter` for arrays without support for
- * iteratee shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} predicate The function invoked per iteration.
- * @returns {Array} Returns the new filtered array.
- */
-function arrayFilter(array, predicate) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      resIndex = 0,
-      result = [];
-
-  while (++index < length) {
-    var value = array[index];
-    if (predicate(value, index, array)) {
-      result[resIndex++] = value;
-    }
-  }
-  return result;
-}
-
-module.exports = arrayFilter;
-
-/***/ }),
-/* 178 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * This method returns a new empty array.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {Array} Returns the new empty array.
- * @example
- *
- * var arrays = _.times(2, _.stubArray);
- *
- * console.log(arrays);
- * // => [[], []]
- *
- * console.log(arrays[0] === arrays[1]);
- * // => false
- */
-function stubArray() {
-  return [];
-}
-
-module.exports = stubArray;
-
-/***/ }),
-/* 179 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseTimes = __webpack_require__(180),
-    isArguments = __webpack_require__(89),
-    isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(90),
-    isIndex = __webpack_require__(91),
-    isTypedArray = __webpack_require__(92);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Creates an array of the enumerable property names of the array-like `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @param {boolean} inherited Specify returning inherited property names.
- * @returns {Array} Returns the array of property names.
- */
-function arrayLikeKeys(value, inherited) {
-  var isArr = isArray(value),
-      isArg = !isArr && isArguments(value),
-      isBuff = !isArr && !isArg && isBuffer(value),
-      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
-      skipIndexes = isArr || isArg || isBuff || isType,
-      result = skipIndexes ? baseTimes(value.length, String) : [],
-      length = result.length;
-
-  for (var key in value) {
-    if ((inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && (
-    // Safari 9 has enumerable `arguments.length` in strict mode.
-    key == 'length' ||
-    // Node.js 0.10 has enumerable non-index properties on buffers.
-    isBuff && (key == 'offset' || key == 'parent') ||
-    // PhantomJS 2 has enumerable non-index properties on typed arrays.
-    isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset') ||
-    // Skip index properties.
-    isIndex(key, length)))) {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-module.exports = arrayLikeKeys;
-
-/***/ }),
-/* 180 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */
-function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
-
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-
-module.exports = baseTimes;
-
-/***/ }),
-/* 181 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGetTag = __webpack_require__(33),
-    isObjectLike = __webpack_require__(36);
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]';
-
-/**
- * The base implementation of `_.isArguments`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- */
-function baseIsArguments(value) {
-  return isObjectLike(value) && baseGetTag(value) == argsTag;
-}
-
-module.exports = baseIsArguments;
-
-/***/ }),
-/* 182 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * This method returns `false`.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {boolean} Returns `false`.
- * @example
- *
- * _.times(2, _.stubFalse);
- * // => [false, false]
- */
-function stubFalse() {
-  return false;
-}
-
-module.exports = stubFalse;
-
-/***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGetTag = __webpack_require__(33),
-    isLength = __webpack_require__(57),
-    isObjectLike = __webpack_require__(36);
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]',
-    arrayTag = '[object Array]',
-    boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    funcTag = '[object Function]',
-    mapTag = '[object Map]',
-    numberTag = '[object Number]',
-    objectTag = '[object Object]',
-    regexpTag = '[object RegExp]',
-    setTag = '[object Set]',
-    stringTag = '[object String]',
-    weakMapTag = '[object WeakMap]';
-
-var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag = '[object DataView]',
-    float32Tag = '[object Float32Array]',
-    float64Tag = '[object Float64Array]',
-    int8Tag = '[object Int8Array]',
-    int16Tag = '[object Int16Array]',
-    int32Tag = '[object Int32Array]',
-    uint8Tag = '[object Uint8Array]',
-    uint8ClampedTag = '[object Uint8ClampedArray]',
-    uint16Tag = '[object Uint16Array]',
-    uint32Tag = '[object Uint32Array]';
-
-/** Used to identify `toStringTag` values of typed arrays. */
-var typedArrayTags = {};
-typedArrayTags[float32Tag] = typedArrayTags[float64Tag] = typedArrayTags[int8Tag] = typedArrayTags[int16Tag] = typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] = typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] = typedArrayTags[uint32Tag] = true;
-typedArrayTags[argsTag] = typedArrayTags[arrayTag] = typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] = typedArrayTags[dataViewTag] = typedArrayTags[dateTag] = typedArrayTags[errorTag] = typedArrayTags[funcTag] = typedArrayTags[mapTag] = typedArrayTags[numberTag] = typedArrayTags[objectTag] = typedArrayTags[regexpTag] = typedArrayTags[setTag] = typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
-
-/**
- * The base implementation of `_.isTypedArray` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- */
-function baseIsTypedArray(value) {
-    return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
-}
-
-module.exports = baseIsTypedArray;
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * The base implementation of `_.unary` without support for storing metadata.
- *
- * @private
- * @param {Function} func The function to cap arguments for.
- * @returns {Function} Returns the new capped function.
- */
-function baseUnary(func) {
-  return function (value) {
-    return func(value);
-  };
-}
-
-module.exports = baseUnary;
-
-/***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var freeGlobal = __webpack_require__(85);
-
-/** Detect free variable `exports`. */
-var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule = freeExports && ( false ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
-
-/** Detect free variable `process` from Node.js. */
-var freeProcess = moduleExports && freeGlobal.process;
-
-/** Used to access faster Node.js helpers. */
-var nodeUtil = function () {
-  try {
-    // Use `util.types` for Node.js 10+.
-    var types = freeModule && freeModule.require && freeModule.require('util').types;
-
-    if (types) {
-      return types;
-    }
-
-    // Legacy `process.binding('util')` for Node.js < 10.
-    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-  } catch (e) {}
-}();
-
-module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
-
-/***/ }),
-/* 186 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isPrototype = __webpack_require__(187),
-    nativeKeys = __webpack_require__(188);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */
-function baseKeys(object) {
-  if (!isPrototype(object)) {
-    return nativeKeys(object);
-  }
-  var result = [];
-  for (var key in Object(object)) {
-    if (hasOwnProperty.call(object, key) && key != 'constructor') {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-module.exports = baseKeys;
-
-/***/ }),
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Checks if `value` is likely a prototype object.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
- */
-function isPrototype(value) {
-  var Ctor = value && value.constructor,
-      proto = typeof Ctor == 'function' && Ctor.prototype || objectProto;
-
-  return value === proto;
-}
-
-module.exports = isPrototype;
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var overArg = __webpack_require__(189);
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeKeys = overArg(Object.keys, Object);
-
-module.exports = nativeKeys;
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */
-function overArg(func, transform) {
-  return function (arg) {
-    return func(transform(arg));
-  };
-}
-
-module.exports = overArg;
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var DataView = __webpack_require__(191),
-    Map = __webpack_require__(54),
-    Promise = __webpack_require__(192),
-    Set = __webpack_require__(193),
-    WeakMap = __webpack_require__(194),
-    baseGetTag = __webpack_require__(33),
-    toSource = __webpack_require__(86);
-
-/** `Object#toString` result references. */
-var mapTag = '[object Map]',
-    objectTag = '[object Object]',
-    promiseTag = '[object Promise]',
-    setTag = '[object Set]',
-    weakMapTag = '[object WeakMap]';
-
-var dataViewTag = '[object DataView]';
-
-/** Used to detect maps, sets, and weakmaps. */
-var dataViewCtorString = toSource(DataView),
-    mapCtorString = toSource(Map),
-    promiseCtorString = toSource(Promise),
-    setCtorString = toSource(Set),
-    weakMapCtorString = toSource(WeakMap);
-
-/**
- * Gets the `toStringTag` of `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-var getTag = baseGetTag;
-
-// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map && getTag(new Map()) != mapTag || Promise && getTag(Promise.resolve()) != promiseTag || Set && getTag(new Set()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
-    getTag = function getTag(value) {
-        var result = baseGetTag(value),
-            Ctor = result == objectTag ? value.constructor : undefined,
-            ctorString = Ctor ? toSource(Ctor) : '';
-
-        if (ctorString) {
-            switch (ctorString) {
-                case dataViewCtorString:
-                    return dataViewTag;
-                case mapCtorString:
-                    return mapTag;
-                case promiseCtorString:
-                    return promiseTag;
-                case setCtorString:
-                    return setTag;
-                case weakMapCtorString:
-                    return weakMapTag;
-            }
-        }
-        return result;
-    };
-}
-
-module.exports = getTag;
-
-/***/ }),
-/* 191 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getNative = __webpack_require__(24),
-    root = __webpack_require__(12);
-
-/* Built-in method references that are verified to be native. */
-var DataView = getNative(root, 'DataView');
-
-module.exports = DataView;
-
-/***/ }),
-/* 192 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getNative = __webpack_require__(24),
-    root = __webpack_require__(12);
-
-/* Built-in method references that are verified to be native. */
-var Promise = getNative(root, 'Promise');
-
-module.exports = Promise;
-
-/***/ }),
-/* 193 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getNative = __webpack_require__(24),
-    root = __webpack_require__(12);
-
-/* Built-in method references that are verified to be native. */
-var Set = getNative(root, 'Set');
-
-module.exports = Set;
-
-/***/ }),
-/* 194 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getNative = __webpack_require__(24),
-    root = __webpack_require__(12);
-
-/* Built-in method references that are verified to be native. */
-var WeakMap = getNative(root, 'WeakMap');
-
-module.exports = WeakMap;
-
-/***/ }),
-/* 195 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isStrictComparable = __webpack_require__(93),
-    keys = __webpack_require__(56);
-
-/**
- * Gets the property names, values, and compare flags of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the match data of `object`.
- */
-function getMatchData(object) {
-    var result = keys(object),
-        length = result.length;
-
-    while (length--) {
-        var key = result[length],
-            value = object[key];
-
-        result[length] = [key, value, isStrictComparable(value)];
-    }
-    return result;
-}
-
-module.exports = getMatchData;
-
-/***/ }),
-/* 196 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsEqual = __webpack_require__(87),
-    get = __webpack_require__(95),
-    hasIn = __webpack_require__(202),
-    isKey = __webpack_require__(59),
-    isStrictComparable = __webpack_require__(93),
-    matchesStrictComparable = __webpack_require__(94),
-    toKey = __webpack_require__(45);
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1,
-    COMPARE_UNORDERED_FLAG = 2;
-
-/**
- * The base implementation of `_.matchesProperty` which doesn't clone `srcValue`.
- *
- * @private
- * @param {string} path The path of the property to get.
- * @param {*} srcValue The value to match.
- * @returns {Function} Returns the new spec function.
- */
-function baseMatchesProperty(path, srcValue) {
-  if (isKey(path) && isStrictComparable(srcValue)) {
-    return matchesStrictComparable(toKey(path), srcValue);
-  }
-  return function (object) {
-    var objValue = get(object, path);
-    return objValue === undefined && objValue === srcValue ? hasIn(object, path) : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
-  };
-}
-
-module.exports = baseMatchesProperty;
-
-/***/ }),
-/* 197 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var memoizeCapped = __webpack_require__(198);
-
-/** Used to match property names within property paths. */
-var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
-
-/** Used to match backslashes in property paths. */
-var reEscapeChar = /\\(\\)?/g;
-
-/**
- * Converts `string` to a property path array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the property path array.
- */
-var stringToPath = memoizeCapped(function (string) {
-  var result = [];
-  if (string.charCodeAt(0) === 46 /* . */) {
-      result.push('');
-    }
-  string.replace(rePropName, function (match, number, quote, subString) {
-    result.push(quote ? subString.replace(reEscapeChar, '$1') : number || match);
-  });
-  return result;
-});
-
-module.exports = stringToPath;
-
-/***/ }),
-/* 198 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var memoize = __webpack_require__(199);
-
-/** Used as the maximum memoize cache size. */
-var MAX_MEMOIZE_SIZE = 500;
-
-/**
- * A specialized version of `_.memoize` which clears the memoized function's
- * cache when it exceeds `MAX_MEMOIZE_SIZE`.
- *
- * @private
- * @param {Function} func The function to have its output memoized.
- * @returns {Function} Returns the new memoized function.
- */
-function memoizeCapped(func) {
-  var result = memoize(func, function (key) {
-    if (cache.size === MAX_MEMOIZE_SIZE) {
-      cache.clear();
-    }
-    return key;
-  });
-
-  var cache = result.cache;
-  return result;
-}
-
-module.exports = memoizeCapped;
-
-/***/ }),
-/* 199 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var MapCache = __webpack_require__(55);
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/**
- * Creates a function that memoizes the result of `func`. If `resolver` is
- * provided, it determines the cache key for storing the result based on the
- * arguments provided to the memoized function. By default, the first argument
- * provided to the memoized function is used as the map cache key. The `func`
- * is invoked with the `this` binding of the memoized function.
- *
- * **Note:** The cache is exposed as the `cache` property on the memoized
- * function. Its creation may be customized by replacing the `_.memoize.Cache`
- * constructor with one whose instances implement the
- * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
- * method interface of `clear`, `delete`, `get`, `has`, and `set`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to have its output memoized.
- * @param {Function} [resolver] The function to resolve the cache key.
- * @returns {Function} Returns the new memoized function.
- * @example
- *
- * var object = { 'a': 1, 'b': 2 };
- * var other = { 'c': 3, 'd': 4 };
- *
- * var values = _.memoize(_.values);
- * values(object);
- * // => [1, 2]
- *
- * values(other);
- * // => [3, 4]
- *
- * object.a = 2;
- * values(object);
- * // => [1, 2]
- *
- * // Modify the result cache.
- * values.cache.set(object, ['a', 'b']);
- * values(object);
- * // => ['a', 'b']
- *
- * // Replace `_.memoize.Cache`.
- * _.memoize.Cache = WeakMap;
- */
-function memoize(func, resolver) {
-  if (typeof func != 'function' || resolver != null && typeof resolver != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  var memoized = function memoized() {
-    var args = arguments,
-        key = resolver ? resolver.apply(this, args) : args[0],
-        cache = memoized.cache;
-
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    var result = func.apply(this, args);
-    memoized.cache = cache.set(key, result) || cache;
-    return result;
-  };
-  memoized.cache = new (memoize.Cache || MapCache)();
-  return memoized;
-}
-
-// Expose `MapCache`.
-memoize.Cache = MapCache;
-
-module.exports = memoize;
-
-/***/ }),
-/* 200 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseToString = __webpack_require__(201);
-
-/**
- * Converts `value` to a string. An empty string is returned for `null`
- * and `undefined` values. The sign of `-0` is preserved.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- * @example
- *
- * _.toString(null);
- * // => ''
- *
- * _.toString(-0);
- * // => '-0'
- *
- * _.toString([1, 2, 3]);
- * // => '1,2,3'
- */
-function toString(value) {
-  return value == null ? '' : baseToString(value);
-}
-
-module.exports = toString;
-
-/***/ }),
-/* 201 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Symbol = __webpack_require__(40),
-    arrayMap = __webpack_require__(81),
-    isArray = __webpack_require__(14),
-    isSymbol = __webpack_require__(44);
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0;
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto = _Symbol ? _Symbol.prototype : undefined,
-    symbolToString = symbolProto ? symbolProto.toString : undefined;
-
-/**
- * The base implementation of `_.toString` which doesn't convert nullish
- * values to empty strings.
- *
- * @private
- * @param {*} value The value to process.
- * @returns {string} Returns the string.
- */
-function baseToString(value) {
-  // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value == 'string') {
-    return value;
-  }
-  if (isArray(value)) {
-    // Recursively convert values (susceptible to call stack limits).
-    return arrayMap(value, baseToString) + '';
-  }
-  if (isSymbol(value)) {
-    return symbolToString ? symbolToString.call(value) : '';
-  }
-  var result = value + '';
-  return result == '0' && 1 / value == -INFINITY ? '-0' : result;
-}
-
-module.exports = baseToString;
-
-/***/ }),
-/* 202 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseHasIn = __webpack_require__(203),
-    hasPath = __webpack_require__(204);
-
-/**
- * Checks if `path` is a direct or inherited property of `object`.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Object
- * @param {Object} object The object to query.
- * @param {Array|string} path The path to check.
- * @returns {boolean} Returns `true` if `path` exists, else `false`.
- * @example
- *
- * var object = _.create({ 'a': _.create({ 'b': 2 }) });
- *
- * _.hasIn(object, 'a');
- * // => true
- *
- * _.hasIn(object, 'a.b');
- * // => true
- *
- * _.hasIn(object, ['a', 'b']);
- * // => true
- *
- * _.hasIn(object, 'b');
- * // => false
- */
-function hasIn(object, path) {
-  return object != null && hasPath(object, path, baseHasIn);
-}
-
-module.exports = hasIn;
-
-/***/ }),
-/* 203 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * The base implementation of `_.hasIn` without support for deep paths.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {Array|string} key The key to check.
- * @returns {boolean} Returns `true` if `key` exists, else `false`.
- */
-function baseHasIn(object, key) {
-  return object != null && key in Object(object);
-}
-
-module.exports = baseHasIn;
-
-/***/ }),
-/* 204 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var castPath = __webpack_require__(97),
-    isArguments = __webpack_require__(89),
-    isArray = __webpack_require__(14),
-    isIndex = __webpack_require__(91),
-    isLength = __webpack_require__(57),
-    toKey = __webpack_require__(45);
-
-/**
- * Checks if `path` exists on `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Array|string} path The path to check.
- * @param {Function} hasFunc The function to check properties.
- * @returns {boolean} Returns `true` if `path` exists, else `false`.
- */
-function hasPath(object, path, hasFunc) {
-  path = castPath(path, object);
-
-  var index = -1,
-      length = path.length,
-      result = false;
-
-  while (++index < length) {
-    var key = toKey(path[index]);
-    if (!(result = object != null && hasFunc(object, key))) {
-      break;
-    }
-    object = object[key];
-  }
-  if (result || ++index != length) {
-    return result;
-  }
-  length = object == null ? 0 : object.length;
-  return !!length && isLength(length) && isIndex(key, length) && (isArray(object) || isArguments(object));
-}
-
-module.exports = hasPath;
-
-/***/ }),
-/* 205 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * This method returns the first argument it receives.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {*} value Any value.
- * @returns {*} Returns `value`.
- * @example
- *
- * var object = { 'a': 1 };
- *
- * console.log(_.identity(object) === object);
- * // => true
- */
-function identity(value) {
-  return value;
-}
-
-module.exports = identity;
-
-/***/ }),
-/* 206 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseProperty = __webpack_require__(207),
-    basePropertyDeep = __webpack_require__(208),
-    isKey = __webpack_require__(59),
-    toKey = __webpack_require__(45);
-
-/**
- * Creates a function that returns the value at `path` of a given object.
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Util
- * @param {Array|string} path The path of the property to get.
- * @returns {Function} Returns the new accessor function.
- * @example
- *
- * var objects = [
- *   { 'a': { 'b': 2 } },
- *   { 'a': { 'b': 1 } }
- * ];
- *
- * _.map(objects, _.property('a.b'));
- * // => [2, 1]
- *
- * _.map(_.sortBy(objects, _.property(['a', 'b'])), 'a.b');
- * // => [1, 2]
- */
-function property(path) {
-  return isKey(path) ? baseProperty(toKey(path)) : basePropertyDeep(path);
-}
-
-module.exports = property;
-
-/***/ }),
-/* 207 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * The base implementation of `_.property` without support for deep paths.
- *
- * @private
- * @param {string} key The key of the property to get.
- * @returns {Function} Returns the new accessor function.
- */
-function baseProperty(key) {
-  return function (object) {
-    return object == null ? undefined : object[key];
-  };
-}
-
-module.exports = baseProperty;
-
-/***/ }),
-/* 208 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGet = __webpack_require__(96);
-
-/**
- * A specialized version of `baseProperty` which supports deep paths.
- *
- * @private
- * @param {Array|string} path The path of the property to get.
- * @returns {Function} Returns the new accessor function.
- */
-function basePropertyDeep(path) {
-  return function (object) {
-    return baseGet(object, path);
-  };
-}
-
-module.exports = basePropertyDeep;
-
-/***/ }),
-/* 209 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseEach = __webpack_require__(210),
-    isArrayLike = __webpack_require__(58);
-
-/**
- * The base implementation of `_.map` without support for iteratee shorthands.
- *
- * @private
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function baseMap(collection, iteratee) {
-  var index = -1,
-      result = isArrayLike(collection) ? Array(collection.length) : [];
-
-  baseEach(collection, function (value, key, collection) {
-    result[++index] = iteratee(value, key, collection);
-  });
-  return result;
-}
-
-module.exports = baseMap;
-
-/***/ }),
-/* 210 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseForOwn = __webpack_require__(211),
-    createBaseEach = __webpack_require__(214);
-
-/**
- * The base implementation of `_.forEach` without support for iteratee shorthands.
- *
- * @private
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array|Object} Returns `collection`.
- */
-var baseEach = createBaseEach(baseForOwn);
-
-module.exports = baseEach;
-
-/***/ }),
-/* 211 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseFor = __webpack_require__(212),
-    keys = __webpack_require__(56);
-
-/**
- * The base implementation of `_.forOwn` without support for iteratee shorthands.
- *
- * @private
- * @param {Object} object The object to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Object} Returns `object`.
- */
-function baseForOwn(object, iteratee) {
-  return object && baseFor(object, iteratee, keys);
-}
-
-module.exports = baseForOwn;
-
-/***/ }),
-/* 212 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createBaseFor = __webpack_require__(213);
-
-/**
- * The base implementation of `baseForOwn` which iterates over `object`
- * properties returned by `keysFunc` and invokes `iteratee` for each property.
- * Iteratee functions may exit iteration early by explicitly returning `false`.
- *
- * @private
- * @param {Object} object The object to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @param {Function} keysFunc The function to get the keys of `object`.
- * @returns {Object} Returns `object`.
- */
-var baseFor = createBaseFor();
-
-module.exports = baseFor;
-
-/***/ }),
-/* 213 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a base function for methods like `_.forIn` and `_.forOwn`.
- *
- * @private
- * @param {boolean} [fromRight] Specify iterating from right to left.
- * @returns {Function} Returns the new base function.
- */
-function createBaseFor(fromRight) {
-  return function (object, iteratee, keysFunc) {
-    var index = -1,
-        iterable = Object(object),
-        props = keysFunc(object),
-        length = props.length;
-
-    while (length--) {
-      var key = props[fromRight ? length : ++index];
-      if (iteratee(iterable[key], key, iterable) === false) {
-        break;
-      }
-    }
-    return object;
-  };
-}
-
-module.exports = createBaseFor;
-
-/***/ }),
-/* 214 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isArrayLike = __webpack_require__(58);
-
-/**
- * Creates a `baseEach` or `baseEachRight` function.
- *
- * @private
- * @param {Function} eachFunc The function to iterate over a collection.
- * @param {boolean} [fromRight] Specify iterating from right to left.
- * @returns {Function} Returns the new base function.
- */
-function createBaseEach(eachFunc, fromRight) {
-  return function (collection, iteratee) {
-    if (collection == null) {
-      return collection;
-    }
-    if (!isArrayLike(collection)) {
-      return eachFunc(collection, iteratee);
-    }
-    var length = collection.length,
-        index = fromRight ? length : -1,
-        iterable = Object(collection);
-
-    while (fromRight ? index-- : ++index < length) {
-      if (iteratee(iterable[index], index, iterable) === false) {
-        break;
-      }
-    }
-    return collection;
-  };
-}
-
-module.exports = createBaseEach;
-
-/***/ }),
-/* 215 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19485,7 +16632,7 @@ fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext
 exports.default = fonts;
 
 /***/ }),
-/* 216 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19843,7 +16990,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 217 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19904,7 +17051,7 @@ function memoizeOne(resultFn, isEqual) {
 exports.default = memoizeOne;
 
 /***/ }),
-/* 218 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19915,7 +17062,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.caches = exports.sheet = exports.css = exports.keyframes = exports.injectGlobal = exports.getRegisteredStyles = exports.merge = exports.cx = exports.hydrate = exports.flush = undefined;
 
-var _createEmotion2 = __webpack_require__(219);
+var _createEmotion2 = __webpack_require__(133);
 
 var _createEmotion3 = _interopRequireDefault(_createEmotion2);
 
@@ -19945,10 +17092,10 @@ exports.keyframes = keyframes;
 exports.css = css;
 exports.sheet = sheet;
 exports.caches = caches;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 219 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19960,23 +17107,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _memoize = __webpack_require__(220);
+var _memoize = __webpack_require__(134);
 
 var _memoize2 = _interopRequireDefault(_memoize);
 
-var _unitless = __webpack_require__(221);
+var _unitless = __webpack_require__(135);
 
 var _unitless2 = _interopRequireDefault(_unitless);
 
-var _hash = __webpack_require__(222);
+var _hash = __webpack_require__(136);
 
 var _hash2 = _interopRequireDefault(_hash);
 
-var _stylis = __webpack_require__(223);
+var _stylis = __webpack_require__(137);
 
 var _stylis2 = _interopRequireDefault(_stylis);
 
-var _stylisRuleSheet = __webpack_require__(224);
+var _stylisRuleSheet = __webpack_require__(138);
 
 var _stylisRuleSheet2 = _interopRequireDefault(_stylisRuleSheet);
 
@@ -20498,7 +17645,7 @@ exports.default = createEmotion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 220 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20518,7 +17665,7 @@ function memoize(fn) {
 exports.default = memoize;
 
 /***/ }),
-/* 221 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20575,7 +17722,7 @@ var unitlessKeys = {
 exports.default = unitlessKeys;
 
 /***/ }),
-/* 222 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20623,7 +17770,7 @@ function murmurhash2_32_gc(str) {
 exports.default = murmurhash2_32_gc;
 
 /***/ }),
-/* 223 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21261,7 +18408,7 @@ function stylis_min(W) {
 exports.default = stylis_min;
 
 /***/ }),
-/* 224 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21318,7 +18465,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 225 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21338,9 +18485,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(4),
-    n = __webpack_require__(32),
-    r = __webpack_require__(99);function ba(a, b, c, d, e, f, g, h) {
+var aa = __webpack_require__(3),
+    n = __webpack_require__(31),
+    r = __webpack_require__(81);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
       var l = [c, d, e, f, g, h],
@@ -23661,7 +20808,7 @@ var Vi = { createPortal: Ti, findDOMNode: function findDOMNode(a) {
     Xi = Wi && Vi || Wi;module.exports = Xi.default || Xi;
 
 /***/ }),
-/* 226 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23864,10 +21011,10 @@ exports.unstable_shouldYield = function () {
 };exports.unstable_pauseExecution = function () {};exports.unstable_getFirstCallbackNode = function () {
   return d;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 227 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24570,10 +21717,10 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(32)))
 
 /***/ }),
-/* 228 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24584,7 +21731,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(4);var _assign=__webpack_require__(32);var checkPropTypes=__webpack_require__(52);var scheduler=__webpack_require__(99);var tracing=__webpack_require__(229);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(3);var _assign=__webpack_require__(31);var checkPropTypes=__webpack_require__(52);var scheduler=__webpack_require__(81);var tracing=__webpack_require__(143);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -28462,21 +25609,21 @@ var reactDom=ReactDOM$3.default||ReactDOM$3;module.exports=reactDom;})();}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 229 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(230);
+  module.exports = __webpack_require__(144);
 } else {
-  module.exports = __webpack_require__(231);
+  module.exports = __webpack_require__(145);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 230 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28503,7 +25650,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });var b = 0;exports.__
 };exports.unstable_subscribe = function () {};exports.unstable_unsubscribe = function () {};
 
 /***/ }),
-/* 231 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28931,7 +26078,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 232 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29006,7 +26153,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 233 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29240,7 +26387,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 234 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29255,8 +26402,8 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(100);
-var assign = __webpack_require__(32);
+var ReactIs = __webpack_require__(82);
+var assign = __webpack_require__(31);
 
 var ReactPropTypesSecret = __webpack_require__(53);
 var checkPropTypes = __webpack_require__(52);
@@ -29818,7 +26965,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 235 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29884,13 +27031,13 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 236 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var now = __webpack_require__(237),
+var now = __webpack_require__(151),
     root = typeof window === 'undefined' ? global : window,
     vendors = ['moz', 'webkit'],
     suffix = 'AnimationFrame',
@@ -29966,10 +27113,10 @@ module.exports.polyfill = function (object) {
   object.requestAnimationFrame = raf;
   object.cancelAnimationFrame = caf;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
 
 /***/ }),
-/* 237 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30013,7 +27160,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 238 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30045,7 +27192,7 @@ var _createClass = function () {
 	};
 }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -30308,7 +27455,7 @@ AutosizeInput.defaultProps = {
 exports.default = AutosizeInput;
 
 /***/ }),
-/* 239 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30319,15 +27466,15 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(10));
 
-var _addClass = _interopRequireDefault(__webpack_require__(240));
+var _addClass = _interopRequireDefault(__webpack_require__(154));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(243));
+var _removeClass = _interopRequireDefault(__webpack_require__(157));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
-var _Transition = _interopRequireDefault(__webpack_require__(101));
+var _Transition = _interopRequireDefault(__webpack_require__(83));
 
-var _PropTypes = __webpack_require__(103);
+var _PropTypes = __webpack_require__(85);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30708,18 +27855,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 240 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(241);
+var _interopRequireDefault = __webpack_require__(155);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(242));
+var _hasClass = _interopRequireDefault(__webpack_require__(156));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -30728,7 +27875,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 241 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30744,7 +27891,7 @@ module.exports = _interopRequireDefault;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 242 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30760,7 +27907,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 243 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30775,7 +27922,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 244 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30786,11 +27933,11 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
-var _react = _interopRequireDefault(__webpack_require__(4));
+var _react = _interopRequireDefault(__webpack_require__(3));
 
-var _reactDom = __webpack_require__(25);
+var _reactDom = __webpack_require__(23);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(104));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(86));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30940,7 +28087,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 245 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30952,7 +28099,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -31095,7 +28242,2890 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 246 */
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Symbol = __webpack_require__(39);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+module.exports = getRawTag;
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+module.exports = objectToString;
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var memoizeCapped = __webpack_require__(163);
+
+/** Used to match property names within property paths. */
+var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+
+/** Used to match backslashes in property paths. */
+var reEscapeChar = /\\(\\)?/g;
+
+/**
+ * Converts `string` to a property path array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the property path array.
+ */
+var stringToPath = memoizeCapped(function (string) {
+  var result = [];
+  if (string.charCodeAt(0) === 46 /* . */) {
+      result.push('');
+    }
+  string.replace(rePropName, function (match, number, quote, subString) {
+    result.push(quote ? subString.replace(reEscapeChar, '$1') : number || match);
+  });
+  return result;
+});
+
+module.exports = stringToPath;
+
+/***/ }),
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var memoize = __webpack_require__(164);
+
+/** Used as the maximum memoize cache size. */
+var MAX_MEMOIZE_SIZE = 500;
+
+/**
+ * A specialized version of `_.memoize` which clears the memoized function's
+ * cache when it exceeds `MAX_MEMOIZE_SIZE`.
+ *
+ * @private
+ * @param {Function} func The function to have its output memoized.
+ * @returns {Function} Returns the new memoized function.
+ */
+function memoizeCapped(func) {
+  var result = memoize(func, function (key) {
+    if (cache.size === MAX_MEMOIZE_SIZE) {
+      cache.clear();
+    }
+    return key;
+  });
+
+  var cache = result.cache;
+  return result;
+}
+
+module.exports = memoizeCapped;
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var MapCache = __webpack_require__(56);
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a function that memoizes the result of `func`. If `resolver` is
+ * provided, it determines the cache key for storing the result based on the
+ * arguments provided to the memoized function. By default, the first argument
+ * provided to the memoized function is used as the map cache key. The `func`
+ * is invoked with the `this` binding of the memoized function.
+ *
+ * **Note:** The cache is exposed as the `cache` property on the memoized
+ * function. Its creation may be customized by replacing the `_.memoize.Cache`
+ * constructor with one whose instances implement the
+ * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
+ * method interface of `clear`, `delete`, `get`, `has`, and `set`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to have its output memoized.
+ * @param {Function} [resolver] The function to resolve the cache key.
+ * @returns {Function} Returns the new memoized function.
+ * @example
+ *
+ * var object = { 'a': 1, 'b': 2 };
+ * var other = { 'c': 3, 'd': 4 };
+ *
+ * var values = _.memoize(_.values);
+ * values(object);
+ * // => [1, 2]
+ *
+ * values(other);
+ * // => [3, 4]
+ *
+ * object.a = 2;
+ * values(object);
+ * // => [1, 2]
+ *
+ * // Modify the result cache.
+ * values.cache.set(object, ['a', 'b']);
+ * values(object);
+ * // => ['a', 'b']
+ *
+ * // Replace `_.memoize.Cache`.
+ * _.memoize.Cache = WeakMap;
+ */
+function memoize(func, resolver) {
+  if (typeof func != 'function' || resolver != null && typeof resolver != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  var memoized = function memoized() {
+    var args = arguments,
+        key = resolver ? resolver.apply(this, args) : args[0],
+        cache = memoized.cache;
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+    var result = func.apply(this, args);
+    memoized.cache = cache.set(key, result) || cache;
+    return result;
+  };
+  memoized.cache = new (memoize.Cache || MapCache)();
+  return memoized;
+}
+
+// Expose `MapCache`.
+memoize.Cache = MapCache;
+
+module.exports = memoize;
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Hash = __webpack_require__(166),
+    ListCache = __webpack_require__(41),
+    Map = __webpack_require__(57);
+
+/**
+ * Removes all key-value entries from the map.
+ *
+ * @private
+ * @name clear
+ * @memberOf MapCache
+ */
+function mapCacheClear() {
+  this.size = 0;
+  this.__data__ = {
+    'hash': new Hash(),
+    'map': new (Map || ListCache)(),
+    'string': new Hash()
+  };
+}
+
+module.exports = mapCacheClear;
+
+/***/ }),
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var hashClear = __webpack_require__(167),
+    hashDelete = __webpack_require__(172),
+    hashGet = __webpack_require__(173),
+    hashHas = __webpack_require__(174),
+    hashSet = __webpack_require__(175);
+
+/**
+ * Creates a hash object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Hash(entries) {
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
+
+    this.clear();
+    while (++index < length) {
+        var entry = entries[index];
+        this.set(entry[0], entry[1]);
+    }
+}
+
+// Add methods to `Hash`.
+Hash.prototype.clear = hashClear;
+Hash.prototype['delete'] = hashDelete;
+Hash.prototype.get = hashGet;
+Hash.prototype.has = hashHas;
+Hash.prototype.set = hashSet;
+
+module.exports = Hash;
+
+/***/ }),
+/* 167 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var nativeCreate = __webpack_require__(40);
+
+/**
+ * Removes all key-value entries from the hash.
+ *
+ * @private
+ * @name clear
+ * @memberOf Hash
+ */
+function hashClear() {
+  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+  this.size = 0;
+}
+
+module.exports = hashClear;
+
+/***/ }),
+/* 168 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isFunction = __webpack_require__(91),
+    isMasked = __webpack_require__(169),
+    isObject = __webpack_require__(35),
+    toSource = __webpack_require__(92);
+
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */
+var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+/** Used to detect host constructors (Safari). */
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+/** Used for built-in method references. */
+var funcProto = Function.prototype,
+    objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to detect if a method is native. */
+var reIsNative = RegExp('^' + funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&').replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
+
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */
+function baseIsNative(value) {
+  if (!isObject(value) || isMasked(value)) {
+    return false;
+  }
+  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
+  return pattern.test(toSource(value));
+}
+
+module.exports = baseIsNative;
+
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var coreJsData = __webpack_require__(170);
+
+/** Used to detect methods masquerading as native. */
+var maskSrcKey = function () {
+  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+  return uid ? 'Symbol(src)_1.' + uid : '';
+}();
+
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */
+function isMasked(func) {
+  return !!maskSrcKey && maskSrcKey in func;
+}
+
+module.exports = isMasked;
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var root = __webpack_require__(12);
+
+/** Used to detect overreaching core-js shims. */
+var coreJsData = root['__core-js_shared__'];
+
+module.exports = coreJsData;
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function getValue(object, key) {
+  return object == null ? undefined : object[key];
+}
+
+module.exports = getValue;
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Removes `key` and its value from the hash.
+ *
+ * @private
+ * @name delete
+ * @memberOf Hash
+ * @param {Object} hash The hash to modify.
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function hashDelete(key) {
+  var result = this.has(key) && delete this.__data__[key];
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+module.exports = hashDelete;
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var nativeCreate = __webpack_require__(40);
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Gets the hash value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Hash
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function hashGet(key) {
+  var data = this.__data__;
+  if (nativeCreate) {
+    var result = data[key];
+    return result === HASH_UNDEFINED ? undefined : result;
+  }
+  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+}
+
+module.exports = hashGet;
+
+/***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var nativeCreate = __webpack_require__(40);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Checks if a hash value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Hash
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function hashHas(key) {
+  var data = this.__data__;
+  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
+}
+
+module.exports = hashHas;
+
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var nativeCreate = __webpack_require__(40);
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/**
+ * Sets the hash `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Hash
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the hash instance.
+ */
+function hashSet(key, value) {
+  var data = this.__data__;
+  this.size += this.has(key) ? 0 : 1;
+  data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
+  return this;
+}
+
+module.exports = hashSet;
+
+/***/ }),
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Removes all key-value entries from the list cache.
+ *
+ * @private
+ * @name clear
+ * @memberOf ListCache
+ */
+function listCacheClear() {
+  this.__data__ = [];
+  this.size = 0;
+}
+
+module.exports = listCacheClear;
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var assocIndexOf = __webpack_require__(42);
+
+/** Used for built-in method references. */
+var arrayProto = Array.prototype;
+
+/** Built-in value references. */
+var splice = arrayProto.splice;
+
+/**
+ * Removes `key` and its value from the list cache.
+ *
+ * @private
+ * @name delete
+ * @memberOf ListCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function listCacheDelete(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    return false;
+  }
+  var lastIndex = data.length - 1;
+  if (index == lastIndex) {
+    data.pop();
+  } else {
+    splice.call(data, index, 1);
+  }
+  --this.size;
+  return true;
+}
+
+module.exports = listCacheDelete;
+
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var assocIndexOf = __webpack_require__(42);
+
+/**
+ * Gets the list cache value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf ListCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function listCacheGet(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  return index < 0 ? undefined : data[index][1];
+}
+
+module.exports = listCacheGet;
+
+/***/ }),
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var assocIndexOf = __webpack_require__(42);
+
+/**
+ * Checks if a list cache value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf ListCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function listCacheHas(key) {
+  return assocIndexOf(this.__data__, key) > -1;
+}
+
+module.exports = listCacheHas;
+
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var assocIndexOf = __webpack_require__(42);
+
+/**
+ * Sets the list cache `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf ListCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the list cache instance.
+ */
+function listCacheSet(key, value) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    ++this.size;
+    data.push([key, value]);
+  } else {
+    data[index][1] = value;
+  }
+  return this;
+}
+
+module.exports = listCacheSet;
+
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getMapData = __webpack_require__(43);
+
+/**
+ * Removes `key` and its value from the map.
+ *
+ * @private
+ * @name delete
+ * @memberOf MapCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function mapCacheDelete(key) {
+  var result = getMapData(this, key)['delete'](key);
+  this.size -= result ? 1 : 0;
+  return result;
+}
+
+module.exports = mapCacheDelete;
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Checks if `value` is suitable for use as unique object key.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+ */
+function isKeyable(value) {
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean' ? value !== '__proto__' : value === null;
+}
+
+module.exports = isKeyable;
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getMapData = __webpack_require__(43);
+
+/**
+ * Gets the map value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf MapCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function mapCacheGet(key) {
+  return getMapData(this, key).get(key);
+}
+
+module.exports = mapCacheGet;
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getMapData = __webpack_require__(43);
+
+/**
+ * Checks if a map value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf MapCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function mapCacheHas(key) {
+  return getMapData(this, key).has(key);
+}
+
+module.exports = mapCacheHas;
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getMapData = __webpack_require__(43);
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet(key, value) {
+  var data = getMapData(this, key),
+      size = data.size;
+
+  data.set(key, value);
+  this.size += data.size == size ? 0 : 1;
+  return this;
+}
+
+module.exports = mapCacheSet;
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseToString = __webpack_require__(187);
+
+/**
+ * Converts `value` to a string. An empty string is returned for `null`
+ * and `undefined` values. The sign of `-0` is preserved.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ * @example
+ *
+ * _.toString(null);
+ * // => ''
+ *
+ * _.toString(-0);
+ * // => '-0'
+ *
+ * _.toString([1, 2, 3]);
+ * // => '1,2,3'
+ */
+function toString(value) {
+  return value == null ? '' : baseToString(value);
+}
+
+module.exports = toString;
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Symbol = __webpack_require__(39),
+    arrayMap = __webpack_require__(94),
+    isArray = __webpack_require__(15),
+    isSymbol = __webpack_require__(38);
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0;
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto = _Symbol ? _Symbol.prototype : undefined,
+    symbolToString = symbolProto ? symbolProto.toString : undefined;
+
+/**
+ * The base implementation of `_.toString` which doesn't convert nullish
+ * values to empty strings.
+ *
+ * @private
+ * @param {*} value The value to process.
+ * @returns {string} Returns the string.
+ */
+function baseToString(value) {
+  // Exit early for strings to avoid a performance hit in some environments.
+  if (typeof value == 'string') {
+    return value;
+  }
+  if (isArray(value)) {
+    // Recursively convert values (susceptible to call stack limits).
+    return arrayMap(value, baseToString) + '';
+  }
+  if (isSymbol(value)) {
+    return symbolToString ? symbolToString.call(value) : '';
+  }
+  var result = value + '';
+  return result == '0' && 1 / value == -INFINITY ? '-0' : result;
+}
+
+module.exports = baseToString;
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var arrayMap = __webpack_require__(94),
+    baseIteratee = __webpack_require__(189),
+    baseMap = __webpack_require__(239),
+    isArray = __webpack_require__(15);
+
+/**
+ * Creates an array of values by running each element in `collection` thru
+ * `iteratee`. The iteratee is invoked with three arguments:
+ * (value, index|key, collection).
+ *
+ * Many lodash methods are guarded to work as iteratees for methods like
+ * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ *
+ * The guarded methods are:
+ * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+ * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+ * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+ * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n;
+ * }
+ *
+ * _.map([4, 8], square);
+ * // => [16, 64]
+ *
+ * _.map({ 'a': 4, 'b': 8 }, square);
+ * // => [16, 64] (iteration order is not guaranteed)
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.map(users, 'user');
+ * // => ['barney', 'fred']
+ */
+function map(collection, iteratee) {
+  var func = isArray(collection) ? arrayMap : baseMap;
+  return func(collection, baseIteratee(iteratee, 3));
+}
+
+module.exports = map;
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var baseMatches = __webpack_require__(190),
+    baseMatchesProperty = __webpack_require__(231),
+    identity = __webpack_require__(235),
+    isArray = __webpack_require__(15),
+    property = __webpack_require__(236);
+
+/**
+ * The base implementation of `_.iteratee`.
+ *
+ * @private
+ * @param {*} [value=_.identity] The value to convert to an iteratee.
+ * @returns {Function} Returns the iteratee.
+ */
+function baseIteratee(value) {
+  // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
+  // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
+  if (typeof value == 'function') {
+    return value;
+  }
+  if (value == null) {
+    return identity;
+  }
+  if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object') {
+    return isArray(value) ? baseMatchesProperty(value[0], value[1]) : baseMatches(value);
+  }
+  return property(value);
+}
+
+module.exports = baseIteratee;
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsMatch = __webpack_require__(191),
+    getMatchData = __webpack_require__(230),
+    matchesStrictComparable = __webpack_require__(103);
+
+/**
+ * The base implementation of `_.matches` which doesn't clone `source`.
+ *
+ * @private
+ * @param {Object} source The object of property values to match.
+ * @returns {Function} Returns the new spec function.
+ */
+function baseMatches(source) {
+  var matchData = getMatchData(source);
+  if (matchData.length == 1 && matchData[0][2]) {
+    return matchesStrictComparable(matchData[0][0], matchData[0][1]);
+  }
+  return function (object) {
+    return object === source || baseIsMatch(object, source, matchData);
+  };
+}
+
+module.exports = baseMatches;
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Stack = __webpack_require__(95),
+    baseIsEqual = __webpack_require__(96);
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/**
+ * The base implementation of `_.isMatch` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Object} object The object to inspect.
+ * @param {Object} source The object of property values to match.
+ * @param {Array} matchData The property names, values, and compare flags to match.
+ * @param {Function} [customizer] The function to customize comparisons.
+ * @returns {boolean} Returns `true` if `object` is a match, else `false`.
+ */
+function baseIsMatch(object, source, matchData, customizer) {
+  var index = matchData.length,
+      length = index,
+      noCustomizer = !customizer;
+
+  if (object == null) {
+    return !length;
+  }
+  object = Object(object);
+  while (index--) {
+    var data = matchData[index];
+    if (noCustomizer && data[2] ? data[1] !== object[data[0]] : !(data[0] in object)) {
+      return false;
+    }
+  }
+  while (++index < length) {
+    data = matchData[index];
+    var key = data[0],
+        objValue = object[key],
+        srcValue = data[1];
+
+    if (noCustomizer && data[2]) {
+      if (objValue === undefined && !(key in object)) {
+        return false;
+      }
+    } else {
+      var stack = new Stack();
+      if (customizer) {
+        var result = customizer(objValue, srcValue, key, object, source, stack);
+      }
+      if (!(result === undefined ? baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG, customizer, stack) : result)) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+module.exports = baseIsMatch;
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var ListCache = __webpack_require__(41);
+
+/**
+ * Removes all key-value entries from the stack.
+ *
+ * @private
+ * @name clear
+ * @memberOf Stack
+ */
+function stackClear() {
+  this.__data__ = new ListCache();
+  this.size = 0;
+}
+
+module.exports = stackClear;
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Removes `key` and its value from the stack.
+ *
+ * @private
+ * @name delete
+ * @memberOf Stack
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function stackDelete(key) {
+  var data = this.__data__,
+      result = data['delete'](key);
+
+  this.size = data.size;
+  return result;
+}
+
+module.exports = stackDelete;
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Gets the stack value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Stack
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function stackGet(key) {
+  return this.__data__.get(key);
+}
+
+module.exports = stackGet;
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Checks if a stack value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Stack
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function stackHas(key) {
+  return this.__data__.has(key);
+}
+
+module.exports = stackHas;
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var ListCache = __webpack_require__(41),
+    Map = __webpack_require__(57),
+    MapCache = __webpack_require__(56);
+
+/** Used as the size to enable large array optimizations. */
+var LARGE_ARRAY_SIZE = 200;
+
+/**
+ * Sets the stack `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Stack
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the stack cache instance.
+ */
+function stackSet(key, value) {
+  var data = this.__data__;
+  if (data instanceof ListCache) {
+    var pairs = data.__data__;
+    if (!Map || pairs.length < LARGE_ARRAY_SIZE - 1) {
+      pairs.push([key, value]);
+      this.size = ++data.size;
+      return this;
+    }
+    data = this.__data__ = new MapCache(pairs);
+  }
+  data.set(key, value);
+  this.size = data.size;
+  return this;
+}
+
+module.exports = stackSet;
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Stack = __webpack_require__(95),
+    equalArrays = __webpack_require__(97),
+    equalByTag = __webpack_require__(203),
+    equalObjects = __webpack_require__(207),
+    getTag = __webpack_require__(225),
+    isArray = __webpack_require__(15),
+    isBuffer = __webpack_require__(99),
+    isTypedArray = __webpack_require__(101);
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1;
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    objectTag = '[object Object]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * A specialized version of `baseIsEqual` for arrays and objects which performs
+ * deep comparisons and tracks traversed objects enabling objects with circular
+ * references to be compared.
+ *
+ * @private
+ * @param {Object} object The object to compare.
+ * @param {Object} other The other object to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} [stack] Tracks traversed `object` and `other` objects.
+ * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+ */
+function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
+  var objIsArr = isArray(object),
+      othIsArr = isArray(other),
+      objTag = objIsArr ? arrayTag : getTag(object),
+      othTag = othIsArr ? arrayTag : getTag(other);
+
+  objTag = objTag == argsTag ? objectTag : objTag;
+  othTag = othTag == argsTag ? objectTag : othTag;
+
+  var objIsObj = objTag == objectTag,
+      othIsObj = othTag == objectTag,
+      isSameTag = objTag == othTag;
+
+  if (isSameTag && isBuffer(object)) {
+    if (!isBuffer(other)) {
+      return false;
+    }
+    objIsArr = true;
+    objIsObj = false;
+  }
+  if (isSameTag && !objIsObj) {
+    stack || (stack = new Stack());
+    return objIsArr || isTypedArray(object) ? equalArrays(object, other, bitmask, customizer, equalFunc, stack) : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
+  }
+  if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
+    var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
+        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
+
+    if (objIsWrapped || othIsWrapped) {
+      var objUnwrapped = objIsWrapped ? object.value() : object,
+          othUnwrapped = othIsWrapped ? other.value() : other;
+
+      stack || (stack = new Stack());
+      return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
+    }
+  }
+  if (!isSameTag) {
+    return false;
+  }
+  stack || (stack = new Stack());
+  return equalObjects(object, other, bitmask, customizer, equalFunc, stack);
+}
+
+module.exports = baseIsEqualDeep;
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var MapCache = __webpack_require__(56),
+    setCacheAdd = __webpack_require__(199),
+    setCacheHas = __webpack_require__(200);
+
+/**
+ *
+ * Creates an array cache object to store unique values.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [values] The values to cache.
+ */
+function SetCache(values) {
+    var index = -1,
+        length = values == null ? 0 : values.length;
+
+    this.__data__ = new MapCache();
+    while (++index < length) {
+        this.add(values[index]);
+    }
+}
+
+// Add methods to `SetCache`.
+SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
+SetCache.prototype.has = setCacheHas;
+
+module.exports = SetCache;
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/**
+ * Adds `value` to the array cache.
+ *
+ * @private
+ * @name add
+ * @memberOf SetCache
+ * @alias push
+ * @param {*} value The value to cache.
+ * @returns {Object} Returns the cache instance.
+ */
+function setCacheAdd(value) {
+  this.__data__.set(value, HASH_UNDEFINED);
+  return this;
+}
+
+module.exports = setCacheAdd;
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Checks if `value` is in the array cache.
+ *
+ * @private
+ * @name has
+ * @memberOf SetCache
+ * @param {*} value The value to search for.
+ * @returns {number} Returns `true` if `value` is found, else `false`.
+ */
+function setCacheHas(value) {
+  return this.__data__.has(value);
+}
+
+module.exports = setCacheHas;
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * A specialized version of `_.some` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} predicate The function invoked per iteration.
+ * @returns {boolean} Returns `true` if any element passes the predicate check,
+ *  else `false`.
+ */
+function arraySome(array, predicate) {
+  var index = -1,
+      length = array == null ? 0 : array.length;
+
+  while (++index < length) {
+    if (predicate(array[index], index, array)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+module.exports = arraySome;
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Checks if a `cache` value for `key` exists.
+ *
+ * @private
+ * @param {Object} cache The cache to query.
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function cacheHas(cache, key) {
+  return cache.has(key);
+}
+
+module.exports = cacheHas;
+
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Symbol = __webpack_require__(39),
+    Uint8Array = __webpack_require__(204),
+    eq = __webpack_require__(93),
+    equalArrays = __webpack_require__(97),
+    mapToArray = __webpack_require__(205),
+    setToArray = __webpack_require__(206);
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/** `Object#toString` result references. */
+var boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    symbolTag = '[object Symbol]';
+
+var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]';
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto = _Symbol ? _Symbol.prototype : undefined,
+    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
+
+/**
+ * A specialized version of `baseIsEqualDeep` for comparing objects of
+ * the same `toStringTag`.
+ *
+ * **Note:** This function only supports comparing values with tags of
+ * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+ *
+ * @private
+ * @param {Object} object The object to compare.
+ * @param {Object} other The other object to compare.
+ * @param {string} tag The `toStringTag` of the objects to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} stack Tracks traversed `object` and `other` objects.
+ * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+ */
+function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
+  switch (tag) {
+    case dataViewTag:
+      if (object.byteLength != other.byteLength || object.byteOffset != other.byteOffset) {
+        return false;
+      }
+      object = object.buffer;
+      other = other.buffer;
+
+    case arrayBufferTag:
+      if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
+        return false;
+      }
+      return true;
+
+    case boolTag:
+    case dateTag:
+    case numberTag:
+      // Coerce booleans to `1` or `0` and dates to milliseconds.
+      // Invalid dates are coerced to `NaN`.
+      return eq(+object, +other);
+
+    case errorTag:
+      return object.name == other.name && object.message == other.message;
+
+    case regexpTag:
+    case stringTag:
+      // Coerce regexes to strings and treat strings, primitives and objects,
+      // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
+      // for more details.
+      return object == other + '';
+
+    case mapTag:
+      var convert = mapToArray;
+
+    case setTag:
+      var isPartial = bitmask & COMPARE_PARTIAL_FLAG;
+      convert || (convert = setToArray);
+
+      if (object.size != other.size && !isPartial) {
+        return false;
+      }
+      // Assume cyclic values are equal.
+      var stacked = stack.get(object);
+      if (stacked) {
+        return stacked == other;
+      }
+      bitmask |= COMPARE_UNORDERED_FLAG;
+
+      // Recursively compare objects (susceptible to call stack limits).
+      stack.set(object, other);
+      var result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
+      stack['delete'](object);
+      return result;
+
+    case symbolTag:
+      if (symbolValueOf) {
+        return symbolValueOf.call(object) == symbolValueOf.call(other);
+      }
+  }
+  return false;
+}
+
+module.exports = equalByTag;
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var root = __webpack_require__(12);
+
+/** Built-in value references. */
+var Uint8Array = root.Uint8Array;
+
+module.exports = Uint8Array;
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Converts `map` to its key-value pairs.
+ *
+ * @private
+ * @param {Object} map The map to convert.
+ * @returns {Array} Returns the key-value pairs.
+ */
+function mapToArray(map) {
+  var index = -1,
+      result = Array(map.size);
+
+  map.forEach(function (value, key) {
+    result[++index] = [key, value];
+  });
+  return result;
+}
+
+module.exports = mapToArray;
+
+/***/ }),
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Converts `set` to an array of its values.
+ *
+ * @private
+ * @param {Object} set The set to convert.
+ * @returns {Array} Returns the values.
+ */
+function setToArray(set) {
+  var index = -1,
+      result = Array(set.size);
+
+  set.forEach(function (value) {
+    result[++index] = value;
+  });
+  return result;
+}
+
+module.exports = setToArray;
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getAllKeys = __webpack_require__(208);
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1;
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * A specialized version of `baseIsEqualDeep` for objects with support for
+ * partial deep comparisons.
+ *
+ * @private
+ * @param {Object} object The object to compare.
+ * @param {Object} other The other object to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} stack Tracks traversed `object` and `other` objects.
+ * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+ */
+function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
+  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+      objProps = getAllKeys(object),
+      objLength = objProps.length,
+      othProps = getAllKeys(other),
+      othLength = othProps.length;
+
+  if (objLength != othLength && !isPartial) {
+    return false;
+  }
+  var index = objLength;
+  while (index--) {
+    var key = objProps[index];
+    if (!(isPartial ? key in other : hasOwnProperty.call(other, key))) {
+      return false;
+    }
+  }
+  // Check that cyclic values are equal.
+  var objStacked = stack.get(object);
+  var othStacked = stack.get(other);
+  if (objStacked && othStacked) {
+    return objStacked == other && othStacked == object;
+  }
+  var result = true;
+  stack.set(object, other);
+  stack.set(other, object);
+
+  var skipCtor = isPartial;
+  while (++index < objLength) {
+    key = objProps[index];
+    var objValue = object[key],
+        othValue = other[key];
+
+    if (customizer) {
+      var compared = isPartial ? customizer(othValue, objValue, key, other, object, stack) : customizer(objValue, othValue, key, object, other, stack);
+    }
+    // Recursively compare objects (susceptible to call stack limits).
+    if (!(compared === undefined ? objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack) : compared)) {
+      result = false;
+      break;
+    }
+    skipCtor || (skipCtor = key == 'constructor');
+  }
+  if (result && !skipCtor) {
+    var objCtor = object.constructor,
+        othCtor = other.constructor;
+
+    // Non `Object` object instances with different constructors are not equal.
+    if (objCtor != othCtor && 'constructor' in object && 'constructor' in other && !(typeof objCtor == 'function' && objCtor instanceof objCtor && typeof othCtor == 'function' && othCtor instanceof othCtor)) {
+      result = false;
+    }
+  }
+  stack['delete'](object);
+  stack['delete'](other);
+  return result;
+}
+
+module.exports = equalObjects;
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGetAllKeys = __webpack_require__(209),
+    getSymbols = __webpack_require__(211),
+    keys = __webpack_require__(58);
+
+/**
+ * Creates an array of own enumerable property names and symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function getAllKeys(object) {
+  return baseGetAllKeys(object, keys, getSymbols);
+}
+
+module.exports = getAllKeys;
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var arrayPush = __webpack_require__(210),
+    isArray = __webpack_require__(15);
+
+/**
+ * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
+ * `keysFunc` and `symbolsFunc` to get the enumerable property names and
+ * symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @param {Function} symbolsFunc The function to get the symbols of `object`.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function baseGetAllKeys(object, keysFunc, symbolsFunc) {
+  var result = keysFunc(object);
+  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
+}
+
+module.exports = baseGetAllKeys;
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Appends the elements of `values` to `array`.
+ *
+ * @private
+ * @param {Array} array The array to modify.
+ * @param {Array} values The values to append.
+ * @returns {Array} Returns `array`.
+ */
+function arrayPush(array, values) {
+  var index = -1,
+      length = values.length,
+      offset = array.length;
+
+  while (++index < length) {
+    array[offset + index] = values[index];
+  }
+  return array;
+}
+
+module.exports = arrayPush;
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var arrayFilter = __webpack_require__(212),
+    stubArray = __webpack_require__(213);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetSymbols = Object.getOwnPropertySymbols;
+
+/**
+ * Creates an array of the own enumerable symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of symbols.
+ */
+var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
+  if (object == null) {
+    return [];
+  }
+  object = Object(object);
+  return arrayFilter(nativeGetSymbols(object), function (symbol) {
+    return propertyIsEnumerable.call(object, symbol);
+  });
+};
+
+module.exports = getSymbols;
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * A specialized version of `_.filter` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} predicate The function invoked per iteration.
+ * @returns {Array} Returns the new filtered array.
+ */
+function arrayFilter(array, predicate) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      resIndex = 0,
+      result = [];
+
+  while (++index < length) {
+    var value = array[index];
+    if (predicate(value, index, array)) {
+      result[resIndex++] = value;
+    }
+  }
+  return result;
+}
+
+module.exports = arrayFilter;
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * This method returns a new empty array.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {Array} Returns the new empty array.
+ * @example
+ *
+ * var arrays = _.times(2, _.stubArray);
+ *
+ * console.log(arrays);
+ * // => [[], []]
+ *
+ * console.log(arrays[0] === arrays[1]);
+ * // => false
+ */
+function stubArray() {
+  return [];
+}
+
+module.exports = stubArray;
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseTimes = __webpack_require__(215),
+    isArguments = __webpack_require__(98),
+    isArray = __webpack_require__(15),
+    isBuffer = __webpack_require__(99),
+    isIndex = __webpack_require__(100),
+    isTypedArray = __webpack_require__(101);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Creates an array of the enumerable property names of the array-like `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @param {boolean} inherited Specify returning inherited property names.
+ * @returns {Array} Returns the array of property names.
+ */
+function arrayLikeKeys(value, inherited) {
+  var isArr = isArray(value),
+      isArg = !isArr && isArguments(value),
+      isBuff = !isArr && !isArg && isBuffer(value),
+      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
+      skipIndexes = isArr || isArg || isBuff || isType,
+      result = skipIndexes ? baseTimes(value.length, String) : [],
+      length = result.length;
+
+  for (var key in value) {
+    if ((inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && (
+    // Safari 9 has enumerable `arguments.length` in strict mode.
+    key == 'length' ||
+    // Node.js 0.10 has enumerable non-index properties on buffers.
+    isBuff && (key == 'offset' || key == 'parent') ||
+    // PhantomJS 2 has enumerable non-index properties on typed arrays.
+    isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset') ||
+    // Skip index properties.
+    isIndex(key, length)))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = arrayLikeKeys;
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
+
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
+}
+
+module.exports = baseTimes;
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGetTag = __webpack_require__(33),
+    isObjectLike = __webpack_require__(34);
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]';
+
+/**
+ * The base implementation of `_.isArguments`.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ */
+function baseIsArguments(value) {
+  return isObjectLike(value) && baseGetTag(value) == argsTag;
+}
+
+module.exports = baseIsArguments;
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * This method returns `false`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {boolean} Returns `false`.
+ * @example
+ *
+ * _.times(2, _.stubFalse);
+ * // => [false, false]
+ */
+function stubFalse() {
+  return false;
+}
+
+module.exports = stubFalse;
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGetTag = __webpack_require__(33),
+    isLength = __webpack_require__(59),
+    isObjectLike = __webpack_require__(34);
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    funcTag = '[object Function]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    objectTag = '[object Object]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    weakMapTag = '[object WeakMap]';
+
+var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]',
+    float32Tag = '[object Float32Array]',
+    float64Tag = '[object Float64Array]',
+    int8Tag = '[object Int8Array]',
+    int16Tag = '[object Int16Array]',
+    int32Tag = '[object Int32Array]',
+    uint8Tag = '[object Uint8Array]',
+    uint8ClampedTag = '[object Uint8ClampedArray]',
+    uint16Tag = '[object Uint16Array]',
+    uint32Tag = '[object Uint32Array]';
+
+/** Used to identify `toStringTag` values of typed arrays. */
+var typedArrayTags = {};
+typedArrayTags[float32Tag] = typedArrayTags[float64Tag] = typedArrayTags[int8Tag] = typedArrayTags[int16Tag] = typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] = typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] = typedArrayTags[uint32Tag] = true;
+typedArrayTags[argsTag] = typedArrayTags[arrayTag] = typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] = typedArrayTags[dataViewTag] = typedArrayTags[dateTag] = typedArrayTags[errorTag] = typedArrayTags[funcTag] = typedArrayTags[mapTag] = typedArrayTags[numberTag] = typedArrayTags[objectTag] = typedArrayTags[regexpTag] = typedArrayTags[setTag] = typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
+
+/**
+ * The base implementation of `_.isTypedArray` without Node.js optimizations.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ */
+function baseIsTypedArray(value) {
+    return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
+}
+
+module.exports = baseIsTypedArray;
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * The base implementation of `_.unary` without support for storing metadata.
+ *
+ * @private
+ * @param {Function} func The function to cap arguments for.
+ * @returns {Function} Returns the new capped function.
+ */
+function baseUnary(func) {
+  return function (value) {
+    return func(value);
+  };
+}
+
+module.exports = baseUnary;
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var freeGlobal = __webpack_require__(90);
+
+/** Detect free variable `exports`. */
+var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && ( false ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Detect free variable `process` from Node.js. */
+var freeProcess = moduleExports && freeGlobal.process;
+
+/** Used to access faster Node.js helpers. */
+var nodeUtil = function () {
+  try {
+    // Use `util.types` for Node.js 10+.
+    var types = freeModule && freeModule.require && freeModule.require('util').types;
+
+    if (types) {
+      return types;
+    }
+
+    // Legacy `process.binding('util')` for Node.js < 10.
+    return freeProcess && freeProcess.binding && freeProcess.binding('util');
+  } catch (e) {}
+}();
+
+module.exports = nodeUtil;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isPrototype = __webpack_require__(222),
+    nativeKeys = __webpack_require__(223);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = baseKeys;
+
+/***/ }),
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Checks if `value` is likely a prototype object.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+ */
+function isPrototype(value) {
+  var Ctor = value && value.constructor,
+      proto = typeof Ctor == 'function' && Ctor.prototype || objectProto;
+
+  return value === proto;
+}
+
+module.exports = isPrototype;
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var overArg = __webpack_require__(224);
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeKeys = overArg(Object.keys, Object);
+
+module.exports = nativeKeys;
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function (arg) {
+    return func(transform(arg));
+  };
+}
+
+module.exports = overArg;
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var DataView = __webpack_require__(226),
+    Map = __webpack_require__(57),
+    Promise = __webpack_require__(227),
+    Set = __webpack_require__(228),
+    WeakMap = __webpack_require__(229),
+    baseGetTag = __webpack_require__(33),
+    toSource = __webpack_require__(92);
+
+/** `Object#toString` result references. */
+var mapTag = '[object Map]',
+    objectTag = '[object Object]',
+    promiseTag = '[object Promise]',
+    setTag = '[object Set]',
+    weakMapTag = '[object WeakMap]';
+
+var dataViewTag = '[object DataView]';
+
+/** Used to detect maps, sets, and weakmaps. */
+var dataViewCtorString = toSource(DataView),
+    mapCtorString = toSource(Map),
+    promiseCtorString = toSource(Promise),
+    setCtorString = toSource(Set),
+    weakMapCtorString = toSource(WeakMap);
+
+/**
+ * Gets the `toStringTag` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+var getTag = baseGetTag;
+
+// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
+if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map && getTag(new Map()) != mapTag || Promise && getTag(Promise.resolve()) != promiseTag || Set && getTag(new Set()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
+    getTag = function getTag(value) {
+        var result = baseGetTag(value),
+            Ctor = result == objectTag ? value.constructor : undefined,
+            ctorString = Ctor ? toSource(Ctor) : '';
+
+        if (ctorString) {
+            switch (ctorString) {
+                case dataViewCtorString:
+                    return dataViewTag;
+                case mapCtorString:
+                    return mapTag;
+                case promiseCtorString:
+                    return promiseTag;
+                case setCtorString:
+                    return setTag;
+                case weakMapCtorString:
+                    return weakMapTag;
+            }
+        }
+        return result;
+    };
+}
+
+module.exports = getTag;
+
+/***/ }),
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getNative = __webpack_require__(24),
+    root = __webpack_require__(12);
+
+/* Built-in method references that are verified to be native. */
+var DataView = getNative(root, 'DataView');
+
+module.exports = DataView;
+
+/***/ }),
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getNative = __webpack_require__(24),
+    root = __webpack_require__(12);
+
+/* Built-in method references that are verified to be native. */
+var Promise = getNative(root, 'Promise');
+
+module.exports = Promise;
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getNative = __webpack_require__(24),
+    root = __webpack_require__(12);
+
+/* Built-in method references that are verified to be native. */
+var Set = getNative(root, 'Set');
+
+module.exports = Set;
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getNative = __webpack_require__(24),
+    root = __webpack_require__(12);
+
+/* Built-in method references that are verified to be native. */
+var WeakMap = getNative(root, 'WeakMap');
+
+module.exports = WeakMap;
+
+/***/ }),
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isStrictComparable = __webpack_require__(102),
+    keys = __webpack_require__(58);
+
+/**
+ * Gets the property names, values, and compare flags of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the match data of `object`.
+ */
+function getMatchData(object) {
+    var result = keys(object),
+        length = result.length;
+
+    while (length--) {
+        var key = result[length],
+            value = object[key];
+
+        result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
+}
+
+module.exports = getMatchData;
+
+/***/ }),
+/* 231 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsEqual = __webpack_require__(96),
+    get = __webpack_require__(87),
+    hasIn = __webpack_require__(232),
+    isKey = __webpack_require__(55),
+    isStrictComparable = __webpack_require__(102),
+    matchesStrictComparable = __webpack_require__(103),
+    toKey = __webpack_require__(44);
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/**
+ * The base implementation of `_.matchesProperty` which doesn't clone `srcValue`.
+ *
+ * @private
+ * @param {string} path The path of the property to get.
+ * @param {*} srcValue The value to match.
+ * @returns {Function} Returns the new spec function.
+ */
+function baseMatchesProperty(path, srcValue) {
+  if (isKey(path) && isStrictComparable(srcValue)) {
+    return matchesStrictComparable(toKey(path), srcValue);
+  }
+  return function (object) {
+    var objValue = get(object, path);
+    return objValue === undefined && objValue === srcValue ? hasIn(object, path) : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
+  };
+}
+
+module.exports = baseMatchesProperty;
+
+/***/ }),
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseHasIn = __webpack_require__(233),
+    hasPath = __webpack_require__(234);
+
+/**
+ * Checks if `path` is a direct or inherited property of `object`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path to check.
+ * @returns {boolean} Returns `true` if `path` exists, else `false`.
+ * @example
+ *
+ * var object = _.create({ 'a': _.create({ 'b': 2 }) });
+ *
+ * _.hasIn(object, 'a');
+ * // => true
+ *
+ * _.hasIn(object, 'a.b');
+ * // => true
+ *
+ * _.hasIn(object, ['a', 'b']);
+ * // => true
+ *
+ * _.hasIn(object, 'b');
+ * // => false
+ */
+function hasIn(object, path) {
+  return object != null && hasPath(object, path, baseHasIn);
+}
+
+module.exports = hasIn;
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * The base implementation of `_.hasIn` without support for deep paths.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {Array|string} key The key to check.
+ * @returns {boolean} Returns `true` if `key` exists, else `false`.
+ */
+function baseHasIn(object, key) {
+  return object != null && key in Object(object);
+}
+
+module.exports = baseHasIn;
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var castPath = __webpack_require__(89),
+    isArguments = __webpack_require__(98),
+    isArray = __webpack_require__(15),
+    isIndex = __webpack_require__(100),
+    isLength = __webpack_require__(59),
+    toKey = __webpack_require__(44);
+
+/**
+ * Checks if `path` exists on `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path to check.
+ * @param {Function} hasFunc The function to check properties.
+ * @returns {boolean} Returns `true` if `path` exists, else `false`.
+ */
+function hasPath(object, path, hasFunc) {
+  path = castPath(path, object);
+
+  var index = -1,
+      length = path.length,
+      result = false;
+
+  while (++index < length) {
+    var key = toKey(path[index]);
+    if (!(result = object != null && hasFunc(object, key))) {
+      break;
+    }
+    object = object[key];
+  }
+  if (result || ++index != length) {
+    return result;
+  }
+  length = object == null ? 0 : object.length;
+  return !!length && isLength(length) && isIndex(key, length) && (isArray(object) || isArguments(object));
+}
+
+module.exports = hasPath;
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * This method returns the first argument it receives.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {*} value Any value.
+ * @returns {*} Returns `value`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ *
+ * console.log(_.identity(object) === object);
+ * // => true
+ */
+function identity(value) {
+  return value;
+}
+
+module.exports = identity;
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseProperty = __webpack_require__(237),
+    basePropertyDeep = __webpack_require__(238),
+    isKey = __webpack_require__(55),
+    toKey = __webpack_require__(44);
+
+/**
+ * Creates a function that returns the value at `path` of a given object.
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Util
+ * @param {Array|string} path The path of the property to get.
+ * @returns {Function} Returns the new accessor function.
+ * @example
+ *
+ * var objects = [
+ *   { 'a': { 'b': 2 } },
+ *   { 'a': { 'b': 1 } }
+ * ];
+ *
+ * _.map(objects, _.property('a.b'));
+ * // => [2, 1]
+ *
+ * _.map(_.sortBy(objects, _.property(['a', 'b'])), 'a.b');
+ * // => [1, 2]
+ */
+function property(path) {
+  return isKey(path) ? baseProperty(toKey(path)) : basePropertyDeep(path);
+}
+
+module.exports = property;
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * The base implementation of `_.property` without support for deep paths.
+ *
+ * @private
+ * @param {string} key The key of the property to get.
+ * @returns {Function} Returns the new accessor function.
+ */
+function baseProperty(key) {
+  return function (object) {
+    return object == null ? undefined : object[key];
+  };
+}
+
+module.exports = baseProperty;
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGet = __webpack_require__(88);
+
+/**
+ * A specialized version of `baseProperty` which supports deep paths.
+ *
+ * @private
+ * @param {Array|string} path The path of the property to get.
+ * @returns {Function} Returns the new accessor function.
+ */
+function basePropertyDeep(path) {
+  return function (object) {
+    return baseGet(object, path);
+  };
+}
+
+module.exports = basePropertyDeep;
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseEach = __webpack_require__(240),
+    isArrayLike = __webpack_require__(60);
+
+/**
+ * The base implementation of `_.map` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function baseMap(collection, iteratee) {
+  var index = -1,
+      result = isArrayLike(collection) ? Array(collection.length) : [];
+
+  baseEach(collection, function (value, key, collection) {
+    result[++index] = iteratee(value, key, collection);
+  });
+  return result;
+}
+
+module.exports = baseMap;
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseForOwn = __webpack_require__(241),
+    createBaseEach = __webpack_require__(244);
+
+/**
+ * The base implementation of `_.forEach` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array|Object} Returns `collection`.
+ */
+var baseEach = createBaseEach(baseForOwn);
+
+module.exports = baseEach;
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseFor = __webpack_require__(242),
+    keys = __webpack_require__(58);
+
+/**
+ * The base implementation of `_.forOwn` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Object} object The object to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Object} Returns `object`.
+ */
+function baseForOwn(object, iteratee) {
+  return object && baseFor(object, iteratee, keys);
+}
+
+module.exports = baseForOwn;
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var createBaseFor = __webpack_require__(243);
+
+/**
+ * The base implementation of `baseForOwn` which iterates over `object`
+ * properties returned by `keysFunc` and invokes `iteratee` for each property.
+ * Iteratee functions may exit iteration early by explicitly returning `false`.
+ *
+ * @private
+ * @param {Object} object The object to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @returns {Object} Returns `object`.
+ */
+var baseFor = createBaseFor();
+
+module.exports = baseFor;
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Creates a base function for methods like `_.forIn` and `_.forOwn`.
+ *
+ * @private
+ * @param {boolean} [fromRight] Specify iterating from right to left.
+ * @returns {Function} Returns the new base function.
+ */
+function createBaseFor(fromRight) {
+  return function (object, iteratee, keysFunc) {
+    var index = -1,
+        iterable = Object(object),
+        props = keysFunc(object),
+        length = props.length;
+
+    while (length--) {
+      var key = props[fromRight ? length : ++index];
+      if (iteratee(iterable[key], key, iterable) === false) {
+        break;
+      }
+    }
+    return object;
+  };
+}
+
+module.exports = createBaseFor;
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isArrayLike = __webpack_require__(60);
+
+/**
+ * Creates a `baseEach` or `baseEachRight` function.
+ *
+ * @private
+ * @param {Function} eachFunc The function to iterate over a collection.
+ * @param {boolean} [fromRight] Specify iterating from right to left.
+ * @returns {Function} Returns the new base function.
+ */
+function createBaseEach(eachFunc, fromRight) {
+  return function (collection, iteratee) {
+    if (collection == null) {
+      return collection;
+    }
+    if (!isArrayLike(collection)) {
+      return eachFunc(collection, iteratee);
+    }
+    var length = collection.length,
+        index = fromRight ? length : -1,
+        iterable = Object(collection);
+
+    while (fromRight ? index-- : ++index < length) {
+      if (iteratee(iterable[index], index, iterable) === false) {
+        break;
+      }
+    }
+    return collection;
+  };
+}
+
+module.exports = createBaseEach;
+
+/***/ }),
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31267,7 +31297,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 247 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31286,7 +31316,7 @@ var attributes = {
     repeaterItems: {
         type: "array",
         default: [{
-            titleText: __("Awesome Title"),
+            titleText: __("Awesome Title", 'premium-block-for-gutenberg'),
             descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         }]
     },
@@ -31451,7 +31481,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 248 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32220,31 +32250,31 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 249 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(250);
+var _edit = __webpack_require__(249);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(251);
+var _save = __webpack_require__(250);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(252);
+var _deprecated = __webpack_require__(251);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(253);
+var _attributes = __webpack_require__(252);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -32268,7 +32298,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 250 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32295,7 +32325,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -32311,7 +32341,7 @@ var _premiumPadding = __webpack_require__(17);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumMediaUpload = __webpack_require__(26);
+var _premiumMediaUpload = __webpack_require__(25);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -32319,11 +32349,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -32430,7 +32460,6 @@ var edit = exports.edit = function (_Component) {
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile,
-                classMigrate = _props$attributes.classMigrate,
                 borderWidth = _props$attributes.borderWidth,
                 borderTop = _props$attributes.borderTop,
                 borderRight = _props$attributes.borderRight,
@@ -33155,7 +33184,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 251 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33179,7 +33208,6 @@ var save = function save(props) {
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
         borderBanner = _props$attributes.borderBanner,
-        imageID = _props$attributes.imageID,
         imageURL = _props$attributes.imageURL,
         titleStyles = _props$attributes.titleStyles,
         descStyles = _props$attributes.descStyles,
@@ -33209,7 +33237,6 @@ var save = function save(props) {
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        classMigrate = _props$attributes.classMigrate,
         borderWidth = _props$attributes.borderWidth,
         borderTop = _props$attributes.borderTop,
         borderRight = _props$attributes.borderRight,
@@ -33332,7 +33359,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 252 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34583,7 +34610,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 253 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34664,7 +34691,7 @@ var attributes = {
             paddingR: '',
             paddingB: '',
             paddingL: '',
-            paddingU: ''
+            paddingU: 'px'
         }]
     },
     title: {
@@ -34808,31 +34835,31 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 254 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _edit = __webpack_require__(255);
+var _edit = __webpack_require__(254);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(256);
+var _save = __webpack_require__(255);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(257);
+var _deprecated = __webpack_require__(256);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(258);
+var _attributes = __webpack_require__(257);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -34857,7 +34884,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 255 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34884,7 +34911,7 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -34892,27 +34919,19 @@ var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumSizeUnits = __webpack_require__(19);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
 var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -34930,7 +34949,6 @@ var __ = wp.i18n.__;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl,
     TabPanel = _wp$components.TabPanel;
 var _wp$element = wp.element,
@@ -35305,11 +35323,6 @@ var edit = exports.edit = function (_Component) {
                                             });
                                         }
                                     }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        "radial" !== effect ? __("Background Color", 'premium-block-for-gutenberg') : __("Background Hover Color", 'premium-block-for-gutenberg')
-                                    ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
                                         colorValue: btnStyles[0].backColor,
@@ -35486,7 +35499,7 @@ var edit = exports.edit = function (_Component) {
                     },
                     style: {
                         color: btnStyles[0].textColor,
-                        backgroundColor: btnStyles[0].backColor ? (0, _hexToRgba2.default)(btnStyles[0].backColor, btnStyles[0].backOpacity) : "transparent",
+                        backgroundColor: btnStyles[0].backColor,
                         fontFamily: textStyles[0].textFontFamily,
                         letterSpacing: textStyles[0].textLetter + "px",
                         fontSize: btnFontSize + textStyles[0].textSizeUnit,
@@ -35532,7 +35545,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 256 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35545,10 +35558,6 @@ Object.defineProperty(exports, "__esModule", {
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35569,7 +35578,6 @@ var save = function save(props) {
         slideColor = _props$attributes.slideColor,
         block_id = _props$attributes.block_id,
         hideDesktop = _props$attributes.hideDesktop,
-        classMigrate = _props$attributes.classMigrate,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
         textStyles = _props$attributes.textStyles,
@@ -35604,7 +35612,7 @@ var save = function save(props) {
             target: btnTarget ? "_blank" : "_self",
             style: {
                 color: btnStyles[0].textColor,
-                backgroundColor: btnStyles[0].backColor ? (0, _hexToRgba2.default)(btnStyles[0].backColor, btnStyles[0].backOpacity) : "transparent",
+                backgroundColor: btnStyles[0].backColor,
                 fontFamily: textStyles[0].textFontFamily,
                 letterSpacing: textStyles[0].textLetter + "px",
                 textTransform: textStyles[0].textUpper ? "uppercase" : "none",
@@ -35626,7 +35634,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 257 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36345,7 +36353,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 258 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36473,31 +36481,31 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 259 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _attributes = __webpack_require__(105);
+var _attributes = __webpack_require__(104);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(260);
+var _edit = __webpack_require__(259);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(261);
+var _save = __webpack_require__(260);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(262);
+var _deprecated = __webpack_require__(261);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -36524,7 +36532,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 260 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36542,7 +36550,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
 var _premiumTypo = __webpack_require__(9);
 
@@ -36564,23 +36572,19 @@ var _premiumPadding = __webpack_require__(17);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumMediaUpload = __webpack_require__(26);
+var _premiumMediaUpload = __webpack_require__(25);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -36601,7 +36605,6 @@ var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     SelectControl = _wp$components.SelectControl,
     TextControl = _wp$components.TextControl,
-    RangeControl = _wp$components.RangeControl,
     ToggleControl = _wp$components.ToggleControl;
 var InspectorControls = wp.blockEditor.InspectorControls;
 var _wp$element = wp.element,
@@ -36707,7 +36710,7 @@ var edit = function (_Component) {
                 label: __("Row", 'premium-block-for-gutenberg')
             }, {
                 value: "row-reverse",
-                label: __("Reversed Row")
+                label: __("Reversed Row", 'premium-block-for-gutenberg')
             }, {
                 value: "column",
                 label: __("Column", 'premium-block-for-gutenberg')
@@ -36822,7 +36825,7 @@ var edit = function (_Component) {
                         onChange: function onChange(value) {
                             return setAttributes({ time: value });
                         },
-                        help: __("Set counting time in milliseconds, for example: 1000")
+                        help: __("Set counting time in milliseconds, for example: 1000", 'premium-block-for-gutenberg')
                     }),
                     React.createElement(TextControl, {
                         label: __("Delay", 'premium-block-for-gutenberg'),
@@ -36940,14 +36943,14 @@ var edit = function (_Component) {
                         React.createElement(TextControl, {
                             label: __("Icon Class", 'premium-block-for-gutenberg'),
                             value: faIcon,
-                            help: [__("Get icon class from"), React.createElement(
+                            help: [__("Get icon class from", 'premium-block-for-gutenberg'), React.createElement(
                                 "a",
                                 {
                                     href: "fa" === iconType ? "https://fontawesome.com/v4.7.0/icons/" : "https://developer.wordpress.org/resource/dashicons/",
                                     target: "_blank"
                                 },
                                 "\xA0",
-                                __("here")
+                                __("here", 'premium-block-for-gutenberg')
                             ), __(" , for example: ", 'premium-block-for-gutenberg'), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
                             onChange: function onChange(newIcon) {
                                 return setAttributes({ faIcon: newIcon });
@@ -36971,7 +36974,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Size"),
+                        label: __("Size", 'premium-block-for-gutenberg'),
                         value: iconSize,
                         onChange: function onChange(newValue) {
                             return setAttributes({ iconSize: newValue });
@@ -37228,12 +37231,12 @@ var edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Spacings"),
+                            title: __("Spacings", 'premium-block-for-gutenberg'),
                             className: "premium-panel-body-inner",
                             initialOpen: false
                         },
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __("Margin Top"),
+                            label: __("Margin Top", 'premium-block-for-gutenberg'),
                             value: titleStyles[0].titleT,
                             onChange: function onChange(newValue) {
                                 return saveTitleStyles({ titleT: newValue });
@@ -37242,7 +37245,7 @@ var edit = function (_Component) {
                             defaultValue: 0
                         }),
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __("Margin Bottom"),
+                            label: __("Margin Bottom", 'premium-block-for-gutenberg'),
                             value: titleStyles[0].titleB,
                             onChange: function onChange(newValue) {
                                 return saveTitleStyles({ titleB: newValue });
@@ -37255,32 +37258,23 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container"),
+                        title: __("Container", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
-                        React.createElement(_premiumBackground2.default, {
-                            type: "color",
-                            colorValue: containerStyles[0].containerBack,
-                            onChangeColor: function onChangeColor(newValue) {
-                                return saveContainerStyle({
-                                    containerBack: newValue
-                                });
-                            },
-                            opacityValue: containerStyles[0].containerOpacity,
-                            onChangeOpacity: function onChangeOpacity(value) {
-                                return saveContainerStyle({ containerOpacity: value });
-                            }
-                        })
-                    ),
+                    React.createElement(_premiumBackground2.default, {
+                        type: "color",
+                        colorValue: containerStyles[0].containerBack,
+                        onChangeColor: function onChangeColor(newValue) {
+                            return saveContainerStyle({
+                                containerBack: newValue
+                            });
+                        },
+                        opacityValue: containerStyles[0].containerOpacity,
+                        onChangeOpacity: function onChangeOpacity(value) {
+                            return saveContainerStyle({ containerOpacity: value });
+                        }
+                    }),
                     React.createElement(_premiumBackground2.default, {
                         imageID: containerStyles[0].backgroundImageID,
                         imageURL: containerStyles[0].backgroundImageURL,
@@ -37432,7 +37426,7 @@ var edit = function (_Component) {
                 iconType === "fa" && 1 != _settings.FontAwesomeEnabled && iconCheck && React.createElement(
                     "p",
                     { className: "premium-countup__alert" },
-                    __("Please Enable Font Awesome Icons from Plugin settings")
+                    __("Please Enable Font Awesome Icons from Plugin settings", 'premium-block-for-gutenberg')
                 )
             ), React.createElement(
                 "div",
@@ -37442,7 +37436,7 @@ var edit = function (_Component) {
                     style: {
                         justifyContent: align,
                         flexDirection: flexDir,
-                        backgroundColor: containerStyles[0].containerBack ? (0, _hexToRgba2.default)(containerStyles[0].containerBack, containerStyles[0].containerOpacity) : "transparent",
+                        backgroundColor: containerStyles[0].containerBack,
                         boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px rgba(" + containerStyles[0].shadowColor.r + "," + containerStyles[0].shadowColor.g + "," + containerStyles[0].shadowColor.b + ", " + containerStyles[0].shadowColor.a + ") " + containerStyles[0].shadowPosition,
                         backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
@@ -37599,7 +37593,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 261 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37612,10 +37606,6 @@ Object.defineProperty(exports, "__esModule", {
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37662,27 +37652,27 @@ var save = function save(props) {
         paddingL = _props$attributes.paddingL;
 
 
-    var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+    var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-countup');
 
     return React.createElement(
-        "div",
+        'div',
         {
-            id: "premium-countup-" + block_id,
-            className: mainClasses + "__wrap premium-countup-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+            id: 'premium-countup-' + block_id,
+            className: mainClasses + '__wrap premium-countup-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 justifyContent: align,
                 flexDirection: flexDir,
-                backgroundColor: containerStyles[0].containerBack ? (0, _hexToRgba2.default)(containerStyles[0].containerBack, containerStyles[0].containerOpacity) : "transparent",
-                boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px rgba(" + containerStyles[0].shadowColor.r + "," + containerStyles[0].shadowColor.g + "," + containerStyles[0].shadowColor.b + ", " + containerStyles[0].shadowColor.a + ") " + containerStyles[0].shadowPosition,
-                backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
+                backgroundColor: containerStyles[0].containerBack,
+                boxShadow: containerStyles[0].shadowHorizontal + 'px ' + containerStyles[0].shadowVertical + 'px ' + containerStyles[0].shadowBlur + 'px rgba(' + containerStyles[0].shadowColor.r + ',' + containerStyles[0].shadowColor.g + ',' + containerStyles[0].shadowColor.b + ', ' + containerStyles[0].shadowColor.a + ') ' + containerStyles[0].shadowPosition,
+                backgroundImage: containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
                 backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
                 borderStyle: containerStyles[0].borderType,
-                borderWidth: borderCount ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : containerStyles[0].borderWidth + "px",
+                borderWidth: borderCount ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
                 paddingTop: paddingT + containerStyles[0].paddingU,
@@ -37692,23 +37682,23 @@ var save = function save(props) {
             }
         },
         iconCheck && React.createElement(
-            "div",
+            'div',
             {
-                className: "premium-countup__icon_wrap",
+                className: 'premium-countup__icon_wrap',
                 style: {
                     marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                     marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                     alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                 }
             },
-            "icon" === icon && React.createElement("i", {
-                className: "premium-countup__icon " + iconClass,
+            "icon" === icon && React.createElement('i', {
+                className: 'premium-countup__icon ' + iconClass,
                 style: {
                     fontSize: iconSize + "px",
                     color: iconColor
                 }
             }),
-            "img" === icon && imageURL && React.createElement("img", {
+            "img" === icon && imageURL && React.createElement('img', {
                 src: imageURL,
                 style: {
                     width: iconSize + "px",
@@ -37717,20 +37707,20 @@ var save = function save(props) {
             })
         ),
         React.createElement(
-            "div",
+            'div',
             {
-                className: "premium-countup__info",
+                className: 'premium-countup__info',
                 style: {
                     alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                 }
             },
             React.createElement(
-                "div",
-                { className: "premium-countup__desc" },
+                'div',
+                { className: 'premium-countup__desc' },
                 prefix && React.createElement(
-                    "p",
+                    'p',
                     {
-                        className: "premium-countup__prefix",
+                        className: 'premium-countup__prefix',
                         style: {
                             fontFamily: prefixStyles[0].prefixFamily,
                             color: prefixStyles[0].prefixColor,
@@ -37741,11 +37731,11 @@ var save = function save(props) {
                     prefixStyles[0].prefixTxt
                 ),
                 React.createElement(
-                    "p",
+                    'p',
                     {
-                        className: "premium-countup__increment",
-                        "data-interval": time,
-                        "data-delay": delay,
+                        className: 'premium-countup__increment',
+                        'data-interval': time,
+                        'data-delay': delay,
                         style: {
                             fontFamily: counterFamily,
                             color: numberStyles[0].numberColor,
@@ -37755,9 +37745,9 @@ var save = function save(props) {
                     increment
                 ),
                 suffix && React.createElement(
-                    "p",
+                    'p',
                     {
-                        className: "premium-countup__suffix",
+                        className: 'premium-countup__suffix',
                         style: {
                             fontFamily: suffixStyles[0].suffixFamily,
                             color: suffixStyles[0].suffixColor,
@@ -37769,9 +37759,9 @@ var save = function save(props) {
                 )
             ),
             titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                "h3",
+                'h3',
                 {
-                    className: "premium-countup__title",
+                    className: 'premium-countup__title',
                     style: {
                         fontFamily: titleStyles[0].titleFamily,
                         marginTop: titleStyles[0].titleT + "px",
@@ -37787,9 +37777,9 @@ var save = function save(props) {
             )
         ),
         titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-            "h3",
+            'h3',
             {
-                className: "premium-countup__title",
+                className: 'premium-countup__title',
                 style: {
                     fontFamily: titleStyles[0].titleFamily,
                     marginTop: titleStyles[0].titleT + "px",
@@ -37810,7 +37800,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 262 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37820,11 +37810,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(105);
+var _attributes = __webpack_require__(104);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _hexToRgba = __webpack_require__(2);
+var _hexToRgba = __webpack_require__(262);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -39218,15 +39208,52 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = hexToRGBA;
+/**
+ * function to return string with capital letter.
+ * @param {string} hex the color hex.
+ * @param {number} alpha the alpha number.
+ * @returns {string} rgba color.
+ */
+function hexToRGBA(hex, alpha) {
+    if (null === hex) {
+        return '';
+    }
+
+    /**
+     * Detect CSS variables in form of var(--color) and get their current
+     * values from the :root selector.
+     */
+    if (hex.indexOf('var(') > -1) {
+        hex = window.getComputedStyle(document.documentElement).getPropertyValue(hex.replace('var(', '').replace(')', '')) || '#fff';
+    }
+
+    hex = hex.replace('#', '');
+    var r = parseInt(hex.length === 3 ? hex.slice(0, 1).repeat(2) : hex.slice(0, 2), 16);
+    var g = parseInt(hex.length === 3 ? hex.slice(1, 2).repeat(2) : hex.slice(2, 4), 16);
+    var b = parseInt(hex.length === 3 ? hex.slice(2, 3).repeat(2) : hex.slice(4, 6), 16);
+    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+}
+
+/***/ }),
 /* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -39293,7 +39320,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -39301,19 +39328,15 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -39334,10 +39357,7 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     TextControl = _wp$components.TextControl,
-    RangeControl = _wp$components.RangeControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    ToggleControl = _wp$components.ToggleControl;
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
@@ -39389,7 +39409,6 @@ var edit = function (_Component) {
                 contentAlign = _props$attributes.contentAlign,
                 firstHeading = _props$attributes.firstHeading,
                 secondHeading = _props$attributes.secondHeading,
-                titleTag = _props$attributes.titleTag,
                 display = _props$attributes.display,
                 firstStyles = _props$attributes.firstStyles,
                 secondStyles = _props$attributes.secondStyles,
@@ -39606,11 +39625,6 @@ var edit = function (_Component) {
                                 });
                             }
                         }),
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color", 'premium-block-for-gutenberg')
-                        ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
                             colorValue: firstStyles[0].firstBackground,
@@ -39816,11 +39830,6 @@ var edit = function (_Component) {
                                 });
                             }
                         }),
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color", 'premium-block-for-gutenberg')
-                        ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
                             colorValue: secondStyles[0].secondBackground,
@@ -39950,11 +39959,6 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Background Color", 'premium-block-for-gutenberg')
-                    ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
                         colorValue: containerStyles[0].containerBack,
@@ -40053,7 +40057,7 @@ var edit = function (_Component) {
                     className: (0, _classnames2.default)(className, "premium-dheading-block__container", "premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
                     style: {
                         textAlign: contentAlign,
-                        backgroundColor: containerStyles[0].containerBack ? (0, _hexToRgba2.default)(containerStyles[0].containerBack, containerStyles[0].containerOpacity) : "transparent",
+                        backgroundColor: containerStyles[0].containerBack,
                         backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
                         backgroundPosition: containerStyles[0].backgroundPosition,
@@ -40079,7 +40083,7 @@ var edit = function (_Component) {
                                     fontSize: "" + firstFontSize + firstStyles[0].firstSizeUnit,
                                     display: display,
                                     color: firstStyles[0].firstColor,
-                                    backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground ? (0, _hexToRgba2.default)(firstStyles[0].firstBackground, firstStyles[0].firstOpacity) : "transparent",
+                                    backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
                                     backgroundImage: firstStyles[0].firstClip ? "linear-gradient(to left, " + firstStyles[0].firstColor + ", " + firstStyles[0].firstClipColor + ")" : "none",
                                     fontFamily: firstStyles[0].firstFamily,
                                     letterSpacing: firstStyles[0].firstLetter + "px",
@@ -40106,7 +40110,7 @@ var edit = function (_Component) {
                                     fontSize: "" + secondFontSize + secondStyles[0].secondSizeUnit,
                                     display: display,
                                     color: secondStyles[0].secondColor,
-                                    backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground ? (0, _hexToRgba2.default)(secondStyles[0].secondBackground, secondStyles[0].secondOpacity) : "transparent",
+                                    backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
                                     backgroundImage: secondStyles[0].secondClip ? "linear-gradient(to left, " + secondStyles[0].secondColor + ", " + secondStyles[0].secondClipColor + ")" : "none",
                                     fontFamily: secondStyles[0].secondFamily,
                                     letterSpacing: secondStyles[0].secondLetter + "px",
@@ -40168,10 +40172,6 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var save = function save(props) {
@@ -40181,7 +40181,6 @@ var save = function save(props) {
         contentAlign = _props$attributes.contentAlign,
         firstHeading = _props$attributes.firstHeading,
         secondHeading = _props$attributes.secondHeading,
-        titleTag = _props$attributes.titleTag,
         display = _props$attributes.display,
         firstStyles = _props$attributes.firstStyles,
         secondStyles = _props$attributes.secondStyles,
@@ -40218,7 +40217,7 @@ var save = function save(props) {
             className: (0, _classnames2.default)(className, "premium-dheading-block__container", "premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
             style: {
                 textAlign: contentAlign,
-                backgroundColor: containerStyles[0].containerBack ? (0, _hexToRgba2.default)(containerStyles[0].containerBack, containerStyles[0].containerOpacity) : "transparent",
+                backgroundColor: containerStyles[0].containerBack,
                 backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -40243,7 +40242,7 @@ var save = function save(props) {
                         style: {
                             display: display,
                             color: firstStyles[0].firstColor,
-                            backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground ? (0, _hexToRgba2.default)(firstStyles[0].firstBackground, firstStyles[0].firstOpacity) : "transparent",
+                            backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
                             backgroundImage: firstStyles[0].firstClip ? "linear-gradient(to left, " + firstStyles[0].firstColor + ", " + firstStyles[0].firstClipColor + ")" : "none",
                             fontFamily: firstStyles[0].firstFamily,
                             letterSpacing: firstStyles[0].firstLetter + "px",
@@ -40269,7 +40268,7 @@ var save = function save(props) {
                         style: {
                             display: display,
                             color: secondStyles[0].secondColor,
-                            backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground ? (0, _hexToRgba2.default)(secondStyles[0].secondBackground, secondStyles[0].secondOpacity) : "transparent",
+                            backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
                             backgroundImage: secondStyles[0].secondClip ? "linear-gradient(to left, " + secondStyles[0].secondColor + ", " + secondStyles[0].secondClipColor + ")" : "none",
                             fontFamily: secondStyles[0].secondFamily,
                             letterSpacing: secondStyles[0].secondLetter + "px",
@@ -42024,9 +42023,9 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -42034,15 +42033,15 @@ var _edit = __webpack_require__(269);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(271);
+var _save = __webpack_require__(270);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(272);
+var _deprecated = __webpack_require__(271);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(273);
+var _attributes = __webpack_require__(272);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42083,17 +42082,17 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _reactFonticonpicker = __webpack_require__(106);
+var _reactFonticonpicker = __webpack_require__(105);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(107);
+var _premiumIconsList = __webpack_require__(106);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _premiumSizeUnits = __webpack_require__(19);
+var _premiumSizeUnits = __webpack_require__(37);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -42113,7 +42112,7 @@ var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -42121,19 +42120,15 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -42144,9 +42139,7 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     Toolbar = _wp$components.Toolbar,
     SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    ToggleControl = _wp$components.ToggleControl;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     URLInput = _wp$blockEditor.URLInput;
@@ -42204,25 +42197,25 @@ var edit = function edit(props) {
 
     var EFFECTS = [{
         value: "none",
-        label: __("None")
+        label: __("None", 'premium-block-for-gutenberg')
     }, {
         value: "pulse",
-        label: __("Pulse")
+        label: __("Pulse", 'premium-block-for-gutenberg')
     }, {
         value: "rotate",
-        label: __("Rotate")
+        label: __("Rotate", 'premium-block-for-gutenberg')
     }, {
         value: "drotate",
-        label: __("3D Rotate")
+        label: __("3D Rotate", 'premium-block-for-gutenberg')
     }, {
         value: "buzz",
-        label: __("Buzz")
+        label: __("Buzz", 'premium-block-for-gutenberg')
     }, {
         value: "drop",
-        label: __("Drop Shadow")
+        label: __("Drop Shadow", 'premium-block-for-gutenberg')
     }, {
         value: "wobble",
-        label: __("Wobble")
+        label: __("Wobble", 'premium-block-for-gutenberg')
     }];
 
     var saveContainerStyle = function saveContainerStyle(value) {
@@ -42259,14 +42252,14 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Icon"),
+                title: __("Icon", 'premium-block-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
             React.createElement(
                 "p",
                 { className: "premium-editor-paragraph" },
-                __("Select Icon")
+                __("Select Icon", 'premium-block-for-gutenberg')
             ),
             React.createElement(_reactFonticonpicker2.default, {
                 icons: _premiumIconsList2.default,
@@ -42276,20 +42269,10 @@ var edit = function edit(props) {
                 value: selectedIcon,
                 isMulti: false,
                 appendTo: "body",
-                noSelectedPlaceholder: __("Select Icon")
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __('Icon Hover Color', ''),
-                colorValue: iconStyles[0].iconColor,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveIconStyle({
-                        iconColor: newValue
-                    });
-                }
+                noSelectedPlaceholder: __("Select Icon", 'premium-block-for-gutenberg')
             }),
             React.createElement(SelectControl, {
-                label: __("Hover Effect"),
+                label: __("Hover Effect", 'premium-block-for-gutenberg'),
                 options: EFFECTS,
                 value: hoverEffect,
                 onChange: function onChange(newEffect) {
@@ -42299,7 +42282,7 @@ var edit = function edit(props) {
             React.createElement(
                 "p",
                 null,
-                __("Align")
+                __("Align", 'premium-block-for-gutenberg')
             ),
             React.createElement(Toolbar, {
                 controls: ALIGNS.map(function (iconAlign) {
@@ -42313,14 +42296,14 @@ var edit = function edit(props) {
                 })
             }),
             React.createElement(ToggleControl, {
-                label: __("Link"),
+                label: __("Link", 'premium-block-for-gutenberg'),
                 checked: urlCheck,
                 onChange: function onChange(newValue) {
                     return setAttributes({ urlCheck: newValue });
                 }
             }),
             urlCheck && React.createElement(ToggleControl, {
-                label: __("Open link in new tab"),
+                label: __("Open link in new tab", 'premium-block-for-gutenberg'),
                 checked: target,
                 onChange: function onChange(newValue) {
                     return setAttributes({ target: newValue });
@@ -42330,12 +42313,12 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Icon Style"),
+                title: __("Icon Style", 'premium-block-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
             React.createElement(_premiumRangeControl2.default, {
-                label: __("Size"),
+                label: __("Size", 'premium-block-for-gutenberg'),
                 value: iconStyles[0].iconSize,
                 onChange: function onChange(newValue) {
                     return saveIconStyle({ iconSize: newValue });
@@ -42349,7 +42332,7 @@ var edit = function edit(props) {
                 unit: iconStyles[0].iconSizeUnit
             }),
             React.createElement(_ColorComponent2.default, {
-                label: __("Icon Color", ''),
+                label: __("Icon Color", 'premium-block-for-gutenberg'),
                 colorValue: iconStyles[0].iconColor,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
@@ -42359,7 +42342,7 @@ var edit = function edit(props) {
                 }
             }),
             React.createElement(_ColorComponent2.default, {
-                label: __("Background Color", 'kadence-blocks'),
+                label: __("Background Color", 'premium-block-for-gutenberg'),
                 colorValue: iconStyles[0].iconBack,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
@@ -42479,7 +42462,7 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Container Style"),
+                title: __("Container Style", 'premium-block-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
@@ -42668,7 +42651,7 @@ var edit = function edit(props) {
             className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: containerStyles[0].backgroundColor ? (0, _hexToRgba2.default)(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity) : "transparent",
+                backgroundColor: containerStyles[0].backgroundColor,
                 backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : "none",
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -42699,8 +42682,6 @@ var edit = function edit(props) {
             style: {
                 color: iconStyles[0].iconColor || "#6ec1e4",
                 backgroundColor: iconStyles[0].iconBack,
-                // ? hexToRgba(iconStyles[0].iconBack, iconStyles[0].iconOpacity)
-                // : "transparent",
                 fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                 paddingTop: paddingT + paddingU,
                 paddingRight: paddingR + paddingU,
@@ -42749,259 +42730,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
-var _get = __webpack_require__(95);
-
-var _get2 = _interopRequireDefault(_get);
-
-var _map = __webpack_require__(80);
-
-var _map2 = _interopRequireDefault(_map);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _wp$i18n = wp.i18n,
-    __ = _wp$i18n.__,
-    sprintf = _wp$i18n.sprintf;
-var Component = wp.element.Component;
-var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    Popover = _wp$components.Popover,
-    RangeControl = _wp$components.RangeControl,
-    ColorIndicator = _wp$components.ColorIndicator,
-    ColorPicker = _wp$components.ColorPicker,
-    Tooltip = _wp$components.Tooltip,
-    Dashicon = _wp$components.Dashicon;
-var withSelect = wp.data.withSelect;
-
-var AdvancedColorControl = function (_Component) {
-    _inherits(AdvancedColorControl, _Component);
-
-    function AdvancedColorControl() {
-        _classCallCheck(this, AdvancedColorControl);
-
-        var _this = _possibleConstructorReturn(this, (AdvancedColorControl.__proto__ || Object.getPrototypeOf(AdvancedColorControl)).apply(this, arguments));
-
-        _this.state = {
-            isVisible: false,
-            colors: [],
-            classSat: 'first',
-            currentColor: '',
-            defaultColor: ''
-        };
-        return _this;
-    }
-
-    _createClass(AdvancedColorControl, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            if ('transparent' === this.props.colorDefault) {
-                this.setState({ currentColor: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue });
-                this.setState({ defaultColor: '' });
-            } else {
-                this.setState({ currentColor: undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue });
-                this.setState({ defaultColor: this.props.colorDefault });
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            var toggleVisible = function toggleVisible() {
-                if ('transparent' === _this2.props.colorDefault) {
-                    _this2.setState({ currentColor: undefined === _this2.props.colorValue || '' === _this2.props.colorValue || 'transparent' === _this2.props.colorValue ? '' : _this2.props.colorValue });
-                } else {
-                    _this2.setState({ currentColor: undefined === _this2.props.colorValue || '' === _this2.props.colorValue ? _this2.props.colorDefault : _this2.props.colorValue });
-                }
-                _this2.setState({ classSat: 'first' });
-                _this2.setState({ isVisible: true });
-            };
-            var toggleClose = function toggleClose() {
-                if (_this2.state.isVisible === true) {
-                    _this2.setState({ isVisible: false });
-                }
-            };
-            return React.createElement(
-                'div',
-                { className: 'kt-color-popover-container' },
-                React.createElement(
-                    'div',
-                    { className: 'kt-advanced-color-settings-container' },
-                    this.props.label && React.createElement(
-                        'h2',
-                        { className: 'kt-beside-color-label' },
-                        this.props.label
-                    ),
-                    this.props.colorValue && this.props.colorValue !== this.props.colorDefault && React.createElement(
-                        Tooltip,
-                        { text: __('Clear') },
-                        React.createElement(Button, {
-                            className: 'components-color-palette__clear',
-                            type: 'button',
-                            onClick: function onClick() {
-                                _this2.setState({ currentColor: _this2.props.colorDefault });
-                                _this2.props.onColorChange(undefined);
-                                if (_this2.props.onColorClassChange) {
-                                    _this2.props.onColorClassChange('');
-                                }
-                            },
-                            isSmall: true
-                        })
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'kt-beside-color-click' },
-                        this.state.isVisible && React.createElement(
-                            Popover,
-                            { position: 'top left', className: 'kt-popover-color', onClose: toggleClose },
-                            this.props.colors && React.createElement(
-                                'div',
-                                { className: 'components-color-palette' },
-                                (0, _map2.default)(this.props.colors, function (_ref) {
-                                    var color = _ref.color,
-                                        slug = _ref.slug,
-                                        name = _ref.name;
-
-                                    var style = { color: color };
-                                    return React.createElement(
-                                        'div',
-                                        { key: color, className: 'components-color-palette__item-wrapper' },
-                                        React.createElement(
-                                            Tooltip,
-                                            {
-                                                text: name || sprintf(__('Color code: %s'), color) },
-                                            React.createElement(Button, {
-                                                type: 'button',
-                                                className: 'components-color-palette__item ' + (_this2.props.colorValue === color ? 'is-active' : ''),
-                                                style: style,
-                                                onClick: function onClick() {
-                                                    _this2.setState({ currentColor: color });
-                                                    _this2.props.onColorChange(color);
-                                                    if (_this2.props.onColorClassChange) {
-                                                        _this2.props.onColorClassChange(slug);
-                                                    }
-                                                    if ('third' === _this2.state.classSat) {
-                                                        _this2.setState({ classSat: 'second' });
-                                                    } else {
-                                                        _this2.setState({ classSat: 'third' });
-                                                    }
-                                                },
-                                                'aria-label': name ? sprintf(__('Color: %s'), name) : sprintf(__('Color code: %s'), color),
-                                                'aria-pressed': _this2.props.colorValue === color
-                                            })
-                                        ),
-                                        _this2.props.colorValue === color && React.createElement(Dashicon, { icon: 'saved' })
-                                    );
-                                })
-                            ),
-                            this.state.classSat === 'first' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
-                                color: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
-                                onChangeComplete: function onChangeComplete(color) {
-                                    _this2.setState({ currentColor: color.hex });
-                                    if (color.rgb) {
-                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
-                                    }
-                                    if (_this2.props.onColorClassChange) {
-                                        _this2.props.onColorClassChange('');
-                                    }
-                                }
-
-                            }),
-                            this.state.classSat === 'second' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
-                                color: undefined === this.state.currentColor || '' === this.state.currentColor || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.state.currentColor,
-                                onChangeComplete: function onChangeComplete(color) {
-                                    _this2.setState({ currentColor: color.hex });
-                                    if (color.rgb) {
-                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
-                                    }
-                                    if (_this2.props.onColorClassChange) {
-                                        _this2.props.onColorClassChange('');
-                                    }
-                                }
-
-                            }),
-                            this.state.classSat !== 'second' && !this.props.disableCustomColors && this.state.classSat !== 'first' && React.createElement(ColorPicker, {
-                                color: undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor,
-                                onChangeComplete: function onChangeComplete(color) {
-                                    _this2.setState({ currentColor: color.hex });
-                                    if (color.rgb) {
-
-                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
-                                    }
-                                    if (_this2.props.onColorClassChange) {
-                                        _this2.props.onColorClassChange('');
-                                    }
-                                }
-
-                            })
-                        ),
-                        this.state.isVisible && React.createElement(
-                            Tooltip,
-                            { text: __('Select Color') },
-                            React.createElement(
-                                Button,
-                                { className: 'kt-color-icon-indicate ' + (this.props.onOpacityChange || 'transparent' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleClose },
-                                React.createElement(ColorIndicator, { className: 'kt-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
-                            )
-                        ),
-                        !this.state.isVisible && React.createElement(
-                            Tooltip,
-                            { text: __('Select Color') },
-                            React.createElement(
-                                Button,
-                                { className: 'kt-color-icon-indicate ' + (this.props.onOpacityChange || 'transparent' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleVisible },
-                                React.createElement(ColorIndicator, { className: 'kt-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return AdvancedColorControl;
-}(Component);
-
-exports.default = withSelect(function (select, ownProps) {
-    var settings = select('core/block-editor').getSettings();
-    var colors = (0, _get2.default)(settings, ['colors'], []);
-    var disableCustomColors = ownProps.disableCustomColors === undefined ? settings.disableCustomColors : ownProps.disableCustomColors;
-    return {
-        colors: colors,
-        disableCustomColors: disableCustomColors
-    };
-})(AdvancedColorControl);
-
-/***/ }),
-/* 271 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43059,7 +42790,7 @@ var save = function save(props) {
             className: mainClasses + '__container ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: containerStyles[0].backgroundColor ? (0, _hexToRgba2.default)(containerStyles[0].backgroundColor, containerStyles[0].backgroundOpacity) : "transparent",
+                backgroundColor: containerStyles[0].backgroundColor,
                 backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : "none",
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -43092,7 +42823,7 @@ var save = function save(props) {
                 className: 'premium-icon ' + selectedIcon + ' premium-icon__' + hoverEffect,
                 style: {
                     color: iconStyles[0].iconColor || "#6ec1e4",
-                    backgroundColor: iconStyles[0].iconBack ? (0, _hexToRgba2.default)(iconStyles[0].iconBack, iconStyles[0].iconOpacity) : "transparent",
+                    backgroundColor: iconStyles[0].iconBack,
                     fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                     paddingTop: paddingT + paddingU,
                     paddingRight: paddingR + paddingU,
@@ -43116,7 +42847,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 272 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44638,7 +44369,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 273 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44863,31 +44594,31 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 274 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(275);
+var _edit = __webpack_require__(274);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(276);
+var _save = __webpack_require__(275);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(277);
+var _deprecated = __webpack_require__(276);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(278);
+var _attributes = __webpack_require__(277);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -44912,7 +44643,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 275 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44930,17 +44661,17 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
 var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _reactFonticonpicker = __webpack_require__(106);
+var _reactFonticonpicker = __webpack_require__(105);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(107);
+var _premiumIconsList = __webpack_require__(106);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
@@ -44956,7 +44687,7 @@ var _premiumMargin = __webpack_require__(62);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -44968,23 +44699,19 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumMediaUpload = __webpack_require__(26);
+var _premiumMediaUpload = __webpack_require__(25);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -45000,7 +44727,6 @@ var __ = wp.i18n.__;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     Toolbar = _wp$components.Toolbar,
-    RangeControl = _wp$components.RangeControl,
     SelectControl = _wp$components.SelectControl,
     ToggleControl = _wp$components.ToggleControl,
     TabPanel = _wp$components.TabPanel;
@@ -45135,7 +44861,6 @@ var edit = function (_Component) {
                 btnText = attributes.btnText,
                 btnLink = attributes.btnLink,
                 btnHoverBorder = attributes.btnHoverBorder,
-                classMigrate = attributes.classMigrate,
                 hideDesktop = attributes.hideDesktop,
                 hideTablet = attributes.hideTablet,
                 hideMobile = attributes.hideMobile,
@@ -45291,14 +45016,14 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Description"),
+                        label: __("Description", 'premium-block-for-gutenberg'),
                         checked: descChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ descChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Button"),
+                        label: __("Button", 'premium-block-for-gutenberg'),
                         checked: btnChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnChecked: newValue });
@@ -45308,12 +45033,12 @@ var edit = function (_Component) {
                 iconChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Icon"),
+                        title: __("Icon", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Icon Position"),
+                        label: __("Icon Position", 'premium-block-for-gutenberg'),
                         options: ICON_POS,
                         value: iconPos,
                         onChange: function onChange(newValue) {
@@ -45324,7 +45049,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(SelectControl, {
-                            label: __("Horizontal Position"),
+                            label: __("Horizontal Position", 'premium-block-for-gutenberg'),
                             options: ICON_HPOS,
                             value: iconHPos,
                             onChange: function onChange(newValue) {
@@ -45332,7 +45057,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(SelectControl, {
-                            label: __("Vertical Position"),
+                            label: __("Vertical Position", 'premium-block-for-gutenberg'),
                             options: ICON_VPOS,
                             value: iconVPos,
                             onChange: function onChange(newValue) {
@@ -45341,7 +45066,7 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(SelectControl, {
-                        label: __("Icon Type"),
+                        label: __("Icon Type", 'premium-block-for-gutenberg'),
                         options: imgIcon,
                         value: iconImage,
                         onChange: function onChange(newType) {
@@ -45354,7 +45079,7 @@ var edit = function (_Component) {
                         React.createElement(
                             "p",
                             { className: "premium-editor-paragraph" },
-                            __("Select Icon")
+                            __("Select Icon", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(_reactFonticonpicker2.default, {
                             icons: _premiumIconsList2.default,
@@ -45364,7 +45089,7 @@ var edit = function (_Component) {
                             value: selectedIcon,
                             isMulti: false,
                             appendTo: "body",
-                            noSelectedPlaceholder: __("Select Icon")
+                            noSelectedPlaceholder: __("Select Icon", 'premium-block-for-gutenberg')
                         })
                     ),
                     "image" === iconImage && React.createElement(
@@ -45388,7 +45113,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __("Border Radius (PX)"),
+                            label: __("Border Radius (PX)", 'premium-block-for-gutenberg'),
                             value: iconRadius,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ iconRadius: newValue || 0 });
@@ -45398,7 +45123,7 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(SelectControl, {
-                        label: __("Hover Effect"),
+                        label: __("Hover Effect", 'premium-block-for-gutenberg'),
                         options: EFFECTS,
                         value: hoverEffect,
                         onChange: function onChange(newEffect) {
@@ -45406,7 +45131,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Size (PX)"),
+                        label: __("Size (PX)", 'premium-block-for-gutenberg'),
                         value: iconSize,
                         min: "10",
                         max: "200",
@@ -45420,14 +45145,14 @@ var edit = function (_Component) {
                 titleChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Title"),
+                        title: __("Title", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "p",
                         null,
-                        __("Title")
+                        __("Title", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(Toolbar, {
                         controls: "123456".split("").map(function (tag) {
@@ -45446,19 +45171,19 @@ var edit = function (_Component) {
                         setAttributes: saveTitleStyle,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit")
+                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: titleStyles[0].titleSize,
-                            label: __("titleSize")
+                            label: __("titleSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile")
+                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet")
+                            label: __("titleSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: titleStyles[0].titleWeight,
                         style: titleStyles[0].titleStyle,
@@ -45524,7 +45249,7 @@ var edit = function (_Component) {
                 descChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Description"),
+                        title: __("Description", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -45533,19 +45258,19 @@ var edit = function (_Component) {
                         setAttributes: saveDescriptionStyle,
                         fontSizeType: {
                             value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit")
+                            label: __("descSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: descStyles[0].descSize,
-                            label: __("descSize")
+                            label: __("descSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: descStyles[0].descSizeMobile,
-                            label: __("descSizeMobile")
+                            label: __("descSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: descStyles[0].descSizeTablet,
-                            label: __("descSizeTablet")
+                            label: __("descSizeTablet", 'premium-block-for-gutenberg')
                         },
                         fontFamily: descStyles[0].descFont,
                         weight: descStyles[0].descWeight,
@@ -45579,13 +45304,13 @@ var edit = function (_Component) {
                 btnChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Button"),
+                        title: __("Button", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
                         options: BTN_EFFECTS,
-                        label: __("Hover Effect"),
+                        label: __("Hover Effect", 'premium-block-for-gutenberg'),
                         value: btnEffect,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnEffect: newValue });
@@ -45593,14 +45318,14 @@ var edit = function (_Component) {
                     }),
                     "slide" === btnEffect && React.createElement(SelectControl, {
                         options: DIRECTION,
-                        label: __("Direction"),
+                        label: __("Direction", 'premium-block-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Open link in new tab"),
+                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
                         checked: btnTarget,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnTarget: newValue });
@@ -45612,19 +45337,19 @@ var edit = function (_Component) {
                         setAttributes: saveButtonStyle,
                         fontSizeType: {
                             value: btnStyles[0].btnSizeUnit,
-                            label: __("btnSizeUnit")
+                            label: __("btnSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: btnStyles[0].btnSize,
-                            label: __("btnSize")
+                            label: __("btnSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: btnStyles[0].btnSizeMobile,
-                            label: __("btnSizeMobile")
+                            label: __("btnSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: btnStyles[0].btnSizeTablet,
-                            label: __("btnSizeTablet")
+                            label: __("btnSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: btnStyles[0].btnWeight,
                         style: btnStyles[0].btnStyle,
@@ -45709,7 +45434,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Padding"),
+                        label: __("Padding", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].btnPadding,
                         onChange: function onChange(newValue) {
                             return saveButtonStyle({ btnPadding: newValue });
@@ -45740,7 +45465,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container"),
+                        title: __("Container", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -45963,7 +45688,7 @@ var edit = function (_Component) {
                                         Fragment,
                                         null,
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __("Icon Color", ''),
+                                            label: __("Icon Color", 'premium-block-for-gutenberg'),
                                             colorValue: iconColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -46133,9 +45858,7 @@ var edit = function (_Component) {
                         paddingBottom: paddingB + containerStyles[0].paddingU,
                         paddingLeft: paddingL + containerStyles[0].paddingU,
                         boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
-                        // backgroundColor: containerStyles[0].backColor
-                        //     ? hexToRgba(containerStyles[0].backColor, containerStyles[0].backOpacity)
-                        //     : "transparent",
+                        backgroundColor: containerStyles[0].backColor,
                         backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
                         backgroundPosition: containerStyles[0].backgroundPosition,
@@ -46165,7 +45888,7 @@ var edit = function (_Component) {
                             className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
                             style: {
                                 color: iconColor,
-                                backgroundColor: iconBackColor ? (0, _hexToRgba2.default)(iconBackColor, iconOpacity) : "transparent",
+                                backgroundColor: iconBackColor,
                                 fontSize: iconSize
                             }
                         })
@@ -46263,7 +45986,7 @@ var edit = function (_Component) {
                             style: {
                                 fontSize: "" + buttonFontSize + btnStyles[0].btnSizeUnit,
                                 color: btnStyles[0].btnColor,
-                                backgroundColor: btnStyles[0].btnBack ? (0, _hexToRgba2.default)(btnStyles[0].btnBack, btnStyles[0].btnOpacity) : "transparent",
+                                backgroundColor: btnStyles[0].btnBack,
                                 letterSpacing: btnStyles[0].btnLetter + "px",
                                 textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
                                 fontStyle: btnStyles[0].btnStyle,
@@ -46307,7 +46030,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 276 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46320,10 +46043,6 @@ Object.defineProperty(exports, "__esModule", {
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46338,7 +46057,6 @@ var save = function save(props) {
         btnBorderIconBox = _props$attributes.btnBorderIconBox,
         align = _props$attributes.align,
         iconImage = _props$attributes.iconImage,
-        iconImgId = _props$attributes.iconImgId,
         iconImgUrl = _props$attributes.iconImgUrl,
         hoverEffect = _props$attributes.hoverEffect,
         iconChecked = _props$attributes.iconChecked,
@@ -46361,7 +46079,6 @@ var save = function save(props) {
         btnText = _props$attributes.btnText,
         btnLink = _props$attributes.btnLink,
         btnHoverBorder = _props$attributes.btnHoverBorder,
-        classMigrate = _props$attributes.classMigrate,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
@@ -46418,7 +46135,7 @@ var save = function save(props) {
                 paddingBottom: paddingB + containerStyles[0].paddingU,
                 paddingLeft: paddingL + containerStyles[0].paddingU,
                 boxShadow: containerStyles[0].shadowHorizontal + 'px ' + containerStyles[0].shadowVertical + 'px ' + containerStyles[0].shadowBlur + 'px ' + containerStyles[0].shadowColor + ' ' + containerStyles[0].shadowPosition,
-                backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                backgroundColor: containerStyles[0].backColor,
                 backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -46440,7 +46157,7 @@ var save = function save(props) {
                 className: selectedIcon + ' premium-icon-box__icon premium-icon__' + hoverEffect,
                 style: {
                     color: iconColor,
-                    backgroundColor: iconBackColor ? (0, _hexToRgba2.default)(iconBackColor, iconOpacity) : "transparent",
+                    backgroundColor: iconBackColor,
                     fontSize: iconSize
                 }
             }),
@@ -46522,7 +46239,7 @@ var save = function save(props) {
                     value: btnText,
                     style: {
                         color: btnStyles[0].btnColor,
-                        backgroundColor: btnStyles[0].btnBack ? (0, _hexToRgba2.default)(btnStyles[0].btnBack, btnStyles[0].btnOpacity) : "transparent",
+                        backgroundColor: btnStyles[0].btnBack,
                         letterSpacing: btnStyles[0].btnLetter + "px",
                         textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
                         fontStyle: btnStyles[0].btnStyle,
@@ -46543,7 +46260,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 277 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49414,7 +49131,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 278 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49622,7 +49339,7 @@ var attributes = {
             btnBorderRadius: '',
             btnBorderColor: '',
             btnPadding: '',
-            btnPaddingU: '',
+            btnPaddingU: 'px',
             btnMarginT: '',
             btnMarginB: '',
             btnShadowColor: '',
@@ -49674,7 +49391,7 @@ var attributes = {
             paddingR: '',
             paddingB: '',
             paddingL: '',
-            paddingU: ''
+            paddingU: 'px'
 
         }]
     },
@@ -49752,7 +49469,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 279 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49760,13 +49477,13 @@ exports.default = attributes;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _premiumMediaUpload = __webpack_require__(26);
+var _premiumMediaUpload = __webpack_require__(25);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -49774,11 +49491,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -49863,11 +49580,11 @@ var mapAttrs = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-block-for-gutenberg')
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description")
+        default: __("Cool Description", 'premium-block-for-gutenberg')
     },
     mapMarker: {
         type: "boolean",
@@ -49985,11 +49702,11 @@ var mapAttrs_1_2 = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-block-for-gutenberg')
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description")
+        default: __("Cool Description", 'premium-block-for-gutenberg')
     },
     mapMarker: {
         type: "boolean",
@@ -50245,16 +49962,16 @@ var PremiumMap = function (_Component) {
 
             var TYPES = [{
                 value: "roadmap",
-                label: __("Road Map")
+                label: __("Road Map", 'premium-block-for-gutenberg')
             }, {
                 value: "satellite",
-                label: __("Satellite")
+                label: __("Satellite", 'premium-block-for-gutenberg')
             }, {
                 value: "terrain",
-                label: __("Terrain")
+                label: __("Terrain", 'premium-block-for-gutenberg')
             }, {
                 value: "hybrid",
-                label: __("Hybrid")
+                label: __("Hybrid", 'premium-block-for-gutenberg')
             }];
 
             var ALIGNS = ["left", "center", "right"];
@@ -50275,7 +49992,7 @@ var PremiumMap = function (_Component) {
                             "a",
                             { href: "https://www.latlong.net/", target: "_blank" },
                             "\xA0",
-                            __("here")
+                            __("here", 'premium-block-for-gutenberg')
                         )],
                         onChange: function onChange(newLng) {
                             return setAttributes({ centerLng: newLng });
@@ -50292,12 +50009,12 @@ var PremiumMap = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Marker"),
+                        title: __("Marker", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Enable Marker"),
+                        label: __("Enable Marker", 'premium-block-for-gutenberg'),
                         checked: mapMarker,
                         onChange: function onChange(check) {
                             return setAttributes({ mapMarker: check });
@@ -50308,21 +50025,21 @@ var PremiumMap = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(TextControl, {
-                            label: __("Marker Title"),
+                            label: __("Marker Title", 'premium-block-for-gutenberg'),
                             value: markerTitle,
                             onChange: function onChange(newText) {
                                 return setAttributes({ markerTitle: newText });
                             }
                         }),
                         React.createElement(TextareaControl, {
-                            label: __("Marker Description"),
+                            label: __("Marker Description", 'premium-block-for-gutenberg'),
                             value: markerDesc,
                             onChange: function onChange(newText) {
                                 return setAttributes({ markerDesc: newText });
                             }
                         }),
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __("Spacing (PX)"),
+                            label: __("Spacing (PX)", 'premium-block-for-gutenberg'),
                             value: gapBetween,
                             min: "10",
                             max: "80",
@@ -50333,7 +50050,7 @@ var PremiumMap = function (_Component) {
                             defaultValue: 10
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Description opened by default"),
+                            label: __("Description opened by default", 'premium-block-for-gutenberg'),
                             checked: markerOpen,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ markerOpen: newValue });
@@ -50351,7 +50068,7 @@ var PremiumMap = function (_Component) {
                             })
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Custom Marker Icon"),
+                            label: __("Custom Marker Icon", 'premium-block-for-gutenberg'),
                             checked: markerCustom,
                             onChange: function onChange(check) {
                                 return setAttributes({ markerCustom: check });
@@ -50376,7 +50093,7 @@ var PremiumMap = function (_Component) {
 
                         }),
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __("Description Box Max Width (PX)"),
+                            label: __("Description Box Max Width (PX)", 'premium-block-for-gutenberg'),
                             value: maxWidth,
                             min: "10",
                             max: "500",
@@ -50387,7 +50104,7 @@ var PremiumMap = function (_Component) {
                             defaultValue: 0
                         }),
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __("Description Box Padding (PX)"),
+                            label: __("Description Box Padding (PX)", 'premium-block-for-gutenberg'),
                             value: boxPadding,
                             min: "1",
                             max: "50",
@@ -50402,12 +50119,12 @@ var PremiumMap = function (_Component) {
                 mapMarker && markerTitle && React.createElement(
                     PanelBody,
                     {
-                        title: __("Marker Title Style"),
+                        title: __("Marker Title Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Font Size (PX)"),
+                        label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
                         value: titleSize,
                         min: "10",
                         max: "80",
@@ -50418,7 +50135,7 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", ''),
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
                         colorValue: titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -50431,12 +50148,12 @@ var PremiumMap = function (_Component) {
                 mapMarker && markerDesc && React.createElement(
                     PanelBody,
                     {
-                        title: __("Marker Description Style"),
+                        title: __("Marker Description Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Font Size (PX)"),
+                        label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
                         value: descSize,
                         min: "10",
                         max: "80",
@@ -50447,7 +50164,7 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", ''),
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
                         colorValue: descColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -50460,12 +50177,12 @@ var PremiumMap = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Controls"),
+                        title: __("Controls", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Map Type"),
+                        label: __("Map Type", 'premium-block-for-gutenberg'),
                         options: TYPES,
                         value: mapType,
                         onChange: function onChange(newType) {
@@ -50473,7 +50190,7 @@ var PremiumMap = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Map Height (PX)"),
+                        label: __("Map Height (PX)", 'premium-block-for-gutenberg'),
                         value: height,
                         min: "10",
                         max: "800",
@@ -50484,7 +50201,7 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Zoom"),
+                        label: __("Zoom", 'premium-block-for-gutenberg'),
                         value: zoom,
                         min: "1",
                         max: "14",
@@ -50495,35 +50212,35 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Map Type Controls"),
+                        label: __("Map Type Controls", 'premium-block-for-gutenberg'),
                         checked: mapTypeControl,
                         onChange: function onChange(check) {
                             return setAttributes({ mapTypeControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Zoom Controls"),
+                        label: __("Zoom Controls", 'premium-block-for-gutenberg'),
                         checked: zoomControl,
                         onChange: function onChange(check) {
                             return setAttributes({ zoomControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Street View Control"),
+                        label: __("Street View Control", 'premium-block-for-gutenberg'),
                         checked: streetViewControl,
                         onChange: function onChange(check) {
                             return setAttributes({ streetViewControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Full Screen Control"),
+                        label: __("Full Screen Control", 'premium-block-for-gutenberg'),
                         checked: fullscreenControl,
                         onChange: function onChange(check) {
                             return setAttributes({ fullscreenControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Scroll Wheel Zoom"),
+                        label: __("Scroll Wheel Zoom", 'premium-block-for-gutenberg'),
                         checked: scrollwheel,
                         onChange: function onChange(check) {
                             return setAttributes({ scrollwheel: check });
@@ -50533,14 +50250,14 @@ var PremiumMap = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Map Style"),
+                        title: __("Map Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextareaControl, {
-                        label: __("Maps Style"),
+                        label: __("Maps Style", 'premium-block-for-gutenberg'),
                         value: mapStyle,
-                        help: [__("Get your custom styling from"), React.createElement(
+                        help: [__("Get your custom styling from", 'premium-block-for-gutenberg'), React.createElement(
                             "a",
                             { href: "https://snazzymaps.com/", target: "_blank" },
                             "\xA0",
@@ -50855,31 +50572,31 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 280 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(281);
+var _edit = __webpack_require__(280);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(282);
+var _save = __webpack_require__(281);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(283);
+var _deprecated = __webpack_require__(282);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(284);
+var _attributes = __webpack_require__(283);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -50903,7 +50620,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 281 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50933,7 +50650,7 @@ var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -50941,19 +50658,15 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -50983,7 +50696,6 @@ var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     RichText = _wp$blockEditor.RichText,
-    PanelColorSettings = _wp$blockEditor.PanelColorSettings,
     URLInput = _wp$blockEditor.URLInput;
 
 var PremiumPricingTable = function (_Component) {
@@ -51047,7 +50759,6 @@ var PremiumPricingTable = function (_Component) {
                 listChecked = _props$attributes.listChecked,
                 listItems = _props$attributes.listItems,
                 block_id = _props$attributes.block_id,
-                classMigrate = _props$attributes.classMigrate,
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile,
@@ -51070,52 +50781,52 @@ var PremiumPricingTable = function (_Component) {
 
             var ALIGNS = [{
                 value: "flex-start",
-                label: __("Top")
+                label: __("Top", 'premium-block-for-gutenberg')
             }, {
                 value: "center",
-                label: __("Middle")
+                label: __("Middle", 'premium-block-for-gutenberg')
             }, {
                 value: "flex-end",
-                label: __("Bottom")
+                label: __("Bottom", 'premium-block-for-gutenberg')
             }];
             var PRICE = [{
                 value: "slash",
-                label: __("Slashed Price")
+                label: __("Slashed Price", 'premium-block-for-gutenberg')
             }, {
                 value: "curr",
-                label: __("Currency")
+                label: __("Currency", 'premium-block-for-gutenberg')
             }, {
                 value: "price",
-                label: __("Price")
+                label: __("Price", 'premium-block-for-gutenberg')
             }, {
                 value: "divider",
-                label: __("Divider")
+                label: __("Divider", 'premium-block-for-gutenberg')
             }, {
                 value: "duration",
-                label: __("Duration")
+                label: __("Duration", 'premium-block-for-gutenberg')
             }];
             var TYPE = [{
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             }, {
                 value: "check",
-                label: __("Check Mark")
+                label: __("Check Mark", 'premium-block-for-gutenberg')
             }, {
                 value: "disc",
-                label: __("Filled Circle")
+                label: __("Filled Circle", 'premium-block-for-gutenberg')
             }, {
                 value: "circle",
-                label: __("Outline Circle")
+                label: __("Outline Circle", 'premium-block-for-gutenberg')
             }, {
                 value: "square",
-                label: __("Square")
+                label: __("Square", 'premium-block-for-gutenberg')
             }];
             var POSITION = [{
                 value: "right",
-                label: __("Right")
+                label: __("Right", 'premium-block-for-gutenberg')
             }, {
                 value: "left",
-                label: __("Left")
+                label: __("Left", 'premium-block-for-gutenberg')
             }];
             var FEATURES_ALIGN = ["left", "center", "right"];
 
@@ -51225,47 +50936,47 @@ var PremiumPricingTable = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Display Options"),
+                        title: __("Display Options", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Title"),
+                        label: __("Title", 'premium-block-for-gutenberg'),
                         checked: titleChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ titleChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Price"),
+                        label: __("Price", 'premium-block-for-gutenberg'),
                         checked: priceChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ priceChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Features"),
+                        label: __("Features", 'premium-block-for-gutenberg'),
                         checked: listChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ listChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Description"),
+                        label: __("Description", 'premium-block-for-gutenberg'),
                         checked: descChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ descChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Button"),
+                        label: __("Button", 'premium-block-for-gutenberg'),
                         checked: btnChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Badge"),
+                        label: __("Badge", 'premium-block-for-gutenberg'),
                         checked: badgeChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ badgeChecked: newValue });
@@ -51275,14 +50986,14 @@ var PremiumPricingTable = function (_Component) {
                 titleChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Title"),
+                        title: __("Title", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "p",
                         null,
-                        __("Heading")
+                        __("Heading", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(Toolbar, {
                         controls: "123456".split("").map(function (tag) {
@@ -51301,19 +51012,19 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveTitleStyles,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit")
+                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: titleStyles[0].titleSize,
-                            label: __("titleSize")
+                            label: __("titleSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile")
+                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet")
+                            label: __("titleSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: titleStyles[0].titleWeight,
                         style: titleStyles[0].titleStyle,
@@ -51336,23 +51047,21 @@ var PremiumPricingTable = function (_Component) {
                             return saveTitleStyles({ titleUpper: check });
                         }
                     }),
-                    React.createElement(PanelColorSettings, {
-                        title: __("Colors"),
-                        className: "premium-panel-body-inner",
-                        initialOpen: false,
-                        colorSettings: [{
-                            value: titleStyles[0].titleColor,
-                            onChange: function onChange(newColor) {
-                                return saveTitleStyles({ titleColor: newColor });
-                            },
-                            label: __("Text Color")
-                        }, {
-                            value: titleStyles[0].titleBack,
-                            onChange: function onChange(newColor) {
-                                return saveTitleStyles({ titleBack: newColor });
-                            },
-                            label: __("Background Color")
-                        }]
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: titleStyles[0].titleColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveTitleStyles({ titleColor: newColor });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: titleStyles[0].titleBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveTitleStyles({ titleBack: newColor });
+                        }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
                         color: titleStyles[0].titleShadowColor,
@@ -51378,7 +51087,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings")
+                            __("Spacings", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -51398,7 +51107,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Top (PX)"),
+                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: titleStyles[0].titleMarginT,
                                         min: "10",
                                         max: "80",
@@ -51409,7 +51118,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 10
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)"),
+                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: titleStyles[0].titleMarginB,
                                         min: "0",
                                         max: "100",
@@ -51420,7 +51129,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Padding (PX)"),
+                                        label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: titleStyles[0].titlePadding,
                                         min: "0",
                                         max: "100",
@@ -51438,40 +51147,40 @@ var PremiumPricingTable = function (_Component) {
                 priceChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Price"),
+                        title: __("Price", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Slashed Price"),
+                        label: __("Slashed Price", 'premium-block-for-gutenberg'),
                         value: priceStyles[0].slashPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ slashPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Currency"),
+                        label: __("Currency", 'premium-block-for-gutenberg'),
                         value: priceStyles[0].currPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ currPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Price"),
+                        label: __("Price", 'premium-block-for-gutenberg'),
                         value: priceStyles[0].valPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ valPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Divider"),
+                        label: __("Divider", 'premium-block-for-gutenberg'),
                         value: priceStyles[0].divPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ divPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Duration"),
+                        label: __("Duration", 'premium-block-for-gutenberg'),
                         value: priceStyles[0].durPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ durPrice: value });
@@ -51480,12 +51189,12 @@ var PremiumPricingTable = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Element to Style"),
+                            title: __("Element to Style", 'premium-block-for-gutenberg'),
                             className: "premium-panel-body-inner",
                             initialOpen: false
                         },
                         React.createElement(SelectControl, {
-                            label: __("Element"),
+                            label: __("Element", 'premium-block-for-gutenberg'),
                             options: PRICE,
                             value: priceStyles[0].selectedStyle,
                             onChange: function onChange(newElem) {
@@ -51500,19 +51209,19 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].slashSizeUnit,
-                                    label: __("slashSizeUnit")
+                                    label: __("slashSizeUnit", 'premium-block-for-gutenberg')
                                 },
                                 fontSize: {
                                     value: priceStyles[0].slashSize,
-                                    label: __("slashSize")
+                                    label: __("slashSize", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeMobile: {
                                     value: priceStyles[0].slashSizeMobile,
-                                    label: __("slashSizeMobile")
+                                    label: __("slashSizeMobile", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeTablet: {
                                     value: priceStyles[0].slashSizeTablet,
-                                    label: __("slashSizeTablet")
+                                    label: __("slashSizeTablet", 'premium-block-for-gutenberg')
                                 },
                                 weight: priceStyles[0].slashWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
@@ -51520,7 +51229,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align"),
+                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].slashV,
                                 onChange: function onChange(newValue) {
@@ -51528,7 +51237,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", ''),
+                                label: __("Text Color", 'premium-block-for-gutenberg'),
                                 colorValue: priceStyles[0].slashColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -51546,19 +51255,19 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].currSizeUnit,
-                                    label: __("currSizeUnit")
+                                    label: __("currSizeUnit", 'premium-block-for-gutenberg')
                                 },
                                 fontSize: {
                                     value: priceStyles[0].currSize,
-                                    label: __("currSize")
+                                    label: __("currSize", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeMobile: {
                                     value: priceStyles[0].currSizeMobile,
-                                    label: __("currSizeMobile")
+                                    label: __("currSizeMobile", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeTablet: {
                                     value: priceStyles[0].currSizeTablet,
-                                    label: __("currSizeTablet")
+                                    label: __("currSizeTablet", 'premium-block-for-gutenberg')
                                 },
                                 weight: priceStyles[0].currWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
@@ -51568,7 +51277,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align"),
+                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].currV,
                                 onChange: function onChange(newValue) {
@@ -51578,7 +51287,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", ''),
+                                label: __("Text Color", 'premium-block-for-gutenberg'),
                                 colorValue: priceStyles[0].currColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -51596,19 +51305,19 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].valSizeUnit,
-                                    label: __("valSizeUnit")
+                                    label: __("valSizeUnit", 'premium-block-for-gutenberg')
                                 },
                                 fontSize: {
                                     value: priceStyles[0].valSize,
-                                    label: __("valSize")
+                                    label: __("valSize", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeMobile: {
                                     value: priceStyles[0].valSizeMobile,
-                                    label: __("valSizeMobile")
+                                    label: __("valSizeMobile", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeTablet: {
                                     value: priceStyles[0].valSizeTablet,
-                                    label: __("valSizeTablet")
+                                    label: __("valSizeTablet", 'premium-block-for-gutenberg')
                                 },
                                 size: priceStyles[0].valSize,
                                 weight: priceStyles[0].valWeight,
@@ -51617,7 +51326,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align"),
+                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].valV,
                                 onChange: function onChange(newValue) {
@@ -51625,7 +51334,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", ''),
+                                label: __("Text Color", 'premium-block-for-gutenberg'),
                                 colorValue: priceStyles[0].valColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -51643,19 +51352,19 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].divSizeUnit,
-                                    label: __("divSizeUnit")
+                                    label: __("divSizeUnit", 'premium-block-for-gutenberg')
                                 },
                                 fontSize: {
                                     value: priceStyles[0].divSize,
-                                    label: __("divSize")
+                                    label: __("divSize", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeMobile: {
                                     value: priceStyles[0].divSizeMobile,
-                                    label: __("divSizeMobile")
+                                    label: __("divSizeMobile", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeTablet: {
                                     value: priceStyles[0].divSizeTablet,
-                                    label: __("divSizeTablet")
+                                    label: __("divSizeTablet", 'premium-block-for-gutenberg')
                                 },
                                 weight: priceStyles[0].divWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
@@ -51663,7 +51372,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align"),
+                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].divV,
                                 onChange: function onChange(newValue) {
@@ -51671,7 +51380,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", ''),
+                                label: __("Text Color", 'premium-block-for-gutenberg'),
                                 colorValue: priceStyles[0].divColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -51689,19 +51398,19 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].durSizeUnit,
-                                    label: __("durSizeUnit")
+                                    label: __("durSizeUnit", 'premium-block-for-gutenberg')
                                 },
                                 fontSize: {
                                     value: priceStyles[0].durSize,
-                                    label: __("durSize")
+                                    label: __("durSize", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeMobile: {
                                     value: priceStyles[0].durSizeMobile,
-                                    label: __("durSizeMobile")
+                                    label: __("durSizeMobile", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeTablet: {
                                     value: priceStyles[0].durSizeTablet,
-                                    label: __("durSizeTablet")
+                                    label: __("durSizeTablet", 'premium-block-for-gutenberg')
                                 },
                                 weight: priceStyles[0].durWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
@@ -51709,7 +51418,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align"),
+                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].durV,
                                 onChange: function onChange(newValue) {
@@ -51717,7 +51426,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", ''),
+                                label: __("Text Color", 'premium-block-for-gutenberg'),
                                 colorValue: priceStyles[0].durColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -51734,7 +51443,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings")
+                            __("Spacings", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -51754,7 +51463,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Container Margin Top (PX)"),
+                                        label: __("Container Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: priceStyles[0].priceMarginT,
                                         min: "0",
                                         max: "100",
@@ -51765,7 +51474,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Container Margin Bottom (PX)"),
+                                        label: __("Container Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: priceStyles[0].priceMarginB,
                                         min: "0",
                                         max: "100",
@@ -51776,7 +51485,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Container Padding (PX)"),
+                                        label: __("Container Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: priceStyles[0].pricePadding,
                                         min: "0",
                                         max: "100",
@@ -51793,11 +51502,6 @@ var PremiumPricingTable = function (_Component) {
                     React.createElement(
                         Fragment,
                         null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Container Background Color")
-                        ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
                             colorValue: priceStyles[0].priceBack,
@@ -51816,7 +51520,7 @@ var PremiumPricingTable = function (_Component) {
                 listChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Features"),
+                        title: __("Features", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -51837,7 +51541,7 @@ var PremiumPricingTable = function (_Component) {
                         })
                     }),
                     React.createElement(SelectControl, {
-                        label: __("List Style"),
+                        label: __("List Style", 'premium-block-for-gutenberg'),
                         options: TYPE,
                         value: featureStyles[0].listStyle,
                         onChange: function onChange(newType) {
@@ -51849,19 +51553,19 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveFeatureStyle,
                         fontSizeType: {
                             value: featureStyles[0].listSizeUnit,
-                            label: __("listSizeUnit")
+                            label: __("listSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: featureStyles[0].listSize,
-                            label: __("listSize")
+                            label: __("listSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: featureStyles[0].listSizeMobile,
-                            label: __("listSizeMobile")
+                            label: __("listSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: featureStyles[0].listSizeTablet,
-                            label: __("listSizeTablet")
+                            label: __("listSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: featureStyles[0].listWeight,
                         style: featureStyles[0].listItemsStyle,
@@ -51884,23 +51588,21 @@ var PremiumPricingTable = function (_Component) {
                             return saveFeatureStyle({ listUpper: check });
                         }
                     }),
-                    React.createElement(PanelColorSettings, {
-                        title: __("Colors"),
-                        className: "premium-panel-body-inner",
-                        initialOpen: false,
-                        colorSettings: [{
-                            value: featureStyles[0].listColor,
-                            onChange: function onChange(newColor) {
-                                return saveFeatureStyle({ listColor: newColor });
-                            },
-                            label: __("List Items Color")
-                        }, {
-                            value: featureStyles[0].listBack,
-                            onChange: function onChange(newColor) {
-                                return saveFeatureStyle({ listBack: newColor });
-                            },
-                            label: __("Background Color")
-                        }]
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("List Items Color", 'premium-block-for-gutenberg'),
+                        colorValue: featureStyles[0].listColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveFeatureStyle({ listColor: newColor });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: featureStyles[0].listBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveFeatureStyle({ listBack: newColor });
+                        }
                     }),
                     React.createElement(
                         "div",
@@ -51908,7 +51610,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings")
+                            __("Spacings", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -51928,7 +51630,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Top (PX)"),
+                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: featureStyles[0].listMarginT,
                                         onChange: function onChange(newSize) {
                                             return saveFeatureStyle({ listMarginT: newSize });
@@ -51937,7 +51639,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)"),
+                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: featureStyles[0].listMarginB,
                                         onChange: function onChange(newSize) {
                                             return saveFeatureStyle({ listMarginB: newSize });
@@ -51946,7 +51648,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Padding (PX)"),
+                                        label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: featureStyles[0].listPadding,
                                         onChange: function onChange(newSize) {
                                             return saveFeatureStyle({ listPadding: newSize });
@@ -51962,7 +51664,7 @@ var PremiumPricingTable = function (_Component) {
                 descChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Description"),
+                        title: __("Description", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -51971,19 +51673,19 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveDescriptionStyle,
                         fontSizeType: {
                             value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit")
+                            label: __("descSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: descStyles[0].descSize,
-                            label: __("descSize")
+                            label: __("descSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: descStyles[0].descSizeMobile,
-                            label: __("descSizeMobile")
+                            label: __("descSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: descStyles[0].descSizeTablet,
-                            label: __("descSizeTablet")
+                            label: __("descSizeTablet", 'premium-block-for-gutenberg')
                         },
                         size: descStyles[0].descSize,
                         weight: descStyles[0].descWeight,
@@ -52003,23 +51705,21 @@ var PremiumPricingTable = function (_Component) {
                             return saveDescriptionStyle({ descLine: newValue });
                         }
                     }),
-                    React.createElement(PanelColorSettings, {
-                        title: __("Colors"),
-                        className: "premium-panel-body-inner",
-                        initialOpen: false,
-                        colorSettings: [{
-                            value: descStyles[0].descColor,
-                            onChange: function onChange(newColor) {
-                                return saveDescriptionStyle({ descColor: newColor });
-                            },
-                            label: __("Text Color")
-                        }, {
-                            value: descStyles[0].descBack,
-                            onChange: function onChange(newColor) {
-                                return saveDescriptionStyle({ descBack: newColor });
-                            },
-                            label: __("Background Color")
-                        }]
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: descStyles[0].descColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveDescriptionStyle({ descColor: newColor });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: descStyles[0].descBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveDescriptionStyle({ descBack: newColor });
+                        }
                     }),
                     React.createElement(
                         "div",
@@ -52027,7 +51727,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings")
+                            __("Spacings", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -52047,7 +51747,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Top (PX)"),
+                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: descStyles[0].descMarginT,
                                         onChange: function onChange(newMargin) {
                                             return saveDescriptionStyle({ descMarginT: newMargin });
@@ -52056,7 +51756,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)"),
+                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: descStyles[0].descMarginB,
                                         onChange: function onChange(newMargin) {
                                             return saveDescriptionStyle({ descMarginB: newMargin });
@@ -52065,7 +51765,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Padding (PX)"),
+                                        label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: descStyles[0].descPadding,
                                         onChange: function onChange(newPadding) {
                                             return saveDescriptionStyle({ descPadding: newPadding });
@@ -52081,7 +51781,7 @@ var PremiumPricingTable = function (_Component) {
                 btnChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Button"),
+                        title: __("Button", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -52090,19 +51790,19 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveButtonStyle,
                         fontSizeType: {
                             value: buttonStyles[0].btnSizeUnit,
-                            label: __("btnSizeUnit")
+                            label: __("btnSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: buttonStyles[0].btnSize,
-                            label: __("btnSize")
+                            label: __("btnSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: buttonStyles[0].btnSizeMobile,
-                            label: __("btnSizeMobile")
+                            label: __("btnSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: buttonStyles[0].btnSizeTablet,
-                            label: __("btnSizeTablet")
+                            label: __("btnSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: buttonStyles[0].btnWeight,
                         style: buttonStyles[0].btnStyle,
@@ -52125,35 +51825,37 @@ var PremiumPricingTable = function (_Component) {
                             return saveButtonStyle({ btnUpper: check });
                         }
                     }),
-                    React.createElement(PanelColorSettings, {
-                        title: __("Colors"),
-                        className: "premium-panel-body-inner",
-                        initialOpen: false,
-                        colorSettings: [{
-                            value: buttonStyles[0].btnColor,
-                            onChange: function onChange(newColor) {
-                                return saveButtonStyle({ btnColor: newColor });
-                            },
-                            label: __("Text Color")
-                        }, {
-                            value: buttonStyles[0].btnHoverColor,
-                            onChange: function onChange(newColor) {
-                                return saveButtonStyle({ btnHoverColor: newColor });
-                            },
-                            label: __("Text Hover Color")
-                        }, {
-                            value: buttonStyles[0].btnBack,
-                            onChange: function onChange(newColor) {
-                                return saveButtonStyle({ btnBack: newColor });
-                            },
-                            label: __("Background Color")
-                        }, {
-                            value: buttonStyles[0].btnHoverBack,
-                            onChange: function onChange(newColor) {
-                                return saveButtonStyle({ btnHoverBack: newColor });
-                            },
-                            label: __("Background Hover Color")
-                        }]
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: buttonStyles[0].btnColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveButtonStyle({ btnColor: newColor });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Hover Color", 'premium-block-for-gutenberg'),
+                        colorValue: buttonStyles[0].btnHoverColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveButtonStyle({ btnHoverColor: newColor });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: buttonStyles[0].btnBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveButtonStyle({ btnBack: newColor });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Hover Color", 'premium-block-for-gutenberg'),
+                        colorValue: buttonStyles[0].btnHoverBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveButtonStyle({ btnHoverBack: newColor });
+                        }
                     }),
                     React.createElement(_premiumBorder2.default, {
                         borderType: buttonStyles[0].btnBorderType,
@@ -52193,7 +51895,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings")
+                            __("Spacings", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -52213,7 +51915,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Width (%)"),
+                                        label: __("Width (%)", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnWidth,
                                         onChange: function onChange(newSize) {
                                             return saveButtonStyle({ btnWidth: newSize });
@@ -52222,7 +51924,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Top (PX)"),
+                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnMarginT,
                                         onChange: function onChange(newPadding) {
                                             return saveButtonStyle({ btnMarginT: newPadding });
@@ -52231,7 +51933,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)"),
+                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnMarginB,
                                         onChange: function onChange(newPadding) {
                                             return saveButtonStyle({ btnMarginB: newPadding });
@@ -52240,7 +51942,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Padding"),
+                                        label: __("Padding", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnPadding,
                                         onChange: function onChange(newPadding) {
                                             return saveButtonStyle({ btnPadding: newPadding });
@@ -52257,7 +51959,7 @@ var PremiumPricingTable = function (_Component) {
                         })
                     ),
                     React.createElement(ToggleControl, {
-                        label: __("Open Link in a new tab"),
+                        label: __("Open Link in a new tab", 'premium-block-for-gutenberg'),
                         checked: buttonStyles[0].btnTarget,
                         onChange: function onChange(newValue) {
                             return saveButtonStyle({ btnTarget: newValue });
@@ -52267,19 +51969,19 @@ var PremiumPricingTable = function (_Component) {
                 badgeChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Badge"),
+                        title: __("Badge", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Text"),
+                        label: __("Text", 'premium-block-for-gutenberg'),
                         value: badgeStyles[0].badgeText,
                         onChange: function onChange(value) {
                             return saveBadgeStyles({ badgeText: value });
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Position"),
+                        label: __("Position", 'premium-block-for-gutenberg'),
                         options: POSITION,
                         value: badgeStyles[0].badgePos,
                         onChange: function onChange(newValue) {
@@ -52291,19 +51993,19 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveBadgeStyles,
                         fontSizeType: {
                             value: badgeStyles[0].badgeTextUnit,
-                            label: __("badgeTextUnit")
+                            label: __("badgeTextUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: badgeStyles[0].badgeSize,
-                            label: __("badgeText")
+                            label: __("badgeText", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: badgeStyles[0].badgeSizeMobile,
-                            label: __("badgeTextMobile")
+                            label: __("badgeTextMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: badgeStyles[0].badgeSizeTablet,
-                            label: __("badgeTextTablet")
+                            label: __("badgeTextTablet", 'premium-block-for-gutenberg')
                         },
                         weight: badgeStyles[0].badgeWeight,
                         style: badgeStyles[0].badgeStyle,
@@ -52322,26 +52024,24 @@ var PremiumPricingTable = function (_Component) {
                             return saveBadgeStyles({ badgeUpper: check });
                         }
                     }),
-                    React.createElement(PanelColorSettings, {
-                        title: __("Colors"),
-                        className: "premium-panel-body-inner",
-                        initialOpen: false,
-                        colorSettings: [{
-                            value: badgeStyles[0].badgeColor,
-                            onChange: function onChange(newColor) {
-                                return saveBadgeStyles({ badgeColor: newColor });
-                            },
-                            label: __("Text Color")
-                        }, {
-                            value: badgeStyles[0].badgeBack,
-                            onChange: function onChange(newColor) {
-                                return saveBadgeStyles({ badgeBack: newColor });
-                            },
-                            label: __("Background Color")
-                        }]
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: badgeStyles[0].badgeColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveBadgeStyles({ badgeColor: newColor });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: badgeStyles[0].badgeBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newColor) {
+                            return saveBadgeStyles({ badgeBack: newColor });
+                        }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Vertical Offset"),
+                        label: __("Vertical Offset", 'premium-block-for-gutenberg'),
                         value: badgeStyles[0].badgeTop,
                         onChange: function onChange(newValue) {
                             return saveBadgeStyles({ badgeTop: newValue });
@@ -52350,7 +52050,7 @@ var PremiumPricingTable = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Horizontal Offset"),
+                        label: __("Horizontal Offset", 'premium-block-for-gutenberg'),
                         value: badgeStyles[0].badgeHorizontal,
                         min: "1",
                         max: "150",
@@ -52361,7 +52061,7 @@ var PremiumPricingTable = function (_Component) {
                         defaultValue: 1
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Badge Size"),
+                        label: __("Badge Size", 'premium-block-for-gutenberg'),
                         value: badgeStyles[0].badgeSize,
                         min: "0",
                         max: "250",
@@ -52372,7 +52072,7 @@ var PremiumPricingTable = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Text Width"),
+                        label: __("Text Width", 'premium-block-for-gutenberg'),
                         min: "1",
                         max: "200",
                         value: badgeStyles[0].badgeWidth,
@@ -52386,30 +52086,21 @@ var PremiumPricingTable = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Table"),
+                        title: __("Table", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
-                        React.createElement(_premiumBackground2.default, {
-                            type: "color",
-                            colorValue: tableStyles[0].tableBack,
-                            onChangeColor: function onChangeColor(newvalue) {
-                                return saveTableStyles({ tableBack: newvalue });
-                            },
-                            opacityValue: tableStyles[0].tableOpacity,
-                            onChangeOpacity: function onChangeOpacity(value) {
-                                return saveTableStyles({ tableOpacity: value });
-                            }
-                        })
-                    ),
+                    React.createElement(_premiumBackground2.default, {
+                        type: "color",
+                        colorValue: tableStyles[0].tableBack,
+                        onChangeColor: function onChangeColor(newvalue) {
+                            return saveTableStyles({ tableBack: newvalue });
+                        },
+                        opacityValue: tableStyles[0].tableOpacity,
+                        onChangeOpacity: function onChangeOpacity(value) {
+                            return saveTableStyles({ tableOpacity: value });
+                        }
+                    }),
                     React.createElement(_premiumBorder2.default, {
                         borderType: tableStyles[0].borderType,
                         borderWidth: tableStyles[0].borderWidth,
@@ -52481,7 +52172,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings")
+                            __("Spacings", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -52501,7 +52192,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Padding"),
+                                        label: __("Padding", 'premium-block-for-gutenberg'),
                                         value: tableStyles[0].tablePadding,
                                         min: "0",
                                         max: "50",
@@ -52537,7 +52228,7 @@ var PremiumPricingTable = function (_Component) {
                     className: mainClasses + " premium-pricing-table-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
                         textAlign: contentAlign,
-                        backgroundColor: tableStyles[0].tableBack ? (0, _hexToRgba2.default)(tableStyles[0].tableBack, tableStyles[0].tableOpacity) : "transparent",
+                        backgroundColor: tableStyles[0].tableBack,
                         borderStyle: tableStyles[0].borderType,
                         borderWidth: borderUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : tableStyles[0].borderWidth + "px",
                         borderRadius: tableStyles[0].borderRadius + "px",
@@ -52589,7 +52280,8 @@ var PremiumPricingTable = function (_Component) {
                         className: "premium-pricing-table__title_wrap",
                         style: {
                             paddingTop: titleStyles[0].titleMarginT + "px",
-                            paddingBottom: titleStyles[0].titleMarginB + "px"
+                            paddingBottom: titleStyles[0].titleMarginB + "px",
+                            background: titleStyles[0].titleBack
                         }
                     },
                     React.createElement(RichText, {
@@ -52598,12 +52290,11 @@ var PremiumPricingTable = function (_Component) {
                         onChange: function onChange(newText) {
                             return setAttributes({ title: newText });
                         },
-                        placeholder: __("Awesome Title"),
+                        placeholder: __("Awesome Title", 'premium-block-for-gutenberg'),
                         value: title,
                         style: {
                             fontSize: "" + titleFontSize + titleStyles[0].titleSizeUnit,
                             color: titleStyles[0].titleColor,
-                            background: titleStyles[0].titleBack,
                             letterSpacing: titleStyles[0].titleLetter + "px",
                             textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                             fontStyle: titleStyles[0].titleStyle,
@@ -52619,7 +52310,7 @@ var PremiumPricingTable = function (_Component) {
                     {
                         className: "premium-pricing-table__price_wrap",
                         style: {
-                            backgroundColor: priceStyles[0].priceBack ? (0, _hexToRgba2.default)(priceStyles[0].priceBack, priceStyles[0].priceOpacity) : "transparent",
+                            backgroundColor: priceStyles[0].priceBack,
                             marginTop: priceStyles[0].priceMarginT + "px",
                             marginBottom: priceStyles[0].priceMarginB + "px",
                             padding: priceStyles[0].pricePadding + "px",
@@ -52825,7 +52516,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 282 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52838,10 +52529,6 @@ Object.defineProperty(exports, "__esModule", {
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52898,7 +52585,7 @@ var save = function save(props) {
             className: mainClasses + " premium-pricing-table-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 textAlign: contentAlign,
-                backgroundColor: tableStyles[0].tableBack ? (0, _hexToRgba2.default)(tableStyles[0].tableBack, tableStyles[0].tableOpacity) : "transparent",
+                backgroundColor: tableStyles[0].tableBack,
                 borderStyle: tableStyles[0].borderType,
                 borderWidth: borderUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : tableStyles[0].borderWidth + "px",
                 borderRadius: tableStyles[0].borderRadius + "px",
@@ -52976,7 +52663,7 @@ var save = function save(props) {
             {
                 className: "premium-pricing-table__price_wrap",
                 style: {
-                    backgroundColor: priceStyles[0].priceBack ? (0, _hexToRgba2.default)(priceStyles[0].priceBack, priceStyles[0].priceOpacity) : "transparent",
+                    backgroundColor: priceStyles[0].priceBack,
                     marginTop: priceStyles[0].priceMarginT + "px",
                     marginBottom: priceStyles[0].priceMarginB + "px",
                     padding: priceStyles[0].pricePadding + "px",
@@ -53148,7 +52835,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 283 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55410,7 +55097,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 284 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55678,7 +55365,6 @@ var attributes = {
             borderType: 'none',
             borderWidth: 1,
             borderRadius: 0,
-
             tableShadowColor: '',
             tableShadowBlur: '0',
             tableShadowHorizontal: '0',
@@ -55715,31 +55401,31 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 285 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _edit = __webpack_require__(286);
+var _edit = __webpack_require__(285);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(287);
+var _save = __webpack_require__(286);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(288);
+var _deprecated = __webpack_require__(287);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(289);
+var _attributes = __webpack_require__(288);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -55771,7 +55457,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 286 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55807,15 +55493,11 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -55835,7 +55517,7 @@ var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls;
 
 
-var CONTENT = [["core/paragraph", { content: __("Insert your text or select a block ") }]];
+var CONTENT = [["core/paragraph", { content: __("Insert your text or select a block ", 'premium-block-for-gutenberg') }]];
 
 var edit = function edit(props) {
     var isSelected = props.isSelected,
@@ -55872,27 +55554,27 @@ var edit = function edit(props) {
 
     var WIDTH = [{
         value: "boxed",
-        label: __("Boxed")
+        label: __("Boxed", 'premium-block-for-gutenberg')
     }, {
         value: "full",
-        label: __("Full Width")
+        label: __("Full Width", 'premium-block-for-gutenberg')
     }];
     var HEIGHT = [{
         value: "fit",
-        label: __("Fit to Screen")
+        label: __("Fit to Screen", 'premium-block-for-gutenberg')
     }, {
         value: "min",
-        label: __("Min Height")
+        label: __("Min Height", 'premium-block-for-gutenberg')
     }];
     var VPOSITION = [{
         value: "top",
-        label: __("Top")
+        label: __("Top", 'premium-block-for-gutenberg')
     }, {
         value: "middle",
-        label: __("Middle")
+        label: __("Middle", 'premium-block-for-gutenberg')
     }, {
         value: "bottom",
-        label: __("Bottom")
+        label: __("Bottom", 'premium-block-for-gutenberg')
     }];
 
     var mainClasses = (0, _classnames2.default)(className, "premium-container");
@@ -55924,20 +55606,20 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("General Settings"),
+                title: __("General Settings", 'premium-block-for-gutenberg'),
                 className: "premium-panel-body premium-stretch-section",
                 initialOpen: true
             },
             React.createElement(ToggleControl, {
-                label: __("Stretch Section"),
+                label: __("Stretch Section", 'premium-block-for-gutenberg'),
                 checked: stretchSection,
                 onChange: function onChange(check) {
                     return setAttributes({ stretchSection: check });
                 },
-                help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.")
+                help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-block-for-gutenberg')
             }),
             stretchSection && React.createElement(SelectControl, {
-                label: __("Content Width"),
+                label: __("Content Width", 'premium-block-for-gutenberg'),
                 options: WIDTH,
                 value: innerWidthType,
                 onChange: function onChange(newValue) {
@@ -55945,7 +55627,7 @@ var edit = function edit(props) {
                 }
             }),
             "boxed" === innerWidthType && stretchSection && React.createElement(_premiumRangeControl2.default, {
-                label: __("Max Width"),
+                label: __("Max Width", 'premium-block-for-gutenberg'),
                 value: innerWidth,
                 min: "1",
                 max: "1600",
@@ -55956,7 +55638,7 @@ var edit = function edit(props) {
                 showUnit: false
             }),
             React.createElement(SelectControl, {
-                label: __("Height"),
+                label: __("Height", 'premium-block-for-gutenberg'),
                 options: HEIGHT,
                 value: height,
                 onChange: function onChange(newValue) {
@@ -55967,7 +55649,7 @@ var edit = function edit(props) {
                 Fragment,
                 null,
                 React.createElement(_premiumRangeControl2.default, {
-                    label: __("Min Height"),
+                    label: __("Min Height", 'premium-block-for-gutenberg'),
                     value: minHeight,
                     min: "1",
                     max: "800",
@@ -55984,8 +55666,8 @@ var edit = function edit(props) {
                 })
             ),
             React.createElement(SelectControl, {
-                label: __("Content Position"),
-                help: __("If you have two or more inner columns then this option will work only on the preview page"),
+                label: __("Content Position", 'premium-block-for-gutenberg'),
+                help: __("If you have two or more inner columns then this option will work only on the preview page", 'premium-block-for-gutenberg'),
                 options: VPOSITION,
                 value: vPos,
                 onChange: function onChange(newValue) {
@@ -55996,15 +55678,10 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Background"),
+                title: __("Background", 'premium-block-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
-            React.createElement(
-                "p",
-                null,
-                __("Background Color")
-            ),
             React.createElement(_premiumBackground2.default, {
                 type: "color",
                 colorValue: containerStyles[0].color,
@@ -56049,7 +55726,7 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Border"),
+                title: __("Border", 'premium-block-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
@@ -56122,7 +55799,7 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Spacings"),
+                title: __("Spacings", 'premium-block-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
@@ -56212,7 +55889,7 @@ var edit = function edit(props) {
             style: {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].color ? (0, _hexToRgba2.default)(containerStyles[0].color, containerStyles[0].opacity) : "transparent",
+                backgroundColor: containerStyles[0].color,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
@@ -56263,7 +55940,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 287 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56276,10 +55953,6 @@ Object.defineProperty(exports, "__esModule", {
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56326,7 +55999,7 @@ var save = function save(props) {
             style: {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].color ? (0, _hexToRgba2.default)(containerStyles[0].color, containerStyles[0].opacity) : "transparent",
+                backgroundColor: containerStyles[0].color,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
@@ -56367,7 +56040,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 288 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57099,7 +56772,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 289 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57221,31 +56894,31 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 290 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _edit = __webpack_require__(291);
+var _edit = __webpack_require__(290);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(292);
+var _save = __webpack_require__(291);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(293);
+var _deprecated = __webpack_require__(292);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(294);
+var _attributes = __webpack_require__(293);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -57270,7 +56943,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 291 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57316,23 +56989,19 @@ var _premiumPadding = __webpack_require__(17);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumMediaUpload = __webpack_require__(26);
+var _premiumMediaUpload = __webpack_require__(25);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -57411,7 +57080,6 @@ var edit = function (_Component) {
                 setAttributes = _props2.setAttributes;
             var _props$attributes = this.props.attributes,
                 block_id = _props$attributes.block_id,
-                classMigrate = _props$attributes.classMigrate,
                 align = _props$attributes.align,
                 authorImgId = _props$attributes.authorImgId,
                 authorImgUrl = _props$attributes.authorImgUrl,
@@ -57438,13 +57106,13 @@ var edit = function (_Component) {
 
             var RADIUS = [{
                 value: "0",
-                label: __("Square")
+                label: __("Square", 'premium-block-for-gutenberg')
             }, {
                 value: "50%",
-                label: __("Circle")
+                label: __("Circle", 'premium-block-for-gutenberg')
             }, {
                 value: "15px",
-                label: __("Rounded")
+                label: __("Rounded", 'premium-block-for-gutenberg')
             }];
 
             var saveAuthorStyle = function saveAuthorStyle(value) {
@@ -57526,21 +57194,21 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Author"),
+                        title: __("Author", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: true
                     },
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Image"),
+                            title: __("Image", 'premium-block-for-gutenberg'),
                             className: "premium-panel-body-inner",
                             initialOpen: false
                         },
                         React.createElement(
                             "p",
                             null,
-                            __("Author Image")
+                            __("Author Image", 'premium-block-for-gutenberg')
                         ),
                         !authorImgUrl && React.createElement(_defaultImage2.default, null),
                         React.createElement(_premiumMediaUpload2.default, {
@@ -57562,7 +57230,7 @@ var edit = function (_Component) {
                             }
                         }),
                         authorImgUrl && React.createElement(SelectControl, {
-                            label: __("Image Style"),
+                            label: __("Image Style", 'premium-block-for-gutenberg'),
                             options: RADIUS,
                             value: imgRadius,
                             onChange: function onChange(newWeight) {
@@ -57570,7 +57238,7 @@ var edit = function (_Component) {
                             }
                         }),
                         authorImgUrl && React.createElement(_premiumRangeControl2.default, {
-                            label: __("Size"),
+                            label: __("Size", 'premium-block-for-gutenberg'),
                             value: imgSize,
                             max: "200",
                             onChange: function onChange(newSize) {
@@ -57580,7 +57248,7 @@ var edit = function (_Component) {
                             defaultValue: 0
                         }),
                         authorImgUrl && React.createElement(_premiumRangeControl2.default, {
-                            label: __("Border Width (PX)"),
+                            label: __("Border Width (PX)", 'premium-block-for-gutenberg'),
                             value: imgBorder,
                             onChange: function onChange(newSize) {
                                 return setAttributes({ imgBorder: newSize });
@@ -57589,7 +57257,7 @@ var edit = function (_Component) {
                             defaultValue: 0
                         }),
                         authorImgUrl && React.createElement(_ColorComponent2.default, {
-                            label: __("Border Color", ''),
+                            label: __("Border Color", 'premium-block-for-gutenberg'),
                             colorValue: imgBorderColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -57602,7 +57270,7 @@ var edit = function (_Component) {
                     React.createElement(
                         "p",
                         null,
-                        __("Author HTML Tag")
+                        __("Author HTML Tag", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(Toolbar, {
                         controls: "123456".split("").map(function (tag) {
@@ -57621,19 +57289,19 @@ var edit = function (_Component) {
                         setAttributes: saveAuthorStyle,
                         fontSizeType: {
                             value: authorStyles[0].authorSizeUnit,
-                            label: __("authorSizeUnit")
+                            label: __("authorSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: authorStyles[0].authorSize,
-                            label: __("authorSize")
+                            label: __("authorSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: authorStyles[0].authorSizeMobile,
-                            label: __("authorSizeMobile")
+                            label: __("authorSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: authorStyles[0].authorSizeTablet,
-                            label: __("authorSizeTablet")
+                            label: __("authorSizeTablet", 'premium-block-for-gutenberg')
                         },
                         onChangeSize: function onChangeSize(newSize) {
                             return saveAuthorStyle({ authorSize: newSize });
@@ -57656,7 +57324,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", ''),
+                        label: __("Color", 'premium-block-for-gutenberg'),
                         colorValue: authorStyles[0].authorColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -57669,7 +57337,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Content"),
+                        title: __("Content", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -57678,19 +57346,19 @@ var edit = function (_Component) {
                         setAttributes: saveContentStyle,
                         fontSizeType: {
                             value: contentStyle[0].bodySizeUnit,
-                            label: __("bodySizeUnit")
+                            label: __("bodySizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: contentStyle[0].bodySize,
-                            label: __("bodySize")
+                            label: __("bodySize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: contentStyle[0].bodySizeMobile,
-                            label: __("bodySizeMobile")
+                            label: __("bodySizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: contentStyle[0].bodySizeTablet,
-                            label: __("bodySizeTablet")
+                            label: __("bodySizeTablet", 'premium-block-for-gutenberg')
                         },
                         line: contentStyle[0].bodyLine,
                         onChangeLine: function onChangeLine(newWeight) {
@@ -57698,7 +57366,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", ''),
+                        label: __("Color", 'premium-block-for-gutenberg'),
                         colorValue: contentStyle[0].bodyColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -57708,7 +57376,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Margin Top (PX)"),
+                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                         value: contentStyle[0].bodyTop,
                         onChange: function onChange(newSize) {
                             return saveContentStyle({ bodyTop: newSize });
@@ -57717,7 +57385,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Margin Bottom (PX)"),
+                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                         value: contentStyle[0].bodyBottom,
                         onChange: function onChange(newSize) {
                             return saveContentStyle({ bodyBottom: newSize });
@@ -57729,14 +57397,14 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Company"),
+                        title: __("Company", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "p",
                         null,
-                        __("HTML Tag")
+                        __("HTML Tag", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(Toolbar, {
                         controls: "123456".split("").map(function (tag) {
@@ -57755,19 +57423,19 @@ var edit = function (_Component) {
                         setAttributes: saveCompanyStyle,
                         fontSizeType: {
                             value: companyStyles[0].authorComSizeUnit,
-                            label: __("authorComSizeUnit")
+                            label: __("authorComSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: companyStyles[0].authorComSize,
-                            label: __("authorComSize")
+                            label: __("authorComSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: companyStyles[0].authorComSizeMobile,
-                            label: __("authorComSizeMobile")
+                            label: __("authorComSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: companyStyles[0].authorComSizeTablet,
-                            label: __("authorComSizeTablet")
+                            label: __("authorComSizeTablet", 'premium-block-for-gutenberg')
                         }
                     }),
                     React.createElement(
@@ -57776,7 +57444,7 @@ var edit = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Colors")
+                            __("Colors", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -57796,7 +57464,7 @@ var edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Text Color", ''),
+                                        label: __("Text Color", 'premium-block-for-gutenberg'),
                                         colorValue: companyStyles[0].authorComColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -57806,7 +57474,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Dash Color", ''),
+                                        label: __("Dash Color", 'premium-block-for-gutenberg'),
                                         colorValue: companyStyles[0].dashColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -57820,21 +57488,21 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(ToggleControl, {
-                        label: __("URL"),
+                        label: __("URL", 'premium-block-for-gutenberg'),
                         checked: companyStyles[0].urlCheck,
                         onChange: function onChange(newCheck) {
                             return saveCompanyStyle({ urlCheck: newCheck });
                         }
                     }),
                     companyStyles[0].urlCheck && React.createElement(TextControl, {
-                        label: __("URL"),
+                        label: __("URL", 'premium-block-for-gutenberg'),
                         value: companyStyles[0].urlText,
                         onChange: function onChange(newURL) {
                             return saveCompanyStyle({ urlText: newURL });
                         }
                     }),
                     companyStyles[0].urlCheck && React.createElement(ToggleControl, {
-                        label: __("Open Link in a New Tab"),
+                        label: __("Open Link in a New Tab", 'premium-block-for-gutenberg'),
                         checked: companyStyles[0].urlTarget,
                         onChange: function onChange(newCheck) {
                             return saveCompanyStyle({ urlTarget: newCheck });
@@ -57844,12 +57512,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Quotations"),
+                        title: __("Quotations", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Size (EM)"),
+                        label: __("Size (EM)", 'premium-block-for-gutenberg'),
                         value: quoteStyles[0].quotSize,
                         min: "1",
                         max: "12",
@@ -57860,7 +57528,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Quotations Color", ''),
+                        label: __("Quotations Color", 'premium-block-for-gutenberg'),
                         colorValue: quoteStyles[0].quotColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -57870,7 +57538,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Opacity"),
+                        label: __("Opacity", 'premium-block-for-gutenberg'),
                         min: "0",
                         max: "100",
                         value: quoteStyles[0].quotOpacity,
@@ -57884,18 +57552,13 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container"),
+                        title: __("Container", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         Fragment,
                         null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
                         React.createElement(_premiumBackground2.default, {
                             type: "color",
                             colorValue: containerStyles[0].backColor,
@@ -58025,7 +57688,7 @@ var edit = function (_Component) {
                     className: mainClasses + "__wrap premium-testimonial-" + block_id,
                     style: {
                         boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
-                        backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                        backgroundColor: containerStyles[0].backColor,
                         backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
                         backgroundPosition: containerStyles[0].backgroundPosition,
@@ -58180,7 +57843,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 292 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58205,10 +57868,6 @@ var _upperQuote2 = _interopRequireDefault(_upperQuote);
 var _lowerQuote = __webpack_require__(65);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58253,7 +57912,7 @@ var save = function save(props) {
             className: mainClasses + "__wrap premium-testimonial-" + block_id,
             style: {
                 boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
-                backgroundColor: containerStyles[0].backColor ? (0, _hexToRgba2.default)(containerStyles[0].backColor, containerStyles[0].backOpacity) : "transparent",
+                backgroundColor: containerStyles[0].backColor,
                 backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -58384,7 +58043,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 293 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59675,7 +59334,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 294 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59837,7 +59496,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 295 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59863,7 +59522,7 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -59879,7 +59538,7 @@ var _index = __webpack_require__(46);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _premiumMediaUpload = __webpack_require__(26);
+var _premiumMediaUpload = __webpack_require__(25);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -59887,19 +59546,15 @@ var _premiumBackground = __webpack_require__(13);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
 var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -60049,16 +59704,16 @@ var edit = function (_Component) {
 
             var TYPE = [{
                 value: "youtube",
-                label: __("Youtube")
+                label: __("Youtube", 'premium-block-for-gutenberg')
             }, {
                 value: "vimeo",
-                label: __("Vimeo")
+                label: __("Vimeo", 'premium-block-for-gutenberg')
             }, {
                 value: "daily",
-                label: __("Daily Motion")
+                label: __("Daily Motion", 'premium-block-for-gutenberg')
             }, {
                 value: "self",
-                label: __("Self Hosted")
+                label: __("Self Hosted", 'premium-block-for-gutenberg')
             }];
             var loopVideo = function loopVideo() {
                 if ("youtube" === videoType) {
@@ -60081,15 +59736,6 @@ var edit = function (_Component) {
                         return __("Enter video ID, for example: x5gifqg or Embed URL, for example: https://dailymotion.com/embed/video/x5gifqg");
                 }
             };
-
-            // const onChangeDescFamily = fontFamily => {
-            //     saveDescritionStyle({ videoDescFamily: fontFamily });
-            //     if (!fontFamily) {
-            //         return;
-            //     }
-
-            // };
-
             var mainClasses = (0, _classnames2.default)(className, "premium-video-box");
 
             var changeVideoType = function changeVideoType(newvalue) {
@@ -60151,19 +59797,19 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Video"),
+                        title: __("Video", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: true
                     },
                     React.createElement(SelectControl, {
-                        label: __("Video Type"),
+                        label: __("Video Type", 'premium-block-for-gutenberg'),
                         options: TYPE,
                         value: videoType,
                         onChange: changeVideoType
                     }),
                     "self" !== videoType && React.createElement(TextControl, {
                         className: "premium-text-control",
-                        label: __("Video URL"),
+                        label: __("Video URL", 'premium-block-for-gutenberg'),
                         value: videoURL,
                         placeholder: __("Enter Video ID, Embed URL or Video URL"),
                         onChange: function onChange(newURL) {
@@ -60189,43 +59835,43 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Autoplay"),
+                        label: __("Autoplay", 'premium-block-for-gutenberg'),
                         checked: autoPlay,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ autoPlay: newCheck });
                         },
-                        help: __("This option effect works when Overlay Image option is disabled")
+                        help: __("This option effect works when Overlay Image option is disabled", 'premium-block-for-gutenberg')
                     }),
                     "daily" !== videoType && React.createElement(ToggleControl, {
-                        label: __("Loop"),
+                        label: __("Loop", 'premium-block-for-gutenberg'),
                         checked: loop,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ loop: newCheck });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Mute"),
+                        label: __("Mute", 'premium-block-for-gutenberg'),
                         checked: mute,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ mute: newCheck });
                         }
                     }),
                     "vimeo" !== videoType && React.createElement(ToggleControl, {
-                        label: __("Player Controls"),
+                        label: __("Player Controls", 'premium-block-for-gutenberg'),
                         checked: controls,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ controls: newCheck });
                         }
                     }),
                     "youtube" === videoType && React.createElement(ToggleControl, {
-                        label: __("Show Related Videos"),
+                        label: __("Show Related Videos", 'premium-block-for-gutenberg'),
                         checked: relatedVideos,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ relatedVideos: newCheck });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Overlay Image"),
+                        label: __("Overlay Image", 'premium-block-for-gutenberg'),
                         checked: overlay,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ overlay: newCheck });
@@ -60235,7 +59881,7 @@ var edit = function (_Component) {
                 overlay && React.createElement(
                     PanelBody,
                     {
-                        title: __("Overlay"),
+                        title: __("Overlay", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -60291,12 +59937,12 @@ var edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Play Icon"),
+                            title: __("Play Icon", 'premium-block-for-gutenberg'),
                             className: "premium-panel-body",
                             initialOpen: false
                         },
                         React.createElement(ToggleControl, {
-                            label: __("Enable Play Icon"),
+                            label: __("Enable Play Icon", 'premium-block-for-gutenberg'),
                             checked: playIcon,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ playIcon: newCheck });
@@ -60306,7 +59952,7 @@ var edit = function (_Component) {
                             Fragment,
                             null,
                             React.createElement(_premiumRangeControl2.default, {
-                                label: __("Size (PX)"),
+                                label: __("Size (PX)", 'premium-block-for-gutenberg'),
                                 value: playStyles[0].playSize,
                                 onChange: function onChange(newValue) {
                                     return savePlayStyles({
@@ -60317,7 +59963,7 @@ var edit = function (_Component) {
                                 defaultValue: 0
                             }),
                             React.createElement(_premiumRangeControl2.default, {
-                                label: __("Vertical Offset (%)"),
+                                label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
                                 value: playStyles[0].playTop,
                                 onChange: function onChange(newValue) {
                                     return savePlayStyles({
@@ -60375,12 +60021,12 @@ var edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Video Description"),
+                            title: __("Video Description", 'premium-block-for-gutenberg'),
                             className: "premium-panel-body",
                             initialOpen: false
                         },
                         React.createElement(ToggleControl, {
-                            label: __("Enable Video Description"),
+                            label: __("Enable Video Description", 'premium-block-for-gutenberg'),
                             checked: videoDesc,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ videoDesc: newCheck });
@@ -60390,7 +60036,7 @@ var edit = function (_Component) {
                             Fragment,
                             null,
                             React.createElement(TextareaControl, {
-                                label: __("Description Text"),
+                                label: __("Description Text", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].videoDescText,
                                 onChange: function onChange(newText) {
                                     return saveDescritionStyle({ videoDescText: newText });
@@ -60401,19 +60047,19 @@ var edit = function (_Component) {
                                 setAttributes: saveDescritionStyle,
                                 fontSizeType: {
                                     value: descStyles[0].videoDescSizeUnit,
-                                    label: __("videoDescSizeUnit")
+                                    label: __("videoDescSizeUnit", 'premium-block-for-gutenberg')
                                 },
                                 fontSize: {
                                     value: descStyles[0].videoDescSize,
-                                    label: __("videoDescSize")
+                                    label: __("videoDescSize", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeMobile: {
                                     value: descStyles[0].videoDescSizeMobile,
-                                    label: __("videoDescSizeMobile")
+                                    label: __("videoDescSizeMobile", 'premium-block-for-gutenberg')
                                 },
                                 fontSizeTablet: {
                                     value: descStyles[0].videoDescSizeTablet,
-                                    label: __("videoDescSizeTablet")
+                                    label: __("videoDescSizeTablet", 'premium-block-for-gutenberg')
                                 },
                                 fontFamily: descStyles[0].videoDescFamily,
                                 weight: descStyles[0].videoDescWeight,
@@ -60437,7 +60083,7 @@ var edit = function (_Component) {
                                 }
                             }),
                             React.createElement(_premiumRangeControl2.default, {
-                                label: __("Vertical Offset (%)"),
+                                label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].descTop,
                                 onChange: function onChange(newValue) {
                                     return saveDescritionStyle({
@@ -60448,7 +60094,7 @@ var edit = function (_Component) {
                                 defaultValue: 0
                             }),
                             React.createElement(_premiumRangeControl2.default, {
-                                label: __("Border Radius (px)"),
+                                label: __("Border Radius (px)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].videoDescBorderRadius,
                                 onChange: function onChange(newValue) {
                                     return saveDescritionStyle({
@@ -60481,7 +60127,7 @@ var edit = function (_Component) {
                                 }
                             }),
                             React.createElement(_premiumRangeControl2.default, {
-                                label: __("Padding (PX)"),
+                                label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].videoDescPadding,
                                 onChange: function onChange(newValue) {
                                     return saveDescritionStyle({
@@ -60497,7 +60143,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Colors"),
+                        title: __("Colors", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -60532,11 +60178,6 @@ var edit = function (_Component) {
                                             });
                                         }
                                     }),
-                                    React.createElement(
-                                        "p",
-                                        null,
-                                        __("Icon Background Color")
-                                    ),
                                     React.createElement(_premiumBackground2.default, {
                                         type: "color",
                                         colorValue: playStyles[0].playBack,
@@ -60561,11 +60202,6 @@ var edit = function (_Component) {
                                                 });
                                             }
                                         }),
-                                        React.createElement(
-                                            "p",
-                                            null,
-                                            __("Description Background Color")
-                                        ),
                                         React.createElement(_premiumBackground2.default, {
                                             type: "color",
                                             colorValue: descStyles[0].videoDescBack,
@@ -60589,7 +60225,7 @@ var edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Icon Hover Color", ''),
+                                        label: __("Icon Hover Color", 'premium-block-for-gutenberg'),
                                         colorValue: playStyles[0].playHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -60599,7 +60235,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Icon Hover Background Color", ''),
+                                        label: __("Icon Hover Background Color", 'premium-block-for-gutenberg'),
                                         colorValue: playStyles[0].playHoverBackColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -60622,7 +60258,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Box Style"),
+                        title: __("Box Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -60758,7 +60394,7 @@ var edit = function (_Component) {
                             top: playStyles[0].playTop + "%",
                             left: playLeft + "%",
                             color: playStyles[0].playColor,
-                            backgroundColor: playStyles[0].playBack ? (0, _hexToRgba2.default)(playStyles[0].playBack, playStyles[0].playOpacity) : "transparent",
+                            backgroundColor: playStyles[0].playBack,
                             borderStyle: playStyles[0].playBorderType,
                             borderWidth: playStyles[0].borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
                             borderRadius: playStyles[0].playBorderRadius + "px",
@@ -60779,7 +60415,7 @@ var edit = function (_Component) {
                         className: "premium-video-box__desc",
                         style: {
                             color: descStyles[0].videoDescColor,
-                            backgroundColor: descStyles[0].videoDescBack ? (0, _hexToRgba2.default)(descStyles[0].videoDescBack, descStyles[0].videoDescOpacity) : "transparent",
+                            backgroundColor: descStyles[0].videoDescBack,
                             padding: descStyles[0].videoDescPadding,
                             borderRadius: descStyles[0].videoDescBorderRadius,
                             top: descStyles[0].descTop + "%",
@@ -60827,7 +60463,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 296 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60844,10 +60480,6 @@ var _classnames2 = _interopRequireDefault(_classnames);
 var _index = __webpack_require__(46);
 
 var _index2 = _interopRequireDefault(_index);
-
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60943,7 +60575,7 @@ var save = function save(props) {
                     top: playStyles[0].playTop + "%",
                     left: playLeft + "%",
                     color: playStyles[0].playColor,
-                    backgroundColor: playStyles[0].playBack ? (0, _hexToRgba2.default)(playStyles[0].playBack, playStyles[0].playOpacity) : "transparent",
+                    backgroundColor: playStyles[0].playBack,
                     borderStyle: playStyles[0].playBorderType,
                     borderWidth: playStyles[0].borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
                     borderRadius: playStyles[0].playBorderRadius + "px",
@@ -60964,7 +60596,7 @@ var save = function save(props) {
                 className: "premium-video-box__desc",
                 style: {
                     color: descStyles[0].videoDescColor,
-                    backgroundColor: descStyles[0].videoDescBack ? (0, _hexToRgba2.default)(descStyles[0].videoDescBack, descStyles[0].videoDescOpacity) : "transparent",
+                    backgroundColor: descStyles[0].videoDescBack,
                     padding: descStyles[0].videoDescPadding,
                     borderRadius: descStyles[0].videoDescBorderRadius,
                     top: descStyles[0].descTop + "%",
@@ -60997,7 +60629,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 297 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62170,7 +61802,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 298 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62342,31 +61974,31 @@ var videoBoxAttrs = {
 exports.default = videoBoxAttrs;
 
 /***/ }),
-/* 299 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _save = __webpack_require__(300);
+var _save = __webpack_require__(299);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(301);
+var _edit = __webpack_require__(300);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(322);
+var _deprecated = __webpack_require__(321);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(323);
+var _attributes = __webpack_require__(322);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -62391,7 +62023,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 300 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62414,7 +62046,6 @@ function save(props) {
     var attributes = props.attributes,
         className = props.className;
     var block_id = attributes.block_id,
-        classMigrate = attributes.classMigrate,
         align = attributes.align,
         prefix = attributes.prefix,
         suffix = attributes.suffix,
@@ -62539,7 +62170,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 301 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62561,11 +62192,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(15);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(302);
+var _typed = __webpack_require__(301);
 
 var _typed2 = _interopRequireDefault(_typed);
 
@@ -62577,15 +62208,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _hexToRgba = __webpack_require__(2);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _reactSortableHoc = __webpack_require__(303);
+var _reactSortableHoc = __webpack_require__(302);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62795,7 +62422,6 @@ var edit = function (_Component) {
                 isSelected = _props.isSelected,
                 className = _props.className;
             var block_id = attributes.block_id,
-                classMigrate = attributes.classMigrate,
                 align = attributes.align,
                 prefix = attributes.prefix,
                 suffix = attributes.suffix,
@@ -62822,10 +62448,10 @@ var edit = function (_Component) {
 
             var ALIGNS = ["left", "center", "right"];
             var EFFECT = [{
-                label: __("Typing"),
+                label: __("Typing", 'premium-block-for-gutenberg'),
                 value: "typing"
             }, {
-                label: __("Slide"),
+                label: __("Slide", 'premium-block-for-gutenberg'),
                 value: "slide"
             }];
 
@@ -62930,7 +62556,7 @@ var edit = function (_Component) {
             var addNewFancyText = function addNewFancyText() {
                 setAttributes({
                     repeaterFancyText: repeaterFancyText.concat([{
-                        title: __("Title"),
+                        title: __("Title", 'premium-block-for-gutenberg'),
                         edit: true
                     }])
                 });
@@ -62964,7 +62590,7 @@ var edit = function (_Component) {
             var renderCss = React.createElement(
                 "style",
                 null,
-                "\n            .premium-fancy-text-title {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ";\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + "px;\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + (fancyStyles[0].fancyTextBGColor ? (0, _hexToRgba2.default)(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity) : "transparent") + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n        .premium-fancy-text-title-slide {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ",\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + " + \"px\";\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + (fancyStyles[0].fancyTextBGColor ? (0, _hexToRgba2.default)(fancyStyles[0].fancyTextBGColor, fancyStyles[0].fancyTextBGOpacity) : "transparent") + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n         .typed-cursor {\n            color: " + cursorColor + ";\n        }\n         .premium-fancy-text-prefix-text {\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + (PreStyles[0].textBGColor ? (0, _hexToRgba2.default)(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity) : "transparent") + ";\n        }\n         .premium-fancy-text-suffix-text{\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + (PreStyles[0].textBGColor ? (0, _hexToRgba2.default)(PreStyles[0].textBGColor, PreStyles[0].textBGOpacity) : "transparent") + ";\n        }\n            "
+                "\n            .premium-fancy-text-title {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ";\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + "px;\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + fancyStyles[0].fancyTextBGColor + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n        .premium-fancy-text-title-slide {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ",\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + " + \"px\";\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + fancyStyles[0].fancyTextBGColor + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n         .typed-cursor {\n            color: " + cursorColor + ";\n        }\n         .premium-fancy-text-prefix-text {\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + PreStyles[0].textBGColor + ";\n        }\n         .premium-fancy-text-suffix-text{\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + PreStyles[0].textBGColor + ";\n        }\n            "
             );
 
             return [renderCss, isSelected && [React.createElement(
@@ -62982,12 +62608,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings"),
+                        title: __("General Settings", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Prefix Text"),
+                        label: __("Prefix Text", 'premium-block-for-gutenberg'),
                         value: prefix,
                         onChange: function onChange(newText) {
                             return setAttributes({ prefix: newText });
@@ -63048,7 +62674,7 @@ var edit = function (_Component) {
                         React.createElement("br", null)
                     ),
                     React.createElement(TextControl, {
-                        label: __("Suffix Text"),
+                        label: __("Suffix Text", 'premium-block-for-gutenberg'),
                         value: suffix,
                         onChange: function onChange(newText) {
                             return setAttributes({ suffix: newText });
@@ -63058,12 +62684,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Advanced Settings"),
+                        title: __("Advanced Settings", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Effect"),
+                        label: __("Effect", 'premium-block-for-gutenberg'),
                         options: EFFECT,
                         value: effect,
                         onChange: function onChange(newValue) {
@@ -63074,7 +62700,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(TextControl, {
-                            label: __("Type Speed"),
+                            label: __("Type Speed", 'premium-block-for-gutenberg'),
                             type: "Number",
                             value: typeSpeed,
                             onChange: function onChange(newValue) {
@@ -63082,10 +62708,10 @@ var edit = function (_Component) {
                                     typeSpeed: parseInt(newValue)
                                 });
                             },
-                            help: __('Set typing effect speed in milliseconds.')
+                            help: __('Set typing effect speed in milliseconds.', 'premium-block-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Back Speed"),
+                            label: __("Back Speed", 'premium-block-for-gutenberg'),
                             type: "Number",
                             value: backSpeed,
                             onChange: function onChange(newValue) {
@@ -63093,10 +62719,10 @@ var edit = function (_Component) {
                                     backSpeed: parseInt(newValue)
                                 });
                             },
-                            help: __('Set a speed for backspace effect in milliseconds.')
+                            help: __('Set a speed for backspace effect in milliseconds.', 'premium-block-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Start Delay"),
+                            label: __("Start Delay", 'premium-block-for-gutenberg'),
                             type: "Number",
                             value: startdelay,
                             onChange: function onChange(newValue) {
@@ -63104,10 +62730,10 @@ var edit = function (_Component) {
                                     startdelay: parseInt(newValue)
                                 });
                             },
-                            help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.')
+                            help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-block-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Back Delay"),
+                            label: __("Back Delay", 'premium-block-for-gutenberg'),
                             type: "Number",
                             value: backdelay,
                             onChange: function onChange(newValue) {
@@ -63115,24 +62741,24 @@ var edit = function (_Component) {
                                     backdelay: parseInt(newValue)
                                 });
                             },
-                            help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.")
+                            help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", 'premium-block-for-gutenberg')
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Loop"),
+                            label: __("Loop", 'premium-block-for-gutenberg'),
                             checked: loop,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ loop: newCheck });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Show Cursor"),
+                            label: __("Show Cursor", 'premium-block-for-gutenberg'),
                             checked: cursorShow,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ cursorShow: newCheck });
                             }
                         }),
                         cursorShow && React.createElement(TextControl, {
-                            label: __("Cursor Mark"),
+                            label: __("Cursor Mark", 'premium-block-for-gutenberg'),
                             value: cursorMark,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({
@@ -63146,10 +62772,10 @@ var edit = function (_Component) {
                         React.createElement(
                             "p",
                             { className: "premium-notice" },
-                            "Please note that Slide effect works only on frontend"
+                            __(' Please note that Slide effect works only on frontend', 'premium-block-for-gutenberg')
                         ),
                         React.createElement(TextControl, {
-                            label: __("Animation Speed"),
+                            label: __("Animation Speed", 'premium-block-for-gutenberg'),
                             value: animationSpeed,
                             type: "Number",
                             onChange: function onChange(newValue) {
@@ -63157,10 +62783,10 @@ var edit = function (_Component) {
                                     animationSpeed: parseInt(newValue)
                                 });
                             },
-                            help: __("Set a duration value in milliseconds for slide effect.")
+                            help: __("Set a duration value in milliseconds for slide effect.", 'premium-block-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Pause Time"),
+                            label: __("Pause Time", 'premium-block-for-gutenberg'),
                             value: pauseTime,
                             type: "Number",
                             onChange: function onChange(newValue) {
@@ -63168,20 +62794,20 @@ var edit = function (_Component) {
                                     pauseTime: parseInt(newValue)
                                 });
                             },
-                            help: __("How long should the word/string stay visible? Set a value in milliseconds.")
+                            help: __("How long should the word/string stay visible? Set a value in milliseconds.", 'premium-block-for-gutenberg')
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Pause on Hover"),
+                            label: __("Pause on Hover", 'premium-block-for-gutenberg'),
                             checked: hoverPause,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ hoverPause: newCheck });
                             },
-                            help: __("If you enabled this option, the slide will be paused when mouseover.")
+                            help: __("If you enabled this option, the slide will be paused when mouseover.", 'premium-block-for-gutenberg')
                         }),
                         React.createElement(
                             "p",
                             null,
-                            __("Fancy Strings Alignment")
+                            __("Fancy Strings Alignment", 'premium-block-for-gutenberg')
                         ),
                         React.createElement(Toolbar, {
                             controls: ALIGNS.map(function (contentAlign) {
@@ -63201,12 +62827,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Fancy Text Style"),
+                        title: __("Fancy Text Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", ''),
+                        label: __("Color", 'premium-block-for-gutenberg'),
                         colorValue: fancyStyles[0].fancyTextColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -63220,19 +62846,19 @@ var edit = function (_Component) {
                         setAttributes: saveFancyStyle,
                         fontSizeType: {
                             value: fancyStyles[0].fancyTextfontSizeUnit,
-                            label: __("fancyTextfontSizeUnit")
+                            label: __("fancyTextfontSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: fancyStyles[0].fancyTextfontSize,
-                            label: __("fancyTextfontSize")
+                            label: __("fancyTextfontSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: fancyStyles[0].fancyTextfontSizeMobile,
-                            label: __("fancyTextfontSizeMobile")
+                            label: __("fancyTextfontSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: fancyStyles[0].fancyTextfontSizeTablet,
-                            label: __("fancyTextfontSizeTablet")
+                            label: __("fancyTextfontSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: fancyStyles[0].fancyTextWeight,
                         style: fancyStyles[0].fancyTextStyle,
@@ -63254,11 +62880,6 @@ var edit = function (_Component) {
                         },
                         onResetClick: onResetClickfancyTextTypo
                     }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Background Color")
-                    ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
                         colorValue: fancyStyles[0].fancyTextBGColor,
@@ -63290,7 +62911,7 @@ var edit = function (_Component) {
                         onResetClick: onResetClickLabelTextShadow
                     }),
                     effect == "typing" && cursorShow && React.createElement(_ColorComponent2.default, {
-                        label: __("Cursor Color", ''),
+                        label: __("Cursor Color", 'premium-block-for-gutenberg'),
                         colorValue: fancyStyles[0].cursorColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -63303,12 +62924,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Prefix & Suffix Style"),
+                        title: __("Prefix & Suffix Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", ''),
+                        label: __("Color", 'premium-block-for-gutenberg'),
                         colorValue: PreStyles[0].textColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -63322,19 +62943,19 @@ var edit = function (_Component) {
                         setAttributes: savePrefixStyle,
                         fontSizeType: {
                             value: PreStyles[0].textfontSizeUnit,
-                            label: __("textfontSizeUnit")
+                            label: __("textfontSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: PreStyles[0].textfontSize,
-                            label: __("textfontSize")
+                            label: __("textfontSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: PreStyles[0].textfontSizeMobile,
-                            label: __("textfontSizeMobile")
+                            label: __("textfontSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: PreStyles[0].textfontSizeTablet,
-                            label: __("textfontSizeTablet")
+                            label: __("textfontSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: PreStyles[0].textWeight,
                         style: PreStyles[0].textStyle,
@@ -63354,11 +62975,6 @@ var edit = function (_Component) {
                         },
                         onResetClick: onResetClickTextTypo
                     }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Background Color")
-                    ),
                     React.createElement(_premiumBackground2.default, {
                         type: "color",
                         colorValue: PreStyles[0].textBGColor,
@@ -63505,7 +63121,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 302 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64614,10 +64230,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	);
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
 
 /***/ }),
-/* 303 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64628,59 +64244,59 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(304);
+var _extends2 = __webpack_require__(303);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(305);
+var _slicedToArray2 = __webpack_require__(304);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(309);
+var _objectSpread2 = __webpack_require__(308);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(310);
+var _classCallCheck2 = __webpack_require__(309);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(311);
+var _createClass2 = __webpack_require__(310);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(312);
+var _possibleConstructorReturn2 = __webpack_require__(311);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(314);
+var _getPrototypeOf2 = __webpack_require__(313);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(315);
+var _inherits2 = __webpack_require__(314);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _assertThisInitialized2 = __webpack_require__(111);
+var _assertThisInitialized2 = __webpack_require__(110);
 
 var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
 
-var _defineProperty2 = __webpack_require__(110);
+var _defineProperty2 = __webpack_require__(109);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDom = __webpack_require__(25);
+var _reactDom = __webpack_require__(23);
 
-var _invariant = __webpack_require__(317);
+var _invariant = __webpack_require__(316);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(318);
+var _toConsumableArray2 = __webpack_require__(317);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -66262,7 +65878,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 304 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66291,7 +65907,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 305 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66302,19 +65918,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(306);
+var _arrayWithHoles = __webpack_require__(305);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(307);
+var _iterableToArrayLimit = __webpack_require__(306);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _unsupportedIterableToArray = __webpack_require__(108);
+var _unsupportedIterableToArray = __webpack_require__(107);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(308);
+var _nonIterableRest = __webpack_require__(307);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -66325,7 +65941,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 306 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66340,7 +65956,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 307 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66381,7 +65997,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 308 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66396,7 +66012,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 309 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66407,7 +66023,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _objectSpread;
 
-var _defineProperty = __webpack_require__(110);
+var _defineProperty = __webpack_require__(109);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -66433,7 +66049,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 310 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66450,7 +66066,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 311 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66477,7 +66093,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 312 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66488,11 +66104,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(313);
+var _typeof2 = __webpack_require__(312);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _assertThisInitialized = __webpack_require__(111);
+var _assertThisInitialized = __webpack_require__(110);
 
 var _assertThisInitialized2 = _interopRequireDefault(_assertThisInitialized);
 
@@ -66509,7 +66125,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 313 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66541,7 +66157,7 @@ module.exports = _typeof;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 314 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66559,7 +66175,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 315 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66570,7 +66186,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(316);
+var _setPrototypeOf = __webpack_require__(315);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -66592,7 +66208,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 316 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66612,7 +66228,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 317 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66665,7 +66281,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 318 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66676,19 +66292,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(319);
+var _arrayWithoutHoles = __webpack_require__(318);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(320);
+var _iterableToArray = __webpack_require__(319);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
-var _unsupportedIterableToArray = __webpack_require__(108);
+var _unsupportedIterableToArray = __webpack_require__(107);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableSpread = __webpack_require__(321);
+var _nonIterableSpread = __webpack_require__(320);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -66699,7 +66315,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 319 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66710,7 +66326,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _arrayWithoutHoles;
 
-var _arrayLikeToArray = __webpack_require__(109);
+var _arrayLikeToArray = __webpack_require__(108);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -66721,7 +66337,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 320 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66736,7 +66352,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 321 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66751,7 +66367,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 322 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67099,7 +66715,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 323 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67248,27 +66864,27 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 324 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(325);
+var _edit = __webpack_require__(324);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _save = __webpack_require__(378);
+var _save = __webpack_require__(377);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(379);
+var _attributes = __webpack_require__(378);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -67292,7 +66908,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 325 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67310,7 +66926,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(326);
+var _reactLottieWithSegments = __webpack_require__(325);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -67330,11 +66946,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -67356,13 +66972,11 @@ var _wp$blockEditor = wp.blockEditor,
     MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    RangeControl = _wp$components.RangeControl,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl,
     SelectControl = _wp$components.SelectControl,
     Button = _wp$components.Button,
-    TabPanel = _wp$components.TabPanel,
-    Dashicon = _wp$components.Dashicon;
+    TabPanel = _wp$components.TabPanel;
 
 
 var isLottieUpdated = null;
@@ -67494,7 +67108,6 @@ var edit = function (_Component) {
                 className = _props2.className;
             var lottieId = attributes.lottieId,
                 block_id = attributes.block_id,
-                classMigrate = attributes.classMigrate,
                 lottieURl = attributes.lottieURl,
                 lottieJson = attributes.lottieJson,
                 loop = attributes.loop,
@@ -67608,22 +67221,22 @@ var edit = function (_Component) {
                         __('Change Animation')
                     ),
                     React.createElement(ToggleControl, {
-                        label: __("loop"),
+                        label: __("loop", 'premium-block-for-gutenberg'),
                         checked: loop,
                         onChange: function onChange(value) {
                             return setAttributes({ loop: value });
                         },
-                        help: loop ? __('This option works only on the preview page') : ''
+                        help: loop ? __('This option works only on the preview page', 'premium-block-for-gutenberg') : ''
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Reverse"),
+                        label: __("Reverse", 'premium-block-for-gutenberg'),
                         checked: reverse,
                         onChange: function onChange() {
                             return setAttributes({ reverse: !reverse });
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __('Animation Speed'),
+                        label: __('Animation Speed', 'premium-block-for-gutenberg'),
                         value: speed,
                         onChange: function onChange(newValue) {
                             return setAttributes({ speed: newValue !== "" ? newValue : 1 });
@@ -67635,8 +67248,8 @@ var edit = function (_Component) {
                         step: 0.1
                     }),
                     React.createElement(SelectControl, {
-                        label: __('Trigger'),
-                        options: [{ value: 'none', label: __("None") }, { value: "hover", label: __("Hover") }, { value: "scroll", label: __("Scroll") }, { value: "viewport", label: __("Viewport") }],
+                        label: __('Trigger', 'premium-block-for-gutenberg'),
+                        options: [{ value: 'none', label: __("None", 'premium-block-for-gutenberg') }, { value: "hover", label: __("Hover", 'premium-block-for-gutenberg') }, { value: "scroll", label: __("Scroll", 'premium-block-for-gutenberg') }, { value: "viewport", label: __("Viewport", 'premium-block-for-gutenberg') }],
                         value: trigger,
                         onChange: function onChange(newValue) {
                             return setAttributes({ trigger: newValue });
@@ -67646,7 +67259,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __('Scroll Speed'),
+                            label: __('Scroll Speed', 'premium-block-for-gutenberg'),
                             value: scrollSpeed,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ scrollSpeed: newValue !== "" ? newValue : 200 });
@@ -67662,7 +67275,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __('Bottom'),
+                            label: __('Bottom', 'premium-block-for-gutenberg'),
                             value: bottom,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ bottom: newValue });
@@ -67673,7 +67286,7 @@ var edit = function (_Component) {
                             max: 50
                         }),
                         React.createElement(_premiumRangeControl2.default, {
-                            label: __('Top'),
+                            label: __('Top', 'premium-block-for-gutenberg'),
                             value: top,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ top: newValue });
@@ -67685,22 +67298,33 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Size"),
-                        value: lottieStyles[0].size,
+                        label: __('Size', 'premium-block-for-gutenberg'),
+                        value: {
+                            'desktop': lottieStyles[0].size,
+                            'tablet': lottieStyles[0].sizeTablet,
+                            'mobile': lottieStyles[0].sizeMobile
+                        },
+                        defaultValue: 200,
+                        min: 0,
+                        max: lottieStyles[0].sizeUnit === '%' ? 100 : 800,
                         onChange: function onChange(value) {
                             return saveLottieStyles({ size: value !== "" ? value : 200 });
                         },
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveLottieStyles({ sizeTablet: value !== "" ? value : 200 });
+                        },
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveLottieStyles({ sizeMobile: value !== "" ? value : 200 });
+                        },
                         showUnit: true,
-                        defaultValue: 200,
-                        min: 0,
-                        max: lottieStyles[0].sizeUnit === '%' ? 100 : 400,
+                        responsive: true,
                         onChangeUnit: function onChangeUnit(newValue) {
                             return saveLottieStyles({ sizeUnit: newValue });
                         },
                         unit: lottieStyles[0].sizeUnit
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Rotate (Degree)"),
+                        label: __("Rotate (Degree)", 'premium-block-for-gutenberg'),
                         value: rotate,
                         min: -180,
                         max: 180,
@@ -67714,7 +67338,7 @@ var edit = function (_Component) {
                         "h2",
                         null,
                         " ",
-                        __("Alignment")
+                        __("Alignment", 'premium-block-for-gutenberg')
                     ),
                     React.createElement(Button, {
                         key: "left",
@@ -67748,7 +67372,7 @@ var edit = function (_Component) {
                     }),
                     React.createElement("hr", null),
                     React.createElement(ToggleControl, {
-                        label: __("Link"),
+                        label: __("Link", 'premium-block-for-gutenberg'),
                         checked: link,
                         onChange: function onChange() {
                             return setAttributes({ link: !link });
@@ -67758,14 +67382,14 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(TextControl, {
-                            label: __("URL"),
+                            label: __("URL", 'premium-block-for-gutenberg'),
                             value: url,
                             onChange: function onChange(newURL) {
                                 return setAttributes({ url: newURL });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Open link in new tab"),
+                            label: __("Open link in new tab", 'premium-block-for-gutenberg'),
                             checked: target,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ target: newValue });
@@ -67773,10 +67397,10 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(SelectControl, {
-                        label: __('Render As'),
+                        label: __('Render As', 'premium-block-for-gutenberg'),
                         value: render,
                         options: [{ label: "SVG", value: 'svg' }, { label: 'Canvas', value: 'canvas' }],
-                        help: __("Set render type to canvas if you're having performance issues on the page.\n                    This setting will only take effect once you are on the live page, and not while you're editing.\n                    "),
+                        help: __("Set render type to canvas if you're having performance issues on the page.\n                    This setting will only take effect once you are on the live page, and not while you're editing.\n                    ", 'premium-block-for-gutenberg'),
                         onChange: function onChange(newValue) {
                             return setAttributes({ render: newValue });
                         }
@@ -67785,7 +67409,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Style"),
+                        title: __("Style", 'premium-block-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -67811,7 +67435,7 @@ var edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Background Color", ''),
+                                        label: __("Background Color", 'premium-block-for-gutenberg'),
                                         colorValue: lottieStyles[0].backColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -67819,7 +67443,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Opacity"),
+                                        label: __("Opacity", 'premium-block-for-gutenberg'),
                                         value: lottieStyles[0].backOpacity,
                                         max: 1,
                                         min: .1,
@@ -67859,7 +67483,7 @@ var edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Background Color", ''),
+                                        label: __("Background Color", 'premium-block-for-gutenberg'),
                                         colorValue: lottieStyles[0].backHColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -67867,7 +67491,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_premiumRangeControl2.default, {
-                                        label: __("Opacity"),
+                                        label: __("Opacity", 'premium-block-for-gutenberg'),
                                         value: lottieStyles[0].backHOpacity,
                                         max: 1,
                                         min: .1,
@@ -68047,7 +67671,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 326 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68057,35 +67681,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(327);
+var _stringify = __webpack_require__(326);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(329);
+var _extends2 = __webpack_require__(328);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(338);
+var _getPrototypeOf = __webpack_require__(337);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(342);
+var _classCallCheck2 = __webpack_require__(341);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(343);
+var _createClass2 = __webpack_require__(342);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(347);
+var _possibleConstructorReturn2 = __webpack_require__(346);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(369);
+var _inherits2 = __webpack_require__(368);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -68093,7 +67717,7 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(377);
+var _lottieWeb = __webpack_require__(376);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -68401,16 +68025,16 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 327 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(328), __esModule: true };
+module.exports = { "default": __webpack_require__(327), __esModule: true };
 
 /***/ }),
-/* 328 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68424,7 +68048,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 329 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68432,7 +68056,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(330);
+var _assign = __webpack_require__(329);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -68455,13 +68079,23 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(330), __esModule: true };
+
+/***/ }),
 /* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(331), __esModule: true };
+__webpack_require__(331);
+module.exports = __webpack_require__(11).Object.assign;
 
 /***/ }),
 /* 331 */
@@ -68470,23 +68104,13 @@ module.exports = { "default": __webpack_require__(331), __esModule: true };
 "use strict";
 
 
-__webpack_require__(332);
-module.exports = __webpack_require__(11).Object.assign;
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(19);
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(333) });
 
 /***/ }),
 /* 332 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(20);
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(334) });
-
-/***/ }),
-/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68498,7 +68122,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 334 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68509,11 +68133,11 @@ var getKeys = __webpack_require__(48);
 var gOPS = __webpack_require__(72);
 var pIE = __webpack_require__(51);
 var toObject = __webpack_require__(73);
-var IObject = __webpack_require__(116);
+var IObject = __webpack_require__(115);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(29)(function () {
+module.exports = !$assign || __webpack_require__(28)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -68544,7 +68168,7 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 } : $assign;
 
 /***/ }),
-/* 335 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68552,9 +68176,9 @@ module.exports = !$assign || __webpack_require__(29)(function () {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(30);
-var toLength = __webpack_require__(336);
-var toAbsoluteIndex = __webpack_require__(337);
+var toIObject = __webpack_require__(29);
+var toLength = __webpack_require__(335);
+var toAbsoluteIndex = __webpack_require__(336);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -68577,7 +68201,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 336 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68591,7 +68215,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 337 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68606,13 +68230,23 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
+/* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(338), __esModule: true };
+
+/***/ }),
 /* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(339), __esModule: true };
+__webpack_require__(339);
+module.exports = __webpack_require__(11).Object.getPrototypeOf;
 
 /***/ }),
 /* 339 */
@@ -68621,8 +68255,15 @@ module.exports = { "default": __webpack_require__(339), __esModule: true };
 "use strict";
 
 
-__webpack_require__(340);
-module.exports = __webpack_require__(11).Object.getPrototypeOf;
+// 19.1.2.9 Object.getPrototypeOf(O)
+var toObject = __webpack_require__(73);
+var $getPrototypeOf = __webpack_require__(117);
+
+__webpack_require__(340)('getPrototypeOf', function () {
+  return function getPrototypeOf(it) {
+    return $getPrototypeOf(toObject(it));
+  };
+});
 
 /***/ }),
 /* 340 */
@@ -68631,27 +68272,10 @@ module.exports = __webpack_require__(11).Object.getPrototypeOf;
 "use strict";
 
 
-// 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(73);
-var $getPrototypeOf = __webpack_require__(118);
-
-__webpack_require__(341)('getPrototypeOf', function () {
-  return function getPrototypeOf(it) {
-    return $getPrototypeOf(toObject(it));
-  };
-});
-
-/***/ }),
-/* 341 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(20);
+var $export = __webpack_require__(19);
 var core = __webpack_require__(11);
-var fails = __webpack_require__(29);
+var fails = __webpack_require__(28);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
   var exp = {};
@@ -68662,7 +68286,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 342 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68677,7 +68301,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 343 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68685,7 +68309,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(344);
+var _defineProperty = __webpack_require__(343);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -68712,13 +68336,26 @@ exports.default = function () {
 }();
 
 /***/ }),
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(344), __esModule: true };
+
+/***/ }),
 /* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(345), __esModule: true };
+__webpack_require__(345);
+var $Object = __webpack_require__(11).Object;
+module.exports = function defineProperty(it, key, desc) {
+  return $Object.defineProperty(it, key, desc);
+};
 
 /***/ }),
 /* 345 */
@@ -68727,11 +68364,9 @@ module.exports = { "default": __webpack_require__(345), __esModule: true };
 "use strict";
 
 
-__webpack_require__(346);
-var $Object = __webpack_require__(11).Object;
-module.exports = function defineProperty(it, key, desc) {
-  return $Object.defineProperty(it, key, desc);
-};
+var $export = __webpack_require__(19);
+// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+$export($export.S + $export.F * !__webpack_require__(21), 'Object', { defineProperty: __webpack_require__(20).f });
 
 /***/ }),
 /* 346 */
@@ -68740,20 +68375,9 @@ module.exports = function defineProperty(it, key, desc) {
 "use strict";
 
 
-var $export = __webpack_require__(20);
-// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(22), 'Object', { defineProperty: __webpack_require__(21).f });
-
-/***/ }),
-/* 347 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(119);
+var _typeof2 = __webpack_require__(118);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -68770,13 +68394,24 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(348), __esModule: true };
+
+/***/ }),
 /* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(349), __esModule: true };
+__webpack_require__(349);
+__webpack_require__(354);
+module.exports = __webpack_require__(77).f('iterator');
 
 /***/ }),
 /* 349 */
@@ -68785,21 +68420,10 @@ module.exports = { "default": __webpack_require__(349), __esModule: true };
 "use strict";
 
 
-__webpack_require__(350);
-__webpack_require__(355);
-module.exports = __webpack_require__(77).f('iterator');
-
-/***/ }),
-/* 350 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $at = __webpack_require__(351)(true);
+var $at = __webpack_require__(350)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(120)(String, 'String', function (iterated) {
+__webpack_require__(119)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -68814,7 +68438,7 @@ __webpack_require__(120)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 351 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68837,7 +68461,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 352 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68849,7 +68473,7 @@ var setToStringTag = __webpack_require__(76);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(27)(IteratorPrototype, __webpack_require__(31)('iterator'), function () {
+__webpack_require__(26)(IteratorPrototype, __webpack_require__(30)('iterator'), function () {
   return this;
 });
 
@@ -68859,17 +68483,17 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 353 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var dP = __webpack_require__(21);
-var anObject = __webpack_require__(37);
+var dP = __webpack_require__(20);
+var anObject = __webpack_require__(36);
 var getKeys = __webpack_require__(48);
 
-module.exports = __webpack_require__(22) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(21) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -68881,7 +68505,7 @@ module.exports = __webpack_require__(22) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 354 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68891,17 +68515,17 @@ var document = __webpack_require__(18).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 355 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(356);
+__webpack_require__(355);
 var global = __webpack_require__(18);
-var hide = __webpack_require__(27);
+var hide = __webpack_require__(26);
 var Iterators = __webpack_require__(74);
-var TO_STRING_TAG = __webpack_require__(31)('toStringTag');
+var TO_STRING_TAG = __webpack_require__(30)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' + 'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' + 'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' + 'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' + 'TextTrackList,TouchList').split(',');
 
@@ -68914,22 +68538,22 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 356 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(357);
-var step = __webpack_require__(358);
+var addToUnscopables = __webpack_require__(356);
+var step = __webpack_require__(357);
 var Iterators = __webpack_require__(74);
-var toIObject = __webpack_require__(30);
+var toIObject = __webpack_require__(29);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(120)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(119)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -68955,7 +68579,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 357 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68964,7 +68588,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 358 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68975,29 +68599,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(359), __esModule: true };
+
+/***/ }),
 /* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(360), __esModule: true };
-
-/***/ }),
-/* 360 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(361);
+__webpack_require__(360);
+__webpack_require__(365);
 __webpack_require__(366);
 __webpack_require__(367);
-__webpack_require__(368);
 module.exports = __webpack_require__(11).Symbol;
 
 /***/ }),
-/* 361 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69007,29 +68631,29 @@ module.exports = __webpack_require__(11).Symbol;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var global = __webpack_require__(18);
-var has = __webpack_require__(23);
-var DESCRIPTORS = __webpack_require__(22);
-var $export = __webpack_require__(20);
-var redefine = __webpack_require__(121);
-var META = __webpack_require__(362).KEY;
-var $fails = __webpack_require__(29);
+var has = __webpack_require__(22);
+var DESCRIPTORS = __webpack_require__(21);
+var $export = __webpack_require__(19);
+var redefine = __webpack_require__(120);
+var META = __webpack_require__(361).KEY;
+var $fails = __webpack_require__(28);
 var shared = __webpack_require__(70);
 var setToStringTag = __webpack_require__(76);
 var uid = __webpack_require__(50);
-var wks = __webpack_require__(31);
+var wks = __webpack_require__(30);
 var wksExt = __webpack_require__(77);
 var wksDefine = __webpack_require__(78);
-var enumKeys = __webpack_require__(363);
-var isArray = __webpack_require__(364);
-var anObject = __webpack_require__(37);
-var isObject = __webpack_require__(28);
-var toIObject = __webpack_require__(30);
+var enumKeys = __webpack_require__(362);
+var isArray = __webpack_require__(363);
+var anObject = __webpack_require__(36);
+var isObject = __webpack_require__(27);
+var toIObject = __webpack_require__(29);
 var toPrimitive = __webpack_require__(66);
 var createDesc = __webpack_require__(47);
 var _create = __webpack_require__(75);
-var gOPNExt = __webpack_require__(365);
-var $GOPD = __webpack_require__(123);
-var $DP = __webpack_require__(21);
+var gOPNExt = __webpack_require__(364);
+var $GOPD = __webpack_require__(122);
+var $DP = __webpack_require__(20);
 var $keys = __webpack_require__(48);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
@@ -69156,7 +68780,7 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(122).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(121).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(51).f = $propertyIsEnumerable;
   __webpack_require__(72).f = $getOwnPropertySymbols;
 
@@ -69238,7 +68862,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(27)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(26)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -69247,7 +68871,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 362 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69256,14 +68880,14 @@ setToStringTag(global.JSON, 'JSON', true);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var META = __webpack_require__(50)('meta');
-var isObject = __webpack_require__(28);
-var has = __webpack_require__(23);
-var setDesc = __webpack_require__(21).f;
+var isObject = __webpack_require__(27);
+var has = __webpack_require__(22);
+var setDesc = __webpack_require__(20).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(29)(function () {
+var FREEZE = !__webpack_require__(28)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function setMeta(it) {
@@ -69310,7 +68934,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 363 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69335,20 +68959,20 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 364 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(117);
+var cof = __webpack_require__(116);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
 /***/ }),
-/* 365 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69357,8 +68981,8 @@ module.exports = Array.isArray || function isArray(arg) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(30);
-var gOPN = __webpack_require__(122).f;
+var toIObject = __webpack_require__(29);
+var gOPN = __webpack_require__(121).f;
 var toString = {}.toString;
 
 var windowNames = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -69376,14 +69000,14 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 366 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 367 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69392,7 +69016,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 __webpack_require__(78)('asyncIterator');
 
 /***/ }),
-/* 368 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69401,7 +69025,7 @@ __webpack_require__(78)('asyncIterator');
 __webpack_require__(78)('observable');
 
 /***/ }),
-/* 369 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69409,15 +69033,15 @@ __webpack_require__(78)('observable');
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(370);
+var _setPrototypeOf = __webpack_require__(369);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(374);
+var _create = __webpack_require__(373);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(119);
+var _typeof2 = __webpack_require__(118);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -69442,13 +69066,23 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(370), __esModule: true };
+
+/***/ }),
 /* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(371), __esModule: true };
+__webpack_require__(371);
+module.exports = __webpack_require__(11).Object.setPrototypeOf;
 
 /***/ }),
 /* 371 */
@@ -69457,8 +69091,9 @@ module.exports = { "default": __webpack_require__(371), __esModule: true };
 "use strict";
 
 
-__webpack_require__(372);
-module.exports = __webpack_require__(11).Object.setPrototypeOf;
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(19);
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(372).set });
 
 /***/ }),
 /* 372 */
@@ -69467,21 +69102,10 @@ module.exports = __webpack_require__(11).Object.setPrototypeOf;
 "use strict";
 
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(20);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(373).set });
-
-/***/ }),
-/* 373 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(28);
-var anObject = __webpack_require__(37);
+var isObject = __webpack_require__(27);
+var anObject = __webpack_require__(36);
 var check = function check(O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -69490,7 +69114,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(112)(Function.call, __webpack_require__(123).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(111)(Function.call, __webpack_require__(122).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -69506,13 +69130,26 @@ module.exports = {
 };
 
 /***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(374), __esModule: true };
+
+/***/ }),
 /* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(375), __esModule: true };
+__webpack_require__(375);
+var $Object = __webpack_require__(11).Object;
+module.exports = function create(P, D) {
+  return $Object.create(P, D);
+};
 
 /***/ }),
 /* 375 */
@@ -69521,25 +69158,12 @@ module.exports = { "default": __webpack_require__(375), __esModule: true };
 "use strict";
 
 
-__webpack_require__(376);
-var $Object = __webpack_require__(11).Object;
-module.exports = function create(P, D) {
-  return $Object.create(P, D);
-};
-
-/***/ }),
-/* 376 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $export = __webpack_require__(20);
+var $export = __webpack_require__(19);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(75) });
 
 /***/ }),
-/* 377 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70130,7 +69754,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 378 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70200,7 +69824,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 379 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70346,25 +69970,25 @@ var LottieAttr = {
 exports.default = LottieAttr;
 
 /***/ }),
-/* 380 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _settings = __webpack_require__(5);
+var _settings = __webpack_require__(4);
 
-var _icons = __webpack_require__(6);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(381);
+var _edit = __webpack_require__(380);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(387);
+var _save = __webpack_require__(386);
 
-var _attributes = __webpack_require__(388);
+var _attributes = __webpack_require__(387);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -70388,7 +70012,7 @@ registerBlockType("premium/newsletter", {
 });
 
 /***/ }),
-/* 381 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70407,11 +70031,11 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactSelect = __webpack_require__(98);
+var _reactSelect = __webpack_require__(80);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _debounce = __webpack_require__(382);
+var _debounce = __webpack_require__(381);
 
 var _debounce2 = _interopRequireDefault(_debounce);
 
@@ -70423,13 +70047,13 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
-var _premiumRangeControl = __webpack_require__(3);
+var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(270);
+var _ColorComponent = __webpack_require__(6);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -70449,8 +70073,7 @@ var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     ToggleControl = _wp$components.ToggleControl,
     TextControl = _wp$components.TextControl,
-    Spinner = _wp$components.Spinner,
-    ServerSideRender = _wp$components.ServerSideRender;
+    Spinner = _wp$components.Spinner;
 var __ = wp.i18n.__;
 var addQueryArgs = wp.url.addQueryArgs;
 var _wp = wp,
@@ -70640,7 +70263,7 @@ var edit = exports.edit = function (_Component) {
             var _this7 = this;
 
             if (!this.state.api) {
-                this.setState({ listTags: ["salma"], listTagsLoaded: true });
+                this.setState({ listTags: [], listTagsLoaded: true });
                 return;
             }
             this.setState({ isFetchingTags: true });
@@ -70692,13 +70315,11 @@ var edit = exports.edit = function (_Component) {
                 _props2$attributes = _props2.attributes,
                 block_id = _props2$attributes.block_id,
                 api = _props2$attributes.api,
-                list_id = _props2$attributes.list_id,
                 columnGap = _props2$attributes.columnGap,
                 rowGap = _props2$attributes.rowGap,
                 eMail = _props2$attributes.eMail,
                 inputStyles = _props2$attributes.inputStyles,
                 btnStyles = _props2$attributes.btnStyles,
-                messageStyle = _props2$attributes.messageStyle,
                 mailchimp = _props2$attributes.mailchimp,
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
@@ -70803,19 +70424,19 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General"),
+                        title: __("General", 'premium-block-for-gutenberg'),
                         className: 'premium-panel-body',
                         initialOpen: true
                     },
                     React.createElement(TextControl, {
-                        label: __('E-mail'),
+                        label: __('E-mail', 'premium-block-for-gutenberg'),
                         value: eMail,
                         onChange: function onChange(value) {
                             return setAttributes({ eMail: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __('Mailchimp Api Key'),
+                        label: __('Mailchimp Api Key', 'premium-block-for-gutenberg'),
                         value: this.state.api,
                         onChange: function onChange(e) {
                             return _this8.setState({ api: e });
@@ -70875,7 +70496,7 @@ var edit = exports.edit = function (_Component) {
                                     __('Select Group', 'premium-block-for-gutenberg')
                                 ),
                                 !listGroupLoaded ? this.getMailChimpGroups() : '',
-                                !Array.isArray(listGroups) ? React.createElement(Spinner, null) : __('No group found.', '')
+                                !Array.isArray(listGroups) ? React.createElement(Spinner, null) : __('No group found.', 'premium-block-for-gutenberg')
                             ),
                             !isFetchingGroups && g && React.createElement(
                                 _react.Fragment,
@@ -70907,7 +70528,7 @@ var edit = exports.edit = function (_Component) {
                                     __('Select Tags', 'premium-block-for-gutenberg')
                                 ),
                                 !listTagsLoaded ? this.getMailChimpTags() : '',
-                                !Array.isArray(listTags) ? React.createElement(Spinner, null) : __('No Tags found.', '')
+                                !Array.isArray(listTags) ? React.createElement(Spinner, null) : __('No Tags found.', 'premium-block-for-gutenberg')
                             ),
                             !isFetchingTags && v && React.createElement(
                                 _react.Fragment,
@@ -70927,18 +70548,18 @@ var edit = exports.edit = function (_Component) {
                                     isMulti: true,
                                     maxMenuHeight: 200
                                 })
-                            )
+                            ),
+                            React.createElement(ToggleControl, {
+                                label: __('Double in Option', 'premium-block-for-gutenberg'),
+                                checked: mailchimp[0]['doubleOption'],
+                                onChange: function onChange(value) {
+                                    return saveMailChimp({ doubleOption: value });
+                                }
+                            })
                         )
                     ),
-                    React.createElement(ToggleControl, {
-                        label: __('Double in Option'),
-                        checked: mailchimp[0]['doubleOption'],
-                        onChange: function onChange(value) {
-                            return saveMailChimp({ doubleOption: value });
-                        }
-                    }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Column Gap"),
+                        label: __("Column Gap", 'premium-block-for-gutenberg'),
                         value: columnGap,
                         onChange: function onChange(newValue) {
                             return setAttributes({ columnGap: newValue });
@@ -70947,7 +70568,7 @@ var edit = exports.edit = function (_Component) {
                         showUnit: false
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Row Gap"),
+                        label: __("Row Gap", 'premium-block-for-gutenberg'),
                         value: rowGap,
                         onChange: function onChange(newValue) {
                             return setAttributes({ rowGap: newValue });
@@ -70959,40 +70580,40 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Input Style"),
+                        title: __("Input Style", 'premium-block-for-gutenberg'),
                         className: 'premium-panel-body',
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __('Label'),
+                        label: __('Label', 'premium-block-for-gutenberg'),
                         checked: inputStyles[0].showLabel,
                         onChange: function onChange(value) {
                             return saveInputStyle({ showLabel: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __('Label'),
+                        label: __('Label', 'premium-block-for-gutenberg'),
                         value: inputStyles[0].label,
                         onChange: function onChange(newURL) {
                             return saveInputStyle({ url: newURL });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __('Placeholder'),
+                        label: __('Placeholder', 'premium-block-for-gutenberg'),
                         value: inputStyles[0].placeholder,
                         onChange: function onChange(newURL) {
                             return saveInputStyle({ placeholder: newURL });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __('Required'),
+                        label: __('Required', 'premium-block-for-gutenberg'),
                         checked: inputStyles[0].required,
                         onChange: function onChange(value) {
                             return saveInputStyle({ required: value });
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __('Column Width'),
+                        label: __('Column Width', 'premium-block-for-gutenberg'),
                         options: COLUMNS,
                         value: inputStyles[0].inputColumnWidth,
                         onChange: function onChange(value) {
@@ -71000,7 +70621,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", ''),
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
                         colorValue: inputStyles[0].textColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -71012,19 +70633,19 @@ var edit = exports.edit = function (_Component) {
                         setAttributes: saveInputStyle,
                         fontSizeType: {
                             value: inputStyles[0].textSizeUnit,
-                            label: __("textSizeUnit")
+                            label: __("textSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: inputStyles[0].textSize,
-                            label: __("textSize")
+                            label: __("textSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: inputStyles[0].textSizeMobile,
-                            label: __("textSizeMobile")
+                            label: __("textSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: inputStyles[0].textSizeTablet,
-                            label: __("textSizeTablet")
+                            label: __("textSizeTablet", 'premium-block-for-gutenberg')
                         },
                         fontFamily: inputStyles[0].textFontFamily,
                         weight: inputStyles[0].textWeight,
@@ -71059,7 +70680,7 @@ var edit = exports.edit = function (_Component) {
                         return saveInputStyle({ textFontFamily: value });
                     }), _React$createElement)),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", ''),
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
                         colorValue: inputStyles[0].textBackColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -71100,12 +70721,12 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Button"),
+                        title: __("Button", 'premium-block-for-gutenberg'),
                         className: 'premium-panel-body',
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __('Column Width'),
+                        label: __('Column Width', 'premium-block-for-gutenberg'),
                         options: COLUMNS,
                         value: btnStyles[0].btnColumn,
                         onChange: function onChange(value) {
@@ -71113,15 +70734,15 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Button Size"),
+                        label: __("Button Size", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].buttonSize,
                         onChange: function onChange(value) {
                             return saveButtonStyle({ buttonSize: value });
                         },
-                        options: [{ value: "small", label: __("Small") }, { value: "medium", label: __("Medium") }, { value: "large", label: __("Large") }, { value: "extralarge", label: __("Extra Large") }, { value: "full", label: __("Full") }]
+                        options: [{ value: "small", label: __("Small", 'premium-block-for-gutenberg') }, { value: "medium", label: __("Medium", 'premium-block-for-gutenberg') }, { value: "large", label: __("Large", 'premium-block-for-gutenberg') }, { value: "extralarge", label: __("Extra Large", 'premium-block-for-gutenberg') }, { value: "full", label: __("Full", 'premium-block-for-gutenberg') }]
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", ''),
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
                         colorValue: btnStyles[0].btnColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -71129,7 +70750,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", ''),
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
                         colorValue: btnStyles[0].btnBackColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -71141,19 +70762,19 @@ var edit = exports.edit = function (_Component) {
                         setAttributes: saveButtonStyle,
                         fontSizeType: {
                             value: btnStyles[0].btnSizeUnit,
-                            label: __("textSizeUnit")
+                            label: __("textSizeUnit", 'premium-block-for-gutenberg')
                         },
                         fontSize: {
                             value: btnStyles[0].btnSize,
-                            label: __("textSize")
+                            label: __("textSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: btnStyles[0].btnSizeMobile,
-                            label: __("textSizeMobile")
+                            label: __("textSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: btnStyles[0].btnSizeTablet,
-                            label: __("textSizeTablet")
+                            label: __("textSizeTablet", 'premium-block-for-gutenberg')
                         },
                         fontFamily: btnStyles[0].btnFontFamily,
                         weight: btnStyles[0].btnWeight,
@@ -71218,7 +70839,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Vertical Spacing"),
+                        label: __("Vertical Spacing", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].vPaddingSubmit,
                         onChange: function onChange(value) {
                             return saveButtonStyle({ vPaddingSubmit: value });
@@ -71227,7 +70848,7 @@ var edit = exports.edit = function (_Component) {
                         showUnit: false
                     }),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Horizontal Spacing"),
+                        label: __("Horizontal Spacing", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].hPaddingSubmit,
                         onChange: function onChange(value) {
                             return saveButtonStyle({ hPaddingSubmit: value });
@@ -71346,15 +70967,15 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 382 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isObject = __webpack_require__(35),
-    now = __webpack_require__(383),
-    toNumber = __webpack_require__(384);
+    now = __webpack_require__(382),
+    toNumber = __webpack_require__(383);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -71542,7 +71163,7 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 /***/ }),
-/* 383 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71573,15 +71194,15 @@ var now = function now() {
 module.exports = now;
 
 /***/ }),
-/* 384 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTrim = __webpack_require__(385),
+var baseTrim = __webpack_require__(384),
     isObject = __webpack_require__(35),
-    isSymbol = __webpack_require__(44);
+    isSymbol = __webpack_require__(38);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -71643,13 +71264,13 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 385 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trimmedEndIndex = __webpack_require__(386);
+var trimmedEndIndex = __webpack_require__(385);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -71668,7 +71289,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 386 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71695,7 +71316,7 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 387 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71706,7 +71327,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.save = save;
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -71816,7 +71437,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 388 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71883,7 +71504,7 @@ var attributes = {
             inputColumnWidth: '100',
             textColor: '',
             textFontFamily: __('Default'),
-            textSizeUnit: "",
+            textSizeUnit: "px",
             textSize: '',
             textSizeMobile: '',
             textSizeTablet: '',
