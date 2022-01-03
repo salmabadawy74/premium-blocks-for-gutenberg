@@ -111,6 +111,13 @@ const attributes = {
                 containerBorderRadius: '0',
                 containerBack: '',
                 containerOpacity: 1,
+                gradientColorOne: '',
+                gradientLocationOne: '',
+                gradientColorTwo: '',
+                gradientLocationTwo: '',
+                gradientType: 'linear',
+                gradientAngle: '',
+                gradientPosition: ''
             }
         ]
     },

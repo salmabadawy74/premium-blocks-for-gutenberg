@@ -41,7 +41,6 @@ const attributes = {
                 titleShadowBlur: 0,
                 titleShadowHorizontal: 0,
                 titleShadowVertical: 0,
-                titlePadding: ['', '', '', '']
             }
         ]
     },

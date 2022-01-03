@@ -100,6 +100,10 @@ const attributes = {
         type: 'boolean',
         default: false
     },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
     numberStyles: {
         type: "array",
         default: [
@@ -155,6 +159,13 @@ const attributes = {
                 shadowVertical: '0',
                 shadowPosition: '',
                 paddingU: '',
+                gradientColorOne: '',
+                gradientLocationOne: '',
+                gradientColorTwo: '',
+                gradientLocationTwo: '',
+                gradientType: 'linear',
+                gradientAngle: '',
+                gradientPosition: ''
             }
         ]
     },

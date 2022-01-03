@@ -45,21 +45,21 @@ export default function PremiumTextShadow(props) {
                             value={blur}
                             onChange={onChangeBlur}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                         <PremiumRangeControl
                             label={__("Horizontal")}
                             value={horizontal}
                             onChange={onChangehHorizontal}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                         <PremiumRangeControl
                             label={__("Vertical")}
                             value={vertical}
                             onChange={onChangeVertical}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                     </Fragment>
                 )}

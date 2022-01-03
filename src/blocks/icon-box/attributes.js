@@ -257,6 +257,13 @@ const attributes = {
                 paddingB: '',
                 paddingL: '',
                 paddingU: 'px',
+                gradientColorOne: '',
+                gradientLocationOne: '',
+                gradientColorTwo: '',
+                gradientLocationTwo: '',
+                gradientType: 'linear',
+                gradientAngle: '',
+                gradientPosition: ''
 
             }
         ]

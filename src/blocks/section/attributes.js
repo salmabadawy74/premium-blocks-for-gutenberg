@@ -106,6 +106,13 @@ const attributes = {
                 shadowPosition: '',
                 marginUnit: 'px',
                 paddingUnit: 'px',
+                gradientColorOne: '',
+                gradientLocationOne: '',
+                gradientColorTwo: '',
+                gradientLocationTwo: '',
+                gradientType: 'linear',
+                gradientAngle: '',
+                gradientPosition: ''
             }
         ]
     }

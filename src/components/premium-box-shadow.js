@@ -63,21 +63,21 @@ export default function PremiumBoxShadow(props) {
                             value={horizontal}
                             onChange={onChangehHorizontal}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                         <PremiumRangeControl
                             label={__("Vertical")}
                             value={vertical}
                             onChange={onChangeVertical}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                         <PremiumRangeControl
                             label={__("Blur")}
                             value={blur}
                             onChange={onChangeBlur}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                         <SelectControl
                             label={__("Position")}

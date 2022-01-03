@@ -167,6 +167,13 @@ const attributes = {
                 wrapShadowHorizontal: '0',
                 wrapShadowVertical: '0',
                 wrapShadowPosition: '',
+                gradientColorOne: '',
+                gradientLocationOne: '',
+                gradientColorTwo: '',
+                gradientLocationTwo: '',
+                gradientType: 'linear',
+                gradientAngle: '',
+                gradientPosition: ''
             }]
     },
 
