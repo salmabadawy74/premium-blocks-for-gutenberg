@@ -11,7 +11,7 @@ const save = props => {
 
     const {
         block_id,
-        classMigrate,
+
         align,
         authorImgId,
         authorImgUrl,
@@ -42,7 +42,7 @@ const save = props => {
     return (
         <div
             id={`premium-testimonial-${block_id}`}
-            className={`${mainClasses}__wrap premium-testimonial-${block_id}`}
+            className={`${mainClasses}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                 backgroundColor: containerStyles[0].backColor,
@@ -105,7 +105,6 @@ const save = props => {
                     </div>
                     <div className={`premium-testimonial__info`}
                         style={{ justifyContent: align }}
-
                     >
                         <RichText.Content
                             tagName={authorStyles[0].authorTag.toLowerCase()}
