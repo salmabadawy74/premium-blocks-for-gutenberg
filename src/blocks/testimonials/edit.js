@@ -10,7 +10,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-
+import map from 'lodash/map';
 
 const { __ } = wp.i18n;
 
@@ -22,6 +22,7 @@ const {
     ToggleControl,
     Dropdown,
     Button,
+    ButtonGroup,
 } = wp.components;
 
 const {
@@ -87,6 +88,7 @@ class edit extends Component {
             paddingRight,
             paddingBottom,
             paddingLeft,
+            backgroundType
         } = this.props.attributes;
 
         const RADIUS = [
@@ -411,7 +413,6 @@ class edit extends Component {
                                 )}
                                 renderContent={() => (
                                     <Fragment>
-
                                         <AdvancedPopColorControl
                                             label={__("Text Color", 'premium-block-for-gutenberg')}
                                             colorValue={companyStyles[0].authorComColor}
@@ -495,14 +496,15 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <div className="kt-btn-size-settings-container">
-                            <h2 className="kt-beside-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
-                            <ButtonGroup className="kt-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
+                        <div className="premium-button-group-container">
+                            <h2 className="premium-background-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
+                            <ButtonGroup className="premium-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
                                 {map(bgType, ({ name, key }) => (
                                     <Button
                                         key={key}
-                                        className="kt-btn-size-btn"
+                                        className="premium-btn-size"
                                         isSmall
+                                        isPrimary={backgroundType === key}
                                         onClick={() => setAttributes({ backgroundType: key })}
                                     >
                                         { name}
@@ -511,7 +513,7 @@ class edit extends Component {
                             </ButtonGroup>
                         </div>
                         {'solid' === backgroundType && (
-                            <div className="kt-inner-sub-section">
+                            <Fragment>
                                 <PremiumBackground
                                     type="color"
                                     colorValue={containerStyles[0].backColor}
@@ -552,52 +554,54 @@ class edit extends Component {
                                     }
                                     onChangeFixed={check => saveContainerStyle({ fixed: check })}
                                 />
-                            </div>
+                            </Fragment>
                         )}
                         {'gradient' === backgroundType && (
-                            <div className="kt-inner-sub-section">
+                            <Fragment>
                                 <AdvancedPopColorControl
                                     label={__('Gradient Color 1', 'premium-block-for-gutenberg')}
-                                    colorValue={containerStyles[0].gradientColorOne}
+                                    colorValue={containerStyles[0].backColor}
                                     colorDefault={''}
                                     onColorChange={value => {
-                                        console.log(value)
+                                        saveContainerStyle({ backColor: value })
                                     }}
                                 />
-                                <RangeControl
+
+                                <PremiumRangeControl
                                     label={__('Location', 'premium-block-for-gutenberg')}
                                     value={containerStyles[0].gradientLocationOne}
                                     onChange={(value) => {
-                                        console.log(value)
+                                        saveContainerStyle({ gradientLocationOne: value })
                                     }}
-                                    min={0}
-                                    max={100}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                                 <AdvancedPopColorControl
                                     label={__('Gradient Color 2', 'premium-block-for-gutenberg')}
                                     colorValue={containerStyles[0].gradientColorTwo}
                                     colorDefault={'#777777'}
                                     onColorChange={value => {
-                                        console.log(value)
+                                        saveContainerStyle({ gradientColorTwo: value })
                                     }}
                                 />
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__('Location', 'premium-block-for-gutenberg')}
                                     value={containerStyles[0].gradientLocationTwo}
                                     onChange={(value) => {
-                                        console.log(value)
+                                        saveContainerStyle({ gradientLocationTwo: value })
                                     }}
-                                    min={0}
-                                    max={100}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
-                                <div className="kt-btn-size-settings-container">
-                                    <h2 className="kt-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
-                                    <ButtonGroup className="kt-button-size-type-options" aria-label={__('Gradient Type', 'premium-block-for-gutenberg')}>
+                                <div className="premium-button-group-container">
+                                    <h2 className='premium-background-btn-group'>{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
+                                    <ButtonGroup className="premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-block-for-gutenberg')}>
                                         {map(gradTypes, ({ name, key }) => (
                                             <Button
                                                 key={key}
-                                                className="kt-btn-size-btn"
+                                                className="premium-btn-size"
                                                 isSmall
+                                                isPrimary={containerStyles[0].gradientType === key}
                                                 onClick={() => {
                                                     saveContainerStyle({ gradientType: key })
                                                 }}
@@ -608,12 +612,14 @@ class edit extends Component {
                                     </ButtonGroup>
                                 </div>
                                 { 'radial' !== (containerStyles[0].gradientType) && (
-                                    <RangeControl
+                                    <PremiumRangeControl
                                         label={__('Gradient Angle', 'premium-block-for-gutenberg')}
-                                        value={containerStyles[0].gradientType}
+                                        value={containerStyles[0].gradientAngle}
                                         onChange={(value) => {
-                                            saveContainerStyle({ gradientType: value });
+                                            saveContainerStyle({ gradientAngle: value })
                                         }}
+                                        showUnit={false}
+                                        defaultValue={0}
                                         min={0}
                                         max={360}
                                     />
@@ -636,9 +642,8 @@ class edit extends Component {
                                         onChange={value => saveContainerStyle({ gradientPosition: value })}
                                     />
                                 )}
-                            </div>
+                            </Fragment>
                         )}
-
                         <PremiumBoxShadow
                             inner={true}
                             color={containerStyles[0].shadowColor}

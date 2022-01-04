@@ -111,13 +111,12 @@ const attributes = {
                 containerBorderRadius: '0',
                 containerBack: '',
                 containerOpacity: 1,
-                gradientColorOne: '',
-                gradientLocationOne: '',
+                gradientLocationOne: '0',
                 gradientColorTwo: '',
-                gradientLocationTwo: '',
+                gradientLocationTwo: '100',
                 gradientType: 'linear',
-                gradientAngle: '',
-                gradientPosition: ''
+                gradientAngle: '180',
+                gradientPosition: 'center center'
             }
         ]
     },

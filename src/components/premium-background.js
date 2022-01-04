@@ -18,7 +18,6 @@ export default function PremiumBackground(props) {
     const {
         type,
         colorValue,
-        opacityValue,
         imageID,
         imageURL,
         backgroundPosition,
@@ -26,7 +25,6 @@ export default function PremiumBackground(props) {
         backgroundSize,
         fixed,
         onChangeColor = () => { },
-        onChangeOpacity = () => { },
         onSelectMedia = () => { },
         onRemoveImage = () => { },
         onChangeBackPos = () => { },

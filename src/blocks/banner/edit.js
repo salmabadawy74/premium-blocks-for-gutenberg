@@ -50,7 +50,6 @@ export class edit extends Component {
         }
         return desktopSize;
     }
-
     componentDidMount() {
         this.props.setAttributes({ block_id: this.props.clientId });
         this.props.setAttributes({ classMigrate: true });
@@ -100,7 +99,6 @@ export class edit extends Component {
             paddingB,
             paddingL
         } = this.props.attributes;
-
         const ALIGNS = [
             {
                 value: "flex-start",
@@ -119,7 +117,6 @@ export class edit extends Component {
                 label: __("Full", 'premium-block-for-gutenberg')
             }
         ];
-
         const EFFECTS = [
             {
                 value: "effect1",
@@ -193,7 +190,6 @@ export class edit extends Component {
         const mainClasses = classnames(className, "premium-banner");
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
         const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
-
         const saveStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -206,7 +202,6 @@ export class edit extends Component {
                 titleStyles: newUpdate,
             });
         }
-
         const descriptionStyles = (value) => {
             const newUpdate = descStyles.map((item, index) => {
                 if (0 === index) {

@@ -27,17 +27,14 @@ const attributes = {
         type: "string",
         default: "column"
     },
-
     prefix: {
         type: "boolean",
         default: true
     },
-
     suffix: {
         type: "boolean",
         default: true
     },
-
     icon: {
         type: "string",
         default: "icon"
@@ -78,7 +75,7 @@ const attributes = {
     },
     titleTxt: {
         type: "string",
-        default: "Premium Count Up"
+        default: __("Premium Count Up")
     },
     faIcon: {
         type: "string",
@@ -159,13 +156,12 @@ const attributes = {
                 shadowVertical: '0',
                 shadowPosition: '',
                 paddingU: '',
-                gradientColorOne: '',
-                gradientLocationOne: '',
+                gradientLocationOne: '0',
                 gradientColorTwo: '',
-                gradientLocationTwo: '',
+                gradientLocationTwo: '100',
                 gradientType: 'linear',
-                gradientAngle: '',
-                gradientPosition: ''
+                gradientAngle: '180',
+                gradientPosition: 'center center'
             }
         ]
     },

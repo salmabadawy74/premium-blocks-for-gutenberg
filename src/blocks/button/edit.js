@@ -7,19 +7,14 @@ import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-
-
 const { __ } = wp.i18n;
-
 const {
     PanelBody,
     SelectControl,
     ToggleControl,
     TabPanel,
 } = wp.components;
-
 const { Fragment, Component } = wp.element;
-
 const {
     InspectorControls,
     AlignmentToolbar,
@@ -27,12 +22,8 @@ const {
     RichText,
     URLInput,
 } = wp.blockEditor;
-
 const { withSelect } = wp.data
-
-
 export class edit extends Component {
-
     constructor() {
         super(...arguments);
         this.getPreviewSize = this.getPreviewSize.bind(this);
@@ -51,11 +42,8 @@ export class edit extends Component {
         }
         return desktopSize;
     }
-
-
     render() {
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
-
         const {
             borderButton,
             btnText,
@@ -78,7 +66,6 @@ export class edit extends Component {
             textStyles,
             btnStyles
         } = this.props.attributes;
-
         const SIZE = [
             {
                 value: "sm",
@@ -177,9 +164,6 @@ export class edit extends Component {
                 label: __("Radial", 'premium-block-for-gutenberg')
             }
         ];
-
-
-
         const onChangeHover = newValue => {
             this.props.setAttributes({ effect: newValue });
             switch (newValue) {
@@ -195,7 +179,6 @@ export class edit extends Component {
             }
         };
         setAttributes({ block_id: blockId });
-
         const saveTextStyles = (value) => {
             const newUpdate = textStyles.map((item, index) => {
                 if (0 === index) {
@@ -218,9 +201,7 @@ export class edit extends Component {
                 btnStyles: newUpdate,
             });
         }
-
         const mainClasses = classnames(className, "premium-button");
-
         const btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
         return [
             isSelected && "block" != btnSize && (
