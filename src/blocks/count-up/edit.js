@@ -32,7 +32,6 @@ class edit extends Component {
     constructor() {
         super(...arguments);
     }
-
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId.substr(0, 6) })
@@ -127,7 +126,6 @@ class edit extends Component {
                 label: __("Reversed Column", 'premium-block-for-gutenberg')
             }
         ];
-
         const TYPE = [
             {
                 value: "fa",
@@ -138,7 +136,6 @@ class edit extends Component {
                 label: __("Dashicon", 'premium-block-for-gutenberg')
             }
         ];
-
         const ALIGNS = ["left", "center", "right"];
         const REVALIGNS = ["right", "center", "left"];
         const gradTypes = [
@@ -171,7 +168,6 @@ class edit extends Component {
                 numberStyles: newUpdate,
             });
         }
-
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -216,12 +212,12 @@ class edit extends Component {
                 containerStyles: newUpdate,
             });
         }
-
         const mainClasses = classnames(className, "premium-countup");
         const numberFontSize = this.getPreviewSize(this.props.deviceType, numberStyles[0].numberSize, numberStyles[0].numberSizeTablet, numberStyles[0].numberSizeMobile);
         const prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
         const suffixFontSize = this.getPreviewSize(this.props.deviceType, suffixStyles[0].suffixSize, suffixStyles[0].suffixSizeTablet, suffixStyles[0].suffixSizeMobile);
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -448,8 +444,6 @@ class edit extends Component {
                                 value={prefixStyles[0].prefixTxt}
                                 onChange={value => savePrefixStyle({ prefixTxt: value })}
                             />
-
-
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "family"]}
                                 setAttributes={savePrefixStyle}
@@ -705,37 +699,38 @@ class edit extends Component {
                             <div className="kt-inner-sub-section">
                                 <AdvancedPopColorControl
                                     label={__('Gradient Color 1', 'premium-block-for-gutenberg')}
-                                    colorValue={containerStyles[0].gradientColorOne}
+                                    colorValue={containerStyles[0].containerBack}
                                     colorDefault={''}
                                     onColorChange={value => {
-                                        console.log(value)
+                                        saveContainerStyle({ containerBack: value })
                                     }}
                                 />
-                                <RangeControl
+
+                                <PremiumRangeControl
                                     label={__('Location', 'premium-block-for-gutenberg')}
                                     value={containerStyles[0].gradientLocationOne}
                                     onChange={(value) => {
-                                        console.log(value)
+                                        saveContainerStyle({ gradientLocationOne: value })
                                     }}
-                                    min={0}
-                                    max={100}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                                 <AdvancedPopColorControl
                                     label={__('Gradient Color 2', 'premium-block-for-gutenberg')}
                                     colorValue={containerStyles[0].gradientColorTwo}
                                     colorDefault={'#777777'}
                                     onColorChange={value => {
-                                        console.log(value)
+                                        saveContainerStyle({ gradientColorTwo: value })
                                     }}
                                 />
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__('Location', 'premium-block-for-gutenberg')}
                                     value={containerStyles[0].gradientLocationTwo}
                                     onChange={(value) => {
-                                        console.log(value)
+                                        saveContainerStyle({ gradientLocationTwo: value })
                                     }}
-                                    min={0}
-                                    max={100}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                                 <div className="kt-btn-size-settings-container">
                                     <h2 className="kt-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
@@ -755,12 +750,14 @@ class edit extends Component {
                                     </ButtonGroup>
                                 </div>
                                 { 'radial' !== (containerStyles[0].gradientType) && (
-                                    <RangeControl
+                                    <PremiumRangeControl
                                         label={__('Gradient Angle', 'premium-block-for-gutenberg')}
-                                        value={containerStyles[0].gradientType}
+                                        value={containerStyles[0].gradientAngle}
                                         onChange={(value) => {
-                                            saveContainerStyle({ gradientType: value });
+                                            saveContainerStyle({ gradientAngle: value })
                                         }}
+                                        showUnit={false}
+                                        defaultValue={0}
                                         min={0}
                                         max={360}
                                     />

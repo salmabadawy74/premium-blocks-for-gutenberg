@@ -6,11 +6,12 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
-
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import map from 'lodash/map';
 
 const { __ } = wp.i18n;
 
-const { PanelBody, ToggleControl, SelectControl } = wp.components;
+const { PanelBody, ToggleControl, SelectControl, Button, ButtonGroup } = wp.components;
 
 const { Fragment } = wp.element;
 const { withSelect } = wp.data
@@ -57,6 +58,7 @@ const edit = props => {
         paddingRight,
         paddingBottom,
         paddingLeft,
+        backgroundType
     } = props.attributes;
 
     const WIDTH = [
@@ -271,37 +273,38 @@ const edit = props => {
                         <div className="kt-inner-sub-section">
                             <AdvancedPopColorControl
                                 label={__('Gradient Color 1', 'premium-block-for-gutenberg')}
-                                colorValue={containerStyles[0].gradientColorOne}
+                                colorValue={containerStyles[0].color}
                                 colorDefault={''}
                                 onColorChange={value => {
-                                    console.log(value)
+                                    saveContainerStyle({ color: value })
                                 }}
                             />
-                            <RangeControl
+
+                            <PremiumRangeControl
                                 label={__('Location', 'premium-block-for-gutenberg')}
                                 value={containerStyles[0].gradientLocationOne}
                                 onChange={(value) => {
-                                    console.log(value)
+                                    saveContainerStyle({ gradientLocationOne: value })
                                 }}
-                                min={0}
-                                max={100}
+                                showUnit={false}
+                                defaultValue={0}
                             />
                             <AdvancedPopColorControl
                                 label={__('Gradient Color 2', 'premium-block-for-gutenberg')}
                                 colorValue={containerStyles[0].gradientColorTwo}
                                 colorDefault={'#777777'}
                                 onColorChange={value => {
-                                    console.log(value)
+                                    saveContainerStyle({ gradientColorTwo: value })
                                 }}
                             />
-                            <RangeControl
+                            <PremiumRangeControl
                                 label={__('Location', 'premium-block-for-gutenberg')}
                                 value={containerStyles[0].gradientLocationTwo}
                                 onChange={(value) => {
-                                    console.log(value)
+                                    saveContainerStyle({ gradientLocationTwo: value })
                                 }}
-                                min={0}
-                                max={100}
+                                showUnit={false}
+                                defaultValue={0}
                             />
                             <div className="kt-btn-size-settings-container">
                                 <h2 className="kt-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
@@ -321,12 +324,14 @@ const edit = props => {
                                 </ButtonGroup>
                             </div>
                             { 'radial' !== (containerStyles[0].gradientType) && (
-                                <RangeControl
+                                <PremiumRangeControl
                                     label={__('Gradient Angle', 'premium-block-for-gutenberg')}
-                                    value={containerStyles[0].gradientType}
+                                    value={containerStyles[0].gradientAngle}
                                     onChange={(value) => {
-                                        saveContainerStyle({ gradientType: value });
+                                        saveContainerStyle({ gradientAngle: value })
                                     }}
+                                    showUnit={false}
+                                    defaultValue={0}
                                     min={0}
                                     max={360}
                                 />
@@ -555,7 +560,6 @@ const edit = props => {
 export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
     return {
         deviceType: deviceType
     }

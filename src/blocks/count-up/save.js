@@ -1,9 +1,6 @@
 import classnames from 'classnames'
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         borderCount,
@@ -113,7 +110,6 @@ const save = props => {
                     )}
                 </div>
             )}
-
             <div
                 className={`premium-countup__info`}
                 style={{

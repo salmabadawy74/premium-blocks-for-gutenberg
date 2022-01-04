@@ -258,12 +258,12 @@ const attributes = {
                 paddingL: '',
                 paddingU: 'px',
                 gradientColorOne: '',
-                gradientLocationOne: '',
+                gradientLocationOne: '0',
                 gradientColorTwo: '',
-                gradientLocationTwo: '',
+                gradientLocationTwo: '100',
                 gradientType: 'linear',
-                gradientAngle: '',
-                gradientPosition: ''
+                gradientAngle: '180',
+                gradientPosition: 'center center'
 
             }
         ]

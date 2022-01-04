@@ -27,10 +27,8 @@ let isAccUpdated = null;
 class PremiumAccordion extends Component {
     constructor() {
         super(...arguments);
-
         this.initAccordion = this.initAccordion.bind(this);
     }
-
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
         if (!attributes.accordionId) {
@@ -38,12 +36,10 @@ class PremiumAccordion extends Component {
         }
         this.initAccordion();
     }
-
     componentDidUpdate(prevProps, prevState) {
         clearTimeout(isAccUpdated);
         isAccUpdated = setTimeout(this.initAccordion, 500);
     }
-
     initAccordion() {
         const { accordionId } = this.props.attributes;
         if (!this.props.attributes.accordionId) return null;
@@ -57,10 +53,8 @@ class PremiumAccordion extends Component {
             title.nextSibling.classList.toggle("premium-accordion__desc_close");
         });
     }
-
     render() {
         const { isSelected, setAttributes, className } = this.props;
-
         const {
             accordionId,
             repeaterItems,
@@ -95,7 +89,6 @@ class PremiumAccordion extends Component {
             descPaddingB,
             descPaddingL,
         } = this.props.attributes;
-
         const DIRECTION = [
             {
                 value: "ltr",
@@ -106,7 +99,6 @@ class PremiumAccordion extends Component {
                 label: "RTL"
             }
         ];
-
         const ARROW = [
             {
                 value: "in",
@@ -117,7 +109,6 @@ class PremiumAccordion extends Component {
                 label: __("Out", 'premium-block-for-gutenberg')
             }
         ];
-
         const TYPE = [
             {
                 value: "text",
@@ -128,7 +119,6 @@ class PremiumAccordion extends Component {
                 label: __("Gutenberg Block", 'premium-block-for-gutenberg')
             }
         ];
-
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -174,10 +164,7 @@ class PremiumAccordion extends Component {
                 return item;
             });
         };
-
         const mainClasses = classnames(className, "premium-accordion");
-
-
         const accordionItems = repeaterItems.map((item, index) => {
             return (
                 <div
@@ -693,7 +680,6 @@ class PremiumAccordion extends Component {
             </Fragment>
         ];
     }
-
 }
 
 export default PremiumAccordion;

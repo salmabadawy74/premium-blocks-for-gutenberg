@@ -13,7 +13,6 @@ import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-
 const { __ } = wp.i18n;
 
 const {
@@ -21,13 +20,10 @@ const {
     Toolbar,
     SelectControl,
     ToggleControl,
-    TabPanel
+    TabPanel,
 } = wp.components;
-
 const { Fragment, Component } = wp.element;
 const { withSelect } = wp.data
-
-
 const {
     BlockControls,
     InspectorControls,
@@ -283,15 +279,6 @@ class edit extends Component {
                 label: __("Bottom", 'premium-block-for-gutenberg'),
                 value: "bottom"
             }
-        ];
-
-        const gradTypes = [
-            { key: 'linear', name: __('Linear') },
-            { key: 'radial', name: __('Radial') },
-        ];
-        const bgType = [
-            { key: 'solid', name: __('Solid') },
-            { key: 'gradient', name: __('Gradient') },
         ];
 
         const mainClasses = classnames(className, "premium-icon-box");
