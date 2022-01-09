@@ -6,7 +6,6 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -33,7 +32,6 @@ let isBoxUpdated = null;
 class edit extends Component {
     constructor() {
         super(...arguments);
-
         this.initVideoBox = this.initVideoBox.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
@@ -152,6 +150,7 @@ class edit extends Component {
                 label: __("Self Hosted", 'premium-block-for-gutenberg')
             }
         ];
+
         const loopVideo = () => {
             if ("youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
@@ -168,6 +167,7 @@ class edit extends Component {
                 return loop ? "1" : "0";
             }
         };
+
         const getHelp = Type => {
             switch (Type) {
                 case "youtube":
@@ -620,18 +620,13 @@ class edit extends Component {
                                                     })
                                                 }
                                             />
-                                            <PremiumBackground
-                                                type="color"
+                                            <AdvancedPopColorControl
+                                                label={__(`Background Color`)}
                                                 colorValue={playStyles[0].playBack}
-                                                onChangeColor={newvalue => {
+                                                onColorChange={newvalue => {
                                                     savePlayStyles({ playBack: newvalue })
                                                 }}
-                                                opacityValue={
-                                                    playStyles[0].playOpacity
-                                                }
-                                                onChangeOpacity={value => {
-                                                    savePlayStyles({ playOpacity: value })
-                                                }}
+                                                colorDefault={``}
                                             />
                                             {videoDesc && (
                                                 <Fragment>
@@ -646,24 +641,15 @@ class edit extends Component {
                                                             })
                                                         }
                                                     />
-                                                    <PremiumBackground
-                                                        type="color"
-                                                        colorValue={
-                                                            descStyles[0].videoDescBack
-                                                        }
-                                                        onChangeColor={newvalue => {
+                                                    <AdvancedPopColorControl
+                                                        label={__(`Background Color`)}
+                                                        colorValue={descStyles[0].videoDescBack}
+                                                        onColorChange={newvalue => {
                                                             saveDescritionStyle({
                                                                 videoDescBack: newvalue,
                                                             })
                                                         }}
-                                                        opacityValue={
-                                                            descStyles[0].videoDescOpacity
-                                                        }
-                                                        onChangeOpacity={value => {
-                                                            saveDescritionStyle({
-                                                                videoDescOpacity: value,
-                                                            })
-                                                        }}
+                                                        colorDefault={``}
                                                     />
                                                 </Fragment>
                                             )}

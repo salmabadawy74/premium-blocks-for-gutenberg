@@ -45,14 +45,14 @@ const save = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].color,
+                backgroundColor: containerStyles[0].containerBack,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,

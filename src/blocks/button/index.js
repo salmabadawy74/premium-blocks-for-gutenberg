@@ -10,8 +10,6 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-
-
 registerBlockType("premium/button", {
     title: __("Button"),
     icon: <PbgIcon icon="button" />,

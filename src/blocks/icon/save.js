@@ -55,8 +55,8 @@ const save = props => {
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                backgroundColor: containerStyles[0].backgroundColor,
-                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : "none",
+                backgroundColor: containerStyles[0].containerBack,
+                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : "none",
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,

@@ -52,7 +52,6 @@ const videoBoxAttrs = {
         type: "boolean",
         default: true
     },
-
     // Old props
     playLeft: {
         type: "number"

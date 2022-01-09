@@ -3,7 +3,6 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -66,6 +65,7 @@ export class edit extends Component {
             textStyles,
             btnStyles
         } = this.props.attributes;
+
         const SIZE = [
             {
                 value: "sm",
@@ -360,20 +360,14 @@ export class edit extends Component {
                                                     })
                                                 }
                                             />
-                                            <PremiumBackground
-                                                type="color"
+                                            <AdvancedPopColorControl
+                                                label={__('Background Color')}
                                                 colorValue={btnStyles[0].backColor}
-                                                onChangeColor={newvalue =>
+                                                colorDefault={''}
+                                                onColorChange={newvalue =>
                                                     saveBtnStyles({
                                                         backColor: newvalue,
-                                                    })
-                                                }
-                                                opacityValue={btnStyles[0].backOpacity}
-                                                onChangeOpacity={value =>
-                                                    saveBtnStyles({
-                                                        backOpacity: value,
-                                                    })
-                                                }
+                                                    })}
                                             />
                                         </Fragment>
                                     );

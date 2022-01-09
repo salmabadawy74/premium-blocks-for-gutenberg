@@ -99,11 +99,11 @@ const attributes = {
         type: 'array',
         default: [
             {
-                imageID: '',
-                imageURL: '',
-                backgroundPosition: "top center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "auto",
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
+                backgroundSize: 'auto',
                 fixed: false,
                 containerBorderType: "none",
                 containerBorderWidth: "1",

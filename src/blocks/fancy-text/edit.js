@@ -2,7 +2,6 @@ import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
-import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
@@ -667,16 +666,12 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickfancyTextTypo}
                         />
-                        <PremiumBackground
-                            type="color"
+                        <AdvancedPopColorControl
+                            label={__('Background Color')}
                             colorValue={fancyStyles[0].fancyTextBGColor}
-                            onChangeColor={newvalue =>
-                                saveFancyStyle({ fancyTextBGColor: newvalue })
-                            }
-                            opacityValue={fancyStyles[0].fancyTextBGOpacity}
-                            onChangeOpacity={value =>
-                                saveFancyStyle({ fancyTextBGOpacity: value })
-                            }
+                            colorDefault={''}
+                            onColorChange={newvalue =>
+                                saveFancyStyle({ fancyTextBGColor: newvalue })}
                         />
                         <PremiumTextShadow
                             color={fancyStyles[0].shadowColor}
@@ -769,17 +764,12 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTextTypo}
                         />
-                        <PremiumBackground
-                            type="color"
+                        <AdvancedPopColorControl
+                            label={__(`Background Color`)}
                             colorValue={PreStyles[0].textBGColor}
-                            onChangeColor={newvalue =>
-                                savePrefixStyle({ textBGColor: newvalue })
-                            }
-                            opacityValue={PreStyles[0].textBGOpacity}
-                            onChangeOpacity={value =>
-                                savePrefixStyle
-                                    ({ textBGOpacity: value })
-                            }
+                            colorDefault={``}
+                            onColorChange={newvalue =>
+                                savePrefixStyle({ textBGColor: newvalue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

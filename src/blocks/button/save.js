@@ -1,11 +1,7 @@
 import classnames from 'classnames'
-
 const { RichText } = wp.blockEditor;
-
 const save = props => {
-
     const { className } = props;
-
     const {
         borderButton,
         btnText,
@@ -28,8 +24,6 @@ const save = props => {
         borderLeft,
         borderWidth
     } = props.attributes;
-
-
     const mainClasses = classnames(className, 'premium-button');
 
     return (
@@ -86,5 +80,4 @@ const save = props => {
         </div>
     );
 };
-
 export default save;

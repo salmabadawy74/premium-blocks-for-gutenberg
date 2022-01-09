@@ -140,11 +140,11 @@ const testimonialsAttrs = {
         default: [
             {
                 backOpacity: 1,
-                backColor: '',
-                imageID: '',
-                imageURL: '',
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "top center",
+                containerBack: '',
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
                 backgroundSize: 'auto',
                 fixed: false,
                 shadowColor: '',

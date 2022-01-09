@@ -938,20 +938,15 @@ class edit extends Component {
                                                             })
                                                         }
                                                     />
-                                                    <PremiumBackground
-                                                        type="color"
+                                                    <AdvancedPopColorControl
+                                                        label={__(`Background Color`)}
                                                         colorValue={iconBackColor}
-                                                        onChangeColor={newvalue =>
+                                                        onColorChange={newvalue =>
                                                             setAttributes({
                                                                 iconBackColor: newvalue,
                                                             })
                                                         }
-                                                        opacityValue={iconOpacity}
-                                                        onChangeOpacity={value =>
-                                                            setAttributes({
-                                                                iconOpacity: value,
-                                                            })
-                                                        }
+                                                        colorDefault={``}
                                                     />
                                                 </Fragment>
                                             )}
@@ -991,33 +986,26 @@ class edit extends Component {
                                                             })
                                                         }
                                                     />
-                                                    <PremiumBackground
-                                                        type="color"
+
+                                                    <AdvancedPopColorControl
+                                                        label={__(`Background Color`)}
                                                         colorValue={btnStyles[0].btnBack}
-                                                        onChangeColor={newvalue =>
+                                                        onColorChange={newvalue =>
                                                             saveButtonStyle({
                                                                 btnBack: newvalue,
                                                             })
                                                         }
-                                                        opacityValue={btnStyles[0].btnOpacity}
-                                                        onChangeOpacity={value =>
-                                                            saveButtonStyle({
-                                                                btnOpacity: value,
-                                                            })
-                                                        }
+                                                        colorDefault={``}
                                                     />
                                                 </Fragment>
                                             )}
-                                            <PremiumBackground
-                                                type="color"
+                                            <AdvancedPopColorControl
+                                                label={__(`Background Color`)}
                                                 colorValue={containerStyles[0].backColor}
-                                                onChangeColor={newvalue =>
+                                                onColorChange={newvalue =>
                                                     saveContainerStyle({ backColor: newvalue })
                                                 }
-                                                opacityValue={containerStyles[0].backOpacity}
-                                                onChangeOpacity={value =>
-                                                    saveContainerStyle({ backOpacity: value })
-                                                }
+                                                colorDefault={``}
                                             />
                                         </Fragment>
                                     );
