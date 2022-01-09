@@ -3,10 +3,10 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import PremiumBackgroundControl from '../../components/Premium-Background-Control'
 import map from 'lodash/map';
 
 const { __ } = wp.i18n;
@@ -210,153 +210,23 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <div className="kt-btn-size-settings-container">
-                        <h2 className="kt-beside-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
-                        <ButtonGroup className="kt-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
-                            {map(bgType, ({ name, key }) => (
-                                <Button
-                                    key={key}
-                                    className="kt-btn-size-btn"
-                                    isSmall
-                                    onClick={() => setAttributes({ backgroundType: key })}
-                                >
-                                    { name}
-                                </Button>
-                            ))}
-                        </ButtonGroup>
-                    </div>
-                    {'solid' === backgroundType && (
-                        <div className="kt-inner-sub-section">
-                            <PremiumBackground
-                                type="color"
-                                colorValue={containerStyles[0].color}
-                                onChangeColor={newvalue =>
-                                    saveContainerStyle({ color: newvalue })
-                                }
-                                opacityValue={containerStyles[0].opacity}
-                                onChangeOpacity={value =>
-                                    saveContainerStyle({ opacity: value })
-                                }
-                            />
-                            <PremiumBackground
-                                imageID={containerStyles[0].imageID}
-                                imageURL={containerStyles[0].imageURL}
-                                backgroundPosition={containerStyles[0].backgroundPosition}
-                                backgroundRepeat={containerStyles[0].backgroundRepeat}
-                                backgroundSize={containerStyles[0].backgroundSize}
-                                fixed={containerStyles[0].fixed}
-                                onSelectMedia={media => {
-                                    saveContainerStyle({
-                                        imageID: media.id,
-                                        imageURL: media.url
-                                    });
-                                }}
-                                onRemoveImage={value =>
-                                    saveContainerStyle({ imageURL: "", imageID: "" })
-                                }
-                                onChangeBackPos={newValue =>
-                                    saveContainerStyle({ backgroundPosition: newValue })
-                                }
-                                onchangeBackRepeat={newValue =>
-                                    saveContainerStyle({ backgroundRepeat: newValue })
-                                }
-                                onChangeBackSize={newValue =>
-                                    saveContainerStyle({ backgroundSize: newValue })
-                                }
-                                onChangeFixed={check =>
-                                    saveContainerStyle({ fixed: check })
-                                }
-                            />
-                        </div>
-                    )}
-                    {'gradient' === backgroundType && (
-                        <div className="kt-inner-sub-section">
-                            <AdvancedPopColorControl
-                                label={__('Gradient Color 1', 'premium-block-for-gutenberg')}
-                                colorValue={containerStyles[0].color}
-                                colorDefault={''}
-                                onColorChange={value => {
-                                    saveContainerStyle({ color: value })
-                                }}
-                            />
-
-                            <PremiumRangeControl
-                                label={__('Location', 'premium-block-for-gutenberg')}
-                                value={containerStyles[0].gradientLocationOne}
-                                onChange={(value) => {
-                                    saveContainerStyle({ gradientLocationOne: value })
-                                }}
-                                showUnit={false}
-                                defaultValue={0}
-                            />
-                            <AdvancedPopColorControl
-                                label={__('Gradient Color 2', 'premium-block-for-gutenberg')}
-                                colorValue={containerStyles[0].gradientColorTwo}
-                                colorDefault={'#777777'}
-                                onColorChange={value => {
-                                    saveContainerStyle({ gradientColorTwo: value })
-                                }}
-                            />
-                            <PremiumRangeControl
-                                label={__('Location', 'premium-block-for-gutenberg')}
-                                value={containerStyles[0].gradientLocationTwo}
-                                onChange={(value) => {
-                                    saveContainerStyle({ gradientLocationTwo: value })
-                                }}
-                                showUnit={false}
-                                defaultValue={0}
-                            />
-                            <div className="kt-btn-size-settings-container">
-                                <h2 className="kt-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
-                                <ButtonGroup className="kt-button-size-type-options" aria-label={__('Gradient Type', 'premium-block-for-gutenberg')}>
-                                    {map(gradTypes, ({ name, key }) => (
-                                        <Button
-                                            key={key}
-                                            className="kt-btn-size-btn"
-                                            isSmall
-                                            onClick={() => {
-                                                saveContainerStyle({ gradientType: key })
-                                            }}
-                                        >
-                                            { name}
-                                        </Button>
-                                    ))}
-                                </ButtonGroup>
-                            </div>
-                            { 'radial' !== (containerStyles[0].gradientType) && (
-                                <PremiumRangeControl
-                                    label={__('Gradient Angle', 'premium-block-for-gutenberg')}
-                                    value={containerStyles[0].gradientAngle}
-                                    onChange={(value) => {
-                                        saveContainerStyle({ gradientAngle: value })
-                                    }}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                    min={0}
-                                    max={360}
-                                />
-                            )}
-                            { 'radial' === (containerStyles[0].gradientType) && (
-                                <SelectControl
-                                    label={__('Gradient Position', 'premium-block-for-gutenberg')}
-                                    value={(containerStyles[0].gradientPosition)}
-                                    options={[
-                                        { value: 'center top', label: __('Center Top', 'premium-block-for-gutenberg') },
-                                        { value: 'center center', label: __('Center Center', 'premium-block-for-gutenberg') },
-                                        { value: 'center bottom', label: __('Center Bottom', 'premium-block-for-gutenberg') },
-                                        { value: 'left top', label: __('Left Top', 'premium-block-for-gutenberg') },
-                                        { value: 'left center', label: __('Left Center', 'premium-block-for-gutenberg') },
-                                        { value: 'left bottom', label: __('Left Bottom', 'premium-block-for-gutenberg') },
-                                        { value: 'right top', label: __('Right Top', 'premium-block-for-gutenberg') },
-                                        { value: 'right center', label: __('Right Center', 'premium-block-for-gutenberg') },
-                                        { value: 'right bottom', label: __('Right Bottom', 'premium-block-for-gutenberg') },
-                                    ]}
-                                    onChange={value => saveContainerStyle({ gradientPosition: value })}
-                                />
-                            )}
-                        </div>
-                    )}
-
+                    <PremiumBackgroundControl
+                        setAttributes={setAttributes}
+                        saveContainerStyle={saveContainerStyle}
+                        backgroundType={backgroundType}
+                        backgroundColor={containerStyles[0].containerBack}
+                        backgroundImageID={containerStyles[0].backgroundImageID}
+                        backgroundImageURL={containerStyles[0].backgroundImageURL}
+                        backgroundPosition={containerStyles[0].backgroundPosition}
+                        backgroundRepeat={containerStyles[0].backgroundRepeat}
+                        backgroundSize={containerStyles[0].backgroundSize}
+                        fixed={containerStyles[0].fixed}
+                        gradientLocationOne={containerStyles[0].gradientLocationOne}
+                        gradientColorTwo={containerStyles[0].gradientColorTwo}
+                        gradientLocationTwo={containerStyles[0].gradientLocationTwo}
+                        gradientAngle={containerStyles[0].gradientAngle}
+                        gradientPosition={containerStyles[0].gradientPosition}
+                    />
                 </PanelBody>
                 <PanelBody
                     title={__("Border", 'premium-block-for-gutenberg')}
@@ -515,14 +385,14 @@ const edit = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].color,
+                backgroundColor: containerStyles[0].containerBack,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,

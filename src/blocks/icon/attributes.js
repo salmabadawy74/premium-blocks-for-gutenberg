@@ -146,12 +146,12 @@ const attributes = {
         type: "array",
         default: [
             {
-                backgroundColor: '',
+                containerBack: '',
                 backgroundOpacity: 1,
-                imageID: '',
-                imageURL: '',
-                backgroundPosition: "top center",
-                backgroundRepeat: "no-repeat",
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
                 backgroundSize: 'auto',
                 fixed: false,
                 wrapBorderType: 'none',

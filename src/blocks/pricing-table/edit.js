@@ -3,7 +3,6 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBackground from "../../components/premium-background";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -780,21 +779,15 @@ class PremiumPricingTable extends Component {
                                     )}
                                 />
                             </div>
-                            <Fragment>
-                                <PremiumBackground
-                                    type="color"
-                                    colorValue={priceStyles[0].priceBack}
-                                    onChangeColor={(newvalue) =>
-                                        savePriceStyles({
-                                            priceBack: newvalue,
-                                        })
-                                    }
-                                    opacityValue={priceStyles[0].priceOpacity}
-                                    onChangeOpacity={(value) =>
-                                        savePriceStyles({ priceOpacity: value })
-                                    }
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__(`Background Color`)}
+                                colorValue={priceStyles[0].priceBack}
+                                onColorChange={(newvalue) =>
+                                    savePriceStyles({
+                                        priceBack: newvalue,
+                                    })}
+                                colorDefault={``}
+                            />
                         </PanelBody>
                     )}
                     {listChecked && (
@@ -1286,16 +1279,13 @@ class PremiumPricingTable extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumBackground
-                            type="color"
+                        <AdvancedPopColorControl
+                            label={__(`Background Color`)}
                             colorValue={tableStyles[0].tableBack}
-                            onChangeColor={(newvalue) =>
+                            onColorChange={(newvalue) =>
                                 saveTableStyles({ tableBack: newvalue })
                             }
-                            opacityValue={tableStyles[0].tableOpacity}
-                            onChangeOpacity={(value) =>
-                                saveTableStyles({ tableOpacity: value })
-                            }
+                            colorDefault={``}
                         />
                         <PremiumBorder
                             borderType={tableStyles[0].borderType}

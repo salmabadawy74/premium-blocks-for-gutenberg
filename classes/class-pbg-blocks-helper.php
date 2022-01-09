@@ -712,7 +712,7 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_fancy_text_css_style( $attributes, $unique_id );
 
@@ -889,7 +889,7 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
@@ -984,7 +984,7 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
@@ -1070,7 +1070,7 @@ class PBG_Blocks_Helper {
 			}
 		}
 
-		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
@@ -1175,7 +1175,7 @@ class PBG_Blocks_Helper {
 			);
 		}
 
-		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
@@ -1342,7 +1342,7 @@ class PBG_Blocks_Helper {
 				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
-		$style_id = 'kt-blocks-' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 
 			$css = $this->get_dual_css_style( $attributes, $unique_id );
@@ -1446,7 +1446,7 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 
 			$css = $this->get_iconbox_css_style( $attributes, $unique_id );
@@ -1566,7 +1566,7 @@ class PBG_Blocks_Helper {
 
 		}
 
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'price', $unique_id ) ) {
 
 			$css = $this->get_pricing_css_style( $attributes, $unique_id );
@@ -1764,7 +1764,7 @@ class PBG_Blocks_Helper {
 			);
 		}
 
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_lottie_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
@@ -1840,7 +1840,7 @@ class PBG_Blocks_Helper {
 				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
 			}
 		}
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_testimonial_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
@@ -1957,7 +1957,7 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_videobox_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
@@ -2063,7 +2063,7 @@ class PBG_Blocks_Helper {
 			);
 
 		}
-		$style_id = 'kt-blocks' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_videobox_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {

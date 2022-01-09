@@ -89,6 +89,7 @@ class PremiumAccordion extends Component {
             descPaddingB,
             descPaddingL,
         } = this.props.attributes;
+
         const DIRECTION = [
             {
                 value: "ltr",
@@ -99,6 +100,7 @@ class PremiumAccordion extends Component {
                 label: "RTL"
             }
         ];
+
         const ARROW = [
             {
                 value: "in",
@@ -109,6 +111,7 @@ class PremiumAccordion extends Component {
                 label: __("Out", 'premium-block-for-gutenberg')
             }
         ];
+
         const TYPE = [
             {
                 value: "text",
@@ -119,6 +122,7 @@ class PremiumAccordion extends Component {
                 label: __("Gutenberg Block", 'premium-block-for-gutenberg')
             }
         ];
+
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -131,6 +135,7 @@ class PremiumAccordion extends Component {
             });
 
         };
+
         const saveArrowStyles = (value) => {
             const newUpdate = arrowStyles.map((item, index) => {
                 if (0 === index) {
@@ -331,31 +336,26 @@ class PremiumAccordion extends Component {
                             onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
                             onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                         />
-
-                        <Fragment>
-
-                            <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].titleColor}
-                                colorDefault={''}
-                                onColorChange={value =>
-                                    saveTitleStyles({
-                                        titleColor: value
-                                    })
-                                }
-                            />
-                            <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].titleBack}
-                                colorDefault={''}
-                                onColorChange={value =>
-                                    saveTitleStyles({
-                                        titleBack: value
-                                    })
-                                }
-                            />
-                        </Fragment>
-
+                        <AdvancedPopColorControl
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            colorValue={titleStyles[0].titleColor}
+                            colorDefault={''}
+                            onColorChange={value =>
+                                saveTitleStyles({
+                                    titleColor: value
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                            colorValue={titleStyles[0].titleBack}
+                            colorDefault={''}
+                            onColorChange={value =>
+                                saveTitleStyles({
+                                    titleBack: value
+                                })
+                            }
+                        />
                         <PremiumBorder
                             borderType={titleStyles[0].titleBorder}
                             borderWidth={titleBorderWidth}
