@@ -730,7 +730,7 @@ var AdvancedColorControl = function (_Component) {
                             { text: __('Select Color') },
                             React.createElement(
                                 Button,
-                                { className: 'premium-color-picker-single ' + ('' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleClose },
+                                { className: 'premium-color-picker-single ' + ('' === this.props.colorDefault ? 'Premium-has-alpha' : 'Premium-no-alpha'), onClick: toggleClose },
                                 React.createElement(ColorIndicator, { className: 'premium-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
                             )
                         ),
@@ -739,7 +739,7 @@ var AdvancedColorControl = function (_Component) {
                             { text: __('Select Color') },
                             React.createElement(
                                 Button,
-                                { className: 'premium-color-picker-single ' + ('' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha'), onClick: toggleVisible },
+                                { className: 'premium-color-picker-single ' + ('' === this.props.colorDefault ? 'Premium-has-alpha' : 'Premium-no-alpha'), onClick: toggleVisible },
                                 React.createElement(ColorIndicator, { className: 'premium-advanced-color-indicate', colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue })
                             )
                         )
@@ -2732,15 +2732,15 @@ function PremiumBackgroundControl(_ref) {
         null,
         _react2.default.createElement(
             'div',
-            { className: 'kt-btn-size-settings-container' },
+            { className: 'Premium-btn-size-settings-container' },
             _react2.default.createElement(
                 'h2',
-                { className: 'kt-beside-btn-group' },
+                { className: 'Premium-beside-btn-group' },
                 __('Background Type', 'premium-block-for-gutenberg')
             ),
             _react2.default.createElement(
                 ButtonGroup,
-                { className: 'kt-button-size-type-options', 'aria-label': __('Background Type', 'premium-block-for-gutenberg') },
+                { className: 'Premium-button-size-type-options', 'aria-label': __('Background Type', 'premium-block-for-gutenberg') },
                 (0, _map2.default)(bgType, function (_ref2) {
                     var name = _ref2.name,
                         key = _ref2.key;
@@ -2748,7 +2748,7 @@ function PremiumBackgroundControl(_ref) {
                         Button,
                         {
                             key: key,
-                            className: 'kt-btn-size-btn',
+                            className: 'Premium-btn-size-btn',
                             isSmall: true,
                             onClick: function onClick() {
                                 return setAttributes({ backgroundType: key });
@@ -2761,7 +2761,7 @@ function PremiumBackgroundControl(_ref) {
         ),
         'solid' === backgroundType && _react2.default.createElement(
             'div',
-            { className: 'kt-inner-sub-section' },
+            { className: 'Premium-inner-sub-section' },
             _react2.default.createElement(_premiumBackground2.default, {
                 type: 'color',
                 colorValue: backgroundColor,
@@ -2806,7 +2806,7 @@ function PremiumBackgroundControl(_ref) {
         ),
         'gradient' === backgroundType && _react2.default.createElement(
             'div',
-            { className: 'kt-inner-sub-section' },
+            { className: 'Premium-inner-sub-section' },
             _react2.default.createElement(_ColorComponent2.default, {
                 label: __('Gradient Color 1', 'premium-block-for-gutenberg'),
                 colorValue: backgroundColor,
@@ -2843,15 +2843,15 @@ function PremiumBackgroundControl(_ref) {
             }),
             _react2.default.createElement(
                 'div',
-                { className: 'kt-btn-size-settings-container' },
+                { className: 'Premium-btn-size-settings-container' },
                 _react2.default.createElement(
                     'h2',
-                    { className: 'kt-beside-btn-group' },
+                    { className: 'Premium-beside-btn-group' },
                     __('Gradient Type', 'premium-block-for-gutenberg')
                 ),
                 _react2.default.createElement(
                     ButtonGroup,
-                    { className: 'kt-button-size-type-options', 'aria-label': __('Gradient Type', 'premium-block-for-gutenberg') },
+                    { className: 'Premium-button-size-type-options', 'aria-label': __('Gradient Type', 'premium-block-for-gutenberg') },
                     (0, _map2.default)(gradTypes, function (_ref3) {
                         var name = _ref3.name,
                             key = _ref3.key;
@@ -2859,7 +2859,7 @@ function PremiumBackgroundControl(_ref) {
                             Button,
                             {
                                 key: key,
-                                className: 'kt-btn-size-btn',
+                                className: 'Premium-btn-size-btn',
                                 isSmall: true,
                                 onClick: function onClick() {
                                     saveContainerStyle({ gradientType: key });
@@ -70684,7 +70684,7 @@ var edit = exports.edit = function (_Component) {
                             null,
                             React.createElement(
                                 'h2',
-                                { className: 'kt-heading-size-title' },
+                                { className: 'Premium-heading-size-title' },
                                 __('Select  Audience', '')
                             ),
                             !listsLoaded ? this.getMailChimpAudience() : '',
@@ -70695,7 +70695,7 @@ var edit = exports.edit = function (_Component) {
                             null,
                             React.createElement(
                                 'h2',
-                                { className: 'kt-heading-size-title' },
+                                { className: 'Premium-heading-size-title' },
                                 __('Select Audience', '')
                             ),
                             React.createElement(_reactSelect2.default, {
@@ -70716,7 +70716,7 @@ var edit = exports.edit = function (_Component) {
                                 null,
                                 React.createElement(
                                     'h2',
-                                    { className: 'kt-heading-size-title' },
+                                    { className: 'Premium-heading-size-title' },
                                     __('Select Group', 'premium-block-for-gutenberg')
                                 ),
                                 !listGroupLoaded ? this.getMailChimpGroups() : '',
@@ -70727,7 +70727,7 @@ var edit = exports.edit = function (_Component) {
                                 null,
                                 React.createElement(
                                     'h2',
-                                    { className: 'kt-heading-size-title' },
+                                    { className: 'Premium-heading-size-title' },
                                     __('Select Group', 'premium-block-for-gutenberg')
                                 ),
                                 React.createElement(_reactSelect2.default, {
@@ -70748,7 +70748,7 @@ var edit = exports.edit = function (_Component) {
                                 null,
                                 React.createElement(
                                     'h2',
-                                    { className: 'kt-heading-size-title' },
+                                    { className: 'Premium-heading-size-title' },
                                     __('Select Tags', 'premium-block-for-gutenberg')
                                 ),
                                 !listTagsLoaded ? this.getMailChimpTags() : '',
@@ -70759,7 +70759,7 @@ var edit = exports.edit = function (_Component) {
                                 null,
                                 React.createElement(
                                     'h2',
-                                    { className: 'kt-heading-size-title' },
+                                    { className: 'Premium-heading-size-title' },
                                     __('Select Tags', 'premium-block-for-gutenberg')
                                 ),
                                 React.createElement(_reactSelect2.default, {

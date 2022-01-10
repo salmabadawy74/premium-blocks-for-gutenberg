@@ -25,13 +25,13 @@ export default function PremiumBackgroundControl({
     console.log(backgroundType, backgroundColor, backgroundImageID, backgroundImageURL);
     return (
         <Fragment>
-            <div className="kt-btn-size-settings-container">
-                <h2 className="kt-beside-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
-                <ButtonGroup className="kt-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
+            <div className="Premium-btn-size-settings-container">
+                <h2 className="Premium-beside-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
+                <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
                     {map(bgType, ({ name, key }) => (
                         <Button
                             key={key}
-                            className="kt-btn-size-btn"
+                            className="Premium-btn-size-btn"
                             isSmall
                             onClick={() => setAttributes({ backgroundType: key })}
                         >
@@ -41,7 +41,7 @@ export default function PremiumBackgroundControl({
                 </ButtonGroup>
             </div>
             {'solid' === backgroundType && (
-                <div className="kt-inner-sub-section">
+                <div className="Premium-inner-sub-section">
                     <PremiumBackground
                         type="color"
                         colorValue={backgroundColor}
@@ -84,7 +84,7 @@ export default function PremiumBackgroundControl({
                 </div>
             )}
             {'gradient' === backgroundType && (
-                <div className="kt-inner-sub-section">
+                <div className="Premium-inner-sub-section">
                     <AdvancedPopColorControl
                         label={__('Gradient Color 1', 'premium-block-for-gutenberg')}
                         colorValue={backgroundColor}
@@ -120,13 +120,13 @@ export default function PremiumBackgroundControl({
                         showUnit={false}
                         defaultValue={0}
                     />
-                    <div className="kt-btn-size-settings-container">
-                        <h2 className="kt-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
-                        <ButtonGroup className="kt-button-size-type-options" aria-label={__('Gradient Type', 'premium-block-for-gutenberg')}>
+                    <div className="Premium-btn-size-settings-container">
+                        <h2 className="Premium-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
+                        <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-block-for-gutenberg')}>
                             {map(gradTypes, ({ name, key }) => (
                                 <Button
                                     key={key}
-                                    className="kt-btn-size-btn"
+                                    className="Premium-btn-size-btn"
                                     isSmall
                                     onClick={() => {
                                         saveContainerStyle({ gradientType: key })
