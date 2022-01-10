@@ -358,7 +358,7 @@ export class edit extends Component {
                         {/* ///////////////////////////////////// Audience //////////////////////////////////////// */}
                         {isSavedAPI && <Fragment>
                             {!isFetching && !m && <Fragment>
-                                <h2 className="kt-heading-size-title">{__('Select  Audience', '')}</h2>
+                                <h2 className="Premium-heading-size-title">{__('Select  Audience', '')}</h2>
                                 {(!listsLoaded ? this.getMailChimpAudience() : '')}
                                 {!Array.isArray(list) ?
                                     <Spinner /> :
@@ -366,7 +366,7 @@ export class edit extends Component {
                             </Fragment>}
                             {!isFetching && m && <Fragment>
 
-                                <h2 className="kt-heading-size-title">{__('Select Audience', '')}</h2>
+                                <h2 className="Premium-heading-size-title">{__('Select Audience', '')}</h2>
                                 <Select
                                     value={mailchimp[0].list ? mailchimp[0].list : ""}
                                     onChange={(value) => {
@@ -386,7 +386,7 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingGroups && !g && (
                                     <Fragment>
-                                        <h2 className="kt-heading-size-title">{__('Select Group', 'premium-block-for-gutenberg')}</h2>
+                                        <h2 className="Premium-heading-size-title">{__('Select Group', 'premium-block-for-gutenberg')}</h2>
                                         { (!listGroupLoaded ? this.getMailChimpGroups() : '')}
                                         { !Array.isArray(listGroups) ?
                                             <Spinner /> :
@@ -396,7 +396,7 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingGroups && g && <Fragment>
 
-                                    <h2 className="kt-heading-size-title">{__('Select Group', 'premium-block-for-gutenberg')}</h2>
+                                    <h2 className="Premium-heading-size-title">{__('Select Group', 'premium-block-for-gutenberg')}</h2>
                                     <Select
                                         value={(undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].groups ? mailchimp[0].groups : '')}
                                         onChange={(value) => {
@@ -415,7 +415,7 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingTags && !v && (
                                     <Fragment>
-                                        <h2 className="kt-heading-size-title">{__('Select Tags', 'premium-block-for-gutenberg')}</h2>
+                                        <h2 className="Premium-heading-size-title">{__('Select Tags', 'premium-block-for-gutenberg')}</h2>
                                         { (!listTagsLoaded ? this.getMailChimpTags() : '')}
                                         { !Array.isArray(listTags) ?
                                             <Spinner /> :
@@ -425,7 +425,7 @@ export class edit extends Component {
                                 )}
                                 {!isFetchingTags && v && <Fragment>
 
-                                    <h2 className="kt-heading-size-title">{__('Select Tags', 'premium-block-for-gutenberg')}</h2>
+                                    <h2 className="Premium-heading-size-title">{__('Select Tags', 'premium-block-for-gutenberg')}</h2>
                                     <Select
                                         value={(undefined !== mailchimp && undefined !== mailchimp[0] && undefined !== mailchimp[0].tags ? mailchimp[0].tags : '')}
                                         onChange={(value) => {

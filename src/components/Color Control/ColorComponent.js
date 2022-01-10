@@ -129,14 +129,14 @@ class AdvancedColorControl extends Component {
                         )}
                         {this.state.isVisible && (
                             <Tooltip text={__('Select Color')}>
-                                <Button className={`premium-color-picker-single ${('' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha')}`} onClick={toggleClose}>
+                                <Button className={`premium-color-picker-single ${('' === this.props.colorDefault ? 'Premium-has-alpha' : 'Premium-no-alpha')}`} onClick={toggleClose}>
                                     <ColorIndicator className="premium-advanced-color-indicate" colorValue={('transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue)} />
                                 </Button>
                             </Tooltip>
                         )}
                         {!this.state.isVisible && (
                             <Tooltip text={__('Select Color')}>
-                                <Button className={`premium-color-picker-single ${('' === this.props.colorDefault ? 'kt-has-alpha' : 'kt-no-alpha')}`} onClick={toggleVisible}>
+                                <Button className={`premium-color-picker-single ${('' === this.props.colorDefault ? 'Premium-has-alpha' : 'Premium-no-alpha')}`} onClick={toggleVisible}>
                                     <ColorIndicator className="premium-advanced-color-indicate" colorValue={('transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue)} />
                                 </Button>
                             </Tooltip>
