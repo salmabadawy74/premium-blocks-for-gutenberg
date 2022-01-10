@@ -115,7 +115,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(81)) === 'object' && __webpack_require__(81)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(80)) === 'object' && __webpack_require__(80)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -562,7 +562,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = __webpack_require__(89);
+var _get = __webpack_require__(88);
 
 var _get2 = _interopRequireDefault(_get);
 
@@ -1167,7 +1167,7 @@ var _webfontloader = __webpack_require__(132);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
-var _reactSelect = __webpack_require__(82);
+var _reactSelect = __webpack_require__(81);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
@@ -1435,7 +1435,7 @@ exports.default = PremiumTypo;
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(84);
+  var ReactIs = __webpack_require__(83);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -1467,7 +1467,7 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(92);
+var freeGlobal = __webpack_require__(91);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -2091,7 +2091,7 @@ module.exports = $export;
 
 var anObject = __webpack_require__(37);
 var IE8_DOM_DEFINE = __webpack_require__(114);
-var toPrimitive = __webpack_require__(68);
+var toPrimitive = __webpack_require__(67);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(20) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -2340,7 +2340,7 @@ module.exports = function (exec) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(117);
-var defined = __webpack_require__(69);
+var defined = __webpack_require__(68);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -2352,7 +2352,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var store = __webpack_require__(72)('wks');
+var store = __webpack_require__(71)('wks');
 var uid = __webpack_require__(51);
 var _Symbol = __webpack_require__(17).Symbol;
 var USE_SYMBOL = typeof _Symbol == 'function';
@@ -2610,7 +2610,7 @@ module.exports = isObject;
 "use strict";
 
 
-var arrayMap = __webpack_require__(96),
+var arrayMap = __webpack_require__(95),
     baseIteratee = __webpack_require__(190),
     baseMap = __webpack_require__(240),
     isArray = __webpack_require__(14);
@@ -2680,7 +2680,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumBackground = __webpack_require__(63);
+var _premiumBackground = __webpack_require__(106);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -3067,7 +3067,7 @@ module.exports = ListCache;
 "use strict";
 
 
-var eq = __webpack_require__(95);
+var eq = __webpack_require__(94);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -3281,7 +3281,7 @@ module.exports = function (bitmap, value) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(116);
-var enumBugKeys = __webpack_require__(73);
+var enumBugKeys = __webpack_require__(72);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -3446,9 +3446,9 @@ var _CSSTransition = _interopRequireDefault(__webpack_require__(155));
 
 var _ReplaceTransition = _interopRequireDefault(__webpack_require__(160));
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(88));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(87));
 
-var _Transition = _interopRequireDefault(__webpack_require__(85));
+var _Transition = _interopRequireDefault(__webpack_require__(84));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -3647,7 +3647,7 @@ module.exports = isLength;
 "use strict";
 
 
-var isFunction = __webpack_require__(93),
+var isFunction = __webpack_require__(92),
     isLength = __webpack_require__(60);
 
 /**
@@ -3798,225 +3798,6 @@ function PremiumFilters(props) {
 
 /***/ }),
 /* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumBackground;
-
-var _ColorComponent = __webpack_require__(5);
-
-var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Tooltip = _wp$components.Tooltip,
-    Dashicon = _wp$components.Dashicon;
-var MediaUpload = wp.blockEditor.MediaUpload;
-function PremiumBackground(props) {
-    var type = props.type,
-        colorValue = props.colorValue,
-        imageID = props.imageID,
-        imageURL = props.imageURL,
-        backgroundPosition = props.backgroundPosition,
-        backgroundRepeat = props.backgroundRepeat,
-        backgroundSize = props.backgroundSize,
-        fixed = props.fixed,
-        _props$onChangeColor = props.onChangeColor,
-        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-        _props$onSelectMedia = props.onSelectMedia,
-        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
-        _props$onRemoveImage = props.onRemoveImage,
-        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage,
-        _props$onChangeBackPo = props.onChangeBackPos,
-        onChangeBackPos = _props$onChangeBackPo === undefined ? function () {} : _props$onChangeBackPo,
-        _props$onchangeBackRe = props.onchangeBackRepeat,
-        onchangeBackRepeat = _props$onchangeBackRe === undefined ? function () {} : _props$onchangeBackRe,
-        _props$onChangeBackSi = props.onChangeBackSize,
-        onChangeBackSize = _props$onChangeBackSi === undefined ? function () {} : _props$onChangeBackSi,
-        _props$onChangeFixed = props.onChangeFixed,
-        onChangeFixed = _props$onChangeFixed === undefined ? function () {} : _props$onChangeFixed;
-
-
-    var POSITION = [{
-        value: "top left",
-        label: __("Top Left")
-    }, {
-        value: "top center",
-        label: __("Top Center")
-    }, {
-        value: "top right",
-        label: __("Top Right")
-    }, {
-        value: "center left",
-        label: __("Center Left")
-    }, {
-        value: "center center",
-        label: __("Center Center")
-    }, {
-        value: "center right",
-        label: __("Center Right")
-    }, {
-        value: "bottom left",
-        label: __("Bottom Left")
-    }, {
-        value: "bottom center",
-        label: __("Bottom Center")
-    }, {
-        value: "bottom right",
-        label: __("Bottom Right")
-    }];
-
-    var REPEAT = [{
-        value: "no-repeat",
-        label: __("No Repeat")
-    }, {
-        value: "repeat",
-        label: __("Repeat")
-    }, {
-        value: "repeat-x",
-        label: __("Repeat Horizontally")
-    }, {
-        value: "repeat-y",
-        label: __("Repeat Vertically")
-    }];
-
-    var SIZE = [{
-        value: "auto",
-        label: __("Auto")
-    }, {
-        value: "cover",
-        label: __("Cover")
-    }, {
-        value: "contain",
-        label: __("Contain")
-    }];
-    console.log(imageID, imageURL, backgroundPosition, backgroundRepeat, backgroundSize, fixed);
-    return type === "color" ? React.createElement(
-        Fragment,
-        null,
-        React.createElement(_ColorComponent2.default, {
-            label: __("Background Color", ''),
-            colorValue: colorValue,
-            colorDefault: '',
-            onColorChange: onChangeColor
-        })
-    ) : React.createElement(
-        Fragment,
-        null,
-        React.createElement(MediaUpload, {
-            allowedTypes: ["image"],
-            onSelect: onSelectMedia,
-            type: "image",
-            value: imageID,
-            render: function render(_ref) {
-                var open = _ref.open;
-                return React.createElement(
-                    Fragment,
-                    null,
-                    imageURL && React.createElement(
-                        "span",
-                        { className: "premium-image-media" },
-                        React.createElement("img", {
-                            src: imageURL,
-                            className: "premium-image-upload"
-                        }),
-                        React.createElement(
-                            "div",
-                            { className: "premium-image-actions" },
-                            React.createElement(
-                                Tooltip,
-                                { text: __("Edit") },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Edit"),
-                                        onClick: open,
-                                        role: "button"
-                                    },
-                                    React.createElement("span", {
-                                        "aria-label": __("Edit"),
-                                        className: "fa fa-pencil"
-                                    })
-                                )
-                            ),
-                            React.createElement(
-                                Tooltip,
-                                { text: __("Remove") },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Remove"),
-                                        onClick: onRemoveImage,
-                                        role: "button"
-                                    },
-                                    React.createElement("span", {
-                                        "aria-label": __("Close"),
-                                        className: "fa fa-trash-o"
-                                    })
-                                )
-                            )
-                        )
-                    ),
-                    !imageURL && React.createElement(
-                        "div",
-                        {
-                            onClick: open,
-                            className: "premium-placeholder-image"
-                        },
-                        React.createElement(Dashicon, { icon: "insert" }),
-                        React.createElement(
-                            "span",
-                            null,
-                            __("Insert Background ")
-                        )
-                    )
-                );
-            }
-        }),
-        imageURL && React.createElement(
-            Fragment,
-            null,
-            React.createElement(SelectControl, {
-                label: __("Position"),
-                options: POSITION,
-                value: backgroundPosition,
-                onChange: onChangeBackPos
-            }),
-            React.createElement(SelectControl, {
-                label: __("Repeat"),
-                options: REPEAT,
-                value: backgroundRepeat,
-                onChange: onchangeBackRepeat
-            }),
-            React.createElement(SelectControl, {
-                label: __("Size"),
-                options: SIZE,
-                value: backgroundSize,
-                onChange: onChangeBackSize
-            }),
-            React.createElement(ToggleControl, {
-                label: __("Fixed Background"),
-                checked: fixed,
-                onChange: onChangeFixed
-            })
-        )
-    );
-}
-
-/***/ }),
-/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4280,7 +4061,7 @@ var PremiumMargin = function (_Component) {
 exports.default = PremiumMargin;
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4324,7 +4105,7 @@ var DefaultImage = function (_Component) {
 exports.default = DefaultImage;
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4392,7 +4173,7 @@ var PremiumLowerQuote = function (_Component) {
 exports.default = PremiumLowerQuote;
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4461,7 +4242,7 @@ var PremiumUpperQuote = function (_Component) {
 exports.default = PremiumUpperQuote;
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4481,7 +4262,7 @@ module.exports = function (it, S) {
 };
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4494,7 +4275,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4508,20 +4289,20 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var shared = __webpack_require__(72)('keys');
+var shared = __webpack_require__(71)('keys');
 var uid = __webpack_require__(51);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4541,7 +4322,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 });
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4551,7 +4332,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'.split(',');
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4560,20 +4341,20 @@ module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,
 exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(69);
+var defined = __webpack_require__(68);
 module.exports = function (it) {
   return Object(defined(it));
 };
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4582,7 +4363,7 @@ module.exports = function (it) {
 module.exports = {};
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4591,8 +4372,8 @@ module.exports = {};
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(37);
 var dPs = __webpack_require__(353);
-var enumBugKeys = __webpack_require__(73);
-var IE_PROTO = __webpack_require__(71)('IE_PROTO');
+var enumBugKeys = __webpack_require__(72);
+var IE_PROTO = __webpack_require__(70)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
 var PROTOTYPE = 'prototype';
 
@@ -4632,7 +4413,7 @@ module.exports = Object.create || function create(O, Properties) {
 };
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4647,7 +4428,7 @@ module.exports = function (it, tag, stat) {
 };
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4656,7 +4437,7 @@ module.exports = function (it, tag, stat) {
 exports.f = __webpack_require__(29);
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4665,7 +4446,7 @@ exports.f = __webpack_require__(29);
 var global = __webpack_require__(17);
 var core = __webpack_require__(11);
 var LIBRARY = __webpack_require__(50);
-var wksExt = __webpack_require__(79);
+var wksExt = __webpack_require__(78);
 var defineProperty = __webpack_require__(19).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -4673,7 +4454,7 @@ module.exports = function (name) {
 };
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -4682,7 +4463,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10028,7 +9809,7 @@ exports.mergeStyles = mergeStyles;
 exports.defaultTheme = defaultTheme;
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10042,7 +9823,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10056,7 +9837,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10071,9 +9852,9 @@ var _react = _interopRequireDefault(__webpack_require__(2));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(22));
 
-var _reactLifecyclesCompat = __webpack_require__(86);
+var _reactLifecyclesCompat = __webpack_require__(85);
 
-var _PropTypes = __webpack_require__(87);
+var _PropTypes = __webpack_require__(86);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -10696,7 +10477,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10831,7 +10612,7 @@ function polyfill(Component) {
 exports.polyfill = polyfill;
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10868,7 +10649,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10881,7 +10662,7 @@ var _propTypes = _interopRequireDefault(__webpack_require__(10));
 
 var _react = _interopRequireDefault(__webpack_require__(2));
 
-var _reactLifecyclesCompat = __webpack_require__(86);
+var _reactLifecyclesCompat = __webpack_require__(85);
 
 var _ChildMapping = __webpack_require__(161);
 
@@ -11105,13 +10886,13 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGet = __webpack_require__(90);
+var baseGet = __webpack_require__(89);
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -11146,13 +10927,13 @@ function get(object, path, defaultValue) {
 module.exports = get;
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var castPath = __webpack_require__(91),
+var castPath = __webpack_require__(90),
     toKey = __webpack_require__(45);
 
 /**
@@ -11178,7 +10959,7 @@ function baseGet(object, path) {
 module.exports = baseGet;
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11207,7 +10988,7 @@ function castPath(value, object) {
 module.exports = castPath;
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11222,7 +11003,7 @@ module.exports = freeGlobal;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)))
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11267,7 +11048,7 @@ function isFunction(value) {
 module.exports = isFunction;
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11301,7 +11082,7 @@ function toSource(func) {
 module.exports = toSource;
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11346,7 +11127,7 @@ function eq(value, other) {
 module.exports = eq;
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11375,7 +11156,7 @@ function arrayMap(array, iteratee) {
 module.exports = arrayMap;
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11410,7 +11191,7 @@ Stack.prototype.set = stackSet;
 module.exports = Stack;
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11446,7 +11227,7 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 module.exports = baseIsEqual;
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11532,7 +11313,7 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalArrays;
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11577,7 +11358,7 @@ var isArguments = baseIsArguments(function () {
 module.exports = isArguments;
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11626,7 +11407,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11658,7 +11439,7 @@ function isIndex(value, length) {
 module.exports = isIndex;
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11693,7 +11474,7 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 module.exports = isTypedArray;
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11716,7 +11497,7 @@ function isStrictComparable(value) {
 module.exports = isStrictComparable;
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11743,7 +11524,7 @@ function matchesStrictComparable(key, srcValue) {
 module.exports = matchesStrictComparable;
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11980,6 +11761,225 @@ var attributes = {
 };
 
 exports.default = attributes;
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumBackground;
+
+var _ColorComponent = __webpack_require__(5);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    ToggleControl = _wp$components.ToggleControl,
+    Tooltip = _wp$components.Tooltip,
+    Dashicon = _wp$components.Dashicon;
+var MediaUpload = wp.blockEditor.MediaUpload;
+function PremiumBackground(props) {
+    var type = props.type,
+        colorValue = props.colorValue,
+        imageID = props.imageID,
+        imageURL = props.imageURL,
+        backgroundPosition = props.backgroundPosition,
+        backgroundRepeat = props.backgroundRepeat,
+        backgroundSize = props.backgroundSize,
+        fixed = props.fixed,
+        _props$onChangeColor = props.onChangeColor,
+        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+        _props$onSelectMedia = props.onSelectMedia,
+        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
+        _props$onRemoveImage = props.onRemoveImage,
+        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage,
+        _props$onChangeBackPo = props.onChangeBackPos,
+        onChangeBackPos = _props$onChangeBackPo === undefined ? function () {} : _props$onChangeBackPo,
+        _props$onchangeBackRe = props.onchangeBackRepeat,
+        onchangeBackRepeat = _props$onchangeBackRe === undefined ? function () {} : _props$onchangeBackRe,
+        _props$onChangeBackSi = props.onChangeBackSize,
+        onChangeBackSize = _props$onChangeBackSi === undefined ? function () {} : _props$onChangeBackSi,
+        _props$onChangeFixed = props.onChangeFixed,
+        onChangeFixed = _props$onChangeFixed === undefined ? function () {} : _props$onChangeFixed;
+
+
+    var POSITION = [{
+        value: "top left",
+        label: __("Top Left")
+    }, {
+        value: "top center",
+        label: __("Top Center")
+    }, {
+        value: "top right",
+        label: __("Top Right")
+    }, {
+        value: "center left",
+        label: __("Center Left")
+    }, {
+        value: "center center",
+        label: __("Center Center")
+    }, {
+        value: "center right",
+        label: __("Center Right")
+    }, {
+        value: "bottom left",
+        label: __("Bottom Left")
+    }, {
+        value: "bottom center",
+        label: __("Bottom Center")
+    }, {
+        value: "bottom right",
+        label: __("Bottom Right")
+    }];
+
+    var REPEAT = [{
+        value: "no-repeat",
+        label: __("No Repeat")
+    }, {
+        value: "repeat",
+        label: __("Repeat")
+    }, {
+        value: "repeat-x",
+        label: __("Repeat Horizontally")
+    }, {
+        value: "repeat-y",
+        label: __("Repeat Vertically")
+    }];
+
+    var SIZE = [{
+        value: "auto",
+        label: __("Auto")
+    }, {
+        value: "cover",
+        label: __("Cover")
+    }, {
+        value: "contain",
+        label: __("Contain")
+    }];
+    console.log(imageID, imageURL, backgroundPosition, backgroundRepeat, backgroundSize, fixed);
+    return type === "color" ? React.createElement(
+        Fragment,
+        null,
+        React.createElement(_ColorComponent2.default, {
+            label: __("Background Color", ''),
+            colorValue: colorValue,
+            colorDefault: '',
+            onColorChange: onChangeColor
+        })
+    ) : React.createElement(
+        Fragment,
+        null,
+        React.createElement(MediaUpload, {
+            allowedTypes: ["image"],
+            onSelect: onSelectMedia,
+            type: "image",
+            value: imageID,
+            render: function render(_ref) {
+                var open = _ref.open;
+                return React.createElement(
+                    Fragment,
+                    null,
+                    imageURL && React.createElement(
+                        "span",
+                        { className: "premium-image-media" },
+                        React.createElement("img", {
+                            src: imageURL,
+                            className: "premium-image-upload"
+                        }),
+                        React.createElement(
+                            "div",
+                            { className: "premium-image-actions" },
+                            React.createElement(
+                                Tooltip,
+                                { text: __("Edit") },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-image-button",
+                                        "aria-label": __("Edit"),
+                                        onClick: open,
+                                        role: "button"
+                                    },
+                                    React.createElement("span", {
+                                        "aria-label": __("Edit"),
+                                        className: "fa fa-pencil"
+                                    })
+                                )
+                            ),
+                            React.createElement(
+                                Tooltip,
+                                { text: __("Remove") },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-image-button",
+                                        "aria-label": __("Remove"),
+                                        onClick: onRemoveImage,
+                                        role: "button"
+                                    },
+                                    React.createElement("span", {
+                                        "aria-label": __("Close"),
+                                        className: "fa fa-trash-o"
+                                    })
+                                )
+                            )
+                        )
+                    ),
+                    !imageURL && React.createElement(
+                        "div",
+                        {
+                            onClick: open,
+                            className: "premium-placeholder-image"
+                        },
+                        React.createElement(Dashicon, { icon: "insert" }),
+                        React.createElement(
+                            "span",
+                            null,
+                            __("Insert Background ")
+                        )
+                    )
+                );
+            }
+        }),
+        imageURL && React.createElement(
+            Fragment,
+            null,
+            React.createElement(SelectControl, {
+                label: __("Position"),
+                options: POSITION,
+                value: backgroundPosition,
+                onChange: onChangeBackPos
+            }),
+            React.createElement(SelectControl, {
+                label: __("Repeat"),
+                options: REPEAT,
+                value: backgroundRepeat,
+                onChange: onchangeBackRepeat
+            }),
+            React.createElement(SelectControl, {
+                label: __("Size"),
+                options: SIZE,
+                value: backgroundSize,
+                onChange: onChangeBackSize
+            }),
+            React.createElement(ToggleControl, {
+                label: __("Fixed Background"),
+                checked: fixed,
+                onChange: onChangeFixed
+            })
+        )
+    );
+}
 
 /***/ }),
 /* 107 */
@@ -12731,7 +12731,7 @@ module.exports = function (it) {
 var has = __webpack_require__(21);
 var toIObject = __webpack_require__(28);
 var arrayIndexOf = __webpack_require__(335)(false);
-var IE_PROTO = __webpack_require__(71)('IE_PROTO');
+var IE_PROTO = __webpack_require__(70)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -12784,8 +12784,8 @@ module.exports = function (it) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(21);
-var toObject = __webpack_require__(75);
-var IE_PROTO = __webpack_require__(71)('IE_PROTO');
+var toObject = __webpack_require__(74);
+var IE_PROTO = __webpack_require__(70)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -12842,9 +12842,9 @@ var LIBRARY = __webpack_require__(50);
 var $export = __webpack_require__(18);
 var redefine = __webpack_require__(122);
 var hide = __webpack_require__(25);
-var Iterators = __webpack_require__(76);
+var Iterators = __webpack_require__(75);
 var $iterCreate = __webpack_require__(352);
-var setToStringTag = __webpack_require__(78);
+var setToStringTag = __webpack_require__(77);
 var getPrototypeOf = __webpack_require__(119);
 var ITERATOR = __webpack_require__(29)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -12937,7 +12937,7 @@ module.exports = __webpack_require__(25);
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = __webpack_require__(116);
-var hiddenKeys = __webpack_require__(73).concat('length', 'prototype');
+var hiddenKeys = __webpack_require__(72).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -12953,7 +12953,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 var pIE = __webpack_require__(52);
 var createDesc = __webpack_require__(48);
 var toIObject = __webpack_require__(28);
-var toPrimitive = __webpack_require__(68);
+var toPrimitive = __webpack_require__(67);
 var has = __webpack_require__(21);
 var IE8_DOM_DEFINE = __webpack_require__(114);
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -18772,7 +18772,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var aa = __webpack_require__(2),
     n = __webpack_require__(30),
-    r = __webpack_require__(83);function ba(a, b, c, d, e, f, g, h) {
+    r = __webpack_require__(82);function ba(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
       var l = [c, d, e, f, g, h],
@@ -22016,7 +22016,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(2);var _assign=__webpack_require__(30);var checkPropTypes=__webpack_require__(53);var scheduler=__webpack_require__(83);var tracing=__webpack_require__(145);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(2);var _assign=__webpack_require__(30);var checkPropTypes=__webpack_require__(53);var scheduler=__webpack_require__(82);var tracing=__webpack_require__(145);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -26687,7 +26687,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(84);
+var ReactIs = __webpack_require__(83);
 var assign = __webpack_require__(30);
 
 var ReactPropTypesSecret = __webpack_require__(54);
@@ -27757,9 +27757,9 @@ var _removeClass = _interopRequireDefault(__webpack_require__(159));
 
 var _react = _interopRequireDefault(__webpack_require__(2));
 
-var _Transition = _interopRequireDefault(__webpack_require__(85));
+var _Transition = _interopRequireDefault(__webpack_require__(84));
 
-var _PropTypes = __webpack_require__(87);
+var _PropTypes = __webpack_require__(86);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -28222,7 +28222,7 @@ var _react = _interopRequireDefault(__webpack_require__(2));
 
 var _reactDom = __webpack_require__(22);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(88));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(87));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -28859,10 +28859,10 @@ module.exports = hashClear;
 "use strict";
 
 
-var isFunction = __webpack_require__(93),
+var isFunction = __webpack_require__(92),
     isMasked = __webpack_require__(171),
     isObject = __webpack_require__(34),
-    toSource = __webpack_require__(94);
+    toSource = __webpack_require__(93);
 
 /**
  * Used to match `RegExp`
@@ -29412,7 +29412,7 @@ module.exports = toString;
 
 
 var _Symbol = __webpack_require__(40),
-    arrayMap = __webpack_require__(96),
+    arrayMap = __webpack_require__(95),
     isArray = __webpack_require__(14),
     isSymbol = __webpack_require__(39);
 
@@ -29497,7 +29497,7 @@ module.exports = baseIteratee;
 
 var baseIsMatch = __webpack_require__(192),
     getMatchData = __webpack_require__(231),
-    matchesStrictComparable = __webpack_require__(105);
+    matchesStrictComparable = __webpack_require__(104);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -29525,8 +29525,8 @@ module.exports = baseMatches;
 "use strict";
 
 
-var Stack = __webpack_require__(97),
-    baseIsEqual = __webpack_require__(98);
+var Stack = __webpack_require__(96),
+    baseIsEqual = __webpack_require__(97);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -29724,14 +29724,14 @@ module.exports = stackSet;
 "use strict";
 
 
-var Stack = __webpack_require__(97),
-    equalArrays = __webpack_require__(99),
+var Stack = __webpack_require__(96),
+    equalArrays = __webpack_require__(98),
     equalByTag = __webpack_require__(204),
     equalObjects = __webpack_require__(208),
     getTag = __webpack_require__(226),
     isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(101),
-    isTypedArray = __webpack_require__(103);
+    isBuffer = __webpack_require__(100),
+    isTypedArray = __webpack_require__(102);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -29951,8 +29951,8 @@ module.exports = cacheHas;
 
 var _Symbol = __webpack_require__(40),
     Uint8Array = __webpack_require__(205),
-    eq = __webpack_require__(95),
-    equalArrays = __webpack_require__(99),
+    eq = __webpack_require__(94),
+    equalArrays = __webpack_require__(98),
     mapToArray = __webpack_require__(206),
     setToArray = __webpack_require__(207);
 
@@ -30406,11 +30406,11 @@ module.exports = stubArray;
 
 
 var baseTimes = __webpack_require__(216),
-    isArguments = __webpack_require__(100),
+    isArguments = __webpack_require__(99),
     isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(101),
-    isIndex = __webpack_require__(102),
-    isTypedArray = __webpack_require__(103);
+    isBuffer = __webpack_require__(100),
+    isIndex = __webpack_require__(101),
+    isTypedArray = __webpack_require__(102);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -30620,7 +30620,7 @@ module.exports = baseUnary;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(92);
+var freeGlobal = __webpack_require__(91);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -30766,7 +30766,7 @@ var DataView = __webpack_require__(227),
     Set = __webpack_require__(229),
     WeakMap = __webpack_require__(230),
     baseGetTag = __webpack_require__(32),
-    toSource = __webpack_require__(94);
+    toSource = __webpack_require__(93);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -30887,7 +30887,7 @@ module.exports = WeakMap;
 "use strict";
 
 
-var isStrictComparable = __webpack_require__(104),
+var isStrictComparable = __webpack_require__(103),
     keys = __webpack_require__(59);
 
 /**
@@ -30919,12 +30919,12 @@ module.exports = getMatchData;
 "use strict";
 
 
-var baseIsEqual = __webpack_require__(98),
-    get = __webpack_require__(89),
+var baseIsEqual = __webpack_require__(97),
+    get = __webpack_require__(88),
     hasIn = __webpack_require__(233),
     isKey = __webpack_require__(56),
-    isStrictComparable = __webpack_require__(104),
-    matchesStrictComparable = __webpack_require__(105),
+    isStrictComparable = __webpack_require__(103),
+    matchesStrictComparable = __webpack_require__(104),
     toKey = __webpack_require__(45);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -31021,10 +31021,10 @@ module.exports = baseHasIn;
 "use strict";
 
 
-var castPath = __webpack_require__(91),
-    isArguments = __webpack_require__(100),
+var castPath = __webpack_require__(90),
+    isArguments = __webpack_require__(99),
     isArray = __webpack_require__(14),
-    isIndex = __webpack_require__(102),
+    isIndex = __webpack_require__(101),
     isLength = __webpack_require__(60),
     toKey = __webpack_require__(45);
 
@@ -31158,7 +31158,7 @@ module.exports = baseProperty;
 "use strict";
 
 
-var baseGet = __webpack_require__(90);
+var baseGet = __webpack_require__(89);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -36692,7 +36692,7 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(4);
 
-var _attributes = __webpack_require__(106);
+var _attributes = __webpack_require__(105);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -37002,6 +37002,20 @@ var edit = function (_Component) {
                     containerStyles: newUpdate
                 });
             };
+            var btnGrad = void 0,
+                btnGrad2 = void 0,
+                btnbg = void 0;
+            if (undefined !== backgroundType && 'gradient' === backgroundType) {
+                btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+                btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+                if ('radial' === containerStyles[0].gradientType) {
+                    btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                } else if ('radial' !== containerStyles[0].gradientType) {
+                    btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                }
+            } else {
+                btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+            }
 
             var mainClasses = (0, _classnames2.default)(className, "premium-countup");
             var numberFontSize = this.getPreviewSize(this.props.deviceType, numberStyles[0].numberSize, numberStyles[0].numberSizeTablet, numberStyles[0].numberSizeMobile);
@@ -37615,9 +37629,9 @@ var edit = function (_Component) {
                     style: {
                         justifyContent: align,
                         flexDirection: flexDir,
-                        backgroundColor: containerStyles[0].containerBack,
+                        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
                         boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px rgba(" + containerStyles[0].shadowColor.r + "," + containerStyles[0].shadowColor.g + "," + containerStyles[0].shadowColor.b + ", " + containerStyles[0].shadowColor.a + ") " + containerStyles[0].shadowPosition,
-                        backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
+                        backgroundImage: btnbg,
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
                         backgroundPosition: containerStyles[0].backgroundPosition,
                         backgroundSize: containerStyles[0].backgroundSize,
@@ -37828,12 +37842,28 @@ var save = function save(props) {
         paddingT = _props$attributes.paddingT,
         paddingR = _props$attributes.paddingR,
         paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL;
+        paddingL = _props$attributes.paddingL,
+        backgroundType = _props$attributes.backgroundType;
 
 
     var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-countup');
+
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = 'radial-gradient(at ' + containerStyles[0].gradientPosition + ', ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = 'linear-gradient(' + containerStyles[0].gradientAngle + 'deg, ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : '';
+    }
 
     return React.createElement(
         'div',
@@ -37843,9 +37873,9 @@ var save = function save(props) {
             style: {
                 justifyContent: align,
                 flexDirection: flexDir,
-                backgroundColor: containerStyles[0].containerBack,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
                 boxShadow: containerStyles[0].shadowHorizontal + 'px ' + containerStyles[0].shadowVertical + 'px ' + containerStyles[0].shadowBlur + 'px rgba(' + containerStyles[0].shadowColor.r + ',' + containerStyles[0].shadowColor.g + ',' + containerStyles[0].shadowColor.b + ', ' + containerStyles[0].shadowColor.a + ') ' + containerStyles[0].shadowPosition,
-                backgroundImage: containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : 'none',
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -37989,7 +38019,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(106);
+var _attributes = __webpack_require__(105);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -39637,6 +39667,7 @@ var edit = function (_Component) {
                     secondStyles: newUpdate
                 });
             };
+
             var saveFirstStyle = function saveFirstStyle(value) {
                 var newUpdate = firstStyles.map(function (item, index) {
                     if (0 === index) {
@@ -39661,7 +39692,20 @@ var edit = function (_Component) {
             };
             var firstFontSize = this.getPreviewSize(this.props.deviceType, firstStyles[0].firstSize, firstStyles[0].firstSizeTablet, firstStyles[0].firstSizeMobile);
             var secondFontSize = this.getPreviewSize(this.props.deviceType, secondStyles[0].secondSize, secondStyles[0].secondSizeTablet, secondStyles[0].secondSizeMobile);
-
+            var btnGrad = void 0,
+                btnGrad2 = void 0,
+                btnbg = void 0;
+            if (undefined !== backgroundType && 'gradient' === backgroundType) {
+                btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+                btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+                if ('radial' === containerStyles[0].gradientType) {
+                    btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                } else if ('radial' !== containerStyles[0].gradientType) {
+                    btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                }
+            } else {
+                btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+            }
             return [isSelected && React.createElement(
                 BlockControls,
                 { key: "controls" },
@@ -40204,8 +40248,8 @@ var edit = function (_Component) {
                     className: (0, _classnames2.default)(className, "premium-dheading-block__container", "premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
                     style: {
                         textAlign: contentAlign,
-                        backgroundColor: containerStyles[0].containerBack,
-                        backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
+                        background: backgroundType === 'solid' ? containerStyles[0].containerBack : "transparent",
+                        backgroundImage: btnbg,
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
                         backgroundPosition: containerStyles[0].backgroundPosition,
                         backgroundSize: containerStyles[0].backgroundSize,
@@ -40352,10 +40396,25 @@ var save = function save(props) {
         secondBorderLeft = _props$attributes.secondBorderLeft,
         firstBorder = _props$attributes.firstBorder,
         secondBorder = _props$attributes.secondBorder,
-        containerBorder = _props$attributes.containerBorder;
+        containerBorder = _props$attributes.containerBorder,
+        backgroundType = _props$attributes.backgroundType;
 
 
     var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+    }
 
     return React.createElement(
         "div",
@@ -40364,8 +40423,8 @@ var save = function save(props) {
             className: (0, _classnames2.default)(className, "premium-dheading-block__container", "premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
             style: {
                 textAlign: contentAlign,
-                backgroundColor: containerStyles[0].containerBack,
-                backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -42253,7 +42312,7 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumMargin = __webpack_require__(64);
+var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
@@ -42403,14 +42462,20 @@ var edit = function edit(props) {
 
     var ALIGNS = ["left", "center", "right"];
 
-    // const gradTypes = [
-    //     { key: 'linear', name: __('Linear') },
-    //     { key: 'radial', name: __('Radial') },
-    // ];
-    // const bgType = [
-    //     { key: 'solid', name: __('Solid') },
-    //     { key: 'gradient', name: __('Gradient') },
-    // ];
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : "";
+    }
 
     var mainClasses = (0, _classnames2.default)(className, "premium-icon");
 
@@ -42790,8 +42855,8 @@ var edit = function edit(props) {
             className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: containerStyles[0].containerBack,
-                backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : "none",
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -42918,10 +42983,26 @@ var save = function save(props) {
         target = _props$attributes.target,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
-        hideMobile = _props$attributes.hideMobile;
+        hideMobile = _props$attributes.hideMobile,
+        backgroundType = _props$attributes.backgroundType;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon');
+
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = 'radial-gradient(at ' + containerStyles[0].gradientPosition + ', ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = 'linear-gradient(' + containerStyles[0].gradientAngle + 'deg, ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : "";
+    }
 
     return React.createElement(
         'div',
@@ -42929,8 +43010,8 @@ var save = function save(props) {
             className: mainClasses + '__container ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align,
-                backgroundColor: containerStyles[0].containerBack,
-                backgroundImage: containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : "none",
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -44828,7 +44909,7 @@ var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumMargin = __webpack_require__(64);
+var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
@@ -44840,7 +44921,7 @@ var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(63);
+var _premiumBackground = __webpack_require__(106);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -55606,7 +55687,7 @@ var _premiumPadding = __webpack_require__(16);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumMargin = __webpack_require__(64);
+var _premiumMargin = __webpack_require__(63);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
@@ -55713,9 +55794,6 @@ var edit = function edit(props) {
         label: __("Bottom", 'premium-block-for-gutenberg')
     }];
 
-    var gradTypes = [{ key: 'linear', name: __('Linear') }, { key: 'radial', name: __('Radial') }];
-    var bgType = [{ key: 'solid', name: __('Solid') }, { key: 'gradient', name: __('Gradient') }];
-
     var mainClasses = (0, _classnames2.default)(className, "premium-container");
 
     var saveContainerStyle = function saveContainerStyle(value) {
@@ -55729,6 +55807,20 @@ var edit = function edit(props) {
             containerStyles: newUpdate
         });
     };
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+    }
 
     return [isSelected && React.createElement(
         BlockControls,
@@ -56005,12 +56097,12 @@ var edit = function edit(props) {
             style: {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].containerBack,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
+                backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -56102,10 +56194,26 @@ var save = function save(props) {
         paddingTop = _props$attributes.paddingTop,
         paddingRight = _props$attributes.paddingRight,
         paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft;
+        paddingLeft = _props$attributes.paddingLeft,
+        backgroundType = _props$attributes.backgroundType;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-container');
+
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = 'radial-gradient(at ' + containerStyles[0].gradientPosition + ', ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = 'linear-gradient(' + containerStyles[0].gradientAngle + 'deg, ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+        }
+    } else {
+        btnbg = containerStyles[0].containerBack;
+    }
 
     return React.createElement(
         'div',
@@ -56114,12 +56222,12 @@ var save = function save(props) {
             style: {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].containerBack,
+                background: btnbg,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : 'none',
+                backgroundImage: containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : '',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -57087,15 +57195,15 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _defaultImage = __webpack_require__(65);
+var _defaultImage = __webpack_require__(64);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(66);
+var _upperQuote = __webpack_require__(65);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(67);
+var _lowerQuote = __webpack_require__(66);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -57301,10 +57409,23 @@ var edit = function (_Component) {
                 });
             };
 
-            var gradTypes = [{ key: 'linear', name: __('Linear') }, { key: 'radial', name: __('Radial') }];
-
-            var bgType = [{ key: 'solid', name: __('Solid') }, { key: 'gradient', name: __('Gradient') }];
-
+            var btnGrad = void 0,
+                btnGrad2 = void 0,
+                btnbg = void 0;
+            if (undefined !== backgroundType && 'gradient' === backgroundType) {
+                btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+                btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+                if ('radial' === containerStyles[0].gradientType) {
+                    btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                } else if ('radial' !== containerStyles[0].gradientType) {
+                    btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                }
+            } else if (containerStyles[0].backgroundImageURL && 'solid' === backgroundType) {
+                btnbg = containerStyles[0].backgroundImageURL + " ";
+            } else {
+                btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+            }
+            console.log(btnbg, "Testimonial Edit Function");
             var mainClasses = (0, _classnames2.default)(className, "premium-testimonial");
             var authorFontSize = this.getPreviewSize(this.props.deviceType, authorStyles[0].authorSize, authorStyles[0].authorSizeTablet, authorStyles[0].authorSizeMobile);
             var authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);
@@ -57790,8 +57911,8 @@ var edit = function (_Component) {
                     className: mainClasses + "__wrap premium-testimonial-" + block_id,
                     style: {
                         boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
-                        backgroundColor: containerStyles[0].containerBack,
-                        backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
+                        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : 'transparent',
+                        backgroundImage: btnbg,
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
                         backgroundPosition: containerStyles[0].backgroundPosition,
                         backgroundSize: containerStyles[0].backgroundSize,
@@ -57959,15 +58080,15 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _defaultImage = __webpack_require__(65);
+var _defaultImage = __webpack_require__(64);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(66);
+var _upperQuote = __webpack_require__(65);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(67);
+var _lowerQuote = __webpack_require__(66);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -58001,11 +58122,28 @@ var save = function save(props) {
         paddingTop = _props$attributes.paddingTop,
         paddingRight = _props$attributes.paddingRight,
         paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft;
+        paddingLeft = _props$attributes.paddingLeft,
+        backgroundType = _props$attributes.backgroundType;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-testimonial');
 
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none';
+    }
+
+    console.log(btnbg, "Testimonial Save Function");
     return React.createElement(
         "div",
         {
@@ -58013,8 +58151,8 @@ var save = function save(props) {
             className: mainClasses + "__wrap premium-testimonial-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
             style: {
                 boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
-                backgroundColor: containerStyles[0].containerBack,
-                backgroundImage: containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : 'none',
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -58153,15 +58291,15 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _defaultImage = __webpack_require__(65);
+var _defaultImage = __webpack_require__(64);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(66);
+var _upperQuote = __webpack_require__(65);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(67);
+var _lowerQuote = __webpack_require__(66);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -68216,9 +68354,9 @@ module.exports = function (it) {
 // 19.1.2.1 Object.assign(target, source, ...)
 
 var getKeys = __webpack_require__(49);
-var gOPS = __webpack_require__(74);
+var gOPS = __webpack_require__(73);
 var pIE = __webpack_require__(52);
-var toObject = __webpack_require__(75);
+var toObject = __webpack_require__(74);
 var IObject = __webpack_require__(117);
 var $assign = Object.assign;
 
@@ -68294,7 +68432,7 @@ module.exports = function (IS_INCLUDES) {
 
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(70);
+var toInteger = __webpack_require__(69);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -68307,7 +68445,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var toInteger = __webpack_require__(70);
+var toInteger = __webpack_require__(69);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -68342,7 +68480,7 @@ module.exports = __webpack_require__(11).Object.getPrototypeOf;
 
 
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(75);
+var toObject = __webpack_require__(74);
 var $getPrototypeOf = __webpack_require__(119);
 
 __webpack_require__(341)('getPrototypeOf', function () {
@@ -68497,7 +68635,7 @@ module.exports = { "default": __webpack_require__(349), __esModule: true };
 
 __webpack_require__(350);
 __webpack_require__(355);
-module.exports = __webpack_require__(79).f('iterator');
+module.exports = __webpack_require__(78).f('iterator');
 
 /***/ }),
 /* 350 */
@@ -68530,8 +68668,8 @@ __webpack_require__(121)(String, 'String', function (iterated) {
 "use strict";
 
 
-var toInteger = __webpack_require__(70);
-var defined = __webpack_require__(69);
+var toInteger = __webpack_require__(69);
+var defined = __webpack_require__(68);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -68553,9 +68691,9 @@ module.exports = function (TO_STRING) {
 "use strict";
 
 
-var create = __webpack_require__(77);
+var create = __webpack_require__(76);
 var descriptor = __webpack_require__(48);
-var setToStringTag = __webpack_require__(78);
+var setToStringTag = __webpack_require__(77);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -68610,7 +68748,7 @@ module.exports = document && document.documentElement;
 __webpack_require__(356);
 var global = __webpack_require__(17);
 var hide = __webpack_require__(25);
-var Iterators = __webpack_require__(76);
+var Iterators = __webpack_require__(75);
 var TO_STRING_TAG = __webpack_require__(29)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' + 'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' + 'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' + 'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' + 'TextTrackList,TouchList').split(',');
@@ -68632,7 +68770,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 var addToUnscopables = __webpack_require__(357);
 var step = __webpack_require__(358);
-var Iterators = __webpack_require__(76);
+var Iterators = __webpack_require__(75);
 var toIObject = __webpack_require__(28);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -68723,20 +68861,20 @@ var $export = __webpack_require__(18);
 var redefine = __webpack_require__(122);
 var META = __webpack_require__(362).KEY;
 var $fails = __webpack_require__(27);
-var shared = __webpack_require__(72);
-var setToStringTag = __webpack_require__(78);
+var shared = __webpack_require__(71);
+var setToStringTag = __webpack_require__(77);
 var uid = __webpack_require__(51);
 var wks = __webpack_require__(29);
-var wksExt = __webpack_require__(79);
-var wksDefine = __webpack_require__(80);
+var wksExt = __webpack_require__(78);
+var wksDefine = __webpack_require__(79);
 var enumKeys = __webpack_require__(363);
 var isArray = __webpack_require__(364);
 var anObject = __webpack_require__(37);
 var isObject = __webpack_require__(26);
 var toIObject = __webpack_require__(28);
-var toPrimitive = __webpack_require__(68);
+var toPrimitive = __webpack_require__(67);
 var createDesc = __webpack_require__(48);
-var _create = __webpack_require__(77);
+var _create = __webpack_require__(76);
 var gOPNExt = __webpack_require__(365);
 var $GOPD = __webpack_require__(124);
 var $DP = __webpack_require__(19);
@@ -68868,7 +69006,7 @@ if (!USE_NATIVE) {
   $DP.f = $defineProperty;
   __webpack_require__(123).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(52).f = $propertyIsEnumerable;
-  __webpack_require__(74).f = $getOwnPropertySymbols;
+  __webpack_require__(73).f = $getOwnPropertySymbols;
 
   if (DESCRIPTORS && !__webpack_require__(50)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
@@ -69028,7 +69166,7 @@ var meta = module.exports = {
 
 // all enumerable object keys, includes symbols
 var getKeys = __webpack_require__(49);
-var gOPS = __webpack_require__(74);
+var gOPS = __webpack_require__(73);
 var pIE = __webpack_require__(52);
 module.exports = function (it) {
   var result = getKeys(it);
@@ -69099,7 +69237,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 "use strict";
 
 
-__webpack_require__(80)('asyncIterator');
+__webpack_require__(79)('asyncIterator');
 
 /***/ }),
 /* 368 */
@@ -69108,7 +69246,7 @@ __webpack_require__(80)('asyncIterator');
 "use strict";
 
 
-__webpack_require__(80)('observable');
+__webpack_require__(79)('observable');
 
 /***/ }),
 /* 369 */
@@ -69246,7 +69384,7 @@ module.exports = function create(P, D) {
 
 var $export = __webpack_require__(18);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(77) });
+$export($export.S, 'Object', { create: __webpack_require__(76) });
 
 /***/ }),
 /* 377 */
@@ -70117,7 +70255,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactSelect = __webpack_require__(82);
+var _reactSelect = __webpack_require__(81);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
