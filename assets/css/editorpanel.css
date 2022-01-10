@@ -2848,6 +2848,11 @@ i.fipicon-angle-left:before {
   content: "\f341";
   font-family: dashicons; }
 
+.Premium-btn-size-settings-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
 .premium-blocks-range-control {
   margin: 15px 0px; }
   .premium-blocks-range-control header {
