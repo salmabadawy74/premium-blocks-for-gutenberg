@@ -3653,6 +3653,11 @@ i.fipicon-angle-left {
         font-family: dashicons;
     }
 }
+.Premium-btn-size-settings-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 @import "./RangeControl.scss";
 @import "./spacing.scss";
 @import "./color.scss";
