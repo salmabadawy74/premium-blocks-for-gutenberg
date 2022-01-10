@@ -96,14 +96,6 @@ const edit = props => {
         }
     ];
 
-    const gradTypes = [
-        { key: 'linear', name: __('Linear') },
-        { key: 'radial', name: __('Radial') },
-    ];
-    const bgType = [
-        { key: 'solid', name: __('Solid') },
-        { key: 'gradient', name: __('Gradient') },
-    ];
 
     const mainClasses = classnames(className, "premium-container");
 
@@ -117,6 +109,18 @@ const edit = props => {
         setAttributes({
             containerStyles: newUpdate,
         });
+    }
+    let btnGrad, btnGrad2, btnbg;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
     }
 
     return [
@@ -385,14 +389,14 @@ const edit = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: containerStyles[0].containerBack,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
+                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : '',
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,

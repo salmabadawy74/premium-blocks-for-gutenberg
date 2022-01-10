@@ -32,13 +32,26 @@ const save = props => {
         secondBorderLeft,
         firstBorder,
         secondBorder,
-        containerBorder
+        containerBorder,
+        backgroundType
     } = props.attributes;
 
     const mainClasses = classnames(
         className,
         "premium-dheading-block__container"
     );
+    let btnGrad, btnGrad2, btnbg;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+    }
 
     return (
         <div
@@ -47,8 +60,8 @@ const save = props => {
                 "premium-dheading-block__container", `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
             style={{
                 textAlign: contentAlign,
-                backgroundColor: containerStyles[0].containerBack,
-                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,

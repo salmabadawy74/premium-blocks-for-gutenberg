@@ -165,16 +165,21 @@ class edit extends Component {
             });
         }
 
-        const gradTypes = [
-            { key: 'linear', name: __('Linear') },
-            { key: 'radial', name: __('Radial') },
-        ];
-
-        const bgType = [
-            { key: 'solid', name: __('Solid') },
-            { key: 'gradient', name: __('Gradient') },
-        ];
-
+        let btnGrad, btnGrad2, btnbg;
+        if (undefined !== backgroundType && 'gradient' === backgroundType) {
+            btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+            btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+            if ('radial' === containerStyles[0].gradientType) {
+                btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+            } else if ('radial' !== containerStyles[0].gradientType) {
+                btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+            }
+        } else if (containerStyles[0].backgroundImageURL && 'solid' === backgroundType) {
+            btnbg = `${containerStyles[0].backgroundImageURL} `;
+        } else {
+            btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+        }
+        console.log(btnbg, "Testimonial Edit Function")
         const mainClasses = classnames(className, "premium-testimonial");
         const authorFontSize = this.getPreviewSize(this.props.deviceType, authorStyles[0].authorSize, authorStyles[0].authorSizeTablet, authorStyles[0].authorSizeMobile);
         const authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);
@@ -593,8 +598,8 @@ class edit extends Component {
                 className={`${mainClasses}__wrap premium-testimonial-${block_id}`}
                 style={{
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                    backgroundColor: containerStyles[0].containerBack,
-                    backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
+                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : 'transparent',
+                    backgroundImage: btnbg,
                     backgroundRepeat: containerStyles[0].backgroundRepeat,
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,

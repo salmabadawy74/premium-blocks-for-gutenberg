@@ -40,11 +40,26 @@ const save = props => {
         paddingR,
         paddingB,
         paddingL,
+        backgroundType
     } = props.attributes;
 
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
     const mainClasses = classnames(className, 'premium-countup');
+
+    let btnGrad, btnGrad2, btnbg;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+    }
+
 
     return (
         <div
@@ -53,9 +68,9 @@ const save = props => {
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
-                backgroundColor: containerStyles[0].containerBack,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px rgba(${containerStyles[0].shadowColor.r},${containerStyles[0].shadowColor.g},${containerStyles[0].shadowColor.b}, ${containerStyles[0].shadowColor.a}) ${containerStyles[0].shadowPosition}`,
-                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,

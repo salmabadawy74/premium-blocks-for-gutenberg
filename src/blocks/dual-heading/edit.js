@@ -110,6 +110,7 @@ class edit extends Component {
                 secondStyles: newUpdate,
             });
         }
+
         const saveFirstStyle = (value) => {
             const newUpdate = firstStyles.map((item, index) => {
                 if (0 === index) {
@@ -134,7 +135,18 @@ class edit extends Component {
         }
         const firstFontSize = this.getPreviewSize(this.props.deviceType, firstStyles[0].firstSize, firstStyles[0].firstSizeTablet, firstStyles[0].firstSizeMobile);
         const secondFontSize = this.getPreviewSize(this.props.deviceType, secondStyles[0].secondSize, secondStyles[0].secondSizeTablet, secondStyles[0].secondSizeMobile);
-
+        let btnGrad, btnGrad2, btnbg;
+        if (undefined !== backgroundType && 'gradient' === backgroundType) {
+            btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+            btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+            if ('radial' === containerStyles[0].gradientType) {
+                btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+            } else if ('radial' !== containerStyles[0].gradientType) {
+                btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+            }
+        } else {
+            btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+        }
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -633,8 +645,8 @@ class edit extends Component {
                     "premium-dheading-block__container", `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
                 style={{
                     textAlign: contentAlign,
-                    backgroundColor: containerStyles[0].containerBack,
-                    backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none',
+                    background: backgroundType === 'solid' ? containerStyles[0].containerBack : "transparent",
+                    backgroundImage: btnbg,
                     backgroundRepeat: containerStyles[0].backgroundRepeat,
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,
