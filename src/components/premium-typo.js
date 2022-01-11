@@ -3,6 +3,7 @@ import googleFonts from "./premium-fonts";
 import WebFont from 'webfontloader';
 import Select from "react-select";
 import PremiumRangeControl from './premium-range-control';
+import TypoComponent from './typo-control/outside-typo'
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -19,8 +20,48 @@ export default class PremiumTypo extends Component {
         super(props)
 
         this.state = {
-            fontFamily: this.props.fontFamily
+            fontFamily: this.props.fontFamily || "System Default",
+            size: this.props.size,
+            weight: this.props.weight, //
+            style: this.props.style,//
+            spacing: this.props.spacing,
+            line: this.props.line,
+            upper: this.props.upper,//
+            sizeUnit: this.props.sizeUnit || 'px'
         }
+
+        this.defaultValue = {
+            fontFamily: "System Default",
+            variation: 'n4',
+            size: {
+                desktop: "15",
+                "desktop-unit": "px",
+                tablet: "",
+                "tablet-unit": "px",
+                mobile: "",
+                "mobile-unit": "px",
+            },
+            sizeUnit: "px",
+            line: {
+                desktop: "",
+                "desktop-unit": "px",
+                tablet: "",
+                "tablet-unit": "px",
+                mobile: "",
+                "mobile-unit": "px",
+            },
+            spacing: {
+                desktop: "",
+                "desktop-unit": "px",
+                tablet: "",
+                "tablet-unit": "px",
+                mobile: "",
+                "mobile-unit": "px",
+            },
+
+            "text-transform": "none",
+            "text-decoration": "none",
+        };
 
     }
 
@@ -37,14 +78,7 @@ export default class PremiumTypo extends Component {
     render() {
         const {
             components,
-            size,
-            weight,
-            style,
-            spacing,
-            line,
-            upper,
             setAttributes,
-            fontFamily,
             onChangeFamily = () => { },
             onChangeSize = () => { },
             onChangeWeight = () => { },
@@ -54,6 +88,17 @@ export default class PremiumTypo extends Component {
             onChangeUpper = () => { },
             onResetClick = () => { },
         } = this.props;
+
+        const {
+            fontFamily,
+            size,
+            weight,
+            style,
+            spacing,
+            line,
+            upper,
+            sizeUnit
+        } = this.state;
 
         const STYLE = [
             {
@@ -126,9 +171,29 @@ export default class PremiumTypo extends Component {
         }
 
         return (
-            <div className="premium-control-toggle">
-                <strong>{__("Typography")}</strong>
-                <Dropdown
+            <div className="premium-control-toggle kmt-typography">
+                <header>
+                    <span className="customize-control-title kmt-control-title">
+                        <strong>{__("Typography")}</strong>
+                    </span>
+                </header>
+                <div className="kmt-typography-wrapper">
+                    <TypoComponent fontFamily={fontFamily} size={size} sizeUnit={sizeUnit} weight={weight} />
+                    <div className="kmt-spacing-btn-reset-wrap">
+                        <button
+                            className="kmt-reset-btn "
+                            disabled={
+                                JSON.stringify(this.state) ===
+                                JSON.stringify(this.defaultValue)
+                            }
+                            onClick={(e) => {
+                                e.preventDefault();
+                                this.setState({ ...this.state, ...this.defaultValue })
+                            }}
+                        ></button>
+                    </div>
+                </div>
+                {/* <Dropdown
                     className="premium-control-toggle-btn"
                     contentClassName="premium-control-toggle-content"
                     position="bottom right"
@@ -242,7 +307,7 @@ export default class PremiumTypo extends Component {
 
                         </Fragment>
                     )}
-                />
+                /> */}
             </div>
         );
     }
