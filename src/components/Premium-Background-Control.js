@@ -22,7 +22,6 @@ export default function PremiumBackgroundControl({
         { key: 'gradient', name: __('Gradient') },
     ];
 
-    console.log(backgroundType, backgroundColor, backgroundImageID, backgroundImageURL);
     return (
         <Fragment>
             <div className="Premium-btn-size-settings-container">
@@ -64,7 +63,7 @@ export default function PremiumBackgroundControl({
                                 backgroundImageURL: media.url
                             });
                         }}
-                        onRemoveImage={value =>
+                        onRemoveImage={() =>
                             saveContainerStyle({
                                 backgroundImageURL: "",
                                 backgroundImageID: ""

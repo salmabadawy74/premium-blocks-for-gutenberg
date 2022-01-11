@@ -545,12 +545,11 @@ class PremiumMap extends Component {
                                     checked={markerOpen}
                                     onChange={newValue => setAttributes({ markerOpen: newValue })}
                                 />
-                                <Toolbar
-                                    controls={ALIGNS.map(align => ({
-                                        icon: "editor-align" + align,
-                                        isActive: align === boxAlign,
-                                        onClick: () => setAttributes({ boxAlign: align })
-                                    }))}
+                                <RadioComponent
+                                    choices={["right", "center", "left"]}
+                                    value={boxAlign}
+                                    onChange={newValue => setAttributes({ boxAlign: newValue })}
+                                    label={__("Align", 'premium-block-for-gutenberg')}
                                 />
                                 <ToggleControl
                                     label={__("Custom Marker Icon", 'premium-block-for-gutenberg')}

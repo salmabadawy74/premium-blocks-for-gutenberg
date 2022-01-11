@@ -2,17 +2,9 @@ import get from 'lodash/get';
 import map from 'lodash/map';
 import classnames from "classnames";
 const { __, sprintf } = wp.i18n;
-const {
-    Component,
-} = wp.element;
+const { Component } = wp.element;
 
-const {
-    Button,
-    Popover,
-    ColorIndicator,
-    ColorPicker,
-    Tooltip,
-} = wp.components;
+const { Button, Popover, ColorIndicator, ColorPicker, Tooltip } = wp.components;
 
 const { withSelect } = wp.data
 
@@ -37,9 +29,7 @@ class AdvancedColorControl extends Component {
         }
     }
 
-
     render() {
-
         const toggleVisible = () => {
             if ('transparent' === this.props.colorDefault) {
                 this.setState({ currentColor: (undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue) });
@@ -49,11 +39,16 @@ class AdvancedColorControl extends Component {
             this.setState({ classSat: 'first' });
             this.setState({ isVisible: true });
         };
+
         const toggleClose = () => {
             if (this.state.isVisible === true) {
                 this.setState({ isVisible: false });
             }
         };
+
+        const handleChangeTopColors = (color) => {
+
+        }
 
         return (
             <div className="premium-color-popover-container">
@@ -74,7 +69,6 @@ class AdvancedColorControl extends Component {
                                                     })}
                                                         style={{ backgroundColor: color }}
                                                         onClick={() => {
-                                                            this.setState({ currentColor: color });
                                                             this.props.onColorChange(color);
                                                             if (this.props.onColorClassChange) {
                                                                 this.props.onColorClassChange(slug);

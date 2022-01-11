@@ -105,12 +105,7 @@ export default function PremiumBackground(props) {
             label: __("Contain"),
         },
     ];
-    console.log(imageID,
-        imageURL,
-        backgroundPosition,
-        backgroundRepeat,
-        backgroundSize,
-        fixed)
+
     return type === "color" ? (
         <Fragment>
             <AdvancedPopColorControl

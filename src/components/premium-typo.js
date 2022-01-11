@@ -142,7 +142,7 @@ export default class PremiumTypo extends Component {
                                     value={size}
                                     min="10"
                                     max="80"
-                                    defaultValue={''}
+                                    defaultValue={20}
                                     onChange={onChangeSize}
                                     showUnit={false}
                                 />
@@ -160,7 +160,7 @@ export default class PremiumTypo extends Component {
                                     onChangeTablet={value => setAttributes({ [this.props.fontSizeTablet.label]: value })}
                                     onChangeMobile={value => setAttributes({ [this.props.fontSizeMobile.label]: value })}
                                     showUnit={true}
-                                    defaultValue={''}
+                                    defaultValue={20}
                                     unit={this.props.fontSizeType.value}
                                     onChangeUnit={key => setAttributes({ [this.props.fontSizeType.label]: key })}
                                     units={["px", "em"]}
@@ -214,6 +214,9 @@ export default class PremiumTypo extends Component {
                                     defaultValue={''}
                                     onChange={onChangeSpacing}
                                     showUnit={false}
+                                    step={0.1}
+                                    min={-5}
+                                    max={15}
                                 />
                             )}
                             {components.includes("line") && (
@@ -221,9 +224,11 @@ export default class PremiumTypo extends Component {
                                     label={__("Line Height (PX)")}
                                     value={line}
                                     onChange={onChangeLine}
-                                    defaultValue={''}
+                                    defaultValue={1}
                                     onChange={onChangeLine}
                                     showUnit={false}
+                                    min={5}
+                                    max={200}
                                 />
                             )}
 

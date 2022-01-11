@@ -202,7 +202,6 @@ class edit extends Component {
             PreStyles
         } = attributes;
 
-        const ALIGNS = ["left", "center", "right"];
         const EFFECT = [
             {
                 label: __("Typing", 'premium-block-for-gutenberg'),
@@ -591,16 +590,11 @@ class edit extends Component {
                                         "If you enabled this option, the slide will be paused when mouseover.", 'premium-block-for-gutenberg'
                                     )}
                                 />
-                                <p>{__("Fancy Strings Alignment", 'premium-block-for-gutenberg')}</p>
-                                <Toolbar
-                                    controls={ALIGNS.map((contentAlign) => ({
-                                        icon: "editor-align" + contentAlign,
-                                        isActive: contentAlign === fancyalign,
-                                        onClick: () =>
-                                            setAttributes({
-                                                fancyalign: contentAlign,
-                                            }),
-                                    }))}
+                                <RadioComponent
+                                    choices={["right", "center", "left"]}
+                                    value={fancyalign}
+                                    onChange={newValue => setAttributes({ fancyalign: newValue })}
+                                    label={__("Fancy Strings Alignment", 'premium-block-for-gutenberg')}
                                 />
                             </Fragment>
                         )}

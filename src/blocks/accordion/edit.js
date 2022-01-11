@@ -5,6 +5,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import RadioComponent from '../../components/radio-control';
 
 const { Component, Fragment } = wp.element;
 
@@ -147,6 +148,7 @@ class PremiumAccordion extends Component {
                 arrowStyles: newUpdate,
             });
         }
+
         const SaveDescStyles = (value) => {
             const newUpdate = descStyles.map((item, index) => {
                 if (0 === index) {
@@ -507,12 +509,18 @@ class PremiumAccordion extends Component {
                             onChange={newType => setAttributes({ contentType: newType })}
                             help={__("Gutenberg Block works only with single accordion item", 'premium-block-for-gutenberg')}
                         />
-                        <Toolbar
+                        {/* <Toolbar
                             controls={ALIGNS.map(align => ({
                                 icon: "editor-align" + align,
                                 isActive: align === descStyles[0].descAlign,
                                 onClick: () => SaveDescStyles({ descAlign: align })
                             }))}
+                        /> */}
+                        <RadioComponent
+                            choices={["left", "center", "right"]}
+                            label={__(`Align Content `)}
+                            onChange={(align) => SaveDescStyles({ descAlign: align })}
+                            value={descStyles[0].descAlign}
                         />
                         {"text" === contentType && (
                             <Fragment>
