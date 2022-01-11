@@ -115,6 +115,10 @@ const attributes = {
                 gradientPosition: 'center center'
             }
         ]
-    }
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
 }
 export default attributes

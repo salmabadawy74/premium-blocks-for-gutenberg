@@ -43,8 +43,6 @@ class edit extends Component {
             setAttributes({ videoBoxId: "premium-video-box-" + clientId });
         }
         this.props.setAttributes({ classMigrate: true });
-
-
         this.initVideoBox();
     }
 
@@ -54,30 +52,20 @@ class edit extends Component {
     }
 
     initVideoBox() {
-
         const { videoBoxId } = this.props.attributes;
-
         if (!videoBoxId) return null;
-
         let videoBox = document.getElementById(videoBoxId),
             video, src;
-
-
         videoBox.addEventListener("click", () => {
-
             videoBox.classList.add("video-overlay-false");
-
             let type = videoBox.getAttribute("data-type");
-
             if ("self" !== type) {
                 video = videoBox.getElementsByTagName("iframe")[0];
                 src = video.getAttribute("src");
             } else {
                 video = videoBox.getElementsByTagName("video")[0];
             }
-
             setTimeout(() => {
-
                 if ("self" !== type) {
                     video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
                 } else {
@@ -86,7 +74,6 @@ class edit extends Component {
                         .remove();
                     video.play();
                 }
-
             }, 300);
         });
     }
@@ -108,6 +95,7 @@ class edit extends Component {
 
     render() {
         const { isSelected, setAttributes, className, clientId } = this.props;
+
         const {
             block_id,
             videoBoxId,
@@ -184,6 +172,7 @@ class edit extends Component {
                     );
             }
         };
+
         const mainClasses = classnames(className, "premium-video-box");
 
         const changeVideoType = (newvalue) => {
@@ -205,6 +194,7 @@ class edit extends Component {
                 boxStyles: newUpdate,
             });
         };
+
         const saveOverlayStyles = (value) => {
             const newUpdate = overlayStyles.map((item, index) => {
                 if (0 === index) {
@@ -216,6 +206,7 @@ class edit extends Component {
                 overlayStyles: newUpdate,
             });
         };
+
         const savePlayStyles = (value) => {
             const newUpdate = playStyles.map((item, index) => {
                 if (0 === index) {
@@ -227,6 +218,7 @@ class edit extends Component {
                 playStyles: newUpdate,
             });
         };
+
         const saveDescritionStyle = (value) => {
             const newUpdate = descStyles.map((item, index) => {
                 if (0 === index) {
@@ -238,7 +230,6 @@ class edit extends Component {
                 descStyles: newUpdate,
             });
         };
-
 
         return [
             isSelected && (
@@ -881,6 +872,7 @@ class edit extends Component {
                 )}
             </div>
         ];
+
     }
 }
 

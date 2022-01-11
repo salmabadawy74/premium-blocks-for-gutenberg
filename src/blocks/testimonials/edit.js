@@ -44,7 +44,6 @@ class edit extends Component {
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId.substr(0, 6) })
-
         this.props.setAttributes({ classMigrate: true });
     }
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
@@ -118,7 +117,6 @@ class edit extends Component {
             });
         }
 
-
         const saveContentStyle = (value) => {
             const newUpdate = contentStyle.map((item, index) => {
                 if (0 === index) {
@@ -179,7 +177,7 @@ class edit extends Component {
         } else {
             btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
         }
-        console.log(btnbg, "Testimonial Edit Function")
+
         const mainClasses = classnames(className, "premium-testimonial");
         const authorFontSize = this.getPreviewSize(this.props.deviceType, authorStyles[0].authorSize, authorStyles[0].authorSizeTablet, authorStyles[0].authorSizeMobile);
         const authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);

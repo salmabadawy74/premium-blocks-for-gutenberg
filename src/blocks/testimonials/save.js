@@ -51,7 +51,6 @@ const save = props => {
         btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none'
     }
 
-    console.log(btnbg, "Testimonial Save Function")
     return (
         <div
             id={`premium-testimonial-${block_id}`}

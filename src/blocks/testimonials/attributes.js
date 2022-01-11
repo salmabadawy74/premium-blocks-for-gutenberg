@@ -162,7 +162,11 @@ const testimonialsAttrs = {
                 gradientPosition: 'center center'
             }
         ]
-    }
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
 
 };
 export default testimonialsAttrs;

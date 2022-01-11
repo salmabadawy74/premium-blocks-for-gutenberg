@@ -49,7 +49,7 @@ const save = props => {
             btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
         }
     } else {
-        btnbg = containerStyles[0].containerBack
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
     }
 
     return (
@@ -59,14 +59,14 @@ const save = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                background: btnbg,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : '',
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,

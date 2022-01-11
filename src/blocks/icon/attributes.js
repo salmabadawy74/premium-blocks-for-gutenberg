@@ -221,6 +221,10 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
-    }
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
 }
 export default attributes;

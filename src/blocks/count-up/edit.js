@@ -11,6 +11,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
+import RadioComponent from '../../components/radio-control'
 
 const {
     PanelBody,
@@ -146,6 +147,7 @@ class edit extends Component {
                 setAttributes({ selfAlign: "flex-end" });
                 break;
         }
+
         const saveNumberStyles = (value) => {
             const newUpdate = numberStyles.map((item, index) => {
                 if (0 === index) {
@@ -217,7 +219,6 @@ class edit extends Component {
         } else {
             btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
         }
-
         const mainClasses = classnames(className, "premium-countup");
         const numberFontSize = this.getPreviewSize(this.props.deviceType, numberStyles[0].numberSize, numberStyles[0].numberSizeTablet, numberStyles[0].numberSizeMobile);
         const prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
@@ -249,24 +250,20 @@ class edit extends Component {
                             onChange={value => setAttributes({ delay: value })}
                             help={__("Set delay in milliseconds, for example: 10", 'premium-block-for-gutenberg')}
                         />
-                        <p>{__("Align")}</p>
                         {"row-reverse" !== flexDir && (
-                            <Toolbar
-                                controls={ALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === align,
-                                    onClick: () => setAttributes({ align: contentAlign })
-                                }))}
+                            <RadioComponent
+                                choices={["left", "center", "right"]}
+                                value={align}
+                                onChange={newValue => setAttributes({ align: newValue })}
+                                label={__(`Align`)}
                             />
                         )}
                         {"row-reverse" === flexDir && (
-                            <Toolbar
-                                label={__("Align")}
-                                controls={REVALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === align,
-                                    onClick: () => setAttributes({ align: contentAlign })
-                                }))}
+                            <RadioComponent
+                                choices={["right", "center", "left"]}
+                                value={align}
+                                onChange={newValue => setAttributes({ align: newValue })}
+                                label={__(`Align `)}
                             />
                         )}
                         <SelectControl

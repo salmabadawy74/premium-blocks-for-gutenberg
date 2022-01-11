@@ -7,7 +7,6 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
-import map from 'lodash/map';
 
 const { __ } = wp.i18n;
 
@@ -396,7 +395,7 @@ const edit = props => {
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : '',
+                backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
