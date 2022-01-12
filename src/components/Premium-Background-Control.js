@@ -1,5 +1,5 @@
 import React from 'react'
-const { SelectControl, Button, ButtonGroup } = wp.components;
+const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
 import PremiumBackground from './premium-background'
 import map from 'lodash/map';
 const { __ } = wp.i18n;
@@ -18,8 +18,8 @@ export default function PremiumBackgroundControl({
         { key: 'radial', name: __('Radial') },
     ];
     const bgType = [
-        { key: 'solid', name: __('Solid') },
-        { key: 'gradient', name: __('Gradient') },
+        { key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') },
+        { key: 'gradient', icon: "fa fa-barcode", tooltip: __('gradient') },
     ];
 
     return (
@@ -27,15 +27,17 @@ export default function PremiumBackgroundControl({
             <div className="Premium-btn-size-settings-container">
                 <h2 className="Premium-beside-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
                 <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
-                    {map(bgType, ({ name, key }) => (
-                        <Button
-                            key={key}
-                            className="Premium-btn-size-btn"
-                            isSmall
-                            onClick={() => setAttributes({ backgroundType: key })}
-                        >
-                            { name}
-                        </Button>
+                    {map(bgType, ({ icon, key, tooltip }) => (
+                        <Tooltip text={tooltip}>
+                            <Button
+                                key={key}
+                                className="Premium-btn-size-btn"
+                                isSmall
+                                onClick={() => setAttributes({ backgroundType: key })}
+                            >
+                                <i className={icon}></i>
+                            </Button>
+                        </Tooltip>
                     ))}
                 </ButtonGroup>
             </div>

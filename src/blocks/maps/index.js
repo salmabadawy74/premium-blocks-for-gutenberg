@@ -3,7 +3,8 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control';
 
 
 const className = "premium-maps";
@@ -13,7 +14,6 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 const {
-    Toolbar,
     PanelBody,
     SelectControl,
     TextControl,
@@ -546,7 +546,7 @@ class PremiumMap extends Component {
                                     onChange={newValue => setAttributes({ markerOpen: newValue })}
                                 />
                                 <RadioComponent
-                                    choices={["right", "center", "left"]}
+                                    choices={["left", "center", "right"]}
                                     value={boxAlign}
                                     onChange={newValue => setAttributes({ boxAlign: newValue })}
                                     label={__("Align", 'premium-block-for-gutenberg')}

@@ -6,7 +6,7 @@ const { ButtonGroup, Button } = wp.components;
 const RadioComponent = ({ value, onChange, label, choices }) => {
 
     const HandleChange = (newVal) => {
-        console.log(newVal)
+
         onChange(newVal);
         setState(newVal);
     };
@@ -36,8 +36,8 @@ const RadioComponent = ({ value, onChange, label, choices }) => {
         </Fragment>
     }
     return <Fragment>
-        <span className="customize-control-title kmt-control-title">{label}</span>
-        <ButtonGroup className="kmt-radio-container-control">
+        <span className="customize-control-title premium-control-title">{label}</span>
+        <ButtonGroup className="premium-radio-container-control">
             {renderButtons()}
         </ButtonGroup>
     </Fragment>

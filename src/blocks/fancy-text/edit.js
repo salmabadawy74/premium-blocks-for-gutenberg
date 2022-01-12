@@ -28,7 +28,6 @@ const {
     SelectControl,
     TextControl,
     ToggleControl,
-    Toolbar,
 } = wp.components;
 
 const SortableItem = SortableElement(

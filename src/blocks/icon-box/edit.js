@@ -12,12 +12,13 @@ import PremiumBackground from "../../components/premium-background"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control';
+
 const { __ } = wp.i18n;
 
 const {
     PanelBody,
-    Toolbar,
     SelectControl,
     ToggleControl,
     TabPanel,
@@ -180,8 +181,6 @@ class edit extends Component {
                 value: "image"
             }
         ];
-
-        const ALIGNS = ["left", "center", "right"];
 
         const EFFECTS = [
             {
@@ -423,14 +422,11 @@ class edit extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <p>{__("Title", 'premium-block-for-gutenberg')}</p>
-                            <Toolbar
-                                controls={"123456".split("").map(tag => ({
-                                    icon: "heading",
-                                    isActive: "H" + tag === titleStyles[0].titleTag,
-                                    onClick: () => saveTitleStyle({ titleTag: "H" + tag }),
-                                    subscript: tag
-                                }))}
+                            <RadioComponent
+                                label={__("Title", 'premium-block-for-gutenberg')}
+                                choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                value={titleStyles[0].titleTag}
+                                onChange={(newValue) => saveTitleStyle({ titleTag: newValue })}
                             />
                             <PremiumTypo
                                 components={[

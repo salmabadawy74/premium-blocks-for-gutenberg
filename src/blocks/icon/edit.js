@@ -12,10 +12,10 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
+import RadioComponent from '../../components/radio-control';
 
 const {
     PanelBody,
-    Toolbar,
     SelectControl,
     ToggleControl,
 } = wp.components;

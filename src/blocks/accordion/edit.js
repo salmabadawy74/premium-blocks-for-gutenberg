@@ -12,7 +12,6 @@ const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 
 const {
-    Toolbar,
     PanelBody,
     SelectControl,
 } = wp.components;
@@ -56,6 +55,7 @@ class PremiumAccordion extends Component {
     }
     render() {
         const { isSelected, setAttributes, className } = this.props;
+
         const {
             accordionId,
             repeaterItems,
@@ -160,7 +160,6 @@ class PremiumAccordion extends Component {
                 descStyles: newUpdate,
             });
         }
-        const ALIGNS = ["left", "center", "right"];
 
         const onAccordionChange = (attr, value, index) => {
             const items = repeaterItems;
@@ -171,7 +170,9 @@ class PremiumAccordion extends Component {
                 return item;
             });
         };
+
         const mainClasses = classnames(className, "premium-accordion");
+
         const accordionItems = repeaterItems.map((item, index) => {
             return (
                 <div
@@ -294,14 +295,12 @@ class PremiumAccordion extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Title Tag", 'premium-block-for-gutenberg')}</p>
-                        <Toolbar
-                            controls={"123456".split("").map(tag => ({
-                                icon: "heading",
-                                isActive: "H" + tag === titleTag,
-                                onClick: () => setAttributes({ titleTag: "H" + tag }),
-                                subscript: tag
-                            }))}
+
+                        <RadioComponent
+                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            value={titleTag}
+                            onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                            label={__("Title Tag", 'premium-block-for-gutenberg')}
                         />
                         <SelectControl
                             label={__("Direction", 'premium-block-for-gutenberg')}
@@ -509,13 +508,6 @@ class PremiumAccordion extends Component {
                             onChange={newType => setAttributes({ contentType: newType })}
                             help={__("Gutenberg Block works only with single accordion item", 'premium-block-for-gutenberg')}
                         />
-                        {/* <Toolbar
-                            controls={ALIGNS.map(align => ({
-                                icon: "editor-align" + align,
-                                isActive: align === descStyles[0].descAlign,
-                                onClick: () => SaveDescStyles({ descAlign: align })
-                            }))}
-                        /> */}
                         <RadioComponent
                             choices={["left", "center", "right"]}
                             label={__(`Align Content `)}

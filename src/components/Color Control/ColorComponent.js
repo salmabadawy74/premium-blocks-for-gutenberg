@@ -46,10 +46,6 @@ class AdvancedColorControl extends Component {
             }
         };
 
-        const handleChangeTopColors = (color) => {
-
-        }
-
         return (
             <div className="premium-color-popover-container">
                 <div className="premium-advanced-color-container">
@@ -64,7 +60,7 @@ class AdvancedColorControl extends Component {
                                         <ul className="premium-color-picker-skins">
                                             {map(this.props.colors, ({ color, slug, name }) => {
                                                 return (
-                                                    <li key={color} className={classnames('kmt-color-picker-single', {
+                                                    <li key={color} className={classnames('premium-color-picker-single', {
                                                         'active': this.props.colorValue === color
                                                     })}
                                                         style={{ backgroundColor: color }}
