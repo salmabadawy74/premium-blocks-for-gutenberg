@@ -621,7 +621,6 @@ class edit extends Component {
                                             />
                                             {videoDesc && (
                                                 <Fragment>
-
                                                     <AdvancedPopColorControl
                                                         label={__("Description Color", '')}
                                                         colorValue={descStyles[0].videoDescColor}

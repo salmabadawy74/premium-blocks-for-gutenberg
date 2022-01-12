@@ -8,7 +8,8 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control';
 
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
@@ -99,6 +100,7 @@ export class edit extends Component {
             paddingB,
             paddingL
         } = this.props.attributes;
+
         const ALIGNS = [
             {
                 value: "flex-start",
@@ -117,6 +119,7 @@ export class edit extends Component {
                 label: __("Full", 'premium-block-for-gutenberg')
             }
         ];
+
         const EFFECTS = [
             {
                 value: "effect1",
@@ -143,6 +146,7 @@ export class edit extends Component {
                 label: __("Style 6", 'premium-block-for-gutenberg')
             }
         ];
+
         const HOVER = [
             {
                 value: "none",
@@ -374,14 +378,11 @@ export class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("HTML Tag", 'premium-block-for-gutenberg')}</p>
-                        <Toolbar
-                            controls={"123456".split("").map(tag => ({
-                                icon: "heading",
-                                isActive: "H" + tag === titleTag,
-                                onClick: () => setAttributes({ titleTag: "H" + tag }),
-                                subscript: tag
-                            }))}
+                        <RadioComponent
+                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            value={titleTag}
+                            onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                            label={__("HTML Tag", 'premium-block-for-gutenberg')}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line"]}

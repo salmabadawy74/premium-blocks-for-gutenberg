@@ -657,13 +657,13 @@
         }
     }
 }
-.kmt-color-picker-single {
+.premium-color-picker-single {
     &:focus {
         outline: none;
         box-shadow: none;
     }
 
-    &:hover .kmt-tooltip-top {
+    &:hover .premium-tooltip-top {
         opacity: 1;
         visibility: visible;
         transform: translate3d(0px, -38px, 0px);

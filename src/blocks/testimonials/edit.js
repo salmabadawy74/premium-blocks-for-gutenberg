@@ -10,12 +10,11 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
-import map from 'lodash/map';
+import RadioComponent from '../../components/radio-control'
 
 const { __ } = wp.i18n;
 
 const {
-    Toolbar,
     PanelBody,
     SelectControl,
     TextControl,
@@ -264,14 +263,11 @@ class edit extends Component {
                                 />
                             )}
                         </PanelBody>
-                        <p>{__("Author HTML Tag", 'premium-block-for-gutenberg')}</p>
-                        <Toolbar
-                            controls={"123456".split("").map(tag => ({
-                                icon: "heading",
-                                isActive: "H" + tag === authorStyles[0].authorTag,
-                                onClick: () => saveAuthorStyle({ authorTag: "H" + tag }),
-                                subscript: tag
-                            }))}
+                        <RadioComponent
+                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            value={authorStyles[0].authorTag}
+                            onChange={(newValue) => saveAuthorStyle({ authorTag: newValue })}
+                            label={__("Author HTML Tag", 'premium-block-for-gutenberg')}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
@@ -374,14 +370,11 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("HTML Tag", 'premium-block-for-gutenberg')}</p>
-                        <Toolbar
-                            controls={"123456".split("").map(tag => ({
-                                icon: "heading",
-                                isActive: "H" + tag === authorStyles[0].authorComTag,
-                                onClick: () => saveAuthorStyle({ authorComTag: "H" + tag }),
-                                subscript: tag
-                            }))}
+                        <RadioComponent
+                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            value={authorStyles[0].authorComTag}
+                            onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
+                            label={__("HTML Tag", 'premium-block-for-gutenberg')}
                         />
                         <PremiumTypo
                             components={["responsiveSize"]}

@@ -5,7 +5,8 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control'
 
 const { __ } = wp.i18n;
 
@@ -36,7 +37,6 @@ class edit extends Component {
     }
 
     componentDidMount() {
-
         const { setAttributes, clientId, attributes } = this.props;
         const { block_id } = attributes;
 
@@ -45,11 +45,7 @@ class edit extends Component {
         if (!attributes.lottieId) {
             setAttributes({ lottieId: "premium-lottie-" + block_id });
         }
-
-
-
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
-
         this.initLottieAnimation = this.initLottieAnimation.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
@@ -342,32 +338,12 @@ class edit extends Component {
                         showUnit={false}
                         defaultValue={0}
                     />
-                    <h2> {__("Alignment", 'premium-block-for-gutenberg')}</h2>
-                    <Button
-                        key={"left"}
-                        icon="editor-alignleft"
-                        label="Left"
-                        onClick={() => setAttributes({ align: "left" })}
-                        aria-pressed={"left" === align}
-                        isPrimary={"left" === align}
-                    />
-                    <Button
-                        key={"center"}
-                        icon="editor-aligncenter"
-                        label="Right"
-                        onClick={() =>
-                            setAttributes({ align: "center" })
-                        }
-                        aria-pressed={"center" === align}
-                        isPrimary={"center" === align}
-                    />
-                    <Button
-                        key={"right"}
-                        icon="editor-alignright"
-                        label="Right"
-                        onClick={() => setAttributes({ align: "right" })}
-                        aria-pressed={"right" === align}
-                        isPrimary={"right" === align}
+
+                    <RadioComponent
+                        choices={["left", "center", "right"]}
+                        value={align}
+                        onChange={newValue => setAttributes({ align: newValue })}
+                        label={__("Alignment", 'premium-block-for-gutenberg')}
                     />
                     <hr />
                     <ToggleControl

@@ -17,8 +17,6 @@ const {
     SelectControl,
     TextControl,
     ToggleControl,
-    Button,
-    ButtonGroup,
 } = wp.components;
 
 const {
@@ -133,6 +131,7 @@ class edit extends Component {
                 containerStyles: newUpdate,
             });
         }
+
         const firstFontSize = this.getPreviewSize(this.props.deviceType, firstStyles[0].firstSize, firstStyles[0].firstSizeTablet, firstStyles[0].firstSizeMobile);
         const secondFontSize = this.getPreviewSize(this.props.deviceType, secondStyles[0].secondSize, secondStyles[0].secondSizeTablet, secondStyles[0].secondSizeMobile);
         let btnGrad, btnGrad2, btnbg;

@@ -15,7 +15,6 @@ import RadioComponent from '../../components/radio-control'
 
 const {
     PanelBody,
-    Toolbar,
     SelectControl,
     TextControl,
     ToggleControl,

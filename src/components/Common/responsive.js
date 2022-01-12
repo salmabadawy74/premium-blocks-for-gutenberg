@@ -21,8 +21,8 @@ class Responsive extends Component {
                 .toLowerCase() : 'desktop';
         return (
             <Fragment>
-                {label ? <span className="customize-control-title kmt-control-title">{label}</span> : null}
-                <ul className="kmt-responsive-control-btns kmt-responsive-slider-btns">
+                {label ? <span className="customize-control-title premium-control-title">{label}</span> : null}
+                <ul className="premium-responsive-control-btns premium-responsive-slider-btns">
                     {devices.map((device, key) => {
                         const activeClass = device === previewDevice ? ' active' : '';
                         const icon = device === 'mobile' ? 'smartphone' : device;

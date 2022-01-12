@@ -3045,7 +3045,7 @@ i.fipicon-angle-left:before {
   box-shadow: none !important;
   border-width: 2px !important; }
 
-.kmt-responsive-control-btns {
+.premium-responsive-control-btns {
   line-height: 1px;
   margin-bottom: 2px;
   display: inline-block;
@@ -3053,13 +3053,13 @@ i.fipicon-angle-left:before {
   position: relative;
   z-index: 8;
   margin-top: 0px !important; }
-  .kmt-responsive-control-btns > li {
+  .premium-responsive-control-btns > li {
     margin-bottom: 0;
     display: none;
     overflow: hidden; }
-    .kmt-responsive-control-btns > li.active {
+    .premium-responsive-control-btns > li.active {
       display: inline-block; }
-  .kmt-responsive-control-btns button[type="button"] {
+  .premium-responsive-control-btns button[type="button"] {
     cursor: pointer;
     background: none;
     border: none;
@@ -3068,7 +3068,7 @@ i.fipicon-angle-left:before {
     border-radius: 20px;
     width: 24px;
     height: 24px; }
-    .kmt-responsive-control-btns button[type="button"] > i {
+    .premium-responsive-control-btns button[type="button"] > i {
       width: 15px;
       height: 13px;
       font-size: 15px;
@@ -3711,27 +3711,27 @@ input[type="number"] {
   .premium-popover-color .components-color-picker__inputs-toggle span {
     display: none; }
 
-.kmt-color-picker-single:focus {
+.premium-color-picker-single:focus {
   outline: none;
   box-shadow: none; }
 
-.kmt-color-picker-single:hover .kmt-tooltip-top {
+.premium-color-picker-single:hover .premium-tooltip-top {
   opacity: 1;
   visibility: visible;
   transform: translate3d(0px, -38px, 0px); }
 
-.kmt-radio-container-control {
+.premium-radio-container-control {
   display: flex;
   padding: 10px 0px;
   background: transparent;
   border: 0; }
-  .kmt-radio-container-control button:first-child {
+  .premium-radio-container-control button:first-child {
     border-radius: 3px 0 0 3px; }
-  .kmt-radio-container-control button:last-child {
+  .premium-radio-container-control button:last-child {
     border-radius: 0 3px 3px 0; }
-  .kmt-radio-container-control button:not(:first-child) {
-    margin-left: -1px; }
-  .kmt-radio-container-control button.components-button.is-tertiary {
+  .premium-radio-container-control button:not(:first-child) {
+    margin-left: -1px !important; }
+  .premium-radio-container-control button.components-button.is-tertiary {
     flex: 1 1 0;
     display: flex;
     -webkit-box-align: center;
@@ -3752,17 +3752,17 @@ input[type="number"] {
     margin: 0px;
     box-shadow: inset 0 0 0 1px #ddd !important;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
-  .kmt-radio-container-control button.components-button.is-tertiary.builder-add-btn {
+  .premium-radio-container-control button.components-button.is-tertiary.builder-add-btn {
     height: auto; }
-  .kmt-radio-container-control .components-button.is-tertiary.active-radio {
+  .premium-radio-container-control .components-button.is-tertiary.active-radio {
     background: #007cba;
     color: #ffffff; }
-  .kmt-radio-container-control .components-button.is-tertiary .kmt-icon-set {
+  .premium-radio-container-control .components-button.is-tertiary .premium-icon-set {
     display: flex; }
-  .kmt-radio-container-control .components-button.is-tertiary svg {
+  .premium-radio-container-control .components-button.is-tertiary svg {
     width: 100%;
     height: 100%;
     max-height: 100%; }
-  .kmt-radio-container-control .components-button .kmt-icon-set {
+  .premium-radio-container-control .components-button .premium-icon-set {
     width: 100%;
     height: 100%; }

@@ -5,7 +5,8 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import PremiumRangeControl from "../../components/premium-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control';
 
 const { withSelect } = wp.data
 
@@ -14,7 +15,6 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
 const {
-    Toolbar,
     PanelBody,
     SelectControl,
     TextControl,
@@ -315,14 +315,11 @@ class PremiumPricingTable extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <p>{__("Heading", 'premium-block-for-gutenberg')}</p>
-                            <Toolbar
-                                controls={"123456".split("").map(tag => ({
-                                    icon: "heading",
-                                    isActive: "H" + tag === titleStyles[0].titleTag,
-                                    onClick: () => saveTitleStyles({ titleTag: "H" + tag }),
-                                    subscript: tag
-                                }))}
+                            <RadioComponent
+                                label={__("Heading", 'premium-block-for-gutenberg')}
+                                choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                value={titleStyles[0].titleTag}
+                                onChange={newValue => saveTitleStyles({ titleTag: newValue })}
                             />
                             <PremiumTypo
                                 components={[
@@ -796,13 +793,11 @@ class PremiumPricingTable extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <p>{__("Align")}</p>
-                            <Toolbar
-                                controls={FEATURES_ALIGN.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === featureStyles[0].featsAlign,
-                                    onClick: () => saveFeatureStyle({ featsAlign: contentAlign })
-                                }))}
+                            <RadioComponent
+                                label={__("Align", 'premium-block-for-gutenberg')}
+                                choices={["left", "center", "right"]}
+                                value={featureStyles[0].featsAlign}
+                                onChange={newValue => saveFeatureStyle({ featsAlign: newValue })}
                             />
                             <SelectControl
                                 label={__("List Style", 'premium-block-for-gutenberg')}
