@@ -130,7 +130,7 @@ const testimonialsAttrs = {
             {
                 quotSize: '',
                 quotColor: '',
-                quotOpacity: 1,
+                quotOpacity: 100,
 
             }
         ]

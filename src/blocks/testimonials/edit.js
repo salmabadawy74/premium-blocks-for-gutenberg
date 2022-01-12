@@ -479,8 +479,6 @@ class edit extends Component {
                         />
                         <PremiumRangeControl
                             label={__("Opacity", 'premium-block-for-gutenberg')}
-                            min="0"
-                            max="100"
                             value={quoteStyles[0].quotOpacity}
                             onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
                             showUnit={false}

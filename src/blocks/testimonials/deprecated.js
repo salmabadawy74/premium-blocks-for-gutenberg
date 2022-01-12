@@ -1,401 +1,16 @@
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
+import testimonialsAttrs from "./attributes";
 
 const className = "premium-testimonial";
 
 const { RichText } = wp.editor;
 
-const newAttributes_1_6_5 = {
-    backColor: {
-        type: "string",
-    },
-    imageID: {
-        type: "string",
-    },
-    imageURL: {
-        type: "string",
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat",
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center",
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto",
-    },
-    fixed: {
-        type: "boolean",
-        default: false,
-    },
-};
-
-const newAttributes_1_3_9 = {
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-    },
-    shadowHorizontal: {
-        type: "number",
-    },
-    shadowVertical: {
-        type: "number",
-    },
-    shadowPosition: {
-        type: "string",
-    },
-};
-
-const testimonialsAttrs_1_0_1 = {
-    align: {
-        type: "string",
-        default: "center",
-    },
-    authorImgId: {
-        type: "string",
-    },
-    authorImgUrl: {
-        type: "string",
-    },
-    imgRadius: {
-        type: "string",
-        default: "50%",
-    },
-    imgSize: {
-        type: "number",
-    },
-    imgBorder: {
-        type: "number",
-        default: "1",
-    },
-    imgBorderColor: {
-        type: "string",
-    },
-    author: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author",
-        default: "John Doe",
-    },
-    authorTag: {
-        type: "string",
-        default: "H3",
-    },
-    authorColor: {
-        type: "string",
-    },
-    authorSize: {
-        type: "number",
-    },
-    authorLetter: {
-        type: "number",
-    },
-    authorStyle: {
-        type: "string",
-    },
-    authorUpper: {
-        type: "boolean",
-    },
-    authorWeight: {
-        type: "number",
-        default: 500,
-    },
-    authorComTag: {
-        type: "string",
-        default: "H4",
-    },
-    text: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__text",
-    },
-    authorCom: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author_comp",
-        default: "Leap13",
-    },
-    authorComColor: {
-        type: "string",
-    },
-    authorComSize: {
-        type: "number",
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false,
-    },
-    urlText: {
-        type: "string",
-    },
-    urlTarget: {
-        type: "boolean",
-        default: false,
-    },
-    quotSize: {
-        type: "number",
-    },
-    quotColor: {
-        type: "string",
-    },
-    quotOpacity: {
-        type: "number",
-    },
-    bodyColor: {
-        type: "string",
-    },
-    bodySize: {
-        type: "number",
-    },
-    bodyLine: {
-        type: "number",
-    },
-    bodyTop: {
-        type: "number",
-    },
-    bodyBottom: {
-        type: "number",
-    },
-    dashColor: {
-        type: "string",
-    },
-};
-
-const testimonialsAttrs_1_3_9 = Object.assign(
-    testimonialsAttrs_1_0_1,
-    newAttributes_1_3_9
-);
-
-const testimonialsAttrs_1_6_5 = Object.assign(
-    testimonialsAttrs_1_3_9,
-    newAttributes_1_6_5
-);
-
-const testimonialsAttrs_2_0 = {
-    align: {
-        type: "string",
-        default: "center"
-    },
-    authorImgId: {
-        type: "string"
-    },
-    authorImgUrl: {
-        type: "string"
-    },
-    imgRadius: {
-        type: "string",
-        default: "50%"
-    },
-    imgSize: {
-        type: "number"
-    },
-    imgBorder: {
-        type: "number",
-        default: "1"
-    },
-    imgBorderColor: {
-        type: "string"
-    },
-    author: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author",
-        default: "John Doe"
-    },
-    authorTag: {
-        type: "string",
-        default: "H3"
-    },
-    authorColor: {
-        type: "string"
-    },
-    authorSize: {
-        type: "number"
-    },
-    authorLetter: {
-        type: "number"
-    },
-    authorStyle: {
-        type: "string"
-    },
-    authorUpper: {
-        type: "boolean"
-    },
-    authorWeight: {
-        type: "number",
-        default: 500
-    },
-    authorComTag: {
-        type: "string",
-        default: "H4"
-    },
-    text: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__text"
-    },
-    authorCom: {
-        type: "array",
-        source: "children",
-        selector: ".premium-testimonial__author_comp",
-        default: "Leap13"
-    },
-    authorComColor: {
-        type: "string"
-    },
-    authorComSize: {
-        type: "number"
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false
-    },
-    urlText: {
-        type: "string"
-    },
-    urlTarget: {
-        type: "boolean",
-        default: false
-    },
-    quotSize: {
-        type: "number"
-    },
-    quotColor: {
-        type: "string"
-    },
-    quotOpacity: {
-        type: "number"
-    },
-    bodyColor: {
-        type: "string"
-    },
-    bodySize: {
-        type: "number"
-    },
-    bodyLine: {
-        type: "number"
-    },
-    bodyTop: {
-        type: "number"
-    },
-    bodyBottom: {
-        type: "number"
-    },
-    dashColor: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number"
-    },
-    shadowHorizontal: {
-        type: "number"
-    },
-    shadowVertical: {
-        type: "number"
-    },
-    shadowPosition: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
-    },
-    paddingUnit: {
-        type: "string",
-        default: "px"
-    }
-}
-const newAttributes_2_2 = {
-    block_id: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    authorSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    authorSizeMobile: {
-        type: "number"
-    },
-    authorSizeTablet: {
-        type: "number"
-    },
-    authorComSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    authorComSizeMobile: {
-        type: 'number'
-    },
-    authorComSizeTablet: {
-        type: 'number'
-    },
-    bodySizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    bodySizeMobile: {
-        type: "number"
-    },
-    bodySizeTablet: {
-        type: "string"
-    },
-    backOpacity: {
-        type: "number"
-    }
-}
-const testimonialsAttrs_2_2 = Object.assign(testimonialsAttrs_2_0, newAttributes_2_2);
-
-
 const deprecatedContent = [
 
     {
-        attributes: testimonialsAttrs_2_2,
+        attributes: testimonialsAttrs,
         migrate: attributes => {
             let newAttributes = {
                 classMigrate: false,
@@ -589,7 +204,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: testimonialsAttrs_1_6_5,
+        attributes: testimonialsAttrs,
         migrate: (attributes) => {
             let newAttributes = {
                 paddingTop: "",
@@ -765,7 +380,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: testimonialsAttrs_1_3_9,
+        attributes: testimonialsAttrs,
         migrate: (attributes) => {
             let newAttributes = {
                 backColor: "",
@@ -930,7 +545,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: testimonialsAttrs_1_0_1,
+        attributes: testimonialsAttrs,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
@@ -1083,7 +698,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: testimonialsAttrs_1_0_1,
+        attributes: testimonialsAttrs,
         save: (props) => {
             const {
                 align,

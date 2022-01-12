@@ -1,229 +1,17 @@
 //import { merge } from "lodash";
 
+import attributes from "./attributes";
+
 const className = "premium-button";
 
 const { __ } = wp.i18n;
 
 const { RichText } = wp.editor;
 
-const buttonAttrs_1_0_0 = {
-    btnText: {
-        type: "string",
-        default: __("Premium Button"),
-    },
-    btnSize: {
-        type: "string",
-        default: "md",
-    },
-    btnAlign: {
-        type: "string",
-        default: "center",
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-button",
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false,
-    },
-    effect: {
-        type: "string",
-        default: "none",
-    },
-    effectDir: {
-        type: "string",
-        default: "top",
-    },
-    textColor: {
-        type: "string",
-    },
-    textHoverColor: {
-        type: "string",
-    },
-    backColor: {
-        type: "string",
-    },
-    backHoverColor: {
-        type: "string",
-    },
-    slideColor: {
-        type: "string",
-    },
-    textSize: {
-        type: "number",
-    },
-    textLetter: {
-        type: "number",
-    },
-    textStyle: {
-        type: "string",
-    },
-    textUpper: {
-        type: "boolean",
-    },
-    textWeight: {
-        type: "number",
-        default: 500,
-    },
-    textLine: {
-        type: "number",
-    },
-    borderType: {
-        type: "string",
-        default: "none",
-    },
-    borderWidth: {
-        type: "number",
-        default: "1",
-    },
-    borderRadius: {
-        type: "number",
-    },
-    borderColor: {
-        type: "string",
-    },
-    padding: {
-        type: "number",
-    },
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    id: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_0_1 = {
-    btnShadowColor: {
-        type: "string",
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: "",
-    },
-};
-
-const buttonAttrs_1_0_1 = Object.assign(buttonAttrs_1_0_0, newAttributes_1_0_1);
-
-const newAttributes_1_3_4 = {
-    borderHoverColor: {
-        type: "string",
-    },
-};
-
-const buttonAttrs_1_3_4 = Object.assign(buttonAttrs_1_0_1, newAttributes_1_3_4);
-
-const newAttributes_1_4_7 = {
-    textFontFamily: {
-        type: "string",
-    },
-};
-
-const buttonAttrs_1_4_7 = Object.assign(buttonAttrs_1_3_4, newAttributes_1_4_7);
-
-const newAttributes_1_4_9 = {
-    borderButton: {
-        type: "boolean",
-        default: false,
-    },
-    borderTop: {
-        type: "number",
-    },
-    borderRight: {
-        type: "number",
-    },
-    borderBottom: {
-        type: "number",
-    },
-    borderLeft: {
-        type: "number",
-    },
-    backOpacity: {
-        type: "number",
-        default: "1",
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    block_id: {
-        type: "string"
-    },
-    textSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    textSizeTablet: {
-        type: "number"
-    },
-    textSizeMobile: {
-        type: "number"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-};
-
-const buttonAttrs_1_4_9 = Object.assign(buttonAttrs_1_4_7, newAttributes_1_4_9);
-
 const deprecatedContent = [
     {
-        attributes: buttonAttrs_1_4_9,
-        migrate: (attributes) => {
-            let newAttributes = {
-                borderTop: "",
-                borderRight: "",
-                borderBottom: "",
-                borderLeft: "",
-                borderButton: "",
-                backOpacity: "",
-                classMigrate: false,
-                block_id: "",
-                textSizeUnit: "px",
-                textSizeTablet: '',
-                textSizeMobile: '',
-                hideDesktop: false,
-                hideTablet: false,
-                hideMobile: false
-            };
-            return Object.assign(attributes, newAttributes);
-        },
+        attributes: attributes,
+
         save: (props) => {
             const {
                 id,
@@ -318,7 +106,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_4_7,
+        attributes: attributes,
         migrate: (attributes) => {
             return Object.assign(attributes, { paddingU: "" });
         },
@@ -415,7 +203,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_4_7,
+        attributes: attributes,
         save: (props) => {
             const {
                 id,
@@ -508,7 +296,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_3_4,
+        attributes: attributes,
         migrate: (attributes) => {
             return Object.assign(attributes, { textFontFamily: "" });
         },
@@ -602,7 +390,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_0_1,
+        attributes: attributes,
         migrate: (attributes) => {
             return Object.assign(attributes, { borderHoverColor: "" });
         },
@@ -694,7 +482,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: buttonAttrs_1_0_0,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 btnShadowColor: "",
