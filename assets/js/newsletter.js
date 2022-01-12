@@ -43,8 +43,6 @@ jQuery(function ($) {
                                 premium_blocks_form.markError(form.find('#' + res.data.required), 'required');
                             }
                         }
-
-
                         submitButton.removeAttr('disabled');
                     }
                     submitButton.removeClass('button-primary-disabled');

@@ -1,303 +1,15 @@
+import attributes from "./attributes";
+
 const { __ } = wp.i18n;
 
 const className = "premium-banner";
 
 const { RichText } = wp.editor;
 
-const deprecated_attributes_1_0_1 = {
-    imageID: {
-        type: "number",
-    },
-    imageURL: {
-        type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img",
-    },
-    title: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__title",
-        default: __("Awesome Title"),
-    },
-    titleTag: {
-        type: "string",
-        default: "H3",
-    },
-    desc: {
-        type: "array",
-        source: "children",
-        selector: ".premium-banner__desc",
-        default: __("Cool Description!!"),
-    },
-    contentAlign: {
-        type: "string",
-        default: "left",
-    },
-    effect: {
-        type: "string",
-        default: "effect1",
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none",
-    },
-    height: {
-        type: "string",
-        default: "default",
-    },
-    minHeight: {
-        type: "number",
-    },
-    verAlign: {
-        type: "string",
-        default: "top",
-    },
-    hovered: {
-        type: "boolean",
-        default: false,
-    },
-    responsive: {
-        type: "boolean",
-        default: false,
-    },
-    background: {
-        type: "string",
-    },
-    opacity: {
-        type: "number",
-        default: 50,
-    },
-    borderType: {
-        type: "string",
-        default: "none",
-    },
-    borderWidth: {
-        type: "number",
-        default: "1",
-    },
-    borderRadius: {
-        type: "number",
-        default: "0",
-    },
-    borderColor: {
-        type: "string",
-    },
-    titleColor: {
-        type: "string",
-    },
-    titleSize: {
-        type: "number",
-        default: "20",
-    },
-    titleLine: {
-        type: "number",
-    },
-    titleWeight: {
-        type: "number",
-    },
-    titleBack: {
-        type: "string",
-    },
-    shadowColor: {
-        type: "string",
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    descColor: {
-        type: "string",
-        default: "#000",
-    },
-    descSize: {
-        type: "number",
-        default: "20",
-    },
-    descLine: {
-        type: "number",
-    },
-    descWeight: {
-        type: "number",
-    },
-    urlCheck: {
-        type: "boolean",
-        default: false,
-    },
-    target: {
-        type: "boolean",
-        default: false,
-    },
-    url: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-banner__link",
-    },
-    sepColor: {
-        type: "string",
-    },
-    id: {
-        type: "string",
-    },
-};
-
-const newAttributes_1_4_4 = {
-    blur: {
-        type: "number",
-        default: "0",
-    },
-    bright: {
-        type: "number",
-        default: "100",
-    },
-    contrast: {
-        type: "number",
-        default: "100",
-    },
-    saturation: {
-        type: "number",
-        default: "100",
-    },
-    hue: {
-        type: "number",
-        default: "0",
-    },
-};
-
-const deprecated_attributes_1_3_8 = Object.assign(
-    deprecated_attributes_1_0_1,
-    newAttributes_1_4_4
-);
-
-const newAttributes_1_5_3 = {
-    descShadowColor: {
-        type: "string",
-    },
-    descShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    descShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    descShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-};
-
-const deprecated_attributes_1_5_3 = Object.assign(
-    deprecated_attributes_1_3_8,
-    newAttributes_1_5_3
-);
-
-const newAttributes_1_6_7 = {
-    containerShadowColor: {
-        type: "string",
-    },
-    containerShadowBlur: {
-        type: "number",
-        default: "0",
-    },
-    containerShadowHorizontal: {
-        type: "number",
-        default: "0",
-    },
-    containerShadowVertical: {
-        type: "number",
-        default: "0",
-    },
-    containerShadowPosition: {
-        type: "string",
-        default: "",
-    },
-};
-
-const deprecated_attributes_1_6_7 = Object.assign(
-    deprecated_attributes_1_5_3,
-    newAttributes_1_6_7
-);
-
-const newAttributes_1_7_1 = {
-    borderBanner: {
-        type: "boolean",
-        default: false,
-    },
-    borderTop: {
-        type: "number",
-    },
-    borderRight: {
-        type: "number",
-    },
-    borderBottom: {
-        type: "number",
-    },
-    borderLeft: {
-        type: "number",
-    },
-    hideDesktop: {
-        type: "boolean",
-        default: false
-    },
-    hideTablet: {
-        type: "boolean",
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    },
-    titleSizeUnit: {
-        type: "string",
-
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    block_id: {
-        type: "string"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number"
-    },
-    descSizeMobile: {
-        type: "number"
-    },
-};
-
-const deprecated_attributes_1_7_1 = Object.assign(
-    deprecated_attributes_1_6_7,
-    newAttributes_1_7_1
-);
 
 const deprecatedContent = [
     {
-        attributes: deprecated_attributes_1_7_1,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 borderBottom: "",
@@ -489,7 +201,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_6_7,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 paddingT: "",
@@ -660,7 +372,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_5_3,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 containerShadowColor: "",
@@ -823,7 +535,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_3_8,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 descShadowBlur: "0",
@@ -980,7 +692,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_3_8,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 blur: "0",
@@ -1130,7 +842,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes: deprecated_attributes_1_0_1,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowBlur: "0",
