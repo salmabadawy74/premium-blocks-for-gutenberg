@@ -13,6 +13,8 @@ const {
     ToggleControl,
     Dropdown,
     Button,
+    Popover,
+    TextControl
 } = wp.components;
 
 export default class PremiumTypo extends Component {
@@ -27,7 +29,10 @@ export default class PremiumTypo extends Component {
             spacing: this.props.spacing,
             line: this.props.line,
             upper: this.props.upper,//
-            sizeUnit: this.props.sizeUnit || 'px'
+            sizeUnit: this.props.sizeUnit || 'px',
+            isVisible: false,
+            currentView: '',
+            search: this.props.fontFamily || "System Default",
         }
 
         this.defaultValue = {
@@ -97,7 +102,10 @@ export default class PremiumTypo extends Component {
             spacing,
             line,
             upper,
-            sizeUnit
+            sizeUnit,
+            isVisible,
+            currentView,
+            search
         } = this.state;
 
         const STYLE = [
@@ -170,6 +178,23 @@ export default class PremiumTypo extends Component {
 
         }
 
+        // const [isVisible, setIsVisible] = useState(false);
+        const toggleVisible = (v) => {
+            console.log(v)
+            setAttributes({ isVisible: true })
+            this.setState({
+                isVisible: true,
+                currentView: v
+            })
+            // setIsVisible((state) => !state);
+        };
+
+        const setSearch = (v) => {
+            this.setState({
+                search: v
+            })
+        }
+
         return (
             <div className="premium-control-toggle kmt-typography">
                 <header>
@@ -178,19 +203,82 @@ export default class PremiumTypo extends Component {
                     </span>
                 </header>
                 <div className="kmt-typography-wrapper">
-                    <TypoComponent fontFamily={fontFamily} size={size} sizeUnit={sizeUnit} weight={weight} />
-                    <div className="kmt-spacing-btn-reset-wrap">
-                        <button
-                            className="kmt-reset-btn "
-                            disabled={
-                                JSON.stringify(this.state) ===
-                                JSON.stringify(this.defaultValue)
-                            }
-                            onClick={(e) => {
-                                e.preventDefault();
-                                this.setState({ ...this.state, ...this.defaultValue })
-                            }}
-                        ></button>
+                    <div className="kmt-typohraphy-value">
+                        <div className="kmt-typography-title-container">
+                            <span
+                                className="kmt-font"
+                                onClick={() => {
+                                    toggleVisible("fonts")
+                                }}
+                            >
+                                <span>
+                                    {fontFamily}
+                                </span>
+                                {isVisible && currentView == 'fonts' &&
+                                    <Popover>
+                                        <div className="kmt-option-modal kmt-typography-modal">
+                                            <div className="kmt-typography-container">
+                                                <div style={{ top: '0px', right: '0px', left: `0px` }}>
+                                                    <ul className="kmt-typography-top kmt-switch-panel kmt-static">
+                                                        <li className="kmt-font">
+                                                            <TextControl
+                                                                value={search}
+                                                                type="search"
+                                                                onChange={(value) => setSearch(value)}
+                                                            />
+                                                        </li>
+                                                    </ul>
+                                                    <ul className="kmt-typography-fonts">
+                                                        <div>
+                                                            <ul>
+                                                                <div className="kmt-typography-fonts"></div>
+                                                            </ul>
+                                                        </div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Popover>
+                                }
+
+                            </span>
+                            <span
+                                className="kmt-size"
+                                onClick={() => {
+                                    toggleVisible("options")
+                                }}
+                            >
+                                {size}{sizeUnit}
+                                {isVisible && currentView == 'options' && <Popover><span>options</span></Popover>}
+
+                            </span>
+                            <span
+                                className="kmt-weight"
+                                onClick={() => {
+                                    toggleVisible("variations")
+                                }}
+                            >{weight}
+                                {isVisible && currentView == 'variations' && <Popover><span>variations</span></Popover>}
+                            </span>
+                        </div>
+                        {/* <Button variant="secondary" onClick={() => toggleVisible()}>
+                        Toggle Popover!
+                        {isVisible && <Popover>Popover is toggled!</Popover>}
+                    </Button> */}
+                        {/* <TypoComponent fontFamily={fontFamily} size={size} sizeUnit={sizeUnit} weight={weight} /> */}
+                        <div className="kmt-spacing-btn-reset-wrap">
+                            <button
+                                className="kmt-reset-btn "
+                                disabled={
+                                    JSON.stringify(this.state) ===
+                                    JSON.stringify(this.defaultValue)
+                                }
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    this.setState({ ...this.state, ...this.defaultValue })
+                                }}
+                            ></button>
+                        </div>
                     </div>
                 </div>
                 {/* <Dropdown

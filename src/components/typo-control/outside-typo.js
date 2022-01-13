@@ -1,7 +1,7 @@
 const { useRef, useState, useCallback, createPortal, useMemo } = wp.element;
 import OutsideComponent from '../Common/OutsideComponent'
 import PopoverComponent from '../Common/popover-component'
-import { Transition } from 'react-spring/renderprops'
+import { Transition, animated } from '@react-spring/web'
 import bezierEasing from 'bezier-easing'
 import TypographyModal from "./typo-modal";
 
