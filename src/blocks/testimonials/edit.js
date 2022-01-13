@@ -139,6 +139,7 @@ class edit extends Component {
                 containerStyles: newUpdate,
             });
         }
+
         const saveCompanyStyle = (value) => {
             const newUpdate = companyStyles.map((item, index) => {
                 if (0 === index) {
@@ -150,6 +151,7 @@ class edit extends Component {
                 companyStyles: newUpdate,
             });
         }
+
         const saveQuoteStyles = (value) => {
             const newUpdate = quoteStyles.map((item, index) => {
                 if (0 === index) {
@@ -161,7 +163,6 @@ class edit extends Component {
                 quoteStyles: newUpdate,
             });
         }
-
         let btnGrad, btnGrad2, btnbg;
         if (undefined !== backgroundType && 'gradient' === backgroundType) {
             btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
@@ -171,10 +172,8 @@ class edit extends Component {
             } else if ('radial' !== containerStyles[0].gradientType) {
                 btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
             }
-        } else if (containerStyles[0].backgroundImageURL && 'solid' === backgroundType) {
-            btnbg = `${containerStyles[0].backgroundImageURL} `;
         } else {
-            btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+            btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none'
         }
 
         const mainClasses = classnames(className, "premium-testimonial");
@@ -506,6 +505,7 @@ class edit extends Component {
                             gradientLocationTwo={containerStyles[0].gradientLocationTwo}
                             gradientAngle={containerStyles[0].gradientAngle}
                             gradientPosition={containerStyles[0].gradientPosition}
+                            gradientType={containerStyles[0].gradientType}
                         />
                         <PremiumBoxShadow
                             inner={true}
