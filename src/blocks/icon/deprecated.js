@@ -1,4 +1,5 @@
 const className = "premium-icon";
+const { __ } = wp.i18n;
 
 const attributes = {
     iconBorder: {

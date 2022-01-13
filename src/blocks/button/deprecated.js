@@ -1,5 +1,6 @@
 const className = "premium-button";
-import classnames from 'classnames'
+import classnames from 'classnames';
+import hexToRgba from 'hex-to-rgba'
 
 const { __ } = wp.i18n;
 

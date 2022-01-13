@@ -1,5 +1,8 @@
 const className = "premium-countup";
 import classnames from 'classnames'
+const { __ } = wp.i18n;
+import hexToRgba from 'hex-to-rgba'
+
 const attributes = {
     block_id: {
         type: "string"
