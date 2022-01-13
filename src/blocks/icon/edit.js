@@ -347,6 +347,7 @@ const edit = props => {
                         gradientLocationTwo={containerStyles[0].gradientLocationTwo}
                         gradientAngle={containerStyles[0].gradientAngle}
                         gradientPosition={containerStyles[0].gradientPosition}
+                        gradientType={containerStyles[0].gradientType}
                     />
                     <PremiumBorder
                         borderType={containerStyles[0].wrapBorderType}

@@ -17,6 +17,7 @@ export default function PremiumBackgroundControl({
         { key: 'linear', name: __('Linear') },
         { key: 'radial', name: __('Radial') },
     ];
+
     const bgType = [
         { key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') },
         { key: 'gradient', icon: "fa fa-barcode", tooltip: __('gradient') },
@@ -94,7 +95,6 @@ export default function PremiumBackgroundControl({
                             saveContainerStyle({ containerBack: value })
                         }}
                     />
-
                     <PremiumRangeControl
                         label={__('Location', 'premium-block-for-gutenberg')}
                         value={gradientLocationOne}
@@ -129,6 +129,7 @@ export default function PremiumBackgroundControl({
                                     key={key}
                                     className="Premium-btn-size-btn"
                                     isSmall
+                                    isPrimary={gradientType === key}
                                     onClick={() => {
                                         saveContainerStyle({ gradientType: key })
                                     }}
