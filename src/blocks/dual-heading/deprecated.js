@@ -1,5 +1,6 @@
 import classnames from "classnames";
 
+const { __ } = wp.i18n;
 
 const className = "premium-dheading-block";
 

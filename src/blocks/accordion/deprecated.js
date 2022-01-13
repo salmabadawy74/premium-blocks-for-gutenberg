@@ -300,7 +300,7 @@ const deprecated_attributes_1_6_3 = Object.assign(
 );
 const deprecated = [
     {
-        attributes: deprecated_attributes_1_6_3,
+        attributes: attributes,
         save: props => {
             const {
                 accordionId,
