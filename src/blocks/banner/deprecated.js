@@ -1,13 +1,529 @@
-import attributes from "./attributes";
+
 
 const { __ } = wp.i18n;
+
+
+import classnames from 'classnames'
 
 const className = "premium-banner";
 
 const { RichText } = wp.editor;
+const attributes = {
+    block_id: {
+        type: "string"
+    },
+    borderBanner: {
+        type: "boolean",
+        default: false,
+    },
+    imageID: {
+        type: "number"
+    },
+    imageURL: {
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: ".premium-banner__img"
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H3"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__desc",
+        default: __("Cool Description!!")
+    },
+    contentAlign: {
+        type: "string",
+        default: "left"
+    },
+    effect: {
+        type: "string",
+        default: "effect1"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    height: {
+        type: "string",
+        default: "default"
+    },
+    minHeight: {
+        type: "number"
+    },
+    verAlign: {
+        type: "string",
+        default: "top"
+    },
+    hovered: {
+        type: "boolean",
+        default: false
+    },
+    responsive: {
+        type: "boolean",
+        default: false
+    },
+    background: {
+        type: "string"
+    },
+    opacity: {
+        type: "number",
+        default: 50
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number",
+    },
+    borderRight: {
+        type: "number",
+    },
+    borderBottom: {
+        type: "number",
+    },
+    borderLeft: {
+        type: "number",
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number",
+        default: "20"
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleWeight: {
+        type: "number"
+    },
+    titleBack: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number",
+        default: "20"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number"
+    },
+    descShadowColor: {
+        type: "string"
+    },
+    descShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    descShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    descShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    urlCheck: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    url: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-banner__link"
+    },
+    sepColor: {
+        type: "string"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowColor: {
+        type: "string"
+    },
+    containerShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    }
+}
+const newAttributes = {
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+                titleSizeUnit: 'px',
+                titleSize: '20',
+                titleSizeMobile: '',
+                titleSizeTablet: '',
+                titleWeight: '',
+                titleLine: '',
+                titleColor: '',
+                titleBack: '',
+                shadowColor: '',
+                shadowBlur: '',
+                shadowHorizontal: '',
+                shadowVertical: ''
+            }
+        ]
+    },
+    descStyles: {
+        type: "array",
+        default: [
+            {
+                descSizeUnit: 'px',
+                descSize: '20',
+                descSizeTablet: '',
+                descSizeMobile: '',
+                descWeight: '',
+                descLine: '',
+                descColor: '#000',
+                descShadowColor: '',
+                descShadowBlur: '',
+                descShadowHorizontal: '',
+                descShadowVertical: '',
+            }
+        ]
+    },
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                borderType: "none",
+                borderWidth: '',
+                borderTop: '',
+                borderRight: '',
+                borderBottom: '',
+                borderLeft: '',
+                borderRadius: '',
+                borderColor: '',
+                containerShadowColor: '',
+                containerShadowBlur: '',
+                containerShadowHorizontal: '',
+                containerShadowVertical: '',
+                containerShadowPosition: '',
+                paddingT: '',
+                paddingR: '',
+                paddingB: '',
+                paddingL: '',
+                paddingU: 'px'
+            }
+        ]
+    },
+}
+
+const new_deprecated_attributes = Object.assign(attributes, newAttributes)
 
 
 const deprecatedContent = [
+    {
+        attributes: new_deprecated_attributes,
+        save: props => {
+
+
+            const {
+                block_id,
+                borderBanner,
+                imageURL,
+                title,
+                titleTag,
+                desc,
+                contentAlign,
+                effect,
+                hoverEffect,
+                height,
+                minHeight,
+                verAlign,
+                hovered,
+                responsive,
+                background,
+                opacity,
+                borderType,
+                borderWidth,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
+                borderRadius,
+                borderColor,
+                titleColor,
+                titleBack,
+                titleWeight,
+                titleLine,
+                shadowBlur,
+                shadowColor,
+                shadowHorizontal,
+                shadowVertical,
+                descColor,
+                descLine,
+                descWeight,
+                descShadowBlur,
+                descShadowColor,
+                descShadowHorizontal,
+                descShadowVertical,
+                urlCheck,
+                url,
+                target,
+                sepColor,
+                blur,
+                bright,
+                contrast,
+                saturation,
+                hue,
+                containerShadowBlur,
+                containerShadowColor,
+                containerShadowHorizontal,
+                containerShadowVertical,
+                containerShadowPosition,
+                paddingB,
+                paddingT,
+                paddingR,
+                paddingL,
+                paddingU,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = props.attributes;
+
+            const mainClasses = classnames(className, 'premium-banner');
+
+            return (
+                <div
+                    id={`premium-banner-${block_id}`}
+                    className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
+                    style={{
+                        paddingTop: paddingT + paddingU,
+                        paddingRight: paddingR + paddingU,
+                        paddingBottom: paddingB + paddingU,
+                        paddingLeft: paddingL + paddingU
+                    }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__inner {`,
+                                `background: ${background}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
+                    <div
+                        className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
+                        style={{
+                            boxShadow: `${containerShadowHorizontal}px ${containerShadowVertical}px ${containerShadowBlur}px ${containerShadowColor} ${containerShadowPosition}`,
+                            borderStyle: borderType,
+                            borderWidth: borderBanner
+                                ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                                : borderWidth + "px",
+                            borderRadius: borderRadius + "px",
+                            borderColor: borderColor
+                        }}
+                    >
+                        <div
+                            className={`premium-banner__img_wrap premium-banner__${height}`}
+                            style={{
+                                minHeight: minHeight,
+                                alignItems: verAlign
+                            }}
+                        >
+                            <img
+                                className={`premium-banner__img`}
+                                alt="Banner Image"
+                                src={imageURL}
+                                style={{
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                }}
+                            />
+                        </div>
+
+                        <div
+                            className={`premium-banner__content`}
+                            style={{
+                                background: "effect2" === effect ? titleBack : "transparent"
+                            }}
+                        >
+                            <div
+                                className={`premium-banner__title_wrap`}
+                                style={{
+                                    textAlign: contentAlign
+                                }}
+                            >
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-banner__title`}
+                                    value={title}
+                                    style={{
+                                        color: titleColor,
+                                        fontWeight: titleWeight,
+                                        lineHeight: titleLine + "px",
+                                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`
+                                    }}
+                                />
+                            </div>
+                            <div
+                                className={`premium-banner__desc_wrap`}
+                                style={{
+                                    textAlign: contentAlign
+                                }}
+                            >
+                                <RichText.Content
+                                    tagName="p"
+                                    className={`premium-banner__desc`}
+                                    value={desc}
+                                    style={{
+                                        color: descColor,
+                                        fontWeight: descWeight,
+                                        lineHeight: descLine + "px",
+                                        textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        {urlCheck && "" !== url && (
+                            <a
+                                className={`premium-banner__link`}
+                                href={url}
+                                target={target && "_blank"}
+                            />
+                        )}
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: attributes,
         migrate: (attributes) => {

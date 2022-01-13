@@ -13608,12 +13608,10 @@ var attributes = {
         type: "string",
         default: "up"
     },
-
     wrapMargin: {
         type: "string",
         default: "up"
     },
-
     urlCheck: {
         type: "boolean"
     },
@@ -33872,22 +33870,301 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(106);
+var _classnames = __webpack_require__(0);
 
-var _attributes2 = _interopRequireDefault(_attributes);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var className = "premium-accordion";
+
 var __ = wp.i18n.__;
 var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
     InnerBlocks = _wp$editor.InnerBlocks;
 
 
+var attributes = {
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            titleText: __("Awesome Title"),
+            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleBorder: {
+        type: "string",
+        default: "none"
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleBorderTop: {
+        type: "number"
+    },
+    titleBorderRight: {
+        type: "number"
+    },
+    titleBorderBottom: {
+        type: "number"
+    },
+    titleBorderLeft: {
+        type: "number"
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    titleBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderColor: {
+        type: "string"
+    },
+    titleBack: {
+        type: "string"
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingT: {
+        type: "number"
+    },
+    titlePaddingR: {
+        type: "number"
+    },
+    titlePaddingB: {
+        type: "number"
+    },
+    titlePaddingL: {
+        type: "number"
+    },
+    arrowColor: {
+        type: "string"
+    },
+    arrowBack: {
+        type: "string"
+    },
+    arrowPos: {
+        type: "string",
+        default: "out"
+    },
+    arrowPadding: {
+        type: "number"
+    },
+    arrowRadius: {
+        type: "number"
+    },
+    arrowSize: {
+        type: "number",
+        default: 20
+    },
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+    descAlign: {
+        type: "string",
+        default: "left"
+    },
+    descColor: {
+        type: "string"
+    },
+    descBack: {
+        type: "string"
+    },
+    descBorder: {
+        type: "string",
+        default: "none"
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    descBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderTop: {
+        type: "number"
+    },
+    descBorderRight: {
+        type: "number"
+    },
+    descBorderBottom: {
+        type: "number"
+    },
+    descBorderLeft: {
+        type: "number"
+    },
+    titleEditBorder: {
+        type: "boolean"
+    },
+    descBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    descBorderColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descUpper: {
+        type: "boolean"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descPaddingT: {
+        type: "number"
+    },
+    descPaddingR: {
+        type: "number"
+    },
+    descPaddingB: {
+        type: "number"
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10
+    }
+};
+var newAttributes = {
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "",
+            titleSize: '',
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: '',
+            titleWeight: '500',
+            titleBorder: 'none',
+            titleBorderRadius: '',
+            titleBorderColor: '',
+            titleBack: '',
+            titleShadowColor: '',
+            titleShadowBlur: 0,
+            titleShadowHorizontal: 0,
+            titleShadowVertical: 0
+        }]
+    },
+    arrowStyles: {
+        type: "array",
+        default: [{
+            arrowColor: '',
+            arrowBack: '',
+            arrowPos: 'out',
+            arrowPadding: '',
+            arrowRadius: '',
+            arrowSize: 20
+        }]
+    },
+    descStyles: {
+        type: 'array',
+        default: [{
+            descAlign: 'left',
+            descColor: '',
+            descBack: '',
+            descBorder: 'none',
+            descBorderWidth: 1,
+            descBorderUpdated: false,
+            descBorderTop: '',
+            descBorderRight: '',
+            descBorderBottom: '',
+            descBorderLeft: '',
+            descBorderRadius: 0,
+            descBorderColor: '',
+            descSize: '',
+            descLine: '',
+            descLetter: '',
+            descStyle: '',
+            descUpper: false,
+            descWeight: 500,
+            descPaddingT: '',
+            descPaddingR: '',
+            descPaddingB: '',
+            descPaddingL: ''
+        }]
+    }
+};
+var deprecated_attributes_1_6_3 = Object.assign(attributes, newAttributes);
 var deprecated = [{
-    attributes: _attributes2.default,
-
+    attributes: deprecated_attributes_1_6_3,
     save: function save(props) {
         var _props$attributes = props.attributes,
             accordionId = _props$attributes.accordionId,
@@ -33902,8 +34179,12 @@ var deprecated = [{
             titleWeight = _props$attributes.titleWeight,
             titleColor = _props$attributes.titleColor,
             titleBorder = _props$attributes.titleBorder,
-            titleBorderColor = _props$attributes.titleBorderColor,
             titleBorderWidth = _props$attributes.titleBorderWidth,
+            titleBorderColor = _props$attributes.titleBorderColor,
+            titleBorderTop = _props$attributes.titleBorderTop,
+            titleBorderRight = _props$attributes.titleBorderRight,
+            titleBorderBottom = _props$attributes.titleBorderBottom,
+            titleBorderLeft = _props$attributes.titleBorderLeft,
             titleBorderRadius = _props$attributes.titleBorderRadius,
             titleBack = _props$attributes.titleBack,
             titleShadowBlur = _props$attributes.titleShadowBlur,
@@ -33934,6 +34215,10 @@ var deprecated = [{
             descBorderColor = _props$attributes.descBorderColor,
             descBorderRadius = _props$attributes.descBorderRadius,
             descBorderWidth = _props$attributes.descBorderWidth,
+            descBorderTop = _props$attributes.descBorderTop,
+            descBorderRight = _props$attributes.descBorderRight,
+            descBorderBottom = _props$attributes.descBorderBottom,
+            descBorderLeft = _props$attributes.descBorderLeft,
             textShadowBlur = _props$attributes.textShadowBlur,
             textShadowColor = _props$attributes.textShadowColor,
             textShadowHorizontal = _props$attributes.textShadowHorizontal,
@@ -33941,7 +34226,178 @@ var deprecated = [{
             descPaddingT = _props$attributes.descPaddingT,
             descPaddingR = _props$attributes.descPaddingR,
             descPaddingB = _props$attributes.descPaddingB,
-            descPaddingL = _props$attributes.descPaddingL;
+            descPaddingL = _props$attributes.descPaddingL,
+            titleBorderUpdated = _props$attributes.titleBorderUpdated,
+            descBorderUpdated = _props$attributes.descBorderUpdated;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return React.createElement(
+                "div",
+                {
+                    id: "premium-accordion__layer" + index,
+                    className: "premium-accordion__content_wrap"
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
+                        style: {
+                            backgroundColor: titleBack,
+                            borderStyle: titleBorder,
+                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
+                            borderRadius: titleBorderRadius + "px",
+                            borderColor: titleBorderColor,
+                            paddingTop: titlePaddingT,
+                            paddingRight: titlePaddingR,
+                            paddingBottom: titlePaddingB,
+                            paddingLeft: titlePaddingL
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__title" },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-accordion__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                letterSpacing: titleLetter + "px",
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyle,
+                                fontWeight: titleWeight,
+                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                                lineHeight: titleLine + "px"
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__icon_wrap" },
+                        React.createElement(
+                            "svg",
+                            {
+                                className: "premium-accordion__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowSize,
+                                height: arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowColor,
+                                    backgroundColor: arrowBack,
+                                    padding: arrowPadding + "px",
+                                    borderRadius: arrowRadius + "px"
+                                }
+                            },
+                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descAlign,
+                            backgroundColor: descBack,
+                            borderStyle: descBorder,
+                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
+                            borderRadius: descBorderRadius + "px",
+                            borderColor: descBorderColor,
+                            paddingTop: descPaddingT,
+                            paddingRight: descPaddingR,
+                            paddingBottom: descPaddingB,
+                            paddingLeft: descPaddingL
+                        }
+                    },
+                    "text" === contentType && React.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-accordion__desc",
+                        value: item.descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            letterSpacing: descLetter + "px",
+                            textTransform: descUpper ? "uppercase" : "none",
+                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
+                            fontStyle: descStyle,
+                            fontWeight: descWeight,
+                            lineHeight: descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return React.createElement(
+            "div",
+            { id: accordionId, className: "" + mainClasses },
+            accordionItems
+        );
+    }
+}, {
+    attributes: attributes,
+
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            accordionId = _props$attributes2.accordionId,
+            repeaterItems = _props$attributes2.repeaterItems,
+            direction = _props$attributes2.direction,
+            titleTag = _props$attributes2.titleTag,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleColor = _props$attributes2.titleColor,
+            titleBorder = _props$attributes2.titleBorder,
+            titleBorderColor = _props$attributes2.titleBorderColor,
+            titleBorderWidth = _props$attributes2.titleBorderWidth,
+            titleBorderRadius = _props$attributes2.titleBorderRadius,
+            titleBack = _props$attributes2.titleBack,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titlePaddingT = _props$attributes2.titlePaddingT,
+            titlePaddingR = _props$attributes2.titlePaddingR,
+            titlePaddingB = _props$attributes2.titlePaddingB,
+            titlePaddingL = _props$attributes2.titlePaddingL,
+            arrowColor = _props$attributes2.arrowColor,
+            arrowBack = _props$attributes2.arrowBack,
+            arrowPos = _props$attributes2.arrowPos,
+            arrowPadding = _props$attributes2.arrowPadding,
+            arrowSize = _props$attributes2.arrowSize,
+            arrowRadius = _props$attributes2.arrowRadius,
+            contentType = _props$attributes2.contentType,
+            descAlign = _props$attributes2.descAlign,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descLetter = _props$attributes2.descLetter,
+            descStyle = _props$attributes2.descStyle,
+            descUpper = _props$attributes2.descUpper,
+            descWeight = _props$attributes2.descWeight,
+            descColor = _props$attributes2.descColor,
+            descBack = _props$attributes2.descBack,
+            descBorder = _props$attributes2.descBorder,
+            descBorderColor = _props$attributes2.descBorderColor,
+            descBorderRadius = _props$attributes2.descBorderRadius,
+            descBorderWidth = _props$attributes2.descBorderWidth,
+            textShadowBlur = _props$attributes2.textShadowBlur,
+            textShadowColor = _props$attributes2.textShadowColor,
+            textShadowHorizontal = _props$attributes2.textShadowHorizontal,
+            textShadowVertical = _props$attributes2.textShadowVertical,
+            descPaddingT = _props$attributes2.descPaddingT,
+            descPaddingR = _props$attributes2.descPaddingR,
+            descPaddingB = _props$attributes2.descPaddingB,
+            descPaddingL = _props$attributes2.descPaddingL;
 
         var accordionItems = repeaterItems.map(function (item, index) {
             return React.createElement(
@@ -34052,57 +34508,57 @@ var deprecated = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            accordionId = _props$attributes2.accordionId,
-            repeaterItems = _props$attributes2.repeaterItems,
-            direction = _props$attributes2.direction,
-            titleTag = _props$attributes2.titleTag,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleColor = _props$attributes2.titleColor,
-            titleBorder = _props$attributes2.titleBorder,
-            titleBorderColor = _props$attributes2.titleBorderColor,
-            titleBorderWidth = _props$attributes2.titleBorderWidth,
-            titleBorderRadius = _props$attributes2.titleBorderRadius,
-            titleBack = _props$attributes2.titleBack,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titlePaddingT = _props$attributes2.titlePaddingT,
-            titlePaddingR = _props$attributes2.titlePaddingR,
-            titlePaddingB = _props$attributes2.titlePaddingB,
-            titlePaddingL = _props$attributes2.titlePaddingL,
-            arrowColor = _props$attributes2.arrowColor,
-            arrowBack = _props$attributes2.arrowBack,
-            arrowPos = _props$attributes2.arrowPos,
-            arrowPadding = _props$attributes2.arrowPadding,
-            arrowSize = _props$attributes2.arrowSize,
-            arrowRadius = _props$attributes2.arrowRadius,
-            contentType = _props$attributes2.contentType,
-            descAlign = _props$attributes2.descAlign,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descLetter = _props$attributes2.descLetter,
-            descStyle = _props$attributes2.descStyle,
-            descUpper = _props$attributes2.descUpper,
-            descWeight = _props$attributes2.descWeight,
-            descColor = _props$attributes2.descColor,
-            descBack = _props$attributes2.descBack,
-            descBorder = _props$attributes2.descBorder,
-            descBorderColor = _props$attributes2.descBorderColor,
-            descBorderRadius = _props$attributes2.descBorderRadius,
-            descBorderWidth = _props$attributes2.descBorderWidth,
-            descPaddingT = _props$attributes2.descPaddingT,
-            descPaddingR = _props$attributes2.descPaddingR,
-            descPaddingB = _props$attributes2.descPaddingB,
-            descPaddingL = _props$attributes2.descPaddingL;
+        var _props$attributes3 = props.attributes,
+            accordionId = _props$attributes3.accordionId,
+            repeaterItems = _props$attributes3.repeaterItems,
+            direction = _props$attributes3.direction,
+            titleTag = _props$attributes3.titleTag,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleColor = _props$attributes3.titleColor,
+            titleBorder = _props$attributes3.titleBorder,
+            titleBorderColor = _props$attributes3.titleBorderColor,
+            titleBorderWidth = _props$attributes3.titleBorderWidth,
+            titleBorderRadius = _props$attributes3.titleBorderRadius,
+            titleBack = _props$attributes3.titleBack,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titlePaddingT = _props$attributes3.titlePaddingT,
+            titlePaddingR = _props$attributes3.titlePaddingR,
+            titlePaddingB = _props$attributes3.titlePaddingB,
+            titlePaddingL = _props$attributes3.titlePaddingL,
+            arrowColor = _props$attributes3.arrowColor,
+            arrowBack = _props$attributes3.arrowBack,
+            arrowPos = _props$attributes3.arrowPos,
+            arrowPadding = _props$attributes3.arrowPadding,
+            arrowSize = _props$attributes3.arrowSize,
+            arrowRadius = _props$attributes3.arrowRadius,
+            contentType = _props$attributes3.contentType,
+            descAlign = _props$attributes3.descAlign,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descLetter = _props$attributes3.descLetter,
+            descStyle = _props$attributes3.descStyle,
+            descUpper = _props$attributes3.descUpper,
+            descWeight = _props$attributes3.descWeight,
+            descColor = _props$attributes3.descColor,
+            descBack = _props$attributes3.descBack,
+            descBorder = _props$attributes3.descBorder,
+            descBorderColor = _props$attributes3.descBorderColor,
+            descBorderRadius = _props$attributes3.descBorderRadius,
+            descBorderWidth = _props$attributes3.descBorderWidth,
+            descPaddingT = _props$attributes3.descPaddingT,
+            descPaddingR = _props$attributes3.descPaddingR,
+            descPaddingB = _props$attributes3.descPaddingB,
+            descPaddingL = _props$attributes3.descPaddingL;
 
 
         var accordionItems = repeaterItems.map(function (item, index) {
@@ -35329,9 +35785,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(107);
+var _classnames = __webpack_require__(0);
 
-var _attributes2 = _interopRequireDefault(_attributes);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35342,33 +35798,339 @@ var className = "premium-banner";
 
 var RichText = wp.editor.RichText;
 
-
-var deprecatedContent = [{
-    attributes: _attributes2.default,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            borderBottom: "",
-            borderTop: "",
-            borderRight: "",
-            borderLeft: "",
-            borderBanner: "",
-            classMigrate: false,
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    borderBanner: {
+        type: "boolean",
+        default: false
+    },
+    imageID: {
+        type: "number"
+    },
+    imageURL: {
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: ".premium-banner__img"
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H3"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__desc",
+        default: __("Cool Description!!")
+    },
+    contentAlign: {
+        type: "string",
+        default: "left"
+    },
+    effect: {
+        type: "string",
+        default: "effect1"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    height: {
+        type: "string",
+        default: "default"
+    },
+    minHeight: {
+        type: "number"
+    },
+    verAlign: {
+        type: "string",
+        default: "top"
+    },
+    hovered: {
+        type: "boolean",
+        default: false
+    },
+    responsive: {
+        type: "boolean",
+        default: false
+    },
+    background: {
+        type: "string"
+    },
+    opacity: {
+        type: "number",
+        default: 50
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number",
+        default: "20"
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleWeight: {
+        type: "number"
+    },
+    titleBack: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number",
+        default: "20"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number"
+    },
+    descSizeMobile: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number"
+    },
+    descShadowColor: {
+        type: "string"
+    },
+    descShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    descShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    descShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    urlCheck: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    url: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-banner__link"
+    },
+    sepColor: {
+        type: "string"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowColor: {
+        type: "string"
+    },
+    containerShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    containerShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    }
+};
+var newAttributes = {
+    titleStyles: {
+        type: "array",
+        default: [{
             titleSizeUnit: 'px',
+            titleSize: '20',
             titleSizeMobile: '',
             titleSizeTablet: '',
-            descSizeUnit: 'px',
-            descSizeMobile: '',
-            descSizeTablet: '',
-            block_id: '',
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
-        };
-        return Object.assign(attributes, newAttributes);
+            titleWeight: '',
+            titleLine: '',
+            titleColor: '',
+            titleBack: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: ''
+        }]
     },
+    descStyles: {
+        type: "array",
+        default: [{
+            descSizeUnit: 'px',
+            descSize: '20',
+            descSizeTablet: '',
+            descSizeMobile: '',
+            descWeight: '',
+            descLine: '',
+            descColor: '#000',
+            descShadowColor: '',
+            descShadowBlur: '',
+            descShadowHorizontal: '',
+            descShadowVertical: ''
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            borderType: "none",
+            borderWidth: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            borderRadius: '',
+            borderColor: '',
+            containerShadowColor: '',
+            containerShadowBlur: '',
+            containerShadowHorizontal: '',
+            containerShadowVertical: '',
+            containerShadowPosition: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: 'px'
+        }]
+    }
+};
+
+var new_deprecated_attributes = Object.assign(attributes, newAttributes);
+
+var deprecatedContent = [{
+    attributes: new_deprecated_attributes,
     save: function save(props) {
         var _props$attributes = props.attributes,
-            id = _props$attributes.id,
+            block_id = _props$attributes.block_id,
+            borderBanner = _props$attributes.borderBanner,
             imageURL = _props$attributes.imageURL,
             title = _props$attributes.title,
             titleTag = _props$attributes.titleTag,
@@ -35385,11 +36147,14 @@ var deprecatedContent = [{
             opacity = _props$attributes.opacity,
             borderType = _props$attributes.borderType,
             borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             borderRadius = _props$attributes.borderRadius,
             borderColor = _props$attributes.borderColor,
             titleColor = _props$attributes.titleColor,
             titleBack = _props$attributes.titleBack,
-            titleSize = _props$attributes.titleSize,
             titleWeight = _props$attributes.titleWeight,
             titleLine = _props$attributes.titleLine,
             shadowBlur = _props$attributes.shadowBlur,
@@ -35397,7 +36162,6 @@ var deprecatedContent = [{
             shadowHorizontal = _props$attributes.shadowHorizontal,
             shadowVertical = _props$attributes.shadowVertical,
             descColor = _props$attributes.descColor,
-            descSize = _props$attributes.descSize,
             descLine = _props$attributes.descLine,
             descWeight = _props$attributes.descWeight,
             descShadowBlur = _props$attributes.descShadowBlur,
@@ -35422,7 +36186,198 @@ var deprecatedContent = [{
             paddingT = _props$attributes.paddingT,
             paddingR = _props$attributes.paddingR,
             paddingL = _props$attributes.paddingL,
-            paddingU = _props$attributes.paddingU;
+            paddingU = _props$attributes.paddingU,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
+
+        return React.createElement(
+            "div",
+            {
+                id: "premium-banner-" + block_id,
+                className: mainClasses + " premium-banner__responsive_" + responsive + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-banner-" + block_id,
+                style: {
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU
+                }
+            },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
+                }
+            }),
+            React.createElement(
+                "div",
+                {
+                    className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
+                    style: {
+                        boxShadow: containerShadowHorizontal + "px " + containerShadowVertical + "px " + containerShadowBlur + "px " + containerShadowColor + " " + containerShadowPosition,
+                        borderStyle: borderType,
+                        borderWidth: borderBanner ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor
+                    }
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__img_wrap premium-banner__" + height,
+                        style: {
+                            minHeight: minHeight,
+                            alignItems: verAlign
+                        }
+                    },
+                    React.createElement("img", {
+                        className: "premium-banner__img",
+                        alt: "Banner Image",
+                        src: imageURL,
+                        style: {
+                            filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                        }
+                    })
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__content",
+                        style: {
+                            background: "effect2" === effect ? titleBack : "transparent"
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__title_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-banner__title",
+                            value: title,
+                            style: {
+                                color: titleColor,
+                                fontWeight: titleWeight,
+                                lineHeight: titleLine + "px",
+                                textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__desc_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        React.createElement(RichText.Content, {
+                            tagName: "p",
+                            className: "premium-banner__desc",
+                            value: desc,
+                            style: {
+                                color: descColor,
+                                fontWeight: descWeight,
+                                lineHeight: descLine + "px",
+                                textShadow: descShadowHorizontal + "px " + descShadowVertical + "px " + descShadowBlur + "px " + descShadowColor
+                            }
+                        })
+                    )
+                ),
+                urlCheck && "" !== url && React.createElement("a", {
+                    className: "premium-banner__link",
+                    href: url,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            borderBottom: "",
+            borderTop: "",
+            borderRight: "",
+            borderLeft: "",
+            borderBanner: "",
+            classMigrate: false,
+            titleSizeUnit: 'px',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            descSizeUnit: 'px',
+            descSizeMobile: '',
+            descSizeTablet: '',
+            block_id: '',
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            imageURL = _props$attributes2.imageURL,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            desc = _props$attributes2.desc,
+            contentAlign = _props$attributes2.contentAlign,
+            effect = _props$attributes2.effect,
+            hoverEffect = _props$attributes2.hoverEffect,
+            height = _props$attributes2.height,
+            minHeight = _props$attributes2.minHeight,
+            verAlign = _props$attributes2.verAlign,
+            hovered = _props$attributes2.hovered,
+            responsive = _props$attributes2.responsive,
+            background = _props$attributes2.background,
+            opacity = _props$attributes2.opacity,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            titleColor = _props$attributes2.titleColor,
+            titleBack = _props$attributes2.titleBack,
+            titleSize = _props$attributes2.titleSize,
+            titleWeight = _props$attributes2.titleWeight,
+            titleLine = _props$attributes2.titleLine,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            descColor = _props$attributes2.descColor,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descShadowBlur = _props$attributes2.descShadowBlur,
+            descShadowColor = _props$attributes2.descShadowColor,
+            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
+            descShadowVertical = _props$attributes2.descShadowVertical,
+            urlCheck = _props$attributes2.urlCheck,
+            url = _props$attributes2.url,
+            target = _props$attributes2.target,
+            sepColor = _props$attributes2.sepColor,
+            blur = _props$attributes2.blur,
+            bright = _props$attributes2.bright,
+            contrast = _props$attributes2.contrast,
+            saturation = _props$attributes2.saturation,
+            hue = _props$attributes2.hue,
+            containerShadowBlur = _props$attributes2.containerShadowBlur,
+            containerShadowColor = _props$attributes2.containerShadowColor,
+            containerShadowHorizontal = _props$attributes2.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes2.containerShadowVertical,
+            containerShadowPosition = _props$attributes2.containerShadowPosition,
+            paddingB = _props$attributes2.paddingB,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU;
 
 
         return React.createElement(
@@ -35532,7 +36487,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             paddingT: "",
@@ -35544,57 +36499,57 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            imageURL = _props$attributes2.imageURL,
-            title = _props$attributes2.title,
-            titleTag = _props$attributes2.titleTag,
-            desc = _props$attributes2.desc,
-            contentAlign = _props$attributes2.contentAlign,
-            effect = _props$attributes2.effect,
-            hoverEffect = _props$attributes2.hoverEffect,
-            height = _props$attributes2.height,
-            minHeight = _props$attributes2.minHeight,
-            verAlign = _props$attributes2.verAlign,
-            hovered = _props$attributes2.hovered,
-            responsive = _props$attributes2.responsive,
-            background = _props$attributes2.background,
-            opacity = _props$attributes2.opacity,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            titleColor = _props$attributes2.titleColor,
-            titleBack = _props$attributes2.titleBack,
-            titleSize = _props$attributes2.titleSize,
-            titleWeight = _props$attributes2.titleWeight,
-            titleLine = _props$attributes2.titleLine,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            descColor = _props$attributes2.descColor,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descShadowBlur = _props$attributes2.descShadowBlur,
-            descShadowColor = _props$attributes2.descShadowColor,
-            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
-            descShadowVertical = _props$attributes2.descShadowVertical,
-            urlCheck = _props$attributes2.urlCheck,
-            url = _props$attributes2.url,
-            target = _props$attributes2.target,
-            sepColor = _props$attributes2.sepColor,
-            blur = _props$attributes2.blur,
-            bright = _props$attributes2.bright,
-            contrast = _props$attributes2.contrast,
-            saturation = _props$attributes2.saturation,
-            hue = _props$attributes2.hue,
-            containerShadowBlur = _props$attributes2.containerShadowBlur,
-            containerShadowColor = _props$attributes2.containerShadowColor,
-            containerShadowHorizontal = _props$attributes2.containerShadowHorizontal,
-            containerShadowVertical = _props$attributes2.containerShadowVertical,
-            containerShadowPosition = _props$attributes2.containerShadowPosition;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            imageURL = _props$attributes3.imageURL,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            desc = _props$attributes3.desc,
+            contentAlign = _props$attributes3.contentAlign,
+            effect = _props$attributes3.effect,
+            hoverEffect = _props$attributes3.hoverEffect,
+            height = _props$attributes3.height,
+            minHeight = _props$attributes3.minHeight,
+            verAlign = _props$attributes3.verAlign,
+            hovered = _props$attributes3.hovered,
+            responsive = _props$attributes3.responsive,
+            background = _props$attributes3.background,
+            opacity = _props$attributes3.opacity,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            titleColor = _props$attributes3.titleColor,
+            titleBack = _props$attributes3.titleBack,
+            titleSize = _props$attributes3.titleSize,
+            titleWeight = _props$attributes3.titleWeight,
+            titleLine = _props$attributes3.titleLine,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descShadowBlur = _props$attributes3.descShadowBlur,
+            descShadowColor = _props$attributes3.descShadowColor,
+            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
+            descShadowVertical = _props$attributes3.descShadowVertical,
+            urlCheck = _props$attributes3.urlCheck,
+            url = _props$attributes3.url,
+            target = _props$attributes3.target,
+            sepColor = _props$attributes3.sepColor,
+            blur = _props$attributes3.blur,
+            bright = _props$attributes3.bright,
+            contrast = _props$attributes3.contrast,
+            saturation = _props$attributes3.saturation,
+            hue = _props$attributes3.hue,
+            containerShadowBlur = _props$attributes3.containerShadowBlur,
+            containerShadowColor = _props$attributes3.containerShadowColor,
+            containerShadowHorizontal = _props$attributes3.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes3.containerShadowVertical,
+            containerShadowPosition = _props$attributes3.containerShadowPosition;
 
         return React.createElement(
             "div",
@@ -35699,7 +36654,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             containerShadowColor: "",
@@ -35711,52 +36666,52 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            imageURL = _props$attributes3.imageURL,
-            title = _props$attributes3.title,
-            titleTag = _props$attributes3.titleTag,
-            desc = _props$attributes3.desc,
-            contentAlign = _props$attributes3.contentAlign,
-            effect = _props$attributes3.effect,
-            hoverEffect = _props$attributes3.hoverEffect,
-            height = _props$attributes3.height,
-            minHeight = _props$attributes3.minHeight,
-            verAlign = _props$attributes3.verAlign,
-            hovered = _props$attributes3.hovered,
-            responsive = _props$attributes3.responsive,
-            background = _props$attributes3.background,
-            opacity = _props$attributes3.opacity,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            titleColor = _props$attributes3.titleColor,
-            titleBack = _props$attributes3.titleBack,
-            titleSize = _props$attributes3.titleSize,
-            titleWeight = _props$attributes3.titleWeight,
-            titleLine = _props$attributes3.titleLine,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            descColor = _props$attributes3.descColor,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descShadowBlur = _props$attributes3.descShadowBlur,
-            descShadowColor = _props$attributes3.descShadowColor,
-            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
-            descShadowVertical = _props$attributes3.descShadowVertical,
-            urlCheck = _props$attributes3.urlCheck,
-            url = _props$attributes3.url,
-            target = _props$attributes3.target,
-            sepColor = _props$attributes3.sepColor,
-            blur = _props$attributes3.blur,
-            bright = _props$attributes3.bright,
-            contrast = _props$attributes3.contrast,
-            saturation = _props$attributes3.saturation,
-            hue = _props$attributes3.hue;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            imageURL = _props$attributes4.imageURL,
+            title = _props$attributes4.title,
+            titleTag = _props$attributes4.titleTag,
+            desc = _props$attributes4.desc,
+            contentAlign = _props$attributes4.contentAlign,
+            effect = _props$attributes4.effect,
+            hoverEffect = _props$attributes4.hoverEffect,
+            height = _props$attributes4.height,
+            minHeight = _props$attributes4.minHeight,
+            verAlign = _props$attributes4.verAlign,
+            hovered = _props$attributes4.hovered,
+            responsive = _props$attributes4.responsive,
+            background = _props$attributes4.background,
+            opacity = _props$attributes4.opacity,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            titleColor = _props$attributes4.titleColor,
+            titleBack = _props$attributes4.titleBack,
+            titleSize = _props$attributes4.titleSize,
+            titleWeight = _props$attributes4.titleWeight,
+            titleLine = _props$attributes4.titleLine,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            descColor = _props$attributes4.descColor,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descShadowBlur = _props$attributes4.descShadowBlur,
+            descShadowColor = _props$attributes4.descShadowColor,
+            descShadowHorizontal = _props$attributes4.descShadowHorizontal,
+            descShadowVertical = _props$attributes4.descShadowVertical,
+            urlCheck = _props$attributes4.urlCheck,
+            url = _props$attributes4.url,
+            target = _props$attributes4.target,
+            sepColor = _props$attributes4.sepColor,
+            blur = _props$attributes4.blur,
+            bright = _props$attributes4.bright,
+            contrast = _props$attributes4.contrast,
+            saturation = _props$attributes4.saturation,
+            hue = _props$attributes4.hue;
 
         return React.createElement(
             "div",
@@ -35858,7 +36813,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             descShadowBlur: "0",
@@ -35869,48 +36824,48 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            imageURL = _props$attributes4.imageURL,
-            title = _props$attributes4.title,
-            titleTag = _props$attributes4.titleTag,
-            desc = _props$attributes4.desc,
-            contentAlign = _props$attributes4.contentAlign,
-            effect = _props$attributes4.effect,
-            hoverEffect = _props$attributes4.hoverEffect,
-            height = _props$attributes4.height,
-            minHeight = _props$attributes4.minHeight,
-            verAlign = _props$attributes4.verAlign,
-            hovered = _props$attributes4.hovered,
-            responsive = _props$attributes4.responsive,
-            background = _props$attributes4.background,
-            opacity = _props$attributes4.opacity,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            titleColor = _props$attributes4.titleColor,
-            titleBack = _props$attributes4.titleBack,
-            titleSize = _props$attributes4.titleSize,
-            titleWeight = _props$attributes4.titleWeight,
-            titleLine = _props$attributes4.titleLine,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            descColor = _props$attributes4.descColor,
-            descSize = _props$attributes4.descSize,
-            descWeight = _props$attributes4.descWeight,
-            descLine = _props$attributes4.descLine,
-            urlCheck = _props$attributes4.urlCheck,
-            url = _props$attributes4.url,
-            target = _props$attributes4.target,
-            sepColor = _props$attributes4.sepColor,
-            blur = _props$attributes4.blur,
-            bright = _props$attributes4.bright,
-            contrast = _props$attributes4.contrast,
-            saturation = _props$attributes4.saturation,
-            hue = _props$attributes4.hue;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            imageURL = _props$attributes5.imageURL,
+            title = _props$attributes5.title,
+            titleTag = _props$attributes5.titleTag,
+            desc = _props$attributes5.desc,
+            contentAlign = _props$attributes5.contentAlign,
+            effect = _props$attributes5.effect,
+            hoverEffect = _props$attributes5.hoverEffect,
+            height = _props$attributes5.height,
+            minHeight = _props$attributes5.minHeight,
+            verAlign = _props$attributes5.verAlign,
+            hovered = _props$attributes5.hovered,
+            responsive = _props$attributes5.responsive,
+            background = _props$attributes5.background,
+            opacity = _props$attributes5.opacity,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            titleColor = _props$attributes5.titleColor,
+            titleBack = _props$attributes5.titleBack,
+            titleSize = _props$attributes5.titleSize,
+            titleWeight = _props$attributes5.titleWeight,
+            titleLine = _props$attributes5.titleLine,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            descColor = _props$attributes5.descColor,
+            descSize = _props$attributes5.descSize,
+            descWeight = _props$attributes5.descWeight,
+            descLine = _props$attributes5.descLine,
+            urlCheck = _props$attributes5.urlCheck,
+            url = _props$attributes5.url,
+            target = _props$attributes5.target,
+            sepColor = _props$attributes5.sepColor,
+            blur = _props$attributes5.blur,
+            bright = _props$attributes5.bright,
+            contrast = _props$attributes5.contrast,
+            saturation = _props$attributes5.saturation,
+            hue = _props$attributes5.hue;
 
         return React.createElement(
             "div",
@@ -36011,7 +36966,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             blur: "0",
@@ -36023,43 +36978,43 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            imageURL = _props$attributes5.imageURL,
-            title = _props$attributes5.title,
-            titleTag = _props$attributes5.titleTag,
-            desc = _props$attributes5.desc,
-            contentAlign = _props$attributes5.contentAlign,
-            effect = _props$attributes5.effect,
-            hoverEffect = _props$attributes5.hoverEffect,
-            height = _props$attributes5.height,
-            minHeight = _props$attributes5.minHeight,
-            verAlign = _props$attributes5.verAlign,
-            hovered = _props$attributes5.hovered,
-            responsive = _props$attributes5.responsive,
-            background = _props$attributes5.background,
-            opacity = _props$attributes5.opacity,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            titleColor = _props$attributes5.titleColor,
-            titleBack = _props$attributes5.titleBack,
-            titleSize = _props$attributes5.titleSize,
-            titleWeight = _props$attributes5.titleWeight,
-            titleLine = _props$attributes5.titleLine,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descWeight = _props$attributes5.descWeight,
-            descLine = _props$attributes5.descLine,
-            urlCheck = _props$attributes5.urlCheck,
-            url = _props$attributes5.url,
-            target = _props$attributes5.target,
-            sepColor = _props$attributes5.sepColor;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            imageURL = _props$attributes6.imageURL,
+            title = _props$attributes6.title,
+            titleTag = _props$attributes6.titleTag,
+            desc = _props$attributes6.desc,
+            contentAlign = _props$attributes6.contentAlign,
+            effect = _props$attributes6.effect,
+            hoverEffect = _props$attributes6.hoverEffect,
+            height = _props$attributes6.height,
+            minHeight = _props$attributes6.minHeight,
+            verAlign = _props$attributes6.verAlign,
+            hovered = _props$attributes6.hovered,
+            responsive = _props$attributes6.responsive,
+            background = _props$attributes6.background,
+            opacity = _props$attributes6.opacity,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            titleColor = _props$attributes6.titleColor,
+            titleBack = _props$attributes6.titleBack,
+            titleSize = _props$attributes6.titleSize,
+            titleWeight = _props$attributes6.titleWeight,
+            titleLine = _props$attributes6.titleLine,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descWeight = _props$attributes6.descWeight,
+            descLine = _props$attributes6.descLine,
+            urlCheck = _props$attributes6.urlCheck,
+            url = _props$attributes6.url,
+            target = _props$attributes6.target,
+            sepColor = _props$attributes6.sepColor;
 
         return React.createElement(
             "div",
@@ -36157,7 +37112,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             shadowBlur: "0",
@@ -36168,39 +37123,39 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            imageURL = _props$attributes6.imageURL,
-            title = _props$attributes6.title,
-            titleTag = _props$attributes6.titleTag,
-            desc = _props$attributes6.desc,
-            contentAlign = _props$attributes6.contentAlign,
-            effect = _props$attributes6.effect,
-            hoverEffect = _props$attributes6.hoverEffect,
-            height = _props$attributes6.height,
-            minHeight = _props$attributes6.minHeight,
-            verAlign = _props$attributes6.verAlign,
-            hovered = _props$attributes6.hovered,
-            responsive = _props$attributes6.responsive,
-            background = _props$attributes6.background,
-            opacity = _props$attributes6.opacity,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            titleColor = _props$attributes6.titleColor,
-            titleBack = _props$attributes6.titleBack,
-            titleSize = _props$attributes6.titleSize,
-            titleWeight = _props$attributes6.titleWeight,
-            titleLine = _props$attributes6.titleLine,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descWeight = _props$attributes6.descWeight,
-            descLine = _props$attributes6.descLine,
-            urlCheck = _props$attributes6.urlCheck,
-            url = _props$attributes6.url,
-            target = _props$attributes6.target,
-            sepColor = _props$attributes6.sepColor;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            imageURL = _props$attributes7.imageURL,
+            title = _props$attributes7.title,
+            titleTag = _props$attributes7.titleTag,
+            desc = _props$attributes7.desc,
+            contentAlign = _props$attributes7.contentAlign,
+            effect = _props$attributes7.effect,
+            hoverEffect = _props$attributes7.hoverEffect,
+            height = _props$attributes7.height,
+            minHeight = _props$attributes7.minHeight,
+            verAlign = _props$attributes7.verAlign,
+            hovered = _props$attributes7.hovered,
+            responsive = _props$attributes7.responsive,
+            background = _props$attributes7.background,
+            opacity = _props$attributes7.opacity,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            titleColor = _props$attributes7.titleColor,
+            titleBack = _props$attributes7.titleBack,
+            titleSize = _props$attributes7.titleSize,
+            titleWeight = _props$attributes7.titleWeight,
+            titleLine = _props$attributes7.titleLine,
+            descColor = _props$attributes7.descColor,
+            descSize = _props$attributes7.descSize,
+            descWeight = _props$attributes7.descWeight,
+            descLine = _props$attributes7.descLine,
+            urlCheck = _props$attributes7.urlCheck,
+            url = _props$attributes7.url,
+            target = _props$attributes7.target,
+            sepColor = _props$attributes7.sepColor;
 
         return React.createElement(
             "div",
@@ -37094,24 +38049,245 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(108);
+var _classnames = __webpack_require__(0);
 
-var _attributes2 = _interopRequireDefault(_attributes);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var className = "premium-button"; //import { merge } from "lodash";
-
+var className = "premium-button";
 var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
 
 
-var deprecatedContent = [{
-    attributes: _attributes2.default,
+var attributes = {
+    borderButton: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "string",
+        default: __("Premium Button")
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    textColor: {
+        type: "string"
+    },
+    textHoverColor: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backOpacity: {
+        type: "number",
+        default: "1"
+    },
+    backHoverColor: {
+        type: "string"
+    },
+    slideColor: {
+        type: "string"
+    },
+    textSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    textSize: {
+        type: "number",
+        default: '20'
+    },
+    textSizeTablet: {
+        type: "number"
+    },
+    textSizeMobile: {
+        type: "number"
+    },
+    textFontFamily: {
+        type: "string"
+    },
+    textLetter: {
+        type: "number"
+    },
+    textStyle: {
+        type: "string"
+    },
+    textUpper: {
+        type: "boolean"
+    },
+    textWeight: {
+        type: "number",
+        default: 500
+    },
+    textLine: {
+        type: "number"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    borderHoverColor: {
+        type: "string"
+    },
+    padding: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    block_id: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
 
+var newAttributes = {
+    textStyles: {
+        type: "array",
+        default: [{
+            textSizeUnit: 'px',
+            textSize: 20,
+            textSizeTablet: '',
+            textSizeMobile: '',
+            textFontFamily: __('Default'),
+            textLetter: '',
+            textStyle: '',
+            textUpper: false,
+            textWeight: '',
+            textLine: '',
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0'
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            textColor: '',
+            textHoverColor: '',
+            backColor: '',
+            backOpacity: 1,
+            backHoverColor: '',
+            borderType: "none",
+            borderRadius: '',
+            borderColor: '',
+            borderHoverColor: '',
+            btnShadowColor: '',
+            btnShadowBlur: 0,
+            btnShadowHorizontal: 0,
+            btnShadowVertical: 0,
+            btnShadowPosition: '',
+            padding: '',
+            paddingU: 'px'
+        }]
+    }
+};
+
+var new_deprecated_attributes = Object.assign(attributes, newAttributes);
+
+var deprecatedContent = [{
+    attributes: new_deprecated_attributes,
     save: function save(props) {
         var _props$attributes = props.attributes,
-            id = _props$attributes.id,
+            block_id = _props$attributes.block_id,
+            borderButton = _props$attributes.borderButton,
             btnText = _props$attributes.btnText,
             btnSize = _props$attributes.btnSize,
             btnAlign = _props$attributes.btnAlign,
@@ -37124,15 +38300,19 @@ var deprecatedContent = [{
             backColor = _props$attributes.backColor,
             backHoverColor = _props$attributes.backHoverColor,
             slideColor = _props$attributes.slideColor,
-            textSize = _props$attributes.textSize,
             textFontFamily = _props$attributes.textFontFamily,
             textWeight = _props$attributes.textWeight,
             textLine = _props$attributes.textLine,
             textLetter = _props$attributes.textLetter,
             textStyle = _props$attributes.textStyle,
+            backOpacity = _props$attributes.backOpacity,
             textUpper = _props$attributes.textUpper,
             borderType = _props$attributes.borderType,
             borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             borderRadius = _props$attributes.borderRadius,
             borderColor = _props$attributes.borderColor,
             borderHoverColor = _props$attributes.borderHoverColor,
@@ -37146,7 +38326,94 @@ var deprecatedContent = [{
             btnShadowColor = _props$attributes.btnShadowColor,
             btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
             btnShadowVertical = _props$attributes.btnShadowVertical,
-            btnShadowPosition = _props$attributes.btnShadowPosition;
+            btnShadowPosition = _props$attributes.btnShadowPosition,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-button');
+
+        return React.createElement(
+            "div",
+            {
+                id: mainClasses + "-wrap-" + block_id,
+                className: mainClasses + "__wrap premium-button__" + effect + " premium-button__" + effectDir + " premium-button-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + block_id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + block_id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + block_id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: "premium-button premium-button__" + btnSize,
+                href: btnLink,
+                rel: "noopener noreferrer",
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + paddingU,
+                    borderStyle: borderType,
+                    borderWidth: borderButton ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            btnText = _props$attributes2.btnText,
+            btnSize = _props$attributes2.btnSize,
+            btnAlign = _props$attributes2.btnAlign,
+            btnLink = _props$attributes2.btnLink,
+            btnTarget = _props$attributes2.btnTarget,
+            effect = _props$attributes2.effect,
+            effectDir = _props$attributes2.effectDir,
+            textColor = _props$attributes2.textColor,
+            textHoverColor = _props$attributes2.textHoverColor,
+            backColor = _props$attributes2.backColor,
+            backHoverColor = _props$attributes2.backHoverColor,
+            slideColor = _props$attributes2.slideColor,
+            textSize = _props$attributes2.textSize,
+            textFontFamily = _props$attributes2.textFontFamily,
+            textWeight = _props$attributes2.textWeight,
+            textLine = _props$attributes2.textLine,
+            textLetter = _props$attributes2.textLetter,
+            textStyle = _props$attributes2.textStyle,
+            textUpper = _props$attributes2.textUpper,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            borderHoverColor = _props$attributes2.borderHoverColor,
+            padding = _props$attributes2.padding,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition;
 
         return React.createElement(
             "div",
@@ -37189,90 +38456,10 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { paddingU: "" });
     },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            btnText = _props$attributes2.btnText,
-            btnSize = _props$attributes2.btnSize,
-            btnAlign = _props$attributes2.btnAlign,
-            btnLink = _props$attributes2.btnLink,
-            btnTarget = _props$attributes2.btnTarget,
-            effect = _props$attributes2.effect,
-            effectDir = _props$attributes2.effectDir,
-            textColor = _props$attributes2.textColor,
-            textHoverColor = _props$attributes2.textHoverColor,
-            backColor = _props$attributes2.backColor,
-            backHoverColor = _props$attributes2.backHoverColor,
-            slideColor = _props$attributes2.slideColor,
-            textSize = _props$attributes2.textSize,
-            textFontFamily = _props$attributes2.textFontFamily,
-            textWeight = _props$attributes2.textWeight,
-            textLine = _props$attributes2.textLine,
-            textLetter = _props$attributes2.textLetter,
-            textStyle = _props$attributes2.textStyle,
-            textUpper = _props$attributes2.textUpper,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            borderHoverColor = _props$attributes2.borderHoverColor,
-            padding = _props$attributes2.padding,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition;
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-wrap-" + id,
-                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: "a",
-                value: btnText,
-                className: className + " " + className + "__" + btnSize,
-                href: btnLink,
-                rel: "noopener noreferrer",
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
-                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
-                    padding: padding + "px",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: _attributes2.default,
     save: function save(props) {
         var _props$attributes3 = props.attributes,
             id = _props$attributes3.id,
@@ -37328,6 +38515,7 @@ var deprecatedContent = [{
                 value: btnText,
                 className: className + " " + className + "__" + btnSize,
                 href: btnLink,
+                rel: "noopener noreferrer",
                 target: btnTarget ? "_blank" : "_self",
                 style: {
                     color: textColor,
@@ -37351,10 +38539,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
-    migrate: function migrate(attributes) {
-        return Object.assign(attributes, { textFontFamily: "" });
-    },
+    attributes: attributes,
     save: function save(props) {
         var _props$attributes4 = props.attributes,
             id = _props$attributes4.id,
@@ -37371,6 +38556,7 @@ var deprecatedContent = [{
             backHoverColor = _props$attributes4.backHoverColor,
             slideColor = _props$attributes4.slideColor,
             textSize = _props$attributes4.textSize,
+            textFontFamily = _props$attributes4.textFontFamily,
             textWeight = _props$attributes4.textWeight,
             textLine = _props$attributes4.textLine,
             textLetter = _props$attributes4.textLetter,
@@ -37414,6 +38600,7 @@ var deprecatedContent = [{
                     color: textColor,
                     backgroundColor: backColor,
                     fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
                     letterSpacing: textLetter + "px",
                     textTransform: textUpper ? "uppercase" : "none",
                     fontStyle: textStyle,
@@ -37431,9 +38618,9 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
-        return Object.assign(attributes, { borderHoverColor: "" });
+        return Object.assign(attributes, { textFontFamily: "" });
     },
     save: function save(props) {
         var _props$attributes5 = props.attributes,
@@ -37460,6 +38647,7 @@ var deprecatedContent = [{
             borderWidth = _props$attributes5.borderWidth,
             borderRadius = _props$attributes5.borderRadius,
             borderColor = _props$attributes5.borderColor,
+            borderHoverColor = _props$attributes5.borderHoverColor,
             padding = _props$attributes5.padding,
             shadowBlur = _props$attributes5.shadowBlur,
             shadowColor = _props$attributes5.shadowColor,
@@ -37470,6 +38658,85 @@ var deprecatedContent = [{
             btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
             btnShadowVertical = _props$attributes5.btnShadowVertical,
             btnShadowPosition = _props$attributes5.btnShadowPosition;
+
+        return React.createElement(
+            "div",
+            {
+                id: className + "-wrap-" + id,
+                className: className + "__wrap " + className + "__" + effect + " " + className + "__" + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-button-wrap-" + id + " .premium-button:hover {", "color: " + textHoverColor + " !important;", "border-color: " + borderHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__none .premium-button:hover {", "background-color: " + backHoverColor + " !important;", "}", "#premium-button-wrap-" + id + ".premium-button__slide .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__shutter .premium-button::before,", "#premium-button-wrap-" + id + ".premium-button__radial .premium-button::before {", "background-color: " + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: "a",
+                value: btnText,
+                className: className + " " + className + "__" + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor,
+                    boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { borderHoverColor: "" });
+    },
+    save: function save(props) {
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            btnText = _props$attributes6.btnText,
+            btnSize = _props$attributes6.btnSize,
+            btnAlign = _props$attributes6.btnAlign,
+            btnLink = _props$attributes6.btnLink,
+            btnTarget = _props$attributes6.btnTarget,
+            effect = _props$attributes6.effect,
+            effectDir = _props$attributes6.effectDir,
+            textColor = _props$attributes6.textColor,
+            textHoverColor = _props$attributes6.textHoverColor,
+            backColor = _props$attributes6.backColor,
+            backHoverColor = _props$attributes6.backHoverColor,
+            slideColor = _props$attributes6.slideColor,
+            textSize = _props$attributes6.textSize,
+            textWeight = _props$attributes6.textWeight,
+            textLine = _props$attributes6.textLine,
+            textLetter = _props$attributes6.textLetter,
+            textStyle = _props$attributes6.textStyle,
+            textUpper = _props$attributes6.textUpper,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            padding = _props$attributes6.padding,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            btnShadowBlur = _props$attributes6.btnShadowBlur,
+            btnShadowColor = _props$attributes6.btnShadowColor,
+            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes6.btnShadowVertical,
+            btnShadowPosition = _props$attributes6.btnShadowPosition;
 
         return React.createElement(
             "div",
@@ -37510,7 +38777,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             btnShadowColor: "",
@@ -37522,35 +38789,35 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            btnText = _props$attributes6.btnText,
-            btnSize = _props$attributes6.btnSize,
-            btnAlign = _props$attributes6.btnAlign,
-            btnLink = _props$attributes6.btnLink,
-            btnTarget = _props$attributes6.btnTarget,
-            effect = _props$attributes6.effect,
-            effectDir = _props$attributes6.effectDir,
-            textColor = _props$attributes6.textColor,
-            textHoverColor = _props$attributes6.textHoverColor,
-            backColor = _props$attributes6.backColor,
-            backHoverColor = _props$attributes6.backHoverColor,
-            slideColor = _props$attributes6.slideColor,
-            textSize = _props$attributes6.textSize,
-            textWeight = _props$attributes6.textWeight,
-            textLine = _props$attributes6.textLine,
-            textLetter = _props$attributes6.textLetter,
-            textStyle = _props$attributes6.textStyle,
-            textUpper = _props$attributes6.textUpper,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            padding = _props$attributes6.padding,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            btnText = _props$attributes7.btnText,
+            btnSize = _props$attributes7.btnSize,
+            btnAlign = _props$attributes7.btnAlign,
+            btnLink = _props$attributes7.btnLink,
+            btnTarget = _props$attributes7.btnTarget,
+            effect = _props$attributes7.effect,
+            effectDir = _props$attributes7.effectDir,
+            textColor = _props$attributes7.textColor,
+            textHoverColor = _props$attributes7.textHoverColor,
+            backColor = _props$attributes7.backColor,
+            backHoverColor = _props$attributes7.backHoverColor,
+            slideColor = _props$attributes7.slideColor,
+            textSize = _props$attributes7.textSize,
+            textWeight = _props$attributes7.textWeight,
+            textLine = _props$attributes7.textLine,
+            textLetter = _props$attributes7.textLetter,
+            textStyle = _props$attributes7.textStyle,
+            textUpper = _props$attributes7.textUpper,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            padding = _props$attributes7.padding,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical;
 
         return React.createElement(
             "div",
@@ -38920,18 +40187,643 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _propTypes = __webpack_require__(9);
+var _ref;
 
-var _attributes = __webpack_require__(109);
+var _classnames = __webpack_require__(0);
 
-var _attributes2 = _interopRequireDefault(_attributes);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var className = "premium-countup";
 
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    borderCount: {
+        type: "boolean",
+        default: false
+    },
+    increment: {
+        type: "string",
+        default: 500
+    },
+    time: {
+        type: "string",
+        default: 1000
+    },
+    delay: {
+        type: "string",
+        default: 10
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    flexDir: {
+        type: "string",
+        default: "column"
+    },
+    numberSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    numberSize: {
+        type: "number",
+        default: 30
+    },
+    numberSizeTablet: {
+        type: "number"
+    },
+    numberSizeMobile: {
+        type: "number"
+    },
+    numberColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    numberWeight: {
+        type: "number",
+        default: 900
+    },
+    prefix: {
+        type: "boolean",
+        default: true
+    },
+    prefixTxt: {
+        type: "string",
+        default: "Prefix"
+    },
+    prefixSize: {
+        type: "number",
+        default: 20
+    },
+    prefixSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    prefixSizeTablet: {
+        type: "number"
+    },
+    prefixSizeMobile: {
+        type: "number"
+    },
+    prefixColor: {
+        type: "string"
+    },
+    prefixWeight: {
+        type: "number"
+    },
+    prefixGap: {
+        type: "number",
+        default: 2
+    },
+    suffix: {
+        type: "boolean",
+        default: true
+    },
+    suffixTxt: {
+        type: "string",
+        default: "Suffix"
+    },
+    suffixSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    suffixSize: {
+        type: "number",
+        default: 20
+    },
+    suffixSizeTablet: {
+        type: "number"
+    },
+    suffixSizeMobile: {
+        type: 'number'
+    },
+    suffixColor: {
+        type: "string"
+    },
+    suffixWeight: {
+        type: "number"
+    },
+    suffixGap: {
+        type: "number",
+        default: 2
+    },
+    icon: {
+        type: "string",
+        default: "icon"
+    },
+    iconSpacing: {
+        type: "number",
+        default: 10
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    iconCheck: {
+        type: "boolean",
+        default: true
+    },
+    iconSize: {
+        type: "number",
+        default: 40
+    },
+    iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    selfAlign: {
+        type: "string",
+        default: "center"
+    },
+    titleCheck: {
+        type: "boolean",
+        default: true
+    },
+    titleTxt: {
+        type: "string",
+        default: "Premium Count Up"
+    },
+    titleSize: {
+        type: "number",
+        default: 20
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleSpacing: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleT: {
+        type: "number",
+        default: 1
+    },
+    titleB: {
+        type: "number",
+        default: 1
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    faIcon: {
+        type: "string",
+        default: "dashicons-clock"
+    },
+    containerBack: {
+        type: "string"
+    },
+    containerOpacity: {
+        type: "number",
+        default: "1"
+    },
+    shadowColor: {
+        type: "object",
+        default: {}
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    backgroundImageID: {
+        type: "string"
+    },
+    backgroundImageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleFamily: {
+        type: "string"
+    },
+    counterFamily: {
+        type: "string"
+    },
+    prefixFamily: {
+        type: "string"
+    },
+    suffixFamily: {
+        type: "string"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var new_Attributes = {
+    numberStyles: {
+        type: "array",
+        default: [{
+            numberSizeUnit: "px",
+            numberSize: 30,
+            numberSizeTablet: '',
+            numberSizeMobile: '',
+            numberColor: "#6ec1e4",
+            numberWeight: ''
+        }]
+    },
+    titleStyles: {
+        type: "array",
+        default: [(_ref = {
+            titleFamily: __('Default'),
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: '',
+            titleSizeMobile: '',
+            titleSpacing: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleColor: '',
+            titleT: 1,
+            titleB: 1
+        }, _defineProperty(_ref, "titleColor", ''), _defineProperty(_ref, "titleWeight", ''), _ref)]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            containerBack: '',
+            containerOpacity: 1,
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            borderType: 'none',
+            borderWidth: 1,
+            borderRadius: 0,
+            borderColor: '',
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            shadowPosition: '',
+            paddingU: '',
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+        }]
+    },
+    suffixStyles: {
+        type: 'array',
+        default: [{
+            suffixTxt: "Suffix",
+            suffixSizeUnit: 'px',
+            suffixSize: 20,
+            suffixSizeTablet: '',
+            suffixSizeMobile: '',
+            suffixColor: '',
+            suffixWeight: '',
+            suffixGap: 2,
+            suffixFamily: __('Default')
+        }]
+    },
+    prefixStyles: {
+        type: "array",
+        default: [{
+            prefixTxt: "Prefix",
+            prefixSize: 20,
+            prefixSizeUnit: 'px',
+            prefixSizeTablet: '',
+            prefixSizeMobile: '',
+            prefixColor: '',
+            prefixWeight: '',
+            prefixGap: 2,
+            prefixFamily: __('Default')
+        }]
+    }
+};
+
+var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
+
 var deprecatedContent = [{
-    attributes: _attributes2.default,
+    attributes: new_deprecated_attributes,
+    save: function save(props) {
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            borderCount = _props$attributes.borderCount,
+            increment = _props$attributes.increment,
+            time = _props$attributes.time,
+            delay = _props$attributes.delay,
+            align = _props$attributes.align,
+            flexDir = _props$attributes.flexDir,
+            numberColor = _props$attributes.numberColor,
+            numberWeight = _props$attributes.numberWeight,
+            prefix = _props$attributes.prefix,
+            prefixTxt = _props$attributes.prefixTxt,
+            prefixColor = _props$attributes.prefixColor,
+            prefixWeight = _props$attributes.prefixWeight,
+            prefixGap = _props$attributes.prefixGap,
+            suffix = _props$attributes.suffix,
+            suffixTxt = _props$attributes.suffixTxt,
+            suffixColor = _props$attributes.suffixColor,
+            suffixWeight = _props$attributes.suffixWeight,
+            suffixGap = _props$attributes.suffixGap,
+            iconCheck = _props$attributes.iconCheck,
+            icon = _props$attributes.icon,
+            iconSpacing = _props$attributes.iconSpacing,
+            iconType = _props$attributes.iconType,
+            imageURL = _props$attributes.imageURL,
+            iconSize = _props$attributes.iconSize,
+            iconColor = _props$attributes.iconColor,
+            selfAlign = _props$attributes.selfAlign,
+            titleCheck = _props$attributes.titleCheck,
+            titleTxt = _props$attributes.titleTxt,
+            titleColor = _props$attributes.titleColor,
+            titleSpacing = _props$attributes.titleSpacing,
+            titleStyle = _props$attributes.titleStyle,
+            titleUpper = _props$attributes.titleUpper,
+            titleT = _props$attributes.titleT,
+            titleB = _props$attributes.titleB,
+            titleWeight = _props$attributes.titleWeight,
+            faIcon = _props$attributes.faIcon,
+            containerBack = _props$attributes.containerBack,
+            containerOpacity = _props$attributes.containerOpacity,
+            shadowBlur = _props$attributes.shadowBlur,
+            shadowColor = _props$attributes.shadowColor,
+            shadowHorizontal = _props$attributes.shadowHorizontal,
+            shadowVertical = _props$attributes.shadowVertical,
+            shadowPosition = _props$attributes.shadowPosition,
+            backgroundImageURL = _props$attributes.backgroundImageURL,
+            fixed = _props$attributes.fixed,
+            backgroundRepeat = _props$attributes.backgroundRepeat,
+            backgroundPosition = _props$attributes.backgroundPosition,
+            backgroundSize = _props$attributes.backgroundSize,
+            borderType = _props$attributes.borderType,
+            borderColor = _props$attributes.borderColor,
+            borderRadius = _props$attributes.borderRadius,
+            borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
+            titleFamily = _props$attributes.titleFamily,
+            counterFamily = _props$attributes.counterFamily,
+            prefixFamily = _props$attributes.prefixFamily,
+            suffixFamily = _props$attributes.suffixFamily,
+            paddingT = _props$attributes.paddingT,
+            paddingR = _props$attributes.paddingR,
+            paddingB = _props$attributes.paddingB,
+            paddingL = _props$attributes.paddingL,
+            paddingU = _props$attributes.paddingU,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-countup');
+
+        return React.createElement(
+            "div",
+            {
+                id: "premium-countup-" + block_id,
+                className: mainClasses + "__wrap premium-countup-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    justifyContent: align,
+                    flexDirection: flexDir,
+                    backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px rgba(" + shadowColor.r + "," + shadowColor.g + "," + shadowColor.b + ", " + shadowColor.a + ") " + shadowPosition,
+                    backgroundImage: "url('" + backgroundImageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    borderStyle: borderType,
+                    borderWidth: borderCount ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU
+                }
+            },
+            iconCheck && React.createElement(
+                "div",
+                {
+                    className: "premium-countup__icon_wrap",
+                    style: {
+                        marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                "icon" === icon && React.createElement("i", {
+                    className: "premium-countup__icon " + iconClass,
+                    style: {
+                        fontSize: iconSize + "px",
+                        color: iconColor
+                    }
+                }),
+                "img" === icon && imageURL && React.createElement("img", {
+                    src: imageURL,
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px"
+                    }
+                })
+            ),
+            React.createElement(
+                "div",
+                {
+                    className: "premium-countup__info",
+                    style: {
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                React.createElement(
+                    "div",
+                    { className: "premium-countup__desc" },
+                    prefix && React.createElement(
+                        "p",
+                        {
+                            className: "premium-countup__prefix",
+                            style: {
+                                fontFamily: prefixFamily,
+                                color: prefixColor,
+                                fontWeight: prefixWeight,
+                                marginRight: prefixGap + "px"
+                            }
+                        },
+                        prefixTxt
+                    ),
+                    React.createElement(
+                        "p",
+                        {
+                            className: "premium-countup__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
+                            style: {
+                                fontFamily: counterFamily,
+                                color: numberColor,
+                                fontWeight: numberWeight
+                            }
+                        },
+                        increment
+                    ),
+                    suffix && React.createElement(
+                        "p",
+                        {
+                            className: "premium-countup__suffix",
+                            style: {
+                                fontFamily: suffixFamily,
+                                color: suffixColor,
+                                fontWeight: suffixWeight,
+                                marginLeft: suffixGap + "px"
+                            }
+                        },
+                        suffixTxt
+                    )
+                ),
+                titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
+                    "h3",
+                    {
+                        className: "premium-countup__title",
+                        style: {
+                            fontFamily: titleFamily,
+                            marginTop: titleT + "px",
+                            marginBottom: titleB + "px",
+                            color: titleColor,
+                            letterSpacing: titleSpacing + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight
+                        }
+                    },
+                    titleTxt
+                )
+            ),
+            titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
+                "h3",
+                {
+                    className: "premium-countup__title",
+                    style: {
+                        fontFamily: titleFamily,
+                        marginTop: titleT + "px",
+                        marginBottom: titleB + "px",
+                        color: titleColor,
+                        letterSpacing: titleSpacing + "px",
+                        fontWeight: titleWeight,
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
+                        alignSelf: selfAlign
+                    }
+                },
+                titleTxt
+            )
+        );
+    }
+}, {
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             borderTop: "",
@@ -38960,65 +40852,65 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            increment = _props$attributes.increment,
-            time = _props$attributes.time,
-            delay = _props$attributes.delay,
-            align = _props$attributes.align,
-            flexDir = _props$attributes.flexDir,
-            numberSize = _props$attributes.numberSize,
-            numberColor = _props$attributes.numberColor,
-            numberWeight = _props$attributes.numberWeight,
-            prefix = _props$attributes.prefix,
-            prefixTxt = _props$attributes.prefixTxt,
-            prefixSize = _props$attributes.prefixSize,
-            prefixColor = _props$attributes.prefixColor,
-            prefixWeight = _props$attributes.prefixWeight,
-            prefixGap = _props$attributes.prefixGap,
-            suffix = _props$attributes.suffix,
-            suffixTxt = _props$attributes.suffixTxt,
-            suffixSize = _props$attributes.suffixSize,
-            suffixColor = _props$attributes.suffixColor,
-            suffixWeight = _props$attributes.suffixWeight,
-            suffixGap = _props$attributes.suffixGap,
-            iconCheck = _props$attributes.iconCheck,
-            icon = _props$attributes.icon,
-            iconSpacing = _props$attributes.iconSpacing,
-            iconType = _props$attributes.iconType,
-            imageURL = _props$attributes.imageURL,
-            iconSize = _props$attributes.iconSize,
-            iconColor = _props$attributes.iconColor,
-            selfAlign = _props$attributes.selfAlign,
-            titleCheck = _props$attributes.titleCheck,
-            titleTxt = _props$attributes.titleTxt,
-            titleColor = _props$attributes.titleColor,
-            titleSize = _props$attributes.titleSize,
-            titleSpacing = _props$attributes.titleSpacing,
-            titleStyle = _props$attributes.titleStyle,
-            titleUpper = _props$attributes.titleUpper,
-            titleT = _props$attributes.titleT,
-            titleB = _props$attributes.titleB,
-            titleWeight = _props$attributes.titleWeight,
-            faIcon = _props$attributes.faIcon,
-            containerBack = _props$attributes.containerBack,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            shadowPosition = _props$attributes.shadowPosition,
-            backgroundImageURL = _props$attributes.backgroundImageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            borderType = _props$attributes.borderType,
-            borderColor = _props$attributes.borderColor,
-            borderRadius = _props$attributes.borderRadius,
-            borderWidth = _props$attributes.borderWidth,
-            titleFamily = _props$attributes.titleFamily,
-            counterFamily = _props$attributes.counterFamily,
-            prefixFamily = _props$attributes.prefixFamily,
-            suffixFamily = _props$attributes.suffixFamily;
+        var _props$attributes2 = props.attributes,
+            increment = _props$attributes2.increment,
+            time = _props$attributes2.time,
+            delay = _props$attributes2.delay,
+            align = _props$attributes2.align,
+            flexDir = _props$attributes2.flexDir,
+            numberSize = _props$attributes2.numberSize,
+            numberColor = _props$attributes2.numberColor,
+            numberWeight = _props$attributes2.numberWeight,
+            prefix = _props$attributes2.prefix,
+            prefixTxt = _props$attributes2.prefixTxt,
+            prefixSize = _props$attributes2.prefixSize,
+            prefixColor = _props$attributes2.prefixColor,
+            prefixWeight = _props$attributes2.prefixWeight,
+            prefixGap = _props$attributes2.prefixGap,
+            suffix = _props$attributes2.suffix,
+            suffixTxt = _props$attributes2.suffixTxt,
+            suffixSize = _props$attributes2.suffixSize,
+            suffixColor = _props$attributes2.suffixColor,
+            suffixWeight = _props$attributes2.suffixWeight,
+            suffixGap = _props$attributes2.suffixGap,
+            iconCheck = _props$attributes2.iconCheck,
+            icon = _props$attributes2.icon,
+            iconSpacing = _props$attributes2.iconSpacing,
+            iconType = _props$attributes2.iconType,
+            imageURL = _props$attributes2.imageURL,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            selfAlign = _props$attributes2.selfAlign,
+            titleCheck = _props$attributes2.titleCheck,
+            titleTxt = _props$attributes2.titleTxt,
+            titleColor = _props$attributes2.titleColor,
+            titleSize = _props$attributes2.titleSize,
+            titleSpacing = _props$attributes2.titleSpacing,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleT = _props$attributes2.titleT,
+            titleB = _props$attributes2.titleB,
+            titleWeight = _props$attributes2.titleWeight,
+            faIcon = _props$attributes2.faIcon,
+            containerBack = _props$attributes2.containerBack,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            backgroundImageURL = _props$attributes2.backgroundImageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderColor = _props$attributes2.borderColor,
+            borderRadius = _props$attributes2.borderRadius,
+            borderWidth = _props$attributes2.borderWidth,
+            titleFamily = _props$attributes2.titleFamily,
+            counterFamily = _props$attributes2.counterFamily,
+            prefixFamily = _props$attributes2.prefixFamily,
+            suffixFamily = _props$attributes2.suffixFamily;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
@@ -39162,7 +41054,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             borderType: "",
@@ -39173,61 +41065,61 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            increment = _props$attributes2.increment,
-            time = _props$attributes2.time,
-            delay = _props$attributes2.delay,
-            align = _props$attributes2.align,
-            flexDir = _props$attributes2.flexDir,
-            numberSize = _props$attributes2.numberSize,
-            numberColor = _props$attributes2.numberColor,
-            numberWeight = _props$attributes2.numberWeight,
-            prefix = _props$attributes2.prefix,
-            prefixTxt = _props$attributes2.prefixTxt,
-            prefixSize = _props$attributes2.prefixSize,
-            prefixColor = _props$attributes2.prefixColor,
-            prefixWeight = _props$attributes2.prefixWeight,
-            prefixGap = _props$attributes2.prefixGap,
-            suffix = _props$attributes2.suffix,
-            suffixTxt = _props$attributes2.suffixTxt,
-            suffixSize = _props$attributes2.suffixSize,
-            suffixColor = _props$attributes2.suffixColor,
-            suffixWeight = _props$attributes2.suffixWeight,
-            suffixGap = _props$attributes2.suffixGap,
-            iconCheck = _props$attributes2.iconCheck,
-            icon = _props$attributes2.icon,
-            iconSpacing = _props$attributes2.iconSpacing,
-            iconType = _props$attributes2.iconType,
-            imageURL = _props$attributes2.imageURL,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            selfAlign = _props$attributes2.selfAlign,
-            titleCheck = _props$attributes2.titleCheck,
-            titleTxt = _props$attributes2.titleTxt,
-            titleColor = _props$attributes2.titleColor,
-            titleSize = _props$attributes2.titleSize,
-            titleSpacing = _props$attributes2.titleSpacing,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleT = _props$attributes2.titleT,
-            titleB = _props$attributes2.titleB,
-            titleWeight = _props$attributes2.titleWeight,
-            faIcon = _props$attributes2.faIcon,
-            containerBack = _props$attributes2.containerBack,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            backgroundImageURL = _props$attributes2.backgroundImageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            titleFamily = _props$attributes2.titleFamily,
-            counterFamily = _props$attributes2.counterFamily,
-            prefixFamily = _props$attributes2.prefixFamily,
-            suffixFamily = _props$attributes2.suffixFamily;
+        var _props$attributes3 = props.attributes,
+            increment = _props$attributes3.increment,
+            time = _props$attributes3.time,
+            delay = _props$attributes3.delay,
+            align = _props$attributes3.align,
+            flexDir = _props$attributes3.flexDir,
+            numberSize = _props$attributes3.numberSize,
+            numberColor = _props$attributes3.numberColor,
+            numberWeight = _props$attributes3.numberWeight,
+            prefix = _props$attributes3.prefix,
+            prefixTxt = _props$attributes3.prefixTxt,
+            prefixSize = _props$attributes3.prefixSize,
+            prefixColor = _props$attributes3.prefixColor,
+            prefixWeight = _props$attributes3.prefixWeight,
+            prefixGap = _props$attributes3.prefixGap,
+            suffix = _props$attributes3.suffix,
+            suffixTxt = _props$attributes3.suffixTxt,
+            suffixSize = _props$attributes3.suffixSize,
+            suffixColor = _props$attributes3.suffixColor,
+            suffixWeight = _props$attributes3.suffixWeight,
+            suffixGap = _props$attributes3.suffixGap,
+            iconCheck = _props$attributes3.iconCheck,
+            icon = _props$attributes3.icon,
+            iconSpacing = _props$attributes3.iconSpacing,
+            iconType = _props$attributes3.iconType,
+            imageURL = _props$attributes3.imageURL,
+            iconSize = _props$attributes3.iconSize,
+            iconColor = _props$attributes3.iconColor,
+            selfAlign = _props$attributes3.selfAlign,
+            titleCheck = _props$attributes3.titleCheck,
+            titleTxt = _props$attributes3.titleTxt,
+            titleColor = _props$attributes3.titleColor,
+            titleSize = _props$attributes3.titleSize,
+            titleSpacing = _props$attributes3.titleSpacing,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleT = _props$attributes3.titleT,
+            titleB = _props$attributes3.titleB,
+            titleWeight = _props$attributes3.titleWeight,
+            faIcon = _props$attributes3.faIcon,
+            containerBack = _props$attributes3.containerBack,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            backgroundImageURL = _props$attributes3.backgroundImageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            titleFamily = _props$attributes3.titleFamily,
+            counterFamily = _props$attributes3.counterFamily,
+            prefixFamily = _props$attributes3.prefixFamily,
+            suffixFamily = _props$attributes3.suffixFamily;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
@@ -39367,7 +41259,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             titleFamily: "",
@@ -39378,57 +41270,57 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            increment = _props$attributes3.increment,
-            time = _props$attributes3.time,
-            delay = _props$attributes3.delay,
-            align = _props$attributes3.align,
-            flexDir = _props$attributes3.flexDir,
-            numberSize = _props$attributes3.numberSize,
-            numberColor = _props$attributes3.numberColor,
-            numberWeight = _props$attributes3.numberWeight,
-            prefix = _props$attributes3.prefix,
-            prefixTxt = _props$attributes3.prefixTxt,
-            prefixSize = _props$attributes3.prefixSize,
-            prefixColor = _props$attributes3.prefixColor,
-            prefixWeight = _props$attributes3.prefixWeight,
-            prefixGap = _props$attributes3.prefixGap,
-            suffix = _props$attributes3.suffix,
-            suffixTxt = _props$attributes3.suffixTxt,
-            suffixSize = _props$attributes3.suffixSize,
-            suffixColor = _props$attributes3.suffixColor,
-            suffixWeight = _props$attributes3.suffixWeight,
-            suffixGap = _props$attributes3.suffixGap,
-            iconCheck = _props$attributes3.iconCheck,
-            icon = _props$attributes3.icon,
-            iconSpacing = _props$attributes3.iconSpacing,
-            iconType = _props$attributes3.iconType,
-            imageURL = _props$attributes3.imageURL,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            selfAlign = _props$attributes3.selfAlign,
-            titleCheck = _props$attributes3.titleCheck,
-            titleTxt = _props$attributes3.titleTxt,
-            titleColor = _props$attributes3.titleColor,
-            titleSize = _props$attributes3.titleSize,
-            titleSpacing = _props$attributes3.titleSpacing,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleT = _props$attributes3.titleT,
-            titleB = _props$attributes3.titleB,
-            titleWeight = _props$attributes3.titleWeight,
-            faIcon = _props$attributes3.faIcon,
-            containerBack = _props$attributes3.containerBack,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            backgroundImageURL = _props$attributes3.backgroundImageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize;
+        var _props$attributes4 = props.attributes,
+            increment = _props$attributes4.increment,
+            time = _props$attributes4.time,
+            delay = _props$attributes4.delay,
+            align = _props$attributes4.align,
+            flexDir = _props$attributes4.flexDir,
+            numberSize = _props$attributes4.numberSize,
+            numberColor = _props$attributes4.numberColor,
+            numberWeight = _props$attributes4.numberWeight,
+            prefix = _props$attributes4.prefix,
+            prefixTxt = _props$attributes4.prefixTxt,
+            prefixSize = _props$attributes4.prefixSize,
+            prefixColor = _props$attributes4.prefixColor,
+            prefixWeight = _props$attributes4.prefixWeight,
+            prefixGap = _props$attributes4.prefixGap,
+            suffix = _props$attributes4.suffix,
+            suffixTxt = _props$attributes4.suffixTxt,
+            suffixSize = _props$attributes4.suffixSize,
+            suffixColor = _props$attributes4.suffixColor,
+            suffixWeight = _props$attributes4.suffixWeight,
+            suffixGap = _props$attributes4.suffixGap,
+            iconCheck = _props$attributes4.iconCheck,
+            icon = _props$attributes4.icon,
+            iconSpacing = _props$attributes4.iconSpacing,
+            iconType = _props$attributes4.iconType,
+            imageURL = _props$attributes4.imageURL,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            selfAlign = _props$attributes4.selfAlign,
+            titleCheck = _props$attributes4.titleCheck,
+            titleTxt = _props$attributes4.titleTxt,
+            titleColor = _props$attributes4.titleColor,
+            titleSize = _props$attributes4.titleSize,
+            titleSpacing = _props$attributes4.titleSpacing,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleT = _props$attributes4.titleT,
+            titleB = _props$attributes4.titleB,
+            titleWeight = _props$attributes4.titleWeight,
+            faIcon = _props$attributes4.faIcon,
+            containerBack = _props$attributes4.containerBack,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition,
+            backgroundImageURL = _props$attributes4.backgroundImageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
@@ -39561,7 +41453,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             shadowColor: "",
@@ -39579,52 +41471,52 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            increment = _props$attributes4.increment,
-            time = _props$attributes4.time,
-            delay = _props$attributes4.delay,
-            align = _props$attributes4.align,
-            flexDir = _props$attributes4.flexDir,
-            numberSize = _props$attributes4.numberSize,
-            numberColor = _props$attributes4.numberColor,
-            numberWeight = _props$attributes4.numberWeight,
-            prefix = _props$attributes4.prefix,
-            prefixTxt = _props$attributes4.prefixTxt,
-            prefixSize = _props$attributes4.prefixSize,
-            prefixColor = _props$attributes4.prefixColor,
-            prefixWeight = _props$attributes4.prefixWeight,
-            prefixGap = _props$attributes4.prefixGap,
-            suffix = _props$attributes4.suffix,
-            suffixTxt = _props$attributes4.suffixTxt,
-            suffixSize = _props$attributes4.suffixSize,
-            suffixColor = _props$attributes4.suffixColor,
-            suffixWeight = _props$attributes4.suffixWeight,
-            suffixGap = _props$attributes4.suffixGap,
-            iconCheck = _props$attributes4.iconCheck,
-            icon = _props$attributes4.icon,
-            iconSpacing = _props$attributes4.iconSpacing,
-            iconType = _props$attributes4.iconType,
-            imageURL = _props$attributes4.imageURL,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            selfAlign = _props$attributes4.selfAlign,
-            titleCheck = _props$attributes4.titleCheck,
-            titleTxt = _props$attributes4.titleTxt,
-            titleColor = _props$attributes4.titleColor,
-            titleSize = _props$attributes4.titleSize,
-            titleSpacing = _props$attributes4.titleSpacing,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleT = _props$attributes4.titleT,
-            titleB = _props$attributes4.titleB,
-            titleWeight = _props$attributes4.titleWeight,
-            faIcon = _props$attributes4.faIcon,
-            containerBack = _props$attributes4.containerBack,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition;
+        var _props$attributes5 = props.attributes,
+            increment = _props$attributes5.increment,
+            time = _props$attributes5.time,
+            delay = _props$attributes5.delay,
+            align = _props$attributes5.align,
+            flexDir = _props$attributes5.flexDir,
+            numberSize = _props$attributes5.numberSize,
+            numberColor = _props$attributes5.numberColor,
+            numberWeight = _props$attributes5.numberWeight,
+            prefix = _props$attributes5.prefix,
+            prefixTxt = _props$attributes5.prefixTxt,
+            prefixSize = _props$attributes5.prefixSize,
+            prefixColor = _props$attributes5.prefixColor,
+            prefixWeight = _props$attributes5.prefixWeight,
+            prefixGap = _props$attributes5.prefixGap,
+            suffix = _props$attributes5.suffix,
+            suffixTxt = _props$attributes5.suffixTxt,
+            suffixSize = _props$attributes5.suffixSize,
+            suffixColor = _props$attributes5.suffixColor,
+            suffixWeight = _props$attributes5.suffixWeight,
+            suffixGap = _props$attributes5.suffixGap,
+            iconCheck = _props$attributes5.iconCheck,
+            icon = _props$attributes5.icon,
+            iconSpacing = _props$attributes5.iconSpacing,
+            iconType = _props$attributes5.iconType,
+            imageURL = _props$attributes5.imageURL,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            selfAlign = _props$attributes5.selfAlign,
+            titleCheck = _props$attributes5.titleCheck,
+            titleTxt = _props$attributes5.titleTxt,
+            titleColor = _props$attributes5.titleColor,
+            titleSize = _props$attributes5.titleSize,
+            titleSpacing = _props$attributes5.titleSpacing,
+            titleStyle = _props$attributes5.titleStyle,
+            titleUpper = _props$attributes5.titleUpper,
+            titleT = _props$attributes5.titleT,
+            titleB = _props$attributes5.titleB,
+            titleWeight = _props$attributes5.titleWeight,
+            faIcon = _props$attributes5.faIcon,
+            containerBack = _props$attributes5.containerBack,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
@@ -39752,7 +41644,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             shadowColor: "",
@@ -39764,47 +41656,47 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            increment = _props$attributes5.increment,
-            time = _props$attributes5.time,
-            delay = _props$attributes5.delay,
-            align = _props$attributes5.align,
-            flexDir = _props$attributes5.flexDir,
-            numberSize = _props$attributes5.numberSize,
-            numberColor = _props$attributes5.numberColor,
-            numberWeight = _props$attributes5.numberWeight,
-            prefix = _props$attributes5.prefix,
-            prefixTxt = _props$attributes5.prefixTxt,
-            prefixSize = _props$attributes5.prefixSize,
-            prefixColor = _props$attributes5.prefixColor,
-            prefixWeight = _props$attributes5.prefixWeight,
-            prefixGap = _props$attributes5.prefixGap,
-            suffix = _props$attributes5.suffix,
-            suffixTxt = _props$attributes5.suffixTxt,
-            suffixSize = _props$attributes5.suffixSize,
-            suffixColor = _props$attributes5.suffixColor,
-            suffixWeight = _props$attributes5.suffixWeight,
-            suffixGap = _props$attributes5.suffixGap,
-            iconCheck = _props$attributes5.iconCheck,
-            icon = _props$attributes5.icon,
-            iconSpacing = _props$attributes5.iconSpacing,
-            iconType = _props$attributes5.iconType,
-            imageURL = _props$attributes5.imageURL,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            selfAlign = _props$attributes5.selfAlign,
-            titleCheck = _props$attributes5.titleCheck,
-            titleTxt = _props$attributes5.titleTxt,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleSpacing = _props$attributes5.titleSpacing,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleT = _props$attributes5.titleT,
-            titleB = _props$attributes5.titleB,
-            titleWeight = _props$attributes5.titleWeight,
-            faIcon = _props$attributes5.faIcon,
-            containerBack = _props$attributes5.containerBack;
+        var _props$attributes6 = props.attributes,
+            increment = _props$attributes6.increment,
+            time = _props$attributes6.time,
+            delay = _props$attributes6.delay,
+            align = _props$attributes6.align,
+            flexDir = _props$attributes6.flexDir,
+            numberSize = _props$attributes6.numberSize,
+            numberColor = _props$attributes6.numberColor,
+            numberWeight = _props$attributes6.numberWeight,
+            prefix = _props$attributes6.prefix,
+            prefixTxt = _props$attributes6.prefixTxt,
+            prefixSize = _props$attributes6.prefixSize,
+            prefixColor = _props$attributes6.prefixColor,
+            prefixWeight = _props$attributes6.prefixWeight,
+            prefixGap = _props$attributes6.prefixGap,
+            suffix = _props$attributes6.suffix,
+            suffixTxt = _props$attributes6.suffixTxt,
+            suffixSize = _props$attributes6.suffixSize,
+            suffixColor = _props$attributes6.suffixColor,
+            suffixWeight = _props$attributes6.suffixWeight,
+            suffixGap = _props$attributes6.suffixGap,
+            iconCheck = _props$attributes6.iconCheck,
+            icon = _props$attributes6.icon,
+            iconSpacing = _props$attributes6.iconSpacing,
+            iconType = _props$attributes6.iconType,
+            imageURL = _props$attributes6.imageURL,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            selfAlign = _props$attributes6.selfAlign,
+            titleCheck = _props$attributes6.titleCheck,
+            titleTxt = _props$attributes6.titleTxt,
+            titleColor = _props$attributes6.titleColor,
+            titleSize = _props$attributes6.titleSize,
+            titleSpacing = _props$attributes6.titleSpacing,
+            titleStyle = _props$attributes6.titleStyle,
+            titleUpper = _props$attributes6.titleUpper,
+            titleT = _props$attributes6.titleT,
+            titleB = _props$attributes6.titleB,
+            titleWeight = _props$attributes6.titleWeight,
+            faIcon = _props$attributes6.faIcon,
+            containerBack = _props$attributes6.containerBack;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
@@ -39931,48 +41823,48 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            increment = _props$attributes6.increment,
-            time = _props$attributes6.time,
-            delay = _props$attributes6.delay,
-            align = _props$attributes6.align,
-            flexDir = _props$attributes6.flexDir,
-            numberSize = _props$attributes6.numberSize,
-            numberColor = _props$attributes6.numberColor,
-            numberWeight = _props$attributes6.numberWeight,
-            prefix = _props$attributes6.prefix,
-            prefixTxt = _props$attributes6.prefixTxt,
-            prefixSize = _props$attributes6.prefixSize,
-            prefixColor = _props$attributes6.prefixColor,
-            prefixWeight = _props$attributes6.prefixWeight,
-            prefixGap = _props$attributes6.prefixGap,
-            suffix = _props$attributes6.suffix,
-            suffixTxt = _props$attributes6.suffixTxt,
-            suffixSize = _props$attributes6.suffixSize,
-            suffixColor = _props$attributes6.suffixColor,
-            suffixWeight = _props$attributes6.suffixWeight,
-            suffixGap = _props$attributes6.suffixGap,
-            iconCheck = _props$attributes6.iconCheck,
-            icon = _props$attributes6.icon,
-            iconSpacing = _props$attributes6.iconSpacing,
-            iconType = _props$attributes6.iconType,
-            imageURL = _props$attributes6.imageURL,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            selfAlign = _props$attributes6.selfAlign,
-            titleCheck = _props$attributes6.titleCheck,
-            titleTxt = _props$attributes6.titleTxt,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleSpacing = _props$attributes6.titleSpacing,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleT = _props$attributes6.titleT,
-            titleB = _props$attributes6.titleB,
-            titleWeight = _props$attributes6.titleWeight,
-            faIcon = _props$attributes6.faIcon;
+        var _props$attributes7 = props.attributes,
+            increment = _props$attributes7.increment,
+            time = _props$attributes7.time,
+            delay = _props$attributes7.delay,
+            align = _props$attributes7.align,
+            flexDir = _props$attributes7.flexDir,
+            numberSize = _props$attributes7.numberSize,
+            numberColor = _props$attributes7.numberColor,
+            numberWeight = _props$attributes7.numberWeight,
+            prefix = _props$attributes7.prefix,
+            prefixTxt = _props$attributes7.prefixTxt,
+            prefixSize = _props$attributes7.prefixSize,
+            prefixColor = _props$attributes7.prefixColor,
+            prefixWeight = _props$attributes7.prefixWeight,
+            prefixGap = _props$attributes7.prefixGap,
+            suffix = _props$attributes7.suffix,
+            suffixTxt = _props$attributes7.suffixTxt,
+            suffixSize = _props$attributes7.suffixSize,
+            suffixColor = _props$attributes7.suffixColor,
+            suffixWeight = _props$attributes7.suffixWeight,
+            suffixGap = _props$attributes7.suffixGap,
+            iconCheck = _props$attributes7.iconCheck,
+            icon = _props$attributes7.icon,
+            iconSpacing = _props$attributes7.iconSpacing,
+            iconType = _props$attributes7.iconType,
+            imageURL = _props$attributes7.imageURL,
+            iconSize = _props$attributes7.iconSize,
+            iconColor = _props$attributes7.iconColor,
+            selfAlign = _props$attributes7.selfAlign,
+            titleCheck = _props$attributes7.titleCheck,
+            titleTxt = _props$attributes7.titleTxt,
+            titleColor = _props$attributes7.titleColor,
+            titleSize = _props$attributes7.titleSize,
+            titleSpacing = _props$attributes7.titleSpacing,
+            titleStyle = _props$attributes7.titleStyle,
+            titleUpper = _props$attributes7.titleUpper,
+            titleT = _props$attributes7.titleT,
+            titleB = _props$attributes7.titleB,
+            titleWeight = _props$attributes7.titleWeight,
+            faIcon = _props$attributes7.faIcon;
 
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
@@ -41168,16 +43060,620 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _attributes = __webpack_require__(111);
-
-var _attributes2 = _interopRequireDefault(_attributes);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var className = "premium-dheading-block";
 
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    firstHeading: {
+        type: "array",
+        source: "children",
+        default: "Premium ",
+        selector: ".premium-dheading-block__first"
+    },
+    secondHeading: {
+        type: "array",
+        source: "children",
+        default: "Blocks",
+        selector: ".premium-dheading-block__second"
+    },
+    titleTag: {
+        type: "string",
+        default: "h1"
+    },
+    display: {
+        type: "string",
+        default: "inline"
+    },
+    firstColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    firstSize: {
+        type: "number",
+        default: "20"
+    },
+    firstSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    firstSizeTablet: {
+        type: "number"
+    },
+    firstSizeMobile: {
+        type: "number"
+    },
+    firstFamily: {
+        type: "string"
+    },
+    firstLetter: {
+        type: "number"
+    },
+    firstStyle: {
+        type: "string"
+    },
+    firstUpper: {
+        type: "boolean"
+    },
+    firstWeight: {
+        type: "number",
+        default: 500
+    },
+    firstBackground: {
+        type: "string"
+    },
+    firstOpacity: {
+        type: "number",
+        default: "1"
+    },
+    firstBorderType: {
+        type: "string",
+        default: "none"
+    },
+    firstBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    firstBorder: {
+        type: "boolean",
+        default: false
+    },
+    firstBorderTop: {
+        type: "number"
+    },
+    firstBorderRight: {
+        type: "number"
+    },
+    firstBorderBottom: {
+        type: "number"
+    },
+    firstBorderLeft: {
+        type: "number"
+    },
+    firstBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    firstBorderColor: {
+        type: "string"
+    },
+    firstMarginR: {
+        type: "number",
+        default: "0"
+    },
+    firstMarginL: {
+        type: "number",
+        default: "0"
+    },
+    firstPadding: {
+        type: "number",
+        default: "0"
+    },
+    firstClip: {
+        type: "boolean",
+        default: false
+    },
+    firstAnim: {
+        type: "boolean",
+        default: false
+    },
+    firstStroke: {
+        type: "boolean",
+        default: false
+    },
+    firstClipColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    firstShadowColor: {
+        type: "string"
+    },
+    firstShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    firstShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    firstShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    secondColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    secondSize: {
+        type: "number",
+        default: "20"
+    },
+    secondSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    secondSizeTablet: {
+        type: "number"
+    },
+    secondSizeMobile: {
+        type: "number"
+    },
+    secondFamily: {
+        type: "string"
+    },
+    secondLetter: {
+        type: "number"
+    },
+    secondStyle: {
+        type: "string"
+    },
+    secondUpper: {
+        type: "boolean"
+    },
+    secondWeight: {
+        type: "number",
+        default: 500
+    },
+    secondBackground: {
+        type: "string"
+    },
+    secondOpacity: {
+        type: "number",
+        default: "1"
+    },
+    secondBorderType: {
+        type: "string",
+        default: "none"
+    },
+    secondBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    secondBorder: {
+        type: "boolean",
+        default: false
+    },
+    secondBorderTop: {
+        type: "number"
+    },
+    secondBorderRight: {
+        type: "number"
+    },
+    secondBorderBottom: {
+        type: "number"
+    },
+    secondBorderLeft: {
+        type: "number"
+    },
+    secondBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    secondBorderColor: {
+        type: "string"
+    },
+    secondMarginR: {
+        type: "number",
+        default: "0"
+    },
+    secondMarginL: {
+        type: "number",
+        default: "0"
+    },
+    secondPadding: {
+        type: "number",
+        default: "0"
+    },
+    secondClip: {
+        type: "boolean",
+        default: false
+    },
+    secondStroke: {
+        type: "boolean",
+        default: false
+    },
+    secondShadowColor: {
+        type: "string"
+    },
+    secondShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    secondShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    secondShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    secondAnim: {
+        type: "boolean",
+        default: false
+    },
+    secondClipColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    link: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    headingURL: {
+        type: "string"
+    },
+    containerBack: {
+        type: "string"
+    },
+    containerOpacity: {
+        type: "number",
+        default: "1"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    containerBorderType: {
+        type: "string",
+        default: "none"
+    },
+    containerBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    containerBorder: {
+        type: "boolean",
+        default: false
+    },
+    containerBorderTop: {
+        type: "number"
+    },
+    containerBorderRight: {
+        type: "number"
+    },
+    containerBorderBottom: {
+        type: "number"
+    },
+    containerBorderLeft: {
+        type: "number"
+    },
+    containerBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    containerBorderColor: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var new_Attributes = {
+    firstStyles: {
+        type: "array",
+        default: [{
+            firstClip: false,
+            firstAnim: false,
+            firstStroke: false,
+            firstFamily: __('Default'),
+            firstSizeUnit: 'px',
+            firstSize: '',
+            firstSizeMobile: '',
+            firstWeight: '',
+            firstStyle: '',
+            firstLetter: '',
+            firstUpper: false,
+            firstColor: '',
+            firstBackground: '',
+            firstOpacity: '1',
+            firstClipColor: "#54595f",
+            firstBorderType: 'none',
+            firstBorderWidth: '',
+            firstBorderColor: '',
+            firstBorderRadius: '0',
+            firstShadowColor: '',
+            firstShadowBlur: '0',
+            firstShadowHorizontal: '0',
+            firstShadowVertical: '0',
+            firstMarginL: '0',
+            firstMarginR: '0',
+            firstPadding: '0'
+        }]
+    },
+    secondStyles: {
+        type: "array",
+        default: [{
+            secondClip: false,
+            secondAnim: false,
+            secondStroke: false,
+            secondFamily: __('Default'),
+            secondSizeUnit: 'px',
+            secondSize: '20',
+            secondSizeTablet: '',
+            secondSizeMobile: '',
+            secondWeight: '',
+            secondStyle: '',
+            secondLetter: '',
+            secondUpper: false,
+            secondColor: "#54595f",
+            secondBackground: '',
+            secondOpacity: '',
+            secondClipColor: "#6ec1e4",
+            secondBorderType: "none",
+            secondBorderWidth: '1',
+            secondBorderColor: '',
+            secondBorderRadius: '0',
+            secondShadowColor: '',
+            secondShadowBlur: '0',
+            secondShadowHorizontal: '0',
+            secondShadowVertical: '0',
+            secondMarginL: '0',
+            secondMarginR: '0',
+            secondPadding: '0'
+
+        }]
+    },
+    containerStyles: {
+        type: 'array',
+        default: [{
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            containerBorderType: "none",
+            containerBorderWidth: "1",
+            containerBorderColor: '',
+            containerBorderRadius: '0',
+            containerBack: '',
+            containerOpacity: 1,
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+        }]
+    }
+};
+
+var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
+
 var deprecatedContent = [{
-    attributes: _attributes2.default,
+    attributes: new_deprecated_attributes,
+    save: function save(props) {
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            contentAlign = _props$attributes.contentAlign,
+            firstHeading = _props$attributes.firstHeading,
+            secondHeading = _props$attributes.secondHeading,
+            display = _props$attributes.display,
+            firstColor = _props$attributes.firstColor,
+            firstBackground = _props$attributes.firstBackground,
+            firstFamily = _props$attributes.firstFamily,
+            firstStyle = _props$attributes.firstStyle,
+            firstUpper = _props$attributes.firstUpper,
+            firstLetter = _props$attributes.firstLetter,
+            firstWeight = _props$attributes.firstWeight,
+            firstBorderType = _props$attributes.firstBorderType,
+            firstBorderWidth = _props$attributes.firstBorderWidth,
+            firstBorderTop = _props$attributes.firstBorderTop,
+            firstBorderRight = _props$attributes.firstBorderRight,
+            firstBorderBottom = _props$attributes.firstBorderBottom,
+            firstBorderLeft = _props$attributes.firstBorderLeft,
+            firstBorderRadius = _props$attributes.firstBorderRadius,
+            firstBorderColor = _props$attributes.firstBorderColor,
+            firstPadding = _props$attributes.firstPadding,
+            firstMargin = _props$attributes.firstMargin,
+            firstClip = _props$attributes.firstClip,
+            firstAnim = _props$attributes.firstAnim,
+            firstStroke = _props$attributes.firstStroke,
+            firstClipColor = _props$attributes.firstClipColor,
+            firstShadowBlur = _props$attributes.firstShadowBlur,
+            firstShadowColor = _props$attributes.firstShadowColor,
+            firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes.firstShadowVertical,
+            secondColor = _props$attributes.secondColor,
+            secondBackground = _props$attributes.secondBackground,
+            secondFamily = _props$attributes.secondFamily,
+            secondLetter = _props$attributes.secondLetter,
+            secondUpper = _props$attributes.secondUpper,
+            secondWeight = _props$attributes.secondWeight,
+            secondStyle = _props$attributes.secondStyle,
+            secondBorderType = _props$attributes.secondBorderType,
+            secondBorderWidth = _props$attributes.secondBorderWidth,
+            secondBorderTop = _props$attributes.secondBorderTop,
+            secondBorderRight = _props$attributes.secondBorderRight,
+            secondBorderBottom = _props$attributes.secondBorderBottom,
+            secondBorderLeft = _props$attributes.secondBorderLeft,
+            secondBorderRadius = _props$attributes.secondBorderRadius,
+            secondBorderColor = _props$attributes.secondBorderColor,
+            secondPadding = _props$attributes.secondPadding,
+            secondMargin = _props$attributes.secondMargin,
+            secondClip = _props$attributes.secondClip,
+            secondStroke = _props$attributes.secondStroke,
+            secondAnim = _props$attributes.secondAnim,
+            secondClipColor = _props$attributes.secondClipColor,
+            secondShadowBlur = _props$attributes.secondShadowBlur,
+            secondShadowColor = _props$attributes.secondShadowColor,
+            secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes.secondShadowVertical,
+            link = _props$attributes.link,
+            target = _props$attributes.target,
+            headingURL = _props$attributes.headingURL,
+            containerBack = _props$attributes.containerBack,
+            imageURL = _props$attributes.imageURL,
+            fixed = _props$attributes.fixed,
+            backgroundRepeat = _props$attributes.backgroundRepeat,
+            backgroundPosition = _props$attributes.backgroundPosition,
+            backgroundSize = _props$attributes.backgroundSize,
+            containerBorderType = _props$attributes.containerBorderType,
+            containerBorderWidth = _props$attributes.containerBorderWidth,
+            containerBorderTop = _props$attributes.containerBorderTop,
+            containerBorderRight = _props$attributes.containerBorderRight,
+            containerBorderBottom = _props$attributes.containerBorderBottom,
+            containerBorderLeft = _props$attributes.containerBorderLeft,
+            containerBorderRadius = _props$attributes.containerBorderRadius,
+            containerBorderColor = _props$attributes.containerBorderColor,
+            firstBorder = _props$attributes.firstBorder,
+            secondBorder = _props$attributes.secondBorder,
+            containerBorder = _props$attributes.containerBorder,
+            firstOpacity = _props$attributes.firstOpacity,
+            secondOpacity = _props$attributes.secondOpacity,
+            containerOpacity = _props$attributes.containerOpacity,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
+
+        return React.createElement(
+            "div",
+            {
+                id: "premium-dheading-block-" + block_id,
+                className: mainClasses + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    borderStyle: containerBorderType,
+                    borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerBorderWidth + "px",
+                    borderRadius: containerBorderRadius + "px",
+                    borderColor: containerBorderColor
+                }
+            },
+            React.createElement(
+                "div",
+                { className: "premium-dheading-block__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: "premium-dheading-block__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground ? hexToRgba(firstBackground, firstOpacity) : "transparent",
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontFamily: firstFamily,
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                borderStyle: firstBorderType,
+                                borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground ? hexToRgba(secondBackground, secondOpacity) : "transparent",
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontFamily: secondFamily,
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                borderStyle: secondBorderType,
+                                borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: "premium-dheading-block__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             firstBorder: "",
@@ -41214,68 +43710,68 @@ var deprecatedContent = [{
     },
     save: function save(props) {
         var className = props.className;
-        var _props$attributes = props.attributes,
-            contentAlign = _props$attributes.contentAlign,
-            firstHeading = _props$attributes.firstHeading,
-            secondHeading = _props$attributes.secondHeading,
-            display = _props$attributes.display,
-            firstColor = _props$attributes.firstColor,
-            firstBackground = _props$attributes.firstBackground,
-            firstSize = _props$attributes.firstSize,
-            firstFamily = _props$attributes.firstFamily,
-            firstStyle = _props$attributes.firstStyle,
-            firstUpper = _props$attributes.firstUpper,
-            firstLetter = _props$attributes.firstLetter,
-            firstWeight = _props$attributes.firstWeight,
-            firstBorderType = _props$attributes.firstBorderType,
-            firstBorderWidth = _props$attributes.firstBorderWidth,
-            firstBorderRadius = _props$attributes.firstBorderRadius,
-            firstBorderColor = _props$attributes.firstBorderColor,
-            firstPadding = _props$attributes.firstPadding,
-            firstMargin = _props$attributes.firstMargin,
-            firstClip = _props$attributes.firstClip,
-            firstAnim = _props$attributes.firstAnim,
-            firstStroke = _props$attributes.firstStroke,
-            firstClipColor = _props$attributes.firstClipColor,
-            firstShadowBlur = _props$attributes.firstShadowBlur,
-            firstShadowColor = _props$attributes.firstShadowColor,
-            firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes.firstShadowVertical,
-            secondColor = _props$attributes.secondColor,
-            secondBackground = _props$attributes.secondBackground,
-            secondSize = _props$attributes.secondSize,
-            secondFamily = _props$attributes.secondFamily,
-            secondLetter = _props$attributes.secondLetter,
-            secondUpper = _props$attributes.secondUpper,
-            secondWeight = _props$attributes.secondWeight,
-            secondStyle = _props$attributes.secondStyle,
-            secondBorderType = _props$attributes.secondBorderType,
-            secondBorderWidth = _props$attributes.secondBorderWidth,
-            secondBorderRadius = _props$attributes.secondBorderRadius,
-            secondBorderColor = _props$attributes.secondBorderColor,
-            secondPadding = _props$attributes.secondPadding,
-            secondMargin = _props$attributes.secondMargin,
-            secondClip = _props$attributes.secondClip,
-            secondStroke = _props$attributes.secondStroke,
-            secondAnim = _props$attributes.secondAnim,
-            secondClipColor = _props$attributes.secondClipColor,
-            secondShadowBlur = _props$attributes.secondShadowBlur,
-            secondShadowColor = _props$attributes.secondShadowColor,
-            secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes.secondShadowVertical,
-            link = _props$attributes.link,
-            target = _props$attributes.target,
-            headingURL = _props$attributes.headingURL,
-            containerBack = _props$attributes.containerBack,
-            imageURL = _props$attributes.imageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            containerBorderType = _props$attributes.containerBorderType,
-            containerBorderWidth = _props$attributes.containerBorderWidth,
-            containerBorderRadius = _props$attributes.containerBorderRadius,
-            containerBorderColor = _props$attributes.containerBorderColor;
+        var _props$attributes2 = props.attributes,
+            contentAlign = _props$attributes2.contentAlign,
+            firstHeading = _props$attributes2.firstHeading,
+            secondHeading = _props$attributes2.secondHeading,
+            display = _props$attributes2.display,
+            firstColor = _props$attributes2.firstColor,
+            firstBackground = _props$attributes2.firstBackground,
+            firstSize = _props$attributes2.firstSize,
+            firstFamily = _props$attributes2.firstFamily,
+            firstStyle = _props$attributes2.firstStyle,
+            firstUpper = _props$attributes2.firstUpper,
+            firstLetter = _props$attributes2.firstLetter,
+            firstWeight = _props$attributes2.firstWeight,
+            firstBorderType = _props$attributes2.firstBorderType,
+            firstBorderWidth = _props$attributes2.firstBorderWidth,
+            firstBorderRadius = _props$attributes2.firstBorderRadius,
+            firstBorderColor = _props$attributes2.firstBorderColor,
+            firstPadding = _props$attributes2.firstPadding,
+            firstMargin = _props$attributes2.firstMargin,
+            firstClip = _props$attributes2.firstClip,
+            firstAnim = _props$attributes2.firstAnim,
+            firstStroke = _props$attributes2.firstStroke,
+            firstClipColor = _props$attributes2.firstClipColor,
+            firstShadowBlur = _props$attributes2.firstShadowBlur,
+            firstShadowColor = _props$attributes2.firstShadowColor,
+            firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes2.firstShadowVertical,
+            secondColor = _props$attributes2.secondColor,
+            secondBackground = _props$attributes2.secondBackground,
+            secondSize = _props$attributes2.secondSize,
+            secondFamily = _props$attributes2.secondFamily,
+            secondLetter = _props$attributes2.secondLetter,
+            secondUpper = _props$attributes2.secondUpper,
+            secondWeight = _props$attributes2.secondWeight,
+            secondStyle = _props$attributes2.secondStyle,
+            secondBorderType = _props$attributes2.secondBorderType,
+            secondBorderWidth = _props$attributes2.secondBorderWidth,
+            secondBorderRadius = _props$attributes2.secondBorderRadius,
+            secondBorderColor = _props$attributes2.secondBorderColor,
+            secondPadding = _props$attributes2.secondPadding,
+            secondMargin = _props$attributes2.secondMargin,
+            secondClip = _props$attributes2.secondClip,
+            secondStroke = _props$attributes2.secondStroke,
+            secondAnim = _props$attributes2.secondAnim,
+            secondClipColor = _props$attributes2.secondClipColor,
+            secondShadowBlur = _props$attributes2.secondShadowBlur,
+            secondShadowColor = _props$attributes2.secondShadowColor,
+            secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes2.secondShadowVertical,
+            link = _props$attributes2.link,
+            target = _props$attributes2.target,
+            headingURL = _props$attributes2.headingURL,
+            containerBack = _props$attributes2.containerBack,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            containerBorderType = _props$attributes2.containerBorderType,
+            containerBorderWidth = _props$attributes2.containerBorderWidth,
+            containerBorderRadius = _props$attributes2.containerBorderRadius,
+            containerBorderColor = _props$attributes2.containerBorderColor;
 
 
         var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
@@ -41366,7 +43862,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             firstStroke: false,
@@ -41376,66 +43872,66 @@ var deprecatedContent = [{
     },
     save: function save(props) {
         var className = props.className;
-        var _props$attributes2 = props.attributes,
-            contentAlign = _props$attributes2.contentAlign,
-            firstHeading = _props$attributes2.firstHeading,
-            secondHeading = _props$attributes2.secondHeading,
-            display = _props$attributes2.display,
-            firstColor = _props$attributes2.firstColor,
-            firstBackground = _props$attributes2.firstBackground,
-            firstSize = _props$attributes2.firstSize,
-            firstFamily = _props$attributes2.firstFamily,
-            firstStyle = _props$attributes2.firstStyle,
-            firstUpper = _props$attributes2.firstUpper,
-            firstLetter = _props$attributes2.firstLetter,
-            firstWeight = _props$attributes2.firstWeight,
-            firstBorderType = _props$attributes2.firstBorderType,
-            firstBorderWidth = _props$attributes2.firstBorderWidth,
-            firstBorderRadius = _props$attributes2.firstBorderRadius,
-            firstBorderColor = _props$attributes2.firstBorderColor,
-            firstPadding = _props$attributes2.firstPadding,
-            firstMargin = _props$attributes2.firstMargin,
-            firstClip = _props$attributes2.firstClip,
-            firstAnim = _props$attributes2.firstAnim,
-            firstClipColor = _props$attributes2.firstClipColor,
-            firstShadowBlur = _props$attributes2.firstShadowBlur,
-            firstShadowColor = _props$attributes2.firstShadowColor,
-            firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes2.firstShadowVertical,
-            secondColor = _props$attributes2.secondColor,
-            secondBackground = _props$attributes2.secondBackground,
-            secondSize = _props$attributes2.secondSize,
-            secondFamily = _props$attributes2.secondFamily,
-            secondLetter = _props$attributes2.secondLetter,
-            secondUpper = _props$attributes2.secondUpper,
-            secondWeight = _props$attributes2.secondWeight,
-            secondStyle = _props$attributes2.secondStyle,
-            secondBorderType = _props$attributes2.secondBorderType,
-            secondBorderWidth = _props$attributes2.secondBorderWidth,
-            secondBorderRadius = _props$attributes2.secondBorderRadius,
-            secondBorderColor = _props$attributes2.secondBorderColor,
-            secondPadding = _props$attributes2.secondPadding,
-            secondMargin = _props$attributes2.secondMargin,
-            secondClip = _props$attributes2.secondClip,
-            secondAnim = _props$attributes2.secondAnim,
-            secondClipColor = _props$attributes2.secondClipColor,
-            secondShadowBlur = _props$attributes2.secondShadowBlur,
-            secondShadowColor = _props$attributes2.secondShadowColor,
-            secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes2.secondShadowVertical,
-            link = _props$attributes2.link,
-            target = _props$attributes2.target,
-            headingURL = _props$attributes2.headingURL,
-            containerBack = _props$attributes2.containerBack,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            containerBorderType = _props$attributes2.containerBorderType,
-            containerBorderWidth = _props$attributes2.containerBorderWidth,
-            containerBorderRadius = _props$attributes2.containerBorderRadius,
-            containerBorderColor = _props$attributes2.containerBorderColor;
+        var _props$attributes3 = props.attributes,
+            contentAlign = _props$attributes3.contentAlign,
+            firstHeading = _props$attributes3.firstHeading,
+            secondHeading = _props$attributes3.secondHeading,
+            display = _props$attributes3.display,
+            firstColor = _props$attributes3.firstColor,
+            firstBackground = _props$attributes3.firstBackground,
+            firstSize = _props$attributes3.firstSize,
+            firstFamily = _props$attributes3.firstFamily,
+            firstStyle = _props$attributes3.firstStyle,
+            firstUpper = _props$attributes3.firstUpper,
+            firstLetter = _props$attributes3.firstLetter,
+            firstWeight = _props$attributes3.firstWeight,
+            firstBorderType = _props$attributes3.firstBorderType,
+            firstBorderWidth = _props$attributes3.firstBorderWidth,
+            firstBorderRadius = _props$attributes3.firstBorderRadius,
+            firstBorderColor = _props$attributes3.firstBorderColor,
+            firstPadding = _props$attributes3.firstPadding,
+            firstMargin = _props$attributes3.firstMargin,
+            firstClip = _props$attributes3.firstClip,
+            firstAnim = _props$attributes3.firstAnim,
+            firstClipColor = _props$attributes3.firstClipColor,
+            firstShadowBlur = _props$attributes3.firstShadowBlur,
+            firstShadowColor = _props$attributes3.firstShadowColor,
+            firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes3.firstShadowVertical,
+            secondColor = _props$attributes3.secondColor,
+            secondBackground = _props$attributes3.secondBackground,
+            secondSize = _props$attributes3.secondSize,
+            secondFamily = _props$attributes3.secondFamily,
+            secondLetter = _props$attributes3.secondLetter,
+            secondUpper = _props$attributes3.secondUpper,
+            secondWeight = _props$attributes3.secondWeight,
+            secondStyle = _props$attributes3.secondStyle,
+            secondBorderType = _props$attributes3.secondBorderType,
+            secondBorderWidth = _props$attributes3.secondBorderWidth,
+            secondBorderRadius = _props$attributes3.secondBorderRadius,
+            secondBorderColor = _props$attributes3.secondBorderColor,
+            secondPadding = _props$attributes3.secondPadding,
+            secondMargin = _props$attributes3.secondMargin,
+            secondClip = _props$attributes3.secondClip,
+            secondAnim = _props$attributes3.secondAnim,
+            secondClipColor = _props$attributes3.secondClipColor,
+            secondShadowBlur = _props$attributes3.secondShadowBlur,
+            secondShadowColor = _props$attributes3.secondShadowColor,
+            secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes3.secondShadowVertical,
+            link = _props$attributes3.link,
+            target = _props$attributes3.target,
+            headingURL = _props$attributes3.headingURL,
+            containerBack = _props$attributes3.containerBack,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            containerBorderType = _props$attributes3.containerBorderType,
+            containerBorderWidth = _props$attributes3.containerBorderWidth,
+            containerBorderRadius = _props$attributes3.containerBorderRadius,
+            containerBorderColor = _props$attributes3.containerBorderColor;
 
 
         var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
@@ -41526,7 +44022,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             containerBorderType: "none",
@@ -41537,62 +44033,62 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            contentAlign = _props$attributes3.contentAlign,
-            firstHeading = _props$attributes3.firstHeading,
-            secondHeading = _props$attributes3.secondHeading,
-            display = _props$attributes3.display,
-            firstColor = _props$attributes3.firstColor,
-            firstBackground = _props$attributes3.firstBackground,
-            firstSize = _props$attributes3.firstSize,
-            firstFamily = _props$attributes3.firstFamily,
-            firstStyle = _props$attributes3.firstStyle,
-            firstUpper = _props$attributes3.firstUpper,
-            firstLetter = _props$attributes3.firstLetter,
-            firstWeight = _props$attributes3.firstWeight,
-            firstBorderType = _props$attributes3.firstBorderType,
-            firstBorderWidth = _props$attributes3.firstBorderWidth,
-            firstBorderRadius = _props$attributes3.firstBorderRadius,
-            firstBorderColor = _props$attributes3.firstBorderColor,
-            firstPadding = _props$attributes3.firstPadding,
-            firstMargin = _props$attributes3.firstMargin,
-            firstClip = _props$attributes3.firstClip,
-            firstAnim = _props$attributes3.firstAnim,
-            firstClipColor = _props$attributes3.firstClipColor,
-            firstShadowBlur = _props$attributes3.firstShadowBlur,
-            firstShadowColor = _props$attributes3.firstShadowColor,
-            firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes3.firstShadowVertical,
-            secondColor = _props$attributes3.secondColor,
-            secondBackground = _props$attributes3.secondBackground,
-            secondSize = _props$attributes3.secondSize,
-            secondFamily = _props$attributes3.secondFamily,
-            secondLetter = _props$attributes3.secondLetter,
-            secondUpper = _props$attributes3.secondUpper,
-            secondWeight = _props$attributes3.secondWeight,
-            secondStyle = _props$attributes3.secondStyle,
-            secondBorderType = _props$attributes3.secondBorderType,
-            secondBorderWidth = _props$attributes3.secondBorderWidth,
-            secondBorderRadius = _props$attributes3.secondBorderRadius,
-            secondBorderColor = _props$attributes3.secondBorderColor,
-            secondPadding = _props$attributes3.secondPadding,
-            secondMargin = _props$attributes3.secondMargin,
-            secondClip = _props$attributes3.secondClip,
-            secondAnim = _props$attributes3.secondAnim,
-            secondClipColor = _props$attributes3.secondClipColor,
-            secondShadowBlur = _props$attributes3.secondShadowBlur,
-            secondShadowColor = _props$attributes3.secondShadowColor,
-            secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes3.secondShadowVertical,
-            link = _props$attributes3.link,
-            target = _props$attributes3.target,
-            headingURL = _props$attributes3.headingURL,
-            containerBack = _props$attributes3.containerBack,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize;
+        var _props$attributes4 = props.attributes,
+            contentAlign = _props$attributes4.contentAlign,
+            firstHeading = _props$attributes4.firstHeading,
+            secondHeading = _props$attributes4.secondHeading,
+            display = _props$attributes4.display,
+            firstColor = _props$attributes4.firstColor,
+            firstBackground = _props$attributes4.firstBackground,
+            firstSize = _props$attributes4.firstSize,
+            firstFamily = _props$attributes4.firstFamily,
+            firstStyle = _props$attributes4.firstStyle,
+            firstUpper = _props$attributes4.firstUpper,
+            firstLetter = _props$attributes4.firstLetter,
+            firstWeight = _props$attributes4.firstWeight,
+            firstBorderType = _props$attributes4.firstBorderType,
+            firstBorderWidth = _props$attributes4.firstBorderWidth,
+            firstBorderRadius = _props$attributes4.firstBorderRadius,
+            firstBorderColor = _props$attributes4.firstBorderColor,
+            firstPadding = _props$attributes4.firstPadding,
+            firstMargin = _props$attributes4.firstMargin,
+            firstClip = _props$attributes4.firstClip,
+            firstAnim = _props$attributes4.firstAnim,
+            firstClipColor = _props$attributes4.firstClipColor,
+            firstShadowBlur = _props$attributes4.firstShadowBlur,
+            firstShadowColor = _props$attributes4.firstShadowColor,
+            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes4.firstShadowVertical,
+            secondColor = _props$attributes4.secondColor,
+            secondBackground = _props$attributes4.secondBackground,
+            secondSize = _props$attributes4.secondSize,
+            secondFamily = _props$attributes4.secondFamily,
+            secondLetter = _props$attributes4.secondLetter,
+            secondUpper = _props$attributes4.secondUpper,
+            secondWeight = _props$attributes4.secondWeight,
+            secondStyle = _props$attributes4.secondStyle,
+            secondBorderType = _props$attributes4.secondBorderType,
+            secondBorderWidth = _props$attributes4.secondBorderWidth,
+            secondBorderRadius = _props$attributes4.secondBorderRadius,
+            secondBorderColor = _props$attributes4.secondBorderColor,
+            secondPadding = _props$attributes4.secondPadding,
+            secondMargin = _props$attributes4.secondMargin,
+            secondClip = _props$attributes4.secondClip,
+            secondAnim = _props$attributes4.secondAnim,
+            secondClipColor = _props$attributes4.secondClipColor,
+            secondShadowBlur = _props$attributes4.secondShadowBlur,
+            secondShadowColor = _props$attributes4.secondShadowColor,
+            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes4.secondShadowVertical,
+            link = _props$attributes4.link,
+            target = _props$attributes4.target,
+            headingURL = _props$attributes4.headingURL,
+            containerBack = _props$attributes4.containerBack,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize;
 
 
         return React.createElement(
@@ -41677,7 +44173,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             firstFamily: "",
@@ -41686,60 +44182,60 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            contentAlign = _props$attributes4.contentAlign,
-            firstHeading = _props$attributes4.firstHeading,
-            secondHeading = _props$attributes4.secondHeading,
-            display = _props$attributes4.display,
-            firstColor = _props$attributes4.firstColor,
-            firstBackground = _props$attributes4.firstBackground,
-            firstSize = _props$attributes4.firstSize,
-            firstStyle = _props$attributes4.firstStyle,
-            firstUpper = _props$attributes4.firstUpper,
-            firstLetter = _props$attributes4.firstLetter,
-            firstWeight = _props$attributes4.firstWeight,
-            firstBorderType = _props$attributes4.firstBorderType,
-            firstBorderWidth = _props$attributes4.firstBorderWidth,
-            firstBorderRadius = _props$attributes4.firstBorderRadius,
-            firstBorderColor = _props$attributes4.firstBorderColor,
-            firstPadding = _props$attributes4.firstPadding,
-            firstMargin = _props$attributes4.firstMargin,
-            firstClip = _props$attributes4.firstClip,
-            firstAnim = _props$attributes4.firstAnim,
-            firstClipColor = _props$attributes4.firstClipColor,
-            firstShadowBlur = _props$attributes4.firstShadowBlur,
-            firstShadowColor = _props$attributes4.firstShadowColor,
-            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes4.firstShadowVertical,
-            secondColor = _props$attributes4.secondColor,
-            secondBackground = _props$attributes4.secondBackground,
-            secondSize = _props$attributes4.secondSize,
-            secondLetter = _props$attributes4.secondLetter,
-            secondUpper = _props$attributes4.secondUpper,
-            secondWeight = _props$attributes4.secondWeight,
-            secondStyle = _props$attributes4.secondStyle,
-            secondBorderType = _props$attributes4.secondBorderType,
-            secondBorderWidth = _props$attributes4.secondBorderWidth,
-            secondBorderRadius = _props$attributes4.secondBorderRadius,
-            secondBorderColor = _props$attributes4.secondBorderColor,
-            secondPadding = _props$attributes4.secondPadding,
-            secondMargin = _props$attributes4.secondMargin,
-            secondClip = _props$attributes4.secondClip,
-            secondAnim = _props$attributes4.secondAnim,
-            secondClipColor = _props$attributes4.secondClipColor,
-            secondShadowBlur = _props$attributes4.secondShadowBlur,
-            secondShadowColor = _props$attributes4.secondShadowColor,
-            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes4.secondShadowVertical,
-            link = _props$attributes4.link,
-            target = _props$attributes4.target,
-            headingURL = _props$attributes4.headingURL,
-            containerBack = _props$attributes4.containerBack,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize;
+        var _props$attributes5 = props.attributes,
+            contentAlign = _props$attributes5.contentAlign,
+            firstHeading = _props$attributes5.firstHeading,
+            secondHeading = _props$attributes5.secondHeading,
+            display = _props$attributes5.display,
+            firstColor = _props$attributes5.firstColor,
+            firstBackground = _props$attributes5.firstBackground,
+            firstSize = _props$attributes5.firstSize,
+            firstStyle = _props$attributes5.firstStyle,
+            firstUpper = _props$attributes5.firstUpper,
+            firstLetter = _props$attributes5.firstLetter,
+            firstWeight = _props$attributes5.firstWeight,
+            firstBorderType = _props$attributes5.firstBorderType,
+            firstBorderWidth = _props$attributes5.firstBorderWidth,
+            firstBorderRadius = _props$attributes5.firstBorderRadius,
+            firstBorderColor = _props$attributes5.firstBorderColor,
+            firstPadding = _props$attributes5.firstPadding,
+            firstMargin = _props$attributes5.firstMargin,
+            firstClip = _props$attributes5.firstClip,
+            firstAnim = _props$attributes5.firstAnim,
+            firstClipColor = _props$attributes5.firstClipColor,
+            firstShadowBlur = _props$attributes5.firstShadowBlur,
+            firstShadowColor = _props$attributes5.firstShadowColor,
+            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes5.firstShadowVertical,
+            secondColor = _props$attributes5.secondColor,
+            secondBackground = _props$attributes5.secondBackground,
+            secondSize = _props$attributes5.secondSize,
+            secondLetter = _props$attributes5.secondLetter,
+            secondUpper = _props$attributes5.secondUpper,
+            secondWeight = _props$attributes5.secondWeight,
+            secondStyle = _props$attributes5.secondStyle,
+            secondBorderType = _props$attributes5.secondBorderType,
+            secondBorderWidth = _props$attributes5.secondBorderWidth,
+            secondBorderRadius = _props$attributes5.secondBorderRadius,
+            secondBorderColor = _props$attributes5.secondBorderColor,
+            secondPadding = _props$attributes5.secondPadding,
+            secondMargin = _props$attributes5.secondMargin,
+            secondClip = _props$attributes5.secondClip,
+            secondAnim = _props$attributes5.secondAnim,
+            secondClipColor = _props$attributes5.secondClipColor,
+            secondShadowBlur = _props$attributes5.secondShadowBlur,
+            secondShadowColor = _props$attributes5.secondShadowColor,
+            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes5.secondShadowVertical,
+            link = _props$attributes5.link,
+            target = _props$attributes5.target,
+            headingURL = _props$attributes5.headingURL,
+            containerBack = _props$attributes5.containerBack,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize;
 
 
         return React.createElement(
@@ -41822,7 +44318,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             imageID: "",
@@ -41835,55 +44331,55 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            contentAlign = _props$attributes5.contentAlign,
-            firstHeading = _props$attributes5.firstHeading,
-            secondHeading = _props$attributes5.secondHeading,
-            display = _props$attributes5.display,
-            firstColor = _props$attributes5.firstColor,
-            firstBackground = _props$attributes5.firstBackground,
-            firstSize = _props$attributes5.firstSize,
-            firstStyle = _props$attributes5.firstStyle,
-            firstUpper = _props$attributes5.firstUpper,
-            firstLetter = _props$attributes5.firstLetter,
-            firstWeight = _props$attributes5.firstWeight,
-            firstBorderType = _props$attributes5.firstBorderType,
-            firstBorderWidth = _props$attributes5.firstBorderWidth,
-            firstBorderRadius = _props$attributes5.firstBorderRadius,
-            firstBorderColor = _props$attributes5.firstBorderColor,
-            firstPadding = _props$attributes5.firstPadding,
-            firstMargin = _props$attributes5.firstMargin,
-            firstClip = _props$attributes5.firstClip,
-            firstAnim = _props$attributes5.firstAnim,
-            firstClipColor = _props$attributes5.firstClipColor,
-            firstShadowBlur = _props$attributes5.firstShadowBlur,
-            firstShadowColor = _props$attributes5.firstShadowColor,
-            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes5.firstShadowVertical,
-            secondColor = _props$attributes5.secondColor,
-            secondBackground = _props$attributes5.secondBackground,
-            secondSize = _props$attributes5.secondSize,
-            secondLetter = _props$attributes5.secondLetter,
-            secondUpper = _props$attributes5.secondUpper,
-            secondWeight = _props$attributes5.secondWeight,
-            secondStyle = _props$attributes5.secondStyle,
-            secondBorderType = _props$attributes5.secondBorderType,
-            secondBorderWidth = _props$attributes5.secondBorderWidth,
-            secondBorderRadius = _props$attributes5.secondBorderRadius,
-            secondBorderColor = _props$attributes5.secondBorderColor,
-            secondPadding = _props$attributes5.secondPadding,
-            secondMargin = _props$attributes5.secondMargin,
-            secondClip = _props$attributes5.secondClip,
-            secondAnim = _props$attributes5.secondAnim,
-            secondClipColor = _props$attributes5.secondClipColor,
-            secondShadowBlur = _props$attributes5.secondShadowBlur,
-            secondShadowColor = _props$attributes5.secondShadowColor,
-            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes5.secondShadowVertical,
-            link = _props$attributes5.link,
-            target = _props$attributes5.target,
-            headingURL = _props$attributes5.headingURL,
-            containerBack = _props$attributes5.containerBack;
+        var _props$attributes6 = props.attributes,
+            contentAlign = _props$attributes6.contentAlign,
+            firstHeading = _props$attributes6.firstHeading,
+            secondHeading = _props$attributes6.secondHeading,
+            display = _props$attributes6.display,
+            firstColor = _props$attributes6.firstColor,
+            firstBackground = _props$attributes6.firstBackground,
+            firstSize = _props$attributes6.firstSize,
+            firstStyle = _props$attributes6.firstStyle,
+            firstUpper = _props$attributes6.firstUpper,
+            firstLetter = _props$attributes6.firstLetter,
+            firstWeight = _props$attributes6.firstWeight,
+            firstBorderType = _props$attributes6.firstBorderType,
+            firstBorderWidth = _props$attributes6.firstBorderWidth,
+            firstBorderRadius = _props$attributes6.firstBorderRadius,
+            firstBorderColor = _props$attributes6.firstBorderColor,
+            firstPadding = _props$attributes6.firstPadding,
+            firstMargin = _props$attributes6.firstMargin,
+            firstClip = _props$attributes6.firstClip,
+            firstAnim = _props$attributes6.firstAnim,
+            firstClipColor = _props$attributes6.firstClipColor,
+            firstShadowBlur = _props$attributes6.firstShadowBlur,
+            firstShadowColor = _props$attributes6.firstShadowColor,
+            firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes6.firstShadowVertical,
+            secondColor = _props$attributes6.secondColor,
+            secondBackground = _props$attributes6.secondBackground,
+            secondSize = _props$attributes6.secondSize,
+            secondLetter = _props$attributes6.secondLetter,
+            secondUpper = _props$attributes6.secondUpper,
+            secondWeight = _props$attributes6.secondWeight,
+            secondStyle = _props$attributes6.secondStyle,
+            secondBorderType = _props$attributes6.secondBorderType,
+            secondBorderWidth = _props$attributes6.secondBorderWidth,
+            secondBorderRadius = _props$attributes6.secondBorderRadius,
+            secondBorderColor = _props$attributes6.secondBorderColor,
+            secondPadding = _props$attributes6.secondPadding,
+            secondMargin = _props$attributes6.secondMargin,
+            secondClip = _props$attributes6.secondClip,
+            secondAnim = _props$attributes6.secondAnim,
+            secondClipColor = _props$attributes6.secondClipColor,
+            secondShadowBlur = _props$attributes6.secondShadowBlur,
+            secondShadowColor = _props$attributes6.secondShadowColor,
+            secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes6.secondShadowVertical,
+            link = _props$attributes6.link,
+            target = _props$attributes6.target,
+            headingURL = _props$attributes6.headingURL,
+            containerBack = _props$attributes6.containerBack;
 
 
         return React.createElement(
@@ -41961,58 +44457,58 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     save: function save(props) {
         {
-            var _props$attributes6 = props.attributes,
-                contentAlign = _props$attributes6.contentAlign,
-                firstHeading = _props$attributes6.firstHeading,
-                secondHeading = _props$attributes6.secondHeading,
-                display = _props$attributes6.display,
-                firstColor = _props$attributes6.firstColor,
-                firstBackground = _props$attributes6.firstBackground,
-                firstSize = _props$attributes6.firstSize,
-                firstStyle = _props$attributes6.firstStyle,
-                firstUpper = _props$attributes6.firstUpper,
-                firstLetter = _props$attributes6.firstLetter,
-                firstWeight = _props$attributes6.firstWeight,
-                firstBorderType = _props$attributes6.firstBorderType,
-                firstBorderWidth = _props$attributes6.firstBorderWidth,
-                firstBorderRadius = _props$attributes6.firstBorderRadius,
-                firstBorderColor = _props$attributes6.firstBorderColor,
-                firstPadding = _props$attributes6.firstPadding,
-                firstMargin = _props$attributes6.firstMargin,
-                firstClip = _props$attributes6.firstClip,
-                firstAnim = _props$attributes6.firstAnim,
-                firstClipColor = _props$attributes6.firstClipColor,
-                firstShadowBlur = _props$attributes6.firstShadowBlur,
-                firstShadowColor = _props$attributes6.firstShadowColor,
-                firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
-                firstShadowVertical = _props$attributes6.firstShadowVertical,
-                secondColor = _props$attributes6.secondColor,
-                secondBackground = _props$attributes6.secondBackground,
-                secondSize = _props$attributes6.secondSize,
-                secondLetter = _props$attributes6.secondLetter,
-                secondUpper = _props$attributes6.secondUpper,
-                secondWeight = _props$attributes6.secondWeight,
-                secondStyle = _props$attributes6.secondStyle,
-                secondBorderType = _props$attributes6.secondBorderType,
-                secondBorderWidth = _props$attributes6.secondBorderWidth,
-                secondBorderRadius = _props$attributes6.secondBorderRadius,
-                secondBorderColor = _props$attributes6.secondBorderColor,
-                secondPadding = _props$attributes6.secondPadding,
-                secondMargin = _props$attributes6.secondMargin,
-                secondClip = _props$attributes6.secondClip,
-                secondAnim = _props$attributes6.secondAnim,
-                secondClipColor = _props$attributes6.secondClipColor,
-                secondShadowBlur = _props$attributes6.secondShadowBlur,
-                secondShadowColor = _props$attributes6.secondShadowColor,
-                secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
-                secondShadowVertical = _props$attributes6.secondShadowVertical,
-                link = _props$attributes6.link,
-                target = _props$attributes6.target,
-                headingURL = _props$attributes6.headingURL,
-                containerBack = _props$attributes6.containerBack;
+            var _props$attributes7 = props.attributes,
+                contentAlign = _props$attributes7.contentAlign,
+                firstHeading = _props$attributes7.firstHeading,
+                secondHeading = _props$attributes7.secondHeading,
+                display = _props$attributes7.display,
+                firstColor = _props$attributes7.firstColor,
+                firstBackground = _props$attributes7.firstBackground,
+                firstSize = _props$attributes7.firstSize,
+                firstStyle = _props$attributes7.firstStyle,
+                firstUpper = _props$attributes7.firstUpper,
+                firstLetter = _props$attributes7.firstLetter,
+                firstWeight = _props$attributes7.firstWeight,
+                firstBorderType = _props$attributes7.firstBorderType,
+                firstBorderWidth = _props$attributes7.firstBorderWidth,
+                firstBorderRadius = _props$attributes7.firstBorderRadius,
+                firstBorderColor = _props$attributes7.firstBorderColor,
+                firstPadding = _props$attributes7.firstPadding,
+                firstMargin = _props$attributes7.firstMargin,
+                firstClip = _props$attributes7.firstClip,
+                firstAnim = _props$attributes7.firstAnim,
+                firstClipColor = _props$attributes7.firstClipColor,
+                firstShadowBlur = _props$attributes7.firstShadowBlur,
+                firstShadowColor = _props$attributes7.firstShadowColor,
+                firstShadowHorizontal = _props$attributes7.firstShadowHorizontal,
+                firstShadowVertical = _props$attributes7.firstShadowVertical,
+                secondColor = _props$attributes7.secondColor,
+                secondBackground = _props$attributes7.secondBackground,
+                secondSize = _props$attributes7.secondSize,
+                secondLetter = _props$attributes7.secondLetter,
+                secondUpper = _props$attributes7.secondUpper,
+                secondWeight = _props$attributes7.secondWeight,
+                secondStyle = _props$attributes7.secondStyle,
+                secondBorderType = _props$attributes7.secondBorderType,
+                secondBorderWidth = _props$attributes7.secondBorderWidth,
+                secondBorderRadius = _props$attributes7.secondBorderRadius,
+                secondBorderColor = _props$attributes7.secondBorderColor,
+                secondPadding = _props$attributes7.secondPadding,
+                secondMargin = _props$attributes7.secondMargin,
+                secondClip = _props$attributes7.secondClip,
+                secondAnim = _props$attributes7.secondAnim,
+                secondClipColor = _props$attributes7.secondClipColor,
+                secondShadowBlur = _props$attributes7.secondShadowBlur,
+                secondShadowColor = _props$attributes7.secondShadowColor,
+                secondShadowHorizontal = _props$attributes7.secondShadowHorizontal,
+                secondShadowVertical = _props$attributes7.secondShadowVertical,
+                link = _props$attributes7.link,
+                target = _props$attributes7.target,
+                headingURL = _props$attributes7.headingURL,
+                containerBack = _props$attributes7.containerBack;
 
 
             return React.createElement(
@@ -42927,19 +45423,334 @@ exports.default = save;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _attributes = __webpack_require__(114);
-
-var _attributes2 = _interopRequireDefault(_attributes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var className = "premium-icon";
 
+var attributes = {
+    iconBorder: {
+        type: "boolean",
+        default: false
+    },
+    wrapBorder: {
+        type: "boolean",
+        default: false
+    },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    iconBack: {
+        type: "string"
+    },
+    iconOpacity: {
+        type: "number",
+        default: "1"
+    },
+    padding: {
+        type: "string",
+        default: "up"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    },
+    margin: {
+        type: "string",
+        default: "up"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    iconBorderTop: {
+        type: "number",
+        default: 1
+    },
+    iconBorderRight: {
+        type: "number",
+        default: 1
+    },
+    iconBorderBottom: {
+        type: "number",
+        default: 1
+    },
+    iconBorderLeft: {
+        type: "number",
+        default: 1
+    },
+    borderRadius: {
+        type: "number",
+        default: 100
+    },
+    borderColor: {
+        type: "string"
+    },
+    backgroundColor: {
+        type: "string"
+    },
+    backgroundOpacity: {
+        type: "number",
+        default: "1"
+    },
+    background: {
+        type: "string"
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    wrapBorderType: {
+        type: "string",
+        default: "none"
+    },
+    wrapBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    wrapBorderTop: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderRight: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderBottom: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderLeft: {
+        type: "number",
+        default: 1
+    },
+    wrapBorderRadius: {
+        type: "number"
+    },
+    wrapBorderColor: {
+        type: "string"
+    },
+    wrapPadding: {
+        type: "string",
+        default: "up"
+    },
+    wrapShadowColor: {
+        type: "string"
+    },
+    wrapShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    wrapShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    wrapShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    wrapShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    wrapPaddingT: {
+        type: "number"
+    },
+    wrapPaddingR: {
+        type: "number"
+    },
+    wrapPaddingB: {
+        type: "number"
+    },
+    wrapPaddingL: {
+        type: "number"
+    },
+    wrapMargin: {
+        type: "string",
+        default: "up"
+    },
+    wrapMarginT: {
+        type: "number"
+    },
+    wrapMarginR: {
+        type: "number"
+    },
+    wrapMarginB: {
+        type: "number"
+    },
+    wrapMarginL: {
+        type: "number"
+    },
+    urlCheck: {
+        type: "boolean"
+    },
+    link: {
+        type: "string"
+    },
+    target: {
+        type: "boolean"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var new_attributes = {
+    iconStyles: {
+        type: "array",
+        default: [{
+            iconSizeUnit: 'px',
+            iconSize: '',
+            iconColor: '',
+            iconBack: '',
+            iconOpacity: '1',
+            borderType: 'none',
+            borderWidth: '1',
+            iconBorderTop: '1',
+            iconBorderRight: '1',
+            iconBorderBottom: '1',
+            iconBorderLeft: '1',
+            borderColor: '',
+            borderRadius: '100',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: ''
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            containerBack: '',
+            backgroundOpacity: 1,
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            wrapBorderType: 'none',
+            wrapBorderWidth: '1',
+            wrapBorderTop: '1',
+            wrapBorderRight: '1',
+            wrapBorderBottom: '1',
+            wrapBorderLeft: '1',
+            wrapBorderColor: '',
+            wrapBorderRadius: '',
+            wrapShadowColor: '',
+            wrapShadowBlur: '0',
+            wrapShadowHorizontal: '0',
+            wrapShadowVertical: '0',
+            wrapShadowPosition: '',
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+        }]
+    }
+};
+
+var new_deprecated_attributes = Object.assign(attributes, new_attributes);
+
 var deprecatedContent = [{
-    attributes: _attributes2.default,
+    attributes: new_deprecated_attributes,
     save: function save(props) {
         var _props$attributes = props.attributes,
+            wrapBorder = _props$attributes.wrapBorder,
+            iconBorder = _props$attributes.iconBorder,
             selectedIcon = _props$attributes.selectedIcon,
             align = _props$attributes.align,
             hoverEffect = _props$attributes.hoverEffect,
@@ -42955,12 +45766,17 @@ var deprecatedContent = [{
             paddingR = _props$attributes.paddingR,
             paddingB = _props$attributes.paddingB,
             paddingL = _props$attributes.paddingL,
+            paddingU = _props$attributes.paddingU,
             marginT = _props$attributes.marginT,
             marginR = _props$attributes.marginR,
             marginB = _props$attributes.marginB,
             marginL = _props$attributes.marginL,
             borderType = _props$attributes.borderType,
             borderWidth = _props$attributes.borderWidth,
+            iconBorderTop = _props$attributes.iconBorderTop,
+            iconBorderRight = _props$attributes.iconBorderRight,
+            iconBorderBottom = _props$attributes.iconBorderBottom,
+            iconBorderLeft = _props$attributes.iconBorderLeft,
             borderRadius = _props$attributes.borderRadius,
             borderColor = _props$attributes.borderColor,
             backgroundColor = _props$attributes.backgroundColor,
@@ -42971,6 +45787,10 @@ var deprecatedContent = [{
             backgroundSize = _props$attributes.backgroundSize,
             wrapBorderType = _props$attributes.wrapBorderType,
             wrapBorderWidth = _props$attributes.wrapBorderWidth,
+            wrapBorderTop = _props$attributes.wrapBorderTop,
+            wrapBorderRight = _props$attributes.wrapBorderRight,
+            wrapBorderBottom = _props$attributes.wrapBorderBottom,
+            wrapBorderLeft = _props$attributes.wrapBorderLeft,
             wrapBorderRadius = _props$attributes.wrapBorderRadius,
             wrapBorderColor = _props$attributes.wrapBorderColor,
             wrapShadowBlur = _props$attributes.wrapShadowBlur,
@@ -42988,23 +45808,30 @@ var deprecatedContent = [{
             wrapMarginL = _props$attributes.wrapMarginL,
             urlCheck = _props$attributes.urlCheck,
             link = _props$attributes.link,
-            target = _props$attributes.target;
+            target = _props$attributes.target,
+            iconOpacity = _props$attributes.iconOpacity,
+            backgroundOpacity = _props$attributes.backgroundOpacity,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
 
+
+        var mainClasses = classnames(className, 'premium-icon');
 
         return React.createElement(
             "div",
             {
-                className: className + "__container",
+                className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: align,
-                    backgroundColor: backgroundColor,
+                    backgroundColor: backgroundColor ? hexToRgba(backgroundColor, backgroundOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: wrapBorderType,
-                    borderWidth: wrapBorderWidth + "px",
+                    borderStyle: wrapBorderType,
+                    borderWidth: wrapBorder ? wrapBorderTop + "px " + wrapBorderRight + "px " + wrapBorderBottom + "px " + wrapBorderLeft + "px" : wrapBorderWidth + "px",
                     borderRadius: wrapBorderRadius + "px",
                     borderColor: wrapBorderColor,
                     boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
@@ -43021,27 +45848,27 @@ var deprecatedContent = [{
             React.createElement(
                 "a",
                 {
-                    className: className + "__link",
+                    className: "premium-icon__link",
                     href: urlCheck && link,
                     rel: "noopener noreferrer",
                     target: target ? "_blank" : "_self"
                 },
                 React.createElement("i", {
-                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                    className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack,
+                        backgroundColor: iconBack ? hexToRgba(iconBack, iconOpacity) : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
+                        paddingTop: paddingT + paddingU,
+                        paddingRight: paddingR + paddingU,
+                        paddingBottom: paddingB + paddingU,
+                        paddingLeft: paddingL + paddingU,
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        border: borderType,
-                        borderWidth: borderWidth + "px",
+                        borderStyle: borderType,
+                        borderWidth: iconBorder ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
                         textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
@@ -43051,19 +45878,14 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            iconSizeUnit: "px"
-        };
-        return Object.assign(attributes, newAttributes);
-    },
+    attributes: attributes,
     save: function save(props) {
         var _props$attributes2 = props.attributes,
             selectedIcon = _props$attributes2.selectedIcon,
             align = _props$attributes2.align,
             hoverEffect = _props$attributes2.hoverEffect,
             iconSize = _props$attributes2.iconSize,
+            iconSizeUnit = _props$attributes2.iconSizeUnit,
             iconColor = _props$attributes2.iconColor,
             iconBack = _props$attributes2.iconBack,
             shadowBlur = _props$attributes2.shadowBlur,
@@ -43150,7 +45972,7 @@ var deprecatedContent = [{
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
-                        fontSize: iconSize || 50,
+                        fontSize: (iconSize || 50) + iconSizeUnit,
                         paddingTop: paddingT,
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
@@ -43170,16 +45992,10 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            backgroundColor: attributes.background,
-            imageID: "",
-            imageURL: "",
-            fixed: false,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "top center",
-            backgroundSize: "auto"
+            iconSizeUnit: "px"
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -43207,7 +46023,12 @@ var deprecatedContent = [{
             borderWidth = _props$attributes3.borderWidth,
             borderRadius = _props$attributes3.borderRadius,
             borderColor = _props$attributes3.borderColor,
-            background = _props$attributes3.background,
+            backgroundColor = _props$attributes3.backgroundColor,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
             wrapBorderType = _props$attributes3.wrapBorderType,
             wrapBorderWidth = _props$attributes3.wrapBorderWidth,
             wrapBorderRadius = _props$attributes3.wrapBorderRadius,
@@ -43228,6 +46049,126 @@ var deprecatedContent = [{
             urlCheck = _props$attributes3.urlCheck,
             link = _props$attributes3.link,
             target = _props$attributes3.target;
+
+
+        return React.createElement(
+            "div",
+            {
+                className: className + "__container",
+                style: {
+                    textAlign: align,
+                    backgroundColor: backgroundColor,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    border: wrapBorderType,
+                    borderWidth: wrapBorderWidth + "px",
+                    borderRadius: wrapBorderRadius + "px",
+                    borderColor: wrapBorderColor,
+                    boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                    paddingTop: wrapPaddingT,
+                    paddingRight: wrapPaddingR,
+                    paddingBottom: wrapPaddingB,
+                    paddingLeft: wrapPaddingL,
+                    marginTop: wrapMarginT,
+                    marginRight: wrapMarginR,
+                    marginBottom: wrapMarginB,
+                    marginLeft: wrapMarginL
+                }
+            },
+            React.createElement(
+                "a",
+                {
+                    className: className + "__link",
+                    href: urlCheck && link,
+                    rel: "noopener noreferrer",
+                    target: target ? "_blank" : "_self"
+                },
+                React.createElement("i", {
+                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                    style: {
+                        color: iconColor || "#6ec1e4",
+                        backgroundColor: iconBack,
+                        fontSize: iconSize || 50,
+                        paddingTop: paddingT,
+                        paddingRight: paddingR,
+                        paddingBottom: paddingB,
+                        paddingLeft: paddingL,
+                        marginTop: marginT,
+                        marginRight: marginR,
+                        marginBottom: marginB,
+                        marginLeft: marginL,
+                        border: borderType,
+                        borderWidth: borderWidth + "px",
+                        borderRadius: borderRadius || 100 + "px",
+                        borderColor: borderColor,
+                        textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                    }
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            backgroundColor: attributes.background,
+            imageID: "",
+            imageURL: "",
+            fixed: false,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto"
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes4 = props.attributes,
+            selectedIcon = _props$attributes4.selectedIcon,
+            align = _props$attributes4.align,
+            hoverEffect = _props$attributes4.hoverEffect,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            iconBack = _props$attributes4.iconBack,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            paddingT = _props$attributes4.paddingT,
+            paddingR = _props$attributes4.paddingR,
+            paddingB = _props$attributes4.paddingB,
+            paddingL = _props$attributes4.paddingL,
+            marginT = _props$attributes4.marginT,
+            marginR = _props$attributes4.marginR,
+            marginB = _props$attributes4.marginB,
+            marginL = _props$attributes4.marginL,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            background = _props$attributes4.background,
+            wrapBorderType = _props$attributes4.wrapBorderType,
+            wrapBorderWidth = _props$attributes4.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes4.wrapBorderRadius,
+            wrapBorderColor = _props$attributes4.wrapBorderColor,
+            wrapShadowBlur = _props$attributes4.wrapShadowBlur,
+            wrapShadowColor = _props$attributes4.wrapShadowColor,
+            wrapShadowHorizontal = _props$attributes4.wrapShadowHorizontal,
+            wrapShadowVertical = _props$attributes4.wrapShadowVertical,
+            wrapShadowPosition = _props$attributes4.wrapShadowPosition,
+            wrapPaddingT = _props$attributes4.wrapPaddingT,
+            wrapPaddingR = _props$attributes4.wrapPaddingR,
+            wrapPaddingB = _props$attributes4.wrapPaddingB,
+            wrapPaddingL = _props$attributes4.wrapPaddingL,
+            wrapMarginT = _props$attributes4.wrapMarginT,
+            wrapMarginR = _props$attributes4.wrapMarginR,
+            wrapMarginB = _props$attributes4.wrapMarginB,
+            wrapMarginL = _props$attributes4.wrapMarginL,
+            urlCheck = _props$attributes4.urlCheck,
+            link = _props$attributes4.link,
+            target = _props$attributes4.target;
 
 
         return React.createElement(
@@ -43284,47 +46225,47 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            selectedIcon = _props$attributes4.selectedIcon,
-            align = _props$attributes4.align,
-            hoverEffect = _props$attributes4.hoverEffect,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            iconBack = _props$attributes4.iconBack,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            paddingT = _props$attributes4.paddingT,
-            paddingR = _props$attributes4.paddingR,
-            paddingB = _props$attributes4.paddingB,
-            paddingL = _props$attributes4.paddingL,
-            marginT = _props$attributes4.marginT,
-            marginR = _props$attributes4.marginR,
-            marginB = _props$attributes4.marginB,
-            marginL = _props$attributes4.marginL,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            background = _props$attributes4.background,
-            wrapBorderType = _props$attributes4.wrapBorderType,
-            wrapBorderWidth = _props$attributes4.wrapBorderWidth,
-            wrapBorderRadius = _props$attributes4.wrapBorderRadius,
-            wrapBorderColor = _props$attributes4.wrapBorderColor,
-            wrapPaddingT = _props$attributes4.wrapPaddingT,
-            wrapPaddingR = _props$attributes4.wrapPaddingR,
-            wrapPaddingB = _props$attributes4.wrapPaddingB,
-            wrapPaddingL = _props$attributes4.wrapPaddingL,
-            wrapMarginT = _props$attributes4.wrapMarginT,
-            wrapMarginR = _props$attributes4.wrapMarginR,
-            wrapMarginB = _props$attributes4.wrapMarginB,
-            wrapMarginL = _props$attributes4.wrapMarginL,
-            urlCheck = _props$attributes4.urlCheck,
-            link = _props$attributes4.link,
-            target = _props$attributes4.target;
+        var _props$attributes5 = props.attributes,
+            selectedIcon = _props$attributes5.selectedIcon,
+            align = _props$attributes5.align,
+            hoverEffect = _props$attributes5.hoverEffect,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            iconBack = _props$attributes5.iconBack,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            paddingT = _props$attributes5.paddingT,
+            paddingR = _props$attributes5.paddingR,
+            paddingB = _props$attributes5.paddingB,
+            paddingL = _props$attributes5.paddingL,
+            marginT = _props$attributes5.marginT,
+            marginR = _props$attributes5.marginR,
+            marginB = _props$attributes5.marginB,
+            marginL = _props$attributes5.marginL,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            background = _props$attributes5.background,
+            wrapBorderType = _props$attributes5.wrapBorderType,
+            wrapBorderWidth = _props$attributes5.wrapBorderWidth,
+            wrapBorderRadius = _props$attributes5.wrapBorderRadius,
+            wrapBorderColor = _props$attributes5.wrapBorderColor,
+            wrapPaddingT = _props$attributes5.wrapPaddingT,
+            wrapPaddingR = _props$attributes5.wrapPaddingR,
+            wrapPaddingB = _props$attributes5.wrapPaddingB,
+            wrapPaddingL = _props$attributes5.wrapPaddingL,
+            wrapMarginT = _props$attributes5.wrapMarginT,
+            wrapMarginR = _props$attributes5.wrapMarginR,
+            wrapMarginB = _props$attributes5.wrapMarginB,
+            wrapMarginL = _props$attributes5.wrapMarginL,
+            urlCheck = _props$attributes5.urlCheck,
+            link = _props$attributes5.link,
+            target = _props$attributes5.target;
 
 
         return React.createElement(
@@ -45038,56 +47979,599 @@ exports.default = save;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _attributes = __webpack_require__(115);
-
-var _attributes2 = _interopRequireDefault(_attributes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var className = "premium-icon-box";
 
 var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
 
 
-var deprecatedContent = [{
-    attributes: _attributes2.default,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            borderLeft: "",
-            borderTop: "",
-            borderRight: "",
-            borderBottom: "",
-            btnBorderBottom: "",
-            btnBorderLeft: "",
-            btnBorderTop: "",
-            btnBorderRight: "",
-            borderIconBox: "",
-            btnBorderIconBox: "",
-            classMigrate: false,
-            block_id: '',
-            titleSizeUnit: "px",
-            titleSizeTablet: '',
-            titleSizeMobile: '',
-            descSizeUnit: 'px',
-            descSizeTablet: '',
-            descSizeMobile: '',
-            btnSizeUnit: 'px',
-            btnSizeTablet: '',
-            btnSizeMobile: '',
-            btnOpacity: "",
-            iconOpacity: "",
-            backOpacity: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
-        };
-        return Object.assign(attributes, newAttributes);
+var attributes = {
+    block_id: {
+        type: "string"
     },
+    borderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderIconBox: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    iconImage: {
+        type: "string",
+        default: "icon"
+    },
+    iconImgId: {
+        type: "string"
+    },
+    iconImgUrl: {
+        type: "string"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    iconChecked: {
+        type: "boolean",
+        default: true
+    },
+    iconPos: {
+        type: "string",
+        default: "block"
+    },
+    iconHPos: {
+        type: "string",
+        default: "before"
+    },
+    iconVPos: {
+        type: "string",
+        default: "center"
+    },
+    iconSize: {
+        type: "number"
+    },
+    iconRadius: {
+        type: "number"
+    },
+    iconColor: {
+        type: "string"
+    },
+    iconBackColor: {
+        type: "string"
+    },
+    selectedIcon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    titleText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleFont: {
+        type: "string"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number",
+        default: '20'
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSizeTablet: {
+        type: 'number',
+        default: '20'
+    },
+    titleSizeMobile: {
+        type: 'number',
+        default: '20'
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleMarginT: {
+        type: "number"
+    },
+    titleMarginB: {
+        type: "number"
+    },
+    descText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__desc",
+        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+    },
+    descChecked: {
+        type: "boolean",
+        default: true
+    },
+    descFont: {
+        type: "string"
+    },
+    descColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number",
+        default: '20'
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    descSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    descLine: {
+        type: "number"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    descMarginT: {
+        type: "number"
+    },
+    descMarginB: {
+        type: "number"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnEffect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "array",
+        source: "children",
+        selector: ".premium-icon-box__btn",
+        default: __("Click Here")
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-icon-box__btn"
+    },
+    btnColor: {
+        type: "string"
+    },
+    btnHoverColor: {
+        type: "string"
+    },
+    btnBack: {
+        type: "string"
+    },
+    btnHoverBack: {
+        type: "string"
+    },
+    btnHoverBorder: {
+        type: "string"
+    },
+    btnSize: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    btnSizeTablet: {
+        type: "number",
+        default: '20'
+    },
+    btnSizeMobile: {
+        type: "number",
+        default: '20'
+    },
+    btnLine: {
+        type: "number"
+    },
+    btnLetter: {
+        type: "number"
+    },
+    btnStyle: {
+        type: "string"
+    },
+    btnUpper: {
+        type: "boolean"
+    },
+    btnWeight: {
+        type: "number",
+        default: 500
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    btnBorderRadius: {
+        type: "number"
+    },
+    btnBorderColor: {
+        type: "string"
+    },
+    btnPadding: {
+        type: "number"
+    },
+    btnPaddingU: {
+        type: "string"
+    },
+    btnMarginT: {
+        type: "number"
+    },
+    btnMarginB: {
+        type: "number"
+    },
+    btnShadowColor: {
+        type: "string"
+    },
+    btnShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    btnShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    backColor: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number"
+    },
+    borderColor: {
+        type: "string"
+    },
+    marginT: {
+        type: "number"
+    },
+    marginR: {
+        type: "number"
+    },
+    marginB: {
+        type: "number"
+    },
+    marginL: {
+        type: "number"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    hoverShadowColor: {
+        type: "string"
+    },
+    hoverShadowBlur: {
+        type: "number"
+    },
+    hoverShadowHorizontal: {
+        type: "number"
+    },
+    hoverShadowVertical: {
+        type: "number"
+    },
+    hoverShadowPosition: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    backOpacity: {
+        type: "number",
+        default: "1"
+    },
+    iconOpacity: {
+        type: "number",
+        default: "1"
+    },
+    btnOpacity: {
+        type: "number",
+        default: "1"
+    }
+};
+var new_attributes = {
+    titleStyles: {
+        type: "array",
+        default: [{
+
+            titleTag: "H2",
+            titleFont: '',
+            titleColor: '',
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: 20,
+            titleSizeMobile: 20,
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: '',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginT: '',
+            titleMarginB: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descFont: '',
+            descColor: '',
+            descSize: 20,
+            descSizeUnit: 'px',
+            descSizeTablet: 20,
+            descSizeMobile: 20,
+            descLine: '',
+            descWeight: '',
+            descMarginT: '',
+            descMarginB: ''
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            btnSize: 20,
+            btnSizeUnit: 'px',
+            btnSizeTablet: 20,
+            btnSizeMobile: 20,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnWeight: '',
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderTop: '',
+            btnBorderRight: '',
+            btnBorderBottom: '',
+            btnBorderLeft: '',
+            btnBorderRadius: '',
+            btnBorderColor: '',
+            btnPadding: '',
+            btnPaddingU: 'px',
+            btnMarginT: '',
+            btnMarginB: '',
+            btnShadowColor: '',
+            btnShadowBlur: '',
+            btnShadowHorizontal: '0',
+            btnShadowVertical: '0',
+            btnShadowPosition: '',
+            btnColor: '',
+            btnHoverColor: '',
+            btnBack: '',
+            btnHoverBack: '',
+            btnOpacity: 1
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            backOpacity: 1,
+            backColor: '',
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto",
+            fixed: false,
+            borderType: "none",
+            borderWidth: 1,
+            borderRadius: '',
+            borderColor: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            hoverShadowColor: '',
+            hoverShadowBlur: '',
+            hoverShadowHorizontal: '',
+            hoverShadowVertical: '',
+            hoverShadowPosition: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: 'px',
+            gradientColorOne: '',
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+
+        }]
+    }
+};
+var new_deprecated_attributes = Object.assign(attributes, new_attributes);
+
+var deprecatedContent = [{
+    attributes: new_deprecated_attributes,
     save: function save(props) {
         var _props$attributes = props.attributes,
-            id = _props$attributes.id,
+            block_id = _props$attributes.block_id,
+            borderIconBox = _props$attributes.borderIconBox,
+            btnBorderIconBox = _props$attributes.btnBorderIconBox,
             align = _props$attributes.align,
             iconImage = _props$attributes.iconImage,
             iconImgUrl = _props$attributes.iconImgUrl,
@@ -45106,7 +48590,6 @@ var deprecatedContent = [{
             titleTag = _props$attributes.titleTag,
             titleColor = _props$attributes.titleColor,
             titleFont = _props$attributes.titleFont,
-            titleSize = _props$attributes.titleSize,
             titleLine = _props$attributes.titleLine,
             titleLetter = _props$attributes.titleLetter,
             titleStyle = _props$attributes.titleStyle,
@@ -45122,7 +48605,6 @@ var deprecatedContent = [{
             descText = _props$attributes.descText,
             descColor = _props$attributes.descColor,
             descFont = _props$attributes.descFont,
-            descSize = _props$attributes.descSize,
             descLine = _props$attributes.descLine,
             descWeight = _props$attributes.descWeight,
             descMarginT = _props$attributes.descMarginT,
@@ -45133,7 +48615,6 @@ var deprecatedContent = [{
             btnText = _props$attributes.btnText,
             btnTarget = _props$attributes.btnTarget,
             btnLink = _props$attributes.btnLink,
-            btnSize = _props$attributes.btnSize,
             btnStyle = _props$attributes.btnStyle,
             btnUpper = _props$attributes.btnUpper,
             btnWeight = _props$attributes.btnWeight,
@@ -45144,6 +48625,14 @@ var deprecatedContent = [{
             btnBack = _props$attributes.btnBack,
             btnHoverBack = _props$attributes.btnHoverBack,
             btnBorderWidth = _props$attributes.btnBorderWidth,
+            btnBorderTop = _props$attributes.btnBorderTop,
+            btnBorderRight = _props$attributes.btnBorderRight,
+            btnBorderBottom = _props$attributes.btnBorderBottom,
+            btnBorderLeft = _props$attributes.btnBorderLeft,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             btnBorderRadius = _props$attributes.btnBorderRadius,
             btnBorderColor = _props$attributes.btnBorderColor,
             btnBorderType = _props$attributes.btnBorderType,
@@ -45184,7 +48673,290 @@ var deprecatedContent = [{
             hoverShadowColor = _props$attributes.hoverShadowColor,
             hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
             hoverShadowVertical = _props$attributes.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes.hoverShadowPosition;
+            hoverShadowPosition = _props$attributes.hoverShadowPosition,
+            iconOpacity = _props$attributes.iconOpacity,
+            btnOpacity = _props$attributes.btnOpacity,
+            backOpacity = _props$attributes.backOpacity,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+        var mainClasses = classnames(className, 'premium-icon-box');
+        return React.createElement(
+            "div",
+            {
+                id: "premium-icon-box-" + block_id,
+                className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: align,
+                    borderStyle: borderType,
+                    borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    marginTop: marginT,
+                    marginRight: marginR,
+                    marginBottom: marginB,
+                    marginLeft: marginL,
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU,
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
+                }
+            },
+            btnChecked && btnText && React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                }
+            }),
+            iconChecked && React.createElement(
+                "div",
+                {
+                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
+                },
+                "icon" === iconImage && selectedIcon && React.createElement("i", {
+                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
+                    style: {
+                        color: iconColor,
+                        backgroundColor: iconBackColor ? hexToRgba(iconBackColor, iconOpacity) : "transparent",
+                        fontSize: iconSize
+                    }
+                }),
+                "image" === iconImage && iconImgUrl && React.createElement("img", {
+                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
+                    src: "" + iconImgUrl,
+                    alt: "Image Icon",
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px",
+                        borderRadius: iconRadius + "px"
+                    }
+                })
+            ),
+            React.createElement(
+                "div",
+                { className: "premium-icon-box__content_wrap" },
+                titleChecked && titleText && React.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__title_wrap",
+                        style: {
+                            marginTop: titleMarginT,
+                            marginBottom: titleMarginB
+                        }
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: titleTag.toLowerCase(),
+                        className: "premium-icon-box__title",
+                        value: titleText,
+                        style: {
+                            color: titleColor,
+                            fontFamily: titleFont,
+                            letterSpacing: titleLetter + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight,
+                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                            lineHeight: titleLine + "px"
+                        }
+                    })
+                ),
+                descChecked && descText && React.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__desc_wrap",
+                        style: {
+                            marginTop: descMarginT,
+                            marginBottom: descMarginB
+                        }
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-icon-box__desc",
+                        value: descText,
+                        style: {
+                            color: descColor,
+                            fontFamily: descFont,
+                            lineHeight: descLine + "px",
+                            fontWeight: descWeight
+                        }
+                    })
+                ),
+                btnChecked && btnText && React.createElement(
+                    "div",
+                    {
+                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                        style: {
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB
+                        }
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: "a",
+                        className: "premium-icon-box__btn premium-button",
+                        href: btnLink,
+                        rel: "noopener noreferrer",
+                        target: btnTarget ? "_blank" : "_self",
+                        value: btnText,
+                        style: {
+                            color: btnColor,
+                            backgroundColor: btnBack ? hexToRgba(btnBack, btnOpacity) : "transparent",
+                            letterSpacing: btnLetter + "px",
+                            textTransform: btnUpper ? "uppercase" : "none",
+                            fontStyle: btnStyle,
+                            fontWeight: btnWeight,
+                            borderStyle: btnBorderType,
+                            borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
+                            borderRadius: btnBorderRadius + "px",
+                            borderColor: btnBorderColor,
+                            padding: btnPadding + btnPaddingU,
+                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        }
+                    })
+                )
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            borderLeft: "",
+            borderTop: "",
+            borderRight: "",
+            borderBottom: "",
+            btnBorderBottom: "",
+            btnBorderLeft: "",
+            btnBorderTop: "",
+            btnBorderRight: "",
+            borderIconBox: "",
+            btnBorderIconBox: "",
+            classMigrate: false,
+            block_id: '',
+            titleSizeUnit: "px",
+            titleSizeTablet: '',
+            titleSizeMobile: '',
+            descSizeUnit: 'px',
+            descSizeTablet: '',
+            descSizeMobile: '',
+            btnSizeUnit: 'px',
+            btnSizeTablet: '',
+            btnSizeMobile: '',
+            btnOpacity: "",
+            iconOpacity: "",
+            backOpacity: "",
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            id = _props$attributes2.id,
+            align = _props$attributes2.align,
+            iconImage = _props$attributes2.iconImage,
+            iconImgUrl = _props$attributes2.iconImgUrl,
+            iconRadius = _props$attributes2.iconRadius,
+            selectedIcon = _props$attributes2.selectedIcon,
+            iconChecked = _props$attributes2.iconChecked,
+            hoverEffect = _props$attributes2.hoverEffect,
+            iconPos = _props$attributes2.iconPos,
+            iconHPos = _props$attributes2.iconHPos,
+            iconVPos = _props$attributes2.iconVPos,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            iconBackColor = _props$attributes2.iconBackColor,
+            titleChecked = _props$attributes2.titleChecked,
+            titleText = _props$attributes2.titleText,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleFont = _props$attributes2.titleFont,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            descChecked = _props$attributes2.descChecked,
+            descText = _props$attributes2.descText,
+            descColor = _props$attributes2.descColor,
+            descFont = _props$attributes2.descFont,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            btnChecked = _props$attributes2.btnChecked,
+            btnEffect = _props$attributes2.btnEffect,
+            effectDir = _props$attributes2.effectDir,
+            btnText = _props$attributes2.btnText,
+            btnTarget = _props$attributes2.btnTarget,
+            btnLink = _props$attributes2.btnLink,
+            btnSize = _props$attributes2.btnSize,
+            btnStyle = _props$attributes2.btnStyle,
+            btnUpper = _props$attributes2.btnUpper,
+            btnWeight = _props$attributes2.btnWeight,
+            btnLetter = _props$attributes2.btnLetter,
+            btnColor = _props$attributes2.btnColor,
+            btnHoverColor = _props$attributes2.btnHoverColor,
+            btnHoverBorder = _props$attributes2.btnHoverBorder,
+            btnBack = _props$attributes2.btnBack,
+            btnHoverBack = _props$attributes2.btnHoverBack,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnPadding = _props$attributes2.btnPadding,
+            btnPaddingU = _props$attributes2.btnPaddingU,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition,
+            backColor = _props$attributes2.backColor,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            marginT = _props$attributes2.marginT,
+            marginR = _props$attributes2.marginR,
+            marginB = _props$attributes2.marginB,
+            marginL = _props$attributes2.marginL,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingB = _props$attributes2.paddingB,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
+            hoverShadowColor = _props$attributes2.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
 
 
         return React.createElement(
@@ -45332,7 +49104,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             iconPos: "block",
@@ -45342,102 +49114,102 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            align = _props$attributes2.align,
-            iconImage = _props$attributes2.iconImage,
-            iconImgUrl = _props$attributes2.iconImgUrl,
-            iconRadius = _props$attributes2.iconRadius,
-            selectedIcon = _props$attributes2.selectedIcon,
-            iconChecked = _props$attributes2.iconChecked,
-            hoverEffect = _props$attributes2.hoverEffect,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            iconBackColor = _props$attributes2.iconBackColor,
-            titleChecked = _props$attributes2.titleChecked,
-            titleText = _props$attributes2.titleText,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleFont = _props$attributes2.titleFont,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            descChecked = _props$attributes2.descChecked,
-            descText = _props$attributes2.descText,
-            descColor = _props$attributes2.descColor,
-            descFont = _props$attributes2.descFont,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            btnChecked = _props$attributes2.btnChecked,
-            btnEffect = _props$attributes2.btnEffect,
-            effectDir = _props$attributes2.effectDir,
-            btnText = _props$attributes2.btnText,
-            btnTarget = _props$attributes2.btnTarget,
-            btnLink = _props$attributes2.btnLink,
-            btnSize = _props$attributes2.btnSize,
-            btnStyle = _props$attributes2.btnStyle,
-            btnUpper = _props$attributes2.btnUpper,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLetter = _props$attributes2.btnLetter,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnHoverBorder = _props$attributes2.btnHoverBorder,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnPadding = _props$attributes2.btnPadding,
-            btnPaddingU = _props$attributes2.btnPaddingU,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition,
-            backColor = _props$attributes2.backColor,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            marginT = _props$attributes2.marginT,
-            marginR = _props$attributes2.marginR,
-            marginB = _props$attributes2.marginB,
-            marginL = _props$attributes2.marginL,
-            paddingT = _props$attributes2.paddingT,
-            paddingR = _props$attributes2.paddingR,
-            paddingB = _props$attributes2.paddingB,
-            paddingL = _props$attributes2.paddingL,
-            paddingU = _props$attributes2.paddingU,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
-            hoverShadowColor = _props$attributes2.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            align = _props$attributes3.align,
+            iconImage = _props$attributes3.iconImage,
+            iconImgUrl = _props$attributes3.iconImgUrl,
+            iconRadius = _props$attributes3.iconRadius,
+            selectedIcon = _props$attributes3.selectedIcon,
+            iconChecked = _props$attributes3.iconChecked,
+            hoverEffect = _props$attributes3.hoverEffect,
+            iconSize = _props$attributes3.iconSize,
+            iconColor = _props$attributes3.iconColor,
+            iconBackColor = _props$attributes3.iconBackColor,
+            titleChecked = _props$attributes3.titleChecked,
+            titleText = _props$attributes3.titleText,
+            titleTag = _props$attributes3.titleTag,
+            titleColor = _props$attributes3.titleColor,
+            titleFont = _props$attributes3.titleFont,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titleMarginT = _props$attributes3.titleMarginT,
+            titleMarginB = _props$attributes3.titleMarginB,
+            descChecked = _props$attributes3.descChecked,
+            descText = _props$attributes3.descText,
+            descColor = _props$attributes3.descColor,
+            descFont = _props$attributes3.descFont,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descMarginT = _props$attributes3.descMarginT,
+            descMarginB = _props$attributes3.descMarginB,
+            btnChecked = _props$attributes3.btnChecked,
+            btnEffect = _props$attributes3.btnEffect,
+            effectDir = _props$attributes3.effectDir,
+            btnText = _props$attributes3.btnText,
+            btnTarget = _props$attributes3.btnTarget,
+            btnLink = _props$attributes3.btnLink,
+            btnSize = _props$attributes3.btnSize,
+            btnStyle = _props$attributes3.btnStyle,
+            btnUpper = _props$attributes3.btnUpper,
+            btnWeight = _props$attributes3.btnWeight,
+            btnLetter = _props$attributes3.btnLetter,
+            btnColor = _props$attributes3.btnColor,
+            btnHoverColor = _props$attributes3.btnHoverColor,
+            btnHoverBorder = _props$attributes3.btnHoverBorder,
+            btnBack = _props$attributes3.btnBack,
+            btnHoverBack = _props$attributes3.btnHoverBack,
+            btnBorderWidth = _props$attributes3.btnBorderWidth,
+            btnBorderRadius = _props$attributes3.btnBorderRadius,
+            btnBorderColor = _props$attributes3.btnBorderColor,
+            btnBorderType = _props$attributes3.btnBorderType,
+            btnPadding = _props$attributes3.btnPadding,
+            btnPaddingU = _props$attributes3.btnPaddingU,
+            btnMarginT = _props$attributes3.btnMarginT,
+            btnMarginB = _props$attributes3.btnMarginB,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition,
+            backColor = _props$attributes3.backColor,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            marginT = _props$attributes3.marginT,
+            marginR = _props$attributes3.marginR,
+            marginB = _props$attributes3.marginB,
+            marginL = _props$attributes3.marginL,
+            paddingT = _props$attributes3.paddingT,
+            paddingR = _props$attributes3.paddingR,
+            paddingB = _props$attributes3.paddingB,
+            paddingL = _props$attributes3.paddingL,
+            paddingU = _props$attributes3.paddingU,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
+            hoverShadowColor = _props$attributes3.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
 
 
         return React.createElement(
@@ -45579,7 +49351,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             paddingU: "",
@@ -45588,100 +49360,100 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            align = _props$attributes3.align,
-            iconImage = _props$attributes3.iconImage,
-            iconImgUrl = _props$attributes3.iconImgUrl,
-            iconRadius = _props$attributes3.iconRadius,
-            selectedIcon = _props$attributes3.selectedIcon,
-            iconChecked = _props$attributes3.iconChecked,
-            hoverEffect = _props$attributes3.hoverEffect,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            iconBackColor = _props$attributes3.iconBackColor,
-            titleChecked = _props$attributes3.titleChecked,
-            titleText = _props$attributes3.titleText,
-            titleTag = _props$attributes3.titleTag,
-            titleColor = _props$attributes3.titleColor,
-            titleFont = _props$attributes3.titleFont,
-            titleSize = _props$attributes3.titleSize,
-            titleLine = _props$attributes3.titleLine,
-            titleLetter = _props$attributes3.titleLetter,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleWeight = _props$attributes3.titleWeight,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titleMarginT = _props$attributes3.titleMarginT,
-            titleMarginB = _props$attributes3.titleMarginB,
-            descChecked = _props$attributes3.descChecked,
-            descText = _props$attributes3.descText,
-            descColor = _props$attributes3.descColor,
-            descFont = _props$attributes3.descFont,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descMarginT = _props$attributes3.descMarginT,
-            descMarginB = _props$attributes3.descMarginB,
-            btnChecked = _props$attributes3.btnChecked,
-            btnEffect = _props$attributes3.btnEffect,
-            effectDir = _props$attributes3.effectDir,
-            btnText = _props$attributes3.btnText,
-            btnTarget = _props$attributes3.btnTarget,
-            btnLink = _props$attributes3.btnLink,
-            btnSize = _props$attributes3.btnSize,
-            btnStyle = _props$attributes3.btnStyle,
-            btnUpper = _props$attributes3.btnUpper,
-            btnWeight = _props$attributes3.btnWeight,
-            btnLetter = _props$attributes3.btnLetter,
-            btnColor = _props$attributes3.btnColor,
-            btnHoverColor = _props$attributes3.btnHoverColor,
-            btnHoverBorder = _props$attributes3.btnHoverBorder,
-            btnBack = _props$attributes3.btnBack,
-            btnHoverBack = _props$attributes3.btnHoverBack,
-            btnBorderWidth = _props$attributes3.btnBorderWidth,
-            btnBorderRadius = _props$attributes3.btnBorderRadius,
-            btnBorderColor = _props$attributes3.btnBorderColor,
-            btnBorderType = _props$attributes3.btnBorderType,
-            btnPadding = _props$attributes3.btnPadding,
-            btnMarginT = _props$attributes3.btnMarginT,
-            btnMarginB = _props$attributes3.btnMarginB,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition,
-            backColor = _props$attributes3.backColor,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            marginT = _props$attributes3.marginT,
-            marginR = _props$attributes3.marginR,
-            marginB = _props$attributes3.marginB,
-            marginL = _props$attributes3.marginL,
-            paddingT = _props$attributes3.paddingT,
-            paddingR = _props$attributes3.paddingR,
-            paddingB = _props$attributes3.paddingB,
-            paddingL = _props$attributes3.paddingL,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
-            hoverShadowColor = _props$attributes3.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            align = _props$attributes4.align,
+            iconImage = _props$attributes4.iconImage,
+            iconImgUrl = _props$attributes4.iconImgUrl,
+            iconRadius = _props$attributes4.iconRadius,
+            selectedIcon = _props$attributes4.selectedIcon,
+            iconChecked = _props$attributes4.iconChecked,
+            hoverEffect = _props$attributes4.hoverEffect,
+            iconSize = _props$attributes4.iconSize,
+            iconColor = _props$attributes4.iconColor,
+            iconBackColor = _props$attributes4.iconBackColor,
+            titleChecked = _props$attributes4.titleChecked,
+            titleText = _props$attributes4.titleText,
+            titleTag = _props$attributes4.titleTag,
+            titleColor = _props$attributes4.titleColor,
+            titleFont = _props$attributes4.titleFont,
+            titleSize = _props$attributes4.titleSize,
+            titleLine = _props$attributes4.titleLine,
+            titleLetter = _props$attributes4.titleLetter,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleWeight = _props$attributes4.titleWeight,
+            titleShadowBlur = _props$attributes4.titleShadowBlur,
+            titleShadowColor = _props$attributes4.titleShadowColor,
+            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes4.titleShadowVertical,
+            titleMarginT = _props$attributes4.titleMarginT,
+            titleMarginB = _props$attributes4.titleMarginB,
+            descChecked = _props$attributes4.descChecked,
+            descText = _props$attributes4.descText,
+            descColor = _props$attributes4.descColor,
+            descFont = _props$attributes4.descFont,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descMarginT = _props$attributes4.descMarginT,
+            descMarginB = _props$attributes4.descMarginB,
+            btnChecked = _props$attributes4.btnChecked,
+            btnEffect = _props$attributes4.btnEffect,
+            effectDir = _props$attributes4.effectDir,
+            btnText = _props$attributes4.btnText,
+            btnTarget = _props$attributes4.btnTarget,
+            btnLink = _props$attributes4.btnLink,
+            btnSize = _props$attributes4.btnSize,
+            btnStyle = _props$attributes4.btnStyle,
+            btnUpper = _props$attributes4.btnUpper,
+            btnWeight = _props$attributes4.btnWeight,
+            btnLetter = _props$attributes4.btnLetter,
+            btnColor = _props$attributes4.btnColor,
+            btnHoverColor = _props$attributes4.btnHoverColor,
+            btnHoverBorder = _props$attributes4.btnHoverBorder,
+            btnBack = _props$attributes4.btnBack,
+            btnHoverBack = _props$attributes4.btnHoverBack,
+            btnBorderWidth = _props$attributes4.btnBorderWidth,
+            btnBorderRadius = _props$attributes4.btnBorderRadius,
+            btnBorderColor = _props$attributes4.btnBorderColor,
+            btnBorderType = _props$attributes4.btnBorderType,
+            btnPadding = _props$attributes4.btnPadding,
+            btnMarginT = _props$attributes4.btnMarginT,
+            btnMarginB = _props$attributes4.btnMarginB,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition,
+            backColor = _props$attributes4.backColor,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            marginT = _props$attributes4.marginT,
+            marginR = _props$attributes4.marginR,
+            marginB = _props$attributes4.marginB,
+            marginL = _props$attributes4.marginL,
+            paddingT = _props$attributes4.paddingT,
+            paddingR = _props$attributes4.paddingR,
+            paddingB = _props$attributes4.paddingB,
+            paddingL = _props$attributes4.paddingL,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition,
+            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
+            hoverShadowColor = _props$attributes4.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
 
 
         return React.createElement(
@@ -45823,7 +49595,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attribute: _attributes2.default,
+    attribute: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             titleFont: "",
@@ -45832,98 +49604,98 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            align = _props$attributes4.align,
-            iconImage = _props$attributes4.iconImage,
-            iconImgUrl = _props$attributes4.iconImgUrl,
-            iconRadius = _props$attributes4.iconRadius,
-            selectedIcon = _props$attributes4.selectedIcon,
-            iconChecked = _props$attributes4.iconChecked,
-            hoverEffect = _props$attributes4.hoverEffect,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            iconBackColor = _props$attributes4.iconBackColor,
-            titleChecked = _props$attributes4.titleChecked,
-            titleText = _props$attributes4.titleText,
-            titleTag = _props$attributes4.titleTag,
-            titleColor = _props$attributes4.titleColor,
-            titleSize = _props$attributes4.titleSize,
-            titleLine = _props$attributes4.titleLine,
-            titleLetter = _props$attributes4.titleLetter,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleWeight = _props$attributes4.titleWeight,
-            titleShadowBlur = _props$attributes4.titleShadowBlur,
-            titleShadowColor = _props$attributes4.titleShadowColor,
-            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes4.titleShadowVertical,
-            titleMarginT = _props$attributes4.titleMarginT,
-            titleMarginB = _props$attributes4.titleMarginB,
-            descChecked = _props$attributes4.descChecked,
-            descText = _props$attributes4.descText,
-            descColor = _props$attributes4.descColor,
-            descSize = _props$attributes4.descSize,
-            descLine = _props$attributes4.descLine,
-            descWeight = _props$attributes4.descWeight,
-            descMarginT = _props$attributes4.descMarginT,
-            descMarginB = _props$attributes4.descMarginB,
-            btnChecked = _props$attributes4.btnChecked,
-            btnEffect = _props$attributes4.btnEffect,
-            effectDir = _props$attributes4.effectDir,
-            btnText = _props$attributes4.btnText,
-            btnTarget = _props$attributes4.btnTarget,
-            btnLink = _props$attributes4.btnLink,
-            btnSize = _props$attributes4.btnSize,
-            btnStyle = _props$attributes4.btnStyle,
-            btnUpper = _props$attributes4.btnUpper,
-            btnWeight = _props$attributes4.btnWeight,
-            btnLetter = _props$attributes4.btnLetter,
-            btnColor = _props$attributes4.btnColor,
-            btnHoverColor = _props$attributes4.btnHoverColor,
-            btnHoverBorder = _props$attributes4.btnHoverBorder,
-            btnBack = _props$attributes4.btnBack,
-            btnHoverBack = _props$attributes4.btnHoverBack,
-            btnBorderWidth = _props$attributes4.btnBorderWidth,
-            btnBorderRadius = _props$attributes4.btnBorderRadius,
-            btnBorderColor = _props$attributes4.btnBorderColor,
-            btnBorderType = _props$attributes4.btnBorderType,
-            btnPadding = _props$attributes4.btnPadding,
-            btnMarginT = _props$attributes4.btnMarginT,
-            btnMarginB = _props$attributes4.btnMarginB,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition,
-            backColor = _props$attributes4.backColor,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            marginT = _props$attributes4.marginT,
-            marginR = _props$attributes4.marginR,
-            marginB = _props$attributes4.marginB,
-            marginL = _props$attributes4.marginL,
-            paddingT = _props$attributes4.paddingT,
-            paddingR = _props$attributes4.paddingR,
-            paddingB = _props$attributes4.paddingB,
-            paddingL = _props$attributes4.paddingL,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition,
-            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
-            hoverShadowColor = _props$attributes4.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            align = _props$attributes5.align,
+            iconImage = _props$attributes5.iconImage,
+            iconImgUrl = _props$attributes5.iconImgUrl,
+            iconRadius = _props$attributes5.iconRadius,
+            selectedIcon = _props$attributes5.selectedIcon,
+            iconChecked = _props$attributes5.iconChecked,
+            hoverEffect = _props$attributes5.hoverEffect,
+            iconSize = _props$attributes5.iconSize,
+            iconColor = _props$attributes5.iconColor,
+            iconBackColor = _props$attributes5.iconBackColor,
+            titleChecked = _props$attributes5.titleChecked,
+            titleText = _props$attributes5.titleText,
+            titleTag = _props$attributes5.titleTag,
+            titleColor = _props$attributes5.titleColor,
+            titleSize = _props$attributes5.titleSize,
+            titleLine = _props$attributes5.titleLine,
+            titleLetter = _props$attributes5.titleLetter,
+            titleStyle = _props$attributes5.titleStyle,
+            titleUpper = _props$attributes5.titleUpper,
+            titleWeight = _props$attributes5.titleWeight,
+            titleShadowBlur = _props$attributes5.titleShadowBlur,
+            titleShadowColor = _props$attributes5.titleShadowColor,
+            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes5.titleShadowVertical,
+            titleMarginT = _props$attributes5.titleMarginT,
+            titleMarginB = _props$attributes5.titleMarginB,
+            descChecked = _props$attributes5.descChecked,
+            descText = _props$attributes5.descText,
+            descColor = _props$attributes5.descColor,
+            descSize = _props$attributes5.descSize,
+            descLine = _props$attributes5.descLine,
+            descWeight = _props$attributes5.descWeight,
+            descMarginT = _props$attributes5.descMarginT,
+            descMarginB = _props$attributes5.descMarginB,
+            btnChecked = _props$attributes5.btnChecked,
+            btnEffect = _props$attributes5.btnEffect,
+            effectDir = _props$attributes5.effectDir,
+            btnText = _props$attributes5.btnText,
+            btnTarget = _props$attributes5.btnTarget,
+            btnLink = _props$attributes5.btnLink,
+            btnSize = _props$attributes5.btnSize,
+            btnStyle = _props$attributes5.btnStyle,
+            btnUpper = _props$attributes5.btnUpper,
+            btnWeight = _props$attributes5.btnWeight,
+            btnLetter = _props$attributes5.btnLetter,
+            btnColor = _props$attributes5.btnColor,
+            btnHoverColor = _props$attributes5.btnHoverColor,
+            btnHoverBorder = _props$attributes5.btnHoverBorder,
+            btnBack = _props$attributes5.btnBack,
+            btnHoverBack = _props$attributes5.btnHoverBack,
+            btnBorderWidth = _props$attributes5.btnBorderWidth,
+            btnBorderRadius = _props$attributes5.btnBorderRadius,
+            btnBorderColor = _props$attributes5.btnBorderColor,
+            btnBorderType = _props$attributes5.btnBorderType,
+            btnPadding = _props$attributes5.btnPadding,
+            btnMarginT = _props$attributes5.btnMarginT,
+            btnMarginB = _props$attributes5.btnMarginB,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition,
+            backColor = _props$attributes5.backColor,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            marginT = _props$attributes5.marginT,
+            marginR = _props$attributes5.marginR,
+            marginB = _props$attributes5.marginB,
+            marginL = _props$attributes5.marginL,
+            paddingT = _props$attributes5.paddingT,
+            paddingR = _props$attributes5.paddingR,
+            paddingB = _props$attributes5.paddingB,
+            paddingL = _props$attributes5.paddingL,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition,
+            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
+            hoverShadowColor = _props$attributes5.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
 
 
         return React.createElement(
@@ -46063,7 +49835,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             iconBackColor: ""
@@ -46071,97 +49843,97 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            align = _props$attributes5.align,
-            iconImage = _props$attributes5.iconImage,
-            iconImgUrl = _props$attributes5.iconImgUrl,
-            iconRadius = _props$attributes5.iconRadius,
-            selectedIcon = _props$attributes5.selectedIcon,
-            iconChecked = _props$attributes5.iconChecked,
-            hoverEffect = _props$attributes5.hoverEffect,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            titleChecked = _props$attributes5.titleChecked,
-            titleText = _props$attributes5.titleText,
-            titleTag = _props$attributes5.titleTag,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleLine = _props$attributes5.titleLine,
-            titleLetter = _props$attributes5.titleLetter,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleWeight = _props$attributes5.titleWeight,
-            titleShadowBlur = _props$attributes5.titleShadowBlur,
-            titleShadowColor = _props$attributes5.titleShadowColor,
-            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes5.titleShadowVertical,
-            titleMarginT = _props$attributes5.titleMarginT,
-            titleMarginB = _props$attributes5.titleMarginB,
-            descChecked = _props$attributes5.descChecked,
-            descText = _props$attributes5.descText,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descLine = _props$attributes5.descLine,
-            descWeight = _props$attributes5.descWeight,
-            descMarginT = _props$attributes5.descMarginT,
-            descMarginB = _props$attributes5.descMarginB,
-            btnChecked = _props$attributes5.btnChecked,
-            btnEffect = _props$attributes5.btnEffect,
-            effectDir = _props$attributes5.effectDir,
-            btnText = _props$attributes5.btnText,
-            btnTarget = _props$attributes5.btnTarget,
-            btnLink = _props$attributes5.btnLink,
-            btnSize = _props$attributes5.btnSize,
-            btnStyle = _props$attributes5.btnStyle,
-            btnUpper = _props$attributes5.btnUpper,
-            btnWeight = _props$attributes5.btnWeight,
-            btnLetter = _props$attributes5.btnLetter,
-            btnColor = _props$attributes5.btnColor,
-            btnHoverColor = _props$attributes5.btnHoverColor,
-            btnHoverBorder = _props$attributes5.btnHoverBorder,
-            btnBack = _props$attributes5.btnBack,
-            btnHoverBack = _props$attributes5.btnHoverBack,
-            btnBorderWidth = _props$attributes5.btnBorderWidth,
-            btnBorderRadius = _props$attributes5.btnBorderRadius,
-            btnBorderColor = _props$attributes5.btnBorderColor,
-            btnBorderType = _props$attributes5.btnBorderType,
-            btnPadding = _props$attributes5.btnPadding,
-            btnMarginT = _props$attributes5.btnMarginT,
-            btnMarginB = _props$attributes5.btnMarginB,
-            btnShadowBlur = _props$attributes5.btnShadowBlur,
-            btnShadowColor = _props$attributes5.btnShadowColor,
-            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes5.btnShadowVertical,
-            btnShadowPosition = _props$attributes5.btnShadowPosition,
-            backColor = _props$attributes5.backColor,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            marginT = _props$attributes5.marginT,
-            marginR = _props$attributes5.marginR,
-            marginB = _props$attributes5.marginB,
-            marginL = _props$attributes5.marginL,
-            paddingT = _props$attributes5.paddingT,
-            paddingR = _props$attributes5.paddingR,
-            paddingB = _props$attributes5.paddingB,
-            paddingL = _props$attributes5.paddingL,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition,
-            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
-            hoverShadowColor = _props$attributes5.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            align = _props$attributes6.align,
+            iconImage = _props$attributes6.iconImage,
+            iconImgUrl = _props$attributes6.iconImgUrl,
+            iconRadius = _props$attributes6.iconRadius,
+            selectedIcon = _props$attributes6.selectedIcon,
+            iconChecked = _props$attributes6.iconChecked,
+            hoverEffect = _props$attributes6.hoverEffect,
+            iconSize = _props$attributes6.iconSize,
+            iconColor = _props$attributes6.iconColor,
+            titleChecked = _props$attributes6.titleChecked,
+            titleText = _props$attributes6.titleText,
+            titleTag = _props$attributes6.titleTag,
+            titleColor = _props$attributes6.titleColor,
+            titleSize = _props$attributes6.titleSize,
+            titleLine = _props$attributes6.titleLine,
+            titleLetter = _props$attributes6.titleLetter,
+            titleStyle = _props$attributes6.titleStyle,
+            titleUpper = _props$attributes6.titleUpper,
+            titleWeight = _props$attributes6.titleWeight,
+            titleShadowBlur = _props$attributes6.titleShadowBlur,
+            titleShadowColor = _props$attributes6.titleShadowColor,
+            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes6.titleShadowVertical,
+            titleMarginT = _props$attributes6.titleMarginT,
+            titleMarginB = _props$attributes6.titleMarginB,
+            descChecked = _props$attributes6.descChecked,
+            descText = _props$attributes6.descText,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descLine = _props$attributes6.descLine,
+            descWeight = _props$attributes6.descWeight,
+            descMarginT = _props$attributes6.descMarginT,
+            descMarginB = _props$attributes6.descMarginB,
+            btnChecked = _props$attributes6.btnChecked,
+            btnEffect = _props$attributes6.btnEffect,
+            effectDir = _props$attributes6.effectDir,
+            btnText = _props$attributes6.btnText,
+            btnTarget = _props$attributes6.btnTarget,
+            btnLink = _props$attributes6.btnLink,
+            btnSize = _props$attributes6.btnSize,
+            btnStyle = _props$attributes6.btnStyle,
+            btnUpper = _props$attributes6.btnUpper,
+            btnWeight = _props$attributes6.btnWeight,
+            btnLetter = _props$attributes6.btnLetter,
+            btnColor = _props$attributes6.btnColor,
+            btnHoverColor = _props$attributes6.btnHoverColor,
+            btnHoverBorder = _props$attributes6.btnHoverBorder,
+            btnBack = _props$attributes6.btnBack,
+            btnHoverBack = _props$attributes6.btnHoverBack,
+            btnBorderWidth = _props$attributes6.btnBorderWidth,
+            btnBorderRadius = _props$attributes6.btnBorderRadius,
+            btnBorderColor = _props$attributes6.btnBorderColor,
+            btnBorderType = _props$attributes6.btnBorderType,
+            btnPadding = _props$attributes6.btnPadding,
+            btnMarginT = _props$attributes6.btnMarginT,
+            btnMarginB = _props$attributes6.btnMarginB,
+            btnShadowBlur = _props$attributes6.btnShadowBlur,
+            btnShadowColor = _props$attributes6.btnShadowColor,
+            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes6.btnShadowVertical,
+            btnShadowPosition = _props$attributes6.btnShadowPosition,
+            backColor = _props$attributes6.backColor,
+            imageURL = _props$attributes6.imageURL,
+            fixed = _props$attributes6.fixed,
+            backgroundRepeat = _props$attributes6.backgroundRepeat,
+            backgroundPosition = _props$attributes6.backgroundPosition,
+            backgroundSize = _props$attributes6.backgroundSize,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            marginT = _props$attributes6.marginT,
+            marginR = _props$attributes6.marginR,
+            marginB = _props$attributes6.marginB,
+            marginL = _props$attributes6.marginL,
+            paddingT = _props$attributes6.paddingT,
+            paddingR = _props$attributes6.paddingR,
+            paddingB = _props$attributes6.paddingB,
+            paddingL = _props$attributes6.paddingL,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition,
+            hoverShadowBlur = _props$attributes6.hoverShadowBlur,
+            hoverShadowColor = _props$attributes6.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes6.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes6.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes6.hoverShadowPosition;
 
 
         return React.createElement(
@@ -46299,7 +50071,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             hoverShadowColor: "",
@@ -46311,92 +50083,92 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            align = _props$attributes6.align,
-            iconImage = _props$attributes6.iconImage,
-            iconImgUrl = _props$attributes6.iconImgUrl,
-            iconRadius = _props$attributes6.iconRadius,
-            selectedIcon = _props$attributes6.selectedIcon,
-            iconChecked = _props$attributes6.iconChecked,
-            hoverEffect = _props$attributes6.hoverEffect,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            titleChecked = _props$attributes6.titleChecked,
-            titleText = _props$attributes6.titleText,
-            titleTag = _props$attributes6.titleTag,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleLine = _props$attributes6.titleLine,
-            titleLetter = _props$attributes6.titleLetter,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleWeight = _props$attributes6.titleWeight,
-            titleShadowBlur = _props$attributes6.titleShadowBlur,
-            titleShadowColor = _props$attributes6.titleShadowColor,
-            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes6.titleShadowVertical,
-            titleMarginT = _props$attributes6.titleMarginT,
-            titleMarginB = _props$attributes6.titleMarginB,
-            descChecked = _props$attributes6.descChecked,
-            descText = _props$attributes6.descText,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descLine = _props$attributes6.descLine,
-            descWeight = _props$attributes6.descWeight,
-            descMarginT = _props$attributes6.descMarginT,
-            descMarginB = _props$attributes6.descMarginB,
-            btnChecked = _props$attributes6.btnChecked,
-            btnEffect = _props$attributes6.btnEffect,
-            effectDir = _props$attributes6.effectDir,
-            btnText = _props$attributes6.btnText,
-            btnTarget = _props$attributes6.btnTarget,
-            btnLink = _props$attributes6.btnLink,
-            btnSize = _props$attributes6.btnSize,
-            btnStyle = _props$attributes6.btnStyle,
-            btnUpper = _props$attributes6.btnUpper,
-            btnWeight = _props$attributes6.btnWeight,
-            btnLetter = _props$attributes6.btnLetter,
-            btnColor = _props$attributes6.btnColor,
-            btnHoverColor = _props$attributes6.btnHoverColor,
-            btnHoverBorder = _props$attributes6.btnHoverBorder,
-            btnBack = _props$attributes6.btnBack,
-            btnHoverBack = _props$attributes6.btnHoverBack,
-            btnBorderWidth = _props$attributes6.btnBorderWidth,
-            btnBorderRadius = _props$attributes6.btnBorderRadius,
-            btnBorderColor = _props$attributes6.btnBorderColor,
-            btnBorderType = _props$attributes6.btnBorderType,
-            btnPadding = _props$attributes6.btnPadding,
-            btnMarginT = _props$attributes6.btnMarginT,
-            btnMarginB = _props$attributes6.btnMarginB,
-            btnShadowBlur = _props$attributes6.btnShadowBlur,
-            btnShadowColor = _props$attributes6.btnShadowColor,
-            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes6.btnShadowVertical,
-            btnShadowPosition = _props$attributes6.btnShadowPosition,
-            backColor = _props$attributes6.backColor,
-            imageURL = _props$attributes6.imageURL,
-            fixed = _props$attributes6.fixed,
-            backgroundRepeat = _props$attributes6.backgroundRepeat,
-            backgroundPosition = _props$attributes6.backgroundPosition,
-            backgroundSize = _props$attributes6.backgroundSize,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            marginT = _props$attributes6.marginT,
-            marginR = _props$attributes6.marginR,
-            marginB = _props$attributes6.marginB,
-            marginL = _props$attributes6.marginL,
-            paddingT = _props$attributes6.paddingT,
-            paddingR = _props$attributes6.paddingR,
-            paddingB = _props$attributes6.paddingB,
-            paddingL = _props$attributes6.paddingL,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            shadowPosition = _props$attributes6.shadowPosition;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            align = _props$attributes7.align,
+            iconImage = _props$attributes7.iconImage,
+            iconImgUrl = _props$attributes7.iconImgUrl,
+            iconRadius = _props$attributes7.iconRadius,
+            selectedIcon = _props$attributes7.selectedIcon,
+            iconChecked = _props$attributes7.iconChecked,
+            hoverEffect = _props$attributes7.hoverEffect,
+            iconSize = _props$attributes7.iconSize,
+            iconColor = _props$attributes7.iconColor,
+            titleChecked = _props$attributes7.titleChecked,
+            titleText = _props$attributes7.titleText,
+            titleTag = _props$attributes7.titleTag,
+            titleColor = _props$attributes7.titleColor,
+            titleSize = _props$attributes7.titleSize,
+            titleLine = _props$attributes7.titleLine,
+            titleLetter = _props$attributes7.titleLetter,
+            titleStyle = _props$attributes7.titleStyle,
+            titleUpper = _props$attributes7.titleUpper,
+            titleWeight = _props$attributes7.titleWeight,
+            titleShadowBlur = _props$attributes7.titleShadowBlur,
+            titleShadowColor = _props$attributes7.titleShadowColor,
+            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes7.titleShadowVertical,
+            titleMarginT = _props$attributes7.titleMarginT,
+            titleMarginB = _props$attributes7.titleMarginB,
+            descChecked = _props$attributes7.descChecked,
+            descText = _props$attributes7.descText,
+            descColor = _props$attributes7.descColor,
+            descSize = _props$attributes7.descSize,
+            descLine = _props$attributes7.descLine,
+            descWeight = _props$attributes7.descWeight,
+            descMarginT = _props$attributes7.descMarginT,
+            descMarginB = _props$attributes7.descMarginB,
+            btnChecked = _props$attributes7.btnChecked,
+            btnEffect = _props$attributes7.btnEffect,
+            effectDir = _props$attributes7.effectDir,
+            btnText = _props$attributes7.btnText,
+            btnTarget = _props$attributes7.btnTarget,
+            btnLink = _props$attributes7.btnLink,
+            btnSize = _props$attributes7.btnSize,
+            btnStyle = _props$attributes7.btnStyle,
+            btnUpper = _props$attributes7.btnUpper,
+            btnWeight = _props$attributes7.btnWeight,
+            btnLetter = _props$attributes7.btnLetter,
+            btnColor = _props$attributes7.btnColor,
+            btnHoverColor = _props$attributes7.btnHoverColor,
+            btnHoverBorder = _props$attributes7.btnHoverBorder,
+            btnBack = _props$attributes7.btnBack,
+            btnHoverBack = _props$attributes7.btnHoverBack,
+            btnBorderWidth = _props$attributes7.btnBorderWidth,
+            btnBorderRadius = _props$attributes7.btnBorderRadius,
+            btnBorderColor = _props$attributes7.btnBorderColor,
+            btnBorderType = _props$attributes7.btnBorderType,
+            btnPadding = _props$attributes7.btnPadding,
+            btnMarginT = _props$attributes7.btnMarginT,
+            btnMarginB = _props$attributes7.btnMarginB,
+            btnShadowBlur = _props$attributes7.btnShadowBlur,
+            btnShadowColor = _props$attributes7.btnShadowColor,
+            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes7.btnShadowVertical,
+            btnShadowPosition = _props$attributes7.btnShadowPosition,
+            backColor = _props$attributes7.backColor,
+            imageURL = _props$attributes7.imageURL,
+            fixed = _props$attributes7.fixed,
+            backgroundRepeat = _props$attributes7.backgroundRepeat,
+            backgroundPosition = _props$attributes7.backgroundPosition,
+            backgroundSize = _props$attributes7.backgroundSize,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            marginT = _props$attributes7.marginT,
+            marginR = _props$attributes7.marginR,
+            marginB = _props$attributes7.marginB,
+            marginL = _props$attributes7.marginL,
+            paddingT = _props$attributes7.paddingT,
+            paddingR = _props$attributes7.paddingR,
+            paddingB = _props$attributes7.paddingB,
+            paddingL = _props$attributes7.paddingL,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            shadowPosition = _props$attributes7.shadowPosition;
 
 
         return React.createElement(
@@ -46534,98 +50306,98 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         return {
             iconSize: attributes.iconSize
         };
     },
     save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            id = _props$attributes7.id,
-            align = _props$attributes7.align,
-            iconType = _props$attributes7.iconType,
-            iconImage = _props$attributes7.iconImage,
-            iconImgUrl = _props$attributes7.iconImgUrl,
-            iconRadius = _props$attributes7.iconRadius,
-            selectedIcon = _props$attributes7.selectedIcon,
-            iconChecked = _props$attributes7.iconChecked,
-            hoverEffect = _props$attributes7.hoverEffect,
-            iconSize = _props$attributes7.iconSize,
-            iconColor = _props$attributes7.iconColor,
-            titleChecked = _props$attributes7.titleChecked,
-            titleText = _props$attributes7.titleText,
-            titleTag = _props$attributes7.titleTag,
-            titleColor = _props$attributes7.titleColor,
-            titleSize = _props$attributes7.titleSize,
-            titleLine = _props$attributes7.titleLine,
-            titleLetter = _props$attributes7.titleLetter,
-            titleStyle = _props$attributes7.titleStyle,
-            titleUpper = _props$attributes7.titleUpper,
-            titleWeight = _props$attributes7.titleWeight,
-            titleShadowBlur = _props$attributes7.titleShadowBlur,
-            titleShadowColor = _props$attributes7.titleShadowColor,
-            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes7.titleShadowVertical,
-            titleMarginT = _props$attributes7.titleMarginT,
-            titleMarginB = _props$attributes7.titleMarginB,
-            descChecked = _props$attributes7.descChecked,
-            descText = _props$attributes7.descText,
-            descColor = _props$attributes7.descColor,
-            descSize = _props$attributes7.descSize,
-            descLine = _props$attributes7.descLine,
-            descWeight = _props$attributes7.descWeight,
-            descMarginT = _props$attributes7.descMarginT,
-            descMarginB = _props$attributes7.descMarginB,
-            btnChecked = _props$attributes7.btnChecked,
-            btnText = _props$attributes7.btnText,
-            btnTarget = _props$attributes7.btnTarget,
-            btnLink = _props$attributes7.btnLink,
-            btnSize = _props$attributes7.btnSize,
-            btnStyle = _props$attributes7.btnStyle,
-            btnUpper = _props$attributes7.btnUpper,
-            btnWeight = _props$attributes7.btnWeight,
-            btnLetter = _props$attributes7.btnLetter,
-            btnColor = _props$attributes7.btnColor,
-            btnHoverColor = _props$attributes7.btnHoverColor,
-            btnHoverBorder = _props$attributes7.btnHoverBorder,
-            btnBack = _props$attributes7.btnBack,
-            btnHoverBack = _props$attributes7.btnHoverBack,
-            btnBorderWidth = _props$attributes7.btnBorderWidth,
-            btnBorderRadius = _props$attributes7.btnBorderRadius,
-            btnBorderColor = _props$attributes7.btnBorderColor,
-            btnBorderType = _props$attributes7.btnBorderType,
-            btnPadding = _props$attributes7.btnPadding,
-            btnMarginT = _props$attributes7.btnMarginT,
-            btnMarginB = _props$attributes7.btnMarginB,
-            btnShadowBlur = _props$attributes7.btnShadowBlur,
-            btnShadowColor = _props$attributes7.btnShadowColor,
-            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes7.btnShadowVertical,
-            btnShadowPosition = _props$attributes7.btnShadowPosition,
-            backColor = _props$attributes7.backColor,
-            imageURL = _props$attributes7.imageURL,
-            fixed = _props$attributes7.fixed,
-            backgroundRepeat = _props$attributes7.backgroundRepeat,
-            backgroundPosition = _props$attributes7.backgroundPosition,
-            backgroundSize = _props$attributes7.backgroundSize,
-            borderType = _props$attributes7.borderType,
-            borderWidth = _props$attributes7.borderWidth,
-            borderRadius = _props$attributes7.borderRadius,
-            borderColor = _props$attributes7.borderColor,
-            marginT = _props$attributes7.marginT,
-            marginR = _props$attributes7.marginR,
-            marginB = _props$attributes7.marginB,
-            marginL = _props$attributes7.marginL,
-            paddingT = _props$attributes7.paddingT,
-            paddingR = _props$attributes7.paddingR,
-            paddingB = _props$attributes7.paddingB,
-            paddingL = _props$attributes7.paddingL,
-            shadowBlur = _props$attributes7.shadowBlur,
-            shadowColor = _props$attributes7.shadowColor,
-            shadowHorizontal = _props$attributes7.shadowHorizontal,
-            shadowVertical = _props$attributes7.shadowVertical,
-            shadowPosition = _props$attributes7.shadowPosition;
+        var _props$attributes8 = props.attributes,
+            id = _props$attributes8.id,
+            align = _props$attributes8.align,
+            iconType = _props$attributes8.iconType,
+            iconImage = _props$attributes8.iconImage,
+            iconImgUrl = _props$attributes8.iconImgUrl,
+            iconRadius = _props$attributes8.iconRadius,
+            selectedIcon = _props$attributes8.selectedIcon,
+            iconChecked = _props$attributes8.iconChecked,
+            hoverEffect = _props$attributes8.hoverEffect,
+            iconSize = _props$attributes8.iconSize,
+            iconColor = _props$attributes8.iconColor,
+            titleChecked = _props$attributes8.titleChecked,
+            titleText = _props$attributes8.titleText,
+            titleTag = _props$attributes8.titleTag,
+            titleColor = _props$attributes8.titleColor,
+            titleSize = _props$attributes8.titleSize,
+            titleLine = _props$attributes8.titleLine,
+            titleLetter = _props$attributes8.titleLetter,
+            titleStyle = _props$attributes8.titleStyle,
+            titleUpper = _props$attributes8.titleUpper,
+            titleWeight = _props$attributes8.titleWeight,
+            titleShadowBlur = _props$attributes8.titleShadowBlur,
+            titleShadowColor = _props$attributes8.titleShadowColor,
+            titleShadowHorizontal = _props$attributes8.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes8.titleShadowVertical,
+            titleMarginT = _props$attributes8.titleMarginT,
+            titleMarginB = _props$attributes8.titleMarginB,
+            descChecked = _props$attributes8.descChecked,
+            descText = _props$attributes8.descText,
+            descColor = _props$attributes8.descColor,
+            descSize = _props$attributes8.descSize,
+            descLine = _props$attributes8.descLine,
+            descWeight = _props$attributes8.descWeight,
+            descMarginT = _props$attributes8.descMarginT,
+            descMarginB = _props$attributes8.descMarginB,
+            btnChecked = _props$attributes8.btnChecked,
+            btnText = _props$attributes8.btnText,
+            btnTarget = _props$attributes8.btnTarget,
+            btnLink = _props$attributes8.btnLink,
+            btnSize = _props$attributes8.btnSize,
+            btnStyle = _props$attributes8.btnStyle,
+            btnUpper = _props$attributes8.btnUpper,
+            btnWeight = _props$attributes8.btnWeight,
+            btnLetter = _props$attributes8.btnLetter,
+            btnColor = _props$attributes8.btnColor,
+            btnHoverColor = _props$attributes8.btnHoverColor,
+            btnHoverBorder = _props$attributes8.btnHoverBorder,
+            btnBack = _props$attributes8.btnBack,
+            btnHoverBack = _props$attributes8.btnHoverBack,
+            btnBorderWidth = _props$attributes8.btnBorderWidth,
+            btnBorderRadius = _props$attributes8.btnBorderRadius,
+            btnBorderColor = _props$attributes8.btnBorderColor,
+            btnBorderType = _props$attributes8.btnBorderType,
+            btnPadding = _props$attributes8.btnPadding,
+            btnMarginT = _props$attributes8.btnMarginT,
+            btnMarginB = _props$attributes8.btnMarginB,
+            btnShadowBlur = _props$attributes8.btnShadowBlur,
+            btnShadowColor = _props$attributes8.btnShadowColor,
+            btnShadowHorizontal = _props$attributes8.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes8.btnShadowVertical,
+            btnShadowPosition = _props$attributes8.btnShadowPosition,
+            backColor = _props$attributes8.backColor,
+            imageURL = _props$attributes8.imageURL,
+            fixed = _props$attributes8.fixed,
+            backgroundRepeat = _props$attributes8.backgroundRepeat,
+            backgroundPosition = _props$attributes8.backgroundPosition,
+            backgroundSize = _props$attributes8.backgroundSize,
+            borderType = _props$attributes8.borderType,
+            borderWidth = _props$attributes8.borderWidth,
+            borderRadius = _props$attributes8.borderRadius,
+            borderColor = _props$attributes8.borderColor,
+            marginT = _props$attributes8.marginT,
+            marginR = _props$attributes8.marginR,
+            marginB = _props$attributes8.marginB,
+            marginL = _props$attributes8.marginL,
+            paddingT = _props$attributes8.paddingT,
+            paddingR = _props$attributes8.paddingR,
+            paddingB = _props$attributes8.paddingB,
+            paddingL = _props$attributes8.paddingL,
+            shadowBlur = _props$attributes8.shadowBlur,
+            shadowColor = _props$attributes8.shadowColor,
+            shadowHorizontal = _props$attributes8.shadowHorizontal,
+            shadowVertical = _props$attributes8.shadowVertical,
+            shadowPosition = _props$attributes8.shadowPosition;
 
 
         return React.createElement(
@@ -52583,6 +56355,7 @@ var edit = function (_Component) {
                     containerStyles: newUpdate
                 });
             };
+
             var saveCompanyStyle = function saveCompanyStyle(value) {
                 var newUpdate = companyStyles.map(function (item, index) {
                     if (0 === index) {
@@ -52594,6 +56367,7 @@ var edit = function (_Component) {
                     companyStyles: newUpdate
                 });
             };
+
             var saveQuoteStyles = function saveQuoteStyles(value) {
                 var newUpdate = quoteStyles.map(function (item, index) {
                     if (0 === index) {
@@ -52605,7 +56379,6 @@ var edit = function (_Component) {
                     quoteStyles: newUpdate
                 });
             };
-
             var btnGrad = void 0,
                 btnGrad2 = void 0,
                 btnbg = void 0;
@@ -60410,17 +64183,365 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _attributes = __webpack_require__(124);
-
-var _attributes2 = _interopRequireDefault(_attributes);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 
 
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    prefix: {
+        type: "string",
+        default: "This is"
+    },
+    suffix: {
+        type: "string",
+        default: "Text"
+    },
+    repeaterFancyText: {
+        type: "array",
+        default: [{
+            title: __("Designer"),
+            edit: false
+        }, {
+            title: __("Developer"),
+            edit: false
+        }, {
+            title: __("Awesome"),
+            edit: false
+        }]
+    },
+    effect: {
+        type: "string",
+        default: "typing"
+    },
+    fancyTextColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    cursorColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    fancyTextLetter: {
+        type: "number"
+    },
+    fancyTextStyle: {
+        type: "string"
+    },
+    fancyTextUpper: {
+        type: "boolean",
+        default: false
+    },
+    fancyTextWeight: {
+        type: "number",
+        default: 600
+    },
+    fancyTextfontSize: {
+        type: "number",
+        default: 20
+    },
+    fancyTextfontSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    fancyTextfontSizeMobile: {
+        type: "number",
+        default: 20
+    },
+    fancyTextfontSizeTablet: {
+        type: "number",
+        default: 20
+    },
+    fancyTextBGColor: {
+        type: "string"
+    },
+    fancyTextBGOpacity: {
+        type: "number",
+        default: "1"
+    },
+    shadowColor: {
+        type: "string"
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    textColor: {
+        type: "string",
+        default: "#54595f"
+    },
+    textLetter: {
+        type: "number"
+    },
+    textStyle: {
+        type: "string"
+    },
+    textUpper: {
+        type: "boolean",
+        default: false
+    },
+    textWeight: {
+        type: "number",
+        default: 600
+    },
+    textfontSize: {
+        type: "number",
+        default: 20
+    },
+    textfontSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    textfontSizeMobile: {
+        type: "number",
+        default: 20
+    },
+    textfontSizeTablet: {
+        type: "number",
+        default: 20
+    },
+    textBGColor: {
+        type: "string"
+    },
+    textBGOpacity: {
+        type: "number",
+        default: "1"
+    },
+    loop: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorShow: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorMark: {
+        type: "string",
+        default: "|"
+    },
+    typeSpeed: {
+        type: "number",
+        default: 100
+    },
+    backdelay: {
+        type: "number",
+        default: 30
+    },
+    startdelay: {
+        type: "number",
+        default: 30
+    },
+    backSpeed: {
+        type: "number",
+        default: 30
+    },
+    animationSpeed: {
+        type: "number",
+        default: 200
+    },
+    pauseTime: {
+        type: "number",
+        default: 3000
+    },
+    hoverPause: {
+        type: "boolean",
+        default: false
+    },
+    fancyalign: {
+        type: "string",
+        default: "center"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+
+var new_attributes = {
+    fancyStyles: {
+        type: "array",
+        default: [{
+            fancyTextColor: "#6ec1e4",
+            fancyTextfontSize: 20,
+            fancyTextfontSizeUnit: 'px',
+            fancyTextfontSizeMobile: 20,
+            fancyTextfontSizeTablet: 20,
+            fancyTextBGColor: '',
+            fancyTextBGOpacity: 1,
+            fancyTextLetter: '',
+            fancyTextStyle: '',
+            fancyTextUpper: false,
+            fancyTextWeight: 600,
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            cursorColor: ''
+        }]
+    },
+    PreStyles: {
+        type: "array",
+        default: [{
+            textColor: "#54595f",
+            textLetter: '',
+            textStyle: '',
+            textUpper: false,
+            textWeight: 600,
+            textfontSize: 20,
+            textfontSizeUnit: 'px',
+            textfontSizeMobile: 20,
+            textfontSizeTablet: 20,
+            textBGColor: '',
+            textBGOpacity: 1
+        }]
+    }
+};
+
+var new_deprecated_attributes = Object.assign(attributes, new_attributes);
+
 var deprecated = [{
-    attributes: _attributes2.default,
+    attributes: new_deprecated_attributes,
+    save: function save(props) {
+        var attributes = props.attributes,
+            className = props.className;
+        var block_id = attributes.block_id,
+            align = attributes.align,
+            prefix = attributes.prefix,
+            suffix = attributes.suffix,
+            repeaterFancyText = attributes.repeaterFancyText,
+            effect = attributes.effect,
+            loop = attributes.loop,
+            cursorShow = attributes.cursorShow,
+            cursorMark = attributes.cursorMark,
+            typeSpeed = attributes.typeSpeed,
+            backSpeed = attributes.backSpeed,
+            startdelay = attributes.startdelay,
+            backdelay = attributes.backdelay,
+            animationSpeed = attributes.animationSpeed,
+            pauseTime = attributes.pauseTime,
+            hoverPause = attributes.hoverPause,
+            fancyalign = attributes.fancyalign,
+            hideDesktop = attributes.hideDesktop,
+            hideTablet = attributes.hideTablet,
+            hideMobile = attributes.hideMobile;
+
+        return React.createElement(
+            "div",
+            {
+                className: (0, _classnames2.default)(className, "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
+                style: {
+                    textAlign: align
+                } },
+            effect == 'typing' ? React.createElement(
+                "div",
+                {
+                    id: "premium-fancy-text-" + block_id,
+                    className: "premium-fancy-text", style: {
+                        textAlign: align
+                    },
+                    "data-effect": "" + effect,
+                    "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                        return item.title;
+                    }),
+                    "data-typespeed": "" + typeSpeed,
+                    "data-backspeed": "" + backSpeed,
+                    "data-startdelay": "" + startdelay,
+                    "data-backdelay": "" + backdelay,
+                    "data-loop": "" + loop,
+                    "data-cursorshow": "" + cursorShow,
+                    "data-cursormark": "" + cursorMark
+                },
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-prefix-text" },
+                    prefix,
+                    " "
+                ),
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-title" },
+                    " "
+                ),
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-suffix-text" },
+                    " ",
+                    suffix
+                )
+            ) : React.createElement(
+                "div",
+                { className: "premium-fancy-text premium-fancy-slide", style: {
+                        textAlign: align
+                    },
+                    "data-effect": "" + effect,
+                    "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                        return item.title;
+                    }),
+                    "data-animationspeed": "" + animationSpeed,
+                    "data-pausetime": "" + pauseTime,
+                    "data-hoverpause": "" + hoverPause
+                },
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-prefix-text" },
+                    prefix,
+                    " "
+                ),
+                React.createElement(
+                    "div",
+                    { className: "premium-fancy-text-title-slide", style: {
+                            textAlign: fancyalign
+                        } },
+                    React.createElement(
+                        "ul",
+                        { className: "premium-fancy-text-title-slide-list" },
+                        repeaterFancyText.map(function (item, index) {
+                            return React.createElement(
+                                "li",
+                                null,
+                                item.title
+                            );
+                        })
+                    )
+                ),
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-suffix-text" },
+                    " ",
+                    suffix
+                )
+            )
+        );
+    }
+}, {
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             fancyTextBGOpacity: "",

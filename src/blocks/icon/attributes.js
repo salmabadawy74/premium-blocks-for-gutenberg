@@ -193,14 +193,10 @@ const attributes = {
         type: "string",
         default: "up"
     },
-
-
-
     wrapMargin: {
         type: "string",
         default: "up"
     },
-
     urlCheck: {
         type: "boolean"
     },
