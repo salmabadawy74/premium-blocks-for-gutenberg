@@ -1,5 +1,7 @@
 const className = "premium-icon";
 const { __ } = wp.i18n;
+import hexToRgba from 'hex-to-rgba'
+
 
 const attributes = {
     iconBorder: {
@@ -396,11 +398,10 @@ const deprecatedContent = [
                 hideMobile
             } = props.attributes;
 
-            const mainClasses = classnames(className, 'premium-icon');
 
             return (
                 <div
-                    className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    className={`${className}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
                         textAlign: align,
                         backgroundColor: backgroundColor
