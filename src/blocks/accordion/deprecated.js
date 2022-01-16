@@ -300,7 +300,12 @@ const deprecated_attributes_1_6_3 = Object.assign(
 );
 const deprecated = [
     {
-        attributes: attributes,
+        attributes: deprecated_attributes_1_6_3,
+        migrate: ({ titleStyles, arrowStyles, descStyles }) => {
+            return {
+                ...titleStyles, ...descStyles, ...arrowStyles
+            }
+        },
         save: props => {
             const {
                 accordionId,
