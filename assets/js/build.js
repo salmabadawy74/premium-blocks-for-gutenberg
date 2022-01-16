@@ -42199,12 +42199,17 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _hexToRgba = __webpack_require__(106);
+
+var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 
 
 var className = "premium-dheading-block";
+
 
 var attributes = {
     block_id: {
@@ -42644,6 +42649,7 @@ var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
 var deprecatedContent = [{
     attributes: new_deprecated_attributes,
     save: function save(props) {
+        var className = props.className;
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
             contentAlign = _props$attributes.contentAlign,
@@ -42737,7 +42743,7 @@ var deprecatedContent = [{
                 className: mainClasses + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: contentAlign,
-                    backgroundColor: containerBack ? hexToRgba(containerBack, containerOpacity) : "transparent",
+                    backgroundColor: containerBack ? (0, _hexToRgba2.default)(containerBack, containerOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -42762,7 +42768,7 @@ var deprecatedContent = [{
                             style: {
                                 display: display,
                                 color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground ? hexToRgba(firstBackground, firstOpacity) : "transparent",
+                                backgroundColor: firstClip ? "none" : firstBackground ? (0, _hexToRgba2.default)(firstBackground, firstOpacity) : "transparent",
                                 backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
                                 fontFamily: firstFamily,
                                 letterSpacing: firstLetter + "px",
@@ -42787,7 +42793,7 @@ var deprecatedContent = [{
                             style: {
                                 display: display,
                                 color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground ? hexToRgba(secondBackground, secondOpacity) : "transparent",
+                                backgroundColor: secondClip ? "none" : secondBackground ? (0, _hexToRgba2.default)(secondBackground, secondOpacity) : "transparent",
                                 backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
                                 fontFamily: secondFamily,
                                 letterSpacing: secondLetter + "px",
@@ -44777,6 +44783,13 @@ exports.default = save;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _hexToRgba = __webpack_require__(106);
+
+var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var className = "premium-icon";
 var __ = wp.i18n.__;
 
@@ -45172,15 +45185,13 @@ var deprecatedContent = [{
             hideMobile = _props$attributes.hideMobile;
 
 
-        var mainClasses = classnames(className, 'premium-icon');
-
         return React.createElement(
             "div",
             {
-                className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                className: className + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: align,
-                    backgroundColor: backgroundColor ? hexToRgba(backgroundColor, backgroundOpacity) : "transparent",
+                    backgroundColor: backgroundColor ? (0, _hexToRgba2.default)(backgroundColor, backgroundOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -45213,7 +45224,7 @@ var deprecatedContent = [{
                     className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack ? hexToRgba(iconBack, iconOpacity) : "transparent",
+                        backgroundColor: iconBack ? (0, _hexToRgba2.default)(iconBack, iconOpacity) : "transparent",
                         fontSize: (iconSize || 50) + iconSizeUnit,
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,
@@ -47568,8 +47579,14 @@ exports.default = save;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var className = "premium-icon-box";
 
+var _hexToRgba = __webpack_require__(106);
+
+var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var className = "premium-icon-box";
 var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
 
@@ -48270,12 +48287,11 @@ var deprecatedContent = [{
             hideTablet = _props$attributes.hideTablet,
             hideMobile = _props$attributes.hideMobile;
 
-        var mainClasses = classnames(className, 'premium-icon-box');
         return React.createElement(
             "div",
             {
                 id: "premium-icon-box-" + block_id,
-                className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     textAlign: align,
                     borderStyle: borderType,
@@ -48291,7 +48307,7 @@ var deprecatedContent = [{
                     paddingBottom: paddingB + paddingU,
                     paddingLeft: paddingL + paddingU,
                     boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor ? hexToRgba(backColor, backOpacity) : "transparent",
+                    backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
                     backgroundImage: "url('" + imageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
@@ -48313,7 +48329,7 @@ var deprecatedContent = [{
                     className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
                     style: {
                         color: iconColor,
-                        backgroundColor: iconBackColor ? hexToRgba(iconBackColor, iconOpacity) : "transparent",
+                        backgroundColor: iconBackColor ? (0, _hexToRgba2.default)(iconBackColor, iconOpacity) : "transparent",
                         fontSize: iconSize
                     }
                 }),
@@ -48395,7 +48411,7 @@ var deprecatedContent = [{
                         value: btnText,
                         style: {
                             color: btnColor,
-                            backgroundColor: btnBack ? hexToRgba(btnBack, btnOpacity) : "transparent",
+                            backgroundColor: btnBack ? (0, _hexToRgba2.default)(btnBack, btnOpacity) : "transparent",
                             letterSpacing: btnLetter + "px",
                             textTransform: btnUpper ? "uppercase" : "none",
                             fontStyle: btnStyle,
@@ -53821,9 +53837,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(110);
+var _hexToRgba = __webpack_require__(106);
 
-var _attributes2 = _interopRequireDefault(_attributes);
+var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53835,19 +53851,804 @@ var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
 
 
-var deprecatedContent = [{
-    attributes: _attributes2.default,
-    migrate: function migrate(attributes) {
-        var _newAttributes;
-
-        var newAttributes = (_newAttributes = {
-            borderLeft: "",
-            borderTop: ""
-        }, _defineProperty(_newAttributes, "borderLeft", ""), _defineProperty(_newAttributes, "borderRight", ""), _defineProperty(_newAttributes, "btnBorderRight", ""), _defineProperty(_newAttributes, "btnBorderTop", ""), _defineProperty(_newAttributes, "btnBorderBottom", ""), _defineProperty(_newAttributes, "btnBorderLeft", ""), _defineProperty(_newAttributes, "borderUpdated", ""), _defineProperty(_newAttributes, "btnBorderUpdated", ""), _defineProperty(_newAttributes, "classMigrate", false), _defineProperty(_newAttributes, "block_id", ''), _defineProperty(_newAttributes, "titleSizeUnit", 'px'), _defineProperty(_newAttributes, "titleSizeMobile", ''), _defineProperty(_newAttributes, "titleSizeTablet", ''), _defineProperty(_newAttributes, "valSizeUnit", "px"), _defineProperty(_newAttributes, "valSizeTablet", ''), _defineProperty(_newAttributes, "valSizeMobile", ''), _defineProperty(_newAttributes, "badgeTextUnit", "px"), _defineProperty(_newAttributes, "badgeTextSizeTablet", ''), _defineProperty(_newAttributes, "badgeTextSizeMobile", ''), _defineProperty(_newAttributes, "btnSizeUnit", 'px'), _defineProperty(_newAttributes, "btnSizeMobile", ''), _defineProperty(_newAttributes, "btnSizeTablet", ''), _defineProperty(_newAttributes, "currSizeUnit", 'px'), _defineProperty(_newAttributes, "currSizeMobile", ''), _defineProperty(_newAttributes, "currSizeTablet", ''), _defineProperty(_newAttributes, "descSizeUnit", 'px'), _defineProperty(_newAttributes, "descSizeMobile", ''), _defineProperty(_newAttributes, "descSizeTablet", ''), _defineProperty(_newAttributes, "divSizeUnit", 'px'), _defineProperty(_newAttributes, "divSizeMobile", ''), _defineProperty(_newAttributes, "divSizeTablet", ''), _defineProperty(_newAttributes, "durSizeUnit", "px"), _defineProperty(_newAttributes, "durSizeTablet", ''), _defineProperty(_newAttributes, "durSizeMobile", ''), _defineProperty(_newAttributes, "listSizeUnit", 'px'), _defineProperty(_newAttributes, "listSizeMobile", ''), _defineProperty(_newAttributes, "listSizeTablet", ''), _defineProperty(_newAttributes, "slashSizeUnit", 'px'), _defineProperty(_newAttributes, "slashSizeMobile", ''), _defineProperty(_newAttributes, "slashSizeTablet", ''), _defineProperty(_newAttributes, "tableOpacity", ""), _defineProperty(_newAttributes, "priceOpacity", ""), _defineProperty(_newAttributes, "hideDesktop", false), _defineProperty(_newAttributes, "hideTablet", false), _defineProperty(_newAttributes, "hideMobile", false), _newAttributes);
-        return Object.assign(attributes, newAttributes);
+var attributes = {
+    borderUpdated: {
+        type: "boolean",
+        default: false
     },
+    btnBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    tableBack: {
+        type: "string"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    tablePadding: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowColor: {
+        type: "string"
+    },
+    tableShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__title",
+        default: "Pricing Table"
+    },
+    titleTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: 'number'
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleBack: {
+        type: "string"
+    },
+    titleMarginB: {
+        type: "number",
+        default: 20
+    },
+    titleMarginT: {
+        type: "number",
+        default: 20
+    },
+    titlePadding: {
+        type: "number",
+        default: "0"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__desc"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: 'number'
+    },
+    descSizeMobile: {
+        type: 'number'
+    },
+    descWeight: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descLine: {
+        type: "number"
+    },
+    descBack: {
+        type: "string"
+    },
+    descMarginT: {
+        type: "number",
+        default: "0"
+    },
+    descMarginB: {
+        type: "number",
+        default: "30"
+    },
+    descPadding: {
+        type: "number",
+        default: "0"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    descChecked: {
+        type: "boolean",
+        default: false
+    },
+    priceChecked: {
+        type: "boolean",
+        default: true
+    },
+    priceBack: {
+        type: "string"
+    },
+    priceMarginT: {
+        type: "number"
+    },
+    priceMarginB: {
+        type: "number",
+        default: 10
+    },
+    pricePadding: {
+        type: "number"
+    },
+    slashPrice: {
+        type: "string"
+    },
+    slashColor: {
+        type: "string"
+    },
+    slashSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    slashSize: {
+        type: "number",
+        default: 20
+    },
+    slashSizeMobile: {
+        type: "number"
+    },
+    slashSizeTablet: {
+        type: "number"
+    },
+    slashWeight: {
+        type: "number"
+    },
+    currPrice: {
+        type: "string",
+        default: "$"
+    },
+    currColor: {
+        type: "string"
+    },
+    currSize: {
+        type: "number",
+        default: 20
+    },
+    currSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    currSizeMobile: {
+        type: "number"
+    },
+    currSizeTablet: {
+        type: "number"
+    },
+    currWeight: {
+        type: "number"
+    },
+    valPrice: {
+        type: "string",
+        default: "25"
+    },
+    valColor: {
+        type: "string"
+    },
+    valSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    valSize: {
+        type: "number",
+        default: 50
+    },
+    valSizeMobile: {
+        type: "number"
+    },
+    valSizeTablet: {
+        type: "number"
+    },
+    valWeight: {
+        type: "number"
+    },
+    divPrice: {
+        type: "string",
+        default: "/"
+    },
+    divColor: {
+        type: "string"
+    },
+    divSize: {
+        type: "number",
+        default: 20
+    },
+    divSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    divSizeMobile: {
+        type: "number"
+    },
+    divSizeTablet: {
+        type: "number"
+    },
+    divWeight: {
+        type: "number"
+    },
+    durPrice: {
+        type: "string",
+        default: "m"
+    },
+    durColor: {
+        type: "string"
+    },
+    durSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    durSize: {
+        type: "number",
+        default: 20
+    },
+    durSizeMobile: {
+        type: "number"
+    },
+    durSizeTablet: {
+        type: "number"
+    },
+    durWeight: {
+        type: "number"
+    },
+    selectedStyle: {
+        type: "string",
+        default: "price"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnText: {
+        type: "string",
+        default: "Get Started"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-pricing-table__button_link"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: true
+    },
+    btnColor: {
+        type: "string",
+        default: "#fff"
+    },
+    btnHoverColor: {
+        type: "string"
+    },
+    btnWidth: {
+        type: "number"
+    },
+    btnSize: {
+        type: "number"
+    },
+    btnSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    btnSizeTablet: {
+        type: 'number'
+    },
+    btnSizeMobile: {
+        type: 'number'
+    },
+    btnWeight: {
+        type: "number",
+        default: 900
+    },
+    btnLine: {
+        type: "number"
+    },
+    btnLetter: {
+        type: "number"
+    },
+    btnStyle: {
+        type: "string"
+    },
+    btnUpper: {
+        type: "boolean"
+    },
+    btnBack: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    btnHoverBack: {
+        type: "string"
+    },
+    btnMarginT: {
+        type: "number",
+        default: "0"
+    },
+    btnMarginB: {
+        type: "number",
+        default: "0"
+    },
+    btnPadding: {
+        type: "number",
+        default: 10
+    },
+    btnPaddingU: {
+        type: "string"
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    btnBorderColor: {
+        type: "string"
+    },
+    badgeChecked: {
+        type: "boolean"
+    },
+    badgePos: {
+        type: "string",
+        default: "right"
+    },
+    badgeBack: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    badgeColor: {
+        type: "string"
+    },
+    badgeTextSize: {
+        type: "number"
+    },
+    badgeSize: {
+        type: "number"
+    },
+    badgeTextUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    badgeTextSizeTablet: {
+        type: 'number'
+    },
+    badgeTextSizeMobile: {
+        type: 'number'
+    },
+    badgeTop: {
+        type: "number"
+    },
+    badgeHorizontal: {
+        type: "number"
+    },
+    badgeWidth: {
+        type: "number"
+    },
+    badgeWeight: {
+        type: "number",
+        default: 900
+    },
+    badgeLetter: {
+        type: "number"
+    },
+    badgeStyle: {
+        type: "string"
+    },
+    badgeUpper: {
+        type: "boolean"
+    },
+    badgeText: {
+        type: "string",
+        default: __("Popular")
+    },
+    listChecked: {
+        type: "boolean",
+        default: true
+    },
+    listColor: {
+        type: "string"
+    },
+    listSize: {
+        type: "number"
+    },
+    listSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    listSizeTablet: {
+        type: 'number'
+    },
+    listSizeMobile: {
+        type: 'number'
+    },
+    listWeight: {
+        type: "number",
+        default: 500
+    },
+    listItemsStyle: {
+        type: "string"
+    },
+    listLetter: {
+        type: "number"
+    },
+    listLine: {
+        type: "number"
+    },
+    listUpper: {
+        type: "boolean"
+    },
+    listBack: {
+        type: "string"
+    },
+    listItems: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__list"
+    },
+    listMarginB: {
+        type: "number",
+        default: 20
+    },
+    listMarginT: {
+        type: "number"
+    },
+    listPadding: {
+        type: "number"
+    },
+    listStyle: {
+        type: "string",
+        default: "disc"
+    },
+    featsAlign: {
+        type: "string"
+    },
+    slashV: {
+        type: "string",
+        default: "center"
+    },
+    currV: {
+        type: "string",
+        default: "center"
+    },
+    valV: {
+        type: "string",
+        default: "center"
+    },
+    divV: {
+        type: "string",
+        default: "center"
+    },
+    durV: {
+        type: "string",
+        default: "center"
+    },
+    block_id: {
+        type: "string"
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    tableOpacity: {
+        type: "number",
+        default: "1"
+    },
+    priceOpacity: {
+        type: "number",
+        default: "1"
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+};
+var new_Attributes = {
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleTag: 'H2',
+            titleSizeUnit: 'px',
+            titleSize: '',
+            titleSizeMobile: '',
+            titleSizeTablet: '',
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleColor: "#6ec1e4",
+            titleBack: '',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginB: 20,
+            titleMarginT: 20,
+            titlePadding: 0
+        }]
+    },
+    priceStyles: {
+        type: "array",
+        default: [{
+            priceBack: '',
+            priceOpacity: 1,
+            priceMarginT: '',
+            priceMarginB: 10,
+            pricePadding: '',
+            slashPrice: '',
+            slashColor: '',
+            slashSizeUnit: 'px',
+            slashSize: 20,
+            slashSizeMobile: '',
+            slashSizeTablet: '',
+            slashWeight: '',
+            currPrice: '$',
+            currColor: '',
+            currSize: 20,
+            currSizeUnit: 'px',
+            currSizeMobile: '',
+            currSizeTablet: '',
+            currWeight: '',
+            valPrice: '25',
+            valColor: '',
+            valSizeUnit: 'px',
+            valSize: 50,
+            valSizeMobile: '',
+            valSizeTablet: '',
+            valWeight: '',
+            divPrice: "/",
+            divColor: '',
+            divSize: 20,
+            divSizeUnit: 'px',
+            divSizeMobile: '',
+            divSizeTablet: '',
+            divWeight: '',
+            durPrice: 'm',
+            durColor: '',
+            durSizeUnit: 'px',
+            durSize: 20,
+            durSizeMobile: '',
+            durSizeTablet: '',
+            durWeight: '',
+            selectedStyle: "price",
+            slashV: 'center',
+            currV: 'center',
+            valV: "center",
+            divV: 'center',
+            durV: 'center'
+        }]
+    },
+    featureStyles: {
+        type: "array",
+        default: [{
+            featsAlign: '',
+            listStyle: "disc",
+            listColor: '',
+            listSize: '',
+            listSizeUnit: 'px',
+            listSizeTablet: '',
+            listSizeMobile: '',
+            listWeight: 500,
+            listItemsStyle: '',
+            listLetter: '',
+            listLine: '',
+            listUpper: false,
+            listBack: '',
+            listMarginB: 20,
+            listMarginT: '',
+            listPadding: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descSize: '',
+            descSizeUnit: 'px',
+            descSizeTablet: '',
+            descSizeMobile: '',
+            descWeight: '',
+            descLetter: '',
+            descStyle: '',
+            descLine: '',
+            descColor: "#000",
+            descBack: '',
+            descMarginT: 0,
+            descMarginB: 30,
+            descPadding: '0'
+        }]
+    },
+    buttonStyles: {
+        type: "array",
+        default: [{
+            btnColor: "#fff",
+            btnHoverColor: '',
+            btnWidth: '',
+            btnSize: '',
+            btnSizeUnit: 'px',
+            btnSizeTablet: '',
+            btnSizeMobile: '',
+            btnWeight: 900,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnBack: "#6ec1e4",
+            btnHoverBack: '',
+            btnMarginT: 0,
+            btnMarginB: 0,
+            btnPadding: 10,
+            btnPaddingU: 'px',
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderRadius: 0,
+            btnBorderColor: '',
+            btnTarget: true
+        }]
+    },
+    badgeStyles: {
+        type: "array",
+        default: [{
+            badgePos: "right",
+            badgeBack: "#6ec1e4",
+            badgeColor: '',
+            badgeSize: '',
+            badgeTextUnit: 'px',
+            badgeSizeTablet: '',
+            badgeSizeMobile: '',
+            badgeTop: '',
+            badgeHorizontal: '',
+            badgeWidth: '',
+            badgeWeight: 900,
+            badgeLetter: '',
+            badgeStyle: '',
+            badgeUpper: false,
+            badgeText: __("Popular")
+        }]
+    },
+    tableStyles: {
+        type: "array",
+        default: [{
+            tableBack: '',
+            tableOpacity: 1,
+            borderType: 'none',
+            borderWidth: 1,
+            borderRadius: 0,
+            tableShadowColor: '',
+            tableShadowBlur: '0',
+            tableShadowHorizontal: '0',
+            tableShadowVertical: '0',
+            tableShadowPosition: '',
+            tablePadding: "0"
+        }]
+    }
+};
+
+var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
+
+var deprecatedContent = [{
+    attributes: new_deprecated_attributes,
     save: function save(props) {
         var _props$attributes = props.attributes,
+            borderUpdated = _props$attributes.borderUpdated,
+            btnBorderUpdated = _props$attributes.btnBorderUpdated,
+            priceOpacity = _props$attributes.priceOpacity,
+            tableOpacity = _props$attributes.tableOpacity,
             contentAlign = _props$attributes.contentAlign,
             tableBack = _props$attributes.tableBack,
             borderType = _props$attributes.borderType,
@@ -53864,7 +54665,6 @@ var deprecatedContent = [{
             title = _props$attributes.title,
             titleTag = _props$attributes.titleTag,
             titleColor = _props$attributes.titleColor,
-            titleSize = _props$attributes.titleSize,
             titleLetter = _props$attributes.titleLetter,
             titleUpper = _props$attributes.titleUpper,
             titleStyle = _props$attributes.titleStyle,
@@ -53881,7 +54681,6 @@ var deprecatedContent = [{
             descChecked = _props$attributes.descChecked,
             desc = _props$attributes.desc,
             descColor = _props$attributes.descColor,
-            descSize = _props$attributes.descSize,
             descLine = _props$attributes.descLine,
             descWeight = _props$attributes.descWeight,
             descStyle = _props$attributes.descStyle,
@@ -53897,27 +54696,22 @@ var deprecatedContent = [{
             pricePadding = _props$attributes.pricePadding,
             slashPrice = _props$attributes.slashPrice,
             slashColor = _props$attributes.slashColor,
-            slashSize = _props$attributes.slashSize,
             slashWeight = _props$attributes.slashWeight,
             slashV = _props$attributes.slashV,
             currPrice = _props$attributes.currPrice,
             currColor = _props$attributes.currColor,
-            currSize = _props$attributes.currSize,
             currWeight = _props$attributes.currWeight,
             currV = _props$attributes.currV,
             valPrice = _props$attributes.valPrice,
             valColor = _props$attributes.valColor,
-            valSize = _props$attributes.valSize,
             valWeight = _props$attributes.valWeight,
             valV = _props$attributes.valV,
             divPrice = _props$attributes.divPrice,
             divColor = _props$attributes.divColor,
-            divSize = _props$attributes.divSize,
             divWeight = _props$attributes.divWeight,
             divV = _props$attributes.divV,
             durPrice = _props$attributes.durPrice,
             durColor = _props$attributes.durColor,
-            durSize = _props$attributes.durSize,
             durWeight = _props$attributes.durWeight,
             durV = _props$attributes.durV,
             btnChecked = _props$attributes.btnChecked,
@@ -53926,7 +54720,6 @@ var deprecatedContent = [{
             btnTarget = _props$attributes.btnTarget,
             btnColor = _props$attributes.btnColor,
             btnHoverColor = _props$attributes.btnHoverColor,
-            btnSize = _props$attributes.btnSize,
             btnWeight = _props$attributes.btnWeight,
             btnLine = _props$attributes.btnLine,
             btnLetter = _props$attributes.btnLetter,
@@ -53939,6 +54732,14 @@ var deprecatedContent = [{
             btnPadding = _props$attributes.btnPadding,
             btnPaddingU = _props$attributes.btnPaddingU,
             btnWidth = _props$attributes.btnWidth,
+            btnBorderTop = _props$attributes.btnBorderTop,
+            btnBorderRight = _props$attributes.btnBorderRight,
+            btnBorderBottom = _props$attributes.btnBorderBottom,
+            btnBorderLeft = _props$attributes.btnBorderLeft,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
             btnBorderType = _props$attributes.btnBorderType,
             btnBorderWidth = _props$attributes.btnBorderWidth,
             btnBorderRadius = _props$attributes.btnBorderRadius,
@@ -53951,7 +54752,6 @@ var deprecatedContent = [{
             badgeHorizontal = _props$attributes.badgeHorizontal,
             badgeWidth = _props$attributes.badgeWidth,
             badgeSize = _props$attributes.badgeSize,
-            badgeTextSize = _props$attributes.badgeTextSize,
             badgeWeight = _props$attributes.badgeWeight,
             badgeLetter = _props$attributes.badgeLetter,
             badgeStyle = _props$attributes.badgeStyle,
@@ -53960,7 +54760,6 @@ var deprecatedContent = [{
             listChecked = _props$attributes.listChecked,
             listColor = _props$attributes.listColor,
             listWeight = _props$attributes.listWeight,
-            listSize = _props$attributes.listSize,
             listItemsStyle = _props$attributes.listItemsStyle,
             listLine = _props$attributes.listLine,
             listUpper = _props$attributes.listUpper,
@@ -53972,7 +54771,403 @@ var deprecatedContent = [{
             listPadding = _props$attributes.listPadding,
             listStyle = _props$attributes.listStyle,
             featsAlign = _props$attributes.featsAlign,
-            id = _props$attributes.id;
+            block_id = _props$attributes.block_id,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile;
+
+
+        return React.createElement(
+            "div",
+            {
+                id: className + "-" + block_id,
+                className: className + " premium-pricing-table-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: tableBack ? (0, _hexToRgba2.default)(tableBack, tableOpacity) : "transparent",
+                    borderStyle: borderType,
+                    borderWidth: borderUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    padding: tablePadding + "px",
+                    boxShadow: tableShadowHorizontal + "px " + tableShadowVertical + "px " + tableShadowBlur + "px " + tableShadowColor + " " + tableShadowPosition
+                }
+            },
+            badgeChecked && React.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__badge_wrap premium-pricing-table__badge_" + badgePos
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-pricing-table__badge",
+                        style: {
+                            borderRightColor: "right" === badgePos ? badgeBack : "transparent",
+                            borderTopColor: "left" === badgePos ? badgeBack : "transparent",
+                            borderBottomWidth: badgeSize + "px",
+                            borderRightWidth: badgeSize + "px",
+                            borderTopWidth: "left" === badgePos ? badgeSize + "px" : "none",
+                            borderLeftWidth: "right" === badgePos ? badgeSize + "px" : "none"
+                        }
+                    },
+                    React.createElement(
+                        "span",
+                        {
+                            style: {
+                                color: badgeColor,
+                                fontWeight: badgeWeight,
+                                textTransform: badgeUpper ? "uppercase" : "none",
+                                letterSpacing: badgeLetter + "px",
+                                fontStyle: badgeStyle,
+                                width: badgeWidth + "px",
+                                top: badgeTop + "px",
+                                left: "left" === badgePos ? badgeHorizontal + "px" : "auto",
+                                right: "right" === badgePos ? badgeHorizontal + "px" : "auto"
+                            }
+                        },
+                        badgeText
+                    )
+                )
+            ),
+            titleChecked && React.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__title_wrap",
+                    style: {
+                        paddingTop: titleMarginT + "px",
+                        paddingBottom: titleMarginB + "px"
+                    }
+                },
+                React.createElement(RichText.Content, {
+                    tagName: titleTag.toLowerCase(),
+                    className: "premium-pricing-table__title",
+                    value: title,
+                    style: {
+                        color: titleColor,
+                        background: titleBack,
+                        letterSpacing: titleLetter + "px",
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
+                        fontWeight: titleWeight,
+                        lineHeight: titleLine + "px",
+                        marginBottom: titleMarginB + "px",
+                        padding: titlePadding + "px",
+                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor
+                    }
+                })
+            ),
+            priceChecked && React.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__price_wrap",
+                    style: {
+                        backgroundColor: priceBack ? (0, _hexToRgba2.default)(priceBack, priceOpacity) : "transparent",
+                        marginTop: priceMarginT + "px",
+                        marginBottom: priceMarginB + "px",
+                        padding: pricePadding + "px",
+                        justifyContent: contentAlign
+                    }
+                },
+                slashPrice && React.createElement(
+                    "strike",
+                    {
+                        className: "premium-pricing-table__slash",
+                        style: {
+                            color: slashColor,
+                            fontWeight: slashWeight,
+                            alignSelf: slashV
+                        }
+                    },
+                    slashPrice
+                ),
+                currPrice && React.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__currency",
+                        style: {
+                            color: currColor,
+                            fontWeight: currWeight,
+                            alignSelf: currV
+                        }
+                    },
+                    currPrice
+                ),
+                valPrice && React.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__val",
+                        style: {
+                            color: valColor,
+                            fontWeight: valWeight,
+                            alignSelf: valV
+                        }
+                    },
+                    valPrice
+                ),
+                divPrice && React.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__divider",
+                        style: {
+                            color: divColor,
+                            fontWeight: divWeight,
+                            alignSelf: divV
+                        }
+                    },
+                    divPrice
+                ),
+                durPrice && React.createElement(
+                    "span",
+                    {
+                        className: "premium-pricing-table__dur",
+                        style: {
+                            color: durColor,
+                            fontWeight: durWeight,
+                            alignSelf: durV
+                        }
+                    },
+                    durPrice
+                )
+            ),
+            listChecked && React.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__list_wrap",
+                    style: {
+                        marginTop: listMarginT + "px",
+                        marginBottom: listMarginB + "px"
+                    }
+                },
+                React.createElement(
+                    "ul",
+                    {
+                        className: "premium-pricing-table__list list-" + listStyle,
+                        style: {
+                            color: listColor,
+                            background: listBack,
+                            padding: listPadding + "px",
+                            listStyle: "check" !== listStyle ? listStyle : "none",
+                            listStylePosition: "inside",
+                            fontWeight: listWeight,
+                            letterSpacing: listLetter + "px",
+                            textTransform: listUpper ? "uppercase" : "none",
+                            fontStyle: listItemsStyle,
+                            lineHeight: listLine + "px",
+                            textAlign: featsAlign ? featsAlign : contentAlign
+                        }
+                    },
+                    listItems
+                )
+            ),
+            descChecked && React.createElement(
+                "div",
+                { className: "premium-pricing-table__desc_wrap" },
+                React.createElement(RichText.Content, {
+                    tagName: "p",
+                    className: "premium-pricing-table__desc",
+                    value: desc,
+                    style: {
+                        color: descColor,
+                        background: descBack,
+                        fontWeight: descWeight,
+                        lineHeight: descLine + "px",
+                        letterSpacing: descLetter + "px",
+                        fontStyle: descStyle,
+                        marginTop: descMarginT + "px",
+                        marginBottom: descMarginB + "px",
+                        padding: descPadding + "px"
+                    }
+                })
+            ),
+            btnChecked && React.createElement(
+                "div",
+                {
+                    className: "premium-pricing-table__button",
+                    style: {
+                        width: btnWidth + "%"
+                    }
+                },
+                React.createElement(
+                    "a",
+                    {
+                        "class": "premium-pricing-table__button_link",
+                        href: btnLink,
+                        target: btnTarget ? "_blank" : "_self",
+                        rel: "noopener noreferrer",
+                        style: {
+                            color: btnColor,
+                            background: btnBack ? btnBack : "transparent",
+                            fontWeight: btnWeight,
+                            letterSpacing: btnLetter + "px",
+                            fontStyle: btnStyle,
+                            lineHeight: btnLine + "px",
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB,
+                            padding: btnPadding + btnPaddingU,
+                            borderStyle: btnBorderType,
+                            borderWidth: btnBorderUpdated ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
+                            borderRadius: btnBorderRadius + "px",
+                            borderColor: btnBorderColor
+                        }
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: "span",
+                        onChange: function onChange(newText) {
+                            return setAttributes({ btnText: newText });
+                        },
+                        value: btnText,
+                        style: {
+                            textTransform: btnUpper ? "uppercase" : "none"
+                        }
+                    })
+                ),
+                React.createElement("style", {
+                    dangerouslySetInnerHTML: {
+                        __html: ["#premium-pricing-table-" + block_id + " .premium-pricing-table__button_link:hover {", "color: " + btnHoverColor + " !important;", "background: " + btnHoverBack + " !important", "}"].join("\n")
+                    }
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var _newAttributes;
+
+        var newAttributes = (_newAttributes = {
+            borderLeft: "",
+            borderTop: ""
+        }, _defineProperty(_newAttributes, "borderLeft", ""), _defineProperty(_newAttributes, "borderRight", ""), _defineProperty(_newAttributes, "btnBorderRight", ""), _defineProperty(_newAttributes, "btnBorderTop", ""), _defineProperty(_newAttributes, "btnBorderBottom", ""), _defineProperty(_newAttributes, "btnBorderLeft", ""), _defineProperty(_newAttributes, "borderUpdated", ""), _defineProperty(_newAttributes, "btnBorderUpdated", ""), _defineProperty(_newAttributes, "classMigrate", false), _defineProperty(_newAttributes, "block_id", ''), _defineProperty(_newAttributes, "titleSizeUnit", 'px'), _defineProperty(_newAttributes, "titleSizeMobile", ''), _defineProperty(_newAttributes, "titleSizeTablet", ''), _defineProperty(_newAttributes, "valSizeUnit", "px"), _defineProperty(_newAttributes, "valSizeTablet", ''), _defineProperty(_newAttributes, "valSizeMobile", ''), _defineProperty(_newAttributes, "badgeTextUnit", "px"), _defineProperty(_newAttributes, "badgeTextSizeTablet", ''), _defineProperty(_newAttributes, "badgeTextSizeMobile", ''), _defineProperty(_newAttributes, "btnSizeUnit", 'px'), _defineProperty(_newAttributes, "btnSizeMobile", ''), _defineProperty(_newAttributes, "btnSizeTablet", ''), _defineProperty(_newAttributes, "currSizeUnit", 'px'), _defineProperty(_newAttributes, "currSizeMobile", ''), _defineProperty(_newAttributes, "currSizeTablet", ''), _defineProperty(_newAttributes, "descSizeUnit", 'px'), _defineProperty(_newAttributes, "descSizeMobile", ''), _defineProperty(_newAttributes, "descSizeTablet", ''), _defineProperty(_newAttributes, "divSizeUnit", 'px'), _defineProperty(_newAttributes, "divSizeMobile", ''), _defineProperty(_newAttributes, "divSizeTablet", ''), _defineProperty(_newAttributes, "durSizeUnit", "px"), _defineProperty(_newAttributes, "durSizeTablet", ''), _defineProperty(_newAttributes, "durSizeMobile", ''), _defineProperty(_newAttributes, "listSizeUnit", 'px'), _defineProperty(_newAttributes, "listSizeMobile", ''), _defineProperty(_newAttributes, "listSizeTablet", ''), _defineProperty(_newAttributes, "slashSizeUnit", 'px'), _defineProperty(_newAttributes, "slashSizeMobile", ''), _defineProperty(_newAttributes, "slashSizeTablet", ''), _defineProperty(_newAttributes, "tableOpacity", ""), _defineProperty(_newAttributes, "priceOpacity", ""), _defineProperty(_newAttributes, "hideDesktop", false), _defineProperty(_newAttributes, "hideTablet", false), _defineProperty(_newAttributes, "hideMobile", false), _newAttributes);
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            contentAlign = _props$attributes2.contentAlign,
+            tableBack = _props$attributes2.tableBack,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            tablePadding = _props$attributes2.tablePadding,
+            tableShadowBlur = _props$attributes2.tableShadowBlur,
+            tableShadowColor = _props$attributes2.tableShadowColor,
+            tableShadowHorizontal = _props$attributes2.tableShadowHorizontal,
+            tableShadowVertical = _props$attributes2.tableShadowVertical,
+            tableShadowPosition = _props$attributes2.tableShadowPosition,
+            titleChecked = _props$attributes2.titleChecked,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleSize = _props$attributes2.titleSize,
+            titleLetter = _props$attributes2.titleLetter,
+            titleUpper = _props$attributes2.titleUpper,
+            titleStyle = _props$attributes2.titleStyle,
+            titleLine = _props$attributes2.titleLine,
+            titleWeight = _props$attributes2.titleWeight,
+            titleBack = _props$attributes2.titleBack,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            titlePadding = _props$attributes2.titlePadding,
+            descChecked = _props$attributes2.descChecked,
+            desc = _props$attributes2.desc,
+            descColor = _props$attributes2.descColor,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descStyle = _props$attributes2.descStyle,
+            descLetter = _props$attributes2.descLetter,
+            descBack = _props$attributes2.descBack,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            descPadding = _props$attributes2.descPadding,
+            priceChecked = _props$attributes2.priceChecked,
+            priceBack = _props$attributes2.priceBack,
+            priceMarginT = _props$attributes2.priceMarginT,
+            priceMarginB = _props$attributes2.priceMarginB,
+            pricePadding = _props$attributes2.pricePadding,
+            slashPrice = _props$attributes2.slashPrice,
+            slashColor = _props$attributes2.slashColor,
+            slashSize = _props$attributes2.slashSize,
+            slashWeight = _props$attributes2.slashWeight,
+            slashV = _props$attributes2.slashV,
+            currPrice = _props$attributes2.currPrice,
+            currColor = _props$attributes2.currColor,
+            currSize = _props$attributes2.currSize,
+            currWeight = _props$attributes2.currWeight,
+            currV = _props$attributes2.currV,
+            valPrice = _props$attributes2.valPrice,
+            valColor = _props$attributes2.valColor,
+            valSize = _props$attributes2.valSize,
+            valWeight = _props$attributes2.valWeight,
+            valV = _props$attributes2.valV,
+            divPrice = _props$attributes2.divPrice,
+            divColor = _props$attributes2.divColor,
+            divSize = _props$attributes2.divSize,
+            divWeight = _props$attributes2.divWeight,
+            divV = _props$attributes2.divV,
+            durPrice = _props$attributes2.durPrice,
+            durColor = _props$attributes2.durColor,
+            durSize = _props$attributes2.durSize,
+            durWeight = _props$attributes2.durWeight,
+            durV = _props$attributes2.durV,
+            btnChecked = _props$attributes2.btnChecked,
+            btnText = _props$attributes2.btnText,
+            btnLink = _props$attributes2.btnLink,
+            btnTarget = _props$attributes2.btnTarget,
+            btnColor = _props$attributes2.btnColor,
+            btnHoverColor = _props$attributes2.btnHoverColor,
+            btnSize = _props$attributes2.btnSize,
+            btnWeight = _props$attributes2.btnWeight,
+            btnLine = _props$attributes2.btnLine,
+            btnLetter = _props$attributes2.btnLetter,
+            btnUpper = _props$attributes2.btnUpper,
+            btnStyle = _props$attributes2.btnStyle,
+            btnBack = _props$attributes2.btnBack,
+            btnHoverBack = _props$attributes2.btnHoverBack,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnPadding = _props$attributes2.btnPadding,
+            btnPaddingU = _props$attributes2.btnPaddingU,
+            btnWidth = _props$attributes2.btnWidth,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            badgeChecked = _props$attributes2.badgeChecked,
+            badgePos = _props$attributes2.badgePos,
+            badgeBack = _props$attributes2.badgeBack,
+            badgeColor = _props$attributes2.badgeColor,
+            badgeTop = _props$attributes2.badgeTop,
+            badgeHorizontal = _props$attributes2.badgeHorizontal,
+            badgeWidth = _props$attributes2.badgeWidth,
+            badgeSize = _props$attributes2.badgeSize,
+            badgeTextSize = _props$attributes2.badgeTextSize,
+            badgeWeight = _props$attributes2.badgeWeight,
+            badgeLetter = _props$attributes2.badgeLetter,
+            badgeStyle = _props$attributes2.badgeStyle,
+            badgeUpper = _props$attributes2.badgeUpper,
+            badgeText = _props$attributes2.badgeText,
+            listChecked = _props$attributes2.listChecked,
+            listColor = _props$attributes2.listColor,
+            listWeight = _props$attributes2.listWeight,
+            listSize = _props$attributes2.listSize,
+            listItemsStyle = _props$attributes2.listItemsStyle,
+            listLine = _props$attributes2.listLine,
+            listUpper = _props$attributes2.listUpper,
+            listLetter = _props$attributes2.listLetter,
+            listBack = _props$attributes2.listBack,
+            listItems = _props$attributes2.listItems,
+            listMarginB = _props$attributes2.listMarginB,
+            listMarginT = _props$attributes2.listMarginT,
+            listPadding = _props$attributes2.listPadding,
+            listStyle = _props$attributes2.listStyle,
+            featsAlign = _props$attributes2.featsAlign,
+            id = _props$attributes2.id;
 
         return React.createElement(
             "div",
@@ -54238,136 +55433,136 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { featsAlign: "" });
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            contentAlign = _props$attributes2.contentAlign,
-            tableBack = _props$attributes2.tableBack,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            tablePadding = _props$attributes2.tablePadding,
-            tableShadowBlur = _props$attributes2.tableShadowBlur,
-            tableShadowColor = _props$attributes2.tableShadowColor,
-            tableShadowHorizontal = _props$attributes2.tableShadowHorizontal,
-            tableShadowVertical = _props$attributes2.tableShadowVertical,
-            tableShadowPosition = _props$attributes2.tableShadowPosition,
-            titleChecked = _props$attributes2.titleChecked,
-            title = _props$attributes2.title,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleSize = _props$attributes2.titleSize,
-            titleLetter = _props$attributes2.titleLetter,
-            titleUpper = _props$attributes2.titleUpper,
-            titleStyle = _props$attributes2.titleStyle,
-            titleLine = _props$attributes2.titleLine,
-            titleWeight = _props$attributes2.titleWeight,
-            titleBack = _props$attributes2.titleBack,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            titlePadding = _props$attributes2.titlePadding,
-            descChecked = _props$attributes2.descChecked,
-            desc = _props$attributes2.desc,
-            descColor = _props$attributes2.descColor,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descStyle = _props$attributes2.descStyle,
-            descLetter = _props$attributes2.descLetter,
-            descBack = _props$attributes2.descBack,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            descPadding = _props$attributes2.descPadding,
-            priceChecked = _props$attributes2.priceChecked,
-            priceBack = _props$attributes2.priceBack,
-            priceMarginT = _props$attributes2.priceMarginT,
-            priceMarginB = _props$attributes2.priceMarginB,
-            pricePadding = _props$attributes2.pricePadding,
-            slashPrice = _props$attributes2.slashPrice,
-            slashColor = _props$attributes2.slashColor,
-            slashSize = _props$attributes2.slashSize,
-            slashWeight = _props$attributes2.slashWeight,
-            slashV = _props$attributes2.slashV,
-            currPrice = _props$attributes2.currPrice,
-            currColor = _props$attributes2.currColor,
-            currSize = _props$attributes2.currSize,
-            currWeight = _props$attributes2.currWeight,
-            currV = _props$attributes2.currV,
-            valPrice = _props$attributes2.valPrice,
-            valColor = _props$attributes2.valColor,
-            valSize = _props$attributes2.valSize,
-            valWeight = _props$attributes2.valWeight,
-            valV = _props$attributes2.valV,
-            divPrice = _props$attributes2.divPrice,
-            divColor = _props$attributes2.divColor,
-            divSize = _props$attributes2.divSize,
-            divWeight = _props$attributes2.divWeight,
-            divV = _props$attributes2.divV,
-            durPrice = _props$attributes2.durPrice,
-            durColor = _props$attributes2.durColor,
-            durSize = _props$attributes2.durSize,
-            durWeight = _props$attributes2.durWeight,
-            durV = _props$attributes2.durV,
-            btnChecked = _props$attributes2.btnChecked,
-            btnText = _props$attributes2.btnText,
-            btnLink = _props$attributes2.btnLink,
-            btnTarget = _props$attributes2.btnTarget,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnSize = _props$attributes2.btnSize,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLine = _props$attributes2.btnLine,
-            btnLetter = _props$attributes2.btnLetter,
-            btnUpper = _props$attributes2.btnUpper,
-            btnStyle = _props$attributes2.btnStyle,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnPadding = _props$attributes2.btnPadding,
-            btnPaddingU = _props$attributes2.btnPaddingU,
-            btnWidth = _props$attributes2.btnWidth,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            badgeChecked = _props$attributes2.badgeChecked,
-            badgePos = _props$attributes2.badgePos,
-            badgeBack = _props$attributes2.badgeBack,
-            badgeColor = _props$attributes2.badgeColor,
-            badgeTop = _props$attributes2.badgeTop,
-            badgeHorizontal = _props$attributes2.badgeHorizontal,
-            badgeWidth = _props$attributes2.badgeWidth,
-            badgeSize = _props$attributes2.badgeSize,
-            badgeTextSize = _props$attributes2.badgeTextSize,
-            badgeWeight = _props$attributes2.badgeWeight,
-            badgeLetter = _props$attributes2.badgeLetter,
-            badgeStyle = _props$attributes2.badgeStyle,
-            badgeUpper = _props$attributes2.badgeUpper,
-            badgeText = _props$attributes2.badgeText,
-            listChecked = _props$attributes2.listChecked,
-            listColor = _props$attributes2.listColor,
-            listWeight = _props$attributes2.listWeight,
-            listSize = _props$attributes2.listSize,
-            listItemsStyle = _props$attributes2.listItemsStyle,
-            listLine = _props$attributes2.listLine,
-            listUpper = _props$attributes2.listUpper,
-            listLetter = _props$attributes2.listLetter,
-            listBack = _props$attributes2.listBack,
-            listItems = _props$attributes2.listItems,
-            listMarginB = _props$attributes2.listMarginB,
-            listMarginT = _props$attributes2.listMarginT,
-            listPadding = _props$attributes2.listPadding,
-            listStyle = _props$attributes2.listStyle,
-            id = _props$attributes2.id;
+        var _props$attributes3 = props.attributes,
+            contentAlign = _props$attributes3.contentAlign,
+            tableBack = _props$attributes3.tableBack,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            tablePadding = _props$attributes3.tablePadding,
+            tableShadowBlur = _props$attributes3.tableShadowBlur,
+            tableShadowColor = _props$attributes3.tableShadowColor,
+            tableShadowHorizontal = _props$attributes3.tableShadowHorizontal,
+            tableShadowVertical = _props$attributes3.tableShadowVertical,
+            tableShadowPosition = _props$attributes3.tableShadowPosition,
+            titleChecked = _props$attributes3.titleChecked,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            titleColor = _props$attributes3.titleColor,
+            titleSize = _props$attributes3.titleSize,
+            titleLetter = _props$attributes3.titleLetter,
+            titleUpper = _props$attributes3.titleUpper,
+            titleStyle = _props$attributes3.titleStyle,
+            titleLine = _props$attributes3.titleLine,
+            titleWeight = _props$attributes3.titleWeight,
+            titleBack = _props$attributes3.titleBack,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titleMarginT = _props$attributes3.titleMarginT,
+            titleMarginB = _props$attributes3.titleMarginB,
+            titlePadding = _props$attributes3.titlePadding,
+            descChecked = _props$attributes3.descChecked,
+            desc = _props$attributes3.desc,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descStyle = _props$attributes3.descStyle,
+            descLetter = _props$attributes3.descLetter,
+            descBack = _props$attributes3.descBack,
+            descMarginT = _props$attributes3.descMarginT,
+            descMarginB = _props$attributes3.descMarginB,
+            descPadding = _props$attributes3.descPadding,
+            priceChecked = _props$attributes3.priceChecked,
+            priceBack = _props$attributes3.priceBack,
+            priceMarginT = _props$attributes3.priceMarginT,
+            priceMarginB = _props$attributes3.priceMarginB,
+            pricePadding = _props$attributes3.pricePadding,
+            slashPrice = _props$attributes3.slashPrice,
+            slashColor = _props$attributes3.slashColor,
+            slashSize = _props$attributes3.slashSize,
+            slashWeight = _props$attributes3.slashWeight,
+            slashV = _props$attributes3.slashV,
+            currPrice = _props$attributes3.currPrice,
+            currColor = _props$attributes3.currColor,
+            currSize = _props$attributes3.currSize,
+            currWeight = _props$attributes3.currWeight,
+            currV = _props$attributes3.currV,
+            valPrice = _props$attributes3.valPrice,
+            valColor = _props$attributes3.valColor,
+            valSize = _props$attributes3.valSize,
+            valWeight = _props$attributes3.valWeight,
+            valV = _props$attributes3.valV,
+            divPrice = _props$attributes3.divPrice,
+            divColor = _props$attributes3.divColor,
+            divSize = _props$attributes3.divSize,
+            divWeight = _props$attributes3.divWeight,
+            divV = _props$attributes3.divV,
+            durPrice = _props$attributes3.durPrice,
+            durColor = _props$attributes3.durColor,
+            durSize = _props$attributes3.durSize,
+            durWeight = _props$attributes3.durWeight,
+            durV = _props$attributes3.durV,
+            btnChecked = _props$attributes3.btnChecked,
+            btnText = _props$attributes3.btnText,
+            btnLink = _props$attributes3.btnLink,
+            btnTarget = _props$attributes3.btnTarget,
+            btnColor = _props$attributes3.btnColor,
+            btnHoverColor = _props$attributes3.btnHoverColor,
+            btnSize = _props$attributes3.btnSize,
+            btnWeight = _props$attributes3.btnWeight,
+            btnLine = _props$attributes3.btnLine,
+            btnLetter = _props$attributes3.btnLetter,
+            btnUpper = _props$attributes3.btnUpper,
+            btnStyle = _props$attributes3.btnStyle,
+            btnBack = _props$attributes3.btnBack,
+            btnHoverBack = _props$attributes3.btnHoverBack,
+            btnMarginT = _props$attributes3.btnMarginT,
+            btnMarginB = _props$attributes3.btnMarginB,
+            btnPadding = _props$attributes3.btnPadding,
+            btnPaddingU = _props$attributes3.btnPaddingU,
+            btnWidth = _props$attributes3.btnWidth,
+            btnBorderType = _props$attributes3.btnBorderType,
+            btnBorderWidth = _props$attributes3.btnBorderWidth,
+            btnBorderRadius = _props$attributes3.btnBorderRadius,
+            btnBorderColor = _props$attributes3.btnBorderColor,
+            badgeChecked = _props$attributes3.badgeChecked,
+            badgePos = _props$attributes3.badgePos,
+            badgeBack = _props$attributes3.badgeBack,
+            badgeColor = _props$attributes3.badgeColor,
+            badgeTop = _props$attributes3.badgeTop,
+            badgeHorizontal = _props$attributes3.badgeHorizontal,
+            badgeWidth = _props$attributes3.badgeWidth,
+            badgeSize = _props$attributes3.badgeSize,
+            badgeTextSize = _props$attributes3.badgeTextSize,
+            badgeWeight = _props$attributes3.badgeWeight,
+            badgeLetter = _props$attributes3.badgeLetter,
+            badgeStyle = _props$attributes3.badgeStyle,
+            badgeUpper = _props$attributes3.badgeUpper,
+            badgeText = _props$attributes3.badgeText,
+            listChecked = _props$attributes3.listChecked,
+            listColor = _props$attributes3.listColor,
+            listWeight = _props$attributes3.listWeight,
+            listSize = _props$attributes3.listSize,
+            listItemsStyle = _props$attributes3.listItemsStyle,
+            listLine = _props$attributes3.listLine,
+            listUpper = _props$attributes3.listUpper,
+            listLetter = _props$attributes3.listLetter,
+            listBack = _props$attributes3.listBack,
+            listItems = _props$attributes3.listItems,
+            listMarginB = _props$attributes3.listMarginB,
+            listMarginT = _props$attributes3.listMarginT,
+            listPadding = _props$attributes3.listPadding,
+            listStyle = _props$attributes3.listStyle,
+            id = _props$attributes3.id;
 
         return React.createElement(
             "div",
@@ -54632,130 +55827,130 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: _attributes2.default,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         return Object.assign(attributes, { btnPaddingU: "" });
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            contentAlign = _props$attributes3.contentAlign,
-            tableBack = _props$attributes3.tableBack,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            tablePadding = _props$attributes3.tablePadding,
-            titleChecked = _props$attributes3.titleChecked,
-            title = _props$attributes3.title,
-            titleTag = _props$attributes3.titleTag,
-            titleColor = _props$attributes3.titleColor,
-            titleSize = _props$attributes3.titleSize,
-            titleLetter = _props$attributes3.titleLetter,
-            titleUpper = _props$attributes3.titleUpper,
-            titleStyle = _props$attributes3.titleStyle,
-            titleLine = _props$attributes3.titleLine,
-            titleWeight = _props$attributes3.titleWeight,
-            titleBack = _props$attributes3.titleBack,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titleMarginT = _props$attributes3.titleMarginT,
-            titleMarginB = _props$attributes3.titleMarginB,
-            titlePadding = _props$attributes3.titlePadding,
-            descChecked = _props$attributes3.descChecked,
-            desc = _props$attributes3.desc,
-            descColor = _props$attributes3.descColor,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descStyle = _props$attributes3.descStyle,
-            descLetter = _props$attributes3.descLetter,
-            descBack = _props$attributes3.descBack,
-            descMarginT = _props$attributes3.descMarginT,
-            descMarginB = _props$attributes3.descMarginB,
-            descPadding = _props$attributes3.descPadding,
-            priceChecked = _props$attributes3.priceChecked,
-            priceBack = _props$attributes3.priceBack,
-            priceMarginT = _props$attributes3.priceMarginT,
-            priceMarginB = _props$attributes3.priceMarginB,
-            pricePadding = _props$attributes3.pricePadding,
-            slashPrice = _props$attributes3.slashPrice,
-            slashColor = _props$attributes3.slashColor,
-            slashSize = _props$attributes3.slashSize,
-            slashWeight = _props$attributes3.slashWeight,
-            slashV = _props$attributes3.slashV,
-            currPrice = _props$attributes3.currPrice,
-            currColor = _props$attributes3.currColor,
-            currSize = _props$attributes3.currSize,
-            currWeight = _props$attributes3.currWeight,
-            currV = _props$attributes3.currV,
-            valPrice = _props$attributes3.valPrice,
-            valColor = _props$attributes3.valColor,
-            valSize = _props$attributes3.valSize,
-            valWeight = _props$attributes3.valWeight,
-            valV = _props$attributes3.valV,
-            divPrice = _props$attributes3.divPrice,
-            divColor = _props$attributes3.divColor,
-            divSize = _props$attributes3.divSize,
-            divWeight = _props$attributes3.divWeight,
-            divV = _props$attributes3.divV,
-            durPrice = _props$attributes3.durPrice,
-            durColor = _props$attributes3.durColor,
-            durSize = _props$attributes3.durSize,
-            durWeight = _props$attributes3.durWeight,
-            durV = _props$attributes3.durV,
-            btnChecked = _props$attributes3.btnChecked,
-            btnText = _props$attributes3.btnText,
-            btnLink = _props$attributes3.btnLink,
-            btnTarget = _props$attributes3.btnTarget,
-            btnColor = _props$attributes3.btnColor,
-            btnHoverColor = _props$attributes3.btnHoverColor,
-            btnSize = _props$attributes3.btnSize,
-            btnWeight = _props$attributes3.btnWeight,
-            btnLine = _props$attributes3.btnLine,
-            btnLetter = _props$attributes3.btnLetter,
-            btnUpper = _props$attributes3.btnUpper,
-            btnStyle = _props$attributes3.btnStyle,
-            btnBack = _props$attributes3.btnBack,
-            btnHoverBack = _props$attributes3.btnHoverBack,
-            btnMarginT = _props$attributes3.btnMarginT,
-            btnMarginB = _props$attributes3.btnMarginB,
-            btnPadding = _props$attributes3.btnPadding,
-            btnWidth = _props$attributes3.btnWidth,
-            btnBorderType = _props$attributes3.btnBorderType,
-            btnBorderWidth = _props$attributes3.btnBorderWidth,
-            btnBorderRadius = _props$attributes3.btnBorderRadius,
-            btnBorderColor = _props$attributes3.btnBorderColor,
-            badgeChecked = _props$attributes3.badgeChecked,
-            badgePos = _props$attributes3.badgePos,
-            badgeBack = _props$attributes3.badgeBack,
-            badgeColor = _props$attributes3.badgeColor,
-            badgeTop = _props$attributes3.badgeTop,
-            badgeHorizontal = _props$attributes3.badgeHorizontal,
-            badgeWidth = _props$attributes3.badgeWidth,
-            badgeSize = _props$attributes3.badgeSize,
-            badgeTextSize = _props$attributes3.badgeTextSize,
-            badgeWeight = _props$attributes3.badgeWeight,
-            badgeLetter = _props$attributes3.badgeLetter,
-            badgeStyle = _props$attributes3.badgeStyle,
-            badgeUpper = _props$attributes3.badgeUpper,
-            badgeText = _props$attributes3.badgeText,
-            listChecked = _props$attributes3.listChecked,
-            listColor = _props$attributes3.listColor,
-            listWeight = _props$attributes3.listWeight,
-            listSize = _props$attributes3.listSize,
-            listItemsStyle = _props$attributes3.listItemsStyle,
-            listLine = _props$attributes3.listLine,
-            listUpper = _props$attributes3.listUpper,
-            listLetter = _props$attributes3.listLetter,
-            listBack = _props$attributes3.listBack,
-            listItems = _props$attributes3.listItems,
-            listMarginB = _props$attributes3.listMarginB,
-            listMarginT = _props$attributes3.listMarginT,
-            listPadding = _props$attributes3.listPadding,
-            listStyle = _props$attributes3.listStyle,
-            id = _props$attributes3.id;
+        var _props$attributes4 = props.attributes,
+            contentAlign = _props$attributes4.contentAlign,
+            tableBack = _props$attributes4.tableBack,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            tablePadding = _props$attributes4.tablePadding,
+            titleChecked = _props$attributes4.titleChecked,
+            title = _props$attributes4.title,
+            titleTag = _props$attributes4.titleTag,
+            titleColor = _props$attributes4.titleColor,
+            titleSize = _props$attributes4.titleSize,
+            titleLetter = _props$attributes4.titleLetter,
+            titleUpper = _props$attributes4.titleUpper,
+            titleStyle = _props$attributes4.titleStyle,
+            titleLine = _props$attributes4.titleLine,
+            titleWeight = _props$attributes4.titleWeight,
+            titleBack = _props$attributes4.titleBack,
+            titleShadowBlur = _props$attributes4.titleShadowBlur,
+            titleShadowColor = _props$attributes4.titleShadowColor,
+            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes4.titleShadowVertical,
+            titleMarginT = _props$attributes4.titleMarginT,
+            titleMarginB = _props$attributes4.titleMarginB,
+            titlePadding = _props$attributes4.titlePadding,
+            descChecked = _props$attributes4.descChecked,
+            desc = _props$attributes4.desc,
+            descColor = _props$attributes4.descColor,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descStyle = _props$attributes4.descStyle,
+            descLetter = _props$attributes4.descLetter,
+            descBack = _props$attributes4.descBack,
+            descMarginT = _props$attributes4.descMarginT,
+            descMarginB = _props$attributes4.descMarginB,
+            descPadding = _props$attributes4.descPadding,
+            priceChecked = _props$attributes4.priceChecked,
+            priceBack = _props$attributes4.priceBack,
+            priceMarginT = _props$attributes4.priceMarginT,
+            priceMarginB = _props$attributes4.priceMarginB,
+            pricePadding = _props$attributes4.pricePadding,
+            slashPrice = _props$attributes4.slashPrice,
+            slashColor = _props$attributes4.slashColor,
+            slashSize = _props$attributes4.slashSize,
+            slashWeight = _props$attributes4.slashWeight,
+            slashV = _props$attributes4.slashV,
+            currPrice = _props$attributes4.currPrice,
+            currColor = _props$attributes4.currColor,
+            currSize = _props$attributes4.currSize,
+            currWeight = _props$attributes4.currWeight,
+            currV = _props$attributes4.currV,
+            valPrice = _props$attributes4.valPrice,
+            valColor = _props$attributes4.valColor,
+            valSize = _props$attributes4.valSize,
+            valWeight = _props$attributes4.valWeight,
+            valV = _props$attributes4.valV,
+            divPrice = _props$attributes4.divPrice,
+            divColor = _props$attributes4.divColor,
+            divSize = _props$attributes4.divSize,
+            divWeight = _props$attributes4.divWeight,
+            divV = _props$attributes4.divV,
+            durPrice = _props$attributes4.durPrice,
+            durColor = _props$attributes4.durColor,
+            durSize = _props$attributes4.durSize,
+            durWeight = _props$attributes4.durWeight,
+            durV = _props$attributes4.durV,
+            btnChecked = _props$attributes4.btnChecked,
+            btnText = _props$attributes4.btnText,
+            btnLink = _props$attributes4.btnLink,
+            btnTarget = _props$attributes4.btnTarget,
+            btnColor = _props$attributes4.btnColor,
+            btnHoverColor = _props$attributes4.btnHoverColor,
+            btnSize = _props$attributes4.btnSize,
+            btnWeight = _props$attributes4.btnWeight,
+            btnLine = _props$attributes4.btnLine,
+            btnLetter = _props$attributes4.btnLetter,
+            btnUpper = _props$attributes4.btnUpper,
+            btnStyle = _props$attributes4.btnStyle,
+            btnBack = _props$attributes4.btnBack,
+            btnHoverBack = _props$attributes4.btnHoverBack,
+            btnMarginT = _props$attributes4.btnMarginT,
+            btnMarginB = _props$attributes4.btnMarginB,
+            btnPadding = _props$attributes4.btnPadding,
+            btnWidth = _props$attributes4.btnWidth,
+            btnBorderType = _props$attributes4.btnBorderType,
+            btnBorderWidth = _props$attributes4.btnBorderWidth,
+            btnBorderRadius = _props$attributes4.btnBorderRadius,
+            btnBorderColor = _props$attributes4.btnBorderColor,
+            badgeChecked = _props$attributes4.badgeChecked,
+            badgePos = _props$attributes4.badgePos,
+            badgeBack = _props$attributes4.badgeBack,
+            badgeColor = _props$attributes4.badgeColor,
+            badgeTop = _props$attributes4.badgeTop,
+            badgeHorizontal = _props$attributes4.badgeHorizontal,
+            badgeWidth = _props$attributes4.badgeWidth,
+            badgeSize = _props$attributes4.badgeSize,
+            badgeTextSize = _props$attributes4.badgeTextSize,
+            badgeWeight = _props$attributes4.badgeWeight,
+            badgeLetter = _props$attributes4.badgeLetter,
+            badgeStyle = _props$attributes4.badgeStyle,
+            badgeUpper = _props$attributes4.badgeUpper,
+            badgeText = _props$attributes4.badgeText,
+            listChecked = _props$attributes4.listChecked,
+            listColor = _props$attributes4.listColor,
+            listWeight = _props$attributes4.listWeight,
+            listSize = _props$attributes4.listSize,
+            listItemsStyle = _props$attributes4.listItemsStyle,
+            listLine = _props$attributes4.listLine,
+            listUpper = _props$attributes4.listUpper,
+            listLetter = _props$attributes4.listLetter,
+            listBack = _props$attributes4.listBack,
+            listItems = _props$attributes4.listItems,
+            listMarginB = _props$attributes4.listMarginB,
+            listMarginT = _props$attributes4.listMarginT,
+            listPadding = _props$attributes4.listPadding,
+            listStyle = _props$attributes4.listStyle,
+            id = _props$attributes4.id;
 
         return React.createElement(
             "div",

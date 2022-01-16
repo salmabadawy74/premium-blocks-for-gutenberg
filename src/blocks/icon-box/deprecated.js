@@ -1,8 +1,8 @@
 const className = "premium-icon-box";
-
 const { __ } = wp.i18n;
-
 const { RichText } = wp.editor;
+import hexToRgba from 'hex-to-rgba'
+
 
 const attributes = {
     block_id: {
@@ -711,11 +711,10 @@ const deprecatedContent = [
                 hideTablet,
                 hideMobile
             } = props.attributes;
-            const mainClasses = classnames(className, 'premium-icon-box');
             return (
                 <div
                     id={`premium-icon-box-${block_id}`}
-                    className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    className={`${className} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
                         textAlign: align,
                         borderStyle: borderType,

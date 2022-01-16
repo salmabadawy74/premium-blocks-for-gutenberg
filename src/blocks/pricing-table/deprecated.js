@@ -1,4 +1,4 @@
-import attributes from "./attributes";
+
 
 const className = "premium-pricing-table";
 
@@ -6,7 +6,1225 @@ const { __ } = wp.i18n;
 
 const { RichText } = wp.editor;
 
+import hexToRgba from 'hex-to-rgba'
+
+
+const attributes = {
+    borderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    tableBack: {
+        type: "string"
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    tablePadding: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowColor: {
+        type: "string"
+    },
+    tableShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    tableShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__title",
+        default: "Pricing Table"
+    },
+    titleTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    titleSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: 'number'
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleBack: {
+        type: "string"
+    },
+    titleMarginB: {
+        type: "number",
+        default: 20
+    },
+    titleMarginT: {
+        type: "number",
+        default: 20
+    },
+    titlePadding: {
+        type: "number",
+        default: "0"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__desc"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number"
+    },
+    descSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    descSizeTablet: {
+        type: 'number'
+    },
+    descSizeMobile: {
+        type: 'number'
+    },
+    descWeight: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descLine: {
+        type: "number"
+    },
+    descBack: {
+        type: "string"
+    },
+    descMarginT: {
+        type: "number",
+        default: "0"
+    },
+    descMarginB: {
+        type: "number",
+        default: "30"
+    },
+    descPadding: {
+        type: "number",
+        default: "0"
+    },
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    descChecked: {
+        type: "boolean",
+        default: false
+    },
+    priceChecked: {
+        type: "boolean",
+        default: true
+    },
+    priceBack: {
+        type: "string"
+    },
+    priceMarginT: {
+        type: "number"
+    },
+    priceMarginB: {
+        type: "number",
+        default: 10
+    },
+    pricePadding: {
+        type: "number"
+    },
+    slashPrice: {
+        type: "string"
+    },
+    slashColor: {
+        type: "string"
+    },
+    slashSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    slashSize: {
+        type: "number",
+        default: 20
+    },
+    slashSizeMobile: {
+        type: "number"
+    },
+    slashSizeTablet: {
+        type: "number"
+    },
+    slashWeight: {
+        type: "number"
+    },
+    currPrice: {
+        type: "string",
+        default: "$"
+    },
+    currColor: {
+        type: "string"
+    },
+    currSize: {
+        type: "number",
+        default: 20
+    },
+    currSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    currSizeMobile: {
+        type: "number"
+    },
+    currSizeTablet: {
+        type: "number"
+    },
+    currWeight: {
+        type: "number"
+    },
+    valPrice: {
+        type: "string",
+        default: "25"
+    },
+    valColor: {
+        type: "string"
+    },
+    valSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    valSize: {
+        type: "number",
+        default: 50
+    },
+    valSizeMobile: {
+        type: "number"
+    },
+    valSizeTablet: {
+        type: "number"
+    },
+    valWeight: {
+        type: "number"
+    },
+    divPrice: {
+        type: "string",
+        default: "/"
+    },
+    divColor: {
+        type: "string"
+    },
+    divSize: {
+        type: "number",
+        default: 20
+    },
+    divSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    divSizeMobile: {
+        type: "number"
+    },
+    divSizeTablet: {
+        type: "number"
+    },
+    divWeight: {
+        type: "number"
+    },
+    durPrice: {
+        type: "string",
+        default: "m"
+    },
+    durColor: {
+        type: "string"
+    },
+    durSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    durSize: {
+        type: "number",
+        default: 20
+    },
+    durSizeMobile: {
+        type: "number"
+    },
+    durSizeTablet: {
+        type: "number"
+    },
+    durWeight: {
+        type: "number"
+    },
+    selectedStyle: {
+        type: "string",
+        default: "price"
+    },
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnText: {
+        type: "string",
+        default: "Get Started"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-pricing-table__button_link"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: true
+    },
+    btnColor: {
+        type: "string",
+        default: "#fff"
+    },
+    btnHoverColor: {
+        type: "string"
+    },
+    btnWidth: {
+        type: "number"
+    },
+    btnSize: {
+        type: "number"
+    },
+    btnSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    btnSizeTablet: {
+        type: 'number'
+    },
+    btnSizeMobile: {
+        type: 'number'
+    },
+    btnWeight: {
+        type: "number",
+        default: 900
+    },
+    btnLine: {
+        type: "number"
+    },
+    btnLetter: {
+        type: "number"
+    },
+    btnStyle: {
+        type: "string"
+    },
+    btnUpper: {
+        type: "boolean"
+    },
+    btnBack: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    btnHoverBack: {
+        type: "string"
+    },
+    btnMarginT: {
+        type: "number",
+        default: "0"
+    },
+    btnMarginB: {
+        type: "number",
+        default: "0"
+    },
+    btnPadding: {
+        type: "number",
+        default: 10
+    },
+    btnPaddingU: {
+        type: "string"
+    },
+    btnBorderType: {
+        type: "string",
+        default: "none"
+    },
+    btnBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    btnBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    btnBorderColor: {
+        type: "string"
+    },
+    badgeChecked: {
+        type: "boolean"
+    },
+    badgePos: {
+        type: "string",
+        default: "right"
+    },
+    badgeBack: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    badgeColor: {
+        type: "string"
+    },
+    badgeTextSize: {
+        type: "number"
+    },
+    badgeSize: {
+        type: "number"
+    },
+    badgeTextUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    badgeTextSizeTablet: {
+        type: 'number'
+    },
+    badgeTextSizeMobile: {
+        type: 'number'
+    },
+    badgeTop: {
+        type: "number"
+    },
+    badgeHorizontal: {
+        type: "number"
+    },
+    badgeWidth: {
+        type: "number"
+    },
+    badgeWeight: {
+        type: "number",
+        default: 900
+    },
+    badgeLetter: {
+        type: "number"
+    },
+    badgeStyle: {
+        type: "string"
+    },
+    badgeUpper: {
+        type: "boolean"
+    },
+    badgeText: {
+        type: "string",
+        default: __("Popular")
+    },
+    listChecked: {
+        type: "boolean",
+        default: true
+    },
+    listColor: {
+        type: "string"
+    },
+    listSize: {
+        type: "number"
+    },
+    listSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    listSizeTablet: {
+        type: 'number'
+    },
+    listSizeMobile: {
+        type: 'number'
+    },
+    listWeight: {
+        type: "number",
+        default: 500
+    },
+    listItemsStyle: {
+        type: "string"
+    },
+    listLetter: {
+        type: "number"
+    },
+    listLine: {
+        type: "number"
+    },
+    listUpper: {
+        type: "boolean"
+    },
+    listBack: {
+        type: "string"
+    },
+    listItems: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__list"
+    },
+    listMarginB: {
+        type: "number",
+        default: 20
+    },
+    listMarginT: {
+        type: "number"
+    },
+    listPadding: {
+        type: "number"
+    },
+    listStyle: {
+        type: "string",
+        default: "disc"
+    },
+    featsAlign: {
+        type: "string"
+    },
+    slashV: {
+        type: "string",
+        default: "center"
+    },
+    currV: {
+        type: "string",
+        default: "center"
+    },
+    valV: {
+        type: "string",
+        default: "center"
+    },
+    divV: {
+        type: "string",
+        default: "center"
+    },
+    durV: {
+        type: "string",
+        default: "center"
+    },
+    block_id: {
+        type: "string"
+    },
+    btnBorderTop: {
+        type: "number"
+    },
+    btnBorderRight: {
+        type: "number"
+    },
+    btnBorderBottom: {
+        type: "number"
+    },
+    btnBorderLeft: {
+        type: "number"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    tableOpacity: {
+        type: "number",
+        default: "1",
+    },
+    priceOpacity: {
+        type: "number",
+        default: "1"
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+}
+const new_Attributes = {
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+                titleTag: 'H2',
+                titleSizeUnit: 'px',
+                titleSize: '',
+                titleSizeMobile: '',
+                titleSizeTablet: '',
+                titleLine: '',
+                titleLetter: '',
+                titleStyle: '',
+                titleUpper: false,
+                titleWeight: 500,
+                titleColor: "#6ec1e4",
+                titleBack: '',
+                titleShadowColor: '',
+                titleShadowBlur: '0',
+                titleShadowHorizontal: '0',
+                titleShadowVertical: '0',
+                titleMarginB: 20,
+                titleMarginT: 20,
+                titlePadding: 0,
+            }
+        ]
+    },
+    priceStyles: {
+        type: "array",
+        default: [
+            {
+                priceBack: '',
+                priceOpacity: 1,
+                priceMarginT: '',
+                priceMarginB: 10,
+                pricePadding: '',
+                slashPrice: '',
+                slashColor: '',
+                slashSizeUnit: 'px',
+                slashSize: 20,
+                slashSizeMobile: '',
+                slashSizeTablet: '',
+                slashWeight: '',
+                currPrice: '$',
+                currColor: '',
+                currSize: 20,
+                currSizeUnit: 'px',
+                currSizeMobile: '',
+                currSizeTablet: '',
+                currWeight: '',
+                valPrice: '25',
+                valColor: '',
+                valSizeUnit: 'px',
+                valSize: 50,
+                valSizeMobile: '',
+                valSizeTablet: '',
+                valWeight: '',
+                divPrice: "/",
+                divColor: '',
+                divSize: 20,
+                divSizeUnit: 'px',
+                divSizeMobile: '',
+                divSizeTablet: '',
+                divWeight: '',
+                durPrice: 'm',
+                durColor: '',
+                durSizeUnit: 'px',
+                durSize: 20,
+                durSizeMobile: '',
+                durSizeTablet: '',
+                durWeight: '',
+                selectedStyle: "price",
+                slashV: 'center',
+                currV: 'center',
+                valV: "center",
+                divV: 'center',
+                durV: 'center',
+            }
+        ]
+    },
+    featureStyles: {
+        type: "array",
+        default: [
+            {
+                featsAlign: '',
+                listStyle: "disc",
+                listColor: '',
+                listSize: '',
+                listSizeUnit: 'px',
+                listSizeTablet: '',
+                listSizeMobile: '',
+                listWeight: 500,
+                listItemsStyle: '',
+                listLetter: '',
+                listLine: '',
+                listUpper: false,
+                listBack: '',
+                listMarginB: 20,
+                listMarginT: '',
+                listPadding: '',
+            }
+        ]
+    },
+    descStyles: {
+        type: "array",
+        default: [
+            {
+                descSize: '',
+                descSizeUnit: 'px',
+                descSizeTablet: '',
+                descSizeMobile: '',
+                descWeight: '',
+                descLetter: '',
+                descStyle: '',
+                descLine: '',
+                descColor: "#000",
+                descBack: '',
+                descMarginT: 0,
+                descMarginB: 30,
+                descPadding: '0',
+            }
+        ]
+    },
+    buttonStyles: {
+        type: "array",
+        default: [
+            {
+                btnColor: "#fff",
+                btnHoverColor: '',
+                btnWidth: '',
+                btnSize: '',
+                btnSizeUnit: 'px',
+                btnSizeTablet: '',
+                btnSizeMobile: '',
+                btnWeight: 900,
+                btnLine: '',
+                btnLetter: '',
+                btnStyle: '',
+                btnUpper: false,
+                btnBack: "#6ec1e4",
+                btnHoverBack: '',
+                btnMarginT: 0,
+                btnMarginB: 0,
+                btnPadding: 10,
+                btnPaddingU: 'px',
+                btnBorderType: 'none',
+                btnBorderWidth: 1,
+                btnBorderRadius: 0,
+                btnBorderColor: '',
+                btnTarget: true,
+            }
+        ]
+    },
+    badgeStyles: {
+        type: "array",
+        default: [
+            {
+                badgePos: "right",
+                badgeBack: "#6ec1e4",
+                badgeColor: '',
+                badgeSize: '',
+                badgeTextUnit: 'px',
+                badgeSizeTablet: '',
+                badgeSizeMobile: '',
+                badgeTop: '',
+                badgeHorizontal: '',
+                badgeWidth: '',
+                badgeWeight: 900,
+                badgeLetter: '',
+                badgeStyle: '',
+                badgeUpper: false,
+                badgeText: __("Popular"),
+            }
+        ]
+    },
+    tableStyles: {
+        type: "array",
+        default: [
+            {
+                tableBack: '',
+                tableOpacity: 1,
+                borderType: 'none',
+                borderWidth: 1,
+                borderRadius: 0,
+                tableShadowColor: '',
+                tableShadowBlur: '0',
+                tableShadowHorizontal: '0',
+                tableShadowVertical: '0',
+                tableShadowPosition: '',
+                tablePadding: "0",
+            }
+        ]
+    }
+}
+
+const new_deprecated_attributes = Object.assign(attributes, new_Attributes)
+
 const deprecatedContent = [
+    {
+        attributes: new_deprecated_attributes,
+        save: (props) => {
+            const {
+                borderUpdated,
+                btnBorderUpdated,
+                priceOpacity,
+                tableOpacity,
+                contentAlign,
+                tableBack,
+                borderType,
+                borderWidth,
+                borderRadius,
+                borderColor,
+                tablePadding,
+                tableShadowBlur,
+                tableShadowColor,
+                tableShadowHorizontal,
+                tableShadowVertical,
+                tableShadowPosition,
+                titleChecked,
+                title,
+                titleTag,
+                titleColor,
+                titleLetter,
+                titleUpper,
+                titleStyle,
+                titleLine,
+                titleWeight,
+                titleBack,
+                titleShadowBlur,
+                titleShadowColor,
+                titleShadowHorizontal,
+                titleShadowVertical,
+                titleMarginT,
+                titleMarginB,
+                titlePadding,
+                descChecked,
+                desc,
+                descColor,
+                descLine,
+                descWeight,
+                descStyle,
+                descLetter,
+                descBack,
+                descMarginT,
+                descMarginB,
+                descPadding,
+                priceChecked,
+                priceBack,
+                priceMarginT,
+                priceMarginB,
+                pricePadding,
+                slashPrice,
+                slashColor,
+                slashWeight,
+                slashV,
+                currPrice,
+                currColor,
+                currWeight,
+                currV,
+                valPrice,
+                valColor,
+                valWeight,
+                valV,
+                divPrice,
+                divColor,
+                divWeight,
+                divV,
+                durPrice,
+                durColor,
+                durWeight,
+                durV,
+                btnChecked,
+                btnText,
+                btnLink,
+                btnTarget,
+                btnColor,
+                btnHoverColor,
+                btnWeight,
+                btnLine,
+                btnLetter,
+                btnUpper,
+                btnStyle,
+                btnBack,
+                btnHoverBack,
+                btnMarginT,
+                btnMarginB,
+                btnPadding,
+                btnPaddingU,
+                btnWidth,
+                btnBorderTop,
+                btnBorderRight,
+                btnBorderBottom,
+                btnBorderLeft,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
+                btnBorderType,
+                btnBorderWidth,
+                btnBorderRadius,
+                btnBorderColor,
+                badgeChecked,
+                badgePos,
+                badgeBack,
+                badgeColor,
+                badgeTop,
+                badgeHorizontal,
+                badgeWidth,
+                badgeSize,
+                badgeWeight,
+                badgeLetter,
+                badgeStyle,
+                badgeUpper,
+                badgeText,
+                listChecked,
+                listColor,
+                listWeight,
+                listItemsStyle,
+                listLine,
+                listUpper,
+                listLetter,
+                listBack,
+                listItems,
+                listMarginB,
+                listMarginT,
+                listPadding,
+                listStyle,
+                featsAlign,
+                block_id,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = props.attributes;
+
+
+            return (
+                <div
+                    id={`${className}-${block_id}`}
+                    className={`${className} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        textAlign: contentAlign,
+                        backgroundColor: tableBack
+                            ? hexToRgba(tableBack, tableOpacity)
+                            : "transparent",
+                        borderStyle: borderType,
+                        borderWidth: borderUpdated
+                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                            : borderWidth + "px",
+                        borderRadius: borderRadius + "px",
+                        borderColor: borderColor,
+                        padding: tablePadding + "px",
+                        boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
+                    }}
+                >
+                    {badgeChecked && (
+                        <div
+                            className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
+                        >
+                            <div
+                                className={`premium-pricing-table__badge`}
+                                style={{
+                                    borderRightColor:
+                                        "right" === badgePos
+                                            ? badgeBack
+                                            : "transparent",
+                                    borderTopColor:
+                                        "left" === badgePos ? badgeBack : "transparent",
+                                    borderBottomWidth: badgeSize + "px",
+                                    borderRightWidth: badgeSize + "px",
+                                    borderTopWidth:
+                                        "left" === badgePos ? badgeSize + "px" : "none",
+                                    borderLeftWidth:
+                                        "right" === badgePos ? badgeSize + "px" : "none"
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        color: badgeColor,
+                                        fontWeight: badgeWeight,
+                                        textTransform: badgeUpper
+                                            ? "uppercase"
+                                            : "none",
+                                        letterSpacing: badgeLetter + "px",
+                                        fontStyle: badgeStyle,
+                                        width: badgeWidth + "px",
+                                        top: badgeTop + "px",
+                                        left:
+                                            "left" === badgePos
+                                                ? badgeHorizontal + "px"
+                                                : "auto",
+                                        right:
+                                            "right" === badgePos
+                                                ? badgeHorizontal + "px"
+                                                : "auto"
+                                    }}
+                                >
+                                    {badgeText}
+                                </span>
+                            </div>
+                        </div>
+                    )}
+                    {titleChecked && (
+                        <div
+                            className={`premium-pricing-table__title_wrap`}
+                            style={{
+                                paddingTop: titleMarginT + "px",
+                                paddingBottom: titleMarginB + "px"
+                            }}
+                        >
+                            <RichText.Content
+                                tagName={titleTag.toLowerCase()}
+                                className={`premium-pricing-table__title`}
+                                value={title}
+                                style={{
+                                    color: titleColor,
+                                    background: titleBack,
+                                    letterSpacing: titleLetter + "px",
+                                    textTransform: titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyle,
+                                    fontWeight: titleWeight,
+                                    lineHeight: titleLine + "px",
+                                    marginBottom: titleMarginB + "px",
+                                    padding: titlePadding + "px",
+                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                                }}
+                            />
+                        </div>
+                    )}
+                    {priceChecked && (
+                        <div
+                            className={`premium-pricing-table__price_wrap`}
+                            style={{
+                                backgroundColor: priceBack
+                                    ? hexToRgba(priceBack, priceOpacity)
+                                    : "transparent",
+                                marginTop: priceMarginT + "px",
+                                marginBottom: priceMarginB + "px",
+                                padding: pricePadding + "px",
+                                justifyContent: contentAlign
+                            }}
+                        >
+                            {slashPrice && (
+                                <strike
+                                    className={`premium-pricing-table__slash`}
+                                    style={{
+                                        color: slashColor,
+                                        fontWeight: slashWeight,
+                                        alignSelf: slashV
+                                    }}
+                                >
+                                    {slashPrice}
+                                </strike>
+                            )}
+                            {currPrice && (
+                                <span
+                                    className={`premium-pricing-table__currency`}
+                                    style={{
+                                        color: currColor,
+                                        fontWeight: currWeight,
+                                        alignSelf: currV
+                                    }}
+                                >
+                                    {currPrice}
+                                </span>
+                            )}
+                            {valPrice && (
+                                <span
+                                    className={`premium-pricing-table__val`}
+                                    style={{
+                                        color: valColor,
+                                        fontWeight: valWeight,
+                                        alignSelf: valV
+                                    }}
+                                >
+                                    {valPrice}
+                                </span>
+                            )}
+                            {divPrice && (
+                                <span
+                                    className={`premium-pricing-table__divider`}
+                                    style={{
+                                        color: divColor,
+                                        fontWeight: divWeight,
+                                        alignSelf: divV
+                                    }}
+                                >
+                                    {divPrice}
+                                </span>
+                            )}
+                            {durPrice && (
+                                <span
+                                    className={`premium-pricing-table__dur`}
+                                    style={{
+                                        color: durColor,
+                                        fontWeight: durWeight,
+                                        alignSelf: durV
+                                    }}
+                                >
+                                    {durPrice}
+                                </span>
+                            )}
+                        </div>
+                    )}
+                    {listChecked && (
+                        <div
+                            className={`premium-pricing-table__list_wrap`}
+                            style={{
+                                marginTop: listMarginT + "px",
+                                marginBottom: listMarginB + "px"
+                            }}
+                        >
+                            <ul
+                                className={`premium-pricing-table__list list-${listStyle}`}
+                                style={{
+                                    color: listColor,
+                                    background: listBack,
+                                    padding: listPadding + "px",
+                                    listStyle:
+                                        "check" !== listStyle ? listStyle : "none",
+                                    listStylePosition: "inside",
+                                    fontWeight: listWeight,
+                                    letterSpacing: listLetter + "px",
+                                    textTransform: listUpper ? "uppercase" : "none",
+                                    fontStyle: listItemsStyle,
+                                    lineHeight: listLine + "px",
+                                    textAlign: featsAlign ? featsAlign : contentAlign
+                                }}
+                            >
+                                {listItems}
+                            </ul>
+                        </div>
+                    )}
+                    {descChecked && (
+                        <div className={`premium-pricing-table__desc_wrap`}>
+                            <RichText.Content
+                                tagName="p"
+                                className={`premium-pricing-table__desc`}
+                                value={desc}
+                                style={{
+                                    color: descColor,
+                                    background: descBack,
+                                    fontWeight: descWeight,
+                                    lineHeight: descLine + "px",
+                                    letterSpacing: descLetter + "px",
+                                    fontStyle: descStyle,
+                                    marginTop: descMarginT + "px",
+                                    marginBottom: descMarginB + "px",
+                                    padding: descPadding + "px"
+                                }}
+                            />
+                        </div>
+                    )}
+                    {btnChecked && (
+                        <div
+                            className={`premium-pricing-table__button`}
+                            style={{
+                                width: btnWidth + "%"
+                            }}
+                        >
+                            <a
+                                class={`premium-pricing-table__button_link`}
+                                href={btnLink}
+                                target={btnTarget ? "_blank" : "_self"}
+                                rel="noopener noreferrer"
+                                style={{
+                                    color: btnColor,
+                                    background: btnBack ? btnBack : "transparent",
+                                    fontWeight: btnWeight,
+                                    letterSpacing: btnLetter + "px",
+                                    fontStyle: btnStyle,
+                                    lineHeight: btnLine + "px",
+                                    marginTop: btnMarginT,
+                                    marginBottom: btnMarginB,
+                                    padding: btnPadding + btnPaddingU,
+                                    borderStyle: btnBorderType,
+                                    borderWidth: btnBorderUpdated
+                                        ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                        : btnBorderWidth + "px",
+                                    borderRadius: btnBorderRadius + "px",
+                                    borderColor: btnBorderColor
+                                }}
+                            >
+                                <RichText.Content
+                                    tagName="span"
+                                    onChange={newText =>
+                                        setAttributes({ btnText: newText })
+                                    }
+                                    value={btnText}
+                                    style={{
+                                        textTransform: btnUpper ? "uppercase" : "none"
+                                    }}
+                                />
+                            </a>
+                            <style
+                                dangerouslySetInnerHTML={{
+                                    __html: [
+                                        `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
+                                        `color: ${btnHoverColor} !important;`,
+                                        `background: ${btnHoverBack} !important`,
+                                        "}"
+                                    ].join("\n")
+                                }}
+                            />
+                        </div>
+                    )}
+                </div>
+            );
+        }
+    },
     {
         attributes: attributes,
         migrate: (attributes) => {

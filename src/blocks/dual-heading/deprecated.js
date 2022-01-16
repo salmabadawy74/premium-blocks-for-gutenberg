@@ -3,6 +3,7 @@ import classnames from "classnames";
 const { __ } = wp.i18n;
 
 const className = "premium-dheading-block";
+import hexToRgba from 'hex-to-rgba'
 
 const attributes = {
     block_id: {
@@ -449,6 +450,7 @@ const deprecatedContent = [
     {
         attributes: new_deprecated_attributes,
         save: props => {
+            const { className } = props;
             const {
                 block_id,
                 contentAlign,
