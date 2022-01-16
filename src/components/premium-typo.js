@@ -33,6 +33,7 @@ export default class PremiumTypo extends Component {
             isVisible: false,
             currentView: '',
             search: this.props.fontFamily || "System Default",
+            showUnit: this.props.showUnit || false
         }
 
         this.defaultValue = {
@@ -71,6 +72,7 @@ export default class PremiumTypo extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        console.log('hh', prevState.fontFamily, this.state.fontFamily)
         if (prevState.fontFamily !== this.state.fontFamily) {
             WebFont.load({
                 google: {
@@ -106,7 +108,7 @@ export default class PremiumTypo extends Component {
             isVisible,
             currentView,
             search,
-
+            showUnit
         } = this.state;
 
         const STYLE = [
@@ -265,7 +267,58 @@ export default class PremiumTypo extends Component {
                                 }}
                             >
                                 {size}{sizeUnit}
-                                {isVisible && currentView == 'options' && <Popover><span>options</span></Popover>}
+                                {isVisible && currentView == 'options' &&
+                                    <Popover>
+                                        <div className="kmt-option-modal kmt-typography-modal">
+                                            <div className="kmt-typography-container">
+                                                <ul className="kmt-typography-options">
+                                                    {components.includes("size") && (
+                                                        <li className="customize-control-kmt-slider">
+                                                            <PremiumRangeControl
+                                                                defaultValue={0}
+                                                                label={__("Font Size")}
+                                                                value={size}
+                                                                min="10"
+                                                                max="80"
+                                                                onChange={onChangeSize}
+                                                                showUnit={showUnit}
+                                                            />
+                                                        </li>
+                                                    )}
+                                                    {components.includes("line") && (
+                                                        <li className="customize-control-kmt-slider">
+                                                            <PremiumRangeControl
+                                                                label={__("Line Height")}
+                                                                value={line}
+                                                                onChange={onChangeLine}
+                                                                defaultValue={''}
+                                                                showUnit={showUnit}
+                                                                responsive={true}
+                                                            />
+                                                        </li>
+                                                    )}
+                                                    {components.includes("spacing") && (
+                                                        <li className="customize-control-kmt-slider">
+                                                            <PremiumRangeControl
+                                                                label={__("Letter Spacing")}
+                                                                value={spacing}
+                                                                onChange={onChangeSpacing}
+                                                                defaultValue={''}
+                                                                onChange={onChangeSpacing}
+                                                                showUnit={showUnit}
+                                                                responsive={true}
+                                                            />
+                                                        </li>
+                                                    )}
+                                                    <li className="kmt-typography-variant">
+                                                        <ul className="kmt-text-transform"></ul>
+                                                        <ul className="kmt-text-decoration"></ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </Popover>
+                                }
 
                             </span>
                             <span

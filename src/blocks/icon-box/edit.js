@@ -450,6 +450,7 @@ class edit extends Component {
                                     "family"
                                 ]}
                                 setAttributes={saveTitleStyle}
+                                showUnit={true}
                                 fontSizeType={{
                                     value: titleStyles[0].titleSizeUnit,
                                     label: __("titleSizeUnit"),

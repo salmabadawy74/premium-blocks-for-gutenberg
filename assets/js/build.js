@@ -1025,7 +1025,8 @@ var PremiumTypo = function (_Component) {
             sizeUnit: _this.props.sizeUnit || 'px',
             isVisible: false,
             currentView: '',
-            search: _this.props.fontFamily || "System Default"
+            search: _this.props.fontFamily || "System Default",
+            showUnit: _this.props.showUnit || false
         };
 
         _this.defaultValue = {
@@ -1067,6 +1068,7 @@ var PremiumTypo = function (_Component) {
     _createClass(PremiumTypo, [{
         key: "componentDidUpdate",
         value: function componentDidUpdate(prevProps, prevState) {
+            console.log('hh', prevState.fontFamily, this.state.fontFamily);
             if (prevState.fontFamily !== this.state.fontFamily) {
                 _webfontloader2.default.load({
                     google: {
@@ -1078,7 +1080,8 @@ var PremiumTypo = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            var _this2 = this;
+            var _this2 = this,
+                _React$createElement;
 
             var _props = this.props,
                 components = _props.components,
@@ -1110,7 +1113,8 @@ var PremiumTypo = function (_Component) {
                 sizeUnit = _state.sizeUnit,
                 isVisible = _state.isVisible,
                 currentView = _state.currentView,
-                search = _state.search;
+                search = _state.search,
+                showUnit = _state.showUnit;
 
 
             var STYLE = [{
@@ -1303,9 +1307,57 @@ var PremiumTypo = function (_Component) {
                                     Popover,
                                     null,
                                     React.createElement(
-                                        "span",
-                                        null,
-                                        "options"
+                                        "div",
+                                        { className: "kmt-option-modal kmt-typography-modal" },
+                                        React.createElement(
+                                            "div",
+                                            { className: "kmt-typography-container" },
+                                            React.createElement(
+                                                "ul",
+                                                { className: "kmt-typography-options" },
+                                                components.includes("size") && React.createElement(
+                                                    "li",
+                                                    { className: "customize-control-kmt-slider" },
+                                                    React.createElement(_premiumRangeControl2.default, {
+                                                        defaultValue: 0,
+                                                        label: __("Font Size"),
+                                                        value: size,
+                                                        min: "10",
+                                                        max: "80",
+                                                        onChange: onChangeSize,
+                                                        showUnit: showUnit
+                                                    })
+                                                ),
+                                                components.includes("line") && React.createElement(
+                                                    "li",
+                                                    { className: "customize-control-kmt-slider" },
+                                                    React.createElement(_premiumRangeControl2.default, {
+                                                        label: __("Line Height"),
+                                                        value: line,
+                                                        onChange: onChangeLine,
+                                                        defaultValue: '',
+                                                        showUnit: showUnit,
+                                                        responsive: true
+                                                    })
+                                                ),
+                                                components.includes("spacing") && React.createElement(
+                                                    "li",
+                                                    { className: "customize-control-kmt-slider" },
+                                                    React.createElement(_premiumRangeControl2.default, (_React$createElement = {
+                                                        label: __("Letter Spacing"),
+                                                        value: spacing,
+                                                        onChange: onChangeSpacing,
+                                                        defaultValue: ''
+                                                    }, _defineProperty(_React$createElement, "onChange", onChangeSpacing), _defineProperty(_React$createElement, "showUnit", showUnit), _defineProperty(_React$createElement, "responsive", true), _React$createElement))
+                                                ),
+                                                React.createElement(
+                                                    "li",
+                                                    { className: "kmt-typography-variant" },
+                                                    React.createElement("ul", { className: "kmt-text-transform" }),
+                                                    React.createElement("ul", { className: "kmt-text-decoration" })
+                                                )
+                                            )
+                                        )
                                     )
                                 )
                             ),
@@ -54570,6 +54622,7 @@ var edit = function (_Component) {
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
                         setAttributes: saveTitleStyle,
+                        showUnit: true,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit")
