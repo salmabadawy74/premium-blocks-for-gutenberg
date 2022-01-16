@@ -37055,6 +37055,7 @@ var newAttributes = {
 };
 
 var new_deprecated_attributes = Object.assign(attributes, newAttributes);
+console.log(new_deprecated_attributes);
 
 var deprecatedContent = [{
     attributes: new_deprecated_attributes,
@@ -37105,14 +37106,11 @@ var deprecatedContent = [{
             hideTablet = _props$attributes.hideTablet,
             hideMobile = _props$attributes.hideMobile;
 
-
-        var mainClasses = (0, _classnames2.default)(className, 'premium-button');
-
         return React.createElement(
             'div',
             {
-                id: mainClasses + '-wrap-' + block_id,
-                className: mainClasses + '__wrap premium-button__' + effect + ' premium-button__' + effectDir + ' premium-button-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+                id: className + '-wrap-' + block_id,
+                className: className + '__wrap premium-button__' + effect + ' premium-button__' + effectDir + ' premium-button-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
                 style: { textAlign: btnAlign }
             },
             React.createElement('style', {
@@ -39330,10 +39328,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _ref;
 
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 var _hexToRgba = __webpack_require__(106);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
@@ -39687,7 +39681,7 @@ var new_Attributes = {
             titleColor: '',
             titleT: 1,
             titleB: 1
-        }, _defineProperty(_ref, 'titleColor', ''), _defineProperty(_ref, 'titleWeight', ''), _ref)]
+        }, _defineProperty(_ref, "titleColor", ''), _defineProperty(_ref, "titleWeight", ''), _ref)]
     },
     containerStyles: {
         type: "array",
@@ -39825,27 +39819,25 @@ var deprecatedContent = [{
             hideMobile = _props$attributes.hideMobile;
 
 
-        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
-
-        var mainClasses = (0, _classnames2.default)(className, 'premium-countup');
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
 
         return React.createElement(
-            'div',
+            "div",
             {
-                id: 'premium-countup-' + block_id,
-                className: mainClasses + '__wrap premium-countup-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+                id: "premium-countup-" + block_id,
+                className: className + "__wrap premium-countup-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack ? (0, _hexToRgba2.default)(containerBack, containerOpacity) : "transparent",
-                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px rgba(' + shadowColor.r + ',' + shadowColor.g + ',' + shadowColor.b + ', ' + shadowColor.a + ') ' + shadowPosition,
-                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px rgba(" + shadowColor.r + "," + shadowColor.g + "," + shadowColor.b + ", " + shadowColor.a + ") " + shadowPosition,
+                    backgroundImage: "url('" + backgroundImageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset",
                     borderStyle: borderType,
-                    borderWidth: borderCount ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
+                    borderWidth: borderCount ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
                     paddingTop: paddingT + paddingU,
@@ -39855,23 +39847,23 @@ var deprecatedContent = [{
                 }
             },
             iconCheck && React.createElement(
-                'div',
+                "div",
                 {
-                    className: 'premium-countup__icon_wrap',
+                    className: "premium-countup__icon_wrap",
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement('i', {
-                    className: 'premium-countup__icon ' + iconClass,
+                "icon" === icon && React.createElement("i", {
+                    className: "premium-countup__icon " + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement('img', {
+                "img" === icon && imageURL && React.createElement("img", {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -39880,20 +39872,20 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                'div',
+                "div",
                 {
-                    className: 'premium-countup__info',
+                    className: "premium-countup__info",
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    'div',
-                    { className: 'premium-countup__desc' },
+                    "div",
+                    { className: "premium-countup__desc" },
                     prefix && React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: 'premium-countup__prefix',
+                            className: "premium-countup__prefix",
                             style: {
                                 fontFamily: prefixFamily,
                                 color: prefixColor,
@@ -39904,11 +39896,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: 'premium-countup__increment',
-                            'data-interval': time,
-                            'data-delay': delay,
+                            className: "premium-countup__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
                             style: {
                                 fontFamily: counterFamily,
                                 color: numberColor,
@@ -39918,9 +39910,9 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: 'premium-countup__suffix',
+                            className: "premium-countup__suffix",
                             style: {
                                 fontFamily: suffixFamily,
                                 color: suffixColor,
@@ -39932,9 +39924,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    'h3',
+                    "h3",
                     {
-                        className: 'premium-countup__title',
+                        className: "premium-countup__title",
                         style: {
                             fontFamily: titleFamily,
                             marginTop: titleT + "px",
@@ -39950,9 +39942,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                'h3',
+                "h3",
                 {
-                    className: 'premium-countup__title',
+                    className: "premium-countup__title",
                     style: {
                         fontFamily: titleFamily,
                         marginTop: titleT + "px",
@@ -40059,17 +40051,17 @@ var deprecatedContent = [{
             prefixFamily = _props$attributes2.prefixFamily,
             suffixFamily = _props$attributes2.suffixFamily;
 
-        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
-            'div',
+            "div",
             {
-                className: className + '__wrap',
+                className: className + "__wrap",
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
-                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundImage: "url('" + backgroundImageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
@@ -40081,23 +40073,23 @@ var deprecatedContent = [{
                 }
             },
             iconCheck && React.createElement(
-                'div',
+                "div",
                 {
-                    className: 'premium-countup__icon_wrap',
+                    className: "premium-countup__icon_wrap",
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement('i', {
-                    className: 'premium-countup__icon ' + iconClass,
+                "icon" === icon && React.createElement("i", {
+                    className: "premium-countup__icon " + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement('img', {
+                "img" === icon && imageURL && React.createElement("img", {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -40106,20 +40098,20 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                'div',
+                "div",
                 {
-                    className: 'premium-countup__info',
+                    className: "premium-countup__info",
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    'div',
-                    { className: 'premium-countup__desc' },
+                    "div",
+                    { className: "premium-countup__desc" },
                     prefix && React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: 'premium-countup__prefix',
+                            className: "premium-countup__prefix",
                             style: {
                                 fontSize: prefixSize + "px",
                                 fontFamily: prefixFamily,
@@ -40131,11 +40123,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: 'premium-countup__increment',
-                            'data-interval': time,
-                            'data-delay': delay,
+                            className: "premium-countup__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 fontFamily: counterFamily,
@@ -40146,9 +40138,9 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: 'premium-countup__suffix',
+                            className: "premium-countup__suffix",
                             style: {
                                 fontSize: suffixSize + "px",
                                 fontFamily: suffixFamily,
@@ -40161,9 +40153,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    'h3',
+                    "h3",
                     {
-                        className: 'premium-countup__title',
+                        className: "premium-countup__title",
                         style: {
                             fontSize: titleSize + "px",
                             fontFamily: titleFamily,
@@ -40180,9 +40172,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                'h3',
+                "h3",
                 {
-                    className: 'premium-countup__title',
+                    className: "premium-countup__title",
                     style: {
                         fontSize: titleSize + "px",
                         fontFamily: titleFamily,
@@ -40268,17 +40260,17 @@ var deprecatedContent = [{
             prefixFamily = _props$attributes3.prefixFamily,
             suffixFamily = _props$attributes3.suffixFamily;
 
-        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
-            'div',
+            "div",
             {
-                className: className + '__wrap',
+                className: className + "__wrap",
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
-                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundImage: "url('" + backgroundImageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
@@ -40286,23 +40278,23 @@ var deprecatedContent = [{
                 }
             },
             iconCheck && React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__icon_wrap',
+                    className: className + "__icon_wrap",
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement('i', {
-                    className: className + '__icon ' + iconClass,
+                "icon" === icon && React.createElement("i", {
+                    className: className + "__icon " + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement('img', {
+                "img" === icon && imageURL && React.createElement("img", {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -40311,20 +40303,20 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__info',
+                    className: className + "__info",
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    'div',
-                    { className: className + '__desc' },
+                    "div",
+                    { className: className + "__desc" },
                     prefix && React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: className + '__prefix',
+                            className: className + "__prefix",
                             style: {
                                 fontSize: prefixSize + "px",
                                 fontFamily: prefixFamily,
@@ -40336,11 +40328,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: className + '__increment',
-                            'data-interval': time,
-                            'data-delay': delay,
+                            className: className + "__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 fontFamily: counterFamily,
@@ -40351,9 +40343,9 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: className + '__suffix',
+                            className: className + "__suffix",
                             style: {
                                 fontSize: suffixSize + "px",
                                 fontFamily: suffixFamily,
@@ -40366,9 +40358,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    'h3',
+                    "h3",
                     {
-                        className: className + '__title',
+                        className: className + "__title",
                         style: {
                             fontSize: titleSize + "px",
                             fontFamily: titleFamily,
@@ -40385,9 +40377,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                'h3',
+                "h3",
                 {
-                    className: className + '__title',
+                    className: className + "__title",
                     style: {
                         fontSize: titleSize + "px",
                         fontFamily: titleFamily,
@@ -40469,17 +40461,17 @@ var deprecatedContent = [{
             backgroundPosition = _props$attributes4.backgroundPosition,
             backgroundSize = _props$attributes4.backgroundSize;
 
-        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
-            'div',
+            "div",
             {
-                className: className + '__wrap',
+                className: className + "__wrap",
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
-                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    backgroundImage: "url('" + backgroundImageURL + "')",
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
@@ -40487,23 +40479,23 @@ var deprecatedContent = [{
                 }
             },
             iconCheck && React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__icon_wrap',
+                    className: className + "__icon_wrap",
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement('i', {
-                    className: className + '__icon ' + iconClass,
+                "icon" === icon && React.createElement("i", {
+                    className: className + "__icon " + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement('img', {
+                "img" === icon && imageURL && React.createElement("img", {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -40512,18 +40504,18 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__info',
+                    className: className + "__info",
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    'div',
-                    { className: className + '__desc' },
+                    "div",
+                    { className: className + "__desc" },
                     prefix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: prefixSize + "px",
@@ -40535,11 +40527,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: className + '__increment',
-                            'data-interval': time,
-                            'data-delay': delay,
+                            className: className + "__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 color: numberColor,
@@ -40549,7 +40541,7 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: suffixSize + "px",
@@ -40562,9 +40554,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    'h3',
+                    "h3",
                     {
-                        className: className + '__title',
+                        className: className + "__title",
                         style: {
                             fontSize: titleSize + "px",
                             marginTop: titleT + "px",
@@ -40580,9 +40572,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                'h3',
+                "h3",
                 {
-                    className: className + '__title',
+                    className: className + "__title",
                     style: {
                         fontSize: titleSize + "px",
                         marginTop: titleT + "px",
@@ -40665,36 +40657,36 @@ var deprecatedContent = [{
             shadowVertical = _props$attributes5.shadowVertical,
             shadowPosition = _props$attributes5.shadowPosition;
 
-        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
-            'div',
+            "div",
             {
-                className: className + '__wrap',
+                className: className + "__wrap",
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition
+                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
                 }
             },
             iconCheck && React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__icon_wrap',
+                    className: className + "__icon_wrap",
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement('i', {
-                    className: className + '__icon ' + iconClass,
+                "icon" === icon && React.createElement("i", {
+                    className: className + "__icon " + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement('img', {
+                "img" === icon && imageURL && React.createElement("img", {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -40703,18 +40695,18 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__info',
+                    className: className + "__info",
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    'div',
-                    { className: className + '__desc' },
+                    "div",
+                    { className: className + "__desc" },
                     prefix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: prefixSize + "px",
@@ -40726,11 +40718,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: className + '__increment',
-                            'data-interval': time,
-                            'data-delay': delay,
+                            className: className + "__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 color: numberColor,
@@ -40740,7 +40732,7 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: suffixSize + "px",
@@ -40753,9 +40745,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    'h3',
+                    "h3",
                     {
-                        className: className + '__title',
+                        className: className + "__title",
                         style: {
                             fontSize: titleSize + "px",
                             marginTop: titleT + "px",
@@ -40771,9 +40763,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                'h3',
+                "h3",
                 {
-                    className: className + '__title',
+                    className: className + "__title",
                     style: {
                         fontSize: titleSize + "px",
                         marginTop: titleT + "px",
@@ -40845,11 +40837,11 @@ var deprecatedContent = [{
             faIcon = _props$attributes6.faIcon,
             containerBack = _props$attributes6.containerBack;
 
-        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
-            'div',
+            "div",
             {
-                className: className + '__wrap',
+                className: className + "__wrap",
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
@@ -40857,23 +40849,23 @@ var deprecatedContent = [{
                 }
             },
             iconCheck && React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__icon_wrap',
+                    className: className + "__icon_wrap",
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement('i', {
-                    className: className + '__icon ' + iconClass,
+                "icon" === icon && React.createElement("i", {
+                    className: className + "__icon " + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement('img', {
+                "img" === icon && imageURL && React.createElement("img", {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -40882,18 +40874,18 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__info',
+                    className: className + "__info",
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    'div',
-                    { className: className + '__desc' },
+                    "div",
+                    { className: className + "__desc" },
                     prefix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: prefixSize + "px",
@@ -40905,11 +40897,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: className + '__increment',
-                            'data-interval': time,
-                            'data-delay': delay,
+                            className: className + "__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 color: numberColor,
@@ -40919,7 +40911,7 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: suffixSize + "px",
@@ -40932,9 +40924,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    'h3',
+                    "h3",
                     {
-                        className: className + '__title',
+                        className: className + "__title",
                         style: {
                             fontSize: titleSize + "px",
                             marginTop: titleT + "px",
@@ -40950,9 +40942,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                'h3',
+                "h3",
                 {
-                    className: className + '__title',
+                    className: className + "__title",
                     style: {
                         fontSize: titleSize + "px",
                         marginTop: titleT + "px",
@@ -41013,34 +41005,34 @@ var deprecatedContent = [{
             titleWeight = _props$attributes7.titleWeight,
             faIcon = _props$attributes7.faIcon;
 
-        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
         return React.createElement(
-            'div',
+            "div",
             {
-                className: className + '__wrap',
+                className: className + "__wrap",
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir
                 }
             },
             iconCheck && React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__icon_wrap',
+                    className: className + "__icon_wrap",
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement('i', {
-                    className: className + '__icon ' + iconClass,
+                "icon" === icon && React.createElement("i", {
+                    className: className + "__icon " + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement('img', {
+                "img" === icon && imageURL && React.createElement("img", {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -41049,18 +41041,18 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                'div',
+                "div",
                 {
-                    className: className + '__info',
+                    className: className + "__info",
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    'div',
-                    { className: className + '__desc' },
+                    "div",
+                    { className: className + "__desc" },
                     prefix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: prefixSize + "px",
@@ -41072,11 +41064,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        'p',
+                        "p",
                         {
-                            className: className + '__increment',
-                            'data-interval': time,
-                            'data-delay': delay,
+                            className: className + "__increment",
+                            "data-interval": time,
+                            "data-delay": delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 color: numberColor,
@@ -41086,7 +41078,7 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        'p',
+                        "p",
                         {
                             style: {
                                 fontSize: suffixSize + "px",
@@ -41099,9 +41091,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    'h3',
+                    "h3",
                     {
-                        className: className + '__title',
+                        className: className + "__title",
                         style: {
                             fontSize: titleSize + "px",
                             marginTop: titleT + "px",
@@ -41117,9 +41109,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                'h3',
+                "h3",
                 {
-                    className: className + '__title',
+                    className: className + "__title",
                     style: {
                         fontSize: titleSize + "px",
                         marginTop: titleT + "px",

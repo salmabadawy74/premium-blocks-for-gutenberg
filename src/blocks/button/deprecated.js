@@ -231,6 +231,7 @@ const newAttributes = {
 }
 
 const new_deprecated_attributes = Object.assign(attributes, newAttributes);
+console.log(new_deprecated_attributes)
 
 const deprecatedContent = [
     {
@@ -284,14 +285,10 @@ const deprecatedContent = [
                 hideTablet,
                 hideMobile
             } = props.attributes;
-
-
-            const mainClasses = classnames(className, 'premium-button');
-
             return (
                 <div
-                    id={`${mainClasses}-wrap-${block_id}`}
-                    className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    id={`${className}-wrap-${block_id}`}
+                    className={`${className}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{ textAlign: btnAlign }}
                 >
                     <style

@@ -1,5 +1,4 @@
 const className = "premium-countup";
-import classnames from 'classnames'
 const { __ } = wp.i18n;
 import hexToRgba from 'hex-to-rgba'
 
@@ -498,12 +497,11 @@ const deprecatedContent = [
 
             let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
-            const mainClasses = classnames(className, 'premium-countup');
 
             return (
                 <div
                     id={`premium-countup-${block_id}`}
-                    className={`${mainClasses}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    className={`${className}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
