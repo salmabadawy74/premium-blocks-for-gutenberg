@@ -3,6 +3,7 @@ import onChangeVideoURL from "./index";
 import hexToRgba from 'hex-to-rgba'
 
 const className = "premium-video-box";
+const { __ } = wp.i18n;
 
 const attributes = {
     block_id: {
@@ -444,7 +445,6 @@ const deprecatedContent = [
                 hideMobile
             } = props.attributes;
 
-
             const loopVideo = () => {
                 if ("youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
@@ -461,6 +461,7 @@ const deprecatedContent = [
                     return loop ? "1" : "0";
                 }
             };
+
             return (
                 <div
                     id={videoBoxId}
