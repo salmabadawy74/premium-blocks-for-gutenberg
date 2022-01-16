@@ -1184,6 +1184,28 @@ var PremiumTypo = function (_Component) {
                 });
             };
 
+            var changeFont = function changeFont(v) {
+                console.log(v);
+                _this2.setState({
+                    fontFamily: v.value
+                });
+                onFontfamilyChange(v);
+            };
+
+            var renderFonts = fonts.map(function (item, index) {
+                return React.createElement(
+                    "div",
+                    { className: "kmt-typography-single-font active", key: index, onClick: function onClick(v) {
+                            return changeFont(item);
+                        } },
+                    React.createElement(
+                        "span",
+                        { className: "kmt-font-name" },
+                        item.label
+                    )
+                );
+            });
+
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle kmt-typography" },
@@ -1251,14 +1273,14 @@ var PremiumTypo = function (_Component) {
                                                 ),
                                                 React.createElement(
                                                     "ul",
-                                                    { className: "kmt-typography-fonts" },
+                                                    { className: "kmt-typography-fonts", style: { width: "100%" } },
                                                     React.createElement(
                                                         "div",
                                                         null,
                                                         React.createElement(
                                                             "ul",
                                                             null,
-                                                            React.createElement("div", { className: "kmt-typography-fonts" })
+                                                            renderFonts
                                                         )
                                                     )
                                                 )

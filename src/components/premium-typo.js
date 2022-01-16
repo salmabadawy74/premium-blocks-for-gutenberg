@@ -105,7 +105,8 @@ export default class PremiumTypo extends Component {
             sizeUnit,
             isVisible,
             currentView,
-            search
+            search,
+
         } = this.state;
 
         const STYLE = [
@@ -195,6 +196,21 @@ export default class PremiumTypo extends Component {
             })
         }
 
+        const changeFont = (v) => {
+            console.log(v)
+            this.setState({
+                fontFamily: v.value
+            })
+            onFontfamilyChange(v)
+        }
+
+        const renderFonts = fonts.map((item, index) => {
+            return (< div className={`kmt-typography-single-font active`} key={index} onClick={(v) => changeFont(item)}>
+                <span className="kmt-font-name">{item.label}</span>
+            </div>
+            )
+        })
+
         return (
             <div className="premium-control-toggle kmt-typography">
                 <header>
@@ -228,10 +244,10 @@ export default class PremiumTypo extends Component {
                                                             />
                                                         </li>
                                                     </ul>
-                                                    <ul className="kmt-typography-fonts">
+                                                    <ul className="kmt-typography-fonts" style={{ width: `100%` }}>
                                                         <div>
                                                             <ul>
-                                                                <div className="kmt-typography-fonts"></div>
+                                                                {renderFonts}
                                                             </ul>
                                                         </div>
                                                     </ul>
