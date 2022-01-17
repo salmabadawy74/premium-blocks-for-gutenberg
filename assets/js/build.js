@@ -31805,8 +31805,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -32039,75 +32037,65 @@ var attributes = {
         default: 10
     }
 };
-var newAttributes = {
-    titleStyles: {
-        type: "array",
-        default: [{
-            titleColor: "",
-            titleSize: '',
-            titleLine: '',
-            titleLetter: '',
-            titleStyle: '',
-            titleUpper: '',
-            titleWeight: '500',
-            titleBorder: 'none',
-            titleBorderRadius: '',
-            titleBorderColor: '',
-            titleBack: '',
-            titleShadowColor: '',
-            titleShadowBlur: 0,
-            titleShadowHorizontal: 0,
-            titleShadowVertical: 0
-        }]
-    },
-    arrowStyles: {
-        type: "array",
-        default: [{
-            arrowColor: '',
-            arrowBack: '',
-            arrowPos: 'out',
-            arrowPadding: '',
-            arrowRadius: '',
-            arrowSize: 20
-        }]
-    },
-    descStyles: {
-        type: 'array',
-        default: [{
-            descAlign: 'left',
-            descColor: '',
-            descBack: '',
-            descBorder: 'none',
-            descBorderWidth: 1,
-            descBorderUpdated: false,
-            descBorderTop: '',
-            descBorderRight: '',
-            descBorderBottom: '',
-            descBorderLeft: '',
-            descBorderRadius: 0,
-            descBorderColor: '',
-            descSize: '',
-            descLine: '',
-            descLetter: '',
-            descStyle: '',
-            descUpper: false,
-            descWeight: 500,
-            descPaddingT: '',
-            descPaddingR: '',
-            descPaddingB: '',
-            descPaddingL: ''
-        }]
-    }
-};
-var deprecated_attributes_1_6_3 = Object.assign(attributes, newAttributes);
-var deprecated = [{
-    attributes: deprecated_attributes_1_6_3,
-    migrate: function migrate(_ref) {
-        var titleStyles = _ref.titleStyles,
-            arrowStyles = _ref.arrowStyles,
-            descStyles = _ref.descStyles;
 
-        return _extends({}, titleStyles, descStyles, arrowStyles);
+var deprecated = [{
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleStyles: [{
+                titleColor: attributes.titleColor,
+                titleSize: attributes.titleSize,
+                titleLine: attributes.titleLine,
+                titleLetter: attributes.titleLetter,
+                titleStyle: attributes.titleStyle,
+                titleUpper: attributes.titleUpper,
+                titleWeight: attributes.titleWeight,
+                titleBorder: attributes.titleBorder,
+                titleBorderRadius: attributes.titleBorderRadius,
+                titleBorderColor: attributes.titleBorderColor,
+                titleBack: attributes.titleBack,
+                titleShadowColor: attributes.titleShadowColor,
+                titleShadowBlur: attributes.titleShadowBlur,
+                titleShadowHorizontal: attributes.titleShadowHorizontal,
+                titleShadowVertical: attributes.titleShadowVertical
+            }],
+
+            arrowStyles: [{
+                arrowColor: attributes.arrowColor,
+                arrowBack: attributes.arrowBack,
+                arrowPos: attributes.arrowPos,
+                arrowPadding: attributes.arrowPadding,
+                arrowRadius: attributes.arrowRadius,
+                arrowSize: attributes.arrowSize
+            }],
+
+            descStyles: [{
+                descAlign: attributes.descAlign,
+                descColor: attributes.descColor,
+                descBack: attributes.descBack,
+                descBorder: attributes.descBorder,
+                descBorderWidth: attributes.descBorderWidth,
+                descBorderUpdated: attributes.descBorderUpdated,
+                descBorderTop: attributes.descBorderTop,
+                descBorderRight: attributes.descBorderRight,
+                descBorderBottom: attributes.descBorderBottom,
+                descBorderLeft: attributes.descBorderLeft,
+                descBorderRadius: attributes.descBorderRadius,
+                descBorderColor: attributes.descBorderColor,
+                descSize: attributes.descSize,
+                descLine: attributes.descLine,
+                descLetter: attributes.descLetter,
+                descStyle: attributes.descStyle,
+                descUpper: attributes.descUpper,
+                descWeight: attributes.descWeight,
+                descPaddingT: attributes.descPaddingT,
+                descPaddingR: attributes.descPaddingR,
+                descPaddingB: attributes.descPaddingB,
+                descPaddingL: attributes.descPaddingL
+            }]
+
+        };
+        return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes = props.attributes,
@@ -34008,69 +33996,61 @@ var attributes = {
         default: false
     }
 };
-var newAttributes = {
-    titleStyles: {
-        type: "array",
-        default: [{
-            titleSizeUnit: 'px',
-            titleSize: '20',
-            titleSizeMobile: '',
-            titleSizeTablet: '',
-            titleWeight: '',
-            titleLine: '',
-            titleColor: '',
-            titleBack: '',
-            shadowColor: '',
-            shadowBlur: '',
-            shadowHorizontal: '',
-            shadowVertical: ''
-        }]
-    },
-    descStyles: {
-        type: "array",
-        default: [{
-            descSizeUnit: 'px',
-            descSize: '20',
-            descSizeTablet: '',
-            descSizeMobile: '',
-            descWeight: '',
-            descLine: '',
-            descColor: '#000',
-            descShadowColor: '',
-            descShadowBlur: '',
-            descShadowHorizontal: '',
-            descShadowVertical: ''
-        }]
-    },
-    containerStyles: {
-        type: "array",
-        default: [{
-            borderType: "none",
-            borderWidth: '',
-            borderTop: '',
-            borderRight: '',
-            borderBottom: '',
-            borderLeft: '',
-            borderRadius: '',
-            borderColor: '',
-            containerShadowColor: '',
-            containerShadowBlur: '',
-            containerShadowHorizontal: '',
-            containerShadowVertical: '',
-            containerShadowPosition: '',
-            paddingT: '',
-            paddingR: '',
-            paddingB: '',
-            paddingL: '',
-            paddingU: 'px'
-        }]
-    }
-};
-
-var new_deprecated_attributes = Object.assign(attributes, newAttributes);
 
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleStyles: [{
+                titleSizeUnit: attributes.titleSizeUnit,
+                titleSize: attributes.titleSize,
+                titleSizeMobile: attributes.titleSizeMobile,
+                titleSizeTablet: attributes.titleSizeTablet,
+                titleWeight: attributes.titleWeight,
+                titleLine: attributes.titleLine,
+                titleColor: attributes.titleColor,
+                titleBack: attributes.titleBack,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical
+            }],
+            descStyles: [{
+                descSizeUnit: attributes.descSizeUnit,
+                descSize: attributes.descSize,
+                descSizeTablet: attributes.descSizeTablet,
+                descSizeMobile: attributes.descSizeMobile,
+                descWeight: attributes.descWeight,
+                descLine: attributes.descLine,
+                descColor: attributes.descColor,
+                descShadowColor: attributes.descShadowColor,
+                descShadowBlur: attributes.descShadowBlur,
+                descShadowHorizontal: attributes.descShadowHorizontal,
+                descShadowVertical: attributes.descShadowVertical
+            }],
+            containerStyles: [{
+                borderType: attributes.borderType,
+                borderWidth: attributes.borderWidth,
+                borderTop: attributes.borderTop,
+                borderRight: attributes.borderRight,
+                borderBottom: attributes.borderBottom,
+                borderLeft: attributes.borderLeft,
+                borderRadius: attributes.borderRadius,
+                borderColor: attributes.borderColor,
+                containerShadowColor: attributes.containerShadowColor,
+                containerShadowBlur: attributes.containerShadowBlur,
+                containerShadowHorizontal: attributes.containerShadowHorizontal,
+                containerShadowVertical: attributes.containerShadowVertical,
+                containerShadowPosition: attributes.containerShadowPosition,
+                paddingT: attributes.paddingT,
+                paddingR: attributes.paddingR,
+                paddingB: attributes.paddingB,
+                paddingL: attributes.paddingL,
+                paddingU: attributes.paddingU
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
@@ -36410,54 +36390,60 @@ var attributes = {
     }
 };
 
-var newAttributes = {
-    textStyles: {
-        type: "array",
-        default: [{
-            textSizeUnit: 'px',
-            textSize: 20,
-            textSizeTablet: '',
-            textSizeMobile: '',
-            textFontFamily: __('Default'),
-            textLetter: '',
-            textStyle: '',
-            textUpper: false,
-            textWeight: '',
-            textLine: '',
-            shadowColor: '',
-            shadowBlur: '0',
-            shadowHorizontal: '0',
-            shadowVertical: '0'
-        }]
-    },
-    btnStyles: {
-        type: 'array',
-        default: [{
-            textColor: '',
-            textHoverColor: '',
-            backColor: '',
-            backOpacity: 1,
-            backHoverColor: '',
-            borderType: "none",
-            borderRadius: '',
-            borderColor: '',
-            borderHoverColor: '',
-            btnShadowColor: '',
-            btnShadowBlur: 0,
-            btnShadowHorizontal: 0,
-            btnShadowVertical: 0,
-            btnShadowPosition: '',
-            padding: '',
-            paddingU: 'px'
-        }]
-    }
-};
-
-var new_deprecated_attributes = Object.assign(attributes, newAttributes);
-console.log(new_deprecated_attributes);
-
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleStyles: [{
+                titleSizeUnit: attributes.titleSizeUnit,
+                titleSize: attributes.titleSize,
+                titleSizeMobile: attributes.titleSizeMobile,
+                titleSizeTablet: attributes.titleSizeTablet,
+                titleWeight: attributes.titleWeight,
+                titleLine: attributes.titleLine,
+                titleColor: attributes.titleColor,
+                titleBack: attributes.titleBack,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical
+            }],
+            descStyles: [{
+                descSizeUnit: attributes.descSizeUnit,
+                descSize: attributes.descSize,
+                descSizeTablet: attributes.descSizeTablet,
+                descSizeMobile: attributes.descSizeMobile,
+                descWeight: attributes.descWeight,
+                descLine: attributes.descLine,
+                descColor: attributes.descColor,
+                descShadowColor: attributes.descShadowColor,
+                descShadowBlur: attributes.descShadowBlur,
+                descShadowHorizontal: attributes.descShadowHorizontal,
+                descShadowVertical: attributes.descShadowVertical
+            }],
+            containerStyles: [{
+                borderType: attributes.borderType,
+                borderWidth: attributes.borderWidth,
+                borderTop: attributes.borderTop,
+                borderRight: attributes.borderRight,
+                borderBottom: attributes.borderBottom,
+                borderLeft: attributes.borderLeft,
+                borderRadius: attributes.borderRadius,
+                borderColor: attributes.borderColor,
+                containerShadowColor: attributes.containerShadowColor,
+                containerShadowBlur: attributes.containerShadowBlur,
+                containerShadowHorizontal: attributes.containerShadowHorizontal,
+                containerShadowVertical: attributes.containerShadowVertical,
+                containerShadowPosition: attributes.containerShadowPosition,
+                paddingT: attributes.paddingT,
+                paddingR: attributes.paddingR,
+                paddingB: attributes.paddingB,
+                paddingL: attributes.paddingL,
+                paddingU: attributes.paddingU
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
@@ -38725,8 +38711,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _ref;
-
 var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
@@ -39054,97 +39038,87 @@ var attributes = {
     }
 };
 
-var new_Attributes = {
-    numberStyles: {
-        type: "array",
-        default: [{
-            numberSizeUnit: "px",
-            numberSize: 30,
-            numberSizeTablet: '',
-            numberSizeMobile: '',
-            numberColor: "#6ec1e4",
-            numberWeight: ''
-        }]
-    },
-    titleStyles: {
-        type: "array",
-        default: [(_ref = {
-            titleFamily: __('Default'),
-            titleSize: 20,
-            titleSizeUnit: 'px',
-            titleSizeTablet: '',
-            titleSizeMobile: '',
-            titleSpacing: '',
-            titleStyle: '',
-            titleUpper: false,
-            titleColor: '',
-            titleT: 1,
-            titleB: 1
-        }, _defineProperty(_ref, "titleColor", ''), _defineProperty(_ref, "titleWeight", ''), _ref)]
-    },
-    containerStyles: {
-        type: "array",
-        default: [{
-            containerBack: '',
-            containerOpacity: 1,
-            backgroundImageID: '',
-            backgroundImageURL: '',
-            backgroundRepeat: 'no-reapet',
-            backgroundPosition: 'top center',
-            backgroundSize: 'auto',
-            fixed: false,
-            borderType: 'none',
-            borderWidth: 1,
-            borderRadius: 0,
-            borderColor: '',
-            shadowColor: '',
-            shadowBlur: '0',
-            shadowHorizontal: '0',
-            shadowVertical: '0',
-            shadowPosition: '',
-            paddingU: '',
-            gradientLocationOne: '0',
-            gradientColorTwo: '',
-            gradientLocationTwo: '100',
-            gradientType: 'linear',
-            gradientAngle: '180',
-            gradientPosition: 'center center'
-        }]
-    },
-    suffixStyles: {
-        type: 'array',
-        default: [{
-            suffixTxt: "Suffix",
-            suffixSizeUnit: 'px',
-            suffixSize: 20,
-            suffixSizeTablet: '',
-            suffixSizeMobile: '',
-            suffixColor: '',
-            suffixWeight: '',
-            suffixGap: 2,
-            suffixFamily: __('Default')
-        }]
-    },
-    prefixStyles: {
-        type: "array",
-        default: [{
-            prefixTxt: "Prefix",
-            prefixSize: 20,
-            prefixSizeUnit: 'px',
-            prefixSizeTablet: '',
-            prefixSizeMobile: '',
-            prefixColor: '',
-            prefixWeight: '',
-            prefixGap: 2,
-            prefixFamily: __('Default')
-        }]
-    }
-};
-
-var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
+var new_Attributes = {};
 
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var _ref;
+
+        var newAttributes = {
+            numberStyles: [{
+                numberSizeUnit: attributes.numberSizeUnit,
+                numberSize: attributes.numberSize,
+                numberSizeTablet: attributes.numberSizeTablet,
+                numberSizeMobile: attributes.numberSizeMobile,
+                numberColor: attributes.numberColor,
+                numberWeight: attributes.numberWeight
+            }],
+            titleStyles: [(_ref = {
+                titleFamily: attributes.titleFamily,
+                titleSize: attributes.titleSize,
+                titleSizeUnit: attributes.titleSizeUnit,
+                titleSizeTablet: attributes.titleSizeTablet,
+                titleSizeMobile: attributes.titleSizeMobile,
+                titleSpacing: attributes.titleSpacing,
+                titleStyle: attributes.titleStyle,
+                titleUpper: attributes.titleUpper,
+                titleColor: attributes.titleColor,
+                titleT: attributes.titleT,
+                titleB: attributes.titleB
+            }, _defineProperty(_ref, "titleColor", attributes.titleColor), _defineProperty(_ref, "titleWeight", attributes.titleWeight), _ref)],
+            containerStyles: [{
+                containerBack: attributes.containerBack,
+                containerOpacity: attributes.containerOpacity,
+                backgroundImageID: attributes.imageID,
+                backgroundImageURL: attributes.imageURL,
+                backgroundRepeat: attributes.backgroundRepeat,
+                backgroundPosition: attributes.backgroundPosition,
+                backgroundSize: attributes.backgroundSize,
+                fixed: attributes.fixed,
+                borderType: attributes.borderType,
+                borderWidth: attributes.borderWidth,
+                borderRadius: attributes.borderRadius,
+                borderColor: attributes.borderColor,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical,
+                shadowPosition: attributes.shadowPosition,
+                paddingU: attributes.paddingU,
+                gradientLocationOne: '',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }],
+            suffixStyles: [{
+                suffixTxt: attributes.suffixTxt,
+                suffixSizeUnit: attributes.suffixSizeUnit,
+                suffixSize: attributes.suffixSize,
+                suffixSizeTablet: attributes.suffixSizeTablet,
+                suffixSizeMobile: attributes.suffixSizeMobile,
+                suffixColor: attributes.suffixColor,
+                suffixWeight: attributes.suffixWeight,
+                suffixGap: attributes.suffixGap,
+                suffixFamily: attributes.suffixFamily
+            }],
+            prefixStyles: [{
+                prefixTxt: attributes.prefixTxt,
+                prefixSize: attributes.prefixSize,
+                prefixSizeUnit: attributes.prefixSizeUnit,
+                prefixSizeTablet: attributes.prefixSizeTablet,
+                prefixSizeMobile: attributes.prefixSizeMobile,
+                prefixColor: attributes.prefixColor,
+                prefixWeight: attributes.prefixWeight,
+                prefixGap: attributes.prefixGap,
+                prefixFamily: attributes.prefixFamily
+            }]
+
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
@@ -41606,7 +41580,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var __ = wp.i18n.__;
 
-
 var className = "premium-dheading-block";
 
 
@@ -41952,101 +41925,91 @@ var attributes = {
         default: false
     }
 };
-
-var new_Attributes = {
-    firstStyles: {
-        type: "array",
-        default: [{
-            firstClip: false,
-            firstAnim: false,
-            firstStroke: false,
-            firstFamily: __('Default'),
-            firstSizeUnit: 'px',
-            firstSize: '',
-            firstSizeMobile: '',
-            firstWeight: '',
-            firstStyle: '',
-            firstLetter: '',
-            firstUpper: false,
-            firstColor: '',
-            firstBackground: '',
-            firstOpacity: '1',
-            firstClipColor: "#54595f",
-            firstBorderType: 'none',
-            firstBorderWidth: '',
-            firstBorderColor: '',
-            firstBorderRadius: '0',
-            firstShadowColor: '',
-            firstShadowBlur: '0',
-            firstShadowHorizontal: '0',
-            firstShadowVertical: '0',
-            firstMarginL: '0',
-            firstMarginR: '0',
-            firstPadding: '0'
-        }]
-    },
-    secondStyles: {
-        type: "array",
-        default: [{
-            secondClip: false,
-            secondAnim: false,
-            secondStroke: false,
-            secondFamily: __('Default'),
-            secondSizeUnit: 'px',
-            secondSize: '20',
-            secondSizeTablet: '',
-            secondSizeMobile: '',
-            secondWeight: '',
-            secondStyle: '',
-            secondLetter: '',
-            secondUpper: false,
-            secondColor: "#54595f",
-            secondBackground: '',
-            secondOpacity: '',
-            secondClipColor: "#6ec1e4",
-            secondBorderType: "none",
-            secondBorderWidth: '1',
-            secondBorderColor: '',
-            secondBorderRadius: '0',
-            secondShadowColor: '',
-            secondShadowBlur: '0',
-            secondShadowHorizontal: '0',
-            secondShadowVertical: '0',
-            secondMarginL: '0',
-            secondMarginR: '0',
-            secondPadding: '0'
-
-        }]
-    },
-    containerStyles: {
-        type: 'array',
-        default: [{
-            backgroundImageID: '',
-            backgroundImageURL: '',
-            backgroundRepeat: 'no-reapet',
-            backgroundPosition: 'top center',
-            backgroundSize: 'auto',
-            fixed: false,
-            containerBorderType: "none",
-            containerBorderWidth: "1",
-            containerBorderColor: '',
-            containerBorderRadius: '0',
-            containerBack: '',
-            containerOpacity: 1,
-            gradientLocationOne: '0',
-            gradientColorTwo: '',
-            gradientLocationTwo: '100',
-            gradientType: 'linear',
-            gradientAngle: '180',
-            gradientPosition: 'center center'
-        }]
-    }
-};
-
-var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
-
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            firstStyles: [{
+                firstClip: attributes.firstClip,
+                firstAnim: attributes.firstAnim,
+                firstStroke: attributes.firstStroke,
+                firstFamily: attributes.firstFamily,
+                firstSizeUnit: attributes.firstSizeUnit,
+                firstSize: attributes.firstSize,
+                firstSizeMobile: attributes.firstSizeMobile,
+                firstWeight: attributes.firstWeight,
+                firstStyle: attributes.firstStyle,
+                firstLetter: attributes.firstLetter,
+                firstUpper: attributes.firstUpper,
+                firstColor: attributes.firstColor,
+                firstBackground: attributes.firstBackground,
+                firstOpacity: attributes.firstOpacity,
+                firstClipColor: attributes.firstClipColor,
+                firstBorderType: attributes.firstBorderType,
+                firstBorderWidth: attributes.firstBorderWidth,
+                firstBorderColor: attributes.firstBorderColor,
+                firstBorderRadius: attributes.firstBorderRadius,
+                firstShadowColor: attributes.firstShadowColor,
+                firstShadowBlur: attributes.firstShadowBlur,
+                firstShadowHorizontal: attributes.firstShadowHorizontal,
+                firstShadowVertical: attributes.firstShadowVertical,
+                firstMarginL: attributes.firstMarginL,
+                firstMarginR: attributes.firstMarginR,
+                firstPadding: attributes.firstPadding
+            }],
+            secondStyles: [{
+                secondClip: attributes.secondClip,
+                secondAnim: attributes.secondAnim,
+                secondStroke: attributes.secondStroke,
+                secondFamily: attributes.secondFamily,
+                secondSizeUnit: attributes.secondSizeUnit,
+                secondSize: attributes.secondSize,
+                secondSizeTablet: attributes.secondSizeTablet,
+                secondSizeMobile: attributes.secondSizeMobile,
+                secondWeight: attributes.secondWeight,
+                secondStyle: attributes.secondStyle,
+                secondLetter: attributes.secondLetter,
+                secondUpper: attributes.secondUpper,
+                secondColor: attributes.secondColor,
+                secondBackground: attributes.secondBackground,
+                secondOpacity: attributes.secondOpacity,
+                secondClipColor: attributes.secondClipColor,
+                secondBorderType: attributes.secondBorderType,
+                secondBorderWidth: attributes.secondBorderWidth,
+                secondBorderColor: attributes.secondBorderColor,
+                secondBorderRadius: attributes.secondBorderRadius,
+                secondShadowColor: attributes.secondShadowColor,
+                secondShadowBlur: attributes.secondShadowBlur,
+                secondShadowHorizontal: attributes.secondShadowHorizontal,
+                secondShadowVertical: attributes.secondShadowVertical,
+                secondMarginL: attributes.secondMarginL,
+                secondMarginR: attributes.secondMarginR,
+                secondPadding: attributes.secondPadding
+
+            }],
+            containerStyles: [{
+                backgroundImageID: attributes.imageID,
+                backgroundImageURL: attributes.imageURL,
+                backgroundRepeat: attributes.backgroundRepeat,
+                backgroundPosition: attributes.backgroundPosition,
+                backgroundSize: attributes.backgroundSize,
+                fixed: attributes.fixed,
+                containerBorderType: attributes.containerBorderType,
+                containerBorderWidth: attributes.containerBorderWidth,
+                containerBorderColor: attributes.containerBorderColor,
+                containerBorderRadius: attributes.containerBorderRadius,
+                containerBack: attributes.containerBack,
+                containerOpacity: attributes.containerOpacity,
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var className = props.className;
         var _props$attributes = props.attributes,
@@ -44454,67 +44417,61 @@ var attributes = {
     }
 };
 
-var new_attributes = {
-    iconStyles: {
-        type: "array",
-        default: [{
-            iconSizeUnit: 'px',
-            iconSize: '',
-            iconColor: '',
-            iconBack: '',
-            iconOpacity: '1',
-            borderType: 'none',
-            borderWidth: '1',
-            iconBorderTop: '1',
-            iconBorderRight: '1',
-            iconBorderBottom: '1',
-            iconBorderLeft: '1',
-            borderColor: '',
-            borderRadius: '100',
-            shadowColor: '',
-            shadowBlur: '',
-            shadowHorizontal: '',
-            shadowVertical: ''
-        }]
-    },
-    containerStyles: {
-        type: "array",
-        default: [{
-            containerBack: '',
-            backgroundOpacity: 1,
-            backgroundImageID: '',
-            backgroundImageURL: '',
-            backgroundRepeat: 'no-reapet',
-            backgroundPosition: 'top center',
-            backgroundSize: 'auto',
-            fixed: false,
-            wrapBorderType: 'none',
-            wrapBorderWidth: '1',
-            wrapBorderTop: '1',
-            wrapBorderRight: '1',
-            wrapBorderBottom: '1',
-            wrapBorderLeft: '1',
-            wrapBorderColor: '',
-            wrapBorderRadius: '',
-            wrapShadowColor: '',
-            wrapShadowBlur: '0',
-            wrapShadowHorizontal: '0',
-            wrapShadowVertical: '0',
-            wrapShadowPosition: '',
-            gradientLocationOne: '0',
-            gradientColorTwo: '',
-            gradientLocationTwo: '100',
-            gradientType: 'linear',
-            gradientAngle: '180',
-            gradientPosition: 'center center'
-        }]
-    }
-};
-
-var new_deprecated_attributes = Object.assign(attributes, new_attributes);
-
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            iconStyles: [{
+                iconSizeUnit: attributes.iconSizeUnit,
+                iconSize: attributes.iconSize,
+                iconColor: attributes.iconColor,
+                iconBack: attributes.iconBack,
+                iconOpacity: attributes.iconOpacity,
+                borderType: attributes.borderType,
+                borderWidth: attributes.borderWidth,
+                iconBorderTop: attributes.iconBorderTop,
+                iconBorderRight: attributes.iconBorderRight,
+                iconBorderBottom: attributes.iconBorderBottom,
+                iconBorderLeft: attributes.iconBorderLeft,
+                borderColor: attributes.borderColor,
+                borderRadius: attributes.borderRadius,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical
+            }],
+            containerStyles: [{
+                containerBack: attributes.backgroundColor,
+                backgroundOpacity: attributes.backgroundOpacity,
+                backgroundImageID: attributes.imageID,
+                backgroundImageURL: attributes.imageURL,
+                backgroundRepeat: attributes.backgroundRepeat,
+                backgroundPosition: attributes.backgroundPosition,
+                backgroundSize: attributes.backgroundSize,
+                fixed: attributes.fixed,
+                wrapBorderType: attributes.wrapBorderType,
+                wrapBorderWidth: attributes.wrapBorderWidth,
+                wrapBorderTop: attributes.wrapBorderTop,
+                wrapBorderRight: attributes.wrapBorderRight,
+                wrapBorderBottom: attributes.wrapBorderBottom,
+                wrapBorderLeft: attributes.wrapBorderLeft,
+                wrapBorderColor: attributes.wrapBorderColor,
+                wrapBorderRadius: attributes.wrapBorderRadius,
+                wrapShadowColor: attributes.wrapShadowColor,
+                wrapShadowBlur: attributes.wrapShadowBlur,
+                wrapShadowHorizontal: attributes.wrapShadowHorizontal,
+                wrapShadowVertical: attributes.wrapShadowVertical,
+                wrapShadowPosition: attributes.wrapShadowPosition,
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             wrapBorder = _props$attributes.wrapBorder,

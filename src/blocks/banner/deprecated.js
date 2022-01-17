@@ -274,80 +274,69 @@ const attributes = {
         default: false
     }
 }
-const newAttributes = {
-    titleStyles: {
-        type: "array",
-        default: [
-            {
-                titleSizeUnit: 'px',
-                titleSize: '20',
-                titleSizeMobile: '',
-                titleSizeTablet: '',
-                titleWeight: '',
-                titleLine: '',
-                titleColor: '',
-                titleBack: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: ''
-            }
-        ]
-    },
-    descStyles: {
-        type: "array",
-        default: [
-            {
-                descSizeUnit: 'px',
-                descSize: '20',
-                descSizeTablet: '',
-                descSizeMobile: '',
-                descWeight: '',
-                descLine: '',
-                descColor: '#000',
-                descShadowColor: '',
-                descShadowBlur: '',
-                descShadowHorizontal: '',
-                descShadowVertical: '',
-            }
-        ]
-    },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                borderType: "none",
-                borderWidth: '',
-                borderTop: '',
-                borderRight: '',
-                borderBottom: '',
-                borderLeft: '',
-                borderRadius: '',
-                borderColor: '',
-                containerShadowColor: '',
-                containerShadowBlur: '',
-                containerShadowHorizontal: '',
-                containerShadowVertical: '',
-                containerShadowPosition: '',
-                paddingT: '',
-                paddingR: '',
-                paddingB: '',
-                paddingL: '',
-                paddingU: 'px'
-            }
-        ]
-    },
-}
-
-const new_deprecated_attributes = Object.assign(attributes, newAttributes)
-
 
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: (attributes) => {
+            let newAttributes = {
+                titleStyles: [
+                    {
+                        titleSizeUnit: attributes.titleSizeUnit,
+                        titleSize: attributes.titleSize,
+                        titleSizeMobile: attributes.titleSizeMobile,
+                        titleSizeTablet: attributes.titleSizeTablet,
+                        titleWeight: attributes.titleWeight,
+                        titleLine: attributes.titleLine,
+                        titleColor: attributes.titleColor,
+                        titleBack: attributes.titleBack,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical
+                    }
+                ],
+                descStyles: [
+                    {
+                        descSizeUnit: attributes.descSizeUnit,
+                        descSize: attributes.descSize,
+                        descSizeTablet: attributes.descSizeTablet,
+                        descSizeMobile: attributes.descSizeMobile,
+                        descWeight: attributes.descWeight,
+                        descLine: attributes.descLine,
+                        descColor: attributes.descColor,
+                        descShadowColor: attributes.descShadowColor,
+                        descShadowBlur: attributes.descShadowBlur,
+                        descShadowHorizontal: attributes.descShadowHorizontal,
+                        descShadowVertical: attributes.descShadowVertical,
+                    }
+                ],
+                containerStyles: [
+                    {
+                        borderType: attributes.borderType,
+                        borderWidth: attributes.borderWidth,
+                        borderTop: attributes.borderTop,
+                        borderRight: attributes.borderRight,
+                        borderBottom: attributes.borderBottom,
+                        borderLeft: attributes.borderLeft,
+                        borderRadius: attributes.borderRadius,
+                        borderColor: attributes.borderColor,
+                        containerShadowColor: attributes.containerShadowColor,
+                        containerShadowBlur: attributes.containerShadowBlur,
+                        containerShadowHorizontal: attributes.containerShadowHorizontal,
+                        containerShadowVertical: attributes.containerShadowVertical,
+                        containerShadowPosition: attributes.containerShadowPosition,
+                        paddingT: attributes.paddingT,
+                        paddingR: attributes.paddingR,
+                        paddingB: attributes.paddingB,
+                        paddingL: attributes.paddingL,
+                        paddingU: attributes.paddingU,
+                    }
+                ],
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
-
-
             const {
                 block_id,
                 borderBanner,

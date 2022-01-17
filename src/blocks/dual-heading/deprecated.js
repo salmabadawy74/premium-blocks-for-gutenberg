@@ -1,7 +1,5 @@
 import classnames from "classnames";
-
 const { __ } = wp.i18n;
-
 const className = "premium-dheading-block";
 import hexToRgba from 'hex-to-rgba'
 
@@ -347,108 +345,98 @@ const attributes = {
         default: false
     }
 }
-
-const new_Attributes = {
-    firstStyles: {
-        type: "array",
-        default: [
-            {
-                firstClip: false,
-                firstAnim: false,
-                firstStroke: false,
-                firstFamily: __('Default'),
-                firstSizeUnit: 'px',
-                firstSize: '',
-                firstSizeMobile: '',
-                firstWeight: '',
-                firstStyle: '',
-                firstLetter: '',
-                firstUpper: false,
-                firstColor: '',
-                firstBackground: '',
-                firstOpacity: '1',
-                firstClipColor: "#54595f",
-                firstBorderType: 'none',
-                firstBorderWidth: '',
-                firstBorderColor: '',
-                firstBorderRadius: '0',
-                firstShadowColor: '',
-                firstShadowBlur: '0',
-                firstShadowHorizontal: '0',
-                firstShadowVertical: '0',
-                firstMarginL: '0',
-                firstMarginR: '0',
-                firstPadding: '0',
-            }
-        ]
-    },
-    secondStyles: {
-        type: "array",
-        default: [
-            {
-                secondClip: false,
-                secondAnim: false,
-                secondStroke: false,
-                secondFamily: __('Default'),
-                secondSizeUnit: 'px',
-                secondSize: '20',
-                secondSizeTablet: '',
-                secondSizeMobile: '',
-                secondWeight: '',
-                secondStyle: '',
-                secondLetter: '',
-                secondUpper: false,
-                secondColor: "#54595f",
-                secondBackground: '',
-                secondOpacity: '',
-                secondClipColor: "#6ec1e4",
-                secondBorderType: "none",
-                secondBorderWidth: '1',
-                secondBorderColor: '',
-                secondBorderRadius: '0',
-                secondShadowColor: '',
-                secondShadowBlur: '0',
-                secondShadowHorizontal: '0',
-                secondShadowVertical: '0',
-                secondMarginL: '0',
-                secondMarginR: '0',
-                secondPadding: '0',
-
-            }
-        ]
-    },
-    containerStyles: {
-        type: 'array',
-        default: [
-            {
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                containerBorderType: "none",
-                containerBorderWidth: "1",
-                containerBorderColor: '',
-                containerBorderRadius: '0',
-                containerBack: '',
-                containerOpacity: 1,
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }
-        ]
-    },
-}
-
-const new_deprecated_attributes = Object.assign(attributes, new_Attributes)
-
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                firstStyles: [
+                    {
+                        firstClip: attributes.firstClip,
+                        firstAnim: attributes.firstAnim,
+                        firstStroke: attributes.firstStroke,
+                        firstFamily: attributes.firstFamily,
+                        firstSizeUnit: attributes.firstSizeUnit,
+                        firstSize: attributes.firstSize,
+                        firstSizeMobile: attributes.firstSizeMobile,
+                        firstWeight: attributes.firstWeight,
+                        firstStyle: attributes.firstStyle,
+                        firstLetter: attributes.firstLetter,
+                        firstUpper: attributes.firstUpper,
+                        firstColor: attributes.firstColor,
+                        firstBackground: attributes.firstBackground,
+                        firstOpacity: attributes.firstOpacity,
+                        firstClipColor: attributes.firstClipColor,
+                        firstBorderType: attributes.firstBorderType,
+                        firstBorderWidth: attributes.firstBorderWidth,
+                        firstBorderColor: attributes.firstBorderColor,
+                        firstBorderRadius: attributes.firstBorderRadius,
+                        firstShadowColor: attributes.firstShadowColor,
+                        firstShadowBlur: attributes.firstShadowBlur,
+                        firstShadowHorizontal: attributes.firstShadowHorizontal,
+                        firstShadowVertical: attributes.firstShadowVertical,
+                        firstMarginL: attributes.firstMarginL,
+                        firstMarginR: attributes.firstMarginR,
+                        firstPadding: attributes.firstPadding,
+                    }
+                ],
+                secondStyles: [
+                    {
+                        secondClip: attributes.secondClip,
+                        secondAnim: attributes.secondAnim,
+                        secondStroke: attributes.secondStroke,
+                        secondFamily: attributes.secondFamily,
+                        secondSizeUnit: attributes.secondSizeUnit,
+                        secondSize: attributes.secondSize,
+                        secondSizeTablet: attributes.secondSizeTablet,
+                        secondSizeMobile: attributes.secondSizeMobile,
+                        secondWeight: attributes.secondWeight,
+                        secondStyle: attributes.secondStyle,
+                        secondLetter: attributes.secondLetter,
+                        secondUpper: attributes.secondUpper,
+                        secondColor: attributes.secondColor,
+                        secondBackground: attributes.secondBackground,
+                        secondOpacity: attributes.secondOpacity,
+                        secondClipColor: attributes.secondClipColor,
+                        secondBorderType: attributes.secondBorderType,
+                        secondBorderWidth: attributes.secondBorderWidth,
+                        secondBorderColor: attributes.secondBorderColor,
+                        secondBorderRadius: attributes.secondBorderRadius,
+                        secondShadowColor: attributes.secondShadowColor,
+                        secondShadowBlur: attributes.secondShadowBlur,
+                        secondShadowHorizontal: attributes.secondShadowHorizontal,
+                        secondShadowVertical: attributes.secondShadowVertical,
+                        secondMarginL: attributes.secondMarginL,
+                        secondMarginR: attributes.secondMarginR,
+                        secondPadding: attributes.secondPadding,
+
+                    }
+                ],
+                containerStyles: [
+                    {
+                        backgroundImageID: attributes.imageID,
+                        backgroundImageURL: attributes.imageURL,
+                        backgroundRepeat: attributes.backgroundRepeat,
+                        backgroundPosition: attributes.backgroundPosition,
+                        backgroundSize: attributes.backgroundSize,
+                        fixed: attributes.fixed,
+                        containerBorderType: attributes.containerBorderType,
+                        containerBorderWidth: attributes.containerBorderWidth,
+                        containerBorderColor: attributes.containerBorderColor,
+                        containerBorderRadius: attributes.containerBorderRadius,
+                        containerBack: attributes.containerBack,
+                        containerOpacity: attributes.containerOpacity,
+                        gradientLocationOne: '0',
+                        gradientColorTwo: '',
+                        gradientLocationTwo: '100',
+                        gradientType: 'linear',
+                        gradientAngle: '180',
+                        gradientPosition: 'center center'
+                    }
+                ]
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
             const { className } = props;
             const {

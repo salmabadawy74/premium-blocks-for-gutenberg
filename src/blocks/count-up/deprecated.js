@@ -318,111 +318,101 @@ const attributes = {
 }
 
 const new_Attributes = {
-    numberStyles: {
-        type: "array",
-        default: [
-            {
-                numberSizeUnit: "px",
-                numberSize: 30,
-                numberSizeTablet: '',
-                numberSizeMobile: '',
-                numberColor: "#6ec1e4",
-                numberWeight: '',
-            }
-        ]
-    },
-    titleStyles: {
-        type: "array",
-        default: [
-            {
-                titleFamily: __('Default'),
-                titleSize: 20,
-                titleSizeUnit: 'px',
-                titleSizeTablet: '',
-                titleSizeMobile: '',
-                titleSpacing: '',
-                titleStyle: '',
-                titleUpper: false,
-                titleColor: '',
-                titleT: 1,
-                titleB: 1,
-                titleColor: '',
-                titleWeight: '',
-            }
-        ]
-    },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                containerBack: '',
-                containerOpacity: 1,
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                borderType: 'none',
-                borderWidth: 1,
-                borderRadius: 0,
-                borderColor: '',
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
-                shadowPosition: '',
-                paddingU: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }
-        ]
-    },
-    suffixStyles: {
-        type: 'array',
-        default: [
-            {
-                suffixTxt: "Suffix",
-                suffixSizeUnit: 'px',
-                suffixSize: 20,
-                suffixSizeTablet: '',
-                suffixSizeMobile: '',
-                suffixColor: '',
-                suffixWeight: '',
-                suffixGap: 2,
-                suffixFamily: __('Default'),
-            }
-        ]
-    },
-    prefixStyles: {
-        type: "array",
-        default: [
-            {
-                prefixTxt: "Prefix",
-                prefixSize: 20,
-                prefixSizeUnit: 'px',
-                prefixSizeTablet: '',
-                prefixSizeMobile: '',
-                prefixColor: '',
-                prefixWeight: '',
-                prefixGap: 2,
-                prefixFamily: __('Default'),
-            }
-        ]
-    }
+
 }
 
-const new_deprecated_attributes = Object.assign(attributes, new_Attributes)
 
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
-        save: props => {
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                numberStyles: [
+                    {
+                        numberSizeUnit: attributes.numberSizeUnit,
+                        numberSize: attributes.numberSize,
+                        numberSizeTablet: attributes.numberSizeTablet,
+                        numberSizeMobile: attributes.numberSizeMobile,
+                        numberColor: attributes.numberColor,
+                        numberWeight: attributes.numberWeight,
+                    }
+                ],
+                titleStyles: [
+                    {
+                        titleFamily: attributes.titleFamily,
+                        titleSize: attributes.titleSize,
+                        titleSizeUnit: attributes.titleSizeUnit,
+                        titleSizeTablet: attributes.titleSizeTablet,
+                        titleSizeMobile: attributes.titleSizeMobile,
+                        titleSpacing: attributes.titleSpacing,
+                        titleStyle: attributes.titleStyle,
+                        titleUpper: attributes.titleUpper,
+                        titleColor: attributes.titleColor,
+                        titleT: attributes.titleT,
+                        titleB: attributes.titleB,
+                        titleColor: attributes.titleColor,
+                        titleWeight: attributes.titleWeight,
+                    }
+                ],
+                containerStyles: [
+                    {
+                        containerBack: attributes.containerBack,
+                        containerOpacity: attributes.containerOpacity,
+                        backgroundImageID: attributes.imageID,
+                        backgroundImageURL: attributes.imageURL,
+                        backgroundRepeat: attributes.backgroundRepeat,
+                        backgroundPosition: attributes.backgroundPosition,
+                        backgroundSize: attributes.backgroundSize,
+                        fixed: attributes.fixed,
+                        borderType: attributes.borderType,
+                        borderWidth: attributes.borderWidth,
+                        borderRadius: attributes.borderRadius,
+                        borderColor: attributes.borderColor,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                        shadowPosition: attributes.shadowPosition,
+                        paddingU: attributes.paddingU,
+                        gradientLocationOne: '',
+                        gradientColorTwo: '',
+                        gradientLocationTwo: '100',
+                        gradientType: 'linear',
+                        gradientAngle: '180',
+                        gradientPosition: 'center center'
+                    }
+                ],
+                suffixStyles: [
+                    {
+                        suffixTxt: attributes.suffixTxt,
+                        suffixSizeUnit: attributes.suffixSizeUnit,
+                        suffixSize: attributes.suffixSize,
+                        suffixSizeTablet: attributes.suffixSizeTablet,
+                        suffixSizeMobile: attributes.suffixSizeMobile,
+                        suffixColor: attributes.suffixColor,
+                        suffixWeight: attributes.suffixWeight,
+                        suffixGap: attributes.suffixGap,
+                        suffixFamily: attributes.suffixFamily,
+                    }
+                ],
+                prefixStyles: [
+                    {
+                        prefixTxt: attributes.prefixTxt,
+                        prefixSize: attributes.prefixSize,
+                        prefixSizeUnit: attributes.prefixSizeUnit,
+                        prefixSizeTablet: attributes.prefixSizeTablet,
+                        prefixSizeMobile: attributes.prefixSizeMobile,
+                        prefixColor: attributes.prefixColor,
+                        prefixWeight: attributes.prefixWeight,
+                        prefixGap: attributes.prefixGap,
+                        prefixFamily: attributes.prefixFamily,
+                    }
+                ]
 
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
             const {
                 block_id,
                 borderCount,

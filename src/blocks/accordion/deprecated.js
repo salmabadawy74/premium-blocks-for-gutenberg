@@ -228,83 +228,73 @@ const attributes = {
         default: 10
     }
 }
-const newAttributes = {
-    titleStyles: {
-        type: "array",
-        default: [
-            {
-                titleColor: "",
-                titleSize: '',
-                titleLine: '',
-                titleLetter: '',
-                titleStyle: '',
-                titleUpper: '',
-                titleWeight: '500',
-                titleBorder: 'none',
-                titleBorderRadius: '',
-                titleBorderColor: '',
-                titleBack: '',
-                titleShadowColor: '',
-                titleShadowBlur: 0,
-                titleShadowHorizontal: 0,
-                titleShadowVertical: 0,
-            }
-        ]
-    },
-    arrowStyles: {
-        type: "array",
-        default: [
-            {
-                arrowColor: '',
-                arrowBack: '',
-                arrowPos: 'out',
-                arrowPadding: '',
-                arrowRadius: '',
-                arrowSize: 20
-            }]
-    },
-    descStyles: {
-        type: 'array',
-        default: [
-            {
-                descAlign: 'left',
-                descColor: '',
-                descBack: '',
-                descBorder: 'none',
-                descBorderWidth: 1,
-                descBorderUpdated: false,
-                descBorderTop: '',
-                descBorderRight: '',
-                descBorderBottom: '',
-                descBorderLeft: '',
-                descBorderRadius: 0,
-                descBorderColor: '',
-                descSize: '',
-                descLine: '',
-                descLetter: '',
-                descStyle: '',
-                descUpper: false,
-                descWeight: 500,
-                descPaddingT: '',
-                descPaddingR: '',
-                descPaddingB: '',
-                descPaddingL: ''
-            }
 
-        ]
-    },
-}
-const deprecated_attributes_1_6_3 = Object.assign(
-    attributes,
-    newAttributes
-);
+
 const deprecated = [
     {
-        attributes: deprecated_attributes_1_6_3,
-        migrate: ({ titleStyles, arrowStyles, descStyles }) => {
-            return {
-                ...titleStyles, ...descStyles, ...arrowStyles
+        attributes: attributes,
+        migrate: (attributes) => {
+            let newAttributes = {
+                titleStyles: [
+                    {
+                        titleColor: attributes.titleColor,
+                        titleSize: attributes.titleSize,
+                        titleLine: attributes.titleLine,
+                        titleLetter: attributes.titleLetter,
+                        titleStyle: attributes.titleStyle,
+                        titleUpper: attributes.titleUpper,
+                        titleWeight: attributes.titleWeight,
+                        titleBorder: attributes.titleBorder,
+                        titleBorderRadius: attributes.titleBorderRadius,
+                        titleBorderColor: attributes.titleBorderColor,
+                        titleBack: attributes.titleBack,
+                        titleShadowColor: attributes.titleShadowColor,
+                        titleShadowBlur: attributes.titleShadowBlur,
+                        titleShadowHorizontal: attributes.titleShadowHorizontal,
+                        titleShadowVertical: attributes.titleShadowVertical,
+                    }
+                ]
+                ,
+                arrowStyles: [
+                    {
+                        arrowColor: attributes.arrowColor,
+                        arrowBack: attributes.arrowBack,
+                        arrowPos: attributes.arrowPos,
+                        arrowPadding: attributes.arrowPadding,
+                        arrowRadius: attributes.arrowRadius,
+                        arrowSize: attributes.arrowSize
+                    }]
+                ,
+                descStyles: [
+                    {
+                        descAlign: attributes.descAlign,
+                        descColor: attributes.descColor,
+                        descBack: attributes.descBack,
+                        descBorder: attributes.descBorder,
+                        descBorderWidth: attributes.descBorderWidth,
+                        descBorderUpdated: attributes.descBorderUpdated,
+                        descBorderTop: attributes.descBorderTop,
+                        descBorderRight: attributes.descBorderRight,
+                        descBorderBottom: attributes.descBorderBottom,
+                        descBorderLeft: attributes.descBorderLeft,
+                        descBorderRadius: attributes.descBorderRadius,
+                        descBorderColor: attributes.descBorderColor,
+                        descSize: attributes.descSize,
+                        descLine: attributes.descLine,
+                        descLetter: attributes.descLetter,
+                        descStyle: attributes.descStyle,
+                        descUpper: attributes.descUpper,
+                        descWeight: attributes.descWeight,
+                        descPaddingT: attributes.descPaddingT,
+                        descPaddingR: attributes.descPaddingR,
+                        descPaddingB: attributes.descPaddingB,
+                        descPaddingL: attributes.descPaddingL
+                    }
+
+                ]
+
             }
+            return Object.assign(attributes, newAttributes)
         },
         save: props => {
             const {
