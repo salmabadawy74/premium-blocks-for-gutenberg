@@ -485,6 +485,10 @@ class edit extends Component {
                                 onChangeLine={newValue => saveTitleStyle({ titleLine: newValue })}
                                 onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
                                 onChangeFamily={(fontFamily) => saveTitleStyle({ titleFont: fontFamily })}
+                                onChangeLineUnit={newValue =>
+                                    saveTitleStyle({ titleLineUnit: newValue })
+                                }
+                                titleLineUnit={titleStyles[0].titleLineUnit}
                             />
                             <PremiumTextShadow
                                 color={titleStyles[0].titleShadowColor}
@@ -1216,7 +1220,7 @@ class edit extends Component {
                                     fontStyle: titleStyles[0].titleStyle,
                                     fontWeight: titleStyles[0].titleWeight,
                                     textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                    lineHeight: titleStyles[0].titleLine + "px"
+                                    lineHeight: `${titleStyles[0].titleLine}${titleStyles[0].titleLineUnit}`
                                 }}
                                 keepPlaceholderOnFocus
                             />

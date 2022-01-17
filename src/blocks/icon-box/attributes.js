@@ -150,6 +150,7 @@ const attributes = {
                 titleSizeTablet: 20,
                 titleSizeMobile: 20,
                 titleLine: '',
+                titleLineUnit: 'px',
                 titleLetter: '',
                 titleStyle: '',
                 titleUpper: false,

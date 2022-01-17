@@ -1016,11 +1016,11 @@ var PremiumTypo = function (_Component) {
 
         _this.state = {
             fontFamily: _this.props.fontFamily || "System Default",
-            size: _this.props.size,
-            weight: _this.props.weight, //
+            // size: this.props.size,
+            // weight: this.props.weight, //
             style: _this.props.style, //
-            spacing: _this.props.spacing,
-            line: _this.props.line,
+            // spacing: this.props.spacing,
+            // line: this.props.line,
             upper: _this.props.upper, //
             sizeUnit: _this.props.sizeUnit || 'px',
             isVisible: false,
@@ -1098,17 +1098,20 @@ var PremiumTypo = function (_Component) {
                 onChangeSpacing = _props$onChangeSpacin === undefined ? function () {} : _props$onChangeSpacin,
                 _props$onChangeLine = _props.onChangeLine,
                 onChangeLine = _props$onChangeLine === undefined ? function () {} : _props$onChangeLine,
+                _props$onChangeLineUn = _props.onChangeLineUnit,
+                onChangeLineUnit = _props$onChangeLineUn === undefined ? function () {} : _props$onChangeLineUn,
                 _props$onChangeUpper = _props.onChangeUpper,
                 onChangeUpper = _props$onChangeUpper === undefined ? function () {} : _props$onChangeUpper,
                 _props$onResetClick = _props.onResetClick,
-                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
+                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick,
+                size = _props.size,
+                line = _props.line,
+                weight = _props.weight,
+                spacing = _props.spacing,
+                titleLineUnit = _props.titleLineUnit;
             var _state = this.state,
                 fontFamily = _state.fontFamily,
-                size = _state.size,
-                weight = _state.weight,
                 style = _state.style,
-                spacing = _state.spacing,
-                line = _state.line,
                 upper = _state.upper,
                 sizeUnit = _state.sizeUnit,
                 isVisible = _state.isVisible,
@@ -1337,7 +1340,9 @@ var PremiumTypo = function (_Component) {
                                                         onChange: onChangeLine,
                                                         defaultValue: '',
                                                         showUnit: showUnit,
-                                                        responsive: true
+                                                        responsive: true,
+                                                        onChangeUnit: onChangeLineUnit,
+                                                        unit: titleLineUnit
                                                     })
                                                 ),
                                                 components.includes("spacing") && React.createElement(
@@ -54662,7 +54667,11 @@ var edit = function (_Component) {
                         },
                         onChangeFamily: function onChangeFamily(fontFamily) {
                             return saveTitleStyle({ titleFont: fontFamily });
-                        }
+                        },
+                        onChangeLineUnit: function onChangeLineUnit(newValue) {
+                            return saveTitleStyle({ titleLineUnit: newValue });
+                        },
+                        titleLineUnit: titleStyles[0].titleLineUnit
                     }),
                     React.createElement(_premiumTextShadow2.default, {
                         color: titleStyles[0].titleShadowColor,
@@ -55440,7 +55449,7 @@ var edit = function (_Component) {
                                 fontStyle: titleStyles[0].titleStyle,
                                 fontWeight: titleStyles[0].titleWeight,
                                 textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
-                                lineHeight: titleStyles[0].titleLine + "px"
+                                lineHeight: "" + titleStyles[0].titleLine + titleStyles[0].titleLineUnit
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -58804,6 +58813,7 @@ var attributes = {
             titleSizeTablet: 20,
             titleSizeMobile: 20,
             titleLine: '',
+            titleLineUnit: 'px',
             titleLetter: '',
             titleStyle: '',
             titleUpper: false,

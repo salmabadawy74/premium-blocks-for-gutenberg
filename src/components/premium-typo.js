@@ -23,11 +23,11 @@ export default class PremiumTypo extends Component {
 
         this.state = {
             fontFamily: this.props.fontFamily || "System Default",
-            size: this.props.size,
-            weight: this.props.weight, //
+            // size: this.props.size,
+            // weight: this.props.weight, //
             style: this.props.style,//
-            spacing: this.props.spacing,
-            line: this.props.line,
+            // spacing: this.props.spacing,
+            // line: this.props.line,
             upper: this.props.upper,//
             sizeUnit: this.props.sizeUnit || 'px',
             isVisible: false,
@@ -92,17 +92,24 @@ export default class PremiumTypo extends Component {
             onChangeStyle = () => { },
             onChangeSpacing = () => { },
             onChangeLine = () => { },
+            onChangeLineUnit = () => { },
             onChangeUpper = () => { },
             onResetClick = () => { },
+            size,
+            line,
+            weight,
+            spacing,
+            titleLineUnit,
+
         } = this.props;
 
         const {
             fontFamily,
-            size,
-            weight,
+            // size,
+            // weight,
             style,
-            spacing,
-            line,
+            // spacing,
+            // line,
             upper,
             sizeUnit,
             isVisible,
@@ -294,6 +301,8 @@ export default class PremiumTypo extends Component {
                                                                 defaultValue={''}
                                                                 showUnit={showUnit}
                                                                 responsive={true}
+                                                                onChangeUnit={onChangeLineUnit}
+                                                                unit={titleLineUnit}
                                                             />
                                                         </li>
                                                     )}
