@@ -264,71 +264,67 @@ const attributes = {
     }
 }
 
-const new_attributes = {
-    iconStyles: {
-        type: "array",
-        default: [
-            {
-                iconSizeUnit: 'px',
-                iconSize: '',
-                iconColor: '',
-                iconBack: '',
-                iconOpacity: '1',
-                borderType: 'none',
-                borderWidth: '1',
-                iconBorderTop: '1',
-                iconBorderRight: '1',
-                iconBorderBottom: '1',
-                iconBorderLeft: '1',
-                borderColor: '',
-                borderRadius: '100',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-            }
-        ]
-    },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                containerBack: '',
-                backgroundOpacity: 1,
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                wrapBorderType: 'none',
-                wrapBorderWidth: '1',
-                wrapBorderTop: '1',
-                wrapBorderRight: '1',
-                wrapBorderBottom: '1',
-                wrapBorderLeft: '1',
-                wrapBorderColor: '',
-                wrapBorderRadius: '',
-                wrapShadowColor: '',
-                wrapShadowBlur: '0',
-                wrapShadowHorizontal: '0',
-                wrapShadowVertical: '0',
-                wrapShadowPosition: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }]
-    }
-}
-
-const new_deprecated_attributes = Object.assign(attributes, new_attributes)
 
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                iconStyles: [
+                    {
+                        iconSizeUnit: attributes.iconSizeUnit,
+                        iconSize: attributes.iconSize,
+                        iconColor: attributes.iconColor,
+                        iconBack: attributes.iconBack,
+                        iconOpacity: attributes.iconOpacity,
+                        borderType: attributes.borderType,
+                        borderWidth: attributes.borderWidth,
+                        iconBorderTop: attributes.iconBorderTop,
+                        iconBorderRight: attributes.iconBorderRight,
+                        iconBorderBottom: attributes.iconBorderBottom,
+                        iconBorderLeft: attributes.iconBorderLeft,
+                        borderColor: attributes.borderColor,
+                        borderRadius: attributes.borderRadius,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                    }
+                ],
+                containerStyles: [
+                    {
+                        containerBack: attributes.backgroundColor,
+                        backgroundOpacity: attributes.backgroundOpacity,
+                        backgroundImageID: attributes.imageID,
+                        backgroundImageURL: attributes.imageURL,
+                        backgroundRepeat: attributes.backgroundRepeat,
+                        backgroundPosition: attributes.backgroundPosition,
+                        backgroundSize: attributes.backgroundSize,
+                        fixed: attributes.fixed,
+                        wrapBorderType: attributes.wrapBorderType,
+                        wrapBorderWidth: attributes.wrapBorderWidth,
+                        wrapBorderTop: attributes.wrapBorderTop,
+                        wrapBorderRight: attributes.wrapBorderRight,
+                        wrapBorderBottom: attributes.wrapBorderBottom,
+                        wrapBorderLeft: attributes.wrapBorderLeft,
+                        wrapBorderColor: attributes.wrapBorderColor,
+                        wrapBorderRadius: attributes.wrapBorderRadius,
+                        wrapShadowColor: attributes.wrapShadowColor,
+                        wrapShadowBlur: attributes.wrapShadowBlur,
+                        wrapShadowHorizontal: attributes.wrapShadowHorizontal,
+                        wrapShadowVertical: attributes.wrapShadowVertical,
+                        wrapShadowPosition: attributes.wrapShadowPosition,
+                        gradientLocationOne: '0',
+                        gradientColorTwo: '',
+                        gradientLocationTwo: '100',
+                        gradientType: 'linear',
+                        gradientAngle: '180',
+                        gradientPosition: 'center center'
+                    }
+                ]
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
             const {
                 wrapBorder,

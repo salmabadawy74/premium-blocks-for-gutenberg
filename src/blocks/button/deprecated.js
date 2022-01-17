@@ -183,62 +183,68 @@ const attributes = {
     }
 }
 
-const newAttributes = {
-    textStyles: {
-        type: "array",
-        default: [
-            {
-                textSizeUnit: 'px',
-                textSize: 20,
-                textSizeTablet: '',
-                textSizeMobile: '',
-                textFontFamily: __('Default'),
-                textLetter: '',
-                textStyle: '',
-                textUpper: false,
-                textWeight: '',
-                textLine: '',
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
-            }
-        ]
-    },
-    btnStyles: {
-        type: 'array',
-        default: [
-            {
-                textColor: '',
-                textHoverColor: '',
-                backColor: '',
-                backOpacity: 1,
-                backHoverColor: '',
-                borderType: "none",
-                borderRadius: '',
-                borderColor: '',
-                borderHoverColor: '',
-                btnShadowColor: '',
-                btnShadowBlur: 0,
-                btnShadowHorizontal: 0,
-                btnShadowVertical: 0,
-                btnShadowPosition: '',
-                padding: '',
-                paddingU: 'px',
-            }
-        ]
-    }
-}
-
-const new_deprecated_attributes = Object.assign(attributes, newAttributes);
-console.log(new_deprecated_attributes)
-
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: (attributes) => {
+            let newAttributes = {
+                titleStyles: [
+                    {
+                        titleSizeUnit: attributes.titleSizeUnit,
+                        titleSize: attributes.titleSize,
+                        titleSizeMobile: attributes.titleSizeMobile,
+                        titleSizeTablet: attributes.titleSizeTablet,
+                        titleWeight: attributes.titleWeight,
+                        titleLine: attributes.titleLine,
+                        titleColor: attributes.titleColor,
+                        titleBack: attributes.titleBack,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical
+                    }
+                ],
+                descStyles: [
+                    {
+                        descSizeUnit: attributes.descSizeUnit,
+                        descSize: attributes.descSize,
+                        descSizeTablet: attributes.descSizeTablet,
+                        descSizeMobile: attributes.descSizeMobile,
+                        descWeight: attributes.descWeight,
+                        descLine: attributes.descLine,
+                        descColor: attributes.descColor,
+                        descShadowColor: attributes.descShadowColor,
+                        descShadowBlur: attributes.descShadowBlur,
+                        descShadowHorizontal: attributes.descShadowHorizontal,
+                        descShadowVertical: attributes.descShadowVertical,
+                    }
+                ],
+                containerStyles: [
+                    {
+                        borderType: attributes.borderType,
+                        borderWidth: attributes.borderWidth,
+                        borderTop: attributes.borderTop,
+                        borderRight: attributes.borderRight,
+                        borderBottom: attributes.borderBottom,
+                        borderLeft: attributes.borderLeft,
+                        borderRadius: attributes.borderRadius,
+                        borderColor: attributes.borderColor,
+                        containerShadowColor: attributes.containerShadowColor,
+                        containerShadowBlur: attributes.containerShadowBlur,
+                        containerShadowHorizontal: attributes.containerShadowHorizontal,
+                        containerShadowVertical: attributes.containerShadowVertical,
+                        containerShadowPosition: attributes.containerShadowPosition,
+                        paddingT: attributes.paddingT,
+                        paddingR: attributes.paddingR,
+                        paddingB: attributes.paddingB,
+                        paddingL: attributes.paddingL,
+                        paddingU: attributes.paddingU
+                    }
+                ],
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
-
-
             const {
                 block_id,
                 borderButton,
