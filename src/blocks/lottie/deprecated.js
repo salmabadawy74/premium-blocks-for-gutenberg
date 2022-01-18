@@ -1,3 +1,5 @@
+import classnames from "classnames";
+
 const LottieAttr = {
     lottieId: {
         type: "string"
@@ -197,11 +199,44 @@ const LottieAttr = {
         type: 'boolean',
         default: false
     }
+
 }
 const deprecated = [
     {
         attributes: LottieAttr,
+        migrate: (attributes) => {
+            let newAttributes = {
+                lottieStyles: [
+                    {
+                        size: attributes.size,
+                        sizeUnit: attributes.sizeUnit,
+                        sizeMobile: attributes.sizeMobile,
+                        sizeTablet: attributes.sizeTablet,
+                        backColor: attributes.backColor,
+                        backOpacity: attributes.backOpacity,
+                        backHColor: attributes.backHColor,
+                        backHOpacity: attributes.backHOpacity,
+                        blur: attributes.blur,
+                        bright: attributes.bright,
+                        contrast: attributes.contrast,
+                        saturation: attributes.saturation,
+                        hue: attributes.hue,
+                        blurH: attributes.blurH,
+                        brightH: attributes.brightH,
+                        contrastH: attributes.contrastH,
+                        saturationH: attributes.saturationH,
+                        hueH: attributes.hueH,
+                        borderType: attributes.borderType,
+                        borderColor: attributes.borderColor,
+                        borderRadius: attributes.borderRadius,
+                        paddingU: attributes.paddingU,
+                    }
+                ]
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: (props) => {
+            const { attributes, className } = props
             const {
                 block_id,
                 lottieURl,
@@ -247,7 +282,7 @@ const deprecated = [
                 hideDesktop,
                 hideTablet,
                 hideMobile
-            } = props.attributes
+            } = attributes
             const mainClasses = classnames(className, 'premium-lottie-wrap')
 
 
@@ -258,6 +293,7 @@ const deprecated = [
                     <div className={`premium-lottie-animation premium-lottie-${render}`} data-lottieURl={lottieURl} data-trigger={trigger} data-start={bottom} data-end={top} data-speed={speed}
                         data-loop={loop} data-render={render} data-reverse={reverse} data-scrollSpeed={scrollSpeed}
                     >
+
                         {link && url !== ' ' && <a rel="noopener noreferrer" target={target ? "_blank" : "_self"} href={url} ></a>}
                     </div>
                     <style
@@ -288,8 +324,9 @@ const deprecated = [
                             ].join("\n"),
                         }}
                     />
-                </div >
+                </div>
             )
         }
     }
 ]
+export default deprecated
