@@ -13099,7 +13099,7 @@ __webpack_require__(300);
 
 __webpack_require__(325);
 
-__webpack_require__(381);
+__webpack_require__(382);
 
 /***/ }),
 /* 128 */
@@ -66852,50 +66852,46 @@ var attributes = {
     }
 };
 
-var new_attributes = {
-    fancyStyles: {
-        type: "array",
-        default: [{
-            fancyTextColor: "#6ec1e4",
-            fancyTextfontSize: 20,
-            fancyTextfontSizeUnit: 'px',
-            fancyTextfontSizeMobile: 20,
-            fancyTextfontSizeTablet: 20,
-            fancyTextBGColor: '',
-            fancyTextBGOpacity: 1,
-            fancyTextLetter: '',
-            fancyTextStyle: '',
-            fancyTextUpper: false,
-            fancyTextWeight: 600,
-            shadowColor: '',
-            shadowBlur: '0',
-            shadowHorizontal: '0',
-            shadowVertical: '0',
-            cursorColor: ''
-        }]
-    },
-    PreStyles: {
-        type: "array",
-        default: [{
-            textColor: "#54595f",
-            textLetter: '',
-            textStyle: '',
-            textUpper: false,
-            textWeight: 600,
-            textfontSize: 20,
-            textfontSizeUnit: 'px',
-            textfontSizeMobile: 20,
-            textfontSizeTablet: 20,
-            textBGColor: '',
-            textBGOpacity: 1
-        }]
-    }
-};
-
-var new_deprecated_attributes = Object.assign(attributes, new_attributes);
-
 var deprecated = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            fancyStyles: [{
+                fancyTextColor: attributes.fancyTextColor,
+                fancyTextfontSize: attributes.fancyTextfontSize,
+                fancyTextfontSizeUnit: attributes.fancyTextfontSizeUnit,
+                fancyTextfontSizeMobile: attributes.fancyTextfontSizeMobile,
+                fancyTextfontSizeTablet: attributes.fancyTextfontSizeTablet,
+                fancyTextBGColor: attributes.fancyTextBGColor,
+                fancyTextBGOpacity: attributes.fancyTextBGOpacity,
+                fancyTextLetter: attributes.fancyTextLetter,
+                fancyTextStyle: attributes.fancyTextStyle,
+                fancyTextUpper: attributes.fancyTextUpper,
+                fancyTextWeight: attributes.fancyTextWeight,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical,
+                cursorColor: attributes.cursorColor
+            }],
+
+            PreStyles: [{
+                textColor: attributes.textColor,
+                textLetter: attributes.textLetter,
+                textStyle: attributes.textStyle,
+                textUpper: attributes.textUpper,
+                textWeight: attributes.textWeight,
+                textfontSize: attributes.textfontSize,
+                textfontSizeUnit: attributes.textfontSizeUnit,
+                textfontSizeMobile: attributes.textfontSizeMobile,
+                textfontSizeTablet: attributes.textfontSizeTablet,
+                textBGColor: attributes.textBGColor,
+                textBGOpacity: attributes.textBGOpacity
+            }]
+
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var attributes = props.attributes,
             className = props.className;
@@ -67305,11 +67301,11 @@ var _save = __webpack_require__(379);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(390);
+var _deprecated = __webpack_require__(380);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(380);
+var _attributes = __webpack_require__(381);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -70233,6 +70229,327 @@ function save(props) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LottieAttr = {
+    lottieId: {
+        type: "string"
+    },
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    lottieURl: {
+        type: "string",
+        default: ""
+    },
+    lottieJson: {
+        type: "object"
+    },
+    loop: {
+        type: 'boolean',
+        default: true
+    },
+    reverse: {
+        type: "boolean",
+        default: false
+    },
+    speed: {
+        type: "number",
+        default: "1"
+    },
+    trigger: {
+        type: 'string',
+        default: 'none'
+    },
+    bottom: {
+        type: "number",
+        default: "0"
+    },
+    top: {
+        type: "number",
+        default: "100"
+    },
+    scrollSpeed: {
+        type: "number",
+        default: "4"
+    },
+    size: {
+        type: "number",
+        default: "200"
+    },
+    sizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    sizeMobile: {
+        type: "number",
+        default: "200"
+    },
+    sizeTablet: {
+        type: "number",
+        default: "200"
+    },
+    rotate: {
+        type: "number",
+        default: 0
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    link: {
+        type: "boolean",
+        default: false
+    },
+    url: {
+        type: "string"
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    render: {
+        type: 'string',
+        default: 'svg'
+    },
+    backColor: {
+        type: "string"
+    },
+    backOpacity: {
+        type: "number",
+        default: "1"
+    },
+    backHColor: {
+        type: "string"
+    },
+    backHOpacity: {
+        type: "number",
+        default: 1
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    blurH: {
+        type: "number",
+        default: "0"
+    },
+    brightH: {
+        type: "number",
+        default: "100"
+    },
+    contrastH: {
+        type: "number",
+        default: "100"
+    },
+    saturationH: {
+        type: "number",
+        default: "100"
+    },
+    hueH: {
+        type: "number",
+        default: "0"
+
+    },
+    borderType: {
+        type: "string",
+        default: 'none'
+    },
+    borderTop: {
+        type: "number",
+        default: 0
+    },
+    borderRight: {
+        type: "number",
+        default: 0
+    },
+    borderBottom: {
+        type: "number",
+        default: 0
+    },
+    borderLeft: {
+        type: "number",
+        default: 0
+    },
+    borderColor: {
+        type: "string"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    paddingT: {
+        type: "number",
+        default: "0"
+    },
+    paddingR: {
+        type: "number",
+        default: "0"
+    },
+    paddingB: {
+        type: "number",
+        default: "0"
+    },
+    paddingL: {
+        type: "number",
+        default: "0"
+    },
+    paddingU: {
+        type: "string",
+        default: "px"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+
+};
+var deprecated = [{
+    attributes: LottieAttr,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            lottieStyles: [{
+                size: attributes.size,
+                sizeUnit: attributes.sizeUnit,
+                sizeMobile: attributes.sizeMobile,
+                sizeTablet: attributes.sizeTablet,
+                backColor: attributes.backColor,
+                backOpacity: attributes.backOpacity,
+                backHColor: attributes.backHColor,
+                backHOpacity: attributes.backHOpacity,
+                blur: attributes.blur,
+                bright: attributes.bright,
+                contrast: attributes.contrast,
+                saturation: attributes.saturation,
+                hue: attributes.hue,
+                blurH: attributes.blurH,
+                brightH: attributes.brightH,
+                contrastH: attributes.contrastH,
+                saturationH: attributes.saturationH,
+                hueH: attributes.hueH,
+                borderType: attributes.borderType,
+                borderColor: attributes.borderColor,
+                borderRadius: attributes.borderRadius,
+                paddingU: attributes.paddingU
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var attributes = props.attributes,
+            className = props.className;
+        var block_id = attributes.block_id,
+            lottieURl = attributes.lottieURl,
+            loop = attributes.loop,
+            reverse = attributes.reverse,
+            speed = attributes.speed,
+            trigger = attributes.trigger,
+            bottom = attributes.bottom,
+            top = attributes.top,
+            scrollSpeed = attributes.scrollSpeed,
+            rotate = attributes.rotate,
+            align = attributes.align,
+            link = attributes.link,
+            url = attributes.url,
+            render = attributes.render,
+            backColor = attributes.backColor,
+            backOpacity = attributes.backOpacity,
+            backHColor = attributes.backHColor,
+            backHOpacity = attributes.backHOpacity,
+            blur = attributes.blur,
+            hue = attributes.hue,
+            contrast = attributes.contrast,
+            saturation = attributes.saturation,
+            bright = attributes.bright,
+            blurH = attributes.blurH,
+            hueH = attributes.hueH,
+            target = attributes.target,
+            contrastH = attributes.contrastH,
+            saturationH = attributes.saturationH,
+            brightH = attributes.brightH,
+            borderType = attributes.borderType,
+            borderTop = attributes.borderTop,
+            borderRight = attributes.borderRight,
+            borderBottom = attributes.borderBottom,
+            borderLeft = attributes.borderLeft,
+            borderColor = attributes.borderColor,
+            borderRadius = attributes.borderRadius,
+            paddingT = attributes.paddingT,
+            paddingR = attributes.paddingR,
+            paddingB = attributes.paddingB,
+            paddingL = attributes.paddingL,
+            paddingU = attributes.paddingU,
+            hideDesktop = attributes.hideDesktop,
+            hideTablet = attributes.hideTablet,
+            hideMobile = attributes.hideMobile;
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-lottie-wrap');
+
+        return React.createElement(
+            "div",
+            { id: "premium-lottie-" + block_id, className: "premium-lottie-" + block_id + " " + mainClasses + " " + hideDesktop + " " + hideTablet + " " + hideMobile
+
+            },
+            React.createElement(
+                "div",
+                { className: "premium-lottie-animation premium-lottie-" + render, "data-lottieURl": lottieURl, "data-trigger": trigger, "data-start": bottom, "data-end": top, "data-speed": speed,
+                    "data-loop": loop, "data-render": render, "data-reverse": reverse, "data-scrollSpeed": scrollSpeed
+                },
+                link && url !== ' ' && React.createElement("a", { rel: "noopener noreferrer", target: target ? "_blank" : "_self", href: url })
+            ),
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-lottie-" + block_id + "{", "text-align:" + align + ";", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation  {", "background-color:" + backColor + ";", "opacity : " + backOpacity + ";", "filter: brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg );", "border-style : " + borderType + ";", "border-width : " + borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px ;", "border-radius : " + borderRadius + "px;", "border-color : " + borderColor + "; ", "padding-top : " + paddingT + paddingU + ";", "padding-right : " + paddingR + paddingU + ";", "padding-bottom : " + paddingB + paddingU + ";", "padding-left : " + paddingL + paddingU + ";", "transform: rotate(" + rotate + "deg) !important;", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation:hover {", "background-color:" + backHColor + ";", "opacity:" + backHOpacity + ";", "filter: brightness( " + brightH + "% ) contrast( " + contrastH + "% ) saturate( " + saturationH + "% ) blur( " + blurH + "px ) hue-rotate( " + hueH + "deg ) !important;", "}"].join("\n")
+                }
+            })
+        );
+    }
+}];
+exports.default = deprecated;
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 var LottieAttr = {
     lottieId: {
         type: "string"
@@ -70370,7 +70687,7 @@ var LottieAttr = {
 exports.default = LottieAttr;
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70382,13 +70699,13 @@ var _icons = __webpack_require__(6);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(382);
+var _edit = __webpack_require__(383);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(388);
+var _save = __webpack_require__(389);
 
-var _attributes = __webpack_require__(389);
+var _attributes = __webpack_require__(390);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -70412,7 +70729,7 @@ registerBlockType("premium/newsletter", {
 });
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70435,7 +70752,7 @@ var _reactSelect = __webpack_require__(82);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _debounce = __webpack_require__(383);
+var _debounce = __webpack_require__(384);
 
 var _debounce2 = _interopRequireDefault(_debounce);
 
@@ -71368,15 +71685,15 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isObject = __webpack_require__(36),
-    now = __webpack_require__(384),
-    toNumber = __webpack_require__(385);
+    now = __webpack_require__(385),
+    toNumber = __webpack_require__(386);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -71564,7 +71881,7 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71595,13 +71912,13 @@ var now = function now() {
 module.exports = now;
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTrim = __webpack_require__(386),
+var baseTrim = __webpack_require__(387),
     isObject = __webpack_require__(36),
     isSymbol = __webpack_require__(39);
 
@@ -71665,13 +71982,13 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trimmedEndIndex = __webpack_require__(387);
+var trimmedEndIndex = __webpack_require__(388);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -71690,7 +72007,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71717,7 +72034,7 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71838,7 +72155,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71952,327 +72269,6 @@ var attributes = {
     }
 };
 exports.default = attributes;
-
-/***/ }),
-/* 390 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var LottieAttr = {
-    lottieId: {
-        type: "string"
-    },
-    block_id: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    lottieURl: {
-        type: "string",
-        default: ""
-    },
-    lottieJson: {
-        type: "object"
-    },
-    loop: {
-        type: 'boolean',
-        default: true
-    },
-    reverse: {
-        type: "boolean",
-        default: false
-    },
-    speed: {
-        type: "number",
-        default: "1"
-    },
-    trigger: {
-        type: 'string',
-        default: 'none'
-    },
-    bottom: {
-        type: "number",
-        default: "0"
-    },
-    top: {
-        type: "number",
-        default: "100"
-    },
-    scrollSpeed: {
-        type: "number",
-        default: "4"
-    },
-    size: {
-        type: "number",
-        default: "200"
-    },
-    sizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    sizeMobile: {
-        type: "number",
-        default: "200"
-    },
-    sizeTablet: {
-        type: "number",
-        default: "200"
-    },
-    rotate: {
-        type: "number",
-        default: 0
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    link: {
-        type: "boolean",
-        default: false
-    },
-    url: {
-        type: "string"
-    },
-    target: {
-        type: "boolean",
-        default: false
-    },
-    render: {
-        type: 'string',
-        default: 'svg'
-    },
-    backColor: {
-        type: "string"
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    backHColor: {
-        type: "string"
-    },
-    backHOpacity: {
-        type: "number",
-        default: 1
-    },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    },
-    blurH: {
-        type: "number",
-        default: "0"
-    },
-    brightH: {
-        type: "number",
-        default: "100"
-    },
-    contrastH: {
-        type: "number",
-        default: "100"
-    },
-    saturationH: {
-        type: "number",
-        default: "100"
-    },
-    hueH: {
-        type: "number",
-        default: "0"
-
-    },
-    borderType: {
-        type: "string",
-        default: 'none'
-    },
-    borderTop: {
-        type: "number",
-        default: 0
-    },
-    borderRight: {
-        type: "number",
-        default: 0
-    },
-    borderBottom: {
-        type: "number",
-        default: 0
-    },
-    borderLeft: {
-        type: "number",
-        default: 0
-    },
-    borderColor: {
-        type: "string"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    paddingT: {
-        type: "number",
-        default: "0"
-    },
-    paddingR: {
-        type: "number",
-        default: "0"
-    },
-    paddingB: {
-        type: "number",
-        default: "0"
-    },
-    paddingL: {
-        type: "number",
-        default: "0"
-    },
-    paddingU: {
-        type: "string",
-        default: "px"
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-
-};
-var deprecated = [{
-    attributes: LottieAttr,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            lottieStyles: [{
-                size: attributes.size,
-                sizeUnit: attributes.sizeUnit,
-                sizeMobile: attributes.sizeMobile,
-                sizeTablet: attributes.sizeTablet,
-                backColor: attributes.backColor,
-                backOpacity: attributes.backOpacity,
-                backHColor: attributes.backHColor,
-                backHOpacity: attributes.backHOpacity,
-                blur: attributes.blur,
-                bright: attributes.bright,
-                contrast: attributes.contrast,
-                saturation: attributes.saturation,
-                hue: attributes.hue,
-                blurH: attributes.blurH,
-                brightH: attributes.brightH,
-                contrastH: attributes.contrastH,
-                saturationH: attributes.saturationH,
-                hueH: attributes.hueH,
-                borderType: attributes.borderType,
-                borderColor: attributes.borderColor,
-                borderRadius: attributes.borderRadius,
-                paddingU: attributes.paddingU
-            }]
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var attributes = props.attributes,
-            className = props.className;
-        var block_id = attributes.block_id,
-            lottieURl = attributes.lottieURl,
-            loop = attributes.loop,
-            reverse = attributes.reverse,
-            speed = attributes.speed,
-            trigger = attributes.trigger,
-            bottom = attributes.bottom,
-            top = attributes.top,
-            scrollSpeed = attributes.scrollSpeed,
-            rotate = attributes.rotate,
-            align = attributes.align,
-            link = attributes.link,
-            url = attributes.url,
-            render = attributes.render,
-            backColor = attributes.backColor,
-            backOpacity = attributes.backOpacity,
-            backHColor = attributes.backHColor,
-            backHOpacity = attributes.backHOpacity,
-            blur = attributes.blur,
-            hue = attributes.hue,
-            contrast = attributes.contrast,
-            saturation = attributes.saturation,
-            bright = attributes.bright,
-            blurH = attributes.blurH,
-            hueH = attributes.hueH,
-            target = attributes.target,
-            contrastH = attributes.contrastH,
-            saturationH = attributes.saturationH,
-            brightH = attributes.brightH,
-            borderType = attributes.borderType,
-            borderTop = attributes.borderTop,
-            borderRight = attributes.borderRight,
-            borderBottom = attributes.borderBottom,
-            borderLeft = attributes.borderLeft,
-            borderColor = attributes.borderColor,
-            borderRadius = attributes.borderRadius,
-            paddingT = attributes.paddingT,
-            paddingR = attributes.paddingR,
-            paddingB = attributes.paddingB,
-            paddingL = attributes.paddingL,
-            paddingU = attributes.paddingU,
-            hideDesktop = attributes.hideDesktop,
-            hideTablet = attributes.hideTablet,
-            hideMobile = attributes.hideMobile;
-
-        var mainClasses = (0, _classnames2.default)(className, 'premium-lottie-wrap');
-
-        return React.createElement(
-            "div",
-            { id: "premium-lottie-" + block_id, className: "premium-lottie-" + block_id + " " + mainClasses + " " + hideDesktop + " " + hideTablet + " " + hideMobile
-
-            },
-            React.createElement(
-                "div",
-                { className: "premium-lottie-animation premium-lottie-" + render, "data-lottieURl": lottieURl, "data-trigger": trigger, "data-start": bottom, "data-end": top, "data-speed": speed,
-                    "data-loop": loop, "data-render": render, "data-reverse": reverse, "data-scrollSpeed": scrollSpeed
-                },
-                link && url !== ' ' && React.createElement("a", { rel: "noopener noreferrer", target: target ? "_blank" : "_self", href: url })
-            ),
-            React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-lottie-" + block_id + "{", "text-align:" + align + ";", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation  {", "background-color:" + backColor + ";", "opacity : " + backOpacity + ";", "filter: brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg );", "border-style : " + borderType + ";", "border-width : " + borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px ;", "border-radius : " + borderRadius + "px;", "border-color : " + borderColor + "; ", "padding-top : " + paddingT + paddingU + ";", "padding-right : " + paddingR + paddingU + ";", "padding-bottom : " + paddingB + paddingU + ";", "padding-left : " + paddingL + paddingU + ";", "transform: rotate(" + rotate + "deg) !important;", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation:hover {", "background-color:" + backHColor + ";", "opacity:" + backHOpacity + ";", "filter: brightness( " + brightH + "% ) contrast( " + contrastH + "% ) saturate( " + saturationH + "% ) blur( " + blurH + "px ) hue-rotate( " + hueH + "deg ) !important;", "}"].join("\n")
-                }
-            })
-        );
-    }
-}];
-exports.default = deprecated;
 
 /***/ })
 /******/ ]);

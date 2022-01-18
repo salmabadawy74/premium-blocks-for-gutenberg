@@ -200,55 +200,53 @@ const attributes = {
     }
 }
 
-const new_attributes = {
-    fancyStyles: {
-        type: "array",
-        default: [
-            {
-                fancyTextColor: "#6ec1e4",
-                fancyTextfontSize: 20,
-                fancyTextfontSizeUnit: 'px',
-                fancyTextfontSizeMobile: 20,
-                fancyTextfontSizeTablet: 20,
-                fancyTextBGColor: '',
-                fancyTextBGOpacity: 1,
-                fancyTextLetter: '',
-                fancyTextStyle: '',
-                fancyTextUpper: false,
-                fancyTextWeight: 600,
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
-                cursorColor: ''
-            }
-        ]
-    },
-    PreStyles: {
-        type: "array",
-        default: [
-            {
-                textColor: "#54595f",
-                textLetter: '',
-                textStyle: '',
-                textUpper: false,
-                textWeight: 600,
-                textfontSize: 20,
-                textfontSizeUnit: 'px',
-                textfontSizeMobile: 20,
-                textfontSizeTablet: 20,
-                textBGColor: '',
-                textBGOpacity: 1,
-            }
-        ]
-    }
-}
 
-const new_deprecated_attributes = Object.assign(attributes, new_attributes)
 
 const deprecated = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                fancyStyles: [
+                    {
+                        fancyTextColor: attributes.fancyTextColor,
+                        fancyTextfontSize: attributes.fancyTextfontSize,
+                        fancyTextfontSizeUnit: attributes.fancyTextfontSizeUnit,
+                        fancyTextfontSizeMobile: attributes.fancyTextfontSizeMobile,
+                        fancyTextfontSizeTablet: attributes.fancyTextfontSizeTablet,
+                        fancyTextBGColor: attributes.fancyTextBGColor,
+                        fancyTextBGOpacity: attributes.fancyTextBGOpacity,
+                        fancyTextLetter: attributes.fancyTextLetter,
+                        fancyTextStyle: attributes.fancyTextStyle,
+                        fancyTextUpper: attributes.fancyTextUpper,
+                        fancyTextWeight: attributes.fancyTextWeight,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                        cursorColor: attributes.cursorColor
+                    }
+                ]
+                ,
+                PreStyles: [
+                    {
+                        textColor: attributes.textColor,
+                        textLetter: attributes.textLetter,
+                        textStyle: attributes.textStyle,
+                        textUpper: attributes.textUpper,
+                        textWeight: attributes.textWeight,
+                        textfontSize: attributes.textfontSize,
+                        textfontSizeUnit: attributes.textfontSizeUnit,
+                        textfontSizeMobile: attributes.textfontSizeMobile,
+                        textfontSizeTablet: attributes.textfontSizeTablet,
+                        textBGColor: attributes.textBGColor,
+                        textBGOpacity: attributes.textBGOpacity,
+                    }
+                ]
+
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
             const { attributes, className } = props
 
