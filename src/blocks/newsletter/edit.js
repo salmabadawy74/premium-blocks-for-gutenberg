@@ -6,12 +6,11 @@ const { PanelBody, SelectControl, ToggleControl, TextControl, Spinner } = wp.com
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
-import { Fragment } from "react";
 import PremiumRangeControl from "../../components/premium-range-control";
 const { addQueryArgs } = wp.url;
 const { apiFetch } = wp;
 const { withSelect } = wp.data
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { getWidgetIdFromBlock } = wp.widgets;
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
@@ -44,6 +43,7 @@ export class edit extends Component {
             listTags: false,
             listTagsLoaded: false
         }
+
     }
 
     componentDidMount() {
@@ -66,6 +66,7 @@ export class edit extends Component {
 
         this.debouncedGetID();
     }
+
     removeAPI() {
         this.setState({ api: "" });
         this.state.isSavedAPI && [this.setState({ isSaving: true }),
@@ -173,9 +174,8 @@ export class edit extends Component {
             .catch(() => {
                 this.setState({ listGroups: [], listGroupLoaded: true, isFetchingGroups: false })
             });
-
-
     }
+
     getMailChimpTags() {
 
         if (!this.state.api) {
@@ -222,7 +222,6 @@ export class edit extends Component {
         }
         return desktopSize;
     }
-
 
     render() {
         const { attributes:
@@ -307,6 +306,7 @@ export class edit extends Component {
                 inputStyles: newUpdate,
             });
         };
+
         const saveButtonStyle = (value) => {
             const newUpdate = btnStyles.map((item, index) => {
                 if (0 === index) {
@@ -864,10 +864,10 @@ export class edit extends Component {
         ];
     }
 }
+
 export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
     return {
         deviceType: deviceType
     }

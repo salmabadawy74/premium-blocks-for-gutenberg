@@ -407,8 +407,8 @@ const deprecatedContent = [
                         prefixGap: attributes.prefixGap,
                         prefixFamily: attributes.prefixFamily,
                     }
-                ]
-
+                ],
+                backgroundType: 'solid',
             }
             return Object.assign(attributes, newAttributes)
         },
@@ -484,10 +484,7 @@ const deprecatedContent = [
                 hideTablet,
                 hideMobile
             } = props.attributes;
-
             let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
-
-
             return (
                 <div
                     id={`premium-countup-${block_id}`}

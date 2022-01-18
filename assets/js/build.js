@@ -39103,8 +39103,8 @@ var deprecatedContent = [{
                 prefixWeight: attributes.prefixWeight,
                 prefixGap: attributes.prefixGap,
                 prefixFamily: attributes.prefixFamily
-            }]
-
+            }],
+            backgroundType: 'solid'
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -39180,9 +39180,7 @@ var deprecatedContent = [{
             hideTablet = _props$attributes.hideTablet,
             hideMobile = _props$attributes.hideMobile;
 
-
         var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
-
         return React.createElement(
             "div",
             {
@@ -41995,7 +41993,8 @@ var deprecatedContent = [{
                 gradientType: 'linear',
                 gradientAngle: '180',
                 gradientPosition: 'center center'
-            }]
+            }],
+            backgroundType: 'solid'
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -44457,7 +44456,8 @@ var deprecatedContent = [{
                 gradientType: 'linear',
                 gradientAngle: '180',
                 gradientPosition: 'center center'
-            }]
+            }],
+            backgroundType: 'solid'
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -56727,7 +56727,8 @@ var deprecatedContent = [{
                 gradientType: 'linear',
                 gradientAngle: '180',
                 gradientPosition: 'center center'
-            }]
+            }],
+            backgroundType: 'solid'
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -58829,7 +58830,8 @@ var deprecatedContent = [{
                 gradientType: 'linear',
                 gradientAngle: '180',
                 gradientPosition: 'center center'
-            }]
+            }],
+            backgroundType: 'solid'
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -70440,8 +70442,6 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _react = __webpack_require__(2);
-
 var _premiumRangeControl = __webpack_require__(3);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
@@ -70472,7 +70472,9 @@ var addQueryArgs = wp.url.addQueryArgs;
 var _wp = wp,
     apiFetch = _wp.apiFetch;
 var withSelect = wp.data.withSelect;
-var Component = wp.element.Component;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
 var getWidgetIdFromBlock = wp.widgets.getWidgetIdFromBlock;
 
 var edit = exports.edit = function (_Component) {
@@ -70508,6 +70510,7 @@ var edit = exports.edit = function (_Component) {
             listTags: false,
             listTagsLoaded: false
         };
+
         return _this;
     }
 
@@ -70787,6 +70790,7 @@ var edit = exports.edit = function (_Component) {
                     inputStyles: newUpdate
                 });
             };
+
             var saveButtonStyle = function saveButtonStyle(value) {
                 var newUpdate = btnStyles.map(function (item, index) {
                     if (0 === index) {
@@ -70846,10 +70850,10 @@ var edit = exports.edit = function (_Component) {
                         __("Remove")
                     ),
                     isSavedAPI && React.createElement(
-                        _react.Fragment,
+                        Fragment,
                         null,
                         !isFetching && !m && React.createElement(
-                            _react.Fragment,
+                            Fragment,
                             null,
                             React.createElement(
                                 'h2',
@@ -70860,7 +70864,7 @@ var edit = exports.edit = function (_Component) {
                             !Array.isArray(list) ? React.createElement(Spinner, null) : __("No Audience found.", 'premium-block-for-gutenberg')
                         ),
                         !isFetching && m && React.createElement(
-                            _react.Fragment,
+                            Fragment,
                             null,
                             React.createElement(
                                 'h2',
@@ -70877,11 +70881,11 @@ var edit = exports.edit = function (_Component) {
                             })
                         ),
                         mailchimp[0].list.value && React.createElement(
-                            _react.Fragment,
+                            Fragment,
                             null,
                             isFetchingGroups && React.createElement(Spinner, null),
                             !isFetchingGroups && !g && React.createElement(
-                                _react.Fragment,
+                                Fragment,
                                 null,
                                 React.createElement(
                                     'h2',
@@ -70892,7 +70896,7 @@ var edit = exports.edit = function (_Component) {
                                 !Array.isArray(listGroups) ? React.createElement(Spinner, null) : __('No group found.', 'premium-block-for-gutenberg')
                             ),
                             !isFetchingGroups && g && React.createElement(
-                                _react.Fragment,
+                                Fragment,
                                 null,
                                 React.createElement(
                                     'h2',
@@ -70913,7 +70917,7 @@ var edit = exports.edit = function (_Component) {
                             ),
                             isFetchingTags && React.createElement(Spinner, null),
                             !isFetchingTags && !v && React.createElement(
-                                _react.Fragment,
+                                Fragment,
                                 null,
                                 React.createElement(
                                     'h2',
@@ -70924,7 +70928,7 @@ var edit = exports.edit = function (_Component) {
                                 !Array.isArray(listTags) ? React.createElement(Spinner, null) : __('No Tags found.', 'premium-block-for-gutenberg')
                             ),
                             !isFetchingTags && v && React.createElement(
-                                _react.Fragment,
+                                Fragment,
                                 null,
                                 React.createElement(
                                     'h2',
@@ -71353,7 +71357,6 @@ exports.default = withSelect(function (select, props) {
         __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
 
     var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
     return {
         deviceType: deviceType
     };

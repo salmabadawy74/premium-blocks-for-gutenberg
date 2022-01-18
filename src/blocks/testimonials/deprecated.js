@@ -403,6 +403,7 @@ const deprecatedContent = [
                         gradientPosition: 'center center'
                     }
                 ],
+                backgroundType: 'solid'
             }
             return Object.assign(attributes, newAttributes)
         },
