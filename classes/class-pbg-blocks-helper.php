@@ -1861,7 +1861,7 @@ class PBG_Blocks_Helper {
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Author Style FontSize.
 		if ( isset( $attr['authorStyles'] ) ) {
-			if ( isset( $attr['authorStyles'][0]['authorSize'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
+			if ( isset( $attr['authorStyles'][0]['authorSize'] ) && isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
 				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
 				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSize'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
 			}
@@ -1883,7 +1883,7 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['tablet'] );
 		// Author Style FontSize Tablet.
 		if ( isset( $attr['authorStyles'] ) ) {
-			if ( isset( $attr['authorStyles'][0]['authorSizeTablet'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
+			if ( isset( $attr['authorStyles'][0]['authorSizeTablet'] ) && isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
 				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
 				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSizeTablet'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
 			}
@@ -1906,7 +1906,7 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['mobile'] );
 		// Author Style FontSize Mobile.
 		if ( isset( $attr['authorStyles'] ) ) {
-			if ( isset( $attr['authorStyles'][0]['authorSizeMobile'] ) || isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
+			if ( isset( $attr['authorStyles'][0]['authorSizeMobile'] ) && isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
 				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
 				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSizeMobile'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
 			}
