@@ -2,6 +2,7 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import { lottie } from "../../../assets/js/settings";
 import save from "./save";
+import deprecated from './deprecated'
 
 const { __ } = wp.i18n;
 
@@ -20,4 +21,5 @@ registerBlockType("premium/lottie", {
     example: {},
     edit: edit,
     save: save,
+    deprecated: deprecated
 });
