@@ -459,144 +459,136 @@ const attributes = {
     },
 }
 const new_attributes = {
-    titleStyles: {
-        type: "array",
-        default: [
-            {
 
-                titleTag: "H2",
-                titleFont: '',
-                titleColor: '',
-                titleSize: 20,
-                titleSizeUnit: 'px',
-                titleSizeTablet: 20,
-                titleSizeMobile: 20,
-                titleLine: '',
-                titleLetter: '',
-                titleStyle: '',
-                titleUpper: false,
-                titleWeight: '',
-                titleShadowColor: '',
-                titleShadowBlur: '0',
-                titleShadowHorizontal: '0',
-                titleShadowVertical: '0',
-                titleMarginT: '',
-                titleMarginB: '',
-            }
-        ]
-    },
-    descStyles: {
-        type: "array",
-        default: [
-            {
-                descFont: '',
-                descColor: '',
-                descSize: 20,
-                descSizeUnit: 'px',
-                descSizeTablet: 20,
-                descSizeMobile: 20,
-                descLine: '',
-                descWeight: '',
-                descMarginT: '',
-                descMarginB: '',
-            }
-        ]
-    },
-    btnStyles: {
-        type: 'array',
-        default: [
-            {
-                btnSize: 20,
-                btnSizeUnit: 'px',
-                btnSizeTablet: 20,
-                btnSizeMobile: 20,
-                btnLine: '',
-                btnLetter: '',
-                btnStyle: '',
-                btnUpper: false,
-                btnWeight: '',
-                btnBorderType: 'none',
-                btnBorderWidth: 1,
-                btnBorderTop: '',
-                btnBorderRight: '',
-                btnBorderBottom: '',
-                btnBorderLeft: '',
-                btnBorderRadius: '',
-                btnBorderColor: '',
-                btnPadding: '',
-                btnPaddingU: 'px',
-                btnMarginT: '',
-                btnMarginB: '',
-                btnShadowColor: '',
-                btnShadowBlur: '',
-                btnShadowHorizontal: '0',
-                btnShadowVertical: '0',
-                btnShadowPosition: '',
-                btnColor: '',
-                btnHoverColor: '',
-                btnBack: '',
-                btnHoverBack: '',
-                btnOpacity: 1,
-            }
-        ]
-    },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                backOpacity: 1,
-                backColor: '',
-                imageID: '',
-                imageURL: '',
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "top center",
-                backgroundSize: "auto",
-                fixed: false,
-                borderType: "none",
-                borderWidth: 1,
-                borderRadius: '',
-                borderColor: '',
-                borderTop: '',
-                borderRight: '',
-                borderBottom: '',
-                borderLeft: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                hoverShadowColor: '',
-                hoverShadowBlur: '',
-                hoverShadowHorizontal: '',
-                hoverShadowVertical: '',
-                hoverShadowPosition: '',
-                marginT: '',
-                marginR: '',
-                marginB: '',
-                marginL: '',
-                paddingT: '',
-                paddingR: '',
-                paddingB: '',
-                paddingL: '',
-                paddingU: 'px',
-                gradientColorOne: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-
-            }
-        ]
-    },
 }
-const new_deprecated_attributes = Object.assign(attributes, new_attributes);
 
 
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                titleStyles: [
+                    {
+                        titleTag: attributes.titleTag,
+                        titleFont: attributes.titleFont,
+                        titleColor: attributes.titleColor,
+                        titleSize: attributes.titleSize,
+                        titleSizeUnit: attributes.titleSize,
+                        titleSizeTablet: attributes.titleSizeTablet,
+                        titleSizeMobile: attributes.titleSizeMobile,
+                        titleLine: attributes.titleLine,
+                        titleLetter: attributes.titleLetter,
+                        titleStyle: attributes.titleStyle,
+                        titleUpper: attributes.titleUpper,
+                        titleWeight: attributes.titleWeight,
+                        titleShadowColor: attributes.titleShadowColor,
+                        titleShadowBlur: attributes.titleShadowBlur,
+                        titleShadowHorizontal: attributes.titleShadowHorizontal,
+                        titleShadowVertical: attributes.titleShadowVertical,
+                        titleMarginT: attributes.titleMarginT,
+                        titleMarginB: attributes.titleMarginB,
+                    }
+                ],
+                descStyles: [
+                    {
+                        descFont: attributes.descFont,
+                        descColor: attributes.descColor,
+                        descSize: attributes.descSize,
+                        descSizeUnit: attributes.descSizeUnit,
+                        descSizeTablet: attributes.descSizeTablet,
+                        descSizeMobile: attributes.descSizeMobile,
+                        descLine: attributes.descLine,
+                        descWeight: attributes.descWeight,
+                        descMarginT: attributes.descMarginT,
+                        descMarginB: attributes.descMarginB,
+                    }
+                ],
+                btnStyles: [
+                    {
+                        btnSize: attributes.btnSize,
+                        btnSizeUnit: attributes.btnSizeUnit,
+                        btnSizeTablet: attributes.btnSizeTablet,
+                        btnSizeMobile: attributes.btnSizeMobile,
+                        btnLine: attributes.btnLine,
+                        btnLetter: attributes.btnLetter,
+                        btnStyle: attributes.btnStyle,
+                        btnUpper: attributes.btnUpper,
+                        btnWeight: attributes.btnWeight,
+                        btnBorderType: attributes.btnBorderType,
+                        btnBorderWidth: attributes.btnBorderWidth,
+                        btnBorderTop: attributes.btnBorderTop,
+                        btnBorderRight: attributes.btnBorderRight,
+                        btnBorderBottom: attributes.btnBorderBottom,
+                        btnBorderLeft: attributes.btnBorderLeft,
+                        btnBorderRadius: attributes.btnBorderRadius,
+                        btnBorderColor: attributes.btnBorderColor,
+                        btnPadding: attributes.btnPadding,
+                        btnPaddingU: attributes.btnPaddingU,
+                        btnMarginT: attributes.btnMarginT,
+                        btnMarginB: attributes.btnMarginB,
+                        btnShadowColor: attributes.btnShadowColor,
+                        btnShadowBlur: attributes.btnShadowBlur,
+                        btnShadowHorizontal: attributes.btnShadowHorizontal,
+                        btnShadowVertical: attributes.btnShadowVertical,
+                        btnShadowPosition: attributes.btnShadowPosition,
+                        btnColor: attributes.btnColor,
+                        btnHoverColor: attributes.btnHoverColor,
+                        btnBack: attributes.btnBack,
+                        btnHoverBack: attributes.btnHoverBack,
+                        btnOpacity: attributes.btnOpacity,
+                    }
+                ],
+                containerStyles: [
+                    {
+                        backOpacity: attributes.backOpacity,
+                        backColor: attributes.backColor,
+                        imageID: attributes.imageID,
+                        imageURL: attributes.imageURL,
+                        backgroundRepeat: attributes.backgroundRepeat,
+                        backgroundPosition: attributes.backgroundPosition,
+                        backgroundSize: attributes.backgroundSize,
+                        fixed: attributes.fixed,
+                        borderType: attributes.borderType,
+                        borderWidth: attributes.borderWidth,
+                        borderRadius: attributes.borderRadius,
+                        borderColor: attributes.borderColor,
+                        borderTop: attributes.borderTop,
+                        borderRight: attributes.borderRight,
+                        borderBottom: attributes.borderBottom,
+                        borderLeft: attributes.borderLeft,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                        shadowPosition: attributes.shadowPosition,
+                        hoverShadowColor: attributes.hoverShadowColor,
+                        hoverShadowBlur: attributes.hoverShadowBlur,
+                        hoverShadowHorizontal: attributes.hoverShadowHorizontal,
+                        hoverShadowVertical: attributes.hoverShadowVertical,
+                        hoverShadowPosition: attributes.hoverShadowPosition,
+                        marginT: attributes.marginT,
+                        marginR: attributes.marginR,
+                        marginB: attributes.marginB,
+                        marginL: attributes.marginL,
+                        paddingT: attributes.paddingT,
+                        paddingR: attributes.paddingR,
+                        paddingB: attributes.paddingB,
+                        paddingL: attributes.paddingL,
+                        paddingU: attributes.paddingU,
+                        gradientColorOne: '',
+                        gradientLocationOne: '0',
+                        gradientColorTwo: '',
+                        gradientLocationTwo: '100',
+                        gradientType: 'linear',
+                        gradientAngle: '180',
+                        gradientPosition: 'center center'
+                    }
+                ]
+            }
+
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
             const {
                 block_id,

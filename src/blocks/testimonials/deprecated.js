@@ -324,11 +324,88 @@ const new_Attributes = {
     },
 }
 
-const new_deprecated_attributes = Object.assign(attributes, new_Attributes)
-
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                authorStyles: [
+                    {
+                        authorTag: attributes.authorTag,
+                        authorColor: attributes.authorColor,
+                        authorSize: attributes.authorSize,
+                        authorSizeUnit: attributes.authorSizeUnit,
+                        authorSizeMobile: attributes.authorSizeMobile,
+                        authorSizeTablet: attributes.authorSizeTablet,
+                        authorLetter: attributes.authorLetter,
+                        authorStyle: attributes.authorStyle,
+                        authorUpper: attributes.authorUpper,
+                        authorWeight: attributes.authorWeight,
+                        authorComTag: attributes.authorComTag,
+                    }
+                ],
+                contentStyle: [
+                    {
+                        bodySizeUnit: attributes.bodySizeUnit,
+                        bodySize: attributes.bodySize,
+                        bodySizeMobile: attributes.bodySizeMobile,
+                        bodySizeTablet: attributes.bodySizeTablet,
+                        bodyColor: attributes.bodyColor,
+                        bodyLine: attributes.bodyLine,
+                        bodyTop: attributes.bodyTop,
+                        bodyBottom: attributes.bodyBottom,
+                    }
+                ],
+                companyStyles: [
+                    {
+                        authorComTag: attributes.authorComTag,
+                        authorComSizeUnit: attributes.authorComSizeUnit,
+                        authorComColor: attributes.authorComColor,
+                        authorComSize: attributes.authorComSize,
+                        authorComSizeMobile: attributes.authorComSizeMobile,
+                        authorComSizeTablet: attributes.authorComSizeTablet,
+                        dashColor: attributes.dashColor,
+                        urlCheck: attributes.urlCheck,
+                        urlText: attributes.urlText,
+                        urlTarget: attributes.urlTarget,
+                    }
+                ],
+                quoteStyles: [
+                    {
+                        quotSize: attributes.quotSize,
+                        quotColor: attributes.quotColor,
+                        quotOpacity: attributes.quotOpacity,
+
+                    }
+                ],
+                containerStyles: [
+                    {
+                        backOpacity: attributes.backOpacity,
+                        containerBack: attributes.backColor,
+                        backgroundImageID: attributes.imageID,
+                        backgroundImageURL: attributes.imageURL,
+                        backgroundRepeat: attributes.backgroundRepeat,
+                        backgroundPosition: attributes.backgroundPosition,
+                        backgroundSize: attributes.backgroundSize,
+                        fixed: attributes.fixed,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                        shadowPosition: attributes.shadowPosition,
+                        paddingUnit: attributes.paddingUnit,
+                        gradientColorOne: '',
+                        gradientLocationOne: '0',
+                        gradientColorTwo: '',
+                        gradientLocationTwo: '100',
+                        gradientType: 'linear',
+                        gradientAngle: '180',
+                        gradientPosition: 'center center'
+                    }
+                ],
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
             const {
                 block_id,

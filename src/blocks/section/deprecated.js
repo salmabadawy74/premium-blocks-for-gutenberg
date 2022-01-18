@@ -192,10 +192,44 @@ const new_Attributes = {
     }
 }
 
-const deprecated_attributes = Object.assign(attributes, new_Attributes)
 const deprecatedContent = [
     {
-        attributes: deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                containerStyles: [
+                    {
+                        containerBack: attributes.color,
+                        opacity: attributes.opacity,
+                        backgroundImageID: attributes.imageID,
+                        backgroundImageURL: attributes.imageURL,
+                        backgroundRepeat: attributes.backgroundRepeat,
+                        backgroundPosition: attributes.backgroundPosition,
+                        backgroundSize: attributes.backgroundSize,
+                        fixed: attributes.fixed,
+                        borderType: attributes.borderType,
+                        borderWidth: attributes.borderWidth,
+                        borderRadius: attributes.borderRadius,
+                        borderColor: attributes.borderColor,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                        shadowPosition: attributes.shadowPosition,
+                        marginUnit: attributes.marginUnit,
+                        paddingUnit: attributes.paddingUnit,
+                        gradientColorOne: '',
+                        gradientLocationOne: '0',
+                        gradientColorTwo: '',
+                        gradientLocationTwo: '100',
+                        gradientType: 'linear',
+                        gradientAngle: '180',
+                        gradientPosition: 'center center'
+                    }
+                ]
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
             const {
                 block_id,
