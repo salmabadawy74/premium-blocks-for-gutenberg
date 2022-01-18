@@ -66656,7 +66656,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var __ = wp.i18n.__;
 
 
-var attributes = {
+var fancyAttributes = {
     block_id: {
         type: "string"
     },
@@ -66734,10 +66734,6 @@ var attributes = {
     fancyTextBGColor: {
         type: "string"
     },
-    fancyTextBGOpacity: {
-        type: "number",
-        default: "1"
-    },
     shadowColor: {
         type: "string"
     },
@@ -66790,10 +66786,6 @@ var attributes = {
     textBGColor: {
         type: "string"
     },
-    textBGOpacity: {
-        type: "number",
-        default: "1"
-    },
     loop: {
         type: "boolean",
         default: "true"
@@ -66837,6 +66829,17 @@ var attributes = {
     fancyalign: {
         type: "string",
         default: "center"
+    }
+};
+
+var newAtrributes_1_0_1 = {
+    fancyTextBGOpacity: {
+        type: "number",
+        default: "1"
+    },
+    textBGOpacity: {
+        type: "number",
+        default: "1"
     },
     hideDesktop: {
         type: 'boolean',
@@ -66852,160 +66855,10 @@ var attributes = {
     }
 };
 
+var fancyAttributes_1_0_1 = Object.assign(newAtrributes_1_0_1, fancyAttributes);
+
 var deprecated = [{
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            fancyStyles: [{
-                fancyTextColor: attributes.fancyTextColor,
-                fancyTextfontSize: attributes.fancyTextfontSize,
-                fancyTextfontSizeUnit: attributes.fancyTextfontSizeUnit,
-                fancyTextfontSizeMobile: attributes.fancyTextfontSizeMobile,
-                fancyTextfontSizeTablet: attributes.fancyTextfontSizeTablet,
-                fancyTextBGColor: attributes.fancyTextBGColor,
-                fancyTextBGOpacity: attributes.fancyTextBGOpacity,
-                fancyTextLetter: attributes.fancyTextLetter,
-                fancyTextStyle: attributes.fancyTextStyle,
-                fancyTextUpper: attributes.fancyTextUpper,
-                fancyTextWeight: attributes.fancyTextWeight,
-                shadowColor: attributes.shadowColor,
-                shadowBlur: attributes.shadowBlur,
-                shadowHorizontal: attributes.shadowHorizontal,
-                shadowVertical: attributes.shadowVertical,
-                cursorColor: attributes.cursorColor
-            }],
-
-            PreStyles: [{
-                textColor: attributes.textColor,
-                textLetter: attributes.textLetter,
-                textStyle: attributes.textStyle,
-                textUpper: attributes.textUpper,
-                textWeight: attributes.textWeight,
-                textfontSize: attributes.textfontSize,
-                textfontSizeUnit: attributes.textfontSizeUnit,
-                textfontSizeMobile: attributes.textfontSizeMobile,
-                textfontSizeTablet: attributes.textfontSizeTablet,
-                textBGColor: attributes.textBGColor,
-                textBGOpacity: attributes.textBGOpacity
-            }]
-
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var attributes = props.attributes,
-            className = props.className;
-        var block_id = attributes.block_id,
-            align = attributes.align,
-            prefix = attributes.prefix,
-            suffix = attributes.suffix,
-            repeaterFancyText = attributes.repeaterFancyText,
-            effect = attributes.effect,
-            loop = attributes.loop,
-            cursorShow = attributes.cursorShow,
-            cursorMark = attributes.cursorMark,
-            typeSpeed = attributes.typeSpeed,
-            backSpeed = attributes.backSpeed,
-            startdelay = attributes.startdelay,
-            backdelay = attributes.backdelay,
-            animationSpeed = attributes.animationSpeed,
-            pauseTime = attributes.pauseTime,
-            hoverPause = attributes.hoverPause,
-            fancyalign = attributes.fancyalign,
-            hideDesktop = attributes.hideDesktop,
-            hideTablet = attributes.hideTablet,
-            hideMobile = attributes.hideMobile;
-
-        return React.createElement(
-            "div",
-            {
-                className: (0, _classnames2.default)(className, "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
-                style: {
-                    textAlign: align
-                } },
-            effect == 'typing' ? React.createElement(
-                "div",
-                {
-                    id: "premium-fancy-text-" + block_id,
-                    className: "premium-fancy-text", style: {
-                        textAlign: align
-                    },
-                    "data-effect": "" + effect,
-                    "data-strings": "" + repeaterFancyText.map(function (item, index) {
-                        return item.title;
-                    }),
-                    "data-typespeed": "" + typeSpeed,
-                    "data-backspeed": "" + backSpeed,
-                    "data-startdelay": "" + startdelay,
-                    "data-backdelay": "" + backdelay,
-                    "data-loop": "" + loop,
-                    "data-cursorshow": "" + cursorShow,
-                    "data-cursormark": "" + cursorMark
-                },
-                React.createElement(
-                    "span",
-                    { className: "premium-fancy-text-prefix-text" },
-                    prefix,
-                    " "
-                ),
-                React.createElement(
-                    "span",
-                    { className: "premium-fancy-text-title" },
-                    " "
-                ),
-                React.createElement(
-                    "span",
-                    { className: "premium-fancy-text-suffix-text" },
-                    " ",
-                    suffix
-                )
-            ) : React.createElement(
-                "div",
-                { className: "premium-fancy-text premium-fancy-slide", style: {
-                        textAlign: align
-                    },
-                    "data-effect": "" + effect,
-                    "data-strings": "" + repeaterFancyText.map(function (item, index) {
-                        return item.title;
-                    }),
-                    "data-animationspeed": "" + animationSpeed,
-                    "data-pausetime": "" + pauseTime,
-                    "data-hoverpause": "" + hoverPause
-                },
-                React.createElement(
-                    "span",
-                    { className: "premium-fancy-text-prefix-text" },
-                    prefix,
-                    " "
-                ),
-                React.createElement(
-                    "div",
-                    { className: "premium-fancy-text-title-slide", style: {
-                            textAlign: fancyalign
-                        } },
-                    React.createElement(
-                        "ul",
-                        { className: "premium-fancy-text-title-slide-list" },
-                        repeaterFancyText.map(function (item, index) {
-                            return React.createElement(
-                                "li",
-                                null,
-                                item.title
-                            );
-                        })
-                    )
-                ),
-                React.createElement(
-                    "span",
-                    { className: "premium-fancy-text-suffix-text" },
-                    " ",
-                    suffix
-                )
-            )
-        );
-    }
-}, {
-    attributes: attributes,
+    attributes: fancyAttributes_1_0_1,
     migrate: function migrate(attributes) {
         var newAttributes = {
             fancyTextBGOpacity: "",
