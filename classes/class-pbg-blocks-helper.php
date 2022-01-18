@@ -1988,20 +1988,20 @@ class PBG_Blocks_Helper {
 		// Style Description.
 
 		if ( isset( $attr['descStyles'] ) ) {
-			if ( isset( $attr['descStyles'][0]['videoDescSize'] ) || isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
+			if ( isset( $attr['descStyles'][0]['videoDescSize'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
 				$css->set_selector( '#premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
 				$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSize'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
 			}
 		}
 		$css->start_media_query( $media_query['tablet'] );
 
-		if ( isset( $attr['descStyles'][0]['videoDescSizeTablet'] ) || isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
+		if ( isset( $attr['descStyles'][0]['videoDescSizeTablet'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
 			$css->set_selector( '#premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
 			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeTablet'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		if ( isset( $attr['descStyles'][0]['videoDescSize'] ) || isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
+		if ( isset( $attr['descStyles'][0]['videoDescSizeMobile'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
 			$css->set_selector( '#premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
 			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeMobile'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
 		}
