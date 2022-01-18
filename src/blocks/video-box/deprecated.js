@@ -275,102 +275,89 @@ const attributes = {
     }
 }
 
-const new_Attributes = {
-    boxStyles: {
-        type: 'array',
-        default: [
-            {
-                boxBorderType: 'none',
-                boxBorderWidth: 1,
-                boxBorderTop: '',
-                boxBorderRight: '',
-                boxBorderBottom: '',
-                boxBorderLeft: '',
-                boxBorderRadius: '',
-                boxBorderColor: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                borderBoxUpdated: false
-            }
-        ]
-    },
-    overlayStyles: {
-        type: 'array',
-        default: [
-            {
-                overlayImgID: '',
-                overlayImgURL: '',
-                blur: 0,
-                bright: 100,
-                contrast: 100,
-                saturation: 100,
-                hue: 0,
-            }
-        ]
-    },
-    playStyles: {
-        type: 'array',
-        default: [
-            {
-                playTop: '',
-                playSize: '',
-                playPadding: '',
-                playBorderType: 'none',
-                playBorderWidth: 1,
-                playBorderRadius: '',
-                playBorderColor: '',
-                playBorderTop: '',
-                playBorderRight: '',
-                playBorderBottom: '',
-                playBorderLeft: '',
-                playColor: '',
-                playBack: '',
-                playOpacity: 1,
-                playHoverColor: '',
-                playHoverBackColor: '',
-                borderPlayUpdated: false
-
-            }
-        ]
-
-    },
-    descStyles: {
-        type: 'array',
-        default: [
-            {
-                videoDescText: '',
-                videoDescFamily: __('Default'),
-                videoDescSize: '',
-                videoDescSizeUnit: 'px',
-                videoDescSizeMobile: '',
-                videoDescSizeTablet: '',
-                videoDescWeight: '',
-                videoDescLetter: '',
-                videoDescStyle: '',
-                videoDescUpper: false,
-                videoDescPadding: '',
-                videoDescBorderRadius: '',
-                descShadowColor: '',
-                descShadowBlur: 0,
-                descShadowHorizontal: 0,
-                descShadowVertical: 0,
-                descLeft: '',
-                descTop: '',
-                videoDescColor: '',
-                videoDescBack: '',
-                videoDescOpacity: 1,
-            }
-        ]
-    }
-}
-const new_deprecated_attributes = Object.assign(attributes, new_Attributes)
-
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                boxStyles: [
+                    {
+                        boxBorderType: attributes.boxBorderType,
+                        boxBorderWidth: attributes.boxBorderWidth,
+                        boxBorderTop: attributes.boxBorderTop,
+                        boxBorderRight: attributes.boxBorderRight,
+                        boxBorderBottom: attributes.boxBorderBottom,
+                        boxBorderLeft: attributes.boxBorderLeft,
+                        boxBorderRadius: attributes.boxBorderRadius,
+                        boxBorderColor: attributes.boxBorderColor,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                        shadowPosition: attributes.shadowPosition,
+                        borderBoxUpdated: attributes.borderBoxUpdated
+                    }
+                ],
+                overlayStyles: [
+                    {
+                        overlayImgID: attributes.overlayImgID,
+                        overlayImgURL: attributes.overlayImgURL,
+                        blur: attributes.blur,
+                        bright: attributes.bright,
+                        contrast: attributes.contrast,
+                        saturation: attributes.saturation,
+                        hue: attributes.hue,
+                    }
+                ],
+                playStyles: [
+                    {
+                        playTop: attributes.playTop,
+                        playSize: attributes.playSize,
+                        playPadding: attributes.playPadding,
+                        playBorderType: attributes.playBorderType,
+                        playBorderWidth: attributes.playBorderWidth,
+                        playBorderRadius: attributes.playBorderRadius,
+                        playBorderColor: attributes.playBorderColor,
+                        playBorderTop: attributes.playBorderTop,
+                        playBorderRight: attributes.playBorderRight,
+                        playBorderBottom: attributes.playBorderBottom,
+                        playBorderLeft: attributes.playBorderLeft,
+                        playColor: attributes.playColor,
+                        playBack: attributes.playBack,
+                        playOpacity: attributes.playOpacity,
+                        playHoverColor: attributes.playHoverColor,
+                        playHoverBackColor: attributes.playHoverBackColor,
+                        borderPlayUpdated: attributes.borderPlayUpdated
+                    }
+                ],
+                descStyles: [
+                    {
+                        videoDescText: attributes.videoDescText,
+                        videoDescFamily: attributes.videoDescFamily,
+                        videoDescSize: attributes.videoDescSize,
+                        videoDescSizeUnit: attributes.videoDescSizeUnit,
+                        videoDescSizeMobile: attributes.videoSizeMobile,
+                        videoDescSizeTablet: attributes.videoDescSizeTablet,
+                        videoDescWeight: attributes.videoDescWeight,
+                        videoDescLetter: attributes.videoDescLetter,
+                        videoDescStyle: attributes.videoDescStyle,
+                        videoDescUpper: attributes.videoDescUpper,
+                        videoDescPadding: attributes.videoDescPadding,
+                        videoDescBorderRadius: attributes.videoDescBorderRadius,
+                        descShadowColor: attributes.descShadowColor,
+                        descShadowBlur: attributes.descShadowBlur,
+                        descShadowHorizontal: attributes.descShadowHorizontal,
+                        descShadowVertical: attributes.descShadowVertical,
+                        descLeft: attributes.descLeft,
+                        descTop: attributes.descTop,
+                        videoDescColor: attributes.videoDescColor,
+                        videoDescBack: attributes.videoDescBack,
+                        videoDescOpacity: attributes.videoDescOpacity,
+                    }
+                ]
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
             const {
                 block_id,

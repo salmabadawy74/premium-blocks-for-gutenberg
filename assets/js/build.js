@@ -36394,53 +36394,42 @@ var deprecatedContent = [{
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            titleStyles: [{
-                titleSizeUnit: attributes.titleSizeUnit,
-                titleSize: attributes.titleSize,
-                titleSizeMobile: attributes.titleSizeMobile,
-                titleSizeTablet: attributes.titleSizeTablet,
-                titleWeight: attributes.titleWeight,
-                titleLine: attributes.titleLine,
-                titleColor: attributes.titleColor,
-                titleBack: attributes.titleBack,
+            textStyles: [{
+                textSizeUnit: attributes.textSizeUnit,
+                textSize: attributes.textSize,
+                textSizeTablet: attributes.textSizeTablet,
+                textSizeMobile: attributes.textSizeMobile,
+                textFontFamily: attributes.textFontFamily,
+                textLetter: attributes.textLetter,
+                textStyle: attributes.textStyle,
+                textUpper: attributes.textUpper,
+                textWeight: attributes.textWeight,
+                textLine: attributes.textLine,
                 shadowColor: attributes.shadowColor,
                 shadowBlur: attributes.shadowBlur,
                 shadowHorizontal: attributes.shadowHorizontal,
                 shadowVertical: attributes.shadowVertical
             }],
-            descStyles: [{
-                descSizeUnit: attributes.descSizeUnit,
-                descSize: attributes.descSize,
-                descSizeTablet: attributes.descSizeTablet,
-                descSizeMobile: attributes.descSizeMobile,
-                descWeight: attributes.descWeight,
-                descLine: attributes.descLine,
-                descColor: attributes.descColor,
-                descShadowColor: attributes.descShadowColor,
-                descShadowBlur: attributes.descShadowBlur,
-                descShadowHorizontal: attributes.descShadowHorizontal,
-                descShadowVertical: attributes.descShadowVertical
-            }],
-            containerStyles: [{
+
+            btnStyles: [{
+                textColor: attributes.textColor,
+                textHoverColor: attributes.textHoverColor,
+                backColor: attributes.backColor,
+                backOpacity: attributes.backOpacity,
+                backHoverColor: attributes.backHoverColor,
                 borderType: attributes.borderType,
-                borderWidth: attributes.borderWidth,
-                borderTop: attributes.borderTop,
-                borderRight: attributes.borderRight,
-                borderBottom: attributes.borderBottom,
-                borderLeft: attributes.borderLeft,
                 borderRadius: attributes.borderRadius,
                 borderColor: attributes.borderColor,
-                containerShadowColor: attributes.containerShadowColor,
-                containerShadowBlur: attributes.containerShadowBlur,
-                containerShadowHorizontal: attributes.containerShadowHorizontal,
-                containerShadowVertical: attributes.containerShadowVertical,
-                containerShadowPosition: attributes.containerShadowPosition,
-                paddingT: attributes.paddingT,
-                paddingR: attributes.paddingR,
-                paddingB: attributes.paddingB,
-                paddingL: attributes.paddingL,
+                borderHoverColor: attributes.borderHoverColor,
+                btnShadowColor: attributes.btnShadowColor,
+                btnShadowBlur: attributes.btnShadowBlur,
+                btnShadowHorizontal: attributes.btnShadowHorizontal,
+                btnShadowVertical: attributes.btnShadowVertical,
+                btnShadowPosition: attributes.btnShadowPosition,
+                padding: attributes.padding,
                 paddingU: attributes.paddingU
             }]
+
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -47400,135 +47389,125 @@ var attributes = {
         default: "1"
     }
 };
-var new_attributes = {
-    titleStyles: {
-        type: "array",
-        default: [{
-
-            titleTag: "H2",
-            titleFont: '',
-            titleColor: '',
-            titleSize: 20,
-            titleSizeUnit: 'px',
-            titleSizeTablet: 20,
-            titleSizeMobile: 20,
-            titleLine: '',
-            titleLetter: '',
-            titleStyle: '',
-            titleUpper: false,
-            titleWeight: '',
-            titleShadowColor: '',
-            titleShadowBlur: '0',
-            titleShadowHorizontal: '0',
-            titleShadowVertical: '0',
-            titleMarginT: '',
-            titleMarginB: ''
-        }]
-    },
-    descStyles: {
-        type: "array",
-        default: [{
-            descFont: '',
-            descColor: '',
-            descSize: 20,
-            descSizeUnit: 'px',
-            descSizeTablet: 20,
-            descSizeMobile: 20,
-            descLine: '',
-            descWeight: '',
-            descMarginT: '',
-            descMarginB: ''
-        }]
-    },
-    btnStyles: {
-        type: 'array',
-        default: [{
-            btnSize: 20,
-            btnSizeUnit: 'px',
-            btnSizeTablet: 20,
-            btnSizeMobile: 20,
-            btnLine: '',
-            btnLetter: '',
-            btnStyle: '',
-            btnUpper: false,
-            btnWeight: '',
-            btnBorderType: 'none',
-            btnBorderWidth: 1,
-            btnBorderTop: '',
-            btnBorderRight: '',
-            btnBorderBottom: '',
-            btnBorderLeft: '',
-            btnBorderRadius: '',
-            btnBorderColor: '',
-            btnPadding: '',
-            btnPaddingU: 'px',
-            btnMarginT: '',
-            btnMarginB: '',
-            btnShadowColor: '',
-            btnShadowBlur: '',
-            btnShadowHorizontal: '0',
-            btnShadowVertical: '0',
-            btnShadowPosition: '',
-            btnColor: '',
-            btnHoverColor: '',
-            btnBack: '',
-            btnHoverBack: '',
-            btnOpacity: 1
-        }]
-    },
-    containerStyles: {
-        type: "array",
-        default: [{
-            backOpacity: 1,
-            backColor: '',
-            imageID: '',
-            imageURL: '',
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "top center",
-            backgroundSize: "auto",
-            fixed: false,
-            borderType: "none",
-            borderWidth: 1,
-            borderRadius: '',
-            borderColor: '',
-            borderTop: '',
-            borderRight: '',
-            borderBottom: '',
-            borderLeft: '',
-            shadowColor: '',
-            shadowBlur: '',
-            shadowHorizontal: '',
-            shadowVertical: '',
-            shadowPosition: '',
-            hoverShadowColor: '',
-            hoverShadowBlur: '',
-            hoverShadowHorizontal: '',
-            hoverShadowVertical: '',
-            hoverShadowPosition: '',
-            marginT: '',
-            marginR: '',
-            marginB: '',
-            marginL: '',
-            paddingT: '',
-            paddingR: '',
-            paddingB: '',
-            paddingL: '',
-            paddingU: 'px',
-            gradientColorOne: '',
-            gradientLocationOne: '0',
-            gradientColorTwo: '',
-            gradientLocationTwo: '100',
-            gradientType: 'linear',
-            gradientAngle: '180',
-            gradientPosition: 'center center'
-
-        }]
-    }
-};
-var new_deprecated_attributes = Object.assign(attributes, new_attributes);
+var new_attributes = {};
 
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleStyles: [{
+                titleTag: attributes.titleTag,
+                titleFont: attributes.titleFont,
+                titleColor: attributes.titleColor,
+                titleSize: attributes.titleSize,
+                titleSizeUnit: attributes.titleSize,
+                titleSizeTablet: attributes.titleSizeTablet,
+                titleSizeMobile: attributes.titleSizeMobile,
+                titleLine: attributes.titleLine,
+                titleLetter: attributes.titleLetter,
+                titleStyle: attributes.titleStyle,
+                titleUpper: attributes.titleUpper,
+                titleWeight: attributes.titleWeight,
+                titleShadowColor: attributes.titleShadowColor,
+                titleShadowBlur: attributes.titleShadowBlur,
+                titleShadowHorizontal: attributes.titleShadowHorizontal,
+                titleShadowVertical: attributes.titleShadowVertical,
+                titleMarginT: attributes.titleMarginT,
+                titleMarginB: attributes.titleMarginB
+            }],
+            descStyles: [{
+                descFont: attributes.descFont,
+                descColor: attributes.descColor,
+                descSize: attributes.descSize,
+                descSizeUnit: attributes.descSizeUnit,
+                descSizeTablet: attributes.descSizeTablet,
+                descSizeMobile: attributes.descSizeMobile,
+                descLine: attributes.descLine,
+                descWeight: attributes.descWeight,
+                descMarginT: attributes.descMarginT,
+                descMarginB: attributes.descMarginB
+            }],
+            btnStyles: [{
+                btnSize: attributes.btnSize,
+                btnSizeUnit: attributes.btnSizeUnit,
+                btnSizeTablet: attributes.btnSizeTablet,
+                btnSizeMobile: attributes.btnSizeMobile,
+                btnLine: attributes.btnLine,
+                btnLetter: attributes.btnLetter,
+                btnStyle: attributes.btnStyle,
+                btnUpper: attributes.btnUpper,
+                btnWeight: attributes.btnWeight,
+                btnBorderType: attributes.btnBorderType,
+                btnBorderWidth: attributes.btnBorderWidth,
+                btnBorderTop: attributes.btnBorderTop,
+                btnBorderRight: attributes.btnBorderRight,
+                btnBorderBottom: attributes.btnBorderBottom,
+                btnBorderLeft: attributes.btnBorderLeft,
+                btnBorderRadius: attributes.btnBorderRadius,
+                btnBorderColor: attributes.btnBorderColor,
+                btnPadding: attributes.btnPadding,
+                btnPaddingU: attributes.btnPaddingU,
+                btnMarginT: attributes.btnMarginT,
+                btnMarginB: attributes.btnMarginB,
+                btnShadowColor: attributes.btnShadowColor,
+                btnShadowBlur: attributes.btnShadowBlur,
+                btnShadowHorizontal: attributes.btnShadowHorizontal,
+                btnShadowVertical: attributes.btnShadowVertical,
+                btnShadowPosition: attributes.btnShadowPosition,
+                btnColor: attributes.btnColor,
+                btnHoverColor: attributes.btnHoverColor,
+                btnBack: attributes.btnBack,
+                btnHoverBack: attributes.btnHoverBack,
+                btnOpacity: attributes.btnOpacity
+            }],
+            containerStyles: [{
+                backOpacity: attributes.backOpacity,
+                backColor: attributes.backColor,
+                imageID: attributes.imageID,
+                imageURL: attributes.imageURL,
+                backgroundRepeat: attributes.backgroundRepeat,
+                backgroundPosition: attributes.backgroundPosition,
+                backgroundSize: attributes.backgroundSize,
+                fixed: attributes.fixed,
+                borderType: attributes.borderType,
+                borderWidth: attributes.borderWidth,
+                borderRadius: attributes.borderRadius,
+                borderColor: attributes.borderColor,
+                borderTop: attributes.borderTop,
+                borderRight: attributes.borderRight,
+                borderBottom: attributes.borderBottom,
+                borderLeft: attributes.borderLeft,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical,
+                shadowPosition: attributes.shadowPosition,
+                hoverShadowColor: attributes.hoverShadowColor,
+                hoverShadowBlur: attributes.hoverShadowBlur,
+                hoverShadowHorizontal: attributes.hoverShadowHorizontal,
+                hoverShadowVertical: attributes.hoverShadowVertical,
+                hoverShadowPosition: attributes.hoverShadowPosition,
+                marginT: attributes.marginT,
+                marginR: attributes.marginR,
+                marginB: attributes.marginB,
+                marginL: attributes.marginL,
+                paddingT: attributes.paddingT,
+                paddingR: attributes.paddingR,
+                paddingB: attributes.paddingB,
+                paddingL: attributes.paddingL,
+                paddingU: attributes.paddingU,
+                gradientColorOne: '',
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }]
+        };
+
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
@@ -53202,10 +53181,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var className = "premium-pricing-table";
-
 var __ = wp.i18n.__;
 var RichText = wp.editor.RichText;
-
 
 var attributes = {
     borderUpdated: {
@@ -53814,191 +53791,171 @@ var attributes = {
         default: false
     }
 };
-var new_Attributes = {
-    titleStyles: {
-        type: "array",
-        default: [{
-            titleTag: 'H2',
-            titleSizeUnit: 'px',
-            titleSize: '',
-            titleSizeMobile: '',
-            titleSizeTablet: '',
-            titleLine: '',
-            titleLetter: '',
-            titleStyle: '',
-            titleUpper: false,
-            titleWeight: 500,
-            titleColor: "#6ec1e4",
-            titleBack: '',
-            titleShadowColor: '',
-            titleShadowBlur: '0',
-            titleShadowHorizontal: '0',
-            titleShadowVertical: '0',
-            titleMarginB: 20,
-            titleMarginT: 20,
-            titlePadding: 0
-        }]
-    },
-    priceStyles: {
-        type: "array",
-        default: [{
-            priceBack: '',
-            priceOpacity: 1,
-            priceMarginT: '',
-            priceMarginB: 10,
-            pricePadding: '',
-            slashPrice: '',
-            slashColor: '',
-            slashSizeUnit: 'px',
-            slashSize: 20,
-            slashSizeMobile: '',
-            slashSizeTablet: '',
-            slashWeight: '',
-            currPrice: '$',
-            currColor: '',
-            currSize: 20,
-            currSizeUnit: 'px',
-            currSizeMobile: '',
-            currSizeTablet: '',
-            currWeight: '',
-            valPrice: '25',
-            valColor: '',
-            valSizeUnit: 'px',
-            valSize: 50,
-            valSizeMobile: '',
-            valSizeTablet: '',
-            valWeight: '',
-            divPrice: "/",
-            divColor: '',
-            divSize: 20,
-            divSizeUnit: 'px',
-            divSizeMobile: '',
-            divSizeTablet: '',
-            divWeight: '',
-            durPrice: 'm',
-            durColor: '',
-            durSizeUnit: 'px',
-            durSize: 20,
-            durSizeMobile: '',
-            durSizeTablet: '',
-            durWeight: '',
-            selectedStyle: "price",
-            slashV: 'center',
-            currV: 'center',
-            valV: "center",
-            divV: 'center',
-            durV: 'center'
-        }]
-    },
-    featureStyles: {
-        type: "array",
-        default: [{
-            featsAlign: '',
-            listStyle: "disc",
-            listColor: '',
-            listSize: '',
-            listSizeUnit: 'px',
-            listSizeTablet: '',
-            listSizeMobile: '',
-            listWeight: 500,
-            listItemsStyle: '',
-            listLetter: '',
-            listLine: '',
-            listUpper: false,
-            listBack: '',
-            listMarginB: 20,
-            listMarginT: '',
-            listPadding: ''
-        }]
-    },
-    descStyles: {
-        type: "array",
-        default: [{
-            descSize: '',
-            descSizeUnit: 'px',
-            descSizeTablet: '',
-            descSizeMobile: '',
-            descWeight: '',
-            descLetter: '',
-            descStyle: '',
-            descLine: '',
-            descColor: "#000",
-            descBack: '',
-            descMarginT: 0,
-            descMarginB: 30,
-            descPadding: '0'
-        }]
-    },
-    buttonStyles: {
-        type: "array",
-        default: [{
-            btnColor: "#fff",
-            btnHoverColor: '',
-            btnWidth: '',
-            btnSize: '',
-            btnSizeUnit: 'px',
-            btnSizeTablet: '',
-            btnSizeMobile: '',
-            btnWeight: 900,
-            btnLine: '',
-            btnLetter: '',
-            btnStyle: '',
-            btnUpper: false,
-            btnBack: "#6ec1e4",
-            btnHoverBack: '',
-            btnMarginT: 0,
-            btnMarginB: 0,
-            btnPadding: 10,
-            btnPaddingU: 'px',
-            btnBorderType: 'none',
-            btnBorderWidth: 1,
-            btnBorderRadius: 0,
-            btnBorderColor: '',
-            btnTarget: true
-        }]
-    },
-    badgeStyles: {
-        type: "array",
-        default: [{
-            badgePos: "right",
-            badgeBack: "#6ec1e4",
-            badgeColor: '',
-            badgeSize: '',
-            badgeTextUnit: 'px',
-            badgeSizeTablet: '',
-            badgeSizeMobile: '',
-            badgeTop: '',
-            badgeHorizontal: '',
-            badgeWidth: '',
-            badgeWeight: 900,
-            badgeLetter: '',
-            badgeStyle: '',
-            badgeUpper: false,
-            badgeText: __("Popular")
-        }]
-    },
-    tableStyles: {
-        type: "array",
-        default: [{
-            tableBack: '',
-            tableOpacity: 1,
-            borderType: 'none',
-            borderWidth: 1,
-            borderRadius: 0,
-            tableShadowColor: '',
-            tableShadowBlur: '0',
-            tableShadowHorizontal: '0',
-            tableShadowVertical: '0',
-            tableShadowPosition: '',
-            tablePadding: "0"
-        }]
-    }
-};
-
-var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
 
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleStyles: [{
+                titleTag: attributes.titleTag,
+                titleSizeUnit: attributes.titleSizeUnit,
+                titleSize: attributes.titleSize,
+                titleSizeMobile: attributes.titleSizeMobile,
+                titleSizeTablet: attributes.titleSizeTablet,
+                titleLine: attributes.titleLine,
+                titleLetter: attributes.titleLetter,
+                titleStyle: attributes.titleStyle,
+                titleUpper: attributes.titleUpper,
+                titleWeight: attributes.titleWeight,
+                titleColor: attributes.titleColor,
+                titleBack: attributes.titleBack,
+                titleShadowColor: attributes.titleShadowColor,
+                titleShadowBlur: attributes.titleShadowBlur,
+                titleShadowHorizontal: attributes.titleShadowHorizontal,
+                titleShadowVertical: attributes.titleShadowVertical,
+                titleMarginB: attributes.titleMarginB,
+                titleMarginT: attributes.titleMarginT,
+                titlePadding: attributes.titlePadding
+            }],
+            priceStyles: [{
+                priceBack: attributes.priceBack,
+                priceOpacity: attributes.priceOpacity,
+                priceMarginT: attributes.priceMarginT,
+                priceMarginB: attributes.priceMarginB,
+                pricePadding: attributes.pricePadding,
+                slashPrice: attributes.slashPrice,
+                slashColor: attributes.slashColor,
+                slashSizeUnit: attributes.slashSizeUnit,
+                slashSize: attributes.slashSize,
+                slashSizeMobile: attributes.slashSizeMobile,
+                slashSizeTablet: attributes.slashSizeTablet,
+                slashWeight: attributes.slashWeight,
+                currPrice: attributes.currPrice,
+                currColor: attributes.currColor,
+                currSize: attributes.currSize,
+                currSizeUnit: attributes.currSizeUnit,
+                currSizeMobile: attributes.currSizeMobile,
+                currSizeTablet: attributes.currSizeTablet,
+                currWeight: attributes.currWeight,
+                valPrice: attributes.valPrice,
+                valColor: attributes.valColor,
+                valSizeUnit: attributes.valSizeUnit,
+                valSize: attributes.valSize,
+                valSizeMobile: attributes.valSizeMobile,
+                valSizeTablet: attributes.valSizeTablet,
+                valWeight: attributes.valWeight,
+                divPrice: attributes.divPrice,
+                divColor: attributes.divColor,
+                divSize: attributes.divSize,
+                divSizeUnit: attributes.divSizeUnit,
+                divSizeMobile: attributes.divSizeMobile,
+                divSizeTablet: attributes.divSizeTablet,
+                divWeight: attributes.divWeight,
+                durPrice: attributes.durPrice,
+                durColor: attributes.durColor,
+                durSizeUnit: attributes.durSizeUnit,
+                durSize: attributes.durSize,
+                durSizeMobile: attributes.durSizeMobile,
+                durSizeTablet: attributes.durSizeTablet,
+                durWeight: attributes.durWeight,
+                selectedStyle: attributes.selectedStyle,
+                slashV: attributes.slashV,
+                currV: attributes.currV,
+                valV: attributes.valV,
+                divV: attributes.divV,
+                durV: attributes.durV
+            }],
+            featureStyles: [{
+                featsAlign: attributes.featsAlign,
+                listStyle: attributes.listStyle,
+                listColor: attributes.listColor,
+                listSize: attributes.listSize,
+                listSizeUnit: attributes.listSizeUnit,
+                listSizeTablet: attributes.listSizeTablet,
+                listSizeMobile: attributes.listSizeMobile,
+                listWeight: attributes.listWeight,
+                listItemsStyle: attributes.listItemsStyle,
+                listLetter: attributes.listLetter,
+                listLine: attributes.listLine,
+                listUpper: attributes.listUpper,
+                listBack: attributes.listBack,
+                listMarginB: attributes.listMarginB,
+                listMarginT: attributes.listMarginT,
+                listPadding: attributes.listPadding
+            }],
+            descStyles: [{
+                descSize: attributes.descSize,
+                descSizeUnit: attributes.descSizeUnit,
+                descSizeTablet: attributes.descSizeTablet,
+                descSizeMobile: attributes.descSizeMobile,
+                descWeight: attributes.descWeight,
+                descLetter: attributes.descLetter,
+                descStyle: attributes.descStyle,
+                descLine: attributes.descLine,
+                descColor: attributes.descColor,
+                descBack: attributes.descBack,
+                descMarginT: attributes.descMarginT,
+                descMarginB: attributes.descMarginB,
+                descPadding: attributes.descPadding
+            }],
+            buttonStyles: [{
+                btnColor: attributes.btnColor,
+                btnHoverColor: attributes.btnHoverColor,
+                btnWidth: attributes.btnWidth,
+                btnSize: attributes.btnSize,
+                btnSizeUnit: attributes.btnSizeUnit,
+                btnSizeTablet: attributes.btnSizeTablet,
+                btnSizeMobile: attributes.btnSizeMobile,
+                btnWeight: attributes.btnWeight,
+                btnLine: attributes.btnLine,
+                btnLetter: attributes.btnLetter,
+                btnStyle: attributes.btnStyle,
+                btnUpper: attributes.btnUpper,
+                btnBack: attributes.btnBack,
+                btnHoverBack: attributes.btnHoverBack,
+                btnMarginT: attributes.btnMarginT,
+                btnMarginB: attributes.btnMarginB,
+                btnPadding: attributes.btnPadding,
+                btnPaddingU: attributes.btnPaddingU,
+                btnBorderType: attributes.btnBorderType,
+                btnBorderWidth: attributes.btnBorderWidth,
+                btnBorderRadius: attributes.btnBorderRadius,
+                btnBorderColor: attributes.btnBorderColor,
+                btnTarget: attributes.btnTarget
+            }],
+            badgeStyles: [{
+                badgePos: attributes.badgePos,
+                badgeBack: attributes.badgeBack,
+                badgeColor: attributes.badgeColor,
+                badgeSize: attributes.badgeSize,
+                badgeTextUnit: attributes.badgeTextUnit,
+                badgeSizeTablet: attributes.badgeSizeTablet,
+                badgeSizeMobile: attributes.badgeSizeMobile,
+                badgeTop: attributes.badgeTop,
+                badgeHorizontal: attributes.badgeHorizontal,
+                badgeWidth: attributes.badgeWidth,
+                badgeWeight: attributes.badgeWeight,
+                badgeLetter: attributes.badgeLetter,
+                badgeStyle: attributes.badgeStyle,
+                badgeUpper: attributes.badgeUpper,
+                badgeText: attributes.badgeText
+            }],
+            tableStyles: [{
+                tableBack: attributes.tableBack,
+                tableOpacity: attributes.tableOpacity,
+                borderType: attributes.borderType,
+                borderWidth: attributes.borderWidth,
+                borderRadius: attributes.borderRadius,
+                tableShadowColor: attributes.tableShadowColor,
+                tableShadowBlur: attributes.tableShadowBlur,
+                tableShadowHorizontal: attributes.tableShadowHorizontal,
+                tableShadowVertical: attributes.tableShadowVertical,
+                tableShadowPosition: attributes.tableShadowPosition,
+                tablePadding: attributes.tablePadding
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             borderUpdated = _props$attributes.borderUpdated,
@@ -56739,9 +56696,41 @@ var new_Attributes = {
     }
 };
 
-var deprecated_attributes = Object.assign(attributes, new_Attributes);
 var deprecatedContent = [{
-    attributes: deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            containerStyles: [{
+                containerBack: attributes.color,
+                opacity: attributes.opacity,
+                backgroundImageID: attributes.imageID,
+                backgroundImageURL: attributes.imageURL,
+                backgroundRepeat: attributes.backgroundRepeat,
+                backgroundPosition: attributes.backgroundPosition,
+                backgroundSize: attributes.backgroundSize,
+                fixed: attributes.fixed,
+                borderType: attributes.borderType,
+                borderWidth: attributes.borderWidth,
+                borderRadius: attributes.borderRadius,
+                borderColor: attributes.borderColor,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical,
+                shadowPosition: attributes.shadowPosition,
+                marginUnit: attributes.marginUnit,
+                paddingUnit: attributes.paddingUnit,
+                gradientColorOne: '',
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
@@ -58773,10 +58762,77 @@ var new_Attributes = {
     }
 };
 
-var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
-
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            authorStyles: [{
+                authorTag: attributes.authorTag,
+                authorColor: attributes.authorColor,
+                authorSize: attributes.authorSize,
+                authorSizeUnit: attributes.authorSizeUnit,
+                authorSizeMobile: attributes.authorSizeMobile,
+                authorSizeTablet: attributes.authorSizeTablet,
+                authorLetter: attributes.authorLetter,
+                authorStyle: attributes.authorStyle,
+                authorUpper: attributes.authorUpper,
+                authorWeight: attributes.authorWeight,
+                authorComTag: attributes.authorComTag
+            }],
+            contentStyle: [{
+                bodySizeUnit: attributes.bodySizeUnit,
+                bodySize: attributes.bodySize,
+                bodySizeMobile: attributes.bodySizeMobile,
+                bodySizeTablet: attributes.bodySizeTablet,
+                bodyColor: attributes.bodyColor,
+                bodyLine: attributes.bodyLine,
+                bodyTop: attributes.bodyTop,
+                bodyBottom: attributes.bodyBottom
+            }],
+            companyStyles: [{
+                authorComTag: attributes.authorComTag,
+                authorComSizeUnit: attributes.authorComSizeUnit,
+                authorComColor: attributes.authorComColor,
+                authorComSize: attributes.authorComSize,
+                authorComSizeMobile: attributes.authorComSizeMobile,
+                authorComSizeTablet: attributes.authorComSizeTablet,
+                dashColor: attributes.dashColor,
+                urlCheck: attributes.urlCheck,
+                urlText: attributes.urlText,
+                urlTarget: attributes.urlTarget
+            }],
+            quoteStyles: [{
+                quotSize: attributes.quotSize,
+                quotColor: attributes.quotColor,
+                quotOpacity: attributes.quotOpacity
+
+            }],
+            containerStyles: [{
+                backOpacity: attributes.backOpacity,
+                containerBack: attributes.backColor,
+                backgroundImageID: attributes.imageID,
+                backgroundImageURL: attributes.imageURL,
+                backgroundRepeat: attributes.backgroundRepeat,
+                backgroundPosition: attributes.backgroundPosition,
+                backgroundSize: attributes.backgroundSize,
+                fixed: attributes.fixed,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical,
+                shadowPosition: attributes.shadowPosition,
+                paddingUnit: attributes.paddingUnit,
+                gradientColorOne: '',
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
@@ -61433,93 +61489,80 @@ var attributes = {
     }
 };
 
-var new_Attributes = {
-    boxStyles: {
-        type: 'array',
-        default: [{
-            boxBorderType: 'none',
-            boxBorderWidth: 1,
-            boxBorderTop: '',
-            boxBorderRight: '',
-            boxBorderBottom: '',
-            boxBorderLeft: '',
-            boxBorderRadius: '',
-            boxBorderColor: '',
-            shadowColor: '',
-            shadowBlur: '',
-            shadowHorizontal: '',
-            shadowVertical: '',
-            shadowPosition: '',
-            borderBoxUpdated: false
-        }]
-    },
-    overlayStyles: {
-        type: 'array',
-        default: [{
-            overlayImgID: '',
-            overlayImgURL: '',
-            blur: 0,
-            bright: 100,
-            contrast: 100,
-            saturation: 100,
-            hue: 0
-        }]
-    },
-    playStyles: {
-        type: 'array',
-        default: [{
-            playTop: '',
-            playSize: '',
-            playPadding: '',
-            playBorderType: 'none',
-            playBorderWidth: 1,
-            playBorderRadius: '',
-            playBorderColor: '',
-            playBorderTop: '',
-            playBorderRight: '',
-            playBorderBottom: '',
-            playBorderLeft: '',
-            playColor: '',
-            playBack: '',
-            playOpacity: 1,
-            playHoverColor: '',
-            playHoverBackColor: '',
-            borderPlayUpdated: false
-
-        }]
-
-    },
-    descStyles: {
-        type: 'array',
-        default: [{
-            videoDescText: '',
-            videoDescFamily: __('Default'),
-            videoDescSize: '',
-            videoDescSizeUnit: 'px',
-            videoDescSizeMobile: '',
-            videoDescSizeTablet: '',
-            videoDescWeight: '',
-            videoDescLetter: '',
-            videoDescStyle: '',
-            videoDescUpper: false,
-            videoDescPadding: '',
-            videoDescBorderRadius: '',
-            descShadowColor: '',
-            descShadowBlur: 0,
-            descShadowHorizontal: 0,
-            descShadowVertical: 0,
-            descLeft: '',
-            descTop: '',
-            videoDescColor: '',
-            videoDescBack: '',
-            videoDescOpacity: 1
-        }]
-    }
-};
-var new_deprecated_attributes = Object.assign(attributes, new_Attributes);
-
 var deprecatedContent = [{
-    attributes: new_deprecated_attributes,
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            boxStyles: [{
+                boxBorderType: attributes.boxBorderType,
+                boxBorderWidth: attributes.boxBorderWidth,
+                boxBorderTop: attributes.boxBorderTop,
+                boxBorderRight: attributes.boxBorderRight,
+                boxBorderBottom: attributes.boxBorderBottom,
+                boxBorderLeft: attributes.boxBorderLeft,
+                boxBorderRadius: attributes.boxBorderRadius,
+                boxBorderColor: attributes.boxBorderColor,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical,
+                shadowPosition: attributes.shadowPosition,
+                borderBoxUpdated: attributes.borderBoxUpdated
+            }],
+            overlayStyles: [{
+                overlayImgID: attributes.overlayImgID,
+                overlayImgURL: attributes.overlayImgURL,
+                blur: attributes.blur,
+                bright: attributes.bright,
+                contrast: attributes.contrast,
+                saturation: attributes.saturation,
+                hue: attributes.hue
+            }],
+            playStyles: [{
+                playTop: attributes.playTop,
+                playSize: attributes.playSize,
+                playPadding: attributes.playPadding,
+                playBorderType: attributes.playBorderType,
+                playBorderWidth: attributes.playBorderWidth,
+                playBorderRadius: attributes.playBorderRadius,
+                playBorderColor: attributes.playBorderColor,
+                playBorderTop: attributes.playBorderTop,
+                playBorderRight: attributes.playBorderRight,
+                playBorderBottom: attributes.playBorderBottom,
+                playBorderLeft: attributes.playBorderLeft,
+                playColor: attributes.playColor,
+                playBack: attributes.playBack,
+                playOpacity: attributes.playOpacity,
+                playHoverColor: attributes.playHoverColor,
+                playHoverBackColor: attributes.playHoverBackColor,
+                borderPlayUpdated: attributes.borderPlayUpdated
+            }],
+            descStyles: [{
+                videoDescText: attributes.videoDescText,
+                videoDescFamily: attributes.videoDescFamily,
+                videoDescSize: attributes.videoDescSize,
+                videoDescSizeUnit: attributes.videoDescSizeUnit,
+                videoDescSizeMobile: attributes.videoSizeMobile,
+                videoDescSizeTablet: attributes.videoDescSizeTablet,
+                videoDescWeight: attributes.videoDescWeight,
+                videoDescLetter: attributes.videoDescLetter,
+                videoDescStyle: attributes.videoDescStyle,
+                videoDescUpper: attributes.videoDescUpper,
+                videoDescPadding: attributes.videoDescPadding,
+                videoDescBorderRadius: attributes.videoDescBorderRadius,
+                descShadowColor: attributes.descShadowColor,
+                descShadowBlur: attributes.descShadowBlur,
+                descShadowHorizontal: attributes.descShadowHorizontal,
+                descShadowVertical: attributes.descShadowVertical,
+                descLeft: attributes.descLeft,
+                descTop: attributes.descTop,
+                videoDescColor: attributes.videoDescColor,
+                videoDescBack: attributes.videoDescBack,
+                videoDescOpacity: attributes.videoDescOpacity
+            }]
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,

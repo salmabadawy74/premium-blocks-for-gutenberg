@@ -188,59 +188,46 @@ const deprecatedContent = [
         attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
-                titleStyles: [
+                textStyles: [
                     {
-                        titleSizeUnit: attributes.titleSizeUnit,
-                        titleSize: attributes.titleSize,
-                        titleSizeMobile: attributes.titleSizeMobile,
-                        titleSizeTablet: attributes.titleSizeTablet,
-                        titleWeight: attributes.titleWeight,
-                        titleLine: attributes.titleLine,
-                        titleColor: attributes.titleColor,
-                        titleBack: attributes.titleBack,
+                        textSizeUnit: attributes.textSizeUnit,
+                        textSize: attributes.textSize,
+                        textSizeTablet: attributes.textSizeTablet,
+                        textSizeMobile: attributes.textSizeMobile,
+                        textFontFamily: attributes.textFontFamily,
+                        textLetter: attributes.textLetter,
+                        textStyle: attributes.textStyle,
+                        textUpper: attributes.textUpper,
+                        textWeight: attributes.textWeight,
+                        textLine: attributes.textLine,
                         shadowColor: attributes.shadowColor,
                         shadowBlur: attributes.shadowBlur,
                         shadowHorizontal: attributes.shadowHorizontal,
-                        shadowVertical: attributes.shadowVertical
+                        shadowVertical: attributes.shadowVertical,
                     }
-                ],
-                descStyles: [
+                ]
+                ,
+                btnStyles: [
                     {
-                        descSizeUnit: attributes.descSizeUnit,
-                        descSize: attributes.descSize,
-                        descSizeTablet: attributes.descSizeTablet,
-                        descSizeMobile: attributes.descSizeMobile,
-                        descWeight: attributes.descWeight,
-                        descLine: attributes.descLine,
-                        descColor: attributes.descColor,
-                        descShadowColor: attributes.descShadowColor,
-                        descShadowBlur: attributes.descShadowBlur,
-                        descShadowHorizontal: attributes.descShadowHorizontal,
-                        descShadowVertical: attributes.descShadowVertical,
-                    }
-                ],
-                containerStyles: [
-                    {
+                        textColor: attributes.textColor,
+                        textHoverColor: attributes.textHoverColor,
+                        backColor: attributes.backColor,
+                        backOpacity: attributes.backOpacity,
+                        backHoverColor: attributes.backHoverColor,
                         borderType: attributes.borderType,
-                        borderWidth: attributes.borderWidth,
-                        borderTop: attributes.borderTop,
-                        borderRight: attributes.borderRight,
-                        borderBottom: attributes.borderBottom,
-                        borderLeft: attributes.borderLeft,
                         borderRadius: attributes.borderRadius,
                         borderColor: attributes.borderColor,
-                        containerShadowColor: attributes.containerShadowColor,
-                        containerShadowBlur: attributes.containerShadowBlur,
-                        containerShadowHorizontal: attributes.containerShadowHorizontal,
-                        containerShadowVertical: attributes.containerShadowVertical,
-                        containerShadowPosition: attributes.containerShadowPosition,
-                        paddingT: attributes.paddingT,
-                        paddingR: attributes.paddingR,
-                        paddingB: attributes.paddingB,
-                        paddingL: attributes.paddingL,
-                        paddingU: attributes.paddingU
+                        borderHoverColor: attributes.borderHoverColor,
+                        btnShadowColor: attributes.btnShadowColor,
+                        btnShadowBlur: attributes.btnShadowBlur,
+                        btnShadowHorizontal: attributes.btnShadowHorizontal,
+                        btnShadowVertical: attributes.btnShadowVertical,
+                        btnShadowPosition: attributes.btnShadowPosition,
+                        padding: attributes.padding,
+                        paddingU: attributes.paddingU,
                     }
-                ],
+                ]
+
             }
             return Object.assign(attributes, newAttributes)
         },

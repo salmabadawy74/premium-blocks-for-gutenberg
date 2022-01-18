@@ -1,14 +1,7 @@
-
-
 const className = "premium-pricing-table";
-
 const { __ } = wp.i18n;
-
 const { RichText } = wp.editor;
-
 import hexToRgba from 'hex-to-rgba'
-
-
 const attributes = {
     borderUpdated: {
         type: "boolean",
@@ -616,206 +609,174 @@ const attributes = {
         default: false
     }
 }
-const new_Attributes = {
-    titleStyles: {
-        type: "array",
-        default: [
-            {
-                titleTag: 'H2',
-                titleSizeUnit: 'px',
-                titleSize: '',
-                titleSizeMobile: '',
-                titleSizeTablet: '',
-                titleLine: '',
-                titleLetter: '',
-                titleStyle: '',
-                titleUpper: false,
-                titleWeight: 500,
-                titleColor: "#6ec1e4",
-                titleBack: '',
-                titleShadowColor: '',
-                titleShadowBlur: '0',
-                titleShadowHorizontal: '0',
-                titleShadowVertical: '0',
-                titleMarginB: 20,
-                titleMarginT: 20,
-                titlePadding: 0,
-            }
-        ]
-    },
-    priceStyles: {
-        type: "array",
-        default: [
-            {
-                priceBack: '',
-                priceOpacity: 1,
-                priceMarginT: '',
-                priceMarginB: 10,
-                pricePadding: '',
-                slashPrice: '',
-                slashColor: '',
-                slashSizeUnit: 'px',
-                slashSize: 20,
-                slashSizeMobile: '',
-                slashSizeTablet: '',
-                slashWeight: '',
-                currPrice: '$',
-                currColor: '',
-                currSize: 20,
-                currSizeUnit: 'px',
-                currSizeMobile: '',
-                currSizeTablet: '',
-                currWeight: '',
-                valPrice: '25',
-                valColor: '',
-                valSizeUnit: 'px',
-                valSize: 50,
-                valSizeMobile: '',
-                valSizeTablet: '',
-                valWeight: '',
-                divPrice: "/",
-                divColor: '',
-                divSize: 20,
-                divSizeUnit: 'px',
-                divSizeMobile: '',
-                divSizeTablet: '',
-                divWeight: '',
-                durPrice: 'm',
-                durColor: '',
-                durSizeUnit: 'px',
-                durSize: 20,
-                durSizeMobile: '',
-                durSizeTablet: '',
-                durWeight: '',
-                selectedStyle: "price",
-                slashV: 'center',
-                currV: 'center',
-                valV: "center",
-                divV: 'center',
-                durV: 'center',
-            }
-        ]
-    },
-    featureStyles: {
-        type: "array",
-        default: [
-            {
-                featsAlign: '',
-                listStyle: "disc",
-                listColor: '',
-                listSize: '',
-                listSizeUnit: 'px',
-                listSizeTablet: '',
-                listSizeMobile: '',
-                listWeight: 500,
-                listItemsStyle: '',
-                listLetter: '',
-                listLine: '',
-                listUpper: false,
-                listBack: '',
-                listMarginB: 20,
-                listMarginT: '',
-                listPadding: '',
-            }
-        ]
-    },
-    descStyles: {
-        type: "array",
-        default: [
-            {
-                descSize: '',
-                descSizeUnit: 'px',
-                descSizeTablet: '',
-                descSizeMobile: '',
-                descWeight: '',
-                descLetter: '',
-                descStyle: '',
-                descLine: '',
-                descColor: "#000",
-                descBack: '',
-                descMarginT: 0,
-                descMarginB: 30,
-                descPadding: '0',
-            }
-        ]
-    },
-    buttonStyles: {
-        type: "array",
-        default: [
-            {
-                btnColor: "#fff",
-                btnHoverColor: '',
-                btnWidth: '',
-                btnSize: '',
-                btnSizeUnit: 'px',
-                btnSizeTablet: '',
-                btnSizeMobile: '',
-                btnWeight: 900,
-                btnLine: '',
-                btnLetter: '',
-                btnStyle: '',
-                btnUpper: false,
-                btnBack: "#6ec1e4",
-                btnHoverBack: '',
-                btnMarginT: 0,
-                btnMarginB: 0,
-                btnPadding: 10,
-                btnPaddingU: 'px',
-                btnBorderType: 'none',
-                btnBorderWidth: 1,
-                btnBorderRadius: 0,
-                btnBorderColor: '',
-                btnTarget: true,
-            }
-        ]
-    },
-    badgeStyles: {
-        type: "array",
-        default: [
-            {
-                badgePos: "right",
-                badgeBack: "#6ec1e4",
-                badgeColor: '',
-                badgeSize: '',
-                badgeTextUnit: 'px',
-                badgeSizeTablet: '',
-                badgeSizeMobile: '',
-                badgeTop: '',
-                badgeHorizontal: '',
-                badgeWidth: '',
-                badgeWeight: 900,
-                badgeLetter: '',
-                badgeStyle: '',
-                badgeUpper: false,
-                badgeText: __("Popular"),
-            }
-        ]
-    },
-    tableStyles: {
-        type: "array",
-        default: [
-            {
-                tableBack: '',
-                tableOpacity: 1,
-                borderType: 'none',
-                borderWidth: 1,
-                borderRadius: 0,
-                tableShadowColor: '',
-                tableShadowBlur: '0',
-                tableShadowHorizontal: '0',
-                tableShadowVertical: '0',
-                tableShadowPosition: '',
-                tablePadding: "0",
-            }
-        ]
-    }
-}
-
-const new_deprecated_attributes = Object.assign(attributes, new_Attributes)
 
 const deprecatedContent = [
     {
-        attributes: new_deprecated_attributes,
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                titleStyles: [{
+                    titleTag: attributes.titleTag,
+                    titleSizeUnit: attributes.titleSizeUnit,
+                    titleSize: attributes.titleSize,
+                    titleSizeMobile: attributes.titleSizeMobile,
+                    titleSizeTablet: attributes.titleSizeTablet,
+                    titleLine: attributes.titleLine,
+                    titleLetter: attributes.titleLetter,
+                    titleStyle: attributes.titleStyle,
+                    titleUpper: attributes.titleUpper,
+                    titleWeight: attributes.titleWeight,
+                    titleColor: attributes.titleColor,
+                    titleBack: attributes.titleBack,
+                    titleShadowColor: attributes.titleShadowColor,
+                    titleShadowBlur: attributes.titleShadowBlur,
+                    titleShadowHorizontal: attributes.titleShadowHorizontal,
+                    titleShadowVertical: attributes.titleShadowVertical,
+                    titleMarginB: attributes.titleMarginB,
+                    titleMarginT: attributes.titleMarginT,
+                    titlePadding: attributes.titlePadding,
+                }],
+                priceStyles: [{
+                    priceBack: attributes.priceBack,
+                    priceOpacity: attributes.priceOpacity,
+                    priceMarginT: attributes.priceMarginT,
+                    priceMarginB: attributes.priceMarginB,
+                    pricePadding: attributes.pricePadding,
+                    slashPrice: attributes.slashPrice,
+                    slashColor: attributes.slashColor,
+                    slashSizeUnit: attributes.slashSizeUnit,
+                    slashSize: attributes.slashSize,
+                    slashSizeMobile: attributes.slashSizeMobile,
+                    slashSizeTablet: attributes.slashSizeTablet,
+                    slashWeight: attributes.slashWeight,
+                    currPrice: attributes.currPrice,
+                    currColor: attributes.currColor,
+                    currSize: attributes.currSize,
+                    currSizeUnit: attributes.currSizeUnit,
+                    currSizeMobile: attributes.currSizeMobile,
+                    currSizeTablet: attributes.currSizeTablet,
+                    currWeight: attributes.currWeight,
+                    valPrice: attributes.valPrice,
+                    valColor: attributes.valColor,
+                    valSizeUnit: attributes.valSizeUnit,
+                    valSize: attributes.valSize,
+                    valSizeMobile: attributes.valSizeMobile,
+                    valSizeTablet: attributes.valSizeTablet,
+                    valWeight: attributes.valWeight,
+                    divPrice: attributes.divPrice,
+                    divColor: attributes.divColor,
+                    divSize: attributes.divSize,
+                    divSizeUnit: attributes.divSizeUnit,
+                    divSizeMobile: attributes.divSizeMobile,
+                    divSizeTablet: attributes.divSizeTablet,
+                    divWeight: attributes.divWeight,
+                    durPrice: attributes.durPrice,
+                    durColor: attributes.durColor,
+                    durSizeUnit: attributes.durSizeUnit,
+                    durSize: attributes.durSize,
+                    durSizeMobile: attributes.durSizeMobile,
+                    durSizeTablet: attributes.durSizeTablet,
+                    durWeight: attributes.durWeight,
+                    selectedStyle: attributes.selectedStyle,
+                    slashV: attributes.slashV,
+                    currV: attributes.currV,
+                    valV: attributes.valV,
+                    divV: attributes.divV,
+                    durV: attributes.durV,
+                }],
+                featureStyles: [{
+                    featsAlign: attributes.featsAlign,
+                    listStyle: attributes.listStyle,
+                    listColor: attributes.listColor,
+                    listSize: attributes.listSize,
+                    listSizeUnit: attributes.listSizeUnit,
+                    listSizeTablet: attributes.listSizeTablet,
+                    listSizeMobile: attributes.listSizeMobile,
+                    listWeight: attributes.listWeight,
+                    listItemsStyle: attributes.listItemsStyle,
+                    listLetter: attributes.listLetter,
+                    listLine: attributes.listLine,
+                    listUpper: attributes.listUpper,
+                    listBack: attributes.listBack,
+                    listMarginB: attributes.listMarginB,
+                    listMarginT: attributes.listMarginT,
+                    listPadding: attributes.listPadding,
+                }],
+                descStyles: [{
+                    descSize: attributes.descSize,
+                    descSizeUnit: attributes.descSizeUnit,
+                    descSizeTablet: attributes.descSizeTablet,
+                    descSizeMobile: attributes.descSizeMobile,
+                    descWeight: attributes.descWeight,
+                    descLetter: attributes.descLetter,
+                    descStyle: attributes.descStyle,
+                    descLine: attributes.descLine,
+                    descColor: attributes.descColor,
+                    descBack: attributes.descBack,
+                    descMarginT: attributes.descMarginT,
+                    descMarginB: attributes.descMarginB,
+                    descPadding: attributes.descPadding,
+                }
+                ],
+                buttonStyles: [{
+                    btnColor: attributes.btnColor,
+                    btnHoverColor: attributes.btnHoverColor,
+                    btnWidth: attributes.btnWidth,
+                    btnSize: attributes.btnSize,
+                    btnSizeUnit: attributes.btnSizeUnit,
+                    btnSizeTablet: attributes.btnSizeTablet,
+                    btnSizeMobile: attributes.btnSizeMobile,
+                    btnWeight: attributes.btnWeight,
+                    btnLine: attributes.btnLine,
+                    btnLetter: attributes.btnLetter,
+                    btnStyle: attributes.btnStyle,
+                    btnUpper: attributes.btnUpper,
+                    btnBack: attributes.btnBack,
+                    btnHoverBack: attributes.btnHoverBack,
+                    btnMarginT: attributes.btnMarginT,
+                    btnMarginB: attributes.btnMarginB,
+                    btnPadding: attributes.btnPadding,
+                    btnPaddingU: attributes.btnPaddingU,
+                    btnBorderType: attributes.btnBorderType,
+                    btnBorderWidth: attributes.btnBorderWidth,
+                    btnBorderRadius: attributes.btnBorderRadius,
+                    btnBorderColor: attributes.btnBorderColor,
+                    btnTarget: attributes.btnTarget,
+                }],
+                badgeStyles: [
+                    {
+                        badgePos: attributes.badgePos,
+                        badgeBack: attributes.badgeBack,
+                        badgeColor: attributes.badgeColor,
+                        badgeSize: attributes.badgeSize,
+                        badgeTextUnit: attributes.badgeTextUnit,
+                        badgeSizeTablet: attributes.badgeSizeTablet,
+                        badgeSizeMobile: attributes.badgeSizeMobile,
+                        badgeTop: attributes.badgeTop,
+                        badgeHorizontal: attributes.badgeHorizontal,
+                        badgeWidth: attributes.badgeWidth,
+                        badgeWeight: attributes.badgeWeight,
+                        badgeLetter: attributes.badgeLetter,
+                        badgeStyle: attributes.badgeStyle,
+                        badgeUpper: attributes.badgeUpper,
+                        badgeText: attributes.badgeText,
+                    }],
+                tableStyles: [{
+                    tableBack: attributes.tableBack,
+                    tableOpacity: attributes.tableOpacity,
+                    borderType: attributes.borderType,
+                    borderWidth: attributes.borderWidth,
+                    borderRadius: attributes.borderRadius,
+                    tableShadowColor: attributes.tableShadowColor,
+                    tableShadowBlur: attributes.tableShadowBlur,
+                    tableShadowHorizontal: attributes.tableShadowHorizontal,
+                    tableShadowVertical: attributes.tableShadowVertical,
+                    tableShadowPosition: attributes.tableShadowPosition,
+                    tablePadding: attributes.tablePadding,
+                }]
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: (props) => {
             const {
                 borderUpdated,
