@@ -61,7 +61,7 @@ export default function save(props) {
                 >
                     <span className={`premium-fancy-text-prefix-text`}
                         style={{
-                            color: PreStyles[0].textColor,
+                            // color: PreStyles[0].textColor,
                             fontWeight: PreStyles[0].textWeight,
                             letterSpacing: `${PreStyles[0].textLetter}px`,
                             textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
@@ -89,7 +89,7 @@ export default function save(props) {
                     </span>
                     <span className={`premium-fancy-text-suffix-text`}
                         style={{
-                            color: PreStyles[0].textColor,
+                            // color: PreStyles[0].textColor,
                             fontWeight: PreStyles[0].textWeight,
                             letterSpacing: `${PreStyles[0].textLetter}px`,
                             textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
@@ -120,7 +120,7 @@ export default function save(props) {
                 >
                     <span className={`premium-fancy-text-prefix-text`}
                         style={{
-                            color: PreStyles[0].textColor,
+                            // color: PreStyles[0].textColor,
                             fontWeight: PreStyles[0].textWeight,
                             letterSpacing: `${PreStyles[0].textLetter}px`,
                             textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,

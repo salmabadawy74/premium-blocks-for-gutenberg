@@ -2,10 +2,11 @@
     display: flex;
     align-items: center;
 }
-.components-popover .components-popover__content {
-    overflow: inherit !important;
-}
 
+.premium-popover-color .components-popover__content {
+    overflow-x: visible;
+    overflow-y: visible;
+}
 .premium-color-popover-container .premium-advanced-color-container {
     display: flex;
     align-items: center;
@@ -481,7 +482,7 @@
         padding: 20px var(--cpm-ph) 1px var(--cpm-ph);
         display: flex;
         align-items: flex-end;
-        border-top: 1px solid var(--optionBorderColor);
+        border-top: 1px solid #e1e1e1;
 
         fieldset {
             flex: 1;
@@ -630,7 +631,7 @@
         border-radius: 0px;
         margin-left: 5px;
         cursor: pointer;
-        border: 1px solid var(--inputBorderColor);
+        border: 1px solid #dcdddf;
         transition: border-color 0.1s linear;
 
         &:hover {
