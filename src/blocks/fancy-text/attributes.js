@@ -39,10 +39,6 @@ const attributes = {
         type: "string",
         default: "typing"
     },
-    cursorColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
     loop: {
         type: "boolean",
         default: "true"
@@ -118,7 +114,7 @@ const attributes = {
                 shadowBlur: '0',
                 shadowHorizontal: '0',
                 shadowVertical: '0',
-                cursorColor: ''
+                cursorColor: "#6ec1e4"
             }
         ]
     },
