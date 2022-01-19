@@ -366,7 +366,7 @@ class edit extends Component {
         }
        #premium-fancy-text-${block_id} .premium-fancy-text-title-slide {
             font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
-            color: ${fancyStyles[0].fancyTextColor},
+            color: ${fancyStyles[0].fancyTextColor};
             font-weight: ${fancyStyles[0].fancyTextWeight};
             letter-spacing: ${fancyStyles[0].fancyTextLetter} + "px";
             text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
@@ -821,6 +821,7 @@ class edit extends Component {
                     </div>
                 ) : (
                     <div
+                        id={`premium-fancy-text-${block_id}`}
                         className={`premium-fancy-text premium-fancy-slide`}
                         style={{
                             textAlign: align,

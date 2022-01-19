@@ -722,6 +722,7 @@ class PBG_Blocks_Helper {
 		return $content;
 	}
 	public function get_fancy_text_css_style( $attr, $unique_id ) {
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -735,49 +736,6 @@ class PBG_Blocks_Helper {
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
 				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 			}
-			if ( isset( $attr['fancyStyles'][0]['fancyTextColor'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'color', $css->render_color( $attr['fancyStyles'][0]['fancyTextColor'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'color', $css->render_color( $attr['fancyStyles'][0]['fancyTextColor'] ) );
-			}
-			if ( isset( $attr['fancyStyles'][0]['fancyTextWeight'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'font-weight', $css->render_color( $attr['fancyStyles'][0]['fancyTextWeight'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'font-weight', $css->render_color( $attr['fancyStyles'][0]['fancyTextWeight'] ) );
-			}
-			if ( isset( $attr['fancyStyles'][0]['fancyTextLetter'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'letter-spacing', $css->render_color( $attr['fancyStyles'][0]['fancyTextLetter'] . 'px' ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'letter-spacing', $css->render_color( $attr['fancyStyles'][0]['fancyTextLetter'] . 'px' ) );
-			}
-			if ( isset( $attr['fancyStyles'][0]['fancyTextUpper'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'text-transform', $css->render_color( $attr['fancyStyles'][0]['fancyTextUpper'] ? 'uppercase' : 'none' ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'text-transform', $css->render_color( $attr['fancyStyles'][0]['fancyTextUpper'] ? 'uppercase' : 'none' ) );
-			}
-			if ( isset( $attr['fancyStyles'][0]['fancyTextStyle'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'font-style', $css->render_color( $attr['fancyStyles'][0]['fancyTextStyle'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'font-style', $css->render_color( $attr['fancyStyles'][0]['fancyTextStyle'] ) );
-			}
-			if ( isset( $attr['fancyStyles'][0]['fancyTextStyle'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'background-color', ( $attr['fancyStyles'][0]['fancyTextBGColor'] ? self::hex_to_rgba( $attr['fancyStyles'][0]['fancyTextBGColor'], $attr['fancyStyles'][0]['fancyTextBGOpacity'] ) : 'transparent' ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'background-color', $css->render_color( $attr['fancyStyles'][0]['fancyTextBGColor'] ? self::hex_to_rgba( $attr['fancyStyles'][0]['fancyTextBGColor'], $attr['fancyStyles'][0]['fancyTextBGOpacity'] ) : 'transparent' ) );
-			}
-			if ( isset( $attr['fancyStyles'][0]['shadowHorizontal'] ) || $attr['fancyStyles'][0]['shadowVertical'] || $attr['fancyStyles'][0]['shadowBlur'] || $attr['fancyStyles'][0]['shadowColor'] ) {
-
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'text-shadow', ( $attr['fancyStyles'][0]['shadowHorizontal'] . 'px ' . $attr['fancyStyles'][0]['shadowVertical'] . 'px ' . $attr['fancyStyles'][0]['shadowBlur'] . 'px ' . $css->render_color( $attr['fancyStyles'][0]['shadowColor'] ) ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'text-shadow', ( $attr['fancyStyles'][0]['shadowHorizontal'] . 'px ' . $attr['fancyStyles'][0]['shadowVertical'] . 'px ' . $attr['fancyStyles'][0]['shadowBlur'] . 'px ' . $css->render_color( $attr['fancyStyles'][0]['shadowColor'] ) ) );
-			}
 		}
 		// Prefix and Suffix Style
 		if ( isset( $attr['PreStyles'] ) ) {
@@ -786,36 +744,6 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
 				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-			}
-			if ( isset( $attr['PreStyles'][0]['textWeight'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'font-weight', $css->render_color( $attr['PreStyles'][0]['textWeight'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'font-weight', $css->render_color( $attr['PreStyles'][0]['textWeight'] ) );
-			}
-			if ( isset( $attr['PreStyles'][0]['textLetter'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'letter-spacing', $css->render_color( $attr['PreStyles'][0]['textLetter'] . 'px' ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'letter-spacing', $css->render_color( $attr['PreStyles'][0]['textLetter'] . 'px' ) );
-			}
-			if ( isset( $attr['PreStyles'][0]['textUpper'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'text-transform', $css->render_color( $attr['PreStyles'][0]['textUpper'] ? 'uppercase' : 'none' ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'text-transform', $css->render_color( $attr['PreStyles'][0]['textUpper'] ? 'uppercase' : 'none' ) );
-			}
-			if ( isset( $attr['fancyStyles'][0]['textStyle'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'font-style', $css->render_color( $attr['fancyStyles'][0]['textStyle'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'font-style', $css->render_color( $attr['fancyStyles'][0]['textStyle'] ) );
-			}
-			if ( isset( $attr['PreStyles'][0]['textBGColor'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'background-color', $css->render_color( $attr['PreStyles'][0]['textBGColor'] ? self::hex_to_rgba( $attr['PreStyles'][0]['textBGColor'], $attr['PreStyles'][0]['textBGOpacity'] ) : 'transparent' ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'background-color', $css->render_color( $attr['PreStyles'][0]['textBGColor'] ? self::hex_to_rgba( $attr['PreStyles'][0]['textBGColor'], $attr['PreStyles'][0]['textBGOpacity'] ) : 'transparent' ) );
 			}
 		}
 		$css->start_media_query( $media_query['tablet'] );
