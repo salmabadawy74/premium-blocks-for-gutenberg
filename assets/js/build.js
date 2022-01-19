@@ -1487,6 +1487,89 @@ module.exports = root;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    Fragment = _wp$element.Fragment;
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    ButtonGroup = _wp$components.ButtonGroup,
+    Button = _wp$components.Button;
+
+
+var RadioComponent = function RadioComponent(_ref) {
+    var value = _ref.value,
+        onChange = _ref.onChange,
+        label = _ref.label,
+        choices = _ref.choices;
+
+
+    var HandleChange = function HandleChange(newVal) {
+
+        onChange(newVal);
+        setState(newVal);
+    };
+    var defaultVal = '';
+    value = value ? value : defaultVal;
+
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
+
+    var renderButtons = function renderButtons() {
+        var currentChoices = choices;
+
+        return React.createElement(
+            Fragment,
+            null,
+            currentChoices.map(function (choice) {
+                var currentValue = state;
+                return React.createElement(
+                    Button,
+                    {
+                        isTertiary: true,
+                        className: choice === currentValue ? 'active-radio' : '',
+                        onClick: function onClick() {
+
+                            HandleChange(choice);
+                        }
+                    },
+                    choice
+                );
+            })
+        );
+    };
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            'span',
+            { className: 'customize-control-title premium-control-title' },
+            label
+        ),
+        React.createElement(
+            ButtonGroup,
+            { className: 'premium-radio-container-control' },
+            renderButtons()
+        )
+    );
+};
+
+exports.default = React.memo(RadioComponent);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.default = PremiumTextShadow;
 
 var _premiumRangeControl = __webpack_require__(2);
@@ -1587,7 +1670,7 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1619,89 +1702,6 @@ function PremiumTextShadow(props) {
 var isArray = Array.isArray;
 
 module.exports = isArray;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _wp$element = wp.element,
-    useState = _wp$element.useState,
-    Fragment = _wp$element.Fragment;
-var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
-
-
-var RadioComponent = function RadioComponent(_ref) {
-    var value = _ref.value,
-        onChange = _ref.onChange,
-        label = _ref.label,
-        choices = _ref.choices;
-
-
-    var HandleChange = function HandleChange(newVal) {
-
-        onChange(newVal);
-        setState(newVal);
-    };
-    var defaultVal = '';
-    value = value ? value : defaultVal;
-
-    var _useState = useState(value),
-        _useState2 = _slicedToArray(_useState, 2),
-        state = _useState2[0],
-        setState = _useState2[1];
-
-    var renderButtons = function renderButtons() {
-        var currentChoices = choices;
-
-        return React.createElement(
-            Fragment,
-            null,
-            currentChoices.map(function (choice) {
-                var currentValue = state;
-                return React.createElement(
-                    Button,
-                    {
-                        isTertiary: true,
-                        className: choice === currentValue ? 'active-radio' : '',
-                        onClick: function onClick() {
-
-                            HandleChange(choice);
-                        }
-                    },
-                    choice
-                );
-            })
-        );
-    };
-    return React.createElement(
-        Fragment,
-        null,
-        React.createElement(
-            'span',
-            { className: 'customize-control-title premium-control-title' },
-            label
-        ),
-        React.createElement(
-            ButtonGroup,
-            { className: 'premium-radio-container-control' },
-            renderButtons()
-        )
-    );
-};
-
-exports.default = React.memo(RadioComponent);
 
 /***/ }),
 /* 16 */
@@ -3574,7 +3574,7 @@ module.exports = {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(14),
+var isArray = __webpack_require__(15),
     isSymbol = __webpack_require__(39);
 
 /** Used to match property names within property paths. */
@@ -11069,7 +11069,7 @@ module.exports = baseGet;
 "use strict";
 
 
-var isArray = __webpack_require__(14),
+var isArray = __webpack_require__(15),
     isKey = __webpack_require__(57),
     stringToPath = __webpack_require__(166),
     toString = __webpack_require__(190);
@@ -11269,7 +11269,7 @@ module.exports = arrayMap;
 var arrayMap = __webpack_require__(96),
     baseIteratee = __webpack_require__(192),
     baseMap = __webpack_require__(242),
-    isArray = __webpack_require__(14);
+    isArray = __webpack_require__(15);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -13181,7 +13181,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -13193,7 +13193,7 @@ var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -29503,7 +29503,7 @@ module.exports = toString;
 
 var _Symbol = __webpack_require__(40),
     arrayMap = __webpack_require__(96),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(15),
     isSymbol = __webpack_require__(39);
 
 /** Used as references for various `Number` constants. */
@@ -29551,7 +29551,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var baseMatches = __webpack_require__(193),
     baseMatchesProperty = __webpack_require__(234),
     identity = __webpack_require__(238),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(15),
     property = __webpack_require__(239);
 
 /**
@@ -29819,7 +29819,7 @@ var Stack = __webpack_require__(98),
     equalByTag = __webpack_require__(206),
     equalObjects = __webpack_require__(210),
     getTag = __webpack_require__(228),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(15),
     isBuffer = __webpack_require__(102),
     isTypedArray = __webpack_require__(104);
 
@@ -30338,7 +30338,7 @@ module.exports = getAllKeys;
 
 
 var arrayPush = __webpack_require__(213),
-    isArray = __webpack_require__(14);
+    isArray = __webpack_require__(15);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -30497,7 +30497,7 @@ module.exports = stubArray;
 
 var baseTimes = __webpack_require__(218),
     isArguments = __webpack_require__(101),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(15),
     isBuffer = __webpack_require__(102),
     isIndex = __webpack_require__(103),
     isTypedArray = __webpack_require__(104);
@@ -31113,7 +31113,7 @@ module.exports = baseHasIn;
 
 var castPath = __webpack_require__(91),
     isArguments = __webpack_require__(101),
-    isArray = __webpack_require__(14),
+    isArray = __webpack_require__(15),
     isIndex = __webpack_require__(103),
     isLength = __webpack_require__(61),
     toKey = __webpack_require__(45);
@@ -32679,7 +32679,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -32711,7 +32711,7 @@ var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -35481,7 +35481,7 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -37481,7 +37481,7 @@ var _PremiumBackgroundControl = __webpack_require__(37);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -40568,7 +40568,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -43391,7 +43391,7 @@ var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -43411,7 +43411,7 @@ var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -45363,7 +45363,7 @@ var _premiumMargin = __webpack_require__(64);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -45391,7 +45391,7 @@ var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -49854,7 +49854,7 @@ var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -51005,7 +51005,7 @@ var _premiumBoxShadow = __webpack_require__(16);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -51021,7 +51021,7 @@ var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -57400,7 +57400,7 @@ var _PremiumBackgroundControl = __webpack_require__(37);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -60101,7 +60101,7 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -62356,8 +62356,12 @@ function save(props) {
         fancyalign = attributes.fancyalign,
         hideDesktop = attributes.hideDesktop,
         hideTablet = attributes.hideTablet,
-        hideMobile = attributes.hideMobile;
+        hideMobile = attributes.hideMobile,
+        fancyStyles = attributes.fancyStyles,
+        PreStyles = attributes.PreStyles;
 
+
+    console.log(PreStyles[0]);
     return React.createElement(
         "div",
         {
@@ -62388,7 +62392,15 @@ function save(props) {
             },
             React.createElement(
                 "span",
-                { className: "premium-fancy-text-prefix-text" },
+                { className: "premium-fancy-text-prefix-text",
+                    style: {
+                        // color: PreStyles[0].textColor,
+                        fontWeight: PreStyles[0].textWeight,
+                        letterSpacing: PreStyles[0].textLetter + "px",
+                        textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
+                        fontStyle: PreStyles[0].textStyle,
+                        backgroundColor: PreStyles[0].textBGColor
+                    } },
                 prefix,
                 " "
             ),
@@ -62396,6 +62408,15 @@ function save(props) {
                 "span",
                 {
                     className: "premium-fancy-text-title",
+                    style: {
+                        color: fancyStyles[0].fancyTextColor,
+                        fontWeight: fancyStyles[0].fancyTextWeight,
+                        letterSpacing: fancyStyles[0].fancyTextLetter + "px",
+                        textTransform: "" + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none"),
+                        fontStyle: "" + fancyStyles[0].fancyTextStyle,
+                        backgroundColor: "" + fancyStyles[0].fancyTextBGColor,
+                        textShadow: fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor
+                    },
                     ref: function ref(el) {
                         _this.el = el;
                     }
@@ -62404,16 +62425,26 @@ function save(props) {
             ),
             React.createElement(
                 "span",
-                { className: "premium-fancy-text-suffix-text" },
+                { className: "premium-fancy-text-suffix-text",
+                    style: {
+                        // color: PreStyles[0].textColor,
+                        fontWeight: PreStyles[0].textWeight,
+                        letterSpacing: PreStyles[0].textLetter + "px",
+                        textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
+                        fontStyle: PreStyles[0].textStyle,
+                        backgroundColor: PreStyles[0].textBGColor
+                    } },
                 " ",
                 suffix
             )
         ) : React.createElement(
             "div",
             {
+                id: "premium-fancy-text-" + block_id,
                 className: "premium-fancy-text premium-fancy-slide",
                 style: {
                     textAlign: align
+
                 },
                 "data-effect": "" + effect,
                 "data-strings": "" + repeaterFancyText.map(function (item, index) {
@@ -62425,7 +62456,16 @@ function save(props) {
             },
             React.createElement(
                 "span",
-                { className: "premium-fancy-text-prefix-text" },
+                { className: "premium-fancy-text-prefix-text",
+                    style: {
+                        // color: PreStyles[0].textColor,
+                        fontWeight: PreStyles[0].textWeight,
+                        letterSpacing: PreStyles[0].textLetter + "px",
+                        textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
+                        fontStyle: PreStyles[0].textStyle,
+                        backgroundColor: PreStyles[0].textBGColor
+                    }
+                },
                 prefix,
                 " "
             ),
@@ -62434,7 +62474,14 @@ function save(props) {
                 {
                     className: "premium-fancy-text-title-slide",
                     style: {
-                        textAlign: fancyalign
+                        textAlign: fancyalign,
+                        color: fancyStyles[0].fancyTextColor,
+                        fontWeight: fancyStyles[0].fancyTextWeight,
+                        letterSpacing: fancyStyles[0].fancyTextLetter + "px",
+                        textTransform: "" + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none"),
+                        fontStyle: "" + fancyStyles[0].fancyTextStyle,
+                        backgroundColor: "" + fancyStyles[0].fancyTextBGColor,
+                        textShadow: fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor
                     }
                 },
                 React.createElement(
@@ -62453,7 +62500,16 @@ function save(props) {
             ),
             React.createElement(
                 "span",
-                { className: "premium-fancy-text-suffix-text" },
+                { className: "premium-fancy-text-suffix-text",
+                    style: {
+                        color: PreStyles[0].textColor,
+                        fontWeight: PreStyles[0].textWeight,
+                        letterSpacing: PreStyles[0].textLetter + "px",
+                        textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
+                        fontStyle: PreStyles[0].textStyle,
+                        backgroundColor: PreStyles[0].textBGColor
+                    }
+                },
                 " ",
                 suffix
             )
@@ -62484,7 +62540,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(13);
+var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -62499,6 +62555,10 @@ var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+var _radioControl = __webpack_require__(13);
+
+var _radioControl2 = _interopRequireDefault(_radioControl);
 
 var _reactSortableHoc = __webpack_require__(304);
 
@@ -62714,7 +62774,6 @@ var edit = function (_Component) {
                 suffix = attributes.suffix,
                 repeaterFancyText = attributes.repeaterFancyText,
                 effect = attributes.effect,
-                cursorColor = attributes.cursorColor,
                 loop = attributes.loop,
                 cursorShow = attributes.cursorShow,
                 cursorMark = attributes.cursorMark,
@@ -62876,7 +62935,7 @@ var edit = function (_Component) {
             var renderCss = React.createElement(
                 "style",
                 null,
-                "\n            .premium-fancy-text-title {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ";\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + "px;\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + fancyStyles[0].fancyTextBGColor + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n        .premium-fancy-text-title-slide {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ",\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + " + \"px\";\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + fancyStyles[0].fancyTextBGColor + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n         .typed-cursor {\n            color: " + cursorColor + ";\n        }\n         .premium-fancy-text-prefix-text {\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + PreStyles[0].textBGColor + ";\n        }\n         .premium-fancy-text-suffix-text{\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + PreStyles[0].textBGColor + ";\n        }\n            "
+                "\n           #premium-fancy-text-" + block_id + " .premium-fancy-text-title {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ";\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + "px;\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + fancyStyles[0].fancyTextBGColor + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n       #premium-fancy-text-" + block_id + " .premium-fancy-text-title-slide {\n            font-size:" + fancyTextFontSize + fancyStyles[0].fancyTextfontSizeUnit + ";\n            color: " + fancyStyles[0].fancyTextColor + ";\n            font-weight: " + fancyStyles[0].fancyTextWeight + ";\n            letter-spacing: " + fancyStyles[0].fancyTextLetter + " + \"px\";\n            text-transform: " + (fancyStyles[0].fancyTextUpper ? "uppercase" : "none") + ";\n            font-style: " + fancyStyles[0].fancyTextStyle + ";\n            background-color: " + fancyStyles[0].fancyTextBGColor + ";\n            text-shadow: " + fancyStyles[0].shadowHorizontal + "px " + fancyStyles[0].shadowVertical + "px " + fancyStyles[0].shadowBlur + "px " + fancyStyles[0].shadowColor + ";\n        }\n        #premium-fancy-text-" + block_id + " .typed-cursor {\n            color: " + fancyStyles[0].cursorColor + ";\n        }\n        #premium-fancy-text-" + block_id + " .premium-fancy-text-prefix-text {\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + PreStyles[0].textBGColor + ";\n        }\n        #premium-fancy-text-" + block_id + " .premium-fancy-text-suffix-text{\n            font-size:" + PrefixFontSize + PreStyles[0].textfontSizeUnit + ";\n            color: " + PreStyles[0].textColor + ";\n            font-weight: " + PreStyles[0].textWeight + ";\n            letter-spacing: " + PreStyles[0].textLetter + "px;\n            text-transform: " + (PreStyles[0].textUpper ? "uppercase" : "none") + ";\n            font-style: " + PreStyles[0].textStyle + ";\n            background-color: " + PreStyles[0].textBGColor + ";\n        }\n            "
             );
 
             return [renderCss, isSelected && [React.createElement(
@@ -63090,7 +63149,7 @@ var edit = function (_Component) {
                             },
                             help: __("If you enabled this option, the slide will be paused when mouseover.", 'premium-block-for-gutenberg')
                         }),
-                        React.createElement(RadioComponent, {
+                        React.createElement(_radioControl2.default, {
                             choices: ["right", "center", "left"],
                             value: fancyalign,
                             onChange: function onChange(newValue) {
@@ -63324,6 +63383,7 @@ var edit = function (_Component) {
                 ) : React.createElement(
                     "div",
                     {
+                        id: "premium-fancy-text-" + block_id,
                         className: "premium-fancy-text premium-fancy-slide",
                         style: {
                             textAlign: align
@@ -66858,6 +66918,157 @@ var newAtrributes_1_0_1 = {
 var fancyAttributes_1_0_1 = Object.assign(newAtrributes_1_0_1, fancyAttributes);
 
 var deprecated = [{
+    attributes: fancyAttributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            fancyStyles: [{
+                fancyTextColor: attributes.fancyTextColor,
+                fancyTextfontSize: attributes.fancyTextfontSize,
+                fancyTextfontSizeUnit: attributes.fancyTextfontSizeUnit,
+                fancyTextfontSizeMobile: attributes.fancyTextfontSizeMobile,
+                fancyTextfontSizeTablet: attributes.fancyTextfontSizeTablet,
+                fancyTextBGColor: attributes.fancyTextBGColor,
+                fancyTextBGOpacity: attributes.fancyTextBGOpacity,
+                fancyTextLetter: attributes.fancyTextLetter,
+                fancyTextStyle: attributes.fancyTextStyle,
+                fancyTextUpper: attributes.fancyTextUpper,
+                fancyTextWeight: attributes.fancyTextWeight,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical,
+                cursorColor: attributes.cursorColor
+            }],
+            PreStyles: [{
+                textColor: attributes.textColor,
+                textLetter: attributes.textLetter,
+                textStyle: attributes.textStyle,
+                textUpper: attributes.textUpper,
+                textWeight: attributes.textWeight,
+                textfontSize: attributes.textFontSize,
+                textfontSizeUnit: attributes.textFontSizeUnit,
+                textfontSizeMobile: attributes.textFontSizeMobile,
+                textfontSizeTablet: attributes.textfontSizeTablet,
+                textBGColor: attributes.textBGColor,
+                textBGOpacity: attributes.textBGOpacity
+            }]
+
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var attributes = props.attributes,
+            className = props.className;
+        var block_id = attributes.block_id,
+            align = attributes.align,
+            prefix = attributes.prefix,
+            suffix = attributes.suffix,
+            repeaterFancyText = attributes.repeaterFancyText,
+            effect = attributes.effect,
+            loop = attributes.loop,
+            cursorShow = attributes.cursorShow,
+            cursorMark = attributes.cursorMark,
+            typeSpeed = attributes.typeSpeed,
+            backSpeed = attributes.backSpeed,
+            startdelay = attributes.startdelay,
+            backdelay = attributes.backdelay,
+            animationSpeed = attributes.animationSpeed,
+            pauseTime = attributes.pauseTime,
+            hoverPause = attributes.hoverPause,
+            fancyalign = attributes.fancyalign,
+            hideDesktop = attributes.hideDesktop,
+            hideTablet = attributes.hideTablet,
+            hideMobile = attributes.hideMobile;
+
+        return React.createElement(
+            "div",
+            {
+                className: (0, _classnames2.default)(className, "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
+                style: {
+                    textAlign: align
+                } },
+            effect == 'typing' ? React.createElement(
+                "div",
+                {
+                    id: "premium-fancy-text-" + block_id,
+                    className: "premium-fancy-text", style: {
+                        textAlign: align
+                    },
+                    "data-effect": "" + effect,
+                    "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                        return item.title;
+                    }),
+                    "data-typespeed": "" + typeSpeed,
+                    "data-backspeed": "" + backSpeed,
+                    "data-startdelay": "" + startdelay,
+                    "data-backdelay": "" + backdelay,
+                    "data-loop": "" + loop,
+                    "data-cursorshow": "" + cursorShow,
+                    "data-cursormark": "" + cursorMark
+                },
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-prefix-text" },
+                    prefix,
+                    " "
+                ),
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-title" },
+                    " "
+                ),
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-suffix-text" },
+                    " ",
+                    suffix
+                )
+            ) : React.createElement(
+                "div",
+                { className: "premium-fancy-text premium-fancy-slide", style: {
+                        textAlign: align
+                    },
+                    "data-effect": "" + effect,
+                    "data-strings": "" + repeaterFancyText.map(function (item, index) {
+                        return item.title;
+                    }),
+                    "data-animationspeed": "" + animationSpeed,
+                    "data-pausetime": "" + pauseTime,
+                    "data-hoverpause": "" + hoverPause
+                },
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-prefix-text" },
+                    prefix,
+                    " "
+                ),
+                React.createElement(
+                    "div",
+                    { className: "premium-fancy-text-title-slide", style: {
+                            textAlign: fancyalign
+                        } },
+                    React.createElement(
+                        "ul",
+                        { className: "premium-fancy-text-title-slide-list" },
+                        repeaterFancyText.map(function (item, index) {
+                            return React.createElement(
+                                "li",
+                                null,
+                                item.title
+                            );
+                        })
+                    )
+                ),
+                React.createElement(
+                    "span",
+                    { className: "premium-fancy-text-suffix-text" },
+                    " ",
+                    suffix
+                )
+            )
+        );
+    }
+}, {
     attributes: fancyAttributes_1_0_1,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -67033,10 +67244,6 @@ var attributes = {
         type: "string",
         default: "typing"
     },
-    cursorColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
     loop: {
         type: "boolean",
         default: "true"
@@ -67111,7 +67318,7 @@ var attributes = {
             shadowBlur: '0',
             shadowHorizontal: '0',
             shadowVertical: '0',
-            cursorColor: ''
+            cursorColor: "#6ec1e4"
         }]
     },
     PreStyles: {
@@ -67229,7 +67436,7 @@ var _ColorComponent = __webpack_require__(5);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(15);
+var _radioControl = __webpack_require__(13);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
