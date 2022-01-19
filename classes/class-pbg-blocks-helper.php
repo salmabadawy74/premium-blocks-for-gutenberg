@@ -567,6 +567,7 @@ class PBG_Blocks_Helper {
 
 		return $css;
 	}
+
 	public function render_inline_css( $css, $style_id, $in_content = false ) {
 
 		if ( ! is_admin() ) {
@@ -579,6 +580,7 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
+
 	public function should_render_inline( $name, $unique_id ) {
 		if ( doing_filter( 'the_content' ) || apply_filters( 'premium_blocks_force_render_inline_css_in_content', false, $name, $unique_id ) || is_customize_preview() ) {
 			return true;
@@ -633,10 +635,9 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
+
 	public function frontend_gfonts() {
-
 		if ( empty( self::$gfonts ) ) {
-
 			return;
 		}
 		$print_google_fonts = apply_filters( 'pbg_blocks_print_google_fonts', true );
@@ -682,10 +683,6 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -695,7 +692,6 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-
 			wp_enqueue_script(
 				'pbg-vticker',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/vticker.js',
@@ -703,7 +699,6 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-
 			wp_enqueue_script(
 				'pbg-typed',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/typed.js',
@@ -874,10 +869,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['accordionId'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -969,10 +961,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -1063,10 +1052,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
@@ -1141,10 +1127,6 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
 		}
 
 		if ( $this->it_is_not_amp() ) {
@@ -1336,10 +1318,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
@@ -1749,10 +1728,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -1777,6 +1753,7 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
+
 	public function get_lottie_css_style( $attr, $unique_id ) {
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
@@ -1835,10 +1812,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
@@ -1943,10 +1917,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -2013,10 +1984,7 @@ class PBG_Blocks_Helper {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-			$pos       = strpos( $content, 'inner-column-' );
-			if ( false !== $pos ) {
-				$content = substr_replace( $content, 'Premium_BLocks-column' . $unique_id . ' inner-column-', $pos, strlen( 'inner-column-' ) );
-			}
+
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
