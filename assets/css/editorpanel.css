@@ -3221,7 +3221,7 @@ input[type="number"] {
   align-items: center; }
 
 .components-popover .components-popover__content {
-  overflow-x: hidden; }
+  overflow: inherit !important; }
 
 .premium-color-popover-container .premium-advanced-color-container {
   display: flex;
@@ -3749,7 +3749,6 @@ input[type="number"] {
     color: #4a5568;
     white-space: normal;
     border: none;
-    margin: 0px;
     box-shadow: inset 0 0 0 1px #ddd !important;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
   .premium-radio-container-control button.components-button.is-tertiary.builder-add-btn {
