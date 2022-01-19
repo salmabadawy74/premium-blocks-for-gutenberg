@@ -3,7 +3,7 @@
     align-items: center;
 }
 .components-popover .components-popover__content {
-    overflow-x: hidden;
+    overflow: inherit !important;
 }
 
 .premium-color-popover-container .premium-advanced-color-container {
