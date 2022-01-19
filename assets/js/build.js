@@ -1100,15 +1100,24 @@ var PremiumTypo = function (_Component) {
                 onChangeLine = _props$onChangeLine === undefined ? function () {} : _props$onChangeLine,
                 _props$onChangeLineUn = _props.onChangeLineUnit,
                 onChangeLineUnit = _props$onChangeLineUn === undefined ? function () {} : _props$onChangeLineUn,
+                _props$onChangeLetter = _props.onChangeLetterUnit,
+                onChangeLetterUnit = _props$onChangeLetter === undefined ? function () {} : _props$onChangeLetter,
                 _props$onChangeUpper = _props.onChangeUpper,
                 onChangeUpper = _props$onChangeUpper === undefined ? function () {} : _props$onChangeUpper,
                 _props$onResetClick = _props.onResetClick,
                 onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick,
+                _props$onChangeTextTr = _props.onChangeTextTransform,
+                onChangeTextTransform = _props$onChangeTextTr === undefined ? function () {} : _props$onChangeTextTr,
+                _props$onChangeTextDe = _props.onChangeTextDecoration,
+                onChangeTextDecoration = _props$onChangeTextDe === undefined ? function () {} : _props$onChangeTextDe,
                 size = _props.size,
                 line = _props.line,
                 weight = _props.weight,
                 spacing = _props.spacing,
-                titleLineUnit = _props.titleLineUnit;
+                titleLineUnit = _props.titleLineUnit,
+                titleLetterUnit = _props.titleLetterUnit,
+                textTransform = _props.textTransform,
+                textDecoration = _props.textDecoration;
             var _state = this.state,
                 fontFamily = _state.fontFamily,
                 style = _state.style,
@@ -1174,15 +1183,12 @@ var PremiumTypo = function (_Component) {
                 }
             };
 
-            // const [isVisible, setIsVisible] = useState(false);
             var toggleVisible = function toggleVisible(v) {
                 console.log(v);
-                setAttributes({ isVisible: true });
                 _this2.setState({
                     isVisible: true,
                     currentView: v
                 });
-                // setIsVisible((state) => !state);
             };
 
             var setSearch = function setSearch(v) {
@@ -1197,6 +1203,11 @@ var PremiumTypo = function (_Component) {
                     fontFamily: v.value
                 });
                 onFontfamilyChange(v);
+            };
+
+            var ChangeTextTransform = function ChangeTextTransform(v) {
+                console.log(v);
+                // textTransform = v;
             };
 
             var renderFonts = fonts.map(function (item, index) {
@@ -1353,13 +1364,53 @@ var PremiumTypo = function (_Component) {
                                                         value: spacing,
                                                         onChange: onChangeSpacing,
                                                         defaultValue: ''
-                                                    }, _defineProperty(_React$createElement, "onChange", onChangeSpacing), _defineProperty(_React$createElement, "showUnit", showUnit), _defineProperty(_React$createElement, "responsive", true), _React$createElement))
+                                                    }, _defineProperty(_React$createElement, "onChange", onChangeSpacing), _defineProperty(_React$createElement, "showUnit", showUnit), _defineProperty(_React$createElement, "responsive", true), _defineProperty(_React$createElement, "onChangeUnit", onChangeLetterUnit), _defineProperty(_React$createElement, "unit", titleLetterUnit), _React$createElement))
                                                 ),
                                                 React.createElement(
                                                     "li",
                                                     { className: "kmt-typography-variant" },
-                                                    React.createElement("ul", { className: "kmt-text-transform" }),
-                                                    React.createElement("ul", { className: "kmt-text-decoration" })
+                                                    React.createElement(
+                                                        "ul",
+                                                        { className: "kmt-text-transform" },
+                                                        ['capitalize', 'uppercase'].map(function (variant) {
+                                                            return React.createElement(
+                                                                "li",
+                                                                {
+                                                                    key: variant,
+                                                                    onClick: function onClick() {
+                                                                        return onChangeTextTransform(variant);
+                                                                    },
+                                                                    className: "" + (textTransform == variant ? 'active' : ''),
+                                                                    "data-variant": variant },
+                                                                React.createElement(
+                                                                    "i",
+                                                                    { className: "kmt-tooltip-top" },
+                                                                    variant
+                                                                )
+                                                            );
+                                                        })
+                                                    ),
+                                                    React.createElement(
+                                                        "ul",
+                                                        { className: "kmt-text-decoration" },
+                                                        ['line-through', 'underline'].map(function (variant) {
+                                                            return React.createElement(
+                                                                "li",
+                                                                {
+                                                                    key: variant,
+                                                                    onClick: function onClick() {
+                                                                        return onChangeTextDecoration(variant);
+                                                                    },
+                                                                    className: "" + (textDecoration == variant ? 'active' : ''),
+                                                                    "data-variant": variant },
+                                                                React.createElement(
+                                                                    "i",
+                                                                    { className: "kmt-tooltip-top" },
+                                                                    variant
+                                                                )
+                                                            );
+                                                        })
+                                                    )
                                                 )
                                             )
                                         )
@@ -1379,9 +1430,13 @@ var PremiumTypo = function (_Component) {
                                     Popover,
                                     null,
                                     React.createElement(
-                                        "span",
-                                        null,
-                                        "variations"
+                                        "div",
+                                        { className: "kmt-option-modal kmt-typography-modal" },
+                                        React.createElement(
+                                            "div",
+                                            { className: "kmt-typography-container" },
+                                            React.createElement("ul", { className: "kmt-typography-variations" })
+                                        )
                                     )
                                 )
                             )
@@ -54172,6 +54227,8 @@ var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -54236,6 +54293,8 @@ var edit = function (_Component) {
     }, {
         key: "render",
         value: function render() {
+            var _ref3;
+
             var _props2 = this.props,
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
@@ -54650,6 +54709,8 @@ var edit = function (_Component) {
                         line: titleStyles[0].titleLine,
                         upper: titleStyles[0].titleUpper,
                         fontFamily: titleStyles[0].titleFont,
+                        textTransform: titleStyles[0].titleTextTransform,
+                        textDecoration: titleStyles[0].titleTextDecoration,
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return saveTitleStyle({ titleWeight: newWeight || 500 });
                         },
@@ -54668,10 +54729,20 @@ var edit = function (_Component) {
                         onChangeFamily: function onChangeFamily(fontFamily) {
                             return saveTitleStyle({ titleFont: fontFamily });
                         },
+                        onChangeTextTransform: function onChangeTextTransform(textTransform) {
+                            return saveTitleStyle({ titleTextTransform: textTransform });
+                        },
+                        onChangeTextDecoration: function onChangeTextDecoration(textDecoration) {
+                            return saveTitleStyle({ titleTextDecoration: textDecoration });
+                        },
                         onChangeLineUnit: function onChangeLineUnit(newValue) {
                             return saveTitleStyle({ titleLineUnit: newValue });
                         },
-                        titleLineUnit: titleStyles[0].titleLineUnit
+                        titleLineUnit: titleStyles[0].titleLineUnit,
+                        onChangeLetterUnit: function onChangeLetterUnit(newValue) {
+                            return saveTitleStyle({ titleLetterUnit: newValue });
+                        },
+                        titleLetterUnit: titleStyles[0].titleLetterUnit
                     }),
                     React.createElement(_premiumTextShadow2.default, {
                         color: titleStyles[0].titleShadowColor,
@@ -55440,17 +55511,17 @@ var edit = function (_Component) {
                             },
                             placeholder: __("Awesome Title"),
                             value: titleText,
-                            style: {
+                            style: (_ref3 = {
                                 fontSize: "" + titleFontSize + titleStyles[0].titleSizeUnit,
                                 color: titleStyles[0].titleColor,
                                 fontFamily: titleStyles[0].titleFont,
-                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                letterSpacing: "" + titleStyles[0].titleLetter + titleStyles[0].titleLetterUnit,
                                 textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                 fontStyle: titleStyles[0].titleStyle,
                                 fontWeight: titleStyles[0].titleWeight,
                                 textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
                                 lineHeight: "" + titleStyles[0].titleLine + titleStyles[0].titleLineUnit
-                            },
+                            }, _defineProperty(_ref3, "textTransform", titleStyles[0].titleTextTransform), _defineProperty(_ref3, "textDecoration", titleStyles[0].titleTextDecoration), _ref3),
                             keepPlaceholderOnFocus: true
                         })
                     ),
@@ -56869,6 +56940,10 @@ var newAttributes_1_7_2 = {
     block_id: {
         type: "string"
     },
+    titleLineUnit: {
+        type: 'string',
+        default: 'px'
+    },
     titleSizeUnit: {
         type: 'string',
         default: 'px'
@@ -56953,6 +57028,7 @@ var deprecatedContent = [{
             btnBorderIconBox: "",
             classMigrate: false,
             block_id: '',
+            titleLineUnit: 'px',
             titleSizeUnit: "px",
             titleSizeTablet: '',
             titleSizeMobile: '',
@@ -58815,6 +58891,7 @@ var attributes = {
             titleLine: '',
             titleLineUnit: 'px',
             titleLetter: '',
+            titleLetterUnit: 'px',
             titleStyle: '',
             titleUpper: false,
             titleWeight: '',
@@ -58823,7 +58900,9 @@ var attributes = {
             titleShadowHorizontal: '0',
             titleShadowVertical: '0',
             titleMarginT: '',
-            titleMarginB: ''
+            titleMarginB: '',
+            titleTextTransform: '',
+            titleTextDecoration: ''
         }]
     },
     descStyles: {

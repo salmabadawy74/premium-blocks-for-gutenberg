@@ -1091,6 +1091,10 @@ const newAttributes_1_7_2 = {
     block_id: {
         type: "string"
     },
+    titleLineUnit: {
+        type: 'string',
+        default: 'px'
+    },
     titleSizeUnit: {
         type: 'string',
         default: 'px'
@@ -1179,6 +1183,7 @@ const deprecatedContent = [
                 btnBorderIconBox: "",
                 classMigrate: false,
                 block_id: '',
+                titleLineUnit: 'px',
                 titleSizeUnit: "px",
                 titleSizeTablet: '',
                 titleSizeMobile: '',

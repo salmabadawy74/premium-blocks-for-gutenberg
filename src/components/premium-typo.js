@@ -93,14 +93,19 @@ export default class PremiumTypo extends Component {
             onChangeSpacing = () => { },
             onChangeLine = () => { },
             onChangeLineUnit = () => { },
+            onChangeLetterUnit = () => { },
             onChangeUpper = () => { },
             onResetClick = () => { },
+            onChangeTextTransform = () => { },
+            onChangeTextDecoration = () => { },
             size,
             line,
             weight,
             spacing,
             titleLineUnit,
-
+            titleLetterUnit,
+            textTransform,
+            textDecoration
         } = this.props;
 
         const {
@@ -188,15 +193,12 @@ export default class PremiumTypo extends Component {
 
         }
 
-        // const [isVisible, setIsVisible] = useState(false);
         const toggleVisible = (v) => {
             console.log(v)
-            setAttributes({ isVisible: true })
             this.setState({
                 isVisible: true,
                 currentView: v
             })
-            // setIsVisible((state) => !state);
         };
 
         const setSearch = (v) => {
@@ -211,6 +213,11 @@ export default class PremiumTypo extends Component {
                 fontFamily: v.value
             })
             onFontfamilyChange(v)
+        }
+
+        const ChangeTextTransform = (v) => {
+            console.log(v)
+            // textTransform = v;
         }
 
         const renderFonts = fonts.map((item, index) => {
@@ -316,12 +323,38 @@ export default class PremiumTypo extends Component {
                                                                 onChange={onChangeSpacing}
                                                                 showUnit={showUnit}
                                                                 responsive={true}
+                                                                onChangeUnit={onChangeLetterUnit}
+                                                                unit={titleLetterUnit}
                                                             />
                                                         </li>
                                                     )}
                                                     <li className="kmt-typography-variant">
-                                                        <ul className="kmt-text-transform"></ul>
-                                                        <ul className="kmt-text-decoration"></ul>
+                                                        <ul className="kmt-text-transform">
+                                                            {['capitalize', 'uppercase'].map((variant) => (
+                                                                <li
+                                                                    key={variant}
+                                                                    onClick={() => onChangeTextTransform(variant)}
+                                                                    className={`${textTransform == variant ? 'active' : ''}`}
+                                                                    data-variant={variant}>
+                                                                    <i className="kmt-tooltip-top">
+                                                                        {variant}
+                                                                    </i>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                        <ul className="kmt-text-decoration">
+                                                            {['line-through', 'underline'].map((variant) => (
+                                                                <li
+                                                                    key={variant}
+                                                                    onClick={() => onChangeTextDecoration(variant)}
+                                                                    className={`${textDecoration == variant ? 'active' : ''}`}
+                                                                    data-variant={variant}>
+                                                                    <i className="kmt-tooltip-top">
+                                                                        {variant}
+                                                                    </i>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -336,7 +369,15 @@ export default class PremiumTypo extends Component {
                                     toggleVisible("variations")
                                 }}
                             >{weight}
-                                {isVisible && currentView == 'variations' && <Popover><span>variations</span></Popover>}
+                                {isVisible && currentView == 'variations' &&
+                                    <Popover>
+                                        <div className="kmt-option-modal kmt-typography-modal">
+                                            <div className="kmt-typography-container">
+                                                <ul className="kmt-typography-variations"></ul>
+                                            </div>
+                                        </div>
+                                    </Popover>
+                                }
                             </span>
                         </div>
                         {/* <Button variant="secondary" onClick={() => toggleVisible()}>

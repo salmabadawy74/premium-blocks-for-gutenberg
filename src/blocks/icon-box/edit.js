@@ -473,6 +473,8 @@ class edit extends Component {
                                 line={titleStyles[0].titleLine}
                                 upper={titleStyles[0].titleUpper}
                                 fontFamily={titleStyles[0].titleFont}
+                                textTransform={titleStyles[0].titleTextTransform}
+                                textDecoration={titleStyles[0].titleTextDecoration}
                                 onChangeWeight={newWeight =>
                                     saveTitleStyle({ titleWeight: newWeight || 500 })
                                 }
@@ -485,10 +487,16 @@ class edit extends Component {
                                 onChangeLine={newValue => saveTitleStyle({ titleLine: newValue })}
                                 onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
                                 onChangeFamily={(fontFamily) => saveTitleStyle({ titleFont: fontFamily })}
+                                onChangeTextTransform={(textTransform) => saveTitleStyle({ titleTextTransform: textTransform })}
+                                onChangeTextDecoration={(textDecoration) => saveTitleStyle({ titleTextDecoration: textDecoration })}
                                 onChangeLineUnit={newValue =>
                                     saveTitleStyle({ titleLineUnit: newValue })
                                 }
                                 titleLineUnit={titleStyles[0].titleLineUnit}
+                                onChangeLetterUnit={newValue =>
+                                    saveTitleStyle({ titleLetterUnit: newValue })
+                                }
+                                titleLetterUnit={titleStyles[0].titleLetterUnit}
                             />
                             <PremiumTextShadow
                                 color={titleStyles[0].titleShadowColor}
@@ -1215,12 +1223,14 @@ class edit extends Component {
                                     fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,
                                     color: titleStyles[0].titleColor,
                                     fontFamily: titleStyles[0].titleFont,
-                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    letterSpacing: `${titleStyles[0].titleLetter}${titleStyles[0].titleLetterUnit}`,
                                     textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                     fontStyle: titleStyles[0].titleStyle,
                                     fontWeight: titleStyles[0].titleWeight,
                                     textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                    lineHeight: `${titleStyles[0].titleLine}${titleStyles[0].titleLineUnit}`
+                                    lineHeight: `${titleStyles[0].titleLine}${titleStyles[0].titleLineUnit}`,
+                                    textTransform: titleStyles[0].titleTextTransform,
+                                    textDecoration: titleStyles[0].titleTextDecoration
                                 }}
                                 keepPlaceholderOnFocus
                             />

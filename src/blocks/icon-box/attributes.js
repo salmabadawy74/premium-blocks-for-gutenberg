@@ -152,6 +152,7 @@ const attributes = {
                 titleLine: '',
                 titleLineUnit: 'px',
                 titleLetter: '',
+                titleLetterUnit: 'px',
                 titleStyle: '',
                 titleUpper: false,
                 titleWeight: '',
@@ -161,6 +162,8 @@ const attributes = {
                 titleShadowVertical: '0',
                 titleMarginT: '',
                 titleMarginB: '',
+                titleTextTransform: '',
+                titleTextDecoration: ''
             }
         ]
     },
