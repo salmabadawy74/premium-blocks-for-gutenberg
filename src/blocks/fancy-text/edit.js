@@ -184,7 +184,6 @@ class edit extends Component {
             suffix,
             repeaterFancyText,
             effect,
-            cursorColor,
             loop,
             cursorShow,
             cursorMark,
@@ -355,7 +354,7 @@ class edit extends Component {
 
         const renderCss = (<style>
             { `
-            .premium-fancy-text-title {
+           #premium-fancy-text-${block_id} .premium-fancy-text-title {
             font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
             color: ${fancyStyles[0].fancyTextColor};
             font-weight: ${fancyStyles[0].fancyTextWeight};
@@ -365,7 +364,7 @@ class edit extends Component {
             background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
         }
-        .premium-fancy-text-title-slide {
+       #premium-fancy-text-${block_id} .premium-fancy-text-title-slide {
             font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
             color: ${fancyStyles[0].fancyTextColor},
             font-weight: ${fancyStyles[0].fancyTextWeight};
@@ -375,10 +374,10 @@ class edit extends Component {
             background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
         }
-         .typed-cursor {
-            color: ${cursorColor};
+        #premium-fancy-text-${block_id} .typed-cursor {
+            color: ${fancyStyles[0].cursorColor};
         }
-         .premium-fancy-text-prefix-text {
+        #premium-fancy-text-${block_id} .premium-fancy-text-prefix-text {
             font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
             color: ${PreStyles[0].textColor};
             font-weight: ${PreStyles[0].textWeight};
@@ -387,7 +386,7 @@ class edit extends Component {
             font-style: ${PreStyles[0].textStyle};
             background-color: ${PreStyles[0].textBGColor};
         }
-         .premium-fancy-text-suffix-text{
+        #premium-fancy-text-${block_id} .premium-fancy-text-suffix-text{
             font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
             color: ${PreStyles[0].textColor};
             font-weight: ${PreStyles[0].textWeight};
