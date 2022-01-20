@@ -39,21 +39,7 @@ class Premium_Blocks_css {
 	 */
 	protected $_selector_states = array();
 
-	/**
-	 * Stores a list of css properties that require more formating
-	 *
-	 * @access private
-	 * @var array
-	 */
-	private $_special_properties_list = array(
-		'transition',
-		'transition-delay',
-		'transition-duration',
-		'transition-property',
-		'transition-timing-function',
-		'flex',
-		'content',
-	);
+
 
 	/**
 	 * Stores all of the rules that will be added to the selector
@@ -206,58 +192,7 @@ class Premium_Blocks_css {
 		return $this;
 	}
 
-	/**
-	 * Adds browser prefixed rules, and other special rules to the css output
-	 *
-	 * @access public
-	 * @since  1.0
-	 *
-	 * @param  string $property - the css property
-	 * @param  string $value - the value to be placed with the property
-	 * @return $this
-	 */
-	public function add_special_rules( $property, $value ) {
-		// Switch through the property types and add prefixed rules.
-		switch ( $property ) {
-			case 'border-top-left-radius':
-				$this->add_rule( $property, $value );
-				$this->add_rule( $property, $value, '-webkit-' );
-				$this->add_rule( 'border-radius-topleft', $value, '-moz-' );
-				break;
-			case 'border-top-right-radius':
-				$this->add_rule( $property, $value );
-				$this->add_rule( $property, $value, '-webkit-' );
-				$this->add_rule( 'border-radius-topright', $value, '-moz-' );
-				break;
-			case 'border-bottom-left-radius':
-				$this->add_rule( $property, $value );
-				$this->add_rule( $property, $value, '-webkit-' );
-				$this->add_rule( 'border-radius-bottomleft', $value, '-moz-' );
-				break;
-			case 'border-bottom-right-radius':
-				$this->add_rule( $property, $value );
-				$this->add_rule( $property, $value, '-webkit-' );
-				$this->add_rule( 'border-radius-bottomright', $value, '-moz-' );
-				break;
-			case 'background-image':
-				$this->add_rule( $property, sprintf( "url('%s')", $value ) );
-				break;
-			case 'content':
-				$this->add_rule( $property, sprintf( '%s', $value ) );
-				break;
-			case 'flex':
-				$this->add_rule( $property, $value );
-				$this->add_rule( $property, $value, '-webkit-' );
-				break;
-			default:
-				$this->add_rule( $property, $value );
-				$this->add_rule( $property, $value, '-webkit-' );
-				$this->add_rule( $property, $value, '-moz-' );
-				break;
-		}
 
-		return $this;
-	}
 
 	/**
 	 * Adds a css property with value to the css output
@@ -273,11 +208,9 @@ class Premium_Blocks_css {
 		if ( null === $value ) {
 			return $this;
 		}
-		if ( in_array( $property, $this->_special_properties_list ) ) {
-			$this->add_special_rules( $property, $value );
-		} else {
+
 			$this->add_rule( $property, $value );
-		}
+
 		return $this;
 	}
 
@@ -595,141 +528,8 @@ class Premium_Blocks_css {
 
 		return $size_string;
 	}
-	/**
-	 * Generates the shadow output.
-	 *
-	 * @param array $shadow an array of shadow settings.
-	 * @return string
-	 */
-	public function render_shadow( $shadow ) {
-		if ( empty( $shadow ) ) {
-			return false;
-		}
-		if ( ! is_array( $shadow ) ) {
-			return false;
-		}
-		if ( ! isset( $shadow['color'] ) ) {
-			return false;
-		}
-		if ( ! isset( $shadow['opacity'] ) ) {
-			return false;
-		}
-		if ( ! isset( $shadow['hOffset'] ) ) {
-			return false;
-		}
-		if ( ! isset( $shadow['vOffset'] ) ) {
-			return false;
-		}
-		if ( ! isset( $shadow['blur'] ) ) {
-			return false;
-		}
-		if ( ! isset( $shadow['spread'] ) ) {
-			return false;
-		}
-		if ( ! isset( $shadow['inset'] ) ) {
-			return false;
-		}
-		if ( $shadow['inset'] ) {
-			$shadow_string = 'inset ' . ( ! empty( $shadow['hOffset'] ) ? $shadow['hOffset'] : '0' ) . 'px ' . ( ! empty( $shadow['vOffset'] ) ? $shadow['vOffset'] : '0' ) . 'px ' . ( ! empty( $shadow['blur'] ) ? $shadow['blur'] : '0' ) . 'px ' . ( ! empty( $shadow['spread'] ) ? $shadow['spread'] : '0' ) . 'px ' . ( ! empty( $shadow['color'] ) ? $this->render_color( $shadow['color'], $shadow['opacity'] ) : $this->render_color( '#000000', $shadow['opacity'] ) );
-		} else {
-			$shadow_string = ( ! empty( $shadow['hOffset'] ) ? $shadow['hOffset'] : '0' ) . 'px ' . ( ! empty( $shadow['vOffset'] ) ? $shadow['vOffset'] : '0' ) . 'px ' . ( ! empty( $shadow['blur'] ) ? $shadow['blur'] : '0' ) . 'px ' . ( ! empty( $shadow['spread'] ) ? $shadow['spread'] : '0' ) . 'px ' . ( ! empty( $shadow['color'] ) ? $this->render_color( $shadow['color'], $shadow['opacity'] ) : $this->render_color( '#000000', $shadow['opacity'] ) );
-		}
 
-		return $shadow_string;
-	}
-	/**
-	 * Generates the measure output.
-	 *
-	 * @param array $measure an array of font settings.
-	 * @return string
-	 */
-	public function render_measure( $measure, $unit = 'px' ) {
-		if ( empty( $measure ) ) {
-			return false;
-		}
-		if ( ! is_array( $measure ) ) {
-			return false;
-		}
-		if ( ! isset( $measure[0] ) ) {
-			return false;
-		}
-		if ( ! is_numeric( $measure[0] ) && ! is_numeric( $measure[1] ) && ! is_numeric( $measure[2] ) && ! is_numeric( $measure[3] ) ) {
-			return false;
-		}
-		$size_string = ( is_numeric( $measure[0] ) ? $measure[0] : '0' ) . $unit . ' ' . ( is_numeric( $measure[1] ) ? $measure[1] : '0' ) . $unit . ' ' . ( is_numeric( $measure[2] ) ? $measure[2] : '0' ) . $unit . ' ' . ( is_numeric( $measure[3] ) ? $measure[3] : '0' ) . $unit;
-		return $size_string;
-	}
-	/**
-	 * Generates the background output.
-	 *
-	 * @param array  $background an array of background settings.
-	 * @param object $css an object of css output.
-	 */
-	public function render_background( $background, $css ) {
-		if ( empty( $background ) ) {
-			return false;
-		}
-		if ( ! is_array( $background ) ) {
-			return false;
-		}
-		$background_string = '';
-		$type              = ( isset( $background['type'] ) && ! empty( $background['type'] ) ? $background['type'] : 'color' );
-		$color_type        = '';
-		if ( isset( $background['color'] ) && ! empty( $background['color'] ) ) {
-			if ( strpos( $background['color'], 'palette' ) !== false ) {
-				$color_type = 'var(--global-' . $background['color'] . ')';
-			} else {
-				$color_type = $background['color'];
-			}
-		}
-		if ( 'image' === $type && isset( $background['image'] ) ) {
-			$image_url = ( isset( $background['image']['url'] ) && ! empty( $background['image']['url'] ) ? $background['image']['url'] : '' );
-			if ( ! empty( $image_url ) ) {
-				$repeat            = ( isset( $background['image']['repeat'] ) && ! empty( $background['image']['repeat'] ) ? $background['image']['repeat'] : '' );
-				$size              = ( isset( $background['image']['size'] ) && ! empty( $background['image']['size'] ) ? $background['image']['size'] : '' );
-				$position          = ( isset( $background['image']['position'] ) && is_array( $background['image']['position'] ) && isset( $background['image']['position']['x'] ) && ! empty( $background['image']['position']['x'] ) && isset( $background['image']['position']['y'] ) && ! empty( $background['image']['position']['y'] ) ? ( $background['image']['position']['x'] * 100 ) . '% ' . ( $background['image']['position']['y'] * 100 ) . '%' : 'center' );
-				$attachement       = ( isset( $background['image']['attachment'] ) && ! empty( $background['image']['attachment'] ) ? $background['image']['attachment'] : '' );
-				$background_string = ( ! empty( $color_type ) ? $color_type . ' ' : '' ) . $image_url . ( ! empty( $repeat ) ? ' ' . $repeat : '' ) . ( ! empty( $position ) ? ' ' . $position : '' ) . ( ! empty( $size ) ? ' ' . $size : '' ) . ( ! empty( $attachement ) ? ' ' . $attachement : '' );
-				$css->add_property( 'background-color', $color_type );
-				$css->add_property( 'background-image', $image_url );
-				$css->add_property( 'background-repeat', $repeat );
-				$css->add_property( 'background-position', $position );
-				$css->add_property( 'background-size', $size );
-				$css->add_property( 'background-attachment', $attachement );
-			} else {
-				if ( ! empty( $color_type ) ) {
-					$background_string = $color_type;
-					$css->add_property( 'background-color', $color_type );
-				}
-			}
-		} elseif ( 'gradient' === $type && isset( $background['gradient'] ) && ! empty( $background['gradient'] ) ) {
-			$css->add_property( 'background', $background['gradient'] );
-		} else {
-			if ( ! empty( $color_type ) ) {
-				$background_string = $color_type;
-				$css->add_property( 'background', $color_type );
-			}
-		}
-	}
-	/**
-	 * Generates the size output.
-	 *
-	 * @param array $size an array of size settings.
-	 * @return string
-	 */
-	public function render_size( $size ) {
-		if ( empty( $size ) ) {
-			return false;
-		}
-		if ( ! is_array( $size ) ) {
-			return false;
-		}
-		$size_number = ( isset( $size['size'] ) && ! empty( $size['size'] ) ? $size['size'] : '0' );
-		$size_unit   = ( isset( $size['unit'] ) && ! empty( $size['unit'] ) ? $size['unit'] : 'em' );
 
-		$size_string = $size_number . $size_unit;
-		return $size_string;
-	}
 	/**
 	 * Add google font to array.
 	 *

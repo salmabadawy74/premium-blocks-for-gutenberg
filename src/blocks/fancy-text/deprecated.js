@@ -2,7 +2,7 @@ import classnames from "classnames";
 
 const { __ } = wp.i18n;
 
-const fancyAttributes = {
+const attributes = {
     block_id: {
         type: "string"
     },
@@ -207,12 +207,56 @@ const newAtrributes_1_0_1 = {
 
 const fancyAttributes_1_0_1 = Object.assign(
     newAtrributes_1_0_1,
-    fancyAttributes
+    attributes
 );
+const new_Deprecated_Attributes = {
+    fancyStyles: {
+        type: "array",
+        default: [
+            {
+                fancyTextColor: "#6ec1e4",
+                fancyTextfontSize: 20,
+                fancyTextfontSizeUnit: 'px',
+                fancyTextfontSizeMobile: 20,
+                fancyTextfontSizeTablet: 20,
+                fancyTextBGColor: '',
+                fancyTextBGOpacity: 1,
+                fancyTextLetter: '',
+                fancyTextStyle: '',
+                fancyTextUpper: false,
+                fancyTextWeight: 600,
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+                cursorColor: "#6ec1e4"
+            }
+        ]
+    },
+    PreStyles: {
+        type: "array",
+        default: [
+            {
+                textColor: "#54595f",
+                textLetter: '',
+                textStyle: '',
+                textUpper: false,
+                textWeight: 600,
+                textfontSize: 20,
+                textfontSizeUnit: 'px',
+                textfontSizeMobile: 20,
+                textfontSizeTablet: 20,
+                textBGColor: '',
+                textBGOpacity: 1,
+            }
+        ]
+    }
+}
+const deprecated_fancyAttributes = Object.assign(fancyAttributes_1_0_1, new_Deprecated_Attributes)
 
 const deprecated = [
     {
-        attributes: fancyAttributes,
+        attributes: deprecated_fancyAttributes,
         migrate: attributes => {
             let newAttributes = {
                 fancyStyles: [
