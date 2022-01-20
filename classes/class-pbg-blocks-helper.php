@@ -732,9 +732,9 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['fancyStyles'] ) ) {
 			if ( isset( $attr['fancyStyles'][0]['fancyTextfontSize'] ) ) {
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'font-size', $css->( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'font-size', $css->( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 			}
 		}
 		// Prefix and Suffix Style
@@ -750,9 +750,9 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] ) ) {
 			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-			$css->add_property( 'font-size', $css->( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-			$css->add_property( 'font-size', $css->( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 		}
 		// Prefix and Suffix Style
 		if ( isset( $attr['PreStyles'][0]['textfontSizeTablet'] ) && isset( $attr['PreStyles'][0]['textfontSizeUnit'] ) ) {
@@ -766,9 +766,9 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] ) ) {
 			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-			$css->add_property( 'font-size', $css->( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-			$css->add_property( 'font-size', $css->( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
 		}
 		// Prefix and Suffix Style
 		if ( isset( $attr['PreStyles'][0]['textfontSizeMobile'] ) && isset( $attr['PreStyles'][0]['textfontSizeUnit'] ) ) {
@@ -835,36 +835,36 @@ class PBG_Blocks_Helper {
 		// Style.
 		if ( isset( $attr['titleSize'] ) && isset( $attr['titleSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-			$css->add_property( 'font-size', $css->( $attr['titleSize'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['titleSize'] . 'px' . '!important' ) );
 		}
 		// Desc Style
 		if ( isset( $attr['descSize'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-			$css->add_property( 'font-size', $css->( $attr['descSize'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['descSize'] . 'px' . '!important' ) );
 		}
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['titleSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-			$css->add_property( 'font-size', $css->( $attr['titleSizeTablet'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeTablet'] . 'px' . '!important' ) );
 		}
 		// Desc Style
 		if ( isset( $attr['descSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-			$css->add_property( 'font-size', $css->( $attr['descSizeTablet'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['descSizeTablet'] . 'px' . '!important' ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 
 		if ( isset( $attr['titleSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-			$css->add_property( 'font-size', $css->( $attr['titleSizeMobile'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeMobile'] . 'px' . '!important' ) );
 
 		}
 		// Desc Style
 		if ( isset( $attr['descSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-			$css->add_property( 'font-size', $css->( $attr['descSizeMobile'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['descSizeMobile'] . 'px' . '!important' ) );
 
 		}
 		$css->stop_media_query();
@@ -924,38 +924,38 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
-				$css->add_property( 'font-size', $css->( $attr['titleStyles'][0]['titleSize'] . 'px' . '!important' ) );
+				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSize'] . 'px' . '!important' ) );
 			}
 		}
 		// Desc Style
 		if ( isset( $attr['descStyles'] ) ) {
 			if ( isset( $attr['descStyles'][0]['descSize'] ) && isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
 				$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
-				$css->add_property( 'font-size', $css->( $attr['descStyles'][0]['descSize'] . 'px' . '!important' ) );
+				$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSize'] . 'px' . '!important' ) );
 			}
 		}
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
-			$css->add_property( 'font-size', $css->( $attr['titleStyles'][0]['titleSizeTablet'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeTablet'] . 'px' . '!important' ) );
 		}
 		// Desc Style
 		if ( isset( $attr['descStyles'][0]['descSizeTablet'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
-			$css->add_property( 'font-size', $css->( $attr['descStyles'][0]['descSizeTablet'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeTablet'] . 'px' . '!important' ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
-			$css->add_property( 'font-size', $css->( $attr['titleStyles'][0]['titleSizeMobile'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeMobile'] . 'px' . '!important' ) );
 
 		}
 		// Desc Style
 		if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
-			$css->add_property( 'font-size', $css->( $attr['descStyles'][0]['descSizeMobile'] . 'px' . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeMobile'] . 'px' . '!important' ) );
 
 		}
 		$css->stop_media_query();
@@ -1017,7 +1017,7 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['textStyles'] ) ) {
 			if ( isset( $attr['textStyles'][0]['textSize'] ) || isset( $attr['textStyles'][0]['textSizeUnit'] ) ) {
 				$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
-				$css->add_property( 'font-size', $css->( $attr['textStyles'][0]['textSize'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
+				$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSize'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 			}
 		}
 
@@ -1025,13 +1025,13 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['textStyles'][0]['textSizeTablet'] ) ) {
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
-			$css->add_property( 'font-size', $css->( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['textStyles'][0]['textSizeMobile'] ) ) {
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
-			$css->add_property( 'font-size', $css->( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
+			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 
 		}
 		$css->stop_media_query();
