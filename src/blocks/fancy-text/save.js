@@ -67,7 +67,8 @@ export default function save(props) {
                             textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
                             fontStyle: PreStyles[0].textStyle,
                             backgroundColor: PreStyles[0].textBGColor
-                        }}>
+                        }}
+                    >
                         {prefix}{" "}
                     </span>
                     <span
@@ -95,7 +96,8 @@ export default function save(props) {
                             textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
                             fontStyle: PreStyles[0].textStyle,
                             backgroundColor: PreStyles[0].textBGColor
-                        }}>
+                        }}
+                    >
                         {" "}
                         {suffix}
                     </span>

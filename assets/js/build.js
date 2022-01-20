@@ -62305,9 +62305,7 @@ registerBlockType("premium/fancy-text", {
     icon: React.createElement(_icons2.default, { icon: "fancy-text" }),
     category: "premium-blocks",
     attributes: _attributes2.default,
-    supports: {
-        inserter: _settings.fancyText
-    },
+    supports: { inserter: _settings.fancyText },
     example: {},
     edit: _edit2.default,
     save: _save2.default,
@@ -62399,7 +62397,8 @@ function save(props) {
                         textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
                         fontStyle: PreStyles[0].textStyle,
                         backgroundColor: PreStyles[0].textBGColor
-                    } },
+                    }
+                },
                 prefix,
                 " "
             ),
@@ -62432,7 +62431,8 @@ function save(props) {
                         textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
                         fontStyle: PreStyles[0].textStyle,
                         backgroundColor: PreStyles[0].textBGColor
-                    } },
+                    }
+                },
                 " ",
                 suffix
             )
@@ -66715,7 +66715,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var __ = wp.i18n.__;
 
 
-var fancyAttributes = {
+var attributes = {
     block_id: {
         type: "string"
     },
@@ -66914,10 +66914,50 @@ var newAtrributes_1_0_1 = {
     }
 };
 
-var fancyAttributes_1_0_1 = Object.assign(newAtrributes_1_0_1, fancyAttributes);
+var fancyAttributes_1_0_1 = Object.assign(newAtrributes_1_0_1, attributes);
+var new_Deprecated_Attributes = {
+    fancyStyles: {
+        type: "array",
+        default: [{
+            fancyTextColor: "#6ec1e4",
+            fancyTextfontSize: 20,
+            fancyTextfontSizeUnit: 'px',
+            fancyTextfontSizeMobile: 20,
+            fancyTextfontSizeTablet: 20,
+            fancyTextBGColor: '',
+            fancyTextBGOpacity: 1,
+            fancyTextLetter: '',
+            fancyTextStyle: '',
+            fancyTextUpper: false,
+            fancyTextWeight: 600,
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            cursorColor: "#6ec1e4"
+        }]
+    },
+    PreStyles: {
+        type: "array",
+        default: [{
+            textColor: "#54595f",
+            textLetter: '',
+            textStyle: '',
+            textUpper: false,
+            textWeight: 600,
+            textfontSize: 20,
+            textfontSizeUnit: 'px',
+            textfontSizeMobile: 20,
+            textfontSizeTablet: 20,
+            textBGColor: '',
+            textBGOpacity: 1
+        }]
+    }
+};
+var deprecated_fancyAttributes = Object.assign(fancyAttributes_1_0_1, new_Deprecated_Attributes);
 
 var deprecated = [{
-    attributes: fancyAttributes,
+    attributes: deprecated_fancyAttributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
             fancyStyles: [{
