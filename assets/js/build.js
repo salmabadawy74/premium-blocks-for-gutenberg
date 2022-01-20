@@ -62361,7 +62361,6 @@ function save(props) {
         PreStyles = attributes.PreStyles;
 
 
-    console.log(PreStyles[0]);
     return React.createElement(
         "div",
         {
@@ -62394,7 +62393,7 @@ function save(props) {
                 "span",
                 { className: "premium-fancy-text-prefix-text",
                     style: {
-                        // color: PreStyles[0].textColor,
+                        color: PreStyles[0].textColor,
                         fontWeight: PreStyles[0].textWeight,
                         letterSpacing: PreStyles[0].textLetter + "px",
                         textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
@@ -62427,7 +62426,7 @@ function save(props) {
                 "span",
                 { className: "premium-fancy-text-suffix-text",
                     style: {
-                        // color: PreStyles[0].textColor,
+                        color: PreStyles[0].textColor,
                         fontWeight: PreStyles[0].textWeight,
                         letterSpacing: PreStyles[0].textLetter + "px",
                         textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
@@ -62458,7 +62457,7 @@ function save(props) {
                 "span",
                 { className: "premium-fancy-text-prefix-text",
                     style: {
-                        // color: PreStyles[0].textColor,
+                        color: PreStyles[0].textColor,
                         fontWeight: PreStyles[0].textWeight,
                         letterSpacing: PreStyles[0].textLetter + "px",
                         textTransform: "" + (PreStyles[0].textUpper ? "uppercase" : "none"),
