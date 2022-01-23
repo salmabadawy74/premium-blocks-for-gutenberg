@@ -1099,7 +1099,7 @@ class PremiumPricingTable extends Component {
                                     })
                                 }
                                 onChangeColor={(colorValue) =>
-                                    saveButtonStyle({ btnBorderColor: colorValue.hex })
+                                    saveButtonStyle({ btnBorderColor: colorValue })
                                 }
                                 onChangeRadius={(newrRadius) =>
                                     saveButtonStyle({ btnBorderRadius: newrRadius })
@@ -1302,7 +1302,7 @@ class PremiumPricingTable extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                saveTableStyles({ borderColor: colorValue.hex })
+                                saveTableStyles({ borderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 saveTableStyles({ borderRadius: newrRadius })

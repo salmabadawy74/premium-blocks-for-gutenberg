@@ -4,6 +4,7 @@ import PremiumRangeControl from './premium-range-control';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { SelectControl, ColorPicker } = wp.components;
+import AdvancedColorControl from './Color Control/ColorComponent'
 
 export default class PremiumBorder extends Component {
 
@@ -119,7 +120,7 @@ export default class PremiumBorder extends Component {
                                                 value={top}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>Top</span>
+                                            <span className={`premium-spacing-title`}>{__(`Top`, 'premium-block-for-gutenberg')}</span>
                                         </li>
                                         <li className={`premium-spacing-input-item`}>
                                             <input
@@ -129,7 +130,7 @@ export default class PremiumBorder extends Component {
                                                 value={right}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>Right</span>
+                                            <span className={`premium-spacing-title`}>{__(`Right`, 'premium-block-for-gutenberg')}</span>
                                         </li>
                                         <li className={`premium-spacing-input-item`}>
                                             <input
@@ -139,7 +140,7 @@ export default class PremiumBorder extends Component {
                                                 value={bottom}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>Bottom</span>
+                                            <span className={`premium-spacing-title`}>{__(`Bottom`, 'premium-block-for-gutenberg')}</span>
                                         </li>
                                         <li className={`premium-spacing-input-item`}>
                                             <input
@@ -149,7 +150,7 @@ export default class PremiumBorder extends Component {
                                                 value={left}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>Right</span>
+                                            <span className={`premium-spacing-title`}>{__(`Right`, 'premium-block-for-gutenberg')}</span>
                                         </li>
                                         <li>
                                             <button
@@ -172,7 +173,7 @@ export default class PremiumBorder extends Component {
                                             this.setState({ ...defauultValues })
                                             const { top = 0, right, bottom, left } = this.state;
                                             this.props.onChangeWidth({ ...defauultValues });
-                                            console.log(this.state)
+
                                         }}
                                     ></button>
                                 </div>
@@ -181,17 +182,18 @@ export default class PremiumBorder extends Component {
                     )}
                     {"none" != borderType && (
                         <Fragment>
-                            <p>{__("Border Color")}</p>
-                            <ColorPicker
-                                color={borderColor}
-                                onChangeComplete={onChangeColor}
-                                disableAlpha
+
+                            <AdvancedColorControl
+                                label={__("Border Color", 'premium-block-for-gutenberg')}
+                                colorValue={borderColor}
+                                colorDefault={''}
+                                onColorChange={onChangeColor}
                             />
                         </Fragment>
                     )}
 
                     <PremiumRangeControl
-                        label={__("Border Radius")}
+                        label={__("Border Radius", 'premium-block-for-gutenberg')}
                         value={borderRadius}
                         defaultValue={0}
                         onChange={onChangeRadius}

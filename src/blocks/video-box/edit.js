@@ -428,7 +428,7 @@ class edit extends Component {
                                                 })
                                             }
                                             onChangeColor={(colorValue) =>
-                                                savePlayStyles({ playBorderColor: colorValue.hex })
+                                                savePlayStyles({ playBorderColor: colorValue })
                                             }
                                             onChangeRadius={(newrRadius) =>
                                                 savePlayStyles({ playBorderRadius: newrRadius })
@@ -709,7 +709,7 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                saveBoxStyle({ boxBorderColor: colorValue.hex })
+                                saveBoxStyle({ boxBorderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 saveBoxStyle({ boxBorderRadius: newrRadius })

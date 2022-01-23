@@ -499,7 +499,7 @@ class edit extends Component {
                         onChangeColor={(colorValue) =>
                             saveLottieStyles({
                                 borderColor:
-                                    colorValue === undefined ? "transparent" : colorValue.hex,
+                                    colorValue === undefined ? "transparent" : colorValue,
                             })
                         }
                         onChangeRadius={(newRadius) =>

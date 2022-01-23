@@ -580,7 +580,7 @@ export class edit extends Component {
                             onChangeColor={(colorValue) =>
                                 containerStyle({
                                     borderColor:
-                                        colorValue === undefined ? "transparent" : colorValue.hex,
+                                        colorValue === undefined ? "transparent" : colorValue,
                                 })
                             }
                             onChangeRadius={(newRadius) =>

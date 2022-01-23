@@ -175,7 +175,7 @@ export default class PremiumTypo extends Component {
                                     maxMenuHeight={300}
                                     onChange={onFontfamilyChange}
                                     className="react-select-container"
-                                    classNamePrefix="react-select"
+                                    placeholder={__(`Select a font family`, 'premium blocks for gutenberg')}
                                 />
 
                             )}
