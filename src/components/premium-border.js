@@ -85,6 +85,13 @@ export default class PremiumBorder extends Component {
             },
         ];
 
+        const defauultValues = {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+        }
+
         return (
             <div className="premium-control-toggle">
                 <Fragment>
@@ -95,59 +102,79 @@ export default class PremiumBorder extends Component {
                         onChange={onChangeType}
                     />
                     {"none" != borderType && (
-                        <div className={`premium-control-group`}>
-                            <div className="premium-control-label-container">
+                        <div className={`premium-spacing-responsive`}>
+                            <header className="premium-control-label-container">
                                 <div className={`premium-control-label`}>
                                     <strong>{__("Border Width ")}</strong>
                                 </div>
-                            </div>
-                            <div className={`premium-controls-container`}>
-                                <div className={`premium-control-wrapper`}>
-                                    <input
-                                        type="number"
-                                        name="top"
-                                        value={top}
-                                        onChange={this.onChangeInput}
-                                    />
-                                    <label className={`premium-control-label`}>Top</label>
+                            </header>
+                            <div className={`premium-spacing-responsive-outer-wrapper`}>
+                                <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
+                                    <ul className={`premium-spacing-wrapper`}>
+                                        <li className={`premium-spacing-input-item`}>
+                                            <input
+                                                className={`premium-spacing-input`}
+                                                type="number"
+                                                name="top"
+                                                value={top}
+                                                onChange={this.onChangeInput}
+                                            />
+                                            <span className={`premium-spacing-title`}>Top</span>
+                                        </li>
+                                        <li className={`premium-spacing-input-item`}>
+                                            <input
+                                                className={`premium-spacing-input`}
+                                                type="number"
+                                                name="right"
+                                                value={right}
+                                                onChange={this.onChangeInput}
+                                            />
+                                            <span className={`premium-spacing-title`}>Right</span>
+                                        </li>
+                                        <li className={`premium-spacing-input-item`}>
+                                            <input
+                                                className={`premium-spacing-input`}
+                                                type="number"
+                                                name="bottom"
+                                                value={bottom}
+                                                onChange={this.onChangeInput}
+                                            />
+                                            <span className={`premium-spacing-title`}>Bottom</span>
+                                        </li>
+                                        <li className={`premium-spacing-input-item`}>
+                                            <input
+                                                className={`premium-spacing-input`}
+                                                type="number"
+                                                name="left"
+                                                value={left}
+                                                onChange={this.onChangeInput}
+                                            />
+                                            <span className={`premium-spacing-title`}>Right</span>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
+                                                    }`}
+                                                onClick={this.onButtonClick}
+                                            />
+                                        </li>
+                                    </ul>
                                 </div>
-
-                                <div className={`premium-control-wrapper`}>
-                                    <input
-                                        type="number"
-                                        name="right"
-                                        value={right}
-                                        onChange={this.onChangeInput}
-                                    />
-                                    <label className={`premium-control-label`}>Right</label>
-                                </div>
-
-                                <div className={`premium-control-wrapper`}>
-                                    <input
-                                        type="number"
-                                        name="bottom"
-                                        value={bottom}
-                                        onChange={this.onChangeInput}
-                                    />
-                                    <label className={`premium-control-label`}>Bottom</label>
-                                </div>
-
-                                <div className={`premium-control-wrapper`}>
-                                    <input
-                                        type="number"
-                                        name="left"
-                                        value={left}
-                                        onChange={this.onChangeInput}
-                                    />
-                                    <label className={`premium-control-label`}>Left</label>
-                                </div>
-
-                                <div>
+                                <div className="premium-spacing-btn-reset-wrap">
                                     <button
-                                        className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"
-                                            }`}
-                                        onClick={this.onButtonClick}
-                                    />
+                                        className="premium-reset-btn "
+                                        disabled={
+                                            JSON.stringify(this.state) ===
+                                            JSON.stringify(this.defaultValue)
+                                        }
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            this.setState({ ...defauultValues })
+                                            const { top = 0, right, bottom, left } = this.state;
+                                            this.props.onChangeWidth({ ...defauultValues });
+                                            console.log(this.state)
+                                        }}
+                                    ></button>
                                 </div>
                             </div>
                         </div>

@@ -888,6 +888,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(3);
@@ -974,6 +976,8 @@ var PremiumBorder = function (_Component) {
     }, {
         key: "render",
         value: function render() {
+            var _this3 = this;
+
             var _props = this.props,
                 borderType = _props.borderType,
                 borderColor = _props.borderColor,
@@ -1012,6 +1016,13 @@ var PremiumBorder = function (_Component) {
                 label: "Groove"
             }];
 
+            var defauultValues = {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            };
+
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle" },
@@ -1026,9 +1037,9 @@ var PremiumBorder = function (_Component) {
                     }),
                     "none" != borderType && React.createElement(
                         "div",
-                        { className: "premium-control-group" },
+                        { className: "premium-spacing-responsive" },
                         React.createElement(
-                            "div",
+                            "header",
                             { className: "premium-control-label-container" },
                             React.createElement(
                                 "div",
@@ -1042,73 +1053,106 @@ var PremiumBorder = function (_Component) {
                         ),
                         React.createElement(
                             "div",
-                            { className: "premium-controls-container" },
+                            { className: "premium-spacing-responsive-outer-wrapper" },
                             React.createElement(
                                 "div",
-                                { className: "premium-control-wrapper" },
-                                React.createElement("input", {
-                                    type: "number",
-                                    name: "top",
-                                    value: top,
-                                    onChange: this.onChangeInput
-                                }),
+                                { className: "input-wrapper premium-spacing-responsive-wrapper" },
                                 React.createElement(
-                                    "label",
-                                    { className: "premium-control-label" },
-                                    "Top"
+                                    "ul",
+                                    { className: "premium-spacing-wrapper" },
+                                    React.createElement(
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "top",
+                                            value: top,
+                                            onChange: this.onChangeInput
+                                        }),
+                                        React.createElement(
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            "Top"
+                                        )
+                                    ),
+                                    React.createElement(
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "right",
+                                            value: right,
+                                            onChange: this.onChangeInput
+                                        }),
+                                        React.createElement(
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            "Right"
+                                        )
+                                    ),
+                                    React.createElement(
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "bottom",
+                                            value: bottom,
+                                            onChange: this.onChangeInput
+                                        }),
+                                        React.createElement(
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            "Bottom"
+                                        )
+                                    ),
+                                    React.createElement(
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "left",
+                                            value: left,
+                                            onChange: this.onChangeInput
+                                        }),
+                                        React.createElement(
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            "Right"
+                                        )
+                                    ),
+                                    React.createElement(
+                                        "li",
+                                        null,
+                                        React.createElement("button", {
+                                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
+                                            onClick: this.onButtonClick
+                                        })
+                                    )
                                 )
                             ),
                             React.createElement(
                                 "div",
-                                { className: "premium-control-wrapper" },
-                                React.createElement("input", {
-                                    type: "number",
-                                    name: "right",
-                                    value: right,
-                                    onChange: this.onChangeInput
-                                }),
-                                React.createElement(
-                                    "label",
-                                    { className: "premium-control-label" },
-                                    "Right"
-                                )
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "premium-control-wrapper" },
-                                React.createElement("input", {
-                                    type: "number",
-                                    name: "bottom",
-                                    value: bottom,
-                                    onChange: this.onChangeInput
-                                }),
-                                React.createElement(
-                                    "label",
-                                    { className: "premium-control-label" },
-                                    "Bottom"
-                                )
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "premium-control-wrapper" },
-                                React.createElement("input", {
-                                    type: "number",
-                                    name: "left",
-                                    value: left,
-                                    onChange: this.onChangeInput
-                                }),
-                                React.createElement(
-                                    "label",
-                                    { className: "premium-control-label" },
-                                    "Left"
-                                )
-                            ),
-                            React.createElement(
-                                "div",
-                                null,
+                                { className: "premium-spacing-btn-reset-wrap" },
                                 React.createElement("button", {
-                                    className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
-                                    onClick: this.onButtonClick
+                                    className: "premium-reset-btn ",
+                                    disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
+                                    onClick: function onClick(e) {
+                                        e.preventDefault();
+                                        _this3.setState(_extends({}, defauultValues));
+                                        var _state4 = _this3.state,
+                                            _state4$top = _state4.top,
+                                            top = _state4$top === undefined ? 0 : _state4$top,
+                                            right = _state4.right,
+                                            bottom = _state4.bottom,
+                                            left = _state4.left;
+
+                                        _this3.props.onChangeWidth(_extends({}, defauultValues));
+                                        console.log(_this3.state);
+                                    }
                                 })
                             )
                         )
@@ -1957,10 +2001,11 @@ var PremiumPadding = function (_Component) {
             unit: _this.props.unit || 'px'
         };
         _this.defaultValue = {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
+            isLinked: false,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
         };
         _this.onInputChange = _this.onInputChange.bind(_this);
         _this.onButtonClick = _this.onButtonClick.bind(_this);
@@ -1975,12 +2020,11 @@ var PremiumPadding = function (_Component) {
         }
     }, {
         key: "changeFunction",
-        value: function changeFunction() {
-            var _state = this.state,
-                top = _state.top,
-                right = _state.right,
-                bottom = _state.bottom,
-                left = _state.left;
+        value: function changeFunction(value) {
+            var top = value.top,
+                right = value.right,
+                bottom = value.bottom,
+                left = value.left;
 
             this.props.onChangePadTop(top);
             this.props.onChangePadRight(right);
@@ -1992,12 +2036,12 @@ var PremiumPadding = function (_Component) {
         value: function onInputChange(event) {
             var _this2 = this;
 
-            var _state2 = this.state,
-                isLinked = _state2.isLinked,
-                top = _state2.top,
-                right = _state2.right,
-                bottom = _state2.bottom,
-                left = _state2.left;
+            var _state = this.state,
+                isLinked = _state.isLinked,
+                top = _state.top,
+                right = _state.right,
+                bottom = _state.bottom,
+                left = _state.left;
             var _event$target = event.target,
                 name = _event$target.name,
                 value = _event$target.value;
@@ -2005,11 +2049,11 @@ var PremiumPadding = function (_Component) {
             if (isLinked) {
                 top = right = bottom = left = parseInt(value) || 0;
                 this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
-                    _this2.changeFunction();
+                    _this2.changeFunction(_this2.state);
                 });
             } else {
                 this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
-                    _this2.changeFunction();
+                    _this2.changeFunction(_this2.state);
                 });
             }
         }
@@ -2018,14 +2062,14 @@ var PremiumPadding = function (_Component) {
         value: function render() {
             var _this3 = this;
 
-            var _state3 = this.state,
-                top = _state3.top,
-                right = _state3.right,
-                bottom = _state3.bottom,
-                left = _state3.left,
-                showUnits = _state3.showUnits,
-                isLinked = _state3.isLinked,
-                unit = _state3.unit;
+            var _state2 = this.state,
+                top = _state2.top,
+                right = _state2.right,
+                bottom = _state2.bottom,
+                left = _state2.left,
+                showUnits = _state2.showUnits,
+                isLinked = _state2.isLinked,
+                unit = _state2.unit;
             var _props = this.props,
                 _props$onChangePadSiz = _props.onChangePadSizeUnit,
                 onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz,
@@ -2141,6 +2185,7 @@ var PremiumPadding = function (_Component) {
                             onClick: function onClick(e) {
                                 e.preventDefault();
                                 _this3.setState(_extends({}, _this3.state, _this3.defaultValue));
+                                _this3.changeFunction(_this3.defaultValue);
                             }
                         })
                     )
@@ -3954,10 +3999,13 @@ var PremiumMargin = function (_Component) {
             unit: _this.props.unit || 'px'
         };
         _this.defaultValue = {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
+            isLinked: false,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            directions: _this.props.directions
+
         };
 
         _this.onInputChange = _this.onInputChange.bind(_this);
@@ -3974,13 +4022,12 @@ var PremiumMargin = function (_Component) {
         }
     }, {
         key: "changeFunction",
-        value: function changeFunction() {
-            var _state = this.state,
-                top = _state.top,
-                right = _state.right,
-                bottom = _state.bottom,
-                left = _state.left,
-                directions = _state.directions;
+        value: function changeFunction(value) {
+            var top = value.top,
+                right = value.right,
+                bottom = value.bottom,
+                left = value.left,
+                directions = value.directions;
 
             if (directions.includes("all") || directions.includes("top")) {
                 this.props.onChangeMarTop(top);
@@ -4000,12 +4047,12 @@ var PremiumMargin = function (_Component) {
         value: function onInputChange(event) {
             var _this2 = this;
 
-            var _state2 = this.state,
-                isLinked = _state2.isLinked,
-                top = _state2.top,
-                right = _state2.right,
-                bottom = _state2.bottom,
-                left = _state2.left;
+            var _state = this.state,
+                isLinked = _state.isLinked,
+                top = _state.top,
+                right = _state.right,
+                bottom = _state.bottom,
+                left = _state.left;
             var _event$target = event.target,
                 name = _event$target.name,
                 value = _event$target.value;
@@ -4013,11 +4060,11 @@ var PremiumMargin = function (_Component) {
             if (isLinked) {
                 top = right = bottom = left = parseInt(value) || 0;
                 this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
-                    _this2.changeFunction();
+                    _this2.changeFunction(_this2.state);
                 });
             } else {
                 this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
-                    _this2.changeFunction();
+                    _this2.changeFunction(_this2.state);
                 });
             }
         }
@@ -4026,15 +4073,15 @@ var PremiumMargin = function (_Component) {
         value: function render() {
             var _this3 = this;
 
-            var _state3 = this.state,
-                top = _state3.top,
-                right = _state3.right,
-                bottom = _state3.bottom,
-                left = _state3.left,
-                directions = _state3.directions,
-                showUnits = _state3.showUnits,
-                isLinked = _state3.isLinked,
-                unit = _state3.unit;
+            var _state2 = this.state,
+                top = _state2.top,
+                right = _state2.right,
+                bottom = _state2.bottom,
+                left = _state2.left,
+                directions = _state2.directions,
+                showUnits = _state2.showUnits,
+                isLinked = _state2.isLinked,
+                unit = _state2.unit;
             var _props = this.props,
                 _props$onChangeMarSiz = _props.onChangeMarSizeUnit,
                 onChangeMarSizeUnit = _props$onChangeMarSiz === undefined ? function () {} : _props$onChangeMarSiz,
@@ -4150,7 +4197,8 @@ var PremiumMargin = function (_Component) {
                             disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                             onClick: function onClick(e) {
                                 e.preventDefault();
-                                _this3.setState(_extends({}, _this3.state, _this3.defaultValue));
+                                _this3.setState(_extends({}, _this3.defaultValue));
+                                _this3.changeFunction(_this3.defaultValue);
                             }
                         })
                     )

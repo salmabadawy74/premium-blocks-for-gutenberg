@@ -15,10 +15,11 @@ class PremiumPadding extends Component {
             unit: this.props.unit || 'px'
         };
         this.defaultValue = {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
+            isLinked: false,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
         }
         this.onInputChange = this.onInputChange.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
@@ -27,8 +28,8 @@ class PremiumPadding extends Component {
     onButtonClick() {
         this.setState({ isLinked: !this.state.isLinked });
     }
-    changeFunction() {
-        let { top, right, bottom, left } = this.state;
+    changeFunction(value) {
+        let { top, right, bottom, left } = value;
         this.props.onChangePadTop(top);
         this.props.onChangePadRight(right);
         this.props.onChangePadBottom(bottom);
@@ -41,11 +42,11 @@ class PremiumPadding extends Component {
         if (isLinked) {
             top = right = bottom = left = parseInt(value) || 0;
             this.setState({ top, right, bottom, left }, () => {
-                this.changeFunction();
+                this.changeFunction(this.state);
             });
         } else {
             this.setState({ [name]: parseInt(value) || 0 }, () => {
-                this.changeFunction();
+                this.changeFunction(this.state);
             });
         }
     }
@@ -129,6 +130,7 @@ class PremiumPadding extends Component {
                             onClick={(e) => {
                                 e.preventDefault();
                                 this.setState({ ...this.state, ...this.defaultValue })
+                                this.changeFunction(this.defaultValue)
                             }}
                         ></button>
                     </div>
