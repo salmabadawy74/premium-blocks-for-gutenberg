@@ -333,7 +333,7 @@ class edit extends Component {
                             }
                             onChangeColor={(colorValue) =>
                                 saveFirstStyle({
-                                    firstBorderColor: colorValue.hex || "transparent",
+                                    firstBorderColor: colorValue || "transparent",
                                 })
                             }
                             onChangeRadius={(newrRadius) =>
@@ -517,7 +517,7 @@ class edit extends Component {
                             }
                             onChangeColor={(colorValue) =>
                                 saveSecondStyle({
-                                    secondBorderColor: colorValue.hex || "transparent",
+                                    secondBorderColor: colorValue || "transparent",
                                 })
                             }
                             onChangeRadius={(newrRadius) =>
@@ -619,7 +619,7 @@ class edit extends Component {
                             }
                             onChangeColor={(colorValue) =>
                                 saveContainerStyle({
-                                    containerBorderColor: colorValue.hex,
+                                    containerBorderColor: colorValue,
                                 })
                             }
                             onChangeRadius={(newrRadius) =>

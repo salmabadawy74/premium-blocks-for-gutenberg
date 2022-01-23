@@ -898,6 +898,10 @@ var _premiumRangeControl = __webpack_require__(2);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
+var _ColorComponent = __webpack_require__(5);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -936,7 +940,7 @@ var PremiumBorder = function (_Component) {
     }
 
     _createClass(PremiumBorder, [{
-        key: "onChangeInput",
+        key: 'onChangeInput',
         value: function onChangeInput(event) {
             var _this2 = this;
 
@@ -969,12 +973,12 @@ var PremiumBorder = function (_Component) {
             }
         }
     }, {
-        key: "onButtonClick",
+        key: 'onButtonClick',
         value: function onButtonClick() {
             this.setState({ isLinked: !this.state.isLinked });
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             var _this3 = this;
 
@@ -1024,8 +1028,8 @@ var PremiumBorder = function (_Component) {
             };
 
             return React.createElement(
-                "div",
-                { className: "premium-control-toggle" },
+                'div',
+                { className: 'premium-control-toggle' },
                 React.createElement(
                     Fragment,
                     null,
@@ -1036,109 +1040,109 @@ var PremiumBorder = function (_Component) {
                         onChange: onChangeType
                     }),
                     "none" != borderType && React.createElement(
-                        "div",
-                        { className: "premium-spacing-responsive" },
+                        'div',
+                        { className: 'premium-spacing-responsive' },
                         React.createElement(
-                            "header",
-                            { className: "premium-control-label-container" },
+                            'header',
+                            { className: 'premium-control-label-container' },
                             React.createElement(
-                                "div",
-                                { className: "premium-control-label" },
+                                'div',
+                                { className: 'premium-control-label' },
                                 React.createElement(
-                                    "strong",
+                                    'strong',
                                     null,
                                     __("Border Width ")
                                 )
                             )
                         ),
                         React.createElement(
-                            "div",
-                            { className: "premium-spacing-responsive-outer-wrapper" },
+                            'div',
+                            { className: 'premium-spacing-responsive-outer-wrapper' },
                             React.createElement(
-                                "div",
-                                { className: "input-wrapper premium-spacing-responsive-wrapper" },
+                                'div',
+                                { className: 'input-wrapper premium-spacing-responsive-wrapper' },
                                 React.createElement(
-                                    "ul",
-                                    { className: "premium-spacing-wrapper" },
+                                    'ul',
+                                    { className: 'premium-spacing-wrapper' },
                                     React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "top",
+                                        'li',
+                                        { className: 'premium-spacing-input-item' },
+                                        React.createElement('input', {
+                                            className: 'premium-spacing-input',
+                                            type: 'number',
+                                            name: 'top',
                                             value: top,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            "Top"
+                                            'span',
+                                            { className: 'premium-spacing-title' },
+                                            __('Top', 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "right",
+                                        'li',
+                                        { className: 'premium-spacing-input-item' },
+                                        React.createElement('input', {
+                                            className: 'premium-spacing-input',
+                                            type: 'number',
+                                            name: 'right',
                                             value: right,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            "Right"
+                                            'span',
+                                            { className: 'premium-spacing-title' },
+                                            __('Right', 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "bottom",
+                                        'li',
+                                        { className: 'premium-spacing-input-item' },
+                                        React.createElement('input', {
+                                            className: 'premium-spacing-input',
+                                            type: 'number',
+                                            name: 'bottom',
                                             value: bottom,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            "Bottom"
+                                            'span',
+                                            { className: 'premium-spacing-title' },
+                                            __('Bottom', 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "left",
+                                        'li',
+                                        { className: 'premium-spacing-input-item' },
+                                        React.createElement('input', {
+                                            className: 'premium-spacing-input',
+                                            type: 'number',
+                                            name: 'left',
                                             value: left,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            "Right"
+                                            'span',
+                                            { className: 'premium-spacing-title' },
+                                            __('Right', 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        "li",
+                                        'li',
                                         null,
-                                        React.createElement("button", {
-                                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
+                                        React.createElement('button', {
+                                            className: 'linked-btn components-button is-button dashicons dashicons-' + (isLinked ? "admin-links" : "editor-unlink"),
                                             onClick: this.onButtonClick
                                         })
                                     )
                                 )
                             ),
                             React.createElement(
-                                "div",
-                                { className: "premium-spacing-btn-reset-wrap" },
-                                React.createElement("button", {
-                                    className: "premium-reset-btn ",
+                                'div',
+                                { className: 'premium-spacing-btn-reset-wrap' },
+                                React.createElement('button', {
+                                    className: 'premium-reset-btn ',
                                     disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                                     onClick: function onClick(e) {
                                         e.preventDefault();
@@ -1151,7 +1155,6 @@ var PremiumBorder = function (_Component) {
                                             left = _state4.left;
 
                                         _this3.props.onChangeWidth(_extends({}, defauultValues));
-                                        console.log(_this3.state);
                                     }
                                 })
                             )
@@ -1160,19 +1163,15 @@ var PremiumBorder = function (_Component) {
                     "none" != borderType && React.createElement(
                         Fragment,
                         null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Border Color")
-                        ),
-                        React.createElement(ColorPicker, {
-                            color: borderColor,
-                            onChangeComplete: onChangeColor,
-                            disableAlpha: true
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Border Color", 'premium-block-for-gutenberg'),
+                            colorValue: borderColor,
+                            colorDefault: '',
+                            onColorChange: onChangeColor
                         })
                     ),
                     React.createElement(_premiumRangeControl2.default, {
-                        label: __("Border Radius"),
+                        label: __("Border Radius", 'premium-block-for-gutenberg'),
                         value: borderRadius,
                         defaultValue: 0,
                         onChange: onChangeRadius,
@@ -1419,7 +1418,7 @@ var PremiumTypo = function (_Component) {
                                 maxMenuHeight: 300,
                                 onChange: onFontfamilyChange,
                                 className: "react-select-container",
-                                classNamePrefix: "react-select"
+                                placeholder: __("Select a font family", 'premium blocks for gutenberg')
                             }),
                             components.includes("weight") && React.createElement(SelectControl, {
                                 label: __("Font Weight", 'premium blocks for gutenberg'),
@@ -1698,14 +1697,18 @@ function PremiumTextShadow(props) {
                         value: horizontal,
                         onChange: onChangehHorizontal,
                         showUnit: false,
-                        defaultValue: 0
+                        defaultValue: 0,
+                        min: -100,
+                        max: 100
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Vertical"),
                         value: vertical,
                         onChange: onChangeVertical,
                         showUnit: false,
-                        defaultValue: 0
+                        defaultValue: 0,
+                        min: -100,
+                        max: 100
                     })
                 );
             }
@@ -1845,14 +1848,18 @@ function PremiumBoxShadow(props) {
                         value: horizontal,
                         onChange: onChangehHorizontal,
                         showUnit: false,
-                        defaultValue: 0
+                        defaultValue: 0,
+                        min: -100,
+                        max: 100
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Vertical"),
                         value: vertical,
                         onChange: onChangeVertical,
                         showUnit: false,
-                        defaultValue: 0
+                        defaultValue: 0,
+                        min: -100,
+                        max: 100
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Blur"),
@@ -13640,7 +13647,7 @@ var PremiumAccordion = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveTitleStyles({ titleBorderColor: colorValue.hex });
+                            return saveTitleStyles({ titleBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveTitleStyles({ titleBorderRadius: newrRadius });
@@ -13863,7 +13870,7 @@ var PremiumAccordion = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return SaveDescStyles({ descBorderColor: colorValue.hex });
+                            return SaveDescStyles({ descBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return SaveDescStyles({ descBorderRadius: newrRadius });
@@ -33364,7 +33371,7 @@ var edit = exports.edit = function (_Component) {
                         },
                         onChangeColor: function onChangeColor(colorValue) {
                             return containerStyle({
-                                borderColor: colorValue === undefined ? "transparent" : colorValue.hex
+                                borderColor: colorValue === undefined ? "transparent" : colorValue
                             });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
@@ -36016,7 +36023,7 @@ var edit = exports.edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveBtnStyles({ borderColor: colorValue.hex });
+                            return saveBtnStyles({ borderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveBtnStyles({ borderRadius: newrRadius });
@@ -38256,7 +38263,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveContainerStyle({ borderColor: colorValue.hex });
+                            return saveContainerStyle({ borderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
                             return saveContainerStyle({ borderRadius: newRadius });
@@ -40998,7 +41005,7 @@ var edit = function (_Component) {
                         },
                         onChangeColor: function onChangeColor(colorValue) {
                             return saveFirstStyle({
-                                firstBorderColor: colorValue.hex || "transparent"
+                                firstBorderColor: colorValue || "transparent"
                             });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
@@ -41198,7 +41205,7 @@ var edit = function (_Component) {
                         },
                         onChangeColor: function onChangeColor(colorValue) {
                             return saveSecondStyle({
-                                secondBorderColor: colorValue.hex || "transparent"
+                                secondBorderColor: colorValue || "transparent"
                             });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
@@ -41305,7 +41312,7 @@ var edit = function (_Component) {
                         },
                         onChangeColor: function onChangeColor(colorValue) {
                             return saveContainerStyle({
-                                containerBorderColor: colorValue.hex
+                                containerBorderColor: colorValue
                             });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
@@ -43712,7 +43719,7 @@ var edit = function edit(props) {
                     });
                 },
                 onChangeColor: function onChangeColor(colorValue) {
-                    return saveIconStyle({ borderColor: colorValue.hex });
+                    return saveIconStyle({ borderColor: colorValue });
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
                     return saveIconStyle({ borderRadius: newrRadius });
@@ -43847,7 +43854,7 @@ var edit = function edit(props) {
                     });
                 },
                 onChangeColor: function onChangeColor(colorValue) {
-                    return saveContainerStyle({ wrapBorderColor: colorValue.hex });
+                    return saveContainerStyle({ wrapBorderColor: colorValue });
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
                     return saveContainerStyle({ wrapBorderRadius: newrRadius });
@@ -46110,7 +46117,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveButtonStyle({ btnBorderColor: colorValue.hex });
+                            return saveButtonStyle({ btnBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveButtonStyle({ btnBorderRadius: newrRadius });
@@ -46240,7 +46247,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveContainerStyle({ borderColor: colorValue.hex });
+                            return saveContainerStyle({ borderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveContainerStyle({ borderRadius: newrRadius });
@@ -52261,7 +52268,7 @@ var PremiumPricingTable = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveButtonStyle({ btnBorderColor: colorValue.hex });
+                            return saveButtonStyle({ btnBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveButtonStyle({ btnBorderRadius: newrRadius });
@@ -52502,7 +52509,7 @@ var PremiumPricingTable = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveTableStyles({ borderColor: colorValue.hex });
+                            return saveTableStyles({ borderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveTableStyles({ borderRadius: newrRadius });
@@ -56236,7 +56243,7 @@ var edit = function edit(props) {
                     });
                 },
                 onChangeColor: function onChangeColor(colorValue) {
-                    return saveContainerStyle({ borderColor: colorValue.hex });
+                    return saveContainerStyle({ borderColor: colorValue });
                 },
                 onChangeRadius: function onChangeRadius(newrRadius) {
                     return saveContainerStyle({ borderRadius: newrRadius });
@@ -60619,7 +60626,7 @@ var edit = function (_Component) {
                                     });
                                 },
                                 onChangeColor: function onChangeColor(colorValue) {
-                                    return savePlayStyles({ playBorderColor: colorValue.hex });
+                                    return savePlayStyles({ playBorderColor: colorValue });
                                 },
                                 onChangeRadius: function onChangeRadius(newrRadius) {
                                     return savePlayStyles({ playBorderRadius: newrRadius });
@@ -60900,7 +60907,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveBoxStyle({ boxBorderColor: colorValue.hex });
+                            return saveBoxStyle({ boxBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveBoxStyle({ boxBorderRadius: newrRadius });
@@ -68102,7 +68109,7 @@ var edit = function (_Component) {
                         },
                         onChangeColor: function onChangeColor(colorValue) {
                             return saveLottieStyles({
-                                borderColor: colorValue === undefined ? "transparent" : colorValue.hex
+                                borderColor: colorValue === undefined ? "transparent" : colorValue
                             });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
@@ -70319,7 +70326,6 @@ function save(props) {
         className = props.className;
     var lottieId = attributes.lottieId,
         block_id = attributes.block_id,
-        classMigrate = attributes.classMigrate,
         lottieURl = attributes.lottieURl,
         lottieJson = attributes.lottieJson,
         loop = attributes.loop,
@@ -70329,10 +70335,6 @@ function save(props) {
         bottom = attributes.bottom,
         top = attributes.top,
         scrollSpeed = attributes.scrollSpeed,
-        size = attributes.size,
-        sizeUnit = attributes.sizeUnit,
-        sizeMobile = attributes.sizeMobile,
-        sizeTablet = attributes.sizeTablet,
         rotate = attributes.rotate,
         align = attributes.align,
         link = attributes.link,
@@ -70342,7 +70344,15 @@ function save(props) {
         hideDesktop = attributes.hideDesktop,
         hideTablet = attributes.hideTablet,
         hideMobile = attributes.hideMobile,
-        lottieStyles = attributes.lottieStyles;
+        lottieStyles = attributes.lottieStyles,
+        paddingT = attributes.paddingT,
+        paddingR = attributes.paddingR,
+        paddingB = attributes.paddingB,
+        paddingL = attributes.paddingL,
+        borderTop = attributes.borderTop,
+        borderRight = attributes.borderRight,
+        borderBottom = attributes.borderBottom,
+        borderLeft = attributes.borderLeft;
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-lottie-wrap');
 
@@ -70360,7 +70370,7 @@ function save(props) {
         ),
         React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-lottie-' + block_id + '{', 'text-align:' + align + ';', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation  {', 'background-color:' + lottieStyles[0].backColor + ';', 'opacity : ' + lottieStyles[0].backOpacity + ';', 'filter: brightness( ' + lottieStyles[0].bright + '% ) contrast( ' + lottieStyles[0].contrast + '% ) saturate( ' + lottieStyles[0].saturation + '% ) blur( ' + lottieStyles[0].blur + 'px ) hue-rotate( ' + lottieStyles[0].hue + 'deg );', 'border-style : ' + lottieStyles[0].borderType + ';', 'border-width : ' + lottieStyles[0].borderTop + 'px ' + lottieStyles[0].borderRight + 'px ' + lottieStyles[0].borderBottom + 'px ' + lottieStyles[0].borderLeft + 'px ;', 'border-radius : ' + lottieStyles[0].borderRadius + 'px;', 'border-color : ' + lottieStyles[0].borderColor + '; ', 'padding-top : ' + lottieStyles[0].paddingT + lottieStyles[0].paddingU + ';', 'padding-right : ' + lottieStyles[0].paddingR + lottieStyles[0].paddingU + ';', 'padding-bottom : ' + lottieStyles[0].paddingB + lottieStyles[0].paddingU + ';', 'padding-left : ' + lottieStyles[0].paddingL + lottieStyles[0].paddingU + ';', 'transform: rotate(' + rotate + 'deg) !important;', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation:hover {', 'background-color:' + lottieStyles[0].backHColor + ';', 'opacity:' + lottieStyles[0].backHOpacity + ';', 'filter: brightness( ' + lottieStyles[0].brightH + '% ) contrast( ' + lottieStyles[0].contrastH + '% ) saturate( ' + lottieStyles[0].saturationH + '% ) blur( ' + lottieStyles[0].blurH + 'px ) hue-rotate( ' + lottieStyles[0].hueH + 'deg ) !important;', "}"].join("\n")
+                __html: ['#premium-lottie-' + block_id + '{', 'text-align:' + align + ';', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation  {', 'background-color:' + lottieStyles[0].backColor + ';', 'opacity : ' + lottieStyles[0].backOpacity + ';', 'filter: brightness( ' + lottieStyles[0].bright + '% ) contrast( ' + lottieStyles[0].contrast + '% ) saturate( ' + lottieStyles[0].saturation + '% ) blur( ' + lottieStyles[0].blur + 'px ) hue-rotate( ' + lottieStyles[0].hue + 'deg );', 'border-style : ' + lottieStyles[0].borderType + ';', 'border-width : ' + borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px ;', 'border-radius : ' + lottieStyles[0].borderRadius + 'px;', 'border-color : ' + lottieStyles[0].borderColor + '; ', 'padding-top : ' + paddingT + lottieStyles[0].paddingU + ';', 'padding-right : ' + paddingR + lottieStyles[0].paddingU + ';', 'padding-bottom : ' + paddingB + lottieStyles[0].paddingU + ';', 'padding-left : ' + paddingL + lottieStyles[0].paddingU + ';', 'transform: rotate(' + rotate + 'deg) !important;', "}", '#premium-lottie-' + block_id + '  .premium-lottie-animation:hover {', 'background-color:' + lottieStyles[0].backHColor + ';', 'opacity:' + lottieStyles[0].backHOpacity + ';', 'filter: brightness( ' + lottieStyles[0].brightH + '% ) contrast( ' + lottieStyles[0].contrastH + '% ) saturate( ' + lottieStyles[0].saturationH + '% ) blur( ' + lottieStyles[0].blurH + 'px ) hue-rotate( ' + lottieStyles[0].hueH + 'deg ) !important;', "}"].join("\n")
             }
         })
     );

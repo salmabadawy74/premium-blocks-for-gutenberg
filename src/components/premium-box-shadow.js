@@ -1,10 +1,5 @@
 const { __ } = wp.i18n;
-const {
-    SelectControl,
-    Dropdown,
-    Button,
-    ColorPicker
-} = wp.components;
+const { SelectControl, Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
 import PremiumRangeControl from './premium-range-control';
 
@@ -64,6 +59,8 @@ export default function PremiumBoxShadow(props) {
                             onChange={onChangehHorizontal}
                             showUnit={false}
                             defaultValue={0}
+                            min={-100}
+                            max={100}
                         />
                         <PremiumRangeControl
                             label={__("Vertical")}
@@ -71,6 +68,8 @@ export default function PremiumBoxShadow(props) {
                             onChange={onChangeVertical}
                             showUnit={false}
                             defaultValue={0}
+                            min={-100}
+                            max={100}
                         />
                         <PremiumRangeControl
                             label={__("Blur")}

@@ -257,7 +257,7 @@ const edit = props => {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            saveContainerStyle({ borderColor: colorValue.hex })
+                            saveContainerStyle({ borderColor: colorValue })
                         }
                         onChangeRadius={(newrRadius) =>
                             saveContainerStyle({ borderRadius: newrRadius })

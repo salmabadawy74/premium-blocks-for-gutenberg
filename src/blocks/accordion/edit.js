@@ -378,7 +378,7 @@ class PremiumAccordion extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                saveTitleStyles({ titleBorderColor: colorValue.hex })
+                                saveTitleStyles({ titleBorderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 saveTitleStyles({ titleBorderRadius: newrRadius })
@@ -588,7 +588,7 @@ class PremiumAccordion extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                SaveDescStyles({ descBorderColor: colorValue.hex })
+                                SaveDescStyles({ descBorderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 SaveDescStyles({ descBorderRadius: newrRadius })

@@ -53,6 +53,8 @@ export default function PremiumTextShadow(props) {
                             onChange={onChangehHorizontal}
                             showUnit={false}
                             defaultValue={0}
+                            min={-100}
+                            max={100}
                         />
                         <PremiumRangeControl
                             label={__("Vertical")}
@@ -60,6 +62,8 @@ export default function PremiumTextShadow(props) {
                             onChange={onChangeVertical}
                             showUnit={false}
                             defaultValue={0}
+                            min={-100}
+                            max={100}
                         />
                     </Fragment>
                 )}

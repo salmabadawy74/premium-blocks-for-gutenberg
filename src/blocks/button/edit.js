@@ -439,7 +439,7 @@ export class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                saveBtnStyles({ borderColor: colorValue.hex })
+                                saveBtnStyles({ borderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 saveBtnStyles({ borderRadius: newrRadius })
