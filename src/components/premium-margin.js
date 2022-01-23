@@ -18,10 +18,13 @@ class PremiumMargin extends Component {
             unit: this.props.unit || 'px'
         };
         this.defaultValue = {
-            top: '',
-            right: '',
-            bottom: '',
-            left: '',
+            isLinked: false,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            directions: this.props.directions,
+
         }
 
         this.onInputChange = this.onInputChange.bind(this);
@@ -34,8 +37,8 @@ class PremiumMargin extends Component {
         this.setState({ isLinked: !this.state.isLinked });
     }
 
-    changeFunction() {
-        let { top, right, bottom, left, directions } = this.state;
+    changeFunction(value) {
+        let { top, right, bottom, left, directions } = value;
         if (directions.includes("all") || directions.includes("top")) {
             this.props.onChangeMarTop(top);
         }
@@ -56,11 +59,11 @@ class PremiumMargin extends Component {
         if (isLinked) {
             top = right = bottom = left = parseInt(value) || 0;
             this.setState({ top, right, bottom, left }, () => {
-                this.changeFunction();
+                this.changeFunction(this.state);
             });
         } else {
             this.setState({ [name]: parseInt(value) || 0 }, () => {
-                this.changeFunction();
+                this.changeFunction(this.state);
             });
         }
     }
@@ -165,7 +168,8 @@ class PremiumMargin extends Component {
                             }
                             onClick={(e) => {
                                 e.preventDefault();
-                                this.setState({ ...this.state, ...this.defaultValue })
+                                this.setState({ ...this.defaultValue })
+                                this.changeFunction(this.defaultValue);
                             }}
                         ></button>
                     </div>
