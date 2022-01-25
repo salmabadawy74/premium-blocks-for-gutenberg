@@ -20,7 +20,7 @@ export default function save(props) {
         indicator,
         progressBarStyles,
         labelStyles,
-        parcentageStyles,
+        percentageStyles,
         indicatorStyles
     } = attributes
 
@@ -31,16 +31,34 @@ export default function save(props) {
                     left: item.percentage + "%"
                 }
             } >
-            <p className="premium-progress-bar-center-label" style={{ transform: align == "center" ? "translateX(-45%)" : align == "left" ? "translateX(-82%)" : "translateX(-10%)" }}> {
-                item.title
-            }
+            <p className="premium-progress-bar-center-label" style={{
+                transform: align == "center" ? "translateX(-45%)" : align == "left" ? "translateX(-82%)" : "translateX(-10%)",
+                color: labelStyles[0].labelColor,
+                fontWeight: labelStyles[0].LabelWeight,
+                letterSpacing: labelStyles[0].LabelLetter + "px",
+                textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                fontStyle: labelStyles[0].LabelStyle,
+            }}> {
+                    item.title
+                }
                 {
-                    item.percentage ? < span className="premium-progress-bar-percentage" > {
-                        item.percentage
-                    }% </span> : ""}
+                    item.percentage ? < span className="premium-progress-bar-percentage"
+                        style={{
+                            color: percentageStyles[0].percentageColor,
+                            fontWeight: percentageStyles[0].percentageWeight,
+                            letterSpacing: percentageStyles[0].percentageLetter + "px",
+                            fontStyle: percentageStyles[0].percentageStyle,
+                        }}
+                    > {
+                            item.percentage
+                        }% </span> : ""}
             </p>
             {
-                (item.title || item.percentage) ? indicator == 'arrow' ? < p className="premium-progress-bar-arrow" > </p> : indicator == 'pin' ? <p className="premium-progress-bar-pin"></p> : "" : ""}
+                (item.title || item.percentage) ? indicator == 'arrow' ? < p className="premium-progress-bar-arrow" style={{
+                    color: indicatorStyles[0].arrowColor,
+                }} > </p> : indicator == 'pin' ? <p className="premium-progress-bar-pin" style={{
+                    borderColor: indicatorStyles[0].pinColor,
+                }}></p> : "" : ""}
         </div>
         )
     })
@@ -60,10 +78,23 @@ export default function save(props) {
                 {
                     !multiStage ? label ? (
                         < div className="premium-progress-bar-labels-wrap" >
-                            <p className="premium-progress-bar-left-label">
+                            <p className="premium-progress-bar-left-label"
+                                style={{
+                                    color: labelStyles[0].labelColor,
+                                    fontWeight: labelStyles[0].LabelWeight,
+                                    letterSpacing: labelStyles[0].LabelLetter + "px",
+                                    textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                                    fontStyle: labelStyles[0].LabelStyle,
+                                }}
+                            >
                                 <span>{label}</span>
                             </p>
-                            < p className="premium-progress-bar-right-label" >
+                            < p className="premium-progress-bar-right-label" style={{
+                                color: percentageStyles[0].percentageColor,
+                                fontWeight: percentageStyles[0].percentageWeight,
+                                letterSpacing: percentageStyles[0].percentageLetter + "px",
+                                fontStyle: percentageStyles[0].percentageStyle,
+                            }} >
                                 <span > {
                                     percentage
                                 } </span>
@@ -73,10 +104,20 @@ export default function save(props) {
                 {
                     multiStage && (<div>{renderItems}</div>)}
                 <div className="premium-progress-bar-clear"></div>
-                <div className="premium-progress-bar-progress">
+                <div className="premium-progress-bar-progress"
+                    style={{
+                        backgroundColor: progressBarStyles[0].progressBarbgColor
+                    }}
+                >
                     < div className={
                         `premium-progress-bar-progress-bar ${block_id} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
                     }
+                        style={{
+                            transition: `width ${speeds}s ease-in-out`,
+                            backgroundColor: progressBarStyles[0].progressBarColor,
+                            width: `${progress}%`,
+
+                        }}
                         data-score={`${progress}`}
                         data-speed={`${speeds}`}
                     > </div>

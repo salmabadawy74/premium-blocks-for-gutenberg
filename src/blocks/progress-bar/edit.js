@@ -104,12 +104,9 @@ class edit extends Component {
         super(...arguments);
     }
     componentDidMount() {
-
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
-
         this.getPreviewSize = this.getPreviewSize.bind(this);
-
     }
 
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
@@ -132,7 +129,6 @@ class edit extends Component {
 
         const {
             block_id,
-            classMigrate,
             className,
             align,
             multiStage,
@@ -153,11 +149,11 @@ class edit extends Component {
 
         const STYLE = [{
             value: "solid",
-            label: __("Solid")
+            label: __("Solid", 'premium-block-for-gutenberg')
         },
         {
             value: "stripe",
-            label: __("Stripe")
+            label: __("Stripe", 'premium-block-for-gutenberg')
         }
         ];
 
@@ -174,6 +170,7 @@ class edit extends Component {
             label: __("None", 'premium-block-for-gutenberg')
         }
         ];
+
         const changeLableValue = (newText, newIndex) => {
             setAttributes({
                 repeaterItems: onRepeaterChange(
@@ -183,6 +180,7 @@ class edit extends Component {
                 )
             })
         }
+
         const changePercentageValue = (newText, newIndex) => {
             setAttributes({
                 repeaterItems: onRepeaterChange(
@@ -192,6 +190,7 @@ class edit extends Component {
                 )
             })
         }
+
         const onSortEndSingle = ({
             oldIndex,
             newIndex
@@ -199,21 +198,20 @@ class edit extends Component {
             let arrayItem = repeaterItems.map((cont) => (
                 cont
             ))
-
             const array = arrayMove(arrayItem, oldIndex, newIndex)
-
             setAttributes({
                 repeaterItems:
                     array
-
             });
         };
+
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
             if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                 return true; // Return true to cancel sorting
             }
         }
+
         const onRepeaterChange = (attr, value, index) => {
             this.forceUpdate()
             const items = repeaterItems;
@@ -226,6 +224,7 @@ class edit extends Component {
                 return item;
             });
         };
+
         const edit = (index) => {
             setAttributes({ editTitle: !editTitle })
             return repeaterItems.map((item, i) => {
@@ -249,6 +248,7 @@ class edit extends Component {
                 }
             })
         }
+
         const removeItem = (index, item) => {
             this.forceUpdate()
             let array = repeaterItems.map((cont, currIndex) => {
@@ -256,6 +256,7 @@ class edit extends Component {
             }).filter((f, i) => i != index)
             setAttributes({ repeaterItems: array });
         }
+
         const renderItems = repeaterItems.map((item, index) => {
             return (< div className="premium-progress-bar-multiple-label"
                 style={
@@ -265,10 +266,10 @@ class edit extends Component {
                 } >
                 <p className="premium-progress-bar-center-label" style={{
                     color: labelStyles[0].labelColor,
-                    fontWeight: labelStyles[0].LabelWeight + "!important",
-                    letterSpacing: labelStyles[0].LabelLetter + "px" + "!important",
-                    textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none" + "!important",
-                    fontStyle: labelStyles[0].LabelStyle + "!important",
+                    fontWeight: labelStyles[0].LabelWeight,
+                    letterSpacing: labelStyles[0].LabelLetter + "px",
+                    textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                    fontStyle: labelStyles[0].LabelStyle,
                     fontSize: `${LabelSize}${labelStyles[0].LabelfontSizeType}`,
                     transform: align == 'right' ? "translateX(-10%)" : align == 'left' ? "translateX(-82%)" : "translateX(-45%)"
                 }} > {
@@ -277,9 +278,9 @@ class edit extends Component {
                     {
                         item.percentage ? < span className="premium-progress-bar-percentage" style={{
                             color: percentageStyles[0].percentageColor,
-                            fontWeight: percentageStyles[0].percentageWeight + "!important",
-                            letterSpacing: percentageStyles[0].percentageLetter + "px" + "!important",
-                            fontStyle: percentageStyles[0].percentageStyle + "!important",
+                            fontWeight: percentageStyles[0].percentageWeight,
+                            letterSpacing: percentageStyles[0].percentageLetter + "px",
+                            fontStyle: percentageStyles[0].percentageStyle,
                             fontSize: `${percentageSize}${percentageStyles[0].percentagefontSizeType}`
                         }} > {
                                 item.percentage
@@ -289,7 +290,7 @@ class edit extends Component {
                     (item.title || item.percentage) ? indicator == 'arrow' ? < div className="premium-progress-bar-arrow" style={{
                         color: indicatorStyles[0].arrowColor,
                         borderWidth: `${arrowSize}${indicatorStyles[0].arrowType}`
-                    }} > </div> : indicator == 'pin' ? <div className="premium-progress-bar-pin" style={{
+                    }}> </div> : indicator == 'pin' ? <div className="premium-progress-bar-pin" style={{
                         borderColor: indicatorStyles[0].pinColor,
                         borderLeftWidth: `${pinSize}${indicatorStyles[0].pinType}`,
                         height: `${pinHeightSize}${indicatorStyles[0].pinHeightType}`
@@ -297,6 +298,7 @@ class edit extends Component {
             </div>
             )
         })
+
         const saveProgressBarStyles = (value) => {
             const newUpdate = progressBarStyles.map((item, index) => {
                 if (0 === index) {
@@ -308,6 +310,7 @@ class edit extends Component {
                 progressBarStyles: newUpdate,
             });
         }
+
         const saveLabelStyles = (value) => {
             const newUpdate = labelStyles.map((item, index) => {
                 if (0 === index) {
@@ -319,6 +322,7 @@ class edit extends Component {
                 labelStyles: newUpdate,
             });
         }
+
         const saveParcentageStyles = (value) => {
             const newUpdate = percentageStyles.map((item, index) => {
                 if (0 === index) {
@@ -330,6 +334,7 @@ class edit extends Component {
                 percentageStyles: newUpdate,
             });
         }
+
         const saveIndicatorStyles = (value) => {
             const newUpdate = indicatorStyles.map((item, index) => {
                 if (0 === index) {
@@ -341,6 +346,7 @@ class edit extends Component {
                 indicatorStyles: newUpdate,
             });
         }
+
         const LabelSize = this.getPreviewSize(this.props.deviceType, labelStyles[0].LabelfontSize, labelStyles[0].LabelfontSizeTablet, labelStyles[0].LabelfontSizeMobile);
         const percentageSize = this.getPreviewSize(this.props.deviceType, percentageStyles[0].percentagefontSize, percentageStyles[0].percentagefontSizeTablet, percentageStyles[0].percentagefontSizeMobile);
         const progressBarHeightSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarHeight, progressBarStyles[0].progressBarHeightTablet, progressBarStyles[0].progressBarHeightMobile);
@@ -688,7 +694,7 @@ class edit extends Component {
             ),
             <div className={classnames(
                 className,
-                `premium-block-${this.props.clientId}`
+                `premium-block-${block_id}`
             )} style={{
                 textAlign: align,
             }}>
@@ -701,20 +707,20 @@ class edit extends Component {
                             < div className="premium-progress-bar-labels-wrap" >
                                 {label ? <p className="premium-progress-bar-left-label" style={{
                                     color: labelStyles[0].labelColor,
-                                    fontWeight: labelStyles[0].LabelWeight + "!important",
-                                    letterSpacing: labelStyles[0].LabelLetter + "px" + "!important",
-                                    textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none" + "!important",
-                                    fontStyle: labelStyles[0].LabelStyle + "!important",
-                                    fontSize: LabelSize + labelStyles[0].LabelfontSizeType + "!important",
+                                    fontWeight: labelStyles[0].LabelWeight,
+                                    letterSpacing: labelStyles[0].LabelLetter + "px",
+                                    textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                                    fontStyle: labelStyles[0].LabelStyle,
+                                    fontSize: LabelSize + labelStyles[0].LabelfontSizeType,
                                 }}>
                                     <span>{label}</span>
                                 </p> : ""}
                                 {percentage ? < p className="premium-progress-bar-right-label" style={{
                                     color: percentageStyles[0].percentageColor,
-                                    fontWeight: percentageStyles[0].percentageWeight + "!important",
-                                    letterSpacing: percentageStyles[0].percentageLetter + "px" + "!important",
-                                    fontStyle: percentageStyles[0].percentageStyle + "!important",
-                                    fontSize: percentageSize + percentageStyles[0].percentagefontSizeType + "!important",
+                                    fontWeight: percentageStyles[0].percentageWeight,
+                                    letterSpacing: percentageStyles[0].percentageLetter + "px",
+                                    fontStyle: percentageStyles[0].percentageStyle,
+                                    fontSize: percentageSize + percentageStyles[0].percentagefontSizeType,
                                 }}>
                                     <span > {
                                         percentage
@@ -734,7 +740,7 @@ class edit extends Component {
                     >
                         < div
                             className={
-                                `premium-progress-bar-progress-bar ${this.props.clientId} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                                `premium-progress-bar-progress-bar ${block_id} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
                             }
                             style={{
                                 transition: `width ${speeds}s ease-in-out`,
