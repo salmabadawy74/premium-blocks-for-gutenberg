@@ -72632,8 +72632,6 @@ var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -73433,16 +73431,19 @@ var edit = function (_Component) {
                         },
                         React.createElement(
                             "div",
-                            _defineProperty({ className: "premium-progress-bar-progress-bar " + this.props.clientId + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : ""),
-                                style: { transition: "width " + speeds + "s ease-in-out" },
+                            {
+                                className: "premium-progress-bar-progress-bar " + this.props.clientId + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : ""),
+                                style: {
+                                    transition: "width " + speeds + "s ease-in-out",
+                                    height: "" + progressBarHeightSize + progressBarStyles[0].progressBarHeightType,
+                                    borderRadius: "" + progressBarRadiusSize + progressBarStyles[0].progressBarRadiusType,
+                                    backgroundColor: progressBarStyles[0].progressBarColor,
+                                    width: progress + "%"
+
+                                },
                                 "data-score": "" + progress,
                                 "data-speed": "" + speeds
-                            }, "style", {
-                                height: "" + progressBarHeightSize + progressBarStyles[0].progressBarHeightType,
-                                borderRadius: "" + progressBarRadiusSize + progressBarStyles[0].progressBarRadiusType,
-                                backgroundColor: progressBarStyles[0].progressBarColor,
-                                width: progress + "%" + "!important"
-                            }),
+                            },
                             " "
                         )
                     )

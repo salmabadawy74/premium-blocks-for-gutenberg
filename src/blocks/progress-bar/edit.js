@@ -732,18 +732,20 @@ class edit extends Component {
                             backgroundColor: progressBarStyles[0].progressBarbgColor
                         }}
                     >
-                        < div className={
-                            `premium-progress-bar-progress-bar ${this.props.clientId} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
-                        }
-                            style={{ transition: `width ${speeds}s ease-in-out` }}
-                            data-score={`${progress}`}
-                            data-speed={`${speeds}`}
+                        < div
+                            className={
+                                `premium-progress-bar-progress-bar ${this.props.clientId} ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                            }
                             style={{
+                                transition: `width ${speeds}s ease-in-out`,
                                 height: `${progressBarHeightSize}${progressBarStyles[0].progressBarHeightType}`,
                                 borderRadius: `${progressBarRadiusSize}${progressBarStyles[0].progressBarRadiusType}`,
                                 backgroundColor: progressBarStyles[0].progressBarColor,
-                                width: progress + "%" + "!important",
+                                width: `${progress}%`,
+
                             }}
+                            data-score={`${progress}`}
+                            data-speed={`${speeds}`}
                         > </div>
                     </div>
                 </div>
