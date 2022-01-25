@@ -72507,7 +72507,7 @@ function save(props) {
         indicator = attributes.indicator,
         progressBarStyles = attributes.progressBarStyles,
         labelStyles = attributes.labelStyles,
-        parcentageStyles = attributes.parcentageStyles,
+        percentageStyles = attributes.percentageStyles,
         indicatorStyles = attributes.indicatorStyles;
 
 
@@ -72520,12 +72520,26 @@ function save(props) {
                 } },
             React.createElement(
                 "p",
-                { className: "premium-progress-bar-center-label", style: { transform: align == "center" ? "translateX(-45%)" : align == "left" ? "translateX(-82%)" : "translateX(-10%)" } },
+                { className: "premium-progress-bar-center-label", style: {
+                        transform: align == "center" ? "translateX(-45%)" : align == "left" ? "translateX(-82%)" : "translateX(-10%)",
+                        color: labelStyles[0].labelColor,
+                        fontWeight: labelStyles[0].LabelWeight,
+                        letterSpacing: labelStyles[0].LabelLetter + "px",
+                        textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                        fontStyle: labelStyles[0].LabelStyle
+                    } },
                 " ",
                 item.title,
                 item.percentage ? React.createElement(
                     "span",
-                    { className: "premium-progress-bar-percentage" },
+                    { className: "premium-progress-bar-percentage",
+                        style: {
+                            color: percentageStyles[0].percentageColor,
+                            fontWeight: percentageStyles[0].percentageWeight,
+                            letterSpacing: percentageStyles[0].percentageLetter + "px",
+                            fontStyle: percentageStyles[0].percentageStyle
+                        }
+                    },
                     " ",
                     item.percentage,
                     "% "
@@ -72533,9 +72547,13 @@ function save(props) {
             ),
             item.title || item.percentage ? indicator == 'arrow' ? React.createElement(
                 "p",
-                { className: "premium-progress-bar-arrow" },
+                { className: "premium-progress-bar-arrow", style: {
+                        color: indicatorStyles[0].arrowColor
+                    } },
                 " "
-            ) : indicator == 'pin' ? React.createElement("p", { className: "premium-progress-bar-pin" }) : "" : ""
+            ) : indicator == 'pin' ? React.createElement("p", { className: "premium-progress-bar-pin", style: {
+                    borderColor: indicatorStyles[0].pinColor
+                } }) : "" : ""
         );
     });
 
@@ -72556,7 +72574,15 @@ function save(props) {
                 { className: "premium-progress-bar-labels-wrap" },
                 React.createElement(
                     "p",
-                    { className: "premium-progress-bar-left-label" },
+                    { className: "premium-progress-bar-left-label",
+                        style: {
+                            color: labelStyles[0].labelColor,
+                            fontWeight: labelStyles[0].LabelWeight,
+                            letterSpacing: labelStyles[0].LabelLetter + "px",
+                            textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                            fontStyle: labelStyles[0].LabelStyle
+                        }
+                    },
                     React.createElement(
                         "span",
                         null,
@@ -72565,7 +72591,12 @@ function save(props) {
                 ),
                 React.createElement(
                     "p",
-                    { className: "premium-progress-bar-right-label" },
+                    { className: "premium-progress-bar-right-label", style: {
+                            color: percentageStyles[0].percentageColor,
+                            fontWeight: percentageStyles[0].percentageWeight,
+                            letterSpacing: percentageStyles[0].percentageLetter + "px",
+                            fontStyle: percentageStyles[0].percentageStyle
+                        } },
                     React.createElement(
                         "span",
                         null,
@@ -72583,10 +72614,20 @@ function save(props) {
             React.createElement("div", { className: "premium-progress-bar-clear" }),
             React.createElement(
                 "div",
-                { className: "premium-progress-bar-progress" },
+                { className: "premium-progress-bar-progress",
+                    style: {
+                        backgroundColor: progressBarStyles[0].progressBarbgColor
+                    }
+                },
                 React.createElement(
                     "div",
                     { className: "premium-progress-bar-progress-bar " + block_id + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : ""),
+                        style: {
+                            transition: "width " + speeds + "s ease-in-out",
+                            backgroundColor: progressBarStyles[0].progressBarColor,
+                            width: progress + "%"
+
+                        },
                         "data-score": "" + progress,
                         "data-speed": "" + speeds
                     },
@@ -72744,10 +72785,8 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-
             this.props.setAttributes({ block_id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
-
             this.getPreviewSize = this.getPreviewSize.bind(this);
         }
     }, {
@@ -72776,7 +72815,6 @@ var edit = function (_Component) {
                 setAttributes = _props.setAttributes,
                 isSelected = _props.isSelected;
             var block_id = attributes.block_id,
-                classMigrate = attributes.classMigrate,
                 className = attributes.className,
                 align = attributes.align,
                 multiStage = attributes.multiStage,
@@ -72797,10 +72835,10 @@ var edit = function (_Component) {
 
             var STYLE = [{
                 value: "solid",
-                label: __("Solid")
+                label: __("Solid", 'premium-block-for-gutenberg')
             }, {
                 value: "stripe",
-                label: __("Stripe")
+                label: __("Stripe", 'premium-block-for-gutenberg')
             }];
 
             var INDICATOR = [{
@@ -72813,16 +72851,19 @@ var edit = function (_Component) {
                 value: "none",
                 label: __("None", 'premium-block-for-gutenberg')
             }];
+
             var changeLableValue = function changeLableValue(newText, newIndex) {
                 setAttributes({
                     repeaterItems: onRepeaterChange("title", newText, newIndex)
                 });
             };
+
             var changePercentageValue = function changePercentageValue(newText, newIndex) {
                 setAttributes({
                     repeaterItems: onRepeaterChange("percentage", newText, newIndex)
                 });
             };
+
             var onSortEndSingle = function onSortEndSingle(_ref3) {
                 var oldIndex = _ref3.oldIndex,
                     newIndex = _ref3.newIndex;
@@ -72830,20 +72871,19 @@ var edit = function (_Component) {
                 var arrayItem = repeaterItems.map(function (cont) {
                     return cont;
                 });
-
                 var array = (0, _reactSortableHoc.arrayMove)(arrayItem, oldIndex, newIndex);
-
                 setAttributes({
                     repeaterItems: array
-
                 });
             };
+
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
                 if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
             };
+
             var onRepeaterChange = function onRepeaterChange(attr, value, index) {
                 _this2.forceUpdate();
                 var items = repeaterItems;
@@ -72856,6 +72896,7 @@ var edit = function (_Component) {
                     return item;
                 });
             };
+
             var _edit = function _edit(index) {
                 setAttributes({ editTitle: !editTitle });
                 return repeaterItems.map(function (item, i) {
@@ -72870,6 +72911,7 @@ var edit = function (_Component) {
                     }
                 });
             };
+
             var _removeItem = function _removeItem(index, item) {
                 _this2.forceUpdate();
                 var array = repeaterItems.map(function (cont, currIndex) {
@@ -72879,6 +72921,7 @@ var edit = function (_Component) {
                 });
                 setAttributes({ repeaterItems: array });
             };
+
             var renderItems = repeaterItems.map(function (item, index) {
                 return React.createElement(
                     "div",
@@ -72890,10 +72933,10 @@ var edit = function (_Component) {
                         "p",
                         { className: "premium-progress-bar-center-label", style: {
                                 color: labelStyles[0].labelColor,
-                                fontWeight: labelStyles[0].LabelWeight + "!important",
-                                letterSpacing: labelStyles[0].LabelLetter + "px" + "!important",
-                                textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none" + "!important",
-                                fontStyle: labelStyles[0].LabelStyle + "!important",
+                                fontWeight: labelStyles[0].LabelWeight,
+                                letterSpacing: labelStyles[0].LabelLetter + "px",
+                                textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                                fontStyle: labelStyles[0].LabelStyle,
                                 fontSize: "" + LabelSize + labelStyles[0].LabelfontSizeType,
                                 transform: align == 'right' ? "translateX(-10%)" : align == 'left' ? "translateX(-82%)" : "translateX(-45%)"
                             } },
@@ -72903,9 +72946,9 @@ var edit = function (_Component) {
                             "span",
                             { className: "premium-progress-bar-percentage", style: {
                                     color: percentageStyles[0].percentageColor,
-                                    fontWeight: percentageStyles[0].percentageWeight + "!important",
-                                    letterSpacing: percentageStyles[0].percentageLetter + "px" + "!important",
-                                    fontStyle: percentageStyles[0].percentageStyle + "!important",
+                                    fontWeight: percentageStyles[0].percentageWeight,
+                                    letterSpacing: percentageStyles[0].percentageLetter + "px",
+                                    fontStyle: percentageStyles[0].percentageStyle,
                                     fontSize: "" + percentageSize + percentageStyles[0].percentagefontSizeType
                                 } },
                             " ",
@@ -72927,6 +72970,7 @@ var edit = function (_Component) {
                         } }) : "" : ""
                 );
             });
+
             var saveProgressBarStyles = function saveProgressBarStyles(value) {
                 var newUpdate = progressBarStyles.map(function (item, index) {
                     if (0 === index) {
@@ -72938,6 +72982,7 @@ var edit = function (_Component) {
                     progressBarStyles: newUpdate
                 });
             };
+
             var saveLabelStyles = function saveLabelStyles(value) {
                 var newUpdate = labelStyles.map(function (item, index) {
                     if (0 === index) {
@@ -72949,6 +72994,7 @@ var edit = function (_Component) {
                     labelStyles: newUpdate
                 });
             };
+
             var saveParcentageStyles = function saveParcentageStyles(value) {
                 var newUpdate = percentageStyles.map(function (item, index) {
                     if (0 === index) {
@@ -72960,6 +73006,7 @@ var edit = function (_Component) {
                     percentageStyles: newUpdate
                 });
             };
+
             var saveIndicatorStyles = function saveIndicatorStyles(value) {
                 var newUpdate = indicatorStyles.map(function (item, index) {
                     if (0 === index) {
@@ -72971,6 +73018,7 @@ var edit = function (_Component) {
                     indicatorStyles: newUpdate
                 });
             };
+
             var LabelSize = this.getPreviewSize(this.props.deviceType, labelStyles[0].LabelfontSize, labelStyles[0].LabelfontSizeTablet, labelStyles[0].LabelfontSizeMobile);
             var percentageSize = this.getPreviewSize(this.props.deviceType, percentageStyles[0].percentagefontSize, percentageStyles[0].percentagefontSizeTablet, percentageStyles[0].percentagefontSizeMobile);
             var progressBarHeightSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarHeight, progressBarStyles[0].progressBarHeightTablet, progressBarStyles[0].progressBarHeightMobile);
@@ -73368,7 +73416,7 @@ var edit = function (_Component) {
                 ) : ""
             ), React.createElement(
                 "div",
-                { className: (0, _classnames2.default)(className, "premium-block-" + this.props.clientId), style: {
+                { className: (0, _classnames2.default)(className, "premium-block-" + block_id), style: {
                         textAlign: align
                     } },
                 React.createElement(
@@ -73384,11 +73432,11 @@ var edit = function (_Component) {
                             "p",
                             { className: "premium-progress-bar-left-label", style: {
                                     color: labelStyles[0].labelColor,
-                                    fontWeight: labelStyles[0].LabelWeight + "!important",
-                                    letterSpacing: labelStyles[0].LabelLetter + "px" + "!important",
-                                    textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none" + "!important",
-                                    fontStyle: labelStyles[0].LabelStyle + "!important",
-                                    fontSize: LabelSize + labelStyles[0].LabelfontSizeType + "!important"
+                                    fontWeight: labelStyles[0].LabelWeight,
+                                    letterSpacing: labelStyles[0].LabelLetter + "px",
+                                    textTransform: labelStyles[0].LabelUpper ? "uppercase" : "none",
+                                    fontStyle: labelStyles[0].LabelStyle,
+                                    fontSize: LabelSize + labelStyles[0].LabelfontSizeType
                                 } },
                             React.createElement(
                                 "span",
@@ -73400,10 +73448,10 @@ var edit = function (_Component) {
                             "p",
                             { className: "premium-progress-bar-right-label", style: {
                                     color: percentageStyles[0].percentageColor,
-                                    fontWeight: percentageStyles[0].percentageWeight + "!important",
-                                    letterSpacing: percentageStyles[0].percentageLetter + "px" + "!important",
-                                    fontStyle: percentageStyles[0].percentageStyle + "!important",
-                                    fontSize: percentageSize + percentageStyles[0].percentagefontSizeType + "!important"
+                                    fontWeight: percentageStyles[0].percentageWeight,
+                                    letterSpacing: percentageStyles[0].percentageLetter + "px",
+                                    fontStyle: percentageStyles[0].percentageStyle,
+                                    fontSize: percentageSize + percentageStyles[0].percentagefontSizeType
                                 } },
                             React.createElement(
                                 "span",
@@ -73432,7 +73480,7 @@ var edit = function (_Component) {
                         React.createElement(
                             "div",
                             {
-                                className: "premium-progress-bar-progress-bar " + this.props.clientId + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : ""),
+                                className: "premium-progress-bar-progress-bar " + block_id + " " + (styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : "") + " " + (animate ? "premium-progress-bar-progress-active" : ""),
                                 style: {
                                     transition: "width " + speeds + "s ease-in-out",
                                     height: "" + progressBarHeightSize + progressBarStyles[0].progressBarHeightType,

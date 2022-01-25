@@ -3,10 +3,8 @@ import map from 'lodash/map';
 import classnames from "classnames";
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
-
 const { Button, Popover, ColorIndicator, ColorPicker, Tooltip } = wp.components;
-
-const { withSelect } = wp.data
+const { withSelect } = wp.data;
 
 class AdvancedColorControl extends Component {
     constructor() {
@@ -150,6 +148,7 @@ class AdvancedColorControl extends Component {
         );
     }
 }
+
 export default withSelect((select, ownProps) => {
     const settings = select('core/block-editor').getSettings();
     const colors = get(settings, ['colors'], []);

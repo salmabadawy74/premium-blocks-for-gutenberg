@@ -320,28 +320,30 @@ class PBG_Blocks_Helper {
 			'premium/testimonial',
 			array(
 				'render_callback' => array( $this, 'get_testimonial_css' ),
-
 			)
 		);
 		register_block_type(
 			'premium/video-box',
 			array(
 				'render_callback' => array( $this, 'get_videobox_css' ),
-
 			)
 		);
 		register_block_type(
 			'premium/pricing-table',
 			array(
 				'render_callback' => array( $this, 'get_pricing_css' ),
-
 			)
 		);
 		register_block_type(
 			'premium/newsletter',
 			array(
 				'render_callback' => array( $this, 'get_newsLetter_css' ),
-
+			)
+		);
+        register_block_type(
+			'premium/progress-bar',
+			array(
+				'render_callback' => array( $this, 'get_progress_css' ),
 			)
 		);
 	}
@@ -721,6 +723,7 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
+
 	public function get_fancy_text_css_style( $attr, $unique_id ) {
 
 		$css                    = new Premium_Blocks_css();
@@ -871,6 +874,200 @@ class PBG_Blocks_Helper {
 
 		return $css->css_output();
 	}
+
+
+    public function get_progress_css( $attributes, $content ) {
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+		}
+		if ( $this->it_is_not_amp() ) {
+		wp_enqueue_script(
+				'waypoints_lib',
+				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION
+            );
+
+            wp_enqueue_script(
+				'progress-bar-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/progress-bar.js',
+				array('jquery'),
+				PREMIUM_BLOCKS_VERSION
+            );
+		}
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			$css = $this->get_progress_css_style( $attributes, $unique_id );
+
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'progress-bar', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
+	}
+
+	public function get_progress_css_style( $attr, $unique_id ) {
+	$css                    = new Premium_Blocks_css();
+	$media_query            = array();
+	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	// Label Styles.
+	if ( isset( $attr['labelStyles'] ) ) {
+		if ( isset( $attr['labelStyles'][0]['LabelfontSize'] ) && isset( $attr['labelStyles'][0]['LabelfontSizeType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-left-label' );
+			$css->add_property( 'font-size', $css->render_color( $attr['labelStyles'][0]['LabelfontSize'] . $attr['labelStyles'][0]['LabelfontSizeType']  ) );
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-center-label' );
+			$css->add_property( 'font-size', $css->render_color( $attr['labelStyles'][0]['LabelfontSize'] . $attr['labelStyles'][0]['LabelfontSizeType']  ) );
+		}
+	}
+	// Percentage Style
+	if ( isset( $attr['percentageStyles'] ) ) {
+		if ( isset( $attr['percentageStyles'][0]['percentagefontSize'] ) && isset( $attr['percentageStyles'][0]['percentagefontSizeType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-percentage'  );
+			$css->add_property( 'font-size', $css->render_color( $attr['percentageStyles'][0]['percentagefontSize'] . $attr['percentageStyles'][0]['percentagefontSizeType'] ) );
+			$css->set_selector( '.premium-block-' . $unique_id . '  .premium-progress-bar-right-label'  );
+			$css->add_property( 'font-size', $css->render_color( $attr['percentageStyles'][0]['percentagefontSize'] . $attr['percentageStyles'][0]['percentagefontSizeType']  ) );
+		}
+	}
+	// Progress Bar Height,  Progress Bar Border Radius
+	if ( isset( $attr['progressBarStyles'] ) ) {
+		if ( isset( $attr['progressBarStyles'][0]['progressBarHeight'] ) && isset( $attr['progressBarStyles'][0]['progressBarHeightType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-progress' );
+							$css->add_property( "border-radius", $css->render_color( $attr['progressBarStyles'][0]['progressBarRadius'] . $attr['progressBarStyles'][0]['progressBarRadiusType'] ) );
+			$css->add_property( 'height', $css->render_color( $attr['progressBarStyles'][0]['progressBarHeight'] . $attr['progressBarStyles'][0]['progressBarHeightType']) );
+		}
+		if ( isset( $attr['progressBarStyles'][0]['progressBarRadius'] ) && isset( $attr['progressBarStyles'][0]['progressBarRadiusType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-progress-bar' );
+			$css->add_property( "border-radius", $css->render_color( $attr['progressBarStyles'][0]['progressBarRadius'] . $attr['progressBarStyles'][0]['progressBarRadiusType'] ) );
+			$css->add_property( 'height', $css->render_color( $attr['progressBarStyles'][0]['progressBarHeight'] . $attr['progressBarStyles'][0]['progressBarHeightType']) );
+
+		}
+	}
+	// Arrow Style ,pin Style,Pin Height Style
+	if ( isset( $attr['indicatorStyles'] ) ) {
+		if ( isset( $attr['indicatorStyles'][0]['arrow'] ) && isset( $attr['indicatorStyles'][0]['arrowType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-arrow' );
+			$css->add_property( "border-width", $css->render_color( $attr['indicatorStyles'][0]['arrow']. $attr['indicatorStyles'][0]['arrowType']) );
+		}
+		if ( isset( $attr['indicatorStyles'][0]['pin'] ) && isset( $attr['indicatorStyles'][0]['pinType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-pin' );
+			$css->add_property( 'font-size', $css->render_color( $attr['indicatorStyles'][0]['pin'] . $attr['indicatorStyles'][0]['pinType']  ) );
+		}
+		if ( isset( $attr['indicatorStyles'][0]['pinHeight'] ) && isset( $attr['indicatorStyles'][0]['pinHeightType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-pin' );
+			$css->add_property( "height", $css->render_color( $attr['indicatorStyles'][0]['pinHeight'] . $attr['indicatorStyles'][0]['pinHeightType']  ) );
+		}
+	}
+	$css->start_media_query( $media_query['tablet'] );
+
+	// Label Styles.
+	if ( isset( $attr['labelStyles'] ) ) {
+		if ( isset( $attr['labelStyles'][0]['LabelfontSizeTablet'] ) && isset( $attr['labelStyles'][0]['LabelfontSizeType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-left-label' );
+			$css->add_property( 'font-size', $css->render_color( $attr['labelStyles'][0]['LabelfontSizeTablet'] . $attr['labelStyles'][0]['LabelfontSizeType']  ) );
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-center-label' );
+			$css->add_property( 'font-size', $css->render_color( $attr['labelStyles'][0]['LabelfontSizeTablet'] . $attr['labelStyles'][0]['LabelfontSizeType']  ) );
+		}
+	}
+	// Percentage Style
+	if ( isset( $attr['percentageStyles'] ) ) {
+		if ( isset( $attr['percentageStyles'][0]['percentagefontSizeTablet'] ) && isset( $attr['percentageStyles'][0]['percentagefontSizeType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-percentage'  );
+			$css->add_property( 'font-size', $css->render_color( $attr['percentageStyles'][0]['percentagefontSizeTablet'] . $attr['percentageStyles'][0]['percentagefontSizeType'] ) );
+			$css->set_selector( '.premium-block-' . $unique_id . '  .premium-progress-bar-right-label'  );
+			$css->add_property( 'font-size', $css->render_color( $attr['percentageStyles'][0]['percentagefontSizeTablet'] . $attr['percentageStyles'][0]['percentagefontSizeType']  ) );
+		}
+	}
+	// Progress Bar Height,  Progress Bar Border Radius
+	if ( isset( $attr['progressBarStyles'] ) ) {
+		if ( isset( $attr['progressBarStyles'][0]['progressBarHeightTablet'] ) && isset( $attr['progressBarStyles'][0]['progressBarHeightType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-progress' );
+			$css->add_property( "border-radius", $css->render_color( $attr['progressBarStyles'][0]['progressBarRadiusTablet'] . $attr['progressBarStyles'][0]['progressBarRadiusType'] ) );
+			$css->add_property( 'height', $css->render_color( $attr['progressBarStyles'][0]['progressBarHeightTablet'] . $attr['progressBarStyles'][0]['progressBarHeightType']) );
+		}
+		if ( isset( $attr['progressBarStyles'][0]['progressBarRadiusTablet'] ) && isset( $attr['progressBarStyles'][0]['progressBarRadiusType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-progress-bar' );
+			$css->add_property( "border-radius", $css->render_color( $attr['progressBarStyles'][0]['progressBarRadiusTablet'] . $attr['progressBarStyles'][0]['progressBarRadiusType'] ) );
+			$css->add_property( 'height', $css->render_color( $attr['progressBarStyles'][0]['progressBarHeightTablet'] . $attr['progressBarStyles'][0]['progressBarHeightType']) );
+
+		}
+	}
+	// Arrow Style ,pin Style,Pin Height Style
+	if ( isset( $attr['indicatorStyles'] ) ) {
+		if ( isset( $attr['indicatorStyles'][0]['arrowTablet'] ) && isset( $attr['indicatorStyles'][0]['arrowType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-arrow' );
+			$css->add_property( "border-width", $css->render_color( $attr['indicatorStyles'][0]['arrowTablet']. $attr['indicatorStyles'][0]['arrowType']) );
+		}
+		if ( isset( $attr['indicatorStyles'][0]['pinTablet'] ) && isset( $attr['indicatorStyles'][0]['pinType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-pin' );
+			$css->add_property( 'font-size', $css->render_color( $attr['indicatorStyles'][0]['pinTablet'] . $attr['indicatorStyles'][0]['pinType']  ) );
+		}
+		if ( isset( $attr['indicatorStyles'][0]['pinHeightTablet'] ) && isset( $attr['indicatorStyles'][0]['pinHeightType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-pin' );
+			$css->add_property( "height", $css->render_color( $attr['indicatorStyles'][0]['pinHeightTablet'] . $attr['indicatorStyles'][0]['pinHeightType']  ) );
+		}
+	}
+	$css->stop_media_query();
+	$css->start_media_query( $media_query['mobile'] );
+	// Label Styles.
+	if ( isset( $attr['labelStyles'] ) ) {
+		if ( isset( $attr['labelStyles'][0]['LabelfontSizeMobile'] ) && isset( $attr['labelStyles'][0]['LabelfontSizeType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-left-label' );
+			$css->add_property( 'font-size', $css->render_color( $attr['labelStyles'][0]['LabelfontSizeMobile'] . $attr['labelStyles'][0]['LabelfontSizeType']  ) );
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-center-label' );
+			$css->add_property( 'font-size', $css->render_color( $attr['labelStyles'][0]['LabelfontSizeMobile'] . $attr['labelStyles'][0]['LabelfontSizeType']  ) );
+		}
+	}
+	// Percentage Style
+	if ( isset( $attr['percentageStyles'] ) ) {
+		if ( isset( $attr['percentageStyles'][0]['percentagefontSizeMobile'] ) && isset( $attr['percentageStyles'][0]['percentagefontSizeType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-percentage'  );
+			$css->add_property( 'font-size', $css->render_color( $attr['percentageStyles'][0]['percentagefontSizeMobile'] . $attr['percentageStyles'][0]['percentagefontSizeType'] ) );
+			$css->set_selector( '.premium-block-' . $unique_id . '  .premium-progress-bar-right-label'  );
+			$css->add_property( 'font-size', $css->render_color( $attr['percentageStyles'][0]['percentagefontSizeMobile'] . $attr['percentageStyles'][0]['percentagefontSizeType']  ) );
+		}
+	}
+	// Progress Bar Height,  Progress Bar Border Radius
+	if ( isset( $attr['progressBarStyles'] ) ) {
+		if ( isset( $attr['progressBarStyles'][0]['progressBarHeightMobile'] ) && isset( $attr['progressBarStyles'][0]['progressBarHeightType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-progress' );
+			$css->add_property( "border-radius", $css->render_color( $attr['progressBarStyles'][0]['progressBarRadiusMobile'] . $attr['progressBarStyles'][0]['progressBarRadiusType'] ) );
+			$css->add_property( 'height', $css->render_color( $attr['progressBarStyles'][0]['progressBarHeightMobile'] . $attr['progressBarStyles'][0]['progressBarHeightType']) );
+		}
+		if ( isset( $attr['progressBarStyles'][0]['progressBarRadiusMobile'] ) && isset( $attr['progressBarStyles'][0]['progressBarRadiusType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-progress-bar' );
+			$css->add_property( "border-radius", $css->render_color( $attr['progressBarStyles'][0]['progressBarRadiusMobile'] . $attr['progressBarStyles'][0]['progressBarRadiusType'] ) );
+			$css->add_property( 'height', $css->render_color( $attr['progressBarStyles'][0]['progressBarHeightMobile'] . $attr['progressBarStyles'][0]['progressBarHeightType']) );
+
+		}
+	}
+	// Arrow Style ,pin Style,Pin Height Style
+	if ( isset( $attr['indicatorStyles'] ) ) {
+		if ( isset( $attr['indicatorStyles'][0]['arrowMobile'] ) && isset( $attr['indicatorStyles'][0]['arrowType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-arrow' );
+			$css->add_property( "border-width", $css->render_color( $attr['indicatorStyles'][0]['arrowMobile']. $attr['indicatorStyles'][0]['arrowType']) );
+		}
+		if ( isset( $attr['indicatorStyles'][0]['pinMobile'] ) && isset( $attr['indicatorStyles'][0]['pinType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-pin' );
+			$css->add_property( 'font-size', $css->render_color( $attr['indicatorStyles'][0]['pinMobile'] . $attr['indicatorStyles'][0]['pinType']  ) );
+		}
+		if ( isset( $attr['indicatorStyles'][0]['pinHeightMobile'] ) && isset( $attr['indicatorStyles'][0]['pinHeightType'] ) ) {
+			$css->set_selector( '.premium-block-' . $unique_id . ' .premium-progress-bar-pin' );
+			$css->add_property( "height", $css->render_color( $attr['indicatorStyles'][0]['pinHeightMobile'] . $attr['indicatorStyles'][0]['pinHeightType']  ) );
+		}
+	}
+	$css->stop_media_query();
+
+	return $css->css_output();
+
+}
 	/**
 	 * Get Banner Block CSS
 	 *
