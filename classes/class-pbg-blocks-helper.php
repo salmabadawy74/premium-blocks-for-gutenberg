@@ -112,7 +112,7 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
 		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
-
+ 		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-templates-helper.php';
 	}
 	/**
 	 * Enqueue Editor CSS/JS for Premium Blocks
