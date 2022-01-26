@@ -57,7 +57,6 @@ export default function PremiumRangeControl({
     };
     const [device, setDevice] = useState('desktop');
     const sliderValue = responsive ? value[device] : value;
-    const resetValue = responsive ? defaultValue[device] : defaultValue;
 
     const updateValue = (value) => {
         device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value)
@@ -106,9 +105,9 @@ export default function PremiumRangeControl({
                         />
                     </div>
                 </div>
-                <button className="premium-slider-reset" disabled={JSON.stringify(sliderValue) === JSON.stringify(resetValue)} onClick={e => {
+                <button className="premium-slider-reset" disabled={JSON.stringify(sliderValue) === JSON.stringify(defaultValue)} onClick={e => {
                     e.preventDefault()
-                    updateValue(resetValue)
+                    updateValue(defaultValue)
                 }}>
                 </button>
             </div>

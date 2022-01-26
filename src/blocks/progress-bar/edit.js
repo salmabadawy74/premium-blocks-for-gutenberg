@@ -498,11 +498,7 @@ class edit extends Component {
                             onChangeMobile={(value) => saveProgressBarStyles({ progressBarHeightMobile: value })}
                             showUnit={false}
                             responsive={true}
-                            defaultValue={{
-                                'desktop': 25,
-                                "tablet": 25,
-                                "mobile": 25
-                            }}
+                            defaultValue={25}
                         />
                         <PremiumRangeControl
                             label={__(`Border Radius`, 'premium-block-for-gutenberg')}
@@ -516,11 +512,7 @@ class edit extends Component {
                             onChangeMobile={(value) => saveProgressBarStyles({ progressBarRadiusMobile: value })}
                             showUnit={false}
                             responsive={true}
-                            defaultValue={{
-                                'desktop': 0,
-                                'tablet': 0,
-                                'mobile': 0
-                            }}
+                            defaultValue={0}
                         />
                         <AdvancedPopColorControl
                             label={__("Background Color", 'premium-block-for-gutenberg')}
@@ -648,11 +640,7 @@ class edit extends Component {
                             onChangeMobile={(value) => saveIndicatorStyles({ arrowMobile: value })}
                             showUnit={false}
                             responsive={true}
-                            defaultValue={{
-                                'desktop': 10,
-                                'tablet': 10,
-                                'mobile': 10
-                            }}
+                            defaultValue={10}
                             min={1}
                             max={50}
                         />
@@ -684,11 +672,7 @@ class edit extends Component {
                             onChangeMobile={(value) => saveIndicatorStyles({ pinMobile: value })}
                             showUnit={false}
                             responsive={true}
-                            defaultValue={{
-                                'desktop': 1,
-                                'tablet': 1,
-                                'mobile': 1
-                            }}
+                            defaultValue={1}
                         />
                         <PremiumRangeControl
                             label={__("Height", 'premium-block-for-gutenberg')}
@@ -702,11 +686,7 @@ class edit extends Component {
                             onChangeMobile={(value) => saveIndicatorStyles({ pinHeightMobile: value })}
                             showUnit={false}
                             responsive={true}
-                            defaultValue={{
-                                'desktop': 12,
-                                'tablet': 12,
-                                'mobile': 12
-                            }}
+                            defaultValue={12}
                         />
 
                     </PanelBody> : ""}
