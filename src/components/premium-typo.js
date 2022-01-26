@@ -160,7 +160,11 @@ export default class PremiumTypo extends Component {
                                     onChangeTablet={value => setAttributes({ [this.props.fontSizeTablet.label]: value })}
                                     onChangeMobile={value => setAttributes({ [this.props.fontSizeMobile.label]: value })}
                                     showUnit={true}
-                                    defaultValue={20}
+                                    defaultValue={{
+                                        'desktop': 20,
+                                        "tablet": 20,
+                                        'mobile': 20
+                                    }}
                                     unit={this.props.fontSizeType.value}
                                     onChangeUnit={key => setAttributes({ [this.props.fontSizeType.label]: key })}
                                     units={["px", "em"]}

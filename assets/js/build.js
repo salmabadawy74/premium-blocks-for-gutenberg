@@ -410,6 +410,7 @@ function PremiumRangeControl(_ref) {
         setDevice = _useState2[1];
 
     var sliderValue = responsive ? value[device] : value;
+    var resetValue = responsive ? defaultValue[device] : defaultValue;
 
     var updateValue = function updateValue(value) {
         device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
@@ -475,9 +476,9 @@ function PremiumRangeControl(_ref) {
                     })
                 )
             ),
-            React.createElement('button', { className: 'premium-slider-reset', disabled: value === defaultValue, onClick: function onClick(e) {
+            React.createElement('button', { className: 'premium-slider-reset', disabled: JSON.stringify(sliderValue) === JSON.stringify(resetValue), onClick: function onClick(e) {
                     e.preventDefault();
-                    onChange(defaultValue);
+                    updateValue(resetValue);
                 } })
         )
     );
@@ -1404,7 +1405,11 @@ var PremiumTypo = function (_Component) {
                                     return setAttributes(_defineProperty({}, _this2.props.fontSizeMobile.label, value));
                                 },
                                 showUnit: true,
-                                defaultValue: 20,
+                                defaultValue: {
+                                    'desktop': 20,
+                                    "tablet": 20,
+                                    'mobile': 20
+                                },
                                 unit: _this2.props.fontSizeType.value,
                                 onChangeUnit: function onChangeUnit(key) {
                                     return setAttributes(_defineProperty({}, _this2.props.fontSizeType.label, key));
@@ -67884,7 +67889,11 @@ var edit = function (_Component) {
                             'tablet': lottieStyles[0].sizeTablet,
                             'mobile': lottieStyles[0].sizeMobile
                         },
-                        defaultValue: 200,
+                        defaultValue: {
+                            'desktop': 200,
+                            'tablet': 200,
+                            'mobile': 200
+                        },
                         min: 0,
                         max: lottieStyles[0].sizeUnit === '%' ? 100 : 800,
                         onChange: function onChange(value) {
@@ -73193,7 +73202,11 @@ var edit = function (_Component) {
                         },
                         showUnit: false,
                         responsive: true,
-                        defaultValue: 25
+                        defaultValue: {
+                            'desktop': 25,
+                            "tablet": 25,
+                            "mobile": 25
+                        }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Border Radius", 'premium-block-for-gutenberg'),
@@ -73213,7 +73226,11 @@ var edit = function (_Component) {
                         },
                         showUnit: false,
                         responsive: true,
-                        defaultValue: 0
+                        defaultValue: {
+                            'desktop': 0,
+                            'tablet': 0,
+                            'mobile': 0
+                        }
                     }),
                     React.createElement(_ColorComponent2.default, {
                         label: __("Background Color", 'premium-block-for-gutenberg'),
@@ -73351,7 +73368,11 @@ var edit = function (_Component) {
                         },
                         showUnit: false,
                         responsive: true,
-                        defaultValue: 10,
+                        defaultValue: {
+                            'desktop': 10,
+                            'tablet': 10,
+                            'mobile': 10
+                        },
                         min: 1,
                         max: 50
                     })
@@ -73391,7 +73412,11 @@ var edit = function (_Component) {
                         },
                         showUnit: false,
                         responsive: true,
-                        defaultValue: 1
+                        defaultValue: {
+                            'desktop': 1,
+                            'tablet': 1,
+                            'mobile': 1
+                        }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Height", 'premium-block-for-gutenberg'),
@@ -73411,7 +73436,11 @@ var edit = function (_Component) {
                         },
                         showUnit: false,
                         responsive: true,
-                        defaultValue: 12
+                        defaultValue: {
+                            'desktop': 12,
+                            'tablet': 12,
+                            'mobile': 12
+                        }
                     })
                 ) : ""
             ), React.createElement(
