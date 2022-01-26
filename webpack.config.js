@@ -13,13 +13,19 @@ module.exports = {
                 test: /\.(js|jsx|mjs)$/,
                 loader: 'babel-loader',
                 query: {
+                    'plugins': ['lodash'],
                     "presets": [
+
                         "es2015", "react", "stage-0"
                     ]
                 }
             }
         ]
     },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+    }
 };
 
 if (process.env.NODE_ENV === 'production') {
