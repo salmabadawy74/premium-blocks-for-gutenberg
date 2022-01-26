@@ -25,9 +25,9 @@ export default class PremiumTypo extends Component {
             fontFamily: this.props.fontFamily || "System Default",
             // size: this.props.size,
             // weight: this.props.weight, //
-            style: this.props.style,//
+            // style: this.props.style,//
             // spacing: this.props.spacing,
-            // line: this.props.line,
+            line: this.props.line,
             upper: this.props.upper,//
             sizeUnit: this.props.sizeUnit || 'px',
             isVisible: false,
@@ -88,6 +88,9 @@ export default class PremiumTypo extends Component {
             setAttributes,
             onChangeFamily = () => { },
             onChangeSize = () => { },
+            onChangeSizeTablet = () => { },
+            onChangeSizeMobile = () => { },
+            onChangeSizeUnit = () => { },
             onChangeWeight = () => { },
             onChangeStyle = () => { },
             onChangeSpacing = () => { },
@@ -102,17 +105,22 @@ export default class PremiumTypo extends Component {
             line,
             weight,
             spacing,
+            style,
             titleLineUnit,
             titleLetterUnit,
             textTransform,
-            textDecoration
+            textDecoration,
+            fontSizeMobile,
+            fontSizeTablet,
+            fontSize,
+            fontSizeType
         } = this.props;
 
         const {
             fontFamily,
             // size,
             // weight,
-            style,
+            // style,
             // spacing,
             // line,
             upper,
@@ -194,7 +202,6 @@ export default class PremiumTypo extends Component {
         }
 
         const toggleVisible = (v) => {
-            console.log(v)
             this.setState({
                 isVisible: true,
                 currentView: v
@@ -210,21 +217,31 @@ export default class PremiumTypo extends Component {
         const changeFont = (v) => {
             console.log(v)
             this.setState({
-                fontFamily: v.value
+                fontFamily: v.value,
+                search: v.value,
             })
             onFontfamilyChange(v)
         }
 
-        const ChangeTextTransform = (v) => {
-            console.log(v)
-            // textTransform = v;
-        }
+        console.log(fonts)
 
         const renderFonts = fonts.map((item, index) => {
-            return (< div className={`kmt-typography-single-font active`} key={index} onClick={(v) => changeFont(item)}>
+            return (< div className={`kmt-typography-single-font ${item.label == fontFamily ? 'active' : ''}`} key={index} onClick={() => changeFont(item)}>
                 <span className="kmt-font-name">{item.label}</span>
             </div>
             )
+        })
+
+        const renderVariations = fonts.map((item, index) => {
+            if (item.value == fontFamily) {
+                return ((item.weight || []).map((weights, i) => {
+                    return <li key={i} className={`${weights == weight ? 'active' : ''}`} onClick={() => { onChangeWeight(weights) }}>
+                        <span className="kmt-variation-name">
+                            {weights}
+                        </span>
+                    </li>
+                }))
+            }
         })
 
         return (
@@ -237,43 +254,45 @@ export default class PremiumTypo extends Component {
                 <div className="kmt-typography-wrapper">
                     <div className="kmt-typohraphy-value">
                         <div className="kmt-typography-title-container">
-                            <span
-                                className="kmt-font"
-                                onClick={() => {
-                                    toggleVisible("fonts")
-                                }}
-                            >
-                                <span>
-                                    {fontFamily}
-                                </span>
-                                {isVisible && currentView == 'fonts' &&
-                                    <Popover>
-                                        <div className="kmt-option-modal kmt-typography-modal">
-                                            <div className="kmt-typography-container">
-                                                <div style={{ top: '0px', right: '0px', left: `0px` }}>
-                                                    <ul className="kmt-typography-top kmt-switch-panel kmt-static">
-                                                        <li className="kmt-font">
-                                                            <TextControl
-                                                                value={search}
-                                                                type="search"
-                                                                onChange={(value) => setSearch(value)}
-                                                            />
-                                                        </li>
-                                                    </ul>
-                                                    <ul className="kmt-typography-fonts" style={{ width: `100%` }}>
-                                                        <div>
-                                                            <ul>
-                                                                {renderFonts}
-                                                            </ul>
-                                                        </div>
-                                                    </ul>
+                            {components.includes('family') &&
+                                <span
+                                    className="kmt-font"
+                                    onClick={() => {
+                                        toggleVisible("fonts")
+                                    }}
+                                >
+                                    <span>
+                                        {fontFamily}
+                                    </span>
+                                    {isVisible && currentView == 'fonts' && components.includes('family') &&
+                                        <Popover>
+                                            <div className="kmt-option-modal kmt-typography-modal">
+                                                <div className="kmt-typography-container">
+                                                    <div style={{ top: '0px', right: '0px', left: `0px` }}>
+                                                        <ul className="kmt-typography-top kmt-switch-panel kmt-static">
+                                                            <li className="kmt-font">
+                                                                <TextControl
+                                                                    value={search}
+                                                                    type="search"
+                                                                    onChange={(value) => setSearch(value)}
+                                                                />
+                                                            </li>
+                                                        </ul>
+                                                        <ul className="kmt-typography-fonts" style={{ width: `100%` }}>
+                                                            <div>
+                                                                <ul>
+                                                                    {renderFonts}
+                                                                </ul>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </Popover>
-                                }
+                                        </Popover>
+                                    }
 
-                            </span>
+                                </span>
+                            }
                             <span
                                 className="kmt-size"
                                 onClick={() => {
@@ -285,17 +304,28 @@ export default class PremiumTypo extends Component {
                                     <Popover>
                                         <div className="kmt-option-modal kmt-typography-modal">
                                             <div className="kmt-typography-container">
-                                                <ul className="kmt-typography-options">
+                                                <ul className="kmt-typography-options" style={{ width: `100%` }}>
                                                     {components.includes("size") && (
                                                         <li className="customize-control-kmt-slider">
                                                             <PremiumRangeControl
                                                                 defaultValue={0}
                                                                 label={__("Font Size")}
-                                                                value={size}
-                                                                min="10"
-                                                                max="80"
+                                                                // value={size}
+                                                                value={{
+                                                                    'desktop': fontSize,
+                                                                    'tablet': fontSizeTablet,
+                                                                    'mobile': fontSizeMobile,
+                                                                }}
+                                                                // min="10"
+                                                                // max="80"
+                                                                // onChange={onChangeSize}
                                                                 onChange={onChangeSize}
+                                                                onChangeTablet={onChangeSizeTablet}
+                                                                onChangeMobile={onChangeSizeMobile}
                                                                 showUnit={showUnit}
+                                                                responsive={true}
+                                                                onChangeUnit={onChangeSizeUnit}
+                                                                unit={fontSizeType}
                                                             />
                                                         </li>
                                                     )}
@@ -328,20 +358,33 @@ export default class PremiumTypo extends Component {
                                                             />
                                                         </li>
                                                     )}
+                                                    {components.includes("style") && (
+                                                        <li className="customize-control-kmt-slider">
+                                                            <SelectControl
+                                                                label={__("Style")}
+                                                                options={STYLE}
+                                                                value={style}
+                                                                onChange={onChangeStyle}
+                                                                onResetClick={onResetClick}
+                                                            />
+                                                        </li>
+                                                    )}
                                                     <li className="kmt-typography-variant">
-                                                        <ul className="kmt-text-transform">
-                                                            {['capitalize', 'uppercase'].map((variant) => (
-                                                                <li
-                                                                    key={variant}
-                                                                    onClick={() => onChangeTextTransform(variant)}
-                                                                    className={`${textTransform == variant ? 'active' : ''}`}
-                                                                    data-variant={variant}>
-                                                                    <i className="kmt-tooltip-top">
-                                                                        {variant}
-                                                                    </i>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
+                                                        {components.includes("upper") && (
+                                                            <ul className="kmt-text-transform">
+                                                                {['capitalize', 'uppercase'].map((variant) => (
+                                                                    <li
+                                                                        key={variant}
+                                                                        onClick={() => onChangeTextTransform(variant)}
+                                                                        className={`${textTransform == variant ? 'active' : ''}`}
+                                                                        data-variant={variant}>
+                                                                        <i className="kmt-tooltip-top">
+                                                                            {variant}
+                                                                        </i>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        )}
                                                         <ul className="kmt-text-decoration">
                                                             {['line-through', 'underline'].map((variant) => (
                                                                 <li
@@ -361,24 +404,25 @@ export default class PremiumTypo extends Component {
                                         </div>
                                     </Popover>
                                 }
-
                             </span>
-                            <span
-                                className="kmt-weight"
-                                onClick={() => {
-                                    toggleVisible("variations")
-                                }}
-                            >{weight}
-                                {isVisible && currentView == 'variations' &&
-                                    <Popover>
-                                        <div className="kmt-option-modal kmt-typography-modal">
-                                            <div className="kmt-typography-container">
-                                                <ul className="kmt-typography-variations"></ul>
+                            {components.includes("weight") && (
+                                <span
+                                    className="kmt-weight"
+                                    onClick={() => {
+                                        toggleVisible("variations")
+                                    }}
+                                >{weight}
+                                    {isVisible && currentView == 'variations' &&
+                                        <Popover>
+                                            <div className="kmt-option-modal kmt-typography-modal">
+                                                <div className="kmt-typography-container">
+                                                    <ul className="kmt-typography-variations">{renderVariations}</ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Popover>
-                                }
-                            </span>
+                                        </Popover>
+                                    }
+                                </span>
+                            )}
                         </div>
                         {/* <Button variant="secondary" onClick={() => toggleVisible()}>
                         Toggle Popover!
@@ -393,6 +437,7 @@ export default class PremiumTypo extends Component {
                                     JSON.stringify(this.defaultValue)
                                 }
                                 onClick={(e) => {
+                                    onResetClick();
                                     e.preventDefault();
                                     this.setState({ ...this.state, ...this.defaultValue })
                                 }}

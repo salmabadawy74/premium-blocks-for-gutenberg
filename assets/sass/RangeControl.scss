@@ -43,12 +43,12 @@
     }
 }
 
-.input-field-wrapper .components-range-control.kmt-range-value-input {
+.input-field-wrapper .components-range-control.premium-range-value-input {
     flex-grow: 1;
     margin-bottom: 0;
 }
 
-.kmt-range-value-input {
+.premium-range-value-input {
     width: 100%;
 
     .components-base-control__field {
@@ -60,7 +60,7 @@
     margin-left: 0px !important;
 }
 
-.kemet_range_value .kmt-range-unit {
+.kemet_range_value .premium-range-unit {
     margin-left: 5px;
 }
 
@@ -75,7 +75,7 @@
         }
     }
 
-    .kmt-slider-units {
+    .premium-slider-units {
         font-size: 11px;
         text-transform: uppercase;
 
@@ -107,7 +107,7 @@
     font-size: 12px;
 }
 
-.kmt-responsive-control-btns {
+.premium-responsive-control-btns {
     line-height: 1px;
     margin-bottom: 2px;
     display: inline-block;
@@ -162,7 +162,7 @@
         align-items: center;
     }
 
-    .kmt-slider-reset {
+    .premium-slider-reset {
         display: flex;
         width: 12px;
         height: 12px;
@@ -198,7 +198,7 @@
     }
 }
 
-.kemet_range_value .kmt-range-unit {
+.kemet_range_value .premium-range-unit {
     position: absolute;
     right: 0;
     display: flex;
@@ -239,4 +239,41 @@
 .css-ln2ltz-Thumb {
     box-shadow: none !important;
     border-width: 2px !important;
+}
+.premium-responsive-control-btns {
+    line-height: 1px;
+    margin-bottom: 2px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    z-index: 8;
+    margin-top: 0px !important;
+
+    > li {
+        margin-bottom: 0;
+        display: none;
+        overflow: hidden;
+
+        &.active {
+            display: inline-block;
+        }
+    }
+
+    button[type="button"] {
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 4px;
+        border-radius: 20px;
+        width: 24px;
+        height: 24px;
+
+        > i {
+            width: 15px;
+            height: 13px;
+            font-size: 15px;
+            color: #bbb;
+        }
+    }
 }

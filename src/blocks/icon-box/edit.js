@@ -80,6 +80,7 @@ class edit extends Component {
         }
 
         const saveTitleStyle = (value) => {
+            console.log(value)
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
                     item = { ...item, ...value };
@@ -288,6 +289,29 @@ class edit extends Component {
             }
         ];
 
+        const onResetTitleTypo = () => {
+            const newUpdate = titleStyles.map((item, index) => {
+                console.log(item.titleFont)
+                item.titleFont = "System Default";
+                item.titleSize = 20;
+                item.titleSizeTablet = 20;
+                item.titleSizeMobile = 20;
+                item.titleSizeUnit = "px";
+                item.titleLine = 0;
+                item.titleLineUnit = 'px';
+                item.titleLetter = 0;
+                item.titleLetterUnit = 'px';
+                item.titleStyle = '';
+                item.titleWeight = '';
+                item.titleTextTransform = '';
+                item.titleTextDecoration = '';
+                return item
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+        }
+
         const mainClasses = classnames(className, "premium-icon-box");
 
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
@@ -441,7 +465,7 @@ class edit extends Component {
                             />
                             <PremiumTypo
                                 components={[
-                                    "responsiveSize",
+                                    "size",
                                     "weight",
                                     "style",
                                     "upper",
@@ -451,22 +475,26 @@ class edit extends Component {
                                 ]}
                                 setAttributes={saveTitleStyle}
                                 showUnit={true}
-                                fontSizeType={{
-                                    value: titleStyles[0].titleSizeUnit,
-                                    label: __("titleSizeUnit"),
-                                }}
-                                fontSize={{
-                                    value: titleStyles[0].titleSize,
-                                    label: __("titleSize"),
-                                }}
-                                fontSizeMobile={{
-                                    value: titleStyles[0].titleSizeMobile,
-                                    label: __("titleSizeMobile"),
-                                }}
-                                fontSizeTablet={{
-                                    value: titleStyles[0].titleSizeTablet,
-                                    label: __("titleSizeTablet"),
-                                }}
+                                // fontSizeType={{
+                                //     value: titleStyles[0].titleSizeUnit,
+                                //     label: __("titleSizeUnit"),
+                                // }}
+                                // fontSize={{
+                                //     value: titleStyles[0].titleSize,
+                                //     // label: __("titleSize"),
+                                // }}
+                                // fontSizeMobile={{
+                                //     value: titleStyles[0].titleSizeMobile,
+                                //     // label: __("titleSizeMobile"),
+                                // }}
+                                // fontSizeTablet={{
+                                //     value: titleStyles[0].titleSizeTablet,
+                                //     // label: __("titleSizeTablet"),
+                                // }}
+                                fontSizeType={titleStyles[0].titleSizeUnit}
+                                fontSize={titleStyles[0].titleSize}
+                                fontSizeMobile={titleStyles[0].titleSizeMobile}
+                                fontSizeTablet={titleStyles[0].titleSizeTablet}
                                 weight={titleStyles[0].titleWeight}
                                 style={titleStyles[0].titleStyle}
                                 spacing={titleStyles[0].titleLetter}
@@ -485,6 +513,12 @@ class edit extends Component {
                                     saveTitleStyle({ titleLetter: newValue })
                                 }
                                 onChangeLine={newValue => saveTitleStyle({ titleLine: newValue })}
+                                onChangeSize={newValue => saveTitleStyle({ titleSize: newValue })}
+                                onChangeSizeTablet={newValue => saveTitleStyle({ titleSizeTablet: newValue })}
+                                onChangeSizeMobile={newValue => saveTitleStyle({ titleSizeMobile: newValue })}
+                                onChangeSizeUnit={newValue =>
+                                    saveTitleStyle({ titleSizeUnit: newValue })
+                                }
                                 onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
                                 onChangeFamily={(fontFamily) => saveTitleStyle({ titleFont: fontFamily })}
                                 onChangeTextTransform={(textTransform) => saveTitleStyle({ titleTextTransform: textTransform })}
@@ -497,6 +531,7 @@ class edit extends Component {
                                     saveTitleStyle({ titleLetterUnit: newValue })
                                 }
                                 titleLetterUnit={titleStyles[0].titleLetterUnit}
+                                onResetClick={onResetTitleTypo}
                             />
                             <PremiumTextShadow
                                 color={titleStyles[0].titleShadowColor}

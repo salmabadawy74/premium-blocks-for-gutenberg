@@ -343,7 +343,10 @@ process.umask = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = PremiumRangeControl;
 
 var _responsive = __webpack_require__(131);
 
@@ -355,16 +358,14 @@ var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var useState = wp.element.useState;
 var RangeControl = wp.components.RangeControl;
 var useInstanceId = wp.compose.useInstanceId;
-/**
- * Build the Measure controls
- * @returns {object} Measure settings.
- */
-
 function PremiumRangeControl(_ref) {
     var label = _ref.label,
-        _onChange = _ref.onChange,
+        onChange = _ref.onChange,
+        onChangeTablet = _ref.onChangeTablet,
+        onChangeMobile = _ref.onChangeMobile,
         _ref$value = _ref.value,
         value = _ref$value === undefined ? '' : _ref$value,
         _ref$className = _ref.className,
@@ -390,32 +391,44 @@ function PremiumRangeControl(_ref) {
 
     var onChangInput = function onChangInput(event) {
         if (event.target.value === '') {
-            _onChange(undefined);
+            onChange(undefined);
             return;
         }
         var newValue = Number(event.target.value);
         if (newValue === '') {
-            _onChange(undefined);
+            onChange(undefined);
             return;
         }
         if (min < -0.1) {
             if (newValue > max) {
-                _onChange(max);
+                onChange(max);
             } else if (newValue < min && newValue !== '-') {
-                _onChange(min);
+                onChange(min);
             } else {
-                _onChange(newValue);
+                onChange(newValue);
             }
         } else {
             if (newValue > max) {
-                _onChange(max);
+                onChange(max);
             } else if (newValue < -0.1) {
-                _onChange(min);
+                onChange(min);
             } else {
-                _onChange(newValue);
+                onChange(newValue);
             }
         }
     };
+
+    var _useState = useState('desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        setDevice = _useState2[1];
+
+    var sliderValue = responsive ? value[device] : value;
+
+    var updateValue = function updateValue(value) {
+        device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
+    };
+
     var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
     return React.createElement(
         'div',
@@ -425,23 +438,22 @@ function PremiumRangeControl(_ref) {
             null,
             React.createElement(
                 'div',
-                { className: 'kmt-slider-title-wrap' },
-                responsive ? React.createElement(_responsive2.default, { label: label }) : React.createElement(
+                { className: 'premium-slider-title-wrap' },
+                responsive ? React.createElement(_responsive2.default, { label: label, onChange: function onChange(value) {
+                        return setDevice(value);
+                    } }) : React.createElement(
                     'span',
-                    { className: 'customize-control-title kmt-control-title' },
+                    { className: 'customize-control-title premium-control-title' },
                     label
                 )
             ),
-            showUnit && React.createElement(
-                'ul',
-                { className: 'kmt-slider-units' },
-                React.createElement(_premiumSizeUnits2.default, {
-                    activeUnit: unit,
-                    onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                        return onChangeUnit(newValue);
-                    }
-                })
-            )
+            showUnit && React.createElement(_premiumSizeUnits2.default, {
+                units: units,
+                activeUnit: unit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeUnit(newValue);
+                }
+            })
         ),
         React.createElement(
             'div',
@@ -451,22 +463,22 @@ function PremiumRangeControl(_ref) {
                 { className: 'input-field-wrapper active' },
                 React.createElement(RangeControl, {
                     beforeIcon: beforeIcon,
-                    value: value,
+                    value: sliderValue,
                     onChange: function onChange(newVal) {
-                        return _onChange(newVal);
+                        return updateValue(newVal);
                     },
                     min: min,
                     max: max,
                     step: step,
                     help: help,
                     withInputField: false,
-                    className: 'kmt-range-value-input'
+                    className: 'premium-range-value-input'
                 }),
                 React.createElement(
                     'div',
                     { className: 'kemet_range_value' },
                     React.createElement('input', {
-                        value: value,
+                        value: sliderValue,
                         onChange: onChangInput,
                         min: min,
                         max: max,
@@ -477,14 +489,13 @@ function PremiumRangeControl(_ref) {
                     })
                 )
             ),
-            React.createElement('button', { className: 'kmt-slider-reset', disabled: value === defaultValue, onClick: function onClick(e) {
+            React.createElement('button', { className: 'premium-slider-reset', disabled: value === defaultValue, onClick: function onClick(e) {
                     e.preventDefault();
-                    _onChange(defaultValue);
+                    onChange(defaultValue);
                 } })
         )
     );
 }
-exports.default = PremiumRangeControl;
 
 /***/ }),
 /* 4 */
@@ -1018,9 +1029,9 @@ var PremiumTypo = function (_Component) {
             fontFamily: _this.props.fontFamily || "System Default",
             // size: this.props.size,
             // weight: this.props.weight, //
-            style: _this.props.style, //
+            // style: this.props.style,//
             // spacing: this.props.spacing,
-            // line: this.props.line,
+            line: _this.props.line,
             upper: _this.props.upper, //
             sizeUnit: _this.props.sizeUnit || 'px',
             isVisible: false,
@@ -1090,6 +1101,12 @@ var PremiumTypo = function (_Component) {
                 onChangeFamily = _props$onChangeFamily === undefined ? function () {} : _props$onChangeFamily,
                 _props$onChangeSize = _props.onChangeSize,
                 onChangeSize = _props$onChangeSize === undefined ? function () {} : _props$onChangeSize,
+                _props$onChangeSizeTa = _props.onChangeSizeTablet,
+                onChangeSizeTablet = _props$onChangeSizeTa === undefined ? function () {} : _props$onChangeSizeTa,
+                _props$onChangeSizeMo = _props.onChangeSizeMobile,
+                onChangeSizeMobile = _props$onChangeSizeMo === undefined ? function () {} : _props$onChangeSizeMo,
+                _props$onChangeSizeUn = _props.onChangeSizeUnit,
+                onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function () {} : _props$onChangeSizeUn,
                 _props$onChangeWeight = _props.onChangeWeight,
                 onChangeWeight = _props$onChangeWeight === undefined ? function () {} : _props$onChangeWeight,
                 _props$onChangeStyle = _props.onChangeStyle,
@@ -1114,13 +1131,17 @@ var PremiumTypo = function (_Component) {
                 line = _props.line,
                 weight = _props.weight,
                 spacing = _props.spacing,
+                style = _props.style,
                 titleLineUnit = _props.titleLineUnit,
                 titleLetterUnit = _props.titleLetterUnit,
                 textTransform = _props.textTransform,
-                textDecoration = _props.textDecoration;
+                textDecoration = _props.textDecoration,
+                fontSizeMobile = _props.fontSizeMobile,
+                fontSizeTablet = _props.fontSizeTablet,
+                fontSize = _props.fontSize,
+                fontSizeType = _props.fontSizeType;
             var _state = this.state,
                 fontFamily = _state.fontFamily,
-                style = _state.style,
                 upper = _state.upper,
                 sizeUnit = _state.sizeUnit,
                 isVisible = _state.isVisible,
@@ -1184,7 +1205,6 @@ var PremiumTypo = function (_Component) {
             };
 
             var toggleVisible = function toggleVisible(v) {
-                console.log(v);
                 _this2.setState({
                     isVisible: true,
                     currentView: v
@@ -1200,20 +1220,18 @@ var PremiumTypo = function (_Component) {
             var changeFont = function changeFont(v) {
                 console.log(v);
                 _this2.setState({
-                    fontFamily: v.value
+                    fontFamily: v.value,
+                    search: v.value
                 });
                 onFontfamilyChange(v);
             };
 
-            var ChangeTextTransform = function ChangeTextTransform(v) {
-                console.log(v);
-                // textTransform = v;
-            };
+            console.log(fonts);
 
             var renderFonts = fonts.map(function (item, index) {
                 return React.createElement(
                     "div",
-                    { className: "kmt-typography-single-font active", key: index, onClick: function onClick(v) {
+                    { className: "kmt-typography-single-font " + (item.label == fontFamily ? 'active' : ''), key: index, onClick: function onClick() {
                             return changeFont(item);
                         } },
                     React.createElement(
@@ -1222,6 +1240,24 @@ var PremiumTypo = function (_Component) {
                         item.label
                     )
                 );
+            });
+
+            var renderVariations = fonts.map(function (item, index) {
+                if (item.value == fontFamily) {
+                    return (item.weight || []).map(function (weights, i) {
+                        return React.createElement(
+                            "li",
+                            { key: i, className: "" + (weights == weight ? 'active' : ''), onClick: function onClick() {
+                                    onChangeWeight(weights);
+                                } },
+                            React.createElement(
+                                "span",
+                                { className: "kmt-variation-name" },
+                                weights
+                            )
+                        );
+                    });
+                }
             });
 
             return React.createElement(
@@ -1249,7 +1285,7 @@ var PremiumTypo = function (_Component) {
                         React.createElement(
                             "div",
                             { className: "kmt-typography-title-container" },
-                            React.createElement(
+                            components.includes('family') && React.createElement(
                                 "span",
                                 {
                                     className: "kmt-font",
@@ -1262,7 +1298,7 @@ var PremiumTypo = function (_Component) {
                                     null,
                                     fontFamily
                                 ),
-                                isVisible && currentView == 'fonts' && React.createElement(
+                                isVisible && currentView == 'fonts' && components.includes('family') && React.createElement(
                                     Popover,
                                     null,
                                     React.createElement(
@@ -1328,18 +1364,29 @@ var PremiumTypo = function (_Component) {
                                             { className: "kmt-typography-container" },
                                             React.createElement(
                                                 "ul",
-                                                { className: "kmt-typography-options" },
+                                                { className: "kmt-typography-options", style: { width: "100%" } },
                                                 components.includes("size") && React.createElement(
                                                     "li",
                                                     { className: "customize-control-kmt-slider" },
                                                     React.createElement(_premiumRangeControl2.default, {
                                                         defaultValue: 0,
-                                                        label: __("Font Size"),
-                                                        value: size,
-                                                        min: "10",
-                                                        max: "80",
-                                                        onChange: onChangeSize,
-                                                        showUnit: showUnit
+                                                        label: __("Font Size")
+                                                        // value={size}
+                                                        , value: {
+                                                            'desktop': fontSize,
+                                                            'tablet': fontSizeTablet,
+                                                            'mobile': fontSizeMobile
+                                                        }
+                                                        // min="10"
+                                                        // max="80"
+                                                        // onChange={onChangeSize}
+                                                        , onChange: onChangeSize,
+                                                        onChangeTablet: onChangeSizeTablet,
+                                                        onChangeMobile: onChangeSizeMobile,
+                                                        showUnit: showUnit,
+                                                        responsive: true,
+                                                        onChangeUnit: onChangeSizeUnit,
+                                                        unit: fontSizeType
                                                     })
                                                 ),
                                                 components.includes("line") && React.createElement(
@@ -1366,10 +1413,21 @@ var PremiumTypo = function (_Component) {
                                                         defaultValue: ''
                                                     }, _defineProperty(_React$createElement, "onChange", onChangeSpacing), _defineProperty(_React$createElement, "showUnit", showUnit), _defineProperty(_React$createElement, "responsive", true), _defineProperty(_React$createElement, "onChangeUnit", onChangeLetterUnit), _defineProperty(_React$createElement, "unit", titleLetterUnit), _React$createElement))
                                                 ),
+                                                components.includes("style") && React.createElement(
+                                                    "li",
+                                                    { className: "customize-control-kmt-slider" },
+                                                    React.createElement(SelectControl, {
+                                                        label: __("Style"),
+                                                        options: STYLE,
+                                                        value: style,
+                                                        onChange: onChangeStyle,
+                                                        onResetClick: onResetClick
+                                                    })
+                                                ),
                                                 React.createElement(
                                                     "li",
                                                     { className: "kmt-typography-variant" },
-                                                    React.createElement(
+                                                    components.includes("upper") && React.createElement(
                                                         "ul",
                                                         { className: "kmt-text-transform" },
                                                         ['capitalize', 'uppercase'].map(function (variant) {
@@ -1417,7 +1475,7 @@ var PremiumTypo = function (_Component) {
                                     )
                                 )
                             ),
-                            React.createElement(
+                            components.includes("weight") && React.createElement(
                                 "span",
                                 {
                                     className: "kmt-weight",
@@ -1435,7 +1493,11 @@ var PremiumTypo = function (_Component) {
                                         React.createElement(
                                             "div",
                                             { className: "kmt-typography-container" },
-                                            React.createElement("ul", { className: "kmt-typography-variations" })
+                                            React.createElement(
+                                                "ul",
+                                                { className: "kmt-typography-variations" },
+                                                renderVariations
+                                            )
                                         )
                                     )
                                 )
@@ -1448,6 +1510,7 @@ var PremiumTypo = function (_Component) {
                                 className: "kmt-reset-btn ",
                                 disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                                 onClick: function onClick(e) {
+                                    onResetClick();
                                     e.preventDefault();
                                     _this2.setState(_extends({}, _this2.state, _this2.defaultValue));
                                 }
@@ -17395,11 +17458,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var __ = wp.i18n.__;
-// import kmtEvents from './events';
-
-var Fragment = wp.element.Fragment;
-
 var Responsive = function (_Component) {
     _inherits(Responsive, _Component);
 
@@ -17411,7 +17469,6 @@ var Responsive = function (_Component) {
         _this.state = {
             view: 'desktop'
         };
-        // this.linkResponsiveButtons();
         return _this;
     }
 
@@ -17425,22 +17482,22 @@ var Responsive = function (_Component) {
             var devices = ['desktop', 'tablet', 'mobile'];
             var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
             return _react2.default.createElement(
-                Fragment,
+                _react.Fragment,
                 null,
                 label ? _react2.default.createElement(
                     'span',
-                    { className: 'customize-control-title kmt-control-title' },
+                    { className: 'customize-control-title premium-control-title' },
                     label
                 ) : null,
                 _react2.default.createElement(
                     'ul',
-                    { className: 'kmt-responsive-control-btns kmt-responsive-slider-btns' },
+                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
                     devices.map(function (device, key) {
                         var activeClass = device === previewDevice ? ' active' : '';
                         var icon = device === 'mobile' ? 'smartphone' : device;
                         return _react2.default.createElement(
                             'li',
-                            { className: '' + device + activeClass },
+                            { key: key, className: '' + device + activeClass },
                             _react2.default.createElement(
                                 'button',
                                 { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
@@ -17467,13 +17524,6 @@ var Responsive = function (_Component) {
             }
             this.props.onChange(device);
         }
-        // linkResponsiveButtons() {
-        //     let self = this;
-        //     kmtEvents.on('KemetChangedRepsonsivePreview', function (e) {
-        //         self.changeViewType(e.detail);
-        //     })
-        // }
-
     }]);
 
     return Responsive;
@@ -54316,6 +54366,7 @@ var edit = function (_Component) {
             };
 
             var saveTitleStyle = function saveTitleStyle(value) {
+                console.log(value);
                 var newUpdate = titleStyles.map(function (item, index) {
                     if (0 === index) {
                         item = _extends({}, item, value);
@@ -54493,6 +54544,29 @@ var edit = function (_Component) {
                 label: __("Bottom"),
                 value: "bottom"
             }];
+
+            var onResetTitleTypo = function onResetTitleTypo() {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    console.log(item.titleFont);
+                    item.titleFont = "System Default";
+                    item.titleSize = 20;
+                    item.titleSizeTablet = 20;
+                    item.titleSizeMobile = 20;
+                    item.titleSizeUnit = "px";
+                    item.titleLine = 0;
+                    item.titleLineUnit = 'px';
+                    item.titleLetter = 0;
+                    item.titleLetterUnit = 'px';
+                    item.titleStyle = '';
+                    item.titleWeight = '';
+                    item.titleTextTransform = '';
+                    item.titleTextDecoration = '';
+                    return item;
+                });
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
 
             var mainClasses = (0, _classnames2.default)(className, "premium-icon-box");
 
@@ -54684,25 +54758,29 @@ var edit = function (_Component) {
                         })
                     }),
                     React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
+                        components: ["size", "weight", "style", "upper", "spacing", "line", "family"],
                         setAttributes: saveTitleStyle,
-                        showUnit: true,
-                        fontSizeType: {
-                            value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit")
-                        },
-                        fontSize: {
-                            value: titleStyles[0].titleSize,
-                            label: __("titleSize")
-                        },
-                        fontSizeMobile: {
-                            value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile")
-                        },
-                        fontSizeTablet: {
-                            value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet")
-                        },
+                        showUnit: true
+                        // fontSizeType={{
+                        //     value: titleStyles[0].titleSizeUnit,
+                        //     label: __("titleSizeUnit"),
+                        // }}
+                        // fontSize={{
+                        //     value: titleStyles[0].titleSize,
+                        //     // label: __("titleSize"),
+                        // }}
+                        // fontSizeMobile={{
+                        //     value: titleStyles[0].titleSizeMobile,
+                        //     // label: __("titleSizeMobile"),
+                        // }}
+                        // fontSizeTablet={{
+                        //     value: titleStyles[0].titleSizeTablet,
+                        //     // label: __("titleSizeTablet"),
+                        // }}
+                        , fontSizeType: titleStyles[0].titleSizeUnit,
+                        fontSize: titleStyles[0].titleSize,
+                        fontSizeMobile: titleStyles[0].titleSizeMobile,
+                        fontSizeTablet: titleStyles[0].titleSizeTablet,
                         weight: titleStyles[0].titleWeight,
                         style: titleStyles[0].titleStyle,
                         spacing: titleStyles[0].titleLetter,
@@ -54723,6 +54801,18 @@ var edit = function (_Component) {
                         onChangeLine: function onChangeLine(newValue) {
                             return saveTitleStyle({ titleLine: newValue });
                         },
+                        onChangeSize: function onChangeSize(newValue) {
+                            return saveTitleStyle({ titleSize: newValue });
+                        },
+                        onChangeSizeTablet: function onChangeSizeTablet(newValue) {
+                            return saveTitleStyle({ titleSizeTablet: newValue });
+                        },
+                        onChangeSizeMobile: function onChangeSizeMobile(newValue) {
+                            return saveTitleStyle({ titleSizeMobile: newValue });
+                        },
+                        onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                            return saveTitleStyle({ titleSizeUnit: newValue });
+                        },
                         onChangeUpper: function onChangeUpper(check) {
                             return saveTitleStyle({ titleUpper: check });
                         },
@@ -54742,7 +54832,8 @@ var edit = function (_Component) {
                         onChangeLetterUnit: function onChangeLetterUnit(newValue) {
                             return saveTitleStyle({ titleLetterUnit: newValue });
                         },
-                        titleLetterUnit: titleStyles[0].titleLetterUnit
+                        titleLetterUnit: titleStyles[0].titleLetterUnit,
+                        onResetClick: onResetTitleTypo
                     }),
                     React.createElement(_premiumTextShadow2.default, {
                         color: titleStyles[0].titleShadowColor,

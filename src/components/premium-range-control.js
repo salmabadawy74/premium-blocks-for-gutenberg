@@ -1,3 +1,4 @@
+const { useState } = wp.element;
 import Responsive from './Common/responsive';
 import PremiumSizeUnits from './premium-size-units'
 const {
@@ -5,13 +6,12 @@ const {
 } = wp.components;
 
 const { useInstanceId } = wp.compose;
-/**
- * Build the Measure controls
- * @returns {object} Measure settings.
- */
+
 export default function PremiumRangeControl({
     label,
     onChange,
+    onChangeTablet,
+    onChangeMobile,
     value = '',
     className = '',
     step = 1,
@@ -24,7 +24,8 @@ export default function PremiumRangeControl({
     defaultValue,
     onChangeUnit,
     showUnit,
-    responsive
+    responsive,
+
 }) {
     const onChangInput = (event) => {
         if (event.target.value === '') {
@@ -54,38 +55,46 @@ export default function PremiumRangeControl({
             }
         }
     };
+    const [device, setDevice] = useState('desktop');
+    const sliderValue = responsive ? value[device] : value;
+
+    const updateValue = (value) => {
+        device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value)
+    }
+
     const id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
     return (
         <div className={`premium-blocks-range-control`}>
             <header>
-                <div className={`kmt-slider-title-wrap`}>
-                    {responsive ? <Responsive label={label} /> : <span className="customize-control-title kmt-control-title">{label}</span>}
+                <div className={`premium-slider-title-wrap`}>
+                    {responsive ? <Responsive label={label} onChange={(value) => setDevice(value)} /> : <span className="customize-control-title premium-control-title">{label}</span>}
                 </div>
-                {showUnit && (<ul className="kmt-slider-units">
+                {showUnit && (
                     <PremiumSizeUnits
+                        units={units}
                         activeUnit={unit}
                         onChangeSizeUnit={newValue =>
                             onChangeUnit(newValue)
                         }
                     />
-                </ul>)}
+                )}
             </header>
             <div className={'wrapper'}>
                 <div className={`input-field-wrapper active`}>
                     <RangeControl
                         beforeIcon={beforeIcon}
-                        value={value}
-                        onChange={(newVal) => onChange(newVal)}
+                        value={sliderValue}
+                        onChange={(newVal) => updateValue(newVal)}
                         min={min}
                         max={max}
                         step={step}
                         help={help}
                         withInputField={false}
-                        className={'kmt-range-value-input'}
+                        className={'premium-range-value-input'}
                     />
                     <div className="kemet_range_value">
                         <input
-                            value={value}
+                            value={sliderValue}
                             onChange={onChangInput}
                             min={min}
                             max={max}
@@ -96,7 +105,7 @@ export default function PremiumRangeControl({
                         />
                     </div>
                 </div>
-                <button className="kmt-slider-reset" disabled={value === defaultValue} onClick={e => {
+                <button className="premium-slider-reset" disabled={value === defaultValue} onClick={e => {
                     e.preventDefault()
                     onChange(defaultValue)
                 }}>
