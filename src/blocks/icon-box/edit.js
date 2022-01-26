@@ -17,21 +17,10 @@ import RadioComponent from '../../components/radio-control';
 
 const { __ } = wp.i18n;
 
-const {
-    PanelBody,
-    SelectControl,
-    ToggleControl,
-    TabPanel,
-} = wp.components;
+const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
 const { withSelect } = wp.data
-const {
-    BlockControls,
-    InspectorControls,
-    RichText,
-    AlignmentToolbar,
-    URLInput,
-} = wp.blockEditor;
+const { BlockControls, InspectorControls, RichText, AlignmentToolbar, URLInput, } = wp.blockEditor;
 
 class edit extends Component {
     constructor() {
