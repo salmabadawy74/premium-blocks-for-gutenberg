@@ -318,11 +318,7 @@ class edit extends Component {
                             'tablet': lottieStyles[0].sizeTablet,
                             'mobile': lottieStyles[0].sizeMobile
                         }}
-                        defaultValue={{
-                            'desktop': 200,
-                            'tablet': 200,
-                            'mobile': 200
-                        }}
+                        defaultValue={200}
                         min={0}
                         max={lottieStyles[0].sizeUnit === '%' ? 100 : 800}
                         onChange={(value) => saveLottieStyles({ size: (value !== "") ? value : 200 })}
