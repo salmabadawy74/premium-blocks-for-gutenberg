@@ -23,7 +23,7 @@ class PBG_Template_Helper {
 
     public function get_cached_templates() {
 
-        $dir        = PREMIUM_BLOCKS_PATH . 'src/blocks/template/json';
+        $dir        = PREMIUM_BLOCKS_PATH . 'assets/template';
 
         $list_files = $this->get_default_assets();
         
@@ -80,7 +80,7 @@ class PBG_Template_Helper {
         $all_templates =  str_replace("\r\n",'', $content);
 
         //write json to file
-        $dir =  PREMIUM_BLOCKS_PATH . 'src/blocks/template/json/pbg-block-templates.json';
+        $dir =  PREMIUM_BLOCKS_PATH . 'assets/template/pbg-block-templates.json';
 
         if (file_put_contents($dir , $all_templates)) {
 
