@@ -58,7 +58,7 @@ class AdvancedColorControl extends Component {
 
             return parsedColor.toRgbString()
         }
-
+        const isNew = wp.components.GradientPicker
         return (
             <div className="premium-color-popover-container">
                 <div className="premium-advanced-color-container">
@@ -99,48 +99,50 @@ class AdvancedColorControl extends Component {
                                         </ul>
                                     </div>
                                 )}
-                                {this.state.classSat === 'first' && !this.props.disableCustomColors && (
-                                    <ColorPicker
-                                        color={(undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue)}
-                                        onChangeComplete={(color) => {
-                                            this.setState({ currentColor: color.hex })
-                                            if (color.rgb) {
-                                                this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
-                                            }
-                                            if (this.props.onColorClassChange) {
-                                                this.props.onColorClassChange('');
-                                            }
-                                        }}
-                                    />
-                                )}
-                                {!this.props.disableCustomColors && this.state.classSat !== 'first' && (
-                                    <ColorPicker
-                                        color={(undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor)}
-                                        onChangeComplete={(color) => {
-                                            this.setState({ currentColor: color.hex });
-                                            if (color.rgb) {
+                                <div className={isNew
+                                    ? 'premium-gutenberg-color-picker-new'
+                                    : 'premium-gutenberg-color-picker'}>
+                                    {this.state.classSat === 'first' && !this.props.disableCustomColors && (
+                                        <ColorPicker
+                                            color={(undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue)}
+                                            onChangeComplete={(color) => {
+                                                this.setState({ currentColor: color.hex })
+                                                if (color.rgb) {
+                                                    this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
+                                                }
+                                                if (this.props.onColorClassChange) {
+                                                    this.props.onColorClassChange('');
+                                                }
+                                            }}
+                                        />
+                                    )}
+                                    {!this.props.disableCustomColors && this.state.classSat !== 'first' && (
+                                        <ColorPicker
+                                            color={(undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor)}
+                                            onChangeComplete={(color) => {
+                                                this.setState({ currentColor: color.hex });
+                                                if (color.rgb) {
 
-                                                this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
-                                            }
-                                            if (this.props.onColorClassChange) {
-                                                this.props.onColorClassChange('');
-                                            }
-                                        }}
-                                    />
-                                )}
-                                <div className="premium-color-picker-value">
-                                    <input
-                                        onChange={({ target: { value: color } }) => {
-                                            this.props.onColorChange(
-                                                normalizeColor(color)
-
-                                            )
-                                            this.setState({ currentColor: color })
-
-                                        }}
-                                        value={normalizeColor(this.state.currentColor)}
-                                        type="text"
-                                    />
+                                                    this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
+                                                }
+                                                if (this.props.onColorClassChange) {
+                                                    this.props.onColorClassChange('');
+                                                }
+                                            }}
+                                        />
+                                    )}
+                                    <div className="premium-color-picker-value">
+                                        <input
+                                            onChange={({ target: { value: color } }) => {
+                                                this.props.onColorChange(
+                                                    normalizeColor(color)
+                                                )
+                                                this.setState({ currentColor: color })
+                                            }}
+                                            value={normalizeColor(this.state.currentColor)}
+                                            type="text"
+                                        />
+                                    </div>
                                 </div>
                             </Popover>
                         )}
