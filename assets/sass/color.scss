@@ -346,6 +346,31 @@
             padding: 20px var(--cpm-ph) 1px var(--cpm-ph);
             border-top: 1px solid #eee;
         }
+        .react-colorful + div {
+            display: none;
+        }
+    }
+    .premium-color-picker-value {
+        display: block;
+        border-top: 1px solid #eee;
+        padding: 20px 17px;
+
+        input[type="text"] {
+            height: 30px !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 3px 8px !important;
+            min-height: initial;
+            font-size: 12px !important;
+            color: #555d66;
+            line-height: normal;
+            background-color: #fff;
+            border: 1px solid #ddd !important;
+            border-radius: 3px !important;
+            box-shadow: 0 0 0 0 transparent;
+            transition: box-shadow 0.1s linear, background 0.1s linear,
+                border-radius 0.1s linear, border-color 0.1s linear;
+        }
     }
 
     .components-color-picker__saturation {

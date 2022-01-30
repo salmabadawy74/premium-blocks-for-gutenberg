@@ -46,6 +46,38 @@ const attributes = {
                 tags: []
             }]
     },
+    btnBorderTop: {
+        type: "number",
+        default: 1
+    },
+    btnBorderRight: {
+        type: "number",
+        default: 1
+    },
+    btnBorderBottom: {
+        type: "number",
+        default: 1
+    },
+    btnBorderLeft: {
+        type: "number",
+        default: 1
+    },
+    textBorderTop: {
+        type: "number",
+        default: 1
+    },
+    textBorderRight: {
+        type: "number",
+        default: 1
+    },
+    textBorderBottom: {
+        type: "number",
+        default: 1
+    },
+    textBorderLeft: {
+        type: "number",
+        default: 1
+    },
     inputStyles: {
         type: 'array',
         default: [
@@ -68,10 +100,7 @@ const attributes = {
                 textLine: '',
                 textBackColor: '',
                 textBorderType: 'none',
-                textBorderTop: 1,
-                textBorderRight: 1,
-                textBorderBottom: 1,
-                textBorderLeft: 1,
+
                 textBorderColor: '',
                 textBorderRadius: 0,
             }
@@ -94,10 +123,6 @@ const attributes = {
                 btnUpper: '',
                 btnLine: '',
                 btnBorderType: 'none',
-                btnBorderTop: 1,
-                btnBorderRight: 1,
-                btnBorderBottom: 1,
-                btnBorderLeft: 1,
                 btnBorderColor: '',
                 btnBorderRadius: 0,
                 btnColumn: '25'
