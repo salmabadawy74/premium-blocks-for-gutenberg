@@ -128,9 +128,9 @@ const testimonialsAttrs = {
         type: "array",
         default: [
             {
-                quotSize: '',
+                quotSize: 2,
                 quotColor: '',
-                quotOpacity: 100,
+                quotOpacity: 50,
 
             }
         ]

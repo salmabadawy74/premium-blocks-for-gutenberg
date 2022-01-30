@@ -232,7 +232,15 @@ export class edit extends Component {
                 eMail,
                 inputStyles,
                 btnStyles,
-                mailchimp },
+                mailchimp,
+                btnBorderTop,
+                btnBorderRight,
+                btnBorderBottom,
+                btnBorderLeft,
+                textBorderTop,
+                textBorderRight,
+                textBorderBottom,
+                textBorderLeft, },
             isSelected,
             setAttributes,
             className } = this.props;
@@ -483,7 +491,7 @@ export class edit extends Component {
                         <TextControl
                             label={__(`Label`, 'premium-block-for-gutenberg')}
                             value={inputStyles[0].label}
-                            onChange={(newURL) => saveInputStyle({ url: newURL })}
+                            onChange={(newURL) => saveInputStyle({ label: newURL })}
                         />
                         <TextControl
                             label={__(`Placeholder`, 'premium-block-for-gutenberg')}
@@ -492,13 +500,7 @@ export class edit extends Component {
                                 saveInputStyle({ placeholder: newURL })
                             }
                         />
-                        <ToggleControl
-                            label={__(`Required`, 'premium-block-for-gutenberg')}
-                            checked={inputStyles[0].required}
-                            onChange={(value) =>
-                                saveInputStyle({ required: value })
-                            }
-                        />
+
                         <SelectControl
                             label={__(`Column Width`, 'premium-block-for-gutenberg')}
                             options={COLUMNS}
@@ -589,17 +591,17 @@ export class edit extends Component {
                         />
                         <PremiumBorder
                             borderType={inputStyles[0].textBorderType}
-                            top={inputStyles[0].textBorderTop}
-                            right={inputStyles[0].textBorderRight}
-                            bottom={inputStyles[0].textBorderBottom}
-                            left={inputStyles[0].textBorderLeft}
+                            top={textBorderTop}
+                            right={textBorderRight}
+                            bottom={textBorderBottom}
+                            left={textBorderLeft}
                             borderColor={inputStyles[0].textBorderColor}
                             borderRadius={inputStyles[0].textBorderRadius}
                             onChangeType={(newType) =>
                                 saveInputStyle({ textBorderType: newType })
                             }
                             onChangeWidth={({ top, right, bottom, left }) =>
-                                saveInputStyle({
+                                setAttributes({
                                     textBorderTop: top,
                                     textBorderRight: right,
                                     textBorderBottom: bottom,
@@ -669,19 +671,19 @@ export class edit extends Component {
                             setAttributes={saveButtonStyle}
                             fontSizeType={{
                                 value: btnStyles[0].btnSizeUnit,
-                                label: __("textSizeUnit", 'premium-block-for-gutenberg'),
+                                label: "btnSizeUnit",
                             }}
                             fontSize={{
                                 value: btnStyles[0].btnSize,
-                                label: __("textSize", 'premium-block-for-gutenberg'),
+                                label: "btnSize",
                             }}
                             fontSizeMobile={{
                                 value: btnStyles[0].btnSizeMobile,
-                                label: __("textSizeMobile", 'premium-block-for-gutenberg'),
+                                label: "btnSizeMobile",
                             }}
                             fontSizeTablet={{
                                 value: btnStyles[0].btnSizeTablet,
-                                label: __("textSizeTablet", 'premium-block-for-gutenberg'),
+                                label: "btnSizeTablet",
                             }}
                             fontFamily={btnStyles[0].btnFontFamily}
                             weight={btnStyles[0].btnWeight}
@@ -704,9 +706,6 @@ export class edit extends Component {
                             onChangeLine={(newValue) =>
                                 saveButtonStyle({ btnLine: newValue })
                             }
-                            onChangeSize={(newSize) =>
-                                saveButtonStyle({ btnSize: newSize })
-                            }
                             onChangeStyle={(newStyle) =>
                                 saveButtonStyle({ btnStyle: newStyle })
                             }
@@ -721,17 +720,17 @@ export class edit extends Component {
                         />
                         <PremiumBorder
                             borderType={btnStyles[0].btnBorderType}
-                            top={btnStyles[0].btnBorderTop}
-                            right={btnStyles[0].btnBorderRight}
-                            bottom={btnStyles[0].btnBorderBottom}
-                            left={btnStyles[0].btnBorderLeft}
+                            top={btnBorderTop}
+                            right={btnBorderRight}
+                            bottom={btnBorderBottom}
+                            left={btnBorderLeft}
                             borderColor={btnStyles[0].btnBorderColor}
                             borderRadius={btnStyles[0].btnBorderRadius}
                             onChangeType={(newType) =>
-                                saveButtonStyle({ borderType: newType })
+                                saveButtonStyle({ btnBorderType: newType })
                             }
                             onChangeWidth={({ top, right, bottom, left }) =>
-                                saveButtonStyle({
+                                setAttributes({
                                     btnBorderTop: top,
                                     btnBorderRight: right,
                                     btnBorderBottom: bottom,
@@ -816,7 +815,9 @@ export class edit extends Component {
                             borderStyle: inputStyles[0].textBorderType,
                             borderColor: inputStyles[0].textBorderColor,
                             borderRadius: inputStyles[0].textBorderRadius,
-                            fontSize: `${textSizeInput}px`
+                            fontSize: `${textSizeInput}px`,
+                            borderWidth: `${textBorderTop}px ${textBorderRight}px ${textBorderBottom}px ${textBorderLeft}px`
+
                         }}
                     />
                 </div>
@@ -849,7 +850,9 @@ export class edit extends Component {
                             borderStyle: btnStyles[0].btnBorderType,
                             borderColor: btnStyles[0].btnBorderColor,
                             borderRadius: btnStyles[0].btnBorderRadius,
-                            fontSize: `${textSizeBtn}px`
+                            fontSize: `${textSizeBtn}${btnStyles[0].btnSizeUnit}`,
+                            borderWidth: `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+
                         }}
                         onClick={(e) => {
                             e.preventDefault();

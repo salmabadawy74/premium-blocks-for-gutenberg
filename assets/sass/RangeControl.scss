@@ -87,7 +87,7 @@
             user-select: none;
             opacity: 0.7;
             cursor: pointer;
-
+            word-wrap: initial;
             &.active {
                 font-weight: bold;
                 text-decoration: underline;

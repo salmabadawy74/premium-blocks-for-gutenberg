@@ -22,8 +22,6 @@ jQuery(document).ready(function ($) {
         const waypoint = new Waypoint({
             element: $toggleprogressBar,
             handler: function () {
-                console.log(barWidth);
-
                 $toggleprogressBar.animate({
                     width: barWidth + '%'
                 }, speed * 1000);

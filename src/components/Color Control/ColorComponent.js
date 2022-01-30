@@ -5,6 +5,8 @@ const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
 const { Button, Popover, ColorIndicator, ColorPicker, Tooltip } = wp.components;
 const { withSelect } = wp.data;
+import { colord } from 'colord'
+
 
 class AdvancedColorControl extends Component {
     constructor() {
@@ -43,6 +45,19 @@ class AdvancedColorControl extends Component {
                 this.setState({ isVisible: false });
             }
         };
+        const normalizeColor = (color) => {
+            const parsedColor = colord(color)
+
+            if (!parsedColor.parsed) {
+                return color
+            }
+
+            if (parsedColor.rgba.a === 1) {
+                return parsedColor.toHex()
+            }
+
+            return parsedColor.toRgbString()
+        }
 
         return (
             <div className="premium-color-popover-container">
@@ -113,6 +128,20 @@ class AdvancedColorControl extends Component {
                                         }}
                                     />
                                 )}
+                                <div className="premium-color-picker-value">
+                                    <input
+                                        onChange={({ target: { value: color } }) => {
+                                            this.props.onColorChange(
+                                                normalizeColor(color)
+
+                                            )
+                                            this.setState({ currentColor: color })
+
+                                        }}
+                                        value={normalizeColor(this.state.currentColor)}
+                                        type="text"
+                                    />
+                                </div>
                             </Popover>
                         )}
                         {this.state.isVisible && (

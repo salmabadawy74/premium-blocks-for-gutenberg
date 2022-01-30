@@ -231,7 +231,7 @@ export default class PremiumTypo extends Component {
                                     defaultValue={1}
                                     onChange={onChangeLine}
                                     showUnit={false}
-                                    min={5}
+                                    min={0}
                                     max={200}
                                 />
                             )}

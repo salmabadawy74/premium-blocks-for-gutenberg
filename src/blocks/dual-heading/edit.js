@@ -363,7 +363,7 @@ class edit extends Component {
                             label={__("Margin Left", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstMarginL}
                             onChange={newMargin =>
-                                saveFirstStyle({ firstMarginL: newMargin || "0" })
+                                saveFirstStyle({ firstMarginL: newMargin })
                             }
                             showUnit={false}
                             defaultValue={0}
