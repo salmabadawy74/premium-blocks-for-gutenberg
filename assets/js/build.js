@@ -451,7 +451,7 @@ var AdvancedColorControl = function (_Component) {
 
                 return parsedColor.toRgbString();
             };
-
+            var isNew = wp.components.GradientPicker;
             return React.createElement(
                 'div',
                 { className: 'premium-color-popover-container' },
@@ -507,44 +507,48 @@ var AdvancedColorControl = function (_Component) {
                                     })
                                 )
                             ),
-                            this.state.classSat === 'first' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
-                                color: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
-                                onChangeComplete: function onChangeComplete(color) {
-                                    _this2.setState({ currentColor: color.hex });
-                                    if (color.rgb) {
-                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
-                                    }
-                                    if (_this2.props.onColorClassChange) {
-                                        _this2.props.onColorClassChange('');
-                                    }
-                                }
-                            }),
-                            !this.props.disableCustomColors && this.state.classSat !== 'first' && React.createElement(ColorPicker, {
-                                color: undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor,
-                                onChangeComplete: function onChangeComplete(color) {
-                                    _this2.setState({ currentColor: color.hex });
-                                    if (color.rgb) {
-
-                                        _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
-                                    }
-                                    if (_this2.props.onColorClassChange) {
-                                        _this2.props.onColorClassChange('');
-                                    }
-                                }
-                            }),
                             React.createElement(
                                 'div',
-                                { className: 'premium-color-picker-value' },
-                                React.createElement('input', {
-                                    onChange: function onChange(_ref2) {
-                                        var color = _ref2.target.value;
+                                { className: isNew ? 'premium-gutenberg-color-picker-new' : 'premium-gutenberg-color-picker' },
+                                this.state.classSat === 'first' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
+                                    color: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
+                                    onChangeComplete: function onChangeComplete(color) {
+                                        _this2.setState({ currentColor: color.hex });
+                                        if (color.rgb) {
+                                            _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
+                                        }
+                                        if (_this2.props.onColorClassChange) {
+                                            _this2.props.onColorClassChange('');
+                                        }
+                                    }
+                                }),
+                                !this.props.disableCustomColors && this.state.classSat !== 'first' && React.createElement(ColorPicker, {
+                                    color: undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor,
+                                    onChangeComplete: function onChangeComplete(color) {
+                                        _this2.setState({ currentColor: color.hex });
+                                        if (color.rgb) {
 
-                                        _this2.props.onColorChange(normalizeColor(color));
-                                        _this2.setState({ currentColor: color });
-                                    },
-                                    value: normalizeColor(this.state.currentColor),
-                                    type: 'text'
-                                })
+                                            _this2.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
+                                        }
+                                        if (_this2.props.onColorClassChange) {
+                                            _this2.props.onColorClassChange('');
+                                        }
+                                    }
+                                }),
+                                React.createElement(
+                                    'div',
+                                    { className: 'premium-color-picker-value' },
+                                    React.createElement('input', {
+                                        onChange: function onChange(_ref2) {
+                                            var color = _ref2.target.value;
+
+                                            _this2.props.onColorChange(normalizeColor(color));
+                                            _this2.setState({ currentColor: color });
+                                        },
+                                        value: normalizeColor(this.state.currentColor),
+                                        type: 'text'
+                                    })
+                                )
                             )
                         ),
                         this.state.isVisible && React.createElement(
@@ -1722,6 +1726,7 @@ var PremiumTypo = function (_Component) {
                     }
                 }
             };
+
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle" },

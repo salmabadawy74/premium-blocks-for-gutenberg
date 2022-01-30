@@ -122,6 +122,7 @@ export default class PremiumTypo extends Component {
                 }
             }
         }
+
         return (
             <div className="premium-control-toggle">
                 <strong>{__("Typography")}</strong>
