@@ -161,7 +161,8 @@ class AdvancedColorControl extends Component {
                             </Tooltip>
                         )}
                     </div>
-                    <div className="premium-color-btn-reset-wrap">
+
+                    {!this.props.disableReset && <div className="premium-color-btn-reset-wrap">
                         <button
                             className="premium-reset-btn"
                             disabled={this.state.currentColor === this.props.colorDefault}
@@ -173,7 +174,7 @@ class AdvancedColorControl extends Component {
                                 }
                             }}>
                         </button>
-                    </div>
+                    </div>}
                 </div>
             </div >
         );

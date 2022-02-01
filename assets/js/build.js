@@ -570,7 +570,7 @@ var AdvancedColorControl = function (_Component) {
                             )
                         )
                     ),
-                    React.createElement(
+                    !this.props.disableReset && React.createElement(
                         'div',
                         { className: 'premium-color-btn-reset-wrap' },
                         React.createElement('button', {
@@ -2034,6 +2034,10 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -2061,73 +2065,68 @@ function PremiumTextShadow(props) {
 
 
     return React.createElement(
-        "div",
-        { className: "premium-control-toggle" },
+        'div',
+        { className: 'premium-control-toggle premium-shadow-control__container' },
         React.createElement(
-            "strong",
+            'strong',
             null,
             __(label || "Text Shadow")
         ),
-        React.createElement(Dropdown, {
-            className: "premium-control-toggle-btn",
-            contentClassName: "premium-control-toggle-content",
-            position: "bottom right",
-            renderToggle: function renderToggle(_ref) {
-                var isOpen = _ref.isOpen,
-                    onToggle = _ref.onToggle;
-                return React.createElement(
-                    Button,
-                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                );
-            },
-            renderContent: function renderContent() {
-                return React.createElement(
-                    Fragment,
-                    null,
-                    React.createElement(
+        React.createElement(
+            'div',
+            { className: 'premium-shadow-control__wrapper' },
+            React.createElement(_ColorComponent2.default, {
+                colorValue: color,
+                colorDefault: '',
+                onColorChange: onChangeColor,
+                disableReset: true
+            }),
+            React.createElement(Dropdown, {
+                className: 'premium-control-toggle-btn',
+                contentClassName: 'premium-control-toggle-content',
+                position: 'bottom right',
+                renderToggle: function renderToggle(_ref) {
+                    var isOpen = _ref.isOpen,
+                        onToggle = _ref.onToggle;
+                    return React.createElement(
+                        Button,
+                        { isSmall: true, onClick: onToggle, 'aria-expanded': isOpen },
+                        React.createElement('i', { className: 'dashicons dashicons-edit' })
+                    );
+                },
+                renderContent: function renderContent() {
+                    return React.createElement(
                         Fragment,
                         null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Shadow Color")
-                        ),
-                        React.createElement(ColorPicker, {
-                            color: color,
-                            onChangeComplete: onChangeColor,
-                            disableAlpha: true,
-                            onResetClick: onResetClick
+                        React.createElement(_premiumRangeControl2.default, {
+                            label: __("Blur"),
+                            value: blur,
+                            onChange: onChangeBlur,
+                            showUnit: false,
+                            defaultValue: 0
+                        }),
+                        React.createElement(_premiumRangeControl2.default, {
+                            label: __("Horizontal"),
+                            value: horizontal,
+                            onChange: onChangehHorizontal,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
+                        }),
+                        React.createElement(_premiumRangeControl2.default, {
+                            label: __("Vertical"),
+                            value: vertical,
+                            onChange: onChangeVertical,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
                         })
-                    ),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Blur"),
-                        value: blur,
-                        onChange: onChangeBlur,
-                        showUnit: false,
-                        defaultValue: 0
-                    }),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Horizontal"),
-                        value: horizontal,
-                        onChange: onChangehHorizontal,
-                        showUnit: false,
-                        defaultValue: 0,
-                        min: -100,
-                        max: 100
-                    }),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Vertical"),
-                        value: vertical,
-                        onChange: onChangeVertical,
-                        showUnit: false,
-                        defaultValue: 0,
-                        min: -100,
-                        max: 100
-                    })
-                );
-            }
-        })
+                    );
+                }
+            })
+        )
     );
 }
 
@@ -2146,6 +2145,10 @@ exports.default = PremiumBoxShadow;
 var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2186,78 +2189,75 @@ function PremiumBoxShadow(props) {
     }];
 
     return React.createElement(
-        "div",
-        { className: "premium-control-toggle" },
+        'div',
+        { className: 'premium-control-toggle premium-shadow-control__container' },
         React.createElement(
-            "strong",
+            'strong',
             null,
             __(label || "Box Shadow")
         ),
-        React.createElement(Dropdown, {
-            className: "premium-control-toggle-btn",
-            contentClassName: "premium-control-toggle-content",
-            position: "bottom right",
-            renderToggle: function renderToggle(_ref) {
-                var isOpen = _ref.isOpen,
-                    onToggle = _ref.onToggle;
-                return React.createElement(
-                    Button,
-                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                );
-            },
-            renderContent: function renderContent() {
-                return React.createElement(
-                    Fragment,
-                    null,
-                    React.createElement(
+        React.createElement(
+            'div',
+            { className: 'premium-shadow-control__wrapper' },
+            React.createElement(_ColorComponent2.default, {
+                colorValue: color,
+                colorDefault: '',
+                onColorChange: onChangeColor,
+                disableReset: true
+
+            }),
+            React.createElement(Dropdown, {
+                className: 'premium-control-toggle-btn',
+                contentClassName: 'premium-control-toggle-content',
+                position: 'bottom right',
+                renderToggle: function renderToggle(_ref) {
+                    var isOpen = _ref.isOpen,
+                        onToggle = _ref.onToggle;
+                    return React.createElement(
+                        Button,
+                        { isSmall: true, onClick: onToggle, 'aria-expanded': isOpen },
+                        React.createElement('i', { className: 'dashicons dashicons-edit' })
+                    );
+                },
+                renderContent: function renderContent() {
+                    return React.createElement(
                         Fragment,
                         null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Shadow Color")
-                        ),
-                        React.createElement(ColorPicker, {
-                            color: color,
-                            onChangeComplete: onChangeColor,
-                            disableAlpha: withAlpha ? false : true
+                        React.createElement(_premiumRangeControl2.default, {
+                            label: __("Horizontal"),
+                            value: horizontal,
+                            onChange: onChangehHorizontal,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
+                        }),
+                        React.createElement(_premiumRangeControl2.default, {
+                            label: __("Vertical"),
+                            value: vertical,
+                            onChange: onChangeVertical,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
+                        }),
+                        React.createElement(_premiumRangeControl2.default, {
+                            label: __("Blur"),
+                            value: blur,
+                            onChange: onChangeBlur,
+                            showUnit: false,
+                            defaultValue: 0
+                        }),
+                        React.createElement(SelectControl, {
+                            label: __("Position"),
+                            options: POSITION,
+                            value: position,
+                            onChange: onChangePosition
                         })
-                    ),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Horizontal"),
-                        value: horizontal,
-                        onChange: onChangehHorizontal,
-                        showUnit: false,
-                        defaultValue: 0,
-                        min: -100,
-                        max: 100
-                    }),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Vertical"),
-                        value: vertical,
-                        onChange: onChangeVertical,
-                        showUnit: false,
-                        defaultValue: 0,
-                        min: -100,
-                        max: 100
-                    }),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Blur"),
-                        value: blur,
-                        onChange: onChangeBlur,
-                        showUnit: false,
-                        defaultValue: 0
-                    }),
-                    React.createElement(SelectControl, {
-                        label: __("Position"),
-                        options: POSITION,
-                        value: position,
-                        onChange: onChangePosition
-                    })
-                );
-            }
-        })
+                    );
+                }
+            })
+        )
     );
 }
 
@@ -16317,7 +16317,7 @@ var PremiumAccordion = function (_Component) {
                         horizontal: titleStyles[0].titleShadowHorizontal,
                         vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyles({ titleShadowColor: newColor.hex });
+                            return saveTitleStyles({ titleShadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveTitleStyles({ titleShadowBlur: newBlur });
@@ -16541,7 +16541,7 @@ var PremiumAccordion = function (_Component) {
                         vertical: textShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
                             return setAttributes({
-                                textShadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                textShadowColor: newColor === undefined ? "transparent" : newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -26428,7 +26428,7 @@ var edit = exports.edit = function (_Component) {
                         vertical: titleStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveStyles({
-                                shadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                shadowColor: newColor === undefined ? "transparent" : newColor
                             }, titleStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -26504,7 +26504,7 @@ var edit = exports.edit = function (_Component) {
                         vertical: descStyles[0].descShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
                             return descriptionStyles({
-                                descShadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                descShadowColor: newColor === undefined ? "transparent" : newColor
                             }, descStyles);
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -26576,7 +26576,7 @@ var edit = exports.edit = function (_Component) {
                         position: containerStyles[0].containerShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return containerStyle({
-                                containerShadowColor: newColor.hex
+                                containerShadowColor: newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -29071,7 +29071,7 @@ var edit = exports.edit = function (_Component) {
                         horizontal: textStyles[0].shadowHorizontal,
                         vertical: textStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveTextStyles({ shadowColor: newColor.hex });
+                            return saveTextStyles({ shadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveTextStyles({ shadowBlur: newBlur });
@@ -29226,7 +29226,7 @@ var edit = exports.edit = function (_Component) {
                         position: btnStyles[0].btnShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveBtnStyles({
-                                btnShadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                btnShadowColor: newColor === undefined ? "transparent" : newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -31466,7 +31466,7 @@ var edit = function (_Component) {
                         withAlpha: true,
                         onChangeColor: function onChangeColor(newColor) {
                             saveContainerStyle({
-                                shadowColor: newColor.rgb
+                                shadowColor: newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -31553,7 +31553,7 @@ var edit = function (_Component) {
                         justifyContent: align,
                         flexDirection: flexDir,
                         backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                        boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px rgba(" + containerStyles[0].shadowColor.r + "," + containerStyles[0].shadowColor.g + "," + containerStyles[0].shadowColor.b + ", " + containerStyles[0].shadowColor.a + ") " + containerStyles[0].shadowPosition,
+                        boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
                         backgroundImage: btnbg,
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
                         backgroundPosition: containerStyles[0].backgroundPosition,
@@ -34205,7 +34205,7 @@ var edit = function (_Component) {
                         horizontal: firstStyles[0].firstShadowHorizontal,
                         vertical: firstStyles[0].firstShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveFirstStyle({ firstShadowColor: newColor.hex || "transparent" });
+                            return saveFirstStyle({ firstShadowColor: newColor || "transparent" });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveFirstStyle({ firstShadowBlur: newBlur || "0" });
@@ -34406,7 +34406,7 @@ var edit = function (_Component) {
                         vertical: secondStyles[0].secondShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveSecondStyle({
-                                secondShadowColor: newColor.hex || "transparent"
+                                secondShadowColor: newColor || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -36919,7 +36919,7 @@ var edit = function edit(props) {
                 horizontal: iconStyles[0].shadowHorizontal,
                 vertical: iconStyles[0].shadowVertical,
                 onChangeColor: function onChangeColor(newColor) {
-                    return saveIconStyle({ shadowColor: newColor.hex });
+                    return saveIconStyle({ shadowColor: newColor });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
                     return saveIconStyle({ shadowBlur: newBlur });
@@ -37056,7 +37056,7 @@ var edit = function edit(props) {
                 position: containerStyles[0].wrapShadowPosition,
                 onChangeColor: function onChangeColor(newColor) {
                     return saveContainerStyle({
-                        wrapShadowColor: newColor.hex
+                        wrapShadowColor: newColor
                     });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
@@ -39127,7 +39127,7 @@ var edit = function (_Component) {
                         vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveTitleStyle({
-                                titleShadowColor: newColor.hex || "transparent"
+                                titleShadowColor: newColor || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -39319,7 +39319,7 @@ var edit = function (_Component) {
                         position: btnStyles[0].btnShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveButtonStyle({
-                                btnShadowColor: newColor.hex || "transparent"
+                                btnShadowColor: newColor || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -39449,7 +39449,7 @@ var edit = function (_Component) {
                         position: containerStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveContainerStyle({
-                                shadowColor: newColor.hex || "transparent"
+                                shadowColor: newColor || "transparent"
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -39483,7 +39483,7 @@ var edit = function (_Component) {
                         position: containerStyles[0].hoverShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveContainerStyle({
-                                hoverShadowColor: newColor.hex
+                                hoverShadowColor: newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -44656,7 +44656,7 @@ var PremiumPricingTable = function (_Component) {
                         horizontal: titleStyles[0].titleShadowHorizontal,
                         vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyles({ titleShadowColor: newColor.hex });
+                            return saveTitleStyles({ titleShadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveTitleStyles({ titleShadowBlur: newBlur });
@@ -45711,7 +45711,7 @@ var PremiumPricingTable = function (_Component) {
                         position: tableStyles[0].tableShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveTableStyles({
-                                tableShadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                tableShadowColor: newColor === undefined ? "transparent" : newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -49445,7 +49445,7 @@ var edit = function edit(props) {
                 position: containerStyles[0].shadowPosition,
                 onChangeColor: function onChangeColor(newColor) {
                     return saveContainerStyle({
-                        shadowColor: newColor === undefined ? "transparent" : newColor.hex
+                        shadowColor: newColor === undefined ? "transparent" : newColor
                     });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
@@ -51219,7 +51219,7 @@ var edit = function (_Component) {
                         position: containerStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveContainerStyle({
-                                shadowColor: newColor.hex
+                                shadowColor: newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -53925,7 +53925,7 @@ var edit = function (_Component) {
                                 vertical: descStyles[0].descShadowVertical,
                                 onChangeColor: function onChangeColor(newColor) {
                                     return saveDescritionStyle({
-                                        descShadowColor: newColor.hex || "transparent"
+                                        descShadowColor: newColor || "transparent"
                                     });
                                 },
                                 onChangeBlur: function onChangeBlur(newBlur) {
@@ -54109,7 +54109,7 @@ var edit = function (_Component) {
                         position: boxStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
                             return saveBoxStyle({
-                                shadowColor: newColor === undefined ? "transparent" : newColor.hex
+                                shadowColor: newColor === undefined ? "transparent" : newColor
                             });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
@@ -56470,7 +56470,7 @@ var edit = function (_Component) {
                         horizontal: fancyStyles[0].shadowHorizontal,
                         vertical: fancyStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveFancyStyle({ shadowColor: newColor.hex });
+                            return saveFancyStyle({ shadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveFancyStyle({ shadowBlur: newBlur });

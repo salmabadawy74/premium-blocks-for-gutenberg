@@ -458,7 +458,7 @@ export class edit extends Component {
                             onChangeColor={newColor =>
                                 saveStyles({
                                     shadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 }, titleStyles)
                             }
                             onChangeBlur={newBlur =>
@@ -533,7 +533,7 @@ export class edit extends Component {
                             onChangeColor={newColor =>
                                 descriptionStyles({
                                     descShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 }, descStyles)
                             }
                             onChangeBlur={newBlur =>
@@ -598,7 +598,7 @@ export class edit extends Component {
                             position={containerStyles[0].containerShadowPosition}
                             onChangeColor={newColor =>
                                 containerStyle({
-                                    containerShadowColor: newColor.hex
+                                    containerShadowColor: newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

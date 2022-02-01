@@ -312,7 +312,7 @@ export class edit extends Component {
                             horizontal={textStyles[0].shadowHorizontal}
                             vertical={textStyles[0].shadowVertical}
                             onChangeColor={newColor =>
-                                saveTextStyles({ shadowColor: newColor.hex })
+                                saveTextStyles({ shadowColor: newColor })
                             }
                             onChangeBlur={newBlur => saveTextStyles({ shadowBlur: newBlur })}
                             onChangehHorizontal={newValue =>
@@ -456,7 +456,7 @@ export class edit extends Component {
                             onChangeColor={newColor =>
                                 saveBtnStyles({
                                     btnShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

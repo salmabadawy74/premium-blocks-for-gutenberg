@@ -516,7 +516,7 @@ class edit extends Component {
                             position={containerStyles[0].shadowPosition}
                             onChangeColor={newColor =>
                                 saveContainerStyle({
-                                    shadowColor: newColor.hex
+                                    shadowColor: newColor
                                 })
                             }
                             onChangeBlur={newBlur =>
