@@ -470,7 +470,7 @@ class edit extends Component {
                                 vertical={titleStyles[0].titleShadowVertical}
                                 onChangeColor={newColor =>
                                     saveTitleStyle({
-                                        titleShadowColor: newColor.hex || "transparent"
+                                        titleShadowColor: newColor || "transparent"
                                     })
                                 }
                                 onChangeBlur={newBlur =>
@@ -649,7 +649,7 @@ class edit extends Component {
                                 position={btnStyles[0].btnShadowPosition}
                                 onChangeColor={newColor =>
                                     saveButtonStyle({
-                                        btnShadowColor: newColor.hex || "transparent"
+                                        btnShadowColor: newColor || "transparent"
                                     })
                                 }
                                 onChangeBlur={newBlur =>
@@ -768,7 +768,7 @@ class edit extends Component {
                             position={containerStyles[0].shadowPosition}
                             onChangeColor={newColor =>
                                 saveContainerStyle({
-                                    shadowColor: newColor.hex || "transparent"
+                                    shadowColor: newColor || "transparent"
                                 })
                             }
                             onChangeBlur={newBlur =>
@@ -802,7 +802,7 @@ class edit extends Component {
                             position={containerStyles[0].hoverShadowPosition}
                             onChangeColor={newColor =>
                                 saveContainerStyle({
-                                    hoverShadowColor: newColor.hex
+                                    hoverShadowColor: newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

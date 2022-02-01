@@ -673,7 +673,7 @@ class edit extends Component {
                             horizontal={fancyStyles[0].shadowHorizontal}
                             vertical={fancyStyles[0].shadowVertical}
                             onChangeColor={(newColor) =>
-                                saveFancyStyle({ shadowColor: newColor.hex })
+                                saveFancyStyle({ shadowColor: newColor })
                             }
                             onChangeBlur={(newBlur) =>
                                 saveFancyStyle({ shadowBlur: newBlur })

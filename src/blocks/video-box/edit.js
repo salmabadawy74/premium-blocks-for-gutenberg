@@ -543,7 +543,7 @@ class edit extends Component {
                                             vertical={descStyles[0].descShadowVertical}
                                             onChangeColor={newColor =>
                                                 saveDescritionStyle({
-                                                    descShadowColor: newColor.hex || "transparent"
+                                                    descShadowColor: newColor || "transparent"
                                                 })
                                             }
                                             onChangeBlur={newBlur =>
@@ -725,7 +725,7 @@ class edit extends Component {
                             onChangeColor={newColor =>
                                 saveBoxStyle({
                                     shadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

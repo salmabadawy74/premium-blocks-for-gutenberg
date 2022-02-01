@@ -256,7 +256,7 @@ const edit = props => {
                         horizontal={iconStyles[0].shadowHorizontal}
                         vertical={iconStyles[0].shadowVertical}
                         onChangeColor={newColor =>
-                            saveIconStyle({ shadowColor: newColor.hex })
+                            saveIconStyle({ shadowColor: newColor })
                         }
                         onChangeBlur={newBlur => saveIconStyle({ shadowBlur: newBlur })}
                         onChangehHorizontal={newValue =>
@@ -386,7 +386,7 @@ const edit = props => {
                         position={containerStyles[0].wrapShadowPosition}
                         onChangeColor={newColor =>
                             saveContainerStyle({
-                                wrapShadowColor: newColor.hex
+                                wrapShadowColor: newColor
                             })
                         }
                         onChangeBlur={newBlur =>

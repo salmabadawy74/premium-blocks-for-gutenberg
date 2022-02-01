@@ -690,7 +690,7 @@ class edit extends Component {
                             withAlpha={true}
                             onChangeColor={newColor => {
                                 saveContainerStyle({
-                                    shadowColor: newColor.rgb
+                                    shadowColor: newColor
                                 })
                             }
                             }
@@ -772,7 +772,7 @@ class edit extends Component {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px rgba(${containerStyles[0].shadowColor.r},${containerStyles[0].shadowColor.g},${containerStyles[0].shadowColor.b}, ${containerStyles[0].shadowColor.a}) ${containerStyles[0].shadowPosition}`,
+                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                     backgroundImage: btnbg,
                     backgroundRepeat: containerStyles[0].backgroundRepeat,
                     backgroundPosition: containerStyles[0].backgroundPosition,

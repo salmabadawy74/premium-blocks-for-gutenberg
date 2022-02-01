@@ -347,7 +347,7 @@ class edit extends Component {
                             horizontal={firstStyles[0].firstShadowHorizontal}
                             vertical={firstStyles[0].firstShadowVertical}
                             onChangeColor={newColor =>
-                                saveFirstStyle({ firstShadowColor: newColor.hex || "transparent" })
+                                saveFirstStyle({ firstShadowColor: newColor || "transparent" })
                             }
                             onChangeBlur={newBlur =>
                                 saveFirstStyle({ firstShadowBlur: newBlur || "0" })
@@ -532,7 +532,7 @@ class edit extends Component {
                             vertical={secondStyles[0].secondShadowVertical}
                             onChangeColor={newColor =>
                                 saveSecondStyle({
-                                    secondShadowColor: newColor.hex || "transparent"
+                                    secondShadowColor: newColor || "transparent"
                                 })
                             }
                             onChangeBlur={newBlur =>

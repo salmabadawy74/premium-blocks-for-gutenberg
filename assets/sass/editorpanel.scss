@@ -3658,6 +3658,15 @@ i.fipicon-angle-left {
     align-items: center;
     justify-content: space-between;
 }
+.premium-shadow-control__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .premium-shadow-control__wrapper {
+        display: flex;
+        align-items: center;
+    }
+}
 @import "./RangeControl.scss";
 @import "./spacing.scss";
 @import "./color.scss";

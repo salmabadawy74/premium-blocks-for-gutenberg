@@ -275,7 +275,7 @@ const edit = props => {
                                 shadowColor:
                                     newColor === undefined
                                         ? "transparent"
-                                        : newColor.hex
+                                        : newColor
                             })
                         }
                         onChangeBlur={newBlur =>

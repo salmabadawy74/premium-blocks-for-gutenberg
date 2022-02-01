@@ -383,7 +383,7 @@ class PremiumPricingTable extends Component {
                                 horizontal={titleStyles[0].titleShadowHorizontal}
                                 vertical={titleStyles[0].titleShadowVertical}
                                 onChangeColor={newColor =>
-                                    saveTitleStyles({ titleShadowColor: newColor.hex })
+                                    saveTitleStyles({ titleShadowColor: newColor })
                                 }
                                 onChangeBlur={newBlur =>
                                     saveTitleStyles({ titleShadowBlur: newBlur })
@@ -1318,7 +1318,7 @@ class PremiumPricingTable extends Component {
                             onChangeColor={newColor =>
                                 saveTableStyles({
                                     tableShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>
