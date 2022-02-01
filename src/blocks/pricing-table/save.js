@@ -100,8 +100,9 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__title_wrap`}
                     style={{
-                        paddingTop: titleStyles[0].titleMarginT + "px",
-                        paddingBottom: titleStyles[0].titleMarginB + "px"
+                        marginTop: titleStyles[0].titleMarginT + "px",
+                        marginBottom: titleStyles[0].titleMarginB + "px",
+                        background: titleStyles[0].titleBack,
                     }}
                 >
                     <RichText.Content
@@ -110,7 +111,6 @@ const save = props => {
                         value={title}
                         style={{
                             color: titleStyles[0].titleColor,
-                            background: titleStyles[0].titleBack,
                             letterSpacing: titleStyles[0].titleLetter + "px",
                             textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                             fontStyle: titleStyles[0].titleStyle,

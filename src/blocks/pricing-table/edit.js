@@ -1194,15 +1194,15 @@ class PremiumPricingTable extends Component {
                                 }}
                                 fontSize={{
                                     value: badgeStyles[0].badgeSize,
-                                    label: __("badgeText", 'premium-block-for-gutenberg'),
+                                    label: __("badgeSize", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeMobile={{
                                     value: badgeStyles[0].badgeSizeMobile,
-                                    label: __("badgeTextMobile", 'premium-block-for-gutenberg'),
+                                    label: __("badgeSizeMobile", 'premium-block-for-gutenberg'),
                                 }}
                                 fontSizeTablet={{
                                     value: badgeStyles[0].badgeSizeTablet,
-                                    label: __("badgeTextTablet", 'premium-block-for-gutenberg'),
+                                    label: __("badgeSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 weight={badgeStyles[0].badgeWeight}
                                 style={badgeStyles[0].badgeStyle}
@@ -1302,7 +1302,7 @@ class PremiumPricingTable extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                saveTableStyles({ borderColor: colorValue })
+                                setAttributes({ borderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 saveTableStyles({ borderRadius: newrRadius })
@@ -1435,8 +1435,8 @@ class PremiumPricingTable extends Component {
                     <div
                         className={`premium-pricing-table__title_wrap`}
                         style={{
-                            paddingTop: titleStyles[0].titleMarginT + "px",
-                            paddingBottom: titleStyles[0].titleMarginB + "px",
+                            marginTop: titleStyles[0].titleMarginT + "px",
+                            marginBottom: titleStyles[0].titleMarginB + "px",
                             background: titleStyles[0].titleBack,
                         }}
                     >

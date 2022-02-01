@@ -300,58 +300,6 @@ function PremiumRangeControl(_ref) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-/*import premiumLogo from "./logo";
-wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
-
-//Blocks Keys
-var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks;
-var banner = _PremiumBlocksSetting.banner,
-    dualHeading = _PremiumBlocksSetting.dualHeading,
-    pricingTable = _PremiumBlocksSetting.pricingTable,
-    maps = _PremiumBlocksSetting.maps,
-    testimonial = _PremiumBlocksSetting.testimonial,
-    countUp = _PremiumBlocksSetting.countUp,
-    icon = _PremiumBlocksSetting.icon,
-    button = _PremiumBlocksSetting.button,
-    container = _PremiumBlocksSetting.container,
-    accordion = _PremiumBlocksSetting.accordion,
-    iconBox = _PremiumBlocksSetting.iconBox,
-    videoBox = _PremiumBlocksSetting.videoBox,
-    fancyText = _PremiumBlocksSetting.fancyText,
-    lottie = _PremiumBlocksSetting.lottie,
-    newsletter = _PremiumBlocksSetting.newsletter;
-
-//Plugin Config Keys
-
-exports.banner = banner;
-exports.dualHeading = dualHeading;
-exports.pricingTable = pricingTable;
-exports.maps = maps;
-exports.testimonial = testimonial;
-exports.countUp = countUp;
-exports.icon = icon;
-exports.button = button;
-exports.container = container;
-exports.accordion = accordion;
-exports.iconBox = iconBox;
-exports.videoBox = videoBox;
-exports.fancyText = fancyText;
-exports.lottie = lottie;
-exports.newsletter = newsletter;
-var _FontAwesomeConfig = FontAwesomeConfig;
-var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
-exports.FontAwesomeEnabled = FontAwesomeEnabled;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -601,6 +549,58 @@ exports.default = withSelect(function (select, ownProps) {
         disableCustomColors: disableCustomColors
     };
 })(AdvancedColorControl);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/*import premiumLogo from "./logo";
+wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
+
+//Blocks Keys
+var _PremiumBlocksSetting = PremiumBlocksSettings.activeBlocks;
+var banner = _PremiumBlocksSetting.banner,
+    dualHeading = _PremiumBlocksSetting.dualHeading,
+    pricingTable = _PremiumBlocksSetting.pricingTable,
+    maps = _PremiumBlocksSetting.maps,
+    testimonial = _PremiumBlocksSetting.testimonial,
+    countUp = _PremiumBlocksSetting.countUp,
+    icon = _PremiumBlocksSetting.icon,
+    button = _PremiumBlocksSetting.button,
+    container = _PremiumBlocksSetting.container,
+    accordion = _PremiumBlocksSetting.accordion,
+    iconBox = _PremiumBlocksSetting.iconBox,
+    videoBox = _PremiumBlocksSetting.videoBox,
+    fancyText = _PremiumBlocksSetting.fancyText,
+    lottie = _PremiumBlocksSetting.lottie,
+    newsletter = _PremiumBlocksSetting.newsletter;
+
+//Plugin Config Keys
+
+exports.banner = banner;
+exports.dualHeading = dualHeading;
+exports.pricingTable = pricingTable;
+exports.maps = maps;
+exports.testimonial = testimonial;
+exports.countUp = countUp;
+exports.icon = icon;
+exports.button = button;
+exports.container = container;
+exports.accordion = accordion;
+exports.iconBox = iconBox;
+exports.videoBox = videoBox;
+exports.fancyText = fancyText;
+exports.lottie = lottie;
+exports.newsletter = newsletter;
+var _FontAwesomeConfig = FontAwesomeConfig;
+var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
+exports.FontAwesomeEnabled = FontAwesomeEnabled;
 
 /***/ }),
 /* 4 */
@@ -1274,7 +1274,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -2034,7 +2034,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -2146,7 +2146,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -3108,7 +3108,7 @@ var _map = __webpack_require__(95);
 
 var _map2 = _interopRequireDefault(_map);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -3580,7 +3580,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -12200,7 +12200,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBackground;
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -15821,7 +15821,7 @@ __webpack_require__(399);
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -15902,7 +15902,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -25852,7 +25852,7 @@ exports.default = deprecated;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -25949,7 +25949,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -28653,7 +28653,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _edit = __webpack_require__(262);
 
@@ -28739,7 +28739,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -30383,7 +30383,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _attributes = __webpack_require__(267);
 
@@ -30685,7 +30685,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _premiumTypo = __webpack_require__(10);
 
@@ -30715,7 +30715,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -33741,7 +33741,7 @@ exports.default = deprecatedContent;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -33822,7 +33822,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -36548,7 +36548,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -36607,7 +36607,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _reactFonticonpicker = __webpack_require__(113);
 
@@ -36649,7 +36649,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -38518,7 +38518,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -38579,7 +38579,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _premiumTypo = __webpack_require__(10);
 
@@ -38629,7 +38629,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -43074,7 +43074,7 @@ exports.default = attributes;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _premiumMediaUpload = __webpack_require__(28);
 
@@ -43092,7 +43092,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -44175,7 +44175,7 @@ registerBlockType("premium/maps", {
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -44259,7 +44259,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -45569,15 +45569,15 @@ var PremiumPricingTable = function (_Component) {
                         },
                         fontSize: {
                             value: badgeStyles[0].badgeSize,
-                            label: __("badgeText", 'premium-block-for-gutenberg')
+                            label: __("badgeSize", 'premium-block-for-gutenberg')
                         },
                         fontSizeMobile: {
                             value: badgeStyles[0].badgeSizeMobile,
-                            label: __("badgeTextMobile", 'premium-block-for-gutenberg')
+                            label: __("badgeSizeMobile", 'premium-block-for-gutenberg')
                         },
                         fontSizeTablet: {
                             value: badgeStyles[0].badgeSizeTablet,
-                            label: __("badgeTextTablet", 'premium-block-for-gutenberg')
+                            label: __("badgeSizeTablet", 'premium-block-for-gutenberg')
                         },
                         weight: badgeStyles[0].badgeWeight,
                         style: badgeStyles[0].badgeStyle,
@@ -45696,7 +45696,7 @@ var PremiumPricingTable = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveTableStyles({ borderColor: colorValue });
+                            return setAttributes({ borderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveTableStyles({ borderRadius: newrRadius });
@@ -45848,8 +45848,8 @@ var PremiumPricingTable = function (_Component) {
                     {
                         className: "premium-pricing-table__title_wrap",
                         style: {
-                            paddingTop: titleStyles[0].titleMarginT + "px",
-                            paddingBottom: titleStyles[0].titleMarginB + "px",
+                            marginTop: titleStyles[0].titleMarginT + "px",
+                            marginBottom: titleStyles[0].titleMarginB + "px",
                             background: titleStyles[0].titleBack
                         }
                     },
@@ -46206,8 +46206,9 @@ var save = function save(props) {
             {
                 className: "premium-pricing-table__title_wrap",
                 style: {
-                    paddingTop: titleStyles[0].titleMarginT + "px",
-                    paddingBottom: titleStyles[0].titleMarginB + "px"
+                    marginTop: titleStyles[0].titleMarginT + "px",
+                    marginBottom: titleStyles[0].titleMarginB + "px",
+                    background: titleStyles[0].titleBack
                 }
             },
             React.createElement(RichText.Content, {
@@ -46216,7 +46217,6 @@ var save = function save(props) {
                 value: title,
                 style: {
                     color: titleStyles[0].titleColor,
-                    background: titleStyles[0].titleBack,
                     letterSpacing: titleStyles[0].titleLetter + "px",
                     textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                     fontStyle: titleStyles[0].titleStyle,
@@ -49082,7 +49082,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _edit = __webpack_require__(293);
 
@@ -49172,7 +49172,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -50537,7 +50537,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _edit = __webpack_require__(298);
 
@@ -50634,7 +50634,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -53371,7 +53371,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -55514,7 +55514,7 @@ exports.default = deprecatedContent;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _save = __webpack_require__(306);
 
@@ -55793,7 +55793,7 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -58991,7 +58991,7 @@ var _edit = __webpack_require__(330);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _save = __webpack_require__(383);
 
@@ -59068,7 +59068,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -62392,7 +62392,7 @@ exports.default = LottieAttr;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
@@ -62467,7 +62467,7 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -64006,7 +64006,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _save = __webpack_require__(396);
 
@@ -64237,7 +64237,7 @@ var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
 var _reactSortableHoc = __webpack_require__(116);
 
-var _ColorComponent = __webpack_require__(3);
+var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -65224,7 +65224,7 @@ exports.default = attributes;
 "use strict";
 
 
-var _settings = __webpack_require__(2);
+var _settings = __webpack_require__(3);
 
 var _icons = __webpack_require__(5);
 
