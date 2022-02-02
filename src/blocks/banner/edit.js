@@ -408,12 +408,12 @@ export class edit extends Component {
                             onChangeWeight={newWeight =>
                                 saveStyles({
                                     titleWeight: newWeight === undefined ? 500 : newWeight
-                                }, titleStyles)
+                                })
                             }
                             onChangeLine={newValue =>
                                 saveStyles({
                                     titleLine: newValue === undefined ? 10 : newValue
-                                }, titleStyles)
+                                })
                             }
                         />
                         <AdvancedPopColorControl
@@ -459,22 +459,22 @@ export class edit extends Component {
                                 saveStyles({
                                     shadowColor:
                                         newColor === undefined ? "transparent" : newColor
-                                }, titleStyles)
+                                })
                             }
                             onChangeBlur={newBlur =>
                                 saveStyles({
                                     shadowBlur: newBlur === undefined ? 0 : newBlur
-                                }, titleStyles)
+                                })
                             }
                             onChangehHorizontal={newValue =>
                                 saveStyles({
                                     shadowHorizontal: newValue === undefined ? 0 : newValue
-                                }, titleStyles)
+                                })
                             }
                             onChangeVertical={newValue =>
                                 saveStyles({
                                     shadowVertical: newValue === undefined ? 0 : newValue
-                                }, titleStyles)
+                                })
                             }
                         />
                     </PanelBody>
@@ -507,12 +507,12 @@ export class edit extends Component {
                             onChangeWeight={newWeight =>
                                 descriptionStyles({
                                     descWeight: newWeight === undefined ? 500 : newWeight
-                                }, descStyles)
+                                })
                             }
                             onChangeLine={newValue =>
                                 descriptionStyles({
                                     descLine: newValue === undefined ? 10 : newValue
-                                }, descStyles)
+                                })
                             }
                         />
                         <AdvancedPopColorControl
@@ -534,22 +534,22 @@ export class edit extends Component {
                                 descriptionStyles({
                                     descShadowColor:
                                         newColor === undefined ? "transparent" : newColor
-                                }, descStyles)
+                                })
                             }
                             onChangeBlur={newBlur =>
                                 descriptionStyles({
                                     descShadowBlur: newBlur === undefined ? 0 : newBlur
-                                }, descStyles)
+                                })
                             }
                             onChangehHorizontal={newValue =>
                                 descriptionStyles({
                                     descShadowHorizontal: newValue === undefined ? 0 : newValue
-                                }, descStyles)
+                                })
                             }
                             onChangeVertical={newValue =>
                                 descriptionStyles({
                                     descShadowVertical: newValue === undefined ? 0 : newValue
-                                }, descStyles)
+                                })
                             }
                         />
                     </PanelBody>

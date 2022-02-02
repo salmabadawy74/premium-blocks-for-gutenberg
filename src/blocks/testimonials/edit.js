@@ -395,43 +395,27 @@ class edit extends Component {
                                 label: __("authorComSizeTablet", 'premium-block-for-gutenberg'),
                             }}
                         />
-                        <div className="premium-control-toggle">
-                            <strong>{__("Colors", 'premium-block-for-gutenberg')}</strong>
-                            <Dropdown
-                                className="premium-control-toggle-btn"
-                                contentClassName="premium-control-toggle-content"
-                                position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                        <i className="dashicons dashicons-edit" />
-                                    </Button>
-                                )}
-                                renderContent={() => (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={companyStyles[0].authorComColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveCompanyStyle({
-                                                    authorComColor: newValue
-                                                })
-                                            }
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Dash Color", 'premium-block-for-gutenberg')}
-                                            colorValue={companyStyles[0].dashColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveCompanyStyle({
-                                                    dashColor: newValue
-                                                })
-                                            }
-                                        />
-                                    </Fragment>
-                                )}
-                            />
-                        </div>
+
+                        <AdvancedPopColorControl
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            colorValue={companyStyles[0].authorComColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveCompanyStyle({
+                                    authorComColor: newValue
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Dash Color", 'premium-block-for-gutenberg')}
+                            colorValue={companyStyles[0].dashColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveCompanyStyle({
+                                    dashColor: newValue
+                                })
+                            }
+                        />
                         <ToggleControl
                             label={__("URL", 'premium-block-for-gutenberg')}
                             checked={companyStyles[0].urlCheck}
