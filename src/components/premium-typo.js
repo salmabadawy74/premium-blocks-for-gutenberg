@@ -72,7 +72,7 @@ export default class PremiumTypo extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('hh', prevState.fontFamily, this.state.fontFamily)
+
         if (prevState.fontFamily !== this.state.fontFamily) {
             WebFont.load({
                 google: {
@@ -215,15 +215,13 @@ export default class PremiumTypo extends Component {
         }
 
         const changeFont = (v) => {
-            console.log(v)
+
             this.setState({
                 fontFamily: v.value,
                 search: v.value,
             })
             onFontfamilyChange(v)
         }
-
-        console.log(fonts)
 
         const renderFonts = fonts.map((item, index) => {
             return (< div className={`kmt-typography-single-font ${item.label == fontFamily ? 'active' : ''}`} key={index} onClick={() => changeFont(item)}>
@@ -302,7 +300,7 @@ export default class PremiumTypo extends Component {
                                 {size}{sizeUnit}
                                 {isVisible && currentView == 'options' &&
                                     <Popover>
-                                        <div className="kmt-option-modal kmt-typography-modal">
+                                        <div className=" kmt-typography-modal">
                                             <div className="kmt-typography-container">
                                                 <ul className="kmt-typography-options" style={{ width: `100%` }}>
                                                     {components.includes("size") && (

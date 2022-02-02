@@ -257,7 +257,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -305,7 +305,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
@@ -389,7 +389,7 @@
   margin-left: 10px; }
 
 .rfipbtn {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -428,7 +428,7 @@
     font-size: 14px; }
 
 .rfipdropdown {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -3435,29 +3435,6 @@ span.kmt-color-description {
       border-radius: 2px;
       transform: rotate(-40deg); }
 
-.kmt-option-modal {
-  position: fixed;
-  z-index: 100000;
-  width: var(--modalWidth);
-  background: #fff;
-  box-sizing: border-box;
-  box-shadow: var(--option-modal-shadown, 0 15px 15px rgba(0, 0, 0, 0.08));
-  right: var(--modal-x-offset);
-  border-radius: 0px;
-  border: 1px solid rgba(0, 0, 0, 0.15); }
-  .kmt-option-modal[data-position="bottom"] {
-    top: calc(var(--modal-y-offset) + var(--modal-y-offset-plus, 13px));
-    transform-origin: center top; }
-  .kmt-option-modal[data-position="top"] {
-    bottom: calc(var(--modal-y-offset) + var(--modal-y-offset-plus, 13px));
-    transform-origin: center bottom; }
-
-.wp-customizer .kmt-option-modal {
-  z-index: 500000; }
-
-.block-editor-page .kmt-option-modal {
-  --modal-x-offset: 17px !important; }
-
 [class*="kmt-tooltip"]:before, [class*="kmt-tooltip"]:after {
   content: "";
   position: absolute;
@@ -3479,6 +3456,3 @@ span.kmt-color-description {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #363f42; }
-
-.wp-customizer .kmt-option-modal {
-  left: 18px; }

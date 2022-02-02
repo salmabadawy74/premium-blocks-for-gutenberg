@@ -262,33 +262,7 @@ span.kmt-color-description {
         }
     }
 }
-.kmt-option-modal {
-    position: fixed;
-    z-index: 100000;
-    width: var(--modalWidth);
-    background: #fff;
-    box-sizing: border-box;
-    box-shadow: var(--option-modal-shadown, 0 15px 15px rgba(0, 0, 0, 0.08));
-    right: var(--modal-x-offset);
-    border-radius: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
 
-    &[data-position="bottom"] {
-        top: calc(var(--modal-y-offset) + var(--modal-y-offset-plus, 13px));
-        transform-origin: center top;
-    }
-
-    &[data-position="top"] {
-        bottom: calc(var(--modal-y-offset) + var(--modal-y-offset-plus, 13px));
-        transform-origin: center bottom;
-    }
-}
-.wp-customizer .kmt-option-modal {
-    z-index: 500000;
-}
-.block-editor-page .kmt-option-modal {
-    --modal-x-offset: 17px !important;
-}
 [class*="kmt-tooltip"] {
     &:before,
     &:after {
@@ -317,7 +291,4 @@ span.kmt-color-description {
             border-top: 5px solid #363f42;
         }
     }
-}
-.wp-customizer .kmt-option-modal {
-    left: 18px;
 }
