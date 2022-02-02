@@ -170,6 +170,14 @@ class edit extends Component {
             label: __("None", 'premium-block-for-gutenberg')
         }
         ];
+        const LabelSize = this.getPreviewSize(this.props.deviceType, labelStyles[0].LabelfontSize, labelStyles[0].LabelfontSizeTablet, labelStyles[0].LabelfontSizeMobile);
+        const percentageSize = this.getPreviewSize(this.props.deviceType, percentageStyles[0].percentagefontSize, percentageStyles[0].percentagefontSizeTablet, percentageStyles[0].percentagefontSizeMobile);
+        const progressBarHeightSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarHeight, progressBarStyles[0].progressBarHeightTablet, progressBarStyles[0].progressBarHeightMobile);
+        const progressBarRadiusSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarRadius, progressBarStyles[0].progressBarRadiusTablet, progressBarStyles[0].progressBarRadiusMobile);
+        const arrowSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].arrow, indicatorStyles[0].arrowTablet, indicatorStyles[0].arrowMobile);
+        const pinSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pin, indicatorStyles[0].pinTablet, indicatorStyles[0].pinMobile);
+        const pinHeightSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pinHeight, indicatorStyles[0].pinHeightTablet, indicatorStyles[0].pinHeightMobile);
+
 
         const changeLableValue = (newText, newIndex) => {
             setAttributes({
@@ -256,6 +264,7 @@ class edit extends Component {
             }).filter((f, i) => i != index)
             setAttributes({ repeaterItems: array });
         }
+
 
         const renderItems = repeaterItems.map((item, index) => {
             return (< div className="premium-progress-bar-multiple-label"
@@ -347,13 +356,6 @@ class edit extends Component {
             });
         }
 
-        const LabelSize = this.getPreviewSize(this.props.deviceType, labelStyles[0].LabelfontSize, labelStyles[0].LabelfontSizeTablet, labelStyles[0].LabelfontSizeMobile);
-        const percentageSize = this.getPreviewSize(this.props.deviceType, percentageStyles[0].percentagefontSize, percentageStyles[0].percentagefontSizeTablet, percentageStyles[0].percentagefontSizeMobile);
-        const progressBarHeightSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarHeight, progressBarStyles[0].progressBarHeightTablet, progressBarStyles[0].progressBarHeightMobile);
-        const progressBarRadiusSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarRadius, progressBarStyles[0].progressBarRadiusTablet, progressBarStyles[0].progressBarRadiusMobile);
-        const arrowSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].arrow, indicatorStyles[0].arrowTablet, indicatorStyles[0].arrowMobile);
-        const pinSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pin, indicatorStyles[0].pinTablet, indicatorStyles[0].pinMobile);
-        const pinHeightSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pinHeight, indicatorStyles[0].pinHeightTablet, indicatorStyles[0].pinHeightMobile);
 
         return [
             isSelected && (

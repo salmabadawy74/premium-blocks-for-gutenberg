@@ -26383,12 +26383,12 @@ var edit = exports.edit = function (_Component) {
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return saveStyles({
                                 titleWeight: newWeight === undefined ? 500 : newWeight
-                            }, titleStyles);
+                            });
                         },
                         onChangeLine: function onChangeLine(newValue) {
                             return saveStyles({
                                 titleLine: newValue === undefined ? 10 : newValue
-                            }, titleStyles);
+                            });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -26429,22 +26429,22 @@ var edit = exports.edit = function (_Component) {
                         onChangeColor: function onChangeColor(newColor) {
                             return saveStyles({
                                 shadowColor: newColor === undefined ? "transparent" : newColor
-                            }, titleStyles);
+                            });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveStyles({
                                 shadowBlur: newBlur === undefined ? 0 : newBlur
-                            }, titleStyles);
+                            });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
                             return saveStyles({
                                 shadowHorizontal: newValue === undefined ? 0 : newValue
-                            }, titleStyles);
+                            });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return saveStyles({
                                 shadowVertical: newValue === undefined ? 0 : newValue
-                            }, titleStyles);
+                            });
                         }
                     })
                 ),
@@ -26479,12 +26479,12 @@ var edit = exports.edit = function (_Component) {
                         onChangeWeight: function onChangeWeight(newWeight) {
                             return descriptionStyles({
                                 descWeight: newWeight === undefined ? 500 : newWeight
-                            }, descStyles);
+                            });
                         },
                         onChangeLine: function onChangeLine(newValue) {
                             return descriptionStyles({
                                 descLine: newValue === undefined ? 10 : newValue
-                            }, descStyles);
+                            });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -26505,22 +26505,22 @@ var edit = exports.edit = function (_Component) {
                         onChangeColor: function onChangeColor(newColor) {
                             return descriptionStyles({
                                 descShadowColor: newColor === undefined ? "transparent" : newColor
-                            }, descStyles);
+                            });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return descriptionStyles({
                                 descShadowBlur: newBlur === undefined ? 0 : newBlur
-                            }, descStyles);
+                            });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
                             return descriptionStyles({
                                 descShadowHorizontal: newValue === undefined ? 0 : newValue
-                            }, descStyles);
+                            });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
                             return descriptionStyles({
                                 descShadowVertical: newValue === undefined ? 0 : newValue
-                            }, descStyles);
+                            });
                         }
                     })
                 ),
@@ -51076,55 +51076,26 @@ var edit = function (_Component) {
                             label: __("authorComSizeTablet", 'premium-block-for-gutenberg')
                         }
                     }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(
-                            "strong",
-                            null,
-                            __("Colors", 'premium-block-for-gutenberg')
-                        ),
-                        React.createElement(Dropdown, {
-                            className: "premium-control-toggle-btn",
-                            contentClassName: "premium-control-toggle-content",
-                            position: "bottom right",
-                            renderToggle: function renderToggle(_ref) {
-                                var isOpen = _ref.isOpen,
-                                    onToggle = _ref.onToggle;
-                                return React.createElement(
-                                    Button,
-                                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                                );
-                            },
-                            renderContent: function renderContent() {
-                                return React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(_ColorComponent2.default, {
-                                        label: __("Text Color", 'premium-block-for-gutenberg'),
-                                        colorValue: companyStyles[0].authorComColor,
-                                        colorDefault: '',
-                                        onColorChange: function onColorChange(newValue) {
-                                            return saveCompanyStyle({
-                                                authorComColor: newValue
-                                            });
-                                        }
-                                    }),
-                                    React.createElement(_ColorComponent2.default, {
-                                        label: __("Dash Color", 'premium-block-for-gutenberg'),
-                                        colorValue: companyStyles[0].dashColor,
-                                        colorDefault: '',
-                                        onColorChange: function onColorChange(newValue) {
-                                            return saveCompanyStyle({
-                                                dashColor: newValue
-                                            });
-                                        }
-                                    })
-                                );
-                            }
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        colorValue: companyStyles[0].authorComColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveCompanyStyle({
+                                authorComColor: newValue
+                            });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Dash Color", 'premium-block-for-gutenberg'),
+                        colorValue: companyStyles[0].dashColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveCompanyStyle({
+                                dashColor: newValue
+                            });
+                        }
+                    }),
                     React.createElement(ToggleControl, {
                         label: __("URL", 'premium-block-for-gutenberg'),
                         checked: companyStyles[0].urlCheck,
@@ -63130,7 +63101,7 @@ var edit = exports.edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveInputStyle({ textBorderColor: colorValue.hex });
+                            return saveInputStyle({ textBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
                             return saveInputStyle({ textBorderRadius: newRadius });
@@ -63253,7 +63224,7 @@ var edit = exports.edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveButtonStyle({ btnBorderColor: colorValue.hex });
+                            return saveButtonStyle({ btnBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
                             return saveButtonStyle({ btnBorderRadius: newRadius });
@@ -64421,6 +64392,13 @@ var edit = function (_Component) {
                 value: "none",
                 label: __("None", 'premium-block-for-gutenberg')
             }];
+            var LabelSize = this.getPreviewSize(this.props.deviceType, labelStyles[0].LabelfontSize, labelStyles[0].LabelfontSizeTablet, labelStyles[0].LabelfontSizeMobile);
+            var percentageSize = this.getPreviewSize(this.props.deviceType, percentageStyles[0].percentagefontSize, percentageStyles[0].percentagefontSizeTablet, percentageStyles[0].percentagefontSizeMobile);
+            var progressBarHeightSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarHeight, progressBarStyles[0].progressBarHeightTablet, progressBarStyles[0].progressBarHeightMobile);
+            var progressBarRadiusSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarRadius, progressBarStyles[0].progressBarRadiusTablet, progressBarStyles[0].progressBarRadiusMobile);
+            var arrowSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].arrow, indicatorStyles[0].arrowTablet, indicatorStyles[0].arrowMobile);
+            var pinSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pin, indicatorStyles[0].pinTablet, indicatorStyles[0].pinMobile);
+            var pinHeightSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pinHeight, indicatorStyles[0].pinHeightTablet, indicatorStyles[0].pinHeightMobile);
 
             var changeLableValue = function changeLableValue(newText, newIndex) {
                 setAttributes({
@@ -64588,14 +64566,6 @@ var edit = function (_Component) {
                     indicatorStyles: newUpdate
                 });
             };
-
-            var LabelSize = this.getPreviewSize(this.props.deviceType, labelStyles[0].LabelfontSize, labelStyles[0].LabelfontSizeTablet, labelStyles[0].LabelfontSizeMobile);
-            var percentageSize = this.getPreviewSize(this.props.deviceType, percentageStyles[0].percentagefontSize, percentageStyles[0].percentagefontSizeTablet, percentageStyles[0].percentagefontSizeMobile);
-            var progressBarHeightSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarHeight, progressBarStyles[0].progressBarHeightTablet, progressBarStyles[0].progressBarHeightMobile);
-            var progressBarRadiusSize = this.getPreviewSize(this.props.deviceType, progressBarStyles[0].progressBarRadius, progressBarStyles[0].progressBarRadiusTablet, progressBarStyles[0].progressBarRadiusMobile);
-            var arrowSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].arrow, indicatorStyles[0].arrowTablet, indicatorStyles[0].arrowMobile);
-            var pinSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pin, indicatorStyles[0].pinTablet, indicatorStyles[0].pinMobile);
-            var pinHeightSize = this.getPreviewSize(this.props.deviceType, indicatorStyles[0].pinHeight, indicatorStyles[0].pinHeightTablet, indicatorStyles[0].pinHeightMobile);
 
             return [isSelected && React.createElement(
                 BlockControls,

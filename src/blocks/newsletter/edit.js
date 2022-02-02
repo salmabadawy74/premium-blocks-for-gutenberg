@@ -609,7 +609,7 @@ export class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                saveInputStyle({ textBorderColor: colorValue.hex })
+                                saveInputStyle({ textBorderColor: colorValue })
                             }
                             onChangeRadius={(newRadius) =>
                                 saveInputStyle({ textBorderRadius: newRadius })
@@ -738,7 +738,7 @@ export class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                saveButtonStyle({ btnBorderColor: colorValue.hex })
+                                saveButtonStyle({ btnBorderColor: colorValue })
                             }
                             onChangeRadius={(newRadius) =>
                                 saveButtonStyle({ btnBorderRadius: newRadius })
