@@ -63129,7 +63129,7 @@ var edit = exports.edit = function (_Component) {
                         onChange: function onChange(value) {
                             return saveButtonStyle({ buttonSize: value });
                         },
-                        options: [{ value: "small", label: __("Small", 'premium-block-for-gutenberg') }, { value: "medium", label: __("Medium", 'premium-block-for-gutenberg') }, { value: "large", label: __("Large", 'premium-block-for-gutenberg') }, { value: "extralarge", label: __("Extra Large", 'premium-block-for-gutenberg') }, { value: "full", label: __("Full", 'premium-block-for-gutenberg') }]
+                        options: [{ value: "sm", label: __("Small", 'premium-block-for-gutenberg') }, { value: "md", label: __("Medium", 'premium-block-for-gutenberg') }, { value: "lg", label: __("Large", 'premium-block-for-gutenberg') }, { value: "block", label: __("Full", 'premium-block-for-gutenberg') }]
                     }),
                     React.createElement(_ColorComponent2.default, {
                         label: __("Text Color", 'premium-block-for-gutenberg'),
@@ -63302,7 +63302,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     'div',
                     {
-                        className: 'premium-newsletter-button__wrapper col-' + btnStyles[0].btnColumn,
+                        className: 'premium-newsletter-button__wrapper col-' + btnStyles[0].btnColumn + ' ',
                         style: {
                             paddingRight: 'calc(' + columnGap + 'px / 2)',
                             paddingLeft: 'calc(' + columnGap + 'px / 2)',
@@ -63313,7 +63313,7 @@ var edit = exports.edit = function (_Component) {
                         'button',
                         {
                             type: 'submit',
-                            className: 'premium-newsletter-button-submit',
+                            className: 'premium-newsletter-button-submit premium-button__' + btnStyles[0].buttonSize,
                             id: 'submit-newsletter',
                             style: {
                                 paddingRight: 'calc(' + columnGap + 'px / 2)',
@@ -63963,7 +63963,8 @@ var attributes = {
             btnBorderType: 'none',
             btnBorderColor: '',
             btnBorderRadius: 0,
-            btnColumn: '25'
+            btnColumn: '25',
+            buttonSize: 'md'
         }]
 
     }

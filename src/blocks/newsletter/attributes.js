@@ -125,7 +125,8 @@ const attributes = {
                 btnBorderType: 'none',
                 btnBorderColor: '',
                 btnBorderRadius: 0,
-                btnColumn: '25'
+                btnColumn: '25',
+                buttonSize: 'md'
             }
         ]
 

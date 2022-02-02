@@ -1872,24 +1872,20 @@ a.premium-dheading-block__link:hover {
 }
 .premium-newsletter__wrapper .premium-newsletter-button__wrapper button {
     font-family: "Red Hat Display", Sans-serif;
-    font-size: 17px;
     font-weight: 800;
     text-transform: capitalize;
     letter-spacing: 0px;
     border-radius: 0px 10px 10px 0px;
     background: #1768ea;
     color: #ffffff;
-    padding: 8px 30px;
     min-height: 47px;
     border: none;
     box-shadow: none;
     outline: none;
     width: 100%;
     z-index: 1;
-    padding: 8px 16px !important;
     cursor: text;
     position: relative;
-    font-size: 18px;
     border-width: 0px;
     display: flex;
     text-align: center;
