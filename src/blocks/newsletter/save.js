@@ -64,7 +64,7 @@ export function save(props) {
                     paddingLeft: `calc(${columnGap}px / 2)`,
                     marginBottom: `${rowGap}px`,
                 }}>
-                    <button className="pbg-forms-submit button  premium-newsletter-button-submit"
+                    <button className={`pbg-forms-submit button  premium-newsletter-button-submit premium-button__${btnStyles[0].buttonSize}`}
                         style={{
                             paddingRight: `calc(${columnGap}px / 2)`,
                             paddingLeft: `calc(${columnGap}px / 2)`,
@@ -88,6 +88,6 @@ export function save(props) {
                     </button>
                 </div>
             </form>
-        </div>
+        </div >
     );
 }
