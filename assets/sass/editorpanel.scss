@@ -3667,5 +3667,8 @@ i.fipicon-angle-left {
         align-items: center;
     }
 }
-
+.components-button.is-secondary {
+    box-shadow: none !important;
+    outline: none !important;
+}
 @import "./color.scss";

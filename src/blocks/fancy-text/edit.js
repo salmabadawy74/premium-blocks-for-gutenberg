@@ -626,7 +626,7 @@ class edit extends Component {
                             horizontal={shadowHorizontal}
                             vertical={shadowVertical}
                             onChangeColor={(newColor) =>
-                                setAttributes({ shadowColor: newColor.hex })
+                                setAttributes({ shadowColor: newColor })
                             }
                             onChangeBlur={(newBlur) =>
                                 setAttributes({ shadowBlur: newBlur })
