@@ -1239,15 +1239,15 @@ class PremiumPricingTable extends Component {
                                 }}
                                 fontSize={{
                                     value: badgeTextSize,
-                                    label: __("badgeText"),
+                                    label: __("badgeTextSize"),
                                 }}
                                 fontSizeMobile={{
                                     value: badgeTextSizeMobile,
-                                    label: __("badgeTextMobile"),
+                                    label: __("badgeTextSizeMobile"),
                                 }}
                                 fontSizeTablet={{
                                     value: badgeTextSizeTablet,
-                                    label: __("badgeTextTablet"),
+                                    label: __("badgeTextSizeTablet"),
                                 }}
                                 weight={badgeWeight}
                                 style={badgeStyle}

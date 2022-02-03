@@ -2862,9 +2862,12 @@ i.fipicon-angle-left:before {
     display: flex;
     align-items: center; }
 
-.components-button.is-secondary {
-  box-shadow: none !important;
-  outline: none !important; }
+.premium-unit-control {
+  float: right;
+  display: inline-block; }
+  .premium-unit-control .premium-unit-control-btn {
+    outline: none !important;
+    box-shadow: none !important; }
 
 .premium-popover-color .premium-gutenberg-color-picker .components-color-picker .components-color-picker__controls, .premium-popover-color .premium-gutenberg-color-picker .components-color-picker .components-color-picker__inputs-wrapper .components-base-control__field label, .premium-popover-color .premium-gutenberg-color-picker .components-color-picker .components-color-picker__inputs-toggle {
   display: flex;

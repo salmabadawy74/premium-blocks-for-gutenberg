@@ -3668,8 +3668,13 @@ i.fipicon-angle-left {
         align-items: center;
     }
 }
-.components-button.is-secondary {
-    box-shadow: none !important;
-    outline: none !important;
+
+.premium-unit-control {
+    float: right;
+    display: inline-block;
+    .premium-unit-control-btn {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 }
 @import "./color.scss";
