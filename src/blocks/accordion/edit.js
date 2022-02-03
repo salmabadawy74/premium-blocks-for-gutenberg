@@ -3,7 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-
+import AdvancedPopColorControl from '../../components/premium-color-control'
 const { Component, Fragment } = wp.element;
 
 const { __ } = wp.i18n;
@@ -341,43 +341,26 @@ class PremiumAccordion extends Component {
                             onChangeLine={newValue => setAttributes({ titleLine: newValue })}
                             onChangeUpper={check => setAttributes({ titleUpper: check })}
                         />
-                        <div className="premium-control-toggle">
-                            <strong>{__("Colors")}</strong>
-                            <Dropdown
-                                className="premium-control-toggle-btn"
-                                contentClassName="premium-control-toggle-content"
-                                position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                        <i className="dashicons dashicons-edit" />
-                                    </Button>
-                                )}
-                                renderContent={() => (
-                                    <Fragment>
-                                        <p>{__("Text Color")}</p>
-                                        <ColorPalette
-                                            value={titleColor}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    titleColor: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={titleBack}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    titleBack: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                    </Fragment>
-                                )}
-                            />
-                        </div>
+                        <AdvancedPopColorControl
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            colorValue={titleColor}
+                            colorDefault={''}
+                            onColorChange={value =>
+                                setAttributes({
+                                    titleColor: value
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                            colorValue={titleBack}
+                            colorDefault={''}
+                            onColorChange={value =>
+                                setAttributes({
+                                    titleBack: value
+                                })
+                            }
+                        />
                         <PremiumBorder
                             borderType={titleBorder}
                             borderWidth={titleBorderWidth}
@@ -400,7 +383,7 @@ class PremiumAccordion extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ titleBorderColor: colorValue.hex })
+                                setAttributes({ titleBorderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 setAttributes({ titleBorderRadius: newrRadius })
@@ -412,7 +395,7 @@ class PremiumAccordion extends Component {
                             horizontal={titleShadowHorizontal}
                             vertical={titleShadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({ titleShadowColor: newColor.hex })
+                                setAttributes({ titleShadowColor: newColor })
                             }
                             onChangeBlur={newBlur =>
                                 setAttributes({ titleShadowBlur: newBlur })
@@ -468,43 +451,26 @@ class PremiumAccordion extends Component {
                             value={arrowSize}
                             onChange={newValue => setAttributes({ arrowSize: newValue })}
                         />
-                        <div className="premium-control-toggle">
-                            <strong>{__("Colors")}</strong>
-                            <Dropdown
-                                className="premium-control-toggle-btn"
-                                contentClassName="premium-control-toggle-content"
-                                position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                        <i className="dashicons dashicons-edit" />
-                                    </Button>
-                                )}
-                                renderContent={() => (
-                                    <Fragment>
-                                        <p>{__("Arrow Color")}</p>
-                                        <ColorPalette
-                                            value={arrowColor}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    arrowColor: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={arrowBack}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    arrowBack: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                    </Fragment>
-                                )}
-                            />
-                        </div>
+                        <AdvancedPopColorControl
+                            label={__("Arrow Color", 'premium-block-for-gutenberg')}
+                            colorValue={arrowColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    arrowColor: newValue
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                            colorValue={arrowBack}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    arrowBack: newValue
+                                })
+                            }
+                        />
                         <RangeControl
                             label={__("Border Radius (PX)")}
                             value={arrowRadius}
@@ -575,46 +541,28 @@ class PremiumAccordion extends Component {
                                     }
                                     onChangeUpper={check => setAttributes({ descUpper: check })}
                                 />
-                                <div className="premium-control-toggle">
-                                    <strong>{__("Colors")}</strong>
-                                    <Dropdown
-                                        className="premium-control-toggle-btn"
-                                        contentClassName="premium-control-toggle-content"
-                                        position="bottom right"
-                                        renderToggle={({ isOpen, onToggle }) => (
-                                            <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                                <i className="dashicons dashicons-edit" />
-                                            </Button>
-                                        )}
-                                        renderContent={() => (
-                                            <Fragment>
-                                                <p>{__("Text Color")}</p>
-                                                <ColorPalette
-                                                    value={descColor}
-                                                    onChange={newValue =>
-                                                        setAttributes({
-                                                            descColor: newValue
-                                                        })
-                                                    }
-                                                    allowReset={true}
-                                                />
-                                                <p>{__("Background Color")}</p>
-                                                <ColorPalette
-                                                    value={descBack}
-                                                    onChange={newValue =>
-                                                        setAttributes({
-                                                            descBack: newValue
-                                                        })
-                                                    }
-                                                    allowReset={true}
-                                                />
-                                            </Fragment>
-                                        )}
-                                    />
-                                </div>
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={descColor}
+                                    colorDefault={''}
+                                    onColorChange={value =>
+                                        setAttributes({
+                                            descColor: value
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Background Color", 'premium-block-for-gutenberg')}
+                                    colorValue={descBack}
+                                    colorDefault={''}
+                                    onColorChange={value =>
+                                        setAttributes({
+                                            descBack: value
+                                        })
+                                    }
+                                />
                             </Fragment>
                         )}
-
                         <PremiumBorder
                             borderType={descBorder}
                             borderWidth={descBorderWidth}
@@ -635,7 +583,7 @@ class PremiumAccordion extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ descBorderColor: colorValue.hex })
+                                setAttributes({ descBorderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 setAttributes({ descBorderRadius: newrRadius })
@@ -651,7 +599,7 @@ class PremiumAccordion extends Component {
                                 onChangeColor={newColor =>
                                     setAttributes({
                                         textShadowColor:
-                                            newColor === undefined ? "transparent" : newColor.hex
+                                            newColor === undefined ? "transparent" : newColor
                                     })
                                 }
                                 onChangeBlur={newBlur =>
@@ -698,7 +646,7 @@ class PremiumAccordion extends Component {
                             }
                         />
                     </PanelBody>
-                </InspectorControls>
+                </InspectorControls >
             ),
             <Fragment>
                 <div id={accordionId} className={`${mainClasses}`}>

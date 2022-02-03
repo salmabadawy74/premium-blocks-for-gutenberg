@@ -2,10 +2,11 @@ module.exports = function (grunt) {
     "use strict";
 
     const pkgInfo = grunt.file.readJSON('package.json');
-
+    const sass = require('node-sass');
     //Grunt Configuration
     grunt.initConfig({
         pkg: pkgInfo,
+
         bumpup: {
             options: {
                 updateProps: {
@@ -13,6 +14,21 @@ module.exports = function (grunt) {
                 }
             },
             file: 'package.json'
+        },
+        sass: {
+            options: {
+                sourcemap: "false",
+                implementation: sass,
+            },
+            dist: {
+                files: [
+                    {
+                        src: "./assets/sass/editorpanel.scss",
+                        dest: "./assets/css/editorpanel.css"
+                    }
+                ]
+            }
+
         },
         copy: {
             main: {
@@ -76,13 +92,14 @@ module.exports = function (grunt) {
                 }
             },
         },
+
     });
 
 
     /* Read File Generation task */
     grunt.loadNpmTasks("grunt-wp-readme-to-markdown")
-
     grunt.loadNpmTasks('grunt-bumpup');
+    grunt.loadNpmTasks('grunt-sass');
 
     grunt.loadNpmTasks("grunt-contrib-copy")
     grunt.loadNpmTasks("grunt-contrib-compress")
@@ -107,12 +124,14 @@ module.exports = function (grunt) {
 
     });
 
+
     /* Run release tasks */
     grunt.registerTask("release", [
         "clean:zip",
         "copy",
         "compress",
-        "clean:main"
+        "clean:main",
     ]);
+
 
 };

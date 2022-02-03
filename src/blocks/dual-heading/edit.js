@@ -7,6 +7,7 @@ import FONTS from "../../components/premium-fonts";
 import styling from './styling';
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -26,7 +27,6 @@ const {
     BlockControls,
     InspectorControls,
     AlignmentToolbar,
-    ColorPalette,
     URLInput
 } = wp.blockEditor;
 
@@ -315,91 +315,57 @@ class edit extends Component {
                         />
 
                         {!firstClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={firstColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        firstColor: newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Background Color")}</p>
-                                            <PremiumBackground
-                                                type="color"
-                                                colorValue={firstBackground}
-                                                onChangeColor={value =>
-                                                    setAttributes({
-                                                        firstBackground: value,
-                                                    })
-                                                }
-                                                opacityValue={firstOpacity}
-                                                onChangeOpacity={value =>
-                                                    setAttributes({
-                                                        firstOpacity: value,
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    )}
+                            <Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            firstColor: newValue
+                                        })
+                                    }
                                 />
-                            </div>
+                                <AdvancedPopColorControl
+                                    label={__(`Background Color`, 'premium-block-for-gutenberg')}
+                                    colorValue={firstBackground}
+                                    onColorChange={value =>
+                                        setAttributes({
+                                            firstBackground: value,
+                                        })
+                                    }
+                                    colorDefault={''}
+                                />
+                            </Fragment>
+
                         )}
 
                         {firstClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("First Color")}</p>
-                                            <ColorPalette
-                                                value={firstColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        firstColor: newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Second Color")}</p>
-                                            <ColorPalette
-                                                value={firstClipColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        firstClipColor: newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
-                                    )}
-                                />
-                            </div>
-                        )}
+                            <Fragment>
 
+                                <AdvancedPopColorControl
+                                    label={__("First Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            firstColor: newValue
+                                        })
+                                    }
+                                />
+
+                                <AdvancedPopColorControl
+                                    label={__("Second Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstClipColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            firstClipColor: newValue
+                                        })
+                                    }
+                                />
+                            </Fragment>
+                        )}
                         <PremiumBorder
                             borderType={firstBorderType}
                             borderWidth={firstBorderWidth}
@@ -423,7 +389,7 @@ class edit extends Component {
                             }
                             onChangeColor={(colorValue) =>
                                 setAttributes({
-                                    firstBorderColor: colorValue.hex || "transparent",
+                                    firstBorderColor: colorValue || "transparent",
                                 })
                             }
                             onChangeRadius={(newrRadius) =>
@@ -437,7 +403,7 @@ class edit extends Component {
                             horizontal={firstShadowHorizontal}
                             vertical={firstShadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({ firstShadowColor: newColor.hex || "transparent" })
+                                setAttributes({ firstShadowColor: newColor || "transparent" })
                             }
                             onChangeBlur={newBlur =>
                                 setAttributes({ firstShadowBlur: newBlur || "0" })
@@ -542,90 +508,54 @@ class edit extends Component {
                         />
 
                         {!secondClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={secondColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        secondColor: newValue || "transparent"
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Background Color")}</p>
-                                            <PremiumBackground
-                                                type="color"
-                                                colorValue={secondBackground}
-                                                onChangeColor={value =>
-                                                    setAttributes({
-                                                        secondBackground: value,
-                                                    })
-                                                }
-                                                opacityValue={secondOpacity}
-                                                onChangeOpacity={value =>
-                                                    setAttributes({
-                                                        secondOpacity: value,
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    )}
+                            <Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={secondColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            secondColor: newValue || "transparent"
+                                        })
+                                    }
                                 />
-                            </div>
+                                <AdvancedPopColorControl
+                                    label={__(`Background Color`, 'premium-block-for-gutenberg')}
+                                    colorValue={secondBackground}
+                                    colorDefault={''}
+                                    onColorChange={value =>
+                                        setAttributes({
+                                            secondBackground: value,
+                                        })
+                                    }
+                                />
+
+                            </Fragment>
                         )}
                         {secondClip && (
-                            <div className="premium-control-toggle">
-                                <strong>{__("Colors")}</strong>
-                                <Dropdown
-                                    className="premium-control-toggle-btn"
-                                    contentClassName="premium-control-toggle-content"
-                                    position="bottom right"
-                                    renderToggle={({ isOpen, onToggle }) => (
-                                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                            <i className="dashicons dashicons-edit" />
-                                        </Button>
-                                    )}
-                                    renderContent={() => (
-                                        <Fragment>
-                                            <p>{__("First Color")}</p>
-                                            <ColorPalette
-                                                value={secondColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        secondColor: newValue || "transparent"
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                            <p>{__("Second Color")}</p>
-                                            <ColorPalette
-                                                value={secondClipColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        secondClipColor: newValue || "transparent"
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
-                                    )}
+                            <Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("First Color", 'premium-block-for-gutenberg')}
+                                    colorValue={secondColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            secondColor: newValue || "transparent"
+                                        })
+                                    }
                                 />
-                            </div>
+                                <AdvancedPopColorControl
+                                    label={__("Second Color", 'premium-block-for-gutenberg')}
+                                    colorValue={secondClipColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            secondClipColor: newValue || "transparent"
+                                        })
+                                    }
+                                />
+                            </Fragment>
                         )}
-
                         <PremiumBorder
                             borderType={secondBorderType}
                             borderWidth={secondBorderWidth}
@@ -649,7 +579,7 @@ class edit extends Component {
                             }
                             onChangeColor={(colorValue) =>
                                 setAttributes({
-                                    secondBorderColor: colorValue.hex || "transparent",
+                                    secondBorderColor: colorValue || "transparent",
                                 })
                             }
                             onChangeRadius={(newrRadius) =>
@@ -664,7 +594,7 @@ class edit extends Component {
                             vertical={secondShadowVertical}
                             onChangeColor={newColor =>
                                 setAttributes({
-                                    secondShadowColor: newColor.hex || "transparent"
+                                    secondShadowColor: newColor || "transparent"
                                 })
                             }
                             onChangeBlur={newBlur =>
@@ -775,7 +705,7 @@ class edit extends Component {
                             }
                             onChangeColor={(colorValue) =>
                                 setAttributes({
-                                    containerBorderColor: colorValue.hex,
+                                    containerBorderColor: colorValue,
                                 })
                             }
                             onChangeRadius={(newrRadius) =>

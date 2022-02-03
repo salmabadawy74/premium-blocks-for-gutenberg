@@ -4,10 +4,10 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
-import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import styling from './styling'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -30,7 +30,6 @@ const {
     AlignmentToolbar,
     RichText,
     PanelColorSettings,
-    ColorPalette,
     URLInput
 } = wp.blockEditor;
 
@@ -413,7 +412,7 @@ class PremiumPricingTable extends Component {
                                 onChangeLine={newValue => setAttributes({ titleLine: newValue })}
                                 onChangeUpper={check => setAttributes({ titleUpper: check })}
                             />
-                            <PanelColorSettings
+                            {/* <PanelColorSettings
                                 title={__("Colors")}
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
@@ -429,6 +428,19 @@ class PremiumPricingTable extends Component {
                                         label: __("Background Color")
                                     }
                                 ]}
+                            /> */}
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleColor}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ titleColor: newColor })
+                                }
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleBack}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ titleBack: newColor })}
                             />
                             <PremiumTextShadow
                                 color={titleShadowColor}
@@ -436,7 +448,7 @@ class PremiumPricingTable extends Component {
                                 horizontal={titleShadowHorizontal}
                                 vertical={titleShadowVertical}
                                 onChangeColor={newColor =>
-                                    setAttributes({ titleShadowColor: newColor.hex })
+                                    setAttributes({ titleShadowColor: newColor })
                                 }
                                 onChangeBlur={newBlur =>
                                     setAttributes({ titleShadowBlur: newBlur })
@@ -568,19 +580,17 @@ class PremiumPricingTable extends Component {
                                             value={slashV}
                                             onChange={newValue => setAttributes({ slashV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={slashColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        slashColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            colorValue={slashColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                setAttributes({
+                                                    slashColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"curr" === selectedStyle && (
@@ -621,22 +631,20 @@ class PremiumPricingTable extends Component {
                                                 })
                                             }
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={currColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        currColor:
-                                                            newValue ===
-                                                                undefined
-                                                                ? "transparent"
-                                                                : newValue,
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            colorValue={currColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                setAttributes({
+                                                    currColor:
+                                                        newValue ===
+                                                            undefined
+                                                            ? "transparent"
+                                                            : newValue,
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"price" === selectedStyle && (
@@ -672,19 +680,17 @@ class PremiumPricingTable extends Component {
                                             value={valV}
                                             onChange={newValue => setAttributes({ valV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={valColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        valColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            colorValue={valColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                setAttributes({
+                                                    valColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"divider" === selectedStyle && (
@@ -719,19 +725,17 @@ class PremiumPricingTable extends Component {
                                             value={divV}
                                             onChange={newValue => setAttributes({ divV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={divColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        divColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            colorValue={divColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                setAttributes({
+                                                    divColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })
+                                            }
+                                        />
                                     </Fragment>
                                 )}
                                 {"duration" === selectedStyle && (
@@ -766,19 +770,16 @@ class PremiumPricingTable extends Component {
                                             value={durV}
                                             onChange={newValue => setAttributes({ durV: newValue })}
                                         />
-                                        <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={durColor}
-                                                onChange={newValue =>
-                                                    setAttributes({
-                                                        durColor:
-                                                            newValue === undefined ? "transparent" : newValue
-                                                    })
-                                                }
-                                                allowReset={true}
-                                            />
-                                        </Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            colorValue={durColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                setAttributes({
+                                                    durColor:
+                                                        newValue === undefined ? "transparent" : newValue
+                                                })}
+                                        />
                                     </Fragment>
                                 )}
                             </PanelBody>
@@ -826,22 +827,15 @@ class PremiumPricingTable extends Component {
                                     )}
                                 />
                             </div>
-                            <Fragment>
-                                <p>{__("Container Background Color")}</p>
-                                <PremiumBackground
-                                    type="color"
-                                    colorValue={priceBack}
-                                    onChangeColor={(newvalue) =>
-                                        setAttributes({
-                                            priceBack: newvalue,
-                                        })
-                                    }
-                                    opacityValue={priceOpacity}
-                                    onChangeOpacity={(value) =>
-                                        setAttributes({ priceOpacity: value })
-                                    }
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__(`Background Color`)}
+                                colorValue={priceBack}
+                                onColorChange={(newvalue) =>
+                                    setAttributes({
+                                        priceBack: newvalue,
+                                    })}
+                                colorDefault={``}
+                            />
                         </PanelBody>
                     )}
                     {listChecked && (
@@ -907,22 +901,17 @@ class PremiumPricingTable extends Component {
                                 onChangeLine={newValue => setAttributes({ listLine: newValue })}
                                 onChangeUpper={check => setAttributes({ listUpper: check })}
                             />
-                            <PanelColorSettings
-                                title={__("Colors")}
-                                className="premium-panel-body-inner"
-                                initialOpen={false}
-                                colorSettings={[
-                                    {
-                                        value: listColor,
-                                        onChange: newColor => setAttributes({ listColor: newColor }),
-                                        label: __("List Items Color")
-                                    },
-                                    {
-                                        value: listBack,
-                                        onChange: newColor => setAttributes({ listBack: newColor }),
-                                        label: __("Background Color")
-                                    }
-                                ]}
+                            <AdvancedPopColorControl
+                                label={__("List Items Color", 'premium-block-for-gutenberg')}
+                                colorValue={listColor}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ listColor: newColor })}
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={listBack}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ listBack: newColor })}
                             />
                             <div className="premium-control-toggle">
                                 <strong>{__("Spacings")}</strong>
@@ -1003,22 +992,17 @@ class PremiumPricingTable extends Component {
                                 }
                                 onChangeLine={newValue => setAttributes({ descLine: newValue })}
                             />
-                            <PanelColorSettings
-                                title={__("Colors")}
-                                className="premium-panel-body-inner"
-                                initialOpen={false}
-                                colorSettings={[
-                                    {
-                                        value: descColor,
-                                        onChange: newColor => setAttributes({ descColor: newColor }),
-                                        label: __("Text Color")
-                                    },
-                                    {
-                                        value: descBack,
-                                        onChange: newColor => setAttributes({ descBack: newColor }),
-                                        label: __("Background Color")
-                                    }
-                                ]}
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={descColor}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ descColor: newColor })}
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={descBack}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ descBack: newColor })}
                             />
                             <div className="premium-control-toggle">
                                 <strong>{__("Spacings")}</strong>
@@ -1113,34 +1097,32 @@ class PremiumPricingTable extends Component {
                                 onChangeLine={newValue => setAttributes({ btnLine: newValue })}
                                 onChangeUpper={check => setAttributes({ btnUpper: check })}
                             />
-                            <PanelColorSettings
-                                title={__("Colors")}
-                                className="premium-panel-body-inner"
-                                initialOpen={false}
-                                colorSettings={[
-                                    {
-                                        value: btnColor,
-                                        onChange: newColor => setAttributes({ btnColor: newColor }),
-                                        label: __("Text Color")
-                                    },
-                                    {
-                                        value: btnHoverColor,
-                                        onChange: newColor =>
-                                            setAttributes({ btnHoverColor: newColor }),
-                                        label: __("Text Hover Color")
-                                    },
-                                    {
-                                        value: btnBack,
-                                        onChange: newColor => setAttributes({ btnBack: newColor }),
-                                        label: __("Background Color")
-                                    },
-                                    {
-                                        value: btnHoverBack,
-                                        onChange: newColor =>
-                                            setAttributes({ btnHoverBack: newColor }),
-                                        label: __("Background Hover Color")
-                                    }
-                                ]}
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={btnColor}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ btnColor: newColor })
+                                }
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Text Hover Color", 'premium-block-for-gutenberg')}
+                                colorValue={btnHoverColor}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ btnHoverColor: newColor })}
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={btnBack}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ btnBack: newColor })}
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Background Hover Color", 'premium-block-for-gutenberg')}
+                                colorValue={btnHoverBack}
+                                colorDefault={''}
+                                onColorChange={newColor =>
+                                    setAttributes({ btnHoverBack: newColor })
+                                }
                             />
                             <PremiumBorder
                                 borderType={btnBorderType}
@@ -1164,7 +1146,7 @@ class PremiumPricingTable extends Component {
                                     })
                                 }
                                 onChangeColor={(colorValue) =>
-                                    setAttributes({ btnBorderColor: colorValue.hex })
+                                    setAttributes({ btnBorderColor: colorValue })
                                 }
                                 onChangeRadius={(newrRadius) =>
                                     setAttributes({ btnBorderRadius: newrRadius })
@@ -1282,22 +1264,17 @@ class PremiumPricingTable extends Component {
                                 }
                                 onChangeUpper={check => setAttributes({ badgeUpper: check })}
                             />
-                            <PanelColorSettings
-                                title={__("Colors")}
-                                className="premium-panel-body-inner"
-                                initialOpen={false}
-                                colorSettings={[
-                                    {
-                                        value: badgeColor,
-                                        onChange: newColor => setAttributes({ badgeColor: newColor }),
-                                        label: __("Text Color")
-                                    },
-                                    {
-                                        value: badgeBack,
-                                        onChange: newColor => setAttributes({ badgeBack: newColor }),
-                                        label: __("Background Color")
-                                    }
-                                ]}
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={badgeColor}
+                                colorDefault={''}
+                                onColorChange={newColor => setAttributes({ badgeColor: newColor })}
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={badgeBack}
+                                colorDefault={''}
+                                onColorChange={newColor => saveBadgeStyles({ badgeBack: newColor })}
                             />
                             <RangeControl
                                 label={__("Vertical Offset")}
@@ -1333,20 +1310,14 @@ class PremiumPricingTable extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <Fragment>
-                            <p>{__("Background Color")}</p>
-                            <PremiumBackground
-                                type="color"
-                                colorValue={tableBack}
-                                onChangeColor={(newvalue) =>
-                                    setAttributes({ tableBack: newvalue })
-                                }
-                                opacityValue={tableOpacity}
-                                onChangeOpacity={(value) =>
-                                    setAttributes({ tableOpacity: value })
-                                }
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__(`Background Color`)}
+                            colorValue={tableBack}
+                            onColorChange={(newvalue) =>
+                                setAttributes({ tableBack: newvalue })
+                            }
+                            colorDefault={``}
+                        />
                         <PremiumBorder
                             borderType={borderType}
                             borderWidth={borderWidth}
@@ -1367,7 +1338,7 @@ class PremiumPricingTable extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                setAttributes({ borderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 setAttributes({ borderRadius: newrRadius })
@@ -1383,7 +1354,7 @@ class PremiumPricingTable extends Component {
                             onChangeColor={newColor =>
                                 setAttributes({
                                     tableShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

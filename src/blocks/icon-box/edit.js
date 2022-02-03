@@ -15,6 +15,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload"
 import styling from './styling'
 import hexToRgba from "hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -541,7 +542,7 @@ class edit extends Component {
                                 vertical={titleShadowVertical}
                                 onChangeColor={newColor =>
                                     setAttributes({
-                                        titleShadowColor: newColor.hex || "transparent"
+                                        titleShadowColor: newColor || "transparent"
                                     })
                                 }
                                 onChangeBlur={newBlur =>
@@ -708,7 +709,7 @@ class edit extends Component {
                                     })
                                 }
                                 onChangeColor={(colorValue) =>
-                                    setAttributes({ btnBorderColor: colorValue.hex })
+                                    setAttributes({ btnBorderColor: colorValue })
                                 }
                                 onChangeRadius={(newrRadius) =>
                                     setAttributes({ btnBorderRadius: newrRadius })
@@ -723,7 +724,7 @@ class edit extends Component {
                                 position={btnShadowPosition}
                                 onChangeColor={newColor =>
                                     setAttributes({
-                                        btnShadowColor: newColor.hex || "transparent"
+                                        btnShadowColor: newColor || "transparent"
                                     })
                                 }
                                 onChangeBlur={newBlur =>
@@ -827,7 +828,7 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                setAttributes({ borderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 setAttributes({ borderRadius: newrRadius })
@@ -842,7 +843,7 @@ class edit extends Component {
                             position={shadowPosition}
                             onChangeColor={newColor =>
                                 setAttributes({
-                                    shadowColor: newColor.hex || "transparent"
+                                    shadowColor: newColor || "transparent"
                                 })
                             }
                             onChangeBlur={newBlur =>
@@ -876,7 +877,7 @@ class edit extends Component {
                             position={hoverShadowPosition}
                             onChangeColor={newColor =>
                                 setAttributes({
-                                    hoverShadowColor: newColor.hex
+                                    hoverShadowColor: newColor
                                 })
                             }
                             onChangeBlur={newBlur =>
@@ -987,104 +988,83 @@ class edit extends Component {
                                         <Fragment>
                                             {iconChecked && (
                                                 <Fragment>
-                                                    <p>{__("Icon Color")}</p>
-                                                    <ColorPalette
-                                                        value={iconColor}
-                                                        onChange={newValue =>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Icon Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={iconColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
                                                             setAttributes({
                                                                 iconColor: newValue || "transparent",
                                                             })
                                                         }
-                                                        allowReset={true}
                                                     />
-                                                    <p>{__(" Icon Background Color")}</p>
-                                                    <PremiumBackground
-                                                        type="color"
+                                                    <AdvancedPopColorControl
+                                                        label={__(`Icon Background Color`)}
                                                         colorValue={iconBackColor}
-                                                        onChangeColor={newvalue =>
+                                                        onColorChange={newvalue =>
                                                             setAttributes({
                                                                 iconBackColor: newvalue,
                                                             })
                                                         }
-                                                        opacityValue={iconOpacity}
-                                                        onChangeOpacity={value =>
-                                                            setAttributes({
-                                                                iconOpacity: value,
-                                                            })
-                                                        }
+                                                        colorDefault={``}
                                                     />
                                                 </Fragment>
                                             )}
                                             {titleChecked && (
-                                                <Fragment>
-                                                    <p>{__("Tile Color")}</p>
-                                                    <ColorPalette
-                                                        value={titleColor}
-                                                        onChange={newValue =>
-                                                            setAttributes({
-                                                                titleColor: newValue || "transparent",
-                                                            })
-                                                        }
-                                                        allowReset={true}
-                                                    />
-                                                </Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Tile Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={titleColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        setAttributes({
+                                                            titleColor: newValue || "transparent",
+                                                        })
+                                                    }
+                                                />
                                             )}
                                             {descChecked && (
-                                                <Fragment>
-                                                    <p>{__("Descreption Color")}</p>
-                                                    <ColorPalette
-                                                        value={descColor}
-                                                        onChange={newValue =>
-                                                            setAttributes({
-                                                                descColor: newValue || "transparent",
-                                                            })
-                                                        }
-                                                        allowReset={true}
-                                                    />
-                                                </Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Descreption Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={descColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        setAttributes({
+                                                            descColor: newValue || "transparent",
+                                                        })
+                                                    }
+                                                />
                                             )}
                                             {btnChecked && (
                                                 <Fragment>
-                                                    <p>{__("Button Color")}</p>
-                                                    <ColorPalette
-                                                        value={btnColor}
-                                                        onChange={newValue =>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Button Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={btnColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
                                                             setAttributes({
                                                                 btnColor: newValue || "#000",
                                                             })
                                                         }
-                                                        allowReset={true}
                                                     />
-                                                    <p>{__("Button Background Color")}</p>
-                                                    <PremiumBackground
-                                                        type="color"
+                                                    <AdvancedPopColorControl
+                                                        label={__(`Background Color`)}
                                                         colorValue={btnBack}
-                                                        onChangeColor={newvalue =>
+                                                        onColorChange={newvalue =>
                                                             setAttributes({
                                                                 btnBack: newvalue,
                                                             })
                                                         }
-                                                        opacityValue={btnOpacity}
-                                                        onChangeOpacity={value =>
-                                                            setAttributes({
-                                                                btnOpacity: value,
-                                                            })
-                                                        }
+                                                        colorDefault={``}
                                                     />
                                                 </Fragment>
                                             )}
-
-                                            <p>{__(" Container Background Color")}</p>
-                                            <PremiumBackground
-                                                type="color"
+                                            <AdvancedPopColorControl
+                                                label={__(`Background Color`)}
                                                 colorValue={backColor}
-                                                onChangeColor={newvalue =>
+                                                onColorChange={newvalue =>
                                                     setAttributes({ backColor: newvalue })
                                                 }
-                                                opacityValue={backOpacity}
-                                                onChangeOpacity={value =>
-                                                    setAttributes({ backOpacity: value })
-                                                }
+                                                colorDefault={``}
                                             />
                                         </Fragment>
                                     );
@@ -1094,39 +1074,37 @@ class edit extends Component {
                                         <Fragment>
                                             {btnChecked && (
                                                 <Fragment>
-                                                    <p>{__("Button Hover Color")}</p>
-                                                    <ColorPalette
-                                                        value={btnHoverColor}
-                                                        onChange={newValue =>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Button Hover Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={btnHoverColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
                                                             setAttributes({
                                                                 btnHoverColor: newValue || "#000",
                                                             })
                                                         }
-                                                        allowReset={true}
                                                     />
-
-                                                    <p>{__("Background Button Hover Color")}</p>
-                                                    <ColorPalette
-                                                        value={btnHoverBack}
-                                                        onChange={newValue =>
+                                                    <AdvancedPopColorControl
+                                                        label={__('Background Button Hover Color', 'premium-block-for-gutenberg')}
+                                                        colorValue={btnHoverBack}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
                                                             setAttributes({
                                                                 btnHoverBack: newValue,
                                                             })
                                                         }
-                                                        allowReset={true}
                                                     />
                                                 </Fragment>
                                             )}
-
-                                            <p>{__("Border Hover Color")}</p>
-                                            <ColorPalette
-                                                value={btnHoverBorder}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__('Border Hover Color', 'premium-block-for-gutenberg')}
+                                                colorValue={btnHoverBorder}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         btnHoverBorder: newValue || "transparent",
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
                                         </Fragment>
                                     );

@@ -3,7 +3,7 @@ import styling from "./styling";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
-import PremiumBackground from "../../components/premium-background";
+import AdvancedPopColorControl from '../../components/premium-color-control'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 import {
@@ -20,7 +20,6 @@ const {
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
-    ColorPalette,
 } = wp.blockEditor;
 
 const {
@@ -49,8 +48,8 @@ const SortableItem = SortableElement(
                         onClick={() => removeItem(newIndex, value)}
                     ></button>
                 ) : (
-                        ""
-                    )}
+                    ""
+                )}
             </div>
             <div
                 className={`premium-repeater-item-controls ${value.edit ? "editable" : ""
@@ -499,75 +498,75 @@ class edit extends Component {
                                 )}
                             </Fragment>
                         ) : (
-                                <Fragment>
-                                    <p className="premium-notice">
-                                        Please note that Slide effect works only on
-                                        frontend
+                            <Fragment>
+                                <p className="premium-notice">
+                                    Please note that Slide effect works only on
+                                    frontend
                                 </p>
-                                    <TextControl
-                                        label={__("Animation Speed")}
-                                        value={animationSpeed}
-                                        type="Number"
-                                        onChange={(newValue) =>
+                                <TextControl
+                                    label={__("Animation Speed")}
+                                    value={animationSpeed}
+                                    type="Number"
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            animationSpeed: parseInt(newValue),
+                                        })
+                                    }
+                                    help={__(
+                                        "Set a duration value in milliseconds for slide effect."
+                                    )}
+                                />
+                                <TextControl
+                                    label={__("Pause Time")}
+                                    value={pauseTime}
+                                    type="Number"
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            pauseTime: parseInt(newValue),
+                                        })
+                                    }
+                                    help={__(
+                                        "How long should the word/string stay visible? Set a value in milliseconds."
+                                    )}
+                                />
+                                <ToggleControl
+                                    label={__("Pause on Hover")}
+                                    checked={hoverPause}
+                                    onChange={(newCheck) =>
+                                        setAttributes({ hoverPause: newCheck })
+                                    }
+                                    help={__(
+                                        "If you enabled this option, the slide will be paused when mouseover."
+                                    )}
+                                />
+                                <p>{__("Fancy Strings Alignment")}</p>
+                                <Toolbar
+                                    controls={ALIGNS.map((contentAlign) => ({
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === fancyalign,
+                                        onClick: () =>
                                             setAttributes({
-                                                animationSpeed: parseInt(newValue),
-                                            })
-                                        }
-                                        help={__(
-                                            "Set a duration value in milliseconds for slide effect."
-                                        )}
-                                    />
-                                    <TextControl
-                                        label={__("Pause Time")}
-                                        value={pauseTime}
-                                        type="Number"
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                pauseTime: parseInt(newValue),
-                                            })
-                                        }
-                                        help={__(
-                                            "How long should the word/string stay visible? Set a value in milliseconds."
-                                        )}
-                                    />
-                                    <ToggleControl
-                                        label={__("Pause on Hover")}
-                                        checked={hoverPause}
-                                        onChange={(newCheck) =>
-                                            setAttributes({ hoverPause: newCheck })
-                                        }
-                                        help={__(
-                                            "If you enabled this option, the slide will be paused when mouseover."
-                                        )}
-                                    />
-                                    <p>{__("Fancy Strings Alignment")}</p>
-                                    <Toolbar
-                                        controls={ALIGNS.map((contentAlign) => ({
-                                            icon: "editor-align" + contentAlign,
-                                            isActive: contentAlign === fancyalign,
-                                            onClick: () =>
-                                                setAttributes({
-                                                    fancyalign: contentAlign,
-                                                }),
-                                        }))}
-                                    />
-                                </Fragment>
-                            )}
+                                                fancyalign: contentAlign,
+                                            }),
+                                    }))}
+                                />
+                            </Fragment>
+                        )}
                     </PanelBody>
                     <PanelBody
                         title={__("Fancy Text Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={fancyTextColor}
-                            onChange={(newValue) =>
+                        <AdvancedPopColorControl
+                            label={__("Color", 'premium-block-for-gutenberg')}
+                            colorValue={fancyTextColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 setAttributes({
                                     fancyTextColor: newValue,
                                 })
                             }
-                            allowReset={true}
                         />
                         <PremiumTypo
                             components={[
@@ -614,17 +613,12 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickfancyTextTypo}
                         />
-                        <p>{__("Background Color")}</p>
-                        <PremiumBackground
-                            type="color"
+                        <AdvancedPopColorControl
+                            label={__('Background Color')}
                             colorValue={fancyTextBGColor}
-                            onChangeColor={newvalue =>
-                                setAttributes({ fancyTextBGColor: newvalue })
-                            }
-                            opacityValue={fancyTextBGOpacity}
-                            onChangeOpacity={value =>
-                                setAttributes({ fancyTextBGOpacity: value })
-                            }
+                            colorDefault={''}
+                            onColorChange={newvalue =>
+                                setAttributes({ fancyTextBGColor: newvalue })}
                         />
                         <PremiumTextShadow
                             color={shadowColor}
@@ -646,18 +640,16 @@ class edit extends Component {
                             onResetClick={onResetClickLabelTextShadow}
                         />
                         {effect == "typing" && cursorShow && (
-                            <Fragment>
-                                <p>{__("Cursor Color")}</p>
-                                <ColorPalette
-                                    value={cursorColor}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            cursorColor: newValue,
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Cursor Color", 'premium-block-for-gutenberg')}
+                                colorValue={cursorColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        cursorColor: newValue,
+                                    })
+                                }
+                            />
                         )}
                     </PanelBody>
                     <PanelBody
@@ -665,15 +657,15 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={textColor}
-                            onChange={(newValue) =>
+                        <AdvancedPopColorControl
+                            label={__("Color", 'premium-block-for-gutenberg')}
+                            colorValue={textColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 setAttributes({
                                     textColor: newValue,
                                 })
                             }
-                            allowReset={true}
                         />
                         <PremiumTypo
                             components={[
@@ -718,17 +710,12 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTextTypo}
                         />
-                        <p>{__("Background Color")}</p>
-                        <PremiumBackground
-                            type="color"
+                        <AdvancedPopColorControl
+                            label={__(`Background Color`)}
                             colorValue={textBGColor}
-                            onChangeColor={newvalue =>
-                                setAttributes({ textBGColor: newvalue })
-                            }
-                            opacityValue={textBGOpacity}
-                            onChangeOpacity={value =>
-                                setAttributes({ textBGOpacity: value })
-                            }
+                            colorDefault={``}
+                            onColorChange={newvalue =>
+                                setAttributes({ textBGColor: newvalue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -785,44 +772,44 @@ class edit extends Component {
                         </span>
                     </div>
                 ) : (
+                    <div
+                        className={`premium-fancy-text premium-fancy-slide`}
+                        style={{
+                            textAlign: align,
+                        }}
+                        data-effect={`${effect}`}
+                        data-strings={`${repeaterFancyText.map(
+                            (item, index) => {
+                                return item.title;
+                            }
+                        )}`}
+                        data-animationspeed={`${animationSpeed}`}
+                        data-pausetime={`${pauseTime}`}
+                        data-hoverpause={`${hoverPause}`}
+                    >
+                        <span className={`premium-fancy-text-prefix-text`}>
+                            {prefix}{" "}
+                        </span>
                         <div
-                            className={`premium-fancy-text premium-fancy-slide`}
+                            className={`premium-fancy-text-title-slide`}
                             style={{
-                                textAlign: align,
+                                textAlign: fancyalign,
                             }}
-                            data-effect={`${effect}`}
-                            data-strings={`${repeaterFancyText.map(
-                                (item, index) => {
-                                    return item.title;
-                                }
-                            )}`}
-                            data-animationspeed={`${animationSpeed}`}
-                            data-pausetime={`${pauseTime}`}
-                            data-hoverpause={`${hoverPause}`}
                         >
-                            <span className={`premium-fancy-text-prefix-text`}>
-                                {prefix}{" "}
-                            </span>
-                            <div
-                                className={`premium-fancy-text-title-slide`}
-                                style={{
-                                    textAlign: fancyalign,
-                                }}
+                            <ul
+                                className={`premium-fancy-text-title-slide-list`}
                             >
-                                <ul
-                                    className={`premium-fancy-text-title-slide-list`}
-                                >
-                                    {repeaterFancyText.map((item, index) => {
-                                        return <li>{item.title}</li>;
-                                    })}
-                                </ul>
-                            </div>
-                            <span className={`premium-fancy-text-suffix-text`}>
-                                {" "}
-                                {suffix}
-                            </span>
+                                {repeaterFancyText.map((item, index) => {
+                                    return <li>{item.title}</li>;
+                                })}
+                            </ul>
                         </div>
-                    )}
+                        <span className={`premium-fancy-text-suffix-text`}>
+                            {" "}
+                            {suffix}
+                        </span>
+                    </div>
+                )}
             </div>,
         ];
     }

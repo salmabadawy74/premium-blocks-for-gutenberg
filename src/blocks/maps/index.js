@@ -2,6 +2,7 @@ import { maps } from "../../../assets/js/settings";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const className = "premium-maps";
 
@@ -19,7 +20,7 @@ const {
     ToggleControl,
 } = wp.components;
 
-const { InspectorControls, ColorPalette } = wp.editor;
+const { InspectorControls } = wp.editor;
 
 const { Component, Fragment } = wp.element;
 
@@ -603,19 +604,17 @@ class PremiumMap extends Component {
                                 max="80"
                                 onChange={newSize => setAttributes({ titleSize: newSize })}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={titleColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            titleColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        titleColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                         </PanelBody>
                     )}
                     {mapMarker && markerDesc && (
@@ -631,19 +630,17 @@ class PremiumMap extends Component {
                                 max="80"
                                 onChange={newSize => setAttributes({ descSize: newSize })}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={descColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            descColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={descColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        descColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                         </PanelBody>
                     )}
                     <PanelBody
