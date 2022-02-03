@@ -10,7 +10,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload"
 import styling from './styling'
 import hexToRgba from "hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-
+import AdvancedPopColorControl from '../../components/premium-color-control'
 const { __ } = wp.i18n;
 
 const {
@@ -404,19 +404,17 @@ class edit extends Component {
                                 onChange={newValue => setAttributes({ iconSize: newValue })}
                             />
                             {"icon" === icon && (
-                                <Fragment>
-                                    <p>{__("Icon Color")}</p>
-                                    <ColorPalette
-                                        value={iconColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                iconColor:
-                                                    newValue === undefined ? "transparent" : newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Icon Color", 'premium-block-for-gutenberg')}
+                                    colorValue={iconColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            iconColor:
+                                                newValue === undefined ? "transparent" : newValue
+                                        })
+                                    }
+                                />
                             )}
                         </PanelBody>
                     )}
@@ -455,18 +453,16 @@ class edit extends Component {
                                 setAttributes({ numberWeight: newWeight })
                             }
                         />
-                        <Fragment>
-                            <p>{__("Number Color")}</p>
-                            <ColorPalette
-                                value={numberColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        numberColor: newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Number Color", 'premium-block-for-gutenberg')}
+                            colorValue={numberColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    numberColor: newValue === undefined ? "transparent" : newValue
+                                })
+                            }
+                        />
                     </PanelBody>
                     {prefix && (
                         <PanelBody
@@ -510,20 +506,17 @@ class edit extends Component {
                                     setAttributes({ prefixWeight: newWeight })
                                 }
                             />
-
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={prefixColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            prefixColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={prefixColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        prefixColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                             <RangeControl
                                 label={__("Gap After (PX)")}
                                 value={prefixGap}
@@ -572,19 +565,17 @@ class edit extends Component {
                                     setAttributes({ suffixWeight: newWeight })
                                 }
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={suffixColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            suffixColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={suffixColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        suffixColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                             <RangeControl
                                 label={__("Gap Before (PX)")}
                                 value={suffixGap}
@@ -643,19 +634,17 @@ class edit extends Component {
                                 }
                                 onChangeUpper={check => setAttributes({ titleUpper: check })}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={titleColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            titleColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        titleColor:
+                                            newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                             <PanelBody
                                 title={__("Spacings")}
                                 className="premium-panel-body-inner"
@@ -680,7 +669,6 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <Fragment>
-                            <p>{__("Background Color")}</p>
                             <PremiumBackground
                                 type="color"
                                 colorValue={containerBack}
@@ -746,7 +734,7 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                setAttributes({ borderColor: colorValue })
                             }
                             onChangeRadius={(newRadius) =>
                                 setAttributes({ borderRadius: newRadius })
@@ -763,10 +751,9 @@ class edit extends Component {
                             onChangeColor={newColor => {
 
                                 setAttributes({
-                                    shadowColor: newColor.rgb
+                                    shadowColor: newColor
                                 })
 
-                                console.log(shadowColor)
                             }
 
                             }

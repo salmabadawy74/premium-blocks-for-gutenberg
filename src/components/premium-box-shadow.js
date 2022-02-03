@@ -7,6 +7,7 @@ const {
     ColorPicker
 } = wp.components;
 const { Fragment } = wp.element;
+import AdvancedColorControl from './premium-color-control'
 
 export default function PremiumBoxShadow(props) {
     const {
@@ -37,51 +38,51 @@ export default function PremiumBoxShadow(props) {
     ];
 
     return (
-        <div className="premium-control-toggle">
+        <div className="premium-control-toggle premium-shadow-control__container">
             <strong>{__(label || "Box Shadow")}</strong>
-            <Dropdown
-                className="premium-control-toggle-btn"
-                contentClassName="premium-control-toggle-content"
-                position="bottom right"
-                renderToggle={({ isOpen, onToggle }) => (
-                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                        <i className="dashicons dashicons-edit" />
-                    </Button>
-                )}
-                renderContent={() => (
-                    <Fragment>
+            <div className={`premium-shadow-control__wrapper`}>
+                <AdvancedColorControl
+                    colorValue={color}
+                    colorDefault={''}
+                    onColorChange={onChangeColor}
+                    disableReset={true}
+                />
+                <Dropdown
+                    className="premium-control-toggle-btn"
+                    contentClassName="premium-control-toggle-content"
+                    position="bottom right"
+                    renderToggle={({ isOpen, onToggle }) => (
+                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
+                            <i className="dashicons dashicons-edit" />
+                        </Button>
+                    )}
+                    renderContent={() => (
                         <Fragment>
-                            <p>{__("Shadow Color")}</p>
-                            <ColorPicker
-                                color={color}
-                                onChangeComplete={onChangeColor}
-                                disableAlpha={withAlpha ? false : true}
+                            <RangeControl
+                                label={__("Horizontal")}
+                                value={horizontal}
+                                onChange={onChangehHorizontal}
+                            />
+                            <RangeControl
+                                label={__("Vertical")}
+                                value={vertical}
+                                onChange={onChangeVertical}
+                            />
+                            <RangeControl
+                                label={__("Blur")}
+                                value={blur}
+                                onChange={onChangeBlur}
+                            />
+                            <SelectControl
+                                label={__("Position")}
+                                options={POSITION}
+                                value={position}
+                                onChange={onChangePosition}
                             />
                         </Fragment>
-                        <RangeControl
-                            label={__("Horizontal")}
-                            value={horizontal}
-                            onChange={onChangehHorizontal}
-                        />
-                        <RangeControl
-                            label={__("Vertical")}
-                            value={vertical}
-                            onChange={onChangeVertical}
-                        />
-                        <RangeControl
-                            label={__("Blur")}
-                            value={blur}
-                            onChange={onChangeBlur}
-                        />
-                        <SelectControl
-                            label={__("Position")}
-                            options={POSITION}
-                            value={position}
-                            onChange={onChangePosition}
-                        />
-                    </Fragment>
-                )}
-            />
+                    )}
+                />
+            </div>
         </div>
     );
 }

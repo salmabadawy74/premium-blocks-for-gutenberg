@@ -5,10 +5,10 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumSizeUnits from "../../components/premium-size-units";
 import FONTS from "../../components/premium-fonts";
-import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import styling from './styling';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -24,7 +24,6 @@ const { Fragment, Component } = wp.element;
 
 const {
     InspectorControls,
-    ColorPalette,
     AlignmentToolbar,
     BlockControls,
     RichText,
@@ -202,16 +201,16 @@ export default class edit extends Component {
         ];
 
         const onChangeHover = newValue => {
-            props.setAttributes({ effect: newValue });
+            setAttributes({ effect: newValue });
             switch (newValue) {
                 case "slide":
-                    props.setAttributes({ effectDir: "top" });
+                    setAttributes({ effectDir: "top" });
                     break;
                 case "shutter":
-                    props.setAttributes({ effectDir: "shutouthor" });
+                    setAttributes({ effectDir: "shutouthor" });
                     break;
                 case "radial":
-                    props.setAttributes({ effectDir: "radialin" });
+                    setAttributes({ effectDir: "radialin" });
                     break;
             }
         };
@@ -360,7 +359,7 @@ export default class edit extends Component {
                             horizontal={shadowHorizontal}
                             vertical={shadowVertical}
                             onChangeColor={newColor =>
-                                setAttributes({ shadowColor: newColor.hex })
+                                setAttributes({ shadowColor: newColor })
                             }
                             onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
                             onChangehHorizontal={newValue =>
@@ -398,76 +397,66 @@ export default class edit extends Component {
                                 if ("normal" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Text Color")}</p>
-                                            <ColorPalette
-                                                value={textColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                                colorValue={textColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         textColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>
-                                                {"radial" !== effect
+                                            <AdvancedPopColorControl
+                                                label={"radial" !== effect
                                                     ? __("Background Color")
                                                     : __("Background Hover Color")}
-                                            </p>
-                                            <PremiumBackground
-                                                type="color"
                                                 colorValue={backColor}
-                                                onChangeColor={newvalue =>
+                                                colorDefault={''}
+                                                onColorChange={newvalue =>
                                                     setAttributes({
                                                         backColor: newvalue,
-                                                    })
-                                                }
-                                                opacityValue={backOpacity}
-                                                onChangeOpacity={value =>
-                                                    setAttributes({
-                                                        backOpacity: value,
-                                                    })
-                                                }
+                                                    })}
                                             />
+
                                         </Fragment>
                                     );
                                 }
                                 if ("hover" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Text Hover Color")}</p>
-                                            <ColorPalette
-                                                value={textHoverColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Hover Color", 'premium-block-for-gutenberg')}
+                                                colorValue={textHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         textHoverColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>
-                                                {"radial" !== effect
-                                                    ? __("Background Hover Color")
-                                                    : __("Background Color")}
-                                            </p>
-                                            <ColorPalette
-                                                value={backHoverColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={"radial" !== effect
+                                                    ? __("Background Hover Color", 'premium-block-for-gutenberg')
+                                                    : __("Background Color", 'premium-block-for-gutenberg')}
+                                                colorValue={backHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         backHoverColor: newValue,
                                                         slideColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>{__("Border Hover Color")}</p>
-                                            <ColorPalette
-                                                value={borderHoverColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Border Hover Color", 'premium-block-for-gutenberg')}
+                                                colorValue={borderHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         borderHoverColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
                                         </Fragment>
                                     );
@@ -500,7 +489,7 @@ export default class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                setAttributes({ borderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 setAttributes({ borderRadius: newrRadius })
@@ -517,7 +506,7 @@ export default class edit extends Component {
                             onChangeColor={newColor =>
                                 setAttributes({
                                     btnShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

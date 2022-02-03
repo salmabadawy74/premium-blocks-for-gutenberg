@@ -1,0 +1,3671 @@
+/*
+  * FontIconPicker CSS
+  */
+/** * Responsive Icons */
+.premium-panel-body {
+    p.premium-editor-paragraph {
+        margin-bottom: 0;
+    }
+}
+.premium-control-toggle {
+    overflow: hidden;
+    padding: 10px 0;
+    .premium-control-toggle-btn {
+        float: right;
+    }
+}
+.premium-control-toggle-content {
+    .components-popover__content {
+        padding: 10px;
+        border-radius: 3px;
+        background-color: #f3f4f5;
+    }
+}
+.reset-btn {
+    margin-right: 3%;
+}
+.components-base-control {
+    .components-base-control__label {
+        margin-right: 0.4em;
+    }
+}
+
+.premium-size-type-field-tabs {
+    .components-range-control {
+        .components-base-control__field {
+            display: block;
+            flex-wrap: unset;
+        }
+        .components-base-control__label {
+            width: auto;
+            display: inline-block;
+        }
+        .dashicon {
+            vertical-align: middle;
+        }
+    }
+    position: relative;
+    .components-tab-panel__tabs {
+        position: absolute;
+        margin-left: 79px;
+        margin-top: -2px;
+        button {
+            svg {
+                width: 14px;
+                height: 14px;
+            }
+            border: 0;
+            border-bottom: 0;
+            padding: 3px;
+            margin-bottom: 0;
+            outline: 0;
+            width: auto;
+            font-size: 8px;
+            background: transparent;
+            color: #999;
+            display: inline-block;
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            margin-right: 3px;
+        }
+        button.active-tab {
+            color: #23282d;
+            background-color: #e4e5e5;
+            box-shadow: none;
+            &:focus {
+                color: #23282d;
+                background-color: #e4e5e5;
+                box-shadow: none;
+            }
+        }
+    }
+}
+.premium-size-responsive-tab {
+    position: absolute;
+    top: -18px;
+    right: 148px;
+    left: 4px;
+}
+.premium-size-type-field-tabs.premium-without-size-type {
+    .components-tab-panel__tabs {
+        margin-right: 0;
+    }
+}
+.premium-size-type-field {
+    button.components-button.premium-size-btn {
+        background: transparent;
+        color: #777;
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        text-shadow: none;
+        height: 18px;
+        line-height: 18px;
+        padding: 0 3px;
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+        &:hover {
+            color: #000;
+            background: transparent;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border: none;
+            outline: none;
+            &:focus {
+                &:not(:disabled) {
+                    &:not([aria-disabled="true"]) {
+                        color: #000;
+                        background: transparent;
+                        -webkit-box-shadow: none;
+                        box-shadow: none;
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+    button.components-button.premium-size-btn.is-primary {
+        color: #000;
+        text-decoration: underline;
+        background: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        &:focus {
+            &:not(:disabled) {
+                &:not([aria-disabled="true"]) {
+                    color: #000;
+                    text-decoration: underline;
+                    background: transparent;
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+.components-button-group {
+    .components-button.is-button {
+        position: relative;
+        z-index: 1;
+    }
+}
+.premium-size-type-field__common-tabs {
+    .components-tab-panel__tabs {
+        margin-bottom: -34px;
+    }
+}
+.components-button-group.premium-size-type-field {
+    margin: 0;
+    text-align: right;
+    display: block;
+    margin-bottom: -30px;
+}
+.premium-control-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    .premium-control-label-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 0.3rem;
+        .premium-control-label {
+            height: 20px;
+            margin-bottom: 0 !important;
+            color: "#5f5f5f";
+        }
+    }
+    .premium-controls-container {
+        display: flex;
+        flex-direction: row;
+        .premium-control-Wrapper {
+            display: flex;
+            flex-direction: column;
+            width: "25%";
+        }
+        .linked-btn {
+            height: 30px !important;
+            width: 20px !important;
+            padding: 0 !important;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: 0;
+            color: #000;
+            background-color: transparent;
+            &:focus {
+                box-shadow: none !important;
+                outline: none !important;
+            }
+        }
+        .premium-control-wrapper {
+            input[type="number"] {
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                border-color: #8d96a0;
+                border-style: solid;
+                border-radius: 0;
+                width: 100%;
+            }
+            .premium-control-label {
+                text-align: center;
+                font-size: 0.75em;
+            }
+        }
+    }
+}
+.premium-image-media {
+    position: relative;
+    display: block;
+}
+.premium-image-upload {
+    width: 100%;
+    height: auto;
+    margin-top: 6px;
+}
+.premium-image-actions {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    button {
+        font-size: 16px;
+        padding: 2px;
+        cursor: pointer;
+        span {
+            color: #8d96a0;
+        }
+    }
+}
+.premium-placeholder-image {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px dashed #dddd;
+    padding: 20px 20px 25px;
+    text-align: center;
+    background: #ffffff;
+    cursor: copy;
+    border-radius: 5px;
+    span {
+        margin-top: 8px;
+    }
+}
+.lottie-remove {
+    display: block;
+    background-color: rgb(240, 240, 240);
+    color: #000;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 100;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition-property: background, color, opacity, -webkit-box-shadow;
+    transition-property: background, color, opacity, -webkit-box-shadow;
+    -o-transition-property: background, color, box-shadow, opacity;
+    transition-property: background, color, box-shadow, opacity;
+    transition-property: background, color, box-shadow, opacity,
+        -webkit-box-shadow;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1em;
+}
+.premium-color-tabpanel {
+    button.components-tab-panel__tabs-item {
+        display: block;
+        text-align: center;
+        border: 1px solid rgb(240, 240, 240);
+        box-sizing: border-box;
+        align-items: center;
+        border-radius: 2px;
+        width: 50%;
+        height: 40px !important;
+        margin: 10px 1px;
+        padding: 5px 19px;
+        border-radius: 5px;
+        box-shadow: none !important;
+    }
+    button.active-tab {
+        border: none;
+        color: #000;
+        background-color: rgb(240, 240, 240);
+    }
+}
+.premium-repeater-btn__wrap {
+    text-align: center;
+    padding-top: 10px;
+}
+.premium-repeater-btn {
+    display: inline-block;
+    background-color: #a4afb7;
+    color: #fff;
+    font-size: 11px;
+    padding: 7px 21px;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition-property: background, color, opacity, -webkit-box-shadow;
+    transition-property: background, color, opacity, -webkit-box-shadow;
+    -o-transition-property: background, color, box-shadow, opacity;
+    transition-property: background, color, box-shadow, opacity;
+    transition-property: background, color, box-shadow, opacity,
+        -webkit-box-shadow;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.premium-repeater__icon {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.premium-notice {
+    margin-top: -15px !important;
+}
+.premium-repeater-item-controls {
+    border-color: #64666a;
+    border: 1px solid #d5dadf;
+    border-top: 0 solid #b4c1ce;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    &:not(.editable) {
+        display: none;
+    }
+}
+.premium-repeater-item__container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    border: 1px solid;
+    line-height: 2.5em;
+}
+.premium-repeater-item__dragHandle {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    flex: 1;
+    background: darkgrey;
+    border-right: 1px solid;
+    cursor: move;
+    color: #ffffff;
+    align-items: center;
+    display: flex !important;
+    justify-content: center;
+    &::before {
+        content: "\f142";
+    }
+}
+.premium-repeater-item__content {
+    font-size: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    width: 90%;
+    flex: 12;
+    line-height: 2.5em;
+}
+.premium-repeater-item__trashicon {
+    font-size: 14px;
+    border-left: 1px solid gray;
+    line-height: 2.5em;
+    flex: 2 1 0%;
+    text-align: center;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.components-panel {
+    .rfipdropdown.rfipdropdown--default.fipappear-enter-done {
+        left: 0 !important;
+        width: 230px;
+    }
+    .rfipdropdown {
+        left: 0 !important;
+        width: 230px;
+    }
+    .rfipicons__ibox {
+        font-size: 15px;
+        &:hover {
+            > * {
+                -webkit-transform: scale(1.45);
+                -ms-transform: scale(1.45);
+                transform: scale(1.45);
+            }
+        }
+    }
+    .rfipicons__icon {
+        height: 40px;
+    }
+}
+.components-button.uagb-rm-btn {
+    margin-left: 10px;
+}
+.rfipbtn {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    line-height: 1.71429;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 136px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    min-height: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-transition: border-color 0.25s, -webkit-box-shadow 0.25s;
+    transition: border-color 0.25s, -webkit-box-shadow 0.25s;
+    transition: box-shadow 0.25s, border-color 0.25s;
+    transition: box-shadow 0.25s, border-color 0.25s, -webkit-box-shadow 0.25s;
+    outline: 0 none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    input {
+        font-size: 14px;
+    }
+    select {
+        font-size: 14px;
+    }
+}
+.rfipdropdown {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    line-height: 1.71429;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 352px;
+    position: absolute;
+    left: 0;
+    margin-top: -1px;
+    z-index: 100000001;
+    border-radius: 0 1px 4px 4px;
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    input {
+        font-size: 14px;
+    }
+    select {
+        font-size: 14px;
+    }
+}
+.rfip {
+    position: relative;
+    margin: 8px 0;
+    width: 100%;
+    vertical-align: middle;
+}
+.rfipbtn--open {
+    border-radius: 2px 2px 0 0;
+}
+.rfipbtn__button {
+    width: 48px;
+    margin-left: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: auto;
+    -webkit-transition: background 0.25s, -webkit-box-shadow 0.25s;
+    transition: background 0.25s, -webkit-box-shadow 0.25s;
+    transition: background 0.25s, box-shadow 0.25s;
+    transition: background 0.25s, box-shadow 0.25s, -webkit-box-shadow 0.25s;
+    i {
+        font-size: 32px;
+        -webkit-transition: -webkit-transform 0.25s;
+        transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+        transition: transform 0.25s, -webkit-transform 0.25s;
+    }
+}
+.rfipbtn__button--open {
+    i {
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+    }
+}
+.rfipbtn__current {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 86px;
+    flex: 0 0 86px;
+    padding: 2px;
+}
+.rfipbtn--multi {
+    width: 258px;
+    .rfipbtn__current {
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-preferred-size: 212px;
+        flex-basis: 212px;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+    }
+}
+.rfipbtn__icon {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    margin: 2px;
+    padding: 0;
+    height: 28px;
+    width: 48px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-radius: 2px;
+}
+.rfipbtn__icon--empty {
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 8px;
+    text-align: center;
+    text-transform: lowercase;
+    font-style: italic;
+}
+.rfipbtn__elm {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 28px;
+    width: 28px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 18px;
+    img {
+        height: 18px;
+        width: auto;
+    }
+    svg {
+        height: 18px;
+        width: auto;
+    }
+}
+.rfipbtn__del {
+    width: 18px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 28px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: background-color 0.25s;
+    transition: background-color 0.25s;
+    cursor: pointer;
+}
+.rfipcategory {
+    width: 100%;
+    margin: 0 0 8px;
+    position: relative;
+    select {
+        width: 100%;
+        display: block;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, box-shadow 0.25s;
+        transition: border 0.25s, box-shadow 0.25s, -webkit-box-shadow 0.25s;
+        background-color: transparent !important;
+    }
+    i {
+        position: absolute;
+        right: 2px;
+        top: 0;
+        font-size: 16px;
+        line-height: 32px;
+        z-index: -1;
+    }
+}
+.rfipdropdown__selector {
+    overflow: hidden;
+    padding: 16px;
+}
+.rfipdropdown.fipappear-enter-active {
+    .rfipdropdown__selector {
+        -webkit-transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        padding: 16px;
+    }
+}
+.rfipdropdown.fipappear-exit-active {
+    .rfipdropdown__selector {
+        -webkit-transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        padding: 16px;
+    }
+}
+.rfipicons__pager {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    height: 24px;
+    line-height: 24px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.rfipicons__num {
+    width: 100px;
+    margin-right: auto;
+}
+.rfipicons__cp {
+    width: 32px;
+    height: 24px;
+    line-height: 24px;
+    text-align: right;
+    margin-right: 8px;
+}
+.rfipicons__sp {
+    margin-right: 8px;
+}
+.rfipicons__tp {
+    margin-right: 8px;
+}
+.rfipicons__arrow {
+    margin-left: auto;
+    width: 56px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 24px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.rfipicons__right {
+    margin-left: auto;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    -webkit-transition: background-color 0.25s, border 0.25s;
+    transition: background-color 0.25s, border 0.25s;
+    outline: 0 none;
+    border-radius: 2px;
+    font-size: 18px;
+}
+.rfipicons__left {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    -webkit-transition: background-color 0.25s, border 0.25s;
+    transition: background-color 0.25s, border 0.25s;
+    outline: 0 none;
+    border-radius: 2px;
+    font-size: 18px;
+}
+.rfipicons__label {
+    height: 22px;
+    width: 22px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    img {
+        height: 18px;
+        width: 18px;
+    }
+}
+.rfipicons__selector {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 20%;
+    flex: 1 1 20%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.rfipicons__ibox {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    -webkit-transition: background-color 0.25s, border 0.25s;
+    transition: background-color 0.25s, border 0.25s;
+    border-radius: 2px;
+    outline: 0 none;
+    font-size: 20px;
+    img {
+        max-height: 24px;
+        width: auto;
+    }
+    svg {
+        max-height: 24px;
+        width: auto;
+    }
+    > * {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: -webkit-transform 0.25s;
+        transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+        transition: transform 0.25s, -webkit-transform 0.25s;
+        -webkit-transform-origin: center;
+        transform-origin: center;
+    }
+    &:hover {
+        > * {
+            -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+        }
+    }
+}
+.rfipicons__ibox--error {
+    text-transform: lowercase;
+    font-style: italic;
+}
+.rfipicons__icon {
+    width: 20%;
+    height: 64px;
+    padding: 1px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.rfipicons__icon--error {
+    display: block;
+    padding: 16px;
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    line-height: 1;
+}
+.rfipsearch {
+    width: 100%;
+    margin: 0 0 8px;
+    input {
+        width: 100%;
+        display: block;
+        height: 32px;
+        line-height: 32px;
+    }
+}
+.rfipbtn--green {
+    background-color: #fff;
+    border: 1px solid #81c784;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #66bb6a;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #66bb6a;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #81c784;
+        background-color: #c8e6c9;
+        color: #2e7d32;
+        &:hover {
+            background-color: #66bb6a;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #81c784;
+            box-shadow: inset 0 0 10px 0 #81c784;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #a5d6a7;
+        color: #2e7d32;
+    }
+    .rfipbtn__icon--empty {
+        color: #81c784;
+    }
+    .rfipbtn__del {
+        background-color: #a5d6a7;
+        &:hover {
+            background-color: #81c784;
+        }
+        &:active {
+            outline: 1px solid #81c784;
+        }
+        &:focus {
+            outline: 1px solid #81c784;
+        }
+    }
+}
+.rfipdropdown--green {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #81c784;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #66bb6a;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #4caf50;
+                -webkit-box-shadow: 0 1px 0 0 #4caf50;
+                box-shadow: 0 1px 0 0 #4caf50;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #4caf50;
+                -webkit-box-shadow: 0 1px 0 0 #4caf50;
+                box-shadow: 0 1px 0 0 #4caf50;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #66bb6a;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #4caf50;
+            -webkit-box-shadow: 0 1px 0 0 #4caf50;
+            box-shadow: 0 1px 0 0 #4caf50;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #4caf50;
+            -webkit-box-shadow: 0 1px 0 0 #4caf50;
+            box-shadow: 0 1px 0 0 #4caf50;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #a5d6a7;
+        border: 1px solid #a5d6a7;
+        color: #2e7d32;
+        &:hover {
+            background-color: #66bb6a;
+            border: 1px solid #66bb6a;
+        }
+        &:active {
+            border: 1px solid #66bb6a;
+        }
+        &:focus {
+            border: 1px solid #66bb6a;
+        }
+    }
+    .rfipicons__right {
+        background-color: #a5d6a7;
+        border: 1px solid #a5d6a7;
+        color: #2e7d32;
+        &:hover {
+            background-color: #66bb6a;
+            border: 1px solid #66bb6a;
+        }
+        &:active {
+            border: 1px solid #66bb6a;
+        }
+        &:focus {
+            border: 1px solid #66bb6a;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #c8e6c9;
+        border: 1px solid #c8e6c9;
+        color: #2e7d32;
+        &:hover {
+            background-color: #66bb6a;
+            border: 1px solid #66bb6a;
+        }
+        &:active {
+            border: 1px solid #66bb6a;
+        }
+        &:focus {
+            border: 1px solid #66bb6a;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #a5d6a7;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #66bb6a;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #4caf50;
+                -webkit-box-shadow: 0 1px 0 0 #4caf50;
+                box-shadow: 0 1px 0 0 #4caf50;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #4caf50;
+                -webkit-box-shadow: 0 1px 0 0 #4caf50;
+                box-shadow: 0 1px 0 0 #4caf50;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--bluegrey {
+    background-color: #fff;
+    border: 1px solid #90a4ae;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #78909c;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #78909c;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #90a4ae;
+        background-color: #cfd8dc;
+        color: #37474f;
+        &:hover {
+            background-color: #78909c;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #90a4ae;
+            box-shadow: inset 0 0 10px 0 #90a4ae;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #b0bec5;
+        color: #37474f;
+    }
+    .rfipbtn__icon--empty {
+        color: #90a4ae;
+    }
+    .rfipbtn__del {
+        background-color: #b0bec5;
+        &:hover {
+            background-color: #90a4ae;
+        }
+        &:active {
+            outline: 1px solid #90a4ae;
+        }
+        &:focus {
+            outline: 1px solid #90a4ae;
+        }
+    }
+}
+.rfipdropdown--bluegrey {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #90a4ae;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #78909c;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #607d8b;
+                -webkit-box-shadow: 0 1px 0 0 #607d8b;
+                box-shadow: 0 1px 0 0 #607d8b;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #607d8b;
+                -webkit-box-shadow: 0 1px 0 0 #607d8b;
+                box-shadow: 0 1px 0 0 #607d8b;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #78909c;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #607d8b;
+            -webkit-box-shadow: 0 1px 0 0 #607d8b;
+            box-shadow: 0 1px 0 0 #607d8b;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #607d8b;
+            -webkit-box-shadow: 0 1px 0 0 #607d8b;
+            box-shadow: 0 1px 0 0 #607d8b;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #b0bec5;
+        border: 1px solid #b0bec5;
+        color: #37474f;
+        &:hover {
+            background-color: #78909c;
+            border: 1px solid #78909c;
+        }
+        &:active {
+            border: 1px solid #78909c;
+        }
+        &:focus {
+            border: 1px solid #78909c;
+        }
+    }
+    .rfipicons__right {
+        background-color: #b0bec5;
+        border: 1px solid #b0bec5;
+        color: #37474f;
+        &:hover {
+            background-color: #78909c;
+            border: 1px solid #78909c;
+        }
+        &:active {
+            border: 1px solid #78909c;
+        }
+        &:focus {
+            border: 1px solid #78909c;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #cfd8dc;
+        border: 1px solid #cfd8dc;
+        color: #37474f;
+        &:hover {
+            background-color: #78909c;
+            border: 1px solid #78909c;
+        }
+        &:active {
+            border: 1px solid #78909c;
+        }
+        &:focus {
+            border: 1px solid #78909c;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #b0bec5;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #78909c;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #607d8b;
+                -webkit-box-shadow: 0 1px 0 0 #607d8b;
+                box-shadow: 0 1px 0 0 #607d8b;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #607d8b;
+                -webkit-box-shadow: 0 1px 0 0 #607d8b;
+                box-shadow: 0 1px 0 0 #607d8b;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--brown {
+    background-color: #fff;
+    border: 1px solid #a1887f;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #8d6e63;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #8d6e63;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #a1887f;
+        background-color: #d7ccc8;
+        color: #4e342e;
+        &:hover {
+            background-color: #8d6e63;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #a1887f;
+            box-shadow: inset 0 0 10px 0 #a1887f;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #bcaaa4;
+        color: #4e342e;
+    }
+    .rfipbtn__icon--empty {
+        color: #a1887f;
+    }
+    .rfipbtn__del {
+        background-color: #bcaaa4;
+        &:hover {
+            background-color: #a1887f;
+        }
+        &:active {
+            outline: 1px solid #a1887f;
+        }
+        &:focus {
+            outline: 1px solid #a1887f;
+        }
+    }
+}
+.rfipdropdown--brown {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #a1887f;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #8d6e63;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #795548;
+                -webkit-box-shadow: 0 1px 0 0 #795548;
+                box-shadow: 0 1px 0 0 #795548;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #795548;
+                -webkit-box-shadow: 0 1px 0 0 #795548;
+                box-shadow: 0 1px 0 0 #795548;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #8d6e63;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #795548;
+            -webkit-box-shadow: 0 1px 0 0 #795548;
+            box-shadow: 0 1px 0 0 #795548;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #795548;
+            -webkit-box-shadow: 0 1px 0 0 #795548;
+            box-shadow: 0 1px 0 0 #795548;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #bcaaa4;
+        border: 1px solid #bcaaa4;
+        color: #4e342e;
+        &:hover {
+            background-color: #8d6e63;
+            border: 1px solid #8d6e63;
+        }
+        &:active {
+            border: 1px solid #8d6e63;
+        }
+        &:focus {
+            border: 1px solid #8d6e63;
+        }
+    }
+    .rfipicons__right {
+        background-color: #bcaaa4;
+        border: 1px solid #bcaaa4;
+        color: #4e342e;
+        &:hover {
+            background-color: #8d6e63;
+            border: 1px solid #8d6e63;
+        }
+        &:active {
+            border: 1px solid #8d6e63;
+        }
+        &:focus {
+            border: 1px solid #8d6e63;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #d7ccc8;
+        border: 1px solid #d7ccc8;
+        color: #4e342e;
+        &:hover {
+            background-color: #8d6e63;
+            border: 1px solid #8d6e63;
+        }
+        &:active {
+            border: 1px solid #8d6e63;
+        }
+        &:focus {
+            border: 1px solid #8d6e63;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #bcaaa4;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #8d6e63;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #795548;
+                -webkit-box-shadow: 0 1px 0 0 #795548;
+                box-shadow: 0 1px 0 0 #795548;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #795548;
+                -webkit-box-shadow: 0 1px 0 0 #795548;
+                box-shadow: 0 1px 0 0 #795548;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--cyan {
+    background-color: #fff;
+    border: 1px solid #4dd0e1;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #26c6da;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #26c6da;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #4dd0e1;
+        background-color: #b2ebf2;
+        color: #00838f;
+        &:hover {
+            background-color: #26c6da;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #4dd0e1;
+            box-shadow: inset 0 0 10px 0 #4dd0e1;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #80deea;
+        color: #00838f;
+    }
+    .rfipbtn__icon--empty {
+        color: #4dd0e1;
+    }
+    .rfipbtn__del {
+        background-color: #80deea;
+        &:hover {
+            background-color: #4dd0e1;
+        }
+        &:active {
+            outline: 1px solid #4dd0e1;
+        }
+        &:focus {
+            outline: 1px solid #4dd0e1;
+        }
+    }
+}
+.rfipdropdown--cyan {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #4dd0e1;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #26c6da;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #00bcd4;
+                -webkit-box-shadow: 0 1px 0 0 #00bcd4;
+                box-shadow: 0 1px 0 0 #00bcd4;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #00bcd4;
+                -webkit-box-shadow: 0 1px 0 0 #00bcd4;
+                box-shadow: 0 1px 0 0 #00bcd4;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #26c6da;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #00bcd4;
+            -webkit-box-shadow: 0 1px 0 0 #00bcd4;
+            box-shadow: 0 1px 0 0 #00bcd4;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #00bcd4;
+            -webkit-box-shadow: 0 1px 0 0 #00bcd4;
+            box-shadow: 0 1px 0 0 #00bcd4;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #80deea;
+        border: 1px solid #80deea;
+        color: #00838f;
+        &:hover {
+            background-color: #26c6da;
+            border: 1px solid #26c6da;
+        }
+        &:active {
+            border: 1px solid #26c6da;
+        }
+        &:focus {
+            border: 1px solid #26c6da;
+        }
+    }
+    .rfipicons__right {
+        background-color: #80deea;
+        border: 1px solid #80deea;
+        color: #00838f;
+        &:hover {
+            background-color: #26c6da;
+            border: 1px solid #26c6da;
+        }
+        &:active {
+            border: 1px solid #26c6da;
+        }
+        &:focus {
+            border: 1px solid #26c6da;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #b2ebf2;
+        border: 1px solid #b2ebf2;
+        color: #00838f;
+        &:hover {
+            background-color: #26c6da;
+            border: 1px solid #26c6da;
+        }
+        &:active {
+            border: 1px solid #26c6da;
+        }
+        &:focus {
+            border: 1px solid #26c6da;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #80deea;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #26c6da;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #00bcd4;
+                -webkit-box-shadow: 0 1px 0 0 #00bcd4;
+                box-shadow: 0 1px 0 0 #00bcd4;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #00bcd4;
+                -webkit-box-shadow: 0 1px 0 0 #00bcd4;
+                box-shadow: 0 1px 0 0 #00bcd4;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--deeporange {
+    background-color: #fff;
+    border: 1px solid #ff8a65;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ff7043;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ff7043;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #ff8a65;
+        background-color: #ffccbc;
+        color: #d84315;
+        &:hover {
+            background-color: #ff7043;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #ff8a65;
+            box-shadow: inset 0 0 10px 0 #ff8a65;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #ffab91;
+        color: #d84315;
+    }
+    .rfipbtn__icon--empty {
+        color: #ff8a65;
+    }
+    .rfipbtn__del {
+        background-color: #ffab91;
+        &:hover {
+            background-color: #ff8a65;
+        }
+        &:active {
+            outline: 1px solid #ff8a65;
+        }
+        &:focus {
+            outline: 1px solid #ff8a65;
+        }
+    }
+}
+.rfipdropdown--deeporange {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #ff8a65;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #ff7043;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #ff5722;
+                -webkit-box-shadow: 0 1px 0 0 #ff5722;
+                box-shadow: 0 1px 0 0 #ff5722;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #ff5722;
+                -webkit-box-shadow: 0 1px 0 0 #ff5722;
+                box-shadow: 0 1px 0 0 #ff5722;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #ff7043;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #ff5722;
+            -webkit-box-shadow: 0 1px 0 0 #ff5722;
+            box-shadow: 0 1px 0 0 #ff5722;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #ff5722;
+            -webkit-box-shadow: 0 1px 0 0 #ff5722;
+            box-shadow: 0 1px 0 0 #ff5722;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #ffab91;
+        border: 1px solid #ffab91;
+        color: #d84315;
+        &:hover {
+            background-color: #ff7043;
+            border: 1px solid #ff7043;
+        }
+        &:active {
+            border: 1px solid #ff7043;
+        }
+        &:focus {
+            border: 1px solid #ff7043;
+        }
+    }
+    .rfipicons__right {
+        background-color: #ffab91;
+        border: 1px solid #ffab91;
+        color: #d84315;
+        &:hover {
+            background-color: #ff7043;
+            border: 1px solid #ff7043;
+        }
+        &:active {
+            border: 1px solid #ff7043;
+        }
+        &:focus {
+            border: 1px solid #ff7043;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #ffccbc;
+        border: 1px solid #ffccbc;
+        color: #d84315;
+        &:hover {
+            background-color: #ff7043;
+            border: 1px solid #ff7043;
+        }
+        &:active {
+            border: 1px solid #ff7043;
+        }
+        &:focus {
+            border: 1px solid #ff7043;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #ffab91;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #ff7043;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #ff5722;
+                -webkit-box-shadow: 0 1px 0 0 #ff5722;
+                box-shadow: 0 1px 0 0 #ff5722;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #ff5722;
+                -webkit-box-shadow: 0 1px 0 0 #ff5722;
+                box-shadow: 0 1px 0 0 #ff5722;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--deeppurple {
+    background-color: #fff;
+    border: 1px solid #9575cd;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #7e57c2;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #7e57c2;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #9575cd;
+        background-color: #d1c4e9;
+        color: #4527a0;
+        &:hover {
+            background-color: #7e57c2;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #9575cd;
+            box-shadow: inset 0 0 10px 0 #9575cd;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #b39ddb;
+        color: #4527a0;
+    }
+    .rfipbtn__icon--empty {
+        color: #9575cd;
+    }
+    .rfipbtn__del {
+        background-color: #b39ddb;
+        &:hover {
+            background-color: #9575cd;
+        }
+        &:active {
+            outline: 1px solid #9575cd;
+        }
+        &:focus {
+            outline: 1px solid #9575cd;
+        }
+    }
+}
+.rfipdropdown--deeppurple {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #9575cd;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #7e57c2;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #673ab7;
+                -webkit-box-shadow: 0 1px 0 0 #673ab7;
+                box-shadow: 0 1px 0 0 #673ab7;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #673ab7;
+                -webkit-box-shadow: 0 1px 0 0 #673ab7;
+                box-shadow: 0 1px 0 0 #673ab7;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #7e57c2;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #673ab7;
+            -webkit-box-shadow: 0 1px 0 0 #673ab7;
+            box-shadow: 0 1px 0 0 #673ab7;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #673ab7;
+            -webkit-box-shadow: 0 1px 0 0 #673ab7;
+            box-shadow: 0 1px 0 0 #673ab7;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #b39ddb;
+        border: 1px solid #b39ddb;
+        color: #4527a0;
+        &:hover {
+            background-color: #7e57c2;
+            border: 1px solid #7e57c2;
+        }
+        &:active {
+            border: 1px solid #7e57c2;
+        }
+        &:focus {
+            border: 1px solid #7e57c2;
+        }
+    }
+    .rfipicons__right {
+        background-color: #b39ddb;
+        border: 1px solid #b39ddb;
+        color: #4527a0;
+        &:hover {
+            background-color: #7e57c2;
+            border: 1px solid #7e57c2;
+        }
+        &:active {
+            border: 1px solid #7e57c2;
+        }
+        &:focus {
+            border: 1px solid #7e57c2;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #d1c4e9;
+        border: 1px solid #d1c4e9;
+        color: #4527a0;
+        &:hover {
+            background-color: #7e57c2;
+            border: 1px solid #7e57c2;
+        }
+        &:active {
+            border: 1px solid #7e57c2;
+        }
+        &:focus {
+            border: 1px solid #7e57c2;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #b39ddb;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #7e57c2;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #673ab7;
+                -webkit-box-shadow: 0 1px 0 0 #673ab7;
+                box-shadow: 0 1px 0 0 #673ab7;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #673ab7;
+                -webkit-box-shadow: 0 1px 0 0 #673ab7;
+                box-shadow: 0 1px 0 0 #673ab7;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--default {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #bdbdbd;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #bdbdbd;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #e0e0e0;
+        background-color: #f5f5f5;
+        color: #424242;
+        &:hover {
+            background-color: #bdbdbd;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #e0e0e0;
+            box-shadow: inset 0 0 10px 0 #e0e0e0;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #eee;
+        color: #424242;
+        border: 0;
+        height: 40px;
+    }
+    .rfipbtn__icon--empty {
+        color: #e0e0e0;
+    }
+    .rfipbtn__del {
+        background-color: #eee;
+        height: 18px;
+        &:hover {
+            background-color: #e0e0e0;
+        }
+        &:active {
+            outline: 1px solid #e0e0e0;
+        }
+        &:focus {
+            outline: 1px solid #e0e0e0;
+        }
+    }
+}
+.rfipdropdown--default {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #bdbdbd;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #9e9e9e;
+                -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+                box-shadow: 0 1px 0 0 #9e9e9e;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #9e9e9e;
+                -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+                box-shadow: 0 1px 0 0 #9e9e9e;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #bdbdbd;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #9e9e9e;
+            -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+            box-shadow: 0 1px 0 0 #9e9e9e;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #9e9e9e;
+            -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+            box-shadow: 0 1px 0 0 #9e9e9e;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #eee;
+        border: 1px solid #eee;
+        color: #424242;
+        &:hover {
+            background-color: #bdbdbd;
+            border: 1px solid #bdbdbd;
+        }
+        &:active {
+            border: 1px solid #bdbdbd;
+        }
+        &:focus {
+            border: 1px solid #bdbdbd;
+        }
+    }
+    .rfipicons__right {
+        background-color: #eee;
+        border: 1px solid #eee;
+        color: #424242;
+        &:hover {
+            background-color: #bdbdbd;
+            border: 1px solid #bdbdbd;
+        }
+        &:active {
+            border: 1px solid #bdbdbd;
+        }
+        &:focus {
+            border: 1px solid #bdbdbd;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #f5f5f5;
+        border: 1px solid #f5f5f5;
+        color: #424242;
+        &:hover {
+            background-color: #bdbdbd;
+            border: 1px solid #bdbdbd;
+        }
+        &:active {
+            border: 1px solid #bdbdbd;
+        }
+        &:focus {
+            border: 1px solid #bdbdbd;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #eee;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #bdbdbd;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #9e9e9e;
+                -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+                box-shadow: 0 1px 0 0 #9e9e9e;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #9e9e9e;
+                -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+                box-shadow: 0 1px 0 0 #9e9e9e;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--blue {
+    background-color: #fff;
+    border: 1px solid #64b5f6;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #42a5f5;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #42a5f5;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #64b5f6;
+        background-color: #bbdefb;
+        color: #1565c0;
+        &:hover {
+            background-color: #42a5f5;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #64b5f6;
+            box-shadow: inset 0 0 10px 0 #64b5f6;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #90caf9;
+        color: #1565c0;
+    }
+    .rfipbtn__icon--empty {
+        color: #64b5f6;
+    }
+    .rfipbtn__del {
+        background-color: #90caf9;
+        &:hover {
+            background-color: #64b5f6;
+        }
+        &:active {
+            outline: 1px solid #64b5f6;
+        }
+        &:focus {
+            outline: 1px solid #64b5f6;
+        }
+    }
+}
+.rfipdropdown--blue {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #64b5f6;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #42a5f5;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #2196f3;
+                -webkit-box-shadow: 0 1px 0 0 #2196f3;
+                box-shadow: 0 1px 0 0 #2196f3;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #2196f3;
+                -webkit-box-shadow: 0 1px 0 0 #2196f3;
+                box-shadow: 0 1px 0 0 #2196f3;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #42a5f5;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #2196f3;
+            -webkit-box-shadow: 0 1px 0 0 #2196f3;
+            box-shadow: 0 1px 0 0 #2196f3;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #2196f3;
+            -webkit-box-shadow: 0 1px 0 0 #2196f3;
+            box-shadow: 0 1px 0 0 #2196f3;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #90caf9;
+        border: 1px solid #90caf9;
+        color: #1565c0;
+        &:hover {
+            background-color: #42a5f5;
+            border: 1px solid #42a5f5;
+        }
+        &:active {
+            border: 1px solid #42a5f5;
+        }
+        &:focus {
+            border: 1px solid #42a5f5;
+        }
+    }
+    .rfipicons__right {
+        background-color: #90caf9;
+        border: 1px solid #90caf9;
+        color: #1565c0;
+        &:hover {
+            background-color: #42a5f5;
+            border: 1px solid #42a5f5;
+        }
+        &:active {
+            border: 1px solid #42a5f5;
+        }
+        &:focus {
+            border: 1px solid #42a5f5;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #bbdefb;
+        border: 1px solid #bbdefb;
+        color: #1565c0;
+        &:hover {
+            background-color: #42a5f5;
+            border: 1px solid #42a5f5;
+        }
+        &:active {
+            border: 1px solid #42a5f5;
+        }
+        &:focus {
+            border: 1px solid #42a5f5;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #90caf9;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #42a5f5;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #2196f3;
+                -webkit-box-shadow: 0 1px 0 0 #2196f3;
+                box-shadow: 0 1px 0 0 #2196f3;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #2196f3;
+                -webkit-box-shadow: 0 1px 0 0 #2196f3;
+                box-shadow: 0 1px 0 0 #2196f3;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--indigo {
+    background-color: #fff;
+    border: 1px solid #7986cb;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #5c6bc0;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #5c6bc0;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #7986cb;
+        background-color: #c5cae9;
+        color: #283593;
+        &:hover {
+            background-color: #5c6bc0;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #7986cb;
+            box-shadow: inset 0 0 10px 0 #7986cb;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #9fa8da;
+        color: #283593;
+    }
+    .rfipbtn__icon--empty {
+        color: #7986cb;
+    }
+    .rfipbtn__del {
+        background-color: #9fa8da;
+        &:hover {
+            background-color: #7986cb;
+        }
+        &:active {
+            outline: 1px solid #7986cb;
+        }
+        &:focus {
+            outline: 1px solid #7986cb;
+        }
+    }
+}
+.rfipdropdown--indigo {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #7986cb;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #5c6bc0;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #3f51b5;
+                -webkit-box-shadow: 0 1px 0 0 #3f51b5;
+                box-shadow: 0 1px 0 0 #3f51b5;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #3f51b5;
+                -webkit-box-shadow: 0 1px 0 0 #3f51b5;
+                box-shadow: 0 1px 0 0 #3f51b5;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #5c6bc0;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #3f51b5;
+            -webkit-box-shadow: 0 1px 0 0 #3f51b5;
+            box-shadow: 0 1px 0 0 #3f51b5;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #3f51b5;
+            -webkit-box-shadow: 0 1px 0 0 #3f51b5;
+            box-shadow: 0 1px 0 0 #3f51b5;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #9fa8da;
+        border: 1px solid #9fa8da;
+        color: #283593;
+        &:hover {
+            background-color: #5c6bc0;
+            border: 1px solid #5c6bc0;
+        }
+        &:active {
+            border: 1px solid #5c6bc0;
+        }
+        &:focus {
+            border: 1px solid #5c6bc0;
+        }
+    }
+    .rfipicons__right {
+        background-color: #9fa8da;
+        border: 1px solid #9fa8da;
+        color: #283593;
+        &:hover {
+            background-color: #5c6bc0;
+            border: 1px solid #5c6bc0;
+        }
+        &:active {
+            border: 1px solid #5c6bc0;
+        }
+        &:focus {
+            border: 1px solid #5c6bc0;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #c5cae9;
+        border: 1px solid #c5cae9;
+        color: #283593;
+        &:hover {
+            background-color: #5c6bc0;
+            border: 1px solid #5c6bc0;
+        }
+        &:active {
+            border: 1px solid #5c6bc0;
+        }
+        &:focus {
+            border: 1px solid #5c6bc0;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #9fa8da;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #5c6bc0;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #3f51b5;
+                -webkit-box-shadow: 0 1px 0 0 #3f51b5;
+                box-shadow: 0 1px 0 0 #3f51b5;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #3f51b5;
+                -webkit-box-shadow: 0 1px 0 0 #3f51b5;
+                box-shadow: 0 1px 0 0 #3f51b5;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--lightblue {
+    background-color: #fff;
+    border: 1px solid #4fc3f7;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #29b6f6;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #29b6f6;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #4fc3f7;
+        background-color: #b3e5fc;
+        color: #0277bd;
+        &:hover {
+            background-color: #29b6f6;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #4fc3f7;
+            box-shadow: inset 0 0 10px 0 #4fc3f7;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #81d4fa;
+        color: #0277bd;
+    }
+    .rfipbtn__icon--empty {
+        color: #4fc3f7;
+    }
+    .rfipbtn__del {
+        background-color: #81d4fa;
+        &:hover {
+            background-color: #4fc3f7;
+        }
+        &:active {
+            outline: 1px solid #4fc3f7;
+        }
+        &:focus {
+            outline: 1px solid #4fc3f7;
+        }
+    }
+}
+.rfipdropdown--lightblue {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #4fc3f7;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #29b6f6;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #03a9f4;
+                -webkit-box-shadow: 0 1px 0 0 #03a9f4;
+                box-shadow: 0 1px 0 0 #03a9f4;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #03a9f4;
+                -webkit-box-shadow: 0 1px 0 0 #03a9f4;
+                box-shadow: 0 1px 0 0 #03a9f4;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #29b6f6;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #03a9f4;
+            -webkit-box-shadow: 0 1px 0 0 #03a9f4;
+            box-shadow: 0 1px 0 0 #03a9f4;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #03a9f4;
+            -webkit-box-shadow: 0 1px 0 0 #03a9f4;
+            box-shadow: 0 1px 0 0 #03a9f4;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #81d4fa;
+        border: 1px solid #81d4fa;
+        color: #0277bd;
+        &:hover {
+            background-color: #29b6f6;
+            border: 1px solid #29b6f6;
+        }
+        &:active {
+            border: 1px solid #29b6f6;
+        }
+        &:focus {
+            border: 1px solid #29b6f6;
+        }
+    }
+    .rfipicons__right {
+        background-color: #81d4fa;
+        border: 1px solid #81d4fa;
+        color: #0277bd;
+        &:hover {
+            background-color: #29b6f6;
+            border: 1px solid #29b6f6;
+        }
+        &:active {
+            border: 1px solid #29b6f6;
+        }
+        &:focus {
+            border: 1px solid #29b6f6;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #b3e5fc;
+        border: 1px solid #b3e5fc;
+        color: #0277bd;
+        &:hover {
+            background-color: #29b6f6;
+            border: 1px solid #29b6f6;
+        }
+        &:active {
+            border: 1px solid #29b6f6;
+        }
+        &:focus {
+            border: 1px solid #29b6f6;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #81d4fa;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #29b6f6;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #03a9f4;
+                -webkit-box-shadow: 0 1px 0 0 #03a9f4;
+                box-shadow: 0 1px 0 0 #03a9f4;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #03a9f4;
+                -webkit-box-shadow: 0 1px 0 0 #03a9f4;
+                box-shadow: 0 1px 0 0 #03a9f4;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--pink {
+    background-color: #fff;
+    border: 1px solid #f06292;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ec407a;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ec407a;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #f06292;
+        background-color: #f8bbd0;
+        color: #ad1457;
+        &:hover {
+            background-color: #ec407a;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #f06292;
+            box-shadow: inset 0 0 10px 0 #f06292;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #f48fb1;
+        color: #ad1457;
+    }
+    .rfipbtn__icon--empty {
+        color: #f06292;
+    }
+    .rfipbtn__del {
+        background-color: #f48fb1;
+        &:hover {
+            background-color: #f06292;
+        }
+        &:active {
+            outline: 1px solid #f06292;
+        }
+        &:focus {
+            outline: 1px solid #f06292;
+        }
+    }
+}
+.rfipdropdown--pink {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #f06292;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #ec407a;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #e91e63;
+                -webkit-box-shadow: 0 1px 0 0 #e91e63;
+                box-shadow: 0 1px 0 0 #e91e63;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #e91e63;
+                -webkit-box-shadow: 0 1px 0 0 #e91e63;
+                box-shadow: 0 1px 0 0 #e91e63;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #ec407a;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #e91e63;
+            -webkit-box-shadow: 0 1px 0 0 #e91e63;
+            box-shadow: 0 1px 0 0 #e91e63;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #e91e63;
+            -webkit-box-shadow: 0 1px 0 0 #e91e63;
+            box-shadow: 0 1px 0 0 #e91e63;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #f48fb1;
+        border: 1px solid #f48fb1;
+        color: #ad1457;
+        &:hover {
+            background-color: #ec407a;
+            border: 1px solid #ec407a;
+        }
+        &:active {
+            border: 1px solid #ec407a;
+        }
+        &:focus {
+            border: 1px solid #ec407a;
+        }
+    }
+    .rfipicons__right {
+        background-color: #f48fb1;
+        border: 1px solid #f48fb1;
+        color: #ad1457;
+        &:hover {
+            background-color: #ec407a;
+            border: 1px solid #ec407a;
+        }
+        &:active {
+            border: 1px solid #ec407a;
+        }
+        &:focus {
+            border: 1px solid #ec407a;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #f8bbd0;
+        border: 1px solid #f8bbd0;
+        color: #ad1457;
+        &:hover {
+            background-color: #ec407a;
+            border: 1px solid #ec407a;
+        }
+        &:active {
+            border: 1px solid #ec407a;
+        }
+        &:focus {
+            border: 1px solid #ec407a;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #f48fb1;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #ec407a;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #e91e63;
+                -webkit-box-shadow: 0 1px 0 0 #e91e63;
+                box-shadow: 0 1px 0 0 #e91e63;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #e91e63;
+                -webkit-box-shadow: 0 1px 0 0 #e91e63;
+                box-shadow: 0 1px 0 0 #e91e63;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--orange {
+    background-color: #fff;
+    border: 1px solid #ffb74d;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ffa726;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ffa726;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #ffb74d;
+        background-color: #ffe0b2;
+        color: #ef6c00;
+        &:hover {
+            background-color: #ffa726;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #ffb74d;
+            box-shadow: inset 0 0 10px 0 #ffb74d;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #ffcc80;
+        color: #ef6c00;
+    }
+    .rfipbtn__icon--empty {
+        color: #ffb74d;
+    }
+    .rfipbtn__del {
+        background-color: #ffcc80;
+        &:hover {
+            background-color: #ffb74d;
+        }
+        &:active {
+            outline: 1px solid #ffb74d;
+        }
+        &:focus {
+            outline: 1px solid #ffb74d;
+        }
+    }
+}
+.rfipdropdown--orange {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #ffb74d;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #ffa726;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #ff9800;
+                -webkit-box-shadow: 0 1px 0 0 #ff9800;
+                box-shadow: 0 1px 0 0 #ff9800;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #ff9800;
+                -webkit-box-shadow: 0 1px 0 0 #ff9800;
+                box-shadow: 0 1px 0 0 #ff9800;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #ffa726;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #ff9800;
+            -webkit-box-shadow: 0 1px 0 0 #ff9800;
+            box-shadow: 0 1px 0 0 #ff9800;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #ff9800;
+            -webkit-box-shadow: 0 1px 0 0 #ff9800;
+            box-shadow: 0 1px 0 0 #ff9800;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #ffcc80;
+        border: 1px solid #ffcc80;
+        color: #ef6c00;
+        &:hover {
+            background-color: #ffa726;
+            border: 1px solid #ffa726;
+        }
+        &:active {
+            border: 1px solid #ffa726;
+        }
+        &:focus {
+            border: 1px solid #ffa726;
+        }
+    }
+    .rfipicons__right {
+        background-color: #ffcc80;
+        border: 1px solid #ffcc80;
+        color: #ef6c00;
+        &:hover {
+            background-color: #ffa726;
+            border: 1px solid #ffa726;
+        }
+        &:active {
+            border: 1px solid #ffa726;
+        }
+        &:focus {
+            border: 1px solid #ffa726;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #ffe0b2;
+        border: 1px solid #ffe0b2;
+        color: #ef6c00;
+        &:hover {
+            background-color: #ffa726;
+            border: 1px solid #ffa726;
+        }
+        &:active {
+            border: 1px solid #ffa726;
+        }
+        &:focus {
+            border: 1px solid #ffa726;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #ffcc80;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #ffa726;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #ff9800;
+                -webkit-box-shadow: 0 1px 0 0 #ff9800;
+                box-shadow: 0 1px 0 0 #ff9800;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #ff9800;
+                -webkit-box-shadow: 0 1px 0 0 #ff9800;
+                box-shadow: 0 1px 0 0 #ff9800;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--purple {
+    background-color: #fff;
+    border: 1px solid #ba68c8;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ab47bc;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ab47bc;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #ba68c8;
+        background-color: #e1bee7;
+        color: #6a1b9a;
+        &:hover {
+            background-color: #ab47bc;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #ba68c8;
+            box-shadow: inset 0 0 10px 0 #ba68c8;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #ce93d8;
+        color: #6a1b9a;
+    }
+    .rfipbtn__icon--empty {
+        color: #ba68c8;
+    }
+    .rfipbtn__del {
+        background-color: #ce93d8;
+        &:hover {
+            background-color: #ba68c8;
+        }
+        &:active {
+            outline: 1px solid #ba68c8;
+        }
+        &:focus {
+            outline: 1px solid #ba68c8;
+        }
+    }
+}
+.rfipdropdown--purple {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #ba68c8;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #ab47bc;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #9c27b0;
+                -webkit-box-shadow: 0 1px 0 0 #9c27b0;
+                box-shadow: 0 1px 0 0 #9c27b0;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #9c27b0;
+                -webkit-box-shadow: 0 1px 0 0 #9c27b0;
+                box-shadow: 0 1px 0 0 #9c27b0;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #ab47bc;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #9c27b0;
+            -webkit-box-shadow: 0 1px 0 0 #9c27b0;
+            box-shadow: 0 1px 0 0 #9c27b0;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #9c27b0;
+            -webkit-box-shadow: 0 1px 0 0 #9c27b0;
+            box-shadow: 0 1px 0 0 #9c27b0;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #ce93d8;
+        border: 1px solid #ce93d8;
+        color: #6a1b9a;
+        &:hover {
+            background-color: #ab47bc;
+            border: 1px solid #ab47bc;
+        }
+        &:active {
+            border: 1px solid #ab47bc;
+        }
+        &:focus {
+            border: 1px solid #ab47bc;
+        }
+    }
+    .rfipicons__right {
+        background-color: #ce93d8;
+        border: 1px solid #ce93d8;
+        color: #6a1b9a;
+        &:hover {
+            background-color: #ab47bc;
+            border: 1px solid #ab47bc;
+        }
+        &:active {
+            border: 1px solid #ab47bc;
+        }
+        &:focus {
+            border: 1px solid #ab47bc;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #e1bee7;
+        border: 1px solid #e1bee7;
+        color: #6a1b9a;
+        &:hover {
+            background-color: #ab47bc;
+            border: 1px solid #ab47bc;
+        }
+        &:active {
+            border: 1px solid #ab47bc;
+        }
+        &:focus {
+            border: 1px solid #ab47bc;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #ce93d8;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #ab47bc;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #9c27b0;
+                -webkit-box-shadow: 0 1px 0 0 #9c27b0;
+                box-shadow: 0 1px 0 0 #9c27b0;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #9c27b0;
+                -webkit-box-shadow: 0 1px 0 0 #9c27b0;
+                box-shadow: 0 1px 0 0 #9c27b0;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--red {
+    background-color: #fff;
+    border: 1px solid #e57373;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ef5350;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #ef5350;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #e57373;
+        background-color: #ffcdd2;
+        color: #c62828;
+        &:hover {
+            background-color: #ef5350;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #e57373;
+            box-shadow: inset 0 0 10px 0 #e57373;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #ef9a9a;
+        color: #c62828;
+    }
+    .rfipbtn__icon--empty {
+        color: #e57373;
+    }
+    .rfipbtn__del {
+        background-color: #ef9a9a;
+        &:hover {
+            background-color: #e57373;
+        }
+        &:active {
+            outline: 1px solid #e57373;
+        }
+        &:focus {
+            outline: 1px solid #e57373;
+        }
+    }
+}
+.rfipdropdown--red {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #e57373;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #ef5350;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #f44336;
+                -webkit-box-shadow: 0 1px 0 0 #f44336;
+                box-shadow: 0 1px 0 0 #f44336;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #f44336;
+                -webkit-box-shadow: 0 1px 0 0 #f44336;
+                box-shadow: 0 1px 0 0 #f44336;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #ef5350;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #f44336;
+            -webkit-box-shadow: 0 1px 0 0 #f44336;
+            box-shadow: 0 1px 0 0 #f44336;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #f44336;
+            -webkit-box-shadow: 0 1px 0 0 #f44336;
+            box-shadow: 0 1px 0 0 #f44336;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #ef9a9a;
+        border: 1px solid #ef9a9a;
+        color: #c62828;
+        &:hover {
+            background-color: #ef5350;
+            border: 1px solid #ef5350;
+        }
+        &:active {
+            border: 1px solid #ef5350;
+        }
+        &:focus {
+            border: 1px solid #ef5350;
+        }
+    }
+    .rfipicons__right {
+        background-color: #ef9a9a;
+        border: 1px solid #ef9a9a;
+        color: #c62828;
+        &:hover {
+            background-color: #ef5350;
+            border: 1px solid #ef5350;
+        }
+        &:active {
+            border: 1px solid #ef5350;
+        }
+        &:focus {
+            border: 1px solid #ef5350;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #ffcdd2;
+        border: 1px solid #ffcdd2;
+        color: #c62828;
+        &:hover {
+            background-color: #ef5350;
+            border: 1px solid #ef5350;
+        }
+        &:active {
+            border: 1px solid #ef5350;
+        }
+        &:focus {
+            border: 1px solid #ef5350;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #ef9a9a;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #ef5350;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #f44336;
+                -webkit-box-shadow: 0 1px 0 0 #f44336;
+                box-shadow: 0 1px 0 0 #f44336;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #f44336;
+                -webkit-box-shadow: 0 1px 0 0 #f44336;
+                box-shadow: 0 1px 0 0 #f44336;
+                outline: 0 none;
+            }
+        }
+    }
+}
+.rfipbtn--teal {
+    background-color: #fff;
+    border: 1px solid #4db6ac;
+    &:active {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #26a69a;
+    }
+    &:focus {
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        border: 1px solid #26a69a;
+    }
+    .rfipbtn__button {
+        border: 0 none transparent;
+        border-left: 1px solid #4db6ac;
+        background-color: #b2dfdb;
+        color: #00695c;
+        &:hover {
+            background-color: #26a69a;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0 0 10px 0 #4db6ac;
+            box-shadow: inset 0 0 10px 0 #4db6ac;
+        }
+    }
+    .rfipbtn__icon {
+        border: 1px solid #80cbc4;
+        color: #00695c;
+    }
+    .rfipbtn__icon--empty {
+        color: #4db6ac;
+    }
+    .rfipbtn__del {
+        background-color: #80cbc4;
+        &:hover {
+            background-color: #4db6ac;
+        }
+        &:active {
+            outline: 1px solid #4db6ac;
+        }
+        &:focus {
+            outline: 1px solid #4db6ac;
+        }
+    }
+}
+.rfipdropdown--teal {
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    color: #424242;
+    background-color: #fff;
+    border: 1px solid #4db6ac;
+    input {
+        color: #424242;
+    }
+    select {
+        color: #424242;
+    }
+    .rfipcategory {
+        select {
+            background-color: #fff;
+            border: 0 none;
+            border-bottom: 1px solid #26a69a;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #009688;
+                -webkit-box-shadow: 0 1px 0 0 #009688;
+                box-shadow: 0 1px 0 0 #009688;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #009688;
+                -webkit-box-shadow: 0 1px 0 0 #009688;
+                box-shadow: 0 1px 0 0 #009688;
+                outline: 0 none;
+            }
+        }
+    }
+    .rfipicons__cp {
+        border: 0 none;
+        border-bottom: 1px solid #26a69a;
+        -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: border 0.25s, -webkit-box-shadow 0.25s;
+        transition: box-shadow 0.25s, border 0.25s;
+        transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+        &:active {
+            border-bottom-color: #009688;
+            -webkit-box-shadow: 0 1px 0 0 #009688;
+            box-shadow: 0 1px 0 0 #009688;
+            outline: 0 none;
+        }
+        &:focus {
+            border-bottom-color: #009688;
+            -webkit-box-shadow: 0 1px 0 0 #009688;
+            box-shadow: 0 1px 0 0 #009688;
+            outline: 0 none;
+        }
+    }
+    .rfipicons__left {
+        background-color: #80cbc4;
+        border: 1px solid #80cbc4;
+        color: #00695c;
+        &:hover {
+            background-color: #26a69a;
+            border: 1px solid #26a69a;
+        }
+        &:active {
+            border: 1px solid #26a69a;
+        }
+        &:focus {
+            border: 1px solid #26a69a;
+        }
+    }
+    .rfipicons__right {
+        background-color: #80cbc4;
+        border: 1px solid #80cbc4;
+        color: #00695c;
+        &:hover {
+            background-color: #26a69a;
+            border: 1px solid #26a69a;
+        }
+        &:active {
+            border: 1px solid #26a69a;
+        }
+        &:focus {
+            border: 1px solid #26a69a;
+        }
+    }
+    .rfipicons__ibox {
+        background-color: #b2dfdb;
+        border: 1px solid #b2dfdb;
+        color: #00695c;
+        &:hover {
+            background-color: #26a69a;
+            border: 1px solid #26a69a;
+        }
+        &:active {
+            border: 1px solid #26a69a;
+        }
+        &:focus {
+            border: 1px solid #26a69a;
+        }
+    }
+    .rfipicons__ibox--error {
+        color: #ef9a9a;
+    }
+    .rfipicons__icon--selected {
+        .rfipicons__ibox {
+            background-color: #80cbc4;
+        }
+    }
+    .rfipsearch {
+        input {
+            border: 0 none;
+            border-bottom: 1px solid #26a69a;
+            -webkit-transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: border 0.25s, -webkit-box-shadow 0.25s;
+            transition: box-shadow 0.25s, border 0.25s;
+            transition: box-shadow 0.25s, border 0.25s, -webkit-box-shadow 0.25s;
+            &:active {
+                border-bottom-color: #009688;
+                -webkit-box-shadow: 0 1px 0 0 #009688;
+                box-shadow: 0 1px 0 0 #009688;
+                outline: 0 none;
+            }
+            &:focus {
+                border-bottom-color: #009688;
+                -webkit-box-shadow: 0 1px 0 0 #009688;
+                box-shadow: 0 1px 0 0 #009688;
+                outline: 0 none;
+            }
+        }
+    }
+}
+[class^="fipicon-"] {
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+i.fipicon-angle-down {
+    &:before {
+        content: "\f140";
+        font-family: dashicons;
+    }
+}
+i.fipicon-angle-up {
+    &:before {
+        content: "\f142";
+        font-family: dashicons;
+    }
+}
+i.fipicon-angle-right {
+    &:before {
+        content: "\f345";
+        font-family: dashicons;
+    }
+}
+i.fipicon-angle-left {
+    &:before {
+        content: "\f341";
+        font-family: dashicons;
+    }
+}
+.Premium-btn-size-settings-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.premium-shadow-control__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .premium-shadow-control__wrapper {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@import "./color.scss";

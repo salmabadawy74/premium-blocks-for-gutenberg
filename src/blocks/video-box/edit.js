@@ -8,7 +8,7 @@ import onChangeVideoURL from "./index";
 import FONTS from "../../components/premium-fonts";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
-import PremiumBackground from "../../components/premium-background";
+import AdvancedPopColorControl from '../../components/premium-color-control'
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
@@ -24,7 +24,7 @@ const {
 
 const { Component, Fragment } = wp.element;
 
-const { InspectorControls, ColorPalette } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 const { __ } = wp.i18n;
 
@@ -460,7 +460,7 @@ class edit extends Component {
                                                 })
                                             }
                                             onChangeColor={(colorValue) =>
-                                                setAttributes({ playBorderColor: colorValue.hex })
+                                                setAttributes({ playBorderColor: colorValue })
                                             }
                                             onChangeRadius={(newrRadius) =>
                                                 setAttributes({ playBorderRadius: newrRadius })
@@ -571,7 +571,7 @@ class edit extends Component {
                                             vertical={descShadowVertical}
                                             onChangeColor={newColor =>
                                                 setAttributes({
-                                                    descShadowColor: newColor.hex || "transparent"
+                                                    descShadowColor: newColor || "transparent"
                                                 })
                                             }
                                             onChangeBlur={newBlur =>
@@ -627,63 +627,45 @@ class edit extends Component {
                                 if ("normal" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Icon Color")}</p>
-                                            <ColorPalette
-                                                value={playColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Icon Color", '')}
+                                                colorValue={playColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         playColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>{__("Icon Background Color")}</p>
-                                            <PremiumBackground
-                                                type="color"
-                                                colorValue={
-                                                    playBack
-                                                }
-                                                onChangeColor={newvalue => {
+                                            <AdvancedPopColorControl
+                                                label={__(`Background Color`)}
+                                                colorValue={playBack}
+                                                onColorChange={newvalue => {
                                                     setAttributes({ playBack: newvalue })
                                                 }}
-                                                opacityValue={
-                                                    playOpacity
-                                                }
-                                                onChangeOpacity={value => {
-                                                    setAttributes({ playOpacity: value })
-                                                }}
+                                                colorDefault={``}
                                             />
                                             {videoDesc && (
                                                 <Fragment>
-                                                    <p>{__("Description Color")}</p>
-                                                    <ColorPalette
-                                                        value={videoDescColor}
-                                                        onChange={newValue =>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Description Color", '')}
+                                                        colorValue={videoDescColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
                                                             setAttributes({
                                                                 videoDescColor: newValue,
                                                             })
                                                         }
-                                                        allowReset={true}
                                                     />
-                                                    <p>{__("Description Background Color")}</p>
-                                                    <PremiumBackground
-                                                        type="color"
-                                                        colorValue={
-                                                            videoDescBack
-                                                        }
-                                                        onChangeColor={newvalue => {
+                                                    <AdvancedPopColorControl
+                                                        label={__(`Background Color`)}
+                                                        colorValue={videoDescBack}
+                                                        onColorChange={newvalue => {
                                                             setAttributes({
                                                                 videoDescBack: newvalue,
                                                             })
                                                         }}
-                                                        opacityValue={
-                                                            videoDescOpacity
-                                                        }
-                                                        onChangeOpacity={value => {
-                                                            setAttributes({
-                                                                videoDescOpacity: value,
-                                                            })
-                                                        }}
+                                                        colorDefault={``}
                                                     />
                                                 </Fragment>
                                             )}
@@ -693,25 +675,25 @@ class edit extends Component {
                                 if ("hover" === tab.name) {
                                     tabout = (
                                         <Fragment>
-                                            <p>{__("Icon Hover Color")}</p>
-                                            <ColorPalette
-                                                value={playHoverColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Icon Hover Color", 'premium-block-for-gutenberg')}
+                                                colorValue={playHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         playHoverColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
-                                            <p>{__("Icon Hover Background Color")}</p>
-                                            <ColorPalette
-                                                value={playHoverBackColor}
-                                                onChange={newValue =>
+                                            <AdvancedPopColorControl
+                                                label={__("Icon Hover Background Color", 'premium-block-for-gutenberg')}
+                                                colorValue={playHoverBackColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
                                                     setAttributes({
                                                         playHoverBackColor: newValue,
                                                     })
                                                 }
-                                                allowReset={true}
                                             />
                                         </Fragment>
                                     );
@@ -752,7 +734,7 @@ class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ boxBorderColor: colorValue.hex })
+                                setAttributes({ boxBorderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
                                 setAttributes({ boxBorderRadius: newrRadius })
@@ -768,7 +750,7 @@ class edit extends Component {
                             onChangeColor={newColor =>
                                 setAttributes({
                                     shadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

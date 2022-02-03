@@ -10,6 +10,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling';
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -20,8 +21,6 @@ const {
     RangeControl,
     TextControl,
     ToggleControl,
-    Dropdown,
-    Button,
 } = wp.components;
 
 const {
@@ -29,7 +28,6 @@ const {
     InspectorControls,
     AlignmentToolbar,
     RichText,
-    ColorPalette,
 } = wp.blockEditor;
 
 const { Fragment, Component } = wp.element;
@@ -209,18 +207,16 @@ class edit extends Component {
                                 />
                             )}
                             {authorImgUrl && (
-                                <Fragment>
-                                    <p>{__("Border Color")}</p>
-                                    <ColorPalette
-                                        value={imgBorderColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                imgBorderColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Border Color", 'premium-block-for-gutenberg')}
+                                    colorValue={imgBorderColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        setAttributes({
+                                            imgBorderColor: newValue
+                                        })
+                                    }
+                                />
                             )}
                         </PanelBody>
                         <p>{__("Author HTML Tag")}</p>
@@ -266,14 +262,15 @@ class edit extends Component {
                             onChangeUpper={check => setAttributes({ authorUpper: check })}
                         />
                         <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={authorColor}
-                            onChange={newValue =>
+                        <AdvancedPopColorControl
+                            label={__("Color", 'premium-block-for-gutenberg')}
+                            colorValue={authorColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 setAttributes({
                                     authorColor: newValue
                                 })
                             }
-                            allowReset={true}
                         />
                     </PanelBody>
                     <PanelBody
@@ -303,17 +300,14 @@ class edit extends Component {
                             line={bodyLine}
                             onChangeLine={newWeight => setAttributes({ bodyLine: newWeight })}
                         />
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={bodyColor}
-                            onChange={newValue =>
+                        <AdvancedPopColorControl
+                            label={__("Color", 'premium-block-for-gutenberg')}
+                            colorValue={bodyColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
                                 setAttributes({
                                     bodyColor: newValue
                                 })
-                            }
-                            opacityValue={backOpacity}
-                            onChangeOpacity={value =>
-                                setAttributes({ backOpacity: value })
                             }
                         />
                         <RangeControl
@@ -361,43 +355,26 @@ class edit extends Component {
                                 label: __("authorComSizeTablet"),
                             }}
                         />
-                        <div className="premium-control-toggle">
-                            <strong>{__("Colors")}</strong>
-                            <Dropdown
-                                className="premium-control-toggle-btn"
-                                contentClassName="premium-control-toggle-content"
-                                position="bottom right"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                        <i className="dashicons dashicons-edit" />
-                                    </Button>
-                                )}
-                                renderContent={() => (
-                                    <Fragment>
-                                        <p>{__("Text Color")}</p>
-                                        <ColorPalette
-                                            value={authorComColor}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    authorComColor: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                        <p>{__("Dash Color")}</p>
-                                        <ColorPalette
-                                            value={dashColor}
-                                            onChange={newValue =>
-                                                setAttributes({
-                                                    dashColor: newValue
-                                                })
-                                            }
-                                            allowReset={true}
-                                        />
-                                    </Fragment>
-                                )}
-                            />
-                        </div>
+                        <AdvancedPopColorControl
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            colorValue={authorComColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    authorComColor: newValue
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Dash Color", 'premium-block-for-gutenberg')}
+                            colorValue={dashColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    dashColor: newValue
+                                })
+                            }
+                        />
                         <ToggleControl
                             label={__("URL")}
                             checked={urlCheck}
@@ -430,18 +407,16 @@ class edit extends Component {
                             max="12"
                             onChange={newSize => setAttributes({ quotSize: newSize })}
                         />
-                        <Fragment>
-                            <p>{__("Quotations Color")}</p>
-                            <ColorPalette
-                                value={quotColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        quotColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Quotations Color", 'premium-block-for-gutenberg')}
+                            colorValue={quotColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    quotColor: newValue
+                                })
+                            }
+                        />
                         <RangeControl
                             label={__("Opacity")}
                             min="0"
@@ -508,7 +483,7 @@ class edit extends Component {
                             position={shadowPosition}
                             onChangeColor={newColor =>
                                 setAttributes({
-                                    shadowColor: newColor.hex
+                                    shadowColor: newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

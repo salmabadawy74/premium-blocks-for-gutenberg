@@ -8,6 +8,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import styling from './styling'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -319,18 +320,16 @@ export default class edit extends Component {
                                 onChange={newValue => setAttributes({ verAlign: newValue })}
                             />
                         )}
-                        <Fragment>
-                            <p>{__("Overlay")}</p>
-                            <ColorPalette
-                                value={background}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        background: newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Overlay", 'premium-block-for-gutenberg')}
+                            colorValue={background}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    background: newValue === undefined ? "transparent" : newValue
+                                })
+                            }
+                        />
                         <RangeControl
                             label={__("Overlay Opacity")}
                             value={opacity}
@@ -412,46 +411,39 @@ export default class edit extends Component {
                                 })
                             }
                         />
-
-                        <Fragment>
-                            <p>{__("Text Color")}</p>
-                            <ColorPalette
-                                value={titleColor}
-                                onChange={newValue =>
+                        <AdvancedPopColorControl
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            colorValue={titleColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    titleColor: newValue === undefined ? "transparent" : newValue
+                                })
+                            }
+                        />
+                        {"effect3" === effect && (
+                            <AdvancedPopColorControl
+                                label={__("Separator Color", 'premium-block-for-gutenberg')}
+                                colorValue={sepColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
                                     setAttributes({
-                                        titleColor: newValue === undefined ? "transparent" : newValue
+                                        sepColor: newValue === undefined ? "transparent" : newValue
                                     })
                                 }
-                                allowReset={true}
                             />
-                        </Fragment>
-                        {"effect3" === effect && (
-                            <Fragment>
-                                <p>{__("Separator Color")}</p>
-                                <ColorPalette
-                                    value={sepColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            sepColor: newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
                         )}
                         {"effect2" === effect && (
-                            <Fragment>
-                                <p>{__("Background Color")}</p>
-                                <ColorPalette
-                                    value={titleBack}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            titleBack: newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleBack}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    setAttributes({
+                                        titleBack: newValue === undefined ? "transparent" : newValue
+                                    })
+                                }
+                            />
                         )}
                         <PremiumTextShadow
                             color={shadowColor}
@@ -461,7 +453,7 @@ export default class edit extends Component {
                             onChangeColor={newColor =>
                                 setAttributes({
                                     shadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>
@@ -518,18 +510,16 @@ export default class edit extends Component {
                                 })
                             }
                         />
-                        <Fragment>
-                            <p>{__("Text Color")}</p>
-                            <ColorPalette
-                                value={descColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        descColor: newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            colorValue={descColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                setAttributes({
+                                    descColor: newValue === undefined ? "transparent" : newValue
+                                })
+                            }
+                        />
                         <PremiumTextShadow
                             color={descShadowColor}
                             blur={descShadowBlur}
@@ -538,7 +528,7 @@ export default class edit extends Component {
                             onChangeColor={newColor =>
                                 setAttributes({
                                     descShadowColor:
-                                        newColor === undefined ? "transparent" : newColor.hex
+                                        newColor === undefined ? "transparent" : newColor
                                 })
                             }
                             onChangeBlur={newBlur =>
@@ -585,7 +575,7 @@ export default class edit extends Component {
                             onChangeColor={(colorValue) =>
                                 setAttributes({
                                     borderColor:
-                                        colorValue === undefined ? "transparent" : colorValue.hex,
+                                        colorValue === undefined ? "transparent" : colorValue,
                                 })
                             }
                             onChangeRadius={(newRadius) =>
@@ -603,7 +593,7 @@ export default class edit extends Component {
                             position={containerShadowPosition}
                             onChangeColor={newColor =>
                                 setAttributes({
-                                    containerShadowColor: newColor.hex
+                                    containerShadowColor: newColor
                                 })
                             }
                             onChangeBlur={newBlur =>

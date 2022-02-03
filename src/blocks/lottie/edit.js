@@ -6,6 +6,7 @@ import PremiumPadding from '../../components/premium-padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumSizeUnits from "../../components/premium-size-units";
 import styling from './styling';
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -27,7 +28,6 @@ const {
     Dashicon,
 } = wp.components
 
-const { ColorPalette } = wp.blockEditor;
 
 let isLottieUpdated = null;
 
@@ -464,9 +464,11 @@ class edit extends Component {
                                 tabout = (
                                     <Fragment>
                                         <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={backColor}
-                                            onChange={(newValue) => setAttributes({ backColor: newValue })}
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            colorValue={backColor}
+                                            colorDefault={''}
+                                            onColorChange={(newValue) => setAttributes({ backColor: newValue })}
                                         />
                                         <RangeControl
                                             label={__(`Opacity`)}
@@ -494,10 +496,11 @@ class edit extends Component {
                             if ("hover" === tab.name) {
                                 tabout = (
                                     <Fragment>
-                                        <p>{__("Background Color")}</p>
-                                        <ColorPalette
-                                            value={backHColor}
-                                            onChange={(newValue) => setAttributes({ backHColor: newValue })}
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            colorValue={backHColor}
+                                            colorDefault={''}
+                                            onColorChange={(newValue) => setAttributes({ backHColor: newValue })}
                                         />
                                         <RangeControl
                                             label={__(`Opacity`)}
@@ -551,7 +554,7 @@ class edit extends Component {
                         onChangeColor={(colorValue) =>
                             setAttributes({
                                 borderColor:
-                                    colorValue === undefined ? "transparent" : colorValue.hex,
+                                    colorValue === undefined ? "transparent" : colorValue,
                             })
                         }
                         onChangeRadius={(newRadius) =>

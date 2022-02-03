@@ -3,7 +3,7 @@ import { Component } from "react";
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { SelectControl, RangeControl, ColorPicker } = wp.components;
-
+import AdvancedPopColorControl from './premium-color-control'
 export default class PremiumBorder extends Component {
 
     constructor(props) {
@@ -152,14 +152,12 @@ export default class PremiumBorder extends Component {
                         </div>
                     )}
                     {"none" != borderType && (
-                        <Fragment>
-                            <p>{__("Border Color")}</p>
-                            <ColorPicker
-                                color={borderColor}
-                                onChangeComplete={onChangeColor}
-                                disableAlpha
-                            />
-                        </Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Border Color", 'premium-block-for-gutenberg')}
+                            colorValue={borderColor}
+                            colorDefault={''}
+                            onColorChange={onChangeColor}
+                        />
                     )}
                     <RangeControl
                         label={__("Border Radius")}

@@ -11,6 +11,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackground from "../../components/premium-background";
 import hexToRgba from "hex-to-rgba";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import AdvancedPopColorControl from '../../components/premium-color-control'
 
 const { __ } = wp.i18n;
 
@@ -19,12 +20,10 @@ const {
     Toolbar,
     SelectControl,
     RangeControl,
-    ToggleControl,
-    Dropdown,
-    Button
+    ToggleControl
 } = wp.components;
 
-const { InspectorControls, ColorPalette, URLInput } = wp.blockEditor;
+const { InspectorControls, URLInput } = wp.blockEditor;
 
 const { Fragment } = wp.element;
 
@@ -197,47 +196,24 @@ const edit = props => {
                         initialPosition={50}
                         allowReset={true}
                     />
-                    <div className="premium-control-toggle">
-                        <strong>{__("Colors")}</strong>
-                        <Dropdown
-                            className="premium-control-toggle-btn"
-                            contentClassName="premium-control-toggle-content"
-                            position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
-                                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                    <i className="dashicons dashicons-edit" />
-                                </Button>
-                            )}
-                            renderContent={() => (
-                                <Fragment>
-                                    <p>{__("Icon Color")}</p>
-                                    <ColorPalette
-                                        value={iconColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                iconColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>{__("Background Color")}</p>
-                                    <PremiumBackground
-                                        type="color"
-                                        colorValue={iconBack}
-                                        onChangeColor={value =>
-                                            setAttributes({ iconBack: value })
-                                        }
-                                        opacityValue={iconOpacity}
-                                        onChangeOpacity={newvalue =>
-                                            setAttributes({
-                                                iconOpacity: newvalue,
-                                            })
-                                        }
-                                    />
-                                </Fragment>
-                            )}
-                        />
-                    </div>
+                    <AdvancedPopColorControl
+                        label={__("Icon Color", 'premium-block-for-gutenberg')}
+                        colorValue={iconColor}
+                        colorDefault={''}
+                        onColorChange={value =>
+                            setAttributes({
+                                iconColor: value
+                            })
+                        }
+                    />
+                    <AdvancedPopColorControl
+                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                        colorValue={iconBack}
+                        colorDefault={''}
+                        onColorChange={value =>
+                            setAttributes({ iconBack: value })
+                        }
+                    />
                     <PremiumBorder
                         borderType={borderType}
                         borderWidth={borderWidth}
@@ -258,7 +234,7 @@ const edit = props => {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            setAttributes({ borderColor: colorValue.hex })
+                            setAttributes({ borderColor: colorValue })
                         }
                         onChangeRadius={(newrRadius) =>
                             setAttributes({ borderRadius: newrRadius })
@@ -272,7 +248,7 @@ const edit = props => {
                         horizontal={shadowHorizontal}
                         vertical={shadowVertical}
                         onChangeColor={newColor =>
-                            setAttributes({ shadowColor: newColor.hex })
+                            setAttributes({ shadowColor: newColor })
                         }
                         onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
                         onChangehHorizontal={newValue =>
@@ -348,7 +324,6 @@ const edit = props => {
                     initialOpen={false}
                 >
                     <Fragment>
-                        <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={backgroundColor}
@@ -413,7 +388,7 @@ const edit = props => {
                             })
                         }
                         onChangeColor={(colorValue) =>
-                            setAttributes({ wrapBorderColor: colorValue.hex })
+                            setAttributes({ wrapBorderColor: colorValue })
                         }
                         onChangeRadius={(newrRadius) =>
                             setAttributes({ wrapBorderRadius: newrRadius })
@@ -429,7 +404,7 @@ const edit = props => {
                         position={wrapShadowPosition}
                         onChangeColor={newColor =>
                             setAttributes({
-                                wrapShadowColor: newColor.hex
+                                wrapShadowColor: newColor
                             })
                         }
                         onChangeBlur={newBlur =>
