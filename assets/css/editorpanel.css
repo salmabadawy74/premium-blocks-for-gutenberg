@@ -14,7 +14,8 @@
 .premium-control-toggle-content .components-popover__content {
   padding: 10px;
   border-radius: 3px;
-  background-color: #f3f4f5; }
+  background-color: #f3f4f5;
+  min-width: 290px; }
 
 .reset-btn {
   margin-right: 3%; }
@@ -2860,6 +2861,10 @@ i.fipicon-angle-left:before {
   .premium-shadow-control__container .premium-shadow-control__wrapper {
     display: flex;
     align-items: center; }
+
+.components-button.is-secondary {
+  box-shadow: none !important;
+  outline: none !important; }
 
 .premium-popover-color .premium-gutenberg-color-picker .components-color-picker .components-color-picker__controls, .premium-popover-color .premium-gutenberg-color-picker .components-color-picker .components-color-picker__inputs-wrapper .components-base-control__field label, .premium-popover-color .premium-gutenberg-color-picker .components-color-picker .components-color-picker__inputs-toggle {
   display: flex;
