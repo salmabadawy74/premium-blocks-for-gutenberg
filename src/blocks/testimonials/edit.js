@@ -261,7 +261,6 @@ class edit extends Component {
                             }
                             onChangeUpper={check => setAttributes({ authorUpper: check })}
                         />
-                        <p>{__("Color")}</p>
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-block-for-gutenberg')}
                             colorValue={authorColor}
@@ -431,7 +430,6 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <Fragment>
-                            <p>{__("Background Color")}</p>
                             <PremiumBackground
                                 type="color"
                                 colorValue={backColor}
