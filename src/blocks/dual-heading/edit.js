@@ -640,7 +640,6 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Background Color")}</p>
                         <PremiumBackground
                             type="color"
                             colorValue={containerBack}
