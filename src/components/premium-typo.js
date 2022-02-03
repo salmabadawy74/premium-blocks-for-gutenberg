@@ -1,18 +1,11 @@
-import PremiumResponsive from "./premium-responsive";
 import googleFonts from "./premium-fonts";
 import WebFont from 'webfontloader';
-import Select from "react-select";
-import PremiumRangeControl from './premium-range-control';
-import TypoComponent from './typo-control/outside-typo'
 
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 
 const {
     SelectControl,
-    ToggleControl,
-    Dropdown,
-    Button,
     Popover,
     TextControl
 } = wp.components;
@@ -23,10 +16,6 @@ export default class PremiumTypo extends Component {
 
         this.state = {
             fontFamily: this.props.fontFamily || "System Default",
-            // size: this.props.size,
-            // weight: this.props.weight, //
-            // style: this.props.style,//
-            // spacing: this.props.spacing,
             line: this.props.line,
             upper: this.props.upper,//
             sizeUnit: this.props.sizeUnit || 'px',
@@ -118,11 +107,6 @@ export default class PremiumTypo extends Component {
 
         const {
             fontFamily,
-            // size,
-            // weight,
-            // style,
-            // spacing,
-            // line,
             upper,
             sizeUnit,
             isVisible,
@@ -308,15 +292,13 @@ export default class PremiumTypo extends Component {
                                                             <PremiumRangeControl
                                                                 defaultValue={0}
                                                                 label={__("Font Size")}
-                                                                // value={size}
+
                                                                 value={{
                                                                     'desktop': fontSize,
                                                                     'tablet': fontSizeTablet,
                                                                     'mobile': fontSizeMobile,
                                                                 }}
-                                                                // min="10"
-                                                                // max="80"
-                                                                // onChange={onChangeSize}
+
                                                                 onChange={onChangeSize}
                                                                 onChangeTablet={onChangeSizeTablet}
                                                                 onChangeMobile={onChangeSizeMobile}
@@ -422,11 +404,7 @@ export default class PremiumTypo extends Component {
                                 </span>
                             )}
                         </div>
-                        {/* <Button variant="secondary" onClick={() => toggleVisible()}>
-                        Toggle Popover!
-                        {isVisible && <Popover>Popover is toggled!</Popover>}
-                    </Button> */}
-                        {/* <TypoComponent fontFamily={fontFamily} size={size} sizeUnit={sizeUnit} weight={weight} /> */}
+
                         <div className="kmt-spacing-btn-reset-wrap">
                             <button
                                 className="kmt-reset-btn "
@@ -443,121 +421,6 @@ export default class PremiumTypo extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <Dropdown
-                    className="premium-control-toggle-btn"
-                    contentClassName="premium-control-toggle-content"
-                    position="bottom right"
-                    renderToggle={({ isOpen, onToggle }) => (
-                        <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                            <i className="dashicons dashicons-edit" />
-                        </Button>
-                    )}
-                    renderContent={() => (
-                        <Fragment>
-                            {components.includes("size") && (
-                                <PremiumRangeControl
-                                    label={__("Font Size (PX)")}
-                                    value={size}
-                                    min="10"
-                                    max="80"
-                                    defaultValue={''}
-                                    onChange={onChangeSize}
-                                    showUnit={false}
-                                />
-                            )}
-                            {components.includes("responsiveSize") && (
-                                <PremiumResponsive
-                                    type={this.props.fontSizeType}
-                                    typeLabel={this.props.fontSizeType.label}
-                                    sizeMobile={this.props.fontSizeMobile}
-                                    sizeMobileLabel={this.props.fontSizeMobile.label}
-                                    sizeTablet={this.props.fontSizeTablet}
-                                    sizeTabletLabel={this.props.fontSizeTablet.label}
-                                    size={this.props.fontSize}
-                                    sizeLabel={this.props.fontSize.label}
-                                    sizeMobileText={
-                                        !this.props.fontSizeLabel
-                                            ? __("Font Size")
-                                            : this.props.fontSizeLabel
-                                    }
-                                    sizeTabletText={
-                                        !this.props.fontSizeLabel
-                                            ? __("Font Size")
-                                            : this.props.fontSizeLabel
-                                    }
-                                    sizeText={
-                                        !this.props.fontSizeLabel
-                                            ? __("Font Size")
-                                            : this.props.fontSizeLabel
-                                    }
-                                    steps={0.1}
-                                    onResetClick={onResetClick}
-                                    {...this.props}
-                                />
-                            )}
-                            {components.includes('family') && (
-                                <Select
-                                    options={fonts}
-                                    value={{ value: this.props.fontFamily, label: __(`${this.props.fontFamily}`), weight: fontWeightObj }}
-                                    isMulti={false}
-                                    maxMenuHeight={300}
-                                    onChange={onFontfamilyChange}
-                                    className="react-select-container"
-                                    classNamePrefix="react-select"
-                                />
-
-                            )}
-                            {components.includes("weight") && (
-                                <SelectControl
-                                    label={__("Font Weight", 'premium blocks for gutenberg')}
-                                    value={weight}
-                                    onChange={onChangeWeight}
-                                    options={
-                                        fontWeightObj
-                                    }
-                                />
-                            )}
-                            {components.includes("style") && (
-                                <SelectControl
-                                    label={__("Style")}
-                                    options={STYLE}
-                                    value={style}
-                                    onChange={onChangeStyle}
-                                    onResetClick={onResetClick}
-                                />
-                            )}
-                            {components.includes("upper") && (
-                                <ToggleControl
-                                    label={__("Uppercase")}
-                                    checked={upper}
-                                    onChange={onChangeUpper}
-                                    onResetClick={onResetClick}
-                                />
-                            )}
-                            {components.includes("spacing") && (
-                                <PremiumRangeControl
-                                    label={__("Letter Spacing (PX)")}
-                                    value={spacing}
-                                    onChange={onChangeSpacing}
-                                    defaultValue={''}
-                                    onChange={onChangeSpacing}
-                                    showUnit={false}
-                                />
-                            )}
-                            {components.includes("line") && (
-                                <PremiumRangeControl
-                                    label={__("Line Height (PX)")}
-                                    value={line}
-                                    onChange={onChangeLine}
-                                    defaultValue={''}
-                                    onChange={onChangeLine}
-                                    showUnit={false}
-                                />
-                            )}
-
-                        </Fragment>
-                    )}
-                /> */}
             </div>
         );
     }

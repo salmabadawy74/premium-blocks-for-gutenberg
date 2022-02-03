@@ -80,7 +80,7 @@ class edit extends Component {
         }
 
         const saveTitleStyle = (value) => {
-            console.log(value)
+
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
                     item = { ...item, ...value };
@@ -291,7 +291,6 @@ class edit extends Component {
 
         const onResetTitleTypo = () => {
             const newUpdate = titleStyles.map((item, index) => {
-                console.log(item.titleFont)
                 item.titleFont = "System Default";
                 item.titleSize = 20;
                 item.titleSizeTablet = 20;

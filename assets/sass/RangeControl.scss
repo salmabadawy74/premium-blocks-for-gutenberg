@@ -107,44 +107,6 @@
     font-size: 12px;
 }
 
-.premium-responsive-control-btns {
-    line-height: 1px;
-    margin-bottom: 2px;
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    z-index: 8;
-    margin-top: 0px !important;
-
-    > li {
-        margin-bottom: 0;
-        display: none;
-        overflow: hidden;
-
-        &.active {
-            display: inline-block;
-        }
-    }
-
-    button[type="button"] {
-        cursor: pointer;
-        background: none;
-        border: none;
-        outline: none;
-        padding: 4px;
-        border-radius: 20px;
-        width: 24px;
-        height: 24px;
-
-        > i {
-            width: 15px;
-            height: 13px;
-            font-size: 15px;
-            color: #bbb;
-        }
-    }
-}
-
 .kemet-slider-wrap {
     position: relative;
     margin-bottom: 0;
