@@ -1024,7 +1024,7 @@ class edit extends Component {
                                             )}
                                             {descChecked && (
                                                 <AdvancedPopColorControl
-                                                    label={__("Descreption Color", 'premium-block-for-gutenberg')}
+                                                    label={__("Description Color", 'premium-block-for-gutenberg')}
                                                     colorValue={descColor}
                                                     colorDefault={''}
                                                     onColorChange={newValue =>
