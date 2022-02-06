@@ -189,24 +189,24 @@ function PremiumRangeControl(_ref) {
         }
         var newValue = Number(event.target.value);
         if (newValue === '') {
-            onChange(undefined);
+            updateValue(undefined);
             return;
         }
         if (min < -0.1) {
             if (newValue > max) {
-                onChange(max);
+                updateValue(max);
             } else if (newValue < min && newValue !== '-') {
-                onChange(min);
+                updateValue(min);
             } else {
-                onChange(newValue);
+                updateValue(newValue);
             }
         } else {
             if (newValue > max) {
-                onChange(max);
+                updateValue(max);
             } else if (newValue < -0.1) {
-                onChange(min);
+                updateValue(min);
             } else {
-                onChange(newValue);
+                updateValue(newValue);
             }
         }
     };
@@ -221,6 +221,8 @@ function PremiumRangeControl(_ref) {
     var updateValue = function updateValue(value) {
         device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
     };
+
+    console.log(device);
 
     var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
     return React.createElement(
@@ -59124,7 +59126,6 @@ var edit = function (_Component) {
     }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
-
             clearTimeout(isLottieUpdated);
             isLottieUpdated = setTimeout(this.initLottieAnimation, 400);
         }
@@ -59132,7 +59133,6 @@ var edit = function (_Component) {
         key: "onSelectLottieJSON",
         value: function onSelectLottieJSON(media) {
             var setAttributes = this.props.setAttributes;
-
 
             if (!media || !media.url) {
                 setAttributes({ jsonLottie: null });
@@ -59150,18 +59150,13 @@ var edit = function (_Component) {
                 bottom = _props$attributes.bottom,
                 top = _props$attributes.top;
 
-
             var lottieContainer = document.getElementById("premium-lottie-" + block_id);
-
             if (lottieContainer !== null) {
                 var initScroll = function initScroll() {
-
                     var triggerEvent = trigger,
                         startEvent = bottom,
                         endEvent = top;
-
                     if (triggerEvent === "scroll" || triggerEvent === "viewport") {
-
                         var scrollHeight = scrollElement.scrollHeight,
                             scrollTop = scrollElement.scrollTop,
                             pageRange = scrollElement.clientHeight,
@@ -59183,7 +59178,6 @@ var edit = function (_Component) {
                 var _lottieContainer = document.getElementById("premium-lottie-" + block_id),
                     scrollElement = document.querySelector('.interface-interface-skeleton__content'),
                     animate = this.lottieplayer.current;
-
                 document.addEventListener("load", initScroll);
                 scrollElement.addEventListener('scroll', initScroll);
             }
@@ -59286,11 +59280,8 @@ var edit = function (_Component) {
                 stopAnimation = false;
             }
             var reversedir = reverse ? -1 : 1;
-
             var mainClasses = (0, _classnames2.default)(className, 'premium-lottie-wrap');
-
             var lottieSize = this.getPreviewSize(this.props.deviceType, lottieStyles[0].size, lottieStyles[0].sizeTablet, lottieStyles[0].sizeMobile);
-
             var renderCss = React.createElement(
                 "style",
                 null,
@@ -63804,7 +63795,7 @@ function save(props) {
                     } },
                 _react2.default.createElement(
                     "button",
-                    { className: "pbg-forms-submit button  premium-newsletter-button-submit",
+                    { className: "pbg-forms-submit button  premium-newsletter-button-submit premium-button__" + btnStyles[0].buttonSize,
                         style: {
                             paddingRight: "calc(" + columnGap + "px / 2)",
                             paddingLeft: "calc(" + columnGap + "px / 2)",
