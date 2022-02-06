@@ -34,24 +34,24 @@ export default function PremiumRangeControl({
         }
         const newValue = Number(event.target.value);
         if (newValue === '') {
-            onChange(undefined);
+            updateValue(undefined);
             return;
         }
         if (min < -0.1) {
             if (newValue > max) {
-                onChange(max);
+                updateValue(max);
             } else if (newValue < min && newValue !== '-') {
-                onChange(min);
+                updateValue(min);
             } else {
-                onChange(newValue);
+                updateValue(newValue);
             }
         } else {
             if (newValue > max) {
-                onChange(max);
+                updateValue(max);
             } else if (newValue < -0.1) {
-                onChange(min);
+                updateValue(min);
             } else {
-                onChange(newValue);
+                updateValue(newValue);
             }
         }
     };
@@ -61,6 +61,8 @@ export default function PremiumRangeControl({
     const updateValue = (value) => {
         device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value)
     }
+
+    console.log(device)
 
     const id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
     return (

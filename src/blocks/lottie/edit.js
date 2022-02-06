@@ -63,49 +63,36 @@ class edit extends Component {
         }
         return desktopSize;
     }
+
     componentDidUpdate() {
-
-
         clearTimeout(isLottieUpdated);
         isLottieUpdated = setTimeout(this.initLottieAnimation, 400);
     }
 
     onSelectLottieJSON(media) {
-
         const { setAttributes } = this.props
-
         if (!media || !media.url) {
             setAttributes({ jsonLottie: null })
             return
         }
         setAttributes({ jsonLottie: media })
         setAttributes({ lottieURl: media.url })
-
     }
 
     initLottieAnimation() {
-
         const { block_id, trigger, bottom, top } = this.props.attributes;
-
         let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
-
         if (lottieContainer !== null) {
-
             let lottieContainer = document.getElementById(`premium-lottie-${block_id}`),
                 scrollElement = document.querySelector('.interface-interface-skeleton__content'),
                 animate = this.lottieplayer.current;
-
             document.addEventListener("load", initScroll)
             scrollElement.addEventListener('scroll', initScroll)
-
             function initScroll() {
-
                 let triggerEvent = trigger,
                     startEvent = bottom,
                     endEvent = top;
-
                 if (triggerEvent === "scroll" || triggerEvent === "viewport") {
-
                     var scrollHeight = scrollElement.scrollHeight,
                         scrollTop = scrollElement.scrollTop,
                         pageRange = scrollElement.clientHeight,
@@ -221,12 +208,8 @@ class edit extends Component {
             stopAnimation = false;
         }
         const reversedir = (reverse) ? -1 : 1;
-
-
         const mainClasses = classnames(className, 'premium-lottie-wrap')
-
         const lottieSize = this.getPreviewSize(this.props.deviceType, lottieStyles[0].size, lottieStyles[0].sizeTablet, lottieStyles[0].sizeMobile);
-
         const renderCss = (<style>
             { `
             #premium-lottie-${block_id} .premium-lottie-animation svg{
