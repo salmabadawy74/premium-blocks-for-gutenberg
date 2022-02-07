@@ -1574,8 +1574,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2094,9 +2092,7 @@ var PremiumTypo = function (_Component) {
                                 className: 'kmt-reset-btn ',
                                 disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                                 onClick: function onClick(e) {
-                                    onResetClick();
                                     e.preventDefault();
-                                    _this2.setState(_extends({}, _this2.state, _this2.defaultValue));
                                 }
                             })
                         )
@@ -25872,7 +25868,7 @@ var edit = exports.edit = function (_Component) {
                     }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
                         return saveTextStyles({ textLetter: newValue });
                     }), _defineProperty(_React$createElement, "onChangeFamily", function onChangeFamily(fontFamily) {
-                        return console.log("fontFamily", fontFamily);
+                        return saveTextStyles({ textFontFamily: fontFamily });
                     }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
                         return saveTextStyles({ textUpper: check });
                     }), _React$createElement)),
