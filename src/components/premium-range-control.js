@@ -62,7 +62,7 @@ export default function PremiumRangeControl({
         device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value)
     }
 
-    console.log(device)
+
 
     const id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
     return (

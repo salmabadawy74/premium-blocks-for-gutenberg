@@ -7,9 +7,9 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control'
+import ResponsiveRangeControl from "../../components/RangeControl /responsive-range-control";
 
 const { __ } = wp.i18n;
-
 const { Component, Fragment } = wp.element;
 const { withSelect } = wp.data
 
@@ -293,24 +293,22 @@ class edit extends Component {
                             max={100}
                         />
                     </Fragment>}
-
-                    <PremiumRangeControl
-                        label={__('Size', 'premium-block-for-gutenberg')}
-                        value={{
-                            'desktop': lottieStyles[0].size,
-                            'tablet': lottieStyles[0].sizeTablet,
-                            'mobile': lottieStyles[0].sizeMobile
-                        }}
-                        defaultValue={200}
-                        min={0}
-                        max={lottieStyles[0].sizeUnit === '%' ? 100 : 800}
+                    <ResponsiveRangeControl
+                        label={__('Size', 'premium-blocks-for-gutenberg')}
+                        value={lottieStyles[0].size}
                         onChange={(value) => saveLottieStyles({ size: (value !== "") ? value : 200 })}
+                        tabletValue={lottieStyles[0].sizeTablet}
                         onChangeTablet={(value) => saveLottieStyles({ sizeTablet: (value !== "") ? value : 200 })}
+                        mobileValue={lottieStyles[0].sizeMobile}
                         onChangeMobile={(value) => saveLottieStyles({ sizeMobile: (value !== "") ? value : 200 })}
-                        showUnit={true}
-                        responsive={true}
+                        min={0}
+                        max={800}
+                        step={1}
                         onChangeUnit={newValue => saveLottieStyles({ sizeUnit: newValue })}
                         unit={lottieStyles[0].sizeUnit}
+                        showUnit={true}
+                        units={['px', 'em', 'rem']}
+                        defaultValue={200}
                     />
                     <PremiumRangeControl
                         label={__("Rotate (Degree)", 'premium-block-for-gutenberg')}
@@ -321,7 +319,6 @@ class edit extends Component {
                         showUnit={false}
                         defaultValue={0}
                     />
-
                     <RadioComponent
                         choices={["left", "center", "right"]}
                         value={align}

@@ -222,8 +222,6 @@ function PremiumRangeControl(_ref) {
         device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
     };
 
-    console.log(device);
-
     var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
     return React.createElement(
         'div',
@@ -1596,6 +1594,10 @@ var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
+var _responsiveRangeControl = __webpack_require__(466);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1627,7 +1629,6 @@ var PremiumTypo = function (_Component) {
         _this.state = {
             fontFamily: _this.props.fontFamily
         };
-
         return _this;
     }
 
@@ -1641,6 +1642,7 @@ var PremiumTypo = function (_Component) {
                     }
                 });
             }
+            console.log(prevState.fontFamily, this.state.fontFamily);
         }
     }, {
         key: "render",
@@ -1685,6 +1687,7 @@ var PremiumTypo = function (_Component) {
                 value: "oblique",
                 label: "Oblique"
             }];
+
             var fonts = [{ value: "", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
 
             var fontWeight = "";
@@ -1707,6 +1710,7 @@ var PremiumTypo = function (_Component) {
             var onFontfamilyChange = function onFontfamilyChange(value) {
                 onFontChange(weight, value.label);
                 onChangeFamily(value.value);
+                console.log(value);
             };
 
             var onFontChange = function onFontChange(weight, fontFamily) {
@@ -1728,6 +1732,8 @@ var PremiumTypo = function (_Component) {
                     }
                 }
             };
+
+            console.log(this.state.fontFamily);
 
             return React.createElement(
                 "div",
@@ -1765,34 +1771,30 @@ var PremiumTypo = function (_Component) {
                                 onChange: onChangeSize,
                                 showUnit: false
                             }),
-                            components.includes("responsiveSize") && React.createElement(_premiumRangeControl2.default, {
+                            components.includes("responsiveSize") && React.createElement(_responsiveRangeControl2.default, {
                                 label: __("Font Size", 'premium-block-for-gutenberg'),
-                                responsive: true,
-                                value: {
-                                    'desktop': _this2.props.fontSize.value,
-                                    "tablet": _this2.props.fontSizeTablet.value,
-                                    'mobile': _this2.props.fontSizeMobile.value
-                                },
+                                value: _this2.props.fontSize.value,
                                 onChange: function onChange(value) {
                                     return setAttributes(_defineProperty({}, _this2.props.fontSize.label, value));
                                 },
+                                tabletValue: _this2.props.fontSizeTablet.value,
                                 onChangeTablet: function onChangeTablet(value) {
                                     return setAttributes(_defineProperty({}, _this2.props.fontSizeTablet.label, value));
                                 },
+                                mobileValue: _this2.props.fontSizeMobile.value,
                                 onChangeMobile: function onChangeMobile(value) {
                                     return setAttributes(_defineProperty({}, _this2.props.fontSizeMobile.label, value));
                                 },
-                                showUnit: true,
-                                defaultValue: {
-                                    'desktop': 20,
-                                    "tablet": 20,
-                                    'mobile': 20
-                                },
+                                min: 0,
+                                max: 100,
+                                step: 1,
                                 unit: _this2.props.fontSizeType.value,
                                 onChangeUnit: function onChangeUnit(key) {
                                     return setAttributes(_defineProperty({}, _this2.props.fontSizeType.label, key));
                                 },
-                                units: ["px", "em"]
+                                units: ["px", "em"],
+                                showUnit: true,
+                                defaultValue: 30
                             }),
                             components.includes('family') && React.createElement(_reactSelect2.default, {
                                 options: fonts,
@@ -15912,6 +15914,10 @@ var _radioControl = __webpack_require__(15);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
+var _singleRangeControl = __webpack_require__(467);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16373,7 +16379,7 @@ var PremiumAccordion = function (_Component) {
                             return saveArrowStyles({ arrowPos: newEffect });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Size", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowSize,
                         onChange: function onChange(newValue) {
@@ -29063,7 +29069,7 @@ var edit = exports.edit = function (_Component) {
                     }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
                         return saveTextStyles({ textLetter: newValue });
                     }), _defineProperty(_React$createElement, "onChangeFamily", function onChangeFamily(fontFamily) {
-                        return saveTextStyles({ textFontFamily: fontFamily });
+                        return console.log("fontFamily", fontFamily);
                     }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
                         return saveTextStyles({ textUpper: check });
                     }), _React$createElement)),
@@ -59049,6 +59055,10 @@ var _radioControl = __webpack_require__(15);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
+var _responsiveRangeControl = __webpack_require__(466);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59379,31 +59389,30 @@ var edit = function (_Component) {
                             max: 100
                         })
                     ),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __('Size', 'premium-block-for-gutenberg'),
-                        value: {
-                            'desktop': lottieStyles[0].size,
-                            'tablet': lottieStyles[0].sizeTablet,
-                            'mobile': lottieStyles[0].sizeMobile
-                        },
-                        defaultValue: 200,
-                        min: 0,
-                        max: lottieStyles[0].sizeUnit === '%' ? 100 : 800,
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __('Size', 'premium-blocks-for-gutenberg'),
+                        value: lottieStyles[0].size,
                         onChange: function onChange(value) {
                             return saveLottieStyles({ size: value !== "" ? value : 200 });
                         },
+                        tabletValue: lottieStyles[0].sizeTablet,
                         onChangeTablet: function onChangeTablet(value) {
                             return saveLottieStyles({ sizeTablet: value !== "" ? value : 200 });
                         },
+                        mobileValue: lottieStyles[0].sizeMobile,
                         onChangeMobile: function onChangeMobile(value) {
                             return saveLottieStyles({ sizeMobile: value !== "" ? value : 200 });
                         },
-                        showUnit: true,
-                        responsive: true,
+                        min: 0,
+                        max: 800,
+                        step: 1,
                         onChangeUnit: function onChangeUnit(newValue) {
                             return saveLottieStyles({ sizeUnit: newValue });
                         },
-                        unit: lottieStyles[0].sizeUnit
+                        unit: lottieStyles[0].sizeUnit,
+                        showUnit: true,
+                        units: ['px', 'em', 'rem'],
+                        defaultValue: 200
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Rotate (Degree)", 'premium-block-for-gutenberg'),
@@ -67658,6 +67667,411 @@ var save = function save(props) {
 };
 
 exports.default = save;
+
+/***/ }),
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _premiumSizeUnits = __webpack_require__(56);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+var _singleRangeControl = __webpack_require__(467);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+var useState = wp.element.useState;
+var __ = wp.i18n.__;
+function ResponsiveRangeControl(_ref) {
+    var label = _ref.label,
+        _onChange = _ref.onChange,
+        onChangeTablet = _ref.onChangeTablet,
+        onChangeMobile = _ref.onChangeMobile,
+        mobileValue = _ref.mobileValue,
+        tabletValue = _ref.tabletValue,
+        value = _ref.value,
+        _ref$step = _ref.step,
+        step = _ref$step === undefined ? 1 : _ref$step,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? 100 : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? 0 : _ref$min,
+        _ref$unit = _ref.unit,
+        unit = _ref$unit === undefined ? '' : _ref$unit,
+        onChangeUnit = _ref.onChangeUnit,
+        _ref$showUnit = _ref.showUnit,
+        showUnit = _ref$showUnit === undefined ? false : _ref$showUnit,
+        _ref$units = _ref.units,
+        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
+        defaultValue = _ref.defaultValue;
+
+    var _useState = useState('Desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        deviceType = _useState2[0],
+        setDeviceType = _useState2[1];
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        setDeviceType(device);
+    };
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== deviceType) {
+            setDeviceType(theDevice);
+        }
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            setDeviceType(device);
+        };
+    }
+    var devices = ['Desktop', 'Tablet', 'Mobile'];
+    var output = {};
+    output.Mobile = React.createElement(_singleRangeControl2.default, {
+        device: 'mobile',
+        value: undefined !== mobileValue ? mobileValue : '',
+        onChange: function onChange(size) {
+            return onChangeMobile(size);
+        },
+        min: min,
+        max: max,
+        step: step,
+        unit: unit,
+        onChangeUnit: onChangeUnit,
+        showUnit: false,
+        units: units,
+        defaultValue: defaultValue
+    });
+    output.Tablet = React.createElement(_singleRangeControl2.default, {
+        device: 'tablet',
+        value: undefined !== tabletValue ? tabletValue : '',
+        onChange: function onChange(size) {
+            return onChangeTablet(size);
+        },
+        min: min,
+        max: max,
+        step: step,
+        unit: unit,
+        onChangeUnit: onChangeUnit,
+        showUnit: false,
+        units: units,
+        defaultValue: defaultValue
+    });
+    output.Desktop = React.createElement(_singleRangeControl2.default, {
+        device: 'desktop',
+        value: undefined !== value ? value : '',
+        onChange: function onChange(size) {
+            return _onChange(size);
+        },
+        min: min,
+        max: max,
+        step: step,
+        unit: unit,
+        onChangeUnit: onChangeUnit,
+        showUnit: false,
+        units: units,
+        defaultValue: defaultValue
+    });
+    return [_onChange && onChangeTablet && onChangeMobile && React.createElement(
+        'div',
+        { className: 'premium-blocks-range-control' },
+        React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                label && React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    label
+                ),
+                React.createElement(
+                    'ul',
+                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === deviceType ? ' active' : '';
+                        var icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
+                        return React.createElement(
+                            'li',
+                            { key: key, className: '' + device + activeClass },
+                            React.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                React.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        customSetPreviewDeviceType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                )
+            ),
+            showUnit && React.createElement(_premiumSizeUnits2.default, {
+                units: units,
+                activeUnit: unit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeUnit(newValue);
+                }
+            })
+        ),
+        output[deviceType] ? output[deviceType] : output.Desktop
+    )];
+}
+exports.default = ResponsiveRangeControl;
+
+/***/ }),
+/* 467 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+
+var _rangeControl = __webpack_require__(468);
+
+var _rangeControl2 = _interopRequireDefault(_rangeControl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+
+/**
+ * Build the Measure controls
+ * @returns {object} Measure settings.
+ */
+
+function ResponsiveSingleRangeControl(_ref) {
+    var _ref$device = _ref.device,
+        device = _ref$device === undefined ? 'device' : _ref$device,
+        _onChange = _ref.onChange,
+        value = _ref.value,
+        _ref$step = _ref.step,
+        step = _ref$step === undefined ? 1 : _ref$step,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? 100 : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? 0 : _ref$min,
+        _ref$unit = _ref.unit,
+        unit = _ref$unit === undefined ? '' : _ref$unit,
+        onUnit = _ref.onUnit,
+        _ref$showUnit = _ref.showUnit,
+        showUnit = _ref$showUnit === undefined ? false : _ref$showUnit,
+        _ref$units = _ref.units,
+        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
+        _ref$className = _ref.className,
+        className = _ref$className === undefined ? '' : _ref$className,
+        label = _ref.label,
+        defaultValue = _ref.defaultValue;
+
+
+    return [_onChange && React.createElement(
+        'div',
+        { className: 'premium-blocks-range-control' },
+        label && React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                label && React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    label
+                )
+            ),
+            showUnit && React.createElement(PremiumSizeUnits, {
+                units: units,
+                activeUnit: unit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeUnit(newValue);
+                }
+            })
+        ),
+        React.createElement(_rangeControl2.default, {
+            value: undefined !== value ? value : '',
+            onChange: function onChange(size) {
+                return _onChange(size);
+            },
+            min: min,
+            max: max,
+            step: step,
+            defaultValue: defaultValue
+        })
+    )];
+}
+exports.default = ResponsiveSingleRangeControl;
+
+/***/ }),
+/* 468 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/**
+ * Range Control
+ *
+ */
+
+/**
+ * Internal block libraries
+ */
+var RangeControl = wp.components.RangeControl;
+
+/**
+ * Build the Measure controls
+ * @returns {object} Measure settings.
+ */
+
+function PremiumRange(_ref) {
+    var _onChange = _ref.onChange,
+        _ref$value = _ref.value,
+        value = _ref$value === undefined ? '' : _ref$value,
+        _ref$step = _ref.step,
+        step = _ref$step === undefined ? 1 : _ref$step,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? 100 : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? 0 : _ref$min,
+        _ref$beforeIcon = _ref.beforeIcon,
+        beforeIcon = _ref$beforeIcon === undefined ? '' : _ref$beforeIcon,
+        _ref$help = _ref.help,
+        help = _ref$help === undefined ? '' : _ref$help,
+        defaultValue = _ref.defaultValue;
+
+    var onChangInput = function onChangInput(event) {
+        if (event.target.value === '') {
+            _onChange(undefined);
+            return;
+        }
+        var newValue = Number(event.target.value);
+        if (newValue === '') {
+            _onChange(undefined);
+            return;
+        }
+        if (min < -0.1) {
+            if (newValue > max) {
+                _onChange(max);
+            } else if (newValue < min && newValue !== '-') {
+                _onChange(min);
+            } else {
+                _onChange(newValue);
+            }
+        } else {
+            if (newValue > max) {
+                _onChange(max);
+            } else if (newValue < -0.1) {
+                _onChange(min);
+            } else {
+                _onChange(newValue);
+            }
+        }
+    };
+    return [_onChange && React.createElement(
+        'div',
+        { className: 'wrapper' },
+        React.createElement(
+            'div',
+            { className: 'input-field-wrapper active' },
+            React.createElement(RangeControl, {
+                className: 'premium-range-value-input',
+                beforeIcon: beforeIcon,
+                value: value,
+                onChange: function onChange(newVal) {
+                    return _onChange(newVal);
+                },
+                min: min,
+                max: max,
+                step: step,
+                help: help,
+                withInputField: false
+            }),
+            React.createElement(
+                'div',
+                { className: 'kemet_range_value' },
+                React.createElement('input', {
+                    value: value,
+                    onChange: onChangInput,
+                    min: min,
+                    max: max,
+
+                    step: step,
+                    type: 'number',
+                    className: 'components-text-control__input'
+                })
+            )
+        ),
+        React.createElement('button', { className: 'premium-slider-reset', disabled: value == defaultValue, onClick: function onClick(e) {
+                e.preventDefault();
+                _onChange(defaultValue);
+            } })
+    )];
+}
+exports.default = PremiumRange;
 
 /***/ })
 /******/ ]);

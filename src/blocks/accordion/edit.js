@@ -6,6 +6,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 
 const { Component, Fragment } = wp.element;
 
@@ -441,7 +442,8 @@ class PremiumAccordion extends Component {
                             value={arrowStyles[0].arrowPos}
                             onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
-                        <PremiumRangeControl
+
+                        <ResponsiveSingleRangeControl
                             label={__("Size", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowSize}
                             onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
