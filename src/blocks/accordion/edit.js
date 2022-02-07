@@ -403,7 +403,6 @@ class PremiumAccordion extends Component {
                                 saveTitleStyles({ titleShadowVertical: newValue })
                             }
                         />
-
                         <PremiumPadding
                             paddingTop={titlePaddingT}
                             paddingRight={titlePaddingR}

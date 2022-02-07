@@ -27,7 +27,7 @@ export default class PremiumTypo extends Component {
 
         this.defaultValue = {
             fontFamily: "System Default",
-            variation: 'n4',
+            variation: '400',
             size: {
                 desktop: "15",
                 "desktop-unit": "px",
@@ -139,6 +139,7 @@ export default class PremiumTypo extends Component {
 
         let fontWeight = ""
         Object.keys(googleFonts).map((k, v) => {
+
             fonts.push(
                 { value: k, label: k, weight: googleFonts[k].weight }
             )
@@ -199,7 +200,6 @@ export default class PremiumTypo extends Component {
         }
 
         const changeFont = (v) => {
-
             this.setState({
                 fontFamily: v.value,
                 search: v.value,
