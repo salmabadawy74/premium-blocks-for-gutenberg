@@ -1574,6 +1574,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1586,17 +1588,9 @@ var _webfontloader = __webpack_require__(228);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
-var _reactSelect = __webpack_require__(68);
-
-var _reactSelect2 = _interopRequireDefault(_reactSelect);
-
 var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
-
-var _responsiveRangeControl = __webpack_require__(466);
-
-var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1609,14 +1603,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+var Component = wp.element.Component;
 var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
+    Popover = _wp$components.Popover,
+    TextControl = _wp$components.TextControl;
 
 var PremiumTypo = function (_Component) {
     _inherits(PremiumTypo, _Component);
@@ -1627,14 +1618,56 @@ var PremiumTypo = function (_Component) {
         var _this = _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).call(this, props));
 
         _this.state = {
-            fontFamily: _this.props.fontFamily
+            fontFamily: _this.props.fontFamily || "System Default",
+            line: _this.props.line,
+            upper: _this.props.upper, //
+            sizeUnit: _this.props.sizeUnit || 'px',
+            isVisible: false,
+            currentView: '',
+            search: _this.props.fontFamily || "System Default",
+            showUnit: _this.props.showUnit || false
         };
+
+        _this.defaultValue = {
+            fontFamily: "System Default",
+            variation: '400',
+            size: {
+                desktop: "15",
+                "desktop-unit": "px",
+                tablet: "",
+                "tablet-unit": "px",
+                mobile: "",
+                "mobile-unit": "px"
+            },
+            sizeUnit: "px",
+            line: {
+                desktop: "",
+                "desktop-unit": "px",
+                tablet: "",
+                "tablet-unit": "px",
+                mobile: "",
+                "mobile-unit": "px"
+            },
+            spacing: {
+                desktop: "",
+                "desktop-unit": "px",
+                tablet: "",
+                "tablet-unit": "px",
+                mobile: "",
+                "mobile-unit": "px"
+            },
+
+            "text-transform": "none",
+            "text-decoration": "none"
+        };
+
         return _this;
     }
 
     _createClass(PremiumTypo, [{
-        key: "componentDidUpdate",
+        key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
+
             if (prevState.fontFamily !== this.state.fontFamily) {
                 _webfontloader2.default.load({
                     google: {
@@ -1642,27 +1675,26 @@ var PremiumTypo = function (_Component) {
                     }
                 });
             }
-            console.log(prevState.fontFamily, this.state.fontFamily);
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this2 = this,
+                _React$createElement;
 
             var _props = this.props,
                 components = _props.components,
-                size = _props.size,
-                weight = _props.weight,
-                style = _props.style,
-                spacing = _props.spacing,
-                line = _props.line,
-                upper = _props.upper,
                 setAttributes = _props.setAttributes,
-                fontFamily = _props.fontFamily,
                 _props$onChangeFamily = _props.onChangeFamily,
                 onChangeFamily = _props$onChangeFamily === undefined ? function () {} : _props$onChangeFamily,
                 _props$onChangeSize = _props.onChangeSize,
                 onChangeSize = _props$onChangeSize === undefined ? function () {} : _props$onChangeSize,
+                _props$onChangeSizeTa = _props.onChangeSizeTablet,
+                onChangeSizeTablet = _props$onChangeSizeTa === undefined ? function () {} : _props$onChangeSizeTa,
+                _props$onChangeSizeMo = _props.onChangeSizeMobile,
+                onChangeSizeMobile = _props$onChangeSizeMo === undefined ? function () {} : _props$onChangeSizeMo,
+                _props$onChangeSizeUn = _props.onChangeSizeUnit,
+                onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function () {} : _props$onChangeSizeUn,
                 _props$onChangeWeight = _props.onChangeWeight,
                 onChangeWeight = _props$onChangeWeight === undefined ? function () {} : _props$onChangeWeight,
                 _props$onChangeStyle = _props.onChangeStyle,
@@ -1671,10 +1703,39 @@ var PremiumTypo = function (_Component) {
                 onChangeSpacing = _props$onChangeSpacin === undefined ? function () {} : _props$onChangeSpacin,
                 _props$onChangeLine = _props.onChangeLine,
                 onChangeLine = _props$onChangeLine === undefined ? function () {} : _props$onChangeLine,
+                _props$onChangeLineUn = _props.onChangeLineUnit,
+                onChangeLineUnit = _props$onChangeLineUn === undefined ? function () {} : _props$onChangeLineUn,
+                _props$onChangeLetter = _props.onChangeLetterUnit,
+                onChangeLetterUnit = _props$onChangeLetter === undefined ? function () {} : _props$onChangeLetter,
                 _props$onChangeUpper = _props.onChangeUpper,
                 onChangeUpper = _props$onChangeUpper === undefined ? function () {} : _props$onChangeUpper,
                 _props$onResetClick = _props.onResetClick,
-                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
+                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick,
+                _props$onChangeTextTr = _props.onChangeTextTransform,
+                onChangeTextTransform = _props$onChangeTextTr === undefined ? function () {} : _props$onChangeTextTr,
+                _props$onChangeTextDe = _props.onChangeTextDecoration,
+                onChangeTextDecoration = _props$onChangeTextDe === undefined ? function () {} : _props$onChangeTextDe,
+                size = _props.size,
+                line = _props.line,
+                weight = _props.weight,
+                spacing = _props.spacing,
+                style = _props.style,
+                titleLineUnit = _props.titleLineUnit,
+                titleLetterUnit = _props.titleLetterUnit,
+                textTransform = _props.textTransform,
+                textDecoration = _props.textDecoration,
+                fontSizeMobile = _props.fontSizeMobile,
+                fontSizeTablet = _props.fontSizeTablet,
+                fontSize = _props.fontSize,
+                fontSizeType = _props.fontSizeType;
+            var _state = this.state,
+                fontFamily = _state.fontFamily,
+                upper = _state.upper,
+                sizeUnit = _state.sizeUnit,
+                isVisible = _state.isVisible,
+                currentView = _state.currentView,
+                search = _state.search,
+                showUnit = _state.showUnit;
 
 
             var STYLE = [{
@@ -1687,11 +1748,11 @@ var PremiumTypo = function (_Component) {
                 value: "oblique",
                 label: "Oblique"
             }];
-
             var fonts = [{ value: "", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
 
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
+
                 fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight });
                 if (k === fontFamily) {
                     fontWeight = _premiumFonts2.default[k].weight;
@@ -1710,7 +1771,6 @@ var PremiumTypo = function (_Component) {
             var onFontfamilyChange = function onFontfamilyChange(value) {
                 onFontChange(weight, value.label);
                 onChangeFamily(value.value);
-                console.log(value);
             };
 
             var onFontChange = function onFontChange(weight, fontFamily) {
@@ -1718,7 +1778,7 @@ var PremiumTypo = function (_Component) {
                 var new_value = void 0;
                 if (_typeof(_premiumFonts2.default[fontFamily]) == "object") {
                     var gfontsObj = _premiumFonts2.default[fontFamily].weight;
-                    if ((typeof gfontsObj === "undefined" ? "undefined" : _typeof(gfontsObj)) == "object") {
+                    if ((typeof gfontsObj === 'undefined' ? 'undefined' : _typeof(gfontsObj)) == "object") {
                         gfontsObj.forEach(function (item) {
                             if (weight.value == item) {
                                 font_flag = false;
@@ -1733,112 +1793,315 @@ var PremiumTypo = function (_Component) {
                 }
             };
 
-            console.log(this.state.fontFamily);
+            var toggleVisible = function toggleVisible(v) {
+                _this2.setState({
+                    isVisible: true,
+                    currentView: v
+                });
+            };
+
+            var setSearch = function setSearch(v) {
+                _this2.setState({
+                    search: v
+                });
+            };
+
+            var changeFont = function changeFont(v) {
+                _this2.setState({
+                    fontFamily: v.value,
+                    search: v.value
+                });
+                onFontfamilyChange(v);
+            };
+
+            var renderFonts = fonts.map(function (item, index) {
+                return React.createElement(
+                    'div',
+                    { className: 'kmt-typography-single-font ' + (item.label == fontFamily ? 'active' : ''), key: index, onClick: function onClick() {
+                            return changeFont(item);
+                        } },
+                    React.createElement(
+                        'span',
+                        { className: 'kmt-font-name' },
+                        item.label
+                    )
+                );
+            });
+
+            var renderVariations = fonts.map(function (item, index) {
+                if (item.value == fontFamily) {
+                    return (item.weight || []).map(function (weights, i) {
+                        return React.createElement(
+                            'li',
+                            { key: i, className: '' + (weights == weight ? 'active' : ''), onClick: function onClick() {
+                                    onChangeWeight(weights);
+                                } },
+                            React.createElement(
+                                'span',
+                                { className: 'kmt-variation-name' },
+                                weights
+                            )
+                        );
+                    });
+                }
+            });
 
             return React.createElement(
-                "div",
-                { className: "premium-control-toggle" },
+                'div',
+                { className: 'premium-control-toggle kmt-typography' },
                 React.createElement(
-                    "strong",
+                    'header',
                     null,
-                    __("Typography")
-                ),
-                React.createElement(Dropdown, {
-                    className: "premium-control-toggle-btn",
-                    contentClassName: "premium-control-toggle-content",
-                    position: "bottom right",
-                    renderToggle: function renderToggle(_ref) {
-                        var isOpen = _ref.isOpen,
-                            onToggle = _ref.onToggle;
-                        return React.createElement(
-                            Button,
-                            { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                            React.createElement("i", { className: "dashicons dashicons-edit" })
-                        );
-                    },
-                    renderContent: function renderContent() {
-                        var _React$createElement, _React$createElement2;
-
-                        return React.createElement(
-                            Fragment,
+                    React.createElement(
+                        'span',
+                        { className: 'customize-control-title kmt-control-title' },
+                        React.createElement(
+                            'strong',
                             null,
-                            components.includes("size") && React.createElement(_premiumRangeControl2.default, {
-                                label: __("Font Size (PX)"),
-                                value: size,
-                                min: "10",
-                                max: "80",
-                                defaultValue: 20,
-                                onChange: onChangeSize,
-                                showUnit: false
-                            }),
-                            components.includes("responsiveSize") && React.createElement(_responsiveRangeControl2.default, {
-                                label: __("Font Size", 'premium-block-for-gutenberg'),
-                                value: _this2.props.fontSize.value,
-                                onChange: function onChange(value) {
-                                    return setAttributes(_defineProperty({}, _this2.props.fontSize.label, value));
+                            __("Typography")
+                        )
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'kmt-typography-wrapper' },
+                    React.createElement(
+                        'div',
+                        { className: 'kmt-typohraphy-value' },
+                        React.createElement(
+                            'div',
+                            { className: 'kmt-typography-title-container' },
+                            components.includes('family') && React.createElement(
+                                'span',
+                                {
+                                    className: 'kmt-font',
+                                    onClick: function onClick() {
+                                        toggleVisible("fonts");
+                                    }
                                 },
-                                tabletValue: _this2.props.fontSizeTablet.value,
-                                onChangeTablet: function onChangeTablet(value) {
-                                    return setAttributes(_defineProperty({}, _this2.props.fontSizeTablet.label, value));
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    fontFamily
+                                ),
+                                isVisible && currentView == 'fonts' && components.includes('family') && React.createElement(
+                                    Popover,
+                                    null,
+                                    React.createElement(
+                                        'div',
+                                        { className: 'kmt-option-modal kmt-typography-modal' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'kmt-typography-container' },
+                                            React.createElement(
+                                                'div',
+                                                { style: { top: '0px', right: '0px', left: '0px' } },
+                                                React.createElement(
+                                                    'ul',
+                                                    { className: 'kmt-typography-top kmt-switch-panel kmt-static' },
+                                                    React.createElement(
+                                                        'li',
+                                                        { className: 'kmt-font' },
+                                                        React.createElement(TextControl, {
+                                                            value: search,
+                                                            type: 'search',
+                                                            onChange: function onChange(value) {
+                                                                return setSearch(value);
+                                                            }
+                                                        })
+                                                    )
+                                                ),
+                                                React.createElement(
+                                                    'ul',
+                                                    { className: 'kmt-typography-fonts', style: { width: '100%' } },
+                                                    React.createElement(
+                                                        'div',
+                                                        null,
+                                                        React.createElement(
+                                                            'ul',
+                                                            null,
+                                                            renderFonts
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'span',
+                                {
+                                    className: 'kmt-size',
+                                    onClick: function onClick() {
+                                        toggleVisible("options");
+                                    }
                                 },
-                                mobileValue: _this2.props.fontSizeMobile.value,
-                                onChangeMobile: function onChangeMobile(value) {
-                                    return setAttributes(_defineProperty({}, _this2.props.fontSizeMobile.label, value));
+                                size,
+                                sizeUnit,
+                                isVisible && currentView == 'options' && React.createElement(
+                                    Popover,
+                                    null,
+                                    React.createElement(
+                                        'div',
+                                        { className: ' kmt-typography-modal' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'kmt-typography-container' },
+                                            React.createElement(
+                                                'ul',
+                                                { className: 'kmt-typography-options', style: { width: '100%' } },
+                                                components.includes("size") && React.createElement(
+                                                    'li',
+                                                    { className: 'customize-control-kmt-slider' },
+                                                    React.createElement(_premiumRangeControl2.default, {
+                                                        defaultValue: 0,
+                                                        label: __("Font Size"),
+
+                                                        value: {
+                                                            'desktop': fontSize,
+                                                            'tablet': fontSizeTablet,
+                                                            'mobile': fontSizeMobile
+                                                        },
+
+                                                        onChange: onChangeSize,
+                                                        onChangeTablet: onChangeSizeTablet,
+                                                        onChangeMobile: onChangeSizeMobile,
+                                                        showUnit: showUnit,
+                                                        responsive: true,
+                                                        onChangeUnit: onChangeSizeUnit,
+                                                        unit: fontSizeType
+                                                    })
+                                                ),
+                                                components.includes("line") && React.createElement(
+                                                    'li',
+                                                    { className: 'customize-control-kmt-slider' },
+                                                    React.createElement(_premiumRangeControl2.default, {
+                                                        label: __("Line Height"),
+                                                        value: line,
+                                                        onChange: onChangeLine,
+                                                        defaultValue: '',
+                                                        showUnit: showUnit,
+                                                        responsive: true,
+                                                        onChangeUnit: onChangeLineUnit,
+                                                        unit: titleLineUnit
+                                                    })
+                                                ),
+                                                components.includes("spacing") && React.createElement(
+                                                    'li',
+                                                    { className: 'customize-control-kmt-slider' },
+                                                    React.createElement(_premiumRangeControl2.default, (_React$createElement = {
+                                                        label: __("Letter Spacing"),
+                                                        value: spacing,
+                                                        onChange: onChangeSpacing,
+                                                        defaultValue: ''
+                                                    }, _defineProperty(_React$createElement, 'onChange', onChangeSpacing), _defineProperty(_React$createElement, 'showUnit', showUnit), _defineProperty(_React$createElement, 'responsive', true), _defineProperty(_React$createElement, 'onChangeUnit', onChangeLetterUnit), _defineProperty(_React$createElement, 'unit', titleLetterUnit), _React$createElement))
+                                                ),
+                                                components.includes("style") && React.createElement(
+                                                    'li',
+                                                    { className: 'customize-control-kmt-slider' },
+                                                    React.createElement(SelectControl, {
+                                                        label: __("Style"),
+                                                        options: STYLE,
+                                                        value: style,
+                                                        onChange: onChangeStyle,
+                                                        onResetClick: onResetClick
+                                                    })
+                                                ),
+                                                React.createElement(
+                                                    'li',
+                                                    { className: 'kmt-typography-variant' },
+                                                    components.includes("upper") && React.createElement(
+                                                        'ul',
+                                                        { className: 'kmt-text-transform' },
+                                                        ['capitalize', 'uppercase'].map(function (variant) {
+                                                            return React.createElement(
+                                                                'li',
+                                                                {
+                                                                    key: variant,
+                                                                    onClick: function onClick() {
+                                                                        return onChangeTextTransform(variant);
+                                                                    },
+                                                                    className: '' + (textTransform == variant ? 'active' : ''),
+                                                                    'data-variant': variant },
+                                                                React.createElement(
+                                                                    'i',
+                                                                    { className: 'kmt-tooltip-top' },
+                                                                    variant
+                                                                )
+                                                            );
+                                                        })
+                                                    ),
+                                                    React.createElement(
+                                                        'ul',
+                                                        { className: 'kmt-text-decoration' },
+                                                        ['line-through', 'underline'].map(function (variant) {
+                                                            return React.createElement(
+                                                                'li',
+                                                                {
+                                                                    key: variant,
+                                                                    onClick: function onClick() {
+                                                                        return onChangeTextDecoration(variant);
+                                                                    },
+                                                                    className: '' + (textDecoration == variant ? 'active' : ''),
+                                                                    'data-variant': variant },
+                                                                React.createElement(
+                                                                    'i',
+                                                                    { className: 'kmt-tooltip-top' },
+                                                                    variant
+                                                                )
+                                                            );
+                                                        })
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            ),
+                            components.includes("weight") && React.createElement(
+                                'span',
+                                {
+                                    className: 'kmt-weight',
+                                    onClick: function onClick() {
+                                        toggleVisible("variations");
+                                    }
                                 },
-                                min: 0,
-                                max: 100,
-                                step: 1,
-                                unit: _this2.props.fontSizeType.value,
-                                onChangeUnit: function onChangeUnit(key) {
-                                    return setAttributes(_defineProperty({}, _this2.props.fontSizeType.label, key));
-                                },
-                                units: ["px", "em"],
-                                showUnit: true,
-                                defaultValue: 30
-                            }),
-                            components.includes('family') && React.createElement(_reactSelect2.default, {
-                                options: fonts,
-                                value: { value: _this2.props.fontFamily, label: __("" + _this2.props.fontFamily), weight: fontWeightObj },
-                                isMulti: false,
-                                maxMenuHeight: 300,
-                                onChange: onFontfamilyChange,
-                                className: "react-select-container",
-                                placeholder: __("Select a font family", 'premium blocks for gutenberg')
-                            }),
-                            components.includes("weight") && React.createElement(SelectControl, {
-                                label: __("Font Weight", 'premium blocks for gutenberg'),
-                                value: weight,
-                                onChange: onChangeWeight,
-                                options: fontWeightObj
-                            }),
-                            components.includes("style") && React.createElement(SelectControl, {
-                                label: __("Style"),
-                                options: STYLE,
-                                value: style,
-                                onChange: onChangeStyle,
-                                onResetClick: onResetClick
-                            }),
-                            components.includes("upper") && React.createElement(ToggleControl, {
-                                label: __("Uppercase"),
-                                checked: upper,
-                                onChange: onChangeUpper,
-                                onResetClick: onResetClick
-                            }),
-                            components.includes("spacing") && React.createElement(_premiumRangeControl2.default, (_React$createElement = {
-                                label: __("Letter Spacing (PX)"),
-                                value: spacing,
-                                onChange: onChangeSpacing,
-                                defaultValue: ''
-                            }, _defineProperty(_React$createElement, "onChange", onChangeSpacing), _defineProperty(_React$createElement, "showUnit", false), _defineProperty(_React$createElement, "step", 0.1), _defineProperty(_React$createElement, "min", -5), _defineProperty(_React$createElement, "max", 15), _React$createElement)),
-                            components.includes("line") && React.createElement(_premiumRangeControl2.default, (_React$createElement2 = {
-                                label: __("Line Height (PX)"),
-                                value: line,
-                                onChange: onChangeLine,
-                                defaultValue: 1
-                            }, _defineProperty(_React$createElement2, "onChange", onChangeLine), _defineProperty(_React$createElement2, "showUnit", false), _defineProperty(_React$createElement2, "min", 0), _defineProperty(_React$createElement2, "max", 200), _React$createElement2))
-                        );
-                    }
-                })
+                                weight,
+                                isVisible && currentView == 'variations' && React.createElement(
+                                    Popover,
+                                    null,
+                                    React.createElement(
+                                        'div',
+                                        { className: 'kmt-option-modal kmt-typography-modal' },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'kmt-typography-container' },
+                                            React.createElement(
+                                                'ul',
+                                                { className: 'kmt-typography-variations' },
+                                                renderVariations
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'kmt-spacing-btn-reset-wrap' },
+                            React.createElement('button', {
+                                className: 'kmt-reset-btn ',
+                                disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
+                                onClick: function onClick(e) {
+                                    onResetClick();
+                                    e.preventDefault();
+                                    _this2.setState(_extends({}, _this2.state, _this2.defaultValue));
+                                }
+                            })
+                        )
+                    )
+                )
             );
         }
     }]);
@@ -36774,8 +37037,6 @@ var edit = function edit(props) {
         });
     };
 
-    var ALIGNS = ["left", "center", "right"];
-
     var btnGrad = void 0,
         btnGrad2 = void 0,
         btnbg = void 0;
@@ -64213,6 +64474,10 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
+var _responsiveRangeControl = __webpack_require__(466);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64716,44 +64981,39 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_responsiveRangeControl2.default, {
                         label: __("Height", 'premium-block-for-gutenberg'),
-                        value: {
-                            'desktop': progressBarStyles[0].progressBarHeight,
-                            'tablet': progressBarStyles[0].progressBarHeightTablet,
-                            'mobile': progressBarStyles[0].progressBarHeightMobile
-                        },
+                        value: progressBarStyles[0].progressBarHeight,
                         onChange: function onChange(value) {
                             return saveProgressBarStyles({ progressBarHeight: value });
                         },
+                        tabletValue: progressBarStyles[0].progressBarHeightTablet,
                         onChangeTablet: function onChangeTablet(value) {
                             return saveProgressBarStyles({ progressBarHeightTablet: value });
                         },
+                        mobileValue: progressBarStyles[0].progressBarHeightMobile,
                         onChangeMobile: function onChangeMobile(value) {
                             return saveProgressBarStyles({ progressBarHeightMobile: value });
                         },
+
                         showUnit: false,
-                        responsive: true,
                         defaultValue: 25
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_responsiveRangeControl2.default, {
                         label: __("Border Radius", 'premium-block-for-gutenberg'),
-                        value: {
-                            'desktop': progressBarStyles[0].progressBarRadius,
-                            'tablet': progressBarStyles[0].progressBarRadiusTablet,
-                            'mobile': progressBarStyles[0].progressBarRadiusMobile
-                        },
+                        value: progressBarStyles[0].progressBarRadius,
                         onChange: function onChange(value) {
                             return saveProgressBarStyles({ progressBarRadius: value });
                         },
+                        tabletValue: progressBarStyles[0].progressBarRadiusTablet,
                         onChangeTablet: function onChangeTablet(value) {
                             return saveProgressBarStyles({ progressBarRadiusTablet: value });
                         },
+                        mobileValue: progressBarStyles[0].progressBarRadiusMobile,
                         onChangeMobile: function onChangeMobile(value) {
                             return saveProgressBarStyles({ progressBarRadiusMobile: value });
                         },
                         showUnit: false,
-                        responsive: true,
                         defaultValue: 0
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -64874,27 +65134,25 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Size", 'premium-block-for-gutenberg'),
-                        value: {
-                            "desktop": indicatorStyles[0].arrow,
-                            "tablet": indicatorStyles[0].arrowTablet,
-                            "mobile": indicatorStyles[0].arrowMobile
-                        },
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __('Size', 'premium-blocks-for-gutenberg'),
+                        value: indicatorStyles[0].arrow,
                         onChange: function onChange(value) {
                             return saveIndicatorStyles({ arrow: value });
                         },
+                        tabletValue: indicatorStyles[0].arrowTablet,
                         onChangeTablet: function onChangeTablet(value) {
                             return saveIndicatorStyles({ arrowTablet: value });
                         },
+                        mobileValue: indicatorStyles[0].arrowMobile,
                         onChangeMobile: function onChangeMobile(value) {
                             return saveIndicatorStyles({ arrowMobile: value });
                         },
-                        showUnit: false,
-                        responsive: true,
-                        defaultValue: 10,
                         min: 1,
-                        max: 50
+                        max: 50,
+                        step: 1,
+                        showUnit: false,
+                        defaultValue: 10
                     })
                 ) : "",
                 multiStage && indicator == 'pin' ? React.createElement(
@@ -64914,44 +65172,38 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Size", 'premium-block-for-gutenberg'),
-                        value: {
-                            "desktop": indicatorStyles[0].pin,
-                            "tablet": indicatorStyles[0].pinTablet,
-                            "mobile": indicatorStyles[0].pinMobile
-                        },
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __('Size', 'premium-blocks-for-gutenberg'),
+                        value: indicatorStyles[0].pin,
                         onChange: function onChange(value) {
                             return saveIndicatorStyles({ pin: value });
                         },
+                        tabletValue: indicatorStyles[0].pinTablet,
                         onChangeTablet: function onChangeTablet(value) {
                             return saveIndicatorStyles({ pinTablet: value });
                         },
+                        mobileValue: indicatorStyles[0].pinMobile,
                         onChangeMobile: function onChangeMobile(value) {
                             return saveIndicatorStyles({ pinMobile: value });
                         },
                         showUnit: false,
-                        responsive: true,
                         defaultValue: 1
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
-                        label: __("Height", 'premium-block-for-gutenberg'),
-                        value: {
-                            "desktop": indicatorStyles[0].pinHeight,
-                            "tablet": indicatorStyles[0].pinHeightTablet,
-                            "mobile": indicatorStyles[0].pinHeightMobile
-                        },
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Height", 'premium-blocks-for-gutenberg'),
+                        value: indicatorStyles[0].pinHeight,
                         onChange: function onChange(value) {
                             return saveIndicatorStyles({ pinHeight: value });
                         },
+                        tabletValue: indicatorStyles[0].pinHeightTablet,
                         onChangeTablet: function onChangeTablet(value) {
                             return saveIndicatorStyles({ pinHeightTablet: value });
                         },
+                        mobileValue: indicatorStyles[0].pinHeightMobile,
                         onChangeMobile: function onChangeMobile(value) {
                             return saveIndicatorStyles({ pinHeightMobile: value });
                         },
                         showUnit: false,
-                        responsive: true,
                         defaultValue: 12
                     })
                 ) : ""

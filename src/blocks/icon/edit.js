@@ -127,8 +127,6 @@ const edit = props => {
         });
     }
 
-    const ALIGNS = ["left", "center", "right"];
-
     let btnGrad, btnGrad2, btnbg;
     if (undefined !== backgroundType && 'gradient' === backgroundType) {
         btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
@@ -141,7 +139,6 @@ const edit = props => {
     } else {
         btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ""
     }
-
 
     const mainClasses = classnames(className, "premium-icon");
 
@@ -349,6 +346,7 @@ const edit = props => {
                         gradientPosition={containerStyles[0].gradientPosition}
                         gradientType={containerStyles[0].gradientType}
                     />
+
                     <PremiumBorder
                         borderType={containerStyles[0].wrapBorderType}
                         borderWidth={containerStyles[0].wrapBorderWidth}
@@ -377,6 +375,7 @@ const edit = props => {
                             saveContainerStyle({ wrapBorderRadius: newrRadius })
                         }
                     />
+
                     <PremiumBoxShadow
                         inner={true}
                         color={containerStyles[0].wrapShadowColor}

@@ -8,6 +8,7 @@ const { Component, Fragment } = wp.element
 const { BlockControls, AlignmentToolbar, InspectorControls } = wp.editor
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components
 const { withSelect } = wp.data
+import ResponsiveRangeControl from "../../components/RangeControl /responsive-range-control";
 
 const SortableItem = SortableElement(({
     edit,
@@ -488,34 +489,30 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRangeControl
+                        <ResponsiveRangeControl
                             label={__(`Height`, 'premium-block-for-gutenberg')}
-                            value={{
-                                'desktop': progressBarStyles[0].progressBarHeight,
-                                'tablet': progressBarStyles[0].progressBarHeightTablet,
-                                'mobile': progressBarStyles[0].progressBarHeightMobile
-                            }}
+                            value={progressBarStyles[0].progressBarHeight}
                             onChange={(value) => saveProgressBarStyles({ progressBarHeight: value })}
+                            tabletValue={progressBarStyles[0].progressBarHeightTablet}
                             onChangeTablet={(value) => saveProgressBarStyles({ progressBarHeightTablet: value })}
+                            mobileValue={progressBarStyles[0].progressBarHeightMobile}
                             onChangeMobile={(value) => saveProgressBarStyles({ progressBarHeightMobile: value })}
+
                             showUnit={false}
-                            responsive={true}
                             defaultValue={25}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveRangeControl
                             label={__(`Border Radius`, 'premium-block-for-gutenberg')}
-                            value={{
-                                'desktop': progressBarStyles[0].progressBarRadius,
-                                'tablet': progressBarStyles[0].progressBarRadiusTablet,
-                                'mobile': progressBarStyles[0].progressBarRadiusMobile
-                            }}
+                            value={progressBarStyles[0].progressBarRadius}
                             onChange={(value) => saveProgressBarStyles({ progressBarRadius: value })}
+                            tabletValue={progressBarStyles[0].progressBarRadiusTablet}
                             onChangeTablet={(value) => saveProgressBarStyles({ progressBarRadiusTablet: value })}
+                            mobileValue={progressBarStyles[0].progressBarRadiusMobile}
                             onChangeMobile={(value) => saveProgressBarStyles({ progressBarRadiusMobile: value })}
                             showUnit={false}
-                            responsive={true}
                             defaultValue={0}
                         />
+
                         <AdvancedPopColorControl
                             label={__("Background Color", 'premium-block-for-gutenberg')}
                             colorValue={progressBarStyles[0].progressBarbgColor}
@@ -630,21 +627,19 @@ class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumRangeControl
-                            label={__("Size", 'premium-block-for-gutenberg')}
-                            value={{
-                                "desktop": indicatorStyles[0].arrow,
-                                "tablet": indicatorStyles[0].arrowTablet,
-                                "mobile": indicatorStyles[0].arrowMobile
-                            }}
+                        <ResponsiveRangeControl
+                            label={__('Size', 'premium-blocks-for-gutenberg')}
+                            value={indicatorStyles[0].arrow}
                             onChange={(value) => saveIndicatorStyles({ arrow: value })}
+                            tabletValue={indicatorStyles[0].arrowTablet}
                             onChangeTablet={(value) => saveIndicatorStyles({ arrowTablet: value })}
+                            mobileValue={indicatorStyles[0].arrowMobile}
                             onChangeMobile={(value) => saveIndicatorStyles({ arrowMobile: value })}
-                            showUnit={false}
-                            responsive={true}
-                            defaultValue={10}
                             min={1}
                             max={50}
+                            step={1}
+                            showUnit={false}
+                            defaultValue={10}
                         />
                     </PanelBody> : ""}
                     {multiStage && indicator == 'pin' ? < PanelBody
@@ -662,32 +657,27 @@ class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumRangeControl
-                            label={__("Size", 'premium-block-for-gutenberg')}
-                            value={{
-                                "desktop": indicatorStyles[0].pin,
-                                "tablet": indicatorStyles[0].pinTablet,
-                                "mobile": indicatorStyles[0].pinMobile
-                            }}
+
+                        <ResponsiveRangeControl
+                            label={__('Size', 'premium-blocks-for-gutenberg')}
+                            value={indicatorStyles[0].pin}
                             onChange={(value) => saveIndicatorStyles({ pin: value })}
+                            tabletValue={indicatorStyles[0].pinTablet}
                             onChangeTablet={(value) => saveIndicatorStyles({ pinTablet: value })}
+                            mobileValue={indicatorStyles[0].pinMobile}
                             onChangeMobile={(value) => saveIndicatorStyles({ pinMobile: value })}
                             showUnit={false}
-                            responsive={true}
                             defaultValue={1}
                         />
-                        <PremiumRangeControl
-                            label={__("Height", 'premium-block-for-gutenberg')}
-                            value={{
-                                "desktop": indicatorStyles[0].pinHeight,
-                                "tablet": indicatorStyles[0].pinHeightTablet,
-                                "mobile": indicatorStyles[0].pinHeightMobile
-                            }}
+                        <ResponsiveRangeControl
+                            label={__("Height", 'premium-blocks-for-gutenberg')}
+                            value={indicatorStyles[0].pinHeight}
                             onChange={(value) => saveIndicatorStyles({ pinHeight: value })}
+                            tabletValue={indicatorStyles[0].pinHeightTablet}
                             onChangeTablet={(value) => saveIndicatorStyles({ pinHeightTablet: value })}
+                            mobileValue={indicatorStyles[0].pinHeightMobile}
                             onChangeMobile={(value) => saveIndicatorStyles({ pinHeightMobile: value })}
                             showUnit={false}
-                            responsive={true}
                             defaultValue={12}
                         />
 
