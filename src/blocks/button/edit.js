@@ -303,7 +303,7 @@ export class edit extends Component {
                             onChangeSpacing={newValue =>
                                 saveTextStyles({ textLetter: newValue })
                             }
-                            onChangeFamily={(fontFamily) => saveTextStyles({ textFontFamily: fontFamily })}
+                            onChangeFamily={(fontFamily) => console.log("fontFamily", fontFamily)}
                             onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
                         <PremiumTextShadow

@@ -2,7 +2,7 @@ import googleFonts from "./premium-fonts";
 import WebFont from 'webfontloader';
 import Select from "react-select";
 import PremiumRangeControl from './premium-range-control';
-
+import ResponsiveRangeControl from './RangeControl /responsive-range-control'
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -16,11 +16,9 @@ const {
 export default class PremiumTypo extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             fontFamily: this.props.fontFamily
         }
-
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -32,6 +30,7 @@ export default class PremiumTypo extends Component {
             });
 
         }
+        console.log(prevState.fontFamily, this.state.fontFamily)
     }
     render() {
         const {
@@ -68,6 +67,7 @@ export default class PremiumTypo extends Component {
                 label: "Oblique",
             },
         ];
+
         const fonts = [
             { value: "", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
@@ -101,6 +101,8 @@ export default class PremiumTypo extends Component {
         const onFontfamilyChange = (value) => {
             onFontChange(weight, value.label)
             onChangeFamily(value.value)
+            console.log(value)
+
         }
 
         const onFontChange = (weight, fontFamily) => {
@@ -122,6 +124,8 @@ export default class PremiumTypo extends Component {
                 }
             }
         }
+
+        console.log(this.state.fontFamily)
 
         return (
             <div className="premium-control-toggle">
@@ -149,26 +153,23 @@ export default class PremiumTypo extends Component {
                                 />
                             )}
                             {components.includes("responsiveSize") && (
-                                <PremiumRangeControl
+
+                                <ResponsiveRangeControl
                                     label={__("Font Size", 'premium-block-for-gutenberg')}
-                                    responsive={true}
-                                    value={{
-                                        'desktop': this.props.fontSize.value,
-                                        "tablet": this.props.fontSizeTablet.value,
-                                        'mobile': this.props.fontSizeMobile.value
-                                    }}
+                                    value={this.props.fontSize.value}
                                     onChange={value => setAttributes({ [this.props.fontSize.label]: value })}
+                                    tabletValue={this.props.fontSizeTablet.value}
                                     onChangeTablet={value => setAttributes({ [this.props.fontSizeTablet.label]: value })}
+                                    mobileValue={this.props.fontSizeMobile.value}
                                     onChangeMobile={value => setAttributes({ [this.props.fontSizeMobile.label]: value })}
-                                    showUnit={true}
-                                    defaultValue={{
-                                        'desktop': 20,
-                                        "tablet": 20,
-                                        'mobile': 20
-                                    }}
+                                    min={0}
+                                    max={100}
+                                    step={1}
                                     unit={this.props.fontSizeType.value}
                                     onChangeUnit={key => setAttributes({ [this.props.fontSizeType.label]: key })}
                                     units={["px", "em"]}
+                                    showUnit={true}
+                                    defaultValue={30}
                                 />
                             )}
 
