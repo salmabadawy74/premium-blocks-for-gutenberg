@@ -2,6 +2,13 @@
   * FontIconPicker CSS
   */
 /** * Responsive Icons */
+
+:root {
+    --primaryColor: #007cba;
+    --accentColorHover: #135e96;
+    --optionBorderColor: #e1e1e1;
+    --inputBorderColor: #dcdddf;
+}
 .premium-panel-body {
     p.premium-editor-paragraph {
         margin-bottom: 0;
@@ -3671,3 +3678,4 @@ i.fipicon-angle-left {
 @import "./spacing.scss";
 @import "./color.scss";
 @import "./radio-control.scss";
+@import "./typography.scss";

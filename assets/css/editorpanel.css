@@ -2,6 +2,12 @@
   * FontIconPicker CSS
   */
 /** * Responsive Icons */
+:root {
+  --primaryColor: #007cba;
+  --accentColorHover: #135e96;
+  --optionBorderColor: #e1e1e1;
+  --inputBorderColor: #dcdddf; }
+
 .premium-panel-body p.premium-editor-paragraph {
   margin-bottom: 0; }
 
@@ -3798,3 +3804,481 @@ input[type="number"] {
   .premium-radio-container-control .components-button .premium-icon-set {
     width: 100%;
     height: 100%; }
+
+.kmt-typography {
+  position: relative; }
+  .kmt-typography header {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-bottom: 5px; }
+  .kmt-typography:hover .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:not(:disabled) {
+    opacity: 1; }
+  .kmt-typography .kmt-typography-wrapper {
+    display: flex;
+    align-items: center; }
+    .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn {
+      color: var(--primaryColor);
+      font-size: 12px;
+      padding: 0px 6px;
+      background: transparent;
+      box-shadow: none;
+      outline: 0;
+      border: 0;
+      width: 12px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: dashicons;
+      padding: 0;
+      border: none;
+      background: transparent;
+      -webkit-font-smoothing: antialiased;
+      cursor: pointer; }
+      .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:disabled {
+        color: rgba(0, 0, 0, 0.2);
+        cursor: default; }
+      .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn::before {
+        content: "\f531";
+        transition: transform 0.3s ease;
+        transform: rotate(45deg); }
+      .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:hover {
+        box-shadow: none;
+        border: none;
+        background: transparent; }
+        .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:hover:not(:disabled):before {
+          transform: rotate(-45deg); }
+  .kmt-typography.kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:focus {
+    box-shadow: none;
+    border: none;
+    background: transparent; }
+
+.kmt-typohraphy-value {
+  display: flex;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.1s linear;
+  align-items: center;
+  justify-content: space-between;
+  width: 96%;
+  margin-right: 8px; }
+  .kmt-typohraphy-value:hover {
+    border-color: #0e8ecc; }
+    .kmt-typohraphy-value:hover a {
+      opacity: 1;
+      color: #0073aa; }
+  .kmt-typohraphy-value > div.kmt-typography-title-container {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 35px; }
+  .kmt-typohraphy-value > div > span {
+    flex: 1 1 auto;
+    display: flex;
+    height: 100%;
+    padding: 0px 10px;
+    border: none;
+    color: #4a5568;
+    background: 0 0;
+    box-shadow: none;
+    font-style: normal;
+    line-height: normal;
+    white-space: normal;
+    align-items: center;
+    -webkit-box-align: center;
+    flex: 1 1 0;
+    justify-content: center;
+    margin: 0px;
+    position: relative;
+    box-shadow: inset 0 0 0 1px #ddd;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
+    .kmt-typohraphy-value > div > span:not(:first-child) {
+      margin-left: -1px; }
+    .kmt-typohraphy-value > div > span span {
+      position: relative;
+      z-index: 2;
+      font-size: 13px;
+      line-height: 1.4em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: inline-block;
+      overflow: hidden;
+      max-width: 85px;
+      text-transform: capitalize; }
+    .kmt-typohraphy-value > div > span:hover span,
+    .kmt-typohraphy-value > div > span.active span {
+      color: var(--primaryColor); }
+  .kmt-typohraphy-value .kmt-font {
+    display: inline-flex;
+    align-items: center; }
+    .kmt-typohraphy-value .kmt-font span {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 85px;
+      display: inline-block;
+      text-transform: capitalize; }
+  .kmt-typohraphy-value a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    color: inherit; }
+
+.kmt-typography-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 360px;
+  position: relative; }
+
+.kmt-typography-top {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 70px;
+  padding: 0 20px;
+  margin: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--optionBorderColor); }
+  .kmt-typography-top.kmt-static > * {
+    transition: none !important; }
+
+.kmt-typography-container ~ * {
+  left: 0;
+  right: 0; }
+
+.kmt-typography-top ~ * {
+  left: 0;
+  right: 0; }
+
+.kmt-typography-top li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  height: 28px;
+  color: #555d66;
+  cursor: pointer;
+  border-radius: 3px;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0 8px;
+  margin-bottom: 0;
+  background: #fff;
+  box-sizing: border-box;
+  border: 1px solid #d1d5d9;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-color 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  .kmt-typography-top li.active {
+    border-color: var(--primaryColor);
+    box-shadow: 0 0 0 1px var(--primaryColor); }
+  .kmt-typography-top li:hover {
+    border-color: var(--primaryColor); }
+
+.kmt-typography-top .kmt-font {
+  flex: 1; }
+  .kmt-typography-top .kmt-font span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-transform: capitalize;
+    transition: width 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  .kmt-typography-top .kmt-font input {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    background: transparent; }
+    .kmt-typography-top .kmt-font input:focus {
+      outline: none; }
+  .kmt-typography-top .kmt-font svg {
+    position: absolute;
+    top: calc(50% - 3px);
+    right: 8px;
+    cursor: pointer;
+    fill: currentColor;
+    opacity: 0;
+    transition: opacity 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  .kmt-typography-top .kmt-font.active svg {
+    opacity: 1; }
+
+.kmt-typography-top .kmt-weight {
+  justify-content: flex-end;
+  width: 78px;
+  margin-left: 7%;
+  transition: width 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  .kmt-typography-top .kmt-weight:before {
+    position: absolute;
+    z-index: 0;
+    color: #727c88;
+    content: "A";
+    left: 8px;
+    font-size: 15px;
+    opacity: 1;
+    margin-right: 10px;
+    transition: font-weight 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  .kmt-typography-top .kmt-weight:hover:before {
+    font-weight: 700; }
+  .kmt-typography-top .kmt-weight span {
+    position: relative;
+    z-index: 1;
+    width: 44px;
+    text-align: right;
+    line-height: normal;
+    background: #fff;
+    box-shadow: 0px 0px 10px 3px #fff; }
+    .kmt-typography-top .kmt-weight span[data-variation*="i"] {
+      font-style: italic; }
+    .kmt-typography-top .kmt-weight span[data-variation="Default"] {
+      opacity: 0; }
+
+.kmt-typography-top .kmt-back {
+  z-index: 2;
+  width: 28px;
+  margin-right: 12px;
+  margin-left: -44px;
+  opacity: 0;
+  transition: margin 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  .kmt-typography-top .kmt-back svg {
+    fill: currentColor; }
+
+.kmt-typography-top.kmt-switch-panel .kmt-back {
+  opacity: 1;
+  margin-left: 0; }
+
+.kmt-typography-top.kmt-switch-panel .kmt-font span {
+  width: 90%; }
+
+.kmt-typography-top.kmt-switch-panel .kmt-weight {
+  margin-left: 5%; }
+  .kmt-typography-top.kmt-switch-panel .kmt-weight:not(.active) {
+    width: 45px; }
+    .kmt-typography-top.kmt-switch-panel .kmt-weight:not(.active):before {
+      opacity: 0; }
+
+.kmt-typography-options {
+  margin: 0;
+  right: 0;
+  left: 0; }
+  .kmt-typography-options > li {
+    align-items: center;
+    padding: 14px 20px;
+    margin: 0;
+    box-sizing: border-box; }
+  .kmt-typography-options li.customize-control-kmt-slider.customize-control-title {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    transition: tr;
+    transform: translateY(-5px) !important; }
+  .kmt-typography-options li.customize-control-kmt-slider .kmt-slider-units {
+    font-size: 11px;
+    text-transform: uppercase; }
+  .kmt-typography-options li.customize-control-kmt-slider .kmt-range-value__input {
+    width: 100%;
+    border: 1px solid #dcdddf !important;
+    border-radius: 0 !important; }
+  .kmt-typography-options > li:not(.kmt-typography-variant) {
+    height: 95px; }
+  .kmt-typography-options > li:not(:last-child) {
+    border-bottom: 1px dashed #eee; }
+  .kmt-typography-options .kmt-control {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%; }
+  .kmt-typography-options .kmt-slider:before {
+    --backgroundColor: #e3e6e8; }
+  .kmt-typography-options .kmt-value-changer ul {
+    box-shadow: 0 10px 20px 3px rgba(0, 0, 0, 0.07), 0 1px 3px 0px rgba(0, 0, 0, 0.03); }
+  .kmt-typography-options .kmt-disabled-notification {
+    background: rgba(243, 243, 245, 0.5); }
+
+.kmt-typography-variant {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 15px;
+  height: 75px; }
+  .kmt-typography-variant ul {
+    display: flex; }
+    .kmt-typography-variant ul li {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin: 0;
+      padding: 5px 0;
+      cursor: pointer;
+      border: 1px solid #dfe1e4; }
+      .kmt-typography-variant ul li:before {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em; }
+      .kmt-typography-variant ul li + li {
+        margin-left: -1px; }
+      .kmt-typography-variant ul li:first-child {
+        border-radius: 3px 0 0 3px; }
+      .kmt-typography-variant ul li:last-child {
+        border-radius: 0 3px 3px 0; }
+      .kmt-typography-variant ul li:not(.active) {
+        color: #727c88; }
+        .kmt-typography-variant ul li:not(.active):hover {
+          color: var(--primaryColor); }
+      .kmt-typography-variant ul li.active {
+        z-index: 2;
+        color: #fff;
+        background: var(--primaryColor);
+        border-color: var(--primaryColor); }
+      .kmt-typography-variant ul li[data-variant="capitalize"]:before {
+        content: "Aa"; }
+      .kmt-typography-variant ul li[data-variant="uppercase"]:before {
+        content: "AA"; }
+      .kmt-typography-variant ul li[data-variant="underline"]:before, .kmt-typography-variant ul li[data-variant="line-through"]:before {
+        content: "Aa"; }
+      .kmt-typography-variant ul li:hover .kmt-tooltip-top {
+        opacity: 1;
+        visibility: visible;
+        transform: translate3d(0px, -40px, 0px); }
+
+.kmt-text-decoration li:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 50%;
+  height: 1px;
+  opacity: 0.7;
+  background: currentColor;
+  margin: auto;
+  border-radius: 2px; }
+
+.kmt-text-decoration li[data-variant="underline"]:after {
+  bottom: 6px; }
+
+.kmt-text-decoration li[data-variant="line-through"]:after {
+  top: 3px;
+  bottom: 0; }
+
+.kmt-typography-single-font,
+.kmt-typography-variations li {
+  cursor: pointer;
+  position: relative; }
+
+.kmt-typography-single-font:not(:first-child),
+.kmt-typography-variations li:not(:first-child) {
+  border-top: 1px solid var(--optionBorderColor); }
+
+.kmt-typography-single-font:hover, .kmt-typography-single-font.active {
+  color: #fff;
+  background: var(--primaryColor);
+  border-color: var(--primaryColor); }
+
+.kmt-typography-variations li:hover, .kmt-typography-variations li.active {
+  color: #fff;
+  background: var(--primaryColor);
+  border-color: var(--primaryColor); }
+
+.kmt-typography-single-font:hover:after, .kmt-typography-single-font.active:after {
+  box-shadow: -5px 0px 15px 10px var(--primaryColor); }
+
+.kmt-typography-variations li:hover:after, .kmt-typography-variations li.active:after {
+  box-shadow: -5px 0px 15px 10px var(--primaryColor); }
+
+.kmt-typography-single-font:hover + *,
+.kmt-typography-single-font.active + * {
+  border-top-color: rgba(255, 255, 255, 0.3); }
+
+.kmt-typography-variations li:hover + *,
+.kmt-typography-variations li.active + * {
+  border-top-color: rgba(255, 255, 255, 0.3); }
+
+.kmt-typography-single-font.active:before,
+.kmt-typography-variations li.active:before {
+  position: absolute;
+  font: 400 17px/17px dashicons;
+  content: "\f147";
+  right: 20px; }
+
+.kmt-typography-fonts {
+  position: relative;
+  height: 290px;
+  overflow: auto;
+  will-change: transform;
+  direction: ltr;
+  margin: 0px; }
+  .kmt-typography-fonts .kmt-source-fonts {
+    text-transform: capitalize;
+    margin-left: 10px; }
+
+.kmt-typography-single-font {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  height: 85px;
+  padding: 0 20px;
+  box-sizing: border-box; }
+  .kmt-typography-single-font:before {
+    top: 18px; }
+  .kmt-typography-single-font:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: #fff;
+    transform: translateX(100%);
+    box-shadow: -5px 0px 15px 10px #fff; }
+  .kmt-typography-single-font .kmt-font-name {
+    opacity: 0.7; }
+  .kmt-typography-single-font .kmt-font-preview {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-top: 10px;
+    font-weight: normal;
+    white-space: nowrap; }
+  .kmt-typography-single-font:hover .kmt-font-name {
+    opacity: 1; }
+
+.kmt-fonts-source {
+  font-size: 16px;
+  background-color: #efeff1;
+  height: 30px;
+  padding: 6px 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center; }
+
+.kmt-typography-variations {
+  overflow-x: auto;
+  max-height: 360px;
+  margin: 0;
+  right: 0;
+  left: 0; }
+  .kmt-typography-variations li {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  .kmt-typography-variations .kmt-variation-name {
+    font-size: 14px;
+    line-height: 1.3; }
