@@ -414,9 +414,7 @@ export default class PremiumTypo extends Component {
                                     JSON.stringify(this.defaultValue)
                                 }
                                 onClick={(e) => {
-                                    onResetClick();
                                     e.preventDefault();
-                                    this.setState({ ...this.state, ...this.defaultValue })
                                 }}
                             ></button>
                         </div>
