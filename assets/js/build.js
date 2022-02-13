@@ -1616,7 +1616,7 @@ var PremiumTypo = function (_Component) {
         var _this = _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).call(this, props));
 
         _this.state = {
-            fontFamily: _this.props.fontFamily || "System Default",
+            fontFamily: _this.props.fontFamily,
             line: _this.props.line,
             upper: _this.props.upper, //
             sizeUnit: _this.props.sizeUnit || 'px',
@@ -1625,7 +1625,6 @@ var PremiumTypo = function (_Component) {
             search: _this.props.fontFamily || "System Default",
             showUnit: _this.props.showUnit || false
         };
-
         _this.defaultValue = {
             fontFamily: "System Default",
             variation: '400',
@@ -1664,9 +1663,8 @@ var PremiumTypo = function (_Component) {
 
     _createClass(PremiumTypo, [{
         key: 'componentDidUpdate',
-        value: function componentDidUpdate(prevProps, prevState) {
-
-            if (prevState.fontFamily !== this.state.fontFamily) {
+        value: function componentDidUpdate(prevProps) {
+            if (prevProps.fontFamily !== this.state.fontFamily) {
                 _webfontloader2.default.load({
                     google: {
                         families: this.state.fontFamily
@@ -1682,17 +1680,18 @@ var PremiumTypo = function (_Component) {
 
             var _props = this.props,
                 components = _props.components,
+                size = _props.size,
+                weight = _props.weight,
+                style = _props.style,
+                spacing = _props.spacing,
+                line = _props.line,
+                upper = _props.upper,
                 setAttributes = _props.setAttributes,
+                fontFamily = _props.fontFamily,
                 _props$onChangeFamily = _props.onChangeFamily,
                 onChangeFamily = _props$onChangeFamily === undefined ? function () {} : _props$onChangeFamily,
                 _props$onChangeSize = _props.onChangeSize,
                 onChangeSize = _props$onChangeSize === undefined ? function () {} : _props$onChangeSize,
-                _props$onChangeSizeTa = _props.onChangeSizeTablet,
-                onChangeSizeTablet = _props$onChangeSizeTa === undefined ? function () {} : _props$onChangeSizeTa,
-                _props$onChangeSizeMo = _props.onChangeSizeMobile,
-                onChangeSizeMobile = _props$onChangeSizeMo === undefined ? function () {} : _props$onChangeSizeMo,
-                _props$onChangeSizeUn = _props.onChangeSizeUnit,
-                onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function () {} : _props$onChangeSizeUn,
                 _props$onChangeWeight = _props.onChangeWeight,
                 onChangeWeight = _props$onChangeWeight === undefined ? function () {} : _props$onChangeWeight,
                 _props$onChangeStyle = _props.onChangeStyle,
@@ -1701,40 +1700,16 @@ var PremiumTypo = function (_Component) {
                 onChangeSpacing = _props$onChangeSpacin === undefined ? function () {} : _props$onChangeSpacin,
                 _props$onChangeLine = _props.onChangeLine,
                 onChangeLine = _props$onChangeLine === undefined ? function () {} : _props$onChangeLine,
-                _props$onChangeLineUn = _props.onChangeLineUnit,
-                onChangeLineUnit = _props$onChangeLineUn === undefined ? function () {} : _props$onChangeLineUn,
-                _props$onChangeLetter = _props.onChangeLetterUnit,
-                onChangeLetterUnit = _props$onChangeLetter === undefined ? function () {} : _props$onChangeLetter,
                 _props$onChangeUpper = _props.onChangeUpper,
                 onChangeUpper = _props$onChangeUpper === undefined ? function () {} : _props$onChangeUpper,
                 _props$onResetClick = _props.onResetClick,
-                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick,
-                _props$onChangeTextTr = _props.onChangeTextTransform,
-                onChangeTextTransform = _props$onChangeTextTr === undefined ? function () {} : _props$onChangeTextTr,
-                _props$onChangeTextDe = _props.onChangeTextDecoration,
-                onChangeTextDecoration = _props$onChangeTextDe === undefined ? function () {} : _props$onChangeTextDe,
-                size = _props.size,
-                line = _props.line,
-                weight = _props.weight,
-                spacing = _props.spacing,
-                style = _props.style,
-                titleLineUnit = _props.titleLineUnit,
-                titleLetterUnit = _props.titleLetterUnit,
-                textTransform = _props.textTransform,
-                textDecoration = _props.textDecoration,
-                fontSizeMobile = _props.fontSizeMobile,
-                fontSizeTablet = _props.fontSizeTablet,
-                fontSize = _props.fontSize,
-                fontSizeType = _props.fontSizeType;
+                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
             var _state = this.state,
-                fontFamily = _state.fontFamily,
-                upper = _state.upper,
                 sizeUnit = _state.sizeUnit,
                 isVisible = _state.isVisible,
                 currentView = _state.currentView,
                 search = _state.search,
                 showUnit = _state.showUnit;
-
 
             var STYLE = [{
                 value: "normal",
@@ -1750,7 +1725,6 @@ var PremiumTypo = function (_Component) {
 
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
-
                 fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight });
                 if (k === fontFamily) {
                     fontWeight = _premiumFonts2.default[k].weight;
@@ -1769,6 +1743,7 @@ var PremiumTypo = function (_Component) {
             var onFontfamilyChange = function onFontfamilyChange(value) {
                 onFontChange(weight, value.label);
                 onChangeFamily(value.value);
+                console.log(fontFamily);
             };
 
             var onFontChange = function onFontChange(weight, fontFamily) {
@@ -1790,33 +1765,17 @@ var PremiumTypo = function (_Component) {
                     }
                 }
             };
-
             var toggleVisible = function toggleVisible(v) {
                 _this2.setState({
                     isVisible: true,
                     currentView: v
                 });
             };
-
-            var setSearch = function setSearch(v) {
-                _this2.setState({
-                    search: v
-                });
-            };
-
-            var changeFont = function changeFont(v) {
-                _this2.setState({
-                    fontFamily: v.value,
-                    search: v.value
-                });
-                onFontfamilyChange(v);
-            };
-
             var renderFonts = fonts.map(function (item, index) {
                 return React.createElement(
                     'div',
                     { className: 'kmt-typography-single-font ' + (item.label == fontFamily ? 'active' : ''), key: index, onClick: function onClick() {
-                            return changeFont(item);
+                            return onFontfamilyChange(item);
                         } },
                     React.createElement(
                         'span',
@@ -1825,25 +1784,6 @@ var PremiumTypo = function (_Component) {
                     )
                 );
             });
-
-            var renderVariations = fonts.map(function (item, index) {
-                if (item.value == fontFamily) {
-                    return (item.weight || []).map(function (weights, i) {
-                        return React.createElement(
-                            'li',
-                            { key: i, className: '' + (weights == weight ? 'active' : ''), onClick: function onClick() {
-                                    onChangeWeight(weights);
-                                } },
-                            React.createElement(
-                                'span',
-                                { className: 'kmt-variation-name' },
-                                weights
-                            )
-                        );
-                    });
-                }
-            });
-
             return React.createElement(
                 'div',
                 { className: 'premium-control-toggle kmt-typography' },
