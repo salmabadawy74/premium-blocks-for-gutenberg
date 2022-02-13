@@ -2,7 +2,7 @@ import { maps } from "../../../assets/js/settings";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 
@@ -531,7 +531,7 @@ class PremiumMap extends Component {
                                     value={markerDesc}
                                     onChange={newText => setAttributes({ markerDesc: newText })}
                                 />
-                                <PremiumRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__("Spacing (PX)", 'premium-block-for-gutenberg')}
                                     value={gapBetween}
                                     min="10"
@@ -576,7 +576,7 @@ class PremiumMap extends Component {
 
                                     />
                                 )}
-                                <PremiumRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__("Description Box Max Width (PX)", 'premium-block-for-gutenberg')}
                                     value={maxWidth}
                                     min="10"
@@ -585,7 +585,7 @@ class PremiumMap extends Component {
                                     showUnit={false}
                                     defaultValue={0}
                                 />
-                                <PremiumRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__("Description Box Padding (PX)", 'premium-block-for-gutenberg')}
                                     value={boxPadding}
                                     min="1"
@@ -603,7 +603,7 @@ class PremiumMap extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Font Size (PX)", 'premium-block-for-gutenberg')}
                                 value={titleSize}
                                 min="10"
@@ -631,7 +631,7 @@ class PremiumMap extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Font Size (PX)", 'premium-block-for-gutenberg')}
                                 value={descSize}
                                 min="10"
@@ -664,7 +664,7 @@ class PremiumMap extends Component {
                             value={mapType}
                             onChange={newType => setAttributes({ mapType: newType })}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Map Height (PX)", 'premium-block-for-gutenberg')}
                             value={height}
                             min="10"
@@ -673,7 +673,7 @@ class PremiumMap extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Zoom", 'premium-block-for-gutenberg')}
                             value={zoom}
                             min="1"

@@ -3,7 +3,6 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
 import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
@@ -469,7 +468,7 @@ class PremiumAccordion extends Component {
                                 })
                             }
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Border Radius", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowRadius}
                             onChange={newValue =>
@@ -482,7 +481,7 @@ class PremiumAccordion extends Component {
                             defaultValue={0}
                             showUnit={false}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowPadding}
                             onChange={newValue =>

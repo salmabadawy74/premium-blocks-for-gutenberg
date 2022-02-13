@@ -1,6 +1,5 @@
 import { Component } from "react";
-import PremiumRangeControl from './premium-range-control';
-
+import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { SelectControl, ColorPicker } = wp.components;
@@ -192,7 +191,7 @@ export default class PremiumBorder extends Component {
                         </Fragment>
                     )}
 
-                    <PremiumRangeControl
+                    <ResponsiveSingleRangeControl
                         label={__("Border Radius", 'premium-block-for-gutenberg')}
                         value={borderRadius}
                         defaultValue={0}

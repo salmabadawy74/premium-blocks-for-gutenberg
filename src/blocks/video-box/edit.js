@@ -7,7 +7,7 @@ import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 
 const { withSelect } = wp.data
@@ -384,7 +384,7 @@ class edit extends Component {
                                 />
                                 {playIcon && (
                                     <Fragment>
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__("Size (PX)", 'premium-block-for-gutenberg')}
                                             value={playStyles[0].playSize}
                                             onChange={newValue =>
@@ -395,7 +395,7 @@ class edit extends Component {
                                             showUnit={false}
                                             defaultValue={0}
                                         />
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
                                             value={playStyles[0].playTop}
                                             onChange={newValue =>
@@ -434,7 +434,7 @@ class edit extends Component {
                                                 savePlayStyles({ playBorderRadius: newrRadius })
                                             }
                                         />
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__("Padding (PX)")}
                                             value={playStyles[0].playPadding}
                                             onChange={newValue =>
@@ -513,7 +513,7 @@ class edit extends Component {
                                             }
                                             onChangeFamily={(fontFamily) => saveDescritionStyle({ videoDescFamily: fontFamily })}
                                         />
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
                                             value={descStyles[0].descTop}
                                             onChange={newValue =>
@@ -524,7 +524,7 @@ class edit extends Component {
                                             showUnit={false}
                                             defaultValue={0}
                                         />
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__("Border Radius (px)", 'premium-block-for-gutenberg')}
                                             value={descStyles[0].videoDescBorderRadius}
                                             onChange={newValue =>
@@ -558,7 +558,7 @@ class edit extends Component {
                                                 saveDescritionStyle({ descShadowVertical: newValue || "0" })
                                             }
                                         />
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__("Padding (PX)", 'premium-block-for-gutenberg')}
                                             value={descStyles[0].videoDescPadding}
                                             onChange={newValue =>

@@ -11,7 +11,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBackground from "../../components/premium-background"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 
@@ -377,7 +377,7 @@ class edit extends Component {
                                             })
                                         }
                                     />
-                                    <PremiumRangeControl
+                                    <ResponsiveSingleRangeControl
                                         label={__("Border Radius (PX)", 'premium-block-for-gutenberg')}
                                         value={iconRadius}
                                         onChange={newValue =>
@@ -394,7 +394,7 @@ class edit extends Component {
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Size (PX)", 'premium-block-for-gutenberg')}
                                 value={iconSize}
                                 min="10"
@@ -673,7 +673,7 @@ class edit extends Component {
                                     })
                                 }
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Padding", 'premium-block-for-gutenberg')}
                                 value={btnStyles[0].btnPadding}
                                 onChange={newValue => saveButtonStyle({ btnPadding: newValue })}

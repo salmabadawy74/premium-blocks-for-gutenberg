@@ -1,19 +1,9 @@
-/**
- * Range Control
- *
- */
 
-/**
- * Internal block libraries
- */
 const {
     RangeControl,
 } = wp.components;
 
-/**
- * Build the Measure controls
- * @returns {object} Measure settings.
- */
+
 export default function PremiumRange({
     onChange,
     value = '',
@@ -52,6 +42,7 @@ export default function PremiumRange({
             }
         }
     };
+
     return [
         onChange && (
             <div className={'wrapper'}>
@@ -73,7 +64,6 @@ export default function PremiumRange({
                             onChange={onChangInput}
                             min={min}
                             max={max}
-
                             step={step}
                             type="number"
                             className="components-text-control__input"

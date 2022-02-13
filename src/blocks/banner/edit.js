@@ -7,7 +7,7 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 
@@ -307,7 +307,7 @@ export class edit extends Component {
                             onChange={newHeight => setAttributes({ height: newHeight })}
                         />
                         {"custom" === height && (
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Min Height (PX)", 'premium-block-for-gutenberg')}
                                 value={minHeight}
                                 min="10"
@@ -336,7 +336,7 @@ export class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Overlay Opacity", 'premium-block-for-gutenberg')}
                             value={opacity}
                             min="1"

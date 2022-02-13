@@ -6,7 +6,7 @@ const { PanelBody, SelectControl, ToggleControl, TextControl, Spinner } = wp.com
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 const { addQueryArgs } = wp.url;
 const { apiFetch } = wp;
 const { withSelect } = wp.data
@@ -457,7 +457,7 @@ export class edit extends Component {
 
                         </Fragment>}
 
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Column Gap", 'premium-block-for-gutenberg')}
                             value={columnGap}
                             onChange={(newValue) =>
@@ -466,7 +466,7 @@ export class edit extends Component {
                             defaultValue={0}
                             showUnit={false}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Row Gap", 'premium-block-for-gutenberg')}
                             value={rowGap}
                             onChange={(newValue) =>
@@ -743,14 +743,14 @@ export class edit extends Component {
                                 saveButtonStyle({ btnBorderRadius: newRadius })
                             }
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Vertical Spacing", 'premium-block-for-gutenberg')}
                             value={btnStyles[0].vPaddingSubmit}
                             onChange={(value) => saveButtonStyle({ vPaddingSubmit: value })}
                             defaultValue={0}
                             showUnit={false}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Horizontal Spacing", 'premium-block-for-gutenberg')}
                             value={btnStyles[0].hPaddingSubmit}
                             onChange={(value) => saveButtonStyle({ hPaddingSubmit: value })}

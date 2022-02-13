@@ -1,12 +1,8 @@
 
 const { __ } = wp.i18n;
+import PremiumSizeUnits from '../premium-size-units';
 import PremiumRange from './range-control';
 const { Fragment } = wp.element;
-
-/**
- * Build the Measure controls
- * @returns {object} Measure settings.
- */
 export default function ResponsiveSingleRangeControl({
     device = 'device',
     onChange,
@@ -15,7 +11,7 @@ export default function ResponsiveSingleRangeControl({
     max = 100,
     min = 0,
     unit = '',
-    onUnit,
+    onChangeUnit,
     showUnit = false,
     units = ['px', 'em', 'rem'],
     className = '',
@@ -35,6 +31,7 @@ export default function ResponsiveSingleRangeControl({
 
                     </div>
                     {showUnit && (
+
                         <PremiumSizeUnits
                             units={units}
                             activeUnit={unit}

@@ -1270,9 +1270,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = __webpack_require__(4);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -1316,7 +1316,7 @@ var PremiumBorder = function (_Component) {
     }
 
     _createClass(PremiumBorder, [{
-        key: 'onChangeInput',
+        key: "onChangeInput",
         value: function onChangeInput(event) {
             var _this2 = this;
 
@@ -1349,12 +1349,12 @@ var PremiumBorder = function (_Component) {
             }
         }
     }, {
-        key: 'onButtonClick',
+        key: "onButtonClick",
         value: function onButtonClick() {
             this.setState({ isLinked: !this.state.isLinked });
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             var _this3 = this;
 
@@ -1404,8 +1404,8 @@ var PremiumBorder = function (_Component) {
             };
 
             return React.createElement(
-                'div',
-                { className: 'premium-control-toggle' },
+                "div",
+                { className: "premium-control-toggle" },
                 React.createElement(
                     Fragment,
                     null,
@@ -1416,109 +1416,109 @@ var PremiumBorder = function (_Component) {
                         onChange: onChangeType
                     }),
                     "none" != borderType && React.createElement(
-                        'div',
-                        { className: 'premium-spacing-responsive' },
+                        "div",
+                        { className: "premium-spacing-responsive" },
                         React.createElement(
-                            'header',
-                            { className: 'premium-control-label-container' },
+                            "header",
+                            { className: "premium-control-label-container" },
                             React.createElement(
-                                'div',
-                                { className: 'premium-control-label' },
+                                "div",
+                                { className: "premium-control-label" },
                                 React.createElement(
-                                    'strong',
+                                    "strong",
                                     null,
                                     __("Border Width ")
                                 )
                             )
                         ),
                         React.createElement(
-                            'div',
-                            { className: 'premium-spacing-responsive-outer-wrapper' },
+                            "div",
+                            { className: "premium-spacing-responsive-outer-wrapper" },
                             React.createElement(
-                                'div',
-                                { className: 'input-wrapper premium-spacing-responsive-wrapper' },
+                                "div",
+                                { className: "input-wrapper premium-spacing-responsive-wrapper" },
                                 React.createElement(
-                                    'ul',
-                                    { className: 'premium-spacing-wrapper' },
+                                    "ul",
+                                    { className: "premium-spacing-wrapper" },
                                     React.createElement(
-                                        'li',
-                                        { className: 'premium-spacing-input-item' },
-                                        React.createElement('input', {
-                                            className: 'premium-spacing-input',
-                                            type: 'number',
-                                            name: 'top',
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "top",
                                             value: top,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            'span',
-                                            { className: 'premium-spacing-title' },
-                                            __('Top', 'premium-block-for-gutenberg')
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            __("Top", 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        'li',
-                                        { className: 'premium-spacing-input-item' },
-                                        React.createElement('input', {
-                                            className: 'premium-spacing-input',
-                                            type: 'number',
-                                            name: 'right',
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "right",
                                             value: right,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            'span',
-                                            { className: 'premium-spacing-title' },
-                                            __('Right', 'premium-block-for-gutenberg')
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            __("Right", 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        'li',
-                                        { className: 'premium-spacing-input-item' },
-                                        React.createElement('input', {
-                                            className: 'premium-spacing-input',
-                                            type: 'number',
-                                            name: 'bottom',
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "bottom",
                                             value: bottom,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            'span',
-                                            { className: 'premium-spacing-title' },
-                                            __('Bottom', 'premium-block-for-gutenberg')
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            __("Bottom", 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        'li',
-                                        { className: 'premium-spacing-input-item' },
-                                        React.createElement('input', {
-                                            className: 'premium-spacing-input',
-                                            type: 'number',
-                                            name: 'left',
+                                        "li",
+                                        { className: "premium-spacing-input-item" },
+                                        React.createElement("input", {
+                                            className: "premium-spacing-input",
+                                            type: "number",
+                                            name: "left",
                                             value: left,
                                             onChange: this.onChangeInput
                                         }),
                                         React.createElement(
-                                            'span',
-                                            { className: 'premium-spacing-title' },
-                                            __('Right', 'premium-block-for-gutenberg')
+                                            "span",
+                                            { className: "premium-spacing-title" },
+                                            __("Right", 'premium-block-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
-                                        'li',
+                                        "li",
                                         null,
-                                        React.createElement('button', {
-                                            className: 'linked-btn components-button is-button dashicons dashicons-' + (isLinked ? "admin-links" : "editor-unlink"),
+                                        React.createElement("button", {
+                                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
                                             onClick: this.onButtonClick
                                         })
                                     )
                                 )
                             ),
                             React.createElement(
-                                'div',
-                                { className: 'premium-spacing-btn-reset-wrap' },
-                                React.createElement('button', {
-                                    className: 'premium-reset-btn ',
+                                "div",
+                                { className: "premium-spacing-btn-reset-wrap" },
+                                React.createElement("button", {
+                                    className: "premium-reset-btn ",
                                     disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                                     onClick: function onClick(e) {
                                         e.preventDefault();
@@ -1546,7 +1546,7 @@ var PremiumBorder = function (_Component) {
                             onColorChange: onChangeColor
                         })
                     ),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Border Radius", 'premium-block-for-gutenberg'),
                         value: borderRadius,
                         defaultValue: 0,
@@ -1574,21 +1574,27 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _premiumFonts = __webpack_require__(229);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _webfontloader = __webpack_require__(230);
-
-var _webfontloader2 = _interopRequireDefault(_webfontloader);
-
 var _premiumRangeControl = __webpack_require__(1);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
+var _responsiveRangeControl = __webpack_require__(133);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
+var _singleRangeControl = __webpack_require__(106);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+var _fontList = __webpack_require__(439);
+
+var _fontList2 = _interopRequireDefault(_fontList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1616,7 +1622,7 @@ var PremiumTypo = function (_Component) {
         var _this = _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).call(this, props));
 
         _this.state = {
-            fontFamily: _this.props.fontFamily,
+            fontFamily: _this.props.fontFamily || '',
             line: _this.props.line,
             upper: _this.props.upper, //
             sizeUnit: _this.props.sizeUnit || 'px',
@@ -1653,30 +1659,18 @@ var PremiumTypo = function (_Component) {
                 mobile: "",
                 "mobile-unit": "px"
             },
-
             "text-transform": "none",
             "text-decoration": "none"
         };
-
         return _this;
     }
 
     _createClass(PremiumTypo, [{
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate(prevProps) {
-            if (prevProps.fontFamily !== this.state.fontFamily) {
-                _webfontloader2.default.load({
-                    google: {
-                        families: this.state.fontFamily
-                    }
-                });
-            }
-        }
-    }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             var _this2 = this,
-                _React$createElement;
+                _React$createElement,
+                _React$createElement2;
 
             var _props = this.props,
                 components = _props.components,
@@ -1687,7 +1681,14 @@ var PremiumTypo = function (_Component) {
                 line = _props.line,
                 upper = _props.upper,
                 setAttributes = _props.setAttributes,
-                fontFamily = _props.fontFamily,
+                _props$fontFamily = _props.fontFamily,
+                fontFamily = _props$fontFamily === undefined ? '' : _props$fontFamily,
+                textTransform = _props.textTransform,
+                textDecoration = _props.textDecoration,
+                _props$onChangeTextTr = _props.onChangeTextTransform,
+                onChangeTextTransform = _props$onChangeTextTr === undefined ? function () {} : _props$onChangeTextTr,
+                _props$onChangeTextDe = _props.onChangeTextDecoration,
+                onChangeTextDecoration = _props$onChangeTextDe === undefined ? function () {} : _props$onChangeTextDe,
                 _props$onChangeFamily = _props.onChangeFamily,
                 onChangeFamily = _props$onChangeFamily === undefined ? function () {} : _props$onChangeFamily,
                 _props$onChangeSize = _props.onChangeSize,
@@ -1711,6 +1712,7 @@ var PremiumTypo = function (_Component) {
                 search = _state.search,
                 showUnit = _state.showUnit;
 
+
             var STYLE = [{
                 value: "normal",
                 label: "Normal"
@@ -1725,152 +1727,126 @@ var PremiumTypo = function (_Component) {
 
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
-                fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight });
+                fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight, google: true });
                 if (k === fontFamily) {
                     fontWeight = _premiumFonts2.default[k].weight;
                 }
             });
-
             if (fontWeight === "") {
                 fontWeight = fonts[0].weight;
             }
             var fontWeightObj = [];
-
             fontWeight.forEach(function (item) {
                 fontWeightObj.push({ value: item, label: item });
             });
 
-            var onFontfamilyChange = function onFontfamilyChange(value) {
-                onFontChange(weight, value.label);
-                onChangeFamily(value.value);
-                console.log(fontFamily);
-            };
-
-            var onFontChange = function onFontChange(weight, fontFamily) {
-                var font_flag = void 0;
-                var new_value = void 0;
-                if (_typeof(_premiumFonts2.default[fontFamily]) == "object") {
-                    var gfontsObj = _premiumFonts2.default[fontFamily].weight;
-                    if ((typeof gfontsObj === 'undefined' ? 'undefined' : _typeof(gfontsObj)) == "object") {
-                        gfontsObj.forEach(function (item) {
-                            if (weight.value == item) {
-                                font_flag = false;
-                            } else {
-                                new_value = item;
-                                font_flag = true;
-                                setAttributes(_defineProperty({}, weight.label, new_value));
-                                return;
-                            }
-                        });
-                    }
-                }
-            };
             var toggleVisible = function toggleVisible(v) {
                 _this2.setState({
                     isVisible: true,
                     currentView: v
                 });
             };
-            var renderFonts = fonts.map(function (item, index) {
-                return React.createElement(
-                    'div',
-                    { className: 'kmt-typography-single-font ' + (item.label == fontFamily ? 'active' : ''), key: index, onClick: function onClick() {
-                            return onFontfamilyChange(item);
-                        } },
-                    React.createElement(
-                        'span',
-                        { className: 'kmt-font-name' },
-                        item.label
-                    )
-                );
+            var toggleClose = function toggleClose() {
+                if (_this2.state.isVisible === true) {
+                    _this2.setState({
+                        isVisible: false,
+                        currentView: ''
+                    });
+                }
+            };
+            var renderVariations = fonts.map(function (item, index) {
+                if (item.value == fontFamily) {
+                    return (item.weight || []).map(function (weights, i) {
+                        return React.createElement(
+                            "li",
+                            { key: i, className: "" + (weights == weight ? 'active' : ''), onClick: function onClick() {
+                                    onChangeWeight(weights);
+                                } },
+                            React.createElement(
+                                "span",
+                                { className: "premium-variation-name" },
+                                weights
+                            )
+                        );
+                    });
+                }
             });
+
             return React.createElement(
-                'div',
-                { className: 'premium-control-toggle kmt-typography' },
+                "div",
+                { className: "premium-control-toggle premium-typography" },
                 React.createElement(
-                    'header',
+                    "header",
                     null,
                     React.createElement(
-                        'span',
-                        { className: 'customize-control-title kmt-control-title' },
+                        "span",
+                        { className: "customize-control-title premium-control-title" },
                         React.createElement(
-                            'strong',
+                            "strong",
                             null,
                             __("Typography")
                         )
                     )
                 ),
                 React.createElement(
-                    'div',
-                    { className: 'kmt-typography-wrapper' },
+                    "div",
+                    { className: "premium-typography-wrapper" },
                     React.createElement(
-                        'div',
-                        { className: 'kmt-typohraphy-value' },
+                        "div",
+                        { className: "premium-typohraphy-value" },
                         React.createElement(
-                            'div',
-                            { className: 'kmt-typography-title-container' },
+                            "div",
+                            { className: "premium-typography-title-container" },
                             components.includes('family') && React.createElement(
-                                'span',
+                                "span",
                                 {
-                                    className: 'kmt-font',
+                                    className: "premium-font",
                                     onClick: function onClick() {
                                         toggleVisible("fonts");
                                     }
                                 },
                                 React.createElement(
-                                    'span',
+                                    "span",
                                     null,
                                     fontFamily
                                 ),
                                 isVisible && currentView == 'fonts' && components.includes('family') && React.createElement(
                                     Popover,
-                                    null,
+                                    { className: "premium-typography-option premium-font-family__modal", onClose: toggleClose },
                                     React.createElement(
-                                        'div',
-                                        { className: 'kmt-option-modal kmt-typography-modal' },
+                                        "div",
+                                        { className: "premium-option-modal " },
                                         React.createElement(
-                                            'div',
-                                            { className: 'kmt-typography-container' },
+                                            "div",
+                                            { className: "premium-typography-container" },
                                             React.createElement(
-                                                'div',
-                                                { style: { top: '0px', right: '0px', left: '0px' } },
+                                                "div",
+                                                { style: { top: '0px', right: '0px', left: "0px" } },
                                                 React.createElement(
-                                                    'ul',
-                                                    { className: 'kmt-typography-top kmt-switch-panel kmt-static' },
+                                                    "ul",
+                                                    { className: "premium-typography-top premium-switch-panel premium-static" },
                                                     React.createElement(
-                                                        'li',
-                                                        { className: 'kmt-font' },
+                                                        "li",
+                                                        { className: "premium-font" },
                                                         React.createElement(TextControl, {
                                                             value: search,
-                                                            type: 'search',
+                                                            type: "search",
                                                             onChange: function onChange(value) {
                                                                 return setSearch(value);
                                                             }
                                                         })
                                                     )
                                                 ),
-                                                React.createElement(
-                                                    'ul',
-                                                    { className: 'kmt-typography-fonts', style: { width: '100%' } },
-                                                    React.createElement(
-                                                        'div',
-                                                        null,
-                                                        React.createElement(
-                                                            'ul',
-                                                            null,
-                                                            renderFonts
-                                                        )
-                                                    )
-                                                )
+                                                React.createElement(_fontList2.default, { linearFontsList: fonts, value: this.state.fontFamily, onPickFamily: onChangeFamily })
                                             )
                                         )
                                     )
                                 )
                             ),
                             React.createElement(
-                                'span',
+                                "span",
                                 {
-                                    className: 'kmt-size',
+                                    className: "premium-size",
                                     onClick: function onClick() {
                                         toggleVisible("options");
                                     }
@@ -1879,65 +1855,79 @@ var PremiumTypo = function (_Component) {
                                 sizeUnit,
                                 isVisible && currentView == 'options' && React.createElement(
                                     Popover,
-                                    null,
+                                    { className: "premium-typography-option", onClose: toggleClose },
                                     React.createElement(
-                                        'div',
-                                        { className: ' kmt-typography-modal' },
+                                        "div",
+                                        { className: " " },
                                         React.createElement(
-                                            'div',
-                                            { className: 'kmt-typography-container' },
+                                            "div",
+                                            { className: "premium-typography-container" },
                                             React.createElement(
-                                                'ul',
-                                                { className: 'kmt-typography-options', style: { width: '100%' } },
+                                                "ul",
+                                                { className: "premium-typography-options", style: { width: "100%" } },
                                                 components.includes("size") && React.createElement(
-                                                    'li',
-                                                    { className: 'customize-control-kmt-slider' },
-                                                    React.createElement(_premiumRangeControl2.default, {
-                                                        defaultValue: 0,
-                                                        label: __("Font Size"),
-
-                                                        value: {
-                                                            'desktop': fontSize,
-                                                            'tablet': fontSizeTablet,
-                                                            'mobile': fontSizeMobile
-                                                        },
-
+                                                    "li",
+                                                    { className: "customize-control-premium-slider" },
+                                                    React.createElement(_singleRangeControl2.default, {
+                                                        label: __("Font Size (PX)"),
+                                                        value: size,
+                                                        min: "10",
+                                                        max: "80",
+                                                        defaultValue: 20,
                                                         onChange: onChangeSize,
-                                                        onChangeTablet: onChangeSizeTablet,
-                                                        onChangeMobile: onChangeSizeMobile,
-                                                        showUnit: showUnit,
-                                                        responsive: true,
-                                                        onChangeUnit: onChangeSizeUnit,
-                                                        unit: fontSizeType
+                                                        showUnit: false
+                                                    })
+                                                ),
+                                                components.includes("responsiveSize") && React.createElement(
+                                                    "li",
+                                                    { className: "customize-control-premium-slider" },
+                                                    React.createElement(_responsiveRangeControl2.default, {
+                                                        label: __("Font Size", 'premium-block-for-gutenberg'),
+                                                        value: this.props.fontSize.value,
+                                                        onChange: function onChange(value) {
+                                                            return setAttributes(_defineProperty({}, _this2.props.fontSize.label, value));
+                                                        },
+                                                        tabletValue: this.props.fontSizeTablet.value,
+                                                        onChangeTablet: function onChangeTablet(value) {
+                                                            return setAttributes(_defineProperty({}, _this2.props.fontSizeTablet.label, value));
+                                                        },
+                                                        mobileValue: this.props.fontSizeMobile.value,
+                                                        onChangeMobile: function onChangeMobile(value) {
+                                                            return setAttributes(_defineProperty({}, _this2.props.fontSizeMobile.label, value));
+                                                        },
+                                                        onChangeUnit: function onChangeUnit(key) {
+                                                            return setAttributes(_defineProperty({}, _this2.props.fontSizeType.label, key));
+                                                        },
+                                                        unit: this.props.fontSizeType.value,
+                                                        showUnit: true,
+                                                        defaultValue: 20,
+                                                        units: ["px", "em"]
                                                     })
                                                 ),
                                                 components.includes("line") && React.createElement(
-                                                    'li',
-                                                    { className: 'customize-control-kmt-slider' },
-                                                    React.createElement(_premiumRangeControl2.default, {
-                                                        label: __("Line Height"),
+                                                    "li",
+                                                    { className: "customize-control-premium-slider" },
+                                                    React.createElement(_singleRangeControl2.default, (_React$createElement = {
+                                                        label: __("Line Height (PX)"),
                                                         value: line,
                                                         onChange: onChangeLine,
-                                                        defaultValue: '',
-                                                        showUnit: showUnit,
-                                                        responsive: true,
-                                                        onChangeUnit: onChangeLineUnit,
-                                                        unit: titleLineUnit
-                                                    })
+                                                        defaultValue: 1
+                                                    }, _defineProperty(_React$createElement, "onChange", onChangeLine), _defineProperty(_React$createElement, "showUnit", false), _defineProperty(_React$createElement, "min", 5), _defineProperty(_React$createElement, "max", 200), _React$createElement))
                                                 ),
                                                 components.includes("spacing") && React.createElement(
-                                                    'li',
-                                                    { className: 'customize-control-kmt-slider' },
-                                                    React.createElement(_premiumRangeControl2.default, (_React$createElement = {
-                                                        label: __("Letter Spacing"),
+                                                    "li",
+                                                    { className: "customize-control-premium-slider" },
+                                                    React.createElement(_singleRangeControl2.default, (_React$createElement2 = {
+
+                                                        label: __("Letter Spacing (PX)"),
                                                         value: spacing,
                                                         onChange: onChangeSpacing,
                                                         defaultValue: ''
-                                                    }, _defineProperty(_React$createElement, 'onChange', onChangeSpacing), _defineProperty(_React$createElement, 'showUnit', showUnit), _defineProperty(_React$createElement, 'responsive', true), _defineProperty(_React$createElement, 'onChangeUnit', onChangeLetterUnit), _defineProperty(_React$createElement, 'unit', titleLetterUnit), _React$createElement))
+                                                    }, _defineProperty(_React$createElement2, "onChange", onChangeSpacing), _defineProperty(_React$createElement2, "showUnit", false), _defineProperty(_React$createElement2, "step", 0.1), _defineProperty(_React$createElement2, "min", -5), _defineProperty(_React$createElement2, "max", 15), _React$createElement2))
                                                 ),
                                                 components.includes("style") && React.createElement(
-                                                    'li',
-                                                    { className: 'customize-control-kmt-slider' },
+                                                    "li",
+                                                    { className: "customize-control-premium-slider" },
                                                     React.createElement(SelectControl, {
                                                         label: __("Style"),
                                                         options: STYLE,
@@ -1946,46 +1936,50 @@ var PremiumTypo = function (_Component) {
                                                         onResetClick: onResetClick
                                                     })
                                                 ),
-                                                React.createElement(
-                                                    'li',
-                                                    { className: 'kmt-typography-variant' },
-                                                    components.includes("upper") && React.createElement(
-                                                        'ul',
-                                                        { className: 'kmt-text-transform' },
+                                                components.includes("Upper") && React.createElement(
+                                                    "li",
+                                                    { className: "premium-typography-variant" },
+                                                    React.createElement(
+                                                        "ul",
+                                                        { className: "premium-text-transform" },
                                                         ['capitalize', 'uppercase'].map(function (variant) {
                                                             return React.createElement(
-                                                                'li',
+                                                                "li",
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
                                                                         return onChangeTextTransform(variant);
                                                                     },
-                                                                    className: '' + (textTransform == variant ? 'active' : ''),
-                                                                    'data-variant': variant },
+                                                                    className: "" + (textTransform == variant ? 'active' : ''),
+                                                                    "data-variant": variant },
                                                                 React.createElement(
-                                                                    'i',
-                                                                    { className: 'kmt-tooltip-top' },
+                                                                    "i",
+                                                                    { className: "premium-tooltip-top" },
                                                                     variant
                                                                 )
                                                             );
                                                         })
-                                                    ),
+                                                    )
+                                                ),
+                                                components.includes("Decoration") && React.createElement(
+                                                    "li",
+                                                    { className: "premium-typography-variant" },
                                                     React.createElement(
-                                                        'ul',
-                                                        { className: 'kmt-text-decoration' },
+                                                        "ul",
+                                                        { className: "premium-text-decoration" },
                                                         ['line-through', 'underline'].map(function (variant) {
                                                             return React.createElement(
-                                                                'li',
+                                                                "li",
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
                                                                         return onChangeTextDecoration(variant);
                                                                     },
-                                                                    className: '' + (textDecoration == variant ? 'active' : ''),
-                                                                    'data-variant': variant },
+                                                                    className: "" + (textDecoration == variant ? 'active' : ''),
+                                                                    "data-variant": variant },
                                                                 React.createElement(
-                                                                    'i',
-                                                                    { className: 'kmt-tooltip-top' },
+                                                                    "i",
+                                                                    { className: "premium-tooltip-top" },
                                                                     variant
                                                                 )
                                                             );
@@ -1998,9 +1992,9 @@ var PremiumTypo = function (_Component) {
                                 )
                             ),
                             components.includes("weight") && React.createElement(
-                                'span',
+                                "span",
                                 {
-                                    className: 'kmt-weight',
+                                    className: "premium-weight",
                                     onClick: function onClick() {
                                         toggleVisible("variations");
                                     }
@@ -2008,16 +2002,16 @@ var PremiumTypo = function (_Component) {
                                 weight,
                                 isVisible && currentView == 'variations' && React.createElement(
                                     Popover,
-                                    null,
+                                    { className: "premium-typography-option", onClose: toggleClose },
                                     React.createElement(
-                                        'div',
-                                        { className: 'kmt-option-modal kmt-typography-modal' },
+                                        "div",
+                                        { className: "premium-typography-option-modal " },
                                         React.createElement(
-                                            'div',
-                                            { className: 'kmt-typography-container' },
+                                            "div",
+                                            { className: "premium-typography-container" },
                                             React.createElement(
-                                                'ul',
-                                                { className: 'kmt-typography-variations' },
+                                                "ul",
+                                                { className: "premium-typography-variations" },
                                                 renderVariations
                                             )
                                         )
@@ -2026,10 +2020,10 @@ var PremiumTypo = function (_Component) {
                             )
                         ),
                         React.createElement(
-                            'div',
-                            { className: 'kmt-spacing-btn-reset-wrap' },
-                            React.createElement('button', {
-                                className: 'kmt-reset-btn ',
+                            "div",
+                            { className: "premium-spacing-btn-reset-wrap" },
+                            React.createElement("button", {
+                                className: "premium-reset-btn ",
                                 disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
                                 onClick: function onClick(e) {
                                     e.preventDefault();
@@ -2101,11 +2095,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(259)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(260)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(262)();
+  module.exports = __webpack_require__(263)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
@@ -2233,9 +2227,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumTextShadow;
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -2268,16 +2262,16 @@ function PremiumTextShadow(props) {
 
 
     return React.createElement(
-        'div',
-        { className: 'premium-control-toggle premium-shadow-control__container' },
+        "div",
+        { className: "premium-control-toggle premium-shadow-control__container" },
         React.createElement(
-            'strong',
+            "strong",
             null,
             __(label || "Text Shadow")
         ),
         React.createElement(
-            'div',
-            { className: 'premium-shadow-control__wrapper' },
+            "div",
+            { className: "premium-shadow-control__wrapper" },
             React.createElement(_ColorComponent2.default, {
                 colorValue: color,
                 colorDefault: '',
@@ -2285,30 +2279,30 @@ function PremiumTextShadow(props) {
                 disableReset: true
             }),
             React.createElement(Dropdown, {
-                className: 'premium-control-toggle-btn',
-                contentClassName: 'premium-control-toggle-content',
-                position: 'bottom right',
+                className: "premium-control-toggle-btn",
+                contentClassName: "premium-control-toggle-content",
+                position: "bottom right",
                 renderToggle: function renderToggle(_ref) {
                     var isOpen = _ref.isOpen,
                         onToggle = _ref.onToggle;
                     return React.createElement(
                         Button,
-                        { isSmall: true, onClick: onToggle, 'aria-expanded': isOpen },
-                        React.createElement('i', { className: 'dashicons dashicons-edit' })
+                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                        React.createElement("i", { className: "dashicons dashicons-edit" })
                     );
                 },
                 renderContent: function renderContent() {
                     return React.createElement(
                         Fragment,
                         null,
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Blur"),
                             value: blur,
                             onChange: onChangeBlur,
                             showUnit: false,
                             defaultValue: 0
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Horizontal"),
                             value: horizontal,
                             onChange: onChangehHorizontal,
@@ -2317,7 +2311,7 @@ function PremiumTextShadow(props) {
                             min: -100,
                             max: 100
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Vertical"),
                             value: vertical,
                             onChange: onChangeVertical,
@@ -2345,9 +2339,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBoxShadow;
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -2392,16 +2386,16 @@ function PremiumBoxShadow(props) {
     }];
 
     return React.createElement(
-        'div',
-        { className: 'premium-control-toggle premium-shadow-control__container' },
+        "div",
+        { className: "premium-control-toggle premium-shadow-control__container" },
         React.createElement(
-            'strong',
+            "strong",
             null,
             __(label || "Box Shadow")
         ),
         React.createElement(
-            'div',
-            { className: 'premium-shadow-control__wrapper' },
+            "div",
+            { className: "premium-shadow-control__wrapper" },
             React.createElement(_ColorComponent2.default, {
                 colorValue: color,
                 colorDefault: '',
@@ -2410,23 +2404,23 @@ function PremiumBoxShadow(props) {
 
             }),
             React.createElement(Dropdown, {
-                className: 'premium-control-toggle-btn',
-                contentClassName: 'premium-control-toggle-content',
-                position: 'bottom right',
+                className: "premium-control-toggle-btn",
+                contentClassName: "premium-control-toggle-content",
+                position: "bottom right",
                 renderToggle: function renderToggle(_ref) {
                     var isOpen = _ref.isOpen,
                         onToggle = _ref.onToggle;
                     return React.createElement(
                         Button,
-                        { isSmall: true, onClick: onToggle, 'aria-expanded': isOpen },
-                        React.createElement('i', { className: 'dashicons dashicons-edit' })
+                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                        React.createElement("i", { className: "dashicons dashicons-edit" })
                     );
                 },
                 renderContent: function renderContent() {
                     return React.createElement(
                         Fragment,
                         null,
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Horizontal"),
                             value: horizontal,
                             onChange: onChangehHorizontal,
@@ -2435,7 +2429,7 @@ function PremiumBoxShadow(props) {
                             min: -100,
                             max: 100
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Vertical"),
                             value: vertical,
                             onChange: onChangeVertical,
@@ -2444,7 +2438,7 @@ function PremiumBoxShadow(props) {
                             min: -100,
                             max: 100
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Blur"),
                             value: blur,
                             onChange: onChangeBlur,
@@ -3315,9 +3309,9 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3444,7 +3438,7 @@ function PremiumBackgroundControl(_ref) {
                     saveContainerStyle({ containerBack: value });
                 }
             }),
-            _react2.default.createElement(_premiumRangeControl2.default, {
+            _react2.default.createElement(_singleRangeControl2.default, {
                 label: __('Location', 'premium-block-for-gutenberg'),
                 value: gradientLocationOne,
                 onChange: function onChange(value) {
@@ -3461,7 +3455,7 @@ function PremiumBackgroundControl(_ref) {
                     saveContainerStyle({ gradientColorTwo: value });
                 }
             }),
-            _react2.default.createElement(_premiumRangeControl2.default, {
+            _react2.default.createElement(_singleRangeControl2.default, {
                 label: __('Location', 'premium-block-for-gutenberg'),
                 value: gradientLocationTwo,
                 onChange: function onChange(value) {
@@ -3500,7 +3494,7 @@ function PremiumBackgroundControl(_ref) {
                     })
                 )
             ),
-            'radial' !== gradientType && _react2.default.createElement(_premiumRangeControl2.default, {
+            'radial' !== gradientType && _react2.default.createElement(_singleRangeControl2.default, {
                 label: __('Gradient Angle', 'premium-block-for-gutenberg'),
                 value: gradientAngle,
                 onChange: function onChange(value) {
@@ -3837,15 +3831,15 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(294);
+var _edit = __webpack_require__(295);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(295);
+var _save = __webpack_require__(296);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(296);
+var _deprecated = __webpack_require__(297);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -3974,7 +3968,7 @@ exports.f = {}.propertyIsEnumerable;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(7);
-var normalizeHeaderName = __webpack_require__(425);
+var normalizeHeaderName = __webpack_require__(426);
 var enhanceError = __webpack_require__(139);
 
 var DEFAULT_CONTENT_TYPE = {
@@ -4531,9 +4525,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumFilters;
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4585,14 +4579,14 @@ function PremiumFilters(props) {
                 return React.createElement(
                     Fragment,
                     null,
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Blur"),
                         value: blur,
                         onChange: onChangeBlur,
                         showUnit: false,
                         defaultValue: ''
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Brightness"),
                         min: "0",
                         max: "200",
@@ -4601,7 +4595,7 @@ function PremiumFilters(props) {
                         showUnit: false,
                         defaultValue: ''
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Contrast"),
                         min: "0",
                         max: "200",
@@ -4610,7 +4604,7 @@ function PremiumFilters(props) {
                         showUnit: false,
                         defaultValue: ''
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Saturation"),
                         min: "0",
                         max: "200",
@@ -4619,7 +4613,7 @@ function PremiumFilters(props) {
                         showUnit: false,
                         defaultValue: ''
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Hue"),
                         min: "0",
                         max: "360",
@@ -4659,9 +4653,9 @@ module.exports = ReactPropTypesSecret;
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(263));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(264));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(268));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(269));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(113));
 
@@ -5256,7 +5250,7 @@ module.exports = {};
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(39);
-var dPs = __webpack_require__(350);
+var dPs = __webpack_require__(351);
 var enumBugKeys = __webpack_require__(80);
 var IE_PROTO = __webpack_require__(78)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -5271,7 +5265,7 @@ var _createDict = function createDict() {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(351).appendChild(iframe);
+  __webpack_require__(352).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -5994,7 +5988,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _rangeControl = __webpack_require__(231);
+var _premiumSizeUnits = __webpack_require__(40);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+var _rangeControl = __webpack_require__(232);
 
 var _rangeControl2 = _interopRequireDefault(_rangeControl);
 
@@ -6002,12 +6000,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
-
-/**
- * Build the Measure controls
- * @returns {object} Measure settings.
- */
-
 function ResponsiveSingleRangeControl(_ref) {
     var _ref$device = _ref.device,
         device = _ref$device === undefined ? 'device' : _ref$device,
@@ -6021,7 +6013,7 @@ function ResponsiveSingleRangeControl(_ref) {
         min = _ref$min === undefined ? 0 : _ref$min,
         _ref$unit = _ref.unit,
         unit = _ref$unit === undefined ? '' : _ref$unit,
-        onUnit = _ref.onUnit,
+        onChangeUnit = _ref.onChangeUnit,
         _ref$showUnit = _ref.showUnit,
         showUnit = _ref$showUnit === undefined ? false : _ref$showUnit,
         _ref$units = _ref.units,
@@ -6047,7 +6039,7 @@ function ResponsiveSingleRangeControl(_ref) {
                     label
                 )
             ),
-            showUnit && React.createElement(PremiumSizeUnits, {
+            showUnit && React.createElement(_premiumSizeUnits2.default, {
                 units: units,
                 activeUnit: unit,
                 onChangeSizeUnit: function onChangeSizeUnit(newValue) {
@@ -6867,9 +6859,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(257);
-} else {
   module.exports = __webpack_require__(258);
+} else {
+  module.exports = __webpack_require__(259);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
@@ -7701,7 +7693,7 @@ var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactLifecyclesCompat = __webpack_require__(111);
 
-var _ChildMapping = __webpack_require__(269);
+var _ChildMapping = __webpack_require__(270);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -8122,35 +8114,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(301);
+var _extends2 = __webpack_require__(302);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(302);
+var _slicedToArray2 = __webpack_require__(303);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(306);
+var _objectSpread2 = __webpack_require__(307);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(307);
+var _classCallCheck2 = __webpack_require__(308);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(308);
+var _createClass2 = __webpack_require__(309);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(309);
+var _possibleConstructorReturn2 = __webpack_require__(310);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(311);
+var _getPrototypeOf2 = __webpack_require__(312);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(312);
+var _inherits2 = __webpack_require__(313);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -8170,11 +8162,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(28);
 
-var _invariant = __webpack_require__(314);
+var _invariant = __webpack_require__(315);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(315);
+var _toConsumableArray2 = __webpack_require__(316);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -9856,7 +9848,7 @@ function _assertThisInitialized(self) {
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(330);
+var aFunction = __webpack_require__(331);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -9916,7 +9908,7 @@ module.exports = function (it) {
 
 var has = __webpack_require__(25);
 var toIObject = __webpack_require__(32);
-var arrayIndexOf = __webpack_require__(332)(false);
+var arrayIndexOf = __webpack_require__(333)(false);
 var IE_PROTO = __webpack_require__(78)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -9993,11 +9985,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(345);
+var _iterator = __webpack_require__(346);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(356);
+var _symbol = __webpack_require__(357);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -10029,7 +10021,7 @@ var $export = __webpack_require__(22);
 var redefine = __webpack_require__(130);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(83);
-var $iterCreate = __webpack_require__(349);
+var $iterCreate = __webpack_require__(350);
 var setToStringTag = __webpack_require__(85);
 var getPrototypeOf = __webpack_require__(127);
 var ITERATOR = __webpack_require__(33)('iterator');
@@ -10347,11 +10339,11 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _memoizeOne = __webpack_require__(380);
+var _memoizeOne = __webpack_require__(381);
 
 var _memoizeOne2 = _interopRequireDefault(_memoizeOne);
 
-var _emotion = __webpack_require__(381);
+var _emotion = __webpack_require__(382);
 
 var _reactDom = __webpack_require__(28);
 
@@ -10359,11 +10351,11 @@ var _propTypes = __webpack_require__(12);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _raf = __webpack_require__(388);
+var _raf = __webpack_require__(389);
 
 var _raf2 = _interopRequireDefault(_raf);
 
-var _reactInputAutosize = __webpack_require__(390);
+var _reactInputAutosize = __webpack_require__(391);
 
 var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 
@@ -15682,10 +15674,10 @@ exports.defaultTheme = defaultTheme;
 "use strict";
 
 
-var baseFlatten = __webpack_require__(404),
-    baseOrderBy = __webpack_require__(406),
-    baseRest = __webpack_require__(410),
-    isIterateeCall = __webpack_require__(418);
+var baseFlatten = __webpack_require__(405),
+    baseOrderBy = __webpack_require__(407),
+    baseRest = __webpack_require__(411),
+    isIterateeCall = __webpack_require__(419);
 
 /**
  * Creates an array of elements, sorted in ascending order by the results of
@@ -15738,7 +15730,7 @@ module.exports = sortBy;
 "use strict";
 
 
-module.exports = __webpack_require__(420);
+module.exports = __webpack_require__(421);
 
 /***/ }),
 /* 137 */
@@ -15885,12 +15877,12 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 var utils = __webpack_require__(7);
-var settle = __webpack_require__(426);
-var cookies = __webpack_require__(427);
+var settle = __webpack_require__(427);
+var cookies = __webpack_require__(428);
 var buildURL = __webpack_require__(138);
-var buildFullPath = __webpack_require__(428);
-var parseHeaders = __webpack_require__(431);
-var isURLSameOrigin = __webpack_require__(432);
+var buildFullPath = __webpack_require__(429);
+var parseHeaders = __webpack_require__(432);
+var isURLSameOrigin = __webpack_require__(433);
 var createError = __webpack_require__(141);
 var defaults = __webpack_require__(55);
 var Cancel = __webpack_require__(56);
@@ -16248,37 +16240,37 @@ module.exports = {
 
 __webpack_require__(146);
 
-__webpack_require__(235);
+__webpack_require__(236);
 
-__webpack_require__(240);
+__webpack_require__(241);
 
-__webpack_require__(245);
+__webpack_require__(246);
 
-__webpack_require__(250);
+__webpack_require__(251);
 
-__webpack_require__(255);
+__webpack_require__(256);
 
-__webpack_require__(273);
-
-__webpack_require__(278);
+__webpack_require__(274);
 
 __webpack_require__(279);
 
-__webpack_require__(284);
+__webpack_require__(280);
 
-__webpack_require__(289);
+__webpack_require__(285);
+
+__webpack_require__(290);
 
 __webpack_require__(49);
 
-__webpack_require__(297);
+__webpack_require__(298);
 
-__webpack_require__(321);
+__webpack_require__(322);
 
-__webpack_require__(378);
+__webpack_require__(379);
 
-__webpack_require__(398);
+__webpack_require__(399);
 
-__webpack_require__(402);
+__webpack_require__(403);
 
 /***/ }),
 /* 146 */
@@ -16297,15 +16289,15 @@ var _edit = __webpack_require__(147);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(232);
+var _save = __webpack_require__(233);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(233);
+var _attributes = __webpack_require__(234);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(234);
+var _deprecated = __webpack_require__(235);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -16363,10 +16355,6 @@ var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
-
-var _premiumRangeControl = __webpack_require__(1);
-
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -16870,7 +16858,7 @@ var PremiumAccordion = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Border Radius", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowRadius,
                         onChange: function onChange(newValue) {
@@ -16883,7 +16871,7 @@ var PremiumAccordion = function (_Component) {
                         defaultValue: 0,
                         showUnit: false
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowPadding,
                         onChange: function onChange(newValue) {
@@ -20959,7 +20947,8 @@ fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext
 exports.default = fonts;
 
 /***/ }),
-/* 230 */
+/* 230 */,
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21317,7 +21306,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21326,21 +21315,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-/**
- * Range Control
- *
- */
-
-/**
- * Internal block libraries
- */
 var RangeControl = wp.components.RangeControl;
-
-/**
- * Build the Measure controls
- * @returns {object} Measure settings.
- */
-
 function PremiumRange(_ref) {
     var _onChange = _ref.onChange,
         _ref$value = _ref.value,
@@ -21385,6 +21360,7 @@ function PremiumRange(_ref) {
             }
         }
     };
+
     return [_onChange && React.createElement(
         'div',
         { className: 'wrapper' },
@@ -21412,7 +21388,6 @@ function PremiumRange(_ref) {
                     onChange: onChangInput,
                     min: min,
                     max: max,
-
                     step: step,
                     type: 'number',
                     className: 'components-text-control__input'
@@ -21428,7 +21403,7 @@ function PremiumRange(_ref) {
 exports.default = PremiumRange;
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21601,7 +21576,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21784,7 +21759,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22593,7 +22568,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22605,19 +22580,19 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(236);
+var _edit = __webpack_require__(237);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(237);
+var _save = __webpack_require__(238);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(238);
+var _deprecated = __webpack_require__(239);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(239);
+var _attributes = __webpack_require__(240);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -22641,7 +22616,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22692,9 +22667,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -23021,7 +22996,7 @@ var edit = exports.edit = function (_Component) {
                             return setAttributes({ height: newHeight });
                         }
                     }),
-                    "custom" === height && React.createElement(_premiumRangeControl2.default, {
+                    "custom" === height && React.createElement(_singleRangeControl2.default, {
                         label: __("Min Height (PX)", 'premium-block-for-gutenberg'),
                         value: minHeight,
                         min: "10",
@@ -23050,7 +23025,7 @@ var edit = exports.edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Overlay Opacity", 'premium-block-for-gutenberg'),
                         value: opacity,
                         min: "1",
@@ -23521,7 +23496,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23696,7 +23671,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25169,7 +25144,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25394,7 +25369,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25402,15 +25377,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(241);
+var _edit = __webpack_require__(242);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(242);
+var _save = __webpack_require__(243);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(243);
+var _deprecated = __webpack_require__(244);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -25418,7 +25393,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(244);
+var _attributes = __webpack_require__(245);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -25443,7 +25418,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25482,9 +25457,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -25997,7 +25972,7 @@ var edit = exports.edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].padding,
                         onChange: function onChange(newValue) {
@@ -26091,7 +26066,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26177,7 +26152,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26996,7 +26971,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27124,7 +27099,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27132,15 +27107,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _attributes = __webpack_require__(246);
+var _attributes = __webpack_require__(247);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(247);
+var _edit = __webpack_require__(248);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(248);
+var _save = __webpack_require__(249);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -27148,7 +27123,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(249);
+var _deprecated = __webpack_require__(250);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -27175,7 +27150,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27414,7 +27389,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27458,9 +27433,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -27762,7 +27737,7 @@ var edit = function (_Component) {
                             return setAttributes({ flexDir: newDir });
                         }
                     }),
-                    ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(_premiumRangeControl2.default, {
+                    ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(_singleRangeControl2.default, {
                         label: __("Spacing", 'premium-block-for-gutenberg'),
                         value: iconSpacing,
                         onChange: function onChange(newValue) {
@@ -27864,7 +27839,7 @@ var edit = function (_Component) {
                             }, "imageURL", ""));
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Size", 'premium-block-for-gutenberg'),
                         value: iconSize,
                         onChange: function onChange(newValue) {
@@ -27983,7 +27958,7 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Gap After", 'premium-block-for-gutenberg'),
                         value: prefixStyles[0].prefixGap,
                         onChange: function onChange(newValue) {
@@ -28045,7 +28020,7 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Gap Before", 'premium-block-for-gutenberg'),
                         value: suffixStyles[0].suffixGap,
                         onChange: function onChange(newValue) {
@@ -28126,7 +28101,7 @@ var edit = function (_Component) {
                             className: "premium-panel-body-inner",
                             initialOpen: false
                         },
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Margin Top", 'premium-block-for-gutenberg'),
                             value: titleStyles[0].titleT,
                             onChange: function onChange(newValue) {
@@ -28135,7 +28110,7 @@ var edit = function (_Component) {
                             showUnit: false,
                             defaultValue: 0
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Margin Bottom", 'premium-block-for-gutenberg'),
                             value: titleStyles[0].titleB,
                             onChange: function onChange(newValue) {
@@ -28456,7 +28431,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28679,7 +28654,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30482,7 +30457,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30494,19 +30469,19 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(251);
+var _edit = __webpack_require__(252);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(252);
+var _save = __webpack_require__(253);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(253);
+var _deprecated = __webpack_require__(254);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(254);
+var _attributes = __webpack_require__(255);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -30531,7 +30506,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30565,9 +30540,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -30964,7 +30939,7 @@ var edit = function (_Component) {
                             return saveFirstStyle({ firstShadowVertical: newValue || "0" });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Margin Left", 'premium-block-for-gutenberg'),
                         value: firstStyles[0].firstMarginL,
                         onChange: function onChange(newMargin) {
@@ -30973,7 +30948,7 @@ var edit = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Margin Right", 'premium-block-for-gutenberg'),
                         value: firstStyles[0].firstMarginR,
                         onChange: function onChange(newMargin) {
@@ -30982,7 +30957,7 @@ var edit = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: firstStyles[0].firstPadding,
                         onChange: function onChange(newPadding) {
@@ -31166,7 +31141,7 @@ var edit = function (_Component) {
                             return saveSecondStyle({ secondShadowVertical: newValue || "0" });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Margin Left", 'premium-block-for-gutenberg'),
                         value: secondStyles[0].secondMarginL,
                         onChange: function onChange(newMargin) {
@@ -31175,7 +31150,7 @@ var edit = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Margin Right", 'premium-block-for-gutenberg'),
                         value: secondStyles[0].secondMarginR,
                         onChange: function onChange(newMargin) {
@@ -31184,7 +31159,7 @@ var edit = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: secondStyles[0].secondPadding,
                         onChange: function onChange(newPadding) {
@@ -31376,7 +31351,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31534,7 +31509,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33077,7 +33052,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33289,7 +33264,7 @@ var attributes = (_attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33301,19 +33276,19 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(256);
+var _edit = __webpack_require__(257);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(270);
+var _save = __webpack_require__(271);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(271);
+var _deprecated = __webpack_require__(272);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(272);
+var _attributes = __webpack_require__(273);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -33338,7 +33313,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33392,9 +33367,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -33593,7 +33568,7 @@ var edit = function edit(props) {
                 className: "premium-panel-body",
                 initialOpen: false
             },
-            React.createElement(_premiumRangeControl2.default, {
+            React.createElement(_singleRangeControl2.default, {
                 label: __("Size", 'premium-block-for-gutenberg'),
                 value: iconStyles[0].iconSize,
                 onChange: function onChange(newValue) {
@@ -33968,7 +33943,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34043,7 +34018,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34277,7 +34252,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34293,10 +34268,10 @@ if (process.env.NODE_ENV !== "production") {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var ReactIs = __webpack_require__(109);
-var assign = __webpack_require__(260);
+var assign = __webpack_require__(261);
 
 var ReactPropTypesSecret = __webpack_require__(69);
-var checkPropTypes = __webpack_require__(261);
+var checkPropTypes = __webpack_require__(262);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -34855,7 +34830,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34951,7 +34926,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35050,7 +35025,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35116,7 +35091,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35127,9 +35102,9 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(12));
 
-var _addClass = _interopRequireDefault(__webpack_require__(264));
+var _addClass = _interopRequireDefault(__webpack_require__(265));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(267));
+var _removeClass = _interopRequireDefault(__webpack_require__(268));
 
 var _react = _interopRequireDefault(__webpack_require__(4));
 
@@ -35516,18 +35491,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(265);
+var _interopRequireDefault = __webpack_require__(266);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(266));
+var _hasClass = _interopRequireDefault(__webpack_require__(267));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -35536,7 +35511,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35552,7 +35527,7 @@ module.exports = _interopRequireDefault;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35568,7 +35543,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35583,7 +35558,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35748,7 +35723,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35903,7 +35878,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36046,7 +36021,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36959,7 +36934,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37192,7 +37167,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37204,19 +37179,19 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(274);
+var _edit = __webpack_require__(275);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(275);
+var _save = __webpack_require__(276);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(276);
+var _deprecated = __webpack_require__(277);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(277);
+var _attributes = __webpack_require__(278);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -37241,7 +37216,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37305,9 +37280,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -37711,7 +37686,7 @@ var edit = function (_Component) {
                                 });
                             }
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Border Radius (PX)", 'premium-block-for-gutenberg'),
                             value: iconRadius,
                             onChange: function onChange(newValue) {
@@ -37729,7 +37704,7 @@ var edit = function (_Component) {
                             return setAttributes({ hoverEffect: newEffect });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Size (PX)", 'premium-block-for-gutenberg'),
                         value: iconSize,
                         min: "10",
@@ -38023,7 +37998,7 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].btnPadding,
                         onChange: function onChange(newValue) {
@@ -38607,7 +38582,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38837,7 +38812,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41401,7 +41376,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41746,7 +41721,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41768,9 +41743,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -42318,7 +42293,7 @@ var PremiumMap = function (_Component) {
                                 return setAttributes({ markerDesc: newText });
                             }
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Spacing (PX)", 'premium-block-for-gutenberg'),
                             value: gapBetween,
                             min: "10",
@@ -42369,7 +42344,7 @@ var PremiumMap = function (_Component) {
                             }
 
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Description Box Max Width (PX)", 'premium-block-for-gutenberg'),
                             value: maxWidth,
                             min: "10",
@@ -42380,7 +42355,7 @@ var PremiumMap = function (_Component) {
                             showUnit: false,
                             defaultValue: 0
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __("Description Box Padding (PX)", 'premium-block-for-gutenberg'),
                             value: boxPadding,
                             min: "1",
@@ -42400,7 +42375,7 @@ var PremiumMap = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
                         value: titleSize,
                         min: "10",
@@ -42429,7 +42404,7 @@ var PremiumMap = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
                         value: descSize,
                         min: "10",
@@ -42466,7 +42441,7 @@ var PremiumMap = function (_Component) {
                             return setAttributes({ mapType: newType });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Map Height (PX)", 'premium-block-for-gutenberg'),
                         value: height,
                         min: "10",
@@ -42477,7 +42452,7 @@ var PremiumMap = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Zoom", 'premium-block-for-gutenberg'),
                         value: zoom,
                         min: "1",
@@ -42849,7 +42824,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42861,19 +42836,19 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(280);
+var _edit = __webpack_require__(281);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(281);
+var _save = __webpack_require__(282);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(282);
+var _deprecated = __webpack_require__(283);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(283);
+var _attributes = __webpack_require__(284);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42897,7 +42872,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42935,9 +42910,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -43373,7 +43348,7 @@ var PremiumPricingTable = function (_Component) {
                                 return React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: titleStyles[0].titleMarginT,
                                         min: "10",
@@ -43384,7 +43359,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 10
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: titleStyles[0].titleMarginB,
                                         min: "0",
@@ -43395,7 +43370,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: titleStyles[0].titlePadding,
                                         min: "0",
@@ -43729,7 +43704,7 @@ var PremiumPricingTable = function (_Component) {
                                 return React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Container Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: priceStyles[0].priceMarginT,
                                         min: "0",
@@ -43740,7 +43715,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Container Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: priceStyles[0].priceMarginB,
                                         min: "0",
@@ -43751,7 +43726,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Container Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: priceStyles[0].pricePadding,
                                         min: "0",
@@ -43881,7 +43856,7 @@ var PremiumPricingTable = function (_Component) {
                                 return React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: featureStyles[0].listMarginT,
                                         onChange: function onChange(newSize) {
@@ -43890,7 +43865,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: featureStyles[0].listMarginB,
                                         onChange: function onChange(newSize) {
@@ -43899,7 +43874,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: featureStyles[0].listPadding,
                                         onChange: function onChange(newSize) {
@@ -43998,7 +43973,7 @@ var PremiumPricingTable = function (_Component) {
                                 return React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: descStyles[0].descMarginT,
                                         onChange: function onChange(newMargin) {
@@ -44007,7 +43982,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: descStyles[0].descMarginB,
                                         onChange: function onChange(newMargin) {
@@ -44016,7 +43991,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                         value: descStyles[0].descPadding,
                                         onChange: function onChange(newPadding) {
@@ -44166,7 +44141,7 @@ var PremiumPricingTable = function (_Component) {
                                 return React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Width (%)", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnWidth,
                                         onChange: function onChange(newSize) {
@@ -44175,7 +44150,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnMarginT,
                                         onChange: function onChange(newPadding) {
@@ -44184,7 +44159,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnMarginB,
                                         onChange: function onChange(newPadding) {
@@ -44193,7 +44168,7 @@ var PremiumPricingTable = function (_Component) {
                                         showUnit: false,
                                         defaultValue: 0
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Padding", 'premium-block-for-gutenberg'),
                                         value: buttonStyles[0].btnPadding,
                                         onChange: function onChange(newPadding) {
@@ -44292,7 +44267,7 @@ var PremiumPricingTable = function (_Component) {
                             return saveBadgeStyles({ badgeBack: newColor });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Vertical Offset", 'premium-block-for-gutenberg'),
                         value: badgeStyles[0].badgeTop,
                         onChange: function onChange(newValue) {
@@ -44301,7 +44276,7 @@ var PremiumPricingTable = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Horizontal Offset", 'premium-block-for-gutenberg'),
                         value: badgeStyles[0].badgeHorizontal,
                         min: "1",
@@ -44312,7 +44287,7 @@ var PremiumPricingTable = function (_Component) {
                         showUnit: false,
                         defaultValue: 1
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Badge Size", 'premium-block-for-gutenberg'),
                         value: badgeStyles[0].badgeSize,
                         min: "0",
@@ -44323,7 +44298,7 @@ var PremiumPricingTable = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Text Width", 'premium-block-for-gutenberg'),
                         min: "1",
                         max: "200",
@@ -44440,7 +44415,7 @@ var PremiumPricingTable = function (_Component) {
                                 return React.createElement(
                                     Fragment,
                                     null,
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Padding", 'premium-block-for-gutenberg'),
                                         value: tableStyles[0].tablePadding,
                                         min: "0",
@@ -44765,7 +44740,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45084,7 +45059,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47452,7 +47427,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47756,7 +47731,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47764,15 +47739,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(285);
+var _edit = __webpack_require__(286);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(286);
+var _save = __webpack_require__(287);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(287);
+var _deprecated = __webpack_require__(288);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -47780,7 +47755,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(288);
+var _attributes = __webpack_require__(289);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -47812,7 +47787,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47848,9 +47823,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -48002,7 +47977,7 @@ var edit = function edit(props) {
                     return setAttributes({ innerWidthType: newValue });
                 }
             }),
-            "boxed" === innerWidthType && stretchSection && React.createElement(_premiumRangeControl2.default, {
+            "boxed" === innerWidthType && stretchSection && React.createElement(_singleRangeControl2.default, {
                 label: __("Max Width", 'premium-block-for-gutenberg'),
                 value: innerWidth,
                 min: "1",
@@ -48024,7 +47999,7 @@ var edit = function edit(props) {
             "min" === height && React.createElement(
                 Fragment,
                 null,
-                React.createElement(_premiumRangeControl2.default, {
+                React.createElement(_singleRangeControl2.default, {
                     label: __("Min Height", 'premium-block-for-gutenberg'),
                     value: minHeight,
                     min: "1",
@@ -48293,7 +48268,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48409,7 +48384,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49078,7 +49053,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49211,7 +49186,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49219,15 +49194,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(290);
+var _edit = __webpack_require__(291);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(291);
+var _save = __webpack_require__(292);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(292);
+var _deprecated = __webpack_require__(293);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -49235,7 +49210,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(293);
+var _attributes = __webpack_require__(294);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -49260,7 +49235,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49310,9 +49285,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -49573,7 +49548,7 @@ var edit = function (_Component) {
                                 return setAttributes({ imgRadius: newWeight });
                             }
                         }),
-                        authorImgUrl && React.createElement(_premiumRangeControl2.default, {
+                        authorImgUrl && React.createElement(_singleRangeControl2.default, {
                             label: __("Size", 'premium-block-for-gutenberg'),
                             value: imgSize,
                             max: "200",
@@ -49583,7 +49558,7 @@ var edit = function (_Component) {
                             showUnit: false,
                             defaultValue: 0
                         }),
-                        authorImgUrl && React.createElement(_premiumRangeControl2.default, {
+                        authorImgUrl && React.createElement(_singleRangeControl2.default, {
                             label: __("Border Width (PX)", 'premium-block-for-gutenberg'),
                             value: imgBorder,
                             onChange: function onChange(newSize) {
@@ -49702,7 +49677,7 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
                         value: contentStyle[0].bodyTop,
                         onChange: function onChange(newSize) {
@@ -49711,7 +49686,7 @@ var edit = function (_Component) {
                         showUnit: false,
                         defaultValue: 0
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
                         value: contentStyle[0].bodyBottom,
                         onChange: function onChange(newSize) {
@@ -49805,7 +49780,7 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Size (EM)", 'premium-block-for-gutenberg'),
                         value: quoteStyles[0].quotSize,
                         min: "1",
@@ -49826,7 +49801,7 @@ var edit = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Opacity", 'premium-block-for-gutenberg'),
                         value: quoteStyles[0].quotOpacity,
                         onChange: function onChange(newValue) {
@@ -50102,7 +50077,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50316,7 +50291,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51795,7 +51770,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51968,7 +51943,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52018,9 +51993,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -52416,7 +52391,7 @@ var edit = function (_Component) {
                         playIcon && React.createElement(
                             Fragment,
                             null,
-                            React.createElement(_premiumRangeControl2.default, {
+                            React.createElement(_singleRangeControl2.default, {
                                 label: __("Size (PX)", 'premium-block-for-gutenberg'),
                                 value: playStyles[0].playSize,
                                 onChange: function onChange(newValue) {
@@ -52427,7 +52402,7 @@ var edit = function (_Component) {
                                 showUnit: false,
                                 defaultValue: 0
                             }),
-                            React.createElement(_premiumRangeControl2.default, {
+                            React.createElement(_singleRangeControl2.default, {
                                 label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
                                 value: playStyles[0].playTop,
                                 onChange: function onChange(newValue) {
@@ -52470,7 +52445,7 @@ var edit = function (_Component) {
                                     return savePlayStyles({ playBorderRadius: newrRadius });
                                 }
                             }),
-                            React.createElement(_premiumRangeControl2.default, {
+                            React.createElement(_singleRangeControl2.default, {
                                 label: __("Padding (PX)"),
                                 value: playStyles[0].playPadding,
                                 onChange: function onChange(newValue) {
@@ -52547,7 +52522,7 @@ var edit = function (_Component) {
                                     return saveDescritionStyle({ videoDescFamily: fontFamily });
                                 }
                             }),
-                            React.createElement(_premiumRangeControl2.default, {
+                            React.createElement(_singleRangeControl2.default, {
                                 label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].descTop,
                                 onChange: function onChange(newValue) {
@@ -52558,7 +52533,7 @@ var edit = function (_Component) {
                                 showUnit: false,
                                 defaultValue: 0
                             }),
-                            React.createElement(_premiumRangeControl2.default, {
+                            React.createElement(_singleRangeControl2.default, {
                                 label: __("Border Radius (px)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].videoDescBorderRadius,
                                 onChange: function onChange(newValue) {
@@ -52591,7 +52566,7 @@ var edit = function (_Component) {
                                     return saveDescritionStyle({ descShadowVertical: newValue || "0" });
                                 }
                             }),
-                            React.createElement(_premiumRangeControl2.default, {
+                            React.createElement(_singleRangeControl2.default, {
                                 label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].videoDescPadding,
                                 onChange: function onChange(newValue) {
@@ -52920,7 +52895,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53086,7 +53061,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54159,7 +54134,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54167,15 +54142,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(298);
+var _save = __webpack_require__(299);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(299);
+var _edit = __webpack_require__(300);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(319);
+var _deprecated = __webpack_require__(320);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -54183,7 +54158,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(320);
+var _attributes = __webpack_require__(321);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -54206,7 +54181,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54410,7 +54385,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54436,7 +54411,7 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(300);
+var _typed = __webpack_require__(301);
 
 var _typed2 = _interopRequireDefault(_typed);
 
@@ -55343,7 +55318,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56455,7 +56430,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56484,7 +56459,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56495,11 +56470,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(303);
+var _arrayWithHoles = __webpack_require__(304);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(304);
+var _iterableToArrayLimit = __webpack_require__(305);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
@@ -56507,7 +56482,7 @@ var _unsupportedIterableToArray = __webpack_require__(117);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(305);
+var _nonIterableRest = __webpack_require__(306);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -56518,7 +56493,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56533,7 +56508,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56574,7 +56549,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56589,7 +56564,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56626,7 +56601,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56643,7 +56618,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56670,7 +56645,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56681,7 +56656,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(310);
+var _typeof2 = __webpack_require__(311);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -56702,7 +56677,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56734,7 +56709,7 @@ module.exports = _typeof;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56752,7 +56727,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56763,7 +56738,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(313);
+var _setPrototypeOf = __webpack_require__(314);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -56785,7 +56760,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56805,7 +56780,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56858,7 +56833,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56869,11 +56844,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(316);
+var _arrayWithoutHoles = __webpack_require__(317);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(317);
+var _iterableToArray = __webpack_require__(318);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
@@ -56881,7 +56856,7 @@ var _unsupportedIterableToArray = __webpack_require__(117);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableSpread = __webpack_require__(318);
+var _nonIterableSpread = __webpack_require__(319);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -56892,7 +56867,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56914,7 +56889,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56929,7 +56904,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56944,7 +56919,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57483,7 +57458,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57628,7 +57603,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57638,21 +57613,21 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(322);
+var _edit = __webpack_require__(323);
 
 var _edit2 = _interopRequireDefault(_edit);
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(375);
+var _save = __webpack_require__(376);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(376);
+var _deprecated = __webpack_require__(377);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(377);
+var _attributes = __webpack_require__(378);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -57677,7 +57652,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57695,7 +57670,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(323);
+var _reactLottieWithSegments = __webpack_require__(324);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -57715,9 +57690,9 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -57999,7 +57974,7 @@ var edit = function (_Component) {
                             return setAttributes({ reverse: !reverse });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __('Animation Speed', 'premium-block-for-gutenberg'),
                         value: speed,
                         onChange: function onChange(newValue) {
@@ -58022,7 +57997,7 @@ var edit = function (_Component) {
                     'scroll' === trigger && !reverse && React.createElement(
                         Fragment,
                         null,
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __('Scroll Speed', 'premium-block-for-gutenberg'),
                             value: scrollSpeed,
                             onChange: function onChange(newValue) {
@@ -58038,7 +58013,7 @@ var edit = function (_Component) {
                     (trigger === 'viewport' || trigger === 'scroll') && !reverse && React.createElement(
                         Fragment,
                         null,
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __('Bottom', 'premium-block-for-gutenberg'),
                             value: bottom,
                             onChange: function onChange(newValue) {
@@ -58049,7 +58024,7 @@ var edit = function (_Component) {
                             min: 0,
                             max: 50
                         }),
-                        React.createElement(_premiumRangeControl2.default, {
+                        React.createElement(_singleRangeControl2.default, {
                             label: __('Top', 'premium-block-for-gutenberg'),
                             value: top,
                             onChange: function onChange(newValue) {
@@ -58086,7 +58061,7 @@ var edit = function (_Component) {
                         units: ['px', 'em', 'rem'],
                         defaultValue: 200
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Rotate (Degree)", 'premium-block-for-gutenberg'),
                         value: rotate,
                         min: -180,
@@ -58177,7 +58152,7 @@ var edit = function (_Component) {
                                             return saveLottieStyles({ backColor: newValue });
                                         }
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Opacity", 'premium-block-for-gutenberg'),
                                         value: lottieStyles[0].backOpacity,
                                         max: 1,
@@ -58225,7 +58200,7 @@ var edit = function (_Component) {
                                             return saveLottieStyles({ backHColor: newValue });
                                         }
                                     }),
-                                    React.createElement(_premiumRangeControl2.default, {
+                                    React.createElement(_singleRangeControl2.default, {
                                         label: __("Opacity", 'premium-block-for-gutenberg'),
                                         value: lottieStyles[0].backHOpacity,
                                         max: 1,
@@ -58406,7 +58381,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58416,31 +58391,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(324);
+var _stringify = __webpack_require__(325);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(326);
+var _extends2 = __webpack_require__(327);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(335);
+var _getPrototypeOf = __webpack_require__(336);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(339);
+var _classCallCheck2 = __webpack_require__(340);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(340);
+var _createClass2 = __webpack_require__(341);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(344);
+var _possibleConstructorReturn2 = __webpack_require__(345);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(366);
+var _inherits2 = __webpack_require__(367);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -58452,7 +58427,7 @@ var _propTypes = __webpack_require__(12);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(374);
+var _lottieWeb = __webpack_require__(375);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -58760,16 +58735,16 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(325), __esModule: true };
+module.exports = { "default": __webpack_require__(326), __esModule: true };
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58783,7 +58758,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58791,7 +58766,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(327);
+var _assign = __webpack_require__(328);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -58814,23 +58789,13 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 327 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(328), __esModule: true };
-
-/***/ }),
 /* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(329);
-module.exports = __webpack_require__(13).Object.assign;
+module.exports = { "default": __webpack_require__(329), __esModule: true };
 
 /***/ }),
 /* 329 */
@@ -58839,13 +58804,23 @@ module.exports = __webpack_require__(13).Object.assign;
 "use strict";
 
 
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(22);
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(331) });
+__webpack_require__(330);
+module.exports = __webpack_require__(13).Object.assign;
 
 /***/ }),
 /* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(22);
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(332) });
+
+/***/ }),
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58857,7 +58832,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58903,7 +58878,7 @@ module.exports = !$assign || __webpack_require__(31)(function () {
 } : $assign;
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58912,8 +58887,8 @@ module.exports = !$assign || __webpack_require__(31)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(32);
-var toLength = __webpack_require__(333);
-var toAbsoluteIndex = __webpack_require__(334);
+var toLength = __webpack_require__(334);
+var toAbsoluteIndex = __webpack_require__(335);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -58936,7 +58911,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58950,7 +58925,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58965,26 +58940,26 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-/* 335 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(336), __esModule: true };
-
-/***/ }),
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(337);
-module.exports = __webpack_require__(13).Object.getPrototypeOf;
+module.exports = { "default": __webpack_require__(337), __esModule: true };
 
 /***/ }),
 /* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(338);
+module.exports = __webpack_require__(13).Object.getPrototypeOf;
+
+/***/ }),
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58994,14 +58969,14 @@ module.exports = __webpack_require__(13).Object.getPrototypeOf;
 var toObject = __webpack_require__(82);
 var $getPrototypeOf = __webpack_require__(127);
 
-__webpack_require__(338)('getPrototypeOf', function () {
+__webpack_require__(339)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59021,7 +58996,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59036,7 +59011,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59044,7 +59019,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(341);
+var _defineProperty = __webpack_require__(342);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -59071,29 +59046,29 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 341 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(342), __esModule: true };
-
-/***/ }),
 /* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(343);
+module.exports = { "default": __webpack_require__(343), __esModule: true };
+
+/***/ }),
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(344);
 var $Object = __webpack_require__(13).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59104,7 +59079,7 @@ var $export = __webpack_require__(22);
 $export($export.S + $export.F * !__webpack_require__(24), 'Object', { defineProperty: __webpack_require__(23).f });
 
 /***/ }),
-/* 344 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59129,24 +59104,13 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 345 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(346), __esModule: true };
-
-/***/ }),
 /* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(347);
-__webpack_require__(352);
-module.exports = __webpack_require__(86).f('iterator');
+module.exports = { "default": __webpack_require__(347), __esModule: true };
 
 /***/ }),
 /* 347 */
@@ -59155,7 +59119,18 @@ module.exports = __webpack_require__(86).f('iterator');
 "use strict";
 
 
-var $at = __webpack_require__(348)(true);
+__webpack_require__(348);
+__webpack_require__(353);
+module.exports = __webpack_require__(86).f('iterator');
+
+/***/ }),
+/* 348 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $at = __webpack_require__(349)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(129)(String, 'String', function (iterated) {
@@ -59173,7 +59148,7 @@ __webpack_require__(129)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 348 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59196,7 +59171,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 349 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59218,7 +59193,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 350 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59240,7 +59215,7 @@ module.exports = __webpack_require__(24) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 351 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59250,13 +59225,13 @@ var document = __webpack_require__(20).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 352 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(353);
+__webpack_require__(354);
 var global = __webpack_require__(20);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(83);
@@ -59273,14 +59248,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 353 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(354);
-var step = __webpack_require__(355);
+var addToUnscopables = __webpack_require__(355);
+var step = __webpack_require__(356);
 var Iterators = __webpack_require__(83);
 var toIObject = __webpack_require__(32);
 
@@ -59314,7 +59289,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 354 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59323,7 +59298,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 355 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59334,29 +59309,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 356 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(357), __esModule: true };
-
-/***/ }),
 /* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(358);
-__webpack_require__(363);
-__webpack_require__(364);
-__webpack_require__(365);
-module.exports = __webpack_require__(13).Symbol;
+module.exports = { "default": __webpack_require__(358), __esModule: true };
 
 /***/ }),
 /* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(359);
+__webpack_require__(364);
+__webpack_require__(365);
+__webpack_require__(366);
+module.exports = __webpack_require__(13).Symbol;
+
+/***/ }),
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59370,7 +59345,7 @@ var has = __webpack_require__(25);
 var DESCRIPTORS = __webpack_require__(24);
 var $export = __webpack_require__(22);
 var redefine = __webpack_require__(130);
-var META = __webpack_require__(359).KEY;
+var META = __webpack_require__(360).KEY;
 var $fails = __webpack_require__(31);
 var shared = __webpack_require__(79);
 var setToStringTag = __webpack_require__(85);
@@ -59378,15 +59353,15 @@ var uid = __webpack_require__(53);
 var wks = __webpack_require__(33);
 var wksExt = __webpack_require__(86);
 var wksDefine = __webpack_require__(87);
-var enumKeys = __webpack_require__(360);
-var isArray = __webpack_require__(361);
+var enumKeys = __webpack_require__(361);
+var isArray = __webpack_require__(362);
 var anObject = __webpack_require__(39);
 var isObject = __webpack_require__(30);
 var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(75);
 var createDesc = __webpack_require__(50);
 var _create = __webpack_require__(84);
-var gOPNExt = __webpack_require__(362);
+var gOPNExt = __webpack_require__(363);
 var $GOPD = __webpack_require__(132);
 var $DP = __webpack_require__(23);
 var $keys = __webpack_require__(51);
@@ -59606,7 +59581,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 359 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59669,7 +59644,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 360 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59694,7 +59669,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 361 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59707,7 +59682,7 @@ module.exports = Array.isArray || function isArray(arg) {
 };
 
 /***/ }),
-/* 362 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59735,20 +59710,11 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
 /* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-__webpack_require__(87)('asyncIterator');
 
 /***/ }),
 /* 365 */
@@ -59757,7 +59723,7 @@ __webpack_require__(87)('asyncIterator');
 "use strict";
 
 
-__webpack_require__(87)('observable');
+__webpack_require__(87)('asyncIterator');
 
 /***/ }),
 /* 366 */
@@ -59766,13 +59732,22 @@ __webpack_require__(87)('observable');
 "use strict";
 
 
+__webpack_require__(87)('observable');
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(367);
+var _setPrototypeOf = __webpack_require__(368);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(371);
+var _create = __webpack_require__(372);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -59801,23 +59776,13 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 367 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(368), __esModule: true };
-
-/***/ }),
 /* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(369);
-module.exports = __webpack_require__(13).Object.setPrototypeOf;
+module.exports = { "default": __webpack_require__(369), __esModule: true };
 
 /***/ }),
 /* 369 */
@@ -59826,12 +59791,22 @@ module.exports = __webpack_require__(13).Object.setPrototypeOf;
 "use strict";
 
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(22);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(370).set });
+__webpack_require__(370);
+module.exports = __webpack_require__(13).Object.setPrototypeOf;
 
 /***/ }),
 /* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(22);
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(371).set });
+
+/***/ }),
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59865,29 +59840,29 @@ module.exports = {
 };
 
 /***/ }),
-/* 371 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(372), __esModule: true };
-
-/***/ }),
 /* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(373);
+module.exports = { "default": __webpack_require__(373), __esModule: true };
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(374);
 var $Object = __webpack_require__(13).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 373 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59898,7 +59873,7 @@ var $export = __webpack_require__(22);
 $export($export.S, 'Object', { create: __webpack_require__(84) });
 
 /***/ }),
-/* 374 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60489,7 +60464,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 375 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60562,7 +60537,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 376 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60883,7 +60858,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 377 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61029,7 +61004,7 @@ var LottieAttr = {
 exports.default = LottieAttr;
 
 /***/ }),
-/* 378 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61041,13 +61016,13 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(379);
+var _edit = __webpack_require__(380);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(396);
+var _save = __webpack_require__(397);
 
-var _attributes = __webpack_require__(397);
+var _attributes = __webpack_require__(398);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -61071,7 +61046,7 @@ registerBlockType("premium/newsletter", {
 });
 
 /***/ }),
-/* 379 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61094,7 +61069,7 @@ var _reactSelect = __webpack_require__(134);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _debounce = __webpack_require__(391);
+var _debounce = __webpack_require__(392);
 
 var _debounce2 = _interopRequireDefault(_debounce);
 
@@ -61106,9 +61081,9 @@ var _premiumBorder = __webpack_require__(9);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(2);
 
@@ -61627,7 +61602,7 @@ var edit = exports.edit = function (_Component) {
                             })
                         )
                     ),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Column Gap", 'premium-block-for-gutenberg'),
                         value: columnGap,
                         onChange: function onChange(newValue) {
@@ -61636,7 +61611,7 @@ var edit = exports.edit = function (_Component) {
                         defaultValue: 0,
                         showUnit: false
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Row Gap", 'premium-block-for-gutenberg'),
                         value: rowGap,
                         onChange: function onChange(newValue) {
@@ -61902,7 +61877,7 @@ var edit = exports.edit = function (_Component) {
                             return saveButtonStyle({ btnBorderRadius: newRadius });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Vertical Spacing", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].vPaddingSubmit,
                         onChange: function onChange(value) {
@@ -61911,7 +61886,7 @@ var edit = exports.edit = function (_Component) {
                         defaultValue: 0,
                         showUnit: false
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Horizontal Spacing", 'premium-block-for-gutenberg'),
                         value: btnStyles[0].hPaddingSubmit,
                         onChange: function onChange(value) {
@@ -62032,7 +62007,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62093,7 +62068,7 @@ function memoizeOne(resultFn, isEqual) {
 exports.default = memoizeOne;
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62104,7 +62079,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.caches = exports.sheet = exports.css = exports.keyframes = exports.injectGlobal = exports.getRegisteredStyles = exports.merge = exports.cx = exports.hydrate = exports.flush = undefined;
 
-var _createEmotion2 = __webpack_require__(382);
+var _createEmotion2 = __webpack_require__(383);
 
 var _createEmotion3 = _interopRequireDefault(_createEmotion2);
 
@@ -62137,7 +62112,7 @@ exports.caches = caches;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(59)))
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62149,23 +62124,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _memoize = __webpack_require__(383);
+var _memoize = __webpack_require__(384);
 
 var _memoize2 = _interopRequireDefault(_memoize);
 
-var _unitless = __webpack_require__(384);
+var _unitless = __webpack_require__(385);
 
 var _unitless2 = _interopRequireDefault(_unitless);
 
-var _hash = __webpack_require__(385);
+var _hash = __webpack_require__(386);
 
 var _hash2 = _interopRequireDefault(_hash);
 
-var _stylis = __webpack_require__(386);
+var _stylis = __webpack_require__(387);
 
 var _stylis2 = _interopRequireDefault(_stylis);
 
-var _stylisRuleSheet = __webpack_require__(387);
+var _stylisRuleSheet = __webpack_require__(388);
 
 var _stylisRuleSheet2 = _interopRequireDefault(_stylisRuleSheet);
 
@@ -62687,7 +62662,7 @@ exports.default = createEmotion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62707,7 +62682,7 @@ function memoize(fn) {
 exports.default = memoize;
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62764,7 +62739,7 @@ var unitlessKeys = {
 exports.default = unitlessKeys;
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62812,7 +62787,7 @@ function murmurhash2_32_gc(str) {
 exports.default = murmurhash2_32_gc;
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63450,7 +63425,7 @@ function stylis_min(W) {
 exports.default = stylis_min;
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63507,13 +63482,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var now = __webpack_require__(389),
+var now = __webpack_require__(390),
     root = typeof window === 'undefined' ? global : window,
     vendors = ['moz', 'webkit'],
     suffix = 'AnimationFrame',
@@ -63592,7 +63567,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(59)))
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63636,7 +63611,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63931,15 +63906,15 @@ AutosizeInput.defaultProps = {
 exports.default = AutosizeInput;
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isObject = __webpack_require__(26),
-    now = __webpack_require__(392),
-    toNumber = __webpack_require__(393);
+    now = __webpack_require__(393),
+    toNumber = __webpack_require__(394);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -64127,7 +64102,7 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64158,13 +64133,13 @@ var now = function now() {
 module.exports = now;
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTrim = __webpack_require__(394),
+var baseTrim = __webpack_require__(395),
     isObject = __webpack_require__(26),
     isSymbol = __webpack_require__(34);
 
@@ -64228,13 +64203,13 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trimmedEndIndex = __webpack_require__(395);
+var trimmedEndIndex = __webpack_require__(396);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -64253,7 +64228,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64280,7 +64255,7 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64401,7 +64376,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64543,7 +64518,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64551,11 +64526,11 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(399);
+var _save = __webpack_require__(400);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(400);
+var _edit = __webpack_require__(401);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -64563,7 +64538,7 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(401);
+var _attributes = __webpack_require__(402);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -64585,7 +64560,7 @@ registerBlockType("premium/progress-bar", {
 });
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64752,7 +64727,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64770,9 +64745,9 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumRangeControl = __webpack_require__(1);
+var _singleRangeControl = __webpack_require__(106);
 
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _premiumTypo = __webpack_require__(10);
 
@@ -65248,7 +65223,7 @@ var edit = function (_Component) {
                             options: INDICATOR
                         })
                     ),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Progress", 'premium-block-for-gutenberg'),
                         value: progress,
                         onChange: function onChange(value) {
@@ -65257,7 +65232,7 @@ var edit = function (_Component) {
                         showUnit: false,
                         defaultValue: 50
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Speed (milliseconds)", 'premium-block-for-gutenberg'),
                         value: speeds,
                         onChange: function onChange(value) {
@@ -65618,7 +65593,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65751,7 +65726,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65763,11 +65738,11 @@ var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(403);
+var _edit = __webpack_require__(404);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(437);
+var _save = __webpack_require__(438);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -65841,7 +65816,7 @@ registerBlockType("premium/template", {
 });
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65861,7 +65836,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _modal = __webpack_require__(419);
+var _modal = __webpack_require__(420);
 
 var _modal2 = _interopRequireDefault(_modal);
 
@@ -66158,14 +66133,14 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var arrayPush = __webpack_require__(99),
-    isFlattenable = __webpack_require__(405);
+    isFlattenable = __webpack_require__(406);
 
 /**
  * The base implementation of `_.flatten` with support for restricting flattening.
@@ -66204,7 +66179,7 @@ function baseFlatten(array, depth, predicate, isStrict, result) {
 module.exports = baseFlatten;
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66231,7 +66206,7 @@ function isFlattenable(value) {
 module.exports = isFlattenable;
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66241,9 +66216,9 @@ var arrayMap = __webpack_require__(63),
     baseGet = __webpack_require__(57),
     baseIteratee = __webpack_require__(95),
     baseMap = __webpack_require__(105),
-    baseSortBy = __webpack_require__(407),
+    baseSortBy = __webpack_require__(408),
     baseUnary = __webpack_require__(102),
-    compareMultiple = __webpack_require__(408),
+    compareMultiple = __webpack_require__(409),
     identity = __webpack_require__(48),
     isArray = __webpack_require__(11);
 
@@ -66288,7 +66263,7 @@ function baseOrderBy(collection, iteratees, orders) {
 module.exports = baseOrderBy;
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66317,13 +66292,13 @@ function baseSortBy(array, comparer) {
 module.exports = baseSortBy;
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var compareAscending = __webpack_require__(409);
+var compareAscending = __webpack_require__(410);
 
 /**
  * Used by `_.orderBy` to compare multiple properties of a value to another
@@ -66369,7 +66344,7 @@ function compareMultiple(object, other, orders) {
 module.exports = compareMultiple;
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66410,15 +66385,15 @@ function compareAscending(value, other) {
 module.exports = compareAscending;
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var identity = __webpack_require__(48),
-    overRest = __webpack_require__(411),
-    setToString = __webpack_require__(413);
+    overRest = __webpack_require__(412),
+    setToString = __webpack_require__(414);
 
 /**
  * The base implementation of `_.rest` which doesn't validate or coerce arguments.
@@ -66435,13 +66410,13 @@ function baseRest(func, start) {
 module.exports = baseRest;
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var apply = __webpack_require__(412);
+var apply = __webpack_require__(413);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -66479,7 +66454,7 @@ function overRest(func, start, transform) {
 module.exports = overRest;
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66512,14 +66487,14 @@ function apply(func, thisArg, args) {
 module.exports = apply;
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseSetToString = __webpack_require__(414),
-    shortOut = __webpack_require__(417);
+var baseSetToString = __webpack_require__(415),
+    shortOut = __webpack_require__(418);
 
 /**
  * Sets the `toString` method of `func` to return `string`.
@@ -66534,14 +66509,14 @@ var setToString = shortOut(baseSetToString);
 module.exports = setToString;
 
 /***/ }),
-/* 414 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var constant = __webpack_require__(415),
-    defineProperty = __webpack_require__(416),
+var constant = __webpack_require__(416),
+    defineProperty = __webpack_require__(417),
     identity = __webpack_require__(48);
 
 /**
@@ -66564,7 +66539,7 @@ var baseSetToString = !defineProperty ? identity : function (func, string) {
 module.exports = baseSetToString;
 
 /***/ }),
-/* 415 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66598,7 +66573,7 @@ function constant(value) {
 module.exports = constant;
 
 /***/ }),
-/* 416 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66617,7 +66592,7 @@ var defineProperty = function () {
 module.exports = defineProperty;
 
 /***/ }),
-/* 417 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66662,7 +66637,7 @@ function shortOut(func) {
 module.exports = shortOut;
 
 /***/ }),
-/* 418 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66699,7 +66674,7 @@ function isIterateeCall(value, index, object) {
 module.exports = isIterateeCall;
 
 /***/ }),
-/* 419 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67213,7 +67188,7 @@ var modal = function (_Component) {
 exports.default = modal;
 
 /***/ }),
-/* 420 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67221,7 +67196,7 @@ exports.default = modal;
 
 var utils = __webpack_require__(7);
 var bind = __webpack_require__(137);
-var Axios = __webpack_require__(421);
+var Axios = __webpack_require__(422);
 var mergeConfig = __webpack_require__(143);
 var defaults = __webpack_require__(55);
 
@@ -67257,7 +67232,7 @@ axios.Axios = Axios;
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(56);
-axios.CancelToken = __webpack_require__(434);
+axios.CancelToken = __webpack_require__(435);
 axios.isCancel = __webpack_require__(142);
 axios.VERSION = __webpack_require__(144).version;
 
@@ -67265,10 +67240,10 @@ axios.VERSION = __webpack_require__(144).version;
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(435);
+axios.spread = __webpack_require__(436);
 
 // Expose isAxiosError
-axios.isAxiosError = __webpack_require__(436);
+axios.isAxiosError = __webpack_require__(437);
 
 module.exports = axios;
 
@@ -67276,7 +67251,7 @@ module.exports = axios;
 module.exports.default = axios;
 
 /***/ }),
-/* 421 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67284,10 +67259,10 @@ module.exports.default = axios;
 
 var utils = __webpack_require__(7);
 var buildURL = __webpack_require__(138);
-var InterceptorManager = __webpack_require__(422);
-var dispatchRequest = __webpack_require__(423);
+var InterceptorManager = __webpack_require__(423);
+var dispatchRequest = __webpack_require__(424);
 var mergeConfig = __webpack_require__(143);
-var validator = __webpack_require__(433);
+var validator = __webpack_require__(434);
 
 var validators = validator.validators;
 /**
@@ -67436,7 +67411,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = Axios;
 
 /***/ }),
-/* 422 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67496,14 +67471,14 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 module.exports = InterceptorManager;
 
 /***/ }),
-/* 423 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(7);
-var transformData = __webpack_require__(424);
+var transformData = __webpack_require__(425);
 var isCancel = __webpack_require__(142);
 var defaults = __webpack_require__(55);
 var Cancel = __webpack_require__(56);
@@ -67567,7 +67542,7 @@ module.exports = function dispatchRequest(config) {
 };
 
 /***/ }),
-/* 424 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67595,7 +67570,7 @@ module.exports = function transformData(data, headers, fns) {
 };
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67613,7 +67588,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 };
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67638,7 +67613,7 @@ module.exports = function settle(resolve, reject, response) {
 };
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67697,14 +67672,14 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(429);
-var combineURLs = __webpack_require__(430);
+var isAbsoluteURL = __webpack_require__(430);
+var combineURLs = __webpack_require__(431);
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -67723,7 +67698,7 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 };
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67745,7 +67720,7 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67764,7 +67739,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 };
 
 /***/ }),
-/* 431 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67820,7 +67795,7 @@ module.exports = function parseHeaders(headers) {
 };
 
 /***/ }),
-/* 432 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67889,7 +67864,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 433 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67974,7 +67949,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 434 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68099,7 +68074,7 @@ CancelToken.source = function source() {
 module.exports = CancelToken;
 
 /***/ }),
-/* 435 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68133,7 +68108,7 @@ module.exports = function spread(callback) {
 };
 
 /***/ }),
-/* 436 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68152,7 +68127,7 @@ module.exports = function isAxiosError(payload) {
 };
 
 /***/ }),
-/* 437 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68229,6 +68204,177 @@ var save = function save(props) {
 };
 
 exports.default = save;
+
+/***/ }),
+/* 439 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _webfontloader = __webpack_require__(231);
+
+var _webfontloader2 = _interopRequireDefault(_webfontloader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var _wp$element = wp.element,
+    useEffect = _wp$element.useEffect,
+    useRef = _wp$element.useRef,
+    useState = _wp$element.useState;
+var __ = wp.i18n.__;
+
+
+var loadedFonts = [];
+
+var loadGoogleFonts = function loadGoogleFonts(font_families) {
+    if (font_families.length === 0) return;
+
+    loadedFonts = [].concat(_toConsumableArray(loadedFonts), _toConsumableArray(font_families.map(function (_ref) {
+        var family = _ref.family;
+        return family;
+    })));
+    if (font_families.length > 0) {
+        _webfontloader2.default.load(_extends({}, font_families.length > 0 ? {
+            google: {
+                families: font_families
+            }
+        } : {}, {
+
+            classes: false,
+            text: 'abcdefghijklmnopqrstuvwxyz'
+        }));
+    }
+};
+var SingleFont = function SingleFont(_ref2) {
+    var family = _ref2.family,
+        onPickFamily = _ref2.onPickFamily,
+        value = _ref2.value;
+
+    return React.createElement(
+        'div',
+        {
+
+            onClick: function onClick() {
+                return onPickFamily(family.value);
+            },
+            className: (0, _classnames2.default)('premium-typography-single-font', {
+                active: family.value === value
+            }),
+            key: family[0] },
+        React.createElement(
+            'span',
+            { className: 'premium-font-name' },
+            family.label
+        ),
+        React.createElement(
+            'span',
+            {
+                style: {
+                    fontFamily: family.value
+                },
+                className: 'premium-font-preview' },
+            'Simply dummy text'
+        )
+    );
+};
+
+var FontsList = function FontsList(_ref3) {
+    var value = _ref3.value,
+        onPickFamily = _ref3.onPickFamily,
+        linearFontsList = _ref3.linearFontsList;
+
+    var listRef = useRef(null);
+
+    var _useState = useState(null),
+        _useState2 = _slicedToArray(_useState, 2),
+        scrollTimer = _useState2[0],
+        setScrollTimer = _useState2[1];
+
+    useEffect(function () {
+        if (value.family && listRef.current) {
+            listRef.current.querySelector('.active').scrollIntoView();
+        }
+    }, []);
+    var systemFonts = linearFontsList.filter(function (family) {
+        return family.google === false;
+    });
+    var googleFonts = linearFontsList.filter(function (family) {
+        return family.google === true;
+    });
+
+    var onScroll = function onScroll() {
+        scrollTimer && clearTimeout(scrollTimer);
+
+        setScrollTimer(setTimeout(function () {
+            if (!listRef.current) {
+                return;
+            }
+            var overscanStartIndex = Math.ceil(listRef.current.scrollTop / 85);
+
+            var perPage = 25;
+            var startingPage = Math.ceil((overscanStartIndex + 1) / perPage);
+            var pageItems = [].concat(_toConsumableArray(Array(perPage))).map(function (_, i) {
+                return (startingPage - 1) * perPage + i;
+            }).map(function (index) {
+                return linearFontsList[index].value;
+            }).filter(function (s) {
+                return !!s;
+            });
+            loadGoogleFonts(pageItems);
+        }, 10));
+    };
+
+    useEffect(function () {
+        onScroll();
+    }, [linearFontsList]);
+
+    return React.createElement(
+        'ul',
+        { ref: listRef, className: 'premium-typography-fonts', onScroll: onScroll, style: {
+                width: '100%'
+            } },
+        React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'ul',
+                null,
+                systemFonts.map(function (family) {
+                    return SingleFont({ family: family, onPickFamily: onPickFamily, value: value });
+                })
+            ),
+            React.createElement(
+                'div',
+                { className: 'premium-fonts-source' },
+                __('Google  Fonts', "kemet")
+            ),
+            React.createElement(
+                'ul',
+                null,
+                googleFonts.map(function (family) {
+                    return SingleFont({ family: family, onPickFamily: onPickFamily, value: value });
+                })
+            )
+        )
+    );
+};
+
+exports.default = FontsList;
 
 /***/ })
 /******/ ]);

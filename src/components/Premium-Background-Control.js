@@ -5,7 +5,7 @@ import map from 'lodash/map';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 import AdvancedPopColorControl from './Color Control/ColorComponent'
-import PremiumRangeControl from './premium-range-control'
+import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
 export default function PremiumBackgroundControl({
     backgroundType, backgroundColor, backgroundImageID,
     backgroundImageURL, backgroundPosition, backgroundRepeat,
@@ -95,7 +95,7 @@ export default function PremiumBackgroundControl({
                             saveContainerStyle({ containerBack: value })
                         }}
                     />
-                    <PremiumRangeControl
+                    <ResponsiveSingleRangeControl
                         label={__('Location', 'premium-block-for-gutenberg')}
                         value={gradientLocationOne}
                         onChange={(value) => {
@@ -112,7 +112,7 @@ export default function PremiumBackgroundControl({
                             saveContainerStyle({ gradientColorTwo: value })
                         }}
                     />
-                    <PremiumRangeControl
+                    <ResponsiveSingleRangeControl
                         label={__('Location', 'premium-block-for-gutenberg')}
                         value={gradientLocationTwo}
                         onChange={(value) => {
@@ -140,7 +140,7 @@ export default function PremiumBackgroundControl({
                         </ButtonGroup>
                     </div>
                     { 'radial' !== (gradientType) && (
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__('Gradient Angle', 'premium-block-for-gutenberg')}
                             value={gradientAngle}
                             onChange={(value) => {

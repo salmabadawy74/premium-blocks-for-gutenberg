@@ -7,7 +7,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
 import RadioComponent from '../../components/radio-control'
@@ -231,7 +231,7 @@ class edit extends Component {
                                 />
                             )}
                             {authorImgUrl && (
-                                <PremiumRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__("Size", 'premium-block-for-gutenberg')}
                                     value={imgSize}
                                     max="200"
@@ -241,7 +241,7 @@ class edit extends Component {
                                 />
                             )}
                             {authorImgUrl && (
-                                <PremiumRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__("Border Width (PX)", 'premium-block-for-gutenberg')}
                                     value={imgBorder}
                                     onChange={newSize => setAttributes({ imgBorder: newSize })}
@@ -349,14 +349,14 @@ class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
                             value={contentStyle[0].bodyTop}
                             onChange={newSize => saveContentStyle({ bodyTop: newSize })}
                             showUnit={false}
                             defaultValue={0}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
                             value={contentStyle[0].bodyBottom}
                             onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
@@ -441,7 +441,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Size (EM)", 'premium-block-for-gutenberg')}
                             value={quoteStyles[0].quotSize}
                             min="1"
@@ -460,7 +460,7 @@ class edit extends Component {
                                 })
                             }
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Opacity", 'premium-block-for-gutenberg')}
                             value={quoteStyles[0].quotOpacity}
                             onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
