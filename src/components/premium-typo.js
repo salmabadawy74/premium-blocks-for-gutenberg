@@ -16,7 +16,7 @@ export default class PremiumTypo extends Component {
         super(props)
 
         this.state = {
-            fontFamily: this.props.fontFamily || "System Default",
+            fontFamily: this.props.fontFamily,
             line: this.props.line,
             upper: this.props.upper,//
             sizeUnit: this.props.sizeUnit || 'px',
@@ -25,7 +25,6 @@ export default class PremiumTypo extends Component {
             search: this.props.fontFamily || "System Default",
             showUnit: this.props.showUnit || false
         }
-
         this.defaultValue = {
             fontFamily: "System Default",
             variation: '400',
@@ -59,11 +58,12 @@ export default class PremiumTypo extends Component {
             "text-decoration": "none",
         };
 
+
+
     }
 
-    componentDidUpdate(prevProps, prevState) {
-
-        if (prevState.fontFamily !== this.state.fontFamily) {
+    componentDidUpdate(prevProps) {
+        if (prevProps.fontFamily !== this.state.fontFamily) {
             WebFont.load({
                 google: {
                     families: this.state.fontFamily
@@ -75,47 +75,32 @@ export default class PremiumTypo extends Component {
     render() {
         const {
             components,
+            size,
+            weight,
+            style,
+            spacing,
+            line,
+            upper,
             setAttributes,
+            fontFamily,
             onChangeFamily = () => { },
             onChangeSize = () => { },
-            onChangeSizeTablet = () => { },
-            onChangeSizeMobile = () => { },
-            onChangeSizeUnit = () => { },
             onChangeWeight = () => { },
             onChangeStyle = () => { },
             onChangeSpacing = () => { },
             onChangeLine = () => { },
-            onChangeLineUnit = () => { },
-            onChangeLetterUnit = () => { },
             onChangeUpper = () => { },
             onResetClick = () => { },
-            onChangeTextTransform = () => { },
-            onChangeTextDecoration = () => { },
-            size,
-            line,
-            weight,
-            spacing,
-            style,
-            titleLineUnit,
-            titleLetterUnit,
-            textTransform,
-            textDecoration,
-            fontSizeMobile,
-            fontSizeTablet,
-            fontSize,
-            fontSizeType
         } = this.props;
-
         const {
-            fontFamily,
-            upper,
+
+
             sizeUnit,
             isVisible,
             currentView,
             search,
             showUnit
         } = this.state;
-
         const STYLE = [
             {
                 value: "normal",
@@ -140,7 +125,6 @@ export default class PremiumTypo extends Component {
 
         let fontWeight = ""
         Object.keys(googleFonts).map((k, v) => {
-
             fonts.push(
                 { value: k, label: k, weight: googleFonts[k].weight }
             )
@@ -164,6 +148,7 @@ export default class PremiumTypo extends Component {
         const onFontfamilyChange = (value) => {
             onFontChange(weight, value.label)
             onChangeFamily(value.value)
+            console.log(fontFamily)
         }
 
         const onFontChange = (weight, fontFamily) => {
@@ -184,49 +169,19 @@ export default class PremiumTypo extends Component {
                     })
                 }
             }
-
         }
-
         const toggleVisible = (v) => {
             this.setState({
                 isVisible: true,
                 currentView: v
             })
         };
-
-        const setSearch = (v) => {
-            this.setState({
-                search: v
-            })
-        }
-
-        const changeFont = (v) => {
-            this.setState({
-                fontFamily: v.value,
-                search: v.value,
-            })
-            onFontfamilyChange(v)
-        }
-
         const renderFonts = fonts.map((item, index) => {
-            return (< div className={`kmt-typography-single-font ${item.label == fontFamily ? 'active' : ''}`} key={index} onClick={() => changeFont(item)}>
+            return (< div className={`kmt-typography-single-font ${item.label == fontFamily ? 'active' : ''}`} key={index} onClick={() => onFontfamilyChange(item)}>
                 <span className="kmt-font-name">{item.label}</span>
             </div>
             )
         })
-
-        const renderVariations = fonts.map((item, index) => {
-            if (item.value == fontFamily) {
-                return ((item.weight || []).map((weights, i) => {
-                    return <li key={i} className={`${weights == weight ? 'active' : ''}`} onClick={() => { onChangeWeight(weights) }}>
-                        <span className="kmt-variation-name">
-                            {weights}
-                        </span>
-                    </li>
-                }))
-            }
-        })
-
         return (
             <div className="premium-control-toggle kmt-typography">
                 <header>
