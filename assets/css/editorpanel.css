@@ -3805,19 +3805,19 @@ input[type="number"] {
     width: 100%;
     height: 100%; }
 
-.kmt-typography {
+.premium-typography {
   position: relative; }
-  .kmt-typography header {
+  .premium-typography header {
     display: flex;
     position: relative;
     align-items: center;
     margin-bottom: 5px; }
-  .kmt-typography:hover .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:not(:disabled) {
+  .premium-typography:hover .premium-typography-wrapper .premium-btn-reset-wrap .premium-reset-btn:not(:disabled) {
     opacity: 1; }
-  .kmt-typography .kmt-typography-wrapper {
+  .premium-typography .premium-typography-wrapper {
     display: flex;
     align-items: center; }
-    .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn {
+    .premium-typography .premium-typography-wrapper .premium-btn-reset-wrap .premiumreset-btn {
       color: var(--primaryColor);
       font-size: 12px;
       padding: 0px 6px;
@@ -3836,25 +3836,25 @@ input[type="number"] {
       background: transparent;
       -webkit-font-smoothing: antialiased;
       cursor: pointer; }
-      .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:disabled {
+      .premium-typography .premium-typography-wrapper .premium-btn-reset-wrap .premiumreset-btn:disabled {
         color: rgba(0, 0, 0, 0.2);
         cursor: default; }
-      .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn::before {
+      .premium-typography .premium-typography-wrapper .premium-btn-reset-wrap .premiumreset-btn::before {
         content: "\f531";
         transition: transform 0.3s ease;
         transform: rotate(45deg); }
-      .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:hover {
+      .premium-typography .premium-typography-wrapper .premium-btn-reset-wrap .premiumreset-btn:hover {
         box-shadow: none;
         border: none;
         background: transparent; }
-        .kmt-typography .kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:hover:not(:disabled):before {
+        .premium-typography .premium-typography-wrapper .premium-btn-reset-wrap .premiumreset-btn:hover:not(:disabled):before {
           transform: rotate(-45deg); }
-  .kmt-typography.kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:focus {
+  .premium-typography.premium-typography-wrapper .premiumbtn-reset-wrap .premiumreset-btn:focus {
     box-shadow: none;
     border: none;
     background: transparent; }
 
-.kmt-typohraphy-value {
+.premium-typohraphy-value {
   display: flex;
   border-radius: 3px;
   background: #fff;
@@ -3864,19 +3864,19 @@ input[type="number"] {
   justify-content: space-between;
   width: 96%;
   margin-right: 8px; }
-  .kmt-typohraphy-value:hover {
+  .premium-typohraphy-value:hover {
     border-color: #0e8ecc; }
-    .kmt-typohraphy-value:hover a {
+    .premium-typohraphy-value:hover a {
       opacity: 1;
       color: #0073aa; }
-  .kmt-typohraphy-value > div.kmt-typography-title-container {
+  .premium-typohraphy-value > div.premium-typography-title-container {
     display: flex;
     align-content: center;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 35px; }
-  .kmt-typohraphy-value > div > span {
+  .premium-typohraphy-value > div > span {
     flex: 1 1 auto;
     display: flex;
     height: 100%;
@@ -3896,9 +3896,9 @@ input[type="number"] {
     position: relative;
     box-shadow: inset 0 0 0 1px #ddd;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
-    .kmt-typohraphy-value > div > span:not(:first-child) {
+    .premium-typohraphy-value > div > span:not(:first-child) {
       margin-left: -1px; }
-    .kmt-typohraphy-value > div > span span {
+    .premium-typohraphy-value > div > span span {
       position: relative;
       z-index: 2;
       font-size: 13px;
@@ -3909,20 +3909,20 @@ input[type="number"] {
       overflow: hidden;
       max-width: 85px;
       text-transform: capitalize; }
-    .kmt-typohraphy-value > div > span:hover span,
-    .kmt-typohraphy-value > div > span.active span {
+    .premium-typohraphy-value > div > span:hover span,
+    .premium-typohraphy-value > div > span.active span {
       color: var(--primaryColor); }
-  .kmt-typohraphy-value .kmt-font {
+  .premium-typohraphy-value .premium-font {
     display: inline-flex;
     align-items: center; }
-    .kmt-typohraphy-value .kmt-font span {
+    .premium-typohraphy-value .premium-font span {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       max-width: 85px;
       display: inline-block;
       text-transform: capitalize; }
-  .kmt-typohraphy-value a {
+  .premium-typohraphy-value a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -3934,14 +3934,14 @@ input[type="number"] {
     opacity: 0.7;
     color: inherit; }
 
-.kmt-typography-container {
+.premium-typography-container {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   min-height: 360px;
   position: relative; }
 
-.kmt-typography-top {
+.premium-typography-top {
   display: flex;
   align-items: center;
   position: relative;
@@ -3950,18 +3950,18 @@ input[type="number"] {
   margin: 0;
   box-sizing: border-box;
   border-bottom: 1px solid var(--optionBorderColor); }
-  .kmt-typography-top.kmt-static > * {
+  .premium-typography-top.premium-static > * {
     transition: none !important; }
 
-.kmt-typography-container ~ * {
+.premium-typography-container ~ * {
   left: 0;
   right: 0; }
 
-.kmt-typography-top ~ * {
+.premium-typography-top ~ * {
   left: 0;
   right: 0; }
 
-.kmt-typography-top li {
+.premium-typography-top li {
   display: flex;
   align-items: center;
   position: relative;
@@ -3980,22 +3980,22 @@ input[type="number"] {
   border: 1px solid #d1d5d9;
   box-shadow: 0 0 0 0 transparent;
   transition: box-shadow 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-color 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-  .kmt-typography-top li.active {
+  .premium-typography-top li.active {
     border-color: var(--primaryColor);
     box-shadow: 0 0 0 1px var(--primaryColor); }
-  .kmt-typography-top li:hover {
+  .premium-typography-top li:hover {
     border-color: var(--primaryColor); }
 
-.kmt-typography-top .kmt-font {
+.premium-typography-top .premium-font {
   flex: 1; }
-  .kmt-typography-top .kmt-font span {
+  .premium-typography-top .premium-font span {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     width: 100%;
     text-transform: capitalize;
     transition: width 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-  .kmt-typography-top .kmt-font input {
+  .premium-typography-top .premium-font input {
     border: none;
     margin: 0;
     padding: 0;
@@ -4003,9 +4003,9 @@ input[type="number"] {
     font: inherit;
     color: inherit;
     background: transparent; }
-    .kmt-typography-top .kmt-font input:focus {
+    .premium-typography-top .premium-font input:focus {
       outline: none; }
-  .kmt-typography-top .kmt-font svg {
+  .premium-typography-top .premium-font svg {
     position: absolute;
     top: calc(50% - 3px);
     right: 8px;
@@ -4013,15 +4013,15 @@ input[type="number"] {
     fill: currentColor;
     opacity: 0;
     transition: opacity 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-  .kmt-typography-top .kmt-font.active svg {
+  .premium-typography-top .premium-font.active svg {
     opacity: 1; }
 
-.kmt-typography-top .kmt-weight {
+.premium-typography-top .premium-weight {
   justify-content: flex-end;
   width: 78px;
   margin-left: 7%;
   transition: width 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-  .kmt-typography-top .kmt-weight:before {
+  .premium-typography-top .premium-weight:before {
     position: absolute;
     z-index: 0;
     color: #727c88;
@@ -4031,9 +4031,9 @@ input[type="number"] {
     opacity: 1;
     margin-right: 10px;
     transition: font-weight 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-  .kmt-typography-top .kmt-weight:hover:before {
+  .premium-typography-top .premium-weight:hover:before {
     font-weight: 700; }
-  .kmt-typography-top .kmt-weight span {
+  .premium-typography-top .premium-weight span {
     position: relative;
     z-index: 1;
     width: 44px;
@@ -4041,80 +4041,80 @@ input[type="number"] {
     line-height: normal;
     background: #fff;
     box-shadow: 0px 0px 10px 3px #fff; }
-    .kmt-typography-top .kmt-weight span[data-variation*="i"] {
+    .premium-typography-top .premium-weight span[data-variation*="i"] {
       font-style: italic; }
-    .kmt-typography-top .kmt-weight span[data-variation="Default"] {
+    .premium-typography-top .premium-weight span[data-variation="Default"] {
       opacity: 0; }
 
-.kmt-typography-top .kmt-back {
+.premium-typography-top .premium-back {
   z-index: 2;
   width: 28px;
   margin-right: 12px;
   margin-left: -44px;
   opacity: 0;
   transition: margin 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-  .kmt-typography-top .kmt-back svg {
+  .premium-typography-top .premium-back svg {
     fill: currentColor; }
 
-.kmt-typography-top.kmt-switch-panel .kmt-back {
+.premium-typography-top.premium-switch-panel .premiumback {
   opacity: 1;
   margin-left: 0; }
 
-.kmt-typography-top.kmt-switch-panel .kmt-font span {
+.premium-typography-top.premium-switch-panel .premium-font span {
   width: 90%; }
 
-.kmt-typography-top.kmt-switch-panel .kmt-weight {
+.premium-typography-top.premium-switch-panel .premium-weight {
   margin-left: 5%; }
-  .kmt-typography-top.kmt-switch-panel .kmt-weight:not(.active) {
+  .premium-typography-top.premium-switch-panel .premium-weight:not(.active) {
     width: 45px; }
-    .kmt-typography-top.kmt-switch-panel .kmt-weight:not(.active):before {
+    .premium-typography-top.premium-switch-panel .premium-weight:not(.active):before {
       opacity: 0; }
 
-.kmt-typography-options {
+.premium-typography-options {
   margin: 0;
   right: 0;
   left: 0; }
-  .kmt-typography-options > li {
+  .premium-typography-options > li {
     align-items: center;
     padding: 14px 20px;
     margin: 0;
     box-sizing: border-box; }
-  .kmt-typography-options li.customize-control-kmt-slider.customize-control-title {
+  .premium-typography-options li.customize-control-premiumslider.customize-control-title {
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
     transition: tr;
     transform: translateY(-5px) !important; }
-  .kmt-typography-options li.customize-control-kmt-slider .kmt-slider-units {
+  .premium-typography-options li.customize-control-premiumslider .premium-slider-units {
     font-size: 11px;
     text-transform: uppercase; }
-  .kmt-typography-options li.customize-control-kmt-slider .kmt-range-value__input {
+  .premium-typography-options li.customize-control-premiumslider .premium-range-value__input {
     width: 100%;
     border: 1px solid #dcdddf !important;
     border-radius: 0 !important; }
-  .kmt-typography-options > li:not(.kmt-typography-variant) {
+  .premium-typography-options > li:not(.premium-typography-variant) {
     height: 95px; }
-  .kmt-typography-options > li:not(:last-child) {
+  .premium-typography-options > li:not(:last-child) {
     border-bottom: 1px dashed #eee; }
-  .kmt-typography-options .kmt-control {
+  .premium-typography-options .premium-control {
     margin: 0 !important;
     padding: 0 !important;
     width: 100%; }
-  .kmt-typography-options .kmt-slider:before {
+  .premium-typography-options .premium-slider:before {
     --backgroundColor: #e3e6e8; }
-  .kmt-typography-options .kmt-value-changer ul {
+  .premium-typography-options .premium-value-changer ul {
     box-shadow: 0 10px 20px 3px rgba(0, 0, 0, 0.07), 0 1px 3px 0px rgba(0, 0, 0, 0.03); }
-  .kmt-typography-options .kmt-disabled-notification {
+  .premium-typography-options .premium-disabled-notification {
     background: rgba(243, 243, 245, 0.5); }
 
-.kmt-typography-variant {
+.premium-typography-variant {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 15px;
   height: 75px; }
-  .kmt-typography-variant ul {
+  .premium-typography-variant ul {
     display: flex; }
-    .kmt-typography-variant ul li {
+    .premium-typography-variant ul li {
       flex: 1;
       display: flex;
       justify-content: center;
@@ -4123,37 +4123,37 @@ input[type="number"] {
       padding: 5px 0;
       cursor: pointer;
       border: 1px solid #dfe1e4; }
-      .kmt-typography-variant ul li:before {
+      .premium-typography-variant ul li:before {
         font-size: 13px;
         font-weight: 700;
         letter-spacing: 0.04em; }
-      .kmt-typography-variant ul li + li {
+      .premium-typography-variant ul li + li {
         margin-left: -1px; }
-      .kmt-typography-variant ul li:first-child {
+      .premium-typography-variant ul li:first-child {
         border-radius: 3px 0 0 3px; }
-      .kmt-typography-variant ul li:last-child {
+      .premium-typography-variant ul li:last-child {
         border-radius: 0 3px 3px 0; }
-      .kmt-typography-variant ul li:not(.active) {
+      .premium-typography-variant ul li:not(.active) {
         color: #727c88; }
-        .kmt-typography-variant ul li:not(.active):hover {
+        .premium-typography-variant ul li:not(.active):hover {
           color: var(--primaryColor); }
-      .kmt-typography-variant ul li.active {
+      .premium-typography-variant ul li.active {
         z-index: 2;
         color: #fff;
         background: var(--primaryColor);
         border-color: var(--primaryColor); }
-      .kmt-typography-variant ul li[data-variant="capitalize"]:before {
+      .premium-typography-variant ul li[data-variant="capitalize"]:before {
         content: "Aa"; }
-      .kmt-typography-variant ul li[data-variant="uppercase"]:before {
+      .premium-typography-variant ul li[data-variant="uppercase"]:before {
         content: "AA"; }
-      .kmt-typography-variant ul li[data-variant="underline"]:before, .kmt-typography-variant ul li[data-variant="line-through"]:before {
+      .premium-typography-variant ul li[data-variant="underline"]:before, .premium-typography-variant ul li[data-variant="line-through"]:before {
         content: "Aa"; }
-      .kmt-typography-variant ul li:hover .kmt-tooltip-top {
+      .premium-typography-variant ul li:hover .premiumtooltip-top {
         opacity: 1;
         visibility: visible;
         transform: translate3d(0px, -40px, 0px); }
 
-.kmt-text-decoration li:after {
+.premium-text-decoration li:after {
   position: absolute;
   content: "";
   left: 0;
@@ -4165,65 +4165,65 @@ input[type="number"] {
   margin: auto;
   border-radius: 2px; }
 
-.kmt-text-decoration li[data-variant="underline"]:after {
+.premium-text-decoration li[data-variant="underline"]:after {
   bottom: 6px; }
 
-.kmt-text-decoration li[data-variant="line-through"]:after {
+.premium-text-decoration li[data-variant="line-through"]:after {
   top: 3px;
   bottom: 0; }
 
-.kmt-typography-single-font,
-.kmt-typography-variations li {
+.premium-typography-single-font,
+.premium-typography-variations li {
   cursor: pointer;
   position: relative; }
 
-.kmt-typography-single-font:not(:first-child),
-.kmt-typography-variations li:not(:first-child) {
+.premium-typography-single-font:not(:first-child),
+.premium-typography-variations li:not(:first-child) {
   border-top: 1px solid var(--optionBorderColor); }
 
-.kmt-typography-single-font:hover, .kmt-typography-single-font.active {
+.premium-typography-single-font:hover, .premium-typography-single-font.active {
   color: #fff;
   background: var(--primaryColor);
   border-color: var(--primaryColor); }
 
-.kmt-typography-variations li:hover, .kmt-typography-variations li.active {
+.premium-typography-variations li:hover, .premium-typography-variations li.active {
   color: #fff;
   background: var(--primaryColor);
   border-color: var(--primaryColor); }
 
-.kmt-typography-single-font:hover:after, .kmt-typography-single-font.active:after {
+.premium-typography-single-font:hover:after, .premium-typography-single-font.active:after {
   box-shadow: -5px 0px 15px 10px var(--primaryColor); }
 
-.kmt-typography-variations li:hover:after, .kmt-typography-variations li.active:after {
+.premium-typography-variations li:hover:after, .premium-typography-variations li.active:after {
   box-shadow: -5px 0px 15px 10px var(--primaryColor); }
 
-.kmt-typography-single-font:hover + *,
-.kmt-typography-single-font.active + * {
+.premium-typography-single-font:hover + *,
+.premium-typography-single-font.active + * {
   border-top-color: rgba(255, 255, 255, 0.3); }
 
-.kmt-typography-variations li:hover + *,
-.kmt-typography-variations li.active + * {
+.premium-typography-variations li:hover + *,
+.premium-typography-variations li.active + * {
   border-top-color: rgba(255, 255, 255, 0.3); }
 
-.kmt-typography-single-font.active:before,
-.kmt-typography-variations li.active:before {
+.premium-typography-single-font.active:before,
+.premium-typography-variations li.active:before {
   position: absolute;
   font: 400 17px/17px dashicons;
   content: "\f147";
   right: 20px; }
 
-.kmt-typography-fonts {
+.premium-typography-fonts {
   position: relative;
   height: 290px;
-  overflow: auto;
   will-change: transform;
   direction: ltr;
-  margin: 0px; }
-  .kmt-typography-fonts .kmt-source-fonts {
+  margin: 0px;
+  overflow: auto; }
+  .premium-typography-fonts .premium-source-fonts {
     text-transform: capitalize;
     margin-left: 10px; }
 
-.kmt-typography-single-font {
+.premium-typography-single-font {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -4231,9 +4231,9 @@ input[type="number"] {
   height: 85px;
   padding: 0 20px;
   box-sizing: border-box; }
-  .kmt-typography-single-font:before {
+  .premium-typography-single-font:before {
     top: 18px; }
-  .kmt-typography-single-font:after {
+  .premium-typography-single-font:after {
     position: absolute;
     content: "";
     top: 0;
@@ -4243,18 +4243,18 @@ input[type="number"] {
     background: #fff;
     transform: translateX(100%);
     box-shadow: -5px 0px 15px 10px #fff; }
-  .kmt-typography-single-font .kmt-font-name {
+  .premium-typography-single-font .premium-font-name {
     opacity: 0.7; }
-  .kmt-typography-single-font .kmt-font-preview {
+  .premium-typography-single-font .premium-font-preview {
     font-size: 20px;
     line-height: 1.3;
     margin-top: 10px;
     font-weight: normal;
     white-space: nowrap; }
-  .kmt-typography-single-font:hover .kmt-font-name {
+  .premium-typography-single-font:hover .premium-font-name {
     opacity: 1; }
 
-.kmt-fonts-source {
+.premium-fonts-source {
   font-size: 16px;
   background-color: #efeff1;
   height: 30px;
@@ -4264,13 +4264,12 @@ input[type="number"] {
   display: flex;
   align-items: center; }
 
-.kmt-typography-variations {
-  overflow-x: auto;
+.premium-typography-variations {
   max-height: 360px;
   margin: 0;
   right: 0;
   left: 0; }
-  .kmt-typography-variations li {
+  .premium-typography-variations li {
     display: flex;
     align-items: center;
     height: 50px;
@@ -4279,6 +4278,12 @@ input[type="number"] {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-  .kmt-typography-variations .kmt-variation-name {
+  .premium-typography-variations .premium-variation-name {
     font-size: 14px;
     line-height: 1.3; }
+
+.premium-typography-option .components-popover__content {
+  width: 300px !important; }
+
+.premium-typography-option.premium-font-family__modal .components-popover__content {
+  overflow: hidden; }

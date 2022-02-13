@@ -3,7 +3,7 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 const { __ } = wp.i18n;
@@ -359,7 +359,7 @@ class edit extends Component {
                                 saveFirstStyle({ firstShadowVertical: newValue || "0" })
                             }
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Margin Left", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstMarginL}
                             onChange={newMargin =>
@@ -368,7 +368,7 @@ class edit extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Margin Right", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstMarginR}
                             onChange={newMargin =>
@@ -377,7 +377,7 @@ class edit extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstPadding}
                             onChange={newPadding =>
@@ -545,7 +545,7 @@ class edit extends Component {
                                 saveSecondStyle({ secondShadowVertical: newValue || "0" })
                             }
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Margin Left", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondMarginL}
                             onChange={newMargin =>
@@ -554,7 +554,7 @@ class edit extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Margin Right", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondMarginR}
                             onChange={newMargin =>
@@ -563,7 +563,7 @@ class edit extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondPadding}
                             onChange={newPadding =>

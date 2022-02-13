@@ -1,4 +1,4 @@
-.kmt-typography {
+.premium-typography {
     position: relative;
 
     header {
@@ -9,17 +9,17 @@
     }
 
     &:hover
-        .kmt-typography-wrapper
-        .kmt-btn-reset-wrap
-        .kmt-reset-btn:not(:disabled) {
+        .premium-typography-wrapper
+        .premium-btn-reset-wrap
+        .premium-reset-btn:not(:disabled) {
         opacity: 1;
     }
 
-    .kmt-typography-wrapper {
+    .premium-typography-wrapper {
         display: flex;
         align-items: center;
 
-        .kmt-btn-reset-wrap .kmt-reset-btn {
+        .premium-btn-reset-wrap .premiumreset-btn {
             color: var(--primaryColor);
             font-size: 12px;
             padding: 0px 6px;
@@ -62,14 +62,16 @@
         }
     }
 
-    &.kmt-typography-wrapper .kmt-btn-reset-wrap .kmt-reset-btn:focus {
+    &.premium-typography-wrapper
+        .premiumbtn-reset-wrap
+        .premiumreset-btn:focus {
         box-shadow: none;
         border: none;
         background: transparent;
     }
 }
 
-.kmt-typohraphy-value {
+.premium-typohraphy-value {
     display: flex;
     border-radius: 3px;
     background: #fff;
@@ -90,7 +92,7 @@
     }
 
     > div {
-        &.kmt-typography-title-container {
+        &.premium-typography-title-container {
             display: flex;
             align-content: center;
             align-items: center;
@@ -144,7 +146,7 @@
         }
     }
 
-    .kmt-font {
+    .premium-font {
         display: inline-flex;
         align-items: center;
 
@@ -172,7 +174,7 @@
     }
 }
 
-.kmt-typography-container {
+.premium-typography-container {
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -180,7 +182,7 @@
     position: relative;
 }
 
-.kmt-typography-top {
+.premium-typography-top {
     display: flex;
     align-items: center;
     position: relative;
@@ -190,17 +192,17 @@
     box-sizing: border-box;
     border-bottom: 1px solid var(--optionBorderColor);
 
-    &.kmt-static > * {
+    &.premium-static > * {
         transition: none !important;
     }
 }
 
-.kmt-typography-container ~ * {
+.premium-typography-container ~ * {
     left: 0;
     right: 0;
 }
 
-.kmt-typography-top {
+.premium-typography-top {
     ~ * {
         left: 0;
         right: 0;
@@ -237,7 +239,7 @@
         }
     }
 
-    .kmt-font {
+    .premium-font {
         flex: 1;
 
         span {
@@ -278,7 +280,7 @@
         }
     }
 
-    .kmt-weight {
+    .premium-weight {
         justify-content: flex-end;
         width: 78px;
         margin-left: 7%;
@@ -320,7 +322,7 @@
         }
     }
 
-    .kmt-back {
+    .premium-back {
         z-index: 2;
         width: 28px;
         margin-right: 12px;
@@ -334,17 +336,17 @@
         }
     }
 
-    &.kmt-switch-panel {
-        .kmt-back {
+    &.premium-switch-panel {
+        .premiumback {
             opacity: 1;
             margin-left: 0;
         }
 
-        .kmt-font span {
+        .premium-font span {
             width: 90%;
         }
 
-        .kmt-weight {
+        .premium-weight {
             margin-left: 5%;
 
             &:not(.active) {
@@ -358,7 +360,7 @@
     }
 }
 
-.kmt-typography-options {
+.premium-typography-options {
     margin: 0;
     right: 0;
     left: 0;
@@ -370,7 +372,7 @@
         box-sizing: border-box;
     }
 
-    li.customize-control-kmt-slider {
+    li.customize-control-premiumslider {
         &.customize-control-title {
             display: inline-block;
             font-size: 13px;
@@ -379,12 +381,12 @@
             transform: translateY(-5px) !important;
         }
 
-        .kmt-slider-units {
+        .premium-slider-units {
             font-size: 11px;
             text-transform: uppercase;
         }
 
-        .kmt-range-value__input {
+        .premium-range-value__input {
             width: 100%;
             border: 1px solid #dcdddf !important;
             border-radius: 0 !important;
@@ -392,7 +394,7 @@
     }
 
     > li {
-        &:not(.kmt-typography-variant) {
+        &:not(.premium-typography-variant) {
             height: 95px;
         }
 
@@ -401,27 +403,27 @@
         }
     }
 
-    .kmt-control {
+    .premium-control {
         margin: 0 !important;
         padding: 0 !important;
         width: 100%;
     }
 
-    .kmt-slider:before {
+    .premium-slider:before {
         --backgroundColor: #e3e6e8;
     }
 
-    .kmt-value-changer ul {
+    .premium-value-changer ul {
         box-shadow: 0 10px 20px 3px rgba(0, 0, 0, 0.07),
             0 1px 3px 0px rgba(0, 0, 0, 0.03);
     }
 
-    .kmt-disabled-notification {
+    .premium-disabled-notification {
         background: rgba(243, 243, 245, 0.5);
     }
 }
 
-.kmt-typography-variant {
+.premium-typography-variant {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
@@ -486,7 +488,7 @@
                 content: "Aa";
             }
 
-            &:hover .kmt-tooltip-top {
+            &:hover .premiumtooltip-top {
                 opacity: 1;
                 visibility: visible;
                 transform: translate3d(0px, -40px, 0px);
@@ -495,7 +497,7 @@
     }
 }
 
-.kmt-text-decoration li {
+.premium-text-decoration li {
     &:after {
         position: absolute;
         content: "";
@@ -519,18 +521,18 @@
     }
 }
 
-.kmt-typography-single-font,
-.kmt-typography-variations li {
+.premium-typography-single-font,
+.premium-typography-variations li {
     cursor: pointer;
     position: relative;
 }
 
-.kmt-typography-single-font:not(:first-child),
-.kmt-typography-variations li:not(:first-child) {
+.premium-typography-single-font:not(:first-child),
+.premium-typography-variations li:not(:first-child) {
     border-top: 1px solid var(--optionBorderColor);
 }
 
-.kmt-typography-single-font {
+.premium-typography-single-font {
     &:hover,
     &.active {
         color: #fff;
@@ -539,7 +541,7 @@
     }
 }
 
-.kmt-typography-variations li {
+.premium-typography-variations li {
     &:hover,
     &.active {
         color: #fff;
@@ -548,57 +550,56 @@
     }
 }
 
-.kmt-typography-single-font {
+.premium-typography-single-font {
     &:hover:after,
     &.active:after {
         box-shadow: -5px 0px 15px 10px var(--primaryColor);
     }
 }
 
-.kmt-typography-variations li {
+.premium-typography-variations li {
     &:hover:after,
     &.active:after {
         box-shadow: -5px 0px 15px 10px var(--primaryColor);
     }
 }
 
-.kmt-typography-single-font {
+.premium-typography-single-font {
     &:hover + *,
     &.active + * {
         border-top-color: rgba(255, 255, 255, 0.3);
     }
 }
 
-.kmt-typography-variations li {
+.premium-typography-variations li {
     &:hover + *,
     &.active + * {
         border-top-color: rgba(255, 255, 255, 0.3);
     }
 }
 
-.kmt-typography-single-font.active:before,
-.kmt-typography-variations li.active:before {
+.premium-typography-single-font.active:before,
+.premium-typography-variations li.active:before {
     position: absolute;
     font: 400 17px/17px dashicons;
     content: "\f147";
     right: 20px;
 }
 
-.kmt-typography-fonts {
+.premium-typography-fonts {
     position: relative;
     height: 290px;
-    overflow: auto;
     will-change: transform;
     direction: ltr;
-
     margin: 0px;
-    .kmt-source-fonts {
+    overflow: auto;
+    .premium-source-fonts {
         text-transform: capitalize;
         margin-left: 10px;
     }
 }
 
-.kmt-typography-single-font {
+.premium-typography-single-font {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -623,11 +624,11 @@
         box-shadow: -5px 0px 15px 10px #fff;
     }
 
-    .kmt-font-name {
+    .premium-font-name {
         opacity: 0.7;
     }
 
-    .kmt-font-preview {
+    .premium-font-preview {
         font-size: 20px;
         line-height: 1.3;
         margin-top: 10px;
@@ -635,11 +636,11 @@
         white-space: nowrap;
     }
 
-    &:hover .kmt-font-name {
+    &:hover .premium-font-name {
         opacity: 1;
     }
 }
-.kmt-fonts-source {
+.premium-fonts-source {
     font-size: 16px;
     background-color: #efeff1;
     height: 30px;
@@ -649,8 +650,7 @@
     display: flex;
     align-items: center;
 }
-.kmt-typography-variations {
-    overflow-x: auto;
+.premium-typography-variations {
     max-height: 360px;
     margin: 0;
     right: 0;
@@ -667,8 +667,18 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .kmt-variation-name {
+    .premium-variation-name {
         font-size: 14px;
         line-height: 1.3;
+    }
+}
+.premium-typography-option {
+    .components-popover__content {
+        width: 300px !important;
+    }
+}
+.premium-typography-option.premium-font-family__modal {
+    .components-popover__content {
+        overflow: hidden;
     }
 }

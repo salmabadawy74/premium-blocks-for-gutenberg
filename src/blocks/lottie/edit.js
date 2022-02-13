@@ -4,7 +4,7 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from '../../components/premium-padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control'
 import ResponsiveRangeControl from "../../components/RangeControl /responsive-range-control";
@@ -239,7 +239,7 @@ class edit extends Component {
                         checked={reverse}
                         onChange={() => setAttributes({ reverse: !reverse })}
                     />
-                    <PremiumRangeControl
+                    <ResponsiveSingleRangeControl
                         label={__('Animation Speed', 'premium-block-for-gutenberg')}
                         value={speed}
                         onChange={newValue => setAttributes({ speed: (newValue !== "") ? newValue : 1 })}
@@ -262,7 +262,7 @@ class edit extends Component {
                     />
 
                     {('scroll' === trigger && !reverse) && <Fragment>
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__('Scroll Speed', 'premium-block-for-gutenberg')}
                             value={scrollSpeed}
                             onChange={(newValue) => setAttributes({ scrollSpeed: (newValue !== "") ? newValue : 200 })}
@@ -274,7 +274,7 @@ class edit extends Component {
                         />
                     </Fragment>}
                     {((trigger === 'viewport' || trigger === 'scroll') && !reverse) && <Fragment>
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__('Bottom', 'premium-block-for-gutenberg')}
                             value={bottom}
                             onChange={(newValue) => setAttributes({ bottom: newValue })}
@@ -283,7 +283,7 @@ class edit extends Component {
                             min={0}
                             max={50}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__('Top', 'premium-block-for-gutenberg')}
                             value={top}
                             onChange={(newValue) => setAttributes({ top: newValue })}
@@ -310,7 +310,7 @@ class edit extends Component {
                         units={['px', 'em', 'rem']}
                         defaultValue={200}
                     />
-                    <PremiumRangeControl
+                    <ResponsiveSingleRangeControl
                         label={__("Rotate (Degree)", 'premium-block-for-gutenberg')}
                         value={rotate}
                         min={-180}
@@ -391,7 +391,7 @@ class edit extends Component {
                                             colorDefault={''}
                                             onColorChange={(newValue) => saveLottieStyles({ backColor: newValue })}
                                         />
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__(`Opacity`, 'premium-block-for-gutenberg')}
                                             value={lottieStyles[0].backOpacity}
                                             max={1}
@@ -425,7 +425,7 @@ class edit extends Component {
                                             colorDefault={''}
                                             onColorChange={(newValue) => saveLottieStyles({ backHColor: newValue })}
                                         />
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__(`Opacity`, 'premium-block-for-gutenberg')}
                                             value={lottieStyles[0].backHOpacity}
                                             max={1}

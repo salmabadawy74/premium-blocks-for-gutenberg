@@ -1,5 +1,5 @@
 import classnames from "classnames"
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import PremiumTypo from "../../components/premium-typo";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -454,14 +454,14 @@ class edit extends Component {
                                 />
                             </Fragment>
                         }
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Progress", 'premium-block-for-gutenberg')}
                             value={progress}
                             onChange={value => setAttributes({ progress: value })}
                             showUnit={false}
                             defaultValue={50}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Speed (milliseconds)", 'premium-block-for-gutenberg')}
                             value={speeds}
                             onChange={value => setAttributes({ speeds: value })}

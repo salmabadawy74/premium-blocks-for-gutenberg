@@ -6,7 +6,7 @@ import PremiumBorder from "../../components/premium-border"
 import PremiumPadding from "../../components/premium-padding"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 const { __ } = wp.i18n;
@@ -272,7 +272,7 @@ class edit extends Component {
                             onChange={newDir => setAttributes({ flexDir: newDir })}
                         />
                         {("row" === flexDir || "row-reverse" === flexDir) && (
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Spacing", 'premium-block-for-gutenberg')}
                                 value={iconSpacing}
                                 onChange={newValue => setAttributes({ iconSpacing: newValue })}
@@ -369,7 +369,7 @@ class edit extends Component {
                                     }
                                 />
                             )}
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Size", 'premium-block-for-gutenberg')}
                                 value={iconSize}
                                 onChange={newValue => setAttributes({ iconSize: newValue })}
@@ -483,7 +483,7 @@ class edit extends Component {
                                     })
                                 }
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Gap After", 'premium-block-for-gutenberg')}
                                 value={prefixStyles[0].prefixGap}
                                 onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
@@ -540,7 +540,7 @@ class edit extends Component {
                                     })
                                 }
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Gap Before", 'premium-block-for-gutenberg')}
                                 value={suffixStyles[0].suffixGap}
                                 onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
@@ -612,7 +612,7 @@ class edit extends Component {
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
                             >
-                                <PremiumRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__("Margin Top", 'premium-block-for-gutenberg')}
                                     value={titleStyles[0].titleT}
                                     onChange={newValue => saveTitleStyles({ titleT: newValue })}
@@ -620,7 +620,7 @@ class edit extends Component {
                                     defaultValue={0}
                                 />
 
-                                <PremiumRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__("Margin Bottom", 'premium-block-for-gutenberg')}
                                     value={titleStyles[0].titleB}
                                     onChange={newValue => saveTitleStyles({ titleB: newValue })}

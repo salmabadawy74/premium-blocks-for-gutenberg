@@ -1,8 +1,7 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { Dropdown, Button } = wp.components;
-import PremiumRangeControl from './premium-range-control';
-
+import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
 export default function PremiumFilters(props) {
     const {
         blur,
@@ -31,14 +30,14 @@ export default function PremiumFilters(props) {
                 )}
                 renderContent={() => (
                     <Fragment>
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Blur")}
                             value={blur}
                             onChange={onChangeBlur}
                             showUnit={false}
                             defaultValue={''}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Brightness")}
                             min="0"
                             max="200"
@@ -47,7 +46,7 @@ export default function PremiumFilters(props) {
                             showUnit={false}
                             defaultValue={''}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Contrast")}
                             min="0"
                             max="200"
@@ -56,7 +55,7 @@ export default function PremiumFilters(props) {
                             showUnit={false}
                             defaultValue={''}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Saturation")}
                             min="0"
                             max="200"
@@ -65,7 +64,7 @@ export default function PremiumFilters(props) {
                             showUnit={false}
                             defaultValue={''}
                         />
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Hue")}
                             min="0"
                             max="360"

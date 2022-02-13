@@ -9,7 +9,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
 import RadioComponent from '../../components/radio-control';
@@ -189,7 +189,7 @@ const edit = props => {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <PremiumRangeControl
+                    <ResponsiveSingleRangeControl
                         label={__("Size", 'premium-block-for-gutenberg')}
                         value={iconStyles[0].iconSize}
                         onChange={newValue => saveIconStyle({ iconSize: newValue })}

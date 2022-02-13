@@ -4,7 +4,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 
@@ -408,7 +408,7 @@ class PremiumPricingTable extends Component {
                                     )}
                                     renderContent={() => (
                                         <Fragment>
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
                                                 value={titleStyles[0].titleMarginT}
                                                 min="10"
@@ -419,7 +419,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={10}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
                                                 value={titleStyles[0].titleMarginB}
                                                 min="0"
@@ -430,7 +430,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Padding (PX)", 'premium-block-for-gutenberg')}
                                                 value={titleStyles[0].titlePadding}
                                                 min="0"
@@ -739,7 +739,7 @@ class PremiumPricingTable extends Component {
                                     )}
                                     renderContent={() => (
                                         <Fragment>
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Container Margin Top (PX)", 'premium-block-for-gutenberg')}
                                                 value={priceStyles[0].priceMarginT}
                                                 min="0"
@@ -750,7 +750,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Container Margin Bottom (PX)", 'premium-block-for-gutenberg')}
                                                 value={priceStyles[0].priceMarginB}
                                                 min="0"
@@ -761,7 +761,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Container Padding (PX)", 'premium-block-for-gutenberg')}
                                                 value={priceStyles[0].pricePadding}
                                                 min="0"
@@ -873,7 +873,7 @@ class PremiumPricingTable extends Component {
                                     )}
                                     renderContent={() => (
                                         <Fragment>
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
                                                 value={featureStyles[0].listMarginT}
                                                 onChange={newSize =>
@@ -882,7 +882,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
                                                 value={featureStyles[0].listMarginB}
                                                 onChange={newSize =>
@@ -891,7 +891,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Padding (PX)", 'premium-block-for-gutenberg')}
                                                 value={featureStyles[0].listPadding}
                                                 onChange={newSize =>
@@ -970,7 +970,7 @@ class PremiumPricingTable extends Component {
                                     )}
                                     renderContent={() => (
                                         <Fragment>
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
                                                 value={descStyles[0].descMarginT}
                                                 onChange={newMargin =>
@@ -979,7 +979,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
                                                 value={descStyles[0].descMarginB}
                                                 onChange={newMargin =>
@@ -988,7 +988,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Padding (PX)", 'premium-block-for-gutenberg')}
                                                 value={descStyles[0].descPadding}
                                                 onChange={newPadding =>
@@ -1118,14 +1118,14 @@ class PremiumPricingTable extends Component {
                                     )}
                                     renderContent={() => (
                                         <Fragment>
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Width (%)", 'premium-block-for-gutenberg')}
                                                 value={buttonStyles[0].btnWidth}
                                                 onChange={newSize => saveButtonStyle({ btnWidth: newSize })}
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
                                                 value={buttonStyles[0].btnMarginT}
                                                 onChange={newPadding =>
@@ -1134,7 +1134,7 @@ class PremiumPricingTable extends Component {
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
                                                 value={buttonStyles[0].btnMarginB}
                                                 onChange={newPadding =>
@@ -1144,7 +1144,7 @@ class PremiumPricingTable extends Component {
                                                 defaultValue={0}
                                             />
 
-                                            <PremiumRangeControl
+                                            <ResponsiveSingleRangeControl
                                                 label={__("Padding", 'premium-block-for-gutenberg')}
                                                 value={buttonStyles[0].btnPadding}
                                                 onChange={newPadding =>
@@ -1231,14 +1231,14 @@ class PremiumPricingTable extends Component {
                                 colorDefault={''}
                                 onColorChange={newColor => saveBadgeStyles({ badgeBack: newColor })}
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Vertical Offset", 'premium-block-for-gutenberg')}
                                 value={badgeStyles[0].badgeTop}
                                 onChange={newValue => saveBadgeStyles({ badgeTop: newValue })}
                                 showUnit={false}
                                 defaultValue={0}
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Horizontal Offset", 'premium-block-for-gutenberg')}
                                 value={badgeStyles[0].badgeHorizontal}
                                 min="1"
@@ -1249,7 +1249,7 @@ class PremiumPricingTable extends Component {
                                 showUnit={false}
                                 defaultValue={1}
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Badge Size", 'premium-block-for-gutenberg')}
                                 value={badgeStyles[0].badgeSize}
                                 min="0"
@@ -1258,7 +1258,7 @@ class PremiumPricingTable extends Component {
                                 showUnit={false}
                                 defaultValue={0}
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Text Width", 'premium-block-for-gutenberg')}
                                 min="1"
                                 max="200"
@@ -1355,7 +1355,7 @@ class PremiumPricingTable extends Component {
                                 )}
                                 renderContent={() => (
                                     <Fragment>
-                                        <PremiumRangeControl
+                                        <ResponsiveSingleRangeControl
                                             label={__("Padding", 'premium-block-for-gutenberg')}
                                             value={tableStyles[0].tablePadding}
                                             min="0"

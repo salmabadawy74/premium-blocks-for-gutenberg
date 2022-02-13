@@ -4,7 +4,7 @@ import PremiumPadding from "../../components/premium-padding";
 import PremiumMargin from "../../components/premium-margin";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import PremiumRangeControl from "../../components/premium-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
 
@@ -159,7 +159,7 @@ const edit = props => {
                         />
                     )}
                     {"boxed" === innerWidthType && stretchSection && (
-                        <PremiumRangeControl
+                        <ResponsiveSingleRangeControl
                             label={__("Max Width", 'premium-block-for-gutenberg')}
                             value={innerWidth}
                             min="1"
@@ -180,7 +180,7 @@ const edit = props => {
                     />
                     {"min" === height && (
                         <Fragment>
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Min Height", 'premium-block-for-gutenberg')}
                                 value={minHeight}
                                 min="1"

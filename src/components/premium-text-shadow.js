@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
-import PremiumRangeControl from './premium-range-control';
+import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
 import AdvancedColorControl from './Color Control/ColorComponent'
 
 export default function PremiumTextShadow(props) {
@@ -48,14 +48,14 @@ export default function PremiumTextShadow(props) {
                                     onResetClick={onResetClick}
                                 />
                             </Fragment> */}
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Blur")}
                                 value={blur}
                                 onChange={onChangeBlur}
                                 showUnit={false}
                                 defaultValue={0}
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Horizontal")}
                                 value={horizontal}
                                 onChange={onChangehHorizontal}
@@ -64,7 +64,7 @@ export default function PremiumTextShadow(props) {
                                 min={-100}
                                 max={100}
                             />
-                            <PremiumRangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Vertical")}
                                 value={vertical}
                                 onChange={onChangeVertical}
