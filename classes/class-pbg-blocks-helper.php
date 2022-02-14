@@ -2156,7 +2156,7 @@ class PBG_Blocks_Helper {
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-			$css = $this->get_videobox_css_style( $attributes, $unique_id );
+			$css = $this->get_newsLetter_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
@@ -2166,6 +2166,74 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+	}
+
+    	public function get_newsLetter_css_style( $attr, $unique_id ) {
+		if ( isset( $attr['inputStyles'][0]['textFontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['inputStyles'][0]['textFontFamily'] ) ? $attr['inputStyles'][0]['textFontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['inputStyles'][0]['textWeight'] ) ? $attr['inputStyles'][0]['textWeight'] : '' ),
+				)
+			);
+		}
+        if ( isset( $attr['btnStyles'][0]['btnFontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['btnStyles'][0]['btnFontFamily'] ) ? $attr['btnStyles'][0]['btnFontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['btnStyles'][0]['btnWeight'] ) ? $attr['btnStyles'][0]['btnWeight'] : '' ),
+				)
+			);
+		}
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		// Style Description.
+
+		// if ( isset( $attr['inputStyles'] ) ) {
+		// 	if ( isset( $attr['inputStyles'][0]['textSize'] )  ) {
+		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-input__wrapper' . ' > input' );
+		// 		$css->add_property( 'font-size', ( $attr['inputStyles'][0]['textSize']. 'px') );
+		// 	}
+		// }
+        // if ( isset( $attr['btnStyles'] ) ) {
+		// 	if ( isset( $attr[['btnStyles']][0]['btnSize'] ) && isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
+		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-button__wrapper' . ' > button' );
+		// 		$css->add_property( 'font-size', ( $attr[['btnStyles']][0]['btnSize'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
+		// 	}
+		// }
+		$css->start_media_query( $media_query['tablet'] );
+
+	    // if ( isset( $attr['inputStyles'] ) ) {
+		// 	if ( isset( $attr['inputStyles'][0]['textSizeTablet'] )  ) {
+		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-input__wrapper' . ' > input' );
+		// 		$css->add_property( 'font-size', ( $attr['inputStyles'][0]['textSizeTablet']. 'px') );
+		// 	}
+		// }
+        // if ( isset( $attr['btnStyles'] ) ) {
+		// 	if ( isset( $attr[['btnStyles']][0]['btnSizeTablet'] ) && isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
+		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-button__wrapper' . ' > button' );
+		// 		$css->add_property( 'font-size', ( $attr[['btnStyles']][0]['btnSizeTablet'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
+		// 	}
+		// }
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+	    // if ( isset( $attr['inputStyles'] ) ) {
+		// 	if ( isset( $attr['inputStyles'][0]['textSizeMobile'] )  ) {
+		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-input__wrapper' . ' > input' );
+		// 		$css->add_property( 'font-size', ( $attr['inputStyles'][0]['textSizeMobile']. 'px') );
+		// 	}
+		// }
+        // if ( isset( $attr['btnStyles'] ) ) {
+		// 	if ( isset( $attr[['btnStyles']][0]['btnSizeMobile'] ) && isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
+		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-button__wrapper' . ' > button' );
+		// 		$css->add_property( 'font-size', ( $attr[['btnStyles']][0]['btnSizeMobile'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
+		// 	}
+		// }
+		$css->stop_media_query();
+		return $css->css_output();
 	}
 	/**
 	 * Get CSS value

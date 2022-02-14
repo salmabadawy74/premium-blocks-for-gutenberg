@@ -3,9 +3,9 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumPadding from "../../components/premium-padding";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 
 const { Component, Fragment } = wp.element;
 
@@ -28,7 +28,6 @@ class PremiumAccordion extends Component {
     constructor() {
         super(...arguments);
         this.initAccordion = this.initAccordion.bind(this);
-        this.myRef = React.createRef();
     }
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
@@ -43,9 +42,10 @@ class PremiumAccordion extends Component {
     }
     initAccordion() {
         const { accordionId } = this.props.attributes;
-        if (!accordionId) return null;
-        console.log(accordionId)
-        let title = this.myRef.current
+        if (!this.props.attributes.accordionId) return null;
+        let title = document
+            .getElementById(accordionId)
+            .getElementsByClassName("premium-accordion__title_wrap")[0];
         title.addEventListener("click", () => {
             title
                 .getElementsByClassName("premium-accordion__icon")[0]
@@ -180,7 +180,6 @@ class PremiumAccordion extends Component {
                     className={`premium-accordion__content_wrap`}
                 >
                     <div
-                        ref={this.myRef}
                         className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
                         style={{
                             backgroundColor: titleStyles[0].titleBack,
@@ -403,6 +402,7 @@ class PremiumAccordion extends Component {
                                 saveTitleStyles({ titleShadowVertical: newValue })
                             }
                         />
+
                         <PremiumPadding
                             paddingTop={titlePaddingT}
                             paddingRight={titlePaddingR}
@@ -441,8 +441,7 @@ class PremiumAccordion extends Component {
                             value={arrowStyles[0].arrowPos}
                             onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
-
-                        <ResponsiveSingleRangeControl
+                        <PremiumRangeControl
                             label={__("Size", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowSize}
                             onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
@@ -469,7 +468,7 @@ class PremiumAccordion extends Component {
                                 })
                             }
                         />
-                        <ResponsiveSingleRangeControl
+                        <PremiumRangeControl
                             label={__("Border Radius", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowRadius}
                             onChange={newValue =>
@@ -482,7 +481,7 @@ class PremiumAccordion extends Component {
                             defaultValue={0}
                             showUnit={false}
                         />
-                        <ResponsiveSingleRangeControl
+                        <PremiumRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowPadding}
                             onChange={newValue =>
