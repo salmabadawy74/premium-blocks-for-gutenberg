@@ -5,35 +5,58 @@ import FontsList from "./typography/fontList";
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { SelectControl, Popover, TextControl } = wp.components;
-
-export default class PremiumTypo extends Component {
+const { withSelect } = wp.data
+class PremiumTypo extends Component {
     constructor(props) {
         super(props)
+        let responsiveSize;
+        if (this.props.components.includes("responsiveSize")) {
+            responsiveSize = {
+                Desktop: this.props.fontSize.value || '',
+                Tablet: this.props.fontSizeTablet.value || '',
+                Mobile: this.props.fontSizeMobile.value || ''
+            }
+        }
+
         this.state = {
-            fontFamily: this.props.fontFamily || '',
+            fontFamily: this.props.fontFamily || 'default',
             line: this.props.line,
-            upper: this.props.upper,
-            weight: this.props.weight,
-            size: this.props.size,
+            weight: this.props.weight || '400',
+            size: this.props.components.includes("responsiveSize") ? responsiveSize : this.props.size,
+            textTransform: this.props.textTransform,
+            textDecoration: this.props.textDecoration,
             sizeUnit: this.props.sizeUnit || 'px',
             isVisible: false,
             currentView: '',
-            search: this.props.fontFamily || "System Default",
-            showUnit: this.props.showUnit || false
+            search: this.props.fontFamily || "",
+            showUnit: this.props.showUnit || false,
+            spacing: this.props.spacing,
+            style: this.props.style,
+            device: this.props.deviceType,
         }
+
+        this.defaultValue = {
+            fontFamily: 'default',
+            line: '',
+            weight: '400',
+            size: '',
+            textTransform: 'none',
+            textDecoration: 'none',
+            sizeUnit: 'px',
+            isVisible: false,
+            currentView: '',
+            search: "",
+            showUnit: this.props.showUnit || false,
+            spacing: '',
+            style: '',
+        };
     }
 
     render() {
+
         const {
             components,
-            size,
-            style,
-            spacing,
-            line,
             setAttributes,
-            fontFamily = '',
-            textTransform,
-            textDecoration,
             onChangeTextTransform = () => { },
             onChangeTextDecoration = () => { },
             onChangeFamily = () => { },
@@ -46,12 +69,22 @@ export default class PremiumTypo extends Component {
         } = this.props;
 
         const {
+            fontFamily,
+            line,
+            weight,
+            size,
+            textTransform,
+            textDecoration,
             sizeUnit,
             isVisible,
             currentView,
             search,
             showUnit,
-            weight
+            spacing,
+            style,
+            device,
+            responsiveSize
+
         } = this.state;
 
         const STYLE = [
@@ -70,7 +103,7 @@ export default class PremiumTypo extends Component {
         ];
 
         const fonts = [
-            { value: "", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+            { value: "default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
@@ -86,16 +119,6 @@ export default class PremiumTypo extends Component {
                 fontWeight = googleFonts[k].weight
 
             }
-        })
-
-        if (fontWeight === "") {
-            fontWeight = fonts[0].weight
-        }
-        const fontWeightObj = []
-        fontWeight.forEach(function (item) {
-            fontWeightObj.push(
-                { value: item, label: item }
-            )
         })
 
         const toggleVisible = (v) => {
@@ -125,12 +148,12 @@ export default class PremiumTypo extends Component {
                 }))
             }
         })
-
+        const fontSize = components.includes("responsiveSize") ? size[device] : size
         return (
             <div className="premium-control-toggle premium-typography">
                 <header>
                     <span className="customize-control-title premium-control-title">
-                        <strong>{__("Typography", 'premium-block-for-gutenberg')}</strong>
+                        <strong>{__('Typography', 'premium-block-for-gutenberg')}</strong>
                     </span>
                 </header>
                 <div className="premium-typography-wrapper">
@@ -160,7 +183,11 @@ export default class PremiumTypo extends Component {
                                                                 />
                                                             </li>
                                                         </ul>
-                                                        <FontsList linearFontsList={fonts} value={this.state.fontFamily} onPickFamily={onChangeFamily} />
+                                                        <FontsList
+                                                            linearFontsList={fonts}
+                                                            value={fontFamily}
+                                                            onPickFamily={(value) => { this.setState({ fontFamily: value }), onChangeFamily(value) }}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,7 +201,7 @@ export default class PremiumTypo extends Component {
                                     toggleVisible("options")
                                 }}
                             >
-                                {size}{sizeUnit}
+                                {fontSize}{sizeUnit}
                                 {isVisible && currentView == 'options' &&
                                     <Popover className="premium-typography-option" onClose={toggleClose}>
                                         <div className=" ">
@@ -188,7 +215,7 @@ export default class PremiumTypo extends Component {
                                                                 min="10"
                                                                 max="80"
                                                                 defaultValue={20}
-                                                                onChange={onChangeSize}
+                                                                onChange={(value) => { this.setState({ size: value }), onChangeSize(value) }}
                                                                 showUnit={false}
                                                             />
                                                         </li>
@@ -216,9 +243,8 @@ export default class PremiumTypo extends Component {
                                                             <ResponsiveSingleRangeControl
                                                                 label={__("Line Height (PX)", 'premium-block-for-gutenberg')}
                                                                 value={line}
-                                                                onChange={onChangeLine}
+                                                                onChange={(value) => { this.setState({ line: value }), onChangeLine(value) }}
                                                                 defaultValue={1}
-                                                                onChange={onChangeLine}
                                                                 showUnit={false}
                                                                 min={5}
                                                                 max={200}
@@ -228,12 +254,10 @@ export default class PremiumTypo extends Component {
                                                     {components.includes("spacing") && (
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
-
                                                                 label={__("Letter Spacing (PX)", 'premium-block-for-gutenberg')}
                                                                 value={spacing}
-                                                                onChange={onChangeSpacing}
+                                                                onChange={(value) => { this.setState({ spacing: value }), onChangeSpacing(value) }}
                                                                 defaultValue={''}
-                                                                onChange={onChangeSpacing}
                                                                 showUnit={false}
                                                                 step={0.1}
                                                                 min={-5}
@@ -247,7 +271,7 @@ export default class PremiumTypo extends Component {
                                                                 label={__("Style", 'premium-block-for-gutenberg')}
                                                                 options={STYLE}
                                                                 value={style}
-                                                                onChange={onChangeStyle}
+                                                                onChange={(value) => { this.setState({ style: value }), onChangeStyle(value) }}
                                                                 onResetClick={onResetClick}
                                                             />
                                                         </li>
@@ -257,7 +281,7 @@ export default class PremiumTypo extends Component {
                                                             {['capitalize', 'uppercase'].map((variant) => (
                                                                 <li
                                                                     key={variant}
-                                                                    onClick={() => onChangeTextTransform(variant)}
+                                                                    onClick={() => { this.setState({ textTransform: variant }), onChangeTextTransform(variant) }}
                                                                     className={`${textTransform == variant ? 'active' : ''}`}
                                                                     data-variant={variant}>
                                                                     <i className="premium-tooltip-top">
@@ -269,12 +293,11 @@ export default class PremiumTypo extends Component {
                                                     </li>
                                                     )}
                                                     {components.includes("Decoration") && (<li className="premium-typography-variant">
-
                                                         <ul className="premium-text-decoration">
                                                             {['line-through', 'underline'].map((variant) => (
                                                                 <li
                                                                     key={variant}
-                                                                    onClick={() => onChangeTextDecoration(variant)}
+                                                                    onClick={() => { this.setState({ textDecoration: variant }), onChangeTextDecoration(variant) }}
                                                                     className={`${textDecoration == variant ? 'active' : ''}`}
                                                                     data-variant={variant}>
                                                                     <i className="premium-tooltip-top">
@@ -310,21 +333,36 @@ export default class PremiumTypo extends Component {
                             )}
                         </div>
 
-                        <div className="premium-spacing-btn-reset-wrap">
-                            <button
-                                className="premium-reset-btn "
-                                disabled={
-                                    JSON.stringify(this.state) ===
-                                    JSON.stringify(this.defaultValue)
-                                }
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                }}
-                            ></button>
-                        </div>
+                    </div>
+                    <div className="premium-spacing-btn-reset-wrap">
+                        <button
+                            className="premium-reset-btn"
+                            disabled={
+                                JSON.stringify(this.state) ===
+                                JSON.stringify(this.defaultValue)
+                            }
+                            onClick={(e) => {
+                                e.preventDefault();
+                                this.setState({
+
+                                    ...this.defaultValue
+                                })
+                            }}
+                        >
+
+                        </button>
                     </div>
                 </div>
-            </div >
+            </div>
         );
+
     }
 }
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType,
+    }
+})(PremiumTypo)

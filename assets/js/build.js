@@ -1495,6 +1495,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _premiumFonts = __webpack_require__(228);
@@ -1529,6 +1531,7 @@ var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     Popover = _wp$components.Popover,
     TextControl = _wp$components.TextControl;
+var withSelect = wp.data.withSelect;
 
 var PremiumTypo = function (_Component) {
     _inherits(PremiumTypo, _Component);
@@ -1538,17 +1541,46 @@ var PremiumTypo = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).call(this, props));
 
+        var responsiveSize = void 0;
+        if (_this.props.components.includes("responsiveSize")) {
+            responsiveSize = {
+                Desktop: _this.props.fontSize.value || '',
+                Tablet: _this.props.fontSizeTablet.value || '',
+                Mobile: _this.props.fontSizeMobile.value || ''
+            };
+        }
+
         _this.state = {
-            fontFamily: _this.props.fontFamily || '',
+            fontFamily: _this.props.fontFamily || 'default',
             line: _this.props.line,
-            upper: _this.props.upper,
-            weight: _this.props.weight,
-            size: _this.props.size,
+            weight: _this.props.weight || '400',
+            size: _this.props.components.includes("responsiveSize") ? responsiveSize : _this.props.size,
+            textTransform: _this.props.textTransform,
+            textDecoration: _this.props.textDecoration,
             sizeUnit: _this.props.sizeUnit || 'px',
             isVisible: false,
             currentView: '',
-            search: _this.props.fontFamily || "System Default",
-            showUnit: _this.props.showUnit || false
+            search: _this.props.fontFamily || "",
+            showUnit: _this.props.showUnit || false,
+            spacing: _this.props.spacing,
+            style: _this.props.style,
+            device: _this.props.deviceType
+        };
+
+        _this.defaultValue = {
+            fontFamily: 'default',
+            line: '',
+            weight: '400',
+            size: '',
+            textTransform: 'none',
+            textDecoration: 'none',
+            sizeUnit: 'px',
+            isVisible: false,
+            currentView: '',
+            search: "",
+            showUnit: _this.props.showUnit || false,
+            spacing: '',
+            style: ''
         };
         return _this;
     }
@@ -1556,21 +1588,11 @@ var PremiumTypo = function (_Component) {
     _createClass(PremiumTypo, [{
         key: "render",
         value: function render() {
-            var _this2 = this,
-                _React$createElement,
-                _React$createElement2;
+            var _this2 = this;
 
             var _props = this.props,
                 components = _props.components,
-                size = _props.size,
-                style = _props.style,
-                spacing = _props.spacing,
-                line = _props.line,
                 setAttributes = _props.setAttributes,
-                _props$fontFamily = _props.fontFamily,
-                fontFamily = _props$fontFamily === undefined ? '' : _props$fontFamily,
-                textTransform = _props.textTransform,
-                textDecoration = _props.textDecoration,
                 _props$onChangeTextTr = _props.onChangeTextTransform,
                 onChangeTextTransform = _props$onChangeTextTr === undefined ? function () {} : _props$onChangeTextTr,
                 _props$onChangeTextDe = _props.onChangeTextDecoration,
@@ -1590,12 +1612,21 @@ var PremiumTypo = function (_Component) {
                 _props$onResetClick = _props.onResetClick,
                 onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
             var _state = this.state,
+                fontFamily = _state.fontFamily,
+                line = _state.line,
+                weight = _state.weight,
+                size = _state.size,
+                textTransform = _state.textTransform,
+                textDecoration = _state.textDecoration,
                 sizeUnit = _state.sizeUnit,
                 isVisible = _state.isVisible,
                 currentView = _state.currentView,
                 search = _state.search,
                 showUnit = _state.showUnit,
-                weight = _state.weight;
+                spacing = _state.spacing,
+                style = _state.style,
+                device = _state.device,
+                responsiveSize = _state.responsiveSize;
 
 
             var STYLE = [{
@@ -1609,7 +1640,7 @@ var PremiumTypo = function (_Component) {
                 label: "Oblique"
             }];
 
-            var fonts = [{ value: "", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
+            var fonts = [{ value: "default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
 
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
@@ -1617,14 +1648,6 @@ var PremiumTypo = function (_Component) {
                 if (k === fontFamily) {
                     fontWeight = _premiumFonts2.default[k].weight;
                 }
-            });
-
-            if (fontWeight === "") {
-                fontWeight = fonts[0].weight;
-            }
-            var fontWeightObj = [];
-            fontWeight.forEach(function (item) {
-                fontWeightObj.push({ value: item, label: item });
             });
 
             var toggleVisible = function toggleVisible(v) {
@@ -1660,7 +1683,7 @@ var PremiumTypo = function (_Component) {
                     });
                 }
             });
-
+            var fontSize = components.includes("responsiveSize") ? size[device] : size;
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle premium-typography" },
@@ -1673,7 +1696,7 @@ var PremiumTypo = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Typography", 'premium-block-for-gutenberg')
+                            __('Typography', 'premium-block-for-gutenberg')
                         )
                     )
                 ),
@@ -1726,7 +1749,13 @@ var PremiumTypo = function (_Component) {
                                                         })
                                                     )
                                                 ),
-                                                React.createElement(_fontList2.default, { linearFontsList: fonts, value: this.state.fontFamily, onPickFamily: onChangeFamily })
+                                                React.createElement(_fontList2.default, {
+                                                    linearFontsList: fonts,
+                                                    value: fontFamily,
+                                                    onPickFamily: function onPickFamily(value) {
+                                                        _this2.setState({ fontFamily: value }), onChangeFamily(value);
+                                                    }
+                                                })
                                             )
                                         )
                                     )
@@ -1740,7 +1769,7 @@ var PremiumTypo = function (_Component) {
                                         toggleVisible("options");
                                     }
                                 },
-                                size,
+                                fontSize,
                                 sizeUnit,
                                 isVisible && currentView == 'options' && React.createElement(
                                     Popover,
@@ -1763,7 +1792,9 @@ var PremiumTypo = function (_Component) {
                                                         min: "10",
                                                         max: "80",
                                                         defaultValue: 20,
-                                                        onChange: onChangeSize,
+                                                        onChange: function onChange(value) {
+                                                            _this2.setState({ size: value }), onChangeSize(value);
+                                                        },
                                                         showUnit: false
                                                     })
                                                 ),
@@ -1796,23 +1827,33 @@ var PremiumTypo = function (_Component) {
                                                 components.includes("line") && React.createElement(
                                                     "li",
                                                     { className: "customize-control-premium-slider" },
-                                                    React.createElement(_singleRangeControl2.default, (_React$createElement = {
+                                                    React.createElement(_singleRangeControl2.default, {
                                                         label: __("Line Height (PX)", 'premium-block-for-gutenberg'),
                                                         value: line,
-                                                        onChange: onChangeLine,
-                                                        defaultValue: 1
-                                                    }, _defineProperty(_React$createElement, "onChange", onChangeLine), _defineProperty(_React$createElement, "showUnit", false), _defineProperty(_React$createElement, "min", 5), _defineProperty(_React$createElement, "max", 200), _React$createElement))
+                                                        onChange: function onChange(value) {
+                                                            _this2.setState({ line: value }), onChangeLine(value);
+                                                        },
+                                                        defaultValue: 1,
+                                                        showUnit: false,
+                                                        min: 5,
+                                                        max: 200
+                                                    })
                                                 ),
                                                 components.includes("spacing") && React.createElement(
                                                     "li",
                                                     { className: "customize-control-premium-slider" },
-                                                    React.createElement(_singleRangeControl2.default, (_React$createElement2 = {
-
+                                                    React.createElement(_singleRangeControl2.default, {
                                                         label: __("Letter Spacing (PX)", 'premium-block-for-gutenberg'),
                                                         value: spacing,
-                                                        onChange: onChangeSpacing,
-                                                        defaultValue: ''
-                                                    }, _defineProperty(_React$createElement2, "onChange", onChangeSpacing), _defineProperty(_React$createElement2, "showUnit", false), _defineProperty(_React$createElement2, "step", 0.1), _defineProperty(_React$createElement2, "min", -5), _defineProperty(_React$createElement2, "max", 15), _React$createElement2))
+                                                        onChange: function onChange(value) {
+                                                            _this2.setState({ spacing: value }), onChangeSpacing(value);
+                                                        },
+                                                        defaultValue: '',
+                                                        showUnit: false,
+                                                        step: 0.1,
+                                                        min: -5,
+                                                        max: 15
+                                                    })
                                                 ),
                                                 components.includes("style") && React.createElement(
                                                     "li",
@@ -1821,7 +1862,9 @@ var PremiumTypo = function (_Component) {
                                                         label: __("Style", 'premium-block-for-gutenberg'),
                                                         options: STYLE,
                                                         value: style,
-                                                        onChange: onChangeStyle,
+                                                        onChange: function onChange(value) {
+                                                            _this2.setState({ style: value }), onChangeStyle(value);
+                                                        },
                                                         onResetClick: onResetClick
                                                     })
                                                 ),
@@ -1837,7 +1880,7 @@ var PremiumTypo = function (_Component) {
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
-                                                                        return onChangeTextTransform(variant);
+                                                                        _this2.setState({ textTransform: variant }), onChangeTextTransform(variant);
                                                                     },
                                                                     className: "" + (textTransform == variant ? 'active' : ''),
                                                                     "data-variant": variant },
@@ -1862,7 +1905,7 @@ var PremiumTypo = function (_Component) {
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
-                                                                        return onChangeTextDecoration(variant);
+                                                                        _this2.setState({ textDecoration: variant }), onChangeTextDecoration(variant);
                                                                     },
                                                                     className: "" + (textDecoration == variant ? 'active' : ''),
                                                                     "data-variant": variant },
@@ -1907,18 +1950,19 @@ var PremiumTypo = function (_Component) {
                                     )
                                 )
                             )
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "premium-spacing-btn-reset-wrap" },
-                            React.createElement("button", {
-                                className: "premium-reset-btn ",
-                                disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
-                                onClick: function onClick(e) {
-                                    e.preventDefault();
-                                }
-                            })
                         )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "premium-spacing-btn-reset-wrap" },
+                        React.createElement("button", {
+                            className: "premium-reset-btn",
+                            disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
+                            onClick: function onClick(e) {
+                                e.preventDefault();
+                                _this2.setState(_extends({}, _this2.defaultValue));
+                            }
+                        })
                     )
                 )
             );
@@ -1928,7 +1972,17 @@ var PremiumTypo = function (_Component) {
     return PremiumTypo;
 }(Component);
 
-exports.default = PremiumTypo;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(PremiumTypo);
 
 /***/ }),
 /* 11 */
@@ -16160,6 +16214,10 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
+var _premiumRangeControl = __webpack_require__(437);
+
+var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
+
 var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
@@ -16167,10 +16225,6 @@ var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 var _radioControl = __webpack_require__(15);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
-
-var _singleRangeControl = __webpack_require__(1);
-
-var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16206,7 +16260,6 @@ var PremiumAccordion = function (_Component) {
         var _this = _possibleConstructorReturn(this, (PremiumAccordion.__proto__ || Object.getPrototypeOf(PremiumAccordion)).apply(this, arguments));
 
         _this.initAccordion = _this.initAccordion.bind(_this);
-        _this.myRef = React.createRef();
         return _this;
     }
 
@@ -16234,9 +16287,8 @@ var PremiumAccordion = function (_Component) {
         value: function initAccordion() {
             var accordionId = this.props.attributes.accordionId;
 
-            if (!accordionId) return null;
-            console.log(accordionId);
-            var title = this.myRef.current;
+            if (!this.props.attributes.accordionId) return null;
+            var title = document.getElementById(accordionId).getElementsByClassName("premium-accordion__title_wrap")[0];
             title.addEventListener("click", function () {
                 title.getElementsByClassName("premium-accordion__icon")[0].classList.toggle("premium-accordion__closed");
                 title.nextSibling.classList.toggle("premium-accordion__desc_close");
@@ -16245,8 +16297,6 @@ var PremiumAccordion = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            var _this2 = this;
-
             var _props2 = this.props,
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
@@ -16368,7 +16418,6 @@ var PremiumAccordion = function (_Component) {
                     React.createElement(
                         "div",
                         {
-                            ref: _this2.myRef,
                             className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowStyles[0].arrowPos,
                             style: {
                                 backgroundColor: titleStyles[0].titleBack,
@@ -16638,7 +16687,7 @@ var PremiumAccordion = function (_Component) {
                             return saveArrowStyles({ arrowPos: newEffect });
                         }
                     }),
-                    React.createElement(_singleRangeControl2.default, {
+                    React.createElement(_premiumRangeControl2.default, {
                         label: __("Size", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowSize,
                         onChange: function onChange(newValue) {
@@ -16667,7 +16716,7 @@ var PremiumAccordion = function (_Component) {
                             });
                         }
                     }),
-                    React.createElement(_singleRangeControl2.default, {
+                    React.createElement(_premiumRangeControl2.default, {
                         label: __("Border Radius", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowRadius,
                         onChange: function onChange(newValue) {
@@ -16680,7 +16729,7 @@ var PremiumAccordion = function (_Component) {
                         defaultValue: 0,
                         showUnit: false
                     }),
-                    React.createElement(_singleRangeControl2.default, {
+                    React.createElement(_premiumRangeControl2.default, {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowPadding,
                         onChange: function onChange(newValue) {
@@ -68085,6 +68134,268 @@ var save = function save(props) {
 };
 
 exports.default = save;
+
+/***/ }),
+/* 437 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = PremiumRangeControl;
+
+var _responsive = __webpack_require__(438);
+
+var _responsive2 = _interopRequireDefault(_responsive);
+
+var _premiumSizeUnits = __webpack_require__(40);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useState = wp.element.useState;
+var RangeControl = wp.components.RangeControl;
+var useInstanceId = wp.compose.useInstanceId;
+function PremiumRangeControl(_ref) {
+    var label = _ref.label,
+        onChange = _ref.onChange,
+        onChangeTablet = _ref.onChangeTablet,
+        onChangeMobile = _ref.onChangeMobile,
+        _ref$value = _ref.value,
+        value = _ref$value === undefined ? '' : _ref$value,
+        _ref$className = _ref.className,
+        className = _ref$className === undefined ? '' : _ref$className,
+        _ref$step = _ref.step,
+        step = _ref$step === undefined ? 1 : _ref$step,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? 100 : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? 0 : _ref$min,
+        _ref$units = _ref.units,
+        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
+        _ref$beforeIcon = _ref.beforeIcon,
+        beforeIcon = _ref$beforeIcon === undefined ? '' : _ref$beforeIcon,
+        _ref$help = _ref.help,
+        help = _ref$help === undefined ? '' : _ref$help,
+        _ref$unit = _ref.unit,
+        unit = _ref$unit === undefined ? 'px' : _ref$unit,
+        defaultValue = _ref.defaultValue,
+        onChangeUnit = _ref.onChangeUnit,
+        showUnit = _ref.showUnit,
+        responsive = _ref.responsive;
+
+    var onChangInput = function onChangInput(event) {
+        if (event.target.value === '') {
+            onChange(undefined);
+            return;
+        }
+        var newValue = Number(event.target.value);
+        if (newValue === '') {
+            updateValue(undefined);
+            return;
+        }
+        if (min < -0.1) {
+            if (newValue > max) {
+                updateValue(max);
+            } else if (newValue < min && newValue !== '-') {
+                updateValue(min);
+            } else {
+                updateValue(newValue);
+            }
+        } else {
+            if (newValue > max) {
+                updateValue(max);
+            } else if (newValue < -0.1) {
+                updateValue(min);
+            } else {
+                updateValue(newValue);
+            }
+        }
+    };
+
+    var _useState = useState('desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        setDevice = _useState2[1];
+
+    var sliderValue = responsive ? value[device] : value;
+
+    var updateValue = function updateValue(value) {
+        device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
+    };
+
+    var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
+    return React.createElement(
+        'div',
+        { className: 'premium-blocks-range-control' },
+        React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                responsive ? React.createElement(_responsive2.default, { label: label, onChange: function onChange(value) {
+                        return setDevice(value);
+                    } }) : React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    label
+                )
+            ),
+            showUnit && React.createElement(_premiumSizeUnits2.default, {
+                units: units,
+                activeUnit: unit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeUnit(newValue);
+                }
+            })
+        ),
+        React.createElement(
+            'div',
+            { className: 'wrapper' },
+            React.createElement(
+                'div',
+                { className: 'input-field-wrapper active' },
+                React.createElement(RangeControl, {
+                    beforeIcon: beforeIcon,
+                    value: sliderValue,
+                    onChange: function onChange(newVal) {
+                        return updateValue(newVal);
+                    },
+                    min: min,
+                    max: max,
+                    step: step,
+                    help: help,
+                    withInputField: false,
+                    className: 'premium-range-value-input'
+                }),
+                React.createElement(
+                    'div',
+                    { className: 'kemet_range_value' },
+                    React.createElement('input', {
+                        value: sliderValue,
+                        onChange: onChangInput,
+                        min: min,
+                        max: max,
+                        id: id,
+                        step: step,
+                        type: 'number',
+                        className: 'components-text-control__input'
+                    })
+                )
+            ),
+            React.createElement('button', { className: 'premium-slider-reset', disabled: JSON.stringify(sliderValue) === JSON.stringify(defaultValue), onClick: function onClick(e) {
+                    e.preventDefault();
+                    updateValue(defaultValue);
+                } })
+        )
+    );
+}
+
+/***/ }),
+/* 438 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Responsive = function (_Component) {
+    _inherits(Responsive, _Component);
+
+    function Responsive(props) {
+        _classCallCheck(this, Responsive);
+
+        var _this = _possibleConstructorReturn(this, (Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call(this, props));
+
+        _this.state = {
+            view: 'desktop'
+        };
+        return _this;
+    }
+
+    _createClass(Responsive, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var label = this.props.label;
+
+            var devices = ['desktop', 'tablet', 'mobile'];
+            var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
+            return _react2.default.createElement(
+                _react.Fragment,
+                null,
+                label ? _react2.default.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    label
+                ) : null,
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === previewDevice ? ' active' : '';
+                        var icon = device === 'mobile' ? 'smartphone' : device;
+                        return _react2.default.createElement(
+                            'li',
+                            { key: key, className: '' + device + activeClass },
+                            _react2.default.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                _react2.default.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        _this2.changeViewType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                ),
+                this.props.children
+            );
+        }
+    }, {
+        key: 'changeViewType',
+        value: function changeViewType(device) {
+            this.setState({ view: device });
+            wp.customize && wp.customize.previewedDevice(device);
+            if (wp.data && wp.data.dispatch && wp.data.dispatch('core/edit-post') && wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType) {
+                wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType(device.replace(/\w/, function (c) {
+                    return c.toUpperCase();
+                }));
+            }
+            this.props.onChange(device);
+        }
+    }]);
+
+    return Responsive;
+}(_react.Component);
+
+exports.default = Responsive;
 
 /***/ })
 /******/ ]);
