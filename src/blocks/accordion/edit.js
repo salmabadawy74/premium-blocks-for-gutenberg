@@ -28,6 +28,7 @@ class PremiumAccordion extends Component {
     constructor() {
         super(...arguments);
         this.initAccordion = this.initAccordion.bind(this);
+        this.myRef = React.createRef();
     }
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
@@ -42,10 +43,9 @@ class PremiumAccordion extends Component {
     }
     initAccordion() {
         const { accordionId } = this.props.attributes;
-        if (!this.props.attributes.accordionId) return null;
-        let title = document
-            .getElementById(accordionId)
-            .getElementsByClassName("premium-accordion__title_wrap")[0];
+        if (!accordionId) return null;
+        console.log(accordionId)
+        let title = this.myRef.current
         title.addEventListener("click", () => {
             title
                 .getElementsByClassName("premium-accordion__icon")[0]
@@ -180,6 +180,7 @@ class PremiumAccordion extends Component {
                     className={`premium-accordion__content_wrap`}
                 >
                     <div
+                        ref={this.myRef}
                         className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
                         style={{
                             backgroundColor: titleStyles[0].titleBack,
