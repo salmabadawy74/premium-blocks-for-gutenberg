@@ -20,7 +20,7 @@ class PremiumTypo extends Component {
         }
 
         this.state = {
-            fontFamily: this.props.fontFamily || 'default',
+            fontFamily: this.props.fontFamily || 'Default',
             line: this.props.line,
             weight: this.props.weight || '400',
             size: this.props.components.includes("responsiveSize") ? responsiveSize : this.props.size,
@@ -47,7 +47,6 @@ class PremiumTypo extends Component {
                 .__experimentalGetPreviewDeviceType()
             : 'Desktop';
         if (this.state.device !== previewDevice) {
-            console.log(this.state.device, previewDevice)
             this.setState({ device: previewDevice })
         }
     }
@@ -100,7 +99,7 @@ class PremiumTypo extends Component {
         ];
 
         const fonts = [
-            { value: "default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+            { value: "Default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
@@ -117,6 +116,9 @@ class PremiumTypo extends Component {
 
             }
         })
+        if (fontWeight === "") {
+            fontWeight = fonts[0].weight
+        }
 
         const toggleVisible = (v) => {
             this.setState({
@@ -329,9 +331,7 @@ class PremiumTypo extends Component {
                                 </span>
                             )}
                         </div>
-
                     </div>
-
                 </div>
             </div>
         );

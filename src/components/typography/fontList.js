@@ -12,13 +12,11 @@ const loadGoogleFonts = (font_families) => {
     if (font_families.length > 0) {
         WebFontLoader.load({
             ...(font_families.length > 0
-                ? {
-                    google: {
-                        families: font_families,
-                    },
+                ?
+                {
+                    google: { families: font_families },
                 }
                 : {}),
-
             classes: false,
             text: 'abcdefghijklmnopqrstuvwxyz',
         })
@@ -27,7 +25,6 @@ const loadGoogleFonts = (font_families) => {
 const SingleFont = ({ family, onPickFamily, value }) => {
     return (
         <div
-
             onClick={() => onPickFamily(family.value)}
             className={classnames(
                 'premium-typography-single-font',
@@ -35,14 +32,13 @@ const SingleFont = ({ family, onPickFamily, value }) => {
                     active: family.value === value,
                 }
             )}
-            key={family[0]}>
+            key={family[0]}
+        >
             <span className="premium-font-name">
                 {family.label}
             </span>
             <span
-                style={{
-                    fontFamily: family.value,
-                }}
+                style={{ fontFamily: family.value }}
                 className="premium-font-preview">
                 Simply dummy text
             </span>
@@ -69,14 +65,12 @@ const FontsList = ({
 
     const onScroll = () => {
         scrollTimer && clearTimeout(scrollTimer)
-
         setScrollTimer(
             setTimeout(() => {
                 if (!listRef.current) {
                     return
                 }
                 let overscanStartIndex = Math.ceil(listRef.current.scrollTop / 85);
-
                 const perPage = 25
                 const startingPage = Math.ceil(
                     (overscanStartIndex + 1) / perPage
@@ -102,7 +96,6 @@ const FontsList = ({
                 <ul>
                     {systemFonts.map((family) => SingleFont({ family, onPickFamily, value }))}
                 </ul>
-
                 <div className={`premium-fonts-source`}>{__('Google  Fonts', "kemet")}</div>
                 <ul>
                     {googleFonts.map((family) => SingleFont({ family, onPickFamily, value }))}
