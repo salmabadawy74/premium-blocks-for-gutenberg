@@ -9,12 +9,18 @@ const { withSelect } = wp.data
 class PremiumTypo extends Component {
     constructor(props) {
         super(props)
-        let responsiveSize;
+        let responsiveSize,
+            defaultResponsiveSize;
         if (this.props.components.includes("responsiveSize")) {
             responsiveSize = {
                 Desktop: this.props.fontSize.value || '',
                 Tablet: this.props.fontSizeTablet.value || '',
                 Mobile: this.props.fontSizeMobile.value || ''
+            }
+            defaultResponsiveSize = {
+                Desktop: '',
+                Tablet: '',
+                Mobile: ''
             }
         }
 
@@ -35,21 +41,10 @@ class PremiumTypo extends Component {
             device: this.props.deviceType,
         }
 
-        this.defaultValue = {
-            fontFamily: 'default',
-            line: '',
-            weight: '400',
-            size: '',
-            textTransform: 'none',
-            textDecoration: 'none',
-            sizeUnit: 'px',
-            isVisible: false,
-            currentView: '',
-            search: "",
-            showUnit: this.props.showUnit || false,
-            spacing: '',
-            style: '',
-        };
+
+    }
+    componentDidUpdate() {
+
     }
 
     render() {
@@ -83,8 +78,6 @@ class PremiumTypo extends Component {
             spacing,
             style,
             device,
-            responsiveSize
-
         } = this.state;
 
         const STYLE = [
@@ -334,24 +327,7 @@ class PremiumTypo extends Component {
                         </div>
 
                     </div>
-                    <div className="premium-spacing-btn-reset-wrap">
-                        <button
-                            className="premium-reset-btn"
-                            disabled={
-                                JSON.stringify(this.state) ===
-                                JSON.stringify(this.defaultValue)
-                            }
-                            onClick={(e) => {
-                                e.preventDefault();
-                                this.setState({
 
-                                    ...this.defaultValue
-                                })
-                            }}
-                        >
-
-                        </button>
-                    </div>
                 </div>
             </div>
         );

@@ -15,19 +15,9 @@ import ResponsiveRangeControl from "../../components/RangeControl /responsive-ra
 
 const { __ } = wp.i18n;
 
-const {
-    PanelBody,
-    SelectControl,
-    TextControl,
-    ToggleControl
-} = wp.components;
+const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
-const {
-    BlockControls,
-    InspectorControls,
-    AlignmentToolbar,
-    RichText,
-} = wp.blockEditor;
+const { BlockControls, InspectorControls, AlignmentToolbar, RichText } = wp.blockEditor;
 
 const { Component } = wp.element;
 const { withSelect } = wp.data
@@ -61,7 +51,6 @@ class edit extends Component {
 
     render() {
         const { isSelected, className, setAttributes } = this.props;
-
         const {
             block_id,
             align,
