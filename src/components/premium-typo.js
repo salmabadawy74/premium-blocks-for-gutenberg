@@ -6,6 +6,27 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { SelectControl, Popover, TextControl } = wp.components;
 const { withSelect } = wp.data
+function fuzzysearch(needle, haystack) {
+    var hlen = haystack.length
+    var nlen = needle.length
+    if (nlen > hlen) {
+        return false
+    }
+    if (nlen === hlen) {
+        return needle === haystack
+    }
+    outer: for (var i = 0, j = 0; i < nlen; i++) {
+        var nch = needle.charCodeAt(i)
+        while (j < hlen) {
+            if (haystack.charCodeAt(j++) === nch) {
+                continue outer
+            }
+        }
+        return false
+    }
+
+    return true
+}
 class PremiumTypo extends Component {
     constructor(props) {
         super(props)
@@ -29,7 +50,7 @@ class PremiumTypo extends Component {
             sizeUnit: this.props.sizeUnit || 'px',
             isVisible: false,
             currentView: '',
-            search: this.props.fontFamily || "",
+            search: "",
             showUnit: this.props.showUnit || false,
             spacing: this.props.spacing,
             style: this.props.style,
@@ -147,6 +168,8 @@ class PremiumTypo extends Component {
                 }))
             }
         })
+
+        const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = components.includes("responsiveSize") ? size[device] : size
         return (
             <div className="premium-control-toggle premium-typography">
@@ -175,15 +198,34 @@ class PremiumTypo extends Component {
                                                     <div style={{ top: '0px', right: '0px', left: `0px` }}>
                                                         <ul className="premium-typography-top premium-switch-panel premium-static">
                                                             <li className="premium-font">
-                                                                <TextControl
+                                                                <input
                                                                     value={search}
-                                                                    type="search"
-                                                                    onChange={(value) => setSearch(value)}
+                                                                    autoFocus
+                                                                    onKeyUp={(e) => {
+                                                                        if (e.keyCode == 13) {
+                                                                            if (linearFonts.length > 0) {
+                                                                                onChangeFamily(linearFonts[0])
+                                                                                this.setState({ search: '' })
+                                                                            }
+                                                                        }
+                                                                    }}
+                                                                    onClick={(e) => e.stopPropagation()}
+                                                                    onChange={({ target: { value } }) =>
+                                                                        this.setState({ search: value })
+                                                                    }
                                                                 />
+                                                                <svg width="8" height="8" viewBox="0 0 15 15">
+                                                                    {currentView === 'search' && (
+                                                                        <path d="M8.9,7.5l4.6-4.6c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L7.5,6.1L2.9,1.5c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l4.6,4.6l-4.6,4.6c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0l4.6-4.6l4.6,4.6c0.4,0.4,1,0.4,1.4,0c0.4-0.4,0.4-1,0-1.4L8.9,7.5z" />
+                                                                    )}
+                                                                    {currentView !== 'search' && (
+                                                                        <path d="M14.6,14.6c-0.6,0.6-1.4,0.6-2,0l-2.5-2.5c-1,0.7-2.2,1-3.5,1C2.9,13.1,0,10.2,0,6.6S2.9,0,6.6,0c3.6,0,6.6,2.9,6.6,6.6c0,1.3-0.4,2.5-1,3.5l2.5,2.5C15.1,13.1,15.1,14,14.6,14.6z M6.6,1.9C4,1.9,1.9,4,1.9,6.6s2.1,4.7,4.7,4.7c2.6,0,4.7-2.1,4.7-4.7C11.3,4,9.2,1.9,6.6,1.9z" />
+                                                                    )}
+                                                                </svg>
                                                             </li>
                                                         </ul>
                                                         <FontsList
-                                                            linearFontsList={fonts}
+                                                            linearFontsList={linearFonts}
                                                             value={fontFamily}
                                                             onPickFamily={(value) => { this.setState({ fontFamily: value }), onChangeFamily(value) }}
                                                         />
