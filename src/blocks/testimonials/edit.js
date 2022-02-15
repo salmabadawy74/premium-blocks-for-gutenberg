@@ -11,6 +11,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl /single-
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
 import RadioComponent from '../../components/radio-control'
+import ResponsiveRangeControl from "../../components/RangeControl /responsive-range-control";
 
 const { __ } = wp.i18n;
 
@@ -18,10 +19,7 @@ const {
     PanelBody,
     SelectControl,
     TextControl,
-    ToggleControl,
-    Dropdown,
-    Button,
-    ButtonGroup,
+    ToggleControl
 } = wp.components;
 
 const {
@@ -31,20 +29,21 @@ const {
     RichText,
 } = wp.blockEditor;
 
-const { Fragment, Component } = wp.element;
+const { Component } = wp.element;
 const { withSelect } = wp.data
 
 class edit extends Component {
     constructor() {
         super(...arguments);
-
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId.substr(0, 6) })
         this.props.setAttributes({ classMigrate: true });
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {
@@ -62,6 +61,7 @@ class edit extends Component {
 
     render() {
         const { isSelected, className, setAttributes } = this.props;
+
         const {
             block_id,
             align,
@@ -147,9 +147,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                companyStyles: newUpdate,
-            });
+            setAttributes({ companyStyles: newUpdate });
         }
 
         const saveQuoteStyles = (value) => {
@@ -159,9 +157,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                quoteStyles: newUpdate,
-            });
+            setAttributes({ quoteStyles: newUpdate, });
         }
         let btnGrad, btnGrad2, btnbg;
         if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -210,8 +206,7 @@ class edit extends Component {
                                 imageURL={authorImgUrl}
                                 onSelectMedia={(media) => {
                                     setAttributes({
-                                        authorImgId: media.id
-                                        ,
+                                        authorImgId: media.id,
                                         authorImgUrl: media.url
                                     })
                                 }}
@@ -254,11 +249,7 @@ class edit extends Component {
                                     label={__("Border Color", 'premium-block-for-gutenberg')}
                                     colorValue={imgBorderColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        setAttributes({
-                                            imgBorderColor: newValue
-                                        })
-                                    }
+                                    onColorChange={newValue => setAttributes({ imgBorderColor: newValue })}
                                 />
                             )}
                         </PanelBody>
@@ -296,20 +287,14 @@ class edit extends Component {
                                 saveAuthorStyle({ authorWeight: newWeight })
                             }
                             onChangeStyle={newStyle => saveAuthorStyle({ authorStyle: newStyle })}
-                            onChangeSpacing={newValue =>
-                                saveAuthorStyle({ authorLetter: newValue })
-                            }
+                            onChangeSpacing={newValue => saveAuthorStyle({ authorLetter: newValue })}
                             onChangeUpper={check => saveAuthorStyle({ authorUpper: check })}
                         />
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-block-for-gutenberg')}
                             colorValue={authorStyles[0].authorColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveAuthorStyle({
-                                    authorColor: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveAuthorStyle({ authorColor: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -317,37 +302,34 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <PremiumTypo
-                            components={["responsiveSize", "line"]}
-                            setAttributes={saveContentStyle}
-                            fontSizeType={{
-                                value: contentStyle[0].bodySizeUnit,
-                                label: __("bodySizeUnit", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSize={{
-                                value: contentStyle[0].bodySize,
-                                label: __("bodySize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: contentStyle[0].bodySizeMobile,
-                                label: __("bodySizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: contentStyle[0].bodySizeTablet,
-                                label: __("bodySizeTablet", 'premium-block-for-gutenberg'),
-                            }}
-                            line={contentStyle[0].bodyLine}
-                            onChangeLine={newWeight => saveContentStyle({ bodyLine: newWeight })}
+                        <ResponsiveRangeControl
+                            label={__("Font Size", 'premium-block-for-gutenberg')}
+                            value={contentStyle[0].bodySize}
+                            onChange={value => saveContentStyle({ bodySize: value })}
+                            tabletValue={contentStyle[0].bodySizeTablet}
+                            onChangeTablet={value => saveContentStyle({ bodySizeTablet: value })}
+                            mobileValue={contentStyle[0].bodySizeMobile}
+                            onChangeMobile={value => saveContentStyle({ bodySizeMobile: value })}
+                            onChangeUnit={key => saveContentStyle({ bodySizeUnit: key })}
+                            unit={contentStyle[0].bodySizeUnit}
+                            showUnit={true}
+                            defaultValue={20}
+                            units={["px", "em"]}
+                        />
+                        <ResponsiveSingleRangeControl
+                            label={__("Line Height (PX)", 'premium-block-for-gutenberg')}
+                            value={contentStyle[0].bodyLine}
+                            onChange={(value) => saveContentStyle({ bodyLine: value })}
+                            defaultValue={1}
+                            showUnit={false}
+                            min={0}
+                            max={100}
                         />
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-block-for-gutenberg')}
                             colorValue={contentStyle[0].bodyColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveContentStyle({
-                                    bodyColor: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveContentStyle({ bodyColor: newValue })}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
@@ -375,46 +357,31 @@ class edit extends Component {
                             onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
                             label={__("HTML Tag", 'premium-block-for-gutenberg')}
                         />
-                        <PremiumTypo
-                            components={["responsiveSize"]}
-                            setAttributes={saveCompanyStyle}
-                            fontSizeType={{
-                                value: companyStyles[0].authorComSizeUnit,
-                                label: __("authorComSizeUnit", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSize={{
-                                value: companyStyles[0].authorComSize,
-                                label: __("authorComSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: companyStyles[0].authorComSizeMobile,
-                                label: __("authorComSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: companyStyles[0].authorComSizeTablet,
-                                label: __("authorComSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                        <ResponsiveRangeControl
+                            label={__("Font Size", 'premium-block-for-gutenberg')}
+                            value={companyStyles[0].authorComSize}
+                            onChange={value => saveCompanyStyle({ authorComSize: value })}
+                            tabletValue={companyStyles[0].authorComSizeTablet}
+                            onChangeTablet={value => saveCompanyStyle({ authorComSizeTablet: value })}
+                            mobileValue={companyStyles[0].authorComSizeMobile}
+                            onChangeMobile={value => saveCompanyStyle({ authorComSizeMobile: value })}
+                            onChangeUnit={key => saveCompanyStyle({ authorComSizeUnit: key })}
+                            unit={companyStyles[0].authorComSizeUnit}
+                            showUnit={true}
+                            defaultValue={20}
+                            units={["px", "em"]}
                         />
-
                         <AdvancedPopColorControl
                             label={__("Text Color", 'premium-block-for-gutenberg')}
                             colorValue={companyStyles[0].authorComColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveCompanyStyle({
-                                    authorComColor: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveCompanyStyle({ authorComColor: newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Dash Color", 'premium-block-for-gutenberg')}
                             colorValue={companyStyles[0].dashColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveCompanyStyle({
-                                    dashColor: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveCompanyStyle({ dashColor: newValue })}
                         />
                         <ToggleControl
                             label={__("URL", 'premium-block-for-gutenberg')}
@@ -454,11 +421,7 @@ class edit extends Component {
                             label={__("Quotations Color", 'premium-block-for-gutenberg')}
                             colorValue={quoteStyles[0].quotColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveQuoteStyles({
-                                    quotColor: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveQuoteStyles({ quotColor: newValue })}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Opacity", 'premium-block-for-gutenberg')}
@@ -498,62 +461,24 @@ class edit extends Component {
                             horizontal={containerStyles[0].shadowHorizontal}
                             vertical={containerStyles[0].shadowVertical}
                             position={containerStyles[0].shadowPosition}
-                            onChangeColor={newColor =>
-                                saveContainerStyle({
-                                    shadowColor: newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveContainerStyle({
-                                    shadowBlur: newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveContainerStyle({
-                                    shadowHorizontal: newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                saveContainerStyle({
-                                    shadowVertical: newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                saveContainerStyle({
-                                    shadowPosition: newValue
-                                })
-                            }
+                            onChangeColor={newColor => saveContainerStyle({ shadowColor: newColor })}
+                            onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue })}
+                            onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
                         <PremiumPadding
                             paddingTop={paddingTop}
                             paddingRight={paddingRight}
                             paddingBottom={paddingBottom}
                             paddingLeft={paddingLeft}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    paddingTop: value
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    paddingRight: value
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    paddingBottom: value
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    paddingLeft: value
-                                })
-                            }
+                            onChangePadTop={value => setAttributes({ paddingTop: value })}
+                            onChangePadRight={value => setAttributes({ paddingRight: value })}
+                            onChangePadBottom={value => setAttributes({ paddingBottom: value })}
+                            onChangePadLeft={value => setAttributes({ paddingLeft: value })}
                             showUnits={true}
                             selectedUnit={containerStyles[0].paddingUnit}
-                            onChangePadSizeUnit={newvalue =>
-                                saveContainerStyle({ paddingUnit: newvalue })
-                            }
+                            onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

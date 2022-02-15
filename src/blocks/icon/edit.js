@@ -205,19 +205,13 @@ const edit = props => {
                         label={__("Icon Color", 'premium-block-for-gutenberg')}
                         colorValue={iconStyles[0].iconColor}
                         colorDefault={''}
-                        onColorChange={value =>
-                            saveIconStyle({
-                                iconColor: value
-                            })
-                        }
+                        onColorChange={value => saveIconStyle({ iconColor: value })}
                     />
                     <AdvancedPopColorControl
                         label={__("Background Color", 'premium-block-for-gutenberg')}
                         colorValue={iconStyles[0].iconBack}
                         colorDefault={''}
-                        onColorChange={value =>
-                            saveIconStyle({ iconBack: value })
-                        }
+                        onColorChange={value => saveIconStyle({ iconBack: value })}
                     />
                     <PremiumBorder
                         borderType={iconStyles[0].borderType}
@@ -238,12 +232,8 @@ const edit = props => {
                                 iconBorderLeft: left,
                             })
                         }
-                        onChangeColor={(colorValue) =>
-                            saveIconStyle({ borderColor: colorValue })
-                        }
-                        onChangeRadius={(newrRadius) =>
-                            saveIconStyle({ borderRadius: newrRadius })
-                        }
+                        onChangeColor={(colorValue) => saveIconStyle({ borderColor: colorValue })}
+                        onChangeRadius={(newrRadius) => saveIconStyle({ borderRadius: newrRadius })}
                     />
 
                     <PremiumTextShadow
@@ -252,16 +242,10 @@ const edit = props => {
                         blur={iconStyles[0].shadowBlur}
                         horizontal={iconStyles[0].shadowHorizontal}
                         vertical={iconStyles[0].shadowVertical}
-                        onChangeColor={newColor =>
-                            saveIconStyle({ shadowColor: newColor })
-                        }
+                        onChangeColor={newColor => saveIconStyle({ shadowColor: newColor })}
                         onChangeBlur={newBlur => saveIconStyle({ shadowBlur: newBlur })}
-                        onChangehHorizontal={newValue =>
-                            saveIconStyle({ shadowHorizontal: newValue })
-                        }
-                        onChangeVertical={newValue =>
-                            saveIconStyle({ shadowVertical: newValue })
-                        }
+                        onChangehHorizontal={newValue => saveIconStyle({ shadowHorizontal: newValue })}
+                        onChangeVertical={newValue => saveIconStyle({ shadowVertical: newValue })}
                     />
 
                     <PremiumMargin
@@ -270,57 +254,23 @@ const edit = props => {
                         marginRight={marginR}
                         marginBottom={marginB}
                         marginLeft={marginL}
-                        onChangeMarTop={value =>
-                            setAttributes({
-                                marginT: value
-                            })
-                        }
-                        onChangeMarRight={value =>
-                            setAttributes({
-                                marginR: value
-                            })
-                        }
-                        onChangeMarBottom={value =>
-                            setAttributes({
-                                marginB: value
-                            })
-                        }
-                        onChangeMarLeft={value =>
-                            setAttributes({
-                                marginL: value
-                            })
-                        }
+                        onChangeMarTop={value => setAttributes({ marginT: value })}
+                        onChangeMarRight={value => setAttributes({ marginR: value })}
+                        onChangeMarBottom={value => setAttributes({ marginB: value })}
+                        onChangeMarLeft={value => setAttributes({ marginL: value })}
                     />
                     <PremiumPadding
                         paddingTop={paddingT}
                         paddingRight={paddingR}
                         paddingBottom={paddingB}
                         paddingLeft={paddingL}
-                        onChangePadTop={value =>
-                            setAttributes({
-                                paddingT: value
-                            })
-                        }
-                        onChangePadRight={value =>
-                            setAttributes({
-                                paddingR: value
-                            })
-                        }
-                        onChangePadBottom={value =>
-                            setAttributes({
-                                paddingB: value
-                            })
-                        }
-                        onChangePadLeft={value =>
-                            setAttributes({
-                                paddingL: value
-                            })
-                        }
+                        onChangePadTop={value => setAttributes({ paddingT: value })}
+                        onChangePadRight={value => setAttributes({ paddingR: value })}
+                        onChangePadBottom={value => setAttributes({ paddingB: value })}
+                        onChangePadLeft={value => setAttributes({ paddingL: value })}
                         showUnits={true}
                         selectedUnit={paddingU}
-                        onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingU: newvalue })
-                        }
+                        onChangePadSizeUnit={newvalue => setAttributes({ paddingU: newvalue })}
                     />
                 </PanelBody>
                 <PanelBody
@@ -356,9 +306,7 @@ const edit = props => {
                         left={wrapBorderLeft}
                         borderColor={containerStyles[0].wrapBorderColor}
                         borderRadius={containerStyles[0].wrapBorderRadius}
-                        onChangeType={(newType) =>
-                            saveContainerStyle({ wrapBorderType: newType })
-                        }
+                        onChangeType={(newType) => saveContainerStyle({ wrapBorderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
                                 wrapBorder: true,
@@ -368,12 +316,8 @@ const edit = props => {
                                 wrapBorderLeft: left,
                             })
                         }
-                        onChangeColor={(colorValue) =>
-                            saveContainerStyle({ wrapBorderColor: colorValue })
-                        }
-                        onChangeRadius={(newrRadius) =>
-                            saveContainerStyle({ wrapBorderRadius: newrRadius })
-                        }
+                        onChangeColor={(colorValue) => saveContainerStyle({ wrapBorderColor: colorValue })}
+                        onChangeRadius={(newrRadius) => saveContainerStyle({ wrapBorderRadius: newrRadius })}
                     />
 
                     <PremiumBoxShadow
@@ -383,31 +327,11 @@ const edit = props => {
                         horizontal={containerStyles[0].wrapShadowHorizontal}
                         vertical={containerStyles[0].wrapShadowVertical}
                         position={containerStyles[0].wrapShadowPosition}
-                        onChangeColor={newColor =>
-                            saveContainerStyle({
-                                wrapShadowColor: newColor
-                            })
-                        }
-                        onChangeBlur={newBlur =>
-                            saveContainerStyle({
-                                wrapShadowBlur: newBlur
-                            })
-                        }
-                        onChangehHorizontal={newValue =>
-                            saveContainerStyle({
-                                wrapShadowHorizontal: newValue
-                            })
-                        }
-                        onChangeVertical={newValue =>
-                            saveContainerStyle({
-                                wrapShadowVertical: newValue
-                            })
-                        }
-                        onChangePosition={newValue =>
-                            saveContainerStyle({
-                                wrapShadowPosition: newValue
-                            })
-                        }
+                        onChangeColor={newColor => saveContainerStyle({ wrapShadowColor: newColor })}
+                        onChangeBlur={newBlur => saveContainerStyle({ wrapShadowBlur: newBlur })}
+                        onChangehHorizontal={newValue => saveContainerStyle({ wrapShadowHorizontal: newValue })}
+                        onChangeVertical={newValue => saveContainerStyle({ wrapShadowVertical: newValue })}
+                        onChangePosition={newValue => saveContainerStyle({ wrapShadowPosition: newValue })}
                     />
                     <PremiumMargin
                         directions={["all"]}
@@ -415,51 +339,20 @@ const edit = props => {
                         marginRight={wrapMarginR}
                         marginBottom={wrapMarginB}
                         marginLeft={wrapMarginL}
-                        onChangeMarTop={value =>
-                            setAttributes({
-                                wrapMarginT: value
-                            })
-                        }
-                        onChangeMarRight={value =>
-                            setAttributes({
-                                wrapMarginR: value
-                            })
-                        }
-                        onChangeMarBottom={value =>
-                            setAttributes({
-                                wrapMarginB: value
-                            })
-                        }
-                        onChangeMarLeft={value =>
-                            setAttributes({
-                                wrapMarginL: value
-                            })
-                        }
+                        onChangeMarTop={value => setAttributes({ wrapMarginT: value })}
+                        onChangeMarRight={value => setAttributes({ wrapMarginR: value })}
+                        onChangeMarBottom={value => setAttributes({ wrapMarginB: value })}
+                        onChangeMarLeft={value => setAttributes({ wrapMarginL: value })}
                     />
                     <PremiumPadding
                         paddingTop={wrapPaddingT}
                         paddingRight={wrapPaddingR}
                         paddingBottom={wrapPaddingB}
                         paddingLeft={wrapPaddingL}
-                        onChangePadTop={value =>
-                            setAttributes({
-                                wrapPaddingT: value
-                            })
-                        }
-                        onChangePadRight={value =>
-                            setAttributes({
-                                wrapPaddingR: value
-                            })
-                        }
-                        onChangePadBottom={value =>
-                            setAttributes({
-                                wrapPaddingB: value
-                            })
-                        }
-                        onChangePadLeft={value =>
-                            setAttributes({
-                                wrapPaddingL: value
-                            })
+                        onChangePadTop={value => setAttributes({ wrapPaddingT: value })}
+                        onChangePadRight={value => setAttributes({ wrapPaddingR: value })}
+                        onChangePadBottom={value => setAttributes({ wrapPaddingB: value })}
+                        onChangePadLeft={value => setAttributes({ wrapPaddingL: value })
                         }
                     />
                 </PanelBody>

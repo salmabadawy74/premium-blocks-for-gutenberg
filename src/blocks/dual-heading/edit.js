@@ -243,68 +243,44 @@ class edit extends Component {
                             style={firstStyles[0].firstStyle}
                             spacing={firstStyles[0].firstLetter}
                             upper={firstStyles[0].firstUpper}
-                            onChangeWeight={newWeight =>
-                                saveFirstStyle({ firstWeight: newWeight || 500 })
-                            }
+                            onChangeWeight={newWeight => saveFirstStyle({ firstWeight: newWeight || 500 })}
                             onChangeStyle={newStyle => saveFirstStyle({ firstStyle: newStyle })}
-                            onChangeSpacing={newValue =>
-                                saveFirstStyle({ firstLetter: newValue })
-                            }
+                            onChangeSpacing={newValue => saveFirstStyle({ firstLetter: newValue })}
                             onChangeUpper={check => saveFirstStyle({ firstUpper: check })}
                             onChangeFamily={(fontFamily) => saveFirstStyle({ firstFamily: fontFamily })}
                         />
 
                         {!firstStyles[0].firstClip && (
-
                             <Fragment>
-
                                 <AdvancedPopColorControl
                                     label={__("Text Color", 'premium-block-for-gutenberg')}
                                     colorValue={firstStyles[0].firstColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveFirstStyle({
-                                            firstColor: newValue
-                                        })
-                                    }
+                                    onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__(`Background Color`)}
                                     colorValue={firstStyles[0].firstBackground}
-                                    onColorChange={value =>
-                                        saveFirstStyle({
-                                            firstBackground: value,
-                                        })
-                                    }
+                                    onColorChange={value => saveFirstStyle({ firstBackground: value, })}
                                     colorDefault={''}
                                 />
                             </Fragment>
                         )}
 
                         {firstStyles[0].firstClip && (
-
                             <Fragment>
-
                                 <AdvancedPopColorControl
                                     label={__("First Color", 'premium-block-for-gutenberg')}
                                     colorValue={firstStyles[0].firstColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveFirstStyle({
-                                            firstColor: newValue
-                                        })
-                                    }
+                                    onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
                                 />
 
                                 <AdvancedPopColorControl
                                     label={__("Second Color", 'premium-block-for-gutenberg')}
                                     colorValue={firstStyles[0].firstClipColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveFirstStyle({
-                                            firstClipColor: newValue
-                                        })
-                                    }
+                                    onColorChange={newValue => saveFirstStyle({ firstClipColor: newValue })}
                                 />
                             </Fragment>
 
@@ -319,9 +295,7 @@ class edit extends Component {
                             left={firstStyles[0].firstBorderLeft}
                             borderColor={firstStyles[0].firstBorderColor}
                             borderRadius={firstStyles[0].firstBorderRadius}
-                            onChangeType={(newType) =>
-                                saveFirstStyle({ firstBorderType: newType })
-                            }
+                            onChangeType={(newType) => saveFirstStyle({ firstBorderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     firstBorder: true,
@@ -331,14 +305,8 @@ class edit extends Component {
                                     firstBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                saveFirstStyle({
-                                    firstBorderColor: colorValue || "transparent",
-                                })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                saveFirstStyle({ firstBorderRadius: newrRadius || "0" })
-                            }
+                            onChangeColor={(colorValue) => saveFirstStyle({ firstBorderColor: colorValue || "transparent", })}
+                            onChangeRadius={(newrRadius) => saveFirstStyle({ firstBorderRadius: newrRadius || "0" })}
                         />
 
                         <PremiumTextShadow
@@ -346,43 +314,29 @@ class edit extends Component {
                             blur={firstStyles[0].firstShadowBlur}
                             horizontal={firstStyles[0].firstShadowHorizontal}
                             vertical={firstStyles[0].firstShadowVertical}
-                            onChangeColor={newColor =>
-                                saveFirstStyle({ firstShadowColor: newColor || "transparent" })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveFirstStyle({ firstShadowBlur: newBlur || "0" })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveFirstStyle({ firstShadowHorizontal: newValue || "0" })
-                            }
-                            onChangeVertical={newValue =>
-                                saveFirstStyle({ firstShadowVertical: newValue || "0" })
-                            }
+                            onChangeColor={newColor => saveFirstStyle({ firstShadowColor: newColor || "transparent" })}
+                            onChangeBlur={newBlur => saveFirstStyle({ firstShadowBlur: newBlur || "0" })}
+                            onChangehHorizontal={newValue => saveFirstStyle({ firstShadowHorizontal: newValue || "0" })}
+                            onChangeVertical={newValue => saveFirstStyle({ firstShadowVertical: newValue || "0" })}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Margin Left", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstMarginL}
-                            onChange={newMargin =>
-                                saveFirstStyle({ firstMarginL: newMargin })
-                            }
+                            onChange={newMargin => saveFirstStyle({ firstMarginL: newMargin })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Margin Right", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstMarginR}
-                            onChange={newMargin =>
-                                saveFirstStyle({ firstMarginR: newMargin })
-                            }
+                            onChange={newMargin => saveFirstStyle({ firstMarginR: newMargin })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={firstStyles[0].firstPadding}
-                            onChange={newPadding =>
-                                saveFirstStyle({ firstPadding: newPadding })
-                            }
+                            onChange={newPadding => saveFirstStyle({ firstPadding: newPadding })}
                             showUnit={false}
                             defaultValue={0}
                         />
@@ -435,13 +389,9 @@ class edit extends Component {
                             style={secondStyles[0].secondStyle}
                             spacing={secondStyles[0].secondLetter}
                             upper={secondStyles[0].secondUpper}
-                            onChangeWeight={newWeight =>
-                                saveSecondStyle({ secondWeight: newWeight || 500 })
-                            }
+                            onChangeWeight={newWeight => saveSecondStyle({ secondWeight: newWeight || 500 })}
                             onChangeStyle={newStyle => saveSecondStyle({ secondStyle: newStyle })}
-                            onChangeSpacing={newValue =>
-                                saveSecondStyle({ secondLetter: newValue })
-                            }
+                            onChangeSpacing={newValue => saveSecondStyle({ secondLetter: newValue })}
                             onChangeUpper={check => saveSecondStyle({ secondUpper: check })}
                             onChangeFamily={(fontFamily) => saveSecondStyle({ secondFamily: fontFamily })}
                         />
@@ -451,21 +401,13 @@ class edit extends Component {
                                     label={__("Text Color", 'premium-block-for-gutenberg')}
                                     colorValue={secondStyles[0].secondColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveSecondStyle({
-                                            secondColor: newValue || "transparent"
-                                        })
-                                    }
+                                    onColorChange={newValue => saveSecondStyle({ secondColor: newValue || "transparent" })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__(`Background Color`, 'premium-block-for-gutenberg')}
                                     colorValue={secondStyles[0].secondBackground}
                                     colorDefault={''}
-                                    onColorChange={value =>
-                                        saveSecondStyle({
-                                            secondBackground: value,
-                                        })
-                                    }
+                                    onColorChange={value => saveSecondStyle({ secondBackground: value, })}
                                 />
                             </Fragment>
                         )}
@@ -475,21 +417,13 @@ class edit extends Component {
                                     label={__("First Color", 'premium-block-for-gutenberg')}
                                     colorValue={secondStyles[0].secondColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveSecondStyle({
-                                            secondColor: newValue || "transparent"
-                                        })
-                                    }
+                                    onColorChange={newValue => saveSecondStyle({ secondColor: newValue || "transparent" })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__("Second Color", 'premium-block-for-gutenberg')}
                                     colorValue={secondStyles[0].secondClipColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveSecondStyle({
-                                            secondClipColor: newValue || "transparent"
-                                        })
-                                    }
+                                    onColorChange={newValue => saveSecondStyle({ secondClipColor: newValue || "transparent" })}
                                 />
                             </Fragment>
                         )}
@@ -503,9 +437,7 @@ class edit extends Component {
                             left={secondBorderLeft}
                             borderColor={secondStyles[0].secondBorderColor}
                             borderRadius={secondStyles[0].secondBorderRadius}
-                            onChangeType={(newType) =>
-                                saveSecondStyle({ secondBorderType: newType })
-                            }
+                            onChangeType={(newType) => saveSecondStyle({ secondBorderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     secondBorder: true,
@@ -515,14 +447,8 @@ class edit extends Component {
                                     secondBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                saveSecondStyle({
-                                    secondBorderColor: colorValue || "transparent",
-                                })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                saveSecondStyle({ secondBorderRadius: newrRadius || "0" })
-                            }
+                            onChangeColor={(colorValue) => saveSecondStyle({ secondBorderColor: colorValue || "transparent", })}
+                            onChangeRadius={(newrRadius) => saveSecondStyle({ secondBorderRadius: newrRadius || "0" })}
                         />
 
                         <PremiumTextShadow
@@ -530,45 +456,29 @@ class edit extends Component {
                             blur={secondStyles[0].secondShadowBlur}
                             horizontal={secondStyles[0].secondShadowHorizontal}
                             vertical={secondStyles[0].secondShadowVertical}
-                            onChangeColor={newColor =>
-                                saveSecondStyle({
-                                    secondShadowColor: newColor || "transparent"
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveSecondStyle({ secondShadowBlur: newBlur || "0" })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveSecondStyle({ secondShadowHorizontal: newValue || "0" })
-                            }
-                            onChangeVertical={newValue =>
-                                saveSecondStyle({ secondShadowVertical: newValue || "0" })
-                            }
+                            onChangeColor={newColor => saveSecondStyle({ secondShadowColor: newColor || "transparent" })}
+                            onChangeBlur={newBlur => saveSecondStyle({ secondShadowBlur: newBlur || "0" })}
+                            onChangehHorizontal={newValue => saveSecondStyle({ secondShadowHorizontal: newValue || "0" })}
+                            onChangeVertical={newValue => saveSecondStyle({ secondShadowVertical: newValue || "0" })}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Margin Left", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondMarginL}
-                            onChange={newMargin =>
-                                saveSecondStyle({ secondMarginL: newMargin })
-                            }
+                            onChange={newMargin => saveSecondStyle({ secondMarginL: newMargin })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Margin Right", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondMarginR}
-                            onChange={newMargin =>
-                                saveSecondStyle({ secondMarginR: newMargin || "0" })
-                            }
+                            onChange={newMargin => saveSecondStyle({ secondMarginR: newMargin || "0" })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={secondStyles[0].secondPadding}
-                            onChange={newPadding =>
-                                saveSecondStyle({ secondPadding: newPadding || "0" })
-                            }
+                            onChange={newPadding => saveSecondStyle({ secondPadding: newPadding || "0" })}
                             showUnit={false}
                             defaultValue={0}
                         />
@@ -605,9 +515,7 @@ class edit extends Component {
                             left={containerBorderLeft}
                             borderColor={containerStyles[0].containerBorderColor}
                             borderRadius={containerStyles[0].containerBorderRadius}
-                            onChangeType={(newType) =>
-                                saveContainerStyle({ containerBorderType: newType })
-                            }
+                            onChangeType={(newType) => saveContainerStyle({ containerBorderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     containerBorder: true,
@@ -617,14 +525,8 @@ class edit extends Component {
                                     containerBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                saveContainerStyle({
-                                    containerBorderColor: colorValue,
-                                })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                saveContainerStyle({ containerBorderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => saveContainerStyle({ containerBorderColor: colorValue, })}
+                            onChangeRadius={(newrRadius) => saveContainerStyle({ containerBorderRadius: newrRadius })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

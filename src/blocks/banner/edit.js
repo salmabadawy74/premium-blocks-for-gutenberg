@@ -202,9 +202,7 @@ export class edit extends Component {
                 return item;
             });
 
-            setAttributes({
-                titleStyles: newUpdate,
-            });
+            setAttributes({ titleStyles: newUpdate });
         }
         const descriptionStyles = (value) => {
             const newUpdate = descStyles.map((item, index) => {
@@ -213,9 +211,7 @@ export class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                descStyles: newUpdate,
-            });
+            setAttributes({ descStyles: newUpdate });
         }
         const containerStyle = (value) => {
             const newUpdate = containerStyles.map((item, index) => {
@@ -224,9 +220,7 @@ export class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                containerStyles: newUpdate,
-            });
+            setAttributes({ containerStyles: newUpdate, });
         }
         return [
             isSelected && (
@@ -264,11 +258,10 @@ export class edit extends Component {
                                     imageURL: media.url
                                 });
                             }}
-                            onRemoveImage={() =>
-                                setAttributes({
-                                    imageURL: "",
-                                    imageURL: ""
-                                })
+                            onRemoveImage={() => setAttributes({
+                                imageURL: "",
+                                imageURL: ""
+                            })
                             }
                         />
                         <PremiumFilters
@@ -330,22 +323,14 @@ export class edit extends Component {
                             label={__("Overlay", 'premium-block-for-gutenberg')}
                             colorValue={background}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                setAttributes({
-                                    background: newValue === undefined ? "transparent" : newValue
-                                })
-                            }
+                            onColorChange={newValue => setAttributes({ background: newValue === undefined ? "transparent" : newValue })}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Overlay Opacity", 'premium-block-for-gutenberg')}
                             value={opacity}
                             min="1"
                             max="100"
-                            onChange={newOpacity =>
-                                setAttributes({
-                                    opacity: newOpacity === undefined ? 50 : newOpacity
-                                })
-                            }
+                            onChange={newOpacity => setAttributes({ opacity: newOpacity === undefined ? 50 : newOpacity })}
                             showUnit={false}
                             defaultValue={''}
                         />
@@ -405,37 +390,21 @@ export class edit extends Component {
                             }}
                             weight={titleStyles[0].titleWeight}
                             line={titleStyles[0].titleLine}
-                            onChangeWeight={newWeight =>
-                                saveStyles({
-                                    titleWeight: newWeight === undefined ? 500 : newWeight
-                                })
-                            }
-                            onChangeLine={newValue =>
-                                saveStyles({
-                                    titleLine: newValue === undefined ? 10 : newValue
-                                })
-                            }
+                            onChangeWeight={newWeight => saveStyles({ titleWeight: newWeight === undefined ? 500 : newWeight })}
+                            onChangeLine={newValue => saveStyles({ titleLine: newValue === undefined ? 10 : newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Text Color", 'premium-block-for-gutenberg')}
                             colorValue={titleStyles[0].titleColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveStyles({
-                                    titleColor: newValue === undefined ? "transparent" : newValue
-                                })
-                            }
+                            onColorChange={newValue => saveStyles({ titleColor: newValue === undefined ? "transparent" : newValue })}
                         />
                         {"effect3" === effect && (
                             <AdvancedPopColorControl
                                 label={__("Separator Color", 'premium-block-for-gutenberg')}
                                 colorValue={sepColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    setAttributes({
-                                        sepColor: newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
+                                onColorChange={newValue => setAttributes({ sepColor: newValue === undefined ? "transparent" : newValue })}
                             />
                         )}
                         {"effect2" === effect && (
@@ -443,11 +412,7 @@ export class edit extends Component {
                                 label={__("Background Color", 'premium-block-for-gutenberg')}
                                 colorValue={titleStyles[0].titleBack}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveStyles({
-                                        titleBack: newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
+                                onColorChange={newValue => saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue })}
                             />
                         )}
                         <PremiumTextShadow
@@ -455,27 +420,10 @@ export class edit extends Component {
                             blur={titleStyles[0].shadowBlur}
                             horizontal={titleStyles[0].shadowHorizontal}
                             vertical={titleStyles[0].shadowVertical}
-                            onChangeColor={newColor =>
-                                saveStyles({
-                                    shadowColor:
-                                        newColor === undefined ? "transparent" : newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveStyles({
-                                    shadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveStyles({
-                                    shadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                saveStyles({
-                                    shadowVertical: newValue === undefined ? 0 : newValue
-                                })
-                            }
+                            onChangeColor={newColor => saveStyles({ shadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => saveStyles({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => saveStyles({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => saveStyles({ shadowVertical: newValue === undefined ? 0 : newValue })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -504,53 +452,24 @@ export class edit extends Component {
                             }}
                             weight={descStyles[0].descWeight}
                             line={descStyles[0].descLine}
-                            onChangeWeight={newWeight =>
-                                descriptionStyles({
-                                    descWeight: newWeight === undefined ? 500 : newWeight
-                                })
-                            }
-                            onChangeLine={newValue =>
-                                descriptionStyles({
-                                    descLine: newValue === undefined ? 10 : newValue
-                                })
-                            }
+                            onChangeWeight={newWeight => descriptionStyles({ descWeight: newWeight === undefined ? 500 : newWeight })}
+                            onChangeLine={newValue => descriptionStyles({ descLine: newValue === undefined ? 10 : newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Text Color", 'premium-block-for-gutenberg')}
                             colorValue={descStyles[0].descColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                descriptionStyles({
-                                    descColor: newValue === undefined ? "transparent" : newValue
-                                })
-                            }
+                            onColorChange={newValue => descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue })}
                         />
                         <PremiumTextShadow
                             color={descStyles[0].descShadowColor}
                             blur={descStyles[0].descShadowBlur}
                             horizontal={descStyles[0].descShadowHorizontal}
                             vertical={descStyles[0].descShadowVertical}
-                            onChangeColor={newColor =>
-                                descriptionStyles({
-                                    descShadowColor:
-                                        newColor === undefined ? "transparent" : newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                descriptionStyles({
-                                    descShadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                descriptionStyles({
-                                    descShadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                descriptionStyles({
-                                    descShadowVertical: newValue === undefined ? 0 : newValue
-                                })
-                            }
+                            onChangeColor={newColor => descriptionStyles({ descShadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => descriptionStyles({ descShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => descriptionStyles({ descShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => descriptionStyles({ descShadowVertical: newValue === undefined ? 0 : newValue })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -577,17 +496,8 @@ export class edit extends Component {
                                     borderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                containerStyle({
-                                    borderColor:
-                                        colorValue === undefined ? "transparent" : colorValue,
-                                })
-                            }
-                            onChangeRadius={(newRadius) =>
-                                containerStyle({
-                                    borderRadius: newRadius === undefined ? 0 : newRadius,
-                                })
-                            }
+                            onChangeColor={(colorValue) => containerStyle({ borderColor: colorValue === undefined ? "transparent" : colorValue, })}
+                            onChangeRadius={(newRadius) => containerStyle({ borderRadius: newRadius === undefined ? 0 : newRadius, })}
                         />
                         <PremiumBoxShadow
                             inner={true}
@@ -596,31 +506,11 @@ export class edit extends Component {
                             horizontal={containerStyles[0].containerShadowHorizontal}
                             vertical={containerStyles[0].containerShadowVertical}
                             position={containerStyles[0].containerShadowPosition}
-                            onChangeColor={newColor =>
-                                containerStyle({
-                                    containerShadowColor: newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                containerStyle({
-                                    containerShadowBlur: newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                containerStyle({
-                                    containerShadowHorizontal: newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                containerStyle({
-                                    containerShadowVertical: newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                containerStyle({
-                                    containerShadowPosition: newValue
-                                })
-                            }
+                            onChangeColor={newColor => containerStyle({ containerShadowColor: newColor })}
+                            onChangeBlur={newBlur => containerStyle({ containerShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => containerStyle({ containerShadowHorizontal: newValue })}
+                            onChangeVertical={newValue => containerStyle({ containerShadowVertical: newValue })}
+                            onChangePosition={newValue => containerStyle({ containerShadowPosition: newValue })}
                         />
                         <PremiumPadding
                             paddingTop={paddingT}
@@ -628,30 +518,12 @@ export class edit extends Component {
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
                             showUnits={true}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    paddingT: value
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    paddingR: value
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    paddingB: value
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    paddingL: value
-                                })
-                            }
+                            onChangePadTop={value => setAttributes({ paddingT: value })}
+                            onChangePadRight={value => setAttributes({ paddingR: value })}
+                            onChangePadBottom={value => setAttributes({ paddingB: value })}
+                            onChangePadLeft={value => setAttributes({ paddingL: value })}
                             selectedUnit={containerStyles[0].paddingU}
-                            onChangePadSizeUnit={newvalue =>
-                                containerStyle({ paddingU: newvalue })
-                            }
+                            onChangePadSizeUnit={newvalue => containerStyle({ paddingU: newvalue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

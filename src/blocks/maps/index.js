@@ -616,11 +616,7 @@ class PremiumMap extends Component {
                                 label={__("Text Color", 'premium-block-for-gutenberg')}
                                 colorValue={titleColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    setAttributes({
-                                        titleColor:
-                                            newValue === undefined ? "transparent" : newValue
-                                    })
+                                onColorChange={newValue => setAttributes({ titleColor: newValue === undefined ? "transparent" : newValue })
                                 }
                             />
                         </PanelBody>
@@ -644,12 +640,7 @@ class PremiumMap extends Component {
                                 label={__("Text Color", 'premium-block-for-gutenberg')}
                                 colorValue={descColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    setAttributes({
-                                        descColor:
-                                            newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
+                                onColorChange={newValue => setAttributes({ descColor: newValue === undefined ? "transparent" : newValue })}
                             />
                         </PanelBody>
                     )}

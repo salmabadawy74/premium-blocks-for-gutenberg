@@ -383,12 +383,7 @@ class edit extends Component {
                                     label={__("Icon Color", 'premium-block-for-gutenberg')}
                                     colorValue={iconColor}
                                     colorDefault={''}
-                                    onColorChange={newValue =>
-                                        setAttributes({
-                                            iconColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
+                                    onColorChange={newValue => setAttributes({ iconColor: newValue === undefined ? "transparent" : newValue })}
                                 />
                             )}
                         </PanelBody>
@@ -428,11 +423,7 @@ class edit extends Component {
                             label={__("Number Color", 'premium-block-for-gutenberg')}
                             colorValue={numberStyles[0].numberColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveNumberStyles({
-                                    numberColor: newValue === undefined ? "transparent" : newValue
-                                })
-                            }
+                            onColorChange={newValue => saveNumberStyles({ numberColor: newValue === undefined ? "transparent" : newValue })}
                         />
                     </PanelBody>
                     {prefix && (
@@ -466,9 +457,7 @@ class edit extends Component {
                                     label: __("prefixSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 weight={prefixStyles[0].prefixWeight}
-                                onChangeWeight={newWeight =>
-                                    savePrefixStyle({ prefixWeight: newWeight })
-                                }
+                                onChangeWeight={newWeight => savePrefixStyle({ prefixWeight: newWeight })}
                                 fontFamily={prefixStyles[0].prefixFamily}
                                 onChangeFamily={(fontFamily) => savePrefixStyle({ prefixFamily: fontFamily })}
                             />
@@ -476,12 +465,7 @@ class edit extends Component {
                                 label={__("Text Color", 'premium-block-for-gutenberg')}
                                 colorValue={prefixStyles[0].prefixColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    savePrefixStyle({
-                                        prefixColor:
-                                            newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
+                                onColorChange={newValue => savePrefixStyle({ prefixColor: newValue === undefined ? "transparent" : newValue })}
                             />
                             <ResponsiveSingleRangeControl
                                 label={__("Gap After", 'premium-block-for-gutenberg')}
@@ -523,9 +507,7 @@ class edit extends Component {
                                     label: __("suffixSizeTablet", 'premium-block-for-gutenberg'),
                                 }}
                                 weight={suffixStyles[0].suffixWeight}
-                                onChangeWeight={newWeight =>
-                                    saveSuffixStyle({ suffixWeight: newWeight })
-                                }
+                                onChangeWeight={newWeight => saveSuffixStyle({ suffixWeight: newWeight })}
                                 fontFamily={suffixStyles[0].suffixFamily}
                                 onChangeFamily={(fontFamily) => saveSuffixStyle({ suffixFamily: fontFamily })}
                             />
@@ -533,12 +515,7 @@ class edit extends Component {
                                 label={__("Text Color", 'premium-block-for-gutenberg')}
                                 colorValue={suffixStyles[0].suffixColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveSuffixStyle({
-                                        suffixColor:
-                                            newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
+                                onColorChange={newValue => saveSuffixStyle({ suffixColor: newValue === undefined ? "transparent" : newValue })}
                             />
                             <ResponsiveSingleRangeControl
                                 label={__("Gap Before", 'premium-block-for-gutenberg')}
@@ -584,15 +561,9 @@ class edit extends Component {
                                 style={titleStyles[0].titleStyle}
                                 spacing={titleStyles[0].titleSpacing}
                                 upper={titleStyles[0].titleUpper}
-                                onChangeWeight={newWeight =>
-                                    saveTitleStyles({ titleWeight: newWeight })
-                                }
-                                onChangeStyle={newStyle =>
-                                    saveTitleStyles({ titleStyle: newStyle })
-                                }
-                                onChangeSpacing={newValue =>
-                                    saveTitleStyles({ titleSpacing: newValue })
-                                }
+                                onChangeWeight={newWeight => saveTitleStyles({ titleWeight: newWeight })}
+                                onChangeStyle={newStyle => saveTitleStyles({ titleStyle: newStyle })}
+                                onChangeSpacing={newValue => saveTitleStyles({ titleSpacing: newValue })}
                                 onChangeFamily={(fontFamily) => saveTitleStyles({ titleFamily: fontFamily })}
                                 onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                             />
@@ -600,12 +571,7 @@ class edit extends Component {
                                 label={__("Text Color", '')}
                                 colorValue={titleStyles[0].titleColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        titleColor:
-                                            newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
+                                onColorChange={newValue => saveTitleStyles({ titleColor: newValue === undefined ? "transparent" : newValue })}
                             />
                             <PanelBody
                                 title={__("Spacings", 'premium-block-for-gutenberg')}
@@ -673,12 +639,8 @@ class edit extends Component {
                                     borderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                saveContainerStyle({ borderColor: colorValue })
-                            }
-                            onChangeRadius={(newRadius) =>
-                                saveContainerStyle({ borderRadius: newRadius })
-                            }
+                            onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
+                            onChangeRadius={(newRadius) => saveContainerStyle({ borderRadius: newRadius })}
                         />
                         <PremiumBoxShadow
                             inner={true}
@@ -688,32 +650,11 @@ class edit extends Component {
                             vertical={containerStyles[0].shadowVertical}
                             position={containerStyles[0].shadowPosition}
                             withAlpha={true}
-                            onChangeColor={newColor => {
-                                saveContainerStyle({
-                                    shadowColor: newColor
-                                })
-                            }
-                            }
-                            onChangeBlur={newBlur =>
-                                saveContainerStyle({
-                                    shadowBlur: newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveContainerStyle({
-                                    shadowHorizontal: newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                saveContainerStyle({
-                                    shadowVertical: newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                saveContainerStyle({
-                                    shadowPosition: newValue
-                                })
-                            }
+                            onChangeColor={newColor => { saveContainerStyle({ shadowColor: newColor }) }}
+                            onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue })}
+                            onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
                         <PremiumPadding
                             paddingTop={paddingT}
@@ -721,30 +662,12 @@ class edit extends Component {
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
                             showUnits={true}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    paddingT: value || 0
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    paddingR: value || 0
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    paddingB: value || 0
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    paddingL: value || 0
-                                })
-                            }
+                            onChangePadTop={value => setAttributes({ paddingT: value || 0 })}
+                            onChangePadRight={value => setAttributes({ paddingR: value || 0 })}
+                            onChangePadBottom={value => setAttributes({ paddingB: value || 0 })}
+                            onChangePadLeft={value => setAttributes({ paddingL: value || 0 })}
                             selectedUnit={containerStyles[0].paddingU}
-                            onChangePadSizeUnit={newvalue =>
-                                saveContainerStyle({ paddingU: newvalue })
-                            }
+                            onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingU: newvalue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
