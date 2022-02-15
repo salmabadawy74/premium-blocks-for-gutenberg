@@ -18,8 +18,6 @@ export default function ResponsiveSingleRangeControl({
     label,
     defaultValue
 }) {
-
-
     return [
         onChange && (
             <div className={`premium-blocks-range-control`}>

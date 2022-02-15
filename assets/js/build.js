@@ -173,7 +173,6 @@ function ResponsiveSingleRangeControl(_ref) {
         label = _ref.label,
         defaultValue = _ref.defaultValue;
 
-
     return [_onChange && React.createElement(
         'div',
         { className: 'premium-blocks-range-control' },
@@ -1202,7 +1201,7 @@ var PremiumTypo = function (_Component) {
         }
 
         _this.state = {
-            fontFamily: _this.props.fontFamily || 'default',
+            fontFamily: _this.props.fontFamily || 'Default',
             line: _this.props.line,
             weight: _this.props.weight || '400',
             size: _this.props.components.includes("responsiveSize") ? responsiveSize : _this.props.size,
@@ -1226,7 +1225,6 @@ var PremiumTypo = function (_Component) {
         value: function componentDidUpdate(prevProps) {
             var previewDevice = wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
             if (this.state.device !== previewDevice) {
-                console.log(this.state.device, previewDevice);
                 this.setState({ device: previewDevice });
             }
         }
@@ -1284,7 +1282,7 @@ var PremiumTypo = function (_Component) {
                 label: "Oblique"
             }];
 
-            var fonts = [{ value: "default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
+            var fonts = [{ value: "Default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
 
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
@@ -1293,6 +1291,9 @@ var PremiumTypo = function (_Component) {
                     fontWeight = _premiumFonts2.default[k].weight;
                 }
             });
+            if (fontWeight === "") {
+                fontWeight = fonts[0].weight;
+            }
 
             var toggleVisible = function toggleVisible(v) {
                 _this2.setState({
@@ -4583,7 +4584,7 @@ exports.default = DefaultImage;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4597,48 +4598,48 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Component = wp.element.Component;
 
 var PremiumLowerQuote = function (_Component) {
-  _inherits(PremiumLowerQuote, _Component);
+    _inherits(PremiumLowerQuote, _Component);
 
-  function PremiumLowerQuote() {
-    _classCallCheck(this, PremiumLowerQuote);
+    function PremiumLowerQuote() {
+        _classCallCheck(this, PremiumLowerQuote);
 
-    return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
-  }
-
-  _createClass(PremiumLowerQuote, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+        return _possibleConstructorReturn(this, (PremiumLowerQuote.__proto__ || Object.getPrototypeOf(PremiumLowerQuote)).apply(this, arguments));
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props = this.props,
-          size = _props.size,
-          color = _props.color,
-          opacity = _props.opacity;
 
-      return React.createElement(
-        "svg",
-        {
-          style: { width: size + "em", opacity: opacity / 100 },
-          "aria-hidden": "true",
-          "data-prefix": "fas",
-          "data-icon": "quote-left",
-          "class": "svg-inline--fa fa-quote-left fa-w-16",
-          role: "img",
-          xmlns: "http://www.w3.org/2000/svg",
-          viewBox: "0 0 512 512"
-        },
-        React.createElement("path", {
-          fill: "" + color,
-          d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
-        })
-      );
-    }
-  }]);
+    _createClass(PremiumLowerQuote, [{
+        key: "shouldComponentUpdate",
+        value: function shouldComponentUpdate(nextProps) {
+            return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                size = _props.size,
+                color = _props.color,
+                opacity = _props.opacity;
 
-  return PremiumLowerQuote;
+            return React.createElement(
+                "svg",
+                {
+                    style: { width: size + "em", opacity: opacity / 100 },
+                    "aria-hidden": "true",
+                    "data-prefix": "fas",
+                    "data-icon": "quote-left",
+                    "class": "svg-inline--fa fa-quote-left fa-w-16",
+                    role: "img",
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 512 512"
+                },
+                React.createElement("path", {
+                    fill: "" + color,
+                    d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
+                })
+            );
+        }
+    }]);
+
+    return PremiumLowerQuote;
 }(Component);
 
 exports.default = PremiumLowerQuote;
@@ -14376,11 +14377,8 @@ var loadGoogleFonts = function loadGoogleFonts(font_families) {
     })));
     if (font_families.length > 0) {
         _webfontloader2.default.load(_extends({}, font_families.length > 0 ? {
-            google: {
-                families: font_families
-            }
+            google: { families: font_families }
         } : {}, {
-
             classes: false,
             text: 'abcdefghijklmnopqrstuvwxyz'
         }));
@@ -14394,14 +14392,14 @@ var SingleFont = function SingleFont(_ref2) {
     return React.createElement(
         'div',
         {
-
             onClick: function onClick() {
                 return onPickFamily(family.value);
             },
             className: (0, _classnames2.default)('premium-typography-single-font', {
                 active: family.value === value
             }),
-            key: family[0] },
+            key: family[0]
+        },
         React.createElement(
             'span',
             { className: 'premium-font-name' },
@@ -14410,9 +14408,7 @@ var SingleFont = function SingleFont(_ref2) {
         React.createElement(
             'span',
             {
-                style: {
-                    fontFamily: family.value
-                },
+                style: { fontFamily: family.value },
                 className: 'premium-font-preview' },
             'Simply dummy text'
         )
@@ -14445,13 +14441,11 @@ var FontsList = function FontsList(_ref3) {
 
     var onScroll = function onScroll() {
         scrollTimer && clearTimeout(scrollTimer);
-
         setScrollTimer(setTimeout(function () {
             if (!listRef.current) {
                 return;
             }
             var overscanStartIndex = Math.ceil(listRef.current.scrollTop / 85);
-
             var perPage = 25;
             var startingPage = Math.ceil((overscanStartIndex + 1) / perPage);
             var pageItems = [].concat(_toConsumableArray(Array(perPage))).map(function (_, i) {
