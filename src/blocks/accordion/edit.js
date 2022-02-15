@@ -324,15 +324,9 @@ class PremiumAccordion extends Component {
                             line={titleStyles[0].titleLine}
                             upper={titleStyles[0].titleUpper}
                             onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
-                            onChangeWeight={newWeight =>
-                                saveTitleStyles({ titleWeight: newWeight })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveTitleStyles({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveTitleStyles({ titleLetter: newValue })
-                            }
+                            onChangeWeight={newWeight => saveTitleStyles({ titleWeight: newWeight })}
+                            onChangeStyle={newStyle => saveTitleStyles({ titleStyle: newStyle })}
+                            onChangeSpacing={newValue => saveTitleStyles({ titleLetter: newValue })}
                             onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
                             onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                         />
@@ -340,21 +334,13 @@ class PremiumAccordion extends Component {
                             label={__("Text Color", 'premium-block-for-gutenberg')}
                             colorValue={titleStyles[0].titleColor}
                             colorDefault={''}
-                            onColorChange={value =>
-                                saveTitleStyles({
-                                    titleColor: value
-                                })
-                            }
+                            onColorChange={value => saveTitleStyles({ titleColor: value })}
                         />
                         <AdvancedPopColorControl
                             label={__("Background Color", 'premium-block-for-gutenberg')}
                             colorValue={titleStyles[0].titleBack}
                             colorDefault={''}
-                            onColorChange={value =>
-                                saveTitleStyles({
-                                    titleBack: value
-                                })
-                            }
+                            onColorChange={value => saveTitleStyles({ titleBack: value })}
                         />
                         <PremiumBorder
                             borderType={titleStyles[0].titleBorder}
@@ -365,9 +351,7 @@ class PremiumAccordion extends Component {
                             left={titleBorderLeft}
                             borderColor={titleStyles[0].titleBorderColor}
                             borderRadius={titleStyles[0].titleBorderRadius}
-                            onChangeType={(newType) =>
-                                saveTitleStyles({ titleBorder: newType })
-                            }
+                            onChangeType={(newType) => saveTitleStyles({ titleBorder: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     titleBorderUpdated: true,
@@ -377,30 +361,18 @@ class PremiumAccordion extends Component {
                                     titleBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                saveTitleStyles({ titleBorderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                saveTitleStyles({ titleBorderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => saveTitleStyles({ titleBorderColor: colorValue })}
+                            onChangeRadius={(newrRadius) => saveTitleStyles({ titleBorderRadius: newrRadius })}
                         />
                         <PremiumTextShadow
                             color={titleStyles[0].titleShadowColor}
                             blur={titleStyles[0].titleShadowBlur}
                             horizontal={titleStyles[0].titleShadowHorizontal}
                             vertical={titleStyles[0].titleShadowVertical}
-                            onChangeColor={newColor =>
-                                saveTitleStyles({ titleShadowColor: newColor })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveTitleStyles({ titleShadowBlur: newBlur })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveTitleStyles({ titleShadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                saveTitleStyles({ titleShadowVertical: newValue })
-                            }
+                            onChangeColor={newColor => saveTitleStyles({ titleShadowColor: newColor })}
+                            onChangeBlur={newBlur => saveTitleStyles({ titleShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveTitleStyles({ titleShadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
                         />
 
                         <PremiumPadding
@@ -408,26 +380,10 @@ class PremiumAccordion extends Component {
                             paddingRight={titlePaddingR}
                             paddingBottom={titlePaddingB}
                             paddingLeft={titlePaddingL}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    titlePaddingT: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    titlePaddingR: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    titlePaddingB: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    titlePaddingL: value === undefined ? 0 : value
-                                })
-                            }
+                            onChangePadTop={value => setAttributes({ titlePaddingT: value === undefined ? 0 : value })}
+                            onChangePadRight={value => setAttributes({ titlePaddingR: value === undefined ? 0 : value })}
+                            onChangePadBottom={value => setAttributes({ titlePaddingB: value === undefined ? 0 : value })}
+                            onChangePadLeft={value => setAttributes({ titlePaddingL: value === undefined ? 0 : value })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -452,30 +408,18 @@ class PremiumAccordion extends Component {
                             label={__("Arrow Color", 'premium-block-for-gutenberg')}
                             colorValue={arrowStyles[0].arrowColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveArrowStyles({
-                                    arrowColor: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveArrowStyles({ arrowColor: newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Background Color", 'premium-block-for-gutenberg')}
                             colorValue={arrowStyles[0].arrowBack}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                saveArrowStyles({
-                                    arrowBack: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
                         />
                         <PremiumRangeControl
                             label={__("Border Radius", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowRadius}
-                            onChange={newValue =>
-                                saveArrowStyles({
-                                    arrowRadius: newValue === undefined ? 0 : newValue
-                                })
-                            }
+                            onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
                             unit={'px'}
                             units={['px']}
                             defaultValue={0}
@@ -484,11 +428,7 @@ class PremiumAccordion extends Component {
                         <PremiumRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowPadding}
-                            onChange={newValue =>
-                                saveArrowStyles({
-                                    arrowPadding: newValue === undefined ? 0 : newValue
-                                })
-                            }
+                            onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
                             unit={'px'}
                             units={['px']}
                             defaultValue={0}
@@ -531,39 +471,23 @@ class PremiumAccordion extends Component {
                                     line={descStyles[0].descLine}
                                     upper={descStyles[0].descUpper}
                                     onChangeSize={newSize => SaveDescStyles({ descSize: newSize })}
-                                    onChangeWeight={newWeight =>
-                                        SaveDescStyles({ descWeight: newWeight })
-                                    }
-                                    onChangeStyle={newStyle =>
-                                        SaveDescStyles({ descStyle: newStyle })
-                                    }
-                                    onChangeSpacing={newValue =>
-                                        SaveDescStyles({ descLetter: newValue })
-                                    }
-                                    onChangeLine={newValue =>
-                                        SaveDescStyles({ descLine: newValue })
-                                    }
+                                    onChangeWeight={newWeight => SaveDescStyles({ descWeight: newWeight })}
+                                    onChangeStyle={newStyle => SaveDescStyles({ descStyle: newStyle })}
+                                    onChangeSpacing={newValue => SaveDescStyles({ descLetter: newValue })}
+                                    onChangeLine={newValue => SaveDescStyles({ descLine: newValue })}
                                     onChangeUpper={check => SaveDescStyles({ descUpper: check })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__("Text Color", 'premium-block-for-gutenberg')}
                                     colorValue={descStyles[0].descColor}
                                     colorDefault={''}
-                                    onColorChange={value =>
-                                        SaveDescStyles({
-                                            descColor: value
-                                        })
-                                    }
+                                    onColorChange={value => SaveDescStyles({ descColor: value })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__("Background Color", 'premium-block-for-gutenberg')}
                                     colorValue={descStyles[0].descBack}
                                     colorDefault={''}
-                                    onColorChange={value =>
-                                        SaveDescStyles({
-                                            descBack: value
-                                        })
-                                    }
+                                    onColorChange={value => SaveDescStyles({ descBack: value })}
                                 />
                             </Fragment>
                         )}
@@ -587,12 +511,8 @@ class PremiumAccordion extends Component {
                                     descBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                SaveDescStyles({ descBorderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                SaveDescStyles({ descBorderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => SaveDescStyles({ descBorderColor: colorValue })}
+                            onChangeRadius={(newrRadius) => SaveDescStyles({ descBorderRadius: newrRadius })}
                         />
 
                         {"text" === contentType && (
@@ -601,27 +521,10 @@ class PremiumAccordion extends Component {
                                 blur={textShadowBlur}
                                 horizontal={textShadowHorizontal}
                                 vertical={textShadowVertical}
-                                onChangeColor={newColor =>
-                                    setAttributes({
-                                        textShadowColor:
-                                            newColor === undefined ? "transparent" : newColor
-                                    })
-                                }
-                                onChangeBlur={newBlur =>
-                                    setAttributes({
-                                        textShadowBlur: newBlur === undefined ? 0 : newBlur
-                                    })
-                                }
-                                onChangehHorizontal={newValue =>
-                                    setAttributes({
-                                        textShadowHorizontal: newValue === undefined ? 0 : newValue
-                                    })
-                                }
-                                onChangeVertical={newValue =>
-                                    setAttributes({
-                                        textShadowVertical: newValue === undefined ? 0 : newValue
-                                    })
-                                }
+                                onChangeColor={newColor => setAttributes({ textShadowColor: newColor === undefined ? "transparent" : newColor })}
+                                onChangeBlur={newBlur => setAttributes({ textShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                                onChangehHorizontal={newValue => setAttributes({ textShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                                onChangeVertical={newValue => setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue })}
                             />
                         )}
                         <PremiumPadding
@@ -629,26 +532,10 @@ class PremiumAccordion extends Component {
                             paddingRight={descPaddingR}
                             paddingBottom={descPaddingB}
                             paddingLeft={descPaddingL}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    descPaddingT: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    descPaddingR: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    descPaddingB: value === undefined ? 0 : value
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    descPaddingL: value === undefined ? 0 : value
-                                })
-                            }
+                            onChangePadTop={value => setAttributes({ descPaddingT: value === undefined ? 0 : value })}
+                            onChangePadRight={value => setAttributes({ descPaddingR: value === undefined ? 0 : value })}
+                            onChangePadBottom={value => setAttributes({ descPaddingB: value === undefined ? 0 : value })}
+                            onChangePadLeft={value => setAttributes({ descPaddingL: value === undefined ? 0 : value })}
                         />
                     </PanelBody>
                 </InspectorControls>

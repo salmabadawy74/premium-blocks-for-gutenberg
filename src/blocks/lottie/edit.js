@@ -476,48 +476,21 @@ class edit extends Component {
                                 borderLeft: left,
                             })
                         }
-                        onChangeColor={(colorValue) =>
-                            saveLottieStyles({
-                                borderColor:
-                                    colorValue === undefined ? "transparent" : colorValue,
-                            })
-                        }
-                        onChangeRadius={(newRadius) =>
-                            saveLottieStyles({
-                                borderRadius: newRadius === undefined ? 0 : newRadius,
-                            })
-                        }
+                        onChangeColor={(colorValue) => saveLottieStyles({ borderColor: colorValue === undefined ? "transparent" : colorValue, })}
+                        onChangeRadius={(newRadius) => saveLottieStyles({ borderRadius: newRadius === undefined ? 0 : newRadius, })}
                     />
                     <PremiumPadding
                         paddingTop={paddingT}
                         paddingRight={paddingR}
                         paddingBottom={paddingB}
                         paddingLeft={paddingL}
-                        onChangePadTop={value =>
-                            setAttributes({
-                                paddingT: value
-                            })
-                        }
-                        onChangePadRight={value =>
-                            setAttributes({
-                                paddingR: value
-                            })
-                        }
-                        onChangePadBottom={value =>
-                            setAttributes({
-                                paddingB: value
-                            })
-                        }
-                        onChangePadLeft={value =>
-                            setAttributes({
-                                paddingL: value
-                            })
-                        }
+                        onChangePadTop={value => setAttributes({ paddingT: value })}
+                        onChangePadRight={value => setAttributes({ paddingR: value })}
+                        onChangePadBottom={value => setAttributes({ paddingB: value })}
+                        onChangePadLeft={value => setAttributes({ paddingL: value })}
                         showUnits={true}
                         selectedUnit={lottieStyles[0].paddingU}
-                        onChangePadSizeUnit={newvalue =>
-                            saveLottieStyles({ paddingU: newvalue })
-                        }
+                        onChangePadSizeUnit={newvalue => saveLottieStyles({ paddingU: newvalue })}
                     />
                 </PanelBody>
                 <PremiumResponsiveTabs

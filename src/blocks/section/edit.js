@@ -141,21 +141,15 @@ const edit = props => {
                     <ToggleControl
                         label={__("Stretch Section", 'premium-block-for-gutenberg')}
                         checked={stretchSection}
-                        onChange={check =>
-                            setAttributes({ stretchSection: check })
-                        }
-                        help={__(
-                            "This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-block-for-gutenberg'
-                        )}
+                        onChange={check => setAttributes({ stretchSection: check })}
+                        help={__("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-block-for-gutenberg')}
                     />
                     {stretchSection && (
                         <SelectControl
                             label={__("Content Width", 'premium-block-for-gutenberg')}
                             options={WIDTH}
                             value={innerWidthType}
-                            onChange={newValue =>
-                                setAttributes({ innerWidthType: newValue })
-                            }
+                            onChange={newValue => setAttributes({ innerWidthType: newValue })}
                         />
                     )}
                     {"boxed" === innerWidthType && stretchSection && (
@@ -164,8 +158,7 @@ const edit = props => {
                             value={innerWidth}
                             min="1"
                             max="1600"
-                            onChange={newValue =>
-                                setAttributes({ innerWidth: newValue })}
+                            onChange={newValue => setAttributes({ innerWidth: newValue })}
                             defaultValue={0}
                             showUnit={false}
                         />
@@ -174,9 +167,7 @@ const edit = props => {
                         label={__("Height", 'premium-block-for-gutenberg')}
                         options={HEIGHT}
                         value={height}
-                        onChange={newValue =>
-                            setAttributes({ height: newValue })
-                        }
+                        onChange={newValue => setAttributes({ height: newValue })}
                     />
                     {"min" === height && (
                         <Fragment>
@@ -185,14 +176,10 @@ const edit = props => {
                                 value={minHeight}
                                 min="1"
                                 max="800"
-                                onChange={newValue =>
-                                    setAttributes({ minHeight: newValue })
-                                }
+                                onChange={newValue => setAttributes({ minHeight: newValue })}
                                 units={["px", "vh", "vw"]}
                                 defaultValue={0}
-                                onChangeUnit={newValue =>
-                                    setAttributes({ minHeightUnit: newValue })
-                                }
+                                onChangeUnit={newValue => setAttributes({ minHeightUnit: newValue })}
                                 showUnit={true}
                                 unit={minHeightUnit}
                             />
@@ -256,12 +243,8 @@ const edit = props => {
                                 isUpdated: true,
                             })
                         }
-                        onChangeColor={(colorValue) =>
-                            saveContainerStyle({ borderColor: colorValue })
-                        }
-                        onChangeRadius={(newrRadius) =>
-                            saveContainerStyle({ borderRadius: newrRadius })
-                        }
+                        onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
+                        onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
                     />
                     <PremiumBoxShadow
                         inner={false}
@@ -278,29 +261,10 @@ const edit = props => {
                                         : newColor
                             })
                         }
-                        onChangeBlur={newBlur =>
-                            saveContainerStyle({
-                                shadowBlur: newBlur === undefined ? 0 : newBlur
-                            })
-                        }
-                        onChangehHorizontal={newValue =>
-                            saveContainerStyle({
-                                shadowHorizontal:
-                                    newValue === undefined ? 0 : newValue
-                            })
-                        }
-                        onChangeVertical={newValue =>
-                            saveContainerStyle({
-                                shadowVertical:
-                                    newValue === undefined ? 0 : newValue
-                            })
-                        }
-                        onChangePosition={newValue =>
-                            saveContainerStyle({
-                                shadowPosition:
-                                    newValue === undefined ? 0 : newValue
-                            })
-                        }
+                        onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
+                        onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
+                        onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue })}
+                        onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue })}
                     />
                 </PanelBody>
                 <PanelBody
@@ -314,30 +278,12 @@ const edit = props => {
                         marginRight={marginRight}
                         marginBottom={marginBottom}
                         marginLeft={marginLeft}
-                        onChangeMarTop={value =>
-                            setAttributes({
-                                marginTop: value === undefined ? 0 : value
-                            })
-                        }
-                        onChangeMarRight={value =>
-                            setAttributes({
-                                marginRight: value === undefined ? 0 : value
-                            })
-                        }
-                        onChangeMarBottom={value =>
-                            setAttributes({
-                                marginBottom: value === undefined ? 0 : value
-                            })
-                        }
-                        onChangeMarLeft={value =>
-                            setAttributes({
-                                marginLeft: value === undefined ? 0 : value
-                            })
-                        }
+                        onChangeMarTop={value => setAttributes({ marginTop: value === undefined ? 0 : value })}
+                        onChangeMarRight={value => setAttributes({ marginRight: value === undefined ? 0 : value })}
+                        onChangeMarBottom={value => setAttributes({ marginBottom: value === undefined ? 0 : value })}
+                        onChangeMarLeft={value => setAttributes({ marginLeft: value === undefined ? 0 : value })}
                         showUnits={true}
-                        onChangeMarSizeUnit={newvalue =>
-                            saveContainerStyle({ marginUnit: newvalue })
-                        }
+                        onChangeMarSizeUnit={newvalue => saveContainerStyle({ marginUnit: newvalue })}
                         selectedUnit={containerStyles[0].marginUnit}
 
                     />
@@ -346,31 +292,13 @@ const edit = props => {
                         paddingRight={paddingRight}
                         paddingBottom={paddingBottom}
                         paddingLeft={paddingLeft}
-                        onChangePadTop={value =>
-                            setAttributes({
-                                paddingTop: value === undefined ? 0 : value
-                            })
-                        }
-                        onChangePadRight={value =>
-                            setAttributes({
-                                paddingRight: value === undefined ? 0 : value
-                            })
-                        }
-                        onChangePadBottom={value =>
-                            setAttributes({
-                                paddingBottom: value === undefined ? 0 : value
-                            })
-                        }
-                        onChangePadLeft={value =>
-                            setAttributes({
-                                paddingLeft: value === undefined ? 0 : value
-                            })
-                        }
+                        onChangePadTop={value => setAttributes({ paddingTop: value === undefined ? 0 : value })}
+                        onChangePadRight={value => setAttributes({ paddingRight: value === undefined ? 0 : value })}
+                        onChangePadBottom={value => setAttributes({ paddingBottom: value === undefined ? 0 : value })}
+                        onChangePadLeft={value => setAttributes({ paddingLeft: value === undefined ? 0 : value })}
                         showUnits={true}
                         selectedUnit={containerStyles[0].paddingUnit}
-                        onChangePadSizeUnit={newvalue =>
-                            saveContainerStyle({ paddingUnit: newvalue })
-                        }
+                        onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
                     />
                 </PanelBody>
                 <PremiumResponsiveTabs

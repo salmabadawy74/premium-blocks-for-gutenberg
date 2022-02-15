@@ -138,7 +138,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _premiumSizeUnits = __webpack_require__(40);
+var _premiumSizeUnits = __webpack_require__(34);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -269,7 +269,7 @@ var AdvancedColorControl = function (_Component) {
         _this.state = {
             isVisible: false,
             colors: [],
-            classSat: 'first',
+            classSat: 'one',
             currentColor: '',
             defaultColor: ''
         };
@@ -298,7 +298,7 @@ var AdvancedColorControl = function (_Component) {
                 } else {
                     _this2.setState({ currentColor: undefined === _this2.props.colorValue || '' === _this2.props.colorValue ? _this2.props.colorDefault : _this2.props.colorValue });
                 }
-                _this2.setState({ classSat: 'first' });
+                _this2.setState({ classSat: 'one' });
                 _this2.setState({ isVisible: true });
             };
 
@@ -307,6 +307,7 @@ var AdvancedColorControl = function (_Component) {
                     _this2.setState({ isVisible: false });
                 }
             };
+
             var normalizeColor = function normalizeColor(color) {
                 var parsedColor = (0, _colord.colord)(color);
 
@@ -320,7 +321,9 @@ var AdvancedColorControl = function (_Component) {
 
                 return parsedColor.toRgbString();
             };
+
             var isNew = wp.components.GradientPicker;
+
             return React.createElement(
                 'div',
                 { className: 'premium-color-popover-container' },
@@ -360,10 +363,10 @@ var AdvancedColorControl = function (_Component) {
                                                     if (_this2.props.onColorClassChange) {
                                                         _this2.props.onColorClassChange(slug);
                                                     }
-                                                    if ('third' === _this2.state.classSat) {
-                                                        _this2.setState({ classSat: 'second' });
+                                                    if ('three' === _this2.state.classSat) {
+                                                        _this2.setState({ classSat: 'two' });
                                                     } else {
-                                                        _this2.setState({ classSat: 'third' });
+                                                        _this2.setState({ classSat: 'three' });
                                                     }
                                                 }
                                             },
@@ -379,7 +382,7 @@ var AdvancedColorControl = function (_Component) {
                             React.createElement(
                                 'div',
                                 { className: isNew ? 'premium-gutenberg-color-picker-new' : 'premium-gutenberg-color-picker' },
-                                this.state.classSat === 'first' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
+                                this.state.classSat === 'one' && !this.props.disableCustomColors && React.createElement(ColorPicker, {
                                     color: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
                                     onChangeComplete: function onChangeComplete(color) {
                                         _this2.setState({ currentColor: color.hex });
@@ -391,7 +394,7 @@ var AdvancedColorControl = function (_Component) {
                                         }
                                     }
                                 }),
-                                !this.props.disableCustomColors && this.state.classSat !== 'first' && React.createElement(ColorPicker, {
+                                !this.props.disableCustomColors && this.state.classSat !== 'one' && React.createElement(ColorPicker, {
                                     color: undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor,
                                     onChangeComplete: function onChangeComplete(color) {
                                         _this2.setState({ currentColor: color.hex });
@@ -525,6 +528,12 @@ exports.FontAwesomeEnabled = FontAwesomeEnabled;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -570,12 +579,6 @@ var PbgIcon = function (_wp$element$Component) {
 }(wp.element.Component);
 
 exports.default = PbgIcon;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = React;
 
 /***/ }),
 /* 6 */
@@ -1189,7 +1192,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _singleRangeControl = __webpack_require__(1);
 
@@ -2038,11 +2041,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(258)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(260)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(261)();
+  module.exports = __webpack_require__(263)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
@@ -2491,11 +2494,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumSizeUnits = __webpack_require__(40);
+var _premiumSizeUnits = __webpack_require__(34);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -2845,7 +2848,7 @@ module.exports = $export;
 "use strict";
 
 
-var anObject = __webpack_require__(39);
+var anObject = __webpack_require__(40);
 var IE8_DOM_DEFINE = __webpack_require__(122);
 var toPrimitive = __webpack_require__(76);
 var dP = Object.defineProperty;
@@ -3106,10 +3109,58 @@ $exports.store = store;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumSizeUnits;
+function PremiumSizeUnits(props) {
+    var activeUnit = props.activeUnit,
+        units = props.units,
+        _props$onChangeSizeUn = props.onChangeSizeUnit,
+        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+
+
+    var sizeUnits = ["px", "em", "%"];
+
+    if (undefined !== units) {
+        sizeUnits = units;
+    }
+
+    return React.createElement(
+        "ul",
+        { className: "premium-slider-units" },
+        sizeUnits.map(function (unit, index) {
+            return React.createElement(
+                "li",
+                {
+
+                    className: "single-unit " + (unit === activeUnit && "active"),
+                    onClick: function onClick() {
+                        return onChangeSizeUnit(unit);
+                    }
+                },
+                React.createElement(
+                    "span",
+                    { className: "unit-text" },
+                    " ",
+                    unit
+                )
+            );
+        })
+    );
+}
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseGetTag = __webpack_require__(35),
-    isObjectLike = __webpack_require__(37);
+var baseGetTag = __webpack_require__(36),
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -3138,13 +3189,13 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(36),
+var _Symbol = __webpack_require__(37),
     getRawTag = __webpack_require__(148),
     objectToString = __webpack_require__(149);
 
@@ -3172,7 +3223,7 @@ function baseGetTag(value) {
 module.exports = baseGetTag;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3186,7 +3237,7 @@ var _Symbol = root.Symbol;
 module.exports = _Symbol;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3225,7 +3276,7 @@ function isObjectLike(value) {
 module.exports = isObjectLike;
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3236,7 +3287,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBackgroundControl;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -3461,7 +3512,7 @@ function PremiumBackgroundControl(_ref) {
 }
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3472,54 +3523,6 @@ module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
 };
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumSizeUnits;
-function PremiumSizeUnits(props) {
-    var activeUnit = props.activeUnit,
-        units = props.units,
-        _props$onChangeSizeUn = props.onChangeSizeUnit,
-        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
-
-
-    var sizeUnits = ["px", "em", "%"];
-
-    if (undefined !== units) {
-        sizeUnits = units;
-    }
-
-    return React.createElement(
-        "ul",
-        { className: "premium-slider-units" },
-        sizeUnits.map(function (unit, index) {
-            return React.createElement(
-                "li",
-                {
-
-                    className: "single-unit " + (unit === activeUnit && "active"),
-                    onClick: function onClick() {
-                        return onChangeSizeUnit(unit);
-                    }
-                },
-                React.createElement(
-                    "span",
-                    { className: "unit-text" },
-                    " ",
-                    unit
-                )
-            );
-        })
-    );
-}
 
 /***/ }),
 /* 41 */
@@ -3635,7 +3638,7 @@ module.exports = getMapData;
 "use strict";
 
 
-var isSymbol = __webpack_require__(34);
+var isSymbol = __webpack_require__(35);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -3770,19 +3773,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(293);
+var _edit = __webpack_require__(295);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(294);
+var _save = __webpack_require__(296);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(295);
+var _deprecated = __webpack_require__(297);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -3911,7 +3914,7 @@ exports.f = {}.propertyIsEnumerable;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(7);
-var normalizeHeaderName = __webpack_require__(424);
+var normalizeHeaderName = __webpack_require__(426);
 var enhanceError = __webpack_require__(138);
 
 var DEFAULT_CONTENT_TYPE = {
@@ -4106,7 +4109,7 @@ module.exports = baseGet;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(34);
+    isSymbol = __webpack_require__(35);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -4345,7 +4348,7 @@ module.exports = keys;
 
 
 var baseIsArguments = __webpack_require__(201),
-    isObjectLike = __webpack_require__(37);
+    isObjectLike = __webpack_require__(38);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -4470,7 +4473,7 @@ exports.default = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumSizeUnits = __webpack_require__(40);
+var _premiumSizeUnits = __webpack_require__(34);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -4772,9 +4775,9 @@ module.exports = ReactPropTypesSecret;
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(262));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(264));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(267));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(269));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(113));
 
@@ -4806,11 +4809,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumSizeUnits = __webpack_require__(40);
+var _premiumSizeUnits = __webpack_require__(34);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -5368,8 +5371,8 @@ module.exports = {};
 
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(39);
-var dPs = __webpack_require__(349);
+var anObject = __webpack_require__(40);
+var dPs = __webpack_require__(351);
 var enumBugKeys = __webpack_require__(81);
 var IE_PROTO = __webpack_require__(79)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
@@ -5384,7 +5387,7 @@ var _createDict = function createDict() {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(350).appendChild(iframe);
+  __webpack_require__(352).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -5552,7 +5555,7 @@ module.exports = freeGlobal;
 "use strict";
 
 
-var baseGetTag = __webpack_require__(35),
+var baseGetTag = __webpack_require__(36),
     isObject = __webpack_require__(26);
 
 /** `Object#toString` result references. */
@@ -5767,7 +5770,7 @@ module.exports = Stack;
 
 
 var baseIsEqualDeep = __webpack_require__(183),
-    isObjectLike = __webpack_require__(37);
+    isObjectLike = __webpack_require__(38);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -6341,7 +6344,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(12), __webpack_require__(5), __webpack_require__(0), __webpack_require__(28), __webpack_require__(71)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(5), __webpack_require__(0), __webpack_require__(28), __webpack_require__(71)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(12), __webpack_require__(4), __webpack_require__(0), __webpack_require__(28), __webpack_require__(71)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(4), __webpack_require__(0), __webpack_require__(28), __webpack_require__(71)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -6893,9 +6896,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(256);
+  module.exports = __webpack_require__(258);
 } else {
-  module.exports = __webpack_require__(257);
+  module.exports = __webpack_require__(259);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
@@ -6911,7 +6914,7 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(28));
 
@@ -7723,11 +7726,11 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactLifecyclesCompat = __webpack_require__(111);
 
-var _ChildMapping = __webpack_require__(268);
+var _ChildMapping = __webpack_require__(270);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -8148,35 +8151,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(300);
+var _extends2 = __webpack_require__(302);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(301);
+var _slicedToArray2 = __webpack_require__(303);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(305);
+var _objectSpread2 = __webpack_require__(307);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(306);
+var _classCallCheck2 = __webpack_require__(308);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(307);
+var _createClass2 = __webpack_require__(309);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(308);
+var _possibleConstructorReturn2 = __webpack_require__(310);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(310);
+var _getPrototypeOf2 = __webpack_require__(312);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(311);
+var _inherits2 = __webpack_require__(313);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -8188,7 +8191,7 @@ var _defineProperty2 = __webpack_require__(119);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _propTypes = __webpack_require__(12);
 
@@ -8196,11 +8199,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(28);
 
-var _invariant = __webpack_require__(313);
+var _invariant = __webpack_require__(315);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(314);
+var _toConsumableArray2 = __webpack_require__(316);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -9882,7 +9885,7 @@ function _assertThisInitialized(self) {
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(329);
+var aFunction = __webpack_require__(331);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -9942,7 +9945,7 @@ module.exports = function (it) {
 
 var has = __webpack_require__(25);
 var toIObject = __webpack_require__(32);
-var arrayIndexOf = __webpack_require__(331)(false);
+var arrayIndexOf = __webpack_require__(333)(false);
 var IE_PROTO = __webpack_require__(79)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -10019,11 +10022,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(344);
+var _iterator = __webpack_require__(346);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(355);
+var _symbol = __webpack_require__(357);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -10055,7 +10058,7 @@ var $export = __webpack_require__(22);
 var redefine = __webpack_require__(130);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(84);
-var $iterCreate = __webpack_require__(348);
+var $iterCreate = __webpack_require__(350);
 var setToStringTag = __webpack_require__(86);
 var getPrototypeOf = __webpack_require__(127);
 var ITERATOR = __webpack_require__(33)('iterator');
@@ -10193,15 +10196,15 @@ exports.defaultTheme = exports.mergeStyles = exports.components = exports.makeAn
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _memoizeOne = __webpack_require__(379);
+var _memoizeOne = __webpack_require__(381);
 
 var _memoizeOne2 = _interopRequireDefault(_memoizeOne);
 
-var _emotion = __webpack_require__(380);
+var _emotion = __webpack_require__(382);
 
 var _reactDom = __webpack_require__(28);
 
@@ -10209,11 +10212,11 @@ var _propTypes = __webpack_require__(12);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _raf = __webpack_require__(387);
+var _raf = __webpack_require__(389);
 
 var _raf2 = _interopRequireDefault(_raf);
 
-var _reactInputAutosize = __webpack_require__(389);
+var _reactInputAutosize = __webpack_require__(391);
 
 var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 
@@ -15532,10 +15535,10 @@ exports.defaultTheme = defaultTheme;
 "use strict";
 
 
-var baseFlatten = __webpack_require__(403),
-    baseOrderBy = __webpack_require__(405),
-    baseRest = __webpack_require__(409),
-    isIterateeCall = __webpack_require__(417);
+var baseFlatten = __webpack_require__(405),
+    baseOrderBy = __webpack_require__(407),
+    baseRest = __webpack_require__(411),
+    isIterateeCall = __webpack_require__(419);
 
 /**
  * Creates an array of elements, sorted in ascending order by the results of
@@ -15588,7 +15591,7 @@ module.exports = sortBy;
 "use strict";
 
 
-module.exports = __webpack_require__(419);
+module.exports = __webpack_require__(421);
 
 /***/ }),
 /* 136 */
@@ -15735,12 +15738,12 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 var utils = __webpack_require__(7);
-var settle = __webpack_require__(425);
-var cookies = __webpack_require__(426);
+var settle = __webpack_require__(427);
+var cookies = __webpack_require__(428);
 var buildURL = __webpack_require__(137);
-var buildFullPath = __webpack_require__(427);
-var parseHeaders = __webpack_require__(430);
-var isURLSameOrigin = __webpack_require__(431);
+var buildFullPath = __webpack_require__(429);
+var parseHeaders = __webpack_require__(432);
+var isURLSameOrigin = __webpack_require__(433);
 var createError = __webpack_require__(140);
 var defaults = __webpack_require__(55);
 var Cancel = __webpack_require__(56);
@@ -16098,37 +16101,37 @@ module.exports = {
 
 __webpack_require__(145);
 
-__webpack_require__(234);
+__webpack_require__(236);
 
-__webpack_require__(239);
+__webpack_require__(241);
 
-__webpack_require__(244);
+__webpack_require__(246);
 
-__webpack_require__(249);
+__webpack_require__(251);
 
-__webpack_require__(254);
+__webpack_require__(256);
 
-__webpack_require__(272);
+__webpack_require__(274);
 
-__webpack_require__(277);
+__webpack_require__(279);
 
-__webpack_require__(278);
+__webpack_require__(280);
 
-__webpack_require__(283);
+__webpack_require__(285);
 
-__webpack_require__(288);
+__webpack_require__(290);
 
 __webpack_require__(49);
 
-__webpack_require__(296);
+__webpack_require__(298);
 
-__webpack_require__(320);
+__webpack_require__(322);
 
-__webpack_require__(377);
+__webpack_require__(379);
 
-__webpack_require__(397);
+__webpack_require__(399);
 
-__webpack_require__(401);
+__webpack_require__(403);
 
 /***/ }),
 /* 145 */
@@ -16139,7 +16142,7 @@ __webpack_require__(401);
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -16147,15 +16150,15 @@ var _edit = __webpack_require__(146);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(231);
+var _save = __webpack_require__(233);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(232);
+var _attributes = __webpack_require__(234);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(233);
+var _deprecated = __webpack_require__(235);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -16214,7 +16217,7 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumRangeControl = __webpack_require__(437);
+var _premiumRangeControl = __webpack_require__(231);
 
 var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
 
@@ -16580,9 +16583,7 @@ var PremiumAccordion = function (_Component) {
                         colorValue: titleStyles[0].titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(value) {
-                            return saveTitleStyles({
-                                titleColor: value
-                            });
+                            return saveTitleStyles({ titleColor: value });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -16590,9 +16591,7 @@ var PremiumAccordion = function (_Component) {
                         colorValue: titleStyles[0].titleBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(value) {
-                            return saveTitleStyles({
-                                titleBack: value
-                            });
+                            return saveTitleStyles({ titleBack: value });
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
@@ -16651,24 +16650,16 @@ var PremiumAccordion = function (_Component) {
                         paddingBottom: titlePaddingB,
                         paddingLeft: titlePaddingL,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                titlePaddingT: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ titlePaddingT: value === undefined ? 0 : value });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                titlePaddingR: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ titlePaddingR: value === undefined ? 0 : value });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                titlePaddingB: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ titlePaddingB: value === undefined ? 0 : value });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                titlePaddingL: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ titlePaddingL: value === undefined ? 0 : value });
                         }
                     })
                 ),
@@ -16701,9 +16692,7 @@ var PremiumAccordion = function (_Component) {
                         colorValue: arrowStyles[0].arrowColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveArrowStyles({
-                                arrowColor: newValue
-                            });
+                            return saveArrowStyles({ arrowColor: newValue });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -16711,18 +16700,14 @@ var PremiumAccordion = function (_Component) {
                         colorValue: arrowStyles[0].arrowBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveArrowStyles({
-                                arrowBack: newValue
-                            });
+                            return saveArrowStyles({ arrowBack: newValue });
                         }
                     }),
                     React.createElement(_premiumRangeControl2.default, {
                         label: __("Border Radius", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowRadius,
                         onChange: function onChange(newValue) {
-                            return saveArrowStyles({
-                                arrowRadius: newValue === undefined ? 0 : newValue
-                            });
+                            return saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue });
                         },
                         unit: 'px',
                         units: ['px'],
@@ -16733,9 +16718,7 @@ var PremiumAccordion = function (_Component) {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowPadding,
                         onChange: function onChange(newValue) {
-                            return saveArrowStyles({
-                                arrowPadding: newValue === undefined ? 0 : newValue
-                            });
+                            return saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue });
                         },
                         unit: 'px',
                         units: ['px'],
@@ -16802,9 +16785,7 @@ var PremiumAccordion = function (_Component) {
                             colorValue: descStyles[0].descColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(value) {
-                                return SaveDescStyles({
-                                    descColor: value
-                                });
+                                return SaveDescStyles({ descColor: value });
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
@@ -16812,9 +16793,7 @@ var PremiumAccordion = function (_Component) {
                             colorValue: descStyles[0].descBack,
                             colorDefault: '',
                             onColorChange: function onColorChange(value) {
-                                return SaveDescStyles({
-                                    descBack: value
-                                });
+                                return SaveDescStyles({ descBack: value });
                             }
                         })
                     ),
@@ -16856,24 +16835,16 @@ var PremiumAccordion = function (_Component) {
                         horizontal: textShadowHorizontal,
                         vertical: textShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({
-                                textShadowColor: newColor === undefined ? "transparent" : newColor
-                            });
+                            return setAttributes({ textShadowColor: newColor === undefined ? "transparent" : newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({
-                                textShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            return setAttributes({ textShadowBlur: newBlur === undefined ? 0 : newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({
-                                textShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            return setAttributes({ textShadowHorizontal: newValue === undefined ? 0 : newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({
-                                textShadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            return setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
@@ -16882,24 +16853,16 @@ var PremiumAccordion = function (_Component) {
                         paddingBottom: descPaddingB,
                         paddingLeft: descPaddingL,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                descPaddingT: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ descPaddingT: value === undefined ? 0 : value });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                descPaddingR: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ descPaddingR: value === undefined ? 0 : value });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                descPaddingB: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ descPaddingB: value === undefined ? 0 : value });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                descPaddingL: value === undefined ? 0 : value
-                            });
+                            return setAttributes({ descPaddingL: value === undefined ? 0 : value });
                         }
                     })
                 )
@@ -17049,7 +17012,7 @@ exports.default = PremiumRange;
 "use strict";
 
 
-var _Symbol = __webpack_require__(36);
+var _Symbol = __webpack_require__(37);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -17927,10 +17890,10 @@ module.exports = toString;
 "use strict";
 
 
-var _Symbol = __webpack_require__(36),
+var _Symbol = __webpack_require__(37),
     arrayMap = __webpack_require__(63),
     isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(34);
+    isSymbol = __webpack_require__(35);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -18426,7 +18389,7 @@ module.exports = cacheHas;
 "use strict";
 
 
-var _Symbol = __webpack_require__(36),
+var _Symbol = __webpack_require__(37),
     Uint8Array = __webpack_require__(190),
     eq = __webpack_require__(61),
     equalArrays = __webpack_require__(99),
@@ -18937,8 +18900,8 @@ module.exports = baseTimes;
 "use strict";
 
 
-var baseGetTag = __webpack_require__(35),
-    isObjectLike = __webpack_require__(37);
+var baseGetTag = __webpack_require__(36),
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -18989,9 +18952,9 @@ module.exports = stubFalse;
 "use strict";
 
 
-var baseGetTag = __webpack_require__(35),
+var baseGetTag = __webpack_require__(36),
     isLength = __webpack_require__(67),
-    isObjectLike = __webpack_require__(37);
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -19192,7 +19155,7 @@ var DataView = __webpack_require__(210),
     Promise = __webpack_require__(211),
     Set = __webpack_require__(212),
     WeakMap = __webpack_require__(213),
-    baseGetTag = __webpack_require__(35),
+    baseGetTag = __webpack_require__(36),
     toSource = __webpack_require__(94);
 
 /** `Object#toString` result references. */
@@ -21343,6 +21306,268 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = PremiumRangeControl;
+
+var _responsive = __webpack_require__(232);
+
+var _responsive2 = _interopRequireDefault(_responsive);
+
+var _premiumSizeUnits = __webpack_require__(34);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useState = wp.element.useState;
+var RangeControl = wp.components.RangeControl;
+var useInstanceId = wp.compose.useInstanceId;
+function PremiumRangeControl(_ref) {
+    var label = _ref.label,
+        onChange = _ref.onChange,
+        onChangeTablet = _ref.onChangeTablet,
+        onChangeMobile = _ref.onChangeMobile,
+        _ref$value = _ref.value,
+        value = _ref$value === undefined ? '' : _ref$value,
+        _ref$className = _ref.className,
+        className = _ref$className === undefined ? '' : _ref$className,
+        _ref$step = _ref.step,
+        step = _ref$step === undefined ? 1 : _ref$step,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? 100 : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? 0 : _ref$min,
+        _ref$units = _ref.units,
+        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
+        _ref$beforeIcon = _ref.beforeIcon,
+        beforeIcon = _ref$beforeIcon === undefined ? '' : _ref$beforeIcon,
+        _ref$help = _ref.help,
+        help = _ref$help === undefined ? '' : _ref$help,
+        _ref$unit = _ref.unit,
+        unit = _ref$unit === undefined ? 'px' : _ref$unit,
+        defaultValue = _ref.defaultValue,
+        onChangeUnit = _ref.onChangeUnit,
+        showUnit = _ref.showUnit,
+        responsive = _ref.responsive;
+
+    var onChangInput = function onChangInput(event) {
+        if (event.target.value === '') {
+            onChange(undefined);
+            return;
+        }
+        var newValue = Number(event.target.value);
+        if (newValue === '') {
+            updateValue(undefined);
+            return;
+        }
+        if (min < -0.1) {
+            if (newValue > max) {
+                updateValue(max);
+            } else if (newValue < min && newValue !== '-') {
+                updateValue(min);
+            } else {
+                updateValue(newValue);
+            }
+        } else {
+            if (newValue > max) {
+                updateValue(max);
+            } else if (newValue < -0.1) {
+                updateValue(min);
+            } else {
+                updateValue(newValue);
+            }
+        }
+    };
+
+    var _useState = useState('desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        setDevice = _useState2[1];
+
+    var sliderValue = responsive ? value[device] : value;
+
+    var updateValue = function updateValue(value) {
+        device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
+    };
+
+    var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
+    return React.createElement(
+        'div',
+        { className: 'premium-blocks-range-control' },
+        React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                responsive ? React.createElement(_responsive2.default, { label: label, onChange: function onChange(value) {
+                        return setDevice(value);
+                    } }) : React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    label
+                )
+            ),
+            showUnit && React.createElement(_premiumSizeUnits2.default, {
+                units: units,
+                activeUnit: unit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeUnit(newValue);
+                }
+            })
+        ),
+        React.createElement(
+            'div',
+            { className: 'wrapper' },
+            React.createElement(
+                'div',
+                { className: 'input-field-wrapper active' },
+                React.createElement(RangeControl, {
+                    beforeIcon: beforeIcon,
+                    value: sliderValue,
+                    onChange: function onChange(newVal) {
+                        return updateValue(newVal);
+                    },
+                    min: min,
+                    max: max,
+                    step: step,
+                    help: help,
+                    withInputField: false,
+                    className: 'premium-range-value-input'
+                }),
+                React.createElement(
+                    'div',
+                    { className: 'kemet_range_value' },
+                    React.createElement('input', {
+                        value: sliderValue,
+                        onChange: onChangInput,
+                        min: min,
+                        max: max,
+                        id: id,
+                        step: step,
+                        type: 'number',
+                        className: 'components-text-control__input'
+                    })
+                )
+            ),
+            React.createElement('button', { className: 'premium-slider-reset', disabled: JSON.stringify(sliderValue) === JSON.stringify(defaultValue), onClick: function onClick(e) {
+                    e.preventDefault();
+                    updateValue(defaultValue);
+                } })
+        )
+    );
+}
+
+/***/ }),
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Responsive = function (_Component) {
+    _inherits(Responsive, _Component);
+
+    function Responsive(props) {
+        _classCallCheck(this, Responsive);
+
+        var _this = _possibleConstructorReturn(this, (Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call(this, props));
+
+        _this.state = {
+            view: 'desktop'
+        };
+        return _this;
+    }
+
+    _createClass(Responsive, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var label = this.props.label;
+
+            var devices = ['desktop', 'tablet', 'mobile'];
+            var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
+            return _react2.default.createElement(
+                _react.Fragment,
+                null,
+                label ? _react2.default.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    label
+                ) : null,
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === previewDevice ? ' active' : '';
+                        var icon = device === 'mobile' ? 'smartphone' : device;
+                        return _react2.default.createElement(
+                            'li',
+                            { key: key, className: '' + device + activeClass },
+                            _react2.default.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                _react2.default.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        _this2.changeViewType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                ),
+                this.props.children
+            );
+        }
+    }, {
+        key: 'changeViewType',
+        value: function changeViewType(device) {
+            this.setState({ view: device });
+            wp.customize && wp.customize.previewedDevice(device);
+            if (wp.data && wp.data.dispatch && wp.data.dispatch('core/edit-post') && wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType) {
+                wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType(device.replace(/\w/, function (c) {
+                    return c.toUpperCase();
+                }));
+            }
+            this.props.onChange(device);
+        }
+    }]);
+
+    return Responsive;
+}(_react.Component);
+
+exports.default = Responsive;
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -21506,7 +21731,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 232 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21689,7 +21914,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 233 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22498,7 +22723,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 234 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22506,23 +22731,23 @@ exports.default = deprecated;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(235);
+var _edit = __webpack_require__(237);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(236);
+var _save = __webpack_require__(238);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(237);
+var _deprecated = __webpack_require__(239);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(238);
+var _attributes = __webpack_require__(240);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -22546,7 +22771,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 235 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22800,9 +23025,7 @@ var edit = exports.edit = function (_Component) {
                     return item;
                 });
 
-                setAttributes({
-                    titleStyles: newUpdate
-                });
+                setAttributes({ titleStyles: newUpdate });
             };
             var descriptionStyles = function descriptionStyles(value) {
                 var newUpdate = descStyles.map(function (item, index) {
@@ -22811,9 +23034,7 @@ var edit = exports.edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    descStyles: newUpdate
-                });
+                setAttributes({ descStyles: newUpdate });
             };
             var containerStyle = function containerStyle(value) {
                 var newUpdate = containerStyles.map(function (item, index) {
@@ -22822,9 +23043,7 @@ var edit = exports.edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    containerStyles: newUpdate
-                });
+                setAttributes({ containerStyles: newUpdate });
             };
             return [isSelected && React.createElement(
                 BlockControls,
@@ -22950,9 +23169,7 @@ var edit = exports.edit = function (_Component) {
                         colorValue: background,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return setAttributes({
-                                background: newValue === undefined ? "transparent" : newValue
-                            });
+                            return setAttributes({ background: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
@@ -22961,9 +23178,7 @@ var edit = exports.edit = function (_Component) {
                         min: "1",
                         max: "100",
                         onChange: function onChange(newOpacity) {
-                            return setAttributes({
-                                opacity: newOpacity === undefined ? 50 : newOpacity
-                            });
+                            return setAttributes({ opacity: newOpacity === undefined ? 50 : newOpacity });
                         },
                         showUnit: false,
                         defaultValue: ''
@@ -23033,14 +23248,10 @@ var edit = exports.edit = function (_Component) {
                         weight: titleStyles[0].titleWeight,
                         line: titleStyles[0].titleLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveStyles({
-                                titleWeight: newWeight === undefined ? 500 : newWeight
-                            });
+                            return saveStyles({ titleWeight: newWeight === undefined ? 500 : newWeight });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return saveStyles({
-                                titleLine: newValue === undefined ? 10 : newValue
-                            });
+                            return saveStyles({ titleLine: newValue === undefined ? 10 : newValue });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -23048,9 +23259,7 @@ var edit = exports.edit = function (_Component) {
                         colorValue: titleStyles[0].titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveStyles({
-                                titleColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return saveStyles({ titleColor: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     "effect3" === effect && React.createElement(_ColorComponent2.default, {
@@ -23058,9 +23267,7 @@ var edit = exports.edit = function (_Component) {
                         colorValue: sepColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return setAttributes({
-                                sepColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return setAttributes({ sepColor: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     "effect2" === effect && React.createElement(_ColorComponent2.default, {
@@ -23068,9 +23275,7 @@ var edit = exports.edit = function (_Component) {
                         colorValue: titleStyles[0].titleBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveStyles({
-                                titleBack: newValue === undefined ? "transparent" : newValue
-                            });
+                            return saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
@@ -23079,24 +23284,16 @@ var edit = exports.edit = function (_Component) {
                         horizontal: titleStyles[0].shadowHorizontal,
                         vertical: titleStyles[0].shadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveStyles({
-                                shadowColor: newColor === undefined ? "transparent" : newColor
-                            });
+                            return saveStyles({ shadowColor: newColor === undefined ? "transparent" : newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveStyles({
-                                shadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            return saveStyles({ shadowBlur: newBlur === undefined ? 0 : newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveStyles({
-                                shadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            return saveStyles({ shadowHorizontal: newValue === undefined ? 0 : newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveStyles({
-                                shadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            return saveStyles({ shadowVertical: newValue === undefined ? 0 : newValue });
                         }
                     })
                 ),
@@ -23129,14 +23326,10 @@ var edit = exports.edit = function (_Component) {
                         weight: descStyles[0].descWeight,
                         line: descStyles[0].descLine,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return descriptionStyles({
-                                descWeight: newWeight === undefined ? 500 : newWeight
-                            });
+                            return descriptionStyles({ descWeight: newWeight === undefined ? 500 : newWeight });
                         },
                         onChangeLine: function onChangeLine(newValue) {
-                            return descriptionStyles({
-                                descLine: newValue === undefined ? 10 : newValue
-                            });
+                            return descriptionStyles({ descLine: newValue === undefined ? 10 : newValue });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -23144,9 +23337,7 @@ var edit = exports.edit = function (_Component) {
                         colorValue: descStyles[0].descColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return descriptionStyles({
-                                descColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     React.createElement(_premiumTextShadow2.default, {
@@ -23155,24 +23346,16 @@ var edit = exports.edit = function (_Component) {
                         horizontal: descStyles[0].descShadowHorizontal,
                         vertical: descStyles[0].descShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return descriptionStyles({
-                                descShadowColor: newColor === undefined ? "transparent" : newColor
-                            });
+                            return descriptionStyles({ descShadowColor: newColor === undefined ? "transparent" : newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return descriptionStyles({
-                                descShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            return descriptionStyles({ descShadowBlur: newBlur === undefined ? 0 : newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return descriptionStyles({
-                                descShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            return descriptionStyles({ descShadowHorizontal: newValue === undefined ? 0 : newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return descriptionStyles({
-                                descShadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            return descriptionStyles({ descShadowVertical: newValue === undefined ? 0 : newValue });
                         }
                     })
                 ),
@@ -23209,14 +23392,10 @@ var edit = exports.edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return containerStyle({
-                                borderColor: colorValue === undefined ? "transparent" : colorValue
-                            });
+                            return containerStyle({ borderColor: colorValue === undefined ? "transparent" : colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
-                            return containerStyle({
-                                borderRadius: newRadius === undefined ? 0 : newRadius
-                            });
+                            return containerStyle({ borderRadius: newRadius === undefined ? 0 : newRadius });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
@@ -23227,29 +23406,19 @@ var edit = exports.edit = function (_Component) {
                         vertical: containerStyles[0].containerShadowVertical,
                         position: containerStyles[0].containerShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return containerStyle({
-                                containerShadowColor: newColor
-                            });
+                            return containerStyle({ containerShadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return containerStyle({
-                                containerShadowBlur: newBlur
-                            });
+                            return containerStyle({ containerShadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return containerStyle({
-                                containerShadowHorizontal: newValue
-                            });
+                            return containerStyle({ containerShadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return containerStyle({
-                                containerShadowVertical: newValue
-                            });
+                            return containerStyle({ containerShadowVertical: newValue });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return containerStyle({
-                                containerShadowPosition: newValue
-                            });
+                            return containerStyle({ containerShadowPosition: newValue });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
@@ -23259,24 +23428,16 @@ var edit = exports.edit = function (_Component) {
                         paddingLeft: paddingL,
                         showUnits: true,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                paddingT: value
-                            });
+                            return setAttributes({ paddingT: value });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                paddingR: value
-                            });
+                            return setAttributes({ paddingR: value });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                paddingB: value
-                            });
+                            return setAttributes({ paddingB: value });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                paddingL: value
-                            });
+                            return setAttributes({ paddingL: value });
                         },
                         selectedUnit: containerStyles[0].paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
@@ -23426,7 +23587,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 236 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23601,7 +23762,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 237 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25074,7 +25235,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 238 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25299,7 +25460,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 239 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25307,23 +25468,23 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(240);
+var _edit = __webpack_require__(242);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(241);
+var _save = __webpack_require__(243);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(242);
+var _deprecated = __webpack_require__(244);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(243);
+var _attributes = __webpack_require__(245);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -25348,7 +25509,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 240 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25774,9 +25935,7 @@ var edit = exports.edit = function (_Component) {
                                         colorValue: btnStyles[0].textColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return saveBtnStyles({
-                                                textColor: newValue
-                                            });
+                                            return saveBtnStyles({ textColor: newValue });
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
@@ -25784,9 +25943,7 @@ var edit = exports.edit = function (_Component) {
                                         colorValue: btnStyles[0].backColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newvalue) {
-                                            return saveBtnStyles({
-                                                backColor: newvalue
-                                            });
+                                            return saveBtnStyles({ backColor: newvalue });
                                         }
                                     })
                                 );
@@ -25800,9 +25957,7 @@ var edit = exports.edit = function (_Component) {
                                         colorValue: btnStyles[0].textHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return saveBtnStyles({
-                                                textHoverColor: newValue
-                                            });
+                                            return saveBtnStyles({ textHoverColor: newValue });
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
@@ -25821,9 +25976,7 @@ var edit = exports.edit = function (_Component) {
                                         colorValue: btnStyles[0].borderHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return saveBtnStyles({
-                                                borderHoverColor: newValue
-                                            });
+                                            return saveBtnStyles({ borderHoverColor: newValue });
                                         }
                                     })
                                 );
@@ -25877,29 +26030,19 @@ var edit = exports.edit = function (_Component) {
                         vertical: btnStyles[0].btnShadowVertical,
                         position: btnStyles[0].btnShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveBtnStyles({
-                                btnShadowColor: newColor === undefined ? "transparent" : newColor
-                            });
+                            return saveBtnStyles({ btnShadowColor: newColor === undefined ? "transparent" : newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveBtnStyles({
-                                btnShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            return saveBtnStyles({ btnShadowBlur: newBlur === undefined ? 0 : newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveBtnStyles({
-                                btnShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            return saveBtnStyles({ btnShadowHorizontal: newValue === undefined ? 0 : newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveBtnStyles({
-                                btnShadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            return saveBtnStyles({ btnShadowVertical: newValue === undefined ? 0 : newValue });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveBtnStyles({
-                                btnShadowPosition: newValue === undefined ? 0 : newValue
-                            });
+                            return saveBtnStyles({ btnShadowPosition: newValue === undefined ? 0 : newValue });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
@@ -25996,7 +26139,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 241 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26082,7 +26225,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 242 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26901,7 +27044,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 243 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27029,7 +27172,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 244 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27037,23 +27180,23 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _attributes = __webpack_require__(245);
+var _attributes = __webpack_require__(247);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(246);
+var _edit = __webpack_require__(248);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(247);
+var _save = __webpack_require__(249);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(248);
+var _deprecated = __webpack_require__(250);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -27080,7 +27223,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 245 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27319,7 +27462,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 246 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27371,7 +27514,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(38);
+var _PremiumBackgroundControl = __webpack_require__(39);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -27784,9 +27927,7 @@ var edit = function (_Component) {
                         colorValue: iconColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return setAttributes({
-                                iconColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return setAttributes({ iconColor: newValue === undefined ? "transparent" : newValue });
                         }
                     })
                 ),
@@ -27830,9 +27971,7 @@ var edit = function (_Component) {
                         colorValue: numberStyles[0].numberColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveNumberStyles({
-                                numberColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return saveNumberStyles({ numberColor: newValue === undefined ? "transparent" : newValue });
                         }
                     })
                 ),
@@ -27883,9 +28022,7 @@ var edit = function (_Component) {
                         colorValue: prefixStyles[0].prefixColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return savePrefixStyle({
-                                prefixColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return savePrefixStyle({ prefixColor: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
@@ -27945,9 +28082,7 @@ var edit = function (_Component) {
                         colorValue: suffixStyles[0].suffixColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveSuffixStyle({
-                                suffixColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return saveSuffixStyle({ suffixColor: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
@@ -28019,9 +28154,7 @@ var edit = function (_Component) {
                         colorValue: titleStyles[0].titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveTitleStyles({
-                                titleColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return saveTitleStyles({ titleColor: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
                     React.createElement(
@@ -28117,29 +28250,19 @@ var edit = function (_Component) {
                         position: containerStyles[0].shadowPosition,
                         withAlpha: true,
                         onChangeColor: function onChangeColor(newColor) {
-                            saveContainerStyle({
-                                shadowColor: newColor
-                            });
+                            saveContainerStyle({ shadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveContainerStyle({
-                                shadowBlur: newBlur
-                            });
+                            return saveContainerStyle({ shadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveContainerStyle({
-                                shadowHorizontal: newValue
-                            });
+                            return saveContainerStyle({ shadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveContainerStyle({
-                                shadowVertical: newValue
-                            });
+                            return saveContainerStyle({ shadowVertical: newValue });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveContainerStyle({
-                                shadowPosition: newValue
-                            });
+                            return saveContainerStyle({ shadowPosition: newValue });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
@@ -28149,24 +28272,16 @@ var edit = function (_Component) {
                         paddingLeft: paddingL,
                         showUnits: true,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                paddingT: value || 0
-                            });
+                            return setAttributes({ paddingT: value || 0 });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                paddingR: value || 0
-                            });
+                            return setAttributes({ paddingR: value || 0 });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                paddingB: value || 0
-                            });
+                            return setAttributes({ paddingB: value || 0 });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                paddingL: value || 0
-                            });
+                            return setAttributes({ paddingL: value || 0 });
                         },
                         selectedUnit: containerStyles[0].paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
@@ -28361,7 +28476,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 247 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28584,7 +28699,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 248 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30387,7 +30502,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 249 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30395,23 +30510,23 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(250);
+var _edit = __webpack_require__(252);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(251);
+var _save = __webpack_require__(253);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(252);
+var _deprecated = __webpack_require__(254);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(253);
+var _attributes = __webpack_require__(255);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -30436,7 +30551,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 250 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30478,7 +30593,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(38);
+var _PremiumBackgroundControl = __webpack_require__(39);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -30777,18 +30892,14 @@ var edit = function (_Component) {
                             colorValue: firstStyles[0].firstColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
-                                return saveFirstStyle({
-                                    firstColor: newValue
-                                });
+                                return saveFirstStyle({ firstColor: newValue });
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
                             label: __("Background Color"),
                             colorValue: firstStyles[0].firstBackground,
                             onColorChange: function onColorChange(value) {
-                                return saveFirstStyle({
-                                    firstBackground: value
-                                });
+                                return saveFirstStyle({ firstBackground: value });
                             },
                             colorDefault: ''
                         })
@@ -30801,9 +30912,7 @@ var edit = function (_Component) {
                             colorValue: firstStyles[0].firstColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
-                                return saveFirstStyle({
-                                    firstColor: newValue
-                                });
+                                return saveFirstStyle({ firstColor: newValue });
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
@@ -30811,9 +30920,7 @@ var edit = function (_Component) {
                             colorValue: firstStyles[0].firstClipColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
-                                return saveFirstStyle({
-                                    firstClipColor: newValue
-                                });
+                                return saveFirstStyle({ firstClipColor: newValue });
                             }
                         })
                     ),
@@ -30843,9 +30950,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveFirstStyle({
-                                firstBorderColor: colorValue || "transparent"
-                            });
+                            return saveFirstStyle({ firstBorderColor: colorValue || "transparent" });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveFirstStyle({ firstBorderRadius: newrRadius || "0" });
@@ -30977,9 +31082,7 @@ var edit = function (_Component) {
                             colorValue: secondStyles[0].secondColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
-                                return saveSecondStyle({
-                                    secondColor: newValue || "transparent"
-                                });
+                                return saveSecondStyle({ secondColor: newValue || "transparent" });
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
@@ -30987,9 +31090,7 @@ var edit = function (_Component) {
                             colorValue: secondStyles[0].secondBackground,
                             colorDefault: '',
                             onColorChange: function onColorChange(value) {
-                                return saveSecondStyle({
-                                    secondBackground: value
-                                });
+                                return saveSecondStyle({ secondBackground: value });
                             }
                         })
                     ),
@@ -31001,9 +31102,7 @@ var edit = function (_Component) {
                             colorValue: secondStyles[0].secondColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
-                                return saveSecondStyle({
-                                    secondColor: newValue || "transparent"
-                                });
+                                return saveSecondStyle({ secondColor: newValue || "transparent" });
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
@@ -31011,9 +31110,7 @@ var edit = function (_Component) {
                             colorValue: secondStyles[0].secondClipColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
-                                return saveSecondStyle({
-                                    secondClipColor: newValue || "transparent"
-                                });
+                                return saveSecondStyle({ secondClipColor: newValue || "transparent" });
                             }
                         })
                     ),
@@ -31043,9 +31140,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveSecondStyle({
-                                secondBorderColor: colorValue || "transparent"
-                            });
+                            return saveSecondStyle({ secondBorderColor: colorValue || "transparent" });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveSecondStyle({ secondBorderRadius: newrRadius || "0" });
@@ -31057,9 +31152,7 @@ var edit = function (_Component) {
                         horizontal: secondStyles[0].secondShadowHorizontal,
                         vertical: secondStyles[0].secondShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveSecondStyle({
-                                secondShadowColor: newColor || "transparent"
-                            });
+                            return saveSecondStyle({ secondShadowColor: newColor || "transparent" });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveSecondStyle({ secondShadowBlur: newBlur || "0" });
@@ -31150,9 +31243,7 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveContainerStyle({
-                                containerBorderColor: colorValue
-                            });
+                            return saveContainerStyle({ containerBorderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
                             return saveContainerStyle({ containerBorderRadius: newrRadius });
@@ -31281,7 +31372,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 251 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31439,7 +31530,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 252 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32982,7 +33073,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 253 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33194,7 +33285,7 @@ var attributes = (_attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 254 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33202,23 +33293,23 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(255);
+var _edit = __webpack_require__(257);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(269);
+var _save = __webpack_require__(271);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(270);
+var _deprecated = __webpack_require__(272);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(271);
+var _attributes = __webpack_require__(273);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -33243,7 +33334,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 255 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33289,7 +33380,7 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _PremiumBackgroundControl = __webpack_require__(38);
+var _PremiumBackgroundControl = __webpack_require__(39);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -33517,9 +33608,7 @@ var edit = function edit(props) {
                 colorValue: iconStyles[0].iconColor,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
-                    return saveIconStyle({
-                        iconColor: value
-                    });
+                    return saveIconStyle({ iconColor: value });
                 }
             }),
             React.createElement(_ColorComponent2.default, {
@@ -33588,24 +33677,16 @@ var edit = function edit(props) {
                 marginBottom: marginB,
                 marginLeft: marginL,
                 onChangeMarTop: function onChangeMarTop(value) {
-                    return setAttributes({
-                        marginT: value
-                    });
+                    return setAttributes({ marginT: value });
                 },
                 onChangeMarRight: function onChangeMarRight(value) {
-                    return setAttributes({
-                        marginR: value
-                    });
+                    return setAttributes({ marginR: value });
                 },
                 onChangeMarBottom: function onChangeMarBottom(value) {
-                    return setAttributes({
-                        marginB: value
-                    });
+                    return setAttributes({ marginB: value });
                 },
                 onChangeMarLeft: function onChangeMarLeft(value) {
-                    return setAttributes({
-                        marginL: value
-                    });
+                    return setAttributes({ marginL: value });
                 }
             }),
             React.createElement(_premiumPadding2.default, {
@@ -33614,24 +33695,16 @@ var edit = function edit(props) {
                 paddingBottom: paddingB,
                 paddingLeft: paddingL,
                 onChangePadTop: function onChangePadTop(value) {
-                    return setAttributes({
-                        paddingT: value
-                    });
+                    return setAttributes({ paddingT: value });
                 },
                 onChangePadRight: function onChangePadRight(value) {
-                    return setAttributes({
-                        paddingR: value
-                    });
+                    return setAttributes({ paddingR: value });
                 },
                 onChangePadBottom: function onChangePadBottom(value) {
-                    return setAttributes({
-                        paddingB: value
-                    });
+                    return setAttributes({ paddingB: value });
                 },
                 onChangePadLeft: function onChangePadLeft(value) {
-                    return setAttributes({
-                        paddingL: value
-                    });
+                    return setAttributes({ paddingL: value });
                 },
                 showUnits: true,
                 selectedUnit: paddingU,
@@ -33705,29 +33778,19 @@ var edit = function edit(props) {
                 vertical: containerStyles[0].wrapShadowVertical,
                 position: containerStyles[0].wrapShadowPosition,
                 onChangeColor: function onChangeColor(newColor) {
-                    return saveContainerStyle({
-                        wrapShadowColor: newColor
-                    });
+                    return saveContainerStyle({ wrapShadowColor: newColor });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
-                    return saveContainerStyle({
-                        wrapShadowBlur: newBlur
-                    });
+                    return saveContainerStyle({ wrapShadowBlur: newBlur });
                 },
                 onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return saveContainerStyle({
-                        wrapShadowHorizontal: newValue
-                    });
+                    return saveContainerStyle({ wrapShadowHorizontal: newValue });
                 },
                 onChangeVertical: function onChangeVertical(newValue) {
-                    return saveContainerStyle({
-                        wrapShadowVertical: newValue
-                    });
+                    return saveContainerStyle({ wrapShadowVertical: newValue });
                 },
                 onChangePosition: function onChangePosition(newValue) {
-                    return saveContainerStyle({
-                        wrapShadowPosition: newValue
-                    });
+                    return saveContainerStyle({ wrapShadowPosition: newValue });
                 }
             }),
             React.createElement(_premiumMargin2.default, {
@@ -33737,24 +33800,16 @@ var edit = function edit(props) {
                 marginBottom: wrapMarginB,
                 marginLeft: wrapMarginL,
                 onChangeMarTop: function onChangeMarTop(value) {
-                    return setAttributes({
-                        wrapMarginT: value
-                    });
+                    return setAttributes({ wrapMarginT: value });
                 },
                 onChangeMarRight: function onChangeMarRight(value) {
-                    return setAttributes({
-                        wrapMarginR: value
-                    });
+                    return setAttributes({ wrapMarginR: value });
                 },
                 onChangeMarBottom: function onChangeMarBottom(value) {
-                    return setAttributes({
-                        wrapMarginB: value
-                    });
+                    return setAttributes({ wrapMarginB: value });
                 },
                 onChangeMarLeft: function onChangeMarLeft(value) {
-                    return setAttributes({
-                        wrapMarginL: value
-                    });
+                    return setAttributes({ wrapMarginL: value });
                 }
             }),
             React.createElement(_premiumPadding2.default, {
@@ -33763,24 +33818,16 @@ var edit = function edit(props) {
                 paddingBottom: wrapPaddingB,
                 paddingLeft: wrapPaddingL,
                 onChangePadTop: function onChangePadTop(value) {
-                    return setAttributes({
-                        wrapPaddingT: value
-                    });
+                    return setAttributes({ wrapPaddingT: value });
                 },
                 onChangePadRight: function onChangePadRight(value) {
-                    return setAttributes({
-                        wrapPaddingR: value
-                    });
+                    return setAttributes({ wrapPaddingR: value });
                 },
                 onChangePadBottom: function onChangePadBottom(value) {
-                    return setAttributes({
-                        wrapPaddingB: value
-                    });
+                    return setAttributes({ wrapPaddingB: value });
                 },
                 onChangePadLeft: function onChangePadLeft(value) {
-                    return setAttributes({
-                        wrapPaddingL: value
-                    });
+                    return setAttributes({ wrapPaddingL: value });
                 }
             })
         ),
@@ -33873,7 +33920,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 256 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33948,7 +33995,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 257 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34182,7 +34229,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 258 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34198,10 +34245,10 @@ if (process.env.NODE_ENV !== "production") {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var ReactIs = __webpack_require__(109);
-var assign = __webpack_require__(259);
+var assign = __webpack_require__(261);
 
 var ReactPropTypesSecret = __webpack_require__(70);
-var checkPropTypes = __webpack_require__(260);
+var checkPropTypes = __webpack_require__(262);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -34760,7 +34807,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 259 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34856,7 +34903,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 260 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34955,7 +35002,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 261 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35021,7 +35068,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 262 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35032,11 +35079,11 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(12));
 
-var _addClass = _interopRequireDefault(__webpack_require__(263));
+var _addClass = _interopRequireDefault(__webpack_require__(265));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(266));
+var _removeClass = _interopRequireDefault(__webpack_require__(268));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _Transition = _interopRequireDefault(__webpack_require__(110));
 
@@ -35421,18 +35468,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 263 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(264);
+var _interopRequireDefault = __webpack_require__(266);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(265));
+var _hasClass = _interopRequireDefault(__webpack_require__(267));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -35441,7 +35488,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 264 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35457,7 +35504,7 @@ module.exports = _interopRequireDefault;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 265 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35473,7 +35520,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 266 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35488,7 +35535,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 267 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35499,7 +35546,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(12));
 
-var _react = _interopRequireDefault(__webpack_require__(5));
+var _react = _interopRequireDefault(__webpack_require__(4));
 
 var _reactDom = __webpack_require__(28);
 
@@ -35653,7 +35700,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 268 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35665,7 +35712,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -35808,7 +35855,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 269 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35951,7 +35998,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 270 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36864,7 +36911,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 271 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37097,7 +37144,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 272 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37105,23 +37152,23 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(273);
+var _edit = __webpack_require__(275);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(274);
+var _save = __webpack_require__(276);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(275);
+var _deprecated = __webpack_require__(277);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(276);
+var _attributes = __webpack_require__(278);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -37146,7 +37193,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 273 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37300,9 +37347,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    containerStyles: newUpdate
-                });
+                setAttributes({ containerStyles: newUpdate });
             };
 
             var saveTitleStyle = function saveTitleStyle(value) {
@@ -37312,9 +37357,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    titleStyles: newUpdate
-                });
+                setAttributes({ titleStyles: newUpdate });
             };
 
             var saveButtonStyle = function saveButtonStyle(value) {
@@ -37324,9 +37367,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    btnStyles: newUpdate
-                });
+                setAttributes({ btnStyles: newUpdate });
             };
             var saveDescriptionStyle = function saveDescriptionStyle(value) {
                 var newUpdate = descStyles.map(function (item, index) {
@@ -37335,9 +37376,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    descStyles: newUpdate
-                });
+                setAttributes({ descStyles: newUpdate });
             };
             var block_id = attributes.block_id,
                 borderIconBox = attributes.borderIconBox,
@@ -37711,9 +37750,7 @@ var edit = function (_Component) {
                         horizontal: titleStyles[0].titleShadowHorizontal,
                         vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyle({
-                                titleShadowColor: newColor || "transparent"
-                            });
+                            return saveTitleStyle({ titleShadowColor: newColor || "transparent" });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveTitleStyle({ titleShadowBlur: newBlur || 0 });
@@ -37730,14 +37767,10 @@ var edit = function (_Component) {
                         marginTop: titleMarginT,
                         marginBottom: titleMarginB,
                         onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                titleMarginT: value || 0
-                            });
+                            return setAttributes({ titleMarginT: value || 0 });
                         },
                         onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                titleMarginB: value || 0
-                            });
+                            return setAttributes({ titleMarginB: value || 0 });
                         }
                     })
                 ),
@@ -37785,14 +37818,10 @@ var edit = function (_Component) {
                         marginTop: descMarginT,
                         marginBottom: descMarginB,
                         onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                descMarginT: value || 0
-                            });
+                            return setAttributes({ descMarginT: value || 0 });
                         },
                         onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                descMarginB: value || 0
-                            });
+                            return setAttributes({ descMarginB: value || 0 });
                         }
                     })
                 ),
@@ -37903,29 +37932,19 @@ var edit = function (_Component) {
                         vertical: btnStyles[0].btnShadowVertical,
                         position: btnStyles[0].btnShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveButtonStyle({
-                                btnShadowColor: newColor || "transparent"
-                            });
+                            return saveButtonStyle({ btnShadowColor: newColor || "transparent" });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveButtonStyle({
-                                btnShadowBlur: newBlur || 0
-                            });
+                            return saveButtonStyle({ btnShadowBlur: newBlur || 0 });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveButtonStyle({
-                                btnShadowHorizontal: newValue || 0
-                            });
+                            return saveButtonStyle({ btnShadowHorizontal: newValue || 0 });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveButtonStyle({
-                                btnShadowVertical: newValue || 0
-                            });
+                            return saveButtonStyle({ btnShadowVertical: newValue || 0 });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveButtonStyle({
-                                btnShadowPosition: newValue || 0
-                            });
+                            return saveButtonStyle({ btnShadowPosition: newValue || 0 });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
@@ -37946,14 +37965,10 @@ var edit = function (_Component) {
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB,
                         onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                btnMarginT: value || 0
-                            });
+                            return setAttributes({ btnMarginT: value || 0 });
                         },
                         onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                btnMarginB: value || 0
-                            });
+                            return setAttributes({ btnMarginB: value || 0 });
                         }
                     })
                 ),
@@ -38033,29 +38048,19 @@ var edit = function (_Component) {
                         vertical: containerStyles[0].shadowVertical,
                         position: containerStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveContainerStyle({
-                                shadowColor: newColor || "transparent"
-                            });
+                            return saveContainerStyle({ shadowColor: newColor || "transparent" });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveContainerStyle({
-                                shadowBlur: newBlur || 0
-                            });
+                            return saveContainerStyle({ shadowBlur: newBlur || 0 });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveContainerStyle({
-                                shadowHorizontal: newValue || 0
-                            });
+                            return saveContainerStyle({ shadowHorizontal: newValue || 0 });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveContainerStyle({
-                                shadowVertical: newValue || 0
-                            });
+                            return saveContainerStyle({ shadowVertical: newValue || 0 });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveContainerStyle({
-                                shadowPosition: newValue
-                            });
+                            return saveContainerStyle({ shadowPosition: newValue });
                         }
                     }),
                     React.createElement(_premiumBoxShadow2.default, {
@@ -38067,29 +38072,19 @@ var edit = function (_Component) {
                         vertical: containerStyles[0].hoverShadowVertical,
                         position: containerStyles[0].hoverShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveContainerStyle({
-                                hoverShadowColor: newColor
-                            });
+                            return saveContainerStyle({ hoverShadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveContainerStyle({
-                                hoverShadowBlur: newBlur
-                            });
+                            return saveContainerStyle({ hoverShadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveContainerStyle({
-                                hoverShadowHorizontal: newValue
-                            });
+                            return saveContainerStyle({ hoverShadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveContainerStyle({
-                                hoverShadowVertical: newValue
-                            });
+                            return saveContainerStyle({ hoverShadowVertical: newValue });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveContainerStyle({
-                                hoverShadowPosition: newValue
-                            });
+                            return saveContainerStyle({ hoverShadowPosition: newValue });
                         }
                     }),
                     React.createElement(_premiumMargin2.default, {
@@ -38099,24 +38094,16 @@ var edit = function (_Component) {
                         marginBottom: marginB,
                         marginLeft: marginL,
                         onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({
-                                marginT: value || 0
-                            });
+                            return setAttributes({ marginT: value || 0 });
                         },
                         onChangeMarRight: function onChangeMarRight(value) {
-                            return setAttributes({
-                                marginR: value || 0
-                            });
+                            return setAttributes({ marginR: value || 0 });
                         },
                         onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({
-                                marginB: value || 0
-                            });
+                            return setAttributes({ marginB: value || 0 });
                         },
                         onChangeMarLeft: function onChangeMarLeft(value) {
-                            return setAttributes({
-                                marginL: value || 0
-                            });
+                            return setAttributes({ marginL: value || 0 });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
@@ -38126,24 +38113,16 @@ var edit = function (_Component) {
                         paddingLeft: paddingL,
                         showUnits: true,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                paddingT: value || 0
-                            });
+                            return setAttributes({ paddingT: value || 0 });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                paddingR: value || 0
-                            });
+                            return setAttributes({ paddingR: value || 0 });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                paddingB: value || 0
-                            });
+                            return setAttributes({ paddingB: value || 0 });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                paddingL: value || 0
-                            });
+                            return setAttributes({ paddingL: value || 0 });
                         },
                         selectedUnit: containerStyles[0].paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
@@ -38187,18 +38166,14 @@ var edit = function (_Component) {
                                             colorValue: iconColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
-                                                return setAttributes({
-                                                    iconColor: newValue || "transparent"
-                                                });
+                                                return setAttributes({ iconColor: newValue || "transparent" });
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
                                             label: __("Background Color"),
                                             colorValue: iconBackColor,
                                             onColorChange: function onColorChange(newvalue) {
-                                                return setAttributes({
-                                                    iconBackColor: newvalue
-                                                });
+                                                return setAttributes({ iconBackColor: newvalue });
                                             },
                                             colorDefault: ""
                                         })
@@ -38208,9 +38183,7 @@ var edit = function (_Component) {
                                         colorValue: titleStyles[0].titleColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return saveTitleStyle({
-                                                titleColor: newValue || "transparent"
-                                            });
+                                            return saveTitleStyle({ titleColor: newValue || "transparent" });
                                         }
                                     }),
                                     descChecked && React.createElement(_ColorComponent2.default, {
@@ -38218,9 +38191,7 @@ var edit = function (_Component) {
                                         colorValue: descStyles[0].descColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return saveDescriptionStyle({
-                                                descColor: newValue || "transparent"
-                                            });
+                                            return saveDescriptionStyle({ descColor: newValue || "transparent" });
                                         }
                                     }),
                                     btnChecked && React.createElement(
@@ -38231,18 +38202,14 @@ var edit = function (_Component) {
                                             colorValue: btnStyles[0].btnColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
-                                                return saveButtonStyle({
-                                                    btnColor: newValue || "#000"
-                                                });
+                                                return saveButtonStyle({ btnColor: newValue || "#000" });
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
                                             label: __("Background Color"),
                                             colorValue: btnStyles[0].btnBack,
                                             onColorChange: function onColorChange(newvalue) {
-                                                return saveButtonStyle({
-                                                    btnBack: newvalue
-                                                });
+                                                return saveButtonStyle({ btnBack: newvalue });
                                             },
                                             colorDefault: ""
                                         })
@@ -38269,9 +38236,7 @@ var edit = function (_Component) {
                                             colorValue: btnStyles[0].btnHoverColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
-                                                return saveButtonStyle({
-                                                    btnHoverColor: newValue || "#000"
-                                                });
+                                                return saveButtonStyle({ btnHoverColor: newValue || "#000" });
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
@@ -38279,9 +38244,7 @@ var edit = function (_Component) {
                                             colorValue: btnStyles[0].btnHoverBack,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
-                                                return saveButtonStyle({
-                                                    btnHoverBack: newValue
-                                                });
+                                                return saveButtonStyle({ btnHoverBack: newValue });
                                             }
                                         })
                                     ),
@@ -38290,9 +38253,7 @@ var edit = function (_Component) {
                                         colorValue: btnHoverBorder,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return setAttributes({
-                                                btnHoverBorder: newValue || "transparent"
-                                            });
+                                            return setAttributes({ btnHoverBorder: newValue || "transparent" });
                                         }
                                     })
                                 );
@@ -38512,7 +38473,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 274 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38742,7 +38703,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 275 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41306,7 +41267,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 276 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41651,7 +41612,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 277 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41665,7 +41626,7 @@ var _premiumMediaUpload = __webpack_require__(27);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
@@ -42321,9 +42282,7 @@ var PremiumMap = function (_Component) {
                         colorValue: titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return setAttributes({
-                                titleColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return setAttributes({ titleColor: newValue === undefined ? "transparent" : newValue });
                         }
                     })
                 ),
@@ -42350,9 +42309,7 @@ var PremiumMap = function (_Component) {
                         colorValue: descColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return setAttributes({
-                                descColor: newValue === undefined ? "transparent" : newValue
-                            });
+                            return setAttributes({ descColor: newValue === undefined ? "transparent" : newValue });
                         }
                     })
                 ),
@@ -42754,7 +42711,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 278 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42762,23 +42719,23 @@ registerBlockType("premium/maps", {
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(279);
+var _edit = __webpack_require__(281);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(280);
+var _save = __webpack_require__(282);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(281);
+var _deprecated = __webpack_require__(283);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(282);
+var _attributes = __webpack_require__(284);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42802,7 +42759,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 279 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43029,9 +42986,7 @@ var PremiumPricingTable = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    priceStyles: newUpdate
-                });
+                setAttributes({ priceStyles: newUpdate });
             };
             var saveFeatureStyle = function saveFeatureStyle(value) {
                 var newUpdate = featureStyles.map(function (item, index) {
@@ -43040,9 +42995,7 @@ var PremiumPricingTable = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    featureStyles: newUpdate
-                });
+                setAttributes({ featureStyles: newUpdate });
             };
 
             var saveButtonStyle = function saveButtonStyle(value) {
@@ -43052,9 +43005,7 @@ var PremiumPricingTable = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    buttonStyles: newUpdate
-                });
+                setAttributes({ buttonStyles: newUpdate });
             };
             var saveBadgeStyles = function saveBadgeStyles(value) {
                 var newUpdate = badgeStyles.map(function (item, index) {
@@ -43063,9 +43014,7 @@ var PremiumPricingTable = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    badgeStyles: newUpdate
-                });
+                setAttributes({ badgeStyles: newUpdate });
             };
             var saveTableStyles = function saveTableStyles(value) {
                 var newUpdate = tableStyles.map(function (item, index) {
@@ -43074,9 +43023,7 @@ var PremiumPricingTable = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    tableStyles: newUpdate
-                });
+                setAttributes({ tableStyles: newUpdate });
             };
             var saveDescriptionStyle = function saveDescriptionStyle(value) {
                 var newUpdate = descStyles.map(function (item, index) {
@@ -43085,9 +43032,7 @@ var PremiumPricingTable = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    descStyles: newUpdate
-                });
+                setAttributes({ descStyles: newUpdate });
             };
 
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
@@ -43413,9 +43358,7 @@ var PremiumPricingTable = function (_Component) {
                                 colorValue: priceStyles[0].slashColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
-                                    return savePriceStyles({
-                                        slashColor: newValue === undefined ? "transparent" : newValue
-                                    });
+                                    return savePriceStyles({ slashColor: newValue === undefined ? "transparent" : newValue });
                                 }
                             })
                         ),
@@ -43443,9 +43386,7 @@ var PremiumPricingTable = function (_Component) {
                                 },
                                 weight: priceStyles[0].currWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
-                                    return savePriceStyles({
-                                        currWeight: newWeight
-                                    });
+                                    return savePriceStyles({ currWeight: newWeight });
                                 }
                             }),
                             React.createElement(SelectControl, {
@@ -43453,9 +43394,7 @@ var PremiumPricingTable = function (_Component) {
                                 options: ALIGNS,
                                 value: priceStyles[0].currV,
                                 onChange: function onChange(newValue) {
-                                    return savePriceStyles({
-                                        currV: newValue
-                                    });
+                                    return savePriceStyles({ currV: newValue });
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
@@ -43556,9 +43495,7 @@ var PremiumPricingTable = function (_Component) {
                                 colorValue: priceStyles[0].divColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
-                                    return savePriceStyles({
-                                        divColor: newValue === undefined ? "transparent" : newValue
-                                    });
+                                    return savePriceStyles({ divColor: newValue === undefined ? "transparent" : newValue });
                                 }
                             })
                         ),
@@ -43602,9 +43539,7 @@ var PremiumPricingTable = function (_Component) {
                                 colorValue: priceStyles[0].durColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
-                                    return savePriceStyles({
-                                        durColor: newValue === undefined ? "transparent" : newValue
-                                    });
+                                    return savePriceStyles({ durColor: newValue === undefined ? "transparent" : newValue });
                                 }
                             })
                         )
@@ -43675,9 +43610,7 @@ var PremiumPricingTable = function (_Component) {
                         label: __("Background Color"),
                         colorValue: priceStyles[0].priceBack,
                         onColorChange: function onColorChange(newvalue) {
-                            return savePriceStyles({
-                                priceBack: newvalue
-                            });
+                            return savePriceStyles({ priceBack: newvalue });
                         },
                         colorDefault: ""
                     })
@@ -44295,29 +44228,19 @@ var PremiumPricingTable = function (_Component) {
                         vertical: tableStyles[0].tableShadowVertical,
                         position: tableStyles[0].tableShadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveTableStyles({
-                                tableShadowColor: newColor === undefined ? "transparent" : newColor
-                            });
+                            return saveTableStyles({ tableShadowColor: newColor === undefined ? "transparent" : newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveTableStyles({
-                                tableShadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            return saveTableStyles({ tableShadowBlur: newBlur === undefined ? 0 : newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveTableStyles({
-                                tableShadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            return saveTableStyles({ tableShadowHorizontal: newValue === undefined ? 0 : newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveTableStyles({
-                                tableShadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            return saveTableStyles({ tableShadowVertical: newValue === undefined ? 0 : newValue });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveTableStyles({
-                                tableShadowPosition: newValue === undefined ? 0 : newValue
-                            });
+                            return saveTableStyles({ tableShadowPosition: newValue === undefined ? 0 : newValue });
                         }
                     }),
                     React.createElement(
@@ -44670,7 +44593,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 280 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44989,7 +44912,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 281 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47357,7 +47280,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 282 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47661,7 +47584,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 283 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47669,23 +47592,23 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(284);
+var _edit = __webpack_require__(286);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(285);
+var _save = __webpack_require__(287);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(286);
+var _deprecated = __webpack_require__(288);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(287);
+var _attributes = __webpack_require__(289);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -47717,7 +47640,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 284 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47761,7 +47684,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(38);
+var _PremiumBackgroundControl = __webpack_require__(39);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -48034,24 +47957,16 @@ var edit = function edit(props) {
                     });
                 },
                 onChangeBlur: function onChangeBlur(newBlur) {
-                    return saveContainerStyle({
-                        shadowBlur: newBlur === undefined ? 0 : newBlur
-                    });
+                    return saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur });
                 },
                 onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return saveContainerStyle({
-                        shadowHorizontal: newValue === undefined ? 0 : newValue
-                    });
+                    return saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue });
                 },
                 onChangeVertical: function onChangeVertical(newValue) {
-                    return saveContainerStyle({
-                        shadowVertical: newValue === undefined ? 0 : newValue
-                    });
+                    return saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue });
                 },
                 onChangePosition: function onChangePosition(newValue) {
-                    return saveContainerStyle({
-                        shadowPosition: newValue === undefined ? 0 : newValue
-                    });
+                    return saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue });
                 }
             })
         ),
@@ -48069,24 +47984,16 @@ var edit = function edit(props) {
                 marginBottom: marginBottom,
                 marginLeft: marginLeft,
                 onChangeMarTop: function onChangeMarTop(value) {
-                    return setAttributes({
-                        marginTop: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ marginTop: value === undefined ? 0 : value });
                 },
                 onChangeMarRight: function onChangeMarRight(value) {
-                    return setAttributes({
-                        marginRight: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ marginRight: value === undefined ? 0 : value });
                 },
                 onChangeMarBottom: function onChangeMarBottom(value) {
-                    return setAttributes({
-                        marginBottom: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ marginBottom: value === undefined ? 0 : value });
                 },
                 onChangeMarLeft: function onChangeMarLeft(value) {
-                    return setAttributes({
-                        marginLeft: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ marginLeft: value === undefined ? 0 : value });
                 },
                 showUnits: true,
                 onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
@@ -48101,24 +48008,16 @@ var edit = function edit(props) {
                 paddingBottom: paddingBottom,
                 paddingLeft: paddingLeft,
                 onChangePadTop: function onChangePadTop(value) {
-                    return setAttributes({
-                        paddingTop: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ paddingTop: value === undefined ? 0 : value });
                 },
                 onChangePadRight: function onChangePadRight(value) {
-                    return setAttributes({
-                        paddingRight: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ paddingRight: value === undefined ? 0 : value });
                 },
                 onChangePadBottom: function onChangePadBottom(value) {
-                    return setAttributes({
-                        paddingBottom: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ paddingBottom: value === undefined ? 0 : value });
                 },
                 onChangePadLeft: function onChangePadLeft(value) {
-                    return setAttributes({
-                        paddingLeft: value === undefined ? 0 : value
-                    });
+                    return setAttributes({ paddingLeft: value === undefined ? 0 : value });
                 },
                 showUnits: true,
                 selectedUnit: containerStyles[0].paddingUnit,
@@ -48198,7 +48097,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 285 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48314,7 +48213,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 286 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48983,7 +48882,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 287 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49116,7 +49015,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 288 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49124,23 +49023,23 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _edit = __webpack_require__(289);
+var _edit = __webpack_require__(291);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(290);
+var _save = __webpack_require__(292);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(291);
+var _deprecated = __webpack_require__(293);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(292);
+var _attributes = __webpack_require__(294);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -49165,7 +49064,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 289 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49223,13 +49122,17 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(38);
+var _PremiumBackgroundControl = __webpack_require__(39);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
 var _radioControl = __webpack_require__(15);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
+
+var _responsiveRangeControl = __webpack_require__(68);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49244,18 +49147,13 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button,
-    ButtonGroup = _wp$components.ButtonGroup;
+    ToggleControl = _wp$components.ToggleControl;
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     RichText = _wp$blockEditor.RichText;
-var _wp$element = wp.element,
-    Fragment = _wp$element.Fragment,
-    Component = _wp$element.Component;
+var Component = wp.element.Component;
 var withSelect = wp.data.withSelect;
 
 var edit = function (_Component) {
@@ -49384,9 +49282,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    companyStyles: newUpdate
-                });
+                setAttributes({ companyStyles: newUpdate });
             };
 
             var saveQuoteStyles = function saveQuoteStyles(value) {
@@ -49396,9 +49292,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    quoteStyles: newUpdate
-                });
+                setAttributes({ quoteStyles: newUpdate });
             };
             var btnGrad = void 0,
                 btnGrad2 = void 0,
@@ -49459,7 +49353,6 @@ var edit = function (_Component) {
                             onSelectMedia: function onSelectMedia(media) {
                                 setAttributes({
                                     authorImgId: media.id,
-
                                     authorImgUrl: media.url
                                 });
                             },
@@ -49502,9 +49395,7 @@ var edit = function (_Component) {
                             colorValue: imgBorderColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
-                                return setAttributes({
-                                    imgBorderColor: newValue
-                                });
+                                return setAttributes({ imgBorderColor: newValue });
                             }
                         })
                     ),
@@ -49560,9 +49451,7 @@ var edit = function (_Component) {
                         colorValue: authorStyles[0].authorColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveAuthorStyle({
-                                authorColor: newValue
-                            });
+                            return saveAuthorStyle({ authorColor: newValue });
                         }
                     })
                 ),
@@ -49573,38 +49462,45 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "line"],
-                        setAttributes: saveContentStyle,
-                        fontSizeType: {
-                            value: contentStyle[0].bodySizeUnit,
-                            label: __("bodySizeUnit", 'premium-block-for-gutenberg')
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Font Size", 'premium-block-for-gutenberg'),
+                        value: contentStyle[0].bodySize,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ bodySize: value });
                         },
-                        fontSize: {
-                            value: contentStyle[0].bodySize,
-                            label: __("bodySize", 'premium-block-for-gutenberg')
+                        tabletValue: contentStyle[0].bodySizeTablet,
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveContentStyle({ bodySizeTablet: value });
                         },
-                        fontSizeMobile: {
-                            value: contentStyle[0].bodySizeMobile,
-                            label: __("bodySizeMobile", 'premium-block-for-gutenberg')
+                        mobileValue: contentStyle[0].bodySizeMobile,
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveContentStyle({ bodySizeMobile: value });
                         },
-                        fontSizeTablet: {
-                            value: contentStyle[0].bodySizeTablet,
-                            label: __("bodySizeTablet", 'premium-block-for-gutenberg')
+                        onChangeUnit: function onChangeUnit(key) {
+                            return saveContentStyle({ bodySizeUnit: key });
                         },
-                        line: contentStyle[0].bodyLine,
-                        onChangeLine: function onChangeLine(newWeight) {
-                            return saveContentStyle({ bodyLine: newWeight });
-                        }
+                        unit: contentStyle[0].bodySizeUnit,
+                        showUnit: true,
+                        defaultValue: 20,
+                        units: ["px", "em"]
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Line Height (PX)", 'premium-block-for-gutenberg'),
+                        value: contentStyle[0].bodyLine,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ bodyLine: value });
+                        },
+                        defaultValue: 1,
+                        showUnit: false,
+                        min: 0,
+                        max: 100
                     }),
                     React.createElement(_ColorComponent2.default, {
                         label: __("Color", 'premium-block-for-gutenberg'),
                         colorValue: contentStyle[0].bodyColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveContentStyle({
-                                bodyColor: newValue
-                            });
+                            return saveContentStyle({ bodyColor: newValue });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
@@ -49641,34 +49537,34 @@ var edit = function (_Component) {
                         },
                         label: __("HTML Tag", 'premium-block-for-gutenberg')
                     }),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize"],
-                        setAttributes: saveCompanyStyle,
-                        fontSizeType: {
-                            value: companyStyles[0].authorComSizeUnit,
-                            label: __("authorComSizeUnit", 'premium-block-for-gutenberg')
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Font Size", 'premium-block-for-gutenberg'),
+                        value: companyStyles[0].authorComSize,
+                        onChange: function onChange(value) {
+                            return saveCompanyStyle({ authorComSize: value });
                         },
-                        fontSize: {
-                            value: companyStyles[0].authorComSize,
-                            label: __("authorComSize", 'premium-block-for-gutenberg')
+                        tabletValue: companyStyles[0].authorComSizeTablet,
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveCompanyStyle({ authorComSizeTablet: value });
                         },
-                        fontSizeMobile: {
-                            value: companyStyles[0].authorComSizeMobile,
-                            label: __("authorComSizeMobile", 'premium-block-for-gutenberg')
+                        mobileValue: companyStyles[0].authorComSizeMobile,
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveCompanyStyle({ authorComSizeMobile: value });
                         },
-                        fontSizeTablet: {
-                            value: companyStyles[0].authorComSizeTablet,
-                            label: __("authorComSizeTablet", 'premium-block-for-gutenberg')
-                        }
+                        onChangeUnit: function onChangeUnit(key) {
+                            return saveCompanyStyle({ authorComSizeUnit: key });
+                        },
+                        unit: companyStyles[0].authorComSizeUnit,
+                        showUnit: true,
+                        defaultValue: 20,
+                        units: ["px", "em"]
                     }),
                     React.createElement(_ColorComponent2.default, {
                         label: __("Text Color", 'premium-block-for-gutenberg'),
                         colorValue: companyStyles[0].authorComColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveCompanyStyle({
-                                authorComColor: newValue
-                            });
+                            return saveCompanyStyle({ authorComColor: newValue });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -49676,9 +49572,7 @@ var edit = function (_Component) {
                         colorValue: companyStyles[0].dashColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveCompanyStyle({
-                                dashColor: newValue
-                            });
+                            return saveCompanyStyle({ dashColor: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
@@ -49726,9 +49620,7 @@ var edit = function (_Component) {
                         colorValue: quoteStyles[0].quotColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveQuoteStyles({
-                                quotColor: newValue
-                            });
+                            return saveQuoteStyles({ quotColor: newValue });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
@@ -49774,29 +49666,19 @@ var edit = function (_Component) {
                         vertical: containerStyles[0].shadowVertical,
                         position: containerStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveContainerStyle({
-                                shadowColor: newColor
-                            });
+                            return saveContainerStyle({ shadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveContainerStyle({
-                                shadowBlur: newBlur
-                            });
+                            return saveContainerStyle({ shadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveContainerStyle({
-                                shadowHorizontal: newValue
-                            });
+                            return saveContainerStyle({ shadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveContainerStyle({
-                                shadowVertical: newValue
-                            });
+                            return saveContainerStyle({ shadowVertical: newValue });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveContainerStyle({
-                                shadowPosition: newValue
-                            });
+                            return saveContainerStyle({ shadowPosition: newValue });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
@@ -49805,24 +49687,16 @@ var edit = function (_Component) {
                         paddingBottom: paddingBottom,
                         paddingLeft: paddingLeft,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                paddingTop: value
-                            });
+                            return setAttributes({ paddingTop: value });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                paddingRight: value
-                            });
+                            return setAttributes({ paddingRight: value });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                paddingBottom: value
-                            });
+                            return setAttributes({ paddingBottom: value });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                paddingLeft: value
-                            });
+                            return setAttributes({ paddingLeft: value });
                         },
                         showUnits: true,
                         selectedUnit: containerStyles[0].paddingUnit,
@@ -50007,7 +49881,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 290 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50221,7 +50095,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 291 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51700,7 +51574,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 292 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51873,7 +51747,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 293 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52120,9 +51994,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    boxStyles: newUpdate
-                });
+                setAttributes({ boxStyles: newUpdate });
             };
 
             var saveOverlayStyles = function saveOverlayStyles(value) {
@@ -52132,9 +52004,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    overlayStyles: newUpdate
-                });
+                setAttributes({ overlayStyles: newUpdate });
             };
 
             var savePlayStyles = function savePlayStyles(value) {
@@ -52144,9 +52014,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    playStyles: newUpdate
-                });
+                setAttributes({ playStyles: newUpdate });
             };
 
             var saveDescritionStyle = function saveDescritionStyle(value) {
@@ -52156,9 +52024,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    descStyles: newUpdate
-                });
+                setAttributes({ descStyles: newUpdate });
             };
 
             return [isSelected && React.createElement(
@@ -52282,19 +52148,13 @@ var edit = function (_Component) {
                             return saveOverlayStyles({ blur: value === undefined ? 0 : value });
                         },
                         onChangeBright: function onChangeBright(value) {
-                            return saveOverlayStyles({
-                                bright: value === undefined ? 100 : value
-                            });
+                            return saveOverlayStyles({ bright: value === undefined ? 100 : value });
                         },
                         onChangeContrast: function onChangeContrast(value) {
-                            return saveOverlayStyles({
-                                contrast: value === undefined ? 100 : value
-                            });
+                            return saveOverlayStyles({ contrast: value === undefined ? 100 : value });
                         },
                         onChangeSat: function onChangeSat(value) {
-                            return saveOverlayStyles({
-                                saturation: value === undefined ? 100 : value
-                            });
+                            return saveOverlayStyles({ saturation: value === undefined ? 100 : value });
                         },
                         onChangeHue: function onChangeHue(value) {
                             return saveOverlayStyles({ hue: value === undefined ? 100 : value });
@@ -52325,9 +52185,7 @@ var edit = function (_Component) {
                                 label: __("Size (PX)", 'premium-block-for-gutenberg'),
                                 value: playStyles[0].playSize,
                                 onChange: function onChange(newValue) {
-                                    return savePlayStyles({
-                                        playSize: newValue === undefined ? 20 : newValue
-                                    });
+                                    return savePlayStyles({ playSize: newValue === undefined ? 20 : newValue });
                                 },
                                 showUnit: false,
                                 defaultValue: 0
@@ -52336,9 +52194,7 @@ var edit = function (_Component) {
                                 label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
                                 value: playStyles[0].playTop,
                                 onChange: function onChange(newValue) {
-                                    return savePlayStyles({
-                                        playTop: newValue === undefined ? 50 : newValue
-                                    });
+                                    return savePlayStyles({ playTop: newValue === undefined ? 50 : newValue });
                                 },
                                 showUnit: false,
                                 defaultValue: 0
@@ -52379,9 +52235,7 @@ var edit = function (_Component) {
                                 label: __("Padding (PX)"),
                                 value: playStyles[0].playPadding,
                                 onChange: function onChange(newValue) {
-                                    return savePlayStyles({
-                                        playPadding: newValue === undefined ? 20 : newValue
-                                    });
+                                    return savePlayStyles({ playPadding: newValue === undefined ? 20 : newValue });
                                 },
                                 showUnit: false,
                                 defaultValue: 0
@@ -52456,9 +52310,7 @@ var edit = function (_Component) {
                                 label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].descTop,
                                 onChange: function onChange(newValue) {
-                                    return saveDescritionStyle({
-                                        descTop: newValue === undefined ? 50 : newValue
-                                    });
+                                    return saveDescritionStyle({ descTop: newValue === undefined ? 50 : newValue });
                                 },
                                 showUnit: false,
                                 defaultValue: 0
@@ -52467,9 +52319,7 @@ var edit = function (_Component) {
                                 label: __("Border Radius (px)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].videoDescBorderRadius,
                                 onChange: function onChange(newValue) {
-                                    return saveDescritionStyle({
-                                        videoDescBorderRadius: newValue === undefined ? 0 : newValue
-                                    });
+                                    return saveDescritionStyle({ videoDescBorderRadius: newValue === undefined ? 0 : newValue });
                                 },
                                 showUnit: false,
                                 defaultValue: 0
@@ -52480,17 +52330,13 @@ var edit = function (_Component) {
                                 horizontal: descStyles[0].descShadowHorizontal,
                                 vertical: descStyles[0].descShadowVertical,
                                 onChangeColor: function onChangeColor(newColor) {
-                                    return saveDescritionStyle({
-                                        descShadowColor: newColor || "transparent"
-                                    });
+                                    return saveDescritionStyle({ descShadowColor: newColor || "transparent" });
                                 },
                                 onChangeBlur: function onChangeBlur(newBlur) {
                                     return saveDescritionStyle({ descShadowBlur: newBlur || "0" });
                                 },
                                 onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                    return saveDescritionStyle({
-                                        descShadowHorizontal: newValue || "0"
-                                    });
+                                    return saveDescritionStyle({ descShadowHorizontal: newValue || "0" });
                                 },
                                 onChangeVertical: function onChangeVertical(newValue) {
                                     return saveDescritionStyle({ descShadowVertical: newValue || "0" });
@@ -52500,9 +52346,7 @@ var edit = function (_Component) {
                                 label: __("Padding (PX)", 'premium-block-for-gutenberg'),
                                 value: descStyles[0].videoDescPadding,
                                 onChange: function onChange(newValue) {
-                                    return saveDescritionStyle({
-                                        videoDescPadding: newValue === undefined ? 20 : newValue
-                                    });
+                                    return saveDescritionStyle({ videoDescPadding: newValue === undefined ? 20 : newValue });
                                 },
                                 showUnit: false,
                                 defaultValue: 0
@@ -52543,9 +52387,7 @@ var edit = function (_Component) {
                                         colorValue: playStyles[0].playColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return savePlayStyles({
-                                                playColor: newValue
-                                            });
+                                            return savePlayStyles({ playColor: newValue });
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
@@ -52564,18 +52406,14 @@ var edit = function (_Component) {
                                             colorValue: descStyles[0].videoDescColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
-                                                return setAttributes({
-                                                    videoDescColor: newValue
-                                                });
+                                                return setAttributes({ videoDescColor: newValue });
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
                                             label: __("Background Color"),
                                             colorValue: descStyles[0].videoDescBack,
                                             onColorChange: function onColorChange(newvalue) {
-                                                saveDescritionStyle({
-                                                    videoDescBack: newvalue
-                                                });
+                                                saveDescritionStyle({ videoDescBack: newvalue });
                                             },
                                             colorDefault: ""
                                         })
@@ -52591,9 +52429,7 @@ var edit = function (_Component) {
                                         colorValue: playStyles[0].playHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return savePlayStyles({
-                                                playHoverColor: newValue
-                                            });
+                                            return savePlayStyles({ playHoverColor: newValue });
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
@@ -52601,9 +52437,7 @@ var edit = function (_Component) {
                                         colorValue: playStyles[0].playHoverBackColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
-                                            return savePlayStyles({
-                                                playHoverBackColor: newValue
-                                            });
+                                            return savePlayStyles({ playHoverBackColor: newValue });
                                         }
                                     })
                                 );
@@ -52664,29 +52498,19 @@ var edit = function (_Component) {
                         vertical: boxStyles[0].shadowVertical,
                         position: boxStyles[0].shadowPosition,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveBoxStyle({
-                                shadowColor: newColor === undefined ? "transparent" : newColor
-                            });
+                            return saveBoxStyle({ shadowColor: newColor === undefined ? "transparent" : newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveBoxStyle({
-                                shadowBlur: newBlur === undefined ? 0 : newBlur
-                            });
+                            return saveBoxStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveBoxStyle({
-                                shadowHorizontal: newValue === undefined ? 0 : newValue
-                            });
+                            return saveBoxStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveBoxStyle({
-                                shadowVertical: newValue === undefined ? 0 : newValue
-                            });
+                            return saveBoxStyle({ shadowVertical: newValue === undefined ? 0 : newValue });
                         },
                         onChangePosition: function onChangePosition(newValue) {
-                            return saveBoxStyle({
-                                shadowPosition: newValue === undefined ? 0 : newValue
-                            });
+                            return saveBoxStyle({ shadowPosition: newValue === undefined ? 0 : newValue });
                         }
                     })
                 ),
@@ -52825,7 +52649,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 294 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52991,7 +52815,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 295 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54064,7 +53888,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 296 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54072,23 +53896,23 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(297);
+var _save = __webpack_require__(299);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(298);
+var _edit = __webpack_require__(300);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(318);
+var _deprecated = __webpack_require__(320);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(319);
+var _attributes = __webpack_require__(321);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -54111,7 +53935,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 297 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54315,7 +54139,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 298 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54341,7 +54165,7 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(299);
+var _typed = __webpack_require__(301);
 
 var _typed2 = _interopRequireDefault(_typed);
 
@@ -54648,9 +54472,7 @@ var edit = function (_Component) {
 
                 var sortedArray = (0, _reactSortableHoc.arrayMove)(arrayItem, oldIndex, newIndex);
 
-                setAttributes({
-                    repeaterFancyText: sortedArray
-                });
+                setAttributes({ repeaterFancyText: sortedArray });
             };
 
             var shouldCancelStart = function shouldCancelStart(e) {
@@ -54690,9 +54512,7 @@ var edit = function (_Component) {
                 }).filter(function (f, i) {
                     return i != index;
                 });
-                setAttributes({
-                    repeaterFancyText: array
-                });
+                setAttributes({ repeaterFancyText: array });
             };
 
             var addNewFancyText = function addNewFancyText() {
@@ -54710,9 +54530,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    fancyStyles: newUpdate
-                });
+                setAttributes({ fancyStyles: newUpdate });
             };
             var savePrefixStyle = function savePrefixStyle(value) {
                 var newUpdate = PreStyles.map(function (item, index) {
@@ -54721,9 +54539,7 @@ var edit = function (_Component) {
                     }
                     return item;
                 });
-                setAttributes({
-                    PreStyles: newUpdate
-                });
+                setAttributes({ PreStyles: newUpdate });
             };
 
             var fancyTextFontSize = this.getPreviewSize(this.props.deviceType, fancyStyles[0].fancyTextfontSize, fancyStyles[0].fancyTextfontSizeTablet, fancyStyles[0].fancyTextfontSizeMobile);;
@@ -54846,9 +54662,7 @@ var edit = function (_Component) {
                             type: "Number",
                             value: typeSpeed,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    typeSpeed: parseInt(newValue)
-                                });
+                                return setAttributes({ typeSpeed: parseInt(newValue) });
                             },
                             help: __('Set typing effect speed in milliseconds.', 'premium-block-for-gutenberg')
                         }),
@@ -54857,9 +54671,7 @@ var edit = function (_Component) {
                             type: "Number",
                             value: backSpeed,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    backSpeed: parseInt(newValue)
-                                });
+                                return setAttributes({ backSpeed: parseInt(newValue) });
                             },
                             help: __('Set a speed for backspace effect in milliseconds.', 'premium-block-for-gutenberg')
                         }),
@@ -54868,9 +54680,7 @@ var edit = function (_Component) {
                             type: "Number",
                             value: startdelay,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    startdelay: parseInt(newValue)
-                                });
+                                return setAttributes({ startdelay: parseInt(newValue) });
                             },
                             help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-block-for-gutenberg')
                         }),
@@ -54879,9 +54689,7 @@ var edit = function (_Component) {
                             type: "Number",
                             value: backdelay,
                             onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    backdelay: parseInt(newValue)
-                                });
+                                return setAttributes({ backdelay: parseInt(newValue) });
                             },
                             help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", 'premium-block-for-gutenberg')
                         }),
@@ -54903,9 +54711,7 @@ var edit = function (_Component) {
                             label: __("Cursor Mark", 'premium-block-for-gutenberg'),
                             value: cursorMark,
                             onChange: function onChange(newCheck) {
-                                return setAttributes({
-                                    cursorMark: newCheck
-                                });
+                                return setAttributes({ cursorMark: newCheck });
                             }
                         })
                     ) : React.createElement(
@@ -54921,9 +54727,7 @@ var edit = function (_Component) {
                             value: animationSpeed,
                             type: "Number",
                             onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    animationSpeed: parseInt(newValue)
-                                });
+                                return setAttributes({ animationSpeed: parseInt(newValue) });
                             },
                             help: __("Set a duration value in milliseconds for slide effect.", 'premium-block-for-gutenberg')
                         }),
@@ -54932,9 +54736,7 @@ var edit = function (_Component) {
                             value: pauseTime,
                             type: "Number",
                             onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    pauseTime: parseInt(newValue)
-                                });
+                                return setAttributes({ pauseTime: parseInt(newValue) });
                             },
                             help: __("How long should the word/string stay visible? Set a value in milliseconds.", 'premium-block-for-gutenberg')
                         }),
@@ -54968,9 +54770,7 @@ var edit = function (_Component) {
                         colorValue: fancyStyles[0].fancyTextColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveFancyStyle({
-                                fancyTextColor: newValue
-                            });
+                            return saveFancyStyle({ fancyTextColor: newValue });
                         }
                     }),
                     React.createElement(_premiumTypo2.default, {
@@ -54997,9 +54797,7 @@ var edit = function (_Component) {
                         spacing: fancyStyles[0].fancyTextLetter,
                         upper: fancyStyles[0].fancyTextUpper,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveFancyStyle({
-                                fancyTextWeight: newWeight || 500
-                            });
+                            return saveFancyStyle({ fancyTextWeight: newWeight || 500 });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
                             return saveFancyStyle({ fancyTextStyle: newStyle });
@@ -55044,9 +54842,7 @@ var edit = function (_Component) {
                         colorValue: fancyStyles[0].cursorColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return saveFancyStyle({
-                                cursorColor: newValue
-                            });
+                            return saveFancyStyle({ cursorColor: newValue });
                         }
                     })
                 ),
@@ -55062,9 +54858,7 @@ var edit = function (_Component) {
                         colorValue: PreStyles[0].textColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
-                            return savePrefixStyle({
-                                textColor: newValue
-                            });
+                            return savePrefixStyle({ textColor: newValue });
                         }
                     }),
                     React.createElement(_premiumTypo2.default, {
@@ -55248,7 +55042,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 299 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56360,7 +56154,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
 
 /***/ }),
-/* 300 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56389,7 +56183,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 301 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56400,11 +56194,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(302);
+var _arrayWithHoles = __webpack_require__(304);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(303);
+var _iterableToArrayLimit = __webpack_require__(305);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
@@ -56412,7 +56206,7 @@ var _unsupportedIterableToArray = __webpack_require__(117);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(304);
+var _nonIterableRest = __webpack_require__(306);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -56423,7 +56217,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 302 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56438,7 +56232,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 303 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56479,7 +56273,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 304 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56494,7 +56288,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 305 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56531,7 +56325,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 306 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56548,7 +56342,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 307 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56575,7 +56369,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 308 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56586,7 +56380,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(309);
+var _typeof2 = __webpack_require__(311);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -56607,7 +56401,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 309 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56639,7 +56433,7 @@ module.exports = _typeof;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 310 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56657,7 +56451,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 311 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56668,7 +56462,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(312);
+var _setPrototypeOf = __webpack_require__(314);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -56690,7 +56484,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 312 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56710,7 +56504,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 313 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56763,7 +56557,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 314 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56774,11 +56568,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(315);
+var _arrayWithoutHoles = __webpack_require__(317);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(316);
+var _iterableToArray = __webpack_require__(318);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
@@ -56786,7 +56580,7 @@ var _unsupportedIterableToArray = __webpack_require__(117);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableSpread = __webpack_require__(317);
+var _nonIterableSpread = __webpack_require__(319);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -56797,7 +56591,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 315 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56819,7 +56613,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 316 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56834,7 +56628,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 317 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56849,7 +56643,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 318 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57388,7 +57182,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 319 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57533,31 +57327,31 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 320 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(321);
+var _edit = __webpack_require__(323);
 
 var _edit2 = _interopRequireDefault(_edit);
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(374);
+var _save = __webpack_require__(376);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(375);
+var _deprecated = __webpack_require__(377);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(376);
+var _attributes = __webpack_require__(378);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -57582,7 +57376,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 321 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57600,7 +57394,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(322);
+var _reactLottieWithSegments = __webpack_require__(324);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -58198,14 +57992,10 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return saveLottieStyles({
-                                borderColor: colorValue === undefined ? "transparent" : colorValue
-                            });
+                            return saveLottieStyles({ borderColor: colorValue === undefined ? "transparent" : colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newRadius) {
-                            return saveLottieStyles({
-                                borderRadius: newRadius === undefined ? 0 : newRadius
-                            });
+                            return saveLottieStyles({ borderRadius: newRadius === undefined ? 0 : newRadius });
                         }
                     }),
                     React.createElement(_premiumPadding2.default, {
@@ -58214,24 +58004,16 @@ var edit = function (_Component) {
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
                         onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({
-                                paddingT: value
-                            });
+                            return setAttributes({ paddingT: value });
                         },
                         onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({
-                                paddingR: value
-                            });
+                            return setAttributes({ paddingR: value });
                         },
                         onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({
-                                paddingB: value
-                            });
+                            return setAttributes({ paddingB: value });
                         },
                         onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({
-                                paddingL: value
-                            });
+                            return setAttributes({ paddingL: value });
                         },
                         showUnits: true,
                         selectedUnit: lottieStyles[0].paddingU,
@@ -58311,7 +58093,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 322 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58321,35 +58103,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(323);
+var _stringify = __webpack_require__(325);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(325);
+var _extends2 = __webpack_require__(327);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(334);
+var _getPrototypeOf = __webpack_require__(336);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(338);
+var _classCallCheck2 = __webpack_require__(340);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(339);
+var _createClass2 = __webpack_require__(341);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(343);
+var _possibleConstructorReturn2 = __webpack_require__(345);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(365);
+var _inherits2 = __webpack_require__(367);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -58357,7 +58139,7 @@ var _propTypes = __webpack_require__(12);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(373);
+var _lottieWeb = __webpack_require__(375);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -58665,16 +58447,16 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 323 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(324), __esModule: true };
+module.exports = { "default": __webpack_require__(326), __esModule: true };
 
 /***/ }),
-/* 324 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58688,7 +58470,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 325 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58696,7 +58478,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(326);
+var _assign = __webpack_require__(328);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -58719,26 +58501,26 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 326 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(327), __esModule: true };
+module.exports = { "default": __webpack_require__(329), __esModule: true };
 
 /***/ }),
-/* 327 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(328);
+__webpack_require__(330);
 module.exports = __webpack_require__(13).Object.assign;
 
 /***/ }),
-/* 328 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58747,10 +58529,10 @@ module.exports = __webpack_require__(13).Object.assign;
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(22);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(330) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(332) });
 
 /***/ }),
-/* 329 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58762,7 +58544,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 330 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58808,7 +58590,7 @@ module.exports = !$assign || __webpack_require__(31)(function () {
 } : $assign;
 
 /***/ }),
-/* 331 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58817,8 +58599,8 @@ module.exports = !$assign || __webpack_require__(31)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(32);
-var toLength = __webpack_require__(332);
-var toAbsoluteIndex = __webpack_require__(333);
+var toLength = __webpack_require__(334);
+var toAbsoluteIndex = __webpack_require__(335);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -58841,7 +58623,7 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 332 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58855,7 +58637,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 333 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58870,26 +58652,26 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-/* 334 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(335), __esModule: true };
+module.exports = { "default": __webpack_require__(337), __esModule: true };
 
 /***/ }),
-/* 335 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(336);
+__webpack_require__(338);
 module.exports = __webpack_require__(13).Object.getPrototypeOf;
 
 /***/ }),
-/* 336 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58899,14 +58681,14 @@ module.exports = __webpack_require__(13).Object.getPrototypeOf;
 var toObject = __webpack_require__(83);
 var $getPrototypeOf = __webpack_require__(127);
 
-__webpack_require__(337)('getPrototypeOf', function () {
+__webpack_require__(339)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 337 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58926,7 +58708,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 338 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58941,7 +58723,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 339 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58949,7 +58731,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(340);
+var _defineProperty = __webpack_require__(342);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -58976,29 +58758,29 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 340 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(341), __esModule: true };
+module.exports = { "default": __webpack_require__(343), __esModule: true };
 
 /***/ }),
-/* 341 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(342);
+__webpack_require__(344);
 var $Object = __webpack_require__(13).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 342 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59009,7 +58791,7 @@ var $export = __webpack_require__(22);
 $export($export.S + $export.F * !__webpack_require__(24), 'Object', { defineProperty: __webpack_require__(23).f });
 
 /***/ }),
-/* 343 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59034,33 +58816,33 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 344 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(345), __esModule: true };
-
-/***/ }),
-/* 345 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(346);
-__webpack_require__(351);
-module.exports = __webpack_require__(87).f('iterator');
-
-/***/ }),
 /* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var $at = __webpack_require__(347)(true);
+module.exports = { "default": __webpack_require__(347), __esModule: true };
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(348);
+__webpack_require__(353);
+module.exports = __webpack_require__(87).f('iterator');
+
+/***/ }),
+/* 348 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $at = __webpack_require__(349)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(129)(String, 'String', function (iterated) {
@@ -59078,7 +58860,7 @@ __webpack_require__(129)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 347 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59101,7 +58883,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 348 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59123,14 +58905,14 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 349 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var dP = __webpack_require__(23);
-var anObject = __webpack_require__(39);
+var anObject = __webpack_require__(40);
 var getKeys = __webpack_require__(51);
 
 module.exports = __webpack_require__(24) ? Object.defineProperties : function defineProperties(O, Properties) {
@@ -59145,7 +58927,7 @@ module.exports = __webpack_require__(24) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 350 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59155,13 +58937,13 @@ var document = __webpack_require__(20).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 351 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(352);
+__webpack_require__(354);
 var global = __webpack_require__(20);
 var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(84);
@@ -59178,14 +58960,14 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 352 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(353);
-var step = __webpack_require__(354);
+var addToUnscopables = __webpack_require__(355);
+var step = __webpack_require__(356);
 var Iterators = __webpack_require__(84);
 var toIObject = __webpack_require__(32);
 
@@ -59219,7 +59001,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 353 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59228,7 +59010,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 354 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59239,29 +59021,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 355 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(356), __esModule: true };
+module.exports = { "default": __webpack_require__(358), __esModule: true };
 
 /***/ }),
-/* 356 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(357);
-__webpack_require__(362);
-__webpack_require__(363);
+__webpack_require__(359);
 __webpack_require__(364);
+__webpack_require__(365);
+__webpack_require__(366);
 module.exports = __webpack_require__(13).Symbol;
 
 /***/ }),
-/* 357 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59275,7 +59057,7 @@ var has = __webpack_require__(25);
 var DESCRIPTORS = __webpack_require__(24);
 var $export = __webpack_require__(22);
 var redefine = __webpack_require__(130);
-var META = __webpack_require__(358).KEY;
+var META = __webpack_require__(360).KEY;
 var $fails = __webpack_require__(31);
 var shared = __webpack_require__(80);
 var setToStringTag = __webpack_require__(86);
@@ -59283,15 +59065,15 @@ var uid = __webpack_require__(53);
 var wks = __webpack_require__(33);
 var wksExt = __webpack_require__(87);
 var wksDefine = __webpack_require__(88);
-var enumKeys = __webpack_require__(359);
-var isArray = __webpack_require__(360);
-var anObject = __webpack_require__(39);
+var enumKeys = __webpack_require__(361);
+var isArray = __webpack_require__(362);
+var anObject = __webpack_require__(40);
 var isObject = __webpack_require__(30);
 var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(76);
 var createDesc = __webpack_require__(50);
 var _create = __webpack_require__(85);
-var gOPNExt = __webpack_require__(361);
+var gOPNExt = __webpack_require__(363);
 var $GOPD = __webpack_require__(132);
 var $DP = __webpack_require__(23);
 var $keys = __webpack_require__(51);
@@ -59511,7 +59293,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 358 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59574,7 +59356,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 359 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59599,7 +59381,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59612,7 +59394,7 @@ module.exports = Array.isArray || function isArray(arg) {
 };
 
 /***/ }),
-/* 361 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59640,29 +59422,11 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 362 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-/* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(88)('asyncIterator');
-
-/***/ }),
 /* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-__webpack_require__(88)('observable');
 
 /***/ }),
 /* 365 */
@@ -59671,13 +59435,31 @@ __webpack_require__(88)('observable');
 "use strict";
 
 
+__webpack_require__(88)('asyncIterator');
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(88)('observable');
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(366);
+var _setPrototypeOf = __webpack_require__(368);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(370);
+var _create = __webpack_require__(372);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -59706,34 +59488,13 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 366 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(367), __esModule: true };
-
-/***/ }),
-/* 367 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(368);
-module.exports = __webpack_require__(13).Object.setPrototypeOf;
-
-/***/ }),
 /* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(22);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(369).set });
+module.exports = { "default": __webpack_require__(369), __esModule: true };
 
 /***/ }),
 /* 369 */
@@ -59742,10 +59503,31 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(369).set });
 "use strict";
 
 
+__webpack_require__(370);
+module.exports = __webpack_require__(13).Object.setPrototypeOf;
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(22);
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(371).set });
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = __webpack_require__(30);
-var anObject = __webpack_require__(39);
+var anObject = __webpack_require__(40);
 var check = function check(O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -59770,29 +59552,29 @@ module.exports = {
 };
 
 /***/ }),
-/* 370 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(371), __esModule: true };
+module.exports = { "default": __webpack_require__(373), __esModule: true };
 
 /***/ }),
-/* 371 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(372);
+__webpack_require__(374);
 var $Object = __webpack_require__(13).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 372 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59803,7 +59585,7 @@ var $export = __webpack_require__(22);
 $export($export.S, 'Object', { create: __webpack_require__(85) });
 
 /***/ }),
-/* 373 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60394,7 +60176,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 374 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60467,7 +60249,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60788,7 +60570,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60934,7 +60716,7 @@ var LottieAttr = {
 exports.default = LottieAttr;
 
 /***/ }),
-/* 377 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60942,17 +60724,17 @@ exports.default = LottieAttr;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(378);
+var _edit = __webpack_require__(380);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(395);
+var _save = __webpack_require__(397);
 
-var _attributes = __webpack_require__(396);
+var _attributes = __webpack_require__(398);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -60976,7 +60758,7 @@ registerBlockType("premium/newsletter", {
 });
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60999,7 +60781,7 @@ var _reactSelect = __webpack_require__(133);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-var _debounce = __webpack_require__(390);
+var _debounce = __webpack_require__(392);
 
 var _debounce2 = _interopRequireDefault(_debounce);
 
@@ -61937,7 +61719,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61998,7 +61780,7 @@ function memoizeOne(resultFn, isEqual) {
 exports.default = memoizeOne;
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62009,7 +61791,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.caches = exports.sheet = exports.css = exports.keyframes = exports.injectGlobal = exports.getRegisteredStyles = exports.merge = exports.cx = exports.hydrate = exports.flush = undefined;
 
-var _createEmotion2 = __webpack_require__(381);
+var _createEmotion2 = __webpack_require__(383);
 
 var _createEmotion3 = _interopRequireDefault(_createEmotion2);
 
@@ -62042,7 +61824,7 @@ exports.caches = caches;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(59)))
 
 /***/ }),
-/* 381 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62054,23 +61836,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _memoize = __webpack_require__(382);
+var _memoize = __webpack_require__(384);
 
 var _memoize2 = _interopRequireDefault(_memoize);
 
-var _unitless = __webpack_require__(383);
+var _unitless = __webpack_require__(385);
 
 var _unitless2 = _interopRequireDefault(_unitless);
 
-var _hash = __webpack_require__(384);
+var _hash = __webpack_require__(386);
 
 var _hash2 = _interopRequireDefault(_hash);
 
-var _stylis = __webpack_require__(385);
+var _stylis = __webpack_require__(387);
 
 var _stylis2 = _interopRequireDefault(_stylis);
 
-var _stylisRuleSheet = __webpack_require__(386);
+var _stylisRuleSheet = __webpack_require__(388);
 
 var _stylisRuleSheet2 = _interopRequireDefault(_stylisRuleSheet);
 
@@ -62592,7 +62374,7 @@ exports.default = createEmotion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 382 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62612,7 +62394,7 @@ function memoize(fn) {
 exports.default = memoize;
 
 /***/ }),
-/* 383 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62669,7 +62451,7 @@ var unitlessKeys = {
 exports.default = unitlessKeys;
 
 /***/ }),
-/* 384 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62717,7 +62499,7 @@ function murmurhash2_32_gc(str) {
 exports.default = murmurhash2_32_gc;
 
 /***/ }),
-/* 385 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63355,7 +63137,7 @@ function stylis_min(W) {
 exports.default = stylis_min;
 
 /***/ }),
-/* 386 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63412,13 +63194,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 387 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var now = __webpack_require__(388),
+var now = __webpack_require__(390),
     root = typeof window === 'undefined' ? global : window,
     vendors = ['moz', 'webkit'],
     suffix = 'AnimationFrame',
@@ -63497,7 +63279,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(59)))
 
 /***/ }),
-/* 388 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63541,7 +63323,7 @@ module.exports.polyfill = function (object) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 389 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63573,7 +63355,7 @@ var _createClass = function () {
 	};
 }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -63836,15 +63618,15 @@ AutosizeInput.defaultProps = {
 exports.default = AutosizeInput;
 
 /***/ }),
-/* 390 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isObject = __webpack_require__(26),
-    now = __webpack_require__(391),
-    toNumber = __webpack_require__(392);
+    now = __webpack_require__(393),
+    toNumber = __webpack_require__(394);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -64032,7 +63814,7 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 /***/ }),
-/* 391 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64063,15 +63845,15 @@ var now = function now() {
 module.exports = now;
 
 /***/ }),
-/* 392 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTrim = __webpack_require__(393),
+var baseTrim = __webpack_require__(395),
     isObject = __webpack_require__(26),
-    isSymbol = __webpack_require__(34);
+    isSymbol = __webpack_require__(35);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -64133,13 +63915,13 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 393 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trimmedEndIndex = __webpack_require__(394);
+var trimmedEndIndex = __webpack_require__(396);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -64158,7 +63940,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 394 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64185,7 +63967,7 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 395 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64196,7 +63978,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.save = save;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -64306,7 +64088,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 396 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64448,7 +64230,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 397 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64456,19 +64238,19 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(398);
+var _save = __webpack_require__(400);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(399);
+var _edit = __webpack_require__(401);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(400);
+var _attributes = __webpack_require__(402);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -64490,7 +64272,7 @@ registerBlockType("premium/progress-bar", {
 });
 
 /***/ }),
-/* 398 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64657,7 +64439,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 399 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65523,7 +65305,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 400 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65656,7 +65438,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 401 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65664,15 +65446,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(3);
 
-var _icons = __webpack_require__(4);
+var _icons = __webpack_require__(5);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(402);
+var _edit = __webpack_require__(404);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(436);
+var _save = __webpack_require__(438);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -65746,7 +65528,7 @@ registerBlockType("premium/template", {
 });
 
 /***/ }),
-/* 402 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65766,7 +65548,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _modal = __webpack_require__(418);
+var _modal = __webpack_require__(420);
 
 var _modal2 = _interopRequireDefault(_modal);
 
@@ -66063,14 +65845,14 @@ var edit = function (_Component) {
 exports.default = edit;
 
 /***/ }),
-/* 403 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var arrayPush = __webpack_require__(100),
-    isFlattenable = __webpack_require__(404);
+    isFlattenable = __webpack_require__(406);
 
 /**
  * The base implementation of `_.flatten` with support for restricting flattening.
@@ -66109,13 +65891,13 @@ function baseFlatten(array, depth, predicate, isStrict, result) {
 module.exports = baseFlatten;
 
 /***/ }),
-/* 404 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(36),
+var _Symbol = __webpack_require__(37),
     isArguments = __webpack_require__(65),
     isArray = __webpack_require__(11);
 
@@ -66136,7 +65918,7 @@ function isFlattenable(value) {
 module.exports = isFlattenable;
 
 /***/ }),
-/* 405 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66146,9 +65928,9 @@ var arrayMap = __webpack_require__(63),
     baseGet = __webpack_require__(57),
     baseIteratee = __webpack_require__(96),
     baseMap = __webpack_require__(106),
-    baseSortBy = __webpack_require__(406),
+    baseSortBy = __webpack_require__(408),
     baseUnary = __webpack_require__(103),
-    compareMultiple = __webpack_require__(407),
+    compareMultiple = __webpack_require__(409),
     identity = __webpack_require__(48),
     isArray = __webpack_require__(11);
 
@@ -66193,7 +65975,7 @@ function baseOrderBy(collection, iteratees, orders) {
 module.exports = baseOrderBy;
 
 /***/ }),
-/* 406 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66222,13 +66004,13 @@ function baseSortBy(array, comparer) {
 module.exports = baseSortBy;
 
 /***/ }),
-/* 407 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var compareAscending = __webpack_require__(408);
+var compareAscending = __webpack_require__(410);
 
 /**
  * Used by `_.orderBy` to compare multiple properties of a value to another
@@ -66274,13 +66056,13 @@ function compareMultiple(object, other, orders) {
 module.exports = compareMultiple;
 
 /***/ }),
-/* 408 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isSymbol = __webpack_require__(34);
+var isSymbol = __webpack_require__(35);
 
 /**
  * Compares values to sort them in ascending order.
@@ -66315,15 +66097,15 @@ function compareAscending(value, other) {
 module.exports = compareAscending;
 
 /***/ }),
-/* 409 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var identity = __webpack_require__(48),
-    overRest = __webpack_require__(410),
-    setToString = __webpack_require__(412);
+    overRest = __webpack_require__(412),
+    setToString = __webpack_require__(414);
 
 /**
  * The base implementation of `_.rest` which doesn't validate or coerce arguments.
@@ -66340,13 +66122,13 @@ function baseRest(func, start) {
 module.exports = baseRest;
 
 /***/ }),
-/* 410 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var apply = __webpack_require__(411);
+var apply = __webpack_require__(413);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -66384,7 +66166,7 @@ function overRest(func, start, transform) {
 module.exports = overRest;
 
 /***/ }),
-/* 411 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66417,14 +66199,14 @@ function apply(func, thisArg, args) {
 module.exports = apply;
 
 /***/ }),
-/* 412 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseSetToString = __webpack_require__(413),
-    shortOut = __webpack_require__(416);
+var baseSetToString = __webpack_require__(415),
+    shortOut = __webpack_require__(418);
 
 /**
  * Sets the `toString` method of `func` to return `string`.
@@ -66439,14 +66221,14 @@ var setToString = shortOut(baseSetToString);
 module.exports = setToString;
 
 /***/ }),
-/* 413 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var constant = __webpack_require__(414),
-    defineProperty = __webpack_require__(415),
+var constant = __webpack_require__(416),
+    defineProperty = __webpack_require__(417),
     identity = __webpack_require__(48);
 
 /**
@@ -66469,7 +66251,7 @@ var baseSetToString = !defineProperty ? identity : function (func, string) {
 module.exports = baseSetToString;
 
 /***/ }),
-/* 414 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66503,7 +66285,7 @@ function constant(value) {
 module.exports = constant;
 
 /***/ }),
-/* 415 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66522,7 +66304,7 @@ var defineProperty = function () {
 module.exports = defineProperty;
 
 /***/ }),
-/* 416 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66567,7 +66349,7 @@ function shortOut(func) {
 module.exports = shortOut;
 
 /***/ }),
-/* 417 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66604,7 +66386,7 @@ function isIterateeCall(value, index, object) {
 module.exports = isIterateeCall;
 
 /***/ }),
-/* 418 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66620,7 +66402,7 @@ var _sortBy3 = _interopRequireDefault(_sortBy2);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -67118,7 +66900,7 @@ var modal = function (_Component) {
 exports.default = modal;
 
 /***/ }),
-/* 419 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67126,7 +66908,7 @@ exports.default = modal;
 
 var utils = __webpack_require__(7);
 var bind = __webpack_require__(136);
-var Axios = __webpack_require__(420);
+var Axios = __webpack_require__(422);
 var mergeConfig = __webpack_require__(142);
 var defaults = __webpack_require__(55);
 
@@ -67162,7 +66944,7 @@ axios.Axios = Axios;
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(56);
-axios.CancelToken = __webpack_require__(433);
+axios.CancelToken = __webpack_require__(435);
 axios.isCancel = __webpack_require__(141);
 axios.VERSION = __webpack_require__(143).version;
 
@@ -67170,10 +66952,10 @@ axios.VERSION = __webpack_require__(143).version;
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(434);
+axios.spread = __webpack_require__(436);
 
 // Expose isAxiosError
-axios.isAxiosError = __webpack_require__(435);
+axios.isAxiosError = __webpack_require__(437);
 
 module.exports = axios;
 
@@ -67181,7 +66963,7 @@ module.exports = axios;
 module.exports.default = axios;
 
 /***/ }),
-/* 420 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67189,10 +66971,10 @@ module.exports.default = axios;
 
 var utils = __webpack_require__(7);
 var buildURL = __webpack_require__(137);
-var InterceptorManager = __webpack_require__(421);
-var dispatchRequest = __webpack_require__(422);
+var InterceptorManager = __webpack_require__(423);
+var dispatchRequest = __webpack_require__(424);
 var mergeConfig = __webpack_require__(142);
-var validator = __webpack_require__(432);
+var validator = __webpack_require__(434);
 
 var validators = validator.validators;
 /**
@@ -67341,7 +67123,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = Axios;
 
 /***/ }),
-/* 421 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67401,14 +67183,14 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 module.exports = InterceptorManager;
 
 /***/ }),
-/* 422 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(7);
-var transformData = __webpack_require__(423);
+var transformData = __webpack_require__(425);
 var isCancel = __webpack_require__(141);
 var defaults = __webpack_require__(55);
 var Cancel = __webpack_require__(56);
@@ -67472,7 +67254,7 @@ module.exports = function dispatchRequest(config) {
 };
 
 /***/ }),
-/* 423 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67500,7 +67282,7 @@ module.exports = function transformData(data, headers, fns) {
 };
 
 /***/ }),
-/* 424 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67518,7 +67300,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 };
 
 /***/ }),
-/* 425 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67543,7 +67325,7 @@ module.exports = function settle(resolve, reject, response) {
 };
 
 /***/ }),
-/* 426 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67602,14 +67384,14 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 427 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(428);
-var combineURLs = __webpack_require__(429);
+var isAbsoluteURL = __webpack_require__(430);
+var combineURLs = __webpack_require__(431);
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -67628,7 +67410,7 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 };
 
 /***/ }),
-/* 428 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67650,7 +67432,7 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 /***/ }),
-/* 429 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67669,7 +67451,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 };
 
 /***/ }),
-/* 430 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67725,7 +67507,7 @@ module.exports = function parseHeaders(headers) {
 };
 
 /***/ }),
-/* 431 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67794,7 +67576,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 432 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67879,7 +67661,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 433 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68004,7 +67786,7 @@ CancelToken.source = function source() {
 module.exports = CancelToken;
 
 /***/ }),
-/* 434 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68038,7 +67820,7 @@ module.exports = function spread(callback) {
 };
 
 /***/ }),
-/* 435 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68057,7 +67839,7 @@ module.exports = function isAxiosError(payload) {
 };
 
 /***/ }),
-/* 436 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68134,268 +67916,6 @@ var save = function save(props) {
 };
 
 exports.default = save;
-
-/***/ }),
-/* 437 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-exports.default = PremiumRangeControl;
-
-var _responsive = __webpack_require__(438);
-
-var _responsive2 = _interopRequireDefault(_responsive);
-
-var _premiumSizeUnits = __webpack_require__(40);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var useState = wp.element.useState;
-var RangeControl = wp.components.RangeControl;
-var useInstanceId = wp.compose.useInstanceId;
-function PremiumRangeControl(_ref) {
-    var label = _ref.label,
-        onChange = _ref.onChange,
-        onChangeTablet = _ref.onChangeTablet,
-        onChangeMobile = _ref.onChangeMobile,
-        _ref$value = _ref.value,
-        value = _ref$value === undefined ? '' : _ref$value,
-        _ref$className = _ref.className,
-        className = _ref$className === undefined ? '' : _ref$className,
-        _ref$step = _ref.step,
-        step = _ref$step === undefined ? 1 : _ref$step,
-        _ref$max = _ref.max,
-        max = _ref$max === undefined ? 100 : _ref$max,
-        _ref$min = _ref.min,
-        min = _ref$min === undefined ? 0 : _ref$min,
-        _ref$units = _ref.units,
-        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
-        _ref$beforeIcon = _ref.beforeIcon,
-        beforeIcon = _ref$beforeIcon === undefined ? '' : _ref$beforeIcon,
-        _ref$help = _ref.help,
-        help = _ref$help === undefined ? '' : _ref$help,
-        _ref$unit = _ref.unit,
-        unit = _ref$unit === undefined ? 'px' : _ref$unit,
-        defaultValue = _ref.defaultValue,
-        onChangeUnit = _ref.onChangeUnit,
-        showUnit = _ref.showUnit,
-        responsive = _ref.responsive;
-
-    var onChangInput = function onChangInput(event) {
-        if (event.target.value === '') {
-            onChange(undefined);
-            return;
-        }
-        var newValue = Number(event.target.value);
-        if (newValue === '') {
-            updateValue(undefined);
-            return;
-        }
-        if (min < -0.1) {
-            if (newValue > max) {
-                updateValue(max);
-            } else if (newValue < min && newValue !== '-') {
-                updateValue(min);
-            } else {
-                updateValue(newValue);
-            }
-        } else {
-            if (newValue > max) {
-                updateValue(max);
-            } else if (newValue < -0.1) {
-                updateValue(min);
-            } else {
-                updateValue(newValue);
-            }
-        }
-    };
-
-    var _useState = useState('desktop'),
-        _useState2 = _slicedToArray(_useState, 2),
-        device = _useState2[0],
-        setDevice = _useState2[1];
-
-    var sliderValue = responsive ? value[device] : value;
-
-    var updateValue = function updateValue(value) {
-        device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
-    };
-
-    var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
-    return React.createElement(
-        'div',
-        { className: 'premium-blocks-range-control' },
-        React.createElement(
-            'header',
-            null,
-            React.createElement(
-                'div',
-                { className: 'premium-slider-title-wrap' },
-                responsive ? React.createElement(_responsive2.default, { label: label, onChange: function onChange(value) {
-                        return setDevice(value);
-                    } }) : React.createElement(
-                    'span',
-                    { className: 'customize-control-title premium-control-title' },
-                    label
-                )
-            ),
-            showUnit && React.createElement(_premiumSizeUnits2.default, {
-                units: units,
-                activeUnit: unit,
-                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                    return onChangeUnit(newValue);
-                }
-            })
-        ),
-        React.createElement(
-            'div',
-            { className: 'wrapper' },
-            React.createElement(
-                'div',
-                { className: 'input-field-wrapper active' },
-                React.createElement(RangeControl, {
-                    beforeIcon: beforeIcon,
-                    value: sliderValue,
-                    onChange: function onChange(newVal) {
-                        return updateValue(newVal);
-                    },
-                    min: min,
-                    max: max,
-                    step: step,
-                    help: help,
-                    withInputField: false,
-                    className: 'premium-range-value-input'
-                }),
-                React.createElement(
-                    'div',
-                    { className: 'kemet_range_value' },
-                    React.createElement('input', {
-                        value: sliderValue,
-                        onChange: onChangInput,
-                        min: min,
-                        max: max,
-                        id: id,
-                        step: step,
-                        type: 'number',
-                        className: 'components-text-control__input'
-                    })
-                )
-            ),
-            React.createElement('button', { className: 'premium-slider-reset', disabled: JSON.stringify(sliderValue) === JSON.stringify(defaultValue), onClick: function onClick(e) {
-                    e.preventDefault();
-                    updateValue(defaultValue);
-                } })
-        )
-    );
-}
-
-/***/ }),
-/* 438 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Responsive = function (_Component) {
-    _inherits(Responsive, _Component);
-
-    function Responsive(props) {
-        _classCallCheck(this, Responsive);
-
-        var _this = _possibleConstructorReturn(this, (Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call(this, props));
-
-        _this.state = {
-            view: 'desktop'
-        };
-        return _this;
-    }
-
-    _createClass(Responsive, [{
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            var label = this.props.label;
-
-            var devices = ['desktop', 'tablet', 'mobile'];
-            var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
-            return _react2.default.createElement(
-                _react.Fragment,
-                null,
-                label ? _react2.default.createElement(
-                    'span',
-                    { className: 'customize-control-title premium-control-title' },
-                    label
-                ) : null,
-                _react2.default.createElement(
-                    'ul',
-                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
-                    devices.map(function (device, key) {
-                        var activeClass = device === previewDevice ? ' active' : '';
-                        var icon = device === 'mobile' ? 'smartphone' : device;
-                        return _react2.default.createElement(
-                            'li',
-                            { key: key, className: '' + device + activeClass },
-                            _react2.default.createElement(
-                                'button',
-                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
-                                _react2.default.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
-                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        _this2.changeViewType(nextDevice);
-                                    } })
-                            )
-                        );
-                    })
-                ),
-                this.props.children
-            );
-        }
-    }, {
-        key: 'changeViewType',
-        value: function changeViewType(device) {
-            this.setState({ view: device });
-            wp.customize && wp.customize.previewedDevice(device);
-            if (wp.data && wp.data.dispatch && wp.data.dispatch('core/edit-post') && wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType) {
-                wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType(device.replace(/\w/, function (c) {
-                    return c.toUpperCase();
-                }));
-            }
-            this.props.onChange(device);
-        }
-    }]);
-
-    return Responsive;
-}(_react.Component);
-
-exports.default = Responsive;
 
 /***/ })
 /******/ ]);

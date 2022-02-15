@@ -14,7 +14,7 @@ class AdvancedColorControl extends Component {
         this.state = {
             isVisible: false,
             colors: [],
-            classSat: 'first',
+            classSat: 'one',
             currentColor: '',
             defaultColor: '',
         };
@@ -30,13 +30,14 @@ class AdvancedColorControl extends Component {
     }
 
     render() {
+
         const toggleVisible = () => {
             if ('transparent' === this.props.colorDefault) {
                 this.setState({ currentColor: (undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue) });
             } else {
                 this.setState({ currentColor: (undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue) });
             }
-            this.setState({ classSat: 'first' });
+            this.setState({ classSat: 'one' });
             this.setState({ isVisible: true });
         };
 
@@ -45,6 +46,7 @@ class AdvancedColorControl extends Component {
                 this.setState({ isVisible: false });
             }
         };
+
         const normalizeColor = (color) => {
             const parsedColor = colord(color)
 
@@ -58,7 +60,9 @@ class AdvancedColorControl extends Component {
 
             return parsedColor.toRgbString()
         }
-        const isNew = wp.components.GradientPicker
+
+        const isNew = wp.components.GradientPicker;
+
         return (
             <div className="premium-color-popover-container">
                 <div className="premium-advanced-color-container">
@@ -82,10 +86,10 @@ class AdvancedColorControl extends Component {
                                                             if (this.props.onColorClassChange) {
                                                                 this.props.onColorClassChange(slug);
                                                             }
-                                                            if ('third' === this.state.classSat) {
-                                                                this.setState({ classSat: 'second' });
+                                                            if ('three' === this.state.classSat) {
+                                                                this.setState({ classSat: 'two' });
                                                             } else {
-                                                                this.setState({ classSat: 'third' });
+                                                                this.setState({ classSat: 'three' });
                                                             }
                                                         }}
                                                     >
@@ -102,7 +106,7 @@ class AdvancedColorControl extends Component {
                                 <div className={isNew
                                     ? 'premium-gutenberg-color-picker-new'
                                     : 'premium-gutenberg-color-picker'}>
-                                    {this.state.classSat === 'first' && !this.props.disableCustomColors && (
+                                    {this.state.classSat === 'one' && !this.props.disableCustomColors && (
                                         <ColorPicker
                                             color={(undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue)}
                                             onChangeComplete={(color) => {
@@ -116,7 +120,7 @@ class AdvancedColorControl extends Component {
                                             }}
                                         />
                                     )}
-                                    {!this.props.disableCustomColors && this.state.classSat !== 'first' && (
+                                    {!this.props.disableCustomColors && this.state.classSat !== 'one' && (
                                         <ColorPicker
                                             color={(undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor)}
                                             onChangeComplete={(color) => {

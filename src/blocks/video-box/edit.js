@@ -190,9 +190,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                boxStyles: newUpdate,
-            });
+            setAttributes({ boxStyles: newUpdate });
         };
 
         const saveOverlayStyles = (value) => {
@@ -202,9 +200,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                overlayStyles: newUpdate,
-            });
+            setAttributes({ overlayStyles: newUpdate });
         };
 
         const savePlayStyles = (value) => {
@@ -214,9 +210,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                playStyles: newUpdate,
-            });
+            setAttributes({ playStyles: newUpdate });
         };
 
         const saveDescritionStyle = (value) => {
@@ -226,9 +220,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                descStyles: newUpdate,
-            });
+            setAttributes({ descStyles: newUpdate });
         };
 
         return [
@@ -305,9 +297,7 @@ class edit extends Component {
                             <ToggleControl
                                 label={__("Show Related Videos", 'premium-block-for-gutenberg')}
                                 checked={relatedVideos}
-                                onChange={newCheck =>
-                                    setAttributes({ relatedVideos: newCheck })
-                                }
+                                onChange={newCheck => setAttributes({ relatedVideos: newCheck })}
                             />
                         )}
                         <ToggleControl
@@ -346,27 +336,11 @@ class edit extends Component {
                                 contrast={overlayStyles[0].contrast}
                                 saturation={overlayStyles[0].saturation}
                                 hue={overlayStyles[0].hue}
-                                onChangeBlur={value =>
-                                    saveOverlayStyles({ blur: value === undefined ? 0 : value })
-                                }
-                                onChangeBright={value =>
-                                    saveOverlayStyles({
-                                        bright: value === undefined ? 100 : value
-                                    })
-                                }
-                                onChangeContrast={value =>
-                                    saveOverlayStyles({
-                                        contrast: value === undefined ? 100 : value
-                                    })
-                                }
-                                onChangeSat={value =>
-                                    saveOverlayStyles({
-                                        saturation: value === undefined ? 100 : value
-                                    })
-                                }
-                                onChangeHue={value =>
-                                    saveOverlayStyles({ hue: value === undefined ? 100 : value })
-                                }
+                                onChangeBlur={value => saveOverlayStyles({ blur: value === undefined ? 0 : value })}
+                                onChangeBright={value => saveOverlayStyles({ bright: value === undefined ? 100 : value })}
+                                onChangeContrast={value => saveOverlayStyles({ contrast: value === undefined ? 100 : value })}
+                                onChangeSat={value => saveOverlayStyles({ saturation: value === undefined ? 100 : value })}
+                                onChangeHue={value => saveOverlayStyles({ hue: value === undefined ? 100 : value })}
                             />
                         </PanelBody>
                     )}
@@ -387,22 +361,14 @@ class edit extends Component {
                                         <ResponsiveSingleRangeControl
                                             label={__("Size (PX)", 'premium-block-for-gutenberg')}
                                             value={playStyles[0].playSize}
-                                            onChange={newValue =>
-                                                savePlayStyles({
-                                                    playSize: newValue === undefined ? 20 : newValue
-                                                })
-                                            }
+                                            onChange={newValue => savePlayStyles({ playSize: newValue === undefined ? 20 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
                                         <ResponsiveSingleRangeControl
                                             label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
                                             value={playStyles[0].playTop}
-                                            onChange={newValue =>
-                                                savePlayStyles({
-                                                    playTop: newValue === undefined ? 50 : newValue
-                                                })
-                                            }
+                                            onChange={newValue => savePlayStyles({ playTop: newValue === undefined ? 50 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
@@ -415,9 +381,7 @@ class edit extends Component {
                                             left={playStyles[0].playBorderLeft}
                                             borderColor={playStyles[0].playBorderColor}
                                             borderRadius={playStyles[0].playBorderRadius}
-                                            onChangeType={(newType) =>
-                                                savePlayStyles({ playBorderType: newType })
-                                            }
+                                            onChangeType={(newType) => savePlayStyles({ playBorderType: newType })}
                                             onChangeWidth={({ top, right, bottom, left }) =>
                                                 savePlayStyles({
                                                     borderPlayUpdated: true,
@@ -427,21 +391,13 @@ class edit extends Component {
                                                     playBorderLeft: left,
                                                 })
                                             }
-                                            onChangeColor={(colorValue) =>
-                                                savePlayStyles({ playBorderColor: colorValue })
-                                            }
-                                            onChangeRadius={(newrRadius) =>
-                                                savePlayStyles({ playBorderRadius: newrRadius })
-                                            }
+                                            onChangeColor={(colorValue) => savePlayStyles({ playBorderColor: colorValue })}
+                                            onChangeRadius={(newrRadius) => savePlayStyles({ playBorderRadius: newrRadius })}
                                         />
                                         <ResponsiveSingleRangeControl
                                             label={__("Padding (PX)")}
                                             value={playStyles[0].playPadding}
-                                            onChange={newValue =>
-                                                savePlayStyles({
-                                                    playPadding: newValue === undefined ? 20 : newValue
-                                                })
-                                            }
+                                            onChange={newValue => savePlayStyles({ playPadding: newValue === undefined ? 20 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
@@ -463,9 +419,7 @@ class edit extends Component {
                                         <TextareaControl
                                             label={__("Description Text", 'premium-block-for-gutenberg')}
                                             value={descStyles[0].videoDescText}
-                                            onChange={newText =>
-                                                saveDescritionStyle({ videoDescText: newText })
-                                            }
+                                            onChange={newText => saveDescritionStyle({ videoDescText: newText })}
                                         />
 
                                         <PremiumTypo
@@ -502,37 +456,22 @@ class edit extends Component {
                                             style={descStyles[0].videoDescStyle}
                                             spacing={descStyles[0].videoDescLetter}
                                             upper={descStyles[0].videoDescUpper}
-                                            onChangeStyle={newStyle =>
-                                                saveDescritionStyle({ videoDescStyle: newStyle })
-                                            }
-                                            onChangeSpacing={newValue =>
-                                                saveDescritionStyle({ videoDescLetter: newValue })
-                                            }
-                                            onChangeUpper={check =>
-                                                saveDescritionStyle({ videoDescUpper: check })
-                                            }
+                                            onChangeStyle={newStyle => saveDescritionStyle({ videoDescStyle: newStyle })}
+                                            onChangeSpacing={newValue => saveDescritionStyle({ videoDescLetter: newValue })}
+                                            onChangeUpper={check => saveDescritionStyle({ videoDescUpper: check })}
                                             onChangeFamily={(fontFamily) => saveDescritionStyle({ videoDescFamily: fontFamily })}
                                         />
                                         <ResponsiveSingleRangeControl
                                             label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
                                             value={descStyles[0].descTop}
-                                            onChange={newValue =>
-                                                saveDescritionStyle({
-                                                    descTop: newValue === undefined ? 50 : newValue
-                                                })
-                                            }
+                                            onChange={newValue => saveDescritionStyle({ descTop: newValue === undefined ? 50 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
                                         <ResponsiveSingleRangeControl
                                             label={__("Border Radius (px)", 'premium-block-for-gutenberg')}
                                             value={descStyles[0].videoDescBorderRadius}
-                                            onChange={newValue =>
-                                                saveDescritionStyle({
-                                                    videoDescBorderRadius:
-                                                        newValue === undefined ? 0 : newValue
-                                                })
-                                            }
+                                            onChange={newValue => saveDescritionStyle({ videoDescBorderRadius: newValue === undefined ? 0 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
@@ -541,32 +480,15 @@ class edit extends Component {
                                             blur={descStyles[0].descShadowBlur}
                                             horizontal={descStyles[0].descShadowHorizontal}
                                             vertical={descStyles[0].descShadowVertical}
-                                            onChangeColor={newColor =>
-                                                saveDescritionStyle({
-                                                    descShadowColor: newColor || "transparent"
-                                                })
-                                            }
-                                            onChangeBlur={newBlur =>
-                                                saveDescritionStyle({ descShadowBlur: newBlur || "0" })
-                                            }
-                                            onChangehHorizontal={newValue =>
-                                                saveDescritionStyle({
-                                                    descShadowHorizontal: newValue || "0"
-                                                })
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveDescritionStyle({ descShadowVertical: newValue || "0" })
-                                            }
+                                            onChangeColor={newColor => saveDescritionStyle({ descShadowColor: newColor || "transparent" })}
+                                            onChangeBlur={newBlur => saveDescritionStyle({ descShadowBlur: newBlur || "0" })}
+                                            onChangehHorizontal={newValue => saveDescritionStyle({ descShadowHorizontal: newValue || "0" })}
+                                            onChangeVertical={newValue => saveDescritionStyle({ descShadowVertical: newValue || "0" })}
                                         />
                                         <ResponsiveSingleRangeControl
                                             label={__("Padding (PX)", 'premium-block-for-gutenberg')}
                                             value={descStyles[0].videoDescPadding}
-                                            onChange={newValue =>
-                                                saveDescritionStyle({
-                                                    videoDescPadding:
-                                                        newValue === undefined ? 20 : newValue
-                                                })
-                                            }
+                                            onChange={newValue => saveDescritionStyle({ videoDescPadding: newValue === undefined ? 20 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
@@ -605,18 +527,12 @@ class edit extends Component {
                                                 label={__("Icon Color", '')}
                                                 colorValue={playStyles[0].playColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    savePlayStyles({
-                                                        playColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => savePlayStyles({ playColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={__(`Background Color`)}
                                                 colorValue={playStyles[0].playBack}
-                                                onColorChange={newvalue => {
-                                                    savePlayStyles({ playBack: newvalue })
-                                                }}
+                                                onColorChange={newvalue => { savePlayStyles({ playBack: newvalue }) }}
                                                 colorDefault={``}
                                             />
                                             {videoDesc && (
@@ -625,20 +541,12 @@ class edit extends Component {
                                                         label={__("Description Color", '')}
                                                         colorValue={descStyles[0].videoDescColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            setAttributes({
-                                                                videoDescColor: newValue,
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => setAttributes({ videoDescColor: newValue, })}
                                                     />
                                                     <AdvancedPopColorControl
                                                         label={__(`Background Color`)}
                                                         colorValue={descStyles[0].videoDescBack}
-                                                        onColorChange={newvalue => {
-                                                            saveDescritionStyle({
-                                                                videoDescBack: newvalue,
-                                                            })
-                                                        }}
+                                                        onColorChange={newvalue => { saveDescritionStyle({ videoDescBack: newvalue, }) }}
                                                         colorDefault={``}
                                                     />
                                                 </Fragment>
@@ -654,21 +562,13 @@ class edit extends Component {
                                                 label={__("Icon Hover Color", 'premium-block-for-gutenberg')}
                                                 colorValue={playStyles[0].playHoverColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    savePlayStyles({
-                                                        playHoverColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => savePlayStyles({ playHoverColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={__("Icon Hover Background Color", 'premium-block-for-gutenberg')}
                                                 colorValue={playStyles[0].playHoverBackColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    savePlayStyles({
-                                                        playHoverBackColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => savePlayStyles({ playHoverBackColor: newValue, })}
                                             />
                                         </Fragment>
                                     );
@@ -708,12 +608,8 @@ class edit extends Component {
                                     boxBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                saveBoxStyle({ boxBorderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                saveBoxStyle({ boxBorderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => saveBoxStyle({ boxBorderColor: colorValue })}
+                            onChangeRadius={(newrRadius) => saveBoxStyle({ boxBorderRadius: newrRadius })}
                         />
                         <PremiumBoxShadow
                             inner={true}
@@ -722,32 +618,11 @@ class edit extends Component {
                             horizontal={boxStyles[0].shadowHorizontal}
                             vertical={boxStyles[0].shadowVertical}
                             position={boxStyles[0].shadowPosition}
-                            onChangeColor={newColor =>
-                                saveBoxStyle({
-                                    shadowColor:
-                                        newColor === undefined ? "transparent" : newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveBoxStyle({
-                                    shadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveBoxStyle({
-                                    shadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                saveBoxStyle({
-                                    shadowVertical: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                saveBoxStyle({
-                                    shadowPosition: newValue === undefined ? 0 : newValue
-                                })
-                            }
+                            onChangeColor={newColor => saveBoxStyle({ shadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => saveBoxStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => saveBoxStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => saveBoxStyle({ shadowVertical: newValue === undefined ? 0 : newValue })}
+                            onChangePosition={newValue => saveBoxStyle({ shadowPosition: newValue === undefined ? 0 : newValue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs

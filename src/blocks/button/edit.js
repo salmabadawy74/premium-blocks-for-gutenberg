@@ -300,9 +300,7 @@ export class edit extends Component {
                             onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
                             onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
                             onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
-                            onChangeSpacing={newValue =>
-                                saveTextStyles({ textLetter: newValue })
-                            }
+                            onChangeSpacing={newValue => saveTextStyles({ textLetter: newValue })}
                             onChangeFamily={(fontFamily) => saveTextStyles({ textFontFamily: fontFamily })}
                             onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
@@ -311,16 +309,10 @@ export class edit extends Component {
                             blur={textStyles[0].shadowBlur}
                             horizontal={textStyles[0].shadowHorizontal}
                             vertical={textStyles[0].shadowVertical}
-                            onChangeColor={newColor =>
-                                saveTextStyles({ shadowColor: newColor })
-                            }
+                            onChangeColor={newColor => saveTextStyles({ shadowColor: newColor })}
                             onChangeBlur={newBlur => saveTextStyles({ shadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                saveTextStyles({ shadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                saveTextStyles({ shadowVertical: newValue })
-                            }
+                            onChangehHorizontal={newValue => saveTextStyles({ shadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveTextStyles({ shadowVertical: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -354,20 +346,13 @@ export class edit extends Component {
                                                 label={__("Text Color", 'premium-block-for-gutenberg')}
                                                 colorValue={btnStyles[0].textColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    saveBtnStyles({
-                                                        textColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => saveBtnStyles({ textColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={__('Background Color')}
                                                 colorValue={btnStyles[0].backColor}
                                                 colorDefault={''}
-                                                onColorChange={newvalue =>
-                                                    saveBtnStyles({
-                                                        backColor: newvalue,
-                                                    })}
+                                                onColorChange={newvalue => saveBtnStyles({ backColor: newvalue, })}
                                             />
                                         </Fragment>
                                     );
@@ -379,11 +364,7 @@ export class edit extends Component {
                                                 label={__("Text Hover Color", 'premium-block-for-gutenberg')}
                                                 colorValue={btnStyles[0].textHoverColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    saveBtnStyles({
-                                                        textHoverColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={"radial" !== effect
@@ -402,11 +383,7 @@ export class edit extends Component {
                                                 label={__("Border Hover Color", 'premium-block-for-gutenberg')}
                                                 colorValue={btnStyles[0].borderHoverColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    saveBtnStyles({
-                                                        borderHoverColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue, })}
                                             />
                                         </Fragment>
                                     );
@@ -453,32 +430,11 @@ export class edit extends Component {
                             horizontal={btnStyles[0].btnShadowHorizontal}
                             vertical={btnStyles[0].btnShadowVertical}
                             position={btnStyles[0].btnShadowPosition}
-                            onChangeColor={newColor =>
-                                saveBtnStyles({
-                                    btnShadowColor:
-                                        newColor === undefined ? "transparent" : newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveBtnStyles({
-                                    btnShadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveBtnStyles({
-                                    btnShadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                saveBtnStyles({
-                                    btnShadowVertical: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                saveBtnStyles({
-                                    btnShadowPosition: newValue === undefined ? 0 : newValue
-                                })
-                            }
+                            onChangeColor={newColor => saveBtnStyles({ btnShadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => saveBtnStyles({ btnShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => saveBtnStyles({ btnShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => saveBtnStyles({ btnShadowVertical: newValue === undefined ? 0 : newValue })}
+                            onChangePosition={newValue => saveBtnStyles({ btnShadowPosition: newValue === undefined ? 0 : newValue })}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}

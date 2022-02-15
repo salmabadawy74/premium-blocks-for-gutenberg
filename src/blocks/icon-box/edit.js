@@ -58,9 +58,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                containerStyles: newUpdate,
-            });
+            setAttributes({ containerStyles: newUpdate });
         }
 
         const saveTitleStyle = (value) => {
@@ -70,9 +68,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                titleStyles: newUpdate,
-            });
+            setAttributes({ titleStyles: newUpdate });
         }
 
         const saveButtonStyle = (value) => {
@@ -82,9 +78,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                btnStyles: newUpdate,
-            });
+            setAttributes({ btnStyles: newUpdate });
         }
         const saveDescriptionStyle = (value) => {
             const newUpdate = descStyles.map((item, index) => {
@@ -93,9 +87,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                descStyles: newUpdate,
-            });
+            setAttributes({ descStyles: newUpdate });
         }
         const {
             block_id,
@@ -380,9 +372,7 @@ class edit extends Component {
                                     <ResponsiveSingleRangeControl
                                         label={__("Border Radius (PX)", 'premium-block-for-gutenberg')}
                                         value={iconRadius}
-                                        onChange={newValue =>
-                                            setAttributes({ iconRadius: newValue || 0 })
-                                        }
+                                        onChange={newValue => setAttributes({ iconRadius: newValue || 0 })}
                                         showUnit={false}
                                         defaultValue={0}
                                     />
@@ -450,15 +440,9 @@ class edit extends Component {
                                 line={titleStyles[0].titleLine}
                                 upper={titleStyles[0].titleUpper}
                                 fontFamily={titleStyles[0].titleFont}
-                                onChangeWeight={newWeight =>
-                                    saveTitleStyle({ titleWeight: newWeight || 500 })
-                                }
-                                onChangeStyle={newStyle =>
-                                    saveTitleStyle({ titleStyle: newStyle })
-                                }
-                                onChangeSpacing={newValue =>
-                                    saveTitleStyle({ titleLetter: newValue })
-                                }
+                                onChangeWeight={newWeight => saveTitleStyle({ titleWeight: newWeight || 500 })}
+                                onChangeStyle={newStyle => saveTitleStyle({ titleStyle: newStyle })}
+                                onChangeSpacing={newValue => saveTitleStyle({ titleLetter: newValue })}
                                 onChangeLine={newValue => saveTitleStyle({ titleLine: newValue })}
                                 onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
                                 onChangeFamily={(fontFamily) => saveTitleStyle({ titleFont: fontFamily })}
@@ -468,35 +452,17 @@ class edit extends Component {
                                 blur={titleStyles[0].titleShadowBlur}
                                 horizontal={titleStyles[0].titleShadowHorizontal}
                                 vertical={titleStyles[0].titleShadowVertical}
-                                onChangeColor={newColor =>
-                                    saveTitleStyle({
-                                        titleShadowColor: newColor || "transparent"
-                                    })
-                                }
-                                onChangeBlur={newBlur =>
-                                    saveTitleStyle({ titleShadowBlur: newBlur || 0 })
-                                }
-                                onChangehHorizontal={newValue =>
-                                    saveTitleStyle({ titleShadowHorizontal: newValue || 0 })
-                                }
-                                onChangeVertical={newValue =>
-                                    saveTitleStyle({ titleShadowVertical: newValue || 0 })
-                                }
+                                onChangeColor={newColor => saveTitleStyle({ titleShadowColor: newColor || "transparent" })}
+                                onChangeBlur={newBlur => saveTitleStyle({ titleShadowBlur: newBlur || 0 })}
+                                onChangehHorizontal={newValue => saveTitleStyle({ titleShadowHorizontal: newValue || 0 })}
+                                onChangeVertical={newValue => saveTitleStyle({ titleShadowVertical: newValue || 0 })}
                             />
                             <PremiumMargin
                                 directions={["top", "bottom"]}
                                 marginTop={titleMarginT}
                                 marginBottom={titleMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        titleMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        titleMarginB: value || 0
-                                    })
-                                }
+                                onChangeMarTop={value => setAttributes({ titleMarginT: value || 0 })}
+                                onChangeMarBottom={value => setAttributes({ titleMarginB: value || 0 })}
                             />
                         </PanelBody>
                     )}
@@ -529,9 +495,7 @@ class edit extends Component {
                                 fontFamily={descStyles[0].descFont}
                                 weight={descStyles[0].descWeight}
                                 line={descStyles[0].descLine}
-                                onChangeWeight={newWeight =>
-                                    saveDescriptionStyle({ descWeight: newWeight || 500 })
-                                }
+                                onChangeWeight={newWeight => saveDescriptionStyle({ descWeight: newWeight || 500 })}
                                 onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
                                 onChangeFamily={(fontFamily) => saveDescriptionStyle({ descFont: fontFamily })}
                             />
@@ -539,16 +503,8 @@ class edit extends Component {
                                 directions={["top", "bottom"]}
                                 marginTop={descMarginT}
                                 marginBottom={descMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        descMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        descMarginB: value || 0
-                                    })
-                                }
+                                onChangeMarTop={value => setAttributes({ descMarginT: value || 0 })}
+                                onChangeMarBottom={value => setAttributes({ descMarginB: value || 0 })}
                             />
                         </PanelBody>
                     )}
@@ -602,13 +558,9 @@ class edit extends Component {
                                 style={btnStyles[0].btnStyle}
                                 spacing={btnStyles[0].btnLetter}
                                 upper={btnStyles[0].btnUpper}
-                                onChangeWeight={newWeight =>
-                                    saveButtonStyle({ btnWeight: newWeight || 500 })
-                                }
+                                onChangeWeight={newWeight => saveButtonStyle({ btnWeight: newWeight || 500 })}
                                 onChangeStyle={newStyle => saveButtonStyle({ btnStyle: newStyle })}
-                                onChangeSpacing={newValue =>
-                                    saveButtonStyle({ btnLetter: newValue })
-                                }
+                                onChangeSpacing={newValue => saveButtonStyle({ btnLetter: newValue })}
                                 onChangeUpper={check => saveButtonStyle({ btnUpper: check })}
                             />
 
@@ -621,9 +573,7 @@ class edit extends Component {
                                 left={btnBorderLeft}
                                 borderColor={btnStyles[0].btnBorderColor}
                                 borderRadius={btnStyles[0].btnBorderRadius}
-                                onChangeType={(newType) =>
-                                    saveButtonStyle({ btnBorderType: newType })
-                                }
+                                onChangeType={(newType) => saveButtonStyle({ btnBorderType: newType })}
                                 onChangeWidth={({ top, right, bottom, left }) =>
                                     setAttributes({
                                         btnBorderIconBox: true,
@@ -633,12 +583,8 @@ class edit extends Component {
                                         btnBorderLeft: left,
                                     })
                                 }
-                                onChangeColor={(colorValue) =>
-                                    saveButtonStyle({ btnBorderColor: colorValue })
-                                }
-                                onChangeRadius={(newrRadius) =>
-                                    saveButtonStyle({ btnBorderRadius: newrRadius })
-                                }
+                                onChangeColor={(colorValue) => saveButtonStyle({ btnBorderColor: colorValue })}
+                                onChangeRadius={(newrRadius) => saveButtonStyle({ btnBorderRadius: newrRadius })}
                             />
                             <PremiumBoxShadow
                                 inner={true}
@@ -647,31 +593,11 @@ class edit extends Component {
                                 horizontal={btnStyles[0].btnShadowHorizontal}
                                 vertical={btnStyles[0].btnShadowVertical}
                                 position={btnStyles[0].btnShadowPosition}
-                                onChangeColor={newColor =>
-                                    saveButtonStyle({
-                                        btnShadowColor: newColor || "transparent"
-                                    })
-                                }
-                                onChangeBlur={newBlur =>
-                                    saveButtonStyle({
-                                        btnShadowBlur: newBlur || 0
-                                    })
-                                }
-                                onChangehHorizontal={newValue =>
-                                    saveButtonStyle({
-                                        btnShadowHorizontal: newValue || 0
-                                    })
-                                }
-                                onChangeVertical={newValue =>
-                                    saveButtonStyle({
-                                        btnShadowVertical: newValue || 0
-                                    })
-                                }
-                                onChangePosition={newValue =>
-                                    saveButtonStyle({
-                                        btnShadowPosition: newValue || 0
-                                    })
-                                }
+                                onChangeColor={newColor => saveButtonStyle({ btnShadowColor: newColor || "transparent" })}
+                                onChangeBlur={newBlur => saveButtonStyle({ btnShadowBlur: newBlur || 0 })}
+                                onChangehHorizontal={newValue => saveButtonStyle({ btnShadowHorizontal: newValue || 0 })}
+                                onChangeVertical={newValue => saveButtonStyle({ btnShadowVertical: newValue || 0 })}
+                                onChangePosition={newValue => saveButtonStyle({ btnShadowPosition: newValue || 0 })}
                             />
                             <ResponsiveSingleRangeControl
                                 label={__("Padding", 'premium-block-for-gutenberg')}
@@ -679,25 +605,15 @@ class edit extends Component {
                                 onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
                                 showUnit={true}
                                 defaultValue={''}
-                                onChangeUnit={newValue =>
-                                    saveButtonStyle({ btnPaddingU: newValue })
-                                }
+                                onChangeUnit={newValue => saveButtonStyle({ btnPaddingU: newValue })}
                                 unit={btnStyles[0].btnPaddingU}
                             />
                             <PremiumMargin
                                 directions={["top", "bottom"]}
                                 marginTop={btnMarginT}
                                 marginBottom={btnMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        btnMarginT: value || 0
-                                    })
-                                }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        btnMarginB: value || 0
-                                    })
-                                }
+                                onChangeMarTop={value => setAttributes({ btnMarginT: value || 0 })}
+                                onChangeMarBottom={value => setAttributes({ btnMarginB: value || 0 })}
                             />
                         </PanelBody>
                     )}
@@ -719,18 +635,10 @@ class edit extends Component {
                                     imageURL: media.url
                                 });
                             }}
-                            onRemoveImage={value =>
-                                saveContainerStyle({ imageURL: "", imageID: "" })
-                            }
-                            onChangeBackPos={newValue =>
-                                saveContainerStyle({ backgroundPosition: newValue })
-                            }
-                            onchangeBackRepeat={newValue =>
-                                saveContainerStyle({ backgroundRepeat: newValue })
-                            }
-                            onChangeBackSize={newValue =>
-                                saveContainerStyle({ backgroundSize: newValue })
-                            }
+                            onRemoveImage={value => saveContainerStyle({ imageURL: "", imageID: "" })}
+                            onChangeBackPos={newValue => saveContainerStyle({ backgroundPosition: newValue })}
+                            onchangeBackRepeat={newValue => saveContainerStyle({ backgroundRepeat: newValue })}
+                            onChangeBackSize={newValue => saveContainerStyle({ backgroundSize: newValue })}
                             onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                         <PremiumBorder
@@ -752,12 +660,8 @@ class edit extends Component {
                                     borderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                saveContainerStyle({ borderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                saveContainerStyle({ borderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
+                            onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
                         />
                         <PremiumBoxShadow
                             inner={true}
@@ -766,31 +670,11 @@ class edit extends Component {
                             horizontal={containerStyles[0].shadowHorizontal}
                             vertical={containerStyles[0].shadowVertical}
                             position={containerStyles[0].shadowPosition}
-                            onChangeColor={newColor =>
-                                saveContainerStyle({
-                                    shadowColor: newColor || "transparent"
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveContainerStyle({
-                                    shadowBlur: newBlur || 0
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveContainerStyle({
-                                    shadowHorizontal: newValue || 0
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                saveContainerStyle({
-                                    shadowVertical: newValue || 0
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                saveContainerStyle({
-                                    shadowPosition: newValue
-                                })
-                            }
+                            onChangeColor={newColor => saveContainerStyle({ shadowColor: newColor || "transparent" })}
+                            onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur || 0 })}
+                            onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue || 0 })}
+                            onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue || 0 })}
+                            onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
                         <PremiumBoxShadow
                             inner={true}
@@ -800,31 +684,11 @@ class edit extends Component {
                             horizontal={containerStyles[0].hoverShadowHorizontal}
                             vertical={containerStyles[0].hoverShadowVertical}
                             position={containerStyles[0].hoverShadowPosition}
-                            onChangeColor={newColor =>
-                                saveContainerStyle({
-                                    hoverShadowColor: newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                saveContainerStyle({
-                                    hoverShadowBlur: newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                saveContainerStyle({
-                                    hoverShadowHorizontal: newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                saveContainerStyle({
-                                    hoverShadowVertical: newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                saveContainerStyle({
-                                    hoverShadowPosition: newValue
-                                })
-                            }
+                            onChangeColor={newColor => saveContainerStyle({ hoverShadowColor: newColor })}
+                            onChangeBlur={newBlur => saveContainerStyle({ hoverShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveContainerStyle({ hoverShadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveContainerStyle({ hoverShadowVertical: newValue })}
+                            onChangePosition={newValue => saveContainerStyle({ hoverShadowPosition: newValue })}
                         />
                         <PremiumMargin
                             directions={["all"]}
@@ -832,26 +696,10 @@ class edit extends Component {
                             marginRight={marginR}
                             marginBottom={marginB}
                             marginLeft={marginL}
-                            onChangeMarTop={value =>
-                                setAttributes({
-                                    marginT: value || 0
-                                })
-                            }
-                            onChangeMarRight={value =>
-                                setAttributes({
-                                    marginR: value || 0
-                                })
-                            }
-                            onChangeMarBottom={value =>
-                                setAttributes({
-                                    marginB: value || 0
-                                })
-                            }
-                            onChangeMarLeft={value =>
-                                setAttributes({
-                                    marginL: value || 0
-                                })
-                            }
+                            onChangeMarTop={value => setAttributes({ marginT: value || 0 })}
+                            onChangeMarRight={value => setAttributes({ marginR: value || 0 })}
+                            onChangeMarBottom={value => setAttributes({ marginB: value || 0 })}
+                            onChangeMarLeft={value => setAttributes({ marginL: value || 0 })}
                         />
                         <PremiumPadding
                             paddingTop={paddingT}
@@ -859,30 +707,12 @@ class edit extends Component {
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
                             showUnits={true}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    paddingT: value || 0
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    paddingR: value || 0
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    paddingB: value || 0
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    paddingL: value || 0
-                                })
-                            }
+                            onChangePadTop={value => setAttributes({ paddingT: value || 0 })}
+                            onChangePadRight={value => setAttributes({ paddingR: value || 0 })}
+                            onChangePadBottom={value => setAttributes({ paddingB: value || 0 })}
+                            onChangePadLeft={value => setAttributes({ paddingL: value || 0 })}
                             selectedUnit={containerStyles[0].paddingU}
-                            onChangePadSizeUnit={newvalue =>
-                                saveContainerStyle({ paddingU: newvalue })
-                            }
+                            onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingU: newvalue })}
                         />
                     </PanelBody>
                     <PanelBody
@@ -917,20 +747,12 @@ class edit extends Component {
                                                         label={__("Icon Color", 'premium-block-for-gutenberg')}
                                                         colorValue={iconColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            setAttributes({
-                                                                iconColor: newValue || "transparent",
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => setAttributes({ iconColor: newValue || "transparent", })}
                                                     />
                                                     <AdvancedPopColorControl
                                                         label={__(`Background Color`)}
                                                         colorValue={iconBackColor}
-                                                        onColorChange={newvalue =>
-                                                            setAttributes({
-                                                                iconBackColor: newvalue,
-                                                            })
-                                                        }
+                                                        onColorChange={newvalue => setAttributes({ iconBackColor: newvalue, })}
                                                         colorDefault={``}
                                                     />
                                                 </Fragment>
@@ -940,11 +762,7 @@ class edit extends Component {
                                                     label={__("Tile Color", 'premium-block-for-gutenberg')}
                                                     colorValue={titleStyles[0].titleColor}
                                                     colorDefault={''}
-                                                    onColorChange={newValue =>
-                                                        saveTitleStyle({
-                                                            titleColor: newValue || "transparent",
-                                                        })
-                                                    }
+                                                    onColorChange={newValue => saveTitleStyle({ titleColor: newValue || "transparent", })}
                                                 />
                                             )}
                                             {descChecked && (
@@ -952,11 +770,7 @@ class edit extends Component {
                                                     label={__("Descreption Color", 'premium-block-for-gutenberg')}
                                                     colorValue={descStyles[0].descColor}
                                                     colorDefault={''}
-                                                    onColorChange={newValue =>
-                                                        saveDescriptionStyle({
-                                                            descColor: newValue || "transparent",
-                                                        })
-                                                    }
+                                                    onColorChange={newValue => saveDescriptionStyle({ descColor: newValue || "transparent", })}
                                                 />
                                             )}
                                             {btnChecked && (
@@ -965,21 +779,13 @@ class edit extends Component {
                                                         label={__("Button Color", 'premium-block-for-gutenberg')}
                                                         colorValue={btnStyles[0].btnColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            saveButtonStyle({
-                                                                btnColor: newValue || "#000",
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => saveButtonStyle({ btnColor: newValue || "#000", })}
                                                     />
 
                                                     <AdvancedPopColorControl
                                                         label={__(`Background Color`)}
                                                         colorValue={btnStyles[0].btnBack}
-                                                        onColorChange={newvalue =>
-                                                            saveButtonStyle({
-                                                                btnBack: newvalue,
-                                                            })
-                                                        }
+                                                        onColorChange={newvalue => saveButtonStyle({ btnBack: newvalue, })}
                                                         colorDefault={``}
                                                     />
                                                 </Fragment>
@@ -987,9 +793,7 @@ class edit extends Component {
                                             <AdvancedPopColorControl
                                                 label={__(`Background Color`)}
                                                 colorValue={containerStyles[0].backColor}
-                                                onColorChange={newvalue =>
-                                                    saveContainerStyle({ backColor: newvalue })
-                                                }
+                                                onColorChange={newvalue => saveContainerStyle({ backColor: newvalue })}
                                                 colorDefault={``}
                                             />
                                         </Fragment>
@@ -1004,21 +808,13 @@ class edit extends Component {
                                                         label={__("Button Hover Color", 'premium-block-for-gutenberg')}
                                                         colorValue={btnStyles[0].btnHoverColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            saveButtonStyle({
-                                                                btnHoverColor: newValue || "#000",
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
                                                     />
                                                     <AdvancedPopColorControl
                                                         label={__('Background Button Hover Color', 'premium-block-for-gutenberg')}
                                                         colorValue={btnStyles[0].btnHoverBack}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            saveButtonStyle({
-                                                                btnHoverBack: newValue,
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
                                                     />
                                                 </Fragment>
                                             )}
@@ -1026,11 +822,7 @@ class edit extends Component {
                                                 label={__('Border Hover Color', 'premium-block-for-gutenberg')}
                                                 colorValue={btnHoverBorder}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    setAttributes({
-                                                        btnHoverBorder: newValue || "transparent",
-                                                    })
-                                                }
+                                                onColorChange={newValue => setAttributes({ btnHoverBorder: newValue || "transparent", })}
                                             />
                                         </Fragment>
                                     );
