@@ -9,19 +9,14 @@ const { withSelect } = wp.data
 class PremiumTypo extends Component {
     constructor(props) {
         super(props)
-        let responsiveSize,
-            defaultResponsiveSize;
+        let responsiveSize;
         if (this.props.components.includes("responsiveSize")) {
             responsiveSize = {
                 Desktop: this.props.fontSize.value || '',
                 Tablet: this.props.fontSizeTablet.value || '',
                 Mobile: this.props.fontSizeMobile.value || ''
             }
-            defaultResponsiveSize = {
-                Desktop: '',
-                Tablet: '',
-                Mobile: ''
-            }
+
         }
 
         this.state = {
@@ -43,12 +38,21 @@ class PremiumTypo extends Component {
 
 
     }
-    componentDidUpdate() {
-
+    componentDidUpdate(prevProps) {
+        let previewDevice = wp.data &&
+            wp.data.select &&
+            wp.data.select('core/edit-post') &&
+            wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data
+                .select('core/edit-post')
+                .__experimentalGetPreviewDeviceType()
+            : 'Desktop';
+        if (this.state.device !== previewDevice) {
+            console.log(this.state.device, previewDevice)
+            this.setState({ device: previewDevice })
+        }
     }
 
     render() {
-
         const {
             components,
             setAttributes,
