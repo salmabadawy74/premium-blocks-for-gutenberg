@@ -566,18 +566,12 @@ class edit extends Component {
                                 value: fancyStyles[0].fancyTextfontSizeUnit,
                                 label: __("fancyTextfontSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: fancyStyles[0].fancyTextfontSize,
-                                label: __("fancyTextfontSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: fancyStyles[0].fancyTextfontSizeMobile,
-                                label: __("fancyTextfontSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: fancyStyles[0].fancyTextfontSizeTablet,
-                                label: __("fancyTextfontSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={fancyStyles[0].fancyTextfontSize}
+                            fontSizeMobile={fancyStyles[0].fancyTextfontSizeMobile}
+                            fontSizeTablet={fancyStyles[0].fancyTextfontSizeTablet}
+                            onChangeSize={newSize => saveFancyStyle({ fancyTextfontSize: newSize })}
+                            onChangeTabletSize={newSize => saveFancyStyle({ fancyTextfontSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveFancyStyle({ fancyTextfontSizeMobile: newSize })}
                             weight={fancyStyles[0].fancyTextWeight}
                             style={fancyStyles[0].fancyTextStyle}
                             spacing={fancyStyles[0].fancyTextLetter}
@@ -639,18 +633,12 @@ class edit extends Component {
                                 value: PreStyles[0].textfontSizeUnit,
                                 label: __("textfontSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: PreStyles[0].textfontSize,
-                                label: __("textfontSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: PreStyles[0].textfontSizeMobile,
-                                label: __("textfontSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: PreStyles[0].textfontSizeTablet,
-                                label: __("textfontSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={PreStyles[0].textfontSize}
+                            fontSizeMobile={PreStyles[0].textfontSizeMobile}
+                            fontSizeTablet={PreStyles[0].textfontSizeTablet}
+                            onChangeSize={newSize => savePrefixStyle({ textfontSize: newSize })}
+                            onChangeTabletSize={newSize => savePrefixStyle({ textfontSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => savePrefixStyle({ textfontSizeMobile: newSize })}
                             weight={PreStyles[0].textWeight}
                             style={PreStyles[0].textStyle}
                             spacing={PreStyles[0].textLetter}

@@ -225,20 +225,13 @@ class edit extends Component {
                                 value: firstStyles[0].firstSizeUnit,
                                 label: __("firstSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: firstStyles[0].firstSize,
-                                label: __("firstSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: firstStyles[0].firstSizeMobile,
-                                label: __("firstSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: firstStyles[0].firstSizeTablet,
-                                label: __("firstSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={firstStyles[0].firstSize}
+                            fontSizeMobile={firstStyles[0].firstSizeMobile}
+                            fontSizeTablet={firstStyles[0].firstSizeTablet}
+                            onChangeSize={newSize => saveFirstStyle({ firstSize: newSize })}
+                            onChangeTabletSize={newSize => saveFirstStyle({ firstSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveFirstStyle({ firstSizeMobile: newSize })}
                             fontFamily={firstStyles[0].firstFamily}
-
                             weight={firstStyles[0].firstWeight}
                             style={firstStyles[0].firstStyle}
                             spacing={firstStyles[0].firstLetter}
@@ -372,18 +365,12 @@ class edit extends Component {
                                 value: secondStyles[0].secondSizeUnit,
                                 label: __("secondSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: secondStyles[0].secondSize,
-                                label: __("secondSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: secondStyles[0].secondSizeMobile,
-                                label: __("secondSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: secondStyles[0].secondSizeTablet,
-                                label: __("secondSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={secondStyles[0].secondSize}
+                            fontSizeMobile={secondStyles[0].secondSizeMobile}
+                            fontSizeTablet={secondStyles[0].secondSizeTablet}
+                            onChangeSize={newSize => saveSecondStyle({ secondSize: newSize })}
+                            onChangeTabletSize={newSize => saveSecondStyle({ secondSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveSecondStyle({ secondSizeMobile: newSize })}
                             fontFamily={secondStyles[0].secondFamily}
                             weight={secondStyles[0].secondWeight}
                             style={secondStyles[0].secondStyle}

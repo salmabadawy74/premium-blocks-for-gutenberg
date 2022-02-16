@@ -273,18 +273,9 @@ export class edit extends Component {
                                 value: textStyles[0].textSizeUnit,
                                 label: __("textSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: textStyles[0].textSize,
-                                label: __("textSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: textStyles[0].textSizeMobile,
-                                label: __("textSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: textStyles[0].textSizeTablet,
-                                label: __("textSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={textStyles[0].textSize}
+                            fontSizeMobile={textStyles[0].textSizeMobile}
+                            fontSizeTablet={textStyles[0].textSizeTablet}
                             fontFamily={textStyles[0].textFontFamily}
                             weight={textStyles[0].textWeight}
                             style={textStyles[0].textStyle}
@@ -292,8 +283,8 @@ export class edit extends Component {
                             upper={textStyles[0].textUpper}
                             line={textStyles[0].textLine}
                             onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
-                            onChangeSizeTablet={newSize => saveTextStyles({ textSizeTablet: newSize })}
-                            onChangeSizeMobile={newSize => saveTextStyles({ textSizeMobile: newSize })}
+                            onChangeTabletSize={newSize => saveTextStyles({ textSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveTextStyles({ textSizeMobile: newSize })}
                             onChangeWeight={newWeight =>
                                 saveTextStyles({ textWeight: newWeight })
                             }

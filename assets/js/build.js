@@ -1156,6 +1156,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _premiumFonts = __webpack_require__(213);
@@ -1225,9 +1227,9 @@ var PremiumTypo = function (_Component) {
         var responsiveSize = void 0;
         if (_this.props.components.includes("responsiveSize")) {
             responsiveSize = {
-                Desktop: _this.props.fontSize.value || '',
-                Tablet: _this.props.fontSizeTablet.value || '',
-                Mobile: _this.props.fontSizeMobile.value || ''
+                Desktop: _this.props.fontSize || '',
+                Tablet: _this.props.fontSizeTablet || '',
+                Mobile: _this.props.fontSizeMobile || ''
             };
         }
 
@@ -1245,7 +1247,7 @@ var PremiumTypo = function (_Component) {
             showUnit: _this.props.showUnit || false,
             spacing: _this.props.spacing,
             style: _this.props.style,
-            device: _this.props.deviceType
+            device: 'Desktop'
         };
 
         return _this;
@@ -1275,6 +1277,10 @@ var PremiumTypo = function (_Component) {
                 onChangeFamily = _props$onChangeFamily === undefined ? function () {} : _props$onChangeFamily,
                 _props$onChangeSize = _props.onChangeSize,
                 onChangeSize = _props$onChangeSize === undefined ? function () {} : _props$onChangeSize,
+                _props$onChangeTablet = _props.onChangeTabletSize,
+                onChangeTabletSize = _props$onChangeTablet === undefined ? function () {} : _props$onChangeTablet,
+                _props$onChangeMobile = _props.onChangeMobileSize,
+                onChangeMobileSize = _props$onChangeMobile === undefined ? function () {} : _props$onChangeMobile,
                 _props$onChangeWeight = _props.onChangeWeight,
                 onChangeWeight = _props$onChangeWeight === undefined ? function () {} : _props$onChangeWeight,
                 _props$onChangeStyle = _props.onChangeStyle,
@@ -1501,17 +1507,17 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_responsiveRangeControl2.default, {
                                                         label: __("Font Size", 'premium-block-for-gutenberg'),
-                                                        value: this.props.fontSize.value,
+                                                        value: this.props.fontSize,
                                                         onChange: function onChange(value) {
-                                                            return setAttributes(_defineProperty({}, _this2.props.fontSize.label, value));
+                                                            _this2.setState(_extends({}, _this2.state.size, { Desktop: value })), onChangeSize(value);
                                                         },
-                                                        tabletValue: this.props.fontSizeTablet.value,
+                                                        tabletValue: this.props.fontSizeTablet,
                                                         onChangeTablet: function onChangeTablet(value) {
-                                                            return setAttributes(_defineProperty({}, _this2.props.fontSizeTablet.label, value));
+                                                            onChangeTabletSize(value);
                                                         },
-                                                        mobileValue: this.props.fontSizeMobile.value,
+                                                        mobileValue: this.props.fontSizeMobile,
                                                         onChangeMobile: function onChangeMobile(value) {
-                                                            return setAttributes(_defineProperty({}, _this2.props.fontSizeMobile.label, value));
+                                                            onChangeMobileSize(value);
                                                         },
                                                         onChangeUnit: function onChangeUnit(key) {
                                                             return setAttributes(_defineProperty({}, _this2.props.fontSizeType.label, key));
@@ -1658,17 +1664,7 @@ var PremiumTypo = function (_Component) {
     return PremiumTypo;
 }(Component);
 
-exports.default = withSelect(function (select, props) {
-    var _select = select('core/edit-post'),
-        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
-        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
-
-    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
-    return {
-        deviceType: deviceType
-    };
-})(PremiumTypo);
+exports.default = PremiumTypo;
 
 /***/ }),
 /* 11 */
@@ -1700,7 +1696,6 @@ var RadioComponent = function RadioComponent(_ref) {
 
 
     var HandleChange = function HandleChange(newVal) {
-
         onChange(newVal);
         setState(newVal);
     };
@@ -1714,7 +1709,6 @@ var RadioComponent = function RadioComponent(_ref) {
 
     var renderButtons = function renderButtons() {
         var currentChoices = choices;
-
         return React.createElement(
             Fragment,
             null,
@@ -1726,7 +1720,6 @@ var RadioComponent = function RadioComponent(_ref) {
                         isTertiary: true,
                         className: choice === currentValue ? 'active-radio' : '',
                         onClick: function onClick() {
-
                             HandleChange(choice);
                         }
                     },
@@ -15177,17 +15170,17 @@ var edit = exports.edit = function (_Component) {
                             value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: titleStyles[0].titleSize,
-                            label: __("titleSize", 'premium-block-for-gutenberg')
+                        fontSize: titleStyles[0].titleSize,
+                        fontSizeMobile: titleStyles[0].titleSizeMobile,
+                        fontSizeTablet: titleStyles[0].titleSizeTablet,
+                        onChangeSize: function onChangeSize(value) {
+                            return saveStyles({ titleSize: value });
                         },
-                        fontSizeMobile: {
-                            value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(value) {
+                            return saveStyles({ titleSizeTablet: value });
                         },
-                        fontSizeTablet: {
-                            value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(value) {
+                            return saveStyles({ titleSizeMobile: value });
                         },
                         weight: titleStyles[0].titleWeight,
                         line: titleStyles[0].titleLine,
@@ -15255,17 +15248,17 @@ var edit = exports.edit = function (_Component) {
                             value: descStyles[0].descSizeUnit,
                             label: __("descSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: descStyles[0].descSize,
-                            label: __("descSize", 'premium-block-for-gutenberg')
+                        fontSize: descStyles[0].descSize,
+                        fontSizeMobile: descStyles[0].descSizeMobile,
+                        fontSizeTablet: descStyles[0].descSizeTablet,
+                        onChangeSize: function onChangeSize(value) {
+                            console.log(descStyles[0].descSize), descriptionStyles({ descSize: value });
                         },
-                        fontSizeMobile: {
-                            value: descStyles[0].descSizeMobile,
-                            label: __("descSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(value) {
+                            return descriptionStyles({ descSizeTablet: value });
                         },
-                        fontSizeTablet: {
-                            value: descStyles[0].descSizeTablet,
-                            label: __("descSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(value) {
+                            return descriptionStyles({ descSizeMobile: value });
                         },
                         weight: descStyles[0].descWeight,
                         line: descStyles[0].descLine,
@@ -17778,18 +17771,9 @@ var edit = exports.edit = function (_Component) {
                             value: textStyles[0].textSizeUnit,
                             label: __("textSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: textStyles[0].textSize,
-                            label: __("textSize", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeMobile: {
-                            value: textStyles[0].textSizeMobile,
-                            label: __("textSizeMobile", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeTablet: {
-                            value: textStyles[0].textSizeTablet,
-                            label: __("textSizeTablet", 'premium-block-for-gutenberg')
-                        },
+                        fontSize: textStyles[0].textSize,
+                        fontSizeMobile: textStyles[0].textSizeMobile,
+                        fontSizeTablet: textStyles[0].textSizeTablet,
                         fontFamily: textStyles[0].textFontFamily,
                         weight: textStyles[0].textWeight,
                         style: textStyles[0].textStyle,
@@ -17799,10 +17783,10 @@ var edit = exports.edit = function (_Component) {
                         onChangeSize: function onChangeSize(newSize) {
                             return saveTextStyles({ textSize: newSize });
                         },
-                        onChangeSizeTablet: function onChangeSizeTablet(newSize) {
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
                             return saveTextStyles({ textSizeTablet: newSize });
                         },
-                        onChangeSizeMobile: function onChangeSizeMobile(newSize) {
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
                             return saveTextStyles({ textSizeMobile: newSize });
                         },
                         onChangeWeight: function onChangeWeight(newWeight) {
@@ -19889,17 +19873,17 @@ var edit = function (_Component) {
                             value: numberStyles[0].numberSizeUnit,
                             label: __("numberSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: numberStyles[0].numberSize,
-                            label: __("numberSize", 'premium-block-for-gutenberg')
+                        fontSize: numberStyles[0].numberSize,
+                        fontSizeMobile: numberStyles[0].numberSizeMobile,
+                        fontSizeTablet: numberStyles[0].numberSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveNumberStyles({ numberSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: numberStyles[0].numberSizeMobile,
-                            label: __("numberSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveNumberStyles({ numberSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: numberStyles[0].numberSizeTablet,
-                            label: __("numberSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveNumberStyles({ numberSizeMobile: newSize });
                         },
                         fontFamily: counterFamily,
                         weight: numberStyles[0].numberWeight,
@@ -19940,17 +19924,17 @@ var edit = function (_Component) {
                             value: prefixStyles[0].prefixSizeUnit,
                             label: __("prefixSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: prefixStyles[0].prefixSize,
-                            label: __("prefixSize", 'premium-block-for-gutenberg')
+                        fontSize: prefixStyles[0].prefixSize,
+                        fontSizeMobile: prefixStyles[0].prefixSizeMobile,
+                        fontSizeTablet: prefixStyles[0].prefixSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return savePrefixStyle({ prefixSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: prefixStyles[0].prefixSizeMobile,
-                            label: __("prefixSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return savePrefixStyle({ prefixSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: prefixStyles[0].prefixSizeTablet,
-                            label: __("prefixSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return savePrefixStyle({ prefixSizeMobile: newSize });
                         },
                         weight: prefixStyles[0].prefixWeight,
                         onChangeWeight: function onChangeWeight(newWeight) {
@@ -20000,17 +19984,17 @@ var edit = function (_Component) {
                             value: suffixStyles[0].suffixSizeUnit,
                             label: __("suffixSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: suffixStyles[0].suffixSize,
-                            label: __("suffixSize", 'premium-block-for-gutenberg')
+                        fontSize: suffixStyles[0].suffixSize,
+                        fontSizeMobile: suffixStyles[0].suffixSizeMobile,
+                        fontSizeTablet: suffixStyles[0].suffixSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveSuffixStyle({ suffixSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: suffixStyles[0].suffixSizeMobile,
-                            label: __("suffixSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveSuffixStyle({ suffixSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: suffixStyles[0].suffixSizeTablet,
-                            label: __("suffixSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveSuffixStyle({ suffixSizeMobile: newSize });
                         },
                         weight: suffixStyles[0].suffixWeight,
                         onChangeWeight: function onChangeWeight(newWeight) {
@@ -20060,17 +20044,17 @@ var edit = function (_Component) {
                             value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: titleStyles[0].titleSize,
-                            label: __("titleSize", 'premium-block-for-gutenberg')
+                        fontSize: titleStyles[0].titleSize,
+                        fontSizeMobile: titleStyles[0].titleSizeMobile,
+                        fontSizeTablet: titleStyles[0].titleSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveTitleStyles({ titleSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveTitleStyles({ titleSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet")
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveTitleStyles({ titleSizeMobile: newSize });
                         },
                         fontFamily: titleStyles[0].titleFamily,
                         weight: titleStyles[0].titleWeight,
@@ -22794,20 +22778,19 @@ var edit = function (_Component) {
                             value: firstStyles[0].firstSizeUnit,
                             label: __("firstSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: firstStyles[0].firstSize,
-                            label: __("firstSize", 'premium-block-for-gutenberg')
+                        fontSize: firstStyles[0].firstSize,
+                        fontSizeMobile: firstStyles[0].firstSizeMobile,
+                        fontSizeTablet: firstStyles[0].firstSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveFirstStyle({ firstSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: firstStyles[0].firstSizeMobile,
-                            label: __("firstSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveFirstStyle({ firstSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: firstStyles[0].firstSizeTablet,
-                            label: __("firstSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveFirstStyle({ firstSizeMobile: newSize });
                         },
                         fontFamily: firstStyles[0].firstFamily,
-
                         weight: firstStyles[0].firstWeight,
                         style: firstStyles[0].firstStyle,
                         spacing: firstStyles[0].firstLetter,
@@ -22985,17 +22968,17 @@ var edit = function (_Component) {
                             value: secondStyles[0].secondSizeUnit,
                             label: __("secondSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: secondStyles[0].secondSize,
-                            label: __("secondSize", 'premium-block-for-gutenberg')
+                        fontSize: secondStyles[0].secondSize,
+                        fontSizeMobile: secondStyles[0].secondSizeMobile,
+                        fontSizeTablet: secondStyles[0].secondSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveSecondStyle({ secondSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: secondStyles[0].secondSizeMobile,
-                            label: __("secondSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveSecondStyle({ secondSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: secondStyles[0].secondSizeTablet,
-                            label: __("secondSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveSecondStyle({ secondSizeMobile: newSize });
                         },
                         fontFamily: secondStyles[0].secondFamily,
                         weight: secondStyles[0].secondWeight,
@@ -29651,17 +29634,17 @@ var edit = function (_Component) {
                             value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: titleStyles[0].titleSize,
-                            label: __("titleSize", 'premium-block-for-gutenberg')
+                        fontSize: titleStyles[0].titleSize,
+                        fontSizeMobile: titleStyles[0].titleSizeMobile,
+                        fontSizeTablet: titleStyles[0].titleSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveTitleStyle({ titleSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveTitleStyle({ titleSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveTitleStyle({ titleSizeMobile: newSize });
                         },
                         weight: titleStyles[0].titleWeight,
                         style: titleStyles[0].titleStyle,
@@ -29732,17 +29715,17 @@ var edit = function (_Component) {
                             value: descStyles[0].descSizeUnit,
                             label: __("descSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: descStyles[0].descSize,
-                            label: __("descSize", 'premium-block-for-gutenberg')
+                        fontSize: descStyles[0].descSize,
+                        fontSizeMobile: descStyles[0].descSizeMobile,
+                        fontSizeTablet: descStyles[0].descSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveDescriptionStyle({ descSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: descStyles[0].descSizeMobile,
-                            label: __("descSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveDescriptionStyle({ descSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: descStyles[0].descSizeTablet,
-                            label: __("descSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveDescriptionStyle({ descSizeMobile: newSize });
                         },
                         fontFamily: descStyles[0].descFont,
                         weight: descStyles[0].descWeight,
@@ -29807,18 +29790,9 @@ var edit = function (_Component) {
                             value: btnStyles[0].btnSizeUnit,
                             label: __("btnSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: btnStyles[0].btnSize,
-                            label: __("btnSize", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeMobile: {
-                            value: btnStyles[0].btnSizeMobile,
-                            label: __("btnSizeMobile", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeTablet: {
-                            value: btnStyles[0].btnSizeTablet,
-                            label: __("btnSizeTablet", 'premium-block-for-gutenberg')
-                        },
+                        fontSize: btnStyles[0].btnSize,
+                        fontSizeMobile: btnStyles[0].btnSizeMobile,
+                        fontSizeTablet: btnStyles[0].btnSizeTablet,
                         weight: btnStyles[0].btnWeight,
                         style: btnStyles[0].btnStyle,
                         spacing: btnStyles[0].btnLetter,
@@ -29834,6 +29808,15 @@ var edit = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return saveButtonStyle({ btnUpper: check });
+                        },
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveButtonStyle({ btnSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveButtonStyle({ btnSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveButtonStyle({ btnSizeMobile: newSize });
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
@@ -35075,17 +35058,17 @@ var PremiumPricingTable = function (_Component) {
                             value: titleStyles[0].titleSizeUnit,
                             label: __("titleSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: titleStyles[0].titleSize,
-                            label: __("titleSize", 'premium-block-for-gutenberg')
+                        fontSize: titleStyles[0].titleSize,
+                        fontSizeMobile: titleStyles[0].titleSizeMobile,
+                        fontSizeTablet: titleStyles[0].titleSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveTitleStyles({ titleSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: titleStyles[0].titleSizeMobile,
-                            label: __("titleSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveTitleStyles({ titleSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: titleStyles[0].titleSizeTablet,
-                            label: __("titleSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveTitleStyles({ titleSizeMobile: newSize });
                         },
                         weight: titleStyles[0].titleWeight,
                         style: titleStyles[0].titleStyle,
@@ -35272,21 +35255,21 @@ var PremiumPricingTable = function (_Component) {
                                     value: priceStyles[0].slashSizeUnit,
                                     label: __("slashSizeUnit", 'premium-block-for-gutenberg')
                                 },
-                                fontSize: {
-                                    value: priceStyles[0].slashSize,
-                                    label: __("slashSize", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeMobile: {
-                                    value: priceStyles[0].slashSizeMobile,
-                                    label: __("slashSizeMobile", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeTablet: {
-                                    value: priceStyles[0].slashSizeTablet,
-                                    label: __("slashSizeTablet", 'premium-block-for-gutenberg')
-                                },
+                                fontSize: priceStyles[0].slashSize,
+                                fontSizeMobile: priceStyles[0].slashSizeMobile,
+                                fontSizeTablet: priceStyles[0].slashSizeTablet,
                                 weight: priceStyles[0].slashWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
                                     return savePriceStyles({ slashWeight: newWeight });
+                                },
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return savePriceStyles({ slashSize: newSize });
+                                },
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return savePriceStyles({ slashSizeTablet: newSize });
+                                },
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return savePriceStyles({ slashSizeMobile: newSize });
                                 }
                             }),
                             React.createElement(SelectControl, {
@@ -35316,17 +35299,17 @@ var PremiumPricingTable = function (_Component) {
                                     value: priceStyles[0].currSizeUnit,
                                     label: __("currSizeUnit", 'premium-block-for-gutenberg')
                                 },
-                                fontSize: {
-                                    value: priceStyles[0].currSize,
-                                    label: __("currSize", 'premium-block-for-gutenberg')
+                                fontSize: priceStyles[0].currSize,
+                                fontSizeMobile: priceStyles[0].currSizeMobile,
+                                fontSizeTablet: priceStyles[0].currSizeTablet,
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return savePriceStyles({ currSize: newSize });
                                 },
-                                fontSizeMobile: {
-                                    value: priceStyles[0].currSizeMobile,
-                                    label: __("currSizeMobile", 'premium-block-for-gutenberg')
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return savePriceStyles({ currSizeTablet: newSize });
                                 },
-                                fontSizeTablet: {
-                                    value: priceStyles[0].currSizeTablet,
-                                    label: __("currSizeTablet", 'premium-block-for-gutenberg')
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return savePriceStyles({ currSizeMobile: newSize });
                                 },
                                 weight: priceStyles[0].currWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
@@ -35362,22 +35345,22 @@ var PremiumPricingTable = function (_Component) {
                                     value: priceStyles[0].valSizeUnit,
                                     label: __("valSizeUnit", 'premium-block-for-gutenberg')
                                 },
-                                fontSize: {
-                                    value: priceStyles[0].valSize,
-                                    label: __("valSize", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeMobile: {
-                                    value: priceStyles[0].valSizeMobile,
-                                    label: __("valSizeMobile", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeTablet: {
-                                    value: priceStyles[0].valSizeTablet,
-                                    label: __("valSizeTablet", 'premium-block-for-gutenberg')
-                                },
+                                fontSize: priceStyles[0].valSize,
+                                fontSizeMobile: priceStyles[0].valSizeMobile,
+                                fontSizeTablet: priceStyles[0].valSizeTablet,
                                 size: priceStyles[0].valSize,
                                 weight: priceStyles[0].valWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
                                     return savePriceStyles({ valWeight: newWeight });
+                                },
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return savePriceStyles({ valSize: newSize });
+                                },
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return savePriceStyles({ valSizeTablet: newSize });
+                                },
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return savePriceStyles({ valSizeMobile: newSize });
                                 }
                             }),
                             React.createElement(SelectControl, {
@@ -35409,21 +35392,21 @@ var PremiumPricingTable = function (_Component) {
                                     value: priceStyles[0].divSizeUnit,
                                     label: __("divSizeUnit", 'premium-block-for-gutenberg')
                                 },
-                                fontSize: {
-                                    value: priceStyles[0].divSize,
-                                    label: __("divSize", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeMobile: {
-                                    value: priceStyles[0].divSizeMobile,
-                                    label: __("divSizeMobile", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeTablet: {
-                                    value: priceStyles[0].divSizeTablet,
-                                    label: __("divSizeTablet", 'premium-block-for-gutenberg')
-                                },
+                                fontSize: priceStyles[0].divSize,
+                                fontSizeMobile: priceStyles[0].divSizeMobile,
+                                fontSizeTablet: priceStyles[0].divSizeTablet,
                                 weight: priceStyles[0].divWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
                                     return savePriceStyles({ divWeight: newWeight });
+                                },
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return savePriceStyles({ divSize: newSize });
+                                },
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return savePriceStyles({ divSizeTablet: newSize });
+                                },
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return savePriceStyles({ divSizeMobile: newSize });
                                 }
                             }),
                             React.createElement(SelectControl, {
@@ -35453,21 +35436,21 @@ var PremiumPricingTable = function (_Component) {
                                     value: priceStyles[0].durSizeUnit,
                                     label: __("durSizeUnit", 'premium-block-for-gutenberg')
                                 },
-                                fontSize: {
-                                    value: priceStyles[0].durSize,
-                                    label: __("durSize", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeMobile: {
-                                    value: priceStyles[0].durSizeMobile,
-                                    label: __("durSizeMobile", 'premium-block-for-gutenberg')
-                                },
-                                fontSizeTablet: {
-                                    value: priceStyles[0].durSizeTablet,
-                                    label: __("durSizeTablet", 'premium-block-for-gutenberg')
-                                },
+                                fontSize: priceStyles[0].durSize,
+                                fontSizeMobile: priceStyles[0].durSizeMobile,
+                                fontSizeTablet: priceStyles[0].durSizeTablet,
                                 weight: priceStyles[0].durWeight,
                                 onChangeWeight: function onChangeWeight(newWeight) {
                                     return savePriceStyles({ durWeight: newWeight });
+                                },
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return savePriceStyles({ durSize: newSize });
+                                },
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return savePriceStyles({ durSizeTablet: newSize });
+                                },
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return savePriceStyles({ durSizeMobile: newSize });
                                 }
                             }),
                             React.createElement(SelectControl, {
@@ -35589,18 +35572,9 @@ var PremiumPricingTable = function (_Component) {
                             value: featureStyles[0].listSizeUnit,
                             label: __("listSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: featureStyles[0].listSize,
-                            label: __("listSize", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeMobile: {
-                            value: featureStyles[0].listSizeMobile,
-                            label: __("listSizeMobile", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeTablet: {
-                            value: featureStyles[0].listSizeTablet,
-                            label: __("listSizeTablet", 'premium-block-for-gutenberg')
-                        },
+                        fontSize: featureStyles[0].listSize,
+                        fontSizeMobile: featureStyles[0].listSizeMobile,
+                        fontSizeTablet: featureStyles[0].listSizeTablet,
                         weight: featureStyles[0].listWeight,
                         style: featureStyles[0].listItemsStyle,
                         spacing: featureStyles[0].listLetter,
@@ -35620,6 +35594,15 @@ var PremiumPricingTable = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return saveFeatureStyle({ listUpper: check });
+                        },
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveFeatureStyle({ listSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveFeatureStyle({ listSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveFeatureStyle({ listSizeMobile: newSize });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -35709,18 +35692,9 @@ var PremiumPricingTable = function (_Component) {
                             value: descStyles[0].descSizeUnit,
                             label: __("descSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: descStyles[0].descSize,
-                            label: __("descSize", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeMobile: {
-                            value: descStyles[0].descSizeMobile,
-                            label: __("descSizeMobile", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeTablet: {
-                            value: descStyles[0].descSizeTablet,
-                            label: __("descSizeTablet", 'premium-block-for-gutenberg')
-                        },
+                        fontSize: descStyles[0].descSize,
+                        fontSizeMobile: descStyles[0].descSizeMobile,
+                        fontSizeTablet: descStyles[0].descSizeTablet,
                         size: descStyles[0].descSize,
                         weight: descStyles[0].descWeight,
                         style: descStyles[0].descStyle,
@@ -35737,6 +35711,15 @@ var PremiumPricingTable = function (_Component) {
                         },
                         onChangeLine: function onChangeLine(newValue) {
                             return saveDescriptionStyle({ descLine: newValue });
+                        },
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveDescriptionStyle({ descSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveDescriptionStyle({ descSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveDescriptionStyle({ descSizeMobile: newSize });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -35826,18 +35809,9 @@ var PremiumPricingTable = function (_Component) {
                             value: buttonStyles[0].btnSizeUnit,
                             label: __("btnSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: buttonStyles[0].btnSize,
-                            label: __("btnSize", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeMobile: {
-                            value: buttonStyles[0].btnSizeMobile,
-                            label: __("btnSizeMobile", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeTablet: {
-                            value: buttonStyles[0].btnSizeTablet,
-                            label: __("btnSizeTablet", 'premium-block-for-gutenberg')
-                        },
+                        fontSize: buttonStyles[0].btnSize,
+                        fontSizeMobile: buttonStyles[0].btnSizeMobile,
+                        fontSizeTablet: buttonStyles[0].btnSizeTablet,
                         weight: buttonStyles[0].btnWeight,
                         style: buttonStyles[0].btnStyle,
                         spacing: buttonStyles[0].btnLetter,
@@ -35857,6 +35831,15 @@ var PremiumPricingTable = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return saveButtonStyle({ btnUpper: check });
+                        },
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveButtonStyle({ btnSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveButtonStyle({ btnSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveButtonStyle({ btnSizeMobile: newSize });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -36029,18 +36012,9 @@ var PremiumPricingTable = function (_Component) {
                             value: badgeStyles[0].badgeTextUnit,
                             label: __("badgeTextUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: badgeStyles[0].badgeSize,
-                            label: __("badgeSize", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeMobile: {
-                            value: badgeStyles[0].badgeSizeMobile,
-                            label: __("badgeSizeMobile", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeTablet: {
-                            value: badgeStyles[0].badgeSizeTablet,
-                            label: __("badgeSizeTablet", 'premium-block-for-gutenberg')
-                        },
+                        fontSize: badgeStyles[0].badgeSize,
+                        fontSizeMobile: badgeStyles[0].badgeSizeMobile,
+                        fontSizeTablet: badgeStyles[0].badgeSizeTablet,
                         weight: badgeStyles[0].badgeWeight,
                         style: badgeStyles[0].badgeStyle,
                         spacing: badgeStyles[0].badgeLetter,
@@ -36056,6 +36030,15 @@ var PremiumPricingTable = function (_Component) {
                         },
                         onChangeUpper: function onChangeUpper(check) {
                             return saveBadgeStyles({ badgeUpper: check });
+                        },
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveBadgeStyles({ badgeSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveBadgeStyles({ badgeSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveBadgeStyles({ badgeSizeMobile: newSize });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -41358,20 +41341,17 @@ var edit = function (_Component) {
                             value: authorStyles[0].authorSizeUnit,
                             label: __("authorSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: authorStyles[0].authorSize,
-                            label: __("authorSize", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeMobile: {
-                            value: authorStyles[0].authorSizeMobile,
-                            label: __("authorSizeMobile", 'premium-block-for-gutenberg')
-                        },
-                        fontSizeTablet: {
-                            value: authorStyles[0].authorSizeTablet,
-                            label: __("authorSizeTablet", 'premium-block-for-gutenberg')
-                        },
+                        fontSize: authorStyles[0].authorSize,
+                        fontSizeMobile: authorStyles[0].authorSizeMobile,
+                        fontSizeTablet: authorStyles[0].authorSizeTablet,
                         onChangeSize: function onChangeSize(newSize) {
                             return saveAuthorStyle({ authorSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveAuthorStyle({ authorSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveAuthorStyle({ authorSizeMobile: newSize });
                         },
                         weight: authorStyles[0].authorWeight,
                         style: authorStyles[0].authorStyle,
@@ -44217,17 +44197,17 @@ var edit = function (_Component) {
                                     value: descStyles[0].videoDescSizeUnit,
                                     label: __("videoDescSizeUnit", 'premium-block-for-gutenberg')
                                 },
-                                fontSize: {
-                                    value: descStyles[0].videoDescSize,
-                                    label: __("videoDescSize", 'premium-block-for-gutenberg')
+                                fontSize: descStyles[0].videoDescSize,
+                                fontSizeMobile: descStyles[0].videoDescSizeMobile,
+                                fontSizeTablet: descStyles[0].videoDescSizeTablet,
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return saveDescritionStyle({ videoDescSize: newSize });
                                 },
-                                fontSizeMobile: {
-                                    value: descStyles[0].videoDescSizeMobile,
-                                    label: __("videoDescSizeMobile", 'premium-block-for-gutenberg')
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return saveDescritionStyle({ videoDescSizeTablet: newSize });
                                 },
-                                fontSizeTablet: {
-                                    value: descStyles[0].videoDescSizeTablet,
-                                    label: __("videoDescSizeTablet", 'premium-block-for-gutenberg')
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return saveDescritionStyle({ videoDescSizeMobile: newSize });
                                 },
                                 fontFamily: descStyles[0].videoDescFamily,
                                 weight: descStyles[0].videoDescWeight,
@@ -46724,17 +46704,17 @@ var edit = function (_Component) {
                             value: fancyStyles[0].fancyTextfontSizeUnit,
                             label: __("fancyTextfontSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: fancyStyles[0].fancyTextfontSize,
-                            label: __("fancyTextfontSize", 'premium-block-for-gutenberg')
+                        fontSize: fancyStyles[0].fancyTextfontSize,
+                        fontSizeMobile: fancyStyles[0].fancyTextfontSizeMobile,
+                        fontSizeTablet: fancyStyles[0].fancyTextfontSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveFancyStyle({ fancyTextfontSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: fancyStyles[0].fancyTextfontSizeMobile,
-                            label: __("fancyTextfontSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveFancyStyle({ fancyTextfontSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: fancyStyles[0].fancyTextfontSizeTablet,
-                            label: __("fancyTextfontSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveFancyStyle({ fancyTextfontSizeMobile: newSize });
                         },
                         weight: fancyStyles[0].fancyTextWeight,
                         style: fancyStyles[0].fancyTextStyle,
@@ -46812,17 +46792,17 @@ var edit = function (_Component) {
                             value: PreStyles[0].textfontSizeUnit,
                             label: __("textfontSizeUnit", 'premium-block-for-gutenberg')
                         },
-                        fontSize: {
-                            value: PreStyles[0].textfontSize,
-                            label: __("textfontSize", 'premium-block-for-gutenberg')
+                        fontSize: PreStyles[0].textfontSize,
+                        fontSizeMobile: PreStyles[0].textfontSizeMobile,
+                        fontSizeTablet: PreStyles[0].textfontSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return savePrefixStyle({ textfontSize: newSize });
                         },
-                        fontSizeMobile: {
-                            value: PreStyles[0].textfontSizeMobile,
-                            label: __("textfontSizeMobile", 'premium-block-for-gutenberg')
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return savePrefixStyle({ textfontSizeTablet: newSize });
                         },
-                        fontSizeTablet: {
-                            value: PreStyles[0].textfontSizeTablet,
-                            label: __("textfontSizeTablet", 'premium-block-for-gutenberg')
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return savePrefixStyle({ textfontSizeMobile: newSize });
                         },
                         weight: PreStyles[0].textWeight,
                         style: PreStyles[0].textStyle,
