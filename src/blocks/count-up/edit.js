@@ -400,18 +400,12 @@ class edit extends Component {
                                 value: numberStyles[0].numberSizeUnit,
                                 label: __("numberSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: numberStyles[0].numberSize,
-                                label: __("numberSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: numberStyles[0].numberSizeMobile,
-                                label: __("numberSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: numberStyles[0].numberSizeTablet,
-                                label: __("numberSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={numberStyles[0].numberSize}
+                            fontSizeMobile={numberStyles[0].numberSizeMobile}
+                            fontSizeTablet={numberStyles[0].numberSizeTablet}
+                            onChangeSize={newSize => saveNumberStyles({ numberSize: newSize })}
+                            onChangeTabletSize={newSize => saveNumberStyles({ numberSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveNumberStyles({ numberSizeMobile: newSize })}
                             fontFamily={counterFamily}
                             weight={numberStyles[0].numberWeight}
                             onChangeWeight={newWeight =>
@@ -444,18 +438,12 @@ class edit extends Component {
                                     value: prefixStyles[0].prefixSizeUnit,
                                     label: __("prefixSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: prefixStyles[0].prefixSize,
-                                    label: __("prefixSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: prefixStyles[0].prefixSizeMobile,
-                                    label: __("prefixSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: prefixStyles[0].prefixSizeTablet,
-                                    label: __("prefixSizeTablet", 'premium-block-for-gutenberg'),
-                                }}
+                                fontSize={prefixStyles[0].prefixSize}
+                                fontSizeMobile={prefixStyles[0].prefixSizeMobile}
+                                fontSizeTablet={prefixStyles[0].prefixSizeTablet}
+                                onChangeSize={newSize => savePrefixStyle({ prefixSize: newSize })}
+                                onChangeTabletSize={newSize => savePrefixStyle({ prefixSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => savePrefixStyle({ prefixSizeMobile: newSize })}
                                 weight={prefixStyles[0].prefixWeight}
                                 onChangeWeight={newWeight => savePrefixStyle({ prefixWeight: newWeight })}
                                 fontFamily={prefixStyles[0].prefixFamily}
@@ -494,18 +482,12 @@ class edit extends Component {
                                     value: suffixStyles[0].suffixSizeUnit,
                                     label: __("suffixSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: suffixStyles[0].suffixSize,
-                                    label: __("suffixSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: suffixStyles[0].suffixSizeMobile,
-                                    label: __("suffixSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: suffixStyles[0].suffixSizeTablet,
-                                    label: __("suffixSizeTablet", 'premium-block-for-gutenberg'),
-                                }}
+                                fontSize={suffixStyles[0].suffixSize}
+                                fontSizeMobile={suffixStyles[0].suffixSizeMobile}
+                                fontSizeTablet={suffixStyles[0].suffixSizeTablet}
+                                onChangeSize={newSize => saveSuffixStyle({ suffixSize: newSize })}
+                                onChangeTabletSize={newSize => saveSuffixStyle({ suffixSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveSuffixStyle({ suffixSizeMobile: newSize })}
                                 weight={suffixStyles[0].suffixWeight}
                                 onChangeWeight={newWeight => saveSuffixStyle({ suffixWeight: newWeight })}
                                 fontFamily={suffixStyles[0].suffixFamily}
@@ -544,18 +526,12 @@ class edit extends Component {
                                     value: titleStyles[0].titleSizeUnit,
                                     label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: titleStyles[0].titleSize,
-                                    label: __("titleSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: titleStyles[0].titleSizeMobile,
-                                    label: __("titleSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: titleStyles[0].titleSizeTablet,
-                                    label: __("titleSizeTablet"),
-                                }}
+                                fontSize={titleStyles[0].titleSize}
+                                fontSizeMobile={titleStyles[0].titleSizeMobile}
+                                fontSizeTablet={titleStyles[0].titleSizeTablet}
+                                onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
+                                onChangeTabletSize={newSize => saveTitleStyles({ titleSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveTitleStyles({ titleSizeMobile: newSize })}
                                 fontFamily={titleStyles[0].titleFamily}
                                 weight={titleStyles[0].titleWeight}
                                 style={titleStyles[0].titleStyle}

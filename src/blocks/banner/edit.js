@@ -376,18 +376,12 @@ export class edit extends Component {
                                 value: titleStyles[0].titleSizeUnit,
                                 label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: titleStyles[0].titleSize,
-                                label: __("titleSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: titleStyles[0].titleSizeMobile,
-                                label: __("titleSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: titleStyles[0].titleSizeTablet,
-                                label: __("titleSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={titleStyles[0].titleSize}
+                            fontSizeMobile={titleStyles[0].titleSizeMobile}
+                            fontSizeTablet={titleStyles[0].titleSizeTablet}
+                            onChangeSize={value => saveStyles({ titleSize: value })}
+                            onChangeTabletSize={value => saveStyles({ titleSizeTablet: value })}
+                            onChangeMobileSize={value => saveStyles({ titleSizeMobile: value })}
                             weight={titleStyles[0].titleWeight}
                             line={titleStyles[0].titleLine}
                             onChangeWeight={newWeight => saveStyles({ titleWeight: newWeight === undefined ? 500 : newWeight })}
@@ -431,6 +425,7 @@ export class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line"]}
                             setAttributes={descriptionStyles}
@@ -438,18 +433,12 @@ export class edit extends Component {
                                 value: descStyles[0].descSizeUnit,
                                 label: __("descSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: descStyles[0].descSize,
-                                label: __("descSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: descStyles[0].descSizeMobile,
-                                label: __("descSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: descStyles[0].descSizeTablet,
-                                label: __("descSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={descStyles[0].descSize}
+                            fontSizeMobile={descStyles[0].descSizeMobile}
+                            fontSizeTablet={descStyles[0].descSizeTablet}
+                            onChangeSize={value => { console.log(descStyles[0].descSize), descriptionStyles({ descSize: value }) }}
+                            onChangeTabletSize={value => descriptionStyles({ descSizeTablet: value })}
+                            onChangeMobileSize={value => descriptionStyles({ descSizeMobile: value })}
                             weight={descStyles[0].descWeight}
                             line={descStyles[0].descLine}
                             onChangeWeight={newWeight => descriptionStyles({ descWeight: newWeight === undefined ? 500 : newWeight })}

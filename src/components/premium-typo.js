@@ -27,15 +27,15 @@ function fuzzysearch(needle, haystack) {
 
     return true
 }
-class PremiumTypo extends Component {
+export default class PremiumTypo extends Component {
     constructor(props) {
         super(props)
         let responsiveSize;
         if (this.props.components.includes("responsiveSize")) {
             responsiveSize = {
-                Desktop: this.props.fontSize.value || '',
-                Tablet: this.props.fontSizeTablet.value || '',
-                Mobile: this.props.fontSizeMobile.value || ''
+                Desktop: this.props.fontSize || '',
+                Tablet: this.props.fontSizeTablet || '',
+                Mobile: this.props.fontSizeMobile || ''
             }
 
         }
@@ -54,7 +54,7 @@ class PremiumTypo extends Component {
             showUnit: this.props.showUnit || false,
             spacing: this.props.spacing,
             style: this.props.style,
-            device: this.props.deviceType,
+            device: 'Desktop',
         }
 
 
@@ -69,6 +69,7 @@ class PremiumTypo extends Component {
             : 'Desktop';
         if (this.state.device !== previewDevice) {
             this.setState({ device: previewDevice })
+
         }
     }
 
@@ -80,6 +81,8 @@ class PremiumTypo extends Component {
             onChangeTextDecoration = () => { },
             onChangeFamily = () => { },
             onChangeSize = () => { },
+            onChangeTabletSize = () => { },
+            onChangeMobileSize = () => { },
             onChangeWeight = () => { },
             onChangeStyle = () => { },
             onChangeSpacing = () => { },
@@ -265,12 +268,12 @@ class PremiumTypo extends Component {
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveRangeControl
                                                                 label={__("Font Size", 'premium-block-for-gutenberg')}
-                                                                value={this.props.fontSize.value}
-                                                                onChange={value => setAttributes({ [this.props.fontSize.label]: value })}
-                                                                tabletValue={this.props.fontSizeTablet.value}
-                                                                onChangeTablet={value => setAttributes({ [this.props.fontSizeTablet.label]: value })}
-                                                                mobileValue={this.props.fontSizeMobile.value}
-                                                                onChangeMobile={value => setAttributes({ [this.props.fontSizeMobile.label]: value })}
+                                                                value={this.props.fontSize}
+                                                                onChange={value => { this.setState({ ...this.state.size, Desktop: value }), onChangeSize(value) }}
+                                                                tabletValue={this.props.fontSizeTablet}
+                                                                onChangeTablet={value => { onChangeTabletSize(value) }}
+                                                                mobileValue={this.props.fontSizeMobile}
+                                                                onChangeMobile={value => { onChangeMobileSize(value) }}
                                                                 onChangeUnit={key => setAttributes({ [this.props.fontSizeType.label]: key })}
                                                                 unit={this.props.fontSizeType.value}
                                                                 showUnit={true}
@@ -380,11 +383,3 @@ class PremiumTypo extends Component {
 
     }
 }
-export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
-    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
-    return {
-        deviceType: deviceType,
-    }
-})(PremiumTypo)

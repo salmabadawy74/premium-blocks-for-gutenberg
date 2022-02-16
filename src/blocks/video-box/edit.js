@@ -436,18 +436,12 @@ class edit extends Component {
                                                 value: descStyles[0].videoDescSizeUnit,
                                                 label: __("videoDescSizeUnit", 'premium-block-for-gutenberg'),
                                             }}
-                                            fontSize={{
-                                                value: descStyles[0].videoDescSize,
-                                                label: __("videoDescSize", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeMobile={{
-                                                value: descStyles[0].videoDescSizeMobile,
-                                                label: __("videoDescSizeMobile", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeTablet={{
-                                                value: descStyles[0].videoDescSizeTablet,
-                                                label: __("videoDescSizeTablet", 'premium-block-for-gutenberg'),
-                                            }}
+                                            fontSize={descStyles[0].videoDescSize}
+                                            fontSizeMobile={descStyles[0].videoDescSizeMobile}
+                                            fontSizeTablet={descStyles[0].videoDescSizeTablet}
+                                            onChangeSize={newSize => saveDescritionStyle({ videoDescSize: newSize })}
+                                            onChangeTabletSize={newSize => saveDescritionStyle({ videoDescSizeTablet: newSize })}
+                                            onChangeMobileSize={newSize => saveDescritionStyle({ videoDescSizeMobile: newSize })}
                                             fontFamily={descStyles[0].videoDescFamily}
                                             weight={descStyles[0].videoDescWeight}
                                             onChangeWeight={newWeight =>

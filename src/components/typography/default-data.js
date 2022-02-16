@@ -15,7 +15,8 @@ export const getDefaultFonts = () => {
         all_variations: weight
 
     }))
-    let googleFonts = Object.keys(googleFonts).map((k, v) => ({
+    let googleFont = Object.keys(googleFonts).map((k, v) => ({
+
         family: key,
         variations: [],
         source: "google",
@@ -25,9 +26,7 @@ export const getDefaultFonts = () => {
 
     return {
         system: systemFonts,
-        google: googleFonts,
-        custom: customFonts
-
+        google: googleFont
     }
 
 }

@@ -323,18 +323,12 @@ class PremiumPricingTable extends Component {
                                     value: titleStyles[0].titleSizeUnit,
                                     label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: titleStyles[0].titleSize,
-                                    label: __("titleSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: titleStyles[0].titleSizeMobile,
-                                    label: __("titleSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: titleStyles[0].titleSizeTablet,
-                                    label: __("titleSizeTablet", 'premium-block-for-gutenberg'),
-                                }}
+                                fontSize={titleStyles[0].titleSize}
+                                fontSizeMobile={titleStyles[0].titleSizeMobile}
+                                fontSizeTablet={titleStyles[0].titleSizeTablet}
+                                onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
+                                onChangeTabletSize={newSize => saveTitleStyles({ titleSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveTitleStyles({ titleSizeMobile: newSize })}
                                 weight={titleStyles[0].titleWeight}
                                 style={titleStyles[0].titleStyle}
                                 spacing={titleStyles[0].titleLetter}
@@ -466,20 +460,14 @@ class PremiumPricingTable extends Component {
                                                 value: priceStyles[0].slashSizeUnit,
                                                 label: __("slashSizeUnit", 'premium-block-for-gutenberg'),
                                             }}
-                                            fontSize={{
-                                                value: priceStyles[0].slashSize,
-                                                label: __("slashSize", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeMobile={{
-                                                value: priceStyles[0].slashSizeMobile,
-                                                label: __("slashSizeMobile", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeTablet={{
-                                                value: priceStyles[0].slashSizeTablet,
-                                                label: __("slashSizeTablet", 'premium-block-for-gutenberg'),
-                                            }}
+                                            fontSize={priceStyles[0].slashSize}
+                                            fontSizeMobile={priceStyles[0].slashSizeMobile}
+                                            fontSizeTablet={priceStyles[0].slashSizeTablet}
                                             weight={priceStyles[0].slashWeight}
                                             onChangeWeight={newWeight => savePriceStyles({ slashWeight: newWeight })}
+                                            onChangeSize={newSize => savePriceStyles({ slashSize: newSize })}
+                                            onChangeTabletSize={newSize => savePriceStyles({ slashSizeTablet: newSize })}
+                                            onChangeMobileSize={newSize => savePriceStyles({ slashSizeMobile: newSize })}
                                         />
                                         <SelectControl
                                             label={__("Vertical Align", 'premium-block-for-gutenberg')}
@@ -504,18 +492,12 @@ class PremiumPricingTable extends Component {
                                                 value: priceStyles[0].currSizeUnit,
                                                 label: __("currSizeUnit", 'premium-block-for-gutenberg'),
                                             }}
-                                            fontSize={{
-                                                value: priceStyles[0].currSize,
-                                                label: __("currSize", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeMobile={{
-                                                value: priceStyles[0].currSizeMobile,
-                                                label: __("currSizeMobile", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeTablet={{
-                                                value: priceStyles[0].currSizeTablet,
-                                                label: __("currSizeTablet", 'premium-block-for-gutenberg'),
-                                            }}
+                                            fontSize={priceStyles[0].currSize}
+                                            fontSizeMobile={priceStyles[0].currSizeMobile}
+                                            fontSizeTablet={priceStyles[0].currSizeTablet}
+                                            onChangeSize={newSize => savePriceStyles({ currSize: newSize })}
+                                            onChangeTabletSize={newSize => savePriceStyles({ currSizeTablet: newSize })}
+                                            onChangeMobileSize={newSize => savePriceStyles({ currSizeMobile: newSize })}
                                             weight={priceStyles[0].currWeight}
                                             onChangeWeight={newWeight => savePriceStyles({ currWeight: newWeight, })}
                                         />
@@ -550,21 +532,15 @@ class PremiumPricingTable extends Component {
                                                 value: priceStyles[0].valSizeUnit,
                                                 label: __("valSizeUnit", 'premium-block-for-gutenberg'),
                                             }}
-                                            fontSize={{
-                                                value: priceStyles[0].valSize,
-                                                label: __("valSize", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeMobile={{
-                                                value: priceStyles[0].valSizeMobile,
-                                                label: __("valSizeMobile", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeTablet={{
-                                                value: priceStyles[0].valSizeTablet,
-                                                label: __("valSizeTablet", 'premium-block-for-gutenberg'),
-                                            }}
+                                            fontSize={priceStyles[0].valSize}
+                                            fontSizeMobile={priceStyles[0].valSizeMobile}
+                                            fontSizeTablet={priceStyles[0].valSizeTablet}
                                             size={priceStyles[0].valSize}
                                             weight={priceStyles[0].valWeight}
                                             onChangeWeight={newWeight => savePriceStyles({ valWeight: newWeight })}
+                                            onChangeSize={newSize => savePriceStyles({ valSize: newSize })}
+                                            onChangeTabletSize={newSize => savePriceStyles({ valSizeTablet: newSize })}
+                                            onChangeMobileSize={newSize => savePriceStyles({ valSizeMobile: newSize })}
                                         />
                                         <SelectControl
                                             label={__("Vertical Align", 'premium-block-for-gutenberg')}
@@ -594,20 +570,14 @@ class PremiumPricingTable extends Component {
                                                 value: priceStyles[0].divSizeUnit,
                                                 label: __("divSizeUnit", 'premium-block-for-gutenberg'),
                                             }}
-                                            fontSize={{
-                                                value: priceStyles[0].divSize,
-                                                label: __("divSize", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeMobile={{
-                                                value: priceStyles[0].divSizeMobile,
-                                                label: __("divSizeMobile", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeTablet={{
-                                                value: priceStyles[0].divSizeTablet,
-                                                label: __("divSizeTablet", 'premium-block-for-gutenberg'),
-                                            }}
+                                            fontSize={priceStyles[0].divSize}
+                                            fontSizeMobile={priceStyles[0].divSizeMobile}
+                                            fontSizeTablet={priceStyles[0].divSizeTablet}
                                             weight={priceStyles[0].divWeight}
                                             onChangeWeight={newWeight => savePriceStyles({ divWeight: newWeight })}
+                                            onChangeSize={newSize => savePriceStyles({ divSize: newSize })}
+                                            onChangeTabletSize={newSize => savePriceStyles({ divSizeTablet: newSize })}
+                                            onChangeMobileSize={newSize => savePriceStyles({ divSizeMobile: newSize })}
                                         />
                                         <SelectControl
                                             label={__("Vertical Align", 'premium-block-for-gutenberg')}
@@ -632,20 +602,14 @@ class PremiumPricingTable extends Component {
                                                 value: priceStyles[0].durSizeUnit,
                                                 label: __("durSizeUnit", 'premium-block-for-gutenberg'),
                                             }}
-                                            fontSize={{
-                                                value: priceStyles[0].durSize,
-                                                label: __("durSize", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeMobile={{
-                                                value: priceStyles[0].durSizeMobile,
-                                                label: __("durSizeMobile", 'premium-block-for-gutenberg'),
-                                            }}
-                                            fontSizeTablet={{
-                                                value: priceStyles[0].durSizeTablet,
-                                                label: __("durSizeTablet", 'premium-block-for-gutenberg'),
-                                            }}
+                                            fontSize={priceStyles[0].durSize}
+                                            fontSizeMobile={priceStyles[0].durSizeMobile}
+                                            fontSizeTablet={priceStyles[0].durSizeTablet}
                                             weight={priceStyles[0].durWeight}
                                             onChangeWeight={newWeight => savePriceStyles({ durWeight: newWeight })}
+                                            onChangeSize={newSize => savePriceStyles({ durSize: newSize })}
+                                            onChangeTabletSize={newSize => savePriceStyles({ durSizeTablet: newSize })}
+                                            onChangeMobileSize={newSize => savePriceStyles({ durSizeMobile: newSize })}
                                         />
                                         <SelectControl
                                             label={__("Vertical Align", 'premium-block-for-gutenberg')}
@@ -747,18 +711,9 @@ class PremiumPricingTable extends Component {
                                     value: featureStyles[0].listSizeUnit,
                                     label: __("listSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: featureStyles[0].listSize,
-                                    label: __("listSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: featureStyles[0].listSizeMobile,
-                                    label: __("listSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: featureStyles[0].listSizeTablet,
-                                    label: __("listSizeTablet", 'premium-block-for-gutenberg'),
-                                }}
+                                fontSize={featureStyles[0].listSize}
+                                fontSizeMobile={featureStyles[0].listSizeMobile}
+                                fontSizeTablet={featureStyles[0].listSizeTablet}
                                 weight={featureStyles[0].listWeight}
                                 style={featureStyles[0].listItemsStyle}
                                 spacing={featureStyles[0].listLetter}
@@ -769,6 +724,9 @@ class PremiumPricingTable extends Component {
                                 onChangeSpacing={newValue => saveFeatureStyle({ listLetter: newValue })}
                                 onChangeLine={newValue => saveFeatureStyle({ listLine: newValue })}
                                 onChangeUpper={check => saveFeatureStyle({ listUpper: check })}
+                                onChangeSize={newSize => saveFeatureStyle({ listSize: newSize })}
+                                onChangeTabletSize={newSize => saveFeatureStyle({ listSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveFeatureStyle({ listSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
                                 label={__("List Items Color", 'premium-block-for-gutenberg')}
@@ -835,18 +793,9 @@ class PremiumPricingTable extends Component {
                                     value: descStyles[0].descSizeUnit,
                                     label: __("descSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: descStyles[0].descSize,
-                                    label: __("descSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: descStyles[0].descSizeMobile,
-                                    label: __("descSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: descStyles[0].descSizeTablet,
-                                    label: __("descSizeTablet", 'premium-block-for-gutenberg'),
-                                }}
+                                fontSize={descStyles[0].descSize}
+                                fontSizeMobile={descStyles[0].descSizeMobile}
+                                fontSizeTablet={descStyles[0].descSizeTablet}
                                 size={descStyles[0].descSize}
                                 weight={descStyles[0].descWeight}
                                 style={descStyles[0].descStyle}
@@ -856,6 +805,9 @@ class PremiumPricingTable extends Component {
                                 onChangeStyle={newStyle => saveDescriptionStyle({ descStyle: newStyle })}
                                 onChangeSpacing={newValue => saveDescriptionStyle({ descLetter: newValue })}
                                 onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
+                                onChangeSize={newSize => saveDescriptionStyle({ descSize: newSize })}
+                                onChangeTabletSize={newSize => saveDescriptionStyle({ descSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveDescriptionStyle({ descSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
                                 label={__("Text Color", 'premium-block-for-gutenberg')}
@@ -929,18 +881,9 @@ class PremiumPricingTable extends Component {
                                     value: buttonStyles[0].btnSizeUnit,
                                     label: __("btnSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: buttonStyles[0].btnSize,
-                                    label: __("btnSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: buttonStyles[0].btnSizeMobile,
-                                    label: __("btnSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: buttonStyles[0].btnSizeTablet,
-                                    label: __("btnSizeTablet", 'premium-block-for-gutenberg'),
-                                }}
+                                fontSize={buttonStyles[0].btnSize}
+                                fontSizeMobile={buttonStyles[0].btnSizeMobile}
+                                fontSizeTablet={buttonStyles[0].btnSizeTablet}
                                 weight={buttonStyles[0].btnWeight}
                                 style={buttonStyles[0].btnStyle}
                                 spacing={buttonStyles[0].btnLetter}
@@ -951,6 +894,9 @@ class PremiumPricingTable extends Component {
                                 onChangeSpacing={newValue => saveButtonStyle({ btnLetter: newValue })}
                                 onChangeLine={newValue => saveButtonStyle({ btnLine: newValue })}
                                 onChangeUpper={check => saveButtonStyle({ btnUpper: check })}
+                                onChangeSize={newSize => saveButtonStyle({ btnSize: newSize })}
+                                onChangeTabletSize={newSize => saveButtonStyle({ btnSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveButtonStyle({ btnSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
                                 label={__("Text Color", 'premium-block-for-gutenberg')}
@@ -1078,18 +1024,9 @@ class PremiumPricingTable extends Component {
                                     value: badgeStyles[0].badgeTextUnit,
                                     label: __("badgeTextUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: badgeStyles[0].badgeSize,
-                                    label: __("badgeSize", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeMobile={{
-                                    value: badgeStyles[0].badgeSizeMobile,
-                                    label: __("badgeSizeMobile", 'premium-block-for-gutenberg'),
-                                }}
-                                fontSizeTablet={{
-                                    value: badgeStyles[0].badgeSizeTablet,
-                                    label: __("badgeSizeTablet", 'premium-block-for-gutenberg'),
-                                }}
+                                fontSize={badgeStyles[0].badgeSize}
+                                fontSizeMobile={badgeStyles[0].badgeSizeMobile}
+                                fontSizeTablet={badgeStyles[0].badgeSizeTablet}
                                 weight={badgeStyles[0].badgeWeight}
                                 style={badgeStyles[0].badgeStyle}
                                 spacing={badgeStyles[0].badgeLetter}
@@ -1098,6 +1035,9 @@ class PremiumPricingTable extends Component {
                                 onChangeStyle={newStyle => saveBadgeStyles({ badgeStyle: newStyle })}
                                 onChangeSpacing={newValue => saveBadgeStyles({ badgeLetter: newValue })}
                                 onChangeUpper={check => saveBadgeStyles({ badgeUpper: check })}
+                                onChangeSize={newSize => saveBadgeStyles({ badgeSize: newSize })}
+                                onChangeTabletSize={newSize => saveBadgeStyles({ badgeSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveBadgeStyles({ badgeSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
                                 label={__("Text Color", 'premium-block-for-gutenberg')}

@@ -255,19 +255,12 @@ class edit extends Component {
                                 value: authorStyles[0].authorSizeUnit,
                                 label: __("authorSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: authorStyles[0].authorSize,
-                                label: __("authorSize", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeMobile={{
-                                value: authorStyles[0].authorSizeMobile,
-                                label: __("authorSizeMobile", 'premium-block-for-gutenberg'),
-                            }}
-                            fontSizeTablet={{
-                                value: authorStyles[0].authorSizeTablet,
-                                label: __("authorSizeTablet", 'premium-block-for-gutenberg'),
-                            }}
+                            fontSize={authorStyles[0].authorSize}
+                            fontSizeMobile={authorStyles[0].authorSizeMobile}
+                            fontSizeTablet={authorStyles[0].authorSizeTablet}
                             onChangeSize={newSize => saveAuthorStyle({ authorSize: newSize })}
+                            onChangeTabletSize={newSize => saveAuthorStyle({ authorSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveAuthorStyle({ authorSizeMobile: newSize })}
                             weight={authorStyles[0].authorWeight}
                             style={authorStyles[0].authorStyle}
                             spacing={authorStyles[0].authorLetter}
