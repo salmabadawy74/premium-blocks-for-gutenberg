@@ -27,7 +27,7 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 			add_action( 'rest_api_init', array( $this, 'register_api_endpoints' ) );
             add_filter('upload_mimes', array( $this, 'pbg_mime_types'));
-
+add_filter( 'wp_check_filetype_and_ext', array( $this, 'fix_mime_type_json' ), 75, 4 );
 			if ( ! $this->is_gutenberg_active() ) {
 
 				return;
@@ -61,6 +61,19 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
             $mimes['svg'] = 'image/svg+xml'; 
             return $mimes; 
              } 
+
+        public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
+		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
+		if ( 1 > strlen( $ext ) ) {
+			$exploded = explode( '.', $filename );
+			$ext      = strtolower( end( $exploded ) );
+		}
+		if ( 'json' === $ext ) {
+			$data['type'] = 'application/json';
+			$data['ext']  = 'json';
+		}
+		return $data;
+	    }
 
 
 		/*
