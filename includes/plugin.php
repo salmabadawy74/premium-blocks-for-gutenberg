@@ -26,6 +26,7 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 			add_action( 'rest_api_init', array( $this, 'register_api_endpoints' ) );
+            add_filter('upload_mimes', array( $this, 'pbg_mime_types'));
 
 			if ( ! $this->is_gutenberg_active() ) {
 
@@ -55,6 +56,12 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 		public function load_domain() {
 			load_plugin_textdomain( 'premium-blocks-for-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
 		}
+         public function pbg_mime_types($mimes) {
+            $mimes['json'] = 'application/json'; 
+            $mimes['svg'] = 'image/svg+xml'; 
+            return $mimes; 
+             } 
+
 
 		/*
 		 * Load necessary files
