@@ -1192,7 +1192,6 @@ var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     Popover = _wp$components.Popover,
     TextControl = _wp$components.TextControl;
-var withSelect = wp.data.withSelect;
 
 function fuzzysearch(needle, haystack) {
     var hlen = haystack.length;
@@ -1232,7 +1231,6 @@ var PremiumTypo = function (_Component) {
                 Mobile: _this.props.fontSizeMobile || ''
             };
         }
-
         _this.state = {
             fontFamily: _this.props.fontFamily || 'Default',
             line: _this.props.line,
@@ -1370,6 +1368,8 @@ var PremiumTypo = function (_Component) {
                 return fuzzysearch(search.toLowerCase(), family['value'].toLowerCase());
             });
             var fontSize = components.includes("responsiveSize") ? size[device] : size;
+
+            console.log(this.fontSize);
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle premium-typography" },
@@ -1539,7 +1539,7 @@ var PremiumTypo = function (_Component) {
                                                         },
                                                         defaultValue: 1,
                                                         showUnit: false,
-                                                        min: 5,
+                                                        min: 0,
                                                         max: 200
                                                     })
                                                 ),

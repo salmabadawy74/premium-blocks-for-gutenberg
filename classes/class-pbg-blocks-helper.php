@@ -103,6 +103,7 @@ class PBG_Blocks_Helper {
 
 		// Register Premium Blocks category.
 		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
+        add_filter('upload_mimes', array( $this, 'pbg_mime_types'));
 
 		// Generate Blocks Stylesheet.
 		// add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
@@ -114,6 +115,15 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
  		require PREMIUM_BLOCKS_PATH . 'classes/class-pbg-templates-helper.php';
 	}
+
+
+
+    public function pbg_mime_types($mimes) {
+            $mimes['json'] = 'application/json'; 
+            $mimes['svg'] = 'image/svg+xml'; 
+            return $mimes; 
+    } 
+
 	/**
 	 * Enqueue Editor CSS/JS for Premium Blocks
 	 *
@@ -169,6 +179,7 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
+
 	public function load_api_settings() {
 		register_setting(
 			'mail_chimp_api',
@@ -255,6 +266,7 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
+
 	public function on_init() {
 
 		if ( ! function_exists( 'register_block_type' ) ) {
@@ -426,6 +438,7 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
+
 	public function it_is_not_amp() {
 		$not_amp = true;
 		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
