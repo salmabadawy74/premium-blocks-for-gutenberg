@@ -56,11 +56,11 @@ add_filter( 'wp_check_filetype_and_ext', array( $this, 'fix_mime_type_json' ), 7
 		public function load_domain() {
 			load_plugin_textdomain( 'premium-blocks-for-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
 		}
-         public function pbg_mime_types($mimes) {
+        public function pbg_mime_types($mimes) {
             $mimes['json'] = 'application/json'; 
             $mimes['svg'] = 'image/svg+xml'; 
             return $mimes; 
-             } 
+        } 
 
         public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
 		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
@@ -73,6 +73,7 @@ add_filter( 'wp_check_filetype_and_ext', array( $this, 'fix_mime_type_json' ), 7
 			$data['ext']  = 'json';
 		}
 		return $data;
+        
 	    }
 
 
