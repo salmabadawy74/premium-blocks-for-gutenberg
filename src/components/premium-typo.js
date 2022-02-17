@@ -5,7 +5,6 @@ import FontsList from "./typography/fontList";
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { SelectControl, Popover, TextControl } = wp.components;
-const { withSelect } = wp.data
 function fuzzysearch(needle, haystack) {
     var hlen = haystack.length
     var nlen = needle.length
@@ -39,7 +38,6 @@ export default class PremiumTypo extends Component {
             }
 
         }
-
         this.state = {
             fontFamily: this.props.fontFamily || 'Default',
             line: this.props.line,
@@ -174,6 +172,8 @@ export default class PremiumTypo extends Component {
 
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = components.includes("responsiveSize") ? size[device] : size
+
+        console.log(this.fontSize)
         return (
             <div className="premium-control-toggle premium-typography">
                 <header>
@@ -290,7 +290,7 @@ export default class PremiumTypo extends Component {
                                                                 onChange={(value) => { this.setState({ line: value }), onChangeLine(value) }}
                                                                 defaultValue={1}
                                                                 showUnit={false}
-                                                                min={5}
+                                                                min={0}
                                                                 max={200}
                                                             />
                                                         </li>
