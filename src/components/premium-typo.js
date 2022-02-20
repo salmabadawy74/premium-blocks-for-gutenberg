@@ -172,8 +172,6 @@ export default class PremiumTypo extends Component {
 
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = components.includes("responsiveSize") ? size[device] : size
-
-        console.log(this.fontSize)
         return (
             <div className="premium-control-toggle premium-typography">
                 <header>
