@@ -8,15 +8,15 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl /single-
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control'
 import ResponsiveRangeControl from "../../components/RangeControl /responsive-range-control";
-
+import Placeholder from './container.js';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { withSelect } = wp.data
+import { JsonUploadEnabled } from "../../../assets/js/settings";
 
 
 const {
     InspectorControls,
-    MediaPlaceholder
 } = wp.blockEditor
 
 const {
@@ -34,6 +34,9 @@ class edit extends Component {
     constructor() {
         super(...arguments);
         this.lottieplayer = React.createRef();
+        this.state = {
+            isJSONAllowed: false
+        }
     }
 
     componentDidMount() {
@@ -48,6 +51,7 @@ class edit extends Component {
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
         this.initLottieAnimation = this.initLottieAnimation.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
+        this.setState({ isJSONAllowed: Boolean(JsonUploadEnabled) })
     }
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
@@ -119,6 +123,8 @@ class edit extends Component {
     render() {
         const { attributes, setAttributes, className } = this.props;
 
+
+
         const {
             lottieId,
             block_id,
@@ -159,14 +165,12 @@ class edit extends Component {
         if (validJsonPath === 'invalid') {
             return (
                 <div className="premium-lottie-animation-wrap">
-                    <MediaPlaceholder
-                        labels={{
-                            title: __('Lottie Animation'),
-                            instructions: __('Allows you to add fancy animation i.e lottie to your website')
-                        }}
-                        allowedTypes={['application/json']}
-                        accept={['application/json']}
+
+                    <Placeholder
+                        className={className}
                         value={lottieJson}
+                        isJSONAllowed={JsonUploadEnabled == 1 ? true : false}
+                        attributes={attributes}
                         onSelectURL={(value) => setAttributes({ lottieURl: value })}
                         onSelect={this.onSelectLottieJSON}
                     />

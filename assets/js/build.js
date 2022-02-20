@@ -524,6 +524,9 @@ exports.newsletter = newsletter;
 var _FontAwesomeConfig = FontAwesomeConfig;
 var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
 exports.FontAwesomeEnabled = FontAwesomeEnabled;
+var _JsonUploadFile = JsonUploadFile;
+var JsonUploadEnabled = _JsonUploadFile.JsonUploadEnabled;
+exports.JsonUploadEnabled = JsonUploadEnabled;
 
 /***/ }),
 /* 4 */
@@ -33884,7 +33887,6 @@ var PremiumMap = function (_Component) {
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId;
 
-
             if (!attributes.mapID) {
                 setAttributes({ mapID: "premium-map-" + clientId });
             }
@@ -50912,15 +50914,15 @@ var _edit2 = _interopRequireDefault(_edit);
 
 var _settings = __webpack_require__(3);
 
-var _save = __webpack_require__(362);
+var _save = __webpack_require__(363);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(363);
+var _deprecated = __webpack_require__(364);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(364);
+var _attributes = __webpack_require__(365);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -50999,6 +51001,12 @@ var _responsiveRangeControl = __webpack_require__(58);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
+var _container = __webpack_require__(362);
+
+var _container2 = _interopRequireDefault(_container);
+
+var _settings = __webpack_require__(3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51012,9 +51020,7 @@ var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 var withSelect = wp.data.withSelect;
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
+var InspectorControls = wp.blockEditor.InspectorControls;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
@@ -51035,6 +51041,9 @@ var edit = function (_Component) {
         var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
 
         _this.lottieplayer = React.createRef();
+        _this.state = {
+            isJSONAllowed: false
+        };
         return _this;
     }
 
@@ -51056,6 +51065,7 @@ var edit = function (_Component) {
             this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
             this.initLottieAnimation = this.initLottieAnimation.bind(this);
             this.getPreviewSize = this.getPreviewSize.bind(this);
+            this.setState({ isJSONAllowed: Boolean(_settings.JsonUploadEnabled) });
         }
     }, {
         key: "getPreviewSize",
@@ -51181,14 +51191,11 @@ var edit = function (_Component) {
                 return React.createElement(
                     "div",
                     { className: "premium-lottie-animation-wrap" },
-                    React.createElement(MediaPlaceholder, {
-                        labels: {
-                            title: __('Lottie Animation'),
-                            instructions: __('Allows you to add fancy animation i.e lottie to your website')
-                        },
-                        allowedTypes: ['application/json'],
-                        accept: ['application/json'],
+                    React.createElement(_container2.default, {
+                        className: className,
                         value: lottieJson,
+                        isJSONAllowed: _settings.JsonUploadEnabled == 1 ? true : false,
+                        attributes: attributes,
                         onSelectURL: function onSelectURL(value) {
                             return setAttributes({ lottieURl: value });
                         },
@@ -53754,6 +53761,142 @@ renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(c
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var __ = wp.i18n.__;
+var _wp$blockEditor = wp.blockEditor,
+    BlockIcon = _wp$blockEditor.BlockIcon,
+    MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    ExternalLink = _wp$components.ExternalLink,
+    Modal = _wp$components.Modal,
+    Placeholder = _wp$components.Placeholder;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    useState = _wp$element.useState;
+
+
+var BlockPlaceholder = function BlockPlaceholder(_ref) {
+    var className = _ref.className,
+        isJSONAllowed = _ref.isJSONAllowed,
+        onSelectURL = _ref.onSelectURL,
+        onSelect = _ref.onSelect,
+        value = _ref.value;
+
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        url = _useState2[0],
+        setURL = _useState2[1];
+
+    var _useState3 = useState(false),
+        _useState4 = _slicedToArray(_useState3, 2),
+        isOpen = _useState4[0],
+        setOpen = _useState4[1];
+
+    var onChangeValue = function onChangeValue(e) {
+        if (e) {
+            e.preventDefault();
+        }
+        return onSelectURL(url);
+    };
+
+    if (isJSONAllowed) {
+        return React.createElement(MediaPlaceholder, {
+            labels: {
+                title: __('Lottie', 'premium-block-for-gutenberg'),
+                instructions: __('Add Lottie animations and files to your website.', 'premium-block-for-gutenberg')
+            },
+            accept: ['application/json'],
+            allowedTypes: ['application/json'],
+            value: value,
+            onSelectURL: onSelectURL,
+            onSelect: onSelect
+        });
+    }
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            Placeholder,
+            {
+                label: __('Lottie', 'premium-block-for-gutenberg'),
+                instructions: __('Add Lottie animations and files to your website.', 'premium-block-for-gutenberg'),
+                className: className
+            },
+            React.createElement(
+                'form',
+                { onSubmit: onChangeValue },
+                React.createElement('input', {
+                    type: 'url',
+                    value: url,
+                    className: 'components-placeholder__input',
+                    'aria-label': __('Lottie', 'premium-block-for-gutenberg'),
+                    placeholder: __('Enter URL to embed here…', 'premium-block-for-gutenberg'),
+                    onChange: function onChange(e) {
+                        return setURL(e.target.value);
+                    }
+                }),
+                React.createElement(
+                    Button,
+                    {
+                        isPrimary: true,
+                        disabled: !url,
+                        type: 'submit'
+                    },
+                    __('Embed', 'premium-block-for-gutenberg')
+                ),
+                !isJSONAllowed && React.createElement(
+                    Button,
+                    {
+                        isSecondary: true,
+                        onClick: function onClick() {
+                            return setOpen(true);
+                        }
+                    },
+                    __('Upload', 'premium-block-for-gutenberg')
+                )
+            )
+        ),
+        isOpen && React.createElement(
+            Modal,
+            {
+                title: __('Allow JSON Uploads', 'premium-block-for-gutenberg'),
+                closeLabel: __('Close'),
+                onRequestClose: function onRequestClose() {
+                    return setOpen(false);
+                },
+                overlayClassName: 'wp-block-themeisle-blocks-lottie-modal'
+            },
+            __('This file type is not permitted for security reasons. Would you still like to enable JSON uploads?', 'premium-block-for-gutenberg'),
+            React.createElement('br', null),
+            React.createElement('br', null),
+            React.createElement(
+                ExternalLink,
+                { href: window.PremiumBlocksSettings.settingPath },
+                __('You can enable JSON uploads from Settings.', 'premium-block-for-gutenberg')
+            ),
+            React.createElement('br', null),
+            React.createElement('br', null),
+            __('You will have to refresh the page after changing JSON upload settings.', 'premium-block-for-gutenberg')
+        )
+    );
+};
+
+exports.default = BlockPlaceholder;
+
+/***/ }),
+/* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.default = save;
 
 var _classnames = __webpack_require__(0);
@@ -53818,7 +53961,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 363 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54139,7 +54282,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 364 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

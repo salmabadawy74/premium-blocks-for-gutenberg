@@ -91,7 +91,11 @@ class PBG_Blocks_Helper {
 
 		// Gets Plugin Admin Settings.
 		self::$config = PBG_Settings::get_enabled_keys();
-
+ $allow_json       = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
+		if ($allow_json ) {
+			add_filter( 'upload_mimes', array( $this, 'pbg_mime_types' ) ); // phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.upload_mimes
+			add_filter( 'wp_check_filetype_and_ext', array( $this, 'fix_mime_type_json' ), 75, 4 );
+		}
 		add_action( 'init', array( $this, 'load_api_settings' ) );
 		add_action( 'init', array( $this, 'on_init' ), 20 );
 
@@ -103,8 +107,7 @@ class PBG_Blocks_Helper {
 
 		// Register Premium Blocks category.
 		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
-        add_filter('upload_mimes', array( $this, 'pbg_mime_types'));
-
+      
 		// Generate Blocks Stylesheet.
 		// add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'generate_stylesheet' ), 20 );
@@ -124,6 +127,20 @@ class PBG_Blocks_Helper {
             return $mimes; 
     } 
 
+    public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
+		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
+		if ( 1 > strlen( $ext ) ) {
+			$exploded = explode( '.', $filename );
+			$ext      = strtolower( end( $exploded ) );
+		}
+		if ( 'json' === $ext ) {
+			$data['type'] = 'application/json';
+			$data['ext']  = 'json';
+		}
+		return $data;
+        
+	}
+
 	/**
 	 * Enqueue Editor CSS/JS for Premium Blocks
 	 *
@@ -133,6 +150,8 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function pbg_editor() {
+         $allow_json       = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
+
 		$is_fa_enabled       = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
 		$plugin_dependencies = array( 'wp-blocks', 'react', 'react-dom', 'wp-components', 'wp-compose', 'wp-data', 'wp-edit-post', 'wp-element', 'wp-hooks', 'wp-i18n', 'wp-plugins', 'wp-polyfill', 'wp-primitives', 'wp-api', 'wp-widgets','lodash' );
 		wp_enqueue_script(
@@ -164,6 +183,7 @@ class PBG_Blocks_Helper {
 			array(
 				'ajaxurl'           => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'nonce'             => wp_create_nonce( 'pa-blog-block-nonce' ),
+                'settingPath'         => admin_url( 'admin.php?page=premium-gutenberg-maps' ),
 				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
 				'activeBlocks'      => self::$blocks,
 				'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
@@ -178,6 +198,13 @@ class PBG_Blocks_Helper {
 				'FontAwesomeEnabled' => $is_fa_enabled,
 			)
 		);
+        wp_localize_script(
+			'pbg-editor',
+			'JsonUploadFile',
+			array(
+				'JsonUploadEnabled' => $allow_json,
+			)
+		);
 	}
 
 	public function load_api_settings() {
@@ -189,6 +216,16 @@ class PBG_Blocks_Helper {
 				'description'  => __( 'Mail Chimp API Key', '' ),
 				'show_in_rest' => true,
 				'default'      => '',
+			)
+		);
+        register_setting(
+			'allow_json_upload',
+			'allow_json_upload',
+			array(
+				'type'              => 'boolean',
+				'description'       => __( 'Allow JSON Upload to Media Library.', 'otter-blocks' ),
+				'show_in_rest'      => true,
+				'default'           => false,
 			)
 		);
 	}
@@ -268,7 +305,7 @@ class PBG_Blocks_Helper {
 	}
 
 	public function on_init() {
-
+	   
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
 		}

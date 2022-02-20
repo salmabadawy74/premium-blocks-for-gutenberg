@@ -93,7 +93,6 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		// Create Premium Blocks for Gutenberg menu page
 		public function pbg_admin() {
-
 			add_menu_page(
 				__( 'Premium Blocks for Gutenberg', 'premium-gutenberg' ),
 				__( 'Premium Blocks for Gutenberg', 'premium-gutenberg' ),
