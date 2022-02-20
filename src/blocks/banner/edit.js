@@ -436,7 +436,7 @@ export class edit extends Component {
                             fontSize={descStyles[0].descSize}
                             fontSizeMobile={descStyles[0].descSizeMobile}
                             fontSizeTablet={descStyles[0].descSizeTablet}
-                            onChangeSize={value => { console.log(descStyles[0].descSize), descriptionStyles({ descSize: value }) }}
+                            onChangeSize={value => { descriptionStyles({ descSize: value }) }}
                             onChangeTabletSize={value => descriptionStyles({ descSizeTablet: value })}
                             onChangeMobileSize={value => descriptionStyles({ descSizeMobile: value })}
                             weight={descStyles[0].descWeight}

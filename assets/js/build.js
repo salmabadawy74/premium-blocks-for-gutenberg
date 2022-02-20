@@ -1371,8 +1371,6 @@ var PremiumTypo = function (_Component) {
                 return fuzzysearch(search.toLowerCase(), family['value'].toLowerCase());
             });
             var fontSize = components.includes("responsiveSize") ? size[device] : size;
-
-            console.log(this.fontSize);
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle premium-typography" },
@@ -15255,7 +15253,7 @@ var edit = exports.edit = function (_Component) {
                         fontSizeMobile: descStyles[0].descSizeMobile,
                         fontSizeTablet: descStyles[0].descSizeTablet,
                         onChangeSize: function onChangeSize(value) {
-                            console.log(descStyles[0].descSize), descriptionStyles({ descSize: value });
+                            descriptionStyles({ descSize: value });
                         },
                         onChangeTabletSize: function onChangeTabletSize(value) {
                             return descriptionStyles({ descSizeTablet: value });
