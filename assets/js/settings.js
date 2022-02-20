@@ -22,3 +22,4 @@ export const {
 
 //Plugin Config Keys
 export const { FontAwesomeEnabled } = FontAwesomeConfig;
+export const { JsonUploadEnabled } = JsonUploadFile;

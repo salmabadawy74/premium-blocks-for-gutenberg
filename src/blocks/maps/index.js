@@ -300,7 +300,6 @@ class PremiumMap extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
-
         if (!attributes.mapID) {
             setAttributes({ mapID: "premium-map-" + clientId });
         }
