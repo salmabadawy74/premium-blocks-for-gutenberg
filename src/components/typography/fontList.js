@@ -77,7 +77,7 @@ const FontsList = ({
                 )
                 const pageItems = [...Array(perPage)]
                     .map((_, i) => (startingPage - 1) * perPage + i)
-                    .map((index) => linearFontsList[index].value)
+                    .map((index) => googleFonts[index].value)
                     .filter((s) => !!s)
                 loadGoogleFonts(pageItems)
             }, 10)
