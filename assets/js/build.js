@@ -16033,6 +16033,7 @@ var deprecatedContent = [{
                 paddingU: attributes.paddingU
             }]
         };
+        console.log(Object.assign(attributes, newAttributes));
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
