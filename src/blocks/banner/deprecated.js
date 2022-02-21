@@ -401,12 +401,11 @@ const deprecatedContent = [
                 hideMobile
             } = props.attributes;
 
-            const mainClasses = classnames(className, 'premium-banner');
 
             return (
                 <div
                     id={`premium-banner-${block_id}`}
-                    className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
+                    className={`${className} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
                     style={{
                         paddingTop: paddingT + paddingU,
                         paddingRight: paddingR + paddingU,

@@ -16109,13 +16109,11 @@ var deprecatedContent = [{
             hideMobile = _props$attributes.hideMobile;
 
 
-        var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
-
         return React.createElement(
             "div",
             {
                 id: "premium-banner-" + block_id,
-                className: mainClasses + " premium-banner__responsive_" + responsive + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-banner-" + block_id,
+                className: className + " premium-banner__responsive_" + responsive + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-banner-" + block_id,
                 style: {
                     paddingTop: paddingT + paddingU,
                     paddingRight: paddingR + paddingU,
