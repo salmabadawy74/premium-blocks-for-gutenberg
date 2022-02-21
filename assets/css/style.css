@@ -1816,6 +1816,12 @@ a.premium-dheading-block__link:hover {
     cursor: pointer;
     z-index: 9999;
 }
+.wp-block-premium-lottie.components-placeholder
+    .components-placeholder__fieldset
+    form
+    .components-button {
+    margin-bottom: 0;
+}
 
 /************ Responsive **************/
 @media (min-width: 977px) {
