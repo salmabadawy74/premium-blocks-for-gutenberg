@@ -59,10 +59,6 @@ const attributes = {
             {
                 borderType: "none",
                 borderWidth: '',
-                borderTop: '',
-                borderRight: '',
-                borderBottom: '',
-                borderLeft: '',
                 borderRadius: '',
                 borderColor: '',
                 containerShadowColor: '',
@@ -70,10 +66,6 @@ const attributes = {
                 containerShadowHorizontal: '',
                 containerShadowVertical: '',
                 containerShadowPosition: '',
-                paddingT: '',
-                paddingR: '',
-                paddingB: '',
-                paddingL: '',
                 paddingU: 'px'
             }
         ]

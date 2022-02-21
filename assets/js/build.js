@@ -16023,11 +16023,6 @@ var deprecatedContent = [{
             }],
             containerStyles: [{
                 borderType: attributes.borderType,
-                borderWidth: attributes.borderWidth,
-                borderTop: attributes.borderTop,
-                borderRight: attributes.borderRight,
-                borderBottom: attributes.borderBottom,
-                borderLeft: attributes.borderLeft,
                 borderRadius: attributes.borderRadius,
                 borderColor: attributes.borderColor,
                 containerShadowColor: attributes.containerShadowColor,
@@ -16035,10 +16030,6 @@ var deprecatedContent = [{
                 containerShadowHorizontal: attributes.containerShadowHorizontal,
                 containerShadowVertical: attributes.containerShadowVertical,
                 containerShadowPosition: attributes.containerShadowPosition,
-                paddingT: attributes.paddingT,
-                paddingR: attributes.paddingR,
-                paddingB: attributes.paddingB,
-                paddingL: attributes.paddingL,
                 paddingU: attributes.paddingU
             }]
         };
@@ -17237,10 +17228,6 @@ var attributes = {
         default: [{
             borderType: "none",
             borderWidth: '',
-            borderTop: '',
-            borderRight: '',
-            borderBottom: '',
-            borderLeft: '',
             borderRadius: '',
             borderColor: '',
             containerShadowColor: '',
@@ -17248,10 +17235,6 @@ var attributes = {
             containerShadowHorizontal: '',
             containerShadowVertical: '',
             containerShadowPosition: '',
-            paddingT: '',
-            paddingR: '',
-            paddingB: '',
-            paddingL: '',
             paddingU: 'px'
         }]
     },
