@@ -325,6 +325,7 @@ const deprecatedContent = [
                     }
                 ],
             }
+            console.log(Object.assign(attributes, newAttributes))
             return Object.assign(attributes, newAttributes)
         },
         save: props => {
