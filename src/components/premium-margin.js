@@ -84,7 +84,7 @@ class PremiumMargin extends Component {
 
         return (
             <div className={`premium-spacing-responsive`}>
-                <header className="premium-control-label-container">
+                {label && <header className="premium-control-label-container">
                     <div className={`premium-slider-title-wrap`}>
                         {__("Margin")}
                     </div>
@@ -96,7 +96,7 @@ class PremiumMargin extends Component {
                             }
                         />
                     )}
-                </header>
+                </header>}
                 <div className={`premium-spacing-responsive-outer-wrapper`}>
                     <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
                         <ul className={`premium-spacing-wrapper`}>

@@ -2196,7 +2196,8 @@ var PremiumPadding = function (_Component) {
             bottom: _this.props.paddingBottom || 0,
             left: _this.props.paddingLeft || 0,
             showUnits: _this.props.showUnits || false,
-            unit: _this.props.unit || 'px'
+            unit: _this.props.unit || 'px',
+            label: _this.props.label
         };
         _this.defaultValue = {
             isLinked: false,
@@ -2267,7 +2268,8 @@ var PremiumPadding = function (_Component) {
                 left = _state2.left,
                 showUnits = _state2.showUnits,
                 isLinked = _state2.isLinked,
-                unit = _state2.unit;
+                unit = _state2.unit,
+                label = _state2.label;
             var _props = this.props,
                 _props$onChangePadSiz = _props.onChangePadSizeUnit,
                 onChangePadSizeUnit = _props$onChangePadSiz === undefined ? function () {} : _props$onChangePadSiz,
@@ -2276,7 +2278,7 @@ var PremiumPadding = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { className: "premium-spacing-responsive" },
-                _react2.default.createElement(
+                label && _react2.default.createElement(
                     "header",
                     { className: "premium-control-label-container" },
                     _react2.default.createElement(
@@ -4178,7 +4180,7 @@ var PremiumMargin = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { className: "premium-spacing-responsive" },
-                _react2.default.createElement(
+                label && _react2.default.createElement(
                     "header",
                     { className: "premium-control-label-container" },
                     _react2.default.createElement(
@@ -7972,9 +7974,9 @@ var _premiumBorder = __webpack_require__(8);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumPadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(366);
 
-var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
+var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
 var _premiumTypo = __webpack_require__(10);
 
@@ -8008,6 +8010,7 @@ var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl;
@@ -8030,10 +8033,28 @@ var PremiumAccordion = function (_Component) {
         var _this = _possibleConstructorReturn(this, (PremiumAccordion.__proto__ || Object.getPrototypeOf(PremiumAccordion)).apply(this, arguments));
 
         _this.initAccordion = _this.initAccordion.bind(_this);
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        _this.accordionRef = React.createRef();
         return _this;
     }
 
     _createClass(PremiumAccordion, [{
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
         key: "componentDidMount",
         value: function componentDidMount() {
             var _props = this.props,
@@ -8058,7 +8079,7 @@ var PremiumAccordion = function (_Component) {
             var accordionId = this.props.attributes.accordionId;
 
             if (!this.props.attributes.accordionId) return null;
-            var title = document.getElementById(accordionId).getElementsByClassName("premium-accordion__title_wrap")[0];
+            var title = this.accordionRef.current.getElementsByClassName("premium-accordion__title_wrap")[0];
             title.addEventListener("click", function () {
                 title.getElementsByClassName("premium-accordion__icon")[0].classList.toggle("premium-accordion__closed");
                 title.nextSibling.classList.toggle("premium-accordion__desc_close");
@@ -8103,7 +8124,23 @@ var PremiumAccordion = function (_Component) {
                 descPaddingT = _props$attributes.descPaddingT,
                 descPaddingR = _props$attributes.descPaddingR,
                 descPaddingB = _props$attributes.descPaddingB,
-                descPaddingL = _props$attributes.descPaddingL;
+                descPaddingL = _props$attributes.descPaddingL,
+                titlePaddingTTablet = _props$attributes.titlePaddingTTablet,
+                titlePaddingRTablet = _props$attributes.titlePaddingRTablet,
+                titlePaddingBTablet = _props$attributes.titlePaddingBTablet,
+                titlePaddingLTablet = _props$attributes.titlePaddingLTablet,
+                titlePaddingTMobile = _props$attributes.titlePaddingTMobile,
+                titlePaddingRMobile = _props$attributes.titlePaddingRMobile,
+                titlePaddingBMobile = _props$attributes.titlePaddingBMobile,
+                titlePaddingLMobile = _props$attributes.titlePaddingLMobile,
+                descPaddingTTablet = _props$attributes.descPaddingTTablet,
+                descPaddingRTablet = _props$attributes.descPaddingRTablet,
+                descPaddingBTablet = _props$attributes.descPaddingBTablet,
+                descPaddingLTablet = _props$attributes.descPaddingLTablet,
+                descPaddingTMobile = _props$attributes.descPaddingTMobile,
+                descPaddingRMobile = _props$attributes.descPaddingRMobile,
+                descPaddingBMobile = _props$attributes.descPaddingBMobile,
+                descPaddingLMobile = _props$attributes.descPaddingLMobile;
 
 
             var DIRECTION = [{
@@ -8175,6 +8212,14 @@ var PremiumAccordion = function (_Component) {
                     return item;
                 });
             };
+            var titlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePaddingT, titlePaddingTTablet, titlePaddingTMobile);
+            var titlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
+            var titlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
+            var titlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePaddingL, titlePaddingLTablet, titlePaddingLMobile);
+            var descPaddingTop = this.getPreviewSize(this.props.deviceType, descPaddingT, descPaddingTTablet, descPaddingTMobile);
+            var descPaddingRight = this.getPreviewSize(this.props.deviceType, descPaddingR, descPaddingRTablet, descPaddingRMobile);
+            var descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPaddingB, descPaddingBTablet, descPaddingBMobile);
+            var descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPaddingL, descPaddingLTablet, descPaddingLMobile);
 
             var mainClasses = (0, _classnames2.default)(className, "premium-accordion");
 
@@ -8195,10 +8240,10 @@ var PremiumAccordion = function (_Component) {
                                 borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
                                 borderRadius: titleStyles[0].titleBorderRadius + "px",
                                 borderColor: titleStyles[0].titleBorderColor,
-                                paddingTop: titlePaddingT,
-                                paddingRight: titlePaddingR,
-                                paddingBottom: titlePaddingB,
-                                paddingLeft: titlePaddingL
+                                paddingTop: titlePaddingTop,
+                                paddingRight: titlePaddingRight,
+                                paddingBottom: titlePaddingBottom,
+                                paddingLeft: titlePaddingLeft
                             }
                         },
                         React.createElement(
@@ -8261,10 +8306,10 @@ var PremiumAccordion = function (_Component) {
                                 borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
                                 borderRadius: descStyles[0].descBorderRadius + "px",
                                 borderColor: descStyles[0].descBorderColor,
-                                paddingTop: descPaddingT,
-                                paddingRight: descPaddingR,
-                                paddingBottom: descPaddingB,
-                                paddingLeft: descPaddingL
+                                paddingTop: descPaddingTop,
+                                paddingRight: descPaddingRight,
+                                paddingBottom: descPaddingBottom,
+                                paddingLeft: descPaddingLeft
                             }
                         },
                         "text" === contentType && React.createElement(RichText, {
@@ -8411,22 +8456,54 @@ var PremiumAccordion = function (_Component) {
                             return saveTitleStyles({ titleShadowVertical: newValue });
                         }
                     }),
-                    React.createElement(_premiumPadding2.default, {
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({ titlePaddingT: value === undefined ? 0 : value });
+                    React.createElement(_PremiumResponsivePadding2.default, {
+                        paddingT: titlePaddingT,
+                        paddingR: titlePaddingR,
+                        paddingB: titlePaddingB,
+                        paddingL: titlePaddingL,
+                        paddingTTablet: titlePaddingTTablet,
+                        paddingRTablet: titlePaddingRTablet,
+                        paddingBTablet: titlePaddingBTablet,
+                        paddingLTablet: titlePaddingLTablet,
+                        paddingTMobile: titlePaddingTMobile,
+                        paddingRMobile: titlePaddingRMobile,
+                        paddingBMobile: titlePaddingBMobile,
+                        paddingLMobile: titlePaddingLMobile,
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({ titlePaddingR: value === undefined ? 0 : value });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({ titlePaddingB: value === undefined ? 0 : value });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({ titlePaddingL: value === undefined ? 0 : value });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ titlePaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ titlePaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ titlePaddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -8614,22 +8691,54 @@ var PremiumAccordion = function (_Component) {
                             return setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue });
                         }
                     }),
-                    React.createElement(_premiumPadding2.default, {
-                        paddingTop: descPaddingT,
-                        paddingRight: descPaddingR,
-                        paddingBottom: descPaddingB,
-                        paddingLeft: descPaddingL,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({ descPaddingT: value === undefined ? 0 : value });
+                    React.createElement(_PremiumResponsivePadding2.default, {
+                        paddingT: descPaddingT,
+                        paddingR: descPaddingR,
+                        paddingB: descPaddingB,
+                        paddingL: descPaddingL,
+                        paddingTTablet: descPaddingTTablet,
+                        paddingRTablet: descPaddingRTablet,
+                        paddingBTablet: descPaddingBTablet,
+                        paddingLTablet: descPaddingLTablet,
+                        paddingTMobile: descPaddingTMobile,
+                        paddingRMobile: descPaddingRMobile,
+                        paddingBMobile: descPaddingBMobile,
+                        paddingLMobile: descPaddingLMobile,
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({ descPaddingR: value === undefined ? 0 : value });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({ descPaddingB: value === undefined ? 0 : value });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({ descPaddingL: value === undefined ? 0 : value });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ descPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ descPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ descPaddingLMobile: newValue });
+                            }
                         }
                     })
                 )
@@ -8638,7 +8747,7 @@ var PremiumAccordion = function (_Component) {
                 null,
                 React.createElement(
                     "div",
-                    { id: accordionId, className: "" + mainClasses },
+                    { ref: this.accordionRef, id: accordionId, className: "" + mainClasses },
                     accordionItems
                 ),
                 React.createElement(
@@ -8673,7 +8782,17 @@ var PremiumAccordion = function (_Component) {
     return PremiumAccordion;
 }(Component);
 
-exports.default = PremiumAccordion;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(PremiumAccordion);
 
 /***/ }),
 /* 126 */
@@ -12830,7 +12949,7 @@ var FontsList = function FontsList(_ref3) {
             var pageItems = [].concat(_toConsumableArray(Array(perPage))).map(function (_, i) {
                 return (startingPage - 1) * perPage + i;
             }).map(function (index) {
-                return linearFontsList[index].value;
+                return googleFonts[index].value;
             }).filter(function (s) {
                 return !!s;
             });
@@ -14748,9 +14867,9 @@ var _premiumFilters = __webpack_require__(59);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _premiumPadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(366);
 
-var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
+var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
 var _premiumMediaUpload = __webpack_require__(25);
 
@@ -14883,7 +15002,15 @@ var edit = exports.edit = function (_Component) {
                 paddingT = _props$attributes.paddingT,
                 paddingR = _props$attributes.paddingR,
                 paddingB = _props$attributes.paddingB,
-                paddingL = _props$attributes.paddingL;
+                paddingL = _props$attributes.paddingL,
+                paddingTTablet = _props$attributes.paddingTTablet,
+                paddingRTablet = _props$attributes.paddingRTablet,
+                paddingBTablet = _props$attributes.paddingBTablet,
+                paddingLTablet = _props$attributes.paddingLTablet,
+                paddingTMobile = _props$attributes.paddingTMobile,
+                paddingRMobile = _props$attributes.paddingRMobile,
+                paddingBMobile = _props$attributes.paddingBMobile,
+                paddingLMobile = _props$attributes.paddingLMobile;
 
 
             var ALIGNS = [{
@@ -14983,6 +15110,11 @@ var edit = exports.edit = function (_Component) {
                 });
                 setAttributes({ containerStyles: newUpdate });
             };
+            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+
             return [isSelected && React.createElement(
                 BlockControls,
                 { key: "controls" },
@@ -15359,27 +15491,54 @@ var edit = exports.edit = function (_Component) {
                             return containerStyle({ containerShadowPosition: newValue });
                         }
                     }),
-                    React.createElement(_premiumPadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        showUnits: true,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({ paddingT: value });
+                    React.createElement(_PremiumResponsivePadding2.default, {
+                        paddingT: paddingT,
+                        paddingR: paddingR,
+                        paddingB: paddingB,
+                        paddingL: paddingL,
+                        paddingTTablet: paddingTTablet,
+                        paddingRTablet: paddingRTablet,
+                        paddingBTablet: paddingBTablet,
+                        paddingLTablet: paddingLTablet,
+                        paddingTMobile: paddingTMobile,
+                        paddingRMobile: paddingRMobile,
+                        paddingBMobile: paddingBMobile,
+                        paddingLMobile: paddingLMobile,
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({ paddingR: value });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({ paddingB: value });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({ paddingL: value });
-                        },
-                        selectedUnit: containerStyles[0].paddingU,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return containerStyle({ paddingU: newvalue });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -15403,10 +15562,10 @@ var edit = exports.edit = function (_Component) {
                     id: "premium-banner-" + block_id,
                     className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
-                        paddingTop: paddingT + containerStyles[0].paddingU,
-                        paddingRight: paddingR + containerStyles[0].paddingU,
-                        paddingBottom: paddingB + containerStyles[0].paddingU,
-                        paddingLeft: paddingL + containerStyles[0].paddingU
+                        paddingTop: containerPaddingTop + containerStyles[0].paddingU,
+                        paddingRight: containerPaddingRight + containerStyles[0].paddingU,
+                        paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
+                        paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
                     }
                 },
                 React.createElement("style", {
@@ -19538,7 +19697,15 @@ var edit = function (_Component) {
                 paddingR = _props$attributes.paddingR,
                 paddingB = _props$attributes.paddingB,
                 paddingL = _props$attributes.paddingL,
-                backgroundType = _props$attributes.backgroundType;
+                backgroundType = _props$attributes.backgroundType,
+                paddingTTablet = _props$attributes.paddingTTablet,
+                paddingRTablet = _props$attributes.paddingRTablet,
+                paddingBTablet = _props$attributes.paddingBTablet,
+                paddingLTablet = _props$attributes.paddingLTablet,
+                paddingTMobile = _props$attributes.paddingTMobile,
+                paddingRMobile = _props$attributes.paddingRMobile,
+                paddingBMobile = _props$attributes.paddingBMobile,
+                paddingLMobile = _props$attributes.paddingLMobile;
 
 
             var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
@@ -19663,6 +19830,10 @@ var edit = function (_Component) {
             var prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
             var suffixFontSize = this.getPreviewSize(this.props.deviceType, suffixStyles[0].suffixSize, suffixStyles[0].suffixSizeTablet, suffixStyles[0].suffixSizeMobile);
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
 
             return [isSelected && React.createElement(
                 InspectorControls,
@@ -20176,27 +20347,54 @@ var edit = function (_Component) {
                             return saveContainerStyle({ shadowPosition: newValue });
                         }
                     }),
-                    React.createElement(_premiumPadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        showUnits: true,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({ paddingT: value || 0 });
+                    React.createElement(PremiumResponsivePadding, {
+                        paddingT: paddingT,
+                        paddingR: paddingR,
+                        paddingB: paddingB,
+                        paddingL: paddingL,
+                        paddingTTablet: paddingTTablet,
+                        paddingRTablet: paddingRTablet,
+                        paddingBTablet: paddingBTablet,
+                        paddingLTablet: paddingLTablet,
+                        paddingTMobile: paddingTMobile,
+                        paddingRMobile: paddingRMobile,
+                        paddingBMobile: paddingBMobile,
+                        paddingLMobile: paddingLMobile,
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({ paddingR: value || 0 });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({ paddingB: value || 0 });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({ paddingL: value || 0 });
-                        },
-                        selectedUnit: containerStyles[0].paddingU,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveContainerStyle({ paddingU: newvalue });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -20241,10 +20439,10 @@ var edit = function (_Component) {
                         borderWidth: borderCount ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : containerStyles[0].borderWidth + "px",
                         borderRadius: containerStyles[0].borderRadius + "px",
                         borderColor: containerStyles[0].borderColor,
-                        paddingTop: paddingT + containerStyles[0].paddingU,
-                        paddingRight: paddingR + containerStyles[0].paddingU,
-                        paddingBottom: paddingB + containerStyles[0].paddingU,
-                        paddingLeft: paddingL + containerStyles[0].paddingU
+                        paddingTop: containerPaddingTop + containerStyles[0].paddingU,
+                        paddingRight: containerPaddingRight + containerStyles[0].paddingU,
+                        paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
+                        paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
                     }
                 },
                 iconCheck && React.createElement(
@@ -25278,10 +25476,6 @@ var _premiumMargin = __webpack_require__(61);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumPadding = __webpack_require__(18);
-
-var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
-
 var _premiumBoxShadow = __webpack_require__(15);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
@@ -25309,6 +25503,14 @@ var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 var _radioControl = __webpack_require__(11);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
+
+var _PremiumResponsivePadding = __webpack_require__(366);
+
+var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
+
+var _PremiumResponsiveMargin = __webpack_require__(367);
+
+var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25369,7 +25571,39 @@ var edit = function edit(props) {
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        backgroundType = _props$attributes.backgroundType;
+        backgroundType = _props$attributes.backgroundType,
+        paddingTTablet = _props$attributes.paddingTTablet,
+        paddingRTablet = _props$attributes.paddingRTablet,
+        paddingBTablet = _props$attributes.paddingBTablet,
+        paddingLTablet = _props$attributes.paddingLTablet,
+        paddingTMobile = _props$attributes.paddingTMobile,
+        paddingRMobile = _props$attributes.paddingRMobile,
+        paddingBMobile = _props$attributes.paddingBMobile,
+        paddingLMobile = _props$attributes.paddingLMobile,
+        wrapPaddingTTablet = _props$attributes.wrapPaddingTTablet,
+        wrapPaddingRTablet = _props$attributes.wrapPaddingRTablet,
+        wrapPaddingBTablet = _props$attributes.wrapPaddingBTablet,
+        wrapPaddingLTablet = _props$attributes.wrapPaddingLTablet,
+        wrapPaddingTMobile = _props$attributes.wrapPaddingTMobile,
+        wrapPaddingRMobile = _props$attributes.wrapPaddingRMobile,
+        wrapPaddingBMobile = _props$attributes.wrapPaddingBMobile,
+        wrapPaddingLMobile = _props$attributes.wrapPaddingLMobile,
+        marginTTablet = _props$attributes.marginTTablet,
+        marginRTablet = _props$attributes.marginRTablet,
+        marginBTablet = _props$attributes.marginBTablet,
+        marginLTablet = _props$attributes.marginLTablet,
+        marginTMobile = _props$attributes.marginTMobile,
+        marginRMobile = _props$attributes.marginRMobile,
+        marginBMobile = _props$attributes.marginBMobile,
+        marginLMobile = _props$attributes.marginLMobile,
+        wrapMarginTTablet = _props$attributes.wrapMarginTTablet,
+        wrapMarginRTablet = _props$attributes.wrapMarginRTablet,
+        wrapMarginBTablet = _props$attributes.wrapMarginBTablet,
+        wrapMarginLTablet = _props$attributes.wrapMarginLTablet,
+        wrapMarginTMobile = _props$attributes.wrapMarginTMobile,
+        wrapMarginRMobile = _props$attributes.wrapMarginRMobile,
+        wrapMarginBMobile = _props$attributes.wrapMarginBMobile,
+        wrapMarginLMobile = _props$attributes.wrapMarginLMobile;
 
 
     var EFFECTS = [{
@@ -25580,46 +25814,106 @@ var edit = function edit(props) {
                     return saveIconStyle({ shadowVertical: newValue });
                 }
             }),
-            React.createElement(_premiumMargin2.default, {
+            React.createElement(_PremiumResponsiveMargin2.default, {
                 directions: ["all"],
                 marginTop: marginT,
                 marginRight: marginR,
                 marginBottom: marginB,
                 marginLeft: marginL,
-                onChangeMarTop: function onChangeMarTop(value) {
-                    return setAttributes({ marginT: value });
+                marginTopTablet: marginTTablet,
+                marginRightTablet: marginRTablet,
+                marginBottomTablet: marginBTablet,
+                marginLeftTablet: marginLTablet,
+                marginTopMobile: marginTMobile,
+                marginRightMobile: marginRMobile,
+                marginBottomMobile: marginBMobile,
+                marginLeftMobile: marginLMobile,
+                onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ marginT: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ marginTTablet: newValue });
+                    } else {
+                        setAttributes({ marginTMobile: newValue });
+                    }
                 },
-                onChangeMarRight: function onChangeMarRight(value) {
-                    return setAttributes({ marginR: value });
+                onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ marginR: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ marginRTablet: newValue });
+                    } else {
+                        setAttributes({ marginRMobile: newValue });
+                    }
                 },
-                onChangeMarBottom: function onChangeMarBottom(value) {
-                    return setAttributes({ marginB: value });
+                onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ marginB: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ marginBTablet: newValue });
+                    } else {
+                        setAttributes({ marginBMobile: newValue });
+                    }
                 },
-                onChangeMarLeft: function onChangeMarLeft(value) {
-                    return setAttributes({ marginL: value });
+                onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ marginL: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ marginLTablet: newValue });
+                    } else {
+                        setAttributes({ marginLMobile: newValue });
+                    }
                 }
+
             }),
-            React.createElement(_premiumPadding2.default, {
-                paddingTop: paddingT,
-                paddingRight: paddingR,
-                paddingBottom: paddingB,
-                paddingLeft: paddingL,
-                onChangePadTop: function onChangePadTop(value) {
-                    return setAttributes({ paddingT: value });
+            React.createElement(_PremiumResponsivePadding2.default, {
+                paddingT: paddingT,
+                paddingR: paddingR,
+                paddingB: paddingB,
+                paddingL: paddingL,
+                paddingTTablet: paddingTTablet,
+                paddingRTablet: paddingRTablet,
+                paddingBTablet: paddingBTablet,
+                paddingLTablet: paddingLTablet,
+                paddingTMobile: paddingTMobile,
+                paddingRMobile: paddingRMobile,
+                paddingBMobile: paddingBMobile,
+                paddingLMobile: paddingLMobile,
+                onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ paddingT: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ paddingTTablet: newValue });
+                    } else {
+                        setAttributes({ paddingTMobile: newValue });
+                    }
                 },
-                onChangePadRight: function onChangePadRight(value) {
-                    return setAttributes({ paddingR: value });
+                onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ paddingR: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ paddingRTablet: newValue });
+                    } else {
+                        setAttributes({ paddingRMobile: newValue });
+                    }
                 },
-                onChangePadBottom: function onChangePadBottom(value) {
-                    return setAttributes({ paddingB: value });
+                onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ paddingB: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ paddingBTablet: newValue });
+                    } else {
+                        setAttributes({ paddingBMobile: newValue });
+                    }
                 },
-                onChangePadLeft: function onChangePadLeft(value) {
-                    return setAttributes({ paddingL: value });
-                },
-                showUnits: true,
-                selectedUnit: paddingU,
-                onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                    return setAttributes({ paddingU: newvalue });
+                onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ paddingL: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ paddingLTablet: newValue });
+                    } else {
+                        setAttributes({ paddingLMobile: newValue });
+                    }
                 }
             })
         ),
@@ -25703,41 +25997,106 @@ var edit = function edit(props) {
                     return saveContainerStyle({ wrapShadowPosition: newValue });
                 }
             }),
-            React.createElement(_premiumMargin2.default, {
+            React.createElement(_PremiumResponsiveMargin2.default, {
                 directions: ["all"],
                 marginTop: wrapMarginT,
                 marginRight: wrapMarginR,
                 marginBottom: wrapMarginB,
                 marginLeft: wrapMarginL,
-                onChangeMarTop: function onChangeMarTop(value) {
-                    return setAttributes({ wrapMarginT: value });
+                marginTopTablet: wrapMarginTTablet,
+                marginRightTablet: wrapMarginRTablet,
+                marginBottomTablet: wrapMarginBTablet,
+                marginLeftTablet: wrapMarginLTablet,
+                marginTopMobile: wrapMarginTMobile,
+                marginRightMobile: wrapMarginRMobile,
+                marginBottomMobile: wrapMarginBMobile,
+                marginLeftMobile: wrapMarginLMobile,
+                onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapMarginT: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapMarginTTablet: newValue });
+                    } else {
+                        setAttributes({ wrapMarginTMobile: newValue });
+                    }
                 },
-                onChangeMarRight: function onChangeMarRight(value) {
-                    return setAttributes({ wrapMarginR: value });
+                onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapMarginR: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapMarginRTablet: newValue });
+                    } else {
+                        setAttributes({ wrapMarginRMobile: newValue });
+                    }
                 },
-                onChangeMarBottom: function onChangeMarBottom(value) {
-                    return setAttributes({ wrapMarginB: value });
+                onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapMarginB: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapMarginBTablet: newValue });
+                    } else {
+                        setAttributes({ wrapMarginBMobile: newValue });
+                    }
                 },
-                onChangeMarLeft: function onChangeMarLeft(value) {
-                    return setAttributes({ wrapMarginL: value });
+                onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapMarginL: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapMarginLTablet: newValue });
+                    } else {
+                        setAttributes({ wrapMarginLMobile: newValue });
+                    }
                 }
+
             }),
-            React.createElement(_premiumPadding2.default, {
-                paddingTop: wrapPaddingT,
-                paddingRight: wrapPaddingR,
-                paddingBottom: wrapPaddingB,
-                paddingLeft: wrapPaddingL,
-                onChangePadTop: function onChangePadTop(value) {
-                    return setAttributes({ wrapPaddingT: value });
+            React.createElement(_PremiumResponsivePadding2.default, {
+                paddingT: wrapPaddingT,
+                paddingR: wrapPaddingR,
+                paddingB: wrapPaddingB,
+                paddingL: wrapPaddingL,
+                paddingTTablet: wrapPaddingTTablet,
+                paddingRTablet: wrapPaddingRTablet,
+                paddingBTablet: wrapPaddingBTablet,
+                paddingLTablet: wrapPaddingLTablet,
+                paddingTMobile: wrapPaddingTMobile,
+                paddingRMobile: wrapPaddingRMobile,
+                paddingBMobile: wrapPaddingBMobile,
+                paddingLMobile: wrapPaddingLMobile,
+                onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapPaddingT: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapPaddingTTablet: newValue });
+                    } else {
+                        setAttributes({ wrapPaddingTMobile: newValue });
+                    }
                 },
-                onChangePadRight: function onChangePadRight(value) {
-                    return setAttributes({ wrapPaddingR: value });
+                onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapPaddingR: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapPaddingRTablet: newValue });
+                    } else {
+                        setAttributes({ wrapPaddingRMobile: newValue });
+                    }
                 },
-                onChangePadBottom: function onChangePadBottom(value) {
-                    return setAttributes({ wrapPaddingB: value });
+                onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapPaddingB: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapPaddingBTablet: newValue });
+                    } else {
+                        setAttributes({ wrapPaddingBMobile: newValue });
+                    }
                 },
-                onChangePadLeft: function onChangePadLeft(value) {
-                    return setAttributes({ wrapPaddingL: value });
+                onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                    if (device === "desktop") {
+                        setAttributes({ wrapPaddingL: newValue });
+                    } else if (device === "tablet") {
+                        setAttributes({ wrapPaddingLTablet: newValue });
+                    } else {
+                        setAttributes({ wrapPaddingLMobile: newValue });
+                    }
                 }
             })
         ),
@@ -29179,6 +29538,14 @@ var _radioControl = __webpack_require__(11);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
+var _PremiumResponsivePadding = __webpack_require__(366);
+
+var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
+
+var _PremiumResponsiveMargin = __webpack_require__(367);
+
+var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29347,7 +29714,23 @@ var edit = function (_Component) {
                 paddingR = attributes.paddingR,
                 paddingB = attributes.paddingB,
                 paddingL = attributes.paddingL,
-                iconType = attributes.iconType;
+                iconType = attributes.iconType,
+                marginTTablet = attributes.marginTTablet,
+                marginRTablet = attributes.marginRTablet,
+                marginBTablet = attributes.marginBTablet,
+                marginLTablet = attributes.marginLTablet,
+                marginTMobile = attributes.marginTMobile,
+                marginRMobile = attributes.marginRMobile,
+                marginBMobile = attributes.marginBMobile,
+                marginLMobile = attributes.marginLMobile,
+                paddingTTablet = attributes.paddingTTablet,
+                paddingRTablet = attributes.paddingRTablet,
+                paddingBTablet = attributes.paddingBTablet,
+                paddingLTablet = attributes.paddingLTablet,
+                paddingTMobile = attributes.paddingTMobile,
+                paddingRMobile = attributes.paddingRMobile,
+                paddingBMobile = attributes.paddingBMobile,
+                paddingLMobile = attributes.paddingLMobile;
 
 
             var imgIcon = [{
@@ -29431,7 +29814,6 @@ var edit = function (_Component) {
             }];
 
             var mainClasses = (0, _classnames2.default)(className, "premium-icon-box");
-
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
             var descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
             var buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
@@ -29870,15 +30252,33 @@ var edit = function (_Component) {
                         },
                         unit: btnStyles[0].btnPaddingU
                     }),
-                    React.createElement(_premiumMargin2.default, {
+                    React.createElement(_PremiumResponsiveMargin2.default, {
                         directions: ["top", "bottom"],
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB,
-                        onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({ btnMarginT: value || 0 });
+                        marginTopTablet: btnMarginTTablet,
+                        marginBottomTablet: btnMarginBTablet,
+                        marginTopMobile: btnMarginTMobile,
+                        marginBottomMobile: btnMarginBMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ btnMarginTMobile: newValue });
+                            }
+                            setAttributes({ btnPadUpdate: true });
                         },
-                        onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({ btnMarginB: value || 0 });
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ btnMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ btnMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ btnMarginBMobile: newValue });
+                            }
+                            setAttributes({ btnPadUpdate: true });
                         }
                     })
                 ),
@@ -29997,46 +30397,110 @@ var edit = function (_Component) {
                             return saveContainerStyle({ hoverShadowPosition: newValue });
                         }
                     }),
-                    React.createElement(_premiumMargin2.default, {
+                    React.createElement(_PremiumResponsiveMargin2.default, {
                         directions: ["all"],
                         marginTop: marginT,
                         marginRight: marginR,
                         marginBottom: marginB,
                         marginLeft: marginL,
-                        onChangeMarTop: function onChangeMarTop(value) {
-                            return setAttributes({ marginT: value || 0 });
+                        marginTopTablet: marginTTablet,
+                        marginRightTablet: marginRTablet,
+                        marginBottomTablet: marginBTablet,
+                        marginLeftTablet: marginLTablet,
+                        marginTopMobile: marginTMobile,
+                        marginRightMobile: marginRMobile,
+                        marginBottomMobile: marginBMobile,
+                        marginLeftMobile: marginLMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginTTablet: newValue });
+                            } else {
+                                setAttributes({ marginTMobile: newValue });
+                            }
                         },
-                        onChangeMarRight: function onChangeMarRight(value) {
-                            return setAttributes({ marginR: value || 0 });
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginRTablet: newValue });
+                            } else {
+                                setAttributes({ marginRMobile: newValue });
+                            }
                         },
-                        onChangeMarBottom: function onChangeMarBottom(value) {
-                            return setAttributes({ marginB: value || 0 });
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginBTablet: newValue });
+                            } else {
+                                setAttributes({ marginBMobile: newValue });
+                            }
                         },
-                        onChangeMarLeft: function onChangeMarLeft(value) {
-                            return setAttributes({ marginL: value || 0 });
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginLTablet: newValue });
+                            } else {
+                                setAttributes({ marginLMobile: newValue });
+                            }
                         }
                     }),
-                    React.createElement(_premiumPadding2.default, {
+                    React.createElement(_PremiumResponsivePadding2.default, {
                         paddingTop: paddingT,
                         paddingRight: paddingR,
                         paddingBottom: paddingB,
                         paddingLeft: paddingL,
+                        paddingTopTablet: paddingTTablet,
+                        paddingRightTablet: paddingRTablet,
+                        paddingBottomTablet: paddingBTablet,
+                        paddingLeftTablet: paddingLTablet,
+                        paddingTopMobile: paddingTMobile,
+                        paddingRightMobile: paddingRMobile,
+                        paddingBottomMobile: paddingBMobile,
+                        paddingLeftMobile: paddingLMobile,
                         showUnits: true,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({ paddingT: value || 0 });
-                        },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({ paddingR: value || 0 });
-                        },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({ paddingB: value || 0 });
-                        },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({ paddingL: value || 0 });
-                        },
-                        selectedUnit: containerStyles[0].paddingU,
+                        selectedUnit: paddingU,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveContainerStyle({ paddingU: newvalue });
+                            return setAttributes({ paddingU: newvalue });
+                        },
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
+                        },
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
+                        },
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
+                        },
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -43746,6 +44210,7 @@ var edit = function (_Component) {
 
         _this.initVideoBox = _this.initVideoBox.bind(_this);
         _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        _this.videoboxRef = React.createRef();
         return _this;
     }
 
@@ -43776,7 +44241,7 @@ var edit = function (_Component) {
             var videoBoxId = this.props.attributes.videoBoxId;
 
             if (!videoBoxId) return null;
-            var videoBox = document.getElementById(videoBoxId),
+            var videoBox = this.videoboxRef.current,
                 video = void 0,
                 src = void 0;
             videoBox.addEventListener("click", function () {
@@ -44437,6 +44902,7 @@ var edit = function (_Component) {
             ), React.createElement(
                 "div",
                 {
+                    ref: this.videoboxRef,
                     id: videoBoxId,
                     className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     "data-type": videoType,
@@ -51159,7 +51625,15 @@ var edit = function (_Component) {
                 borderTop = attributes.borderTop,
                 borderRight = attributes.borderRight,
                 borderBottom = attributes.borderBottom,
-                borderLeft = attributes.borderLeft;
+                borderLeft = attributes.borderLeft,
+                paddingTTablet = attributes.paddingTTablet,
+                paddingRTablet = attributes.paddingRTablet,
+                paddingBTablet = attributes.paddingBTablet,
+                paddingLTablet = attributes.paddingLTablet,
+                paddingTMobile = attributes.paddingTMobile,
+                paddingRMobile = attributes.paddingRMobile,
+                paddingBMobile = attributes.paddingBMobile,
+                paddingLMobile = attributes.paddingLMobile;
 
 
             var validJsonPath = 'invalid';
@@ -51189,7 +51663,6 @@ var edit = function (_Component) {
             };
 
             var handleLottieMouseLeave = function handleLottieMouseLeave() {
-
                 _this2.lottieplayer.current.anim.pause();
             };
 
@@ -51224,6 +51697,11 @@ var edit = function (_Component) {
                 null,
                 "\n            #premium-lottie-" + block_id + " .premium-lottie-animation svg{\n                width:" + lottieSize + lottieStyles[0].sizeUnit + " !important;\n                height:" + lottieSize + lottieStyles[0].sizeUnit + " !important;\n            }\n            "
             );
+            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+
             return [renderCss, React.createElement(
                 InspectorControls,
                 null,
@@ -51554,27 +52032,54 @@ var edit = function (_Component) {
                             return saveLottieStyles({ borderRadius: newRadius === undefined ? 0 : newRadius });
                         }
                     }),
-                    React.createElement(_premiumPadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        onChangePadTop: function onChangePadTop(value) {
-                            return setAttributes({ paddingT: value });
+                    React.createElement(PremiumResponsivePadding, {
+                        paddingT: paddingT,
+                        paddingR: paddingR,
+                        paddingB: paddingB,
+                        paddingL: paddingL,
+                        paddingTTablet: paddingTTablet,
+                        paddingRTablet: paddingRTablet,
+                        paddingBTablet: paddingBTablet,
+                        paddingLTablet: paddingLTablet,
+                        paddingTMobile: paddingTMobile,
+                        paddingRMobile: paddingRMobile,
+                        paddingBMobile: paddingBMobile,
+                        paddingLMobile: paddingLMobile,
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
                         },
-                        onChangePadRight: function onChangePadRight(value) {
-                            return setAttributes({ paddingR: value });
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
                         },
-                        onChangePadBottom: function onChangePadBottom(value) {
-                            return setAttributes({ paddingB: value });
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
                         },
-                        onChangePadLeft: function onChangePadLeft(value) {
-                            return setAttributes({ paddingL: value });
-                        },
-                        showUnits: true,
-                        selectedUnit: lottieStyles[0].paddingU,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveLottieStyles({ paddingU: newvalue });
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
                         }
                     })
                 ),
@@ -51626,7 +52131,7 @@ var edit = function (_Component) {
                 ),
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-lottie-" + block_id + "{", "text-align:" + align + ";", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation  {", "background-color:" + lottieStyles[0].backColor + ";", "opacity : " + lottieStyles[0].backOpacity + ";", "filter: brightness( " + lottieStyles[0].bright + "% ) contrast( " + lottieStyles[0].contrast + "% ) saturate( " + lottieStyles[0].saturation + "% ) blur( " + lottieStyles[0].blur + "px ) hue-rotate( " + lottieStyles[0].hue + "deg );", "border-style : " + lottieStyles[0].borderType + ";", "border-width : " + borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px ;", "border-radius : " + lottieStyles[0].borderRadius + "px;", "border-color : " + lottieStyles[0].borderColor + "; ", "padding-top : " + paddingT + lottieStyles[0].paddingU + ";", "padding-right : " + paddingR + lottieStyles[0].paddingU + ";", "padding-bottom : " + paddingB + lottieStyles[0].paddingU + ";", "padding-left : " + paddingL + lottieStyles[0].paddingU + ";", "transform: rotate(" + rotate + "deg) !important;", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation:hover {", "background-color:" + lottieStyles[0].backHColor + ";", "opacity:" + lottieStyles[0].backHOpacity + ";", "filter: brightness( " + lottieStyles[0].brightH + "% ) contrast( " + lottieStyles[0].contrastH + "% ) saturate( " + lottieStyles[0].saturationH + "% ) blur( " + lottieStyles[0].blurH + "px ) hue-rotate( " + lottieStyles[0].hueH + "deg ) !important;", "}"].join("\n")
+                        __html: ["#premium-lottie-" + block_id + "{", "text-align:" + align + ";", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation  {", "background-color:" + lottieStyles[0].backColor + ";", "opacity : " + lottieStyles[0].backOpacity + ";", "filter: brightness( " + lottieStyles[0].bright + "% ) contrast( " + lottieStyles[0].contrast + "% ) saturate( " + lottieStyles[0].saturation + "% ) blur( " + lottieStyles[0].blur + "px ) hue-rotate( " + lottieStyles[0].hue + "deg );", "border-style : " + lottieStyles[0].borderType + ";", "border-width : " + borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px ;", "border-radius : " + lottieStyles[0].borderRadius + "px;", "border-color : " + lottieStyles[0].borderColor + "; ", "padding-top : " + containerPaddingTop + lottieStyles[0].paddingU + ";", "padding-right : " + containerPaddingRight + lottieStyles[0].paddingU + ";", "padding-bottom : " + containerPaddingBottom + lottieStyles[0].paddingU + ";", "padding-left : " + containerPaddingLeft + lottieStyles[0].paddingU + ";", "transform: rotate(" + rotate + "deg) !important;", "}", "#premium-lottie-" + block_id + "  .premium-lottie-animation:hover {", "background-color:" + lottieStyles[0].backHColor + ";", "opacity:" + lottieStyles[0].backHOpacity + ";", "filter: brightness( " + lottieStyles[0].brightH + "% ) contrast( " + lottieStyles[0].contrastH + "% ) saturate( " + lottieStyles[0].saturationH + "% ) blur( " + lottieStyles[0].blurH + "px ) hue-rotate( " + lottieStyles[0].hueH + "deg ) !important;", "}"].join("\n")
                     }
                 })
             )];
@@ -54406,6 +54911,383 @@ var LottieAttr = {
     }
 };
 exports.default = LottieAttr;
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _premiumPadding = __webpack_require__(18);
+
+var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
+
+var _premiumSizeUnits = __webpack_require__(31);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+var useState = wp.element.useState;
+
+function PremiumResponsivePadding(props) {
+    var showUnits = props.showUnits,
+        selectedUnit = props.selectedUnit,
+        onChangePadSizeUnit = props.onChangePadSizeUnit,
+        paddingTop = props.paddingTop,
+        paddingRight = props.paddingRight,
+        paddingBottom = props.paddingBottom,
+        paddingLeft = props.paddingLeft,
+        paddingTopTablet = props.paddingTopTablet,
+        paddingRightTablet = props.paddingRightTablet,
+        paddingBottomTablet = props.paddingBottomTablet,
+        paddingLeftTablet = props.paddingLeftTablet,
+        paddingTopMobile = props.paddingTopMobile,
+        paddingRightMobile = props.paddingRightMobile,
+        paddingBottomMobile = props.paddingBottomMobile,
+        paddingLeftMobile = props.paddingLeftMobile;
+
+    var _useState = useState('Desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        deviceType = _useState2[0],
+        setDeviceType = _useState2[1];
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        setDeviceType(device);
+    };
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== deviceType) {
+            setDeviceType(theDevice);
+        }
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            setDeviceType(device);
+        };
+    }
+    var devices = ['Desktop', 'Tablet', 'Mobile'];
+    var output = {};
+    output.Mobile = React.createElement(_premiumPadding2.default, {
+        paddingTop: paddingTopMobile,
+        paddingRight: paddingRightMobile,
+        paddingBottom: paddingBottomMobile,
+        paddingLeft: paddingLeftMobile,
+        onChangePadTop: function onChangePadTop(paddingTopMobile) {
+            return props.onChangePaddingTop("mobile", paddingTopMobile);
+        },
+        onChangePadRight: function onChangePadRight(paddingRightMobile) {
+            return props.onChangePaddingRight("mobile", paddingRightMobile);
+        },
+        onChangePadBottom: function onChangePadBottom(paddingBottomMobile) {
+            return props.onChangePaddingBottom("mobile", paddingBottomMobile);
+        },
+        onChangePadLeft: function onChangePadLeft(paddingLeftMobile) {
+            return props.onChangePaddingLeft("mobile", paddingLeftMobile);
+        },
+        showUnits: false,
+        selectedUnit: selectedUnit,
+        onChangePadSizeUnit: onChangePadSizeUnit
+    });
+    output.Tablet = React.createElement(_premiumPadding2.default, {
+
+        paddingTop: paddingTopTablet,
+        paddingRight: paddingRightTablet,
+        paddingBottom: paddingBottomTablet,
+        paddingLeft: paddingLeftTablet,
+        onChangePadTop: function onChangePadTop(paddingTopTablet) {
+            return props.onChangePaddingTop("tablet", paddingTopTablet);
+        },
+        onChangePadRight: function onChangePadRight(paddingRightTablet) {
+            return props.onChangePaddingRight("tablet", paddingRightTablet);
+        },
+        onChangePadBottom: function onChangePadBottom(paddingBottomTablet) {
+            return props.onChangePaddingBottom("tablet", paddingBottomTablet);
+        },
+        onChangePadLeft: function onChangePadLeft(paddingLeftTablet) {
+            return props.onChangePaddingLeft("tablet", paddingLeftTablet);
+        },
+        showUnits: false,
+        selectedUnit: selectedUnit,
+        onChangePadSizeUnit: onChangePadSizeUnit
+    });
+    output.Desktop = React.createElement(_premiumPadding2.default, {
+
+        paddingTop: paddingTop,
+        paddingRight: paddingRight,
+        paddingBottom: paddingBottom,
+        paddingLeft: paddingLeft,
+        onChangePadTop: function onChangePadTop(paddingTop) {
+            return props.onChangePaddingTop("desktop", paddingTop);
+        },
+        onChangePadRight: function onChangePadRight(paddingRight) {
+            return props.onChangePaddingRight("desktop", paddingRight);
+        },
+        onChangePadBottom: function onChangePadBottom(paddingBottom) {
+            return props.onChangePaddingBottom("desktop", paddingBottom);
+        },
+        onChangePadLeft: function onChangePadLeft(paddingLeft) {
+            return props.onChangePaddingLeft("desktop", paddingLeft);
+        },
+        showUnits: false,
+        selectedUnit: selectedUnit,
+        onChangePadSizeUnit: onChangePadSizeUnit
+    });
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    '  ',
+                    __("Padding")
+                ),
+                React.createElement(
+                    'ul',
+                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === deviceType ? ' active' : '';
+                        var icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
+                        return React.createElement(
+                            'li',
+                            { key: key, className: '' + device + activeClass },
+                            React.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                React.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        customSetPreviewDeviceType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                )
+            ),
+            showUnits && React.createElement(_premiumSizeUnits2.default, {
+                activeUnit: selectedUnit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangePadSizeUnit(newValue);
+                }
+            })
+        ),
+        output[deviceType] ? output[deviceType] : output.Desktop
+    );
+}
+exports.default = PremiumResponsivePadding;
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _premiumMargin = __webpack_require__(61);
+
+var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _wp$components = wp.components,
+    Dashicon = _wp$components.Dashicon,
+    TabPanel = _wp$components.TabPanel;
+
+
+function PremiumResponsiveMargin(props) {
+    var directions = props.directions,
+        marginTop = props.marginTop,
+        marginRight = props.marginRight,
+        marginBottom = props.marginBottom,
+        marginLeft = props.marginLeft,
+        marginTopTablet = props.marginTopTablet,
+        marginRightTablet = props.marginRightTablet,
+        marginBottomTablet = props.marginBottomTablet,
+        marginLeftTablet = props.marginLeftTablet,
+        marginTopMobile = props.marginTopMobile,
+        marginRightMobile = props.marginRightMobile,
+        marginBottomMobile = props.marginBottomMobile,
+        marginLeftMobile = props.marginLeftMobile,
+        selectedUnit = props.selectedUnit,
+        showUnits = props.showUnits,
+        onChangeMarSizeUnit = props.onChangeMarSizeUnit;
+
+    var _useState = useState('Desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        deviceType = _useState2[0],
+        setDeviceType = _useState2[1];
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        setDeviceType(device);
+    };
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== deviceType) {
+            setDeviceType(theDevice);
+        }
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            setDeviceType(device);
+        };
+    }
+    var devices = ['Desktop', 'Tablet', 'Mobile'];
+    var output = {};
+    output.Mobile = React.createElement(_premiumMargin2.default, {
+        directions: directions,
+        marginTop: marginTopMobile,
+        marginRight: marginRightMobile,
+        marginBottom: marginBottomMobile,
+        marginLeft: marginLeftMobile,
+        onChangeMarTop: function onChangeMarTop(marginTopMobile) {
+            return props.onChangeMarginTop("mobile", marginTopMobile);
+        },
+        onChangeMarRight: function onChangeMarRight(marginRightMobile) {
+            return props.onChangeMarginRight("mobile", marginRightMobile);
+        },
+        onChangeMarBottom: function onChangeMarBottom(marginBottomMobile) {
+            return props.onChangeMarginBottom("mobile", marginBottomMobile);
+        },
+        onChangeMarLeft: function onChangeMarLeft(marginLeftMobile) {
+            return props.onChangeMarginLeft("mobile", marginLeftMobile);
+        },
+        showUnits: showUnits,
+        selectedUnit: selectedUnit,
+        onChangeMarSizeUnit: onChangeMarSizeUnit
+    });
+    output.Tablet = React.createElement(_premiumMargin2.default, {
+        directions: directions,
+        marginTop: marginTopTablet,
+        marginRight: marginRightTablet,
+        marginBottom: marginBottomTablet,
+        marginLeft: marginLeftTablet,
+        onChangeMarTop: function onChangeMarTop(marginTopTablet) {
+            return props.onChangeMarginTop("tablet", marginTopTablet);
+        },
+        onChangeMarRight: function onChangeMarRight(marginRightTablet) {
+            return props.onChangeMarginRight("tablet", marginRightTablet);
+        },
+        onChangeMarBottom: function onChangeMarBottom(marginBottomTablet) {
+            return props.onChangeMarginBottom("tablet", marginBottomTablet);
+        },
+        onChangeMarLeft: function onChangeMarLeft(marginLeftTablet) {
+            return props.onChangeMarginLeft("tablet", marginLeftTablet);
+        },
+        showUnits: showUnits,
+        selectedUnit: selectedUnit,
+        onChangeMarSizeUnit: onChangeMarSizeUnit
+    });
+    output.Desktop = React.createElement(_premiumMargin2.default, {
+        directions: directions,
+        marginTop: marginTop,
+        marginRight: marginRight,
+        marginBottom: marginBottom,
+        marginLeft: marginLeft,
+        onChangeMarTop: function onChangeMarTop(marginTop) {
+            return props.onChangeMarginTop("desktop", marginTop);
+        },
+        onChangeMarRight: function onChangeMarRight(marginRight) {
+            return props.onChangeMarginRight("desktop", marginRight);
+        },
+        onChangeMarBottom: function onChangeMarBottom(marginBottom) {
+            return props.onChangeMarginBottom("desktop", marginBottom);
+        },
+        onChangeMarLeft: function onChangeMarLeft(marginLeft) {
+            return props.onChangeMarginLeft("desktop", marginLeft);
+        },
+        showUnits: showUnits,
+        selectedUnit: selectedUnit,
+        onChangeMarSizeUnit: onChangeMarSizeUnit
+    });
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    '  ',
+                    __("Margin")
+                ),
+                React.createElement(
+                    'ul',
+                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === deviceType ? ' active' : '';
+                        var icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
+                        return React.createElement(
+                            'li',
+                            { key: key, className: '' + device + activeClass },
+                            React.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                React.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        customSetPreviewDeviceType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                )
+            ),
+            showUnits && React.createElement(PremiumSizeUnits, {
+                activeUnit: selectedUnit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeMarSizeUnit(newValue);
+                }
+            })
+        ),
+        output[deviceType] ? output[deviceType] : output.Desktop
+    );
+}
+exports.default = PremiumResponsiveMargin;
 
 /***/ })
 /******/ ]);

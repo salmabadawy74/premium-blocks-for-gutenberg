@@ -89,7 +89,15 @@ class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
-            backgroundType
+            backgroundType,
+            paddingTTablet,
+            paddingRTablet,
+            paddingBTablet,
+            paddingLTablet,
+            paddingTMobile,
+            paddingRMobile,
+            paddingBMobile,
+            paddingLMobile,
         } = this.props.attributes;
 
         let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -223,6 +231,10 @@ class edit extends Component {
         const prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
         const suffixFontSize = this.getPreviewSize(this.props.deviceType, suffixStyles[0].suffixSize, suffixStyles[0].suffixSizeTablet, suffixStyles[0].suffixSizeMobile);
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
 
         return [
             isSelected && (
@@ -632,7 +644,7 @@ class edit extends Component {
                             onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue })}
                             onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
-                        <PremiumPadding
+                        {/* <PremiumPadding
                             paddingTop={paddingT}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
@@ -644,6 +656,64 @@ class edit extends Component {
                             onChangePadLeft={value => setAttributes({ paddingL: value || 0 })}
                             selectedUnit={containerStyles[0].paddingU}
                             onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingU: newvalue })}
+                        /> */}
+                        <PremiumResponsivePadding
+                            paddingT={paddingT}
+                            paddingR={paddingR}
+                            paddingB={paddingB}
+                            paddingL={paddingL}
+                            paddingTTablet={paddingTTablet}
+                            paddingRTablet={paddingRTablet}
+                            paddingBTablet={paddingBTablet}
+                            paddingLTablet={paddingLTablet}
+                            paddingTMobile={paddingTMobile}
+                            paddingRMobile={paddingRMobile}
+                            paddingBMobile={paddingBMobile}
+                            paddingLMobile={paddingLMobile}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -683,10 +753,10 @@ class edit extends Component {
                         : containerStyles[0].borderWidth + "px",
                     borderRadius: containerStyles[0].borderRadius + "px",
                     borderColor: containerStyles[0].borderColor,
-                    paddingTop: paddingT + containerStyles[0].paddingU,
-                    paddingRight: paddingR + containerStyles[0].paddingU,
-                    paddingBottom: paddingB + containerStyles[0].paddingU,
-                    paddingLeft: paddingL + containerStyles[0].paddingU,
+                    paddingTop: containerPaddingTop + containerStyles[0].paddingU,
+                    paddingRight: containerPaddingRight + containerStyles[0].paddingU,
+                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
+                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingU,
                 }}
             >
                 {iconCheck && (
