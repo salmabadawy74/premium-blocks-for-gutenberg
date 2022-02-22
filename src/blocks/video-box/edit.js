@@ -34,6 +34,7 @@ class edit extends Component {
         super(...arguments);
         this.initVideoBox = this.initVideoBox.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
+        this.videoboxRef = React.createRef()
     }
 
     componentDidMount() {
@@ -54,7 +55,7 @@ class edit extends Component {
     initVideoBox() {
         const { videoBoxId } = this.props.attributes;
         if (!videoBoxId) return null;
-        let videoBox = document.getElementById(videoBoxId),
+        let videoBox = this.videoboxRef.current,
             video, src;
         videoBox.addEventListener("click", () => {
             videoBox.classList.add("video-overlay-false");
@@ -630,6 +631,7 @@ class edit extends Component {
                 </InspectorControls>
             ),
             <div
+                ref={this.videoboxRef}
                 id={videoBoxId}
                 className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 data-type={videoType}

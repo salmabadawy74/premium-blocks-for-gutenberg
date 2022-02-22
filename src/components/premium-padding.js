@@ -12,7 +12,8 @@ class PremiumPadding extends Component {
             bottom: this.props.paddingBottom || 0,
             left: this.props.paddingLeft || 0,
             showUnits: this.props.showUnits || false,
-            unit: this.props.unit || 'px'
+            unit: this.props.unit || 'px',
+            label: this.props.label
         };
         this.defaultValue = {
             isLinked: false,
@@ -51,11 +52,11 @@ class PremiumPadding extends Component {
         }
     }
     render() {
-        const { top, right, bottom, left, showUnits, isLinked, unit } = this.state;
+        const { top, right, bottom, left, showUnits, isLinked, unit, label } = this.state;
         const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;
         return (
             <div className={`premium-spacing-responsive`}>
-                <header className="premium-control-label-container">
+                {  label && <header className="premium-control-label-container">
                     <div className={`premium-slider-title-wrap`}>
                         {__("Padding")}
                     </div>
@@ -67,7 +68,7 @@ class PremiumPadding extends Component {
                             }
                         />
                     )}
-                </header>
+                </header>}
                 <div className={`premium-spacing-responsive-outer-wrapper`}>
                     <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
                         <ul className={`premium-spacing-wrapper`}>

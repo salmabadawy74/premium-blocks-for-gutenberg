@@ -122,9 +122,6 @@ class edit extends Component {
 
     render() {
         const { attributes, setAttributes, className } = this.props;
-
-
-
         const {
             lottieId,
             block_id,
@@ -155,6 +152,14 @@ class edit extends Component {
             borderRight,
             borderBottom,
             borderLeft,
+            paddingTTablet,
+            paddingRTablet,
+            paddingBTablet,
+            paddingLTablet,
+            paddingTMobile,
+            paddingRMobile,
+            paddingBMobile,
+            paddingLMobile,
         } = attributes
 
         let validJsonPath = 'invalid';
@@ -183,7 +188,6 @@ class edit extends Component {
         };
 
         const handleLottieMouseLeave = () => {
-
             this.lottieplayer.current.anim.pause();
         };
 
@@ -223,6 +227,11 @@ class edit extends Component {
             `}
         </style>
         )
+        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+
         return [
             renderCss,
             <InspectorControls>
@@ -483,7 +492,7 @@ class edit extends Component {
                         onChangeColor={(colorValue) => saveLottieStyles({ borderColor: colorValue === undefined ? "transparent" : colorValue, })}
                         onChangeRadius={(newRadius) => saveLottieStyles({ borderRadius: newRadius === undefined ? 0 : newRadius, })}
                     />
-                    <PremiumPadding
+                    {/* <PremiumPadding
                         paddingTop={paddingT}
                         paddingRight={paddingR}
                         paddingBottom={paddingB}
@@ -495,6 +504,64 @@ class edit extends Component {
                         showUnits={true}
                         selectedUnit={lottieStyles[0].paddingU}
                         onChangePadSizeUnit={newvalue => saveLottieStyles({ paddingU: newvalue })}
+                    /> */}
+                    <PremiumResponsivePadding
+                        paddingT={paddingT}
+                        paddingR={paddingR}
+                        paddingB={paddingB}
+                        paddingL={paddingL}
+                        paddingTTablet={paddingTTablet}
+                        paddingRTablet={paddingRTablet}
+                        paddingBTablet={paddingBTablet}
+                        paddingLTablet={paddingLTablet}
+                        paddingTMobile={paddingTMobile}
+                        paddingRMobile={paddingRMobile}
+                        paddingBMobile={paddingBMobile}
+                        paddingLMobile={paddingLMobile}
+                        onChangePaddingTop={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingT: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingTTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingTMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangePaddingRight={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingR: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingRTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingRMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangePaddingBottom={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingB: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingBTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingBMobile: newValue })
+                                }
+                            }
+                        }
+                        onChangePaddingLeft={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingL: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingLTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingLMobile: newValue })
+                                }
+                            }
+                        }
                     />
                 </PanelBody>
                 <PremiumResponsiveTabs
@@ -545,10 +612,10 @@ class edit extends Component {
                             `border-width : ${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px ;`,
                             `border-radius : ${lottieStyles[0].borderRadius}px;`,
                             `border-color : ${lottieStyles[0].borderColor}; `,
-                            `padding-top : ${paddingT}${lottieStyles[0].paddingU};`,
-                            `padding-right : ${paddingR}${lottieStyles[0].paddingU};`,
-                            `padding-bottom : ${paddingB}${lottieStyles[0].paddingU};`,
-                            `padding-left : ${paddingL}${lottieStyles[0].paddingU};`,
+                            `padding-top : ${containerPaddingTop}${lottieStyles[0].paddingU};`,
+                            `padding-right : ${containerPaddingRight}${lottieStyles[0].paddingU};`,
+                            `padding-bottom : ${containerPaddingBottom}${lottieStyles[0].paddingU};`,
+                            `padding-left : ${containerPaddingLeft}${lottieStyles[0].paddingU};`,
                             `transform: rotate(${rotate}deg) !important;`,
                             "}",
                             `#premium-lottie-${block_id}  .premium-lottie-animation:hover {`,
