@@ -175,6 +175,54 @@ const attributes = {
     descPaddingL: {
         type: "number",
         default: 10
-    }
+    },
+    titlePaddingTTablet: {
+        type: "number"
+    },
+    titlePaddingRTablet: {
+        type: "number"
+    },
+    titlePaddingBTablet: {
+        type: "number"
+    },
+    titlePaddingLTablet: {
+        type: "number"
+    },
+    titlePaddingTMobile: {
+        type: "number"
+    },
+    titlePaddingRMobile: {
+        type: "number"
+    },
+    titlePaddingBMobile: {
+        type: "number"
+    },
+    titlePaddingLMobile: {
+        type: "number"
+    },
+    descPaddingTTablet: {
+        type: "number"
+    },
+    descPaddingRTablet: {
+        type: "number"
+    },
+    descPaddingBTablet: {
+        type: "number"
+    },
+    descPaddingLTablet: {
+        type: "number"
+    },
+    descPaddingTMobile: {
+        type: "number"
+    },
+    descPaddingRMobile: {
+        type: "number"
+    },
+    descPaddingBMobile: {
+        type: "number"
+    },
+    descPaddingLMobile: {
+        type: "number"
+    },
 }
 export default attributes;
