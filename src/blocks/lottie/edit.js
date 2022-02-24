@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Lottie from 'react-lottie-with-segments';
 import PremiumFilters from "../../components/premium-filters";
 import PremiumBorder from "../../components/premium-border";
-import PremiumPadding from '../../components/premium-padding';
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
@@ -492,19 +492,7 @@ class edit extends Component {
                         onChangeColor={(colorValue) => saveLottieStyles({ borderColor: colorValue === undefined ? "transparent" : colorValue, })}
                         onChangeRadius={(newRadius) => saveLottieStyles({ borderRadius: newRadius === undefined ? 0 : newRadius, })}
                     />
-                    {/* <PremiumPadding
-                        paddingTop={paddingT}
-                        paddingRight={paddingR}
-                        paddingBottom={paddingB}
-                        paddingLeft={paddingL}
-                        onChangePadTop={value => setAttributes({ paddingT: value })}
-                        onChangePadRight={value => setAttributes({ paddingR: value })}
-                        onChangePadBottom={value => setAttributes({ paddingB: value })}
-                        onChangePadLeft={value => setAttributes({ paddingL: value })}
-                        showUnits={true}
-                        selectedUnit={lottieStyles[0].paddingU}
-                        onChangePadSizeUnit={newvalue => saveLottieStyles({ paddingU: newvalue })}
-                    /> */}
+
                     <PremiumResponsivePadding
                         paddingT={paddingT}
                         paddingR={paddingR}

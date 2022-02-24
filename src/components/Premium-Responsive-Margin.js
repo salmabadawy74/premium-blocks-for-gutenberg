@@ -5,6 +5,9 @@ const {
     Dashicon,
     TabPanel,
 } = wp.components;
+const { useSelect, useDispatch } = wp.data;
+const { useState } = wp.element;
+const { __ } = wp.i18n;
 
 function PremiumResponsiveMargin(props) {
     const {

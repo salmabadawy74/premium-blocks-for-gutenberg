@@ -3,7 +3,6 @@ import { FontAwesomeEnabled } from "../../../assets/js/settings"
 import PremiumTypo from "../../components/premium-typo"
 import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBorder from "../../components/premium-border"
-import PremiumPadding from "../../components/premium-padding"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
@@ -12,13 +11,9 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import RadioComponent from '../../components/radio-control'
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 
-const {
-    PanelBody,
-    SelectControl,
-    TextControl,
-    ToggleControl,
-} = wp.components;
+const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
 const { InspectorControls } = wp.blockEditor;
 
@@ -99,7 +94,6 @@ class edit extends Component {
             paddingBMobile,
             paddingLMobile,
         } = this.props.attributes;
-
         let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
         const ICONS = [
             {
@@ -111,7 +105,6 @@ class edit extends Component {
                 label: __("Image", 'premium-block-for-gutenberg')
             }
         ];
-
         const DIRECTION = [
             {
                 value: "row",
@@ -140,9 +133,6 @@ class edit extends Component {
                 label: __("Dashicon", 'premium-block-for-gutenberg')
             }
         ];
-        const ALIGNS = ["left", "center", "right"];
-        const REVALIGNS = ["right", "center", "left"];
-
         switch (align) {
             case "left":
                 setAttributes({ selfAlign: "flex-start" });
@@ -154,7 +144,6 @@ class edit extends Component {
                 setAttributes({ selfAlign: "flex-end" });
                 break;
         }
-
         const saveNumberStyles = (value) => {
             const newUpdate = numberStyles.map((item, index) => {
                 if (0 === index) {
@@ -166,7 +155,6 @@ class edit extends Component {
                 numberStyles: newUpdate,
             });
         }
-
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -178,7 +166,6 @@ class edit extends Component {
                 titleStyles: newUpdate,
             });
         }
-
         const savePrefixStyle = (value) => {
             const newUpdate = prefixStyles.map((item, index) => {
                 if (0 === index) {
@@ -190,7 +177,6 @@ class edit extends Component {
                 prefixStyles: newUpdate,
             });
         }
-
         const saveSuffixStyle = (value) => {
             const newUpdate = suffixStyles.map((item, index) => {
                 if (0 === index) {
@@ -202,7 +188,6 @@ class edit extends Component {
                 suffixStyles: newUpdate,
             });
         }
-
         const saveContainerStyle = (value) => {
             const newUpdate = containerStyles.map((item, index) => {
                 if (0 === index) {
@@ -215,6 +200,7 @@ class edit extends Component {
             });
         }
         let btnGrad, btnGrad2, btnbg;
+
         if (undefined !== backgroundType && 'gradient' === backgroundType) {
             btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
             btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');

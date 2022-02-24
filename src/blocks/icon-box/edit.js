@@ -4,8 +4,6 @@ import PremiumTypo from "../../components/premium-typo"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import iconsList from "../../components/premium-icons-list"
 import PremiumBorder from "../../components/premium-border"
-import PremiumPadding from "../../components/premium-padding"
-import PremiumMargin from "../../components/premium-margin"
 import PremiumTextShadow from "../../components/premium-text-shadow"
 import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBackground from "../../components/premium-background"
@@ -50,9 +48,7 @@ class edit extends Component {
     }
 
     render() {
-
         const { isSelected, setAttributes, className, clientId: blockId, attributes } = this.props;
-
         const saveContainerStyle = (value) => {
             const newUpdate = containerStyles.map((item, index) => {
                 if (0 === index) {
@@ -82,6 +78,7 @@ class edit extends Component {
             });
             setAttributes({ btnStyles: newUpdate });
         }
+
         const saveDescriptionStyle = (value) => {
             const newUpdate = descStyles.map((item, index) => {
                 if (0 === index) {
@@ -91,6 +88,7 @@ class edit extends Component {
             });
             setAttributes({ descStyles: newUpdate });
         }
+
         const {
             block_id,
             borderIconBox,
@@ -168,6 +166,18 @@ class edit extends Component {
             paddingRMobile,
             paddingBMobile,
             paddingLMobile,
+            btnMarginTTablet,
+            btnMarginBTablet,
+            btnMarginTMobile,
+            btnMarginBMobile,
+            titleMarginTTablet,
+            titleMarginBTablet,
+            titleMarginTMobile,
+            titleMarginBMobile,
+            descMarginTTablet,
+            descMarginBTablet,
+            descMarginTMobile,
+            descMarginBMobile,
         } = attributes;
 
         const imgIcon = [
@@ -283,6 +293,21 @@ class edit extends Component {
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
         const descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
         const buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
+        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+        const containerMarginTop = this.getPreviewSize(this.props.deviceType, marginT, marginTTablet, marginTMobile);
+        const containerMarginRight = this.getPreviewSize(this.props.deviceType, marginR, marginRTablet, marginRMobile);
+        const containerMarginBottom = this.getPreviewSize(this.props.deviceType, marginB, marginBTablet, marginBMobile);
+        const containerMarginLeft = this.getPreviewSize(this.props.deviceType, marginL, marginLTablet, marginLMobile);
+        const titleMarginTop = this.getPreviewSize(this.props.deviceType, titleMarginT, titleMarginTTablet, titleMarginTMobile);
+        const titleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMarginB, titleMarginBTablet, titleMarginBMobile);
+        const descMarginTop = this.getPreviewSize(this.props.deviceType, descMarginT, descMarginTTablet, descMarginTMobile);
+        const descMarginBottom = this.getPreviewSize(this.props.deviceType, descMarginB, descMarginBTablet, descMarginBMobile);
+        const btnMarginTop = this.getPreviewSize(this.props.deviceType, btnMarginT, btnMarginTTablet, btnMarginTMobile);
+        const btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMarginB, btnMarginBTablet, btnMarginBMobile);
+
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -468,12 +493,37 @@ class edit extends Component {
                                 onChangehHorizontal={newValue => saveTitleStyle({ titleShadowHorizontal: newValue || 0 })}
                                 onChangeVertical={newValue => saveTitleStyle({ titleShadowVertical: newValue || 0 })}
                             />
-                            <PremiumMargin
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={titleMarginT}
                                 marginBottom={titleMarginB}
-                                onChangeMarTop={value => setAttributes({ titleMarginT: value || 0 })}
-                                onChangeMarBottom={value => setAttributes({ titleMarginB: value || 0 })}
+                                marginTopTablet={titleMarginTTablet}
+                                marginBottomTablet={titleMarginBTablet}
+                                marginTopMobile={titleMarginTMobile}
+                                marginBottomMobile={titleMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ titleMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ titleMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ titleMarginTMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ titleMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ titleMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ titleMarginBMobile: newValue })
+                                        }
+                                    }
+                                }
+
                             />
                         </PanelBody>
                     )}
@@ -504,12 +554,37 @@ class edit extends Component {
                                 onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
                                 onChangeFamily={(fontFamily) => saveDescriptionStyle({ descFont: fontFamily })}
                             />
-                            <PremiumMargin
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={descMarginT}
                                 marginBottom={descMarginB}
-                                onChangeMarTop={value => setAttributes({ descMarginT: value || 0 })}
-                                onChangeMarBottom={value => setAttributes({ descMarginB: value || 0 })}
+                                marginTopTablet={descMarginTTablet}
+                                marginBottomTablet={descMarginBTablet}
+                                marginTopMobile={descMarginTMobile}
+                                marginBottomMobile={descMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ descMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ descMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ descMarginTMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ descMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ descMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ descMarginBMobile: newValue })
+                                        }
+                                    }
+                                }
+
                             />
                         </PanelBody>
                     )}
@@ -789,9 +864,9 @@ class edit extends Component {
                             paddingBottomMobile={paddingBMobile}
                             paddingLeftMobile={paddingLMobile}
                             showUnits={true}
-                            selectedUnit={paddingU}
+                            selectedUnit={containerStyles[0].paddingU}
                             onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingU: newvalue })
+                                saveContainerStyle({ paddingU: newvalue })
                             }
                             onChangePaddingTop={
                                 (device, newValue) => {
@@ -981,14 +1056,14 @@ class edit extends Component {
                         : containerStyles[0].borderWidth + "px",
                     borderRadius: containerStyles[0].borderRadius + "px",
                     borderColor: containerStyles[0].borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT + containerStyles[0].paddingU,
-                    paddingRight: paddingR + containerStyles[0].paddingU,
-                    paddingBottom: paddingB + containerStyles[0].paddingU,
-                    paddingLeft: paddingL + containerStyles[0].paddingU,
+                    marginTop: containerMarginTop,
+                    marginRight: containerMarginRight,
+                    marginBottom: containerMarginBottom,
+                    marginLeft: containerMarginLeft,
+                    paddingTop: containerPaddingTop + containerStyles[0].paddingU,
+                    paddingRight: containerPaddingRight + containerStyles[0].paddingU,
+                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
+                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingU,
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                     backgroundColor: containerStyles[0].backColor,
                     backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
@@ -1061,8 +1136,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__title_wrap`}
                             style={{
-                                marginTop: titleMarginT,
-                                marginBottom: titleMarginB
+                                marginTop: titleMarginTop,
+                                marginBottom: titleMarginBottom
                             }}
                         >
                             <RichText
@@ -1090,8 +1165,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__desc_wrap`}
                             style={{
-                                marginTop: descMarginT,
-                                marginBottom: descMarginB
+                                marginTop: descMarginTop,
+                                marginBottom: descMarginBottom
                             }}
                         >
                             <RichText
@@ -1116,8 +1191,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
-                                marginTop: btnMarginT,
-                                marginBottom: btnMarginB
+                                marginTop: btnMarginTop,
+                                marginBottom: btnMarginBottom
                             }}
                         >
                             <RichText

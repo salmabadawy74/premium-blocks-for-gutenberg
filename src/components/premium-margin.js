@@ -15,7 +15,8 @@ class PremiumMargin extends Component {
             left: this.props.marginLeft || 0,
             directions: this.props.directions,
             showUnits: this.props.showUnits || false,
-            unit: this.props.unit || 'px'
+            unit: this.props.unit || 'px',
+            label: this.props.label
         };
         this.defaultValue = {
             isLinked: false,
@@ -77,7 +78,8 @@ class PremiumMargin extends Component {
             directions,
             showUnits,
             isLinked,
-            unit
+            unit,
+            label,
         } = this.state;
 
         const { onChangeMarSizeUnit = () => { }, selectedUnit } = this.props;

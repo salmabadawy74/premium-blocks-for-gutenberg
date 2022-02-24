@@ -338,5 +338,65 @@ const attributes = {
     paddingL: {
         type: "number"
     },
+    marginTTablet: {
+        type: "number"
+    },
+    marginRTablet: {
+        type: "number"
+    },
+    marginBTablet: {
+        type: "number"
+    },
+    marginLTablet: {
+        type: "number"
+    },
+    marginTMobile: {
+        type: "number"
+    },
+    marginRMobile: {
+        type: "number"
+    },
+    marginBMobile: {
+        type: "number"
+    },
+    marginLMobile: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
+    btnMarginTTablet: {
+        type: "number"
+    },
+    btnMarginBTablet: {
+        type: "number"
+    },
+    btnMarginTMobile: {
+        type: "number"
+    },
+    btnMarginBMobile: {
+        type: "number"
+    },
 }
 export default attributes;

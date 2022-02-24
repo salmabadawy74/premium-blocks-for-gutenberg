@@ -24,6 +24,20 @@ const {
 const { InspectorControls, URLInput } = wp.blockEditor;
 
 const { withSelect } = wp.data
+function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+    if (device === 'Mobile') {
+        if (undefined !== mobileSize && '' !== mobileSize) {
+            return mobileSize;
+        } else if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    } else if (device === 'Tablet') {
+        if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    }
+    return desktopSize;
+}
 
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
@@ -174,7 +188,22 @@ const edit = props => {
     }
 
     const mainClasses = classnames(className, "premium-icon");
-
+    const iconPaddingTop = getPreviewSize(props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+    const iconPaddingRight = getPreviewSize(props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+    const iconPaddingBottom = getPreviewSize(props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+    const iconPaddingLeft = getPreviewSize(props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+    const iconMarginTop = getPreviewSize(props.deviceType, marginT, marginTTablet, marginTMobile);
+    const iconMarginRight = getPreviewSize(props.deviceType, marginR, marginRTablet, marginRMobile);
+    const iconMarginBottom = getPreviewSize(props.deviceType, marginB, marginBTablet, marginBMobile);
+    const iconMarginLeft = getPreviewSize(props.deviceType, marginL, marginLTablet, marginLMobile);
+    const wrapPaddingTop = getPreviewSize(props.deviceType, wrapPaddingT, wrapPaddingTTablet, wrapPaddingTMobile);
+    const wrapPaddingRight = getPreviewSize(props.deviceType, wrapPaddingR, wrapPaddingRTablet, wrapPaddingRMobile);
+    const wrapPaddingBottom = getPreviewSize(props.deviceType, wrapPaddingB, wrapPaddingBTablet, wrapPaddingBMobile);
+    const wrapPaddingLeft = getPreviewSize(props.deviceType, wrapPaddingL, wrapPaddingLTablet, wrapPaddingLMobile);
+    const wrapMarginTop = getPreviewSize(props.deviceType, wrapMarginT, wrapMarginTTablet, wrapMarginTMobile);
+    const wrapMarginRight = getPreviewSize(props.deviceType, wrapMarginR, wrapMarginRTablet, wrapMarginRMobile);
+    const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMarginB, wrapMarginBTablet, wrapMarginBMobile);
+    const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMarginL, wrapMarginLTablet, wrapMarginLMobile);
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
@@ -607,14 +636,14 @@ const edit = props => {
                 boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
                     0}px ${containerStyles[0].wrapShadowBlur ||
                     0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
-                paddingTop: wrapPaddingT,
-                paddingRight: wrapPaddingR,
-                paddingBottom: wrapPaddingB,
-                paddingLeft: wrapPaddingL,
-                marginTop: wrapMarginT,
-                marginRight: wrapMarginR,
-                marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL
+                paddingTop: wrapPaddingTop,
+                paddingRight: wrapPaddingRight,
+                paddingBottom: wrapPaddingBottom,
+                paddingLeft: wrapPaddingLeft,
+                marginTop: wrapMarginTop,
+                marginRight: wrapMarginRight,
+                marginBottom: wrapMarginBottom,
+                marginLeft: wrapMarginLeft
             }}
         >
             {iconType === "fa" && 1 != FontAwesomeEnabled && (
@@ -629,14 +658,14 @@ const edit = props => {
                         color: iconStyles[0].iconColor || "#6ec1e4",
                         backgroundColor: iconStyles[0].iconBack,
                         fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
+                        paddingTop: iconPaddingTop + paddingU,
+                        paddingRight: iconPaddingRight + paddingU,
+                        paddingBottom: iconPaddingBottom + paddingU,
+                        paddingLeft: iconPaddingLeft + paddingU,
+                        marginTop: iconMarginTop,
+                        marginRight: iconMarginRight,
+                        marginBottom: iconMarginBottom,
+                        marginLeft: iconMarginLeft,
                         borderStyle: iconStyles[0].borderType,
                         borderWidth: iconBorder
                             ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
