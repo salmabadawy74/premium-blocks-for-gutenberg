@@ -96,7 +96,6 @@ function PremiumResponsivePadding(props) {
     );
     output.Desktop = (
         <PremiumPadding
-
             paddingTop={paddingTop}
             paddingRight={paddingRight}
             paddingBottom={paddingBottom}
@@ -122,9 +121,7 @@ function PremiumResponsivePadding(props) {
         <div>
             <header>
                 <div className={`premium-slider-title-wrap`}>
-
                     <span className="customize-control-title premium-control-title">  {__("Padding")}</span>
-
                     <ul className="premium-responsive-control-btns premium-responsive-slider-btns">
                         {devices.map((device, key) => {
                             const activeClass = device === deviceType ? ' active' : '';

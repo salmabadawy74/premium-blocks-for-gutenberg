@@ -422,7 +422,6 @@ class edit extends Component {
                                             value={descStyles[0].videoDescText}
                                             onChange={newText => saveDescritionStyle({ videoDescText: newText })}
                                         />
-
                                         <PremiumTypo
                                             components={[
                                                 "responsiveSize",
@@ -552,7 +551,6 @@ class edit extends Component {
                                 if ("hover" === tab.name) {
                                     tabout = (
                                         <Fragment>
-
                                             <AdvancedPopColorControl
                                                 label={__("Icon Hover Color", 'premium-block-for-gutenberg')}
                                                 colorValue={playStyles[0].playHoverColor}

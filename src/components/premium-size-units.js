@@ -2,18 +2,14 @@
 
 export default function PremiumSizeUnits(props) {
     const { activeUnit, units, onChangeSizeUnit = unit => { } } = props;
-
     let sizeUnits = ["px", "em", "%"];
-
     if (undefined !== units) {
         sizeUnits = units;
     }
-
     return (
         <ul className="premium-slider-units">
             {sizeUnits.map((unit, index) => (
                 <li
-
                     className={
                         "single-unit " +
                         (unit === activeUnit &&

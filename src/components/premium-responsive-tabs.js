@@ -16,7 +16,6 @@ function PremiumResponsiveTabs(props) {
     } = props;
 
     return (
-
         <PanelBody
             title={__("Responsive")}
             className="premium-panel-body"
@@ -27,21 +26,17 @@ function PremiumResponsiveTabs(props) {
                 checked={Desktop}
                 onChange={onChangeDesktop}
             />
-
             <ToggleControl
                 label={__('Hide in Tablet')}
                 checked={Tablet}
                 onChange={onChangeTablet}
             />
-
             <ToggleControl
                 label={__('Hide in Mobile')}
                 checked={Mobile}
                 onChange={onChangeMobile}
             />
-
         </PanelBody>
-
     )
 }
 export default PremiumResponsiveTabs;

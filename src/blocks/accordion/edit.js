@@ -3,9 +3,10 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumRangeControl from "../../components/premium-range-control";
+// import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
+import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 
 const { Component, Fragment } = wp.element;
 
@@ -484,7 +485,14 @@ class PremiumAccordion extends Component {
                             value={arrowStyles[0].arrowPos}
                             onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
-                        <PremiumRangeControl
+                        {/* <PremiumRangeControl
+                            label={__("Size", 'premium-block-for-gutenberg')}
+                            value={arrowStyles[0].arrowSize}
+                            onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
+                            showUnit={false}
+                            defaultValue={20}
+                        /> */}
+                        <ResponsiveSingleRangeControl
                             label={__("Size", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowSize}
                             onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
@@ -503,7 +511,7 @@ class PremiumAccordion extends Component {
                             colorDefault={''}
                             onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
                         />
-                        <PremiumRangeControl
+                        {/* <PremiumRangeControl
                             label={__("Border Radius", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowRadius}
                             onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
@@ -511,13 +519,27 @@ class PremiumAccordion extends Component {
                             units={['px']}
                             defaultValue={0}
                             showUnit={false}
+                        /> */}
+                        <ResponsiveSingleRangeControl
+                            label={__("Border Radius", 'premium-block-for-gutenberg')}
+                            value={arrowStyles[0].arrowRadius}
+                            onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
+                            defaultValue={0}
+                            showUnit={false}
                         />
-                        <PremiumRangeControl
+                        {/* <PremiumRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowPadding}
                             onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
                             unit={'px'}
                             units={['px']}
+                            defaultValue={0}
+                            showUnit={false}
+                        /> */}
+                        <ResponsiveSingleRangeControl
+                            label={__("Padding", 'premium-block-for-gutenberg')}
+                            value={arrowStyles[0].arrowPadding}
+                            onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
                             defaultValue={0}
                             showUnit={false}
                         />
@@ -578,7 +600,6 @@ class PremiumAccordion extends Component {
                                 />
                             </Fragment>
                         )}
-
                         <PremiumBorder
                             borderType={descStyles[0].descBorder}
                             borderWidth={descBorderWidth}
@@ -601,7 +622,6 @@ class PremiumAccordion extends Component {
                             onChangeColor={(colorValue) => SaveDescStyles({ descBorderColor: colorValue })}
                             onChangeRadius={(newrRadius) => SaveDescStyles({ descBorderRadius: newrRadius })}
                         />
-
                         {"text" === contentType && (
                             <PremiumTextShadow
                                 color={textShadowColor}

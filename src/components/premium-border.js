@@ -23,11 +23,8 @@ export default class PremiumBorder extends Component {
     }
 
     onChangeInput(event) {
-
         let { top, right, bottom, left, isLinked } = this.state;
-
         let { name, value } = event.target;
-
         if (isLinked) {
             top = right = bottom = left = parseInt(value) || 0;
             this.setState({ top, right, bottom, left }, () => {
@@ -39,7 +36,6 @@ export default class PremiumBorder extends Component {
                 this.props.onChangeWidth({ top, right, bottom, left });
             });
         }
-
     }
 
     onButtonClick() {
@@ -61,27 +57,27 @@ export default class PremiumBorder extends Component {
         const BORDER = [
             {
                 value: "none",
-                label: "None",
+                label: __("None", 'premium-block-for-gutenberg'),
             },
             {
                 value: "solid",
-                label: "Solid",
+                label: __("Solid", 'premium-block-for-gutenberg'),
             },
             {
                 value: "double",
-                label: "Double",
+                label: __("Double", 'premium-block-for-gutenberg'),
             },
             {
                 value: "dotted",
-                label: "Dotted",
+                label: __("Dotted", 'premium-block-for-gutenberg'),
             },
             {
                 value: "dashed",
-                label: "Dashed",
+                label: __("Dashed", 'premium-block-for-gutenberg'),
             },
             {
                 value: "groove",
-                label: "Groove",
+                label: __("Groove", 'premium-block-for-gutenberg'),
             },
         ];
 
