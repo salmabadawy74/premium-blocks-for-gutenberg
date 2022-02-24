@@ -39,15 +39,6 @@ export default function PremiumTextShadow(props) {
                     )}
                     renderContent={() => (
                         <Fragment>
-                            {/* <Fragment>
-                                <p>{__("Shadow Color")}</p>
-                                <ColorPicker
-                                    color={color}
-                                    onChangeComplete={onChangeColor}
-                                    disableAlpha
-                                    onResetClick={onResetClick}
-                                />
-                            </Fragment> */}
                             <ResponsiveSingleRangeControl
                                 label={__("Blur")}
                                 value={blur}
@@ -77,12 +68,7 @@ export default function PremiumTextShadow(props) {
                     )}
                 />
             </div>
-            {/* <Button
-                className="premium-control-toggle-btn reset-btn"
-                contentClassName="premium-control-toggle-content"
-                isSmall
-                onClick={onResetClick}
-            ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button> */}
+
         </div>
     );
 }

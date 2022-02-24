@@ -25,13 +25,10 @@ class PremiumMargin extends Component {
             bottom: 0,
             left: 0,
             directions: this.props.directions,
-
         }
-
         this.onInputChange = this.onInputChange.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
         this.changeFunction = this.changeFunction.bind(this);
-
     }
 
     onButtonClick() {

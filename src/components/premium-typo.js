@@ -4,7 +4,7 @@ import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
 import FontsList from "./typography/fontList";
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { SelectControl, Popover, TextControl } = wp.components;
+const { SelectControl, Popover } = wp.components;
 function fuzzysearch(needle, haystack) {
     var hlen = haystack.length
     var nlen = needle.length
@@ -23,7 +23,6 @@ function fuzzysearch(needle, haystack) {
         }
         return false
     }
-
     return true
 }
 export default class PremiumTypo extends Component {
@@ -36,7 +35,6 @@ export default class PremiumTypo extends Component {
                 Tablet: this.props.fontSizeTablet || '',
                 Mobile: this.props.fontSizeMobile || ''
             }
-
         }
         this.state = {
             fontFamily: this.props.fontFamily || 'Default',
@@ -54,8 +52,6 @@ export default class PremiumTypo extends Component {
             style: this.props.style,
             device: 'Desktop',
         }
-
-
     }
     componentDidUpdate(prevProps) {
         let previewDevice = wp.data &&
@@ -67,10 +63,8 @@ export default class PremiumTypo extends Component {
             : 'Desktop';
         if (this.state.device !== previewDevice) {
             this.setState({ device: previewDevice })
-
         }
     }
-
     render() {
         const {
             components,
@@ -87,7 +81,6 @@ export default class PremiumTypo extends Component {
             onChangeLine = () => { },
             onResetClick = () => { },
         } = this.props;
-
         const {
             fontFamily,
             line,
@@ -104,22 +97,20 @@ export default class PremiumTypo extends Component {
             style,
             device,
         } = this.state;
-
         const STYLE = [
             {
                 value: "normal",
-                label: "Normal",
+                label: __("Normal", 'premium-block-for-gutenberg'),
             },
             {
                 value: "italic",
-                label: "Italic",
+                label: __("Italic", 'premium-block-for-gutenberg'),
             },
             {
                 value: "oblique",
-                label: "Oblique",
+                label: __("Oblique", 'premium-block-for-gutenberg'),
             },
         ];
-
         const fonts = [
             { value: "Default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
@@ -127,7 +118,6 @@ export default class PremiumTypo extends Component {
             { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
         ]
-
         let fontWeight = ""
         Object.keys(googleFonts).map((k, v) => {
             fonts.push(
@@ -141,14 +131,12 @@ export default class PremiumTypo extends Component {
         if (fontWeight === "") {
             fontWeight = fonts[0].weight
         }
-
         const toggleVisible = (v) => {
             this.setState({
                 isVisible: true,
                 currentView: v
             })
         };
-
         const toggleClose = () => {
             if (this.state.isVisible === true) {
                 this.setState({
@@ -157,7 +145,6 @@ export default class PremiumTypo extends Component {
                 });
             }
         };
-
         const renderVariations = fonts.map((item, index) => {
             if (item.value == fontFamily) {
                 return ((item.weight || []).map((weights, i) => {
@@ -169,7 +156,6 @@ export default class PremiumTypo extends Component {
                 }))
             }
         })
-
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = components.includes("responsiveSize") ? size[device] : size
         return (

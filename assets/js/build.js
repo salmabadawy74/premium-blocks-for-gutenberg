@@ -905,7 +905,6 @@ var PremiumBorder = function (_Component) {
                 name = _event$target.name,
                 value = _event$target.value;
 
-
             if (isLinked) {
                 top = right = bottom = left = parseInt(value) || 0;
                 this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
@@ -953,22 +952,22 @@ var PremiumBorder = function (_Component) {
 
             var BORDER = [{
                 value: "none",
-                label: "None"
+                label: __("None", 'premium-block-for-gutenberg')
             }, {
                 value: "solid",
-                label: "Solid"
+                label: __("Solid", 'premium-block-for-gutenberg')
             }, {
                 value: "double",
-                label: "Double"
+                label: __("Double", 'premium-block-for-gutenberg')
             }, {
                 value: "dotted",
-                label: "Dotted"
+                label: __("Dotted", 'premium-block-for-gutenberg')
             }, {
                 value: "dashed",
-                label: "Dashed"
+                label: __("Dashed", 'premium-block-for-gutenberg')
             }, {
                 value: "groove",
-                label: "Groove"
+                label: __("Groove", 'premium-block-for-gutenberg')
             }];
 
             var defauultValues = {
@@ -1193,8 +1192,7 @@ var __ = wp.i18n.__;
 var Component = wp.element.Component;
 var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
-    Popover = _wp$components.Popover,
-    TextControl = _wp$components.TextControl;
+    Popover = _wp$components.Popover;
 
 function fuzzysearch(needle, haystack) {
     var hlen = haystack.length;
@@ -1214,7 +1212,6 @@ function fuzzysearch(needle, haystack) {
         }
         return false;
     }
-
     return true;
 }
 
@@ -1250,7 +1247,6 @@ var PremiumTypo = function (_Component) {
             style: _this.props.style,
             device: 'Desktop'
         };
-
         return _this;
     }
 
@@ -1308,20 +1304,17 @@ var PremiumTypo = function (_Component) {
                 style = _state.style,
                 device = _state.device;
 
-
             var STYLE = [{
                 value: "normal",
-                label: "Normal"
+                label: __("Normal", 'premium-block-for-gutenberg')
             }, {
                 value: "italic",
-                label: "Italic"
+                label: __("Italic", 'premium-block-for-gutenberg')
             }, {
                 value: "oblique",
-                label: "Oblique"
+                label: __("Oblique", 'premium-block-for-gutenberg')
             }];
-
             var fonts = [{ value: "Default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
-
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
                 fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight, google: true });
@@ -1332,14 +1325,12 @@ var PremiumTypo = function (_Component) {
             if (fontWeight === "") {
                 fontWeight = fonts[0].weight;
             }
-
             var toggleVisible = function toggleVisible(v) {
                 _this2.setState({
                     isVisible: true,
                     currentView: v
                 });
             };
-
             var toggleClose = function toggleClose() {
                 if (_this2.state.isVisible === true) {
                     _this2.setState({
@@ -1348,7 +1339,6 @@ var PremiumTypo = function (_Component) {
                     });
                 }
             };
-
             var renderVariations = fonts.map(function (item, index) {
                 if (item.value == fontFamily) {
                     return (item.weight || []).map(function (weights, i) {
@@ -1366,7 +1356,6 @@ var PremiumTypo = function (_Component) {
                     });
                 }
             });
-
             var linearFonts = fonts.filter(function (family) {
                 return fuzzysearch(search.toLowerCase(), family['value'].toLowerCase());
             });
@@ -1695,7 +1684,6 @@ var RadioComponent = function RadioComponent(_ref) {
         label = _ref.label,
         choices = _ref.choices;
 
-
     var HandleChange = function HandleChange(newVal) {
         onChange(newVal);
         setState(newVal);
@@ -1986,7 +1974,6 @@ function PremiumBoxShadow(props) {
                 colorDefault: '',
                 onColorChange: onChangeColor,
                 disableReset: true
-
             }),
             React.createElement(Dropdown, {
                 className: "premium-control-toggle-btn",
@@ -2299,13 +2286,10 @@ function PremiumSizeUnits(props) {
         _props$onChangeSizeUn = props.onChangeSizeUnit,
         onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
 
-
     var sizeUnits = ["px", "em", "%"];
-
     if (undefined !== units) {
         sizeUnits = units;
     }
-
     return React.createElement(
         "ul",
         { className: "premium-slider-units" },
@@ -2313,7 +2297,6 @@ function PremiumSizeUnits(props) {
             return React.createElement(
                 "li",
                 {
-
                     className: "single-unit " + (unit === activeUnit && "active"),
                     onClick: function onClick() {
                         return onChangeSizeUnit(unit);
@@ -2476,7 +2459,6 @@ function PremiumResponsivePadding(props) {
         onChangePadSizeUnit: onChangePadSizeUnit
     });
     output.Desktop = React.createElement(_premiumPadding2.default, {
-
         paddingTop: paddingTop,
         paddingRight: paddingRight,
         paddingBottom: paddingBottom,
@@ -3531,13 +3513,10 @@ var PremiumMargin = function (_Component) {
             bottom: 0,
             left: 0,
             directions: _this.props.directions
-
         };
-
         _this.onInputChange = _this.onInputChange.bind(_this);
         _this.onButtonClick = _this.onButtonClick.bind(_this);
         _this.changeFunction = _this.changeFunction.bind(_this);
-
         return _this;
     }
 
@@ -8370,10 +8349,6 @@ var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumRangeControl = __webpack_require__(218);
-
-var _premiumRangeControl2 = _interopRequireDefault(_premiumRangeControl);
-
 var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
@@ -8382,6 +8357,10 @@ var _radioControl = __webpack_require__(11);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
+var _singleRangeControl = __webpack_require__(1);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8389,6 +8368,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import PremiumRangeControl from "../../components/premium-range-control";
+
 
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -8906,7 +8887,7 @@ var PremiumAccordion = function (_Component) {
                             return saveArrowStyles({ arrowPos: newEffect });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Size", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowSize,
                         onChange: function onChange(newValue) {
@@ -8931,25 +8912,21 @@ var PremiumAccordion = function (_Component) {
                             return saveArrowStyles({ arrowBack: newValue });
                         }
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Border Radius", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowRadius,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue });
                         },
-                        unit: 'px',
-                        units: ['px'],
                         defaultValue: 0,
                         showUnit: false
                     }),
-                    React.createElement(_premiumRangeControl2.default, {
+                    React.createElement(_singleRangeControl2.default, {
                         label: __("Padding", 'premium-block-for-gutenberg'),
                         value: arrowStyles[0].arrowPadding,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue });
                         },
-                        unit: 'px',
-                        units: ['px'],
                         defaultValue: 0,
                         showUnit: false
                     })
@@ -13737,268 +13714,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 218 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-exports.default = PremiumRangeControl;
-
-var _responsive = __webpack_require__(219);
-
-var _responsive2 = _interopRequireDefault(_responsive);
-
-var _premiumSizeUnits = __webpack_require__(23);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var useState = wp.element.useState;
-var RangeControl = wp.components.RangeControl;
-var useInstanceId = wp.compose.useInstanceId;
-function PremiumRangeControl(_ref) {
-    var label = _ref.label,
-        onChange = _ref.onChange,
-        onChangeTablet = _ref.onChangeTablet,
-        onChangeMobile = _ref.onChangeMobile,
-        _ref$value = _ref.value,
-        value = _ref$value === undefined ? '' : _ref$value,
-        _ref$className = _ref.className,
-        className = _ref$className === undefined ? '' : _ref$className,
-        _ref$step = _ref.step,
-        step = _ref$step === undefined ? 1 : _ref$step,
-        _ref$max = _ref.max,
-        max = _ref$max === undefined ? 100 : _ref$max,
-        _ref$min = _ref.min,
-        min = _ref$min === undefined ? 0 : _ref$min,
-        _ref$units = _ref.units,
-        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
-        _ref$beforeIcon = _ref.beforeIcon,
-        beforeIcon = _ref$beforeIcon === undefined ? '' : _ref$beforeIcon,
-        _ref$help = _ref.help,
-        help = _ref$help === undefined ? '' : _ref$help,
-        _ref$unit = _ref.unit,
-        unit = _ref$unit === undefined ? 'px' : _ref$unit,
-        defaultValue = _ref.defaultValue,
-        onChangeUnit = _ref.onChangeUnit,
-        showUnit = _ref.showUnit,
-        responsive = _ref.responsive;
-
-    var onChangInput = function onChangInput(event) {
-        if (event.target.value === '') {
-            onChange(undefined);
-            return;
-        }
-        var newValue = Number(event.target.value);
-        if (newValue === '') {
-            updateValue(undefined);
-            return;
-        }
-        if (min < -0.1) {
-            if (newValue > max) {
-                updateValue(max);
-            } else if (newValue < min && newValue !== '-') {
-                updateValue(min);
-            } else {
-                updateValue(newValue);
-            }
-        } else {
-            if (newValue > max) {
-                updateValue(max);
-            } else if (newValue < -0.1) {
-                updateValue(min);
-            } else {
-                updateValue(newValue);
-            }
-        }
-    };
-
-    var _useState = useState('desktop'),
-        _useState2 = _slicedToArray(_useState, 2),
-        device = _useState2[0],
-        setDevice = _useState2[1];
-
-    var sliderValue = responsive ? value[device] : value;
-
-    var updateValue = function updateValue(value) {
-        device === "desktop" ? onChange(value) : device === "tablet" ? onChangeTablet(value) : onChangeMobile(value);
-    };
-
-    var id = useInstanceId(PremiumRangeControl, 'inspector-premium-range');
-    return React.createElement(
-        'div',
-        { className: 'premium-blocks-range-control' },
-        React.createElement(
-            'header',
-            null,
-            React.createElement(
-                'div',
-                { className: 'premium-slider-title-wrap' },
-                responsive ? React.createElement(_responsive2.default, { label: label, onChange: function onChange(value) {
-                        return setDevice(value);
-                    } }) : React.createElement(
-                    'span',
-                    { className: 'customize-control-title premium-control-title' },
-                    label
-                )
-            ),
-            showUnit && React.createElement(_premiumSizeUnits2.default, {
-                units: units,
-                activeUnit: unit,
-                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                    return onChangeUnit(newValue);
-                }
-            })
-        ),
-        React.createElement(
-            'div',
-            { className: 'wrapper' },
-            React.createElement(
-                'div',
-                { className: 'input-field-wrapper active' },
-                React.createElement(RangeControl, {
-                    beforeIcon: beforeIcon,
-                    value: sliderValue,
-                    onChange: function onChange(newVal) {
-                        return updateValue(newVal);
-                    },
-                    min: min,
-                    max: max,
-                    step: step,
-                    help: help,
-                    withInputField: false,
-                    className: 'premium-range-value-input'
-                }),
-                React.createElement(
-                    'div',
-                    { className: 'kemet_range_value' },
-                    React.createElement('input', {
-                        value: sliderValue,
-                        onChange: onChangInput,
-                        min: min,
-                        max: max,
-                        id: id,
-                        step: step,
-                        type: 'number',
-                        className: 'components-text-control__input'
-                    })
-                )
-            ),
-            React.createElement('button', { className: 'premium-slider-reset', disabled: JSON.stringify(sliderValue) === JSON.stringify(defaultValue), onClick: function onClick(e) {
-                    e.preventDefault();
-                    updateValue(defaultValue);
-                } })
-        )
-    );
-}
-
-/***/ }),
-/* 219 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Responsive = function (_Component) {
-    _inherits(Responsive, _Component);
-
-    function Responsive(props) {
-        _classCallCheck(this, Responsive);
-
-        var _this = _possibleConstructorReturn(this, (Responsive.__proto__ || Object.getPrototypeOf(Responsive)).call(this, props));
-
-        _this.state = {
-            view: 'desktop'
-        };
-        return _this;
-    }
-
-    _createClass(Responsive, [{
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            var label = this.props.label;
-
-            var devices = ['desktop', 'tablet', 'mobile'];
-            var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType().toLowerCase() : 'desktop';
-            return _react2.default.createElement(
-                _react.Fragment,
-                null,
-                label ? _react2.default.createElement(
-                    'span',
-                    { className: 'customize-control-title premium-control-title' },
-                    label
-                ) : null,
-                _react2.default.createElement(
-                    'ul',
-                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
-                    devices.map(function (device, key) {
-                        var activeClass = device === previewDevice ? ' active' : '';
-                        var icon = device === 'mobile' ? 'smartphone' : device;
-                        return _react2.default.createElement(
-                            'li',
-                            { key: key, className: '' + device + activeClass },
-                            _react2.default.createElement(
-                                'button',
-                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
-                                _react2.default.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
-                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        _this2.changeViewType(nextDevice);
-                                    } })
-                            )
-                        );
-                    })
-                ),
-                this.props.children
-            );
-        }
-    }, {
-        key: 'changeViewType',
-        value: function changeViewType(device) {
-            this.setState({ view: device });
-            wp.customize && wp.customize.previewedDevice(device);
-            if (wp.data && wp.data.dispatch && wp.data.dispatch('core/edit-post') && wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType) {
-                wp.data.dispatch('core/edit-post').__experimentalSetPreviewDeviceType(device.replace(/\w/, function (c) {
-                    return c.toUpperCase();
-                }));
-            }
-            this.props.onChange(device);
-        }
-    }]);
-
-    return Responsive;
-}(_react.Component);
-
-exports.default = Responsive;
-
-/***/ }),
+/* 218 */,
+/* 219 */,
 /* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -4,7 +4,6 @@ const { __ } = wp.i18n;
 const { ButtonGroup, Button } = wp.components;
 
 const RadioComponent = ({ value, onChange, label, choices }) => {
-
     const HandleChange = (newVal) => {
         onChange(newVal);
         setState(newVal);
@@ -12,7 +11,6 @@ const RadioComponent = ({ value, onChange, label, choices }) => {
     let defaultVal = '';
     value = value ? value : defaultVal;
     const [state, setState] = useState(value);
-
     const renderButtons = () => {
         let currentChoices = choices
         return <Fragment>

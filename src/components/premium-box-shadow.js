@@ -41,7 +41,6 @@ export default function PremiumBoxShadow(props) {
                     colorDefault={''}
                     onColorChange={onChangeColor}
                     disableReset={true}
-
                 />
                 <Dropdown
                     className="premium-control-toggle-btn"
@@ -54,14 +53,6 @@ export default function PremiumBoxShadow(props) {
                     )}
                     renderContent={() => (
                         <Fragment>
-                            {/* <Fragment>
-                                <p>{__("Shadow Color")}</p>
-                                <ColorPicker
-                                    color={color}
-                                    onChangeComplete={onChangeColor}
-                                    disableAlpha={withAlpha ? false : true}
-                                />
-                            </Fragment> */}
                             <ResponsiveSingleRangeControl
                                 label={__("Horizontal")}
                                 value={horizontal}
