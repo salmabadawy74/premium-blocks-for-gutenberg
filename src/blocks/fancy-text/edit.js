@@ -112,21 +112,13 @@ class edit extends Component {
     }
 
     componentDidMount() {
-
-        // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
-
         this.props.setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-
-
         this.renderFancyText();
     }
 
     componentDidUpdate() {
         const { effect } = this.props.attributes;
-
         if (effect == "typing" && this.typed != undefined) {
             this.typed.destroy();
         }
@@ -169,8 +161,6 @@ class edit extends Component {
 
     componentWillUnmount() {
         const { effect } = this.props.attributes;
-        // Make sure to destroy Typed instance on unmounting
-        // to prevent memory leaks
         effect === "typing" ? this.typed.destroy() : "";
     }
 
@@ -258,9 +248,7 @@ class edit extends Component {
 
         const onSortEndSingle = ({ oldIndex, newIndex }) => {
             let arrayItem = repeaterFancyText.map((cont) => cont);
-
             const sortedArray = arrayMove(arrayItem, oldIndex, newIndex);
-
             setAttributes({ repeaterFancyText: sortedArray });
         };
 

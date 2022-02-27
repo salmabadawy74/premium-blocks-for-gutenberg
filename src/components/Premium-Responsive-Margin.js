@@ -1,10 +1,7 @@
 
 import PremiumMargin from './premium-margin';
+import PremiumSizeUnits from "./premium-size-units";
 
-const {
-    Dashicon,
-    TabPanel,
-} = wp.components;
 const { useSelect, useDispatch } = wp.data;
 const { useState } = wp.element;
 const { __ } = wp.i18n;
@@ -113,7 +110,7 @@ function PremiumResponsiveMargin(props) {
         />
     )
     return (
-        <div>
+        <div className="premium-blocks-range-control">
             <header>
                 <div className={`premium-slider-title-wrap`}>
                     <span className="customize-control-title premium-control-title">  {__("Margin")}</span>

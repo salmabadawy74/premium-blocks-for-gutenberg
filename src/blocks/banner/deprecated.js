@@ -324,6 +324,14 @@ const deprecatedContent = [
                         paddingU: attributes.paddingU,
                     }
                 ],
+                paddingTTablet: "",
+                paddingRTablet: "",
+                paddingBTablet: " ",
+                paddingLTablet: "",
+                paddingTMobile: "",
+                paddingRMobile: "",
+                paddingBMobile: "",
+                paddingLMobile: ""
             }
             console.log(Object.assign(attributes, newAttributes))
             return Object.assign(attributes, newAttributes)

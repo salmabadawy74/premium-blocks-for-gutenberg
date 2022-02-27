@@ -3,7 +3,6 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-// import PremiumRangeControl from "../../components/premium-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
 import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
@@ -58,6 +57,7 @@ class PremiumAccordion extends Component {
         clearTimeout(isAccUpdated);
         isAccUpdated = setTimeout(this.initAccordion, 500);
     }
+
     initAccordion() {
         const { accordionId } = this.props.attributes;
         if (!this.props.attributes.accordionId) return null;
@@ -69,6 +69,7 @@ class PremiumAccordion extends Component {
             title.nextSibling.classList.toggle("premium-accordion__desc_close");
         });
     }
+
     render() {
         const { isSelected, setAttributes, className } = this.props;
 
@@ -202,6 +203,7 @@ class PremiumAccordion extends Component {
                 return item;
             });
         };
+
         const titlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePaddingT, titlePaddingTTablet, titlePaddingTMobile);
         const titlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
         const titlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
@@ -485,13 +487,6 @@ class PremiumAccordion extends Component {
                             value={arrowStyles[0].arrowPos}
                             onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
-                        {/* <PremiumRangeControl
-                            label={__("Size", 'premium-block-for-gutenberg')}
-                            value={arrowStyles[0].arrowSize}
-                            onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
-                            showUnit={false}
-                            defaultValue={20}
-                        /> */}
                         <ResponsiveSingleRangeControl
                             label={__("Size", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowSize}
@@ -511,15 +506,7 @@ class PremiumAccordion extends Component {
                             colorDefault={''}
                             onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
                         />
-                        {/* <PremiumRangeControl
-                            label={__("Border Radius", 'premium-block-for-gutenberg')}
-                            value={arrowStyles[0].arrowRadius}
-                            onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
-                            unit={'px'}
-                            units={['px']}
-                            defaultValue={0}
-                            showUnit={false}
-                        /> */}
+
                         <ResponsiveSingleRangeControl
                             label={__("Border Radius", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowRadius}
@@ -527,15 +514,7 @@ class PremiumAccordion extends Component {
                             defaultValue={0}
                             showUnit={false}
                         />
-                        {/* <PremiumRangeControl
-                            label={__("Padding", 'premium-block-for-gutenberg')}
-                            value={arrowStyles[0].arrowPadding}
-                            onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
-                            unit={'px'}
-                            units={['px']}
-                            defaultValue={0}
-                            showUnit={false}
-                        /> */}
+
                         <ResponsiveSingleRangeControl
                             label={__("Padding", 'premium-block-for-gutenberg')}
                             value={arrowStyles[0].arrowPadding}

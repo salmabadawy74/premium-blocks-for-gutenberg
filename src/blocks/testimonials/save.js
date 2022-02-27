@@ -63,10 +63,6 @@ const save = props => {
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
                 backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                paddingTop: paddingTop + containerStyles[0].paddingUnit,
-                paddingBottom: paddingBottom + containerStyles[0].paddingUnit,
-                paddingLeft: paddingLeft + containerStyles[0].paddingUnit,
-                paddingRight: paddingRight + containerStyles[0].paddingUnit
             }}
         >
             <div className={`premium-testimonial__container`}>

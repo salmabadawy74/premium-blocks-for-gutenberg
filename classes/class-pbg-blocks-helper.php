@@ -426,6 +426,14 @@ class PBG_Blocks_Helper {
                 'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+            register_block_type(
+			'premium/container',
+			array(
+				'render_callback' => array( $this, 'get_section_css' ),
+                'editor_style'    => 'premium-blocks-editor-css',
+                'editor_script'   => 'pbg-blocks-js',
+			)
+		);
 	}
 	/**
 	 * Add Premium Blocks category to Blocks Categories
@@ -2473,6 +2481,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySize'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
 			}
 		}
+        // Container Style
+        if(isset( $attr['paddingTop']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-top', ( $attr['paddingTop'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingRight']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-right', ( $attr['paddingRight'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingBottom']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-bottom', ( $attr['paddingBottom'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingLeft']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector('#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-left', ( $attr['paddingLeft'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
 		$css->start_media_query( $media_query['tablet'] );
 		// Author Style FontSize Tablet.
 		if ( isset( $attr['authorStyles'] ) ) {
@@ -2495,6 +2520,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySizeTablet'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
 			}
 		}
+        // Container Style Tablet
+        if(isset( $attr['paddingTTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-top', ( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingRTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-right', ( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingBTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-bottom', ( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingLTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector('#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		// Author Style FontSize Mobile.
@@ -2518,6 +2560,162 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySizeMobile'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
 			}
 		}
+        // Container Style Mobile
+        if(isset( $attr['paddingTMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-top', ( $attr['paddingTMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingRMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-right', ( $attr['paddingRMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingBMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-bottom', ( $attr['paddingBMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingLMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector('#premium-testimonial-' . $unique_id );
+            $css->add_property( 'padding-left', ( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+		$css->stop_media_query();
+		return $css->css_output();
+	}
+
+    /**
+	 * Get Section Block CSS
+	 *
+	 * Return Frontend CSS for Section.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $id block ID.
+	 */
+    public function get_section_css( $attributes, $content ) {
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+
+		}
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			$css = $this->get_section_css_style( $attributes, $unique_id );
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
+	}
+	public function get_section_css_style( $attr, $unique_id ) {
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		if(isset( $attr['paddingTop']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-top', ( $attr['paddingTop'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingRight']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-right', ( $attr['paddingRight'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingBottom']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-bottom', ( $attr['paddingBottom'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingLeft']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-left', ( $attr['paddingLeft'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['marginTop']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-top', ( $attr['marginTop'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginRight']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-right', ( $attr['marginRight'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginBottom']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-bottom', ( $attr['marginBottom'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginLeft']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-left', ( $attr['marginLeft'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+		$css->start_media_query( $media_query['tablet'] );
+		if(isset( $attr['paddingTTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-top', ( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingRTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-right', ( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingBTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-bottom', ( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingLTablet']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['marginTTablet']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-top', ( $attr['marginTTablet'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginRTablet']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-right', ( $attr['marginRTablet'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginBTablet']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-bottom', ( $attr['marginBTablet'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginLTablet']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-left', ( $attr['marginLTablet'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
+		if(isset( $attr['paddingTMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-top', ( $attr['paddingTMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingRMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-right', ( $attr['paddingRMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingBMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-bottom', ( $attr['paddingBMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['paddingLMobile']) && isset($attr['containerStyles'][0]['paddingUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'padding-left', ( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+        }
+        if(isset( $attr['marginTMobile']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-top', ( $attr['marginTMobile'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginRMobile']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-right', ( $attr['marginRMobile'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginBMobile']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-bottom', ( $attr['marginBMobile'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
+        if(isset( $attr['marginLMobile']) && isset($attr['containerStyles'][0]['marginUnit'])){
+            $css->set_selector( '.premium-container' );
+            $css->add_property( 'margin-left', ( $attr['marginLMobile'] . $attr['containerStyles'][0]['marginUnit'] ) );
+        }
 		$css->stop_media_query();
 		return $css->css_output();
 	}

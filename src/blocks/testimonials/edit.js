@@ -4,7 +4,7 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumPadding from "../../components/premium-padding";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
@@ -75,7 +75,15 @@ class edit extends Component {
             paddingRight,
             paddingBottom,
             paddingLeft,
-            backgroundType
+            backgroundType,
+            paddingTTablet,
+            paddingRTablet,
+            paddingBTablet,
+            paddingLTablet,
+            paddingTMobile,
+            paddingRMobile,
+            paddingBMobile,
+            paddingLMobile,
         } = this.props.attributes;
 
         const RADIUS = [
@@ -165,7 +173,10 @@ class edit extends Component {
         const authorFontSize = this.getPreviewSize(this.props.deviceType, authorStyles[0].authorSize, authorStyles[0].authorSizeTablet, authorStyles[0].authorSizeMobile);
         const authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);
         const testimonalFontSize = this.getPreviewSize(this.props.deviceType, contentStyle[0].bodySize, contentStyle[0].bodySizeTablet, contentStyle[0].bodySizeMobile);
-
+        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingTop, paddingTTablet, paddingTMobile);
+        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingRight, paddingRTablet, paddingRMobile);
+        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingLeft, paddingLTablet, paddingLMobile);
+        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingLeft, paddingLTablet, paddingLMobile);
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -449,7 +460,7 @@ class edit extends Component {
                             onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue })}
                             onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
-                        <PremiumPadding
+                        {/* <PremiumPadding
                             paddingTop={paddingTop}
                             paddingRight={paddingRight}
                             paddingBottom={paddingBottom}
@@ -461,7 +472,69 @@ class edit extends Component {
                             showUnits={true}
                             selectedUnit={containerStyles[0].paddingUnit}
                             onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
+                        /> */}
+                        <PremiumResponsivePadding
+                            paddingTop={paddingTop}
+                            paddingRight={paddingRight}
+                            paddingBottom={paddingBottom}
+                            paddingLeft={paddingLeft}
+                            paddingTopTablet={paddingTTablet}
+                            paddingRightTablet={paddingRTablet}
+                            paddingBottomTablet={paddingBTablet}
+                            paddingLeftTablet={paddingLTablet}
+                            paddingTopMobile={paddingTMobile}
+                            paddingRightMobile={paddingRMobile}
+                            paddingBottomMobile={paddingBMobile}
+                            paddingLeftMobile={paddingLMobile}
+                            showUnits={true}
+                            selectedUnit={containerStyles[0].paddingUnit}
+                            onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
+
                     </PanelBody>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}
@@ -484,10 +557,10 @@ class edit extends Component {
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                    paddingTop: paddingTop + containerStyles[0].paddingUnit,
-                    paddingBottom: paddingBottom + containerStyles[0].paddingUnit,
-                    paddingLeft: paddingLeft + containerStyles[0].paddingUnit,
-                    paddingRight: paddingRight + containerStyles[0].paddingUnit
+                    paddingTop: containerPaddingTop + containerStyles[0].paddingUnit,
+                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingUnit,
+                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingUnit,
+                    paddingRight: containerPaddingRight + containerStyles[0].paddingUnit
                 }}
             >
                 <div className={`premium-testimonial__container`}>

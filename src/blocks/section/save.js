@@ -71,14 +71,6 @@ const save = props => {
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
                 backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                marginTop: marginTop + containerStyles[0].marginUnit,
-                marginBottom: marginBottom + containerStyles[0].marginUnit,
-                marginLeft: marginLeft + containerStyles[0].marginUnit,
-                marginRight: marginRight + containerStyles[0].marginUnit,
-                paddingTop: paddingTop + containerStyles[0].paddingUnit,
-                paddingBottom: paddingBottom + containerStyles[0].paddingUnit,
-                paddingLeft: paddingLeft + containerStyles[0].paddingUnit,
-                paddingRight: paddingRight + containerStyles[0].paddingUnit,
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
             }}
         >

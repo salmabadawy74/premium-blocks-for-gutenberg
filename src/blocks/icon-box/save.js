@@ -82,14 +82,6 @@ const save = props => {
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                marginTop: marginT,
-                marginRight: marginR,
-                marginBottom: marginB,
-                marginLeft: marginL,
-                paddingTop: paddingT + containerStyles[0].paddingU,
-                paddingRight: paddingR + containerStyles[0].paddingU,
-                paddingBottom: paddingB + containerStyles[0].paddingU,
-                paddingLeft: paddingL + containerStyles[0].paddingU,
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                 backgroundColor: containerStyles[0].backColor,
                 backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
@@ -152,10 +144,6 @@ const save = props => {
                 {titleChecked && titleText && (
                     <div
                         className={`premium-icon-box__title_wrap`}
-                        style={{
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName={titleStyles[0].titleTag.toLowerCase()}
@@ -177,10 +165,6 @@ const save = props => {
                 {descChecked && descText && (
                     <div
                         className={`premium-icon-box__desc_wrap`}
-                        style={{
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName="p"
@@ -198,10 +182,6 @@ const save = props => {
                 {btnChecked && btnText && (
                     <div
                         className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-                        style={{
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName="a"

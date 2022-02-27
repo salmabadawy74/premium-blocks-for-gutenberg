@@ -60,11 +60,7 @@ const save = props => {
                             ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
                             : titleBorderWidth + "px",
                         borderRadius: titleStyles[0].titleBorderRadius + "px",
-                        borderColor: titleStyles[0].titleBorderColor,
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL
+                        borderColor: titleStyles[0].titleBorderColor
                     }}
                 >
                     <div className={`premium-accordion__title`}>
@@ -115,10 +111,7 @@ const save = props => {
                             : descBorderWidth + "px",
                         borderRadius: descStyles[0].descBorderRadius + "px",
                         borderColor: descStyles[0].descBorderColor,
-                        paddingTop: descPaddingT,
-                        paddingRight: descPaddingR,
-                        paddingBottom: descPaddingB,
-                        paddingLeft: descPaddingL
+
                     }}
                 >
                     {"text" === contentType && (

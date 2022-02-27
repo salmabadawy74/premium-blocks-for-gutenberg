@@ -231,7 +231,15 @@ const deprecated = [
                         borderRadius: attributes.borderRadius,
                         paddingU: attributes.paddingU,
                     }
-                ]
+                ],
+                paddingTTablet: '',
+                paddingRTablet: '',
+                paddingBTablet: '',
+                paddingLTablet: '',
+                paddingTMobile: '',
+                paddingRMobile: '',
+                paddingBMobile: '',
+                paddingLMobile: '',
             }
             return Object.assign(attributes, newAttributes)
         },

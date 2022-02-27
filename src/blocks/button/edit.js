@@ -7,20 +7,9 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
-const {
-    PanelBody,
-    SelectControl,
-    ToggleControl,
-    TabPanel,
-} = wp.components;
+const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
-const {
-    InspectorControls,
-    AlignmentToolbar,
-    BlockControls,
-    RichText,
-    URLInput,
-} = wp.blockEditor;
+const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
 const { withSelect } = wp.data
 export class edit extends Component {
     constructor() {
@@ -277,6 +266,7 @@ export class edit extends Component {
                             fontSizeMobile={textStyles[0].textSizeMobile}
                             fontSizeTablet={textStyles[0].textSizeTablet}
                             fontFamily={textStyles[0].textFontFamily}
+
                             weight={textStyles[0].textWeight}
                             style={textStyles[0].textStyle}
                             spacing={textStyles[0].textLetter}

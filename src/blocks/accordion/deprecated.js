@@ -291,7 +291,32 @@ const deprecated = [
                         descPaddingL: attributes.descPaddingL
                     }
 
-                ]
+                ],
+                titlePaddingTTablet: "0",
+                titlePaddingRTablet: "0",
+                titlePaddingBTablet: "0",
+                titlePaddingLTablet: "0",
+                titlePaddingTMobile: "0",
+                titlePaddingRMobile: "0",
+                titlePaddingBMobile: "0",
+                titlePaddingLMobile: "0",
+                arrowPaddingTTablet: "0",
+                arrowPaddingRTablet: "0",
+                arrowPaddingBTablet: "0",
+                arrowPaddingLTablet: "0",
+                arrowPaddingTMobile: "0",
+                arrowPaddingRMobile: "0",
+                arrowPaddingBMobile: "0",
+                arrowPaddingLMobile: "0",
+                descPaddingTTablet: "0",
+                descPaddingRTablet: "0",
+                descPaddingBTablet: "0",
+                descPaddingLTablet: "0",
+                descPaddingTMobile: "0",
+                descPaddingRMobile: "0",
+                descPaddingBMobile: "0",
+                descPaddingLMobile: "0",
+
 
             }
             return Object.assign(attributes, newAttributes)

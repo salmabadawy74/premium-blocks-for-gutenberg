@@ -630,19 +630,7 @@ class edit extends Component {
                             onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue })}
                             onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
-                        {/* <PremiumPadding
-                            paddingTop={paddingT}
-                            paddingRight={paddingR}
-                            paddingBottom={paddingB}
-                            paddingLeft={paddingL}
-                            showUnits={true}
-                            onChangePadTop={value => setAttributes({ paddingT: value || 0 })}
-                            onChangePadRight={value => setAttributes({ paddingR: value || 0 })}
-                            onChangePadBottom={value => setAttributes({ paddingB: value || 0 })}
-                            onChangePadLeft={value => setAttributes({ paddingL: value || 0 })}
-                            selectedUnit={containerStyles[0].paddingU}
-                            onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingU: newvalue })}
-                        /> */}
+
                         <PremiumResponsivePadding
                             paddingT={paddingT}
                             paddingR={paddingR}
