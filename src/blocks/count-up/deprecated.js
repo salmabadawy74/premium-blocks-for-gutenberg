@@ -409,6 +409,14 @@ const deprecatedContent = [
                     }
                 ],
                 backgroundType: 'solid',
+                paddingTTablet: '',
+                paddingRTablet: '',
+                paddingBTablet: '',
+                paddingLTablet: '',
+                paddingTMobile: '',
+                paddingRMobile: '',
+                paddingBMobile: '',
+                paddingLMobile: '',
             }
             return Object.assign(attributes, newAttributes)
         },

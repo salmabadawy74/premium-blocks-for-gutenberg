@@ -81,10 +81,6 @@ const save = props => {
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                paddingTop: paddingT + containerStyles[0].paddingU,
-                paddingRight: paddingR + containerStyles[0].paddingU,
-                paddingBottom: paddingB + containerStyles[0].paddingU,
-                paddingLeft: paddingL + containerStyles[0].paddingU,
             }}
         >
             {iconCheck && (

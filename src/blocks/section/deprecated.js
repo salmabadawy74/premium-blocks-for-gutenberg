@@ -227,7 +227,23 @@ const deprecatedContent = [
                         gradientPosition: 'center center'
                     }
                 ],
-                backgroundType: 'solid'
+                backgroundType: 'solid',
+                marginTTablet: '',
+                marginRTablet: '',
+                marginBTablet: '',
+                marginLTablet: '',
+                marginTMobile: '',
+                marginRMobile: '',
+                marginBMobile: '',
+                marginLMobile: '',
+                paddingTTablet: '',
+                paddingRTablet: '',
+                paddingBTablet: '',
+                paddingLTablet: '',
+                paddingTMobile: '',
+                paddingRMobile: '',
+                paddingLMobile: '',
+                paddingBMobile: ''
             }
             return Object.assign(attributes, newAttributes)
         },

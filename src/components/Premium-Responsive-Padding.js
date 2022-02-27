@@ -118,7 +118,7 @@ function PremiumResponsivePadding(props) {
         />
     );
     return (
-        <div>
+        <div className={'premium-blocks-range-control'}>
             <header>
                 <div className={`premium-slider-title-wrap`}>
                     <span className="customize-control-title premium-control-title">  {__("Padding")}</span>

@@ -230,99 +230,7 @@ const attributes = {
         default: false
     }
 }
-const new_Attributes = {
-    authorStyles: {
-        type: 'array',
-        default: [
-            {
-                authorTag: "H3",
-                authorColor: '',
-                authorSize: '',
-                authorSizeUnit: 'px',
-                authorSizeMobile: '',
-                authorSizeTablet: '',
-                authorLetter: '',
-                authorStyle: '',
-                authorUpper: false,
-                authorWeight: 500,
-                authorComTag: "H4",
-            }
-        ]
-    },
-    contentStyle: {
-        type: "array",
-        default: [
-            {
-                bodySizeUnit: 'px',
-                bodySize: '',
-                bodySizeMobile: '',
-                bodySizeTablet: '',
-                bodyColor: '',
-                bodyLine: '',
-                bodyTop: '',
-                bodyBottom: '',
-            }
-        ]
 
-    },
-    companyStyles: {
-        type: "array",
-        default: [
-            {
-                authorComTag: 'H4',
-                authorComSizeUnit: 'px',
-                authorComColor: '',
-                authorComSize: '',
-                authorComSizeMobile: '',
-                authorComSizeTablet: '',
-                dashColor: '',
-                urlCheck: false,
-                urlText: '',
-                urlTarget: false,
-
-            }
-        ]
-    },
-    quoteStyles: {
-        type: "array",
-        default: [
-            {
-                quotSize: '',
-                quotColor: '',
-                quotOpacity: 100,
-
-            }
-        ]
-    },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                backOpacity: 1,
-                containerBack: '',
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                paddingUnit: 'px',
-                gradientColorOne: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }
-        ]
-    },
-}
 
 const deprecatedContent = [
     {
@@ -403,7 +311,15 @@ const deprecatedContent = [
                         gradientPosition: 'center center'
                     }
                 ],
-                backgroundType: 'solid'
+                backgroundType: 'solid',
+                paddingTTablet: '',
+                paddingRTablet: '',
+                paddingBTablet: '',
+                paddingLTablet: '',
+                paddingTMobile: '',
+                paddingRMobile: '',
+                paddingBMobile: '',
+                paddingLMobile: '',
             }
             return Object.assign(attributes, newAttributes)
         },

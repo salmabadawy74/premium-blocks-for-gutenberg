@@ -458,9 +458,7 @@ const attributes = {
         default: "1"
     },
 }
-const new_attributes = {
 
-}
 
 
 const deprecatedContent = [
@@ -584,7 +582,35 @@ const deprecatedContent = [
                         gradientAngle: '180',
                         gradientPosition: 'center center'
                     }
-                ]
+                ],
+                marginTTablet: '',
+                marginRTablet: '',
+                marginBTablet: '',
+                marginLTablet: '',
+                marginTMobile: '',
+                marginRMobile: '',
+                marginBMobile: '',
+                marginLMobile: '',
+                paddingTTablet: '',
+                paddingRTablet: '',
+                paddingBTablet: '',
+                paddingLTablet: '',
+                paddingTMobile: '',
+                paddingRMobile: '',
+                paddingBMobile: '',
+                paddingLMobile: '',
+                btnMarginTTablet: '',
+                btnMarginBTablet: '',
+                btnMarginTMobile: '',
+                btnMarginBMobile: '',
+                titleMarginTTablet: '',
+                titleMarginBTablet: '',
+                titleMarginTMobile: '',
+                titleMarginBMobile: '',
+                descMarginTTablet: '',
+                descMarginBTablet: '',
+                descMarginTMobile: '',
+                descMarginBMobile: '',
             }
 
             return Object.assign(attributes, newAttributes)

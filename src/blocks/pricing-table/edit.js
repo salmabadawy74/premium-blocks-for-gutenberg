@@ -14,14 +14,7 @@ const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
 
-const {
-    PanelBody,
-    SelectControl,
-    TextControl,
-    ToggleControl,
-    Dropdown,
-    Button
-} = wp.components;
+const { PanelBody, SelectControl, TextControl, ToggleControl, Dropdown, Button } = wp.components;
 
 const {
     BlockControls,
