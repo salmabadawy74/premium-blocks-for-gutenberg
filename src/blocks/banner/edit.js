@@ -515,18 +515,23 @@ export class edit extends Component {
                             onChangePosition={newValue => containerStyle({ containerShadowPosition: newValue })}
                         />
                         <PremiumResponsivePadding
-                            paddingT={paddingT}
-                            paddingR={paddingR}
-                            paddingB={paddingB}
-                            paddingL={paddingL}
-                            paddingTTablet={paddingTTablet}
-                            paddingRTablet={paddingRTablet}
-                            paddingBTablet={paddingBTablet}
-                            paddingLTablet={paddingLTablet}
-                            paddingTMobile={paddingTMobile}
-                            paddingRMobile={paddingRMobile}
-                            paddingBMobile={paddingBMobile}
-                            paddingLMobile={paddingLMobile}
+                            paddingTop={paddingT}
+                            paddingRight={paddingR}
+                            paddingBottom={paddingB}
+                            paddingLeft={paddingL}
+                            paddingTopTablet={paddingTTablet}
+                            paddingRightTablet={paddingRTablet}
+                            paddingBottomTablet={paddingBTablet}
+                            paddingLeftTablet={paddingLTablet}
+                            paddingTopMobile={paddingTMobile}
+                            paddingRightMobile={paddingRMobile}
+                            paddingBottomMobile={paddingBMobile}
+                            paddingLeftMobile={paddingLMobile}
+                            selectedUnit={containerStyles[0].paddingU}
+                            showUnits={true}
+                            onChangePadSizeUnit={newvalue =>
+                                containerStyle({ paddingU: newvalue })
+                            }
                             onChangePaddingTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
