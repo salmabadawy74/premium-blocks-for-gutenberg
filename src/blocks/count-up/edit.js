@@ -5,7 +5,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBorder from "../../components/premium-border"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 const { __ } = wp.i18n;

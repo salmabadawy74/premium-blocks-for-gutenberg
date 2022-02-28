@@ -7,7 +7,7 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 

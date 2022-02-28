@@ -2,7 +2,7 @@ import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';

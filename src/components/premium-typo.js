@@ -1,6 +1,6 @@
 import googleFonts from "./premium-fonts";
-import ResponsiveRangeControl from "./RangeControl /responsive-range-control";
-import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
+import ResponsiveRangeControl from "./RangeControl/responsive-range-control";
+import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 import FontsList from "./typography/fontList";
 const { __ } = wp.i18n;
 const { Component } = wp.element;

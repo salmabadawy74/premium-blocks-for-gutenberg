@@ -4,7 +4,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 
@@ -1263,7 +1263,7 @@ class PremiumPricingTable extends Component {
                                     alignSelf: priceStyles[0].slashV
                                 }}
                             >
-                                { priceStyles[0].slashPrice}
+                                {priceStyles[0].slashPrice}
                             </strike>
                         )}
                         {priceStyles[0].currPrice && (
@@ -1276,7 +1276,7 @@ class PremiumPricingTable extends Component {
                                     alignSelf: priceStyles[0].currV
                                 }}
                             >
-                                { priceStyles[0].currPrice}
+                                {priceStyles[0].currPrice}
                             </span>
                         )}
                         {priceStyles[0].valPrice && (
@@ -1289,7 +1289,7 @@ class PremiumPricingTable extends Component {
                                     alignSelf: priceStyles[0].valV
                                 }}
                             >
-                                { priceStyles[0].valPrice}
+                                {priceStyles[0].valPrice}
                             </span>
                         )}
                         {priceStyles[0].divPrice && (
@@ -1302,7 +1302,7 @@ class PremiumPricingTable extends Component {
                                     alignSelf: priceStyles[0].divV
                                 }}
                             >
-                                { priceStyles[0].divPrice}
+                                {priceStyles[0].divPrice}
                             </span>
                         )}
                         {priceStyles[0].durPrice && (
@@ -1315,7 +1315,7 @@ class PremiumPricingTable extends Component {
                                     alignSelf: priceStyles[0].durV
                                 }}
                             >
-                                { priceStyles[0].durPrice}
+                                {priceStyles[0].durPrice}
                             </span>
                         )}
                     </div>

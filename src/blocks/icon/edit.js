@@ -8,7 +8,7 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
 import RadioComponent from '../../components/radio-control';
