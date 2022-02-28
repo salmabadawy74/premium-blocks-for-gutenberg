@@ -1,3 +1,4 @@
+const { __ } = wp.i18n;
 const attributes = {
     block_id: {
         type: "string"
@@ -26,91 +27,13 @@ const attributes = {
         type: "string",
         default: "column"
     },
-    numberSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    numberSize: {
-        type: "number",
-        default: 30
-    },
-    numberSizeTablet: {
-        type: "number"
-    },
-    numberSizeMobile: {
-        type: "number"
-    },
-    numberColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    numberWeight: {
-        type: "number",
-        default: 900
-    },
     prefix: {
         type: "boolean",
         default: true
     },
-    prefixTxt: {
-        type: "string",
-        default: "Prefix"
-    },
-    prefixSize: {
-        type: "number",
-        default: 20
-    },
-    prefixSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    prefixSizeTablet: {
-        type: "number"
-    },
-    prefixSizeMobile: {
-        type: "number"
-    },
-    prefixColor: {
-        type: "string"
-    },
-    prefixWeight: {
-        type: "number"
-    },
-    prefixGap: {
-        type: "number",
-        default: 2
-    },
     suffix: {
         type: "boolean",
         default: true
-    },
-    suffixTxt: {
-        type: "string",
-        default: "Suffix"
-    },
-    suffixSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    suffixSize: {
-        type: "number",
-        default: 20
-    },
-    suffixSizeTablet: {
-        type: "number"
-    },
-    suffixSizeMobile: {
-        type: 'number'
-    },
-    suffixColor: {
-        type: "string"
-    },
-    suffixWeight: {
-        type: "number"
-    },
-    suffixGap: {
-        type: "number",
-        default: 2
     },
     icon: {
         type: "string",
@@ -152,152 +75,15 @@ const attributes = {
     },
     titleTxt: {
         type: "string",
-        default: "Premium Count Up"
-    },
-    titleSize: {
-        type: "number",
-        default: 20
-    },
-    titleSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    titleSizeTablet: {
-        type: "number"
-    },
-    titleSizeMobile: {
-        type: "number"
-    },
-    titleSpacing: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleT: {
-        type: "number",
-        default: 1
-    },
-    titleB: {
-        type: "number",
-        default: 1
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
+        default: __("Premium Count Up")
     },
     faIcon: {
         type: "string",
         default: "dashicons-clock"
     },
-    containerBack: {
-        type: "string"
-    },
-    containerOpacity: {
-        type: "number",
-        default: "1"
-    },
-    shadowColor: {
-        type: "object",
-        default: {}
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    backgroundImageID: {
-        type: "string"
-    },
-    backgroundImageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    borderRadius: {
-        type: "number",
-        default: "0"
-    },
-    borderColor: {
-        type: "string"
-    },
-    titleFamily: {
-        type: "string"
-    },
     counterFamily: {
-        type: "string"
-    },
-    prefixFamily: {
-        type: "string"
-    },
-    suffixFamily: {
-        type: "string"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
+        type: "string",
+        default: __('Default')
     },
     hideDesktop: {
         type: 'boolean',
@@ -310,7 +96,163 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
-    }
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
+    numberStyles: {
+        type: "array",
+        default: [
+            {
+                numberSizeUnit: "px",
+                numberSize: 30,
+                numberSizeTablet: '',
+                numberSizeMobile: '',
+                numberColor: "#6ec1e4",
+                numberWeight: '',
+            }
+        ]
+    },
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+                titleFamily: __('Default'),
+                titleSize: 20,
+                titleSizeUnit: 'px',
+                titleSizeTablet: '',
+                titleSizeMobile: '',
+                titleSpacing: '',
+                titleStyle: '',
+                titleUpper: false,
+                titleColor: '',
+                titleT: 1,
+                titleB: 1,
+                titleColor: '',
+                titleWeight: '',
+            }
+        ]
+    },
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                containerBack: '',
+                containerOpacity: 1,
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
+                backgroundSize: 'auto',
+                fixed: false,
+                borderType: 'none',
+                borderWidth: 1,
+                borderRadius: 0,
+                borderColor: '',
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+                shadowPosition: '',
+                paddingU: '',
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }
+        ]
+    },
+    borderTop: {
+        type: 'number',
+        default: '0'
+    },
+    borderRight: {
+        type: 'number',
+        default: '0'
+    },
+    borderBottom: {
+        type: 'number',
+        default: '0'
+    },
+    borderLeft: {
+        type: 'number',
+        default: '0'
+    },
+    paddingT: {
+        type: 'number',
+        default: '0'
+    },
+    paddingR: {
+        type: 'number',
+        default: '0'
+    },
+    paddingB: {
+        type: 'number',
+        default: '0'
+    },
+    paddingL: {
+        type: 'number',
+        default: '0'
+    },
+    suffixStyles: {
+        type: 'array',
+        default: [
+            {
+                suffixTxt: "Suffix",
+                suffixSizeUnit: 'px',
+                suffixSize: 20,
+                suffixSizeTablet: '',
+                suffixSizeMobile: '',
+                suffixColor: '',
+                suffixWeight: '',
+                suffixGap: 2,
+                suffixFamily: __('Default'),
+            }
+        ]
+    },
+    prefixStyles: {
+        type: "array",
+        default: [
+            {
+                prefixTxt: "Prefix",
+                prefixSize: 20,
+                prefixSizeUnit: 'px',
+                prefixSizeTablet: '',
+                prefixSizeMobile: '',
+                prefixColor: '',
+                prefixWeight: '',
+                prefixGap: 2,
+                prefixFamily: __('Default'),
+            }
+        ]
+    },
+    paddingTTablet: {
+        type: 'number',
+    },
+    paddingRTablet: {
+        type: 'number',
+    },
+    paddingBTablet: {
+        type: 'number',
+    },
+    paddingLTablet: {
+        type: 'number',
+    },
+    paddingTMobile: {
+        type: 'number',
+    },
+    paddingRMobile: {
+        type: 'number',
+    },
+    paddingBMobile: {
+        type: 'number',
+    },
+    paddingLMobile: {
+        type: 'number',
+    },
 }
 
 export default attributes

@@ -16,8 +16,9 @@ export const {
     iconBox,
     videoBox,
     fancyText,
-    lottie
+    lottie,
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
 export const { FontAwesomeEnabled } = FontAwesomeConfig;
+export const { JsonUploadEnabled } = JsonUploadFile;

@@ -1,7 +1,9 @@
 const { __ } = wp.i18n;
-const { RangeControl, Dropdown, Button } = wp.components;
+const { Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
-import AdvancedColorControl from './premium-color-control'
+import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
+import AdvancedColorControl from './Color Control/ColorComponent'
+
 export default function PremiumTextShadow(props) {
     const {
         label,
@@ -37,35 +39,36 @@ export default function PremiumTextShadow(props) {
                     )}
                     renderContent={() => (
                         <Fragment>
-
-                            <RangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Blur")}
                                 value={blur}
                                 onChange={onChangeBlur}
-                                onResetClick={onResetClick}
+                                showUnit={false}
+                                defaultValue={0}
                             />
-                            <RangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Horizontal")}
                                 value={horizontal}
                                 onChange={onChangehHorizontal}
-                                onResetClick={onResetClick}
+                                showUnit={false}
+                                defaultValue={0}
+                                min={-100}
+                                max={100}
                             />
-                            <RangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Vertical")}
                                 value={vertical}
                                 onChange={onChangeVertical}
-                                onResetClick={onResetClick}
+                                showUnit={false}
+                                defaultValue={0}
+                                min={-100}
+                                max={100}
                             />
                         </Fragment>
                     )}
                 />
-                {/* <Button
-                className="premium-control-toggle-btn reset-btn"
-                contentClassName="premium-control-toggle-content"
-                isSmall
-                onClick={onResetClick}
-            ><i className="premium-control-reset dashicons dashicons-image-rotate" /></Button> */}
             </div>
+
         </div>
     );
 }

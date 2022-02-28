@@ -1,26 +1,26 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
-import PremiumPadding from "../../components/premium-padding";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import AdvancedPopColorControl from '../../components/premium-color-control'
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import RadioComponent from '../../components/radio-control';
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+
 const { Component, Fragment } = wp.element;
 
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
 
 const {
-    Toolbar,
     PanelBody,
     SelectControl,
-    RangeControl,
-    Dropdown,
-    Button
 } = wp.components;
 
-const { InspectorControls, RichText, InnerBlocks, ColorPalette } = wp.blockEditor;
+const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
 
 const CONTENT = [
-    ["core/paragraph", { content: __("Insert Your Content Here") }]
+    ["core/paragraph", { content: __("Insert Your Content Here", 'premium-block-for-gutenberg') }]
 ];
 
 let isAccUpdated = null;
@@ -28,10 +28,24 @@ let isAccUpdated = null;
 class PremiumAccordion extends Component {
     constructor() {
         super(...arguments);
-
         this.initAccordion = this.initAccordion.bind(this);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+        this.accordionRef = React.createRef();
     }
-
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
+    }
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
         if (!attributes.accordionId) {
@@ -39,7 +53,6 @@ class PremiumAccordion extends Component {
         }
         this.initAccordion();
     }
-
     componentDidUpdate(prevProps, prevState) {
         clearTimeout(isAccUpdated);
         isAccUpdated = setTimeout(this.initAccordion, 500);
@@ -48,9 +61,7 @@ class PremiumAccordion extends Component {
     initAccordion() {
         const { accordionId } = this.props.attributes;
         if (!this.props.attributes.accordionId) return null;
-        let title = document
-            .getElementById(accordionId)
-            .getElementsByClassName("premium-accordion__title_wrap")[0];
+        let title = this.accordionRef.current.getElementsByClassName("premium-accordion__title_wrap")[0];
         title.addEventListener("click", () => {
             title
                 .getElementsByClassName("premium-accordion__icon")[0]
@@ -60,71 +71,57 @@ class PremiumAccordion extends Component {
     }
 
     render() {
-        const { isSelected, setAttributes, clientId, className } = this.props;
+        const { isSelected, setAttributes, className } = this.props;
 
         const {
             accordionId,
             repeaterItems,
             direction,
             titleTag,
-            titleColor,
-            titleSize,
-            titleLine,
-            titleLetter,
-            titleStyle,
-            titleUpper,
-            titleWeight,
-            titleBorder,
+            titleStyles,
+            arrowStyles,
+            descStyles,
+            contentType,
+            textShadowColor,
+            textShadowBlur,
+            textShadowHorizontal,
+            textShadowVertical,
             titleBorderWidth,
             titleBorderTop,
             titleBorderRight,
             titleBorderBottom,
             titleBorderLeft,
-            titleBorderColor,
-            titleBorderRadius,
-            titleBack,
-            titleShadowBlur,
-            titleShadowColor,
-            titleShadowHorizontal,
-            titleShadowVertical,
+            titleBorderUpdated,
             titlePaddingT,
             titlePaddingR,
             titlePaddingB,
             titlePaddingL,
-            arrowColor,
-            arrowBack,
-            arrowPos,
-            arrowPadding,
-            arrowRadius,
-            arrowSize,
-            contentType,
-            descAlign,
-            descColor,
-            descBack,
-            descBorder,
-            descBorderColor,
-            descBorderRadius,
             descBorderWidth,
+            descBorderUpdated,
             descBorderTop,
             descBorderRight,
             descBorderBottom,
             descBorderLeft,
-            descSize,
-            descLine,
-            descLetter,
-            descStyle,
-            descUpper,
-            descWeight,
-            textShadowBlur,
-            textShadowColor,
-            textShadowHorizontal,
-            textShadowVertical,
             descPaddingT,
             descPaddingR,
             descPaddingB,
             descPaddingL,
-            titleBorderUpdated,
-            descBorderUpdated
+            titlePaddingTTablet,
+            titlePaddingRTablet,
+            titlePaddingBTablet,
+            titlePaddingLTablet,
+            titlePaddingTMobile,
+            titlePaddingRMobile,
+            titlePaddingBMobile,
+            titlePaddingLMobile,
+            descPaddingTTablet,
+            descPaddingRTablet,
+            descPaddingBTablet,
+            descPaddingLTablet,
+            descPaddingTMobile,
+            descPaddingRMobile,
+            descPaddingBMobile,
+            descPaddingLMobile,
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -141,38 +138,81 @@ class PremiumAccordion extends Component {
         const ARROW = [
             {
                 value: "in",
-                label: __("In")
+                label: __("In", 'premium-block-for-gutenberg')
             },
             {
                 value: "out",
-                label: __("Out")
+                label: __("Out", 'premium-block-for-gutenberg')
             }
         ];
 
         const TYPE = [
             {
                 value: "text",
-                label: __("Text")
+                label: __("Text", 'premium-block-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Gutenberg Block")
+                label: __("Gutenberg Block", 'premium-block-for-gutenberg')
             }
         ];
 
-        const ALIGNS = ["left", "center", "right"];
+        const saveTitleStyles = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+
+        };
+
+        const saveArrowStyles = (value) => {
+            const newUpdate = arrowStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                arrowStyles: newUpdate,
+            });
+        }
+
+        const SaveDescStyles = (value) => {
+            const newUpdate = descStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                descStyles: newUpdate,
+            });
+        }
 
         const onAccordionChange = (attr, value, index) => {
             const items = repeaterItems;
-
             return items.map(function (item, currIndex) {
                 if (index == currIndex) {
                     item[attr] = value;
                 }
-
                 return item;
             });
         };
+
+        const titlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePaddingT, titlePaddingTTablet, titlePaddingTMobile);
+        const titlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
+        const titlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
+        const titlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePaddingL, titlePaddingLTablet, titlePaddingLMobile);
+        const descPaddingTop = this.getPreviewSize(this.props.deviceType, descPaddingT, descPaddingTTablet, descPaddingTMobile);
+        const descPaddingRight = this.getPreviewSize(this.props.deviceType, descPaddingR, descPaddingRTablet, descPaddingRMobile);
+        const descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPaddingB, descPaddingBTablet, descPaddingBMobile);
+        const descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPaddingL, descPaddingLTablet, descPaddingLMobile);
+
 
         const mainClasses = classnames(className, "premium-accordion");
 
@@ -183,19 +223,19 @@ class PremiumAccordion extends Component {
                     className={`premium-accordion__content_wrap`}
                 >
                     <div
-                        className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+                        className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
                         style={{
-                            backgroundColor: titleBack,
-                            borderStyle: titleBorder,
+                            backgroundColor: titleStyles[0].titleBack,
+                            borderStyle: titleStyles[0].titleBorder,
                             borderWidth: titleBorderUpdated
                                 ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
                                 : titleBorderWidth + "px",
-                            borderRadius: titleBorderRadius + "px",
-                            borderColor: titleBorderColor,
-                            paddingTop: titlePaddingT,
-                            paddingRight: titlePaddingR,
-                            paddingBottom: titlePaddingB,
-                            paddingLeft: titlePaddingL
+                            borderRadius: titleStyles[0].titleBorderRadius + "px",
+                            borderColor: titleStyles[0].titleBorderColor,
+                            paddingTop: titlePaddingTop,
+                            paddingRight: titlePaddingRight,
+                            paddingBottom: titlePaddingBottom,
+                            paddingLeft: titlePaddingLeft
                         }}
                     >
                         <div className={`premium-accordion__title`}>
@@ -211,17 +251,17 @@ class PremiumAccordion extends Component {
                                         )
                                     })
                                 }
-                                placeholder={__("Awesome Title")}
+                                placeholder={__("Awesome Title", 'premium-block-for-gutenberg')}
                                 value={item.titleText}
                                 style={{
-                                    color: titleColor,
-                                    fontSize: titleSize + "px",
-                                    letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper ? "uppercase" : "none",
-                                    fontStyle: titleStyle,
-                                    fontWeight: titleWeight,
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                    lineHeight: titleLine + "px"
+                                    color: titleStyles[0].titleColor,
+                                    fontSize: titleStyles[0].titleSize + "px",
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                    lineHeight: titleStyles[0].titleLine + "px"
                                 }}
                             />
                         </div>
@@ -231,14 +271,14 @@ class PremiumAccordion extends Component {
                                 role="img"
                                 focusable="false"
                                 xmlns="http://www.w3.org/2000/svg"
-                                width={arrowSize}
-                                height={arrowSize}
+                                width={arrowStyles[0].arrowSize}
+                                height={arrowStyles[0].arrowSize}
                                 viewBox="0 0 20 20"
                                 style={{
-                                    fill: arrowColor,
-                                    backgroundColor: arrowBack,
-                                    padding: arrowPadding + "px",
-                                    borderRadius: arrowRadius + "px"
+                                    fill: arrowStyles[0].arrowColor,
+                                    backgroundColor: arrowStyles[0].arrowBack,
+                                    padding: arrowStyles[0].arrowPadding + "px",
+                                    borderRadius: arrowStyles[0].arrowRadius + "px"
                                 }}
                             >
                                 <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -248,18 +288,18 @@ class PremiumAccordion extends Component {
                     <div
                         className={`premium-accordion__desc_wrap`}
                         style={{
-                            textAlign: descAlign,
-                            backgroundColor: descBack,
-                            borderStyle: descBorder,
+                            textAlign: descStyles[0].descAlign,
+                            backgroundColor: descStyles[0].descBack,
+                            borderStyle: descStyles[0].descBorder,
                             borderWidth: descBorderUpdated
                                 ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
                                 : descBorderWidth + "px",
-                            borderRadius: descBorderRadius + "px",
-                            borderColor: descBorderColor,
-                            paddingTop: descPaddingT,
-                            paddingRight: descPaddingR,
-                            paddingBottom: descPaddingB,
-                            paddingLeft: descPaddingL
+                            borderRadius: descStyles[0].descBorderRadius + "px",
+                            borderColor: descStyles[0].descBorderColor,
+                            paddingTop: descPaddingTop,
+                            paddingRight: descPaddingRight,
+                            paddingBottom: descPaddingBottom,
+                            paddingLeft: descPaddingLeft
                         }}
                     >
                         {"text" === contentType && (
@@ -273,14 +313,14 @@ class PremiumAccordion extends Component {
                                 }
                                 value={item.descText}
                                 style={{
-                                    color: descColor,
-                                    fontSize: descSize + "px",
-                                    letterSpacing: descLetter + "px",
-                                    textTransform: descUpper ? "uppercase" : "none",
+                                    color: descStyles[0].descColor,
+                                    fontSize: descStyles[0].descSize + "px",
+                                    letterSpacing: descStyles[0].descLetter + "px",
+                                    textTransform: descStyles[0].descUpper ? "uppercase" : "none",
                                     textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
-                                    fontStyle: descStyle,
-                                    fontWeight: descWeight,
-                                    lineHeight: descLine + "px"
+                                    fontStyle: descStyles[0].descStyle,
+                                    fontWeight: descStyles[0].descWeight,
+                                    lineHeight: descStyles[0].descLine + "px"
                                 }}
                             />
                         )}
@@ -289,25 +329,23 @@ class PremiumAccordion extends Component {
                 </div>
             );
         });
+
         return [
             isSelected && (
                 <InspectorControls key="inspector">
                     <PanelBody
-                        title={__("Title")}
+                        title={__("Title", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Title Tag")}</p>
-                        <Toolbar
-                            controls={"123456".split("").map(tag => ({
-                                icon: "heading",
-                                isActive: "H" + tag === titleTag,
-                                onClick: () => setAttributes({ titleTag: "H" + tag }),
-                                subscript: tag
-                            }))}
+                        <RadioComponent
+                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            value={titleTag}
+                            onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                            label={__("Title Tag", 'premium-block-for-gutenberg')}
                         />
                         <SelectControl
-                            label={__("Direction")}
+                            label={__("Direction", 'premium-block-for-gutenberg')}
                             options={DIRECTION}
                             value={direction}
                             onChange={newEffect => setAttributes({ direction: newEffect })}
@@ -322,57 +360,41 @@ class PremiumAccordion extends Component {
                                 "spacing",
                                 "line"
                             ]}
-                            size={titleSize}
-                            weight={titleWeight}
-                            style={titleStyle}
-                            spacing={titleLetter}
-                            line={titleLine}
-                            upper={titleUpper}
-                            onChangeSize={newSize => setAttributes({ titleSize: newSize })}
-                            onChangeWeight={newWeight =>
-                                setAttributes({ titleWeight: newWeight })
-                            }
-                            onChangeStyle={newStyle =>
-                                setAttributes({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                setAttributes({ titleLetter: newValue })
-                            }
-                            onChangeLine={newValue => setAttributes({ titleLine: newValue })}
-                            onChangeUpper={check => setAttributes({ titleUpper: check })}
+                            size={titleStyles[0].titleSize}
+                            weight={titleStyles[0].titleWeight}
+                            style={titleStyles[0].titleStyle}
+                            spacing={titleStyles[0].titleLetter}
+                            line={titleStyles[0].titleLine}
+                            upper={titleStyles[0].titleUpper}
+                            onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
+                            onChangeWeight={newWeight => saveTitleStyles({ titleWeight: newWeight })}
+                            onChangeStyle={newStyle => saveTitleStyles({ titleStyle: newStyle })}
+                            onChangeSpacing={newValue => saveTitleStyles({ titleLetter: newValue })}
+                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
+                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                         />
                         <AdvancedPopColorControl
                             label={__("Text Color", 'premium-block-for-gutenberg')}
-                            colorValue={titleColor}
+                            colorValue={titleStyles[0].titleColor}
                             colorDefault={''}
-                            onColorChange={value =>
-                                setAttributes({
-                                    titleColor: value
-                                })
-                            }
+                            onColorChange={value => saveTitleStyles({ titleColor: value })}
                         />
                         <AdvancedPopColorControl
                             label={__("Background Color", 'premium-block-for-gutenberg')}
-                            colorValue={titleBack}
+                            colorValue={titleStyles[0].titleBack}
                             colorDefault={''}
-                            onColorChange={value =>
-                                setAttributes({
-                                    titleBack: value
-                                })
-                            }
+                            onColorChange={value => saveTitleStyles({ titleBack: value })}
                         />
                         <PremiumBorder
-                            borderType={titleBorder}
+                            borderType={titleStyles[0].titleBorder}
                             borderWidth={titleBorderWidth}
                             top={titleBorderTop}
                             right={titleBorderRight}
                             bottom={titleBorderBottom}
                             left={titleBorderLeft}
-                            borderColor={titleBorderColor}
-                            borderRadius={titleBorderRadius}
-                            onChangeType={(newType) =>
-                                setAttributes({ titleBorder: newType })
-                            }
+                            borderColor={titleStyles[0].titleBorderColor}
+                            borderRadius={titleStyles[0].titleBorderRadius}
+                            onChangeType={(newType) => saveTitleStyles({ titleBorder: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     titleBorderUpdated: true,
@@ -382,132 +404,142 @@ class PremiumAccordion extends Component {
                                     titleBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                setAttributes({ titleBorderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                setAttributes({ titleBorderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => saveTitleStyles({ titleBorderColor: colorValue })}
+                            onChangeRadius={(newrRadius) => saveTitleStyles({ titleBorderRadius: newrRadius })}
                         />
                         <PremiumTextShadow
-                            color={titleShadowColor}
-                            blur={titleShadowBlur}
-                            horizontal={titleShadowHorizontal}
-                            vertical={titleShadowVertical}
-                            onChangeColor={newColor =>
-                                setAttributes({ titleShadowColor: newColor })
-                            }
-                            onChangeBlur={newBlur =>
-                                setAttributes({ titleShadowBlur: newBlur })
-                            }
-                            onChangehHorizontal={newValue =>
-                                setAttributes({ titleShadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({ titleShadowVertical: newValue })
-                            }
+                            color={titleStyles[0].titleShadowColor}
+                            blur={titleStyles[0].titleShadowBlur}
+                            horizontal={titleStyles[0].titleShadowHorizontal}
+                            vertical={titleStyles[0].titleShadowVertical}
+                            onChangeColor={newColor => saveTitleStyles({ titleShadowColor: newColor })}
+                            onChangeBlur={newBlur => saveTitleStyles({ titleShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveTitleStyles({ titleShadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
                         />
-
-                        <PremiumPadding
-                            paddingTop={titlePaddingT}
-                            paddingRight={titlePaddingR}
-                            paddingBottom={titlePaddingB}
-                            paddingLeft={titlePaddingL}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    titlePaddingT: value === undefined ? 0 : value
-                                })
+                        <PremiumResponsivePadding
+                            paddingT={titlePaddingT}
+                            paddingR={titlePaddingR}
+                            paddingB={titlePaddingB}
+                            paddingL={titlePaddingL}
+                            paddingTTablet={titlePaddingTTablet}
+                            paddingRTablet={titlePaddingRTablet}
+                            paddingBTablet={titlePaddingBTablet}
+                            paddingLTablet={titlePaddingLTablet}
+                            paddingTMobile={titlePaddingTMobile}
+                            paddingRMobile={titlePaddingRMobile}
+                            paddingBMobile={titlePaddingBMobile}
+                            paddingLMobile={titlePaddingLMobile}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingTMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    titlePaddingR: value === undefined ? 0 : value
-                                })
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingRMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    titlePaddingB: value === undefined ? 0 : value
-                                })
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingBMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    titlePaddingL: value === undefined ? 0 : value
-                                })
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlePaddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlePaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlePaddingLMobile: newValue })
+                                    }
+                                }
                             }
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Arrow")}
+                        title={__("Arrow", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Position")}
+                            label={__("Position", 'premium-block-for-gutenberg')}
                             options={ARROW}
-                            value={arrowPos}
-                            onChange={newEffect => setAttributes({ arrowPos: newEffect })}
+                            value={arrowStyles[0].arrowPos}
+                            onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
-                        <RangeControl
-                            label={__("Size ")}
-                            value={arrowSize}
-                            onChange={newValue => setAttributes({ arrowSize: newValue })}
+                        <ResponsiveSingleRangeControl
+                            label={__("Size", 'premium-block-for-gutenberg')}
+                            value={arrowStyles[0].arrowSize}
+                            onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
+                            showUnit={false}
+                            defaultValue={20}
                         />
                         <AdvancedPopColorControl
                             label={__("Arrow Color", 'premium-block-for-gutenberg')}
-                            colorValue={arrowColor}
+                            colorValue={arrowStyles[0].arrowColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                setAttributes({
-                                    arrowColor: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveArrowStyles({ arrowColor: newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Background Color", 'premium-block-for-gutenberg')}
-                            colorValue={arrowBack}
+                            colorValue={arrowStyles[0].arrowBack}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                setAttributes({
-                                    arrowBack: newValue
-                                })
-                            }
+                            onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
                         />
-                        <RangeControl
-                            label={__("Border Radius (PX)")}
-                            value={arrowRadius}
-                            onChange={newValue =>
-                                setAttributes({
-                                    arrowRadius: newValue === undefined ? 0 : newValue
-                                })
-                            }
+
+                        <ResponsiveSingleRangeControl
+                            label={__("Border Radius", 'premium-block-for-gutenberg')}
+                            value={arrowStyles[0].arrowRadius}
+                            onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
+                            defaultValue={0}
+                            showUnit={false}
                         />
-                        <RangeControl
-                            label={__("Padding (PX)")}
-                            value={arrowPadding}
-                            onChange={newValue =>
-                                setAttributes({
-                                    arrowPadding: newValue === undefined ? 0 : newValue
-                                })
-                            }
+
+                        <ResponsiveSingleRangeControl
+                            label={__("Padding", 'premium-block-for-gutenberg')}
+                            value={arrowStyles[0].arrowPadding}
+                            onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
+                            defaultValue={0}
+                            showUnit={false}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Content")}
+                        title={__("Content", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Type")}
+                            label={__("Type", 'premium-block-for-gutenberg')}
                             options={TYPE}
                             value={contentType}
                             onChange={newType => setAttributes({ contentType: newType })}
-                            help={__("Gutenberg Block works only with single accordion item")}
+                            help={__("Gutenberg Block works only with single accordion item", 'premium-block-for-gutenberg')}
                         />
-                        <Toolbar
-                            controls={ALIGNS.map(align => ({
-                                icon: "editor-align" + align,
-                                isActive: align === descAlign,
-                                onClick: () => setAttributes({ descAlign: align })
-                            }))}
+                        <RadioComponent
+                            choices={["left", "center", "right"]}
+                            label={__(`Align Content `)}
+                            onChange={(align) => SaveDescStyles({ descAlign: align })}
+                            value={descStyles[0].descAlign}
                         />
                         {"text" === contentType && (
                             <Fragment>
@@ -520,59 +552,43 @@ class PremiumAccordion extends Component {
                                         "spacing",
                                         "line"
                                     ]}
-                                    size={descSize}
-                                    weight={descWeight}
-                                    style={descStyle}
-                                    spacing={descLetter}
-                                    line={descLine}
-                                    upper={descUpper}
-                                    onChangeSize={newSize => setAttributes({ descSize: newSize })}
-                                    onChangeWeight={newWeight =>
-                                        setAttributes({ descWeight: newWeight })
-                                    }
-                                    onChangeStyle={newStyle =>
-                                        setAttributes({ descStyle: newStyle })
-                                    }
-                                    onChangeSpacing={newValue =>
-                                        setAttributes({ descLetter: newValue })
-                                    }
-                                    onChangeLine={newValue =>
-                                        setAttributes({ descLine: newValue })
-                                    }
-                                    onChangeUpper={check => setAttributes({ descUpper: check })}
+                                    size={descStyles[0].descSize}
+                                    weight={descStyles[0].descWeight}
+                                    style={descStyles[0].descStyle}
+                                    spacing={descStyles[0].descLetter}
+                                    line={descStyles[0].descLine}
+                                    upper={descStyles[0].descUpper}
+                                    onChangeSize={newSize => SaveDescStyles({ descSize: newSize })}
+                                    onChangeWeight={newWeight => SaveDescStyles({ descWeight: newWeight })}
+                                    onChangeStyle={newStyle => SaveDescStyles({ descStyle: newStyle })}
+                                    onChangeSpacing={newValue => SaveDescStyles({ descLetter: newValue })}
+                                    onChangeLine={newValue => SaveDescStyles({ descLine: newValue })}
+                                    onChangeUpper={check => SaveDescStyles({ descUpper: check })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__("Text Color", 'premium-block-for-gutenberg')}
-                                    colorValue={descColor}
+                                    colorValue={descStyles[0].descColor}
                                     colorDefault={''}
-                                    onColorChange={value =>
-                                        setAttributes({
-                                            descColor: value
-                                        })
-                                    }
+                                    onColorChange={value => SaveDescStyles({ descColor: value })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__("Background Color", 'premium-block-for-gutenberg')}
-                                    colorValue={descBack}
+                                    colorValue={descStyles[0].descBack}
                                     colorDefault={''}
-                                    onColorChange={value =>
-                                        setAttributes({
-                                            descBack: value
-                                        })
-                                    }
+                                    onColorChange={value => SaveDescStyles({ descBack: value })}
                                 />
                             </Fragment>
                         )}
                         <PremiumBorder
-                            borderType={descBorder}
+                            borderType={descStyles[0].descBorder}
                             borderWidth={descBorderWidth}
                             top={descBorderTop}
                             right={descBorderRight}
                             bottom={descBorderBottom}
                             left={descBorderLeft}
-                            borderColor={descBorderColor}
-                            borderRadius={descBorderRadius}
-                            onChangeType={(newType) => setAttributes({ descBorder: newType })}
+                            borderColor={descStyles[0].descBorderColor}
+                            borderRadius={descStyles[0].descBorderRadius}
+                            onChangeType={(newType) => SaveDescStyles({ descBorder: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     descBorderUpdated: true,
@@ -582,74 +598,84 @@ class PremiumAccordion extends Component {
                                     descBorderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                setAttributes({ descBorderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                setAttributes({ descBorderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => SaveDescStyles({ descBorderColor: colorValue })}
+                            onChangeRadius={(newrRadius) => SaveDescStyles({ descBorderRadius: newrRadius })}
                         />
-
                         {"text" === contentType && (
                             <PremiumTextShadow
                                 color={textShadowColor}
                                 blur={textShadowBlur}
                                 horizontal={textShadowHorizontal}
                                 vertical={textShadowVertical}
-                                onChangeColor={newColor =>
-                                    setAttributes({
-                                        textShadowColor:
-                                            newColor === undefined ? "transparent" : newColor
-                                    })
-                                }
-                                onChangeBlur={newBlur =>
-                                    setAttributes({
-                                        textShadowBlur: newBlur === undefined ? 0 : newBlur
-                                    })
-                                }
-                                onChangehHorizontal={newValue =>
-                                    setAttributes({
-                                        textShadowHorizontal: newValue === undefined ? 0 : newValue
-                                    })
-                                }
-                                onChangeVertical={newValue =>
-                                    setAttributes({
-                                        textShadowVertical: newValue === undefined ? 0 : newValue
-                                    })
-                                }
+                                onChangeColor={newColor => setAttributes({ textShadowColor: newColor === undefined ? "transparent" : newColor })}
+                                onChangeBlur={newBlur => setAttributes({ textShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                                onChangehHorizontal={newValue => setAttributes({ textShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                                onChangeVertical={newValue => setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue })}
                             />
                         )}
-                        <PremiumPadding
-                            paddingTop={descPaddingT}
-                            paddingRight={descPaddingR}
-                            paddingBottom={descPaddingB}
-                            paddingLeft={descPaddingL}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    descPaddingT: value === undefined ? 0 : value
-                                })
+                        <PremiumResponsivePadding
+                            paddingT={descPaddingT}
+                            paddingR={descPaddingR}
+                            paddingB={descPaddingB}
+                            paddingL={descPaddingL}
+                            paddingTTablet={descPaddingTTablet}
+                            paddingRTablet={descPaddingRTablet}
+                            paddingBTablet={descPaddingBTablet}
+                            paddingLTablet={descPaddingLTablet}
+                            paddingTMobile={descPaddingTMobile}
+                            paddingRMobile={descPaddingRMobile}
+                            paddingBMobile={descPaddingBMobile}
+                            paddingLMobile={descPaddingLMobile}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ descPaddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ descPaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ descPaddingTMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    descPaddingR: value === undefined ? 0 : value
-                                })
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ descPaddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ descPaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ descPaddingRMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    descPaddingB: value === undefined ? 0 : value
-                                })
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ descPaddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ descPaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ descPaddingBMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    descPaddingL: value === undefined ? 0 : value
-                                })
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ descPaddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ descPaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ descPaddingLMobile: newValue })
+                                    }
+                                }
                             }
                         />
                     </PanelBody>
                 </InspectorControls >
             ),
             <Fragment>
-                <div id={accordionId} className={`${mainClasses}`}>
+                <div ref={this.accordionRef} id={accordionId} className={`${mainClasses}`}>
                     {accordionItems}
                 </div>
                 <div className={"premium-repeater"}>
@@ -659,21 +685,28 @@ class PremiumAccordion extends Component {
                             return setAttributes({
                                 repeaterItems: repeaterItems.concat([
                                     {
-                                        titleText: __("Awesome Title"),
-                                        descText: __("Cool Description")
+                                        titleText: __("Awesome Title", 'premium-block-for-gutenberg'),
+                                        descText: __("Cool Description", 'premium-block-for-gutenberg')
                                     }
                                 ])
                             });
                         }}
                     >
                         <i className="dashicons dashicons-plus premium-repeater-icon" />
-                        {__("Add New Item")}
+                        {__("Add New Item", 'premium-block-for-gutenberg')}
                     </button>
-                    <p>{__("Add the items you need then reload the page")}</p>
+                    <p>{__("Add the items you need then reload the page", 'premium-block-for-gutenberg')}</p>
                 </div>
             </Fragment>
         ];
     }
 }
 
-export default PremiumAccordion;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(PremiumAccordion)

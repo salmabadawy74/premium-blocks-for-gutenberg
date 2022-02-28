@@ -4,40 +4,23 @@ import PremiumTypo from "../../components/premium-typo"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import iconsList from "../../components/premium-icons-list"
 import PremiumBorder from "../../components/premium-border"
-import PremiumPadding from "../../components/premium-padding"
-import PremiumMargin from "../../components/premium-margin"
 import PremiumTextShadow from "../../components/premium-text-shadow"
 import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBackground from "../../components/premium-background"
-import PremiumSizeUnits from "../../components/premium-size-units"
-import FONTS from "../../components/premium-fonts"
 import PremiumMediaUpload from "../../components/premium-media-upload"
-import styling from './styling'
-import hexToRgba from "hex-to-rgba"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import AdvancedPopColorControl from '../../components/premium-color-control'
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control';
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 
 const { __ } = wp.i18n;
 
-const {
-    PanelBody,
-    Toolbar,
-    RangeControl,
-    SelectControl,
-    ToggleControl,
-    TabPanel
-} = wp.components;
-
+const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
-
-const {
-    BlockControls,
-    InspectorControls,
-    RichText,
-    ColorPalette,
-    AlignmentToolbar,
-    URLInput,
-} = wp.blockEditor;
+const { withSelect } = wp.data
+const { BlockControls, InspectorControls, RichText, AlignmentToolbar, URLInput, } = wp.blockEditor;
 
 class edit extends Component {
     constructor() {
@@ -46,37 +29,76 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-
         setAttributes({ block_id: clientId })
-
-        setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-iconBox-" + clientId
-        );
-        document.head.appendChild($style);
-
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     render() {
-
         const { isSelected, setAttributes, className, clientId: blockId, attributes } = this.props;
+        const saveContainerStyle = (value) => {
+            const newUpdate = containerStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ containerStyles: newUpdate });
+        }
+
+        const saveTitleStyle = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ titleStyles: newUpdate });
+        }
+
+        const saveButtonStyle = (value) => {
+            const newUpdate = btnStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ btnStyles: newUpdate });
+        }
+
+        const saveDescriptionStyle = (value) => {
+            const newUpdate = descStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ descStyles: newUpdate });
+        }
 
         const {
             block_id,
             borderIconBox,
             btnBorderIconBox,
             align,
-            iconChecked,
             iconImage,
             iconImgId,
             iconImgUrl,
-            iconType,
-            selectedIcon,
             hoverEffect,
+            iconChecked,
             iconPos,
             iconHPos,
             iconVPos,
@@ -84,92 +106,41 @@ class edit extends Component {
             iconRadius,
             iconColor,
             iconBackColor,
-            iconOpacity,
+            selectedIcon,
             titleChecked,
             titleText,
-            titleTag,
-            titleColor,
-            titleFont,
-            titleSizeUnit,
-            titleSize,
-            titleSizeTablet,
-            titleSizeMobile,
-            titleLine,
-            titleLetter,
-            titleStyle,
-            titleUpper,
-            titleWeight,
-            titleShadowBlur,
-            titleShadowColor,
-            titleShadowHorizontal,
-            titleShadowVertical,
-            titleMarginT,
-            titleMarginB,
-            descChecked,
             descText,
-            descColor,
-            descFont,
-            descSizeUnit,
-            descSize,
-            descSizeTablet,
-            descSizeMobile,
-            descLine,
-            descWeight,
-            descMarginT,
-            descMarginB,
+            descChecked,
             btnChecked,
             btnEffect,
             effectDir,
             btnTarget,
             btnText,
             btnLink,
-            btnSizeUnit,
-            btnSize,
-            btnSizeTablet,
-            btnSizeMobile,
-            btnUpper,
-            btnWeight,
-            btnLetter,
-            btnColor,
-            btnStyle,
-            btnHoverColor,
-            btnBack,
-            btnOpacity,
-            btnHoverBack,
             btnHoverBorder,
-            btnBorderColor,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            iconOpacity,
+            titleStyles,
+            descStyles,
+            btnStyles,
+            containerStyles,
+            titleMarginT,
+            titleMarginB,
+            descMarginT,
+            descMarginB,
             btnBorderWidth,
             btnBorderTop,
             btnBorderRight,
             btnBorderBottom,
             btnBorderLeft,
-            btnBorderRadius,
-            btnBorderType,
-            btnPadding,
-            btnPaddingU,
-            btnMarginT,
-            btnMarginB,
-            btnShadowBlur,
-            btnShadowColor,
-            btnShadowHorizontal,
-            btnShadowVertical,
-            btnShadowPosition,
-            imageID,
-            imageURL,
-            fixed,
-            backColor,
-            backOpacity,
-            backgroundRepeat,
-            backgroundPosition,
-            backgroundSize,
-            borderType,
-            borderWidth,
             borderTop,
             borderRight,
             borderBottom,
             borderLeft,
-            borderRadius,
-            borderColor,
+            btnMarginT,
+            btnMarginB,
             marginT,
             marginR,
             marginB,
@@ -178,171 +149,164 @@ class edit extends Component {
             paddingR,
             paddingB,
             paddingL,
-            paddingU,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
-            shadowPosition,
-            hoverShadowBlur,
-            hoverShadowColor,
-            hoverShadowHorizontal,
-            hoverShadowVertical,
-            hoverShadowPosition,
-            hideDesktop,
-            hideTablet,
-            hideMobile
+            iconType,
+            marginTTablet,
+            marginRTablet,
+            marginBTablet,
+            marginLTablet,
+            marginTMobile,
+            marginRMobile,
+            marginBMobile,
+            marginLMobile,
+            paddingTTablet,
+            paddingRTablet,
+            paddingBTablet,
+            paddingLTablet,
+            paddingTMobile,
+            paddingRMobile,
+            paddingBMobile,
+            paddingLMobile,
+            btnMarginTTablet,
+            btnMarginBTablet,
+            btnMarginTMobile,
+            btnMarginBMobile,
+            titleMarginTTablet,
+            titleMarginBTablet,
+            titleMarginTMobile,
+            titleMarginBMobile,
+            descMarginTTablet,
+            descMarginBTablet,
+            descMarginTMobile,
+            descMarginBMobile,
         } = attributes;
 
         const imgIcon = [
             {
-                label: __("Icon"),
+                label: __("Icon", 'premium-block-for-gutenberg'),
                 value: "icon"
             },
             {
-                label: __("Image"),
+                label: __("Image", 'premium-block-for-gutenberg'),
                 value: "image"
             }
         ];
 
-        const ALIGNS = ["left", "center", "right"];
-
         const EFFECTS = [
             {
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             },
             {
                 value: "pulse",
-                label: __("Pulse")
+                label: __("Pulse", 'premium-block-for-gutenberg')
             },
             {
                 value: "rotate",
-                label: __("Rotate")
+                label: __("Rotate", 'premium-block-for-gutenberg')
             },
             {
                 value: "drotate",
-                label: __("3D Rotate")
+                label: __("3D Rotate", 'premium-block-for-gutenberg')
             },
             {
                 value: "buzz",
-                label: __("Buzz")
+                label: __("Buzz", 'premium-block-for-gutenberg')
             },
             {
                 value: "drop",
-                label: __("Drop Shadow")
+                label: __("Drop Shadow", 'premium-block-for-gutenberg')
             },
             {
                 value: "wobble",
-                label: __("Wobble")
+                label: __("Wobble", 'premium-block-for-gutenberg')
             }
         ];
 
         const BTN_EFFECTS = [
             {
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-block-for-gutenberg')
             },
             {
                 value: "slide",
-                label: __("Slide")
+                label: __("Slide", 'premium-block-for-gutenberg')
             }
         ];
 
         const DIRECTION = [
             {
                 value: "top",
-                label: __("Top to Bottom")
+                label: __("Top to Bottom", 'premium-block-for-gutenberg')
             },
             {
                 value: "bottom",
-                label: __("Bottom to Top")
+                label: __("Bottom to Top", 'premium-block-for-gutenberg')
             },
             {
                 value: "left",
-                label: __("Left to Right")
+                label: __("Left to Right", 'premium-block-for-gutenberg')
             },
             {
                 value: "right",
-                label: __("Right to Left")
+                label: __("Right to Left", 'premium-block-for-gutenberg')
             }
         ];
 
         const ICON_POS = [
             {
-                label: __("Inline"),
+                label: __("Inline", 'premium-block-for-gutenberg'),
                 value: "inline"
             },
             {
-                label: __("Block"),
+                label: __("Block", 'premium-block-for-gutenberg'),
                 value: "block"
             }
         ];
 
         const ICON_HPOS = [
             {
-                label: __("Before"),
+                label: __("Before", 'premium-block-for-gutenberg'),
                 value: "before"
             },
             {
-                label: __("After"),
+                label: __("After", 'premium-block-for-gutenberg'),
                 value: "after"
             }
         ];
 
         const ICON_VPOS = [
             {
-                label: __("Top"),
+                label: __("Top", 'premium-block-for-gutenberg'),
                 value: "top"
             },
             {
-                label: __("Middle"),
+                label: __("Middle", 'premium-block-for-gutenberg'),
                 value: "center"
             },
             {
-                label: __("Bottom"),
+                label: __("Bottom", 'premium-block-for-gutenberg'),
                 value: "bottom"
             }
         ];
 
-        const addFontToHead = fontFamily => {
-            const head = document.head;
-            const link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href =
-                "https://fonts.googleapis.com/css2?family=" +
-                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
-            head.appendChild(link);
-        };
-
-        const onChangeTitleFamily = fontFamily => {
-            setAttributes({ titleFont: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        const onChangeDescFamily = fontFamily => {
-            setAttributes({ descFont: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        let element = document.getElementById(
-            "premium-style-iconBox-" + blockId
-        );
-
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
-        }
-
         const mainClasses = classnames(className, "premium-icon-box");
+        const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+        const descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
+        const buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
+        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+        const containerMarginTop = this.getPreviewSize(this.props.deviceType, marginT, marginTTablet, marginTMobile);
+        const containerMarginRight = this.getPreviewSize(this.props.deviceType, marginR, marginRTablet, marginRMobile);
+        const containerMarginBottom = this.getPreviewSize(this.props.deviceType, marginB, marginBTablet, marginBMobile);
+        const containerMarginLeft = this.getPreviewSize(this.props.deviceType, marginL, marginLTablet, marginLMobile);
+        const titleMarginTop = this.getPreviewSize(this.props.deviceType, titleMarginT, titleMarginTTablet, titleMarginTMobile);
+        const titleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMarginB, titleMarginBTablet, titleMarginBMobile);
+        const descMarginTop = this.getPreviewSize(this.props.deviceType, descMarginT, descMarginTTablet, descMarginTMobile);
+        const descMarginBottom = this.getPreviewSize(this.props.deviceType, descMarginB, descMarginBTablet, descMarginBMobile);
+        const btnMarginTop = this.getPreviewSize(this.props.deviceType, btnMarginT, btnMarginTTablet, btnMarginTMobile);
+        const btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMarginB, btnMarginBTablet, btnMarginBMobile);
 
         return [
             isSelected && (
@@ -356,39 +320,39 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Display Options")}
+                        title={__("Display Options", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Icon")}
+                            label={__("Icon", 'premium-block-for-gutenberg')}
                             checked={iconChecked}
                             onChange={newValue => setAttributes({ iconChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Title")}
+                            label={__("Title", 'premium-block-for-gutenberg')}
                             checked={titleChecked}
                             onChange={newValue => setAttributes({ titleChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Description")}
+                            label={__("Description", 'premium-block-for-gutenberg')}
                             checked={descChecked}
                             onChange={newValue => setAttributes({ descChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Button")}
+                            label={__("Button", 'premium-block-for-gutenberg')}
                             checked={btnChecked}
                             onChange={newValue => setAttributes({ btnChecked: newValue })}
                         />
                     </PanelBody>
                     {iconChecked && (
                         <PanelBody
-                            title={__("Icon")}
+                            title={__("Icon", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
-                                label={__("Icon Position")}
+                                label={__("Icon Position", 'premium-block-for-gutenberg')}
                                 options={ICON_POS}
                                 value={iconPos}
                                 onChange={newValue => setAttributes({ iconPos: newValue })}
@@ -396,13 +360,13 @@ class edit extends Component {
                             {"inline" === iconPos && (
                                 <Fragment>
                                     <SelectControl
-                                        label={__("Horizontal Position")}
+                                        label={__("Horizontal Position", 'premium-block-for-gutenberg')}
                                         options={ICON_HPOS}
                                         value={iconHPos}
                                         onChange={newValue => setAttributes({ iconHPos: newValue })}
                                     />
                                     <SelectControl
-                                        label={__("Vertical Position")}
+                                        label={__("Vertical Position", 'premium-block-for-gutenberg')}
                                         options={ICON_VPOS}
                                         value={iconVPos}
                                         onChange={newValue => setAttributes({ iconVPos: newValue })}
@@ -410,21 +374,21 @@ class edit extends Component {
                                 </Fragment>
                             )}
                             <SelectControl
-                                label={__("Icon Type")}
+                                label={__("Icon Type", 'premium-block-for-gutenberg')}
                                 options={imgIcon}
                                 value={iconImage}
                                 onChange={newType => setAttributes({ iconImage: newType })}
                             />
                             {"icon" === iconImage && (
                                 <Fragment>
-                                    <p className="premium-editor-paragraph">{__("Select Icon")}</p>
+                                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-block-for-gutenberg')}</p>
                                     <FontIconPicker
                                         icons={iconsList}
                                         onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
                                         value={selectedIcon}
                                         isMulti={false}
                                         appendTo="body"
-                                        noSelectedPlaceholder={__("Select Icon")}
+                                        noSelectedPlaceholder={__("Select Icon", 'premium-block-for-gutenberg')}
                                     />
                                 </Fragment>
                             )}
@@ -447,50 +411,43 @@ class edit extends Component {
                                             })
                                         }
                                     />
-                                    <RangeControl
-                                        label={__("Border Radius (PX)")}
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Border Radius (PX)", 'premium-block-for-gutenberg')}
                                         value={iconRadius}
-                                        onChange={newValue =>
-                                            setAttributes({ iconRadius: newValue || 0 })
-                                        }
+                                        onChange={newValue => setAttributes({ iconRadius: newValue || 0 })}
+                                        showUnit={false}
+                                        defaultValue={0}
                                     />
                                 </Fragment>
                             )}
                             <SelectControl
-                                label={__("Hover Effect")}
+                                label={__("Hover Effect", 'premium-block-for-gutenberg')}
                                 options={EFFECTS}
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
-                            <RangeControl
-                                label={__("Size (PX)")}
+                            <ResponsiveSingleRangeControl
+                                label={__("Size (PX)", 'premium-block-for-gutenberg')}
                                 value={iconSize}
-                                min="1"
+                                min="10"
                                 max="200"
                                 onChange={newValue => setAttributes({ iconSize: newValue || 30 })}
+                                showUnit={false}
+                                defaultValue={''}
                             />
                         </PanelBody>
                     )}
                     {titleChecked && (
                         <PanelBody
-                            title={__("Title")}
+                            title={__("Title", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <p>{__("Title")}</p>
-                            <Toolbar
-                                controls={"123456".split("").map(tag => ({
-                                    icon: "heading",
-                                    isActive: "H" + tag === titleTag,
-                                    onClick: () => setAttributes({ titleTag: "H" + tag }),
-                                    subscript: tag
-                                }))}
-                            />
-                            <SelectControl
-                                label={__("Font Family")}
-                                value={titleFont}
-                                options={FONTS}
-                                onChange={onChangeTitleFamily}
+                            <RadioComponent
+                                label={__("Title", 'premium-block-for-gutenberg')}
+                                choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                value={titleStyles[0].titleTag}
+                                onChange={(newValue) => saveTitleStyle({ titleTag: newValue })}
                             />
                             <PremiumTypo
                                 components={[
@@ -499,206 +456,198 @@ class edit extends Component {
                                     "style",
                                     "upper",
                                     "spacing",
-                                    "line"
+                                    "line",
+                                    "family"
                                 ]}
-                                setAttributes={setAttributes}
+                                setAttributes={saveTitleStyle}
                                 fontSizeType={{
-                                    value: titleSizeUnit,
-                                    label: __("titleSizeUnit"),
+                                    value: titleStyles[0].titleSizeUnit,
+                                    label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: titleSize,
-                                    label: __("titleSize"),
-                                }}
-                                fontSizeMobile={{
-                                    value: titleSizeMobile,
-                                    label: __("titleSizeMobile"),
-                                }}
-                                fontSizeTablet={{
-                                    value: titleSizeTablet,
-                                    label: __("titleSizeTablet"),
-                                }}
-                                weight={titleWeight}
-                                style={titleStyle}
-                                spacing={titleLetter}
-                                line={titleLine}
-                                upper={titleUpper}
-                                onChangeWeight={newWeight =>
-                                    setAttributes({ titleWeight: newWeight || 500 })
-                                }
-                                onChangeStyle={newStyle =>
-                                    setAttributes({ titleStyle: newStyle })
-                                }
-                                onChangeSpacing={newValue =>
-                                    setAttributes({ titleLetter: newValue })
-                                }
-                                onChangeLine={newValue => setAttributes({ titleLine: newValue })}
-                                onChangeUpper={check => setAttributes({ titleUpper: check })}
+                                fontSize={titleStyles[0].titleSize}
+                                fontSizeMobile={titleStyles[0].titleSizeMobile}
+                                fontSizeTablet={titleStyles[0].titleSizeTablet}
+                                onChangeSize={newSize => saveTitleStyle({ titleSize: newSize })}
+                                onChangeTabletSize={newSize => saveTitleStyle({ titleSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveTitleStyle({ titleSizeMobile: newSize })}
+                                weight={titleStyles[0].titleWeight}
+                                style={titleStyles[0].titleStyle}
+                                spacing={titleStyles[0].titleLetter}
+                                line={titleStyles[0].titleLine}
+                                upper={titleStyles[0].titleUpper}
+                                fontFamily={titleStyles[0].titleFont}
+                                onChangeWeight={newWeight => saveTitleStyle({ titleWeight: newWeight || 500 })}
+                                onChangeStyle={newStyle => saveTitleStyle({ titleStyle: newStyle })}
+                                onChangeSpacing={newValue => saveTitleStyle({ titleLetter: newValue })}
+                                onChangeLine={newValue => saveTitleStyle({ titleLine: newValue })}
+                                onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
+                                onChangeFamily={(fontFamily) => saveTitleStyle({ titleFont: fontFamily })}
                             />
                             <PremiumTextShadow
-                                color={titleShadowColor}
-                                blur={titleShadowBlur}
-                                horizontal={titleShadowHorizontal}
-                                vertical={titleShadowVertical}
-                                onChangeColor={newColor =>
-                                    setAttributes({
-                                        titleShadowColor: newColor || "transparent"
-                                    })
-                                }
-                                onChangeBlur={newBlur =>
-                                    setAttributes({ titleShadowBlur: newBlur || 0 })
-                                }
-                                onChangehHorizontal={newValue =>
-                                    setAttributes({ titleShadowHorizontal: newValue || 0 })
-                                }
-                                onChangeVertical={newValue =>
-                                    setAttributes({ titleShadowVertical: newValue || 0 })
-                                }
+                                color={titleStyles[0].titleShadowColor}
+                                blur={titleStyles[0].titleShadowBlur}
+                                horizontal={titleStyles[0].titleShadowHorizontal}
+                                vertical={titleStyles[0].titleShadowVertical}
+                                onChangeColor={newColor => saveTitleStyle({ titleShadowColor: newColor || "transparent" })}
+                                onChangeBlur={newBlur => saveTitleStyle({ titleShadowBlur: newBlur || 0 })}
+                                onChangehHorizontal={newValue => saveTitleStyle({ titleShadowHorizontal: newValue || 0 })}
+                                onChangeVertical={newValue => saveTitleStyle({ titleShadowVertical: newValue || 0 })}
                             />
-                            <PremiumMargin
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={titleMarginT}
                                 marginBottom={titleMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        titleMarginT: value || 0
-                                    })
+                                marginTopTablet={titleMarginTTablet}
+                                marginBottomTablet={titleMarginBTablet}
+                                marginTopMobile={titleMarginTMobile}
+                                marginBottomMobile={titleMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ titleMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ titleMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ titleMarginTMobile: newValue })
+                                        }
+                                    }
                                 }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        titleMarginB: value || 0
-                                    })
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ titleMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ titleMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ titleMarginBMobile: newValue })
+                                        }
+                                    }
                                 }
+
                             />
                         </PanelBody>
                     )}
                     {descChecked && (
                         <PanelBody
-                            title={__("Description")}
+                            title={__("Description", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <SelectControl
-                                label={__("Font Family")}
-                                value={descFont}
-                                options={FONTS}
-                                onChange={onChangeDescFamily}
-                            />
+
                             <PremiumTypo
-                                components={["responsiveSize", "weight", "line"]}
-                                setAttributes={setAttributes}
+                                components={["responsiveSize", "weight", "line", "family"]}
+                                setAttributes={saveDescriptionStyle}
                                 fontSizeType={{
-                                    value: descSizeUnit,
-                                    label: __("descSizeUnit"),
+                                    value: descStyles[0].descSizeUnit,
+                                    label: __("descSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: descSize,
-                                    label: __("descSize"),
-                                }}
-                                fontSizeMobile={{
-                                    value: descSizeMobile,
-                                    label: __("descSizeMobile"),
-                                }}
-                                fontSizeTablet={{
-                                    value: descSizeTablet,
-                                    label: __("descSizeTablet"),
-                                }}
-                                weight={descWeight}
-                                line={descLine}
-                                onChangeWeight={newWeight =>
-                                    setAttributes({ descWeight: newWeight || 500 })
-                                }
-                                onChangeLine={newValue => setAttributes({ descLine: newValue })}
+                                fontSize={descStyles[0].descSize}
+                                fontSizeMobile={descStyles[0].descSizeMobile}
+                                fontSizeTablet={descStyles[0].descSizeTablet}
+                                onChangeSize={newSize => saveDescriptionStyle({ descSize: newSize })}
+                                onChangeTabletSize={newSize => saveDescriptionStyle({ descSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveDescriptionStyle({ descSizeMobile: newSize })}
+                                fontFamily={descStyles[0].descFont}
+                                weight={descStyles[0].descWeight}
+                                line={descStyles[0].descLine}
+                                onChangeWeight={newWeight => saveDescriptionStyle({ descWeight: newWeight || 500 })}
+                                onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
+                                onChangeFamily={(fontFamily) => saveDescriptionStyle({ descFont: fontFamily })}
                             />
-                            <PremiumMargin
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={descMarginT}
                                 marginBottom={descMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        descMarginT: value || 0
-                                    })
+                                marginTopTablet={descMarginTTablet}
+                                marginBottomTablet={descMarginBTablet}
+                                marginTopMobile={descMarginTMobile}
+                                marginBottomMobile={descMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ descMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ descMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ descMarginTMobile: newValue })
+                                        }
+                                    }
                                 }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        descMarginB: value || 0
-                                    })
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ descMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ descMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ descMarginBMobile: newValue })
+                                        }
+                                    }
                                 }
+
                             />
                         </PanelBody>
                     )}
 
                     {btnChecked && (
                         <PanelBody
-                            title={__("Button")}
+                            title={__("Button", 'premium-block-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
                                 options={BTN_EFFECTS}
-                                label={__("Hover Effect")}
+                                label={__("Hover Effect", 'premium-block-for-gutenberg')}
                                 value={btnEffect}
                                 onChange={newValue => setAttributes({ btnEffect: newValue })}
                             />
                             {"slide" === btnEffect && (
                                 <SelectControl
                                     options={DIRECTION}
-                                    label={__("Direction")}
+                                    label={__("Direction", 'premium-block-for-gutenberg')}
                                     value={effectDir}
                                     onChange={newValue => setAttributes({ effectDir: newValue })}
                                 />
                             )}
                             <ToggleControl
-                                label={__("Open link in new tab")}
+                                label={__("Open link in new tab", 'premium-block-for-gutenberg')}
                                 checked={btnTarget}
                                 onChange={newValue => setAttributes({ btnTarget: newValue })}
                             />
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "style", "upper", "spacing"]}
 
-                                setAttributes={setAttributes}
+                                setAttributes={saveButtonStyle}
                                 fontSizeType={{
-                                    value: btnSizeUnit,
-                                    label: __("btnSizeUnit"),
+                                    value: btnStyles[0].btnSizeUnit,
+                                    label: __("btnSizeUnit", 'premium-block-for-gutenberg'),
                                 }}
-                                fontSize={{
-                                    value: btnSize,
-                                    label: __("btnSize"),
-                                }}
-                                fontSizeMobile={{
-                                    value: btnSizeMobile,
-                                    label: __("btnSizeMobile"),
-                                }}
-                                fontSizeTablet={{
-                                    value: btnSizeTablet,
-                                    label: __("btnSizeTablet"),
-                                }}
-                                weight={btnWeight}
-                                style={btnStyle}
-                                spacing={btnLetter}
-                                upper={btnUpper}
-                                onChangeWeight={newWeight =>
-                                    setAttributes({ btnWeight: newWeight || 500 })
-                                }
-                                onChangeStyle={newStyle => setAttributes({ btnStyle: newStyle })}
-                                onChangeSpacing={newValue =>
-                                    setAttributes({ btnLetter: newValue })
-                                }
-                                onChangeUpper={check => setAttributes({ btnUpper: check })}
+                                fontSize={btnStyles[0].btnSize}
+                                fontSizeMobile={btnStyles[0].btnSizeMobile}
+                                fontSizeTablet={btnStyles[0].btnSizeTablet}
+                                weight={btnStyles[0].btnWeight}
+                                style={btnStyles[0].btnStyle}
+                                spacing={btnStyles[0].btnLetter}
+                                upper={btnStyles[0].btnUpper}
+                                onChangeWeight={newWeight => saveButtonStyle({ btnWeight: newWeight || 500 })}
+                                onChangeStyle={newStyle => saveButtonStyle({ btnStyle: newStyle })}
+                                onChangeSpacing={newValue => saveButtonStyle({ btnLetter: newValue })}
+                                onChangeUpper={check => saveButtonStyle({ btnUpper: check })}
+                                onChangeSize={newSize => saveButtonStyle({ btnSize: newSize })}
+                                onChangeTabletSize={newSize => saveButtonStyle({ btnSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveButtonStyle({ btnSizeMobile: newSize })}
                             />
 
                             <PremiumBorder
-                                borderType={btnBorderType}
+                                borderType={btnStyles[0].btnBorderType}
                                 borderWidth={btnBorderWidth}
                                 top={btnBorderTop}
                                 right={btnBorderRight}
                                 bottom={btnBorderBottom}
                                 left={btnBorderLeft}
-                                borderColor={btnBorderColor}
-                                borderRadius={btnBorderRadius}
-                                onChangeType={(newType) =>
-                                    setAttributes({ btnBorderType: newType })
-                                }
+                                borderColor={btnStyles[0].btnBorderColor}
+                                borderRadius={btnStyles[0].btnBorderRadius}
+                                onChangeType={(newType) => saveButtonStyle({ btnBorderType: newType })}
                                 onChangeWidth={({ top, right, bottom, left }) =>
                                     setAttributes({
                                         btnBorderIconBox: true,
@@ -708,116 +657,101 @@ class edit extends Component {
                                         btnBorderLeft: left,
                                     })
                                 }
-                                onChangeColor={(colorValue) =>
-                                    setAttributes({ btnBorderColor: colorValue })
-                                }
-                                onChangeRadius={(newrRadius) =>
-                                    setAttributes({ btnBorderRadius: newrRadius })
-                                }
+                                onChangeColor={(colorValue) => saveButtonStyle({ btnBorderColor: colorValue })}
+                                onChangeRadius={(newrRadius) => saveButtonStyle({ btnBorderRadius: newrRadius })}
                             />
                             <PremiumBoxShadow
                                 inner={true}
-                                color={btnShadowColor}
-                                blur={btnShadowBlur}
-                                horizontal={btnShadowHorizontal}
-                                vertical={btnShadowVertical}
-                                position={btnShadowPosition}
-                                onChangeColor={newColor =>
-                                    setAttributes({
-                                        btnShadowColor: newColor || "transparent"
-                                    })
-                                }
-                                onChangeBlur={newBlur =>
-                                    setAttributes({
-                                        btnShadowBlur: newBlur || 0
-                                    })
-                                }
-                                onChangehHorizontal={newValue =>
-                                    setAttributes({
-                                        btnShadowHorizontal: newValue || 0
-                                    })
-                                }
-                                onChangeVertical={newValue =>
-                                    setAttributes({
-                                        btnShadowVertical: newValue || 0
-                                    })
-                                }
-                                onChangePosition={newValue =>
-                                    setAttributes({
-                                        btnShadowPosition: newValue || 0
-                                    })
-                                }
+                                color={btnStyles[0].btnShadowColor}
+                                blur={btnStyles[0].btnShadowBlur}
+                                horizontal={btnStyles[0].btnShadowHorizontal}
+                                vertical={btnStyles[0].btnShadowVertical}
+                                position={btnStyles[0].btnShadowPosition}
+                                onChangeColor={newColor => saveButtonStyle({ btnShadowColor: newColor || "transparent" })}
+                                onChangeBlur={newBlur => saveButtonStyle({ btnShadowBlur: newBlur || 0 })}
+                                onChangehHorizontal={newValue => saveButtonStyle({ btnShadowHorizontal: newValue || 0 })}
+                                onChangeVertical={newValue => saveButtonStyle({ btnShadowVertical: newValue || 0 })}
+                                onChangePosition={newValue => saveButtonStyle({ btnShadowPosition: newValue || 0 })}
                             />
-                            <PremiumSizeUnits
-                                onChangeSizeUnit={newValue =>
-                                    setAttributes({ btnPaddingU: newValue })
-                                }
+                            <ResponsiveSingleRangeControl
+                                label={__("Padding", 'premium-block-for-gutenberg')}
+                                value={btnStyles[0].btnPadding}
+                                onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
+                                showUnit={true}
+                                defaultValue={''}
+                                onChangeUnit={newValue => saveButtonStyle({ btnPaddingU: newValue })}
+                                unit={btnStyles[0].btnPaddingU}
                             />
-                            <RangeControl
-                                label={__("Padding")}
-                                value={btnPadding}
-                                onChange={newValue => setAttributes({ btnPadding: newValue })}
-                            />
-                            <PremiumMargin
+                            <PremiumResponsiveMargin
                                 directions={["top", "bottom"]}
                                 marginTop={btnMarginT}
                                 marginBottom={btnMarginB}
-                                onChangeMarTop={value =>
-                                    setAttributes({
-                                        btnMarginT: value || 0
-                                    })
+                                marginTopTablet={btnMarginTTablet}
+                                marginBottomTablet={btnMarginBTablet}
+                                marginTopMobile={btnMarginTMobile}
+                                marginBottomMobile={btnMarginBMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnMarginTMobile: newValue })
+                                        }
+                                        setAttributes({ btnPadUpdate: true })
+                                    }
                                 }
-                                onChangeMarBottom={value =>
-                                    setAttributes({
-                                        btnMarginB: value || 0
-                                    })
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ btnMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ btnMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ btnMarginBMobile: newValue })
+                                        }
+                                        setAttributes({ btnPadUpdate: true })
+                                    }
                                 }
                             />
+
                         </PanelBody>
                     )}
-
                     <PanelBody
-                        title={__("Container")}
+                        title={__("Container", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <PremiumBackground
-                            imageID={imageID}
-                            imageURL={imageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
+                            imageID={containerStyles[0].imageID}
+                            imageURL={containerStyles[0].imageURL}
+                            backgroundPosition={containerStyles[0].backgroundPosition}
+                            backgroundRepeat={containerStyles[0].backgroundRepeat}
+                            backgroundSize={containerStyles[0].backgroundSize}
+                            fixed={containerStyles[0].fixed}
                             onSelectMedia={media => {
-                                setAttributes({
+                                saveContainerStyle({
                                     imageID: media.id,
                                     imageURL: media.url
                                 });
                             }}
-                            onRemoveImage={value =>
-                                setAttributes({ imageURL: "", imageID: "" })
-                            }
-                            onChangeBackPos={newValue =>
-                                setAttributes({ backgroundPosition: newValue })
-                            }
-                            onchangeBackRepeat={newValue =>
-                                setAttributes({ backgroundRepeat: newValue })
-                            }
-                            onChangeBackSize={newValue =>
-                                setAttributes({ backgroundSize: newValue })
-                            }
-                            onChangeFixed={check => setAttributes({ fixed: check })}
+                            onRemoveImage={value => saveContainerStyle({ imageURL: "", imageID: "" })}
+                            onChangeBackPos={newValue => saveContainerStyle({ backgroundPosition: newValue })}
+                            onchangeBackRepeat={newValue => saveContainerStyle({ backgroundRepeat: newValue })}
+                            onChangeBackSize={newValue => saveContainerStyle({ backgroundSize: newValue })}
+                            onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                         <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
+                            borderType={containerStyles[0].borderType}
+                            borderWidth={containerStyles[0].borderWidth}
                             top={borderTop}
                             right={borderRight}
                             bottom={borderBottom}
                             left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderColor={containerStyles[0].borderColor}
+                            borderRadius={containerStyles[0].borderRadius}
+                            onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderIconBox: true,
@@ -827,136 +761,156 @@ class edit extends Component {
                                     borderLeft: left,
                                 })
                             }
-                            onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                setAttributes({ borderRadius: newrRadius })
-                            }
+                            onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
+                            onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
                         />
                         <PremiumBoxShadow
                             inner={true}
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            position={shadowPosition}
-                            onChangeColor={newColor =>
-                                setAttributes({
-                                    shadowColor: newColor || "transparent"
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                setAttributes({
-                                    shadowBlur: newBlur || 0
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                setAttributes({
-                                    shadowHorizontal: newValue || 0
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({
-                                    shadowVertical: newValue || 0
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                setAttributes({
-                                    shadowPosition: newValue
-                                })
-                            }
+                            color={containerStyles[0].shadowColor}
+                            blur={containerStyles[0].shadowBlur}
+                            horizontal={containerStyles[0].shadowHorizontal}
+                            vertical={containerStyles[0].shadowVertical}
+                            position={containerStyles[0].shadowPosition}
+                            onChangeColor={newColor => saveContainerStyle({ shadowColor: newColor || "transparent" })}
+                            onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur || 0 })}
+                            onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue || 0 })}
+                            onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue || 0 })}
+                            onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
                         <PremiumBoxShadow
                             inner={true}
                             label={__("Hover Box Shadow")}
-                            color={hoverShadowColor}
-                            blur={hoverShadowBlur}
-                            horizontal={hoverShadowHorizontal}
-                            vertical={hoverShadowVertical}
-                            position={hoverShadowPosition}
-                            onChangeColor={newColor =>
-                                setAttributes({
-                                    hoverShadowColor: newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                setAttributes({
-                                    hoverShadowBlur: newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                setAttributes({
-                                    hoverShadowHorizontal: newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({
-                                    hoverShadowVertical: newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                setAttributes({
-                                    hoverShadowPosition: newValue
-                                })
-                            }
+                            color={containerStyles[0].hoverShadowColor}
+                            blur={containerStyles[0].hoverShadowBlur}
+                            horizontal={containerStyles[0].hoverShadowHorizontal}
+                            vertical={containerStyles[0].hoverShadowVertical}
+                            position={containerStyles[0].hoverShadowPosition}
+                            onChangeColor={newColor => saveContainerStyle({ hoverShadowColor: newColor })}
+                            onChangeBlur={newBlur => saveContainerStyle({ hoverShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveContainerStyle({ hoverShadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveContainerStyle({ hoverShadowVertical: newValue })}
+                            onChangePosition={newValue => saveContainerStyle({ hoverShadowPosition: newValue })}
                         />
-                        <PremiumMargin
+                        <PremiumResponsiveMargin
                             directions={["all"]}
                             marginTop={marginT}
                             marginRight={marginR}
                             marginBottom={marginB}
                             marginLeft={marginL}
-                            onChangeMarTop={value =>
-                                setAttributes({
-                                    marginT: value || 0
-                                })
+                            marginTopTablet={marginTTablet}
+                            marginRightTablet={marginRTablet}
+                            marginBottomTablet={marginBTablet}
+                            marginLeftTablet={marginLTablet}
+                            marginTopMobile={marginTMobile}
+                            marginRightMobile={marginRMobile}
+                            marginBottomMobile={marginBMobile}
+                            marginLeftMobile={marginLMobile}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginTMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangeMarRight={value =>
-                                setAttributes({
-                                    marginR: value || 0
-                                })
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginRMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangeMarBottom={value =>
-                                setAttributes({
-                                    marginB: value || 0
-                                })
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginBMobile: newValue })
+                                    }
+                                }
                             }
-                            onChangeMarLeft={value =>
-                                setAttributes({
-                                    marginL: value || 0
-                                })
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ marginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ marginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ marginLMobile: newValue })
+                                    }
+                                }
                             }
                         />
-                        <PremiumPadding
+                        <PremiumResponsivePadding
                             paddingTop={paddingT}
                             paddingRight={paddingR}
                             paddingBottom={paddingB}
                             paddingLeft={paddingL}
+                            paddingTopTablet={paddingTTablet}
+                            paddingRightTablet={paddingRTablet}
+                            paddingBottomTablet={paddingBTablet}
+                            paddingLeftTablet={paddingLTablet}
+                            paddingTopMobile={paddingTMobile}
+                            paddingRightMobile={paddingRMobile}
+                            paddingBottomMobile={paddingBMobile}
+                            paddingLeftMobile={paddingLMobile}
                             showUnits={true}
-                            onChangePadTop={value =>
-                                setAttributes({
-                                    paddingT: value || 0
-                                })
-                            }
-                            onChangePadRight={value =>
-                                setAttributes({
-                                    paddingR: value || 0
-                                })
-                            }
-                            onChangePadBottom={value =>
-                                setAttributes({
-                                    paddingB: value || 0
-                                })
-                            }
-                            onChangePadLeft={value =>
-                                setAttributes({
-                                    paddingL: value || 0
-                                })
-                            }
-                            selectedUnit={paddingU}
+                            selectedUnit={containerStyles[0].paddingU}
                             onChangePadSizeUnit={newvalue =>
-                                setAttributes({ paddingU: newvalue })
+                                saveContainerStyle({ paddingU: newvalue })
+                            }
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ paddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ paddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ paddingLMobile: newValue })
+                                    }
+                                }
                             }
                         />
                     </PanelBody>
@@ -992,20 +946,12 @@ class edit extends Component {
                                                         label={__("Icon Color", 'premium-block-for-gutenberg')}
                                                         colorValue={iconColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            setAttributes({
-                                                                iconColor: newValue || "transparent",
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => setAttributes({ iconColor: newValue || "transparent", })}
                                                     />
                                                     <AdvancedPopColorControl
-                                                        label={__(`Icon Background Color`)}
+                                                        label={__(`Background Color`)}
                                                         colorValue={iconBackColor}
-                                                        onColorChange={newvalue =>
-                                                            setAttributes({
-                                                                iconBackColor: newvalue,
-                                                            })
-                                                        }
+                                                        onColorChange={newvalue => setAttributes({ iconBackColor: newvalue, })}
                                                         colorDefault={``}
                                                     />
                                                 </Fragment>
@@ -1013,57 +959,40 @@ class edit extends Component {
                                             {titleChecked && (
                                                 <AdvancedPopColorControl
                                                     label={__("Tile Color", 'premium-block-for-gutenberg')}
-                                                    colorValue={titleColor}
+                                                    colorValue={titleStyles[0].titleColor}
                                                     colorDefault={''}
-                                                    onColorChange={newValue =>
-                                                        setAttributes({
-                                                            titleColor: newValue || "transparent",
-                                                        })
-                                                    }
+                                                    onColorChange={newValue => saveTitleStyle({ titleColor: newValue || "transparent", })}
                                                 />
                                             )}
                                             {descChecked && (
                                                 <AdvancedPopColorControl
                                                     label={__("Descreption Color", 'premium-block-for-gutenberg')}
-                                                    colorValue={descColor}
+                                                    colorValue={descStyles[0].descColor}
                                                     colorDefault={''}
-                                                    onColorChange={newValue =>
-                                                        setAttributes({
-                                                            descColor: newValue || "transparent",
-                                                        })
-                                                    }
+                                                    onColorChange={newValue => saveDescriptionStyle({ descColor: newValue || "transparent", })}
                                                 />
                                             )}
                                             {btnChecked && (
                                                 <Fragment>
                                                     <AdvancedPopColorControl
                                                         label={__("Button Color", 'premium-block-for-gutenberg')}
-                                                        colorValue={btnColor}
+                                                        colorValue={btnStyles[0].btnColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            setAttributes({
-                                                                btnColor: newValue || "#000",
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => saveButtonStyle({ btnColor: newValue || "#000", })}
                                                     />
+
                                                     <AdvancedPopColorControl
                                                         label={__(`Background Color`)}
-                                                        colorValue={btnBack}
-                                                        onColorChange={newvalue =>
-                                                            setAttributes({
-                                                                btnBack: newvalue,
-                                                            })
-                                                        }
+                                                        colorValue={btnStyles[0].btnBack}
+                                                        onColorChange={newvalue => saveButtonStyle({ btnBack: newvalue, })}
                                                         colorDefault={``}
                                                     />
                                                 </Fragment>
                                             )}
                                             <AdvancedPopColorControl
                                                 label={__(`Background Color`)}
-                                                colorValue={backColor}
-                                                onColorChange={newvalue =>
-                                                    setAttributes({ backColor: newvalue })
-                                                }
+                                                colorValue={containerStyles[0].backColor}
+                                                onColorChange={newvalue => saveContainerStyle({ backColor: newvalue })}
                                                 colorDefault={``}
                                             />
                                         </Fragment>
@@ -1076,23 +1005,15 @@ class edit extends Component {
                                                 <Fragment>
                                                     <AdvancedPopColorControl
                                                         label={__("Button Hover Color", 'premium-block-for-gutenberg')}
-                                                        colorValue={btnHoverColor}
+                                                        colorValue={btnStyles[0].btnHoverColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            setAttributes({
-                                                                btnHoverColor: newValue || "#000",
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
                                                     />
                                                     <AdvancedPopColorControl
                                                         label={__('Background Button Hover Color', 'premium-block-for-gutenberg')}
-                                                        colorValue={btnHoverBack}
+                                                        colorValue={btnStyles[0].btnHoverBack}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
-                                                            setAttributes({
-                                                                btnHoverBack: newValue,
-                                                            })
-                                                        }
+                                                        onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
                                                     />
                                                 </Fragment>
                                             )}
@@ -1100,11 +1021,7 @@ class edit extends Component {
                                                 label={__('Border Hover Color', 'premium-block-for-gutenberg')}
                                                 colorValue={btnHoverBorder}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    setAttributes({
-                                                        btnHoverBorder: newValue || "transparent",
-                                                    })
-                                                }
+                                                onColorChange={newValue => setAttributes({ btnHoverBorder: newValue || "transparent", })}
                                             />
                                         </Fragment>
                                     );
@@ -1133,29 +1050,27 @@ class edit extends Component {
                 className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: align,
-                    borderStyle: borderType,
+                    borderStyle: containerStyles[0].borderType,
                     borderWidth: borderIconBox
                         ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
-                    boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                    backgroundColor: backColor
-                        ? hexToRgba(backColor, backOpacity)
-                        : "transparent",
-                    backgroundImage: imageURL ? `url('${imageURL}')` : 'none',
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
+                        : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor,
+                    marginTop: containerMarginTop,
+                    marginRight: containerMarginRight,
+                    marginBottom: containerMarginBottom,
+                    marginLeft: containerMarginLeft,
+                    paddingTop: containerPaddingTop + containerStyles[0].paddingU,
+                    paddingRight: containerPaddingRight + containerStyles[0].paddingU,
+                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
+                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingU,
+                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                    backgroundColor: containerStyles[0].backColor,
+                    backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
                 }}
             >
                 {btnChecked && btnText && (
@@ -1163,17 +1078,17 @@ class edit extends Component {
                         dangerouslySetInnerHTML={{
                             __html: [
                                 `#premium-icon-box-${block_id}:hover {`,
-                                `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
+                                `box-shadow: ${containerStyles[0].hoverShadowHorizontal}px ${containerStyles[0].hoverShadowVertical}px ${containerStyles[0].hoverShadowBlur}px ${containerStyles[0].hoverShadowColor} ${containerStyles[0].hoverShadowPosition} !important`,
                                 "}",
                                 `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
-                                `color: ${btnHoverColor} !important;`,
+                                `color: ${btnStyles[0].btnHoverColor} !important;`,
                                 `border-color: ${btnHoverBorder} !important;`,
                                 "}",
                                 `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
-                                `background-color: ${btnHoverBack} !important;`,
+                                `background-color: ${btnStyles[0].btnHoverBack} !important;`,
                                 "}",
                                 `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
-                                `background-color: ${btnHoverBack} !important;`,
+                                `background-color: ${btnStyles[0].btnHoverBack} !important;`,
                                 "}"
                             ].join("\n")
                         }}
@@ -1195,12 +1110,7 @@ class edit extends Component {
                                         className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                                         style={{
                                             color: iconColor,
-                                            backgroundColor: iconBackColor
-                                                ? hexToRgba(
-                                                    iconBackColor,
-                                                    iconOpacity
-                                                )
-                                                : "transparent",
+                                            backgroundColor: iconBackColor,
                                             fontSize: iconSize
                                         }}
                                     />
@@ -1226,25 +1136,26 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__title_wrap`}
                             style={{
-                                marginTop: titleMarginT,
-                                marginBottom: titleMarginB
+                                marginTop: titleMarginTop,
+                                marginBottom: titleMarginBottom
                             }}
                         >
                             <RichText
-                                tagName={titleTag.toLowerCase()}
+                                tagName={titleStyles[0].titleTag.toLowerCase()}
                                 className={`premium-icon-box__title`}
                                 onChange={newText => setAttributes({ titleText: newText })}
                                 placeholder={__("Awesome Title")}
                                 value={titleText}
                                 style={{
-                                    color: titleColor,
-                                    fontFamily: titleFont,
-                                    letterSpacing: titleLetter + "px",
-                                    textTransform: titleUpper ? "uppercase" : "none",
-                                    fontStyle: titleStyle,
-                                    fontWeight: titleWeight,
-                                    textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                    lineHeight: titleLine + "px"
+                                    fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,
+                                    color: titleStyles[0].titleColor,
+                                    fontFamily: titleStyles[0].titleFont,
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                    lineHeight: titleStyles[0].titleLine + "px"
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1254,8 +1165,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__desc_wrap`}
                             style={{
-                                marginTop: descMarginT,
-                                marginBottom: descMarginB
+                                marginTop: descMarginTop,
+                                marginBottom: descMarginBottom
                             }}
                         >
                             <RichText
@@ -1266,10 +1177,11 @@ class edit extends Component {
                                 placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                 onChange={newText => setAttributes({ descText: newText })}
                                 style={{
-                                    color: descColor,
-                                    fontFamily: descFont,
-                                    lineHeight: descLine + "px",
-                                    fontWeight: descWeight
+                                    color: descStyles[0].descColor,
+                                    fontFamily: descStyles[0].descFont,
+                                    lineHeight: descStyles[0].descLine + "px",
+                                    fontWeight: descStyles[0].descWeight,
+                                    fontSize: `${descriptionFontSize}${descStyles[0].descSizeUnit}`
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1279,8 +1191,8 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
-                                marginTop: btnMarginT,
-                                marginBottom: btnMarginB
+                                marginTop: btnMarginTop,
+                                marginBottom: btnMarginBottom
                             }}
                         >
                             <RichText
@@ -1290,22 +1202,21 @@ class edit extends Component {
                                 placeholder={__("Click Here")}
                                 value={btnText}
                                 style={{
-                                    color: btnColor,
-                                    backgroundColor: btnBack
-                                        ? hexToRgba(btnBack, btnOpacity)
-                                        : "transparent",
-                                    letterSpacing: btnLetter + "px",
-                                    textTransform: btnUpper ? "uppercase" : "none",
-                                    fontStyle: btnStyle,
-                                    fontWeight: btnWeight,
-                                    borderStyle: btnBorderType,
+                                    fontSize: `${buttonFontSize}${btnStyles[0].btnSizeUnit}`,
+                                    color: btnStyles[0].btnColor,
+                                    backgroundColor: btnStyles[0].btnBack,
+                                    letterSpacing: btnStyles[0].btnLetter + "px",
+                                    textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                    fontStyle: btnStyles[0].btnStyle,
+                                    fontWeight: btnStyles[0].btnWeight,
+                                    borderStyle: btnStyles[0].btnBorderType,
                                     borderWidth: btnBorderIconBox
                                         ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                        : btnBorderWidth + "px",
-                                    borderRadius: btnBorderRadius + "px",
-                                    borderColor: btnBorderColor,
-                                    padding: btnPadding + btnPaddingU,
-                                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+                                        : btnStyles[0].btnBorderWidth + "px",
+                                    borderRadius: btnStyles[0].btnBorderRadius + "px",
+                                    borderColor: btnStyles[0].btnBorderColor,
+                                    padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                    boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1323,4 +1234,11 @@ class edit extends Component {
     }
 };
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)
