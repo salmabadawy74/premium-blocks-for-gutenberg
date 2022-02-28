@@ -488,7 +488,7 @@ export class edit extends Component {
                             left={borderLeft}
                             borderColor={containerStyles[0].borderColor}
                             borderRadius={containerStyles[0].borderRadius}
-                            onChangeType={(newType) => containerStyle({ borderType: newType }, containerStyles)}
+                            onChangeType={(newType) => containerStyle({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderBanner: true,
