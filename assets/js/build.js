@@ -238,8 +238,7 @@ var banner = _PremiumBlocksSetting.banner,
     iconBox = _PremiumBlocksSetting.iconBox,
     videoBox = _PremiumBlocksSetting.videoBox,
     fancyText = _PremiumBlocksSetting.fancyText,
-    lottie = _PremiumBlocksSetting.lottie,
-    newsletter = _PremiumBlocksSetting.newsletter;
+    lottie = _PremiumBlocksSetting.lottie;
 
 //Plugin Config Keys
 
@@ -257,7 +256,6 @@ exports.iconBox = iconBox;
 exports.videoBox = videoBox;
 exports.fancyText = fancyText;
 exports.lottie = lottie;
-exports.newsletter = newsletter;
 var _FontAwesomeConfig = FontAwesomeConfig;
 var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
 exports.FontAwesomeEnabled = FontAwesomeEnabled;
@@ -15610,7 +15608,7 @@ var edit = exports.edit = function (_Component) {
                         borderColor: containerStyles[0].borderColor,
                         borderRadius: containerStyles[0].borderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return containerStyle({ borderType: newType }, containerStyles);
+                            return containerStyle({ borderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref) {
                             var top = _ref.top,
@@ -15905,11 +15903,7 @@ var save = function save(props) {
         borderTop = _props$attributes.borderTop,
         borderRight = _props$attributes.borderRight,
         borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL;
+        borderLeft = _props$attributes.borderLeft;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
@@ -16358,7 +16352,6 @@ var deprecatedContent = [{
             paddingBMobile: "",
             paddingLMobile: ""
         };
-        console.log(Object.assign(attributes, newAttributes));
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
@@ -24297,7 +24290,7 @@ var deprecatedContent = [{
                 gradientAngle: '180',
                 gradientPosition: 'center center'
             }],
-            backgroundType: 'solid'
+            backgroundType: ''
         };
         return Object.assign(attributes, newAttributes);
     },

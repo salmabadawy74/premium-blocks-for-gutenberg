@@ -43,10 +43,7 @@ const save = props => {
         borderRight,
         borderBottom,
         borderLeft,
-        paddingT,
-        paddingR,
-        paddingB,
-        paddingL
+
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-banner');
