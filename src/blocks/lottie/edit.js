@@ -4,10 +4,10 @@ import PremiumFilters from "../../components/premium-filters";
 import PremiumBorder from "../../components/premium-border";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control'
-import ResponsiveRangeControl from "../../components/RangeControl /responsive-range-control";
+import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import Placeholder from './container.js';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -219,7 +219,7 @@ class edit extends Component {
         const mainClasses = classnames(className, 'premium-lottie-wrap')
         const lottieSize = this.getPreviewSize(this.props.deviceType, lottieStyles[0].size, lottieStyles[0].sizeTablet, lottieStyles[0].sizeMobile);
         const renderCss = (<style>
-            { `
+            {`
             #premium-lottie-${block_id} .premium-lottie-animation svg{
                 width:${lottieSize}${lottieStyles[0].sizeUnit} !important;
                 height:${lottieSize}${lottieStyles[0].sizeUnit} !important;

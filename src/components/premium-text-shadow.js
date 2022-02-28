@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
-import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 import AdvancedColorControl from './Color Control/ColorComponent'
 
 export default function PremiumTextShadow(props) {

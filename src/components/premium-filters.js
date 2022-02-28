@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { Dropdown, Button } = wp.components;
-import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 export default function PremiumFilters(props) {
     const {
         blur,

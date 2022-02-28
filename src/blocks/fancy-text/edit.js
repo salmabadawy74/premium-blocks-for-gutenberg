@@ -333,7 +333,7 @@ class edit extends Component {
         const PrefixFontSize = this.getPreviewSize(this.props.deviceType, PreStyles[0].textfontSize, PreStyles[0].textfontSizeTablet, PreStyles[0].textfontSizeMobile);
 
         const renderCss = (<style>
-            { `
+            {`
            #premium-fancy-text-${block_id} .premium-fancy-text-title {
             font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
             color: ${fancyStyles[0].fancyTextColor};

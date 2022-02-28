@@ -2,7 +2,7 @@ import { maps } from "../../../assets/js/settings";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 
@@ -496,7 +496,7 @@ class PremiumMap extends Component {
                                 __("Get your location coordinates from"),
                                 <a href="https://www.latlong.net/" target="_blank">
                                     &nbsp;
-                  {__("here", 'premium-block-for-gutenberg')}
+                                    {__("here", 'premium-block-for-gutenberg')}
                                 </a>
                             ]}
                             onChange={newLng => setAttributes({ centerLng: newLng })}
@@ -711,7 +711,7 @@ class PremiumMap extends Component {
                                 __("Get your custom styling from", 'premium-block-for-gutenberg'),
                                 <a href="https://snazzymaps.com/" target="_blank">
                                     &nbsp;
-                  {__("here")}
+                                    {__("here")}
                                 </a>
                             ]}
                             onChange={newStyle =>

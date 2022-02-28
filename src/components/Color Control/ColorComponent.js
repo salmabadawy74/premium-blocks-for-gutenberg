@@ -72,7 +72,7 @@ class AdvancedColorControl extends Component {
                     <div className="premium-color-wrapper">
                         {this.state.isVisible && (
                             <Popover position="bottom left" className="premium-popover-color" onClose={toggleClose}>
-                                { this.props.colors && (
+                                {this.props.colors && (
                                     <div className={`premium-color-picker-top`}>
                                         <ul className="premium-color-picker-skins">
                                             {map(this.props.colors, ({ color, slug, name }) => {

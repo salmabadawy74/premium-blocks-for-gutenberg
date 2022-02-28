@@ -1,5 +1,5 @@
 import { Component } from "react";
-import ResponsiveSingleRangeControl from "./RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { SelectControl, ColorPicker } = wp.components;

@@ -7,11 +7,11 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import ResponsiveSingleRangeControl from "../../components/RangeControl /single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
 import RadioComponent from '../../components/radio-control'
-import ResponsiveRangeControl from "../../components/RangeControl /responsive-range-control";
+import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 
 const { __ } = wp.i18n;
 
@@ -640,7 +640,7 @@ class edit extends Component {
                                 }}
                             >
                                 &nbsp;-&nbsp;
-            </span>
+                            </span>
                             <RichText
                                 tagName={authorStyles[0].authorComTag.toLowerCase()}
                                 className={`premium-testimonial__author_comp`}
