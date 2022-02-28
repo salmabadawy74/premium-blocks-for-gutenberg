@@ -1,1742 +1,1509 @@
 const iconsList = {
-  Dashicons: [
-    "",
+    Dashicons: [
+        "",
+        "dashicons dashicons-menu",
+        "dashicons dashicons-admin-site",
+        "dashicons dashicons-dashboard",
+        "dashicons dashicons-admin-post",
+        "dashicons dashicons-admin-media",
+        "dashicons dashicons-admin-links",
+        "dashicons dashicons-admin-page",
+        "dashicons dashicons-admin-comments",
+        "dashicons dashicons-admin-appearance",
+        "dashicons dashicons-admin-plugins",
+        "dashicons dashicons-admin-users",
+        "dashicons dashicons-admin-tools",
+        "dashicons dashicons-admin-settings",
+        "dashicons dashicons-admin-network",
+        "dashicons dashicons-admin-home",
+        "dashicons dashicons-admin-generic",
+        "dashicons dashicons-admin-collapse",
+        "dashicons dashicons-filter",
+        "dashicons dashicons-admin-customizer",
+        "dashicons dashicons-admin-multisite",
+        "dashicons dashicons-welcome-write-blog",
+        "dashicons dashicons-welcome-add-page",
+        "dashicons dashicons-welcome-view-site",
+        "dashicons dashicons-welcome-widgets-menus",
+        "dashicons dashicons-welcome-comments",
+        "dashicons dashicons-welcome-learn-more",
+        "dashicons dashicons-format-aside",
+        "dashicons dashicons-format-image",
+        "dashicons dashicons-format-gallery",
+        "dashicons dashicons-format-video",
+        "dashicons dashicons-format-status",
+        "dashicons dashicons-format-quote",
+        "dashicons dashicons-format-chat",
+        "dashicons dashicons-format-audio",
+        "dashicons dashicons-camera",
+        "dashicons dashicons-images-alt",
+        "dashicons dashicons-images-alt2",
+        "dashicons dashicons-video-alt",
+        "dashicons dashicons-video-alt2",
+        "dashicons dashicons-video-alt3",
+        "dashicons dashicons-media-archive",
+        "dashicons dashicons-media-audio",
+        "dashicons dashicons-media-code",
+        "dashicons dashicons-media-default",
+        "dashicons dashicons-media-document",
+        "dashicons dashicons-media-interactive",
+        "dashicons dashicons-media-spreadsheet",
+        "dashicons dashicons-media-text",
+        "dashicons dashicons-media-video",
+        "dashicons dashicons-playlist-audio",
+        "dashicons dashicons-playlist-video",
+        "dashicons dashicons-controls-play",
+        "dashicons dashicons-controls-pause",
+        "dashicons dashicons-controls-forward",
+        "dashicons dashicons-controls-skipforward",
+        "dashicons dashicons-controls-back",
+        "dashicons dashicons-controls-skipback",
+        "dashicons dashicons-controls-repeat",
+        "dashicons dashicons-controls-volumeon",
+        "dashicons dashicons-controls-volumeoff",
+        "dashicons dashicons-image-crop",
+        "dashicons dashicons-image-rotate",
+        "dashicons dashicons-image-rotate-left",
+        "dashicons dashicons-image-rotate-right",
+        "dashicons dashicons-image-flip-vertical",
+        "dashicons dashicons-image-flip-horizontal",
+        "dashicons dashicons-image-filter",
+        "dashicons dashicons-undo",
+        "dashicons dashicons-redo",
+        "dashicons dashicons-editor-bold",
+        "dashicons dashicons-editor-italic",
+        "dashicons dashicons-editor-ul",
+        "dashicons dashicons-editor-ol",
+        "dashicons dashicons-editor-quote",
+        "dashicons dashicons-editor-alignleft",
+        "dashicons dashicons-editor-aligncenter",
+        "dashicons dashicons-editor-alignright",
+        "dashicons dashicons-editor-insertmore",
+        "dashicons dashicons-editor-spellcheck",
+        "dashicons dashicons-editor-expand",
+        "dashicons dashicons-editor-contract",
+        "dashicons dashicons-editor-kitchensink",
+        "dashicons dashicons-editor-underline",
+        "dashicons dashicons-editor-justify",
+        "dashicons dashicons-editor-textcolor",
+        "dashicons dashicons-editor-paste-word",
+        "dashicons dashicons-editor-paste-text",
+        "dashicons dashicons-editor-removeformatting",
+        "dashicons dashicons-editor-video",
+        "dashicons dashicons-editor-customchar",
+        "dashicons dashicons-editor-outdent",
+        "dashicons dashicons-editor-indent",
+        "dashicons dashicons-editor-help",
+        "dashicons dashicons-editor-strikethrough",
+        "dashicons dashicons-editor-unlink",
+        "dashicons dashicons-editor-rtl",
+        "dashicons dashicons-editor-break",
+        "dashicons dashicons-editor-code",
+        "dashicons dashicons-editor-paragraph",
+        "dashicons dashicons-editor-table",
+        "dashicons dashicons-align-left",
+        "dashicons dashicons-align-right",
+        "dashicons dashicons-align-center",
+        "dashicons dashicons-align-none",
+        "dashicons dashicons-lock",
+        "dashicons dashicons-unlock",
+        "dashicons dashicons-calendar",
+        "dashicons dashicons-calendar-alt",
+        "dashicons dashicons-visibility",
+        "dashicons dashicons-hidden",
+        "dashicons dashicons-post-status",
+        "dashicons dashicons-edit",
+        "dashicons dashicons-trash",
+        "dashicons dashicons-sticky",
+        "dashicons dashicons-external",
+        "dashicons dashicons-arrow-up",
+        "dashicons dashicons-arrow-down",
+        "dashicons dashicons-arrow-right",
+        "dashicons dashicons-arrow-left",
+        "dashicons dashicons-arrow-up-alt",
+        "dashicons dashicons-arrow-down-alt",
+        "dashicons dashicons-arrow-right-alt",
+        "dashicons dashicons-arrow-left-alt",
+        "dashicons dashicons-arrow-up-alt2",
+        "dashicons dashicons-arrow-down-alt2",
+        "dashicons dashicons-arrow-right-alt2",
+        "dashicons dashicons-arrow-left-alt2",
+        "dashicons dashicons-sort",
+        "dashicons dashicons-leftright",
+        "dashicons dashicons-randomize",
+        "dashicons dashicons-list-view",
+        "dashicons dashicons-exerpt-view",
+        "dashicons dashicons-grid-view",
+        "dashicons dashicons-move",
+        "dashicons dashicons-share",
+        "dashicons dashicons-share-alt",
+        "dashicons dashicons-share-alt2",
+        "dashicons dashicons-twitter",
+        "dashicons dashicons-rss",
+        "dashicons dashicons-email",
+        "dashicons dashicons-email-alt",
+        "dashicons dashicons-facebook",
+        "dashicons dashicons-facebook-alt",
+        "dashicons dashicons-googleplus",
+        "dashicons dashicons-networking",
+        "dashicons dashicons-hammer",
+        "dashicons dashicons-art",
+        "dashicons dashicons-migrate",
+        "dashicons dashicons-performance",
+        "dashicons dashicons-universal-access",
+        "dashicons dashicons-universal-access-alt",
+        "dashicons dashicons-tickets",
+        "dashicons dashicons-nametag",
+        "dashicons dashicons-clipboard",
+        "dashicons dashicons-heart",
+        "dashicons dashicons-megaphone",
+        "dashicons dashicons-schedule",
+        "dashicons dashicons-wordpress",
+        "dashicons dashicons-wordpress-alt",
+        "dashicons dashicons-pressthis",
+        "dashicons dashicons-update",
+        "dashicons dashicons-screenoptions",
+        "dashicons dashicons-info",
+        "dashicons dashicons-cart",
+        "dashicons dashicons-feedback",
+        "dashicons dashicons-cloud",
+        "dashicons dashicons-translation",
+        "dashicons dashicons-tag",
+        "dashicons dashicons-category",
+        "dashicons dashicons-archive",
+        "dashicons dashicons-tagcloud",
+        "dashicons dashicons-text",
+        "dashicons dashicons-yes",
+        "dashicons dashicons-no",
+        "dashicons dashicons-no-alt",
+        "dashicons dashicons-plus",
+        "dashicons dashicons-plus-alt",
+        "dashicons dashicons-minus",
+        "dashicons dashicons-dismiss",
+        "dashicons dashicons-marker",
+        "dashicons dashicons-star-filled",
+        "dashicons dashicons-star-half",
+        "dashicons dashicons-star-empty",
+        "dashicons dashicons-flag",
+        "dashicons dashicons-warning",
+        "dashicons dashicons-location",
+        "dashicons dashicons-location-alt",
+        "dashicons dashicons-vault",
+        "dashicons dashicons-shield",
+        "dashicons dashicons-shield-alt",
+        "dashicons dashicons-sos",
+        "dashicons dashicons-search",
+        "dashicons dashicons-slides",
+        "dashicons dashicons-analytics",
+        "dashicons dashicons-chart-pie",
+        "dashicons dashicons-chart-bar",
+        "dashicons dashicons-chart-line",
+        "dashicons dashicons-chart-area",
+        "dashicons dashicons-groups",
+        "dashicons dashicons-businessman",
+        "dashicons dashicons-id",
+        "dashicons dashicons-id-alt",
+        "dashicons dashicons-products",
+        "dashicons dashicons-awards",
+        "dashicons dashicons-forms",
+        "dashicons dashicons-testimonial",
+        "dashicons dashicons-portfolio",
+        "dashicons dashicons-book",
+        "dashicons dashicons-book-alt",
+        "dashicons dashicons-download",
+        "dashicons dashicons-upload",
+        "dashicons dashicons-backup",
+        "dashicons dashicons-clock",
+        "dashicons dashicons-lightbulb",
+        "dashicons dashicons-microphone",
+        "dashicons dashicons-desktop",
+        "dashicons dashicons-laptop",
+        "dashicons dashicons-tablet",
+        "dashicons dashicons-smartphone",
+        "dashicons dashicons-phone",
+        "dashicons dashicons-index-card",
+        "dashicons dashicons-carrot",
+        "dashicons dashicons-building",
+        "dashicons dashicons-store",
+        "dashicons dashicons-album",
+        "dashicons dashicons-palmtree",
+        "dashicons dashicons-tickets-alt",
+        "dashicons dashicons-money",
+        "dashicons dashicons-smiley",
+        "dashicons dashicons-thumbs-up",
+        "dashicons dashicons-thumbs-down",
+        "dashicons dashicons-layout",
+        "dashicons dashicons-paperclip"
+    ],
+    "Font Awesome Icons": [
+        "fa fa-glass",
+
+        "fa fa-music",
+
+        "fa fa-search",
+
+        "fa fa-envelope-o",
+
+        "fa fa-heart",
+
+        "fa fa-star",
+
+        "fa fa-star-o",
+
+        "fa fa-user",
+
+        "fa fa-film",
+
+        "fa fa-th-large",
+
+        "fa fa-th",
+
+        "fa fa-th-list",
+
+        "fa fa-check",
+
+        "fa fa-times",
+
+        "fa fa-search-plus",
+
+        "fa fa-search-minus",
+
+        "fa fa-power-off",
+
+        "fa fa-signal",
+
+        "fa fa-cog",
+
+        "fa fa-trash-o",
 
-    "dashicons dashicons-menu",
+        "fa fa-home",
 
-    "dashicons dashicons-admin-site",
+        "fa fa-file-o",
 
-    "dashicons dashicons-dashboard",
+        "fa fa-clock-o",
 
-    "dashicons dashicons-admin-post",
+        "fa fa-road",
 
-    "dashicons dashicons-admin-media",
+        "fa fa-download",
 
-    "dashicons dashicons-admin-links",
+        "fa fa-arrow-circle-o-down",
 
-    "dashicons dashicons-admin-page",
+        "fa fa-arrow-circle-o-up",
 
-    "dashicons dashicons-admin-comments",
+        "fa fa-inbox",
 
-    "dashicons dashicons-admin-appearance",
+        "fa fa-play-circle-o",
 
-    "dashicons dashicons-admin-plugins",
+        "fa fa-repeat",
 
-    "dashicons dashicons-admin-users",
+        "fa fa-refresh",
 
-    "dashicons dashicons-admin-tools",
+        "fa fa-list-alt",
 
-    "dashicons dashicons-admin-settings",
+        "fa fa-lock",
 
-    "dashicons dashicons-admin-network",
+        "fa fa-flag",
 
-    "dashicons dashicons-admin-home",
+        "fa fa-headphones",
 
-    "dashicons dashicons-admin-generic",
+        "fa fa-volume-off",
 
-    "dashicons dashicons-admin-collapse",
+        "fa fa-volume-down",
 
-    "dashicons dashicons-filter",
+        "fa fa-volume-up",
 
-    "dashicons dashicons-admin-customizer",
+        "fa fa-qrcode",
 
-    "dashicons dashicons-admin-multisite",
+        "fa fa-barcode",
 
-    "dashicons dashicons-welcome-write-blog",
+        "fa fa-tag",
 
-    "dashicons dashicons-welcome-add-page",
+        "fa fa-tags",
 
-    "dashicons dashicons-welcome-view-site",
+        "fa fa-book",
 
-    "dashicons dashicons-welcome-widgets-menus",
+        "fa fa-bookmark",
 
-    "dashicons dashicons-welcome-comments",
+        "fa fa-print",
 
-    "dashicons dashicons-welcome-learn-more",
+        "fa fa-camera",
 
-    "dashicons dashicons-format-aside",
+        "fa fa-font",
 
-    "dashicons dashicons-format-image",
+        "fa fa-bold",
 
-    "dashicons dashicons-format-gallery",
+        "fa fa-italic",
 
-    "dashicons dashicons-format-video",
+        "fa fa-text-height",
 
-    "dashicons dashicons-format-status",
+        "fa fa-text-width",
 
-    "dashicons dashicons-format-quote",
+        "fa fa-align-left",
 
-    "dashicons dashicons-format-chat",
+        "fa fa-align-center",
 
-    "dashicons dashicons-format-audio",
+        "fa fa-align-right",
 
-    "dashicons dashicons-camera",
+        "fa fa-align-justify",
 
-    "dashicons dashicons-images-alt",
+        "fa fa-list",
 
-    "dashicons dashicons-images-alt2",
+        "fa fa-outdent",
 
-    "dashicons dashicons-video-alt",
+        "fa fa-indent",
 
-    "dashicons dashicons-video-alt2",
+        "fa fa-video-camera",
 
-    "dashicons dashicons-video-alt3",
+        "fa fa-picture-o",
 
-    "dashicons dashicons-media-archive",
+        "fa fa-pencil",
 
-    "dashicons dashicons-media-audio",
+        "fa fa-map-marker",
 
-    "dashicons dashicons-media-code",
+        "fa fa-adjust",
 
-    "dashicons dashicons-media-default",
+        "fa fa-tint",
 
-    "dashicons dashicons-media-document",
+        "fa fa-pencil-square-o",
 
-    "dashicons dashicons-media-interactive",
+        "fa fa-share-square-o",
 
-    "dashicons dashicons-media-spreadsheet",
+        "fa fa-check-square-o",
 
-    "dashicons dashicons-media-text",
+        "fa fa-arrows",
 
-    "dashicons dashicons-media-video",
+        "fa fa-step-backward",
 
-    "dashicons dashicons-playlist-audio",
+        "fa fa-fast-backward",
 
-    "dashicons dashicons-playlist-video",
+        "fa fa-backward",
 
-    "dashicons dashicons-controls-play",
+        "fa fa-play",
 
-    "dashicons dashicons-controls-pause",
+        "fa fa-pause",
 
-    "dashicons dashicons-controls-forward",
+        "fa fa-stop",
 
-    "dashicons dashicons-controls-skipforward",
+        "fa fa-forward",
 
-    "dashicons dashicons-controls-back",
+        "fa fa-fast-forward",
 
-    "dashicons dashicons-controls-skipback",
+        "fa fa-step-forward",
 
-    "dashicons dashicons-controls-repeat",
+        "fa fa-eject",
 
-    "dashicons dashicons-controls-volumeon",
+        "fa fa-chevron-left",
 
-    "dashicons dashicons-controls-volumeoff",
+        "fa fa-chevron-right",
 
-    "dashicons dashicons-image-crop",
+        "fa fa-plus-circle",
 
-    "dashicons dashicons-image-rotate",
+        "fa fa-minus-circle",
 
-    "dashicons dashicons-image-rotate-left",
+        "fa fa-times-circle",
 
-    "dashicons dashicons-image-rotate-right",
+        "fa fa-check-circle",
 
-    "dashicons dashicons-image-flip-vertical",
+        "fa fa-question-circle",
 
-    "dashicons dashicons-image-flip-horizontal",
+        "fa fa-info-circle",
 
-    "dashicons dashicons-image-filter",
+        "fa fa-crosshairs",
 
-    "dashicons dashicons-undo",
+        "fa fa-times-circle-o",
 
-    "dashicons dashicons-redo",
+        "fa fa-check-circle-o",
 
-    "dashicons dashicons-editor-bold",
+        "fa fa-ban",
 
-    "dashicons dashicons-editor-italic",
+        "fa fa-arrow-left",
 
-    "dashicons dashicons-editor-ul",
+        "fa fa-arrow-right",
 
-    "dashicons dashicons-editor-ol",
+        "fa fa-arrow-up",
 
-    "dashicons dashicons-editor-quote",
+        "fa fa-arrow-down",
 
-    "dashicons dashicons-editor-alignleft",
+        "fa fa-share",
 
-    "dashicons dashicons-editor-aligncenter",
+        "fa fa-expand",
 
-    "dashicons dashicons-editor-alignright",
+        "fa fa-compress",
 
-    "dashicons dashicons-editor-insertmore",
+        "fa fa-plus",
 
-    "dashicons dashicons-editor-spellcheck",
+        "fa fa-minus",
 
-    "dashicons dashicons-editor-expand",
+        "fa fa-asterisk",
 
-    "dashicons dashicons-editor-contract",
+        "fa fa-exclamation-circle",
 
-    "dashicons dashicons-editor-kitchensink",
+        "fa fa-gift",
 
-    "dashicons dashicons-editor-underline",
+        "fa fa-leaf",
 
-    "dashicons dashicons-editor-justify",
+        "fa fa-fire",
 
-    "dashicons dashicons-editor-textcolor",
+        "fa fa-eye",
 
-    "dashicons dashicons-editor-paste-word",
+        "fa fa-eye-slash",
 
-    "dashicons dashicons-editor-paste-text",
+        "fa fa-exclamation-triangle",
 
-    "dashicons dashicons-editor-removeformatting",
+        "fa fa-plane",
 
-    "dashicons dashicons-editor-video",
+        "fa fa-calendar",
 
-    "dashicons dashicons-editor-customchar",
+        "fa fa-random",
 
-    "dashicons dashicons-editor-outdent",
+        "fa fa-comment",
 
-    "dashicons dashicons-editor-indent",
+        "fa fa-magnet",
 
-    "dashicons dashicons-editor-help",
+        "fa fa-chevron-up",
 
-    "dashicons dashicons-editor-strikethrough",
+        "fa fa-chevron-down",
 
-    "dashicons dashicons-editor-unlink",
+        "fa fa-retweet",
 
-    "dashicons dashicons-editor-rtl",
+        "fa fa-shopping-cart",
 
-    "dashicons dashicons-editor-break",
+        "fa fa-folder",
 
-    "dashicons dashicons-editor-code",
+        "fa fa-folder-open",
 
-    "dashicons dashicons-editor-paragraph",
+        "fa fa-arrows-v",
 
-    "dashicons dashicons-editor-table",
+        "fa fa-arrows-h",
 
-    "dashicons dashicons-align-left",
+        "fa fa-bar-chart",
 
-    "dashicons dashicons-align-right",
+        "fa fa-twitter-square",
 
-    "dashicons dashicons-align-center",
+        "fa fa-facebook-square",
 
-    "dashicons dashicons-align-none",
+        "fa fa-camera-retro",
 
-    "dashicons dashicons-lock",
+        "fa fa-key",
 
-    "dashicons dashicons-unlock",
+        "fa fa-cogs",
 
-    "dashicons dashicons-calendar",
+        "fa fa-comments",
 
-    "dashicons dashicons-calendar-alt",
+        "fa fa-thumbs-o-up",
 
-    "dashicons dashicons-visibility",
+        "fa fa-thumbs-o-down",
 
-    "dashicons dashicons-hidden",
+        "fa fa-star-half",
 
-    "dashicons dashicons-post-status",
+        "fa fa-heart-o",
 
-    "dashicons dashicons-edit",
+        "fa fa-sign-out",
 
-    "dashicons dashicons-trash",
+        "fa fa-linkedin-square",
 
-    "dashicons dashicons-sticky",
+        "fa fa-thumb-tack",
 
-    "dashicons dashicons-external",
+        "fa fa-external-link",
 
-    "dashicons dashicons-arrow-up",
+        "fa fa-sign-in",
 
-    "dashicons dashicons-arrow-down",
+        "fa fa-trophy",
 
-    "dashicons dashicons-arrow-right",
+        "fa fa-github-square",
 
-    "dashicons dashicons-arrow-left",
+        "fa fa-upload",
 
-    "dashicons dashicons-arrow-up-alt",
+        "fa fa-lemon-o",
 
-    "dashicons dashicons-arrow-down-alt",
+        "fa fa-phone",
 
-    "dashicons dashicons-arrow-right-alt",
+        "fa fa-square-o",
 
-    "dashicons dashicons-arrow-left-alt",
+        "fa fa-bookmark-o",
 
-    "dashicons dashicons-arrow-up-alt2",
+        "fa fa-phone-square",
 
-    "dashicons dashicons-arrow-down-alt2",
+        "fa fa-twitter",
 
-    "dashicons dashicons-arrow-right-alt2",
+        "fa fa-facebook",
 
-    "dashicons dashicons-arrow-left-alt2",
+        "fa fa-github",
 
-    "dashicons dashicons-sort",
+        "fa fa-unlock",
 
-    "dashicons dashicons-leftright",
+        "fa fa-credit-card",
 
-    "dashicons dashicons-randomize",
+        "fa fa-rss",
 
-    "dashicons dashicons-list-view",
+        "fa fa-hdd-o",
 
-    "dashicons dashicons-exerpt-view",
+        "fa fa-bullhorn",
 
-    "dashicons dashicons-grid-view",
+        "fa fa-bell",
 
-    "dashicons dashicons-move",
+        "fa fa-certificate",
 
-    "dashicons dashicons-share",
+        "fa fa-hand-o-right",
 
-    "dashicons dashicons-share-alt",
+        "fa fa-hand-o-left",
 
-    "dashicons dashicons-share-alt2",
+        "fa fa-hand-o-up",
 
-    "dashicons dashicons-twitter",
+        "fa fa-hand-o-down",
 
-    "dashicons dashicons-rss",
+        "fa fa-arrow-circle-left",
 
-    "dashicons dashicons-email",
+        "fa fa-arrow-circle-right",
 
-    "dashicons dashicons-email-alt",
+        "fa fa-arrow-circle-up",
 
-    "dashicons dashicons-facebook",
+        "fa fa-arrow-circle-down",
 
-    "dashicons dashicons-facebook-alt",
+        "fa fa-globe",
 
-    "dashicons dashicons-googleplus",
+        "fa fa-wrench",
 
-    "dashicons dashicons-networking",
+        "fa fa-tasks",
 
-    "dashicons dashicons-hammer",
+        "fa fa-filter",
 
-    "dashicons dashicons-art",
+        "fa fa-briefcase",
 
-    "dashicons dashicons-migrate",
+        "fa fa-arrows-alt",
 
-    "dashicons dashicons-performance",
+        "fa fa-users",
 
-    "dashicons dashicons-universal-access",
+        "fa fa-link",
 
-    "dashicons dashicons-universal-access-alt",
+        "fa fa-cloud",
 
-    "dashicons dashicons-tickets",
+        "fa fa-flask",
 
-    "dashicons dashicons-nametag",
+        "fa fa-scissors",
 
-    "dashicons dashicons-clipboard",
+        "fa fa-files-o",
 
-    "dashicons dashicons-heart",
+        "fa fa-paperclip",
 
-    "dashicons dashicons-megaphone",
+        "fa fa-floppy-o",
 
-    "dashicons dashicons-schedule",
+        "fa fa-square",
 
-    "dashicons dashicons-wordpress",
+        "fa fa-bars",
 
-    "dashicons dashicons-wordpress-alt",
+        "fa fa-list-ul",
 
-    "dashicons dashicons-pressthis",
+        "fa fa-list-ol",
 
-    "dashicons dashicons-update",
+        "fa fa-strikethrough",
 
-    "dashicons dashicons-screenoptions",
+        "fa fa-underline",
 
-    "dashicons dashicons-info",
+        "fa fa-table",
 
-    "dashicons dashicons-cart",
+        "fa fa-magic",
 
-    "dashicons dashicons-feedback",
+        "fa fa-truck",
 
-    "dashicons dashicons-cloud",
+        "fa fa-pinterest",
 
-    "dashicons dashicons-translation",
+        "fa fa-pinterest-square",
 
-    "dashicons dashicons-tag",
+        "fa fa-google-plus-square",
 
-    "dashicons dashicons-category",
+        "fa fa-google-plus",
 
-    "dashicons dashicons-archive",
+        "fa fa-money",
 
-    "dashicons dashicons-tagcloud",
+        "fa fa-caret-down",
 
-    "dashicons dashicons-text",
+        "fa fa-caret-up",
 
-    "dashicons dashicons-yes",
+        "fa fa-caret-left",
 
-    "dashicons dashicons-no",
+        "fa fa-caret-right",
 
-    "dashicons dashicons-no-alt",
+        "fa fa-columns",
 
-    "dashicons dashicons-plus",
+        "fa fa-sort",
 
-    "dashicons dashicons-plus-alt",
+        "fa fa-sort-desc",
 
-    "dashicons dashicons-minus",
+        "fa fa-sort-asc",
 
-    "dashicons dashicons-dismiss",
+        "fa fa-envelope",
 
-    "dashicons dashicons-marker",
+        "fa fa-linkedin",
 
-    "dashicons dashicons-star-filled",
+        "fa fa-undo",
 
-    "dashicons dashicons-star-half",
+        "fa fa-gavel",
 
-    "dashicons dashicons-star-empty",
+        "fa fa-tachometer",
 
-    "dashicons dashicons-flag",
+        "fa fa-comment-o",
 
-    "dashicons dashicons-warning",
+        "fa fa-comments-o",
 
-    "dashicons dashicons-location",
+        "fa fa-bolt",
 
-    "dashicons dashicons-location-alt",
+        "fa fa-sitemap",
 
-    "dashicons dashicons-vault",
+        "fa fa-umbrella",
 
-    "dashicons dashicons-shield",
+        "fa fa-clipboard",
 
-    "dashicons dashicons-shield-alt",
+        "fa fa-lightbulb-o",
 
-    "dashicons dashicons-sos",
+        "fa fa-exchange",
 
-    "dashicons dashicons-search",
+        "fa fa-cloud-download",
 
-    "dashicons dashicons-slides",
+        "fa fa-cloud-upload",
 
-    "dashicons dashicons-analytics",
+        "fa fa-user-md",
 
-    "dashicons dashicons-chart-pie",
+        "fa fa-stethoscope",
 
-    "dashicons dashicons-chart-bar",
+        "fa fa-suitcase",
 
-    "dashicons dashicons-chart-line",
+        "fa fa-bell-o",
 
-    "dashicons dashicons-chart-area",
+        "fa fa-coffee",
 
-    "dashicons dashicons-groups",
+        "fa fa-cutlery",
 
-    "dashicons dashicons-businessman",
+        "fa fa-file-text-o",
 
-    "dashicons dashicons-id",
+        "fa fa-building-o",
 
-    "dashicons dashicons-id-alt",
+        "fa fa-hospital-o",
 
-    "dashicons dashicons-products",
+        "fa fa-ambulance",
 
-    "dashicons dashicons-awards",
+        "fa fa-medkit",
 
-    "dashicons dashicons-forms",
+        "fa fa-fighter-jet",
 
-    "dashicons dashicons-testimonial",
+        "fa fa-beer",
 
-    "dashicons dashicons-portfolio",
+        "fa fa-h-square",
 
-    "dashicons dashicons-book",
+        "fa fa-plus-square",
 
-    "dashicons dashicons-book-alt",
+        "fa fa-angle-double-left",
 
-    "dashicons dashicons-download",
+        "fa fa-angle-double-right",
 
-    "dashicons dashicons-upload",
+        "fa fa-angle-double-up",
 
-    "dashicons dashicons-backup",
+        "fa fa-angle-double-down",
 
-    "dashicons dashicons-clock",
+        "fa fa-angle-left",
 
-    "dashicons dashicons-lightbulb",
+        "fa fa-angle-right",
 
-    "dashicons dashicons-microphone",
+        "fa fa-angle-up",
 
-    "dashicons dashicons-desktop",
+        "fa fa-angle-down",
 
-    "dashicons dashicons-laptop",
+        "fa fa-desktop",
 
-    "dashicons dashicons-tablet",
+        "fa fa-laptop",
 
-    "dashicons dashicons-smartphone",
+        "fa fa-tablet",
 
-    "dashicons dashicons-phone",
+        "fa fa-mobile",
 
-    "dashicons dashicons-index-card",
+        "fa fa-circle-o",
 
-    "dashicons dashicons-carrot",
+        "fa fa-quote-left",
 
-    "dashicons dashicons-building",
+        "fa fa-quote-right",
 
-    "dashicons dashicons-store",
+        "fa fa-spinner",
 
-    "dashicons dashicons-album",
+        "fa fa-circle",
 
-    "dashicons dashicons-palmtree",
+        "fa fa-reply",
 
-    "dashicons dashicons-tickets-alt",
+        "fa fa-github-alt",
 
-    "dashicons dashicons-money",
+        "fa fa-folder-o",
 
-    "dashicons dashicons-smiley",
+        "fa fa-folder-open-o",
 
-    "dashicons dashicons-thumbs-up",
+        "fa fa-smile-o",
 
-    "dashicons dashicons-thumbs-down",
+        "fa fa-frown-o",
 
-    "dashicons dashicons-layout",
+        "fa fa-meh-o",
 
-    "dashicons dashicons-paperclip"
-  ],
-  "Font Awesome Icons": [
-    "fa fa-glass",
+        "fa fa-gamepad",
 
-    "fa fa-music",
+        "fa fa-keyboard-o",
 
-    "fa fa-search",
+        "fa fa-flag-o",
 
-    "fa fa-envelope-o",
+        "fa fa-flag-checkered",
 
-    "fa fa-heart",
+        "fa fa-terminal",
 
-    "fa fa-star",
+        "fa fa-code",
 
-    "fa fa-star-o",
+        "fa fa-reply-all",
 
-    "fa fa-user",
+        "fa fa-star-half-o",
 
-    "fa fa-film",
+        "fa fa-location-arrow",
 
-    "fa fa-th-large",
+        "fa fa-crop",
 
-    "fa fa-th",
+        "fa fa-code-fork",
 
-    "fa fa-th-list",
+        "fa fa-chain-broken",
 
-    "fa fa-check",
+        "fa fa-question",
 
-    "fa fa-times",
+        "fa fa-info",
 
-    "fa fa-search-plus",
+        "fa fa-exclamation",
 
-    "fa fa-search-minus",
+        "fa fa-superscript",
 
-    "fa fa-power-off",
+        "fa fa-subscript",
 
-    "fa fa-signal",
+        "fa fa-eraser",
 
-    "fa fa-cog",
+        "fa fa-puzzle-piece",
 
-    "fa fa-trash-o",
+        "fa fa-microphone",
 
-    "fa fa-home",
+        "fa fa-microphone-slash",
 
-    "fa fa-file-o",
+        "fa fa-shield",
 
-    "fa fa-clock-o",
+        "fa fa-calendar-o",
 
-    "fa fa-road",
+        "fa fa-fire-extinguisher",
 
-    "fa fa-download",
+        "fa fa-rocket",
 
-    "fa fa-arrow-circle-o-down",
+        "fa fa-maxcdn",
 
-    "fa fa-arrow-circle-o-up",
+        "fa fa-chevron-circle-left",
 
-    "fa fa-inbox",
+        "fa fa-chevron-circle-right",
 
-    "fa fa-play-circle-o",
+        "fa fa-chevron-circle-up",
 
-    "fa fa-repeat",
+        "fa fa-chevron-circle-down",
 
-    "fa fa-refresh",
+        "fa fa-html5",
 
-    "fa fa-list-alt",
+        "fa fa-css3",
 
-    "fa fa-lock",
+        "fa fa-anchor",
 
-    "fa fa-flag",
+        "fa fa-unlock-alt",
 
-    "fa fa-headphones",
+        "fa fa-bullseye",
 
-    "fa fa-volume-off",
+        "fa fa-ellipsis-h",
 
-    "fa fa-volume-down",
+        "fa fa-ellipsis-v",
 
-    "fa fa-volume-up",
+        "fa fa-rss-square",
 
-    "fa fa-qrcode",
+        "fa fa-play-circle",
 
-    "fa fa-barcode",
+        "fa fa-ticket",
 
-    "fa fa-tag",
+        "fa fa-minus-square",
 
-    "fa fa-tags",
+        "fa fa-minus-square-o",
 
-    "fa fa-book",
+        "fa fa-level-up",
 
-    "fa fa-bookmark",
+        "fa fa-level-down",
 
-    "fa fa-print",
+        "fa fa-check-square",
 
-    "fa fa-camera",
+        "fa fa-pencil-square",
 
-    "fa fa-font",
+        "fa fa-external-link-square",
 
-    "fa fa-bold",
+        "fa fa-share-square",
 
-    "fa fa-italic",
+        "fa fa-compass",
 
-    "fa fa-text-height",
+        "fa fa-caret-square-o-down",
 
-    "fa fa-text-width",
+        "fa fa-caret-square-o-up",
 
-    "fa fa-align-left",
+        "fa fa-caret-square-o-right",
 
-    "fa fa-align-center",
+        "fa fa-eur",
 
-    "fa fa-align-right",
+        "fa fa-gbp",
 
-    "fa fa-align-justify",
+        "fa fa-usd",
 
-    "fa fa-list",
+        "fa fa-inr",
 
-    "fa fa-outdent",
+        "fa fa-jpy",
 
-    "fa fa-indent",
+        "fa fa-rub",
 
-    "fa fa-video-camera",
+        "fa fa-krw",
 
-    "fa fa-picture-o",
+        "fa fa-btc",
 
-    "fa fa-pencil",
+        "fa fa-file",
 
-    "fa fa-map-marker",
+        "fa fa-file-text",
 
-    "fa fa-adjust",
+        "fa fa-sort-alpha-asc",
 
-    "fa fa-tint",
+        "fa fa-sort-alpha-desc",
 
-    "fa fa-pencil-square-o",
+        "fa fa-sort-amount-asc",
 
-    "fa fa-share-square-o",
+        "fa fa-sort-amount-desc",
 
-    "fa fa-check-square-o",
+        "fa fa-sort-numeric-asc",
 
-    "fa fa-arrows",
+        "fa fa-sort-numeric-desc",
 
-    "fa fa-step-backward",
+        "fa fa-thumbs-up",
 
-    "fa fa-fast-backward",
+        "fa fa-thumbs-down",
 
-    "fa fa-backward",
+        "fa fa-youtube-square",
 
-    "fa fa-play",
+        "fa fa-youtube",
 
-    "fa fa-pause",
+        "fa fa-xing",
 
-    "fa fa-stop",
+        "fa fa-xing-square",
 
-    "fa fa-forward",
+        "fa fa-youtube-play",
 
-    "fa fa-fast-forward",
+        "fa fa-dropbox",
 
-    "fa fa-step-forward",
+        "fa fa-stack-overflow",
 
-    "fa fa-eject",
+        "fa fa-instagram",
 
-    "fa fa-chevron-left",
+        "fa fa-flickr",
 
-    "fa fa-chevron-right",
+        "fa fa-adn",
 
-    "fa fa-plus-circle",
+        "fa fa-bitbucket",
 
-    "fa fa-minus-circle",
+        "fa fa-bitbucket-square",
 
-    "fa fa-times-circle",
+        "fa fa-tumblr",
 
-    "fa fa-check-circle",
+        "fa fa-tumblr-square",
 
-    "fa fa-question-circle",
+        "fa fa-long-arrow-down",
 
-    "fa fa-info-circle",
+        "fa fa-long-arrow-up",
 
-    "fa fa-crosshairs",
+        "fa fa-long-arrow-left",
 
-    "fa fa-times-circle-o",
+        "fa fa-long-arrow-right",
 
-    "fa fa-check-circle-o",
+        "fa fa-apple",
 
-    "fa fa-ban",
+        "fa fa-windows",
 
-    "fa fa-arrow-left",
+        "fa fa-android",
 
-    "fa fa-arrow-right",
+        "fa fa-linux",
 
-    "fa fa-arrow-up",
+        "fa fa-dribbble",
 
-    "fa fa-arrow-down",
+        "fa fa-skype",
 
-    "fa fa-share",
+        "fa fa-foursquare",
 
-    "fa fa-expand",
+        "fa fa-trello",
 
-    "fa fa-compress",
+        "fa fa-female",
 
-    "fa fa-plus",
+        "fa fa-male",
 
-    "fa fa-minus",
+        "fa fa-gratipay",
 
-    "fa fa-asterisk",
+        "fa fa-sun-o",
 
-    "fa fa-exclamation-circle",
+        "fa fa-moon-o",
 
-    "fa fa-gift",
+        "fa fa-archive",
 
-    "fa fa-leaf",
+        "fa fa-bug",
 
-    "fa fa-fire",
+        "fa fa-vk",
 
-    "fa fa-eye",
+        "fa fa-weibo",
 
-    "fa fa-eye-slash",
+        "fa fa-renren",
 
-    "fa fa-exclamation-triangle",
+        "fa fa-pagelines",
 
-    "fa fa-plane",
+        "fa fa-stack-exchange",
 
-    "fa fa-calendar",
+        "fa fa-arrow-circle-o-right",
 
-    "fa fa-random",
+        "fa fa-arrow-circle-o-left",
 
-    "fa fa-comment",
+        "fa fa-caret-square-o-left",
 
-    "fa fa-magnet",
+        "fa fa-dot-circle-o",
 
-    "fa fa-chevron-up",
+        "fa fa-wheelchair",
 
-    "fa fa-chevron-down",
+        "fa fa-vimeo-square",
 
-    "fa fa-retweet",
+        "fa fa-try",
 
-    "fa fa-shopping-cart",
+        "fa fa-plus-square-o",
 
-    "fa fa-folder",
+        "fa fa-space-shuttle",
 
-    "fa fa-folder-open",
+        "fa fa-slack",
 
-    "fa fa-arrows-v",
+        "fa fa-envelope-square",
 
-    "fa fa-arrows-h",
+        "fa fa-wordpress",
 
-    "fa fa-bar-chart",
+        "fa fa-openid",
 
-    "fa fa-twitter-square",
+        "fa fa-university",
 
-    "fa fa-facebook-square",
+        "fa fa-graduation-cap",
 
-    "fa fa-camera-retro",
+        "fa fa-yahoo",
 
-    "fa fa-key",
+        "fa fa-google",
 
-    "fa fa-cogs",
+        "fa fa-reddit",
 
-    "fa fa-comments",
+        "fa fa-reddit-square",
 
-    "fa fa-thumbs-o-up",
+        "fa fa-stumbleupon-circle",
 
-    "fa fa-thumbs-o-down",
+        "fa fa-stumbleupon",
 
-    "fa fa-star-half",
+        "fa fa-delicious",
 
-    "fa fa-heart-o",
+        "fa fa-digg",
 
-    "fa fa-sign-out",
+        "fa fa-pied-piper-pp",
 
-    "fa fa-linkedin-square",
+        "fa fa-pied-piper-alt",
 
-    "fa fa-thumb-tack",
+        "fa fa-drupal",
 
-    "fa fa-external-link",
+        "fa fa-joomla",
 
-    "fa fa-sign-in",
+        "fa fa-language",
 
-    "fa fa-trophy",
+        "fa fa-fax",
 
-    "fa fa-github-square",
+        "fa fa-building",
 
-    "fa fa-upload",
+        "fa fa-child",
 
-    "fa fa-lemon-o",
+        "fa fa-paw",
 
-    "fa fa-phone",
+        "fa fa-spoon",
 
-    "fa fa-square-o",
+        "fa fa-cube",
 
-    "fa fa-bookmark-o",
+        "fa fa-cubes",
 
-    "fa fa-phone-square",
+        "fa fa-behance",
 
-    "fa fa-twitter",
+        "fa fa-behance-square",
 
-    "fa fa-facebook",
+        "fa fa-steam",
 
-    "fa fa-github",
+        "fa fa-steam-square",
 
-    "fa fa-unlock",
+        "fa fa-recycle",
 
-    "fa fa-credit-card",
+        "fa fa-car",
 
-    "fa fa-rss",
+        "fa fa-taxi",
 
-    "fa fa-hdd-o",
+        "fa fa-tree",
 
-    "fa fa-bullhorn",
+        "fa fa-spotify",
 
-    "fa fa-bell",
+        "fa fa-deviantart",
 
-    "fa fa-certificate",
+        "fa fa-soundcloud",
 
-    "fa fa-hand-o-right",
+        "fa fa-database",
 
-    "fa fa-hand-o-left",
+        "fa fa-file-pdf-o",
 
-    "fa fa-hand-o-up",
+        "fa fa-file-word-o",
 
-    "fa fa-hand-o-down",
+        "fa fa-file-excel-o",
 
-    "fa fa-arrow-circle-left",
+        "fa fa-file-powerpoint-o",
 
-    "fa fa-arrow-circle-right",
+        "fa fa-file-image-o",
 
-    "fa fa-arrow-circle-up",
+        "fa fa-file-archive-o",
 
-    "fa fa-arrow-circle-down",
+        "fa fa-file-audio-o",
 
-    "fa fa-globe",
+        "fa fa-file-video-o",
 
-    "fa fa-wrench",
+        "fa fa-file-code-o",
 
-    "fa fa-tasks",
+        "fa fa-vine",
 
-    "fa fa-filter",
+        "fa fa-codepen",
 
-    "fa fa-briefcase",
+        "fa fa-jsfiddle",
 
-    "fa fa-arrows-alt",
+        "fa fa-life-ring",
 
-    "fa fa-users",
+        "fa fa-circle-o-notch",
 
-    "fa fa-link",
+        "fa fa-rebel",
 
-    "fa fa-cloud",
+        "fa fa-empire",
 
-    "fa fa-flask",
+        "fa fa-git-square",
 
-    "fa fa-scissors",
+        "fa fa-git",
 
-    "fa fa-files-o",
+        "fa fa-hacker-news",
 
-    "fa fa-paperclip",
+        "fa fa-tencent-weibo",
 
-    "fa fa-floppy-o",
+        "fa fa-qq",
 
-    "fa fa-square",
+        "fa fa-weixin",
 
-    "fa fa-bars",
+        "fa fa-paper-plane",
 
-    "fa fa-list-ul",
+        "fa fa-paper-plane-o",
 
-    "fa fa-list-ol",
+        "fa fa-history",
 
-    "fa fa-strikethrough",
+        "fa fa-circle-thin",
 
-    "fa fa-underline",
+        "fa fa-header",
 
-    "fa fa-table",
+        "fa fa-paragraph",
 
-    "fa fa-magic",
+        "fa fa-sliders",
 
-    "fa fa-truck",
+        "fa fa-share-alt",
 
-    "fa fa-pinterest",
+        "fa fa-share-alt-square",
 
-    "fa fa-pinterest-square",
+        "fa fa-bomb",
 
-    "fa fa-google-plus-square",
+        "fa fa-futbol-o",
 
-    "fa fa-google-plus",
+        "fa fa-tty",
 
-    "fa fa-money",
+        "fa fa-binoculars",
 
-    "fa fa-caret-down",
+        "fa fa-plug",
 
-    "fa fa-caret-up",
+        "fa fa-slideshare",
 
-    "fa fa-caret-left",
+        "fa fa-twitch",
 
-    "fa fa-caret-right",
+        "fa fa-yelp",
 
-    "fa fa-columns",
+        "fa fa-newspaper-o",
 
-    "fa fa-sort",
+        "fa fa-wifi",
 
-    "fa fa-sort-desc",
+        "fa fa-calculator",
 
-    "fa fa-sort-asc",
+        "fa fa-paypal",
 
-    "fa fa-envelope",
+        "fa fa-google-wallet",
 
-    "fa fa-linkedin",
+        "fa fa-cc-visa",
 
-    "fa fa-undo",
+        "fa fa-cc-mastercard",
 
-    "fa fa-gavel",
+        "fa fa-cc-discover",
 
-    "fa fa-tachometer",
+        "fa fa-cc-amex",
 
-    "fa fa-comment-o",
+        "fa fa-cc-paypal",
 
-    "fa fa-comments-o",
+        "fa fa-cc-stripe",
 
-    "fa fa-bolt",
+        "fa fa-bell-slash",
 
-    "fa fa-sitemap",
+        "fa fa-bell-slash-o",
 
-    "fa fa-umbrella",
+        "fa fa-trash",
 
-    "fa fa-clipboard",
+        "fa fa-copyright",
 
-    "fa fa-lightbulb-o",
+        "fa fa-at",
 
-    "fa fa-exchange",
+        "fa fa-eyedropper",
 
-    "fa fa-cloud-download",
+        "fa fa-paint-brush",
 
-    "fa fa-cloud-upload",
+        "fa fa-birthday-cake",
 
-    "fa fa-user-md",
+        "fa fa-area-chart",
 
-    "fa fa-stethoscope",
+        "fa fa-pie-chart",
 
-    "fa fa-suitcase",
+        "fa fa-line-chart",
 
-    "fa fa-bell-o",
+        "fa fa-lastfm",
 
-    "fa fa-coffee",
+        "fa fa-lastfm-square",
 
-    "fa fa-cutlery",
+        "fa fa-toggle-off",
 
-    "fa fa-file-text-o",
+        "fa fa-toggle-on",
 
-    "fa fa-building-o",
+        "fa fa-bicycle",
 
-    "fa fa-hospital-o",
+        "fa fa-bus",
 
-    "fa fa-ambulance",
+        "fa fa-ioxhost",
 
-    "fa fa-medkit",
+        "fa fa-angellist",
 
-    "fa fa-fighter-jet",
+        "fa fa-cc",
 
-    "fa fa-beer",
+        "fa fa-ils",
 
-    "fa fa-h-square",
+        "fa fa-meanpath",
 
-    "fa fa-plus-square",
+        "fa fa-buysellads",
 
-    "fa fa-angle-double-left",
+        "fa fa-connectdevelop",
 
-    "fa fa-angle-double-right",
+        "fa fa-dashcube",
 
-    "fa fa-angle-double-up",
+        "fa fa-forumbee",
 
-    "fa fa-angle-double-down",
+        "fa fa-leanpub",
 
-    "fa fa-angle-left",
+        "fa fa-sellsy",
 
-    "fa fa-angle-right",
+        "fa fa-shirtsinbulk",
 
-    "fa fa-angle-up",
+        "fa fa-simplybuilt",
 
-    "fa fa-angle-down",
+        "fa fa-skyatlas",
 
-    "fa fa-desktop",
+        "fa fa-cart-plus",
 
-    "fa fa-laptop",
+        "fa fa-cart-arrow-down",
 
-    "fa fa-tablet",
+        "fa fa-diamond",
 
-    "fa fa-mobile",
+        "fa fa-ship",
 
-    "fa fa-circle-o",
+        "fa fa-user-secret",
 
-    "fa fa-quote-left",
+        "fa fa-motorcycle",
 
-    "fa fa-quote-right",
+        "fa fa-street-view",
 
-    "fa fa-spinner",
+        "fa fa-heartbeat",
 
-    "fa fa-circle",
+        "fa fa-venus",
 
-    "fa fa-reply",
+        "fa fa-mars",
 
-    "fa fa-github-alt",
+        "fa fa-mercury",
 
-    "fa fa-folder-o",
+        "fa fa-transgender",
 
-    "fa fa-folder-open-o",
+        "fa fa-transgender-alt",
 
-    "fa fa-smile-o",
+        "fa fa-venus-double",
 
-    "fa fa-frown-o",
+        "fa fa-mars-double",
 
-    "fa fa-meh-o",
+        "fa fa-venus-mars",
 
-    "fa fa-gamepad",
+        "fa fa-mars-stroke",
 
-    "fa fa-keyboard-o",
+        "fa fa-mars-stroke-v",
 
-    "fa fa-flag-o",
+        "fa fa-mars-stroke-h",
 
-    "fa fa-flag-checkered",
+        "fa fa-neuter",
 
-    "fa fa-terminal",
+        "fa fa-genderless",
 
-    "fa fa-code",
+        "fa fa-facebook-official",
 
-    "fa fa-reply-all",
+        "fa fa-pinterest-p",
 
-    "fa fa-star-half-o",
+        "fa fa-whatsapp",
 
-    "fa fa-location-arrow",
+        "fa fa-server",
 
-    "fa fa-crop",
+        "fa fa-user-plus",
 
-    "fa fa-code-fork",
+        "fa fa-user-times",
 
-    "fa fa-chain-broken",
+        "fa fa-bed",
 
-    "fa fa-question",
+        "fa fa-viacoin",
 
-    "fa fa-info",
+        "fa fa-train",
 
-    "fa fa-exclamation",
+        "fa fa-subway",
 
-    "fa fa-superscript",
+        "fa fa-medium",
 
-    "fa fa-subscript",
+        "fa fa-y-combinator",
 
-    "fa fa-eraser",
+        "fa fa-optin-monster",
 
-    "fa fa-puzzle-piece",
+        "fa fa-opencart",
 
-    "fa fa-microphone",
+        "fa fa-expeditedssl",
 
-    "fa fa-microphone-slash",
+        "fa fa-battery-full",
 
-    "fa fa-shield",
+        "fa fa-battery-three-quarters",
 
-    "fa fa-calendar-o",
+        "fa fa-battery-half",
 
-    "fa fa-fire-extinguisher",
+        "fa fa-battery-quarter",
 
-    "fa fa-rocket",
+        "fa fa-battery-empty",
 
-    "fa fa-maxcdn",
+        "fa fa-mouse-pointer",
 
-    "fa fa-chevron-circle-left",
+        "fa fa-i-cursor",
 
-    "fa fa-chevron-circle-right",
+        "fa fa-object-group",
 
-    "fa fa-chevron-circle-up",
+        "fa fa-object-ungroup",
 
-    "fa fa-chevron-circle-down",
+        "fa fa-sticky-note",
 
-    "fa fa-html5",
+        "fa fa-sticky-note-o",
 
-    "fa fa-css3",
+        "fa fa-cc-jcb",
 
-    "fa fa-anchor",
+        "fa fa-cc-diners-club",
 
-    "fa fa-unlock-alt",
+        "fa fa-clone",
 
-    "fa fa-bullseye",
+        "fa fa-balance-scale",
 
-    "fa fa-ellipsis-h",
+        "fa fa-hourglass-o",
 
-    "fa fa-ellipsis-v",
+        "fa fa-hourglass-start",
 
-    "fa fa-rss-square",
+        "fa fa-hourglass-half",
 
-    "fa fa-play-circle",
+        "fa fa-hourglass-end",
 
-    "fa fa-ticket",
+        "fa fa-hourglass",
 
-    "fa fa-minus-square",
+        "fa fa-hand-rock-o",
 
-    "fa fa-minus-square-o",
+        "fa fa-hand-paper-o",
 
-    "fa fa-level-up",
+        "fa fa-hand-scissors-o",
 
-    "fa fa-level-down",
+        "fa fa-hand-lizard-o",
 
-    "fa fa-check-square",
+        "fa fa-hand-spock-o",
 
-    "fa fa-pencil-square",
+        "fa fa-hand-pointer-o",
 
-    "fa fa-external-link-square",
+        "fa fa-hand-peace-o",
 
-    "fa fa-share-square",
+        "fa fa-trademark",
 
-    "fa fa-compass",
+        "fa fa-registered",
 
-    "fa fa-caret-square-o-down",
+        "fa fa-creative-commons",
 
-    "fa fa-caret-square-o-up",
+        "fa fa-gg",
 
-    "fa fa-caret-square-o-right",
+        "fa fa-gg-circle",
 
-    "fa fa-eur",
+        "fa fa-tripadvisor",
 
-    "fa fa-gbp",
+        "fa fa-odnoklassniki",
 
-    "fa fa-usd",
+        "fa fa-odnoklassniki-square",
 
-    "fa fa-inr",
+        "fa fa-get-pocket",
 
-    "fa fa-jpy",
+        "fa fa-wikipedia-w",
 
-    "fa fa-rub",
+        "fa fa-safari",
 
-    "fa fa-krw",
+        "fa fa-chrome",
 
-    "fa fa-btc",
+        "fa fa-firefox",
 
-    "fa fa-file",
+        "fa fa-opera",
 
-    "fa fa-file-text",
+        "fa fa-internet-explorer",
 
-    "fa fa-sort-alpha-asc",
+        "fa fa-television",
 
-    "fa fa-sort-alpha-desc",
+        "fa fa-contao",
 
-    "fa fa-sort-amount-asc",
+        "fa fa-500px",
 
-    "fa fa-sort-amount-desc",
+        "fa fa-amazon",
 
-    "fa fa-sort-numeric-asc",
+        "fa fa-calendar-plus-o",
 
-    "fa fa-sort-numeric-desc",
+        "fa fa-calendar-minus-o",
 
-    "fa fa-thumbs-up",
+        "fa fa-calendar-times-o",
 
-    "fa fa-thumbs-down",
+        "fa fa-calendar-check-o",
 
-    "fa fa-youtube-square",
+        "fa fa-industry",
 
-    "fa fa-youtube",
+        "fa fa-map-pin",
 
-    "fa fa-xing",
+        "fa fa-map-signs",
 
-    "fa fa-xing-square",
+        "fa fa-map-o",
 
-    "fa fa-youtube-play",
+        "fa fa-map",
 
-    "fa fa-dropbox",
+        "fa fa-commenting",
 
-    "fa fa-stack-overflow",
+        "fa fa-commenting-o",
 
-    "fa fa-instagram",
+        "fa fa-houzz",
 
-    "fa fa-flickr",
+        "fa fa-vimeo",
 
-    "fa fa-adn",
+        "fa fa-black-tie",
 
-    "fa fa-bitbucket",
+        "fa fa-fonticons",
 
-    "fa fa-bitbucket-square",
+        "fa fa-reddit-alien",
 
-    "fa fa-tumblr",
+        "fa fa-edge",
 
-    "fa fa-tumblr-square",
+        "fa fa-credit-card-alt",
 
-    "fa fa-long-arrow-down",
+        "fa fa-codiepie",
 
-    "fa fa-long-arrow-up",
+        "fa fa-modx",
 
-    "fa fa-long-arrow-left",
+        "fa fa-fort-awesome",
 
-    "fa fa-long-arrow-right",
+        "fa fa-usb",
 
-    "fa fa-apple",
+        "fa fa-product-hunt",
 
-    "fa fa-windows",
+        "fa fa-mixcloud",
 
-    "fa fa-android",
+        "fa fa-scribd",
 
-    "fa fa-linux",
+        "fa fa-pause-circle",
 
-    "fa fa-dribbble",
+        "fa fa-pause-circle-o",
 
-    "fa fa-skype",
+        "fa fa-stop-circle",
 
-    "fa fa-foursquare",
+        "fa fa-stop-circle-o",
 
-    "fa fa-trello",
+        "fa fa-shopping-bag",
 
-    "fa fa-female",
+        "fa fa-shopping-basket",
 
-    "fa fa-male",
+        "fa fa-hashtag",
 
-    "fa fa-gratipay",
+        "fa fa-bluetooth",
 
-    "fa fa-sun-o",
+        "fa fa-bluetooth-b",
 
-    "fa fa-moon-o",
+        "fa fa-percent",
 
-    "fa fa-archive",
+        "fa fa-gitlab",
 
-    "fa fa-bug",
+        "fa fa-wpbeginner",
 
-    "fa fa-vk",
+        "fa fa-wpforms",
 
-    "fa fa-weibo",
+        "fa fa-envira",
 
-    "fa fa-renren",
+        "fa fa-universal-access",
 
-    "fa fa-pagelines",
+        "fa fa-wheelchair-alt",
 
-    "fa fa-stack-exchange",
+        "fa fa-question-circle-o",
 
-    "fa fa-arrow-circle-o-right",
+        "fa fa-blind",
 
-    "fa fa-arrow-circle-o-left",
+        "fa fa-audio-description",
 
-    "fa fa-caret-square-o-left",
+        "fa fa-volume-control-phone",
 
-    "fa fa-dot-circle-o",
+        "fa fa-braille",
 
-    "fa fa-wheelchair",
+        "fa fa-assistive-listening-systems",
 
-    "fa fa-vimeo-square",
+        "fa fa-american-sign-language-interpreting",
 
-    "fa fa-try",
+        "fa fa-deaf",
 
-    "fa fa-plus-square-o",
+        "fa fa-glide",
 
-    "fa fa-space-shuttle",
+        "fa fa-glide-g",
 
-    "fa fa-slack",
+        "fa fa-sign-language",
 
-    "fa fa-envelope-square",
+        "fa fa-low-vision",
 
-    "fa fa-wordpress",
+        "fa fa-viadeo",
 
-    "fa fa-openid",
+        "fa fa-viadeo-square",
 
-    "fa fa-university",
+        "fa fa-snapchat",
 
-    "fa fa-graduation-cap",
+        "fa fa-snapchat-ghost",
 
-    "fa fa-yahoo",
+        "fa fa-snapchat-square",
 
-    "fa fa-google",
+        "fa fa-pied-piper",
 
-    "fa fa-reddit",
+        "fa fa-first-order",
 
-    "fa fa-reddit-square",
+        "fa fa-yoast",
 
-    "fa fa-stumbleupon-circle",
+        "fa fa-themeisle",
 
-    "fa fa-stumbleupon",
+        "fa fa-google-plus-official",
 
-    "fa fa-delicious",
-
-    "fa fa-digg",
-
-    "fa fa-pied-piper-pp",
-
-    "fa fa-pied-piper-alt",
-
-    "fa fa-drupal",
-
-    "fa fa-joomla",
-
-    "fa fa-language",
-
-    "fa fa-fax",
-
-    "fa fa-building",
-
-    "fa fa-child",
-
-    "fa fa-paw",
-
-    "fa fa-spoon",
-
-    "fa fa-cube",
-
-    "fa fa-cubes",
-
-    "fa fa-behance",
-
-    "fa fa-behance-square",
-
-    "fa fa-steam",
-
-    "fa fa-steam-square",
-
-    "fa fa-recycle",
-
-    "fa fa-car",
-
-    "fa fa-taxi",
-
-    "fa fa-tree",
-
-    "fa fa-spotify",
-
-    "fa fa-deviantart",
-
-    "fa fa-soundcloud",
-
-    "fa fa-database",
-
-    "fa fa-file-pdf-o",
-
-    "fa fa-file-word-o",
-
-    "fa fa-file-excel-o",
-
-    "fa fa-file-powerpoint-o",
-
-    "fa fa-file-image-o",
-
-    "fa fa-file-archive-o",
-
-    "fa fa-file-audio-o",
-
-    "fa fa-file-video-o",
-
-    "fa fa-file-code-o",
-
-    "fa fa-vine",
-
-    "fa fa-codepen",
-
-    "fa fa-jsfiddle",
-
-    "fa fa-life-ring",
-
-    "fa fa-circle-o-notch",
-
-    "fa fa-rebel",
-
-    "fa fa-empire",
-
-    "fa fa-git-square",
-
-    "fa fa-git",
-
-    "fa fa-hacker-news",
-
-    "fa fa-tencent-weibo",
-
-    "fa fa-qq",
-
-    "fa fa-weixin",
-
-    "fa fa-paper-plane",
-
-    "fa fa-paper-plane-o",
-
-    "fa fa-history",
-
-    "fa fa-circle-thin",
-
-    "fa fa-header",
-
-    "fa fa-paragraph",
-
-    "fa fa-sliders",
-
-    "fa fa-share-alt",
-
-    "fa fa-share-alt-square",
-
-    "fa fa-bomb",
-
-    "fa fa-futbol-o",
-
-    "fa fa-tty",
-
-    "fa fa-binoculars",
-
-    "fa fa-plug",
-
-    "fa fa-slideshare",
-
-    "fa fa-twitch",
-
-    "fa fa-yelp",
-
-    "fa fa-newspaper-o",
-
-    "fa fa-wifi",
-
-    "fa fa-calculator",
-
-    "fa fa-paypal",
-
-    "fa fa-google-wallet",
-
-    "fa fa-cc-visa",
-
-    "fa fa-cc-mastercard",
-
-    "fa fa-cc-discover",
-
-    "fa fa-cc-amex",
-
-    "fa fa-cc-paypal",
-
-    "fa fa-cc-stripe",
-
-    "fa fa-bell-slash",
-
-    "fa fa-bell-slash-o",
-
-    "fa fa-trash",
-
-    "fa fa-copyright",
-
-    "fa fa-at",
-
-    "fa fa-eyedropper",
-
-    "fa fa-paint-brush",
-
-    "fa fa-birthday-cake",
-
-    "fa fa-area-chart",
-
-    "fa fa-pie-chart",
-
-    "fa fa-line-chart",
-
-    "fa fa-lastfm",
-
-    "fa fa-lastfm-square",
-
-    "fa fa-toggle-off",
-
-    "fa fa-toggle-on",
-
-    "fa fa-bicycle",
-
-    "fa fa-bus",
-
-    "fa fa-ioxhost",
-
-    "fa fa-angellist",
-
-    "fa fa-cc",
-
-    "fa fa-ils",
-
-    "fa fa-meanpath",
-
-    "fa fa-buysellads",
-
-    "fa fa-connectdevelop",
-
-    "fa fa-dashcube",
-
-    "fa fa-forumbee",
-
-    "fa fa-leanpub",
-
-    "fa fa-sellsy",
-
-    "fa fa-shirtsinbulk",
-
-    "fa fa-simplybuilt",
-
-    "fa fa-skyatlas",
-
-    "fa fa-cart-plus",
-
-    "fa fa-cart-arrow-down",
-
-    "fa fa-diamond",
-
-    "fa fa-ship",
-
-    "fa fa-user-secret",
-
-    "fa fa-motorcycle",
-
-    "fa fa-street-view",
-
-    "fa fa-heartbeat",
-
-    "fa fa-venus",
-
-    "fa fa-mars",
-
-    "fa fa-mercury",
-
-    "fa fa-transgender",
-
-    "fa fa-transgender-alt",
-
-    "fa fa-venus-double",
-
-    "fa fa-mars-double",
-
-    "fa fa-venus-mars",
-
-    "fa fa-mars-stroke",
-
-    "fa fa-mars-stroke-v",
-
-    "fa fa-mars-stroke-h",
-
-    "fa fa-neuter",
-
-    "fa fa-genderless",
-
-    "fa fa-facebook-official",
-
-    "fa fa-pinterest-p",
-
-    "fa fa-whatsapp",
-
-    "fa fa-server",
-
-    "fa fa-user-plus",
-
-    "fa fa-user-times",
-
-    "fa fa-bed",
-
-    "fa fa-viacoin",
-
-    "fa fa-train",
-
-    "fa fa-subway",
-
-    "fa fa-medium",
-
-    "fa fa-y-combinator",
-
-    "fa fa-optin-monster",
-
-    "fa fa-opencart",
-
-    "fa fa-expeditedssl",
-
-    "fa fa-battery-full",
-
-    "fa fa-battery-three-quarters",
-
-    "fa fa-battery-half",
-
-    "fa fa-battery-quarter",
-
-    "fa fa-battery-empty",
-
-    "fa fa-mouse-pointer",
-
-    "fa fa-i-cursor",
-
-    "fa fa-object-group",
-
-    "fa fa-object-ungroup",
-
-    "fa fa-sticky-note",
-
-    "fa fa-sticky-note-o",
-
-    "fa fa-cc-jcb",
-
-    "fa fa-cc-diners-club",
-
-    "fa fa-clone",
-
-    "fa fa-balance-scale",
-
-    "fa fa-hourglass-o",
-
-    "fa fa-hourglass-start",
-
-    "fa fa-hourglass-half",
-
-    "fa fa-hourglass-end",
-
-    "fa fa-hourglass",
-
-    "fa fa-hand-rock-o",
-
-    "fa fa-hand-paper-o",
-
-    "fa fa-hand-scissors-o",
-
-    "fa fa-hand-lizard-o",
-
-    "fa fa-hand-spock-o",
-
-    "fa fa-hand-pointer-o",
-
-    "fa fa-hand-peace-o",
-
-    "fa fa-trademark",
-
-    "fa fa-registered",
-
-    "fa fa-creative-commons",
-
-    "fa fa-gg",
-
-    "fa fa-gg-circle",
-
-    "fa fa-tripadvisor",
-
-    "fa fa-odnoklassniki",
-
-    "fa fa-odnoklassniki-square",
-
-    "fa fa-get-pocket",
-
-    "fa fa-wikipedia-w",
-
-    "fa fa-safari",
-
-    "fa fa-chrome",
-
-    "fa fa-firefox",
-
-    "fa fa-opera",
-
-    "fa fa-internet-explorer",
-
-    "fa fa-television",
-
-    "fa fa-contao",
-
-    "fa fa-500px",
-
-    "fa fa-amazon",
-
-    "fa fa-calendar-plus-o",
-
-    "fa fa-calendar-minus-o",
-
-    "fa fa-calendar-times-o",
-
-    "fa fa-calendar-check-o",
-
-    "fa fa-industry",
-
-    "fa fa-map-pin",
-
-    "fa fa-map-signs",
-
-    "fa fa-map-o",
-
-    "fa fa-map",
-
-    "fa fa-commenting",
-
-    "fa fa-commenting-o",
-
-    "fa fa-houzz",
-
-    "fa fa-vimeo",
-
-    "fa fa-black-tie",
-
-    "fa fa-fonticons",
-
-    "fa fa-reddit-alien",
-
-    "fa fa-edge",
-
-    "fa fa-credit-card-alt",
-
-    "fa fa-codiepie",
-
-    "fa fa-modx",
-
-    "fa fa-fort-awesome",
-
-    "fa fa-usb",
-
-    "fa fa-product-hunt",
-
-    "fa fa-mixcloud",
-
-    "fa fa-scribd",
-
-    "fa fa-pause-circle",
-
-    "fa fa-pause-circle-o",
-
-    "fa fa-stop-circle",
-
-    "fa fa-stop-circle-o",
-
-    "fa fa-shopping-bag",
-
-    "fa fa-shopping-basket",
-
-    "fa fa-hashtag",
-
-    "fa fa-bluetooth",
-
-    "fa fa-bluetooth-b",
-
-    "fa fa-percent",
-
-    "fa fa-gitlab",
-
-    "fa fa-wpbeginner",
-
-    "fa fa-wpforms",
-
-    "fa fa-envira",
-
-    "fa fa-universal-access",
-
-    "fa fa-wheelchair-alt",
-
-    "fa fa-question-circle-o",
-
-    "fa fa-blind",
-
-    "fa fa-audio-description",
-
-    "fa fa-volume-control-phone",
-
-    "fa fa-braille",
-
-    "fa fa-assistive-listening-systems",
-
-    "fa fa-american-sign-language-interpreting",
-
-    "fa fa-deaf",
-
-    "fa fa-glide",
-
-    "fa fa-glide-g",
-
-    "fa fa-sign-language",
-
-    "fa fa-low-vision",
-
-    "fa fa-viadeo",
-
-    "fa fa-viadeo-square",
-
-    "fa fa-snapchat",
-
-    "fa fa-snapchat-ghost",
-
-    "fa fa-snapchat-square",
-
-    "fa fa-pied-piper",
-
-    "fa fa-first-order",
-
-    "fa fa-yoast",
-
-    "fa fa-themeisle",
-
-    "fa fa-google-plus-official",
-
-    "fa fa-font-awesome"
-  ]
+        "fa fa-font-awesome"
+    ]
 };
 
 export default iconsList;

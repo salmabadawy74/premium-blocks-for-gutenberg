@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import hexToRgba from 'hex-to-rgba'
 
 const { RichText } = wp.blockEditor;
 
@@ -14,55 +13,39 @@ const save = props => {
         align,
         iconImage,
         iconImgUrl,
-        iconRadius,
-        selectedIcon,
-        iconChecked,
         hoverEffect,
+        iconChecked,
         iconPos,
         iconHPos,
         iconVPos,
         iconSize,
+        iconRadius,
         iconColor,
         iconBackColor,
+        selectedIcon,
         titleChecked,
         titleText,
-        titleTag,
-        titleColor,
-        titleFont,
-        titleLine,
-        titleLetter,
-        titleStyle,
-        titleUpper,
-        titleWeight,
-        titleShadowBlur,
-        titleShadowColor,
-        titleShadowHorizontal,
-        titleShadowVertical,
-        titleMarginT,
-        titleMarginB,
-        descChecked,
         descText,
-        descColor,
-        descFont,
-        descLine,
-        descWeight,
-        descMarginT,
-        descMarginB,
+        descChecked,
         btnChecked,
         btnEffect,
         effectDir,
-        btnText,
         btnTarget,
+        btnText,
         btnLink,
-        btnStyle,
-        btnUpper,
-        btnWeight,
-        btnLetter,
-        btnColor,
-        btnHoverColor,
         btnHoverBorder,
-        btnBack,
-        btnHoverBack,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        iconOpacity,
+        titleStyles,
+        descStyles,
+        btnStyles,
+        containerStyles,
+        titleMarginT,
+        titleMarginB,
+        descMarginT,
+        descMarginB,
         btnBorderWidth,
         btnBorderTop,
         btnBorderRight,
@@ -72,28 +55,8 @@ const save = props => {
         borderRight,
         borderBottom,
         borderLeft,
-        btnBorderRadius,
-        btnBorderColor,
-        btnBorderType,
-        btnPadding,
-        btnPaddingU,
         btnMarginT,
         btnMarginB,
-        btnShadowBlur,
-        btnShadowColor,
-        btnShadowHorizontal,
-        btnShadowVertical,
-        btnShadowPosition,
-        backColor,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        borderType,
-        borderWidth,
-        borderRadius,
-        borderColor,
         marginT,
         marginR,
         marginB,
@@ -102,23 +65,7 @@ const save = props => {
         paddingR,
         paddingB,
         paddingL,
-        paddingU,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition,
-        hoverShadowBlur,
-        hoverShadowColor,
-        hoverShadowHorizontal,
-        hoverShadowVertical,
-        hoverShadowPosition,
-        iconOpacity,
-        btnOpacity,
-        backOpacity,
-        hideDesktop,
-        hideTablet,
-        hideMobile
+        iconType
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon-box');
@@ -129,29 +76,19 @@ const save = props => {
             className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                borderStyle: borderType,
+                borderStyle: containerStyles[0].borderType,
                 borderWidth: borderIconBox
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                marginTop: marginT,
-                marginRight: marginR,
-                marginBottom: marginB,
-                marginLeft: marginL,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundColor: backColor
-                    ? hexToRgba(backColor, backOpacity)
-                    : "transparent",
-                backgroundImage: `url('${imageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset"
+                    : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                backgroundColor: containerStyles[0].backColor,
+                backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
             }}
         >
             {btnChecked && btnText && (
@@ -159,17 +96,17 @@ const save = props => {
                     dangerouslySetInnerHTML={{
                         __html: [
                             `#premium-icon-box-${block_id}:hover {`,
-                            `box-shadow: ${hoverShadowHorizontal}px ${hoverShadowVertical}px ${hoverShadowBlur}px ${hoverShadowColor} ${hoverShadowPosition} !important`,
+                            `box-shadow: ${containerStyles[0].hoverShadowHorizontal}px ${containerStyles[0].hoverShadowVertical}px ${containerStyles[0].hoverShadowBlur}px ${containerStyles[0].hoverShadowColor} ${containerStyles[0].hoverShadowPosition} !important`,
                             "}",
                             `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
-                            `color: ${btnHoverColor} !important;`,
+                            `color: ${btnStyles[0].btnHoverColor} !important;`,
                             `border-color: ${btnHoverBorder} !important;`,
                             "}",
                             `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
-                            `background-color: ${btnHoverBack} !important;`,
+                            `background-color: ${btnStyles[0].btnHoverBack} !important;`,
                             "}",
                             `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
-                            `background-color: ${btnHoverBack} !important;`,
+                            `background-color: ${btnStyles[0].btnHoverBack} !important;`,
                             "}"
                         ].join("\n")
                     }}
@@ -184,10 +121,8 @@ const save = props => {
                             className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                             style={{
                                 color: iconColor,
-                                backgroundColor: iconBackColor
-                                    ? hexToRgba(iconBackColor, iconOpacity)
-                                    : "transparent",
-                                fontSize: iconSize,
+                                backgroundColor: iconBackColor,
+                                fontSize: iconSize
                             }}
                         />
                     )}
@@ -209,24 +144,20 @@ const save = props => {
                 {titleChecked && titleText && (
                     <div
                         className={`premium-icon-box__title_wrap`}
-                        style={{
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }}
                     >
                         <RichText.Content
-                            tagName={titleTag.toLowerCase()}
+                            tagName={titleStyles[0].titleTag.toLowerCase()}
                             className={`premium-icon-box__title`}
                             value={titleText}
                             style={{
-                                color: titleColor,
-                                fontFamily: titleFont,
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                lineHeight: titleLine + "px"
+                                color: titleStyles[0].titleColor,
+                                fontFamily: titleStyles[0].titleFont,
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle,
+                                fontWeight: titleStyles[0].titleWeight,
+                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                lineHeight: titleStyles[0].titleLine + "px"
                             }}
                         />
                     </div>
@@ -234,20 +165,16 @@ const save = props => {
                 {descChecked && descText && (
                     <div
                         className={`premium-icon-box__desc_wrap`}
-                        style={{
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName="p"
                             className={`premium-icon-box__desc`}
                             value={descText}
                             style={{
-                                color: descColor,
-                                fontFamily: descFont,
-                                lineHeight: descLine + "px",
-                                fontWeight: descWeight
+                                color: descStyles[0].descColor,
+                                fontFamily: descStyles[0].descFont,
+                                lineHeight: descStyles[0].descLine + "px",
+                                fontWeight: descStyles[0].descWeight
                             }}
                         />
                     </div>
@@ -255,10 +182,6 @@ const save = props => {
                 {btnChecked && btnText && (
                     <div
                         className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-                        style={{
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }}
                     >
                         <RichText.Content
                             tagName="a"
@@ -268,22 +191,20 @@ const save = props => {
                             target={btnTarget ? "_blank" : "_self"}
                             value={btnText}
                             style={{
-                                color: btnColor,
-                                backgroundColor: btnBack
-                                    ? hexToRgba(btnBack, btnOpacity)
-                                    : "transparent",
-                                letterSpacing: btnLetter + "px",
-                                textTransform: btnUpper ? "uppercase" : "none",
-                                fontStyle: btnStyle,
-                                fontWeight: btnWeight,
-                                borderStyle: btnBorderType,
+                                color: btnStyles[0].btnColor,
+                                backgroundColor: btnStyles[0].btnBack,
+                                letterSpacing: btnStyles[0].btnLetter + "px",
+                                textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                fontStyle: btnStyles[0].btnStyle,
+                                fontWeight: btnStyles[0].btnWeight,
+                                borderStyle: btnStyles[0].btnBorderType,
                                 borderWidth: btnBorderIconBox
                                     ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                    : btnBorderWidth + "px",
-                                borderRadius: btnBorderRadius + "px",
-                                borderColor: btnBorderColor,
-                                padding: btnPadding + btnPaddingU,
-                                boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`
+                                    : btnStyles[0].btnBorderWidth + "px",
+                                borderRadius: btnStyles[0].btnBorderRadius + "px",
+                                borderColor: btnStyles[0].btnBorderColor,
+                                padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
                             }}
                         />
                     </div>

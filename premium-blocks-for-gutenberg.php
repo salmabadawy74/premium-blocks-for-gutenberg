@@ -15,9 +15,7 @@
 /**
  * Exit if accessed directly
  */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if( ! defined( 'ABSPATH' ) ) exit;
 
 // Define plugin constants
 define( 'PREMIUM_BLOCKS_VERSION', '1.9.1' );
@@ -29,10 +27,10 @@ define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.9.0' );
 define( 'PBG_TABLET_BREAKPOINT', '976' );
 define( 'PBG_MOBILE_BREAKPOINT', '767' );
 
-require_once PREMIUM_BLOCKS_PATH . 'includes/plugin.php';
+require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
 
 /*
  * Initialize Plugin Main Class
  * @return void
  */
-add_action( 'init', array( 'Premium_Blocks_Gutenberg', 'get_instance' ) );
+// add_action('init', array('Premium_Blocks_Gutenberg','get_instance') );

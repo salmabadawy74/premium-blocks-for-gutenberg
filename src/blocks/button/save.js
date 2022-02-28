@@ -1,14 +1,8 @@
 import classnames from 'classnames'
-import hexToRgba from 'hex-to-rgba'
-
 const { RichText } = wp.blockEditor;
-
 const save = props => {
-
     const { className } = props;
-
     const {
-        block_id,
         borderButton,
         btnText,
         btnSize,
@@ -17,44 +11,19 @@ const save = props => {
         btnTarget,
         effect,
         effectDir,
-        textColor,
-        textHoverColor,
-        backColor,
-        backHoverColor,
         slideColor,
-        textFontFamily,
-        textWeight,
-        textLine,
-        textLetter,
-        textStyle,
-        backOpacity,
-        textUpper,
-        borderType,
-        borderWidth,
+        block_id,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        textStyles,
+        btnStyles,
         borderTop,
         borderRight,
         borderBottom,
         borderLeft,
-        borderRadius,
-        borderColor,
-        borderHoverColor,
-        padding,
-        paddingU,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        btnShadowBlur,
-        btnShadowColor,
-        btnShadowHorizontal,
-        btnShadowVertical,
-        btnShadowPosition,
-        hideDesktop,
-        hideTablet,
-        hideMobile
+        borderWidth
     } = props.attributes;
-
-
     const mainClasses = classnames(className, 'premium-button');
 
     return (
@@ -67,18 +36,18 @@ const save = props => {
                 dangerouslySetInnerHTML={{
                     __html: [
                         `#premium-button-wrap-${block_id} .premium-button:hover {`,
-                        `color: ${textHoverColor} !important;`,
-                        `border-color: ${borderHoverColor} !important;`,
+                        `color: ${btnStyles[0].textHoverColor} !important;`,
+                        `border-color: ${btnStyles[0].borderHoverColor} !important;`,
                         "}",
                         `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
-                        `background-color: ${backHoverColor} !important;`,
+                        `background-color: ${btnStyles[0].backHoverColor} !important;`,
                         "}",
                         `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
                         `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
                         `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
                         `background-color: ${slideColor}`,
-                        "}",
-                    ].join("\n"),
+                        "}"
+                    ].join("\n")
                 }}
             />
             <RichText.Content
@@ -89,29 +58,26 @@ const save = props => {
                 rel="noopener noreferrer"
                 target={btnTarget ? "_blank" : "_self"}
                 style={{
-                    color: textColor,
-                    backgroundColor: backColor
-                        ? hexToRgba(backColor, backOpacity)
-                        : "transparent",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
-                    padding: padding + paddingU,
-                    borderStyle: borderType,
+                    color: btnStyles[0].textColor,
+                    backgroundColor: btnStyles[0].backColor,
+                    fontFamily: textStyles[0].textFontFamily,
+                    letterSpacing: textStyles[0].textLetter + "px",
+                    textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                    fontStyle: textStyles[0].textStyle,
+                    lineHeight: textStyles[0].textLine + "px",
+                    fontWeight: textStyles[0].textWeight,
+                    textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
+                    boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
+                    padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                    borderStyle: btnStyles[0].borderType,
                     borderWidth: borderButton
                         ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                         : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
+                    borderRadius: btnStyles[0].borderRadius + "px",
+                    borderColor: btnStyles[0].borderColor
                 }}
             />
         </div>
     );
 };
-
 export default save;

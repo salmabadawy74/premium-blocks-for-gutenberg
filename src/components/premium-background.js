@@ -7,16 +7,16 @@ const {
     ToggleControl,
     Tooltip,
     Dashicon,
-    RangeControl
 } = wp.components;
 
 const { MediaUpload } = wp.blockEditor;
-import AdvancedPopColorControl from './premium-color-control'
+import AdvancedPopColorControl from './Color Control/ColorComponent'
+
+
 export default function PremiumBackground(props) {
     const {
         type,
         colorValue,
-        opacityValue,
         imageID,
         imageURL,
         backgroundPosition,
@@ -24,7 +24,6 @@ export default function PremiumBackground(props) {
         backgroundSize,
         fixed,
         onChangeColor = () => { },
-        onChangeOpacity = () => { },
         onSelectMedia = () => { },
         onRemoveImage = () => { },
         onChangeBackPos = () => { },
@@ -108,20 +107,11 @@ export default function PremiumBackground(props) {
 
     return type === "color" ? (
         <Fragment>
-
             <AdvancedPopColorControl
                 label={__("Background Color", '')}
                 colorValue={colorValue}
                 colorDefault={''}
                 onColorChange={onChangeColor}
-            />
-            <RangeControl
-                label={__(`Background Opacity`)}
-                value={opacityValue}
-                onChange={onChangeOpacity}
-                max={1}
-                min={0}
-                step={0.1}
             />
         </Fragment>
     ) : (

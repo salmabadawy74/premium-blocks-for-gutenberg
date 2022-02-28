@@ -1,10 +1,11 @@
 import classnames from "classnames";
-import styling from "./styling";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
-import AdvancedPopColorControl from '../../components/premium-color-control'
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import RadioComponent from '../../components/radio-control'
+
 
 import {
     SortableContainer,
@@ -13,6 +14,8 @@ import {
 } from "react-sortable-hoc";
 
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
+
 
 const { Component, Fragment } = wp.element;
 
@@ -27,7 +30,6 @@ const {
     SelectControl,
     TextControl,
     ToggleControl,
-    Toolbar,
 } = wp.components;
 
 const SortableItem = SortableElement(
@@ -92,29 +94,31 @@ class edit extends Component {
     constructor() {
         super(...arguments);
         this.renderFancyText = this.renderFancyText.bind(this);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     componentDidMount() {
-
-        // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
-
         this.props.setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-fancy-text-" + this.props.clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
-
         this.renderFancyText();
     }
 
     componentDidUpdate() {
         const { effect } = this.props.attributes;
-
         if (effect == "typing" && this.typed != undefined) {
             this.typed.destroy();
         }
@@ -157,84 +161,49 @@ class edit extends Component {
 
     componentWillUnmount() {
         const { effect } = this.props.attributes;
-        // Make sure to destroy Typed instance on unmounting
-        // to prevent memory leaks
         effect === "typing" ? this.typed.destroy() : "";
     }
 
     render() {
-        const { attributes, setAttributes, isSelected } = this.props;
+        const { attributes, setAttributes, isSelected, className } = this.props;
 
         const {
             block_id,
             align,
-            className,
             prefix,
             suffix,
             repeaterFancyText,
             effect,
-            fancyTextColor,
-            fancyTextfontSize,
-            fancyTextfontSizeMobile,
-            fancyTextfontSizeTablet,
-            fancyTextfontSizeUnit,
-            fancyTextWeight,
-            fancyTextUpper,
-            fancyTextStyle,
-            fancyTextLetter,
-            fancyTextBGColor,
-            shadowColor,
-            shadowBlur,
-            shadowHorizontal,
-            shadowVertical,
-            cursorColor,
-            textColor,
-            textfontSize,
-            textfontSizeMobile,
-            textfontSizeTablet,
-            textfontSizeUnit,
-            textWeight,
-            textLetter,
-            textUpper,
-            textStyle,
-            textBGColor,
             loop,
             cursorShow,
             cursorMark,
             typeSpeed,
-            backSpeed,
-            startdelay,
             backdelay,
+            startdelay,
+            backSpeed,
             animationSpeed,
             pauseTime,
             hoverPause,
             fancyalign,
-            fancyTextBGOpacity,
-            textBGOpacity,
             hideDesktop,
             hideTablet,
-            hideMobile
+            hideMobile,
+            fancyStyles,
+            PreStyles
         } = attributes;
 
-        const ALIGNS = ["left", "center", "right"];
         const EFFECT = [
             {
-                label: __("Typing"),
+                label: __("Typing", 'premium-block-for-gutenberg'),
                 value: "typing",
             },
             {
-                label: __("Slide"),
+                label: __("Slide", 'premium-block-for-gutenberg'),
                 value: "slide",
             },
         ];
 
-        var element = document.getElementById(
-            "premium-style-fancy-text-" + block_id
-        );
 
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
-        }
 
         const onResetClickfancyTextTypo = () => {
             setAttributes({
@@ -279,12 +248,8 @@ class edit extends Component {
 
         const onSortEndSingle = ({ oldIndex, newIndex }) => {
             let arrayItem = repeaterFancyText.map((cont) => cont);
-
             const sortedArray = arrayMove(arrayItem, oldIndex, newIndex);
-
-            setAttributes({
-                repeaterFancyText: sortedArray,
-            });
+            setAttributes({ repeaterFancyText: sortedArray });
         };
 
         const shouldCancelStart = (e) => {
@@ -332,46 +297,109 @@ class edit extends Component {
                     return cont;
                 })
                 .filter((f, i) => i != index);
-            setAttributes({
-                repeaterFancyText: array,
-            });
+            setAttributes({ repeaterFancyText: array, });
         };
 
         const addNewFancyText = () => {
             setAttributes({
                 repeaterFancyText: repeaterFancyText.concat([
                     {
-                        title: __("Title"),
+                        title: __("Title", 'premium-block-for-gutenberg'),
                         edit: true,
                     },
                 ]),
             });
         };
+        const saveFancyStyle = (value) => {
+            const newUpdate = fancyStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ fancyStyles: newUpdate });
+        }
+        const savePrefixStyle = (value) => {
+            const newUpdate = PreStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ PreStyles: newUpdate });
+        }
+
+        const fancyTextFontSize = this.getPreviewSize(this.props.deviceType, fancyStyles[0].fancyTextfontSize, fancyStyles[0].fancyTextfontSizeTablet, fancyStyles[0].fancyTextfontSizeMobile);;
+        const PrefixFontSize = this.getPreviewSize(this.props.deviceType, PreStyles[0].textfontSize, PreStyles[0].textfontSizeTablet, PreStyles[0].textfontSizeMobile);
+
+        const renderCss = (<style>
+            {`
+           #premium-fancy-text-${block_id} .premium-fancy-text-title {
+            font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
+            color: ${fancyStyles[0].fancyTextColor};
+            font-weight: ${fancyStyles[0].fancyTextWeight};
+            letter-spacing: ${fancyStyles[0].fancyTextLetter}px;
+            text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
+            font-style: ${fancyStyles[0].fancyTextStyle};
+            background-color: ${fancyStyles[0].fancyTextBGColor};
+            text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
+        }
+       #premium-fancy-text-${block_id} .premium-fancy-text-title-slide {
+            font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
+            color: ${fancyStyles[0].fancyTextColor};
+            font-weight: ${fancyStyles[0].fancyTextWeight};
+            letter-spacing: ${fancyStyles[0].fancyTextLetter} + "px";
+            text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
+            font-style: ${fancyStyles[0].fancyTextStyle};
+            background-color: ${fancyStyles[0].fancyTextBGColor};
+            text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
+        }
+        #premium-fancy-text-${block_id} .typed-cursor {
+            color: ${fancyStyles[0].cursorColor};
+        }
+        #premium-fancy-text-${block_id} .premium-fancy-text-prefix-text {
+            font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
+            color: ${PreStyles[0].textColor};
+            font-weight: ${PreStyles[0].textWeight};
+            letter-spacing: ${PreStyles[0].textLetter}px;
+            text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
+            font-style: ${PreStyles[0].textStyle};
+            background-color: ${PreStyles[0].textBGColor};
+        }
+        #premium-fancy-text-${block_id} .premium-fancy-text-suffix-text{
+            font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
+            color: ${PreStyles[0].textColor};
+            font-weight: ${PreStyles[0].textWeight};
+            letter-spacing: ${PreStyles[0].textLetter}px;
+            text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
+            font-style: ${PreStyles[0].textStyle};
+            background-color: ${PreStyles[0].textBGColor};
+        }
+            `}
+        </style>)
 
         return [
-            isSelected && (
-                <BlockControls>
+            renderCss,
+            isSelected && [
+                < BlockControls >
                     <AlignmentToolbar
                         value={align}
-                        onChange={value =>
-                            setAttributes({ align: value })
-                        }
+                        onChange={value => setAttributes({ align: value })}
                     />
-                </BlockControls>
-            ),
+                </BlockControls >
+            ],
+
             isSelected && (
                 <InspectorControls>
                     <PanelBody
-                        title={__("General Settings")}
+                        title={__("General Settings", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("Prefix Text")}
+                            label={__("Prefix Text", 'premium-block-for-gutenberg')}
                             value={prefix}
-                            onChange={(newText) =>
-                                setAttributes({ prefix: newText })
-                            }
+                            onChange={(newText) => setAttributes({ prefix: newText })}
                         />
                         <Fragment>
                             <div className="premium-fancy-text-control-content">
@@ -403,170 +431,115 @@ class edit extends Component {
                             <br />
                         </Fragment>
                         <TextControl
-                            label={__("Suffix Text")}
+                            label={__("Suffix Text", 'premium-block-for-gutenberg')}
                             value={suffix}
-                            onChange={(newText) =>
-                                setAttributes({ suffix: newText })
-                            }
+                            onChange={(newText) => setAttributes({ suffix: newText })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Advanced Settings")}
+                        title={__("Advanced Settings", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Effect")}
+                            label={__("Effect", 'premium-block-for-gutenberg')}
                             options={EFFECT}
                             value={effect}
-                            onChange={(newValue) =>
-                                setAttributes({ effect: newValue })
-                            }
+                            onChange={(newValue) => setAttributes({ effect: newValue })}
                         />
                         {"typing" === effect ? (
                             <Fragment>
                                 <TextControl
-                                    label={__("Type Speed")}
+                                    label={__("Type Speed", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={typeSpeed}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            typeSpeed: parseInt(newValue),
-                                        })
-                                    }
-                                    help={__('Set typing effect speed in milliseconds.')}
+                                    onChange={(newValue) => setAttributes({ typeSpeed: parseInt(newValue), })}
+                                    help={__('Set typing effect speed in milliseconds.', 'premium-block-for-gutenberg')}
                                 />
                                 <TextControl
-                                    label={__("Back Speed")}
+                                    label={__("Back Speed", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={backSpeed}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            backSpeed: parseInt(newValue),
-                                        })
-                                    }
-                                    help={__('Set a speed for backspace effect in milliseconds.')}
+                                    onChange={(newValue) => setAttributes({ backSpeed: parseInt(newValue), })}
+                                    help={__('Set a speed for backspace effect in milliseconds.', 'premium-block-for-gutenberg')}
                                 />
                                 <TextControl
-                                    label={__("Start Delay")}
+                                    label={__("Start Delay", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={startdelay}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            startdelay: parseInt(newValue),
-                                        })
-                                    }
-                                    help={__('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.')}
+                                    onChange={(newValue) => setAttributes({ startdelay: parseInt(newValue), })}
+                                    help={__('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-block-for-gutenberg')}
                                 />
                                 <TextControl
-                                    label={__("Back Delay")}
+                                    label={__("Back Delay", 'premium-block-for-gutenberg')}
                                     type="Number"
                                     value={backdelay}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            backdelay: parseInt(newValue),
-                                        })
-                                    }
-                                    help={__(
-                                        "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect."
-                                    )}
+                                    onChange={(newValue) => setAttributes({ backdelay: parseInt(newValue), })}
+                                    help={__("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", 'premium-block-for-gutenberg')}
                                 />
                                 <ToggleControl
-                                    label={__("Loop")}
+                                    label={__("Loop", 'premium-block-for-gutenberg')}
                                     checked={loop}
-                                    onChange={(newCheck) =>
-                                        setAttributes({ loop: newCheck })
-                                    }
+                                    onChange={(newCheck) => setAttributes({ loop: newCheck })}
                                 />
                                 <ToggleControl
-                                    label={__("Show Cursor")}
+                                    label={__("Show Cursor", 'premium-block-for-gutenberg')}
                                     checked={cursorShow}
-                                    onChange={(newCheck) =>
-                                        setAttributes({ cursorShow: newCheck })
-                                    }
+                                    onChange={(newCheck) => setAttributes({ cursorShow: newCheck })}
                                 />
                                 {cursorShow && (
                                     <TextControl
-                                        label={__("Cursor Mark")}
+                                        label={__("Cursor Mark", 'premium-block-for-gutenberg')}
                                         value={cursorMark}
-                                        onChange={(newCheck) =>
-                                            setAttributes({
-                                                cursorMark: newCheck,
-                                            })
-                                        }
+                                        onChange={(newCheck) => setAttributes({ cursorMark: newCheck, })}
                                     />
                                 )}
                             </Fragment>
                         ) : (
                             <Fragment>
                                 <p className="premium-notice">
-                                    Please note that Slide effect works only on
-                                    frontend
+                                    {__(' Please note that Slide effect works only on frontend', 'premium-block-for-gutenberg')}
                                 </p>
                                 <TextControl
-                                    label={__("Animation Speed")}
+                                    label={__("Animation Speed", 'premium-block-for-gutenberg')}
                                     value={animationSpeed}
                                     type="Number"
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            animationSpeed: parseInt(newValue),
-                                        })
-                                    }
-                                    help={__(
-                                        "Set a duration value in milliseconds for slide effect."
-                                    )}
+                                    onChange={(newValue) => setAttributes({ animationSpeed: parseInt(newValue) })}
+                                    help={__("Set a duration value in milliseconds for slide effect.", 'premium-block-for-gutenberg')}
                                 />
                                 <TextControl
-                                    label={__("Pause Time")}
+                                    label={__("Pause Time", 'premium-block-for-gutenberg')}
                                     value={pauseTime}
                                     type="Number"
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            pauseTime: parseInt(newValue),
-                                        })
-                                    }
-                                    help={__(
-                                        "How long should the word/string stay visible? Set a value in milliseconds."
-                                    )}
+                                    onChange={(newValue) => setAttributes({ pauseTime: parseInt(newValue), })}
+                                    help={__("How long should the word/string stay visible? Set a value in milliseconds.", 'premium-block-for-gutenberg')}
                                 />
                                 <ToggleControl
-                                    label={__("Pause on Hover")}
+                                    label={__("Pause on Hover", 'premium-block-for-gutenberg')}
                                     checked={hoverPause}
-                                    onChange={(newCheck) =>
-                                        setAttributes({ hoverPause: newCheck })
-                                    }
-                                    help={__(
-                                        "If you enabled this option, the slide will be paused when mouseover."
-                                    )}
+                                    onChange={(newCheck) => setAttributes({ hoverPause: newCheck })}
+                                    help={__("If you enabled this option, the slide will be paused when mouseover.", 'premium-block-for-gutenberg')}
                                 />
-                                <p>{__("Fancy Strings Alignment")}</p>
-                                <Toolbar
-                                    controls={ALIGNS.map((contentAlign) => ({
-                                        icon: "editor-align" + contentAlign,
-                                        isActive: contentAlign === fancyalign,
-                                        onClick: () =>
-                                            setAttributes({
-                                                fancyalign: contentAlign,
-                                            }),
-                                    }))}
+                                <RadioComponent
+                                    choices={["right", "center", "left"]}
+                                    value={fancyalign}
+                                    onChange={newValue => setAttributes({ fancyalign: newValue })}
+                                    label={__("Fancy Strings Alignment", 'premium-block-for-gutenberg')}
                                 />
                             </Fragment>
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Fancy Text Style")}
+                        title={__("Fancy Text Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-block-for-gutenberg')}
-                            colorValue={fancyTextColor}
+                            colorValue={fancyStyles[0].fancyTextColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                setAttributes({
-                                    fancyTextColor: newValue,
-                                })
-                            }
+                            onColorChange={newValue => saveFancyStyle({ fancyTextColor: newValue })}
                         />
                         <PremiumTypo
                             components={[
@@ -576,96 +549,64 @@ class edit extends Component {
                                 "upper",
                                 "spacing",
                             ]}
-                            setAttributes={setAttributes}
+                            setAttributes={saveFancyStyle}
                             fontSizeType={{
-                                value: fancyTextfontSizeUnit,
-                                label: __("fancyTextfontSizeUnit"),
+                                value: fancyStyles[0].fancyTextfontSizeUnit,
+                                label: __("fancyTextfontSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: fancyTextfontSize,
-                                label: __("fancyTextfontSize"),
-                            }}
-                            fontSizeMobile={{
-                                value: fancyTextfontSizeMobile,
-                                label: __("fancyTextfontSizeMobile"),
-                            }}
-                            fontSizeTablet={{
-                                value: fancyTextfontSizeTablet,
-                                label: __("fancyTextfontSizeTablet"),
-                            }}
-                            weight={fancyTextWeight}
-                            style={fancyTextStyle}
-                            spacing={fancyTextLetter}
-                            upper={fancyTextUpper}
-                            onChangeWeight={newWeight =>
-                                setAttributes({
-                                    fancyTextWeight: newWeight || 500,
-                                })
-                            }
-                            onChangeStyle={newStyle =>
-                                setAttributes({ fancyTextStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                setAttributes({ fancyTextLetter: newValue })
-                            }
-                            onChangeUpper={check =>
-                                setAttributes({ fancyTextUpper: check })
-                            }
+                            fontSize={fancyStyles[0].fancyTextfontSize}
+                            fontSizeMobile={fancyStyles[0].fancyTextfontSizeMobile}
+                            fontSizeTablet={fancyStyles[0].fancyTextfontSizeTablet}
+                            onChangeSize={newSize => saveFancyStyle({ fancyTextfontSize: newSize })}
+                            onChangeTabletSize={newSize => saveFancyStyle({ fancyTextfontSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveFancyStyle({ fancyTextfontSizeMobile: newSize })}
+                            weight={fancyStyles[0].fancyTextWeight}
+                            style={fancyStyles[0].fancyTextStyle}
+                            spacing={fancyStyles[0].fancyTextLetter}
+                            upper={fancyStyles[0].fancyTextUpper}
+                            onChangeWeight={newWeight => saveFancyStyle({ fancyTextWeight: newWeight || 500, })}
+                            onChangeStyle={newStyle => saveFancyStyle({ fancyTextStyle: newStyle })}
+                            onChangeSpacing={newValue => saveFancyStyle({ fancyTextLetter: newValue })}
+                            onChangeUpper={check => saveFancyStyle({ fancyTextUpper: check })}
                             onResetClick={onResetClickfancyTextTypo}
                         />
                         <AdvancedPopColorControl
                             label={__('Background Color')}
-                            colorValue={fancyTextBGColor}
+                            colorValue={fancyStyles[0].fancyTextBGColor}
                             colorDefault={''}
-                            onColorChange={newvalue =>
-                                setAttributes({ fancyTextBGColor: newvalue })}
+                            onColorChange={newvalue => saveFancyStyle({ fancyTextBGColor: newvalue })}
                         />
                         <PremiumTextShadow
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            onChangeColor={(newColor) =>
-                                setAttributes({ shadowColor: newColor })
-                            }
-                            onChangeBlur={(newBlur) =>
-                                setAttributes({ shadowBlur: newBlur })
-                            }
-                            onChangehHorizontal={(newValue) =>
-                                setAttributes({ shadowHorizontal: newValue })
-                            }
-                            onChangeVertical={(newValue) =>
-                                setAttributes({ shadowVertical: newValue })
-                            }
+                            color={fancyStyles[0].shadowColor}
+                            blur={fancyStyles[0].shadowBlur}
+                            horizontal={fancyStyles[0].shadowHorizontal}
+                            vertical={fancyStyles[0].shadowVertical}
+                            onChangeColor={(newColor) => saveFancyStyle({ shadowColor: newColor })}
+                            onChangeBlur={(newBlur) => saveFancyStyle({ shadowBlur: newBlur })}
+                            onChangehHorizontal={(newValue) => saveFancyStyle({ shadowHorizontal: newValue })}
+                            onChangeVertical={(newValue) => saveFancyStyle({ shadowVertical: newValue })}
                             onResetClick={onResetClickLabelTextShadow}
                         />
                         {effect == "typing" && cursorShow && (
                             <AdvancedPopColorControl
                                 label={__("Cursor Color", 'premium-block-for-gutenberg')}
-                                colorValue={cursorColor}
+                                colorValue={fancyStyles[0].cursorColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    setAttributes({
-                                        cursorColor: newValue,
-                                    })
-                                }
+                                onColorChange={newValue => saveFancyStyle({ cursorColor: newValue, })}
                             />
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Prefix & Suffix Style")}
+                        title={__("Prefix & Suffix Style", 'premium-block-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-block-for-gutenberg')}
-                            colorValue={textColor}
+                            colorValue={PreStyles[0].textColor}
                             colorDefault={''}
-                            onColorChange={newValue =>
-                                setAttributes({
-                                    textColor: newValue,
-                                })
-                            }
+                            onColorChange={newValue => savePrefixStyle({ textColor: newValue, })}
                         />
                         <PremiumTypo
                             components={[
@@ -675,47 +616,32 @@ class edit extends Component {
                                 "upper",
                                 "spacing",
                             ]}
-                            setAttributes={setAttributes}
+                            setAttributes={savePrefixStyle}
                             fontSizeType={{
-                                value: textfontSizeUnit,
-                                label: __("textfontSizeUnit"),
+                                value: PreStyles[0].textfontSizeUnit,
+                                label: __("textfontSizeUnit", 'premium-block-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: textfontSize,
-                                label: __("textfontSize"),
-                            }}
-                            fontSizeMobile={{
-                                value: textfontSizeMobile,
-                                label: __("textfontSizeMobile"),
-                            }}
-                            fontSizeTablet={{
-                                value: textfontSizeTablet,
-                                label: __("textfontSizeTablet"),
-                            }}
-                            weight={textWeight}
-                            style={textStyle}
-                            spacing={textLetter}
-                            upper={textUpper}
-                            onChangeWeight={(newWeight) =>
-                                setAttributes({ textWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={(newStyle) =>
-                                setAttributes({ textStyle: newStyle })
-                            }
-                            onChangeSpacing={(newValue) =>
-                                setAttributes({ textLetter: newValue })
-                            }
-                            onChangeUpper={(check) =>
-                                setAttributes({ textUpper: check })
-                            }
+                            fontSize={PreStyles[0].textfontSize}
+                            fontSizeMobile={PreStyles[0].textfontSizeMobile}
+                            fontSizeTablet={PreStyles[0].textfontSizeTablet}
+                            onChangeSize={newSize => savePrefixStyle({ textfontSize: newSize })}
+                            onChangeTabletSize={newSize => savePrefixStyle({ textfontSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => savePrefixStyle({ textfontSizeMobile: newSize })}
+                            weight={PreStyles[0].textWeight}
+                            style={PreStyles[0].textStyle}
+                            spacing={PreStyles[0].textLetter}
+                            upper={PreStyles[0].textUpper}
+                            onChangeWeight={(newWeight) => savePrefixStyle({ textWeight: newWeight || 500 })}
+                            onChangeStyle={(newStyle) => savePrefixStyle({ textStyle: newStyle })}
+                            onChangeSpacing={(newValue) => savePrefixStyle({ textLetter: newValue })}
+                            onChangeUpper={(check) => savePrefixStyle({ textUpper: check })}
                             onResetClick={onResetClickTextTypo}
                         />
                         <AdvancedPopColorControl
                             label={__(`Background Color`)}
-                            colorValue={textBGColor}
+                            colorValue={PreStyles[0].textBGColor}
                             colorDefault={``}
-                            onColorChange={newvalue =>
-                                setAttributes({ textBGColor: newvalue })}
+                            onColorChange={newvalue => savePrefixStyle({ textBGColor: newvalue })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -773,6 +699,7 @@ class edit extends Component {
                     </div>
                 ) : (
                     <div
+                        id={`premium-fancy-text-${block_id}`}
                         className={`premium-fancy-text premium-fancy-slide`}
                         style={{
                             textAlign: align,
@@ -815,4 +742,11 @@ class edit extends Component {
     }
 }
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

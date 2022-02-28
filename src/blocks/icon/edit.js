@@ -2,48 +2,55 @@ import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
-import PremiumSizeUnits from "../../components/premium-size-units";
 import PremiumBorder from "../../components/premium-border";
 import PremiumMargin from "../../components/premium-margin";
-import PremiumPadding from "../../components/premium-padding";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBackground from "../../components/premium-background";
-import hexToRgba from "hex-to-rgba";
+import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import AdvancedPopColorControl from '../../components/premium-color-control'
-
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
+import RadioComponent from '../../components/radio-control';
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 
 const {
     PanelBody,
-    Toolbar,
     SelectControl,
-    RangeControl,
-    ToggleControl
+    ToggleControl,
 } = wp.components;
 
 const { InspectorControls, URLInput } = wp.blockEditor;
 
-const { Fragment } = wp.element;
+const { withSelect } = wp.data
+function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+    if (device === 'Mobile') {
+        if (undefined !== mobileSize && '' !== mobileSize) {
+            return mobileSize;
+        } else if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    } else if (device === 'Tablet') {
+        if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    }
+    return desktopSize;
+}
 
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
 
     const {
+        iconBorder,
+        wrapBorder,
         iconType,
         selectedIcon,
         align,
         hoverEffect,
-        iconSize,
-        iconSizeUnit,
-        iconColor,
-        iconBack,
-        iconOpacity,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
+        iconStyles,
+        containerStyles,
         paddingT,
         paddingR,
         paddingB,
@@ -53,37 +60,16 @@ const edit = props => {
         marginR,
         marginB,
         marginL,
-        borderType,
         borderWidth,
-        iconBorder,
         iconBorderTop,
         iconBorderRight,
         iconBorderBottom,
         iconBorderLeft,
-        borderRadius,
-        borderColor,
-        backgroundColor,
-        backgroundOpacity,
-        imageID,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        wrapBorderType,
-        wrapBorder,
         wrapBorderWidth,
         wrapBorderTop,
         wrapBorderRight,
         wrapBorderBottom,
         wrapBorderLeft,
-        wrapBorderRadius,
-        wrapBorderColor,
-        wrapShadowBlur,
-        wrapShadowColor,
-        wrapShadowHorizontal,
-        wrapShadowVertical,
-        wrapShadowPosition,
         wrapPaddingT,
         wrapPaddingR,
         wrapPaddingB,
@@ -97,133 +83,208 @@ const edit = props => {
         target,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
+        backgroundType,
+        paddingTTablet,
+        paddingRTablet,
+        paddingBTablet,
+        paddingLTablet,
+        paddingTMobile,
+        paddingRMobile,
+        paddingBMobile,
+        paddingLMobile,
+        wrapPaddingTTablet,
+        wrapPaddingRTablet,
+        wrapPaddingBTablet,
+        wrapPaddingLTablet,
+        wrapPaddingTMobile,
+        wrapPaddingRMobile,
+        wrapPaddingBMobile,
+        wrapPaddingLMobile,
+        marginTTablet,
+        marginRTablet,
+        marginBTablet,
+        marginLTablet,
+        marginTMobile,
+        marginRMobile,
+        marginBMobile,
+        marginLMobile,
+        wrapMarginTTablet,
+        wrapMarginRTablet,
+        wrapMarginBTablet,
+        wrapMarginLTablet,
+        wrapMarginTMobile,
+        wrapMarginRMobile,
+        wrapMarginBMobile,
+        wrapMarginLMobile,
     } = props.attributes;
 
     const EFFECTS = [
         {
             value: "none",
-            label: __("None")
+            label: __("None", 'premium-block-for-gutenberg')
         },
         {
             value: "pulse",
-            label: __("Pulse")
+            label: __("Pulse", 'premium-block-for-gutenberg')
         },
         {
             value: "rotate",
-            label: __("Rotate")
+            label: __("Rotate", 'premium-block-for-gutenberg')
         },
         {
             value: "drotate",
-            label: __("3D Rotate")
+            label: __("3D Rotate", 'premium-block-for-gutenberg')
         },
         {
             value: "buzz",
-            label: __("Buzz")
+            label: __("Buzz", 'premium-block-for-gutenberg')
         },
         {
             value: "drop",
-            label: __("Drop Shadow")
+            label: __("Drop Shadow", 'premium-block-for-gutenberg')
         },
         {
             value: "wobble",
-            label: __("Wobble")
+            label: __("Wobble", 'premium-block-for-gutenberg')
         }
     ];
 
-    const ALIGNS = ["left", "center", "right"];
+    const saveContainerStyle = (value) => {
+        const newUpdate = containerStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            containerStyles: newUpdate,
+        });
+    }
+
+    const saveIconStyle = (value) => {
+        const newUpdate = iconStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            iconStyles: newUpdate,
+        });
+    }
+
+    let btnGrad, btnGrad2, btnbg;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ""
+    }
 
     const mainClasses = classnames(className, "premium-icon");
-
+    const iconPaddingTop = getPreviewSize(props.deviceType, paddingT, paddingTTablet, paddingTMobile);
+    const iconPaddingRight = getPreviewSize(props.deviceType, paddingR, paddingRTablet, paddingRMobile);
+    const iconPaddingBottom = getPreviewSize(props.deviceType, paddingB, paddingBTablet, paddingBMobile);
+    const iconPaddingLeft = getPreviewSize(props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+    const iconMarginTop = getPreviewSize(props.deviceType, marginT, marginTTablet, marginTMobile);
+    const iconMarginRight = getPreviewSize(props.deviceType, marginR, marginRTablet, marginRMobile);
+    const iconMarginBottom = getPreviewSize(props.deviceType, marginB, marginBTablet, marginBMobile);
+    const iconMarginLeft = getPreviewSize(props.deviceType, marginL, marginLTablet, marginLMobile);
+    const wrapPaddingTop = getPreviewSize(props.deviceType, wrapPaddingT, wrapPaddingTTablet, wrapPaddingTMobile);
+    const wrapPaddingRight = getPreviewSize(props.deviceType, wrapPaddingR, wrapPaddingRTablet, wrapPaddingRMobile);
+    const wrapPaddingBottom = getPreviewSize(props.deviceType, wrapPaddingB, wrapPaddingBTablet, wrapPaddingBMobile);
+    const wrapPaddingLeft = getPreviewSize(props.deviceType, wrapPaddingL, wrapPaddingLTablet, wrapPaddingLMobile);
+    const wrapMarginTop = getPreviewSize(props.deviceType, wrapMarginT, wrapMarginTTablet, wrapMarginTMobile);
+    const wrapMarginRight = getPreviewSize(props.deviceType, wrapMarginR, wrapMarginRTablet, wrapMarginRMobile);
+    const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMarginB, wrapMarginBTablet, wrapMarginBMobile);
+    const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMarginL, wrapMarginLTablet, wrapMarginLMobile);
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
                 <PanelBody
-                    title={__("Icon")}
+                    title={__("Icon", 'premium-block-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <p className="premium-editor-paragraph">{__("Select Icon")}</p>
+                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-block-for-gutenberg')}</p>
                     <FontIconPicker
                         icons={iconsList}
                         onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
                         value={selectedIcon}
                         isMulti={false}
                         appendTo="body"
-                        noSelectedPlaceholder={__("Select Icon")}
+                        noSelectedPlaceholder={__("Select Icon", 'premium-block-for-gutenberg')}
                     />
                     <SelectControl
-                        label={__("Hover Effect")}
+                        label={__("Hover Effect", 'premium-block-for-gutenberg')}
                         options={EFFECTS}
                         value={hoverEffect}
                         onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                     />
-                    <p>{__("Align")}</p>
-                    <Toolbar
-                        controls={ALIGNS.map(iconAlign => ({
-                            icon: "editor-align" + iconAlign,
-                            isActive: iconAlign === align,
-                            onClick: () => setAttributes({ align: iconAlign })
-                        }))}
+                    <RadioComponent
+                        choices={["right", "center", "left"]}
+                        value={align}
+                        onChange={newValue => setAttributes({ align: newValue })}
+                        label={__("Align", 'premium-block-for-gutenberg')}
                     />
                     <ToggleControl
-                        label={__("Link")}
+                        label={__("Link", 'premium-block-for-gutenberg')}
                         checked={urlCheck}
                         onChange={newValue => setAttributes({ urlCheck: newValue })}
                     />
                     {urlCheck && (
                         <ToggleControl
-                            label={__("Open link in new tab")}
+                            label={__("Open link in new tab", 'premium-block-for-gutenberg')}
                             checked={target}
                             onChange={newValue => setAttributes({ target: newValue })}
                         />
                     )}
                 </PanelBody>
                 <PanelBody
-                    title={__("Icon Style")}
+                    title={__("Icon Style", 'premium-block-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <PremiumSizeUnits
-                        onChangeSizeUnit={newValue =>
-                            setAttributes({ iconSizeUnit: newValue })
+                    <ResponsiveSingleRangeControl
+                        label={__("Size", 'premium-block-for-gutenberg')}
+                        value={iconStyles[0].iconSize}
+                        onChange={newValue => saveIconStyle({ iconSize: newValue })}
+                        units={['px', 'em', 'rem']}
+                        defaultValue={0}
+                        onChangeUnit={newValue =>
+                            saveIconStyle({ iconSizeUnit: newValue })
                         }
-                    />
-                    <RangeControl
-                        label={__("Size")}
-                        value={iconSize}
-                        onChange={newValue => setAttributes({ iconSize: newValue })}
-                        initialPosition={50}
-                        allowReset={true}
+                        showUnit={true}
+                        unit={iconStyles[0].iconSizeUnit}
                     />
                     <AdvancedPopColorControl
                         label={__("Icon Color", 'premium-block-for-gutenberg')}
-                        colorValue={iconColor}
+                        colorValue={iconStyles[0].iconColor}
                         colorDefault={''}
-                        onColorChange={value =>
-                            setAttributes({
-                                iconColor: value
-                            })
-                        }
+                        onColorChange={value => saveIconStyle({ iconColor: value })}
                     />
                     <AdvancedPopColorControl
                         label={__("Background Color", 'premium-block-for-gutenberg')}
-                        colorValue={iconBack}
+                        colorValue={iconStyles[0].iconBack}
                         colorDefault={''}
-                        onColorChange={value =>
-                            setAttributes({ iconBack: value })
-                        }
+                        onColorChange={value => saveIconStyle({ iconBack: value })}
                     />
                     <PremiumBorder
-                        borderType={borderType}
+                        borderType={iconStyles[0].borderType}
                         borderWidth={borderWidth}
                         top={iconBorderTop}
                         right={iconBorderRight}
                         bottom={iconBorderBottom}
                         left={iconBorderLeft}
-                        borderColor={borderColor}
-                        borderRadius={borderRadius}
-                        onChangeType={(newType) => setAttributes({ borderType: newType })}
+                        borderColor={iconStyles[0].borderColor}
+                        borderRadius={iconStyles[0].borderRadius}
+                        onChangeType={(newType) => saveIconStyle({ borderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
                                 iconBorder: true,
@@ -233,151 +294,174 @@ const edit = props => {
                                 iconBorderLeft: left,
                             })
                         }
-                        onChangeColor={(colorValue) =>
-                            setAttributes({ borderColor: colorValue })
-                        }
-                        onChangeRadius={(newrRadius) =>
-                            setAttributes({ borderRadius: newrRadius })
-                        }
+                        onChangeColor={(colorValue) => saveIconStyle({ borderColor: colorValue })}
+                        onChangeRadius={(newrRadius) => saveIconStyle({ borderRadius: newrRadius })}
                     />
 
                     <PremiumTextShadow
                         label="Shadow"
-                        color={shadowColor}
-                        blur={shadowBlur}
-                        horizontal={shadowHorizontal}
-                        vertical={shadowVertical}
-                        onChangeColor={newColor =>
-                            setAttributes({ shadowColor: newColor })
-                        }
-                        onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
-                        onChangehHorizontal={newValue =>
-                            setAttributes({ shadowHorizontal: newValue })
-                        }
-                        onChangeVertical={newValue =>
-                            setAttributes({ shadowVertical: newValue })
-                        }
+                        color={iconStyles[0].shadowColor}
+                        blur={iconStyles[0].shadowBlur}
+                        horizontal={iconStyles[0].shadowHorizontal}
+                        vertical={iconStyles[0].shadowVertical}
+                        onChangeColor={newColor => saveIconStyle({ shadowColor: newColor })}
+                        onChangeBlur={newBlur => saveIconStyle({ shadowBlur: newBlur })}
+                        onChangehHorizontal={newValue => saveIconStyle({ shadowHorizontal: newValue })}
+                        onChangeVertical={newValue => saveIconStyle({ shadowVertical: newValue })}
                     />
-
-                    <PremiumMargin
+                    <PremiumResponsiveMargin
                         directions={["all"]}
                         marginTop={marginT}
                         marginRight={marginR}
                         marginBottom={marginB}
                         marginLeft={marginL}
-                        onChangeMarTop={value =>
-                            setAttributes({
-                                marginT: value
-                            })
+                        marginTopTablet={marginTTablet}
+                        marginRightTablet={marginRTablet}
+                        marginBottomTablet={marginBTablet}
+                        marginLeftTablet={marginLTablet}
+                        marginTopMobile={marginTMobile}
+                        marginRightMobile={marginRMobile}
+                        marginBottomMobile={marginBMobile}
+                        marginLeftMobile={marginLMobile}
+                        onChangeMarginTop={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ marginT: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ marginTTablet: newValue })
+                                } else {
+                                    setAttributes({ marginTMobile: newValue })
+                                }
+                            }
                         }
-                        onChangeMarRight={value =>
-                            setAttributes({
-                                marginR: value
-                            })
+                        onChangeMarginRight={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ marginR: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ marginRTablet: newValue })
+                                } else {
+                                    setAttributes({ marginRMobile: newValue })
+                                }
+                            }
                         }
-                        onChangeMarBottom={value =>
-                            setAttributes({
-                                marginB: value
-                            })
+                        onChangeMarginBottom={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ marginB: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ marginBTablet: newValue })
+                                } else {
+                                    setAttributes({ marginBMobile: newValue })
+                                }
+                            }
                         }
-                        onChangeMarLeft={value =>
-                            setAttributes({
-                                marginL: value
-                            })
+                        onChangeMarginLeft={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ marginL: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ marginLTablet: newValue })
+                                } else {
+                                    setAttributes({ marginLMobile: newValue })
+                                }
+                            }
                         }
+
                     />
-                    <PremiumPadding
-                        paddingTop={paddingT}
-                        paddingRight={paddingR}
-                        paddingBottom={paddingB}
-                        paddingLeft={paddingL}
-                        onChangePadTop={value =>
-                            setAttributes({
-                                paddingT: value
-                            })
+                    <PremiumResponsivePadding
+                        paddingT={paddingT}
+                        paddingR={paddingR}
+                        paddingB={paddingB}
+                        paddingL={paddingL}
+                        paddingTTablet={paddingTTablet}
+                        paddingRTablet={paddingRTablet}
+                        paddingBTablet={paddingBTablet}
+                        paddingLTablet={paddingLTablet}
+                        paddingTMobile={paddingTMobile}
+                        paddingRMobile={paddingRMobile}
+                        paddingBMobile={paddingBMobile}
+                        paddingLMobile={paddingLMobile}
+                        onChangePaddingTop={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingT: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingTTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingTMobile: newValue })
+                                }
+                            }
                         }
-                        onChangePadRight={value =>
-                            setAttributes({
-                                paddingR: value
-                            })
+                        onChangePaddingRight={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingR: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingRTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingRMobile: newValue })
+                                }
+                            }
                         }
-                        onChangePadBottom={value =>
-                            setAttributes({
-                                paddingB: value
-                            })
+                        onChangePaddingBottom={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingB: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingBTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingBMobile: newValue })
+                                }
+                            }
                         }
-                        onChangePadLeft={value =>
-                            setAttributes({
-                                paddingL: value
-                            })
-                        }
-                        showUnits={true}
-                        selectedUnit={paddingU}
-                        onChangePadSizeUnit={newvalue =>
-                            setAttributes({ paddingU: newvalue })
+                        onChangePaddingLeft={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ paddingL: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ paddingLTablet: newValue })
+                                } else {
+                                    setAttributes({ paddingLMobile: newValue })
+                                }
+                            }
                         }
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__("Container Style")}
+                    title={__("Container Style", 'premium-block-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <Fragment>
-                        <PremiumBackground
-                            type="color"
-                            colorValue={backgroundColor}
-                            onChangeColor={value =>
-                                setAttributes({
-                                    backgroundColor: value,
-                                })
-                            }
-                            opacityValue={backgroundOpacity}
-                            onChangeOpacity={newvalue =>
-                                setAttributes({ backgroundOpacity: newvalue })
-                            }
-                        />
-                        <PremiumBackground
-                            imageID={imageID}
-                            imageURL={imageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
-                            onSelectMedia={media => {
-                                setAttributes({
-                                    imageID: media.id,
-                                    imageURL: media.url
-                                });
-                            }}
-                            onRemoveImage={value =>
-                                setAttributes({ imageURL: "", imageID: "" })
-                            }
-                            onChangeBackPos={newValue =>
-                                setAttributes({ backgroundPosition: newValue })
-                            }
-                            onchangeBackRepeat={newValue =>
-                                setAttributes({ backgroundRepeat: newValue })
-                            }
-                            onChangeBackSize={newValue =>
-                                setAttributes({ backgroundSize: newValue })
-                            }
-                            onChangeFixed={check => setAttributes({ fixed: check })}
-                        />
-                    </Fragment>
+                    <PremiumBackgroundControl
+                        setAttributes={setAttributes}
+                        saveContainerStyle={saveContainerStyle}
+                        backgroundType={backgroundType}
+                        backgroundColor={containerStyles[0].containerBack}
+                        backgroundImageID={containerStyles[0].backgroundImageID}
+                        backgroundImageURL={containerStyles[0].backgroundImageURL}
+                        backgroundPosition={containerStyles[0].backgroundPosition}
+                        backgroundRepeat={containerStyles[0].backgroundRepeat}
+                        backgroundSize={containerStyles[0].backgroundSize}
+                        fixed={containerStyles[0].fixed}
+                        gradientLocationOne={containerStyles[0].gradientLocationOne}
+                        gradientColorTwo={containerStyles[0].gradientColorTwo}
+                        gradientLocationTwo={containerStyles[0].gradientLocationTwo}
+                        gradientAngle={containerStyles[0].gradientAngle}
+                        gradientPosition={containerStyles[0].gradientPosition}
+                        gradientType={containerStyles[0].gradientType}
+                    />
 
                     <PremiumBorder
-                        borderType={wrapBorderType}
-                        borderWidth={wrapBorderWidth}
+                        borderType={containerStyles[0].wrapBorderType}
+                        borderWidth={containerStyles[0].wrapBorderWidth}
                         top={wrapBorderTop}
                         right={wrapBorderRight}
                         bottom={wrapBorderBottom}
                         left={wrapBorderLeft}
-                        borderColor={wrapBorderColor}
-                        borderRadius={wrapBorderRadius}
-                        onChangeType={(newType) =>
-                            setAttributes({ wrapBorderType: newType })
-                        }
+                        borderColor={containerStyles[0].wrapBorderColor}
+                        borderRadius={containerStyles[0].wrapBorderRadius}
+                        onChangeType={(newType) => saveContainerStyle({ wrapBorderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
                                 wrapBorder: true,
@@ -387,99 +471,139 @@ const edit = props => {
                                 wrapBorderLeft: left,
                             })
                         }
-                        onChangeColor={(colorValue) =>
-                            setAttributes({ wrapBorderColor: colorValue })
-                        }
-                        onChangeRadius={(newrRadius) =>
-                            setAttributes({ wrapBorderRadius: newrRadius })
-                        }
+                        onChangeColor={(colorValue) => saveContainerStyle({ wrapBorderColor: colorValue })}
+                        onChangeRadius={(newrRadius) => saveContainerStyle({ wrapBorderRadius: newrRadius })}
                     />
 
                     <PremiumBoxShadow
                         inner={true}
-                        color={wrapShadowColor}
-                        blur={wrapShadowBlur}
-                        horizontal={wrapShadowHorizontal}
-                        vertical={wrapShadowVertical}
-                        position={wrapShadowPosition}
-                        onChangeColor={newColor =>
-                            setAttributes({
-                                wrapShadowColor: newColor
-                            })
-                        }
-                        onChangeBlur={newBlur =>
-                            setAttributes({
-                                wrapShadowBlur: newBlur
-                            })
-                        }
-                        onChangehHorizontal={newValue =>
-                            setAttributes({
-                                wrapShadowHorizontal: newValue
-                            })
-                        }
-                        onChangeVertical={newValue =>
-                            setAttributes({
-                                wrapShadowVertical: newValue
-                            })
-                        }
-                        onChangePosition={newValue =>
-                            setAttributes({
-                                wrapShadowPosition: newValue
-                            })
-                        }
+                        color={containerStyles[0].wrapShadowColor}
+                        blur={containerStyles[0].wrapShadowBlur}
+                        horizontal={containerStyles[0].wrapShadowHorizontal}
+                        vertical={containerStyles[0].wrapShadowVertical}
+                        position={containerStyles[0].wrapShadowPosition}
+                        onChangeColor={newColor => saveContainerStyle({ wrapShadowColor: newColor })}
+                        onChangeBlur={newBlur => saveContainerStyle({ wrapShadowBlur: newBlur })}
+                        onChangehHorizontal={newValue => saveContainerStyle({ wrapShadowHorizontal: newValue })}
+                        onChangeVertical={newValue => saveContainerStyle({ wrapShadowVertical: newValue })}
+                        onChangePosition={newValue => saveContainerStyle({ wrapShadowPosition: newValue })}
                     />
-
-                    <PremiumMargin
+                    <PremiumResponsiveMargin
                         directions={["all"]}
                         marginTop={wrapMarginT}
                         marginRight={wrapMarginR}
                         marginBottom={wrapMarginB}
                         marginLeft={wrapMarginL}
-                        onChangeMarTop={value =>
-                            setAttributes({
-                                wrapMarginT: value
-                            })
+                        marginTopTablet={wrapMarginTTablet}
+                        marginRightTablet={wrapMarginRTablet}
+                        marginBottomTablet={wrapMarginBTablet}
+                        marginLeftTablet={wrapMarginLTablet}
+                        marginTopMobile={wrapMarginTMobile}
+                        marginRightMobile={wrapMarginRMobile}
+                        marginBottomMobile={wrapMarginBMobile}
+                        marginLeftMobile={wrapMarginLMobile}
+                        onChangeMarginTop={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapMarginT: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapMarginTTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapMarginTMobile: newValue })
+                                }
+                            }
                         }
-                        onChangeMarRight={value =>
-                            setAttributes({
-                                wrapMarginR: value
-                            })
+                        onChangeMarginRight={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapMarginR: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapMarginRTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapMarginRMobile: newValue })
+                                }
+                            }
                         }
-                        onChangeMarBottom={value =>
-                            setAttributes({
-                                wrapMarginB: value
-                            })
+                        onChangeMarginBottom={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapMarginB: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapMarginBTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapMarginBMobile: newValue })
+                                }
+                            }
                         }
-                        onChangeMarLeft={value =>
-                            setAttributes({
-                                wrapMarginL: value
-                            })
+                        onChangeMarginLeft={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapMarginL: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapMarginLTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapMarginLMobile: newValue })
+                                }
+                            }
                         }
+
                     />
-                    <PremiumPadding
-                        paddingTop={wrapPaddingT}
-                        paddingRight={wrapPaddingR}
-                        paddingBottom={wrapPaddingB}
-                        paddingLeft={wrapPaddingL}
-                        onChangePadTop={value =>
-                            setAttributes({
-                                wrapPaddingT: value
-                            })
+                    <PremiumResponsivePadding
+                        paddingT={wrapPaddingT}
+                        paddingR={wrapPaddingR}
+                        paddingB={wrapPaddingB}
+                        paddingL={wrapPaddingL}
+                        paddingTTablet={wrapPaddingTTablet}
+                        paddingRTablet={wrapPaddingRTablet}
+                        paddingBTablet={wrapPaddingBTablet}
+                        paddingLTablet={wrapPaddingLTablet}
+                        paddingTMobile={wrapPaddingTMobile}
+                        paddingRMobile={wrapPaddingRMobile}
+                        paddingBMobile={wrapPaddingBMobile}
+                        paddingLMobile={wrapPaddingLMobile}
+                        onChangePaddingTop={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapPaddingT: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapPaddingTTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapPaddingTMobile: newValue })
+                                }
+                            }
                         }
-                        onChangePadRight={value =>
-                            setAttributes({
-                                wrapPaddingR: value
-                            })
+                        onChangePaddingRight={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapPaddingR: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapPaddingRTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapPaddingRMobile: newValue })
+                                }
+                            }
                         }
-                        onChangePadBottom={value =>
-                            setAttributes({
-                                wrapPaddingB: value
-                            })
+                        onChangePaddingBottom={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapPaddingB: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapPaddingBTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapPaddingBMobile: newValue })
+                                }
+                            }
                         }
-                        onChangePadLeft={value =>
-                            setAttributes({
-                                wrapPaddingL: value
-                            })
+                        onChangePaddingLeft={
+                            (device, newValue) => {
+                                if (device === "desktop") {
+                                    setAttributes({ wrapPaddingL: newValue })
+                                } else if (device === "tablet") {
+                                    setAttributes({ wrapPaddingLTablet: newValue })
+                                } else {
+                                    setAttributes({ wrapPaddingLMobile: newValue })
+                                }
+                            }
                         }
                     />
                 </PanelBody>
@@ -493,36 +617,33 @@ const edit = props => {
                 />
             </InspectorControls>
         ),
-
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: align,
-                backgroundColor: backgroundColor
-                    ? hexToRgba(backgroundColor, backgroundOpacity)
-                    : "transparent",
-                backgroundImage: imageURL ? `url('${imageURL}')` : "none",
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                borderStyle: wrapBorderType,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].wrapBorderType,
                 borderWidth: wrapBorder
                     ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
                     : wrapBorderWidth + "px",
-                borderRadius: wrapBorderRadius + "px",
-                borderColor: wrapBorderColor,
-                boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-                    0}px ${wrapShadowBlur ||
-                    0}px ${wrapShadowColor} ${wrapShadowPosition}`,
-                paddingTop: wrapPaddingT,
-                paddingRight: wrapPaddingR,
-                paddingBottom: wrapPaddingB,
-                paddingLeft: wrapPaddingL,
-                marginTop: wrapMarginT,
-                marginRight: wrapMarginR,
-                marginBottom: wrapMarginB,
-                marginLeft: wrapMarginL
+                borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                borderColor: containerStyles[0].wrapBorderColor,
+                boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
+                    0}px ${containerStyles[0].wrapShadowBlur ||
+                    0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+                paddingTop: wrapPaddingTop,
+                paddingRight: wrapPaddingRight,
+                paddingBottom: wrapPaddingBottom,
+                paddingLeft: wrapPaddingLeft,
+                marginTop: wrapMarginTop,
+                marginRight: wrapMarginRight,
+                marginBottom: wrapMarginBottom,
+                marginLeft: wrapMarginLeft
             }}
         >
             {iconType === "fa" && 1 != FontAwesomeEnabled && (
@@ -534,27 +655,25 @@ const edit = props => {
                 <i
                     className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                     style={{
-                        color: iconColor || "#6ec1e4",
-                        backgroundColor: iconBack
-                            ? hexToRgba(iconBack, iconOpacity)
-                            : "transparent",
-                        fontSize: (iconSize || 50) + iconSizeUnit,
-                        paddingTop: paddingT + paddingU,
-                        paddingRight: paddingR + paddingU,
-                        paddingBottom: paddingB + paddingU,
-                        paddingLeft: paddingL + paddingU,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
-                        borderStyle: borderType,
+                        color: iconStyles[0].iconColor || "#6ec1e4",
+                        backgroundColor: iconStyles[0].iconBack,
+                        fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                        paddingTop: iconPaddingTop + paddingU,
+                        paddingRight: iconPaddingRight + paddingU,
+                        paddingBottom: iconPaddingBottom + paddingU,
+                        paddingLeft: iconPaddingLeft + paddingU,
+                        marginTop: iconMarginTop,
+                        marginRight: iconMarginRight,
+                        marginBottom: iconMarginBottom,
+                        marginLeft: iconMarginLeft,
+                        borderStyle: iconStyles[0].borderType,
                         borderWidth: iconBorder
                             ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
                             : borderWidth + "px",
-                        borderRadius: borderRadius || 100 + "px",
-                        borderColor: borderColor,
-                        textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-                            0}px ${shadowBlur || 0}px ${shadowColor}`
+                        borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                        borderColor: iconStyles[0].borderColor,
+                        textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
+                            0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
                     }}
                 />
             )}
@@ -568,4 +687,11 @@ const edit = props => {
     ];
 };
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

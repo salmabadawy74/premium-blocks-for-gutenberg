@@ -2,7 +2,6 @@ import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
-import hexToRgba from "hex-to-rgba";
 
 const { RichText } = wp.blockEditor;
 
@@ -13,83 +12,65 @@ const save = props => {
     const {
         block_id,
         align,
+        authorImgId,
         authorImgUrl,
         imgRadius,
+        imgSize,
         imgBorder,
         imgBorderColor,
-        imgSize,
-        text,
-        authorTag,
-        authorColor,
-        authorLetter,
-        authorStyle,
-        authorUpper,
-        authorWeight,
         author,
-        authorComTag,
-        authorComColor,
+        authorStyles,
+        text,
         authorCom,
-        quotSize,
-        quotColor,
-        quotOpacity,
-        bodyColor,
-        bodyLine,
-        bodyTop,
-        bodyBottom,
-        dashColor,
-        urlCheck,
-        urlText,
-        urlTarget,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition,
-        backColor,
-        backOpacity,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        contentStyle,
+        companyStyles,
+        quoteStyles,
+        containerStyles,
         paddingTop,
         paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingUnit,
-        hideDesktop,
-        hideTablet,
-        hideMobile
+        backgroundType
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-testimonial');
+
+    let btnGrad, btnGrad2, btnbg;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none'
+    }
 
     return (
         <div
             id={`premium-testimonial-${block_id}`}
             className={`${mainClasses}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                backgroundColor: backColor
-                    ? hexToRgba(backColor, backOpacity)
-                    : "transparent",
-                backgroundImage: `url('${imageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
             }}
         >
             <div className={`premium-testimonial__container`}>
                 <span className={`premium-testimonial__upper`}>
                     <PremiumUpperQuote
-                        size={quotSize}
-                        color={quotColor}
-                        opacity={quotOpacity}
+                        size={quoteStyles[0].quotSize}
+                        color={quoteStyles[0].quotColor}
+                        opacity={quoteStyles[0].quotOpacity}
                     />
                 </span>
                 <div
@@ -122,49 +103,51 @@ const save = props => {
                                 className={`premium-testimonial__text`}
                                 value={text}
                                 style={{
-                                    color: bodyColor,
-                                    lineHeight: bodyLine + "px",
-                                    marginTop: bodyTop + "px",
-                                    marginBottom: bodyBottom + "px"
+                                    color: contentStyle[0].bodyColor,
+                                    lineHeight: contentStyle[0].bodyLine + "px",
+                                    marginTop: contentStyle[0].bodyTop + "px",
+                                    marginBottom: contentStyle[0].bodyBottom + "px"
                                 }}
                             />
                         </div>
                     </div>
-                    <div className={`premium-testimonial__info`}>
+                    <div className={`premium-testimonial__info`}
+                        style={{ justifyContent: align }}
+                    >
                         <RichText.Content
-                            tagName={authorTag.toLowerCase()}
+                            tagName={authorStyles[0].authorTag.toLowerCase()}
                             className={`premium-testimonial__author`}
                             value={author}
                             style={{
-                                color: authorColor,
-                                letterSpacing: authorLetter + "px",
-                                textTransform: authorUpper ? "uppercase" : "none",
-                                fontStyle: authorStyle,
-                                fontWeight: authorWeight
+                                color: authorStyles[0].authorColor,
+                                letterSpacing: authorStyles[0].authorLetter + "px",
+                                textTransform: authorStyles[0].authorUpper ? "uppercase" : "none",
+                                fontStyle: authorStyles[0].authorStyle,
+                                fontWeight: authorStyles[0].authorWeight
                             }}
                         />
                         <span
                             className={`premium-testimonial__sep`}
                             style={{
-                                color: dashColor
+                                color: companyStyles[0].dashColor
                             }}
                         >
                             &nbsp;-&nbsp;
             </span>
                         <div className={`premium-testimonial__link_wrap`}>
                             <RichText.Content
-                                tagName={authorComTag.toLowerCase()}
+                                tagName={authorStyles[0].authorComTag.toLowerCase()}
                                 className={`premium-testimonial__author_comp`}
                                 value={authorCom}
                                 style={{
-                                    color: authorComColor,
+                                    color: companyStyles[0].authorComColor,
                                 }}
                             />
-                            {urlCheck && (
+                            {companyStyles[0].urlCheck && (
                                 <a
                                     rel="noopener noreferrer"
-                                    href={urlText}
-                                    target={urlTarget ? "_blank" : ""}
+                                    href={companyStyles[0].urlText}
+                                    target={companyStyles[0].urlTarget ? "_blank" : ""}
                                 />
                             )}
                         </div>
@@ -172,9 +155,9 @@ const save = props => {
                 </div>
                 <span className={`premium-testimonial__lower`}>
                     <PremiumLowerQuote
-                        color={quotColor}
-                        size={quotSize}
-                        opacity={quotOpacity}
+                        size={quoteStyles[0].quotSize}
+                        color={quoteStyles[0].quotColor}
+                        opacity={quoteStyles[0].quotOpacity}
                     />
                 </span>
             </div>

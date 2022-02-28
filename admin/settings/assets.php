@@ -13,7 +13,7 @@ if( ! class_exists('PBG_Settings') ) {
 
         private static $instance = null;
 
-        public static $pb_maps_keys = [ 'premium-map-key', 'premium-map-api', 'premium-fa-css' ];
+        public static $pb_maps_keys = [ 'premium-map-key', 'premium-map-api', 'premium-fa-css','premium-upload-json' ];
 
         private $pb_maps_default;
 
@@ -29,6 +29,7 @@ if( ! class_exists('PBG_Settings') ) {
             add_action( 'admin_menu', array ( $this,'pbg_maps' ), 100 );
 
             add_action( 'wp_ajax_pb_maps', array( $this, 'pb_save_maps_settings' ) );
+
 
         }
 
@@ -106,6 +107,11 @@ if( ! class_exists('PBG_Settings') ) {
                                             <h4 class="pb-api-disable-title"><label><?php echo __('Enable Font Awesome Icons:','premium-blocks-for-gutenberg'); ?></label><input name="premium-fa-css" id="premium-fa-css" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-fa-css'], true) ?>><span><?php echo __('This will load Font Awesome Icons to be used within Premium Blocks','premium-blocks-for-gutenberg');?></span></h4>
                                         </th>
                                     </tr>
+                                    <tr>
+                                        <th>
+                                            <h4 class="pb-api-disable-title"><label><?php echo __('Allow JSON Uploads.','premium-blocks-for-gutenberg'); ?></label><input name="premium-upload-json" id="premium-upload-json" type="checkbox" <?php checked( 1, $this->pb_maps_get['premium-upload-json'], true) ?>><span><?php echo __('This option will be used to upload JSON files in lottie animation block','premium-blocks-for-gutenberg');?></span></h4>
+                                        </th>
+                                    </tr>
                                 </table>
                                 <input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
                                 <div>
@@ -121,7 +127,7 @@ if( ! class_exists('PBG_Settings') ) {
         //Get Default Keys
         public static function get_default_keys() {
 
-            $default_keys = array_fill_keys( self::$pb_maps_keys, true );
+            $default_keys = array_fill_keys( self::$pb_maps_keys, false );
 
             return $default_keys;
         }
@@ -133,6 +139,10 @@ if( ! class_exists('PBG_Settings') ) {
 
             return $enabled_keys;
         }
+
+        // subscribe_newsletter
+
+
 
         /**
         * Save map block configuration settings
@@ -154,6 +164,7 @@ if( ! class_exists('PBG_Settings') ) {
                 'premium-map-key'           => sanitize_text_field( $settings['premium-map-key'] ),
                 'premium-map-api'           => intval( $settings['premium-map-api'] ? 1 : 0),
                 'premium-fa-css'            => intval( $settings['premium-fa-css'] ? 1 : 0),
+                'premium-upload-json'       =>intval( $settings['premium-upload-json'] ? 1 : 0)
             );
 
             update_option( 'pbg_maps_settings', $this->pb_maps_settings );
