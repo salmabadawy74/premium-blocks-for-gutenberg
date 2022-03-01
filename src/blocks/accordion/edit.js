@@ -19,10 +19,6 @@ const {
 
 const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
 
-const CONTENT = [
-    ["core/paragraph", { content: __("Insert Your Content Here", 'premium-block-for-gutenberg') }]
-];
-
 let isAccUpdated = null;
 
 class PremiumAccordion extends Component {
@@ -324,7 +320,7 @@ class PremiumAccordion extends Component {
                                 }}
                             />
                         )}
-                        {"block" === contentType && <InnerBlocks template={CONTENT} />}
+                        {"block" === contentType && <InnerBlocks templateLock={false} />}
                     </div>
                 </div>
             );
