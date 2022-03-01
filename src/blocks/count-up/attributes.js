@@ -75,7 +75,7 @@ const attributes = {
     },
     titleTxt: {
         type: "string",
-        default: __("Premium Count Up")
+        default: __("Premium Count Up", 'premium-blocks-for-gutenberg')
     },
     faIcon: {
         type: "string",
@@ -83,7 +83,7 @@ const attributes = {
     },
     counterFamily: {
         type: "string",
-        default: __('Default')
+        default: __('Default', 'premium-blocks-for-gutenberg')
     },
     hideDesktop: {
         type: 'boolean',
@@ -118,7 +118,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                titleFamily: __('Default'),
+                titleFamily: __('Default', 'premium-blocks-for-gutenberg'),
                 titleSize: 20,
                 titleSizeUnit: 'px',
                 titleSizeTablet: '',
@@ -209,7 +209,7 @@ const attributes = {
                 suffixColor: '',
                 suffixWeight: '',
                 suffixGap: 2,
-                suffixFamily: __('Default'),
+                suffixFamily: __('Default', 'premium-blocks-for-gutenberg'),
             }
         ]
     },
@@ -225,7 +225,7 @@ const attributes = {
                 prefixColor: '',
                 prefixWeight: '',
                 prefixGap: 2,
-                prefixFamily: __('Default'),
+                prefixFamily: __('Default', 'premium-blocks-for-gutenberg'),
             }
         ]
     },

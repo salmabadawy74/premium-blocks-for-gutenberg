@@ -242,18 +242,18 @@ class edit extends Component {
                 >
                     <button className="lottie-remove" onClick={handleRemoveLottie}>{__('Change Animation')}</button>
                     <ToggleControl
-                        label={__(`loop`, 'premium-block-for-gutenberg')}
+                        label={__(`loop`, 'premium-blocks-for-gutenberg')}
                         checked={loop}
                         onChange={(value) => setAttributes({ loop: value })}
-                        help={loop ? __('This option works only on the preview page', 'premium-block-for-gutenberg') : ''}
+                        help={loop ? __('This option works only on the preview page', 'premium-blocks-for-gutenberg') : ''}
                     />
                     <ToggleControl
-                        label={__(`Reverse`, 'premium-block-for-gutenberg')}
+                        label={__(`Reverse`, 'premium-blocks-for-gutenberg')}
                         checked={reverse}
                         onChange={() => setAttributes({ reverse: !reverse })}
                     />
                     <ResponsiveSingleRangeControl
-                        label={__('Animation Speed', 'premium-block-for-gutenberg')}
+                        label={__('Animation Speed', 'premium-blocks-for-gutenberg')}
                         value={speed}
                         onChange={newValue => setAttributes({ speed: (newValue !== "") ? newValue : 1 })}
                         showUnit={false}
@@ -263,12 +263,12 @@ class edit extends Component {
                         step={0.1}
                     />
                     <SelectControl
-                        label={__('Trigger', 'premium-block-for-gutenberg')}
+                        label={__('Trigger', 'premium-blocks-for-gutenberg')}
                         options={[
-                            { value: 'none', label: __("None", 'premium-block-for-gutenberg') },
-                            { value: "hover", label: __("Hover", 'premium-block-for-gutenberg') },
-                            { value: "scroll", label: __("Scroll", 'premium-block-for-gutenberg') },
-                            { value: "viewport", label: __("Viewport", 'premium-block-for-gutenberg') },
+                            { value: 'none', label: __("None", 'premium-blocks-for-gutenberg') },
+                            { value: "hover", label: __("Hover", 'premium-blocks-for-gutenberg') },
+                            { value: "scroll", label: __("Scroll", 'premium-blocks-for-gutenberg') },
+                            { value: "viewport", label: __("Viewport", 'premium-blocks-for-gutenberg') },
                         ]}
                         value={trigger}
                         onChange={(newValue) => setAttributes({ trigger: newValue })}
@@ -276,7 +276,7 @@ class edit extends Component {
 
                     {('scroll' === trigger && !reverse) && <Fragment>
                         <ResponsiveSingleRangeControl
-                            label={__('Scroll Speed', 'premium-block-for-gutenberg')}
+                            label={__('Scroll Speed', 'premium-blocks-for-gutenberg')}
                             value={scrollSpeed}
                             onChange={(newValue) => setAttributes({ scrollSpeed: (newValue !== "") ? newValue : 200 })}
                             showUnit={false}
@@ -288,7 +288,7 @@ class edit extends Component {
                     </Fragment>}
                     {((trigger === 'viewport' || trigger === 'scroll') && !reverse) && <Fragment>
                         <ResponsiveSingleRangeControl
-                            label={__('Bottom', 'premium-block-for-gutenberg')}
+                            label={__('Bottom', 'premium-blocks-for-gutenberg')}
                             value={bottom}
                             onChange={(newValue) => setAttributes({ bottom: newValue })}
                             showUnit={false}
@@ -297,7 +297,7 @@ class edit extends Component {
                             max={50}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__('Top', 'premium-block-for-gutenberg')}
+                            label={__('Top', 'premium-blocks-for-gutenberg')}
                             value={top}
                             onChange={(newValue) => setAttributes({ top: newValue })}
                             showUnit={false}
@@ -324,7 +324,7 @@ class edit extends Component {
                         defaultValue={200}
                     />
                     <ResponsiveSingleRangeControl
-                        label={__("Rotate (Degree)", 'premium-block-for-gutenberg')}
+                        label={__("Rotate (Degree)", 'premium-blocks-for-gutenberg')}
                         value={rotate}
                         min={-180}
                         max={180}
@@ -336,29 +336,29 @@ class edit extends Component {
                         choices={["left", "center", "right"]}
                         value={align}
                         onChange={newValue => setAttributes({ align: newValue })}
-                        label={__("Alignment", 'premium-block-for-gutenberg')}
+                        label={__("Alignment", 'premium-blocks-for-gutenberg')}
                     />
                     <hr />
                     <ToggleControl
-                        label={__("Link", 'premium-block-for-gutenberg')}
+                        label={__("Link", 'premium-blocks-for-gutenberg')}
                         checked={link}
                         onChange={() => setAttributes({ link: !link })}
                     />
                     {link &&
                         <Fragment>
                             <TextControl
-                                label={__("URL", 'premium-block-for-gutenberg')}
+                                label={__("URL", 'premium-blocks-for-gutenberg')}
                                 value={url}
                                 onChange={(newURL) => setAttributes({ url: newURL })}
                             />
                             <ToggleControl
-                                label={__("Open link in new tab", 'premium-block-for-gutenberg')}
+                                label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                                 checked={target}
                                 onChange={(newValue) => setAttributes({ target: newValue })}
                             />
                         </Fragment>}
                     <SelectControl
-                        label={__('Render As', 'premium-block-for-gutenberg')}
+                        label={__('Render As', 'premium-blocks-for-gutenberg')}
                         value={render}
                         options={[
                             { label: "SVG", value: 'svg' },
@@ -366,13 +366,13 @@ class edit extends Component {
                         ]}
                         help={__(`Set render type to canvas if you're having performance issues on the page.
                     This setting will only take effect once you are on the live page, and not while you're editing.
-                    `, 'premium-block-for-gutenberg')}
+                    `, 'premium-blocks-for-gutenberg')}
                         onChange={(newValue) => setAttributes({ render: newValue })}
                     />
                 </PanelBody>
 
                 <PanelBody
-                    title={__("Style", 'premium-block-for-gutenberg')}
+                    title={__("Style", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
@@ -399,13 +399,13 @@ class edit extends Component {
                                 tabout = (
                                     <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={lottieStyles[0].backColor}
                                             colorDefault={''}
                                             onColorChange={(newValue) => saveLottieStyles({ backColor: newValue })}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__(`Opacity`, 'premium-block-for-gutenberg')}
+                                            label={__(`Opacity`, 'premium-blocks-for-gutenberg')}
                                             value={lottieStyles[0].backOpacity}
                                             max={1}
                                             min={.1}
@@ -433,13 +433,13 @@ class edit extends Component {
                                 tabout = (
                                     <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={lottieStyles[0].backHColor}
                                             colorDefault={''}
                                             onColorChange={(newValue) => saveLottieStyles({ backHColor: newValue })}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__(`Opacity`, 'premium-block-for-gutenberg')}
+                                            label={__(`Opacity`, 'premium-blocks-for-gutenberg')}
                                             value={lottieStyles[0].backHOpacity}
                                             max={1}
                                             min={.1}

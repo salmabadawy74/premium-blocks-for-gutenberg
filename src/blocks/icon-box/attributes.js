@@ -69,7 +69,7 @@ const attributes = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     descText: {
         type: "array",
@@ -103,7 +103,7 @@ const attributes = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __("Click Here")
+        default: __("Click Here", 'premium-blocks-for-gutenberg')
     },
     btnLink: {
         type: "string",

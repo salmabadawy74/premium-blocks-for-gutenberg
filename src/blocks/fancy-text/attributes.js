@@ -22,15 +22,15 @@ const attributes = {
     repeaterFancyText: {
         type: "array",
         default: [{
-            title: __("Designer"),
+            title: __("Designer", 'premium-blocks-for-gutenberg'),
             edit: false
         },
         {
-            title: __("Developer"),
+            title: __("Developer", 'premium-blocks-for-gutenberg'),
             edit: false
         },
         {
-            title: __("Awesome"),
+            title: __("Awesome", 'premium-blocks-for-gutenebrg'),
             edit: false
         },
         ]

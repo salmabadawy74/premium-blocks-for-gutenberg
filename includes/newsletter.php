@@ -53,15 +53,15 @@ class PBG_Ajax_Form {
 				$form_args = $this->get_form_args( $post_id, $form_id );
 				if ( ! $form_args ) {
 
-					$this->process_bail( __( 'Submission Failed', 'premium-block-for-gutenberg' ), __( 'Data notsss Found', 'premium-block-for-gutenberg' ) );
+					$this->process_bail( __( 'Submission Failed', 'premium-blocks-for-gutenberg' ), __( 'Data notsss Found', 'premium-blocks-for-gutenberg' ) );
 				}
 				// Check for default form actions.
 
 				// Check for Message strings.
 				$messages = array(
 					0 => array(
-						'success' => esc_html__( 'Submission Success, Thanks for getting in touch!', 'premium-block-for-gutenberg' ),
-						'error'   => esc_html__( 'Submission Failed', 'premium-block-for-gutenberg' ),
+						'success' => esc_html__( 'Submission Success, Thanks for getting in touch!', 'premium-blocks-for-gutenberg' ),
+						'error'   => esc_html__( 'Submission Failed', 'premium-blocks-for-gutenberg' ),
 					),
 				);
 				if ( isset( $form_args['messages'] ) && isset( $form_args['messages'][0] ) ) {
@@ -108,7 +108,7 @@ class PBG_Ajax_Form {
 				foreach ( $form_args['fields'] as $key => $data ) {
 					// check for required.
 					if ( $data['required'] && ( ! isset( $_POST[ 'pbg_field_' . $key ] ) || empty( $_POST[ 'pbg_field_' . $key ] ) ) ) {
-						$this->process_bail( $messages[0]['error'], __( 'Required Field Empty', 'premium-block-for-gutenberg' ), 'pbg_field_' . $key );
+						$this->process_bail( $messages[0]['error'], __( 'Required Field Empty', 'premium-blocks-for-gutenberg' ), 'pbg_field_' . $key );
 					}
 					if ( isset( $_POST[ 'pbg_field_' . $key ] ) ) {
 						$fields[ $key ] = array(
@@ -288,16 +288,16 @@ class PBG_Ajax_Form {
 				}
 				$messages = apply_filters( 'premium_blocks_form_submission_messages', $messages );
 				if ( ! $success ) {
-					$this->process_bail( $messages[0]['error'], __( 'Third Party Failed', 'premium-block-for-gutenberg' ) );
+					$this->process_bail( $messages[0]['error'], __( 'Third Party Failed', 'premium-blocks-for-gutenberg' ) );
 				} else {
 					$final_data['html'] = '<div class="premium-blocks-form-message premium-blocks-form-success">' . $messages[0]['success'] . '</div>';
 					$this->send_json( $final_data );
 				}
 			} else {
-				$this->process_bail( __( 'Submission rejected, invalid security token. Reload the page and try again.', 'premium-block-for-gutenberg' ), __( 'Token invalid', 'premium-block-for-gutenberg' ) );
+				$this->process_bail( __( 'Submission rejected, invalid security token. Reload the page and try again.', 'premium-blocks-for-gutenberg' ), __( 'Token invalid', 'premium-blocks-for-gutenberg' ) );
 			}
 		} else {
-			$this->process_bail( __( 'Submission failed', 'premium-block-for-gutenberg' ), __( 'No Data', 'premium-block-for-gutenberg' ) );
+			$this->process_bail( __( 'Submission failed', 'premium-blocks-for-gutenberg' ), __( 'No Data', 'premium-blocks-for-gutenberg' ) );
 		}
 	}
 
@@ -334,7 +334,7 @@ class PBG_Ajax_Form {
 				$value = sanitize_email( trim( $value ) );
 				break;
 			case 'accept':
-				$value = esc_html__( 'Accept', 'premium-block-for-gutenberg' );
+				$value = esc_html__( 'Accept', 'premium-blocks-for-gutenberg' );
 				break;
 			default:
 				/**
@@ -479,7 +479,7 @@ class PBG_Ajax_Form {
 			}
 		}
 		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-			$this->process_bail( __( 'Submission Failed', 'premium-block-for-gutenberg' ), __( 'Data not found', 'premium-block-for-gutenberg' ) );
+			$this->process_bail( __( 'Submission Failed', 'premium-blocks-for-gutenberg' ), __( 'Data not found', 'premium-blocks-for-gutenberg' ) );
 		}
 		foreach ( $blocks as $indexkey => $block ) {
 			if ( ! is_object( $block ) && is_array( $block ) && isset( $block['blockName'] ) ) {

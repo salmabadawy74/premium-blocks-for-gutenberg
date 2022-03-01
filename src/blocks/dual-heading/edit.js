@@ -89,11 +89,11 @@ class edit extends Component {
         const DISPLAY = [
             {
                 value: "inline",
-                label: __("Inline", 'premium-block-for-gutenberg')
+                label: __("Inline", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Block", 'premium-block-for-gutenberg')
+                label: __("Block", 'premium-blocks-for-gutenberg')
             }
         ];
 
@@ -158,61 +158,61 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("General Settings", 'premium-block-for-gutenberg')}
+                        title={__("General Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("First Heading", 'premium-block-for-gutenberg')}
+                            label={__("First Heading", 'premium-blocks-for-gutenberg')}
                             type="url"
                             value={firstHeading}
                             onChange={value => setAttributes({ firstHeading: value })}
                         />
                         <TextControl
-                            label={__("Second Heading", 'premium-block-for-gutenberg')}
+                            label={__("Second Heading", 'premium-blocks-for-gutenberg')}
                             type="url"
                             value={secondHeading}
                             onChange={value => setAttributes({ secondHeading: value })}
                         />
 
                         <SelectControl
-                            label={__("Display", 'premium-block-for-gutenberg')}
+                            label={__("Display", 'premium-blocks-for-gutenberg')}
                             value={display}
                             options={DISPLAY}
                             onChange={value => setAttributes({ display: value })}
                         />
                         <ToggleControl
-                            label={__("Link", 'premium-block-for-gutenberg')}
+                            label={__("Link", 'premium-blocks-for-gutenberg')}
                             checked={link}
                             onChange={newValue => setAttributes({ link: newValue })}
                         />
                         {link && (
                             <ToggleControl
-                                label={__("Open link in new tab", 'premium-block-for-gutenberg')}
+                                label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                                 checked={target}
                                 onChange={newValue => setAttributes({ target: newValue })}
                             />
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("First Heading Style", 'premium-block-for-gutenberg')}
+                        title={__("First Heading Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Clipped", 'premium-block-for-gutenberg')}
+                            label={__("Clipped", 'premium-blocks-for-gutenberg')}
                             checked={firstStyles[0].firstClip}
                             onChange={newValue => saveFirstStyle({ firstClip: newValue })}
                         />
                         {firstStyles[0].firstClip && (
                             <Fragment>
                                 <ToggleControl
-                                    label={__("Animated", 'premium-block-for-gutenberg')}
+                                    label={__("Animated", 'premium-blocks-for-gutenberg')}
                                     checked={firstStyles[0].firstAnim}
                                     onChange={newValue => saveFirstStyle({ firstAnim: newValue })}
                                 />
                                 <ToggleControl
-                                    label={__("Stroke", 'premium-block-for-gutenberg')}
+                                    label={__("Stroke", 'premium-blocks-for-gutenberg')}
                                     checked={firstStyles[0].firstStroke}
                                     onChange={newValue => saveFirstStyle({ firstStroke: newValue })}
                                 />
@@ -223,7 +223,7 @@ class edit extends Component {
                             setAttributes={saveFirstStyle}
                             fontSizeType={{
                                 value: firstStyles[0].firstSizeUnit,
-                                label: __("firstSizeUnit", 'premium-block-for-gutenberg'),
+                                label: __("firstSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
                             fontSize={firstStyles[0].firstSize}
                             fontSizeMobile={firstStyles[0].firstSizeMobile}
@@ -246,7 +246,7 @@ class edit extends Component {
                         {!firstStyles[0].firstClip && (
                             <Fragment>
                                 <AdvancedPopColorControl
-                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={firstStyles[0].firstColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
@@ -263,14 +263,14 @@ class edit extends Component {
                         {firstStyles[0].firstClip && (
                             <Fragment>
                                 <AdvancedPopColorControl
-                                    label={__("First Color", 'premium-block-for-gutenberg')}
+                                    label={__("First Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={firstStyles[0].firstColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
                                 />
 
                                 <AdvancedPopColorControl
-                                    label={__("Second Color", 'premium-block-for-gutenberg')}
+                                    label={__("Second Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={firstStyles[0].firstClipColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveFirstStyle({ firstClipColor: newValue })}
@@ -313,21 +313,21 @@ class edit extends Component {
                             onChangeVertical={newValue => saveFirstStyle({ firstShadowVertical: newValue || "0" })}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Margin Left", 'premium-block-for-gutenberg')}
+                            label={__("Margin Left", 'premium-blocks-for-gutenberg')}
                             value={firstStyles[0].firstMarginL}
                             onChange={newMargin => saveFirstStyle({ firstMarginL: newMargin })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Margin Right", 'premium-block-for-gutenberg')}
+                            label={__("Margin Right", 'premium-blocks-for-gutenberg')}
                             value={firstStyles[0].firstMarginR}
                             onChange={newMargin => saveFirstStyle({ firstMarginR: newMargin })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Padding", 'premium-block-for-gutenberg')}
+                            label={__("Padding", 'premium-blocks-for-gutenberg')}
                             value={firstStyles[0].firstPadding}
                             onChange={newPadding => saveFirstStyle({ firstPadding: newPadding })}
                             showUnit={false}
@@ -335,24 +335,24 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Second Heading Style", 'premium-block-for-gutenberg')}
+                        title={__("Second Heading Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Clipped", 'premium-block-for-gutenberg')}
+                            label={__("Clipped", 'premium-blocks-for-gutenberg')}
                             checked={secondStyles[0].secondClip}
                             onChange={newValue => saveSecondStyle({ secondClip: newValue })}
                         />
                         {secondStyles[0].secondClip && (
                             <Fragment>
                                 <ToggleControl
-                                    label={__("Animated", 'premium-block-for-gutenberg')}
+                                    label={__("Animated", 'premium-blocks-for-gutenberg')}
                                     checked={secondStyles[0].secondAnim}
                                     onChange={newValue => saveSecondStyle({ secondAnim: newValue })}
                                 />
                                 <ToggleControl
-                                    label={__('Stroke', 'premium-block-for-gutenberg')}
+                                    label={__('Stroke', 'premium-blocks-for-gutenberg')}
                                     checked={secondStyles[0].secondStroke}
                                     onChange={newValue => saveSecondStyle({ secondStroke: newValue })}
                                 />
@@ -363,7 +363,7 @@ class edit extends Component {
                             setAttributes={saveSecondStyle}
                             fontSizeType={{
                                 value: secondStyles[0].secondSizeUnit,
-                                label: __("secondSizeUnit", 'premium-block-for-gutenberg'),
+                                label: __("secondSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
                             fontSize={secondStyles[0].secondSize}
                             fontSizeMobile={secondStyles[0].secondSizeMobile}
@@ -385,13 +385,13 @@ class edit extends Component {
                         {!secondStyles[0].secondClip && (
                             <Fragment>
                                 <AdvancedPopColorControl
-                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={secondStyles[0].secondColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveSecondStyle({ secondColor: newValue || "transparent" })}
                                 />
                                 <AdvancedPopColorControl
-                                    label={__(`Background Color`, 'premium-block-for-gutenberg')}
+                                    label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
                                     colorValue={secondStyles[0].secondBackground}
                                     colorDefault={''}
                                     onColorChange={value => saveSecondStyle({ secondBackground: value, })}
@@ -401,13 +401,13 @@ class edit extends Component {
                         {secondStyles[0].secondClip && (
                             <Fragment>
                                 <AdvancedPopColorControl
-                                    label={__("First Color", 'premium-block-for-gutenberg')}
+                                    label={__("First Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={secondStyles[0].secondColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveSecondStyle({ secondColor: newValue || "transparent" })}
                                 />
                                 <AdvancedPopColorControl
-                                    label={__("Second Color", 'premium-block-for-gutenberg')}
+                                    label={__("Second Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={secondStyles[0].secondClipColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveSecondStyle({ secondClipColor: newValue || "transparent" })}
@@ -449,21 +449,21 @@ class edit extends Component {
                             onChangeVertical={newValue => saveSecondStyle({ secondShadowVertical: newValue || "0" })}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Margin Left", 'premium-block-for-gutenberg')}
+                            label={__("Margin Left", 'premium-blocks-for-gutenberg')}
                             value={secondStyles[0].secondMarginL}
                             onChange={newMargin => saveSecondStyle({ secondMarginL: newMargin })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Margin Right", 'premium-block-for-gutenberg')}
+                            label={__("Margin Right", 'premium-blocks-for-gutenberg')}
                             value={secondStyles[0].secondMarginR}
                             onChange={newMargin => saveSecondStyle({ secondMarginR: newMargin || "0" })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Padding", 'premium-block-for-gutenberg')}
+                            label={__("Padding", 'premium-blocks-for-gutenberg')}
                             value={secondStyles[0].secondPadding}
                             onChange={newPadding => saveSecondStyle({ secondPadding: newPadding || "0" })}
                             showUnit={false}
@@ -471,7 +471,7 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Container Style", 'premium-block-for-gutenberg')}
+                        title={__("Container Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >

@@ -57,27 +57,27 @@ export default class PremiumBorder extends Component {
         const BORDER = [
             {
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg'),
+                label: __("None", 'premium-blocks-for-gutenberg'),
             },
             {
                 value: "solid",
-                label: __("Solid", 'premium-block-for-gutenberg'),
+                label: __("Solid", 'premium-blocks-for-gutenberg'),
             },
             {
                 value: "double",
-                label: __("Double", 'premium-block-for-gutenberg'),
+                label: __("Double", 'premium-blocks-for-gutenberg'),
             },
             {
                 value: "dotted",
-                label: __("Dotted", 'premium-block-for-gutenberg'),
+                label: __("Dotted", 'premium-blocks-for-gutenberg'),
             },
             {
                 value: "dashed",
-                label: __("Dashed", 'premium-block-for-gutenberg'),
+                label: __("Dashed", 'premium-blocks-for-gutenberg'),
             },
             {
                 value: "groove",
-                label: __("Groove", 'premium-block-for-gutenberg'),
+                label: __("Groove", 'premium-blocks-for-gutenberg'),
             },
         ];
 
@@ -115,7 +115,7 @@ export default class PremiumBorder extends Component {
                                                 value={top}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>{__(`Top`, 'premium-block-for-gutenberg')}</span>
+                                            <span className={`premium-spacing-title`}>{__(`Top`, 'premium-blocks-for-gutenberg')}</span>
                                         </li>
                                         <li className={`premium-spacing-input-item`}>
                                             <input
@@ -125,7 +125,7 @@ export default class PremiumBorder extends Component {
                                                 value={right}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>{__(`Right`, 'premium-block-for-gutenberg')}</span>
+                                            <span className={`premium-spacing-title`}>{__(`Right`, 'premium-blocks-for-gutenberg')}</span>
                                         </li>
                                         <li className={`premium-spacing-input-item`}>
                                             <input
@@ -135,7 +135,7 @@ export default class PremiumBorder extends Component {
                                                 value={bottom}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>{__(`Bottom`, 'premium-block-for-gutenberg')}</span>
+                                            <span className={`premium-spacing-title`}>{__(`Bottom`, 'premium-blocks-for-gutenberg')}</span>
                                         </li>
                                         <li className={`premium-spacing-input-item`}>
                                             <input
@@ -145,7 +145,7 @@ export default class PremiumBorder extends Component {
                                                 value={left}
                                                 onChange={this.onChangeInput}
                                             />
-                                            <span className={`premium-spacing-title`}>{__(`Right`, 'premium-block-for-gutenberg')}</span>
+                                            <span className={`premium-spacing-title`}>{__(`Right`, 'premium-blocks-for-gutenberg')}</span>
                                         </li>
                                         <li>
                                             <button
@@ -179,7 +179,7 @@ export default class PremiumBorder extends Component {
                         <Fragment>
 
                             <AdvancedColorControl
-                                label={__("Border Color", 'premium-block-for-gutenberg')}
+                                label={__("Border Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={borderColor}
                                 colorDefault={''}
                                 onColorChange={onChangeColor}
@@ -188,7 +188,7 @@ export default class PremiumBorder extends Component {
                     )}
 
                     <ResponsiveSingleRangeControl
-                        label={__("Border Radius", 'premium-block-for-gutenberg')}
+                        label={__("Border Radius", 'premium-blocks-for-gutenberg')}
                         value={borderRadius}
                         defaultValue={0}
                         onChange={onChangeRadius}

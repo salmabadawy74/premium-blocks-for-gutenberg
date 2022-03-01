@@ -950,22 +950,22 @@ var PremiumBorder = function (_Component) {
 
             var BORDER = [{
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             }, {
                 value: "solid",
-                label: __("Solid", 'premium-block-for-gutenberg')
+                label: __("Solid", 'premium-blocks-for-gutenberg')
             }, {
                 value: "double",
-                label: __("Double", 'premium-block-for-gutenberg')
+                label: __("Double", 'premium-blocks-for-gutenberg')
             }, {
                 value: "dotted",
-                label: __("Dotted", 'premium-block-for-gutenberg')
+                label: __("Dotted", 'premium-blocks-for-gutenberg')
             }, {
                 value: "dashed",
-                label: __("Dashed", 'premium-block-for-gutenberg')
+                label: __("Dashed", 'premium-blocks-for-gutenberg')
             }, {
                 value: "groove",
-                label: __("Groove", 'premium-block-for-gutenberg')
+                label: __("Groove", 'premium-blocks-for-gutenberg')
             }];
 
             var defauultValues = {
@@ -1025,7 +1025,7 @@ var PremiumBorder = function (_Component) {
                                         React.createElement(
                                             "span",
                                             { className: "premium-spacing-title" },
-                                            __("Top", 'premium-block-for-gutenberg')
+                                            __("Top", 'premium-blocks-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
@@ -1041,7 +1041,7 @@ var PremiumBorder = function (_Component) {
                                         React.createElement(
                                             "span",
                                             { className: "premium-spacing-title" },
-                                            __("Right", 'premium-block-for-gutenberg')
+                                            __("Right", 'premium-blocks-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
@@ -1057,7 +1057,7 @@ var PremiumBorder = function (_Component) {
                                         React.createElement(
                                             "span",
                                             { className: "premium-spacing-title" },
-                                            __("Bottom", 'premium-block-for-gutenberg')
+                                            __("Bottom", 'premium-blocks-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
@@ -1073,7 +1073,7 @@ var PremiumBorder = function (_Component) {
                                         React.createElement(
                                             "span",
                                             { className: "premium-spacing-title" },
-                                            __("Right", 'premium-block-for-gutenberg')
+                                            __("Right", 'premium-blocks-for-gutenberg')
                                         )
                                     ),
                                     React.createElement(
@@ -1112,14 +1112,14 @@ var PremiumBorder = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Border Color", 'premium-block-for-gutenberg'),
+                            label: __("Border Color", 'premium-blocks-for-gutenberg'),
                             colorValue: borderColor,
                             colorDefault: '',
                             onColorChange: onChangeColor
                         })
                     ),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Border Radius", 'premium-block-for-gutenberg'),
+                        label: __("Border Radius", 'premium-blocks-for-gutenberg'),
                         value: borderRadius,
                         defaultValue: 0,
                         onChange: onChangeRadius,
@@ -1304,15 +1304,15 @@ var PremiumTypo = function (_Component) {
 
             var STYLE = [{
                 value: "normal",
-                label: __("Normal", 'premium-block-for-gutenberg')
+                label: __("Normal", 'premium-blocks-for-gutenberg')
             }, {
                 value: "italic",
-                label: __("Italic", 'premium-block-for-gutenberg')
+                label: __("Italic", 'premium-blocks-for-gutenberg')
             }, {
                 value: "oblique",
-                label: __("Oblique", 'premium-block-for-gutenberg')
+                label: __("Oblique", 'premium-blocks-for-gutenberg')
             }];
-            var fonts = [{ value: "Default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
+            var fonts = [{ value: "Default", label: __("Default", 'premium-blocks-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
                 fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight, google: true });
@@ -1370,7 +1370,7 @@ var PremiumTypo = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __('Typography', 'premium-block-for-gutenberg')
+                            __('Typography', 'premium-blocks-for-gutenberg')
                         )
                     )
                 ),
@@ -1479,7 +1479,7 @@ var PremiumTypo = function (_Component) {
                                                     "li",
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
-                                                        label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
+                                                        label: __("Font Size (PX)", 'premium-blocks-for-gutenberg'),
                                                         value: size,
                                                         min: "10",
                                                         max: "80",
@@ -1494,7 +1494,7 @@ var PremiumTypo = function (_Component) {
                                                     "li",
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_responsiveRangeControl2.default, {
-                                                        label: __("Font Size", 'premium-block-for-gutenberg'),
+                                                        label: __("Font Size", 'premium-blocks-for-gutenberg'),
                                                         value: this.props.fontSize,
                                                         onChange: function onChange(value) {
                                                             _this2.setState(_extends({}, _this2.state.size, { Desktop: value })), onChangeSize(value);
@@ -1520,7 +1520,7 @@ var PremiumTypo = function (_Component) {
                                                     "li",
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
-                                                        label: __("Line Height (PX)", 'premium-block-for-gutenberg'),
+                                                        label: __("Line Height (PX)", 'premium-blocks-for-gutenberg'),
                                                         value: line,
                                                         onChange: function onChange(value) {
                                                             _this2.setState({ line: value }), onChangeLine(value);
@@ -1535,7 +1535,7 @@ var PremiumTypo = function (_Component) {
                                                     "li",
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
-                                                        label: __("Letter Spacing (PX)", 'premium-block-for-gutenberg'),
+                                                        label: __("Letter Spacing (PX)", 'premium-blocks-for-gutenberg'),
                                                         value: spacing,
                                                         onChange: function onChange(value) {
                                                             _this2.setState({ spacing: value }), onChangeSpacing(value);
@@ -1551,7 +1551,7 @@ var PremiumTypo = function (_Component) {
                                                     "li",
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(SelectControl, {
-                                                        label: __("Style", 'premium-block-for-gutenberg'),
+                                                        label: __("Style", 'premium-blocks-for-gutenberg'),
                                                         options: STYLE,
                                                         value: style,
                                                         onChange: function onChange(value) {
@@ -2835,11 +2835,11 @@ function PremiumBackgroundControl(_ref) {
             _react2.default.createElement(
                 'h2',
                 { className: 'Premium-beside-btn-group' },
-                __('Background Type', 'premium-block-for-gutenberg')
+                __('Background Type', 'premium-blocks-for-gutenberg')
             ),
             _react2.default.createElement(
                 ButtonGroup,
-                { className: 'Premium-button-size-type-options', 'aria-label': __('Background Type', 'premium-block-for-gutenberg') },
+                { className: 'Premium-button-size-type-options', 'aria-label': __('Background Type', 'premium-blocks-for-gutenberg') },
                 (0, _map2.default)(bgType, function (_ref2) {
                     var icon = _ref2.icon,
                         key = _ref2.key,
@@ -2912,7 +2912,7 @@ function PremiumBackgroundControl(_ref) {
             'div',
             { className: 'Premium-inner-sub-section' },
             _react2.default.createElement(_ColorComponent2.default, {
-                label: __('Gradient Color 1', 'premium-block-for-gutenberg'),
+                label: __('Gradient Color 1', 'premium-blocks-for-gutenberg'),
                 colorValue: backgroundColor,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
@@ -2920,7 +2920,7 @@ function PremiumBackgroundControl(_ref) {
                 }
             }),
             _react2.default.createElement(_singleRangeControl2.default, {
-                label: __('Location', 'premium-block-for-gutenberg'),
+                label: __('Location', 'premium-blocks-for-gutenberg'),
                 value: gradientLocationOne,
                 onChange: function onChange(value) {
                     saveContainerStyle({ gradientLocationOne: value });
@@ -2929,7 +2929,7 @@ function PremiumBackgroundControl(_ref) {
                 defaultValue: 0
             }),
             _react2.default.createElement(_ColorComponent2.default, {
-                label: __('Gradient Color 2', 'premium-block-for-gutenberg'),
+                label: __('Gradient Color 2', 'premium-blocks-for-gutenberg'),
                 colorValue: gradientColorTwo,
                 colorDefault: '#777777',
                 onColorChange: function onColorChange(value) {
@@ -2937,7 +2937,7 @@ function PremiumBackgroundControl(_ref) {
                 }
             }),
             _react2.default.createElement(_singleRangeControl2.default, {
-                label: __('Location', 'premium-block-for-gutenberg'),
+                label: __('Location', 'premium-blocks-for-gutenberg'),
                 value: gradientLocationTwo,
                 onChange: function onChange(value) {
                     saveContainerStyle({ gradientLocationTwo: value });
@@ -2951,11 +2951,11 @@ function PremiumBackgroundControl(_ref) {
                 _react2.default.createElement(
                     'h2',
                     { className: 'Premium-beside-btn-group' },
-                    __('Gradient Type', 'premium-block-for-gutenberg')
+                    __('Gradient Type', 'premium-blocks-for-gutenberg')
                 ),
                 _react2.default.createElement(
                     ButtonGroup,
-                    { className: 'Premium-button-size-type-options', 'aria-label': __('Gradient Type', 'premium-block-for-gutenberg') },
+                    { className: 'Premium-button-size-type-options', 'aria-label': __('Gradient Type', 'premium-blocks-for-gutenberg') },
                     (0, _map2.default)(gradTypes, function (_ref3) {
                         var name = _ref3.name,
                             key = _ref3.key;
@@ -2976,7 +2976,7 @@ function PremiumBackgroundControl(_ref) {
                 )
             ),
             'radial' !== gradientType && _react2.default.createElement(_singleRangeControl2.default, {
-                label: __('Gradient Angle', 'premium-block-for-gutenberg'),
+                label: __('Gradient Angle', 'premium-blocks-for-gutenberg'),
                 value: gradientAngle,
                 onChange: function onChange(value) {
                     saveContainerStyle({ gradientAngle: value });
@@ -2987,9 +2987,9 @@ function PremiumBackgroundControl(_ref) {
                 max: 360
             }),
             'radial' === gradientType && _react2.default.createElement(SelectControl, {
-                label: __('Gradient Position', 'premium-block-for-gutenberg'),
+                label: __('Gradient Position', 'premium-blocks-for-gutenberg'),
                 value: gradientPosition,
-                options: [{ value: 'center top', label: __('Center Top', 'premium-block-for-gutenberg') }, { value: 'center center', label: __('Center Center', 'premium-block-for-gutenberg') }, { value: 'center bottom', label: __('Center Bottom', 'premium-block-for-gutenberg') }, { value: 'left top', label: __('Left Top', 'premium-block-for-gutenberg') }, { value: 'left center', label: __('Left Center', 'premium-block-for-gutenberg') }, { value: 'left bottom', label: __('Left Bottom', 'premium-block-for-gutenberg') }, { value: 'right top', label: __('Right Top', 'premium-block-for-gutenberg') }, { value: 'right center', label: __('Right Center', 'premium-block-for-gutenberg') }, { value: 'right bottom', label: __('Right Bottom', 'premium-block-for-gutenberg') }],
+                options: [{ value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') }, { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') }, { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') }, { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') }, { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') }, { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') }, { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') }, { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') }, { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') }],
                 onChange: function onChange(value) {
                     return saveContainerStyle({ gradientPosition: value });
                 }
@@ -8260,18 +8260,18 @@ var PremiumAccordion = function (_Component) {
 
             var ARROW = [{
                 value: "in",
-                label: __("In", 'premium-block-for-gutenberg')
+                label: __("In", 'premium-blocks-for-gutenberg')
             }, {
                 value: "out",
-                label: __("Out", 'premium-block-for-gutenberg')
+                label: __("Out", 'premium-blocks-for-gutenberg')
             }];
 
             var TYPE = [{
                 value: "text",
-                label: __("Text", 'premium-block-for-gutenberg')
+                label: __("Text", 'premium-blocks-for-gutenberg')
             }, {
                 value: "block",
-                label: __("Gutenberg Block", 'premium-block-for-gutenberg')
+                label: __("Gutenberg Block", 'premium-blocks-for-gutenberg')
             }];
 
             var saveTitleStyles = function saveTitleStyles(value) {
@@ -8365,7 +8365,7 @@ var PremiumAccordion = function (_Component) {
                                         repeaterItems: onAccordionChange("titleText", newText, index)
                                     });
                                 },
-                                placeholder: __("Awesome Title", 'premium-block-for-gutenberg'),
+                                placeholder: __("Awesome Title", 'premium-blocks-for-gutenberg'),
                                 value: item.titleText,
                                 style: {
                                     color: titleStyles[0].titleColor,
@@ -8451,7 +8451,7 @@ var PremiumAccordion = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Title", 'premium-block-for-gutenberg'),
+                        title: __("Title", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -8461,10 +8461,10 @@ var PremiumAccordion = function (_Component) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ titleTag: newValue });
                         },
-                        label: __("Title Tag", 'premium-block-for-gutenberg')
+                        label: __("Title Tag", 'premium-blocks-for-gutenberg')
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Direction", 'premium-block-for-gutenberg'),
+                        label: __("Direction", 'premium-blocks-for-gutenberg'),
                         options: DIRECTION,
                         value: direction,
                         onChange: function onChange(newEffect) {
@@ -8499,7 +8499,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: titleStyles[0].titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(value) {
@@ -8507,7 +8507,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: titleStyles[0].titleBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(value) {
@@ -8618,12 +8618,12 @@ var PremiumAccordion = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Arrow", 'premium-block-for-gutenberg'),
+                        title: __("Arrow", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Position", 'premium-block-for-gutenberg'),
+                        label: __("Position", 'premium-blocks-for-gutenberg'),
                         options: ARROW,
                         value: arrowStyles[0].arrowPos,
                         onChange: function onChange(newEffect) {
@@ -8631,7 +8631,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Size", 'premium-block-for-gutenberg'),
+                        label: __("Size", 'premium-blocks-for-gutenberg'),
                         value: arrowStyles[0].arrowSize,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({ arrowSize: newValue });
@@ -8640,7 +8640,7 @@ var PremiumAccordion = function (_Component) {
                         defaultValue: 20
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Arrow Color", 'premium-block-for-gutenberg'),
+                        label: __("Arrow Color", 'premium-blocks-for-gutenberg'),
                         colorValue: arrowStyles[0].arrowColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -8648,7 +8648,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: arrowStyles[0].arrowBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -8656,7 +8656,7 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Border Radius", 'premium-block-for-gutenberg'),
+                        label: __("Border Radius", 'premium-blocks-for-gutenberg'),
                         value: arrowStyles[0].arrowRadius,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue });
@@ -8665,7 +8665,7 @@ var PremiumAccordion = function (_Component) {
                         showUnit: false
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Padding", 'premium-block-for-gutenberg'),
+                        label: __("Padding", 'premium-blocks-for-gutenberg'),
                         value: arrowStyles[0].arrowPadding,
                         onChange: function onChange(newValue) {
                             return saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue });
@@ -8677,18 +8677,18 @@ var PremiumAccordion = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Content", 'premium-block-for-gutenberg'),
+                        title: __("Content", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Type", 'premium-block-for-gutenberg'),
+                        label: __("Type", 'premium-blocks-for-gutenberg'),
                         options: TYPE,
                         value: contentType,
                         onChange: function onChange(newType) {
                             return setAttributes({ contentType: newType });
                         },
-                        help: __("Gutenberg Block works only with single accordion item", 'premium-block-for-gutenberg')
+                        help: __("Gutenberg Block works only with single accordion item", 'premium-blocks-for-gutenberg')
                     }),
                     React.createElement(_radioControl2.default, {
                         choices: ["left", "center", "right"],
@@ -8729,7 +8729,7 @@ var PremiumAccordion = function (_Component) {
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Text Color", 'premium-block-for-gutenberg'),
+                            label: __("Text Color", 'premium-blocks-for-gutenberg'),
                             colorValue: descStyles[0].descColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(value) {
@@ -8737,7 +8737,7 @@ var PremiumAccordion = function (_Component) {
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Background Color", 'premium-block-for-gutenberg'),
+                            label: __("Background Color", 'premium-blocks-for-gutenberg'),
                             colorValue: descStyles[0].descBack,
                             colorDefault: '',
                             onColorChange: function onColorChange(value) {
@@ -8864,19 +8864,19 @@ var PremiumAccordion = function (_Component) {
                             onClick: function onClick() {
                                 return setAttributes({
                                     repeaterItems: repeaterItems.concat([{
-                                        titleText: __("Awesome Title", 'premium-block-for-gutenberg'),
-                                        descText: __("Cool Description", 'premium-block-for-gutenberg')
+                                        titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
+                                        descText: __("Cool Description", 'premium-blocks-for-gutenberg')
                                     }])
                                 });
                             }
                         },
                         React.createElement("i", { className: "dashicons dashicons-plus premium-repeater-icon" }),
-                        __("Add New Item", 'premium-block-for-gutenberg')
+                        __("Add New Item", 'premium-blocks-for-gutenberg')
                     ),
                     React.createElement(
                         "p",
                         null,
-                        __("Add the items you need then reload the page", 'premium-block-for-gutenberg')
+                        __("Add the items you need then reload the page", 'premium-blocks-for-gutenberg')
                     )
                 )
             )];
@@ -13895,7 +13895,7 @@ var attributes = {
     repeaterItems: {
         type: "array",
         default: [{
-            titleText: __("Awesome Title", 'premium-block-for-gutenberg'),
+            titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
             descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         }]
     },
@@ -15175,69 +15175,69 @@ var edit = exports.edit = function (_Component) {
 
             var ALIGNS = [{
                 value: "flex-start",
-                label: __("Top", 'premium-block-for-gutenberg')
+                label: __("Top", 'premium-blocks-for-gutenberg')
             }, {
                 value: "center",
-                label: __("Middle", 'premium-block-for-gutenberg')
+                label: __("Middle", 'premium-blocks-for-gutenberg')
             }, {
                 value: "flex-end",
-                label: __("Bottom", 'premium-block-for-gutenberg')
+                label: __("Bottom", 'premium-blocks-for-gutenberg')
             }, {
                 value: "inherit",
-                label: __("Full", 'premium-block-for-gutenberg')
+                label: __("Full", 'premium-blocks-for-gutenberg')
             }];
 
             var EFFECTS = [{
                 value: "effect1",
-                label: __("Style 1", 'premium-block-for-gutenberg')
+                label: __("Style 1", 'premium-blocks-for-gutenberg')
             }, {
                 value: "effect2",
-                label: __("Style 2", 'premium-block-for-gutenberg')
+                label: __("Style 2", 'premium-blocks-for-gutenberg')
             }, {
                 value: "effect3",
-                label: __("Style 3", 'premium-block-for-gutenberg')
+                label: __("Style 3", 'premium-blocks-for-gutenberg')
             }, {
                 value: "effect4",
-                label: __("Style 4", 'premium-block-for-gutenberg')
+                label: __("Style 4", 'premium-blocks-for-gutenberg')
             }, {
                 value: "effect5",
-                label: __("Style 5", 'premium-block-for-gutenberg')
+                label: __("Style 5", 'premium-blocks-for-gutenberg')
             }, {
                 value: "effect6",
-                label: __("Style 6", 'premium-block-for-gutenberg')
+                label: __("Style 6", 'premium-blocks-for-gutenberg')
             }];
 
             var HOVER = [{
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             }, {
                 value: "zoomin",
-                label: __("Zoom In", 'premium-block-for-gutenberg')
+                label: __("Zoom In", 'premium-blocks-for-gutenberg')
             }, {
                 value: "zoomout",
-                label: __("Zoom Out", 'premium-block-for-gutenberg')
+                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
             }, {
                 value: "scale",
-                label: __("Scale", 'premium-block-for-gutenberg')
+                label: __("Scale", 'premium-blocks-for-gutenberg')
             }, {
                 value: "gray",
-                label: __("Gray Scale", 'premium-block-for-gutenberg')
+                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
             }, {
                 value: "blur",
-                label: __("Blur", 'premium-block-for-gutenberg')
+                label: __("Blur", 'premium-blocks-for-gutenberg')
             }, {
                 value: "bright",
-                label: __("Bright", 'premium-block-for-gutenberg')
+                label: __("Bright", 'premium-blocks-for-gutenberg')
             }, {
                 value: "sepia",
-                label: __("Sepia", 'premium-block-for-gutenberg')
+                label: __("Sepia", 'premium-blocks-for-gutenberg')
             }];
             var HEIGHT = [{
                 value: "default",
-                label: __("Default", 'premium-block-for-gutenberg')
+                label: __("Default", 'premium-blocks-for-gutenberg')
             }, {
                 value: "custom",
-                label: __("Custom", 'premium-block-for-gutenberg')
+                label: __("Custom", 'premium-blocks-for-gutenberg')
             }];
             var mainClasses = (0, _classnames2.default)(className, "premium-banner");
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
@@ -15282,7 +15282,7 @@ var edit = exports.edit = function (_Component) {
                     Toolbar,
                     null,
                     React.createElement(IconButton, {
-                        label: __("Refresh this button when it conflict with other buttons styles", 'premium-block-for-gutenberg'),
+                        label: __("Refresh this button when it conflict with other buttons styles", 'premium-blocks-for-gutenberg'),
                         icon: "update",
                         className: "components-toolbar__control",
                         onClick: function onClick() {
@@ -15302,7 +15302,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings", 'premium-block-for-gutenberg'),
+                        title: __("General Settings", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: true
                     },
@@ -15345,7 +15345,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Banner Style", 'premium-block-for-gutenberg'),
+                        label: __("Banner Style", 'premium-blocks-for-gutenberg'),
                         value: effect,
                         onChange: function onChange(newEffect) {
                             return setAttributes({ effect: newEffect });
@@ -15353,7 +15353,7 @@ var edit = exports.edit = function (_Component) {
                         options: EFFECTS
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Image Hover Effect", 'premium-block-for-gutenberg'),
+                        label: __("Image Hover Effect", 'premium-blocks-for-gutenberg'),
                         options: HOVER,
                         value: hoverEffect,
                         onChange: function onChange(newEffect) {
@@ -15361,14 +15361,14 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Always Hovered", 'premium-block-for-gutenberg'),
+                        label: __("Always Hovered", 'premium-blocks-for-gutenberg'),
                         checked: hovered,
                         onChange: function onChange(check) {
                             return setAttributes({ hovered: check });
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Height", 'premium-block-for-gutenberg'),
+                        label: __("Height", 'premium-blocks-for-gutenberg'),
                         options: HEIGHT,
                         value: height,
                         onChange: function onChange(newHeight) {
@@ -15376,7 +15376,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     "custom" === height && React.createElement(_singleRangeControl2.default, {
-                        label: __("Min Height (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Min Height (PX)", 'premium-blocks-for-gutenberg'),
                         value: minHeight,
                         min: "10",
                         max: "800",
@@ -15387,7 +15387,7 @@ var edit = exports.edit = function (_Component) {
                         defaultValue: 100
                     }),
                     "custom" === height && React.createElement(SelectControl, {
-                        label: __("Vertical Align", 'premium-block-for-gutenberg'),
+                        label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
                         options: ALIGNS,
                         value: verAlign,
                         onChange: function onChange(newValue) {
@@ -15395,7 +15395,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Overlay", 'premium-block-for-gutenberg'),
+                        label: __("Overlay", 'premium-blocks-for-gutenberg'),
                         colorValue: background,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -15403,7 +15403,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Overlay Opacity", 'premium-block-for-gutenberg'),
+                        label: __("Overlay Opacity", 'premium-blocks-for-gutenberg'),
                         value: opacity,
                         min: "1",
                         max: "100",
@@ -15414,7 +15414,7 @@ var edit = exports.edit = function (_Component) {
                         defaultValue: ''
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Link", 'premium-block-for-gutenberg'),
+                        label: __("Link", 'premium-blocks-for-gutenberg'),
                         checked: urlCheck,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ urlCheck: newCheck });
@@ -15427,14 +15427,14 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     urlCheck && React.createElement(ToggleControl, {
-                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
+                        label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
                         checked: target,
                         onChange: function onChange(newValue) {
                             return setAttributes({ target: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Hide Description on Mobiles", 'premium-block-for-gutenberg'),
+                        label: __("Hide Description on Mobiles", 'premium-blocks-for-gutenberg'),
                         checked: responsive,
                         onChange: function onChange(newValue) {
                             return setAttributes({ responsive: newValue });
@@ -15444,7 +15444,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Title Settings", 'premium-block-for-gutenberg'),
+                        title: __("Title Settings", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -15454,14 +15454,14 @@ var edit = exports.edit = function (_Component) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ titleTag: newValue });
                         },
-                        label: __("HTML Tag", 'premium-block-for-gutenberg')
+                        label: __("HTML Tag", 'premium-blocks-for-gutenberg')
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line"],
                         setAttributes: saveStyles,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: titleStyles[0].titleSize,
                         fontSizeMobile: titleStyles[0].titleSizeMobile,
@@ -15485,7 +15485,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: titleStyles[0].titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -15493,7 +15493,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     "effect3" === effect && React.createElement(_ColorComponent2.default, {
-                        label: __("Separator Color", 'premium-block-for-gutenberg'),
+                        label: __("Separator Color", 'premium-blocks-for-gutenberg'),
                         colorValue: sepColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -15501,7 +15501,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     "effect2" === effect && React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: titleStyles[0].titleBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -15530,7 +15530,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Description Settings", 'premium-block-for-gutenberg'),
+                        title: __("Description Settings", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -15539,7 +15539,7 @@ var edit = exports.edit = function (_Component) {
                         setAttributes: descriptionStyles,
                         fontSizeType: {
                             value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: descStyles[0].descSize,
                         fontSizeMobile: descStyles[0].descSizeMobile,
@@ -15563,7 +15563,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: descStyles[0].descColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -15592,7 +15592,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container Style", 'premium-block-for-gutenberg'),
+                        title: __("Container Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -17510,7 +17510,8 @@ var attributes = {
         type: "string",
         source: "attribute",
         attribute: "src",
-        selector: ".premium-banner__img"
+        selector: ".premium-banner__img",
+        default: 'https://jshs.tu.edu.ly/wp-content/uploads/2020/02/placeholder.png'
     },
     titleStyles: {
         type: "array",
@@ -17574,7 +17575,7 @@ var attributes = {
         type: "array",
         source: "children",
         selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
+        default: __("Cool Description!!", 'premium-blocks-for-gutenberg')
     },
     contentAlign: {
         type: "string",
@@ -17912,74 +17913,74 @@ var edit = exports.edit = function (_Component) {
 
             var SIZE = [{
                 value: "sm",
-                label: __("Small", 'premium-block-for-gutenberg')
+                label: __("Small", 'premium-blocks-for-gutenberg')
             }, {
                 value: "md",
-                label: __("Medium", 'premium-block-for-gutenberg')
+                label: __("Medium", 'premium-blocks-for-gutenberg')
             }, {
                 value: "lg",
-                label: __("Large", 'premium-block-for-gutenberg')
+                label: __("Large", 'premium-blocks-for-gutenberg')
             }, {
                 value: "block",
-                label: __("Block", 'premium-block-for-gutenberg')
+                label: __("Block", 'premium-blocks-for-gutenberg')
             }];
             var DIRECTION = [{
                 value: "top",
-                label: __("Top to Bottom", 'premium-block-for-gutenberg')
+                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
             }, {
                 value: "bottom",
-                label: __("Bottom to Top", 'premium-block-for-gutenberg')
+                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
             }, {
                 value: "left",
-                label: __("Left to Right", 'premium-block-for-gutenberg')
+                label: __("Left to Right", 'premium-blocks-for-gutenberg')
             }, {
                 value: "right",
-                label: __("Right to Left", 'premium-block-for-gutenberg')
+                label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }];
             var SHUTTER = [{
                 value: "shutouthor",
-                label: __("Shutter out Horizontal", 'premium-block-for-gutenberg')
+                label: __("Shutter out Horizontal", 'premium-blocks-for-gutenberg')
             }, {
                 value: "shutoutver",
-                label: __("Shutter out Vertical", 'premium-block-for-gutenberg')
+                label: __("Shutter out Vertical", 'premium-blocks-for-gutenberg')
             }, {
                 value: "scshutoutver",
-                label: __("Scaled Shutter Vertical", 'premium-block-for-gutenberg')
+                label: __("Scaled Shutter Vertical", 'premium-blocks-for-gutenberg')
             }, {
                 value: "scshutouthor",
-                label: __("Scaled Shutter Horizontal", 'premium-block-for-gutenberg')
+                label: __("Scaled Shutter Horizontal", 'premium-blocks-for-gutenberg')
             }, {
                 value: "dshutinver",
-                label: __("Tilted Left", 'premium-block-for-gutenberg')
+                label: __("Tilted Left", 'premium-blocks-for-gutenberg')
             }, {
                 value: "dshutinhor",
-                label: __("Tilted Right", 'premium-block-for-gutenberg')
+                label: __("Tilted Right", 'premium-blocks-for-gutenberg')
             }];
             var RADIAL = [{
                 value: "radialin",
-                label: __("Radial In", 'premium-block-for-gutenberg')
+                label: __("Radial In", 'premium-blocks-for-gutenberg')
             }, {
                 value: "radialout",
-                label: __("Radial Out", 'premium-block-for-gutenberg')
+                label: __("Radial Out", 'premium-blocks-for-gutenberg')
             }, {
                 value: "rectin",
-                label: __("Rectangle In", 'premium-block-for-gutenberg')
+                label: __("Rectangle In", 'premium-blocks-for-gutenberg')
             }, {
                 value: "rectout",
-                label: __("Rectangle Out", 'premium-block-for-gutenberg')
+                label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
             }];
             var EFFECTS = [{
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             }, {
                 value: "slide",
-                label: __("Slide", 'premium-block-for-gutenberg')
+                label: __("Slide", 'premium-blocks-for-gutenberg')
             }, {
                 value: "shutter",
-                label: __("Shutter", 'premium-block-for-gutenberg')
+                label: __("Shutter", 'premium-blocks-for-gutenberg')
             }, {
                 value: "radial",
-                label: __("Radial", 'premium-block-for-gutenberg')
+                label: __("Radial", 'premium-blocks-for-gutenberg')
             }];
             var onChangeHover = function onChangeHover(newValue) {
                 _this2.props.setAttributes({ effect: newValue });
@@ -18035,19 +18036,19 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings", 'premium-block-for-gutenberg'),
+                        title: __("General Settings", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
                         options: EFFECTS,
-                        label: __("Hover Effect", 'premium-block-for-gutenberg'),
+                        label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
                         value: effect,
                         onChange: onChangeHover
                     }),
                     "slide" === effect && React.createElement(SelectControl, {
                         options: DIRECTION,
-                        label: __("Direction", 'premium-block-for-gutenberg'),
+                        label: __("Direction", 'premium-blocks-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
@@ -18055,7 +18056,7 @@ var edit = exports.edit = function (_Component) {
                     }),
                     "shutter" === effect && React.createElement(SelectControl, {
                         options: SHUTTER,
-                        label: __("Shutter Direction", 'premium-block-for-gutenberg'),
+                        label: __("Shutter Direction", 'premium-blocks-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
@@ -18063,7 +18064,7 @@ var edit = exports.edit = function (_Component) {
                     }),
                     "radial" === effect && React.createElement(SelectControl, {
                         options: RADIAL,
-                        label: __("Style", 'premium-block-for-gutenberg'),
+                        label: __("Style", 'premium-blocks-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
@@ -18071,14 +18072,14 @@ var edit = exports.edit = function (_Component) {
                     }),
                     React.createElement(SelectControl, {
                         options: SIZE,
-                        label: __("Button Size", 'premium-block-for-gutenberg'),
+                        label: __("Button Size", 'premium-blocks-for-gutenberg'),
                         value: btnSize,
                         onChange: function onChange(newSize) {
                             return setAttributes({ btnSize: newSize });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
+                        label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
                         checked: btnTarget,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnTarget: newValue });
@@ -18088,7 +18089,7 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Text Style", 'premium-block-for-gutenberg'),
+                        title: __("Text Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -18097,7 +18098,7 @@ var edit = exports.edit = function (_Component) {
                         setAttributes: saveTextStyles,
                         fontSizeType: {
                             value: textStyles[0].textSizeUnit,
-                            label: __("textSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("textSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: textStyles[0].textSize,
                         fontSizeMobile: textStyles[0].textSizeMobile,
@@ -18157,14 +18158,14 @@ var edit = exports.edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Button Style", 'premium-block-for-gutenberg'),
+                        title: __("Button Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(
                         "strong",
                         null,
-                        __("Colors", 'premium-block-for-gutenberg')
+                        __("Colors", 'premium-blocks-for-gutenberg')
                     ),
                     React.createElement(
                         TabPanel,
@@ -18188,7 +18189,7 @@ var edit = exports.edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: btnStyles[0].textColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -18210,7 +18211,7 @@ var edit = exports.edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Text Hover Color", 'premium-block-for-gutenberg'),
+                                        label: __("Text Hover Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: btnStyles[0].textHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -18218,7 +18219,7 @@ var edit = exports.edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
-                                        label: "radial" !== effect ? __("Background Hover Color", 'premium-block-for-gutenberg') : __("Background Color", 'premium-block-for-gutenberg'),
+                                        label: "radial" !== effect ? __("Background Hover Color", 'premium-blocks-for-gutenberg') : __("Background Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: btnStyles[0].backHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -18229,7 +18230,7 @@ var edit = exports.edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Border Hover Color", 'premium-block-for-gutenberg'),
+                                        label: __("Border Hover Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: btnStyles[0].borderHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -18303,7 +18304,7 @@ var edit = exports.edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Padding", 'premium-block-for-gutenberg'),
+                        label: __("Padding", 'premium-blocks-for-gutenberg'),
                         value: btnStyles[0].padding,
                         onChange: function onChange(newValue) {
                             return saveBtnStyles({ padding: newValue });
@@ -19319,7 +19320,7 @@ var attributes = {
     },
     btnText: {
         type: "string",
-        default: __("Premium Button")
+        default: __("Premium Button", 'premium-blocks-for-gutenberg')
     },
     btnSize: {
         type: "string",
@@ -19392,7 +19393,7 @@ var attributes = {
             textSize: 20,
             textSizeTablet: '',
             textSizeMobile: '',
-            textFontFamily: __('Default'),
+            textFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
             textLetter: '',
             textStyle: '',
             textUpper: false,
@@ -19572,7 +19573,7 @@ var attributes = {
     },
     titleTxt: {
         type: "string",
-        default: __("Premium Count Up")
+        default: __("Premium Count Up", 'premium-blocks-for-gutenberg')
     },
     faIcon: {
         type: "string",
@@ -19580,7 +19581,7 @@ var attributes = {
     },
     counterFamily: {
         type: "string",
-        default: __('Default')
+        default: __('Default', 'premium-blocks-for-gutenberg')
     },
     hideDesktop: {
         type: 'boolean',
@@ -19612,7 +19613,7 @@ var attributes = {
     titleStyles: {
         type: "array",
         default: [(_ref = {
-            titleFamily: __('Default'),
+            titleFamily: __('Default', 'premium-blocks-for-gutenberg'),
             titleSize: 20,
             titleSizeUnit: 'px',
             titleSizeTablet: '',
@@ -19697,7 +19698,7 @@ var attributes = {
             suffixColor: '',
             suffixWeight: '',
             suffixGap: 2,
-            suffixFamily: __('Default')
+            suffixFamily: __('Default', 'premium-blocks-for-gutenberg')
         }]
     },
     prefixStyles: {
@@ -19711,7 +19712,7 @@ var attributes = {
             prefixColor: '',
             prefixWeight: '',
             prefixGap: 2,
-            prefixFamily: __('Default')
+            prefixFamily: __('Default', 'premium-blocks-for-gutenberg')
         }]
     },
     paddingTTablet: {
@@ -19921,30 +19922,30 @@ var edit = function (_Component) {
             var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
             var ICONS = [{
                 value: "icon",
-                label: __("Icon", 'premium-block-for-gutenberg')
+                label: __("Icon", 'premium-blocks-for-gutenberg')
             }, {
                 value: "img",
-                label: __("Image", 'premium-block-for-gutenberg')
+                label: __("Image", 'premium-blocks-for-gutenberg')
             }];
             var DIRECTION = [{
                 value: "row",
-                label: __("Row", 'premium-block-for-gutenberg')
+                label: __("Row", 'premium-blocks-for-gutenberg')
             }, {
                 value: "row-reverse",
-                label: __("Reversed Row", 'premium-block-for-gutenberg')
+                label: __("Reversed Row", 'premium-blocks-for-gutenberg')
             }, {
                 value: "column",
-                label: __("Column", 'premium-block-for-gutenberg')
+                label: __("Column", 'premium-blocks-for-gutenberg')
             }, {
                 value: "column-reverse",
-                label: __("Reversed Column", 'premium-block-for-gutenberg')
+                label: __("Reversed Column", 'premium-blocks-for-gutenberg')
             }];
             var TYPE = [{
                 value: "fa",
-                label: __("Font Awesome Icon", 'premium-block-for-gutenberg')
+                label: __("Font Awesome Icon", 'premium-blocks-for-gutenberg')
             }, {
                 value: "dash",
-                label: __("Dashicon", 'premium-block-for-gutenberg')
+                label: __("Dashicon", 'premium-blocks-for-gutenberg')
             }];
             switch (align) {
                 case "left":
@@ -20043,32 +20044,32 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Counter", 'premium-block-for-gutenberg'),
+                        title: __("Counter", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Final Number", 'premium-block-for-gutenberg'),
+                        label: __("Final Number", 'premium-blocks-for-gutenberg'),
                         value: increment,
                         onChange: function onChange(value) {
                             return setAttributes({ increment: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Counting Time", 'premium-block-for-gutenberg'),
+                        label: __("Counting Time", 'premium-blocks-for-gutenberg'),
                         value: time,
                         onChange: function onChange(value) {
                             return setAttributes({ time: value });
                         },
-                        help: __("Set counting time in milliseconds, for example: 1000", 'premium-block-for-gutenberg')
+                        help: __("Set counting time in milliseconds, for example: 1000", 'premium-blocks-for-gutenberg')
                     }),
                     React.createElement(TextControl, {
-                        label: __("Delay", 'premium-block-for-gutenberg'),
+                        label: __("Delay", 'premium-blocks-for-gutenberg'),
                         value: delay,
                         onChange: function onChange(value) {
                             return setAttributes({ delay: value });
                         },
-                        help: __("Set delay in milliseconds, for example: 10", 'premium-block-for-gutenberg')
+                        help: __("Set delay in milliseconds, for example: 10", 'premium-blocks-for-gutenberg')
                     }),
                     "row-reverse" !== flexDir && React.createElement(_radioControl2.default, {
                         choices: ["left", "center", "right"],
@@ -20087,7 +20088,7 @@ var edit = function (_Component) {
                         label: __("Align ")
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Direction", 'premium-block-for-gutenberg'),
+                        label: __("Direction", 'premium-blocks-for-gutenberg'),
                         options: DIRECTION,
                         value: flexDir,
                         onChange: function onChange(newDir) {
@@ -20095,7 +20096,7 @@ var edit = function (_Component) {
                         }
                     }),
                     ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(_singleRangeControl2.default, {
-                        label: __("Spacing", 'premium-block-for-gutenberg'),
+                        label: __("Spacing", 'premium-blocks-for-gutenberg'),
                         value: iconSpacing,
                         onChange: function onChange(newValue) {
                             return setAttributes({ iconSpacing: newValue });
@@ -20104,28 +20105,28 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Icon", 'premium-block-for-gutenberg'),
+                        label: __("Icon", 'premium-blocks-for-gutenberg'),
                         checked: iconCheck,
                         onChange: function onChange(check) {
                             return setAttributes({ iconCheck: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Prefix", 'premium-block-for-gutenberg'),
+                        label: __("Prefix", 'premium-blocks-for-gutenberg'),
                         checked: prefix,
                         onChange: function onChange(check) {
                             return setAttributes({ prefix: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Suffix", 'premium-block-for-gutenberg'),
+                        label: __("Suffix", 'premium-blocks-for-gutenberg'),
                         checked: suffix,
                         onChange: function onChange(check) {
                             return setAttributes({ suffix: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Title", 'premium-block-for-gutenberg'),
+                        label: __("Title", 'premium-blocks-for-gutenberg'),
                         checked: titleCheck,
                         onChange: function onChange(check) {
                             return setAttributes({ titleCheck: check });
@@ -20135,12 +20136,12 @@ var edit = function (_Component) {
                 iconCheck && React.createElement(
                     PanelBody,
                     {
-                        title: __("Icon", 'premium-block-for-gutenberg'),
+                        title: __("Icon", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Icon Type", 'premium-block-for-gutenberg'),
+                        label: __("Icon Type", 'premium-blocks-for-gutenberg'),
                         options: ICONS,
                         value: icon,
                         onChange: function onChange(newType) {
@@ -20156,7 +20157,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(SelectControl, {
-                            label: __("Icon Type", 'premium-block-for-gutenberg'),
+                            label: __("Icon Type", 'premium-blocks-for-gutenberg'),
                             value: iconType,
                             options: TYPE,
                             onChange: function onChange(newType) {
@@ -20164,17 +20165,17 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(TextControl, {
-                            label: __("Icon Class", 'premium-block-for-gutenberg'),
+                            label: __("Icon Class", 'premium-blocks-for-gutenberg'),
                             value: faIcon,
-                            help: [__("Get icon class from", 'premium-block-for-gutenberg'), React.createElement(
+                            help: [__("Get icon class from", 'premium-blocks-for-gutenberg'), React.createElement(
                                 "a",
                                 {
                                     href: "fa" === iconType ? "https://fontawesome.com/v4.7.0/icons/" : "https://developer.wordpress.org/resource/dashicons/",
                                     target: "_blank"
                                 },
                                 "\xA0",
-                                __("here", 'premium-block-for-gutenberg')
-                            ), __(" , for example: ", 'premium-block-for-gutenberg'), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
+                                __("here", 'premium-blocks-for-gutenberg')
+                            ), __(" , for example: ", 'premium-blocks-for-gutenberg'), "fa" === iconType ? "address-book" : "dashicons-admin-site"],
                             onChange: function onChange(newIcon) {
                                 return setAttributes({ faIcon: newIcon });
                             }
@@ -20197,7 +20198,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Size", 'premium-block-for-gutenberg'),
+                        label: __("Size", 'premium-blocks-for-gutenberg'),
                         value: iconSize,
                         onChange: function onChange(newValue) {
                             return setAttributes({ iconSize: newValue });
@@ -20207,7 +20208,7 @@ var edit = function (_Component) {
                         max: 200
                     }),
                     "icon" === icon && React.createElement(_ColorComponent2.default, {
-                        label: __("Icon Color", 'premium-block-for-gutenberg'),
+                        label: __("Icon Color", 'premium-blocks-for-gutenberg'),
                         colorValue: iconColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -20218,7 +20219,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Number", 'premium-block-for-gutenberg'),
+                        title: __("Number", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -20227,7 +20228,7 @@ var edit = function (_Component) {
                         setAttributes: saveNumberStyles,
                         fontSizeType: {
                             value: numberStyles[0].numberSizeUnit,
-                            label: __("numberSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("numberSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: numberStyles[0].numberSize,
                         fontSizeMobile: numberStyles[0].numberSizeMobile,
@@ -20251,7 +20252,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Number Color", 'premium-block-for-gutenberg'),
+                        label: __("Number Color", 'premium-blocks-for-gutenberg'),
                         colorValue: numberStyles[0].numberColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -20262,12 +20263,12 @@ var edit = function (_Component) {
                 prefix && React.createElement(
                     PanelBody,
                     {
-                        title: __("Prefix", 'premium-block-for-gutenberg'),
+                        title: __("Prefix", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Prefix", 'premium-block-for-gutenberg'),
+                        label: __("Prefix", 'premium-blocks-for-gutenberg'),
                         value: prefixStyles[0].prefixTxt,
                         onChange: function onChange(value) {
                             return savePrefixStyle({ prefixTxt: value });
@@ -20278,7 +20279,7 @@ var edit = function (_Component) {
                         setAttributes: savePrefixStyle,
                         fontSizeType: {
                             value: prefixStyles[0].prefixSizeUnit,
-                            label: __("prefixSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("prefixSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: prefixStyles[0].prefixSize,
                         fontSizeMobile: prefixStyles[0].prefixSizeMobile,
@@ -20302,7 +20303,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: prefixStyles[0].prefixColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -20310,7 +20311,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Gap After", 'premium-block-for-gutenberg'),
+                        label: __("Gap After", 'premium-blocks-for-gutenberg'),
                         value: prefixStyles[0].prefixGap,
                         onChange: function onChange(newValue) {
                             return savePrefixStyle({ prefixGap: newValue });
@@ -20322,12 +20323,12 @@ var edit = function (_Component) {
                 suffix && React.createElement(
                     PanelBody,
                     {
-                        title: __("Suffix", 'premium-block-for-gutenberg'),
+                        title: __("Suffix", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Suffix", 'premium-block-for-gutenberg'),
+                        label: __("Suffix", 'premium-blocks-for-gutenberg'),
                         value: suffixStyles[0].suffixTxt,
                         onChange: function onChange(value) {
                             return saveSuffixStyle({ suffixTxt: value });
@@ -20338,7 +20339,7 @@ var edit = function (_Component) {
                         setAttributes: saveSuffixStyle,
                         fontSizeType: {
                             value: suffixStyles[0].suffixSizeUnit,
-                            label: __("suffixSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("suffixSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: suffixStyles[0].suffixSize,
                         fontSizeMobile: suffixStyles[0].suffixSizeMobile,
@@ -20362,7 +20363,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: suffixStyles[0].suffixColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -20370,7 +20371,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Gap Before", 'premium-block-for-gutenberg'),
+                        label: __("Gap Before", 'premium-blocks-for-gutenberg'),
                         value: suffixStyles[0].suffixGap,
                         onChange: function onChange(newValue) {
                             return saveSuffixStyle({ suffixGap: newValue });
@@ -20382,12 +20383,12 @@ var edit = function (_Component) {
                 titleCheck && React.createElement(
                     PanelBody,
                     {
-                        title: __("Title", 'premium-block-for-gutenberg'),
+                        title: __("Title", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Title Text", 'premium-block-for-gutenberg'),
+                        label: __("Title Text", 'premium-blocks-for-gutenberg'),
                         value: titleTxt,
                         onChange: function onChange(value) {
                             return setAttributes({ titleTxt: value });
@@ -20398,7 +20399,7 @@ var edit = function (_Component) {
                         setAttributes: saveTitleStyles,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: titleStyles[0].titleSize,
                         fontSizeMobile: titleStyles[0].titleSizeMobile,
@@ -20444,12 +20445,12 @@ var edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Spacings", 'premium-block-for-gutenberg'),
+                            title: __("Spacings", 'premium-blocks-for-gutenberg'),
                             className: "premium-panel-body-inner",
                             initialOpen: false
                         },
                         React.createElement(_singleRangeControl2.default, {
-                            label: __("Margin Top", 'premium-block-for-gutenberg'),
+                            label: __("Margin Top", 'premium-blocks-for-gutenberg'),
                             value: titleStyles[0].titleT,
                             onChange: function onChange(newValue) {
                                 return saveTitleStyles({ titleT: newValue });
@@ -20458,7 +20459,7 @@ var edit = function (_Component) {
                             defaultValue: 0
                         }),
                         React.createElement(_singleRangeControl2.default, {
-                            label: __("Margin Bottom", 'premium-block-for-gutenberg'),
+                            label: __("Margin Bottom", 'premium-blocks-for-gutenberg'),
                             value: titleStyles[0].titleB,
                             onChange: function onChange(newValue) {
                                 return saveTitleStyles({ titleB: newValue });
@@ -20471,7 +20472,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container", 'premium-block-for-gutenberg'),
+                        title: __("Container", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -20620,7 +20621,7 @@ var edit = function (_Component) {
                 iconType === "fa" && 1 != _settings.FontAwesomeEnabled && iconCheck && React.createElement(
                     "p",
                     { className: "premium-countup__alert" },
-                    __("Please Enable Font Awesome Icons from Plugin settings", 'premium-block-for-gutenberg')
+                    __("Please Enable Font Awesome Icons from Plugin settings", 'premium-blocks-for-gutenberg')
                 )
             ), React.createElement(
                 "div",
@@ -23011,10 +23012,10 @@ var edit = function (_Component) {
 
             var DISPLAY = [{
                 value: "inline",
-                label: __("Inline", 'premium-block-for-gutenberg')
+                label: __("Inline", 'premium-blocks-for-gutenberg')
             }, {
                 value: "block",
-                label: __("Block", 'premium-block-for-gutenberg')
+                label: __("Block", 'premium-blocks-for-gutenberg')
             }];
 
             var saveSecondStyle = function saveSecondStyle(value) {
@@ -23083,12 +23084,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings", 'premium-block-for-gutenberg'),
+                        title: __("General Settings", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("First Heading", 'premium-block-for-gutenberg'),
+                        label: __("First Heading", 'premium-blocks-for-gutenberg'),
                         type: "url",
                         value: firstHeading,
                         onChange: function onChange(value) {
@@ -23096,7 +23097,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Second Heading", 'premium-block-for-gutenberg'),
+                        label: __("Second Heading", 'premium-blocks-for-gutenberg'),
                         type: "url",
                         value: secondHeading,
                         onChange: function onChange(value) {
@@ -23104,7 +23105,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Display", 'premium-block-for-gutenberg'),
+                        label: __("Display", 'premium-blocks-for-gutenberg'),
                         value: display,
                         options: DISPLAY,
                         onChange: function onChange(value) {
@@ -23112,14 +23113,14 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Link", 'premium-block-for-gutenberg'),
+                        label: __("Link", 'premium-blocks-for-gutenberg'),
                         checked: link,
                         onChange: function onChange(newValue) {
                             return setAttributes({ link: newValue });
                         }
                     }),
                     link && React.createElement(ToggleControl, {
-                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
+                        label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
                         checked: target,
                         onChange: function onChange(newValue) {
                             return setAttributes({ target: newValue });
@@ -23129,12 +23130,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("First Heading Style", 'premium-block-for-gutenberg'),
+                        title: __("First Heading Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Clipped", 'premium-block-for-gutenberg'),
+                        label: __("Clipped", 'premium-blocks-for-gutenberg'),
                         checked: firstStyles[0].firstClip,
                         onChange: function onChange(newValue) {
                             return saveFirstStyle({ firstClip: newValue });
@@ -23144,14 +23145,14 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(ToggleControl, {
-                            label: __("Animated", 'premium-block-for-gutenberg'),
+                            label: __("Animated", 'premium-blocks-for-gutenberg'),
                             checked: firstStyles[0].firstAnim,
                             onChange: function onChange(newValue) {
                                 return saveFirstStyle({ firstAnim: newValue });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Stroke", 'premium-block-for-gutenberg'),
+                            label: __("Stroke", 'premium-blocks-for-gutenberg'),
                             checked: firstStyles[0].firstStroke,
                             onChange: function onChange(newValue) {
                                 return saveFirstStyle({ firstStroke: newValue });
@@ -23163,7 +23164,7 @@ var edit = function (_Component) {
                         setAttributes: saveFirstStyle,
                         fontSizeType: {
                             value: firstStyles[0].firstSizeUnit,
-                            label: __("firstSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("firstSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: firstStyles[0].firstSize,
                         fontSizeMobile: firstStyles[0].firstSizeMobile,
@@ -23202,7 +23203,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Text Color", 'premium-block-for-gutenberg'),
+                            label: __("Text Color", 'premium-blocks-for-gutenberg'),
                             colorValue: firstStyles[0].firstColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -23222,7 +23223,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_ColorComponent2.default, {
-                            label: __("First Color", 'premium-block-for-gutenberg'),
+                            label: __("First Color", 'premium-blocks-for-gutenberg'),
                             colorValue: firstStyles[0].firstColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -23230,7 +23231,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Second Color", 'premium-block-for-gutenberg'),
+                            label: __("Second Color", 'premium-blocks-for-gutenberg'),
                             colorValue: firstStyles[0].firstClipColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -23289,7 +23290,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Margin Left", 'premium-block-for-gutenberg'),
+                        label: __("Margin Left", 'premium-blocks-for-gutenberg'),
                         value: firstStyles[0].firstMarginL,
                         onChange: function onChange(newMargin) {
                             return saveFirstStyle({ firstMarginL: newMargin });
@@ -23298,7 +23299,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Margin Right", 'premium-block-for-gutenberg'),
+                        label: __("Margin Right", 'premium-blocks-for-gutenberg'),
                         value: firstStyles[0].firstMarginR,
                         onChange: function onChange(newMargin) {
                             return saveFirstStyle({ firstMarginR: newMargin });
@@ -23307,7 +23308,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Padding", 'premium-block-for-gutenberg'),
+                        label: __("Padding", 'premium-blocks-for-gutenberg'),
                         value: firstStyles[0].firstPadding,
                         onChange: function onChange(newPadding) {
                             return saveFirstStyle({ firstPadding: newPadding });
@@ -23319,12 +23320,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Second Heading Style", 'premium-block-for-gutenberg'),
+                        title: __("Second Heading Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Clipped", 'premium-block-for-gutenberg'),
+                        label: __("Clipped", 'premium-blocks-for-gutenberg'),
                         checked: secondStyles[0].secondClip,
                         onChange: function onChange(newValue) {
                             return saveSecondStyle({ secondClip: newValue });
@@ -23334,14 +23335,14 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(ToggleControl, {
-                            label: __("Animated", 'premium-block-for-gutenberg'),
+                            label: __("Animated", 'premium-blocks-for-gutenberg'),
                             checked: secondStyles[0].secondAnim,
                             onChange: function onChange(newValue) {
                                 return saveSecondStyle({ secondAnim: newValue });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __('Stroke', 'premium-block-for-gutenberg'),
+                            label: __('Stroke', 'premium-blocks-for-gutenberg'),
                             checked: secondStyles[0].secondStroke,
                             onChange: function onChange(newValue) {
                                 return saveSecondStyle({ secondStroke: newValue });
@@ -23353,7 +23354,7 @@ var edit = function (_Component) {
                         setAttributes: saveSecondStyle,
                         fontSizeType: {
                             value: secondStyles[0].secondSizeUnit,
-                            label: __("secondSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("secondSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: secondStyles[0].secondSize,
                         fontSizeMobile: secondStyles[0].secondSizeMobile,
@@ -23392,7 +23393,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Text Color", 'premium-block-for-gutenberg'),
+                            label: __("Text Color", 'premium-blocks-for-gutenberg'),
                             colorValue: secondStyles[0].secondColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -23400,7 +23401,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Background Color", 'premium-block-for-gutenberg'),
+                            label: __("Background Color", 'premium-blocks-for-gutenberg'),
                             colorValue: secondStyles[0].secondBackground,
                             colorDefault: '',
                             onColorChange: function onColorChange(value) {
@@ -23412,7 +23413,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_ColorComponent2.default, {
-                            label: __("First Color", 'premium-block-for-gutenberg'),
+                            label: __("First Color", 'premium-blocks-for-gutenberg'),
                             colorValue: secondStyles[0].secondColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -23420,7 +23421,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
-                            label: __("Second Color", 'premium-block-for-gutenberg'),
+                            label: __("Second Color", 'premium-blocks-for-gutenberg'),
                             colorValue: secondStyles[0].secondClipColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -23479,7 +23480,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Margin Left", 'premium-block-for-gutenberg'),
+                        label: __("Margin Left", 'premium-blocks-for-gutenberg'),
                         value: secondStyles[0].secondMarginL,
                         onChange: function onChange(newMargin) {
                             return saveSecondStyle({ secondMarginL: newMargin });
@@ -23488,7 +23489,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Margin Right", 'premium-block-for-gutenberg'),
+                        label: __("Margin Right", 'premium-blocks-for-gutenberg'),
                         value: secondStyles[0].secondMarginR,
                         onChange: function onChange(newMargin) {
                             return saveSecondStyle({ secondMarginR: newMargin || "0" });
@@ -23497,7 +23498,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Padding", 'premium-block-for-gutenberg'),
+                        label: __("Padding", 'premium-blocks-for-gutenberg'),
                         value: secondStyles[0].secondPadding,
                         onChange: function onChange(newPadding) {
                             return saveSecondStyle({ secondPadding: newPadding || "0" });
@@ -23509,7 +23510,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container Style", 'premium-block-for-gutenberg'),
+                        title: __("Container Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -25437,7 +25438,7 @@ var attributes = (_attributes = {
             firstClip: false,
             firstAnim: false,
             firstStroke: false,
-            firstFamily: __('Default'),
+            firstFamily: __('Default', 'premium-blocks-for-gutenebrg'),
             firstSizeUnit: 'px',
             firstSize: '',
             firstSizeMobile: '',
@@ -25468,7 +25469,7 @@ var attributes = (_attributes = {
             secondClip: false,
             secondAnim: false,
             secondStroke: false,
-            secondFamily: __('Default'),
+            secondFamily: __('Default', 'premium-blocks-for-gutenberg'),
             secondSizeUnit: 'px',
             secondSize: '20',
             secondSizeTablet: '',
@@ -25828,25 +25829,25 @@ var edit = function edit(props) {
 
     var EFFECTS = [{
         value: "none",
-        label: __("None", 'premium-block-for-gutenberg')
+        label: __("None", 'premium-blocks-for-gutenberg')
     }, {
         value: "pulse",
-        label: __("Pulse", 'premium-block-for-gutenberg')
+        label: __("Pulse", 'premium-blocks-for-gutenberg')
     }, {
         value: "rotate",
-        label: __("Rotate", 'premium-block-for-gutenberg')
+        label: __("Rotate", 'premium-blocks-for-gutenberg')
     }, {
         value: "drotate",
-        label: __("3D Rotate", 'premium-block-for-gutenberg')
+        label: __("3D Rotate", 'premium-blocks-for-gutenberg')
     }, {
         value: "buzz",
-        label: __("Buzz", 'premium-block-for-gutenberg')
+        label: __("Buzz", 'premium-blocks-for-gutenberg')
     }, {
         value: "drop",
-        label: __("Drop Shadow", 'premium-block-for-gutenberg')
+        label: __("Drop Shadow", 'premium-blocks-for-gutenberg')
     }, {
         value: "wobble",
-        label: __("Wobble", 'premium-block-for-gutenberg')
+        label: __("Wobble", 'premium-blocks-for-gutenberg')
     }];
 
     var saveContainerStyle = function saveContainerStyle(value) {
@@ -25911,14 +25912,14 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Icon", 'premium-block-for-gutenberg'),
+                title: __("Icon", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
             React.createElement(
                 "p",
                 { className: "premium-editor-paragraph" },
-                __("Select Icon", 'premium-block-for-gutenberg')
+                __("Select Icon", 'premium-blocks-for-gutenberg')
             ),
             React.createElement(_reactFonticonpicker2.default, {
                 icons: _premiumIconsList2.default,
@@ -25928,10 +25929,10 @@ var edit = function edit(props) {
                 value: selectedIcon,
                 isMulti: false,
                 appendTo: "body",
-                noSelectedPlaceholder: __("Select Icon", 'premium-block-for-gutenberg')
+                noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
             }),
             React.createElement(SelectControl, {
-                label: __("Hover Effect", 'premium-block-for-gutenberg'),
+                label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
                 options: EFFECTS,
                 value: hoverEffect,
                 onChange: function onChange(newEffect) {
@@ -25944,17 +25945,17 @@ var edit = function edit(props) {
                 onChange: function onChange(newValue) {
                     return setAttributes({ align: newValue });
                 },
-                label: __("Align", 'premium-block-for-gutenberg')
+                label: __("Align", 'premium-blocks-for-gutenberg')
             }),
             React.createElement(ToggleControl, {
-                label: __("Link", 'premium-block-for-gutenberg'),
+                label: __("Link", 'premium-blocks-for-gutenberg'),
                 checked: urlCheck,
                 onChange: function onChange(newValue) {
                     return setAttributes({ urlCheck: newValue });
                 }
             }),
             urlCheck && React.createElement(ToggleControl, {
-                label: __("Open link in new tab", 'premium-block-for-gutenberg'),
+                label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
                 checked: target,
                 onChange: function onChange(newValue) {
                     return setAttributes({ target: newValue });
@@ -25964,12 +25965,12 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Icon Style", 'premium-block-for-gutenberg'),
+                title: __("Icon Style", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
             React.createElement(_singleRangeControl2.default, {
-                label: __("Size", 'premium-block-for-gutenberg'),
+                label: __("Size", 'premium-blocks-for-gutenberg'),
                 value: iconStyles[0].iconSize,
                 onChange: function onChange(newValue) {
                     return saveIconStyle({ iconSize: newValue });
@@ -25983,7 +25984,7 @@ var edit = function edit(props) {
                 unit: iconStyles[0].iconSizeUnit
             }),
             React.createElement(_ColorComponent2.default, {
-                label: __("Icon Color", 'premium-block-for-gutenberg'),
+                label: __("Icon Color", 'premium-blocks-for-gutenberg'),
                 colorValue: iconStyles[0].iconColor,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
@@ -25991,7 +25992,7 @@ var edit = function edit(props) {
                 }
             }),
             React.createElement(_ColorComponent2.default, {
-                label: __("Background Color", 'premium-block-for-gutenberg'),
+                label: __("Background Color", 'premium-blocks-for-gutenberg'),
                 colorValue: iconStyles[0].iconBack,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
@@ -26155,7 +26156,7 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Container Style", 'premium-block-for-gutenberg'),
+                title: __("Container Style", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
@@ -30086,82 +30087,82 @@ var edit = function (_Component) {
 
 
             var imgIcon = [{
-                label: __("Icon", 'premium-block-for-gutenberg'),
+                label: __("Icon", 'premium-blocks-for-gutenberg'),
                 value: "icon"
             }, {
-                label: __("Image", 'premium-block-for-gutenberg'),
+                label: __("Image", 'premium-blocks-for-gutenberg'),
                 value: "image"
             }];
 
             var EFFECTS = [{
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             }, {
                 value: "pulse",
-                label: __("Pulse", 'premium-block-for-gutenberg')
+                label: __("Pulse", 'premium-blocks-for-gutenberg')
             }, {
                 value: "rotate",
-                label: __("Rotate", 'premium-block-for-gutenberg')
+                label: __("Rotate", 'premium-blocks-for-gutenberg')
             }, {
                 value: "drotate",
-                label: __("3D Rotate", 'premium-block-for-gutenberg')
+                label: __("3D Rotate", 'premium-blocks-for-gutenberg')
             }, {
                 value: "buzz",
-                label: __("Buzz", 'premium-block-for-gutenberg')
+                label: __("Buzz", 'premium-blocks-for-gutenberg')
             }, {
                 value: "drop",
-                label: __("Drop Shadow", 'premium-block-for-gutenberg')
+                label: __("Drop Shadow", 'premium-blocks-for-gutenberg')
             }, {
                 value: "wobble",
-                label: __("Wobble", 'premium-block-for-gutenberg')
+                label: __("Wobble", 'premium-blocks-for-gutenberg')
             }];
 
             var BTN_EFFECTS = [{
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             }, {
                 value: "slide",
-                label: __("Slide", 'premium-block-for-gutenberg')
+                label: __("Slide", 'premium-blocks-for-gutenberg')
             }];
 
             var DIRECTION = [{
                 value: "top",
-                label: __("Top to Bottom", 'premium-block-for-gutenberg')
+                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
             }, {
                 value: "bottom",
-                label: __("Bottom to Top", 'premium-block-for-gutenberg')
+                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
             }, {
                 value: "left",
-                label: __("Left to Right", 'premium-block-for-gutenberg')
+                label: __("Left to Right", 'premium-blocks-for-gutenberg')
             }, {
                 value: "right",
-                label: __("Right to Left", 'premium-block-for-gutenberg')
+                label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }];
 
             var ICON_POS = [{
-                label: __("Inline", 'premium-block-for-gutenberg'),
+                label: __("Inline", 'premium-blocks-for-gutenberg'),
                 value: "inline"
             }, {
-                label: __("Block", 'premium-block-for-gutenberg'),
+                label: __("Block", 'premium-blocks-for-gutenberg'),
                 value: "block"
             }];
 
             var ICON_HPOS = [{
-                label: __("Before", 'premium-block-for-gutenberg'),
+                label: __("Before", 'premium-blocks-for-gutenberg'),
                 value: "before"
             }, {
-                label: __("After", 'premium-block-for-gutenberg'),
+                label: __("After", 'premium-blocks-for-gutenberg'),
                 value: "after"
             }];
 
             var ICON_VPOS = [{
-                label: __("Top", 'premium-block-for-gutenberg'),
+                label: __("Top", 'premium-blocks-for-gutenberg'),
                 value: "top"
             }, {
-                label: __("Middle", 'premium-block-for-gutenberg'),
+                label: __("Middle", 'premium-blocks-for-gutenberg'),
                 value: "center"
             }, {
-                label: __("Bottom", 'premium-block-for-gutenberg'),
+                label: __("Bottom", 'premium-blocks-for-gutenberg'),
                 value: "bottom"
             }];
 
@@ -30199,33 +30200,33 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Display Options", 'premium-block-for-gutenberg'),
+                        title: __("Display Options", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Icon", 'premium-block-for-gutenberg'),
+                        label: __("Icon", 'premium-blocks-for-gutenberg'),
                         checked: iconChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ iconChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Title", 'premium-block-for-gutenberg'),
+                        label: __("Title", 'premium-blocks-for-gutenberg'),
                         checked: titleChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ titleChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Description", 'premium-block-for-gutenberg'),
+                        label: __("Description", 'premium-blocks-for-gutenberg'),
                         checked: descChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ descChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Button", 'premium-block-for-gutenberg'),
+                        label: __("Button", 'premium-blocks-for-gutenberg'),
                         checked: btnChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnChecked: newValue });
@@ -30235,12 +30236,12 @@ var edit = function (_Component) {
                 iconChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Icon", 'premium-block-for-gutenberg'),
+                        title: __("Icon", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Icon Position", 'premium-block-for-gutenberg'),
+                        label: __("Icon Position", 'premium-blocks-for-gutenberg'),
                         options: ICON_POS,
                         value: iconPos,
                         onChange: function onChange(newValue) {
@@ -30251,7 +30252,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(SelectControl, {
-                            label: __("Horizontal Position", 'premium-block-for-gutenberg'),
+                            label: __("Horizontal Position", 'premium-blocks-for-gutenberg'),
                             options: ICON_HPOS,
                             value: iconHPos,
                             onChange: function onChange(newValue) {
@@ -30259,7 +30260,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(SelectControl, {
-                            label: __("Vertical Position", 'premium-block-for-gutenberg'),
+                            label: __("Vertical Position", 'premium-blocks-for-gutenberg'),
                             options: ICON_VPOS,
                             value: iconVPos,
                             onChange: function onChange(newValue) {
@@ -30268,7 +30269,7 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(SelectControl, {
-                        label: __("Icon Type", 'premium-block-for-gutenberg'),
+                        label: __("Icon Type", 'premium-blocks-for-gutenberg'),
                         options: imgIcon,
                         value: iconImage,
                         onChange: function onChange(newType) {
@@ -30281,7 +30282,7 @@ var edit = function (_Component) {
                         React.createElement(
                             "p",
                             { className: "premium-editor-paragraph" },
-                            __("Select Icon", 'premium-block-for-gutenberg')
+                            __("Select Icon", 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(_reactFonticonpicker2.default, {
                             icons: _premiumIconsList2.default,
@@ -30291,7 +30292,7 @@ var edit = function (_Component) {
                             value: selectedIcon,
                             isMulti: false,
                             appendTo: "body",
-                            noSelectedPlaceholder: __("Select Icon", 'premium-block-for-gutenberg')
+                            noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
                         })
                     ),
                     "image" === iconImage && React.createElement(
@@ -30315,7 +30316,7 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(_singleRangeControl2.default, {
-                            label: __("Border Radius (PX)", 'premium-block-for-gutenberg'),
+                            label: __("Border Radius (PX)", 'premium-blocks-for-gutenberg'),
                             value: iconRadius,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ iconRadius: newValue || 0 });
@@ -30325,7 +30326,7 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(SelectControl, {
-                        label: __("Hover Effect", 'premium-block-for-gutenberg'),
+                        label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
                         options: EFFECTS,
                         value: hoverEffect,
                         onChange: function onChange(newEffect) {
@@ -30333,7 +30334,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Size (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Size (PX)", 'premium-blocks-for-gutenberg'),
                         value: iconSize,
                         min: "10",
                         max: "200",
@@ -30347,12 +30348,12 @@ var edit = function (_Component) {
                 titleChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Title", 'premium-block-for-gutenberg'),
+                        title: __("Title", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_radioControl2.default, {
-                        label: __("Title", 'premium-block-for-gutenberg'),
+                        label: __("Title", 'premium-blocks-for-gutenberg'),
                         choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
                         value: titleStyles[0].titleTag,
                         onChange: function onChange(newValue) {
@@ -30364,7 +30365,7 @@ var edit = function (_Component) {
                         setAttributes: saveTitleStyle,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: titleStyles[0].titleSize,
                         fontSizeMobile: titleStyles[0].titleSizeMobile,
@@ -30453,7 +30454,7 @@ var edit = function (_Component) {
                 descChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Description", 'premium-block-for-gutenberg'),
+                        title: __("Description", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -30462,7 +30463,7 @@ var edit = function (_Component) {
                         setAttributes: saveDescriptionStyle,
                         fontSizeType: {
                             value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: descStyles[0].descSize,
                         fontSizeMobile: descStyles[0].descSizeMobile,
@@ -30521,13 +30522,13 @@ var edit = function (_Component) {
                 btnChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Button", 'premium-block-for-gutenberg'),
+                        title: __("Button", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
                         options: BTN_EFFECTS,
-                        label: __("Hover Effect", 'premium-block-for-gutenberg'),
+                        label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
                         value: btnEffect,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnEffect: newValue });
@@ -30535,14 +30536,14 @@ var edit = function (_Component) {
                     }),
                     "slide" === btnEffect && React.createElement(SelectControl, {
                         options: DIRECTION,
-                        label: __("Direction", 'premium-block-for-gutenberg'),
+                        label: __("Direction", 'premium-blocks-for-gutenberg'),
                         value: effectDir,
                         onChange: function onChange(newValue) {
                             return setAttributes({ effectDir: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Open link in new tab", 'premium-block-for-gutenberg'),
+                        label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
                         checked: btnTarget,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnTarget: newValue });
@@ -30554,7 +30555,7 @@ var edit = function (_Component) {
                         setAttributes: saveButtonStyle,
                         fontSizeType: {
                             value: btnStyles[0].btnSizeUnit,
-                            label: __("btnSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("btnSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: btnStyles[0].btnSize,
                         fontSizeMobile: btnStyles[0].btnSizeMobile,
@@ -30641,7 +30642,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Padding", 'premium-block-for-gutenberg'),
+                        label: __("Padding", 'premium-blocks-for-gutenberg'),
                         value: btnStyles[0].btnPadding,
                         onChange: function onChange(newValue) {
                             return saveButtonStyle({ btnPadding: newValue });
@@ -30686,7 +30687,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container", 'premium-block-for-gutenberg'),
+                        title: __("Container", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -30937,7 +30938,7 @@ var edit = function (_Component) {
                                         Fragment,
                                         null,
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __("Icon Color", 'premium-block-for-gutenberg'),
+                                            label: __("Icon Color", 'premium-blocks-for-gutenberg'),
                                             colorValue: iconColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -30954,7 +30955,7 @@ var edit = function (_Component) {
                                         })
                                     ),
                                     titleChecked && React.createElement(_ColorComponent2.default, {
-                                        label: __("Tile Color", 'premium-block-for-gutenberg'),
+                                        label: __("Tile Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: titleStyles[0].titleColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -30962,7 +30963,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     descChecked && React.createElement(_ColorComponent2.default, {
-                                        label: __("Descreption Color", 'premium-block-for-gutenberg'),
+                                        label: __("Descreption Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: descStyles[0].descColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -30973,7 +30974,7 @@ var edit = function (_Component) {
                                         Fragment,
                                         null,
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Color", 'premium-block-for-gutenberg'),
+                                            label: __("Button Color", 'premium-blocks-for-gutenberg'),
                                             colorValue: btnStyles[0].btnColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -31007,7 +31008,7 @@ var edit = function (_Component) {
                                         Fragment,
                                         null,
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Hover Color", 'premium-block-for-gutenberg'),
+                                            label: __("Button Hover Color", 'premium-blocks-for-gutenberg'),
                                             colorValue: btnStyles[0].btnHoverColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -31015,7 +31016,7 @@ var edit = function (_Component) {
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __('Background Button Hover Color', 'premium-block-for-gutenberg'),
+                                            label: __('Background Button Hover Color', 'premium-blocks-for-gutenberg'),
                                             colorValue: btnStyles[0].btnHoverBack,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -31024,7 +31025,7 @@ var edit = function (_Component) {
                                         })
                                     ),
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __('Border Hover Color', 'premium-block-for-gutenberg'),
+                                        label: __('Border Hover Color', 'premium-blocks-for-gutenberg'),
                                         colorValue: btnHoverBorder,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -34130,7 +34131,7 @@ var attributes = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     descText: {
         type: "array",
@@ -34163,7 +34164,7 @@ var attributes = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __("Click Here")
+        default: __("Click Here", 'premium-blocks-for-gutenberg')
     },
     btnLink: {
         type: "string",
@@ -34568,11 +34569,11 @@ var mapAttrs = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title", 'premium-block-for-gutenberg')
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description", 'premium-block-for-gutenberg')
+        default: __("Cool Description", 'premium-blocks-for-gutenberg')
     },
     mapMarker: {
         type: "boolean",
@@ -34690,11 +34691,11 @@ var mapAttrs_1_2 = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title", 'premium-block-for-gutenberg')
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description", 'premium-block-for-gutenberg')
+        default: __("Cool Description", 'premium-blocks-for-gutenberg')
     },
     mapMarker: {
         type: "boolean",
@@ -34949,16 +34950,16 @@ var PremiumMap = function (_Component) {
 
             var TYPES = [{
                 value: "roadmap",
-                label: __("Road Map", 'premium-block-for-gutenberg')
+                label: __("Road Map", 'premium-blocks-for-gutenberg')
             }, {
                 value: "satellite",
-                label: __("Satellite", 'premium-block-for-gutenberg')
+                label: __("Satellite", 'premium-blocks-for-gutenberg')
             }, {
                 value: "terrain",
-                label: __("Terrain", 'premium-block-for-gutenberg')
+                label: __("Terrain", 'premium-blocks-for-gutenberg')
             }, {
                 value: "hybrid",
-                label: __("Hybrid", 'premium-block-for-gutenberg')
+                label: __("Hybrid", 'premium-blocks-for-gutenberg')
             }];
 
             var ALIGNS = ["left", "center", "right"];
@@ -34979,7 +34980,7 @@ var PremiumMap = function (_Component) {
                             "a",
                             { href: "https://www.latlong.net/", target: "_blank" },
                             "\xA0",
-                            __("here", 'premium-block-for-gutenberg')
+                            __("here", 'premium-blocks-for-gutenberg')
                         )],
                         onChange: function onChange(newLng) {
                             return setAttributes({ centerLng: newLng });
@@ -34996,37 +34997,37 @@ var PremiumMap = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Marker", 'premium-block-for-gutenberg'),
+                        title: __("Marker", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Enable Marker", 'premium-block-for-gutenberg'),
+                        label: __("Enable Marker", 'premium-blocks-for-gutenberg'),
                         checked: mapMarker,
                         onChange: function onChange(check) {
                             return setAttributes({ mapMarker: check });
                         },
-                        help: __("Disable marker is applied on page reload")
+                        help: __("Disable marker is applied on page reload", 'premium-blocks-for-gutenberg')
                     }),
                     mapMarker && React.createElement(
                         Fragment,
                         null,
                         React.createElement(TextControl, {
-                            label: __("Marker Title", 'premium-block-for-gutenberg'),
+                            label: __("Marker Title", 'premium-blocks-for-gutenberg'),
                             value: markerTitle,
                             onChange: function onChange(newText) {
                                 return setAttributes({ markerTitle: newText });
                             }
                         }),
                         React.createElement(TextareaControl, {
-                            label: __("Marker Description", 'premium-block-for-gutenberg'),
+                            label: __("Marker Description", 'premium-blocks-for-gutenberg'),
                             value: markerDesc,
                             onChange: function onChange(newText) {
                                 return setAttributes({ markerDesc: newText });
                             }
                         }),
                         React.createElement(_singleRangeControl2.default, {
-                            label: __("Spacing (PX)", 'premium-block-for-gutenberg'),
+                            label: __("Spacing (PX)", 'premium-blocks-for-gutenberg'),
                             value: gapBetween,
                             min: "10",
                             max: "80",
@@ -35037,7 +35038,7 @@ var PremiumMap = function (_Component) {
                             defaultValue: 10
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Description opened by default", 'premium-block-for-gutenberg'),
+                            label: __("Description opened by default", 'premium-blocks-for-gutenberg'),
                             checked: markerOpen,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ markerOpen: newValue });
@@ -35049,10 +35050,10 @@ var PremiumMap = function (_Component) {
                             onChange: function onChange(newValue) {
                                 return setAttributes({ boxAlign: newValue });
                             },
-                            label: __("Align", 'premium-block-for-gutenberg')
+                            label: __("Align", 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Custom Marker Icon", 'premium-block-for-gutenberg'),
+                            label: __("Custom Marker Icon", 'premium-blocks-for-gutenberg'),
                             checked: markerCustom,
                             onChange: function onChange(check) {
                                 return setAttributes({ markerCustom: check });
@@ -35077,7 +35078,7 @@ var PremiumMap = function (_Component) {
 
                         }),
                         React.createElement(_singleRangeControl2.default, {
-                            label: __("Description Box Max Width (PX)", 'premium-block-for-gutenberg'),
+                            label: __("Description Box Max Width (PX)", 'premium-blocks-for-gutenberg'),
                             value: maxWidth,
                             min: "10",
                             max: "500",
@@ -35088,7 +35089,7 @@ var PremiumMap = function (_Component) {
                             defaultValue: 0
                         }),
                         React.createElement(_singleRangeControl2.default, {
-                            label: __("Description Box Padding (PX)", 'premium-block-for-gutenberg'),
+                            label: __("Description Box Padding (PX)", 'premium-blocks-for-gutenberg'),
                             value: boxPadding,
                             min: "1",
                             max: "50",
@@ -35103,12 +35104,12 @@ var PremiumMap = function (_Component) {
                 mapMarker && markerTitle && React.createElement(
                     PanelBody,
                     {
-                        title: __("Marker Title Style", 'premium-block-for-gutenberg'),
+                        title: __("Marker Title Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Font Size (PX)", 'premium-blocks-for-gutenberg'),
                         value: titleSize,
                         min: "10",
                         max: "80",
@@ -35119,7 +35120,7 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -35130,12 +35131,12 @@ var PremiumMap = function (_Component) {
                 mapMarker && markerDesc && React.createElement(
                     PanelBody,
                     {
-                        title: __("Marker Description Style", 'premium-block-for-gutenberg'),
+                        title: __("Marker Description Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Font Size (PX)", 'premium-blocks-for-gutenberg'),
                         value: descSize,
                         min: "10",
                         max: "80",
@@ -35146,7 +35147,7 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: descColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -35157,12 +35158,12 @@ var PremiumMap = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Controls", 'premium-block-for-gutenberg'),
+                        title: __("Controls", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Map Type", 'premium-block-for-gutenberg'),
+                        label: __("Map Type", 'premium-blocks-for-gutenberg'),
                         options: TYPES,
                         value: mapType,
                         onChange: function onChange(newType) {
@@ -35170,7 +35171,7 @@ var PremiumMap = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Map Height (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Map Height (PX)", 'premium-blocks-for-gutenberg'),
                         value: height,
                         min: "10",
                         max: "800",
@@ -35181,7 +35182,7 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Zoom", 'premium-block-for-gutenberg'),
+                        label: __("Zoom", 'premium-blocks-for-gutenberg'),
                         value: zoom,
                         min: "1",
                         max: "14",
@@ -35192,35 +35193,35 @@ var PremiumMap = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Map Type Controls", 'premium-block-for-gutenberg'),
+                        label: __("Map Type Controls", 'premium-blocks-for-gutenberg'),
                         checked: mapTypeControl,
                         onChange: function onChange(check) {
                             return setAttributes({ mapTypeControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Zoom Controls", 'premium-block-for-gutenberg'),
+                        label: __("Zoom Controls", 'premium-blocks-for-gutenberg'),
                         checked: zoomControl,
                         onChange: function onChange(check) {
                             return setAttributes({ zoomControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Street View Control", 'premium-block-for-gutenberg'),
+                        label: __("Street View Control", 'premium-blocks-for-gutenberg'),
                         checked: streetViewControl,
                         onChange: function onChange(check) {
                             return setAttributes({ streetViewControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Full Screen Control", 'premium-block-for-gutenberg'),
+                        label: __("Full Screen Control", 'premium-blocks-for-gutenberg'),
                         checked: fullscreenControl,
                         onChange: function onChange(check) {
                             return setAttributes({ fullscreenControl: check });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Scroll Wheel Zoom", 'premium-block-for-gutenberg'),
+                        label: __("Scroll Wheel Zoom", 'premium-blocks-for-gutenberg'),
                         checked: scrollwheel,
                         onChange: function onChange(check) {
                             return setAttributes({ scrollwheel: check });
@@ -35230,14 +35231,14 @@ var PremiumMap = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Map Style", 'premium-block-for-gutenberg'),
+                        title: __("Map Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextareaControl, {
-                        label: __("Maps Style", 'premium-block-for-gutenberg'),
+                        label: __("Maps Style", 'premium-blocks-for-gutenberg'),
                         value: mapStyle,
-                        help: [__("Get your custom styling from", 'premium-block-for-gutenberg'), React.createElement(
+                        help: [__("Get your custom styling from", 'premium-blocks-for-gutenberg'), React.createElement(
                             "a",
                             { href: "https://snazzymaps.com/", target: "_blank" },
                             "\xA0",
@@ -35760,52 +35761,52 @@ var PremiumPricingTable = function (_Component) {
 
             var ALIGNS = [{
                 value: "flex-start",
-                label: __("Top", 'premium-block-for-gutenberg')
+                label: __("Top", 'premium-blocks-for-gutenberg')
             }, {
                 value: "center",
-                label: __("Middle", 'premium-block-for-gutenberg')
+                label: __("Middle", 'premium-blocks-for-gutenberg')
             }, {
                 value: "flex-end",
-                label: __("Bottom", 'premium-block-for-gutenberg')
+                label: __("Bottom", 'premium-blocks-for-gutenberg')
             }];
             var PRICE = [{
                 value: "slash",
-                label: __("Slashed Price", 'premium-block-for-gutenberg')
+                label: __("Slashed Price", 'premium-blocks-for-gutenberg')
             }, {
                 value: "curr",
-                label: __("Currency", 'premium-block-for-gutenberg')
+                label: __("Currency", 'premium-blocks-for-gutenberg')
             }, {
                 value: "price",
-                label: __("Price", 'premium-block-for-gutenberg')
+                label: __("Price", 'premium-blocks-for-gutenberg')
             }, {
                 value: "divider",
-                label: __("Divider", 'premium-block-for-gutenberg')
+                label: __("Divider", 'premium-blocks-for-gutenberg')
             }, {
                 value: "duration",
-                label: __("Duration", 'premium-block-for-gutenberg')
+                label: __("Duration", 'premium-blocks-for-gutenberg')
             }];
             var TYPE = [{
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             }, {
                 value: "check",
-                label: __("Check Mark", 'premium-block-for-gutenberg')
+                label: __("Check Mark", 'premium-blocks-for-gutenberg')
             }, {
                 value: "disc",
-                label: __("Filled Circle", 'premium-block-for-gutenberg')
+                label: __("Filled Circle", 'premium-blocks-for-gutenberg')
             }, {
                 value: "circle",
-                label: __("Outline Circle", 'premium-block-for-gutenberg')
+                label: __("Outline Circle", 'premium-blocks-for-gutenberg')
             }, {
                 value: "square",
-                label: __("Square", 'premium-block-for-gutenberg')
+                label: __("Square", 'premium-blocks-for-gutenberg')
             }];
             var POSITION = [{
                 value: "right",
-                label: __("Right", 'premium-block-for-gutenberg')
+                label: __("Right", 'premium-blocks-for-gutenberg')
             }, {
                 value: "left",
-                label: __("Left", 'premium-block-for-gutenberg')
+                label: __("Left", 'premium-blocks-for-gutenberg')
             }];
             var FEATURES_ALIGN = ["left", "center", "right"];
 
@@ -35903,47 +35904,47 @@ var PremiumPricingTable = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Display Options", 'premium-block-for-gutenberg'),
+                        title: __("Display Options", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(ToggleControl, {
-                        label: __("Title", 'premium-block-for-gutenberg'),
+                        label: __("Title", 'premium-blocks-for-gutenberg'),
                         checked: titleChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ titleChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Price", 'premium-block-for-gutenberg'),
+                        label: __("Price", 'premium-blocks-for-gutenberg'),
                         checked: priceChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ priceChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Features", 'premium-block-for-gutenberg'),
+                        label: __("Features", 'premium-blocks-for-gutenberg'),
                         checked: listChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ listChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Description", 'premium-block-for-gutenberg'),
+                        label: __("Description", 'premium-blocks-for-gutenberg'),
                         checked: descChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ descChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Button", 'premium-block-for-gutenberg'),
+                        label: __("Button", 'premium-blocks-for-gutenberg'),
                         checked: btnChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ btnChecked: newValue });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Badge", 'premium-block-for-gutenberg'),
+                        label: __("Badge", 'premium-blocks-for-gutenberg'),
                         checked: badgeChecked,
                         onChange: function onChange(newValue) {
                             return setAttributes({ badgeChecked: newValue });
@@ -35953,12 +35954,12 @@ var PremiumPricingTable = function (_Component) {
                 titleChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Title", 'premium-block-for-gutenberg'),
+                        title: __("Title", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_radioControl2.default, {
-                        label: __("Heading", 'premium-block-for-gutenberg'),
+                        label: __("Heading", 'premium-blocks-for-gutenberg'),
                         choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
                         value: titleStyles[0].titleTag,
                         onChange: function onChange(newValue) {
@@ -35970,7 +35971,7 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveTitleStyles,
                         fontSizeType: {
                             value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: titleStyles[0].titleSize,
                         fontSizeMobile: titleStyles[0].titleSizeMobile,
@@ -36006,7 +36007,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: titleStyles[0].titleColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36014,7 +36015,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: titleStyles[0].titleBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36045,7 +36046,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings", 'premium-block-for-gutenberg')
+                            __("Spacings", 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -36065,7 +36066,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Top (PX)", 'premium-blocks-for-gutenberg'),
                                         value: titleStyles[0].titleMarginT,
                                         min: "10",
                                         max: "80",
@@ -36076,7 +36077,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 10
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Bottom (PX)", 'premium-blocks-for-gutenberg'),
                                         value: titleStyles[0].titleMarginB,
                                         min: "0",
                                         max: "100",
@@ -36087,7 +36088,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Padding (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Padding (PX)", 'premium-blocks-for-gutenberg'),
                                         value: titleStyles[0].titlePadding,
                                         min: "0",
                                         max: "100",
@@ -36105,40 +36106,40 @@ var PremiumPricingTable = function (_Component) {
                 priceChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Price", 'premium-block-for-gutenberg'),
+                        title: __("Price", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Slashed Price", 'premium-block-for-gutenberg'),
+                        label: __("Slashed Price", 'premium-blocks-for-gutenberg'),
                         value: priceStyles[0].slashPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ slashPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Currency", 'premium-block-for-gutenberg'),
+                        label: __("Currency", 'premium-blocks-for-gutenberg'),
                         value: priceStyles[0].currPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ currPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Price", 'premium-block-for-gutenberg'),
+                        label: __("Price", 'premium-blocks-for-gutenberg'),
                         value: priceStyles[0].valPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ valPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Divider", 'premium-block-for-gutenberg'),
+                        label: __("Divider", 'premium-blocks-for-gutenberg'),
                         value: priceStyles[0].divPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ divPrice: value });
                         }
                     }),
                     React.createElement(TextControl, {
-                        label: __("Duration", 'premium-block-for-gutenberg'),
+                        label: __("Duration", 'premium-blocks-for-gutenberg'),
                         value: priceStyles[0].durPrice,
                         onChange: function onChange(value) {
                             return savePriceStyles({ durPrice: value });
@@ -36147,12 +36148,12 @@ var PremiumPricingTable = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Element to Style", 'premium-block-for-gutenberg'),
+                            title: __("Element to Style", 'premium-blocks-for-gutenberg'),
                             className: "premium-panel-body-inner",
                             initialOpen: false
                         },
                         React.createElement(SelectControl, {
-                            label: __("Element", 'premium-block-for-gutenberg'),
+                            label: __("Element", 'premium-blocks-for-gutenberg'),
                             options: PRICE,
                             value: priceStyles[0].selectedStyle,
                             onChange: function onChange(newElem) {
@@ -36167,7 +36168,7 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].slashSizeUnit,
-                                    label: __("slashSizeUnit", 'premium-block-for-gutenberg')
+                                    label: __("slashSizeUnit", 'premium-blocks-for-gutenberg')
                                 },
                                 fontSize: priceStyles[0].slashSize,
                                 fontSizeMobile: priceStyles[0].slashSizeMobile,
@@ -36187,7 +36188,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
+                                label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].slashV,
                                 onChange: function onChange(newValue) {
@@ -36195,7 +36196,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", 'premium-block-for-gutenberg'),
+                                label: __("Text Color", 'premium-blocks-for-gutenberg'),
                                 colorValue: priceStyles[0].slashColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -36211,7 +36212,7 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].currSizeUnit,
-                                    label: __("currSizeUnit", 'premium-block-for-gutenberg')
+                                    label: __("currSizeUnit", 'premium-blocks-for-gutenberg')
                                 },
                                 fontSize: priceStyles[0].currSize,
                                 fontSizeMobile: priceStyles[0].currSizeMobile,
@@ -36231,7 +36232,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
+                                label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].currV,
                                 onChange: function onChange(newValue) {
@@ -36239,7 +36240,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", 'premium-block-for-gutenberg'),
+                                label: __("Text Color", 'premium-blocks-for-gutenberg'),
                                 colorValue: priceStyles[0].currColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -36257,7 +36258,7 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].valSizeUnit,
-                                    label: __("valSizeUnit", 'premium-block-for-gutenberg')
+                                    label: __("valSizeUnit", 'premium-blocks-for-gutenberg')
                                 },
                                 fontSize: priceStyles[0].valSize,
                                 fontSizeMobile: priceStyles[0].valSizeMobile,
@@ -36278,7 +36279,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
+                                label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].valV,
                                 onChange: function onChange(newValue) {
@@ -36286,7 +36287,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", 'premium-block-for-gutenberg'),
+                                label: __("Text Color", 'premium-blocks-for-gutenberg'),
                                 colorValue: priceStyles[0].valColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -36304,7 +36305,7 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].divSizeUnit,
-                                    label: __("divSizeUnit", 'premium-block-for-gutenberg')
+                                    label: __("divSizeUnit", 'premium-blocks-for-gutenberg')
                                 },
                                 fontSize: priceStyles[0].divSize,
                                 fontSizeMobile: priceStyles[0].divSizeMobile,
@@ -36324,7 +36325,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
+                                label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].divV,
                                 onChange: function onChange(newValue) {
@@ -36332,7 +36333,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", 'premium-block-for-gutenberg'),
+                                label: __("Text Color", 'premium-blocks-for-gutenberg'),
                                 colorValue: priceStyles[0].divColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -36348,7 +36349,7 @@ var PremiumPricingTable = function (_Component) {
                                 setAttributes: savePriceStyles,
                                 fontSizeType: {
                                     value: priceStyles[0].durSizeUnit,
-                                    label: __("durSizeUnit", 'premium-block-for-gutenberg')
+                                    label: __("durSizeUnit", 'premium-blocks-for-gutenberg')
                                 },
                                 fontSize: priceStyles[0].durSize,
                                 fontSizeMobile: priceStyles[0].durSizeMobile,
@@ -36368,7 +36369,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(SelectControl, {
-                                label: __("Vertical Align", 'premium-block-for-gutenberg'),
+                                label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
                                 options: ALIGNS,
                                 value: priceStyles[0].durV,
                                 onChange: function onChange(newValue) {
@@ -36376,7 +36377,7 @@ var PremiumPricingTable = function (_Component) {
                                 }
                             }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Text Color", 'premium-block-for-gutenberg'),
+                                label: __("Text Color", 'premium-blocks-for-gutenberg'),
                                 colorValue: priceStyles[0].durColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
@@ -36391,7 +36392,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings", 'premium-block-for-gutenberg')
+                            __("Spacings", 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -36411,7 +36412,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Container Margin Top (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Container Margin Top (PX)", 'premium-blocks-for-gutenberg'),
                                         value: priceStyles[0].priceMarginT,
                                         min: "0",
                                         max: "100",
@@ -36422,7 +36423,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Container Margin Bottom (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Container Margin Bottom (PX)", 'premium-blocks-for-gutenberg'),
                                         value: priceStyles[0].priceMarginB,
                                         min: "0",
                                         max: "100",
@@ -36433,7 +36434,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Container Padding (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Container Padding (PX)", 'premium-blocks-for-gutenberg'),
                                         value: priceStyles[0].pricePadding,
                                         min: "0",
                                         max: "100",
@@ -36459,12 +36460,12 @@ var PremiumPricingTable = function (_Component) {
                 listChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Features", 'premium-block-for-gutenberg'),
+                        title: __("Features", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_radioControl2.default, {
-                        label: __("Align", 'premium-block-for-gutenberg'),
+                        label: __("Align", 'premium-blocks-for-gutenberg'),
                         choices: ["left", "center", "right"],
                         value: featureStyles[0].featsAlign,
                         onChange: function onChange(newValue) {
@@ -36472,7 +36473,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("List Style", 'premium-block-for-gutenberg'),
+                        label: __("List Style", 'premium-blocks-for-gutenberg'),
                         options: TYPE,
                         value: featureStyles[0].listStyle,
                         onChange: function onChange(newType) {
@@ -36484,7 +36485,7 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveFeatureStyle,
                         fontSizeType: {
                             value: featureStyles[0].listSizeUnit,
-                            label: __("listSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("listSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: featureStyles[0].listSize,
                         fontSizeMobile: featureStyles[0].listSizeMobile,
@@ -36520,7 +36521,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("List Items Color", 'premium-block-for-gutenberg'),
+                        label: __("List Items Color", 'premium-blocks-for-gutenberg'),
                         colorValue: featureStyles[0].listColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36528,7 +36529,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: featureStyles[0].listBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36541,7 +36542,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings", 'premium-block-for-gutenberg')
+                            __("Spacings", 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -36561,7 +36562,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Top (PX)", 'premium-blocks-for-gutenberg'),
                                         value: featureStyles[0].listMarginT,
                                         onChange: function onChange(newSize) {
                                             return saveFeatureStyle({ listMarginT: newSize });
@@ -36570,7 +36571,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Bottom (PX)", 'premium-blocks-for-gutenberg'),
                                         value: featureStyles[0].listMarginB,
                                         onChange: function onChange(newSize) {
                                             return saveFeatureStyle({ listMarginB: newSize });
@@ -36579,7 +36580,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Padding (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Padding (PX)", 'premium-blocks-for-gutenberg'),
                                         value: featureStyles[0].listPadding,
                                         onChange: function onChange(newSize) {
                                             return saveFeatureStyle({ listPadding: newSize });
@@ -36595,7 +36596,7 @@ var PremiumPricingTable = function (_Component) {
                 descChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Description", 'premium-block-for-gutenberg'),
+                        title: __("Description", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -36604,7 +36605,7 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveDescriptionStyle,
                         fontSizeType: {
                             value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: descStyles[0].descSize,
                         fontSizeMobile: descStyles[0].descSizeMobile,
@@ -36637,7 +36638,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: descStyles[0].descColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36645,7 +36646,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: descStyles[0].descBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36658,7 +36659,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings", 'premium-block-for-gutenberg')
+                            __("Spacings", 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -36678,7 +36679,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Top (PX)", 'premium-blocks-for-gutenberg'),
                                         value: descStyles[0].descMarginT,
                                         onChange: function onChange(newMargin) {
                                             return saveDescriptionStyle({ descMarginT: newMargin });
@@ -36687,7 +36688,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Bottom (PX)", 'premium-blocks-for-gutenberg'),
                                         value: descStyles[0].descMarginB,
                                         onChange: function onChange(newMargin) {
                                             return saveDescriptionStyle({ descMarginB: newMargin });
@@ -36696,7 +36697,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Padding (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Padding (PX)", 'premium-blocks-for-gutenberg'),
                                         value: descStyles[0].descPadding,
                                         onChange: function onChange(newPadding) {
                                             return saveDescriptionStyle({ descPadding: newPadding });
@@ -36712,7 +36713,7 @@ var PremiumPricingTable = function (_Component) {
                 btnChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Button", 'premium-block-for-gutenberg'),
+                        title: __("Button", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -36721,7 +36722,7 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveButtonStyle,
                         fontSizeType: {
                             value: buttonStyles[0].btnSizeUnit,
-                            label: __("btnSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("btnSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: buttonStyles[0].btnSize,
                         fontSizeMobile: buttonStyles[0].btnSizeMobile,
@@ -36757,7 +36758,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: buttonStyles[0].btnColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36765,7 +36766,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Hover Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Hover Color", 'premium-blocks-for-gutenberg'),
                         colorValue: buttonStyles[0].btnHoverColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36773,7 +36774,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: buttonStyles[0].btnBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36781,7 +36782,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Hover Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Hover Color", 'premium-blocks-for-gutenberg'),
                         colorValue: buttonStyles[0].btnHoverBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36826,7 +36827,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings", 'premium-block-for-gutenberg')
+                            __("Spacings", 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -36846,7 +36847,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Width (%)", 'premium-block-for-gutenberg'),
+                                        label: __("Width (%)", 'premium-blocks-for-gutenberg'),
                                         value: buttonStyles[0].btnWidth,
                                         onChange: function onChange(newSize) {
                                             return saveButtonStyle({ btnWidth: newSize });
@@ -36855,7 +36856,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Top (PX)", 'premium-blocks-for-gutenberg'),
                                         value: buttonStyles[0].btnMarginT,
                                         onChange: function onChange(newPadding) {
                                             return saveButtonStyle({ btnMarginT: newPadding });
@@ -36864,7 +36865,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
+                                        label: __("Margin Bottom (PX)", 'premium-blocks-for-gutenberg'),
                                         value: buttonStyles[0].btnMarginB,
                                         onChange: function onChange(newPadding) {
                                             return saveButtonStyle({ btnMarginB: newPadding });
@@ -36873,7 +36874,7 @@ var PremiumPricingTable = function (_Component) {
                                         defaultValue: 0
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Padding", 'premium-block-for-gutenberg'),
+                                        label: __("Padding", 'premium-blocks-for-gutenberg'),
                                         value: buttonStyles[0].btnPadding,
                                         onChange: function onChange(newPadding) {
                                             return saveButtonStyle({ btnPadding: newPadding });
@@ -36890,7 +36891,7 @@ var PremiumPricingTable = function (_Component) {
                         })
                     ),
                     React.createElement(ToggleControl, {
-                        label: __("Open Link in a new tab", 'premium-block-for-gutenberg'),
+                        label: __("Open Link in a new tab", 'premium-blocks-for-gutenberg'),
                         checked: buttonStyles[0].btnTarget,
                         onChange: function onChange(newValue) {
                             return saveButtonStyle({ btnTarget: newValue });
@@ -36900,19 +36901,19 @@ var PremiumPricingTable = function (_Component) {
                 badgeChecked && React.createElement(
                     PanelBody,
                     {
-                        title: __("Badge", 'premium-block-for-gutenberg'),
+                        title: __("Badge", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Text", 'premium-block-for-gutenberg'),
+                        label: __("Text", 'premium-blocks-for-gutenberg'),
                         value: badgeStyles[0].badgeText,
                         onChange: function onChange(value) {
                             return saveBadgeStyles({ badgeText: value });
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Position", 'premium-block-for-gutenberg'),
+                        label: __("Position", 'premium-blocks-for-gutenberg'),
                         options: POSITION,
                         value: badgeStyles[0].badgePos,
                         onChange: function onChange(newValue) {
@@ -36924,7 +36925,7 @@ var PremiumPricingTable = function (_Component) {
                         setAttributes: saveBadgeStyles,
                         fontSizeType: {
                             value: badgeStyles[0].badgeTextUnit,
-                            label: __("badgeTextUnit", 'premium-block-for-gutenberg')
+                            label: __("badgeTextUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: badgeStyles[0].badgeSize,
                         fontSizeMobile: badgeStyles[0].badgeSizeMobile,
@@ -36956,7 +36957,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: badgeStyles[0].badgeColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36964,7 +36965,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                         colorValue: badgeStyles[0].badgeBack,
                         colorDefault: '',
                         onColorChange: function onColorChange(newColor) {
@@ -36972,7 +36973,7 @@ var PremiumPricingTable = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Vertical Offset", 'premium-block-for-gutenberg'),
+                        label: __("Vertical Offset", 'premium-blocks-for-gutenberg'),
                         value: badgeStyles[0].badgeTop,
                         onChange: function onChange(newValue) {
                             return saveBadgeStyles({ badgeTop: newValue });
@@ -36981,7 +36982,7 @@ var PremiumPricingTable = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Horizontal Offset", 'premium-block-for-gutenberg'),
+                        label: __("Horizontal Offset", 'premium-blocks-for-gutenberg'),
                         value: badgeStyles[0].badgeHorizontal,
                         min: "1",
                         max: "150",
@@ -36992,7 +36993,7 @@ var PremiumPricingTable = function (_Component) {
                         defaultValue: 1
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Badge Size", 'premium-block-for-gutenberg'),
+                        label: __("Badge Size", 'premium-blocks-for-gutenberg'),
                         value: badgeStyles[0].badgeSize,
                         min: "0",
                         max: "250",
@@ -37003,7 +37004,7 @@ var PremiumPricingTable = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Text Width", 'premium-block-for-gutenberg'),
+                        label: __("Text Width", 'premium-blocks-for-gutenberg'),
                         min: "1",
                         max: "200",
                         value: badgeStyles[0].badgeWidth,
@@ -37017,7 +37018,7 @@ var PremiumPricingTable = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Table", 'premium-block-for-gutenberg'),
+                        title: __("Table", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -37090,7 +37091,7 @@ var PremiumPricingTable = function (_Component) {
                         React.createElement(
                             "strong",
                             null,
-                            __("Spacings", 'premium-block-for-gutenberg')
+                            __("Spacings", 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(Dropdown, {
                             className: "premium-control-toggle-btn",
@@ -37110,7 +37111,7 @@ var PremiumPricingTable = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Padding", 'premium-block-for-gutenberg'),
+                                        label: __("Padding", 'premium-blocks-for-gutenberg'),
                                         value: tableStyles[0].tablePadding,
                                         min: "0",
                                         max: "50",
@@ -37208,7 +37209,7 @@ var PremiumPricingTable = function (_Component) {
                         onChange: function onChange(newText) {
                             return setAttributes({ title: newText });
                         },
-                        placeholder: __("Awesome Title", 'premium-block-for-gutenberg'),
+                        placeholder: __("Awesome Title", 'premium-blocks-for-gutenberg'),
                         value: title,
                         style: {
                             fontSize: "" + titleFontSize + titleStyles[0].titleSizeUnit,
@@ -40543,7 +40544,7 @@ var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls;
 
 
-var CONTENT = [["core/paragraph", { content: __("Insert your text or select a block ", 'premium-block-for-gutenberg') }]];
+var CONTENT = [["core/paragraph", { content: __("Insert your text or select a block ", 'premium-blocks-for-gutenberg') }]];
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     if (device === 'Mobile') {
         if (undefined !== mobileSize && '' !== mobileSize) {
@@ -40610,27 +40611,27 @@ var edit = function edit(props) {
 
     var WIDTH = [{
         value: "boxed",
-        label: __("Boxed", 'premium-block-for-gutenberg')
+        label: __("Boxed", 'premium-blocks-for-gutenberg')
     }, {
         value: "full",
-        label: __("Full Width", 'premium-block-for-gutenberg')
+        label: __("Full Width", 'premium-blocks-for-gutenberg')
     }];
     var HEIGHT = [{
         value: "fit",
-        label: __("Fit to Screen", 'premium-block-for-gutenberg')
+        label: __("Fit to Screen", 'premium-blocks-for-gutenberg')
     }, {
         value: "min",
-        label: __("Min Height", 'premium-block-for-gutenberg')
+        label: __("Min Height", 'premium-blocks-for-gutenberg')
     }];
     var VPOSITION = [{
         value: "top",
-        label: __("Top", 'premium-block-for-gutenberg')
+        label: __("Top", 'premium-blocks-for-gutenberg')
     }, {
         value: "middle",
-        label: __("Middle", 'premium-block-for-gutenberg')
+        label: __("Middle", 'premium-blocks-for-gutenberg')
     }, {
         value: "bottom",
-        label: __("Bottom", 'premium-block-for-gutenberg')
+        label: __("Bottom", 'premium-blocks-for-gutenberg')
     }];
 
     var mainClasses = (0, _classnames2.default)(className, "premium-container");
@@ -40685,20 +40686,20 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("General Settings", 'premium-block-for-gutenberg'),
+                title: __("General Settings", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body premium-stretch-section",
                 initialOpen: true
             },
             React.createElement(ToggleControl, {
-                label: __("Stretch Section", 'premium-block-for-gutenberg'),
+                label: __("Stretch Section", 'premium-blocks-for-gutenberg'),
                 checked: stretchSection,
                 onChange: function onChange(check) {
                     return setAttributes({ stretchSection: check });
                 },
-                help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-block-for-gutenberg')
+                help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')
             }),
             stretchSection && React.createElement(SelectControl, {
-                label: __("Content Width", 'premium-block-for-gutenberg'),
+                label: __("Content Width", 'premium-blocks-for-gutenberg'),
                 options: WIDTH,
                 value: innerWidthType,
                 onChange: function onChange(newValue) {
@@ -40706,7 +40707,7 @@ var edit = function edit(props) {
                 }
             }),
             "boxed" === innerWidthType && stretchSection && React.createElement(_singleRangeControl2.default, {
-                label: __("Max Width", 'premium-block-for-gutenberg'),
+                label: __("Max Width", 'premium-blocks-for-gutenberg'),
                 value: innerWidth,
                 min: "1",
                 max: "1600",
@@ -40717,7 +40718,7 @@ var edit = function edit(props) {
                 showUnit: false
             }),
             React.createElement(SelectControl, {
-                label: __("Height", 'premium-block-for-gutenberg'),
+                label: __("Height", 'premium-blocks-for-gutenberg'),
                 options: HEIGHT,
                 value: height,
                 onChange: function onChange(newValue) {
@@ -40728,7 +40729,7 @@ var edit = function edit(props) {
                 Fragment,
                 null,
                 React.createElement(_singleRangeControl2.default, {
-                    label: __("Min Height", 'premium-block-for-gutenberg'),
+                    label: __("Min Height", 'premium-blocks-for-gutenberg'),
                     value: minHeight,
                     min: "1",
                     max: "800",
@@ -40745,8 +40746,8 @@ var edit = function edit(props) {
                 })
             ),
             React.createElement(SelectControl, {
-                label: __("Content Position", 'premium-block-for-gutenberg'),
-                help: __("If you have two or more inner columns then this option will work only on the preview page", 'premium-block-for-gutenberg'),
+                label: __("Content Position", 'premium-blocks-for-gutenberg'),
+                help: __("If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'),
                 options: VPOSITION,
                 value: vPos,
                 onChange: function onChange(newValue) {
@@ -40757,7 +40758,7 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Background", 'premium-block-for-gutenberg'),
+                title: __("Background", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
@@ -40783,7 +40784,7 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Border", 'premium-block-for-gutenberg'),
+                title: __("Border", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
@@ -40848,7 +40849,7 @@ var edit = function edit(props) {
         React.createElement(
             PanelBody,
             {
-                title: __("Spacings", 'premium-block-for-gutenberg'),
+                title: __("Spacings", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
@@ -42232,13 +42233,13 @@ var edit = function (_Component) {
 
             var RADIUS = [{
                 value: "0",
-                label: __("Square", 'premium-block-for-gutenberg')
+                label: __("Square", 'premium-blocks-for-gutenberg')
             }, {
                 value: "50%",
-                label: __("Circle", 'premium-block-for-gutenberg')
+                label: __("Circle", 'premium-blocks-for-gutenberg')
             }, {
                 value: "15px",
-                label: __("Rounded", 'premium-block-for-gutenberg')
+                label: __("Rounded", 'premium-blocks-for-gutenberg')
             }];
 
             var saveAuthorStyle = function saveAuthorStyle(value) {
@@ -42334,21 +42335,21 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Author", 'premium-block-for-gutenberg'),
+                        title: __("Author", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: true
                     },
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Image", 'premium-block-for-gutenberg'),
+                            title: __("Image", 'premium-blocks-for-gutenberg'),
                             className: "premium-panel-body-inner",
                             initialOpen: false
                         },
                         React.createElement(
                             "p",
                             null,
-                            __("Author Image", 'premium-block-for-gutenberg')
+                            __("Author Image", 'premium-blocks-for-gutenberg')
                         ),
                         !authorImgUrl && React.createElement(_defaultImage2.default, null),
                         React.createElement(_premiumMediaUpload2.default, {
@@ -42369,7 +42370,7 @@ var edit = function (_Component) {
                             }
                         }),
                         authorImgUrl && React.createElement(SelectControl, {
-                            label: __("Image Style", 'premium-block-for-gutenberg'),
+                            label: __("Image Style", 'premium-blocks-for-gutenberg'),
                             options: RADIUS,
                             value: imgRadius,
                             onChange: function onChange(newWeight) {
@@ -42377,7 +42378,7 @@ var edit = function (_Component) {
                             }
                         }),
                         authorImgUrl && React.createElement(_singleRangeControl2.default, {
-                            label: __("Size", 'premium-block-for-gutenberg'),
+                            label: __("Size", 'premium-blocks-for-gutenberg'),
                             value: imgSize,
                             max: "200",
                             onChange: function onChange(newSize) {
@@ -42387,7 +42388,7 @@ var edit = function (_Component) {
                             defaultValue: 0
                         }),
                         authorImgUrl && React.createElement(_singleRangeControl2.default, {
-                            label: __("Border Width (PX)", 'premium-block-for-gutenberg'),
+                            label: __("Border Width (PX)", 'premium-blocks-for-gutenberg'),
                             value: imgBorder,
                             onChange: function onChange(newSize) {
                                 return setAttributes({ imgBorder: newSize });
@@ -42396,7 +42397,7 @@ var edit = function (_Component) {
                             defaultValue: 0
                         }),
                         authorImgUrl && React.createElement(_ColorComponent2.default, {
-                            label: __("Border Color", 'premium-block-for-gutenberg'),
+                            label: __("Border Color", 'premium-blocks-for-gutenberg'),
                             colorValue: imgBorderColor,
                             colorDefault: '',
                             onColorChange: function onColorChange(newValue) {
@@ -42410,14 +42411,14 @@ var edit = function (_Component) {
                         onChange: function onChange(newValue) {
                             return saveAuthorStyle({ authorTag: newValue });
                         },
-                        label: __("Author HTML Tag", 'premium-block-for-gutenberg')
+                        label: __("Author HTML Tag", 'premium-blocks-for-gutenberg')
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "style", "upper", "spacing"],
                         setAttributes: saveAuthorStyle,
                         fontSizeType: {
                             value: authorStyles[0].authorSizeUnit,
-                            label: __("authorSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("authorSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: authorStyles[0].authorSize,
                         fontSizeMobile: authorStyles[0].authorSizeMobile,
@@ -42449,7 +42450,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", 'premium-block-for-gutenberg'),
+                        label: __("Color", 'premium-blocks-for-gutenberg'),
                         colorValue: authorStyles[0].authorColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -42460,12 +42461,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Content", 'premium-block-for-gutenberg'),
+                        title: __("Content", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_responsiveRangeControl2.default, {
-                        label: __("Font Size", 'premium-block-for-gutenberg'),
+                        label: __("Font Size", 'premium-blocks-for-gutenberg'),
                         value: contentStyle[0].bodySize,
                         onChange: function onChange(value) {
                             return saveContentStyle({ bodySize: value });
@@ -42487,7 +42488,7 @@ var edit = function (_Component) {
                         units: ["px", "em"]
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Line Height (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Line Height (PX)", 'premium-blocks-for-gutenberg'),
                         value: contentStyle[0].bodyLine,
                         onChange: function onChange(value) {
                             return saveContentStyle({ bodyLine: value });
@@ -42498,7 +42499,7 @@ var edit = function (_Component) {
                         max: 100
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", 'premium-block-for-gutenberg'),
+                        label: __("Color", 'premium-blocks-for-gutenberg'),
                         colorValue: contentStyle[0].bodyColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -42506,7 +42507,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Margin Top (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Margin Top (PX)", 'premium-blocks-for-gutenberg'),
                         value: contentStyle[0].bodyTop,
                         onChange: function onChange(newSize) {
                             return saveContentStyle({ bodyTop: newSize });
@@ -42515,7 +42516,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Margin Bottom (PX)", 'premium-block-for-gutenberg'),
+                        label: __("Margin Bottom (PX)", 'premium-blocks-for-gutenberg'),
                         value: contentStyle[0].bodyBottom,
                         onChange: function onChange(newSize) {
                             return saveContentStyle({ bodyBottom: newSize });
@@ -42527,7 +42528,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Company", 'premium-block-for-gutenberg'),
+                        title: __("Company", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -42537,10 +42538,10 @@ var edit = function (_Component) {
                         onChange: function onChange(newValue) {
                             return saveAuthorStyle({ authorComTag: newValue });
                         },
-                        label: __("HTML Tag", 'premium-block-for-gutenberg')
+                        label: __("HTML Tag", 'premium-blocks-for-gutenberg')
                     }),
                     React.createElement(_responsiveRangeControl2.default, {
-                        label: __("Font Size", 'premium-block-for-gutenberg'),
+                        label: __("Font Size", 'premium-blocks-for-gutenberg'),
                         value: companyStyles[0].authorComSize,
                         onChange: function onChange(value) {
                             return saveCompanyStyle({ authorComSize: value });
@@ -42562,7 +42563,7 @@ var edit = function (_Component) {
                         units: ["px", "em"]
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
                         colorValue: companyStyles[0].authorComColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -42570,7 +42571,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Dash Color", 'premium-block-for-gutenberg'),
+                        label: __("Dash Color", 'premium-blocks-for-gutenberg'),
                         colorValue: companyStyles[0].dashColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -42578,21 +42579,21 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("URL", 'premium-block-for-gutenberg'),
+                        label: __("URL", 'premium-blocks-for-gutenberg'),
                         checked: companyStyles[0].urlCheck,
                         onChange: function onChange(newCheck) {
                             return saveCompanyStyle({ urlCheck: newCheck });
                         }
                     }),
                     companyStyles[0].urlCheck && React.createElement(TextControl, {
-                        label: __("URL", 'premium-block-for-gutenberg'),
+                        label: __("URL", 'premium-blocks-for-gutenberg'),
                         value: companyStyles[0].urlText,
                         onChange: function onChange(newURL) {
                             return saveCompanyStyle({ urlText: newURL });
                         }
                     }),
                     companyStyles[0].urlCheck && React.createElement(ToggleControl, {
-                        label: __("Open Link in a New Tab", 'premium-block-for-gutenberg'),
+                        label: __("Open Link in a New Tab", 'premium-blocks-for-gutenberg'),
                         checked: companyStyles[0].urlTarget,
                         onChange: function onChange(newCheck) {
                             return saveCompanyStyle({ urlTarget: newCheck });
@@ -42602,12 +42603,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Quotations", 'premium-block-for-gutenberg'),
+                        title: __("Quotations", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Size (EM)", 'premium-block-for-gutenberg'),
+                        label: __("Size (EM)", 'premium-blocks-for-gutenberg'),
                         value: quoteStyles[0].quotSize,
                         min: "1",
                         max: "12",
@@ -42618,7 +42619,7 @@ var edit = function (_Component) {
                         defaultValue: 0
                     }),
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Quotations Color", 'premium-block-for-gutenberg'),
+                        label: __("Quotations Color", 'premium-blocks-for-gutenberg'),
                         colorValue: quoteStyles[0].quotColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -42626,7 +42627,7 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Opacity", 'premium-block-for-gutenberg'),
+                        label: __("Opacity", 'premium-blocks-for-gutenberg'),
                         value: quoteStyles[0].quotOpacity,
                         onChange: function onChange(newValue) {
                             return saveQuoteStyles({ quotOpacity: newValue });
@@ -42638,7 +42639,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Container", 'premium-block-for-gutenberg'),
+                        title: __("Container", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -44921,16 +44922,16 @@ var edit = function (_Component) {
 
             var TYPE = [{
                 value: "youtube",
-                label: __("Youtube", 'premium-block-for-gutenberg')
+                label: __("Youtube", 'premium-blocks-for-gutenberg')
             }, {
                 value: "vimeo",
-                label: __("Vimeo", 'premium-block-for-gutenberg')
+                label: __("Vimeo", 'premium-blocks-for-gutenberg')
             }, {
                 value: "daily",
-                label: __("Daily Motion", 'premium-block-for-gutenberg')
+                label: __("Daily Motion", 'premium-blocks-for-gutenberg')
             }, {
                 value: "self",
-                label: __("Self Hosted", 'premium-block-for-gutenberg')
+                label: __("Self Hosted", 'premium-blocks-for-gutenberg')
             }];
 
             var loopVideo = function loopVideo() {
@@ -45012,19 +45013,19 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Video", 'premium-block-for-gutenberg'),
+                        title: __("Video", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: true
                     },
                     React.createElement(SelectControl, {
-                        label: __("Video Type", 'premium-block-for-gutenberg'),
+                        label: __("Video Type", 'premium-blocks-for-gutenberg'),
                         options: TYPE,
                         value: videoType,
                         onChange: changeVideoType
                     }),
                     "self" !== videoType && React.createElement(TextControl, {
                         className: "premium-text-control",
-                        label: __("Video URL", 'premium-block-for-gutenberg'),
+                        label: __("Video URL", 'premium-blocks-for-gutenberg'),
                         value: videoURL,
                         placeholder: __("Enter Video ID, Embed URL or Video URL"),
                         onChange: function onChange(newURL) {
@@ -45050,43 +45051,43 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Autoplay", 'premium-block-for-gutenberg'),
+                        label: __("Autoplay", 'premium-blocks-for-gutenberg'),
                         checked: autoPlay,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ autoPlay: newCheck });
                         },
-                        help: __("This option effect works when Overlay Image option is disabled", 'premium-block-for-gutenberg')
+                        help: __("This option effect works when Overlay Image option is disabled", 'premium-blocks-for-gutenberg')
                     }),
                     "daily" !== videoType && React.createElement(ToggleControl, {
-                        label: __("Loop", 'premium-block-for-gutenberg'),
+                        label: __("Loop", 'premium-blocks-for-gutenberg'),
                         checked: loop,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ loop: newCheck });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Mute", 'premium-block-for-gutenberg'),
+                        label: __("Mute", 'premium-blocks-for-gutenberg'),
                         checked: mute,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ mute: newCheck });
                         }
                     }),
                     "vimeo" !== videoType && React.createElement(ToggleControl, {
-                        label: __("Player Controls", 'premium-block-for-gutenberg'),
+                        label: __("Player Controls", 'premium-blocks-for-gutenberg'),
                         checked: controls,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ controls: newCheck });
                         }
                     }),
                     "youtube" === videoType && React.createElement(ToggleControl, {
-                        label: __("Show Related Videos", 'premium-block-for-gutenberg'),
+                        label: __("Show Related Videos", 'premium-blocks-for-gutenberg'),
                         checked: relatedVideos,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ relatedVideos: newCheck });
                         }
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Overlay Image", 'premium-block-for-gutenberg'),
+                        label: __("Overlay Image", 'premium-blocks-for-gutenberg'),
                         checked: overlay,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ overlay: newCheck });
@@ -45096,7 +45097,7 @@ var edit = function (_Component) {
                 overlay && React.createElement(
                     PanelBody,
                     {
-                        title: __("Overlay", 'premium-block-for-gutenberg'),
+                        title: __("Overlay", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -45146,12 +45147,12 @@ var edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Play Icon", 'premium-block-for-gutenberg'),
+                            title: __("Play Icon", 'premium-blocks-for-gutenberg'),
                             className: "premium-panel-body",
                             initialOpen: false
                         },
                         React.createElement(ToggleControl, {
-                            label: __("Enable Play Icon", 'premium-block-for-gutenberg'),
+                            label: __("Enable Play Icon", 'premium-blocks-for-gutenberg'),
                             checked: playIcon,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ playIcon: newCheck });
@@ -45161,7 +45162,7 @@ var edit = function (_Component) {
                             Fragment,
                             null,
                             React.createElement(_singleRangeControl2.default, {
-                                label: __("Size (PX)", 'premium-block-for-gutenberg'),
+                                label: __("Size (PX)", 'premium-blocks-for-gutenberg'),
                                 value: playStyles[0].playSize,
                                 onChange: function onChange(newValue) {
                                     return savePlayStyles({ playSize: newValue === undefined ? 20 : newValue });
@@ -45170,7 +45171,7 @@ var edit = function (_Component) {
                                 defaultValue: 0
                             }),
                             React.createElement(_singleRangeControl2.default, {
-                                label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
+                                label: __("Vertical Offset (%)", 'premium-blocks-for-gutenberg'),
                                 value: playStyles[0].playTop,
                                 onChange: function onChange(newValue) {
                                     return savePlayStyles({ playTop: newValue === undefined ? 50 : newValue });
@@ -45224,12 +45225,12 @@ var edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         {
-                            title: __("Video Description", 'premium-block-for-gutenberg'),
+                            title: __("Video Description", 'premium-blocks-for-gutenberg'),
                             className: "premium-panel-body",
                             initialOpen: false
                         },
                         React.createElement(ToggleControl, {
-                            label: __("Enable Video Description", 'premium-block-for-gutenberg'),
+                            label: __("Enable Video Description", 'premium-blocks-for-gutenberg'),
                             checked: videoDesc,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ videoDesc: newCheck });
@@ -45239,7 +45240,7 @@ var edit = function (_Component) {
                             Fragment,
                             null,
                             React.createElement(TextareaControl, {
-                                label: __("Description Text", 'premium-block-for-gutenberg'),
+                                label: __("Description Text", 'premium-blocks-for-gutenberg'),
                                 value: descStyles[0].videoDescText,
                                 onChange: function onChange(newText) {
                                     return saveDescritionStyle({ videoDescText: newText });
@@ -45250,7 +45251,7 @@ var edit = function (_Component) {
                                 setAttributes: saveDescritionStyle,
                                 fontSizeType: {
                                     value: descStyles[0].videoDescSizeUnit,
-                                    label: __("videoDescSizeUnit", 'premium-block-for-gutenberg')
+                                    label: __("videoDescSizeUnit", 'premium-blocks-for-gutenberg')
                                 },
                                 fontSize: descStyles[0].videoDescSize,
                                 fontSizeMobile: descStyles[0].videoDescSizeMobile,
@@ -45286,7 +45287,7 @@ var edit = function (_Component) {
                                 }
                             }),
                             React.createElement(_singleRangeControl2.default, {
-                                label: __("Vertical Offset (%)", 'premium-block-for-gutenberg'),
+                                label: __("Vertical Offset (%)", 'premium-blocks-for-gutenberg'),
                                 value: descStyles[0].descTop,
                                 onChange: function onChange(newValue) {
                                     return saveDescritionStyle({ descTop: newValue === undefined ? 50 : newValue });
@@ -45295,7 +45296,7 @@ var edit = function (_Component) {
                                 defaultValue: 0
                             }),
                             React.createElement(_singleRangeControl2.default, {
-                                label: __("Border Radius (px)", 'premium-block-for-gutenberg'),
+                                label: __("Border Radius (px)", 'premium-blocks-for-gutenberg'),
                                 value: descStyles[0].videoDescBorderRadius,
                                 onChange: function onChange(newValue) {
                                     return saveDescritionStyle({ videoDescBorderRadius: newValue === undefined ? 0 : newValue });
@@ -45322,7 +45323,7 @@ var edit = function (_Component) {
                                 }
                             }),
                             React.createElement(_singleRangeControl2.default, {
-                                label: __("Padding (PX)", 'premium-block-for-gutenberg'),
+                                label: __("Padding (PX)", 'premium-blocks-for-gutenberg'),
                                 value: descStyles[0].videoDescPadding,
                                 onChange: function onChange(newValue) {
                                     return saveDescritionStyle({ videoDescPadding: newValue === undefined ? 20 : newValue });
@@ -45336,7 +45337,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Colors", 'premium-block-for-gutenberg'),
+                        title: __("Colors", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -45404,7 +45405,7 @@ var edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Icon Hover Color", 'premium-block-for-gutenberg'),
+                                        label: __("Icon Hover Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: playStyles[0].playHoverColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -45412,7 +45413,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Icon Hover Background Color", 'premium-block-for-gutenberg'),
+                                        label: __("Icon Hover Background Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: playStyles[0].playHoverBackColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -45433,7 +45434,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Box Style", 'premium-block-for-gutenberg'),
+                        title: __("Box Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -47384,10 +47385,10 @@ var edit = function (_Component) {
 
 
             var EFFECT = [{
-                label: __("Typing", 'premium-block-for-gutenberg'),
+                label: __("Typing", 'premium-blocks-for-gutenberg'),
                 value: "typing"
             }, {
-                label: __("Slide", 'premium-block-for-gutenberg'),
+                label: __("Slide", 'premium-blocks-for-gutenberg'),
                 value: "slide"
             }];
 
@@ -47486,7 +47487,7 @@ var edit = function (_Component) {
             var addNewFancyText = function addNewFancyText() {
                 setAttributes({
                     repeaterFancyText: repeaterFancyText.concat([{
-                        title: __("Title", 'premium-block-for-gutenberg'),
+                        title: __("Title", 'premium-blocks-for-gutenberg'),
                         edit: true
                     }])
                 });
@@ -47534,12 +47535,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings", 'premium-block-for-gutenberg'),
+                        title: __("General Settings", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(TextControl, {
-                        label: __("Prefix Text", 'premium-block-for-gutenberg'),
+                        label: __("Prefix Text", 'premium-blocks-for-gutenberg'),
                         value: prefix,
                         onChange: function onChange(newText) {
                             return setAttributes({ prefix: newText });
@@ -47600,7 +47601,7 @@ var edit = function (_Component) {
                         React.createElement("br", null)
                     ),
                     React.createElement(TextControl, {
-                        label: __("Suffix Text", 'premium-block-for-gutenberg'),
+                        label: __("Suffix Text", 'premium-blocks-for-gutenberg'),
                         value: suffix,
                         onChange: function onChange(newText) {
                             return setAttributes({ suffix: newText });
@@ -47610,12 +47611,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Advanced Settings", 'premium-block-for-gutenberg'),
+                        title: __("Advanced Settings", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(SelectControl, {
-                        label: __("Effect", 'premium-block-for-gutenberg'),
+                        label: __("Effect", 'premium-blocks-for-gutenberg'),
                         options: EFFECT,
                         value: effect,
                         onChange: function onChange(newValue) {
@@ -47626,57 +47627,57 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(TextControl, {
-                            label: __("Type Speed", 'premium-block-for-gutenberg'),
+                            label: __("Type Speed", 'premium-blocks-for-gutenberg'),
                             type: "Number",
                             value: typeSpeed,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ typeSpeed: parseInt(newValue) });
                             },
-                            help: __('Set typing effect speed in milliseconds.', 'premium-block-for-gutenberg')
+                            help: __('Set typing effect speed in milliseconds.', 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Back Speed", 'premium-block-for-gutenberg'),
+                            label: __("Back Speed", 'premium-blocks-for-gutenberg'),
                             type: "Number",
                             value: backSpeed,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ backSpeed: parseInt(newValue) });
                             },
-                            help: __('Set a speed for backspace effect in milliseconds.', 'premium-block-for-gutenberg')
+                            help: __('Set a speed for backspace effect in milliseconds.', 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Start Delay", 'premium-block-for-gutenberg'),
+                            label: __("Start Delay", 'premium-blocks-for-gutenberg'),
                             type: "Number",
                             value: startdelay,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ startdelay: parseInt(newValue) });
                             },
-                            help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-block-for-gutenberg')
+                            help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Back Delay", 'premium-block-for-gutenberg'),
+                            label: __("Back Delay", 'premium-blocks-for-gutenberg'),
                             type: "Number",
                             value: backdelay,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ backdelay: parseInt(newValue) });
                             },
-                            help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", 'premium-block-for-gutenberg')
+                            help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Loop", 'premium-block-for-gutenberg'),
+                            label: __("Loop", 'premium-blocks-for-gutenberg'),
                             checked: loop,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ loop: newCheck });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Show Cursor", 'premium-block-for-gutenberg'),
+                            label: __("Show Cursor", 'premium-blocks-for-gutenberg'),
                             checked: cursorShow,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ cursorShow: newCheck });
                             }
                         }),
                         cursorShow && React.createElement(TextControl, {
-                            label: __("Cursor Mark", 'premium-block-for-gutenberg'),
+                            label: __("Cursor Mark", 'premium-blocks-for-gutenberg'),
                             value: cursorMark,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ cursorMark: newCheck });
@@ -47688,33 +47689,33 @@ var edit = function (_Component) {
                         React.createElement(
                             "p",
                             { className: "premium-notice" },
-                            __(' Please note that Slide effect works only on frontend', 'premium-block-for-gutenberg')
+                            __(' Please note that Slide effect works only on frontend', 'premium-blocks-for-gutenberg')
                         ),
                         React.createElement(TextControl, {
-                            label: __("Animation Speed", 'premium-block-for-gutenberg'),
+                            label: __("Animation Speed", 'premium-blocks-for-gutenberg'),
                             value: animationSpeed,
                             type: "Number",
                             onChange: function onChange(newValue) {
                                 return setAttributes({ animationSpeed: parseInt(newValue) });
                             },
-                            help: __("Set a duration value in milliseconds for slide effect.", 'premium-block-for-gutenberg')
+                            help: __("Set a duration value in milliseconds for slide effect.", 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(TextControl, {
-                            label: __("Pause Time", 'premium-block-for-gutenberg'),
+                            label: __("Pause Time", 'premium-blocks-for-gutenberg'),
                             value: pauseTime,
                             type: "Number",
                             onChange: function onChange(newValue) {
                                 return setAttributes({ pauseTime: parseInt(newValue) });
                             },
-                            help: __("How long should the word/string stay visible? Set a value in milliseconds.", 'premium-block-for-gutenberg')
+                            help: __("How long should the word/string stay visible? Set a value in milliseconds.", 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Pause on Hover", 'premium-block-for-gutenberg'),
+                            label: __("Pause on Hover", 'premium-blocks-for-gutenberg'),
                             checked: hoverPause,
                             onChange: function onChange(newCheck) {
                                 return setAttributes({ hoverPause: newCheck });
                             },
-                            help: __("If you enabled this option, the slide will be paused when mouseover.", 'premium-block-for-gutenberg')
+                            help: __("If you enabled this option, the slide will be paused when mouseover.", 'premium-blocks-for-gutenberg')
                         }),
                         React.createElement(_radioControl2.default, {
                             choices: ["right", "center", "left"],
@@ -47722,19 +47723,19 @@ var edit = function (_Component) {
                             onChange: function onChange(newValue) {
                                 return setAttributes({ fancyalign: newValue });
                             },
-                            label: __("Fancy Strings Alignment", 'premium-block-for-gutenberg')
+                            label: __("Fancy Strings Alignment", 'premium-blocks-for-gutenberg')
                         })
                     )
                 ),
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Fancy Text Style", 'premium-block-for-gutenberg'),
+                        title: __("Fancy Text Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", 'premium-block-for-gutenberg'),
+                        label: __("Color", 'premium-blocks-for-gutenberg'),
                         colorValue: fancyStyles[0].fancyTextColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -47746,7 +47747,7 @@ var edit = function (_Component) {
                         setAttributes: saveFancyStyle,
                         fontSizeType: {
                             value: fancyStyles[0].fancyTextfontSizeUnit,
-                            label: __("fancyTextfontSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("fancyTextfontSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: fancyStyles[0].fancyTextfontSize,
                         fontSizeMobile: fancyStyles[0].fancyTextfontSizeMobile,
@@ -47806,7 +47807,7 @@ var edit = function (_Component) {
                         onResetClick: onResetClickLabelTextShadow
                     }),
                     effect == "typing" && cursorShow && React.createElement(_ColorComponent2.default, {
-                        label: __("Cursor Color", 'premium-block-for-gutenberg'),
+                        label: __("Cursor Color", 'premium-blocks-for-gutenberg'),
                         colorValue: fancyStyles[0].cursorColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -47817,12 +47818,12 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Prefix & Suffix Style", 'premium-block-for-gutenberg'),
+                        title: __("Prefix & Suffix Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_ColorComponent2.default, {
-                        label: __("Color", 'premium-block-for-gutenberg'),
+                        label: __("Color", 'premium-blocks-for-gutenberg'),
                         colorValue: PreStyles[0].textColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -47834,7 +47835,7 @@ var edit = function (_Component) {
                         setAttributes: savePrefixStyle,
                         fontSizeType: {
                             value: PreStyles[0].textfontSizeUnit,
-                            label: __("textfontSizeUnit", 'premium-block-for-gutenberg')
+                            label: __("textfontSizeUnit", 'premium-blocks-for-gutenberg')
                         },
                         fontSize: PreStyles[0].textfontSize,
                         fontSizeMobile: PreStyles[0].textfontSizeMobile,
@@ -51827,13 +51828,13 @@ var attributes = {
     repeaterFancyText: {
         type: "array",
         default: [{
-            title: __("Designer"),
+            title: __("Designer", 'premium-blocks-for-gutenberg'),
             edit: false
         }, {
-            title: __("Developer"),
+            title: __("Developer", 'premium-blocks-for-gutenberg'),
             edit: false
         }, {
-            title: __("Awesome"),
+            title: __("Awesome", 'premium-blocks-for-gutenebrg'),
             edit: false
         }]
     },
@@ -52312,22 +52313,22 @@ var edit = function (_Component) {
                         __('Change Animation')
                     ),
                     React.createElement(ToggleControl, {
-                        label: __("loop", 'premium-block-for-gutenberg'),
+                        label: __("loop", 'premium-blocks-for-gutenberg'),
                         checked: loop,
                         onChange: function onChange(value) {
                             return setAttributes({ loop: value });
                         },
-                        help: loop ? __('This option works only on the preview page', 'premium-block-for-gutenberg') : ''
+                        help: loop ? __('This option works only on the preview page', 'premium-blocks-for-gutenberg') : ''
                     }),
                     React.createElement(ToggleControl, {
-                        label: __("Reverse", 'premium-block-for-gutenberg'),
+                        label: __("Reverse", 'premium-blocks-for-gutenberg'),
                         checked: reverse,
                         onChange: function onChange() {
                             return setAttributes({ reverse: !reverse });
                         }
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __('Animation Speed', 'premium-block-for-gutenberg'),
+                        label: __('Animation Speed', 'premium-blocks-for-gutenberg'),
                         value: speed,
                         onChange: function onChange(newValue) {
                             return setAttributes({ speed: newValue !== "" ? newValue : 1 });
@@ -52339,8 +52340,8 @@ var edit = function (_Component) {
                         step: 0.1
                     }),
                     React.createElement(SelectControl, {
-                        label: __('Trigger', 'premium-block-for-gutenberg'),
-                        options: [{ value: 'none', label: __("None", 'premium-block-for-gutenberg') }, { value: "hover", label: __("Hover", 'premium-block-for-gutenberg') }, { value: "scroll", label: __("Scroll", 'premium-block-for-gutenberg') }, { value: "viewport", label: __("Viewport", 'premium-block-for-gutenberg') }],
+                        label: __('Trigger', 'premium-blocks-for-gutenberg'),
+                        options: [{ value: 'none', label: __("None", 'premium-blocks-for-gutenberg') }, { value: "hover", label: __("Hover", 'premium-blocks-for-gutenberg') }, { value: "scroll", label: __("Scroll", 'premium-blocks-for-gutenberg') }, { value: "viewport", label: __("Viewport", 'premium-blocks-for-gutenberg') }],
                         value: trigger,
                         onChange: function onChange(newValue) {
                             return setAttributes({ trigger: newValue });
@@ -52350,7 +52351,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_singleRangeControl2.default, {
-                            label: __('Scroll Speed', 'premium-block-for-gutenberg'),
+                            label: __('Scroll Speed', 'premium-blocks-for-gutenberg'),
                             value: scrollSpeed,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ scrollSpeed: newValue !== "" ? newValue : 200 });
@@ -52366,7 +52367,7 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(_singleRangeControl2.default, {
-                            label: __('Bottom', 'premium-block-for-gutenberg'),
+                            label: __('Bottom', 'premium-blocks-for-gutenberg'),
                             value: bottom,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ bottom: newValue });
@@ -52377,7 +52378,7 @@ var edit = function (_Component) {
                             max: 50
                         }),
                         React.createElement(_singleRangeControl2.default, {
-                            label: __('Top', 'premium-block-for-gutenberg'),
+                            label: __('Top', 'premium-blocks-for-gutenberg'),
                             value: top,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ top: newValue });
@@ -52414,7 +52415,7 @@ var edit = function (_Component) {
                         defaultValue: 200
                     }),
                     React.createElement(_singleRangeControl2.default, {
-                        label: __("Rotate (Degree)", 'premium-block-for-gutenberg'),
+                        label: __("Rotate (Degree)", 'premium-blocks-for-gutenberg'),
                         value: rotate,
                         min: -180,
                         max: 180,
@@ -52430,11 +52431,11 @@ var edit = function (_Component) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ align: newValue });
                         },
-                        label: __("Alignment", 'premium-block-for-gutenberg')
+                        label: __("Alignment", 'premium-blocks-for-gutenberg')
                     }),
                     React.createElement("hr", null),
                     React.createElement(ToggleControl, {
-                        label: __("Link", 'premium-block-for-gutenberg'),
+                        label: __("Link", 'premium-blocks-for-gutenberg'),
                         checked: link,
                         onChange: function onChange() {
                             return setAttributes({ link: !link });
@@ -52444,14 +52445,14 @@ var edit = function (_Component) {
                         Fragment,
                         null,
                         React.createElement(TextControl, {
-                            label: __("URL", 'premium-block-for-gutenberg'),
+                            label: __("URL", 'premium-blocks-for-gutenberg'),
                             value: url,
                             onChange: function onChange(newURL) {
                                 return setAttributes({ url: newURL });
                             }
                         }),
                         React.createElement(ToggleControl, {
-                            label: __("Open link in new tab", 'premium-block-for-gutenberg'),
+                            label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
                             checked: target,
                             onChange: function onChange(newValue) {
                                 return setAttributes({ target: newValue });
@@ -52459,10 +52460,10 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(SelectControl, {
-                        label: __('Render As', 'premium-block-for-gutenberg'),
+                        label: __('Render As', 'premium-blocks-for-gutenberg'),
                         value: render,
                         options: [{ label: "SVG", value: 'svg' }, { label: 'Canvas', value: 'canvas' }],
-                        help: __("Set render type to canvas if you're having performance issues on the page.\n                    This setting will only take effect once you are on the live page, and not while you're editing.\n                    ", 'premium-block-for-gutenberg'),
+                        help: __("Set render type to canvas if you're having performance issues on the page.\n                    This setting will only take effect once you are on the live page, and not while you're editing.\n                    ", 'premium-blocks-for-gutenberg'),
                         onChange: function onChange(newValue) {
                             return setAttributes({ render: newValue });
                         }
@@ -52471,7 +52472,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Style", 'premium-block-for-gutenberg'),
+                        title: __("Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -52497,7 +52498,7 @@ var edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: lottieStyles[0].backColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -52505,7 +52506,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Opacity", 'premium-block-for-gutenberg'),
+                                        label: __("Opacity", 'premium-blocks-for-gutenberg'),
                                         value: lottieStyles[0].backOpacity,
                                         max: 1,
                                         min: .1,
@@ -52545,7 +52546,7 @@ var edit = function (_Component) {
                                     Fragment,
                                     null,
                                     React.createElement(_ColorComponent2.default, {
-                                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
                                         colorValue: lottieStyles[0].backHColor,
                                         colorDefault: '',
                                         onColorChange: function onColorChange(newValue) {
@@ -52553,7 +52554,7 @@ var edit = function (_Component) {
                                         }
                                     }),
                                     React.createElement(_singleRangeControl2.default, {
-                                        label: __("Opacity", 'premium-block-for-gutenberg'),
+                                        label: __("Opacity", 'premium-blocks-for-gutenberg'),
                                         value: lottieStyles[0].backHOpacity,
                                         max: 1,
                                         min: .1,
@@ -54884,8 +54885,8 @@ var BlockPlaceholder = function BlockPlaceholder(_ref) {
     if (isJSONAllowed) {
         return React.createElement(MediaPlaceholder, {
             labels: {
-                title: __('Lottie', 'premium-block-for-gutenberg'),
-                instructions: __('Add Lottie animations and files to your website.', 'premium-block-for-gutenberg')
+                title: __('Lottie', 'premium-blocks-for-gutenberg'),
+                instructions: __('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg')
             },
             accept: ['application/json'],
             allowedTypes: ['application/json'],
@@ -54901,8 +54902,8 @@ var BlockPlaceholder = function BlockPlaceholder(_ref) {
         React.createElement(
             Placeholder,
             {
-                label: __('Lottie', 'premium-block-for-gutenberg'),
-                instructions: __('Add Lottie animations and files to your website.', 'premium-block-for-gutenberg'),
+                label: __('Lottie', 'premium-blocks-for-gutenberg'),
+                instructions: __('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg'),
                 className: className
             },
             React.createElement(
@@ -54912,8 +54913,8 @@ var BlockPlaceholder = function BlockPlaceholder(_ref) {
                     type: 'url',
                     value: url,
                     className: 'components-placeholder__input',
-                    'aria-label': __('Lottie', 'premium-block-for-gutenberg'),
-                    placeholder: __('Enter URL to embed here…', 'premium-block-for-gutenberg'),
+                    'aria-label': __('Lottie', 'premium-blocks-for-gutenberg'),
+                    placeholder: __('Enter URL to embed here…', 'premium-blocks-for-gutenberg'),
                     onChange: function onChange(e) {
                         return setURL(e.target.value);
                     }
@@ -54925,7 +54926,7 @@ var BlockPlaceholder = function BlockPlaceholder(_ref) {
                         disabled: !url,
                         type: 'submit'
                     },
-                    __('Embed', 'premium-block-for-gutenberg')
+                    __('Embed', 'premium-blocks-for-gutenberg')
                 ),
                 !isJSONAllowed && React.createElement(
                     Button,
@@ -54935,31 +54936,31 @@ var BlockPlaceholder = function BlockPlaceholder(_ref) {
                             return setOpen(true);
                         }
                     },
-                    __('Upload', 'premium-block-for-gutenberg')
+                    __('Upload', 'premium-blocks-for-gutenberg')
                 )
             )
         ),
         isOpen && React.createElement(
             Modal,
             {
-                title: __('Allow JSON Uploads', 'premium-block-for-gutenberg'),
+                title: __('Allow JSON Uploads', 'premium-blocks-for-gutenberg'),
                 closeLabel: __('Close'),
                 onRequestClose: function onRequestClose() {
                     return setOpen(false);
                 },
                 overlayClassName: 'wp-block-themeisle-blocks-lottie-modal'
             },
-            __('This file type is not permitted for security reasons. Would you still like to enable JSON uploads?', 'premium-block-for-gutenberg'),
+            __('This file type is not permitted for security reasons. Would you still like to enable JSON uploads?', 'premium-blocks-for-gutenberg'),
             React.createElement('br', null),
             React.createElement('br', null),
             React.createElement(
                 ExternalLink,
                 { href: window.PremiumBlocksSettings.settingPath },
-                __('You can enable JSON uploads from Settings.', 'premium-block-for-gutenberg')
+                __('You can enable JSON uploads from Settings.', 'premium-blocks-for-gutenberg')
             ),
             React.createElement('br', null),
             React.createElement('br', null),
-            __('You will have to refresh the page after changing JSON upload settings.', 'premium-block-for-gutenberg')
+            __('You will have to refresh the page after changing JSON upload settings.', 'premium-blocks-for-gutenberg')
         )
     );
 };

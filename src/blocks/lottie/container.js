@@ -28,8 +28,8 @@ const BlockPlaceholder = ({
         return (
             <MediaPlaceholder
                 labels={{
-                    title: __('Lottie', 'premium-block-for-gutenberg'),
-                    instructions: __('Add Lottie animations and files to your website.', 'premium-block-for-gutenberg')
+                    title: __('Lottie', 'premium-blocks-for-gutenberg'),
+                    instructions: __('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg')
                 }}
                 accept={['application/json']}
                 allowedTypes={['application/json']}
@@ -43,8 +43,8 @@ const BlockPlaceholder = ({
     return (
         <Fragment>
             <Placeholder
-                label={__('Lottie', 'premium-block-for-gutenberg')}
-                instructions={__('Add Lottie animations and files to your website.', 'premium-block-for-gutenberg')}
+                label={__('Lottie', 'premium-blocks-for-gutenberg')}
+                instructions={__('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg')}
                 className={className}
             >
                 <form onSubmit={onChangeValue}>
@@ -52,8 +52,8 @@ const BlockPlaceholder = ({
                         type="url"
                         value={url}
                         className="components-placeholder__input"
-                        aria-label={__('Lottie', 'premium-block-for-gutenberg')}
-                        placeholder={__('Enter URL to embed here…', 'premium-block-for-gutenberg')}
+                        aria-label={__('Lottie', 'premium-blocks-for-gutenberg')}
+                        placeholder={__('Enter URL to embed here…', 'premium-blocks-for-gutenberg')}
                         onChange={e => setURL(e.target.value)}
                     />
 
@@ -62,7 +62,7 @@ const BlockPlaceholder = ({
                         disabled={!url}
                         type="submit"
                     >
-                        {__('Embed', 'premium-block-for-gutenberg')}
+                        {__('Embed', 'premium-blocks-for-gutenberg')}
                     </Button>
 
                     {!isJSONAllowed && (
@@ -70,7 +70,7 @@ const BlockPlaceholder = ({
                             isSecondary
                             onClick={() => setOpen(true)}
                         >
-                            { __('Upload', 'premium-block-for-gutenberg')}
+                            { __('Upload', 'premium-blocks-for-gutenberg')}
                         </Button>
                     )}
                 </form>
@@ -78,16 +78,16 @@ const BlockPlaceholder = ({
 
             { isOpen && (
                 <Modal
-                    title={__('Allow JSON Uploads', 'premium-block-for-gutenberg')}
+                    title={__('Allow JSON Uploads', 'premium-blocks-for-gutenberg')}
                     closeLabel={__('Close')}
                     onRequestClose={() => setOpen(false)}
                     overlayClassName="wp-block-themeisle-blocks-lottie-modal"
                 >
-                    { __('This file type is not permitted for security reasons. Would you still like to enable JSON uploads?', 'premium-block-for-gutenberg')}
+                    { __('This file type is not permitted for security reasons. Would you still like to enable JSON uploads?', 'premium-blocks-for-gutenberg')}
                     <br /><br />
-                    <ExternalLink href={window.PremiumBlocksSettings.settingPath}>{__('You can enable JSON uploads from Settings.', 'premium-block-for-gutenberg')}</ExternalLink>
+                    <ExternalLink href={window.PremiumBlocksSettings.settingPath}>{__('You can enable JSON uploads from Settings.', 'premium-blocks-for-gutenberg')}</ExternalLink>
                     <br /><br />
-                    { __('You will have to refresh the page after changing JSON upload settings.', 'premium-block-for-gutenberg')}
+                    { __('You will have to refresh the page after changing JSON upload settings.', 'premium-blocks-for-gutenberg')}
                 </Modal>
             )}
         </Fragment>

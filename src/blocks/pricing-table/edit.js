@@ -96,69 +96,69 @@ class PremiumPricingTable extends Component {
         const ALIGNS = [
             {
                 value: "flex-start",
-                label: __("Top", 'premium-block-for-gutenberg')
+                label: __("Top", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "center",
-                label: __("Middle", 'premium-block-for-gutenberg')
+                label: __("Middle", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "flex-end",
-                label: __("Bottom", 'premium-block-for-gutenberg')
+                label: __("Bottom", 'premium-blocks-for-gutenberg')
             }
         ];
         const PRICE = [
             {
                 value: "slash",
-                label: __("Slashed Price", 'premium-block-for-gutenberg')
+                label: __("Slashed Price", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "curr",
-                label: __("Currency", 'premium-block-for-gutenberg')
+                label: __("Currency", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "price",
-                label: __("Price", 'premium-block-for-gutenberg')
+                label: __("Price", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "divider",
-                label: __("Divider", 'premium-block-for-gutenberg')
+                label: __("Divider", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "duration",
-                label: __("Duration", 'premium-block-for-gutenberg')
+                label: __("Duration", 'premium-blocks-for-gutenberg')
             }
         ];
         const TYPE = [
             {
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "check",
-                label: __("Check Mark", 'premium-block-for-gutenberg')
+                label: __("Check Mark", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "disc",
-                label: __("Filled Circle", 'premium-block-for-gutenberg')
+                label: __("Filled Circle", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "circle",
-                label: __("Outline Circle", 'premium-block-for-gutenberg')
+                label: __("Outline Circle", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "square",
-                label: __("Square", 'premium-block-for-gutenberg')
+                label: __("Square", 'premium-blocks-for-gutenberg')
             }
         ];
         const POSITION = [
             {
                 value: "right",
-                label: __("Right", 'premium-block-for-gutenberg')
+                label: __("Right", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "left",
-                label: __("Left", 'premium-block-for-gutenberg')
+                label: __("Left", 'premium-blocks-for-gutenberg')
             }
         ];
         const FEATURES_ALIGN = ["left", "center", "right"];
@@ -255,49 +255,49 @@ class PremiumPricingTable extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Display Options", 'premium-block-for-gutenberg')}
+                        title={__("Display Options", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Title", 'premium-block-for-gutenberg')}
+                            label={__("Title", 'premium-blocks-for-gutenberg')}
                             checked={titleChecked}
                             onChange={newValue => setAttributes({ titleChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Price", 'premium-block-for-gutenberg')}
+                            label={__("Price", 'premium-blocks-for-gutenberg')}
                             checked={priceChecked}
                             onChange={newValue => setAttributes({ priceChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Features", 'premium-block-for-gutenberg')}
+                            label={__("Features", 'premium-blocks-for-gutenberg')}
                             checked={listChecked}
                             onChange={newValue => setAttributes({ listChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Description", 'premium-block-for-gutenberg')}
+                            label={__("Description", 'premium-blocks-for-gutenberg')}
                             checked={descChecked}
                             onChange={newValue => setAttributes({ descChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Button", 'premium-block-for-gutenberg')}
+                            label={__("Button", 'premium-blocks-for-gutenberg')}
                             checked={btnChecked}
                             onChange={newValue => setAttributes({ btnChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Badge", 'premium-block-for-gutenberg')}
+                            label={__("Badge", 'premium-blocks-for-gutenberg')}
                             checked={badgeChecked}
                             onChange={newValue => setAttributes({ badgeChecked: newValue })}
                         />
                     </PanelBody>
                     {titleChecked && (
                         <PanelBody
-                            title={__("Title", 'premium-block-for-gutenberg')}
+                            title={__("Title", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <RadioComponent
-                                label={__("Heading", 'premium-block-for-gutenberg')}
+                                label={__("Heading", 'premium-blocks-for-gutenberg')}
                                 choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                                 value={titleStyles[0].titleTag}
                                 onChange={newValue => saveTitleStyles({ titleTag: newValue })}
@@ -314,7 +314,7 @@ class PremiumPricingTable extends Component {
                                 setAttributes={saveTitleStyles}
                                 fontSizeType={{
                                     value: titleStyles[0].titleSizeUnit,
-                                    label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={titleStyles[0].titleSize}
                                 fontSizeMobile={titleStyles[0].titleSizeMobile}
@@ -334,14 +334,14 @@ class PremiumPricingTable extends Component {
                                 onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={titleStyles[0].titleColor}
                                 colorDefault={''}
                                 onColorChange={newColor => saveTitleStyles({ titleColor: newColor })
                                 }
                             />
                             <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={titleStyles[0].titleBack}
                                 colorDefault={''}
                                 onColorChange={newColor => saveTitleStyles({ titleBack: newColor })}
@@ -357,7 +357,7 @@ class PremiumPricingTable extends Component {
                                 onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
                             />
                             <div className="premium-control-toggle">
-                                <strong>{__("Spacings", 'premium-block-for-gutenberg')}</strong>
+                                <strong>{__("Spacings", 'premium-blocks-for-gutenberg')}</strong>
                                 <Dropdown
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
@@ -370,7 +370,7 @@ class PremiumPricingTable extends Component {
                                     renderContent={() => (
                                         <Fragment>
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Top (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={titleStyles[0].titleMarginT}
                                                 min="10"
                                                 max="80"
@@ -379,7 +379,7 @@ class PremiumPricingTable extends Component {
                                                 defaultValue={10}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Bottom (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={titleStyles[0].titleMarginB}
                                                 min="0"
                                                 max="100"
@@ -388,7 +388,7 @@ class PremiumPricingTable extends Component {
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Padding (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Padding (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={titleStyles[0].titlePadding}
                                                 min="0"
                                                 max="100"
@@ -404,42 +404,42 @@ class PremiumPricingTable extends Component {
                     )}
                     {priceChecked && (
                         <PanelBody
-                            title={__("Price", 'premium-block-for-gutenberg')}
+                            title={__("Price", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Slashed Price", 'premium-block-for-gutenberg')}
+                                label={__("Slashed Price", 'premium-blocks-for-gutenberg')}
                                 value={priceStyles[0].slashPrice}
                                 onChange={value => savePriceStyles({ slashPrice: value })}
                             />
                             <TextControl
-                                label={__("Currency", 'premium-block-for-gutenberg')}
+                                label={__("Currency", 'premium-blocks-for-gutenberg')}
                                 value={priceStyles[0].currPrice}
                                 onChange={value => savePriceStyles({ currPrice: value })}
                             />
                             <TextControl
-                                label={__("Price", 'premium-block-for-gutenberg')}
+                                label={__("Price", 'premium-blocks-for-gutenberg')}
                                 value={priceStyles[0].valPrice}
                                 onChange={value => savePriceStyles({ valPrice: value })}
                             />
                             <TextControl
-                                label={__("Divider", 'premium-block-for-gutenberg')}
+                                label={__("Divider", 'premium-blocks-for-gutenberg')}
                                 value={priceStyles[0].divPrice}
                                 onChange={value => savePriceStyles({ divPrice: value })}
                             />
                             <TextControl
-                                label={__("Duration", 'premium-block-for-gutenberg')}
+                                label={__("Duration", 'premium-blocks-for-gutenberg')}
                                 value={priceStyles[0].durPrice}
                                 onChange={value => savePriceStyles({ durPrice: value })}
                             />
                             <PanelBody
-                                title={__("Element to Style", 'premium-block-for-gutenberg')}
+                                title={__("Element to Style", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
                             >
                                 <SelectControl
-                                    label={__("Element", 'premium-block-for-gutenberg')}
+                                    label={__("Element", 'premium-blocks-for-gutenberg')}
                                     options={PRICE}
                                     value={priceStyles[0].selectedStyle}
                                     onChange={newElem => savePriceStyles({ selectedStyle: newElem })}
@@ -451,7 +451,7 @@ class PremiumPricingTable extends Component {
                                             setAttributes={savePriceStyles}
                                             fontSizeType={{
                                                 value: priceStyles[0].slashSizeUnit,
-                                                label: __("slashSizeUnit", 'premium-block-for-gutenberg'),
+                                                label: __("slashSizeUnit", 'premium-blocks-for-gutenberg'),
                                             }}
                                             fontSize={priceStyles[0].slashSize}
                                             fontSizeMobile={priceStyles[0].slashSizeMobile}
@@ -463,13 +463,13 @@ class PremiumPricingTable extends Component {
                                             onChangeMobileSize={newSize => savePriceStyles({ slashSizeMobile: newSize })}
                                         />
                                         <SelectControl
-                                            label={__("Vertical Align", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Align", 'premium-blocks-for-gutenberg')}
                                             options={ALIGNS}
                                             value={priceStyles[0].slashV}
                                             onChange={newValue => savePriceStyles({ slashV: newValue })}
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={priceStyles[0].slashColor}
                                             colorDefault={''}
                                             onColorChange={newValue => savePriceStyles({ slashColor: newValue === undefined ? "transparent" : newValue })}
@@ -483,7 +483,7 @@ class PremiumPricingTable extends Component {
                                             setAttributes={savePriceStyles}
                                             fontSizeType={{
                                                 value: priceStyles[0].currSizeUnit,
-                                                label: __("currSizeUnit", 'premium-block-for-gutenberg'),
+                                                label: __("currSizeUnit", 'premium-blocks-for-gutenberg'),
                                             }}
                                             fontSize={priceStyles[0].currSize}
                                             fontSizeMobile={priceStyles[0].currSizeMobile}
@@ -495,13 +495,13 @@ class PremiumPricingTable extends Component {
                                             onChangeWeight={newWeight => savePriceStyles({ currWeight: newWeight, })}
                                         />
                                         <SelectControl
-                                            label={__("Vertical Align", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Align", 'premium-blocks-for-gutenberg')}
                                             options={ALIGNS}
                                             value={priceStyles[0].currV}
                                             onChange={newValue => savePriceStyles({ currV: newValue, })}
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={priceStyles[0].currColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
@@ -523,7 +523,7 @@ class PremiumPricingTable extends Component {
                                             setAttributes={savePriceStyles}
                                             fontSizeType={{
                                                 value: priceStyles[0].valSizeUnit,
-                                                label: __("valSizeUnit", 'premium-block-for-gutenberg'),
+                                                label: __("valSizeUnit", 'premium-blocks-for-gutenberg'),
                                             }}
                                             fontSize={priceStyles[0].valSize}
                                             fontSizeMobile={priceStyles[0].valSizeMobile}
@@ -536,13 +536,13 @@ class PremiumPricingTable extends Component {
                                             onChangeMobileSize={newSize => savePriceStyles({ valSizeMobile: newSize })}
                                         />
                                         <SelectControl
-                                            label={__("Vertical Align", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Align", 'premium-blocks-for-gutenberg')}
                                             options={ALIGNS}
                                             value={priceStyles[0].valV}
                                             onChange={newValue => savePriceStyles({ valV: newValue })}
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={priceStyles[0].valColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
@@ -561,7 +561,7 @@ class PremiumPricingTable extends Component {
                                             setAttributes={savePriceStyles}
                                             fontSizeType={{
                                                 value: priceStyles[0].divSizeUnit,
-                                                label: __("divSizeUnit", 'premium-block-for-gutenberg'),
+                                                label: __("divSizeUnit", 'premium-blocks-for-gutenberg'),
                                             }}
                                             fontSize={priceStyles[0].divSize}
                                             fontSizeMobile={priceStyles[0].divSizeMobile}
@@ -573,13 +573,13 @@ class PremiumPricingTable extends Component {
                                             onChangeMobileSize={newSize => savePriceStyles({ divSizeMobile: newSize })}
                                         />
                                         <SelectControl
-                                            label={__("Vertical Align", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Align", 'premium-blocks-for-gutenberg')}
                                             options={ALIGNS}
                                             value={priceStyles[0].divV}
                                             onChange={newValue => savePriceStyles({ divV: newValue })}
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={priceStyles[0].divColor}
                                             colorDefault={''}
                                             onColorChange={newValue => savePriceStyles({ divColor: newValue === undefined ? "transparent" : newValue })}
@@ -593,7 +593,7 @@ class PremiumPricingTable extends Component {
                                             setAttributes={savePriceStyles}
                                             fontSizeType={{
                                                 value: priceStyles[0].durSizeUnit,
-                                                label: __("durSizeUnit", 'premium-block-for-gutenberg'),
+                                                label: __("durSizeUnit", 'premium-blocks-for-gutenberg'),
                                             }}
                                             fontSize={priceStyles[0].durSize}
                                             fontSizeMobile={priceStyles[0].durSizeMobile}
@@ -605,14 +605,14 @@ class PremiumPricingTable extends Component {
                                             onChangeMobileSize={newSize => savePriceStyles({ durSizeMobile: newSize })}
                                         />
                                         <SelectControl
-                                            label={__("Vertical Align", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Align", 'premium-blocks-for-gutenberg')}
                                             options={ALIGNS}
                                             value={priceStyles[0].durV}
                                             onChange={newValue => savePriceStyles({ durV: newValue })}
                                         />
 
                                         <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={priceStyles[0].durColor}
                                             colorDefault={''}
                                             onColorChange={newValue => savePriceStyles({ durColor: newValue === undefined ? "transparent" : newValue })}
@@ -621,7 +621,7 @@ class PremiumPricingTable extends Component {
                                 )}
                             </PanelBody>
                             <div className="premium-control-toggle">
-                                <strong>{__("Spacings", 'premium-block-for-gutenberg')}</strong>
+                                <strong>{__("Spacings", 'premium-blocks-for-gutenberg')}</strong>
                                 <Dropdown
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
@@ -634,7 +634,7 @@ class PremiumPricingTable extends Component {
                                     renderContent={() => (
                                         <Fragment>
                                             <ResponsiveSingleRangeControl
-                                                label={__("Container Margin Top (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Container Margin Top (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={priceStyles[0].priceMarginT}
                                                 min="0"
                                                 max="100"
@@ -643,7 +643,7 @@ class PremiumPricingTable extends Component {
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Container Margin Bottom (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Container Margin Bottom (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={priceStyles[0].priceMarginB}
                                                 min="0"
                                                 max="100"
@@ -652,7 +652,7 @@ class PremiumPricingTable extends Component {
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Container Padding (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Container Padding (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={priceStyles[0].pricePadding}
                                                 min="0"
                                                 max="100"
@@ -674,18 +674,18 @@ class PremiumPricingTable extends Component {
                     )}
                     {listChecked && (
                         <PanelBody
-                            title={__("Features", 'premium-block-for-gutenberg')}
+                            title={__("Features", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <RadioComponent
-                                label={__("Align", 'premium-block-for-gutenberg')}
+                                label={__("Align", 'premium-blocks-for-gutenberg')}
                                 choices={["left", "center", "right"]}
                                 value={featureStyles[0].featsAlign}
                                 onChange={newValue => saveFeatureStyle({ featsAlign: newValue })}
                             />
                             <SelectControl
-                                label={__("List Style", 'premium-block-for-gutenberg')}
+                                label={__("List Style", 'premium-blocks-for-gutenberg')}
                                 options={TYPE}
                                 value={featureStyles[0].listStyle}
                                 onChange={newType => saveFeatureStyle({ listStyle: newType })}
@@ -702,7 +702,7 @@ class PremiumPricingTable extends Component {
                                 setAttributes={saveFeatureStyle}
                                 fontSizeType={{
                                     value: featureStyles[0].listSizeUnit,
-                                    label: __("listSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("listSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={featureStyles[0].listSize}
                                 fontSizeMobile={featureStyles[0].listSizeMobile}
@@ -722,19 +722,19 @@ class PremiumPricingTable extends Component {
                                 onChangeMobileSize={newSize => saveFeatureStyle({ listSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
-                                label={__("List Items Color", 'premium-block-for-gutenberg')}
+                                label={__("List Items Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={featureStyles[0].listColor}
                                 colorDefault={''}
                                 onColorChange={newColor => saveFeatureStyle({ listColor: newColor })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={featureStyles[0].listBack}
                                 colorDefault={''}
                                 onColorChange={newColor => saveFeatureStyle({ listBack: newColor })}
                             />
                             <div className="premium-control-toggle">
-                                <strong>{__("Spacings", 'premium-block-for-gutenberg')}</strong>
+                                <strong>{__("Spacings", 'premium-blocks-for-gutenberg')}</strong>
                                 <Dropdown
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
@@ -747,21 +747,21 @@ class PremiumPricingTable extends Component {
                                     renderContent={() => (
                                         <Fragment>
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Top (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={featureStyles[0].listMarginT}
                                                 onChange={newSize => saveFeatureStyle({ listMarginT: newSize })}
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Bottom (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={featureStyles[0].listMarginB}
                                                 onChange={newSize => saveFeatureStyle({ listMarginB: newSize })}
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Padding (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Padding (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={featureStyles[0].listPadding}
                                                 onChange={newSize => saveFeatureStyle({ listPadding: newSize })}
                                                 showUnit={false}
@@ -775,7 +775,7 @@ class PremiumPricingTable extends Component {
                     )}
                     {descChecked && (
                         <PanelBody
-                            title={__("Description", 'premium-block-for-gutenberg')}
+                            title={__("Description", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -784,7 +784,7 @@ class PremiumPricingTable extends Component {
                                 setAttributes={saveDescriptionStyle}
                                 fontSizeType={{
                                     value: descStyles[0].descSizeUnit,
-                                    label: __("descSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("descSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={descStyles[0].descSize}
                                 fontSizeMobile={descStyles[0].descSizeMobile}
@@ -803,19 +803,19 @@ class PremiumPricingTable extends Component {
                                 onChangeMobileSize={newSize => saveDescriptionStyle({ descSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={descStyles[0].descColor}
                                 colorDefault={''}
                                 onColorChange={newColor => saveDescriptionStyle({ descColor: newColor })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={descStyles[0].descBack}
                                 colorDefault={''}
                                 onColorChange={newColor => saveDescriptionStyle({ descBack: newColor })}
                             />
                             <div className="premium-control-toggle">
-                                <strong>{__("Spacings", 'premium-block-for-gutenberg')}</strong>
+                                <strong>{__("Spacings", 'premium-blocks-for-gutenberg')}</strong>
                                 <Dropdown
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
@@ -828,21 +828,21 @@ class PremiumPricingTable extends Component {
                                     renderContent={() => (
                                         <Fragment>
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Top (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={descStyles[0].descMarginT}
                                                 onChange={newMargin => saveDescriptionStyle({ descMarginT: newMargin })}
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Bottom (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={descStyles[0].descMarginB}
                                                 onChange={newMargin => saveDescriptionStyle({ descMarginB: newMargin })}
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Padding (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Padding (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={descStyles[0].descPadding}
                                                 onChange={newPadding => saveDescriptionStyle({ descPadding: newPadding })}
                                                 showUnit={false}
@@ -856,7 +856,7 @@ class PremiumPricingTable extends Component {
                     )}
                     {btnChecked && (
                         <PanelBody
-                            title={__("Button", 'premium-block-for-gutenberg')}
+                            title={__("Button", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -872,7 +872,7 @@ class PremiumPricingTable extends Component {
                                 setAttributes={saveButtonStyle}
                                 fontSizeType={{
                                     value: buttonStyles[0].btnSizeUnit,
-                                    label: __("btnSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("btnSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={buttonStyles[0].btnSize}
                                 fontSizeMobile={buttonStyles[0].btnSizeMobile}
@@ -892,26 +892,26 @@ class PremiumPricingTable extends Component {
                                 onChangeMobileSize={newSize => saveButtonStyle({ btnSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={buttonStyles[0].btnColor}
                                 colorDefault={''}
                                 onColorChange={newColor => saveButtonStyle({ btnColor: newColor })
                                 }
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Hover Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Hover Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={buttonStyles[0].btnHoverColor}
                                 colorDefault={''}
                                 onColorChange={newColor => saveButtonStyle({ btnHoverColor: newColor })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={buttonStyles[0].btnBack}
                                 colorDefault={''}
                                 onColorChange={newColor => saveButtonStyle({ btnBack: newColor })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Background Hover Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={buttonStyles[0].btnHoverBack}
                                 colorDefault={''}
                                 onColorChange={newColor => saveButtonStyle({ btnHoverBack: newColor })}
@@ -939,7 +939,7 @@ class PremiumPricingTable extends Component {
                                 onChangeRadius={(newrRadius) => saveButtonStyle({ btnBorderRadius: newrRadius })}
                             />
                             <div className="premium-control-toggle">
-                                <strong>{__("Spacings", 'premium-block-for-gutenberg')}</strong>
+                                <strong>{__("Spacings", 'premium-blocks-for-gutenberg')}</strong>
                                 <Dropdown
                                     className="premium-control-toggle-btn"
                                     contentClassName="premium-control-toggle-content"
@@ -952,21 +952,21 @@ class PremiumPricingTable extends Component {
                                     renderContent={() => (
                                         <Fragment>
                                             <ResponsiveSingleRangeControl
-                                                label={__("Width (%)", 'premium-block-for-gutenberg')}
+                                                label={__("Width (%)", 'premium-blocks-for-gutenberg')}
                                                 value={buttonStyles[0].btnWidth}
                                                 onChange={newSize => saveButtonStyle({ btnWidth: newSize })}
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Top (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={buttonStyles[0].btnMarginT}
                                                 onChange={newPadding => saveButtonStyle({ btnMarginT: newPadding })}
                                                 showUnit={false}
                                                 defaultValue={0}
                                             />
                                             <ResponsiveSingleRangeControl
-                                                label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
+                                                label={__("Margin Bottom (PX)", 'premium-blocks-for-gutenberg')}
                                                 value={buttonStyles[0].btnMarginB}
                                                 onChange={newPadding => saveButtonStyle({ btnMarginB: newPadding })}
                                                 showUnit={false}
@@ -974,7 +974,7 @@ class PremiumPricingTable extends Component {
                                             />
 
                                             <ResponsiveSingleRangeControl
-                                                label={__("Padding", 'premium-block-for-gutenberg')}
+                                                label={__("Padding", 'premium-blocks-for-gutenberg')}
                                                 value={buttonStyles[0].btnPadding}
                                                 onChange={newPadding => saveButtonStyle({ btnPadding: newPadding })}
                                                 showUnit={true}
@@ -987,7 +987,7 @@ class PremiumPricingTable extends Component {
                                 />
                             </div>
                             <ToggleControl
-                                label={__("Open Link in a new tab", 'premium-block-for-gutenberg')}
+                                label={__("Open Link in a new tab", 'premium-blocks-for-gutenberg')}
                                 checked={buttonStyles[0].btnTarget}
                                 onChange={newValue => saveButtonStyle({ btnTarget: newValue })}
                             />
@@ -995,17 +995,17 @@ class PremiumPricingTable extends Component {
                     )}
                     {badgeChecked && (
                         <PanelBody
-                            title={__("Badge", 'premium-block-for-gutenberg')}
+                            title={__("Badge", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Text", 'premium-block-for-gutenberg')}
+                                label={__("Text", 'premium-blocks-for-gutenberg')}
                                 value={badgeStyles[0].badgeText}
                                 onChange={value => saveBadgeStyles({ badgeText: value })}
                             />
                             <SelectControl
-                                label={__("Position", 'premium-block-for-gutenberg')}
+                                label={__("Position", 'premium-blocks-for-gutenberg')}
                                 options={POSITION}
                                 value={badgeStyles[0].badgePos}
                                 onChange={newValue => saveBadgeStyles({ badgePos: newValue })}
@@ -1015,7 +1015,7 @@ class PremiumPricingTable extends Component {
                                 setAttributes={saveBadgeStyles}
                                 fontSizeType={{
                                     value: badgeStyles[0].badgeTextUnit,
-                                    label: __("badgeTextUnit", 'premium-block-for-gutenberg'),
+                                    label: __("badgeTextUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={badgeStyles[0].badgeSize}
                                 fontSizeMobile={badgeStyles[0].badgeSizeMobile}
@@ -1033,26 +1033,26 @@ class PremiumPricingTable extends Component {
                                 onChangeMobileSize={newSize => saveBadgeStyles({ badgeSizeMobile: newSize })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={badgeStyles[0].badgeColor}
                                 colorDefault={''}
                                 onColorChange={newColor => saveBadgeStyles({ badgeColor: newColor })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={badgeStyles[0].badgeBack}
                                 colorDefault={''}
                                 onColorChange={newColor => saveBadgeStyles({ badgeBack: newColor })}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Vertical Offset", 'premium-block-for-gutenberg')}
+                                label={__("Vertical Offset", 'premium-blocks-for-gutenberg')}
                                 value={badgeStyles[0].badgeTop}
                                 onChange={newValue => saveBadgeStyles({ badgeTop: newValue })}
                                 showUnit={false}
                                 defaultValue={0}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Horizontal Offset", 'premium-block-for-gutenberg')}
+                                label={__("Horizontal Offset", 'premium-blocks-for-gutenberg')}
                                 value={badgeStyles[0].badgeHorizontal}
                                 min="1"
                                 max="150"
@@ -1061,7 +1061,7 @@ class PremiumPricingTable extends Component {
                                 defaultValue={1}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Badge Size", 'premium-block-for-gutenberg')}
+                                label={__("Badge Size", 'premium-blocks-for-gutenberg')}
                                 value={badgeStyles[0].badgeSize}
                                 min="0"
                                 max="250"
@@ -1070,7 +1070,7 @@ class PremiumPricingTable extends Component {
                                 defaultValue={0}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Text Width", 'premium-block-for-gutenberg')}
+                                label={__("Text Width", 'premium-blocks-for-gutenberg')}
                                 min="1"
                                 max="200"
                                 value={badgeStyles[0].badgeWidth}
@@ -1081,7 +1081,7 @@ class PremiumPricingTable extends Component {
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Table", 'premium-block-for-gutenberg')}
+                        title={__("Table", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -1127,7 +1127,7 @@ class PremiumPricingTable extends Component {
                             onChangePosition={newValue => saveTableStyles({ tableShadowPosition: newValue === undefined ? 0 : newValue })}
                         />
                         <div className="premium-control-toggle">
-                            <strong>{__("Spacings", 'premium-block-for-gutenberg')}</strong>
+                            <strong>{__("Spacings", 'premium-blocks-for-gutenberg')}</strong>
                             <Dropdown
                                 className="premium-control-toggle-btn"
                                 contentClassName="premium-control-toggle-content"
@@ -1140,7 +1140,7 @@ class PremiumPricingTable extends Component {
                                 renderContent={() => (
                                     <Fragment>
                                         <ResponsiveSingleRangeControl
-                                            label={__("Padding", 'premium-block-for-gutenberg')}
+                                            label={__("Padding", 'premium-blocks-for-gutenberg')}
                                             value={tableStyles[0].tablePadding}
                                             min="0"
                                             max="50"
@@ -1226,7 +1226,7 @@ class PremiumPricingTable extends Component {
                             tagName={titleStyles[0].titleTag.toLowerCase()}
                             className={`premium-pricing-table__title`}
                             onChange={newText => setAttributes({ title: newText })}
-                            placeholder={__("Awesome Title", 'premium-block-for-gutenberg')}
+                            placeholder={__("Awesome Title", 'premium-blocks-for-gutenberg')}
                             value={title}
                             style={{
                                 fontSize: `${titleFontSize}${titleStyles[0].titleSizeUnit}`,

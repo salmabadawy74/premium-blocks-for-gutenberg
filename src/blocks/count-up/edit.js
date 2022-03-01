@@ -98,39 +98,39 @@ class edit extends Component {
         const ICONS = [
             {
                 value: "icon",
-                label: __("Icon", 'premium-block-for-gutenberg')
+                label: __("Icon", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "img",
-                label: __("Image", 'premium-block-for-gutenberg')
+                label: __("Image", 'premium-blocks-for-gutenberg')
             }
         ];
         const DIRECTION = [
             {
                 value: "row",
-                label: __("Row", 'premium-block-for-gutenberg')
+                label: __("Row", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "row-reverse",
-                label: __("Reversed Row", 'premium-block-for-gutenberg')
+                label: __("Reversed Row", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "column",
-                label: __("Column", 'premium-block-for-gutenberg')
+                label: __("Column", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "column-reverse",
-                label: __("Reversed Column", 'premium-block-for-gutenberg')
+                label: __("Reversed Column", 'premium-blocks-for-gutenberg')
             }
         ];
         const TYPE = [
             {
                 value: "fa",
-                label: __("Font Awesome Icon", 'premium-block-for-gutenberg')
+                label: __("Font Awesome Icon", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "dash",
-                label: __("Dashicon", 'premium-block-for-gutenberg')
+                label: __("Dashicon", 'premium-blocks-for-gutenberg')
             }
         ];
         switch (align) {
@@ -226,26 +226,26 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Counter", 'premium-block-for-gutenberg')}
+                        title={__("Counter", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextControl
-                            label={__("Final Number", 'premium-block-for-gutenberg')}
+                            label={__("Final Number", 'premium-blocks-for-gutenberg')}
                             value={increment}
                             onChange={value => setAttributes({ increment: value })}
                         />
                         <TextControl
-                            label={__("Counting Time", 'premium-block-for-gutenberg')}
+                            label={__("Counting Time", 'premium-blocks-for-gutenberg')}
                             value={time}
                             onChange={value => setAttributes({ time: value })}
-                            help={__("Set counting time in milliseconds, for example: 1000", 'premium-block-for-gutenberg')}
+                            help={__("Set counting time in milliseconds, for example: 1000", 'premium-blocks-for-gutenberg')}
                         />
                         <TextControl
-                            label={__("Delay", 'premium-block-for-gutenberg')}
+                            label={__("Delay", 'premium-blocks-for-gutenberg')}
                             value={delay}
                             onChange={value => setAttributes({ delay: value })}
-                            help={__("Set delay in milliseconds, for example: 10", 'premium-block-for-gutenberg')}
+                            help={__("Set delay in milliseconds, for example: 10", 'premium-blocks-for-gutenberg')}
                         />
                         {"row-reverse" !== flexDir && (
                             <RadioComponent
@@ -264,14 +264,14 @@ class edit extends Component {
                             />
                         )}
                         <SelectControl
-                            label={__("Direction", 'premium-block-for-gutenberg')}
+                            label={__("Direction", 'premium-blocks-for-gutenberg')}
                             options={DIRECTION}
                             value={flexDir}
                             onChange={newDir => setAttributes({ flexDir: newDir })}
                         />
                         {("row" === flexDir || "row-reverse" === flexDir) && (
                             <ResponsiveSingleRangeControl
-                                label={__("Spacing", 'premium-block-for-gutenberg')}
+                                label={__("Spacing", 'premium-blocks-for-gutenberg')}
                                 value={iconSpacing}
                                 onChange={newValue => setAttributes({ iconSpacing: newValue })}
                                 showUnit={false}
@@ -279,34 +279,34 @@ class edit extends Component {
                             />
                         )}
                         <ToggleControl
-                            label={__("Icon", 'premium-block-for-gutenberg')}
+                            label={__("Icon", 'premium-blocks-for-gutenberg')}
                             checked={iconCheck}
                             onChange={check => setAttributes({ iconCheck: check })}
                         />
                         <ToggleControl
-                            label={__("Prefix", 'premium-block-for-gutenberg')}
+                            label={__("Prefix", 'premium-blocks-for-gutenberg')}
                             checked={prefix}
                             onChange={check => setAttributes({ prefix: check })}
                         />
                         <ToggleControl
-                            label={__("Suffix", 'premium-block-for-gutenberg')}
+                            label={__("Suffix", 'premium-blocks-for-gutenberg')}
                             checked={suffix}
                             onChange={check => setAttributes({ suffix: check })}
                         />
                         <ToggleControl
-                            label={__("Title", 'premium-block-for-gutenberg')}
+                            label={__("Title", 'premium-blocks-for-gutenberg')}
                             checked={titleCheck}
                             onChange={check => setAttributes({ titleCheck: check })}
                         />
                     </PanelBody>
                     {iconCheck && (
                         <PanelBody
-                            title={__("Icon", 'premium-block-for-gutenberg')}
+                            title={__("Icon", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
-                                label={__("Icon Type", 'premium-block-for-gutenberg')}
+                                label={__("Icon Type", 'premium-blocks-for-gutenberg')}
                                 options={ICONS}
                                 value={icon}
                                 onChange={newType => setAttributes({ icon: newType })}
@@ -320,16 +320,16 @@ class edit extends Component {
                             {"icon" === icon && (
                                 <Fragment>
                                     <SelectControl
-                                        label={__("Icon Type", 'premium-block-for-gutenberg')}
+                                        label={__("Icon Type", 'premium-blocks-for-gutenberg')}
                                         value={iconType}
                                         options={TYPE}
                                         onChange={newType => setAttributes({ iconType: newType })}
                                     />
                                     <TextControl
-                                        label={__("Icon Class", 'premium-block-for-gutenberg')}
+                                        label={__("Icon Class", 'premium-blocks-for-gutenberg')}
                                         value={faIcon}
                                         help={[
-                                            __("Get icon class from", 'premium-block-for-gutenberg'),
+                                            __("Get icon class from", 'premium-blocks-for-gutenberg'),
                                             <a
                                                 href={
                                                     "fa" === iconType
@@ -339,9 +339,9 @@ class edit extends Component {
                                                 target="_blank"
                                             >
                                                 &nbsp;
-                                                {__("here", 'premium-block-for-gutenberg')}
+                                                {__("here", 'premium-blocks-for-gutenberg')}
                                             </a>,
-                                            __(" , for example: ", 'premium-block-for-gutenberg'),
+                                            __(" , for example: ", 'premium-blocks-for-gutenberg'),
                                             "fa" === iconType ? "address-book" : "dashicons-admin-site"
                                         ]}
                                         onChange={newIcon => setAttributes({ faIcon: newIcon })}
@@ -368,7 +368,7 @@ class edit extends Component {
                                 />
                             )}
                             <ResponsiveSingleRangeControl
-                                label={__("Size", 'premium-block-for-gutenberg')}
+                                label={__("Size", 'premium-blocks-for-gutenberg')}
                                 value={iconSize}
                                 onChange={newValue => setAttributes({ iconSize: newValue })}
                                 showUnit={false}
@@ -378,7 +378,7 @@ class edit extends Component {
 
                             {"icon" === icon && (
                                 <AdvancedPopColorControl
-                                    label={__("Icon Color", 'premium-block-for-gutenberg')}
+                                    label={__("Icon Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={iconColor}
                                     colorDefault={''}
                                     onColorChange={newValue => setAttributes({ iconColor: newValue === undefined ? "transparent" : newValue })}
@@ -387,7 +387,7 @@ class edit extends Component {
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Number", 'premium-block-for-gutenberg')}
+                        title={__("Number", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -396,7 +396,7 @@ class edit extends Component {
                             setAttributes={saveNumberStyles}
                             fontSizeType={{
                                 value: numberStyles[0].numberSizeUnit,
-                                label: __("numberSizeUnit", 'premium-block-for-gutenberg'),
+                                label: __("numberSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
                             fontSize={numberStyles[0].numberSize}
                             fontSizeMobile={numberStyles[0].numberSizeMobile}
@@ -412,7 +412,7 @@ class edit extends Component {
                             onChangeFamily={(fontFamily) => setAttributes({ counterFamily: fontFamily })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Number Color", 'premium-block-for-gutenberg')}
+                            label={__("Number Color", 'premium-blocks-for-gutenberg')}
                             colorValue={numberStyles[0].numberColor}
                             colorDefault={''}
                             onColorChange={newValue => saveNumberStyles({ numberColor: newValue === undefined ? "transparent" : newValue })}
@@ -420,12 +420,12 @@ class edit extends Component {
                     </PanelBody>
                     {prefix && (
                         <PanelBody
-                            title={__("Prefix", 'premium-block-for-gutenberg')}
+                            title={__("Prefix", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Prefix", 'premium-block-for-gutenberg')}
+                                label={__("Prefix", 'premium-blocks-for-gutenberg')}
                                 value={prefixStyles[0].prefixTxt}
                                 onChange={value => savePrefixStyle({ prefixTxt: value })}
                             />
@@ -434,7 +434,7 @@ class edit extends Component {
                                 setAttributes={savePrefixStyle}
                                 fontSizeType={{
                                     value: prefixStyles[0].prefixSizeUnit,
-                                    label: __("prefixSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("prefixSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={prefixStyles[0].prefixSize}
                                 fontSizeMobile={prefixStyles[0].prefixSizeMobile}
@@ -448,13 +448,13 @@ class edit extends Component {
                                 onChangeFamily={(fontFamily) => savePrefixStyle({ prefixFamily: fontFamily })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={prefixStyles[0].prefixColor}
                                 colorDefault={''}
                                 onColorChange={newValue => savePrefixStyle({ prefixColor: newValue === undefined ? "transparent" : newValue })}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Gap After", 'premium-block-for-gutenberg')}
+                                label={__("Gap After", 'premium-blocks-for-gutenberg')}
                                 value={prefixStyles[0].prefixGap}
                                 onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
                                 showUnit={false}
@@ -464,12 +464,12 @@ class edit extends Component {
                     )}
                     {suffix && (
                         <PanelBody
-                            title={__("Suffix", 'premium-block-for-gutenberg')}
+                            title={__("Suffix", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Suffix", 'premium-block-for-gutenberg')}
+                                label={__("Suffix", 'premium-blocks-for-gutenberg')}
                                 value={suffixStyles[0].suffixTxt}
                                 onChange={value => saveSuffixStyle({ suffixTxt: value })}
                             />
@@ -478,7 +478,7 @@ class edit extends Component {
                                 setAttributes={saveSuffixStyle}
                                 fontSizeType={{
                                     value: suffixStyles[0].suffixSizeUnit,
-                                    label: __("suffixSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("suffixSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={suffixStyles[0].suffixSize}
                                 fontSizeMobile={suffixStyles[0].suffixSizeMobile}
@@ -492,13 +492,13 @@ class edit extends Component {
                                 onChangeFamily={(fontFamily) => saveSuffixStyle({ suffixFamily: fontFamily })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={suffixStyles[0].suffixColor}
                                 colorDefault={''}
                                 onColorChange={newValue => saveSuffixStyle({ suffixColor: newValue === undefined ? "transparent" : newValue })}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Gap Before", 'premium-block-for-gutenberg')}
+                                label={__("Gap Before", 'premium-blocks-for-gutenberg')}
                                 value={suffixStyles[0].suffixGap}
                                 onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
                                 showUnit={false}
@@ -508,12 +508,12 @@ class edit extends Component {
                     )}
                     {titleCheck && (
                         <PanelBody
-                            title={__("Title", 'premium-block-for-gutenberg')}
+                            title={__("Title", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <TextControl
-                                label={__("Title Text", 'premium-block-for-gutenberg')}
+                                label={__("Title Text", 'premium-blocks-for-gutenberg')}
                                 value={titleTxt}
                                 onChange={value => setAttributes({ titleTxt: value })}
                             />
@@ -522,7 +522,7 @@ class edit extends Component {
                                 setAttributes={saveTitleStyles}
                                 fontSizeType={{
                                     value: titleStyles[0].titleSizeUnit,
-                                    label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={titleStyles[0].titleSize}
                                 fontSizeMobile={titleStyles[0].titleSizeMobile}
@@ -548,12 +548,12 @@ class edit extends Component {
                                 onColorChange={newValue => saveTitleStyles({ titleColor: newValue === undefined ? "transparent" : newValue })}
                             />
                             <PanelBody
-                                title={__("Spacings", 'premium-block-for-gutenberg')}
+                                title={__("Spacings", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body-inner"
                                 initialOpen={false}
                             >
                                 <ResponsiveSingleRangeControl
-                                    label={__("Margin Top", 'premium-block-for-gutenberg')}
+                                    label={__("Margin Top", 'premium-blocks-for-gutenberg')}
                                     value={titleStyles[0].titleT}
                                     onChange={newValue => saveTitleStyles({ titleT: newValue })}
                                     showUnit={false}
@@ -561,7 +561,7 @@ class edit extends Component {
                                 />
 
                                 <ResponsiveSingleRangeControl
-                                    label={__("Margin Bottom", 'premium-block-for-gutenberg')}
+                                    label={__("Margin Bottom", 'premium-blocks-for-gutenberg')}
                                     value={titleStyles[0].titleB}
                                     onChange={newValue => saveTitleStyles({ titleB: newValue })}
                                     showUnit={false}
@@ -571,7 +571,7 @@ class edit extends Component {
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Container", 'premium-block-for-gutenberg')}
+                        title={__("Container", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -704,7 +704,7 @@ class edit extends Component {
             <div>
                 {iconType === "fa" && 1 != FontAwesomeEnabled && iconCheck && (
                     <p className={`premium-countup__alert`}>
-                        {__("Please Enable Font Awesome Icons from Plugin settings", 'premium-block-for-gutenberg')}
+                        {__("Please Enable Font Awesome Icons from Plugin settings", 'premium-blocks-for-gutenberg')}
                     </p>
                 )}
             </div>,
