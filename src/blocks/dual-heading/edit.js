@@ -244,54 +244,41 @@ class edit extends Component {
                         />
 
                         {!firstStyles[0].firstClip && (
-                <Fragment>
-                    <AdvancedPopColorControl
-                        label={__("Text Color", 'premium-block-for-gutenberg')}
-                        colorValue={firstStyles[0].firstColor}
-                        colorDefault={''}
-                        onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
-                    />
-                    <AdvancedPopColorControl
-                        label={__(`Background Color`)}
-                        colorValue={firstStyles[0].firstBackground}
-                        onColorChange={value => saveFirstStyle({ firstBackground: value, })}
-                        colorDefault={''}
-                    />
-                </Fragment>
-            )}
+                            <Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstStyles[0].firstColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__(`Background Color`)}
+                                    colorValue={firstStyles[0].firstBackground}
+                                    onColorChange={value => saveFirstStyle({ firstBackground: value, })}
+                                    colorDefault={''}
+                                />
+                            </Fragment>
+                        )}
 
-            {firstStyles[0].firstClip && (
-                <Fragment>
-                    <AdvancedPopColorControl
-                        label={__("First Color", 'premium-block-for-gutenberg')}
-                        colorValue={firstStyles[0].firstColor}
-                        colorDefault={''}
-                        onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
-                    />
+                        {firstStyles[0].firstClip && (
+                            <Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("First Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstStyles[0].firstColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
+                                />
 
-                    <AdvancedPopColorControl
-                        label={__("Second Color", 'premium-block-for-gutenberg')}
-                        colorValue={firstStyles[0].firstClipColor}
-                        colorDefault={''}
-                        onColorChange={newValue => saveFirstStyle({ firstClipColor: newValue })}
-                    />
-                </Fragment>
+                                <AdvancedPopColorControl
+                                    label={__("Second Color", 'premium-block-for-gutenberg')}
+                                    colorValue={firstStyles[0].firstClipColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveFirstStyle({ firstClipColor: newValue })}
+                                />
+                            </Fragment>
 
-            )}
+                        )}
 
-            <AdvancedPopColorControl
-                label={__("Second Color", 'premium-block-for-gutenberg')}
-                colorValue={firstClipColor}
-                colorDefault={''}
-                onColorChange={newValue =>
-                    setAttributes({
-                        firstClipColor: newValue
-                    })
-                }
-            />
-        </Fragment>
-    )
-}
                         <PremiumBorder
                             borderType={firstStyles[0].firstBorderType}
                             borderWidth={firstStyles[0].firstBorderWidth}
@@ -346,55 +333,55 @@ class edit extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                    </PanelBody >
-    <PanelBody
-        title={__("Second Heading Style", 'premium-block-for-gutenberg')}
-        className="premium-panel-body"
-        initialOpen={false}
-    >
-        <ToggleControl
-            label={__("Clipped", 'premium-block-for-gutenberg')}
-            checked={secondStyles[0].secondClip}
-            onChange={newValue => saveSecondStyle({ secondClip: newValue })}
-        />
-        {secondStyles[0].secondClip && (
-            <Fragment>
-                <ToggleControl
-                    label={__("Animated", 'premium-block-for-gutenberg')}
-                    checked={secondStyles[0].secondAnim}
-                    onChange={newValue => saveSecondStyle({ secondAnim: newValue })}
-                />
-                <ToggleControl
-                    label={__('Stroke', 'premium-block-for-gutenberg')}
-                    checked={secondStyles[0].secondStroke}
-                    onChange={newValue => saveSecondStyle({ secondStroke: newValue })}
-                />
-            </Fragment>
-        )}
-        <PremiumTypo
-            components={["responsiveSize", "weight", "style", "upper", "spacing", "family"]}
-            setAttributes={saveSecondStyle}
-            fontSizeType={{
-                value: secondStyles[0].secondSizeUnit,
-                label: __("secondSizeUnit", 'premium-block-for-gutenberg'),
-            }}
-            fontSize={secondStyles[0].secondSize}
-            fontSizeMobile={secondStyles[0].secondSizeMobile}
-            fontSizeTablet={secondStyles[0].secondSizeTablet}
-            onChangeSize={newSize => saveSecondStyle({ secondSize: newSize })}
-            onChangeTabletSize={newSize => saveSecondStyle({ secondSizeTablet: newSize })}
-            onChangeMobileSize={newSize => saveSecondStyle({ secondSizeMobile: newSize })}
-            fontFamily={secondStyles[0].secondFamily}
-            weight={secondStyles[0].secondWeight}
-            style={secondStyles[0].secondStyle}
-            spacing={secondStyles[0].secondLetter}
-            upper={secondStyles[0].secondUpper}
-            onChangeWeight={newWeight => saveSecondStyle({ secondWeight: newWeight || 500 })}
-            onChangeStyle={newStyle => saveSecondStyle({ secondStyle: newStyle })}
-            onChangeSpacing={newValue => saveSecondStyle({ secondLetter: newValue })}
-            onChangeUpper={check => saveSecondStyle({ secondUpper: check })}
-            onChangeFamily={(fontFamily) => saveSecondStyle({ secondFamily: fontFamily })}
-        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Second Heading Style", 'premium-block-for-gutenberg')}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <ToggleControl
+                            label={__("Clipped", 'premium-block-for-gutenberg')}
+                            checked={secondStyles[0].secondClip}
+                            onChange={newValue => saveSecondStyle({ secondClip: newValue })}
+                        />
+                        {secondStyles[0].secondClip && (
+                            <Fragment>
+                                <ToggleControl
+                                    label={__("Animated", 'premium-block-for-gutenberg')}
+                                    checked={secondStyles[0].secondAnim}
+                                    onChange={newValue => saveSecondStyle({ secondAnim: newValue })}
+                                />
+                                <ToggleControl
+                                    label={__('Stroke', 'premium-block-for-gutenberg')}
+                                    checked={secondStyles[0].secondStroke}
+                                    onChange={newValue => saveSecondStyle({ secondStroke: newValue })}
+                                />
+                            </Fragment>
+                        )}
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "style", "upper", "spacing", "family"]}
+                            setAttributes={saveSecondStyle}
+                            fontSizeType={{
+                                value: secondStyles[0].secondSizeUnit,
+                                label: __("secondSizeUnit", 'premium-block-for-gutenberg'),
+                            }}
+                            fontSize={secondStyles[0].secondSize}
+                            fontSizeMobile={secondStyles[0].secondSizeMobile}
+                            fontSizeTablet={secondStyles[0].secondSizeTablet}
+                            onChangeSize={newSize => saveSecondStyle({ secondSize: newSize })}
+                            onChangeTabletSize={newSize => saveSecondStyle({ secondSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveSecondStyle({ secondSizeMobile: newSize })}
+                            fontFamily={secondStyles[0].secondFamily}
+                            weight={secondStyles[0].secondWeight}
+                            style={secondStyles[0].secondStyle}
+                            spacing={secondStyles[0].secondLetter}
+                            upper={secondStyles[0].secondUpper}
+                            onChangeWeight={newWeight => saveSecondStyle({ secondWeight: newWeight || 500 })}
+                            onChangeStyle={newStyle => saveSecondStyle({ secondStyle: newStyle })}
+                            onChangeSpacing={newValue => saveSecondStyle({ secondLetter: newValue })}
+                            onChangeUpper={check => saveSecondStyle({ secondUpper: check })}
+                            onChangeFamily={(fontFamily) => saveSecondStyle({ secondFamily: fontFamily })}
+                        />
                         {!secondStyles[0].secondClip && (
                             <Fragment>
                                 <AdvancedPopColorControl
@@ -424,10 +411,10 @@ class edit extends Component {
                                     colorValue={secondStyles[0].secondClipColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveSecondStyle({ secondClipColor: newValue || "transparent" })}
-            />
-        </Fragment>
-    )
-}
+                                />
+                            </Fragment>
+                        )}
+
                         <PremiumBorder
                             borderType={secondStyles[0].secondBorderType}
                             borderWidth={secondStyles[0].secondBorderWidth}
@@ -482,12 +469,12 @@ class edit extends Component {
                             showUnit={false}
                             defaultValue={0}
                         />
-                    </PanelBody >
-    <PanelBody
-        title={__("Container Style", 'premium-block-for-gutenberg')}
-        className="premium-panel-body"
-        initialOpen={false}
-    >
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Container Style", 'premium-block-for-gutenberg')}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
                         <PremiumBackgroundControl
                             setAttributes={setAttributes}
                             saveContainerStyle={saveContainerStyle}
@@ -528,16 +515,16 @@ class edit extends Component {
                             onChangeColor={(colorValue) => saveContainerStyle({ containerBorderColor: colorValue, })}
                             onChangeRadius={(newrRadius) => saveContainerStyle({ containerBorderRadius: newrRadius })}
                         />
-                    </PanelBody >
-    <PremiumResponsiveTabs
-        Desktop={hideDesktop}
-        Tablet={hideTablet}
-        Mobile={hideMobile}
-        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
-    />
-                </InspectorControls >
+                    </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                    />
+                </InspectorControls>
             ),
 
             <div
