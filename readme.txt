@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 Donate link: http://leap13.com
 Requires at least: 4.5
-Tested up to: 5.9
+Tested up to: 5.9.1
 Requires PHP: 5.4
-Stable tag: 1.9.1
+Stable tag: 1.9.2
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -58,6 +58,14 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.9.2 =
+
+- Tweak: Added responsive controls for Margin and Padding controls.
+- Tweak: Added option to set a gradient background in Background control.
+- Tweak: Improved Typography control.
+- Tweak: Improved UX for Box/Text Shadow controls.
+- Tweak: Added option to upload JSON file in Lottie Animations block.
 
 = 1.9.1 =
 
