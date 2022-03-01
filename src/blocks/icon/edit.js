@@ -122,31 +122,31 @@ const edit = props => {
     const EFFECTS = [
         {
             value: "none",
-            label: __("None", 'premium-block-for-gutenberg')
+            label: __("None", 'premium-blocks-for-gutenberg')
         },
         {
             value: "pulse",
-            label: __("Pulse", 'premium-block-for-gutenberg')
+            label: __("Pulse", 'premium-blocks-for-gutenberg')
         },
         {
             value: "rotate",
-            label: __("Rotate", 'premium-block-for-gutenberg')
+            label: __("Rotate", 'premium-blocks-for-gutenberg')
         },
         {
             value: "drotate",
-            label: __("3D Rotate", 'premium-block-for-gutenberg')
+            label: __("3D Rotate", 'premium-blocks-for-gutenberg')
         },
         {
             value: "buzz",
-            label: __("Buzz", 'premium-block-for-gutenberg')
+            label: __("Buzz", 'premium-blocks-for-gutenberg')
         },
         {
             value: "drop",
-            label: __("Drop Shadow", 'premium-block-for-gutenberg')
+            label: __("Drop Shadow", 'premium-blocks-for-gutenberg')
         },
         {
             value: "wobble",
-            label: __("Wobble", 'premium-block-for-gutenberg')
+            label: __("Wobble", 'premium-blocks-for-gutenberg')
         }
     ];
 
@@ -208,21 +208,21 @@ const edit = props => {
         isSelected && (
             <InspectorControls key={"inspector"}>
                 <PanelBody
-                    title={__("Icon", 'premium-block-for-gutenberg')}
+                    title={__("Icon", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-block-for-gutenberg')}</p>
+                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-blocks-for-gutenberg')}</p>
                     <FontIconPicker
                         icons={iconsList}
                         onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
                         value={selectedIcon}
                         isMulti={false}
                         appendTo="body"
-                        noSelectedPlaceholder={__("Select Icon", 'premium-block-for-gutenberg')}
+                        noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                     />
                     <SelectControl
-                        label={__("Hover Effect", 'premium-block-for-gutenberg')}
+                        label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
                         options={EFFECTS}
                         value={hoverEffect}
                         onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
@@ -231,28 +231,28 @@ const edit = props => {
                         choices={["right", "center", "left"]}
                         value={align}
                         onChange={newValue => setAttributes({ align: newValue })}
-                        label={__("Align", 'premium-block-for-gutenberg')}
+                        label={__("Align", 'premium-blocks-for-gutenberg')}
                     />
                     <ToggleControl
-                        label={__("Link", 'premium-block-for-gutenberg')}
+                        label={__("Link", 'premium-blocks-for-gutenberg')}
                         checked={urlCheck}
                         onChange={newValue => setAttributes({ urlCheck: newValue })}
                     />
                     {urlCheck && (
                         <ToggleControl
-                            label={__("Open link in new tab", 'premium-block-for-gutenberg')}
+                            label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                             checked={target}
                             onChange={newValue => setAttributes({ target: newValue })}
                         />
                     )}
                 </PanelBody>
                 <PanelBody
-                    title={__("Icon Style", 'premium-block-for-gutenberg')}
+                    title={__("Icon Style", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
                     <ResponsiveSingleRangeControl
-                        label={__("Size", 'premium-block-for-gutenberg')}
+                        label={__("Size", 'premium-blocks-for-gutenberg')}
                         value={iconStyles[0].iconSize}
                         onChange={newValue => saveIconStyle({ iconSize: newValue })}
                         units={['px', 'em', 'rem']}
@@ -264,13 +264,13 @@ const edit = props => {
                         unit={iconStyles[0].iconSizeUnit}
                     />
                     <AdvancedPopColorControl
-                        label={__("Icon Color", 'premium-block-for-gutenberg')}
+                        label={__("Icon Color", 'premium-blocks-for-gutenberg')}
                         colorValue={iconStyles[0].iconColor}
                         colorDefault={''}
                         onColorChange={value => saveIconStyle({ iconColor: value })}
                     />
                     <AdvancedPopColorControl
-                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                        label={__("Background Color", 'premium-blocks-for-gutenberg')}
                         colorValue={iconStyles[0].iconBack}
                         colorDefault={''}
                         onColorChange={value => saveIconStyle({ iconBack: value })}
@@ -429,7 +429,7 @@ const edit = props => {
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__("Container Style", 'premium-block-for-gutenberg')}
+                    title={__("Container Style", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >

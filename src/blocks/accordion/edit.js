@@ -134,22 +134,22 @@ class PremiumAccordion extends Component {
         const ARROW = [
             {
                 value: "in",
-                label: __("In", 'premium-block-for-gutenberg')
+                label: __("In", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "out",
-                label: __("Out", 'premium-block-for-gutenberg')
+                label: __("Out", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const TYPE = [
             {
                 value: "text",
-                label: __("Text", 'premium-block-for-gutenberg')
+                label: __("Text", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Gutenberg Block", 'premium-block-for-gutenberg')
+                label: __("Gutenberg Block", 'premium-blocks-for-gutenberg')
             }
         ];
 
@@ -247,7 +247,7 @@ class PremiumAccordion extends Component {
                                         )
                                     })
                                 }
-                                placeholder={__("Awesome Title", 'premium-block-for-gutenberg')}
+                                placeholder={__("Awesome Title", 'premium-blocks-for-gutenberg')}
                                 value={item.titleText}
                                 style={{
                                     color: titleStyles[0].titleColor,
@@ -330,7 +330,7 @@ class PremiumAccordion extends Component {
             isSelected && (
                 <InspectorControls key="inspector">
                     <PanelBody
-                        title={__("Title", 'premium-block-for-gutenberg')}
+                        title={__("Title", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -338,10 +338,10 @@ class PremiumAccordion extends Component {
                             choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                             value={titleTag}
                             onChange={(newValue) => setAttributes({ titleTag: newValue })}
-                            label={__("Title Tag", 'premium-block-for-gutenberg')}
+                            label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                         />
                         <SelectControl
-                            label={__("Direction", 'premium-block-for-gutenberg')}
+                            label={__("Direction", 'premium-blocks-for-gutenberg')}
                             options={DIRECTION}
                             value={direction}
                             onChange={newEffect => setAttributes({ direction: newEffect })}
@@ -370,13 +370,13 @@ class PremiumAccordion extends Component {
                             onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                             colorValue={titleStyles[0].titleColor}
                             colorDefault={''}
                             onColorChange={value => saveTitleStyles({ titleColor: value })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
                             colorValue={titleStyles[0].titleBack}
                             colorDefault={''}
                             onColorChange={value => saveTitleStyles({ titleBack: value })}
@@ -473,38 +473,38 @@ class PremiumAccordion extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Arrow", 'premium-block-for-gutenberg')}
+                        title={__("Arrow", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Position", 'premium-block-for-gutenberg')}
+                            label={__("Position", 'premium-blocks-for-gutenberg')}
                             options={ARROW}
                             value={arrowStyles[0].arrowPos}
                             onChange={newEffect => saveArrowStyles({ arrowPos: newEffect })}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Size", 'premium-block-for-gutenberg')}
+                            label={__("Size", 'premium-blocks-for-gutenberg')}
                             value={arrowStyles[0].arrowSize}
                             onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
                             showUnit={false}
                             defaultValue={20}
                         />
                         <AdvancedPopColorControl
-                            label={__("Arrow Color", 'premium-block-for-gutenberg')}
+                            label={__("Arrow Color", 'premium-blocks-for-gutenberg')}
                             colorValue={arrowStyles[0].arrowColor}
                             colorDefault={''}
                             onColorChange={newValue => saveArrowStyles({ arrowColor: newValue })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
                             colorValue={arrowStyles[0].arrowBack}
                             colorDefault={''}
                             onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
                         />
 
                         <ResponsiveSingleRangeControl
-                            label={__("Border Radius", 'premium-block-for-gutenberg')}
+                            label={__("Border Radius", 'premium-blocks-for-gutenberg')}
                             value={arrowStyles[0].arrowRadius}
                             onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
                             defaultValue={0}
@@ -512,7 +512,7 @@ class PremiumAccordion extends Component {
                         />
 
                         <ResponsiveSingleRangeControl
-                            label={__("Padding", 'premium-block-for-gutenberg')}
+                            label={__("Padding", 'premium-blocks-for-gutenberg')}
                             value={arrowStyles[0].arrowPadding}
                             onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
                             defaultValue={0}
@@ -520,16 +520,16 @@ class PremiumAccordion extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Content", 'premium-block-for-gutenberg')}
+                        title={__("Content", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Type", 'premium-block-for-gutenberg')}
+                            label={__("Type", 'premium-blocks-for-gutenberg')}
                             options={TYPE}
                             value={contentType}
                             onChange={newType => setAttributes({ contentType: newType })}
-                            help={__("Gutenberg Block works only with single accordion item", 'premium-block-for-gutenberg')}
+                            help={__("Gutenberg Block works only with single accordion item", 'premium-blocks-for-gutenberg')}
                         />
                         <RadioComponent
                             choices={["left", "center", "right"]}
@@ -562,13 +562,13 @@ class PremiumAccordion extends Component {
                                     onChangeUpper={check => SaveDescStyles({ descUpper: check })}
                                 />
                                 <AdvancedPopColorControl
-                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={descStyles[0].descColor}
                                     colorDefault={''}
                                     onColorChange={value => SaveDescStyles({ descColor: value })}
                                 />
                                 <AdvancedPopColorControl
-                                    label={__("Background Color", 'premium-block-for-gutenberg')}
+                                    label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={descStyles[0].descBack}
                                     colorDefault={''}
                                     onColorChange={value => SaveDescStyles({ descBack: value })}
@@ -681,17 +681,17 @@ class PremiumAccordion extends Component {
                             return setAttributes({
                                 repeaterItems: repeaterItems.concat([
                                     {
-                                        titleText: __("Awesome Title", 'premium-block-for-gutenberg'),
-                                        descText: __("Cool Description", 'premium-block-for-gutenberg')
+                                        titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
+                                        descText: __("Cool Description", 'premium-blocks-for-gutenberg')
                                     }
                                 ])
                             });
                         }}
                     >
                         <i className="dashicons dashicons-plus premium-repeater-icon" />
-                        {__("Add New Item", 'premium-block-for-gutenberg')}
+                        {__("Add New Item", 'premium-blocks-for-gutenberg')}
                     </button>
-                    <p>{__("Add the items you need then reload the page", 'premium-block-for-gutenberg')}</p>
+                    <p>{__("Add the items you need then reload the page", 'premium-blocks-for-gutenberg')}</p>
                 </div>
             </Fragment>
         ];

@@ -89,15 +89,15 @@ class edit extends Component {
         const RADIUS = [
             {
                 value: "0",
-                label: __("Square", 'premium-block-for-gutenberg')
+                label: __("Square", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "50%",
-                label: __("Circle", 'premium-block-for-gutenberg')
+                label: __("Circle", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "15px",
-                label: __("Rounded", 'premium-block-for-gutenberg')
+                label: __("Rounded", 'premium-blocks-for-gutenberg')
             }
         ];
 
@@ -189,16 +189,16 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Author", 'premium-block-for-gutenberg')}
+                        title={__("Author", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={true}
                     >
                         <PanelBody
-                            title={__("Image", 'premium-block-for-gutenberg')}
+                            title={__("Image", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body-inner"
                             initialOpen={false}
                         >
-                            <p>{__("Author Image", 'premium-block-for-gutenberg')}</p>
+                            <p>{__("Author Image", 'premium-blocks-for-gutenberg')}</p>
                             {!authorImgUrl && <DefaultImage />}
                             <PremiumMediaUpload
                                 type="image"
@@ -219,7 +219,7 @@ class edit extends Component {
                             />
                             {authorImgUrl && (
                                 <SelectControl
-                                    label={__("Image Style", 'premium-block-for-gutenberg')}
+                                    label={__("Image Style", 'premium-blocks-for-gutenberg')}
                                     options={RADIUS}
                                     value={imgRadius}
                                     onChange={newWeight => setAttributes({ imgRadius: newWeight })}
@@ -227,7 +227,7 @@ class edit extends Component {
                             )}
                             {authorImgUrl && (
                                 <ResponsiveSingleRangeControl
-                                    label={__("Size", 'premium-block-for-gutenberg')}
+                                    label={__("Size", 'premium-blocks-for-gutenberg')}
                                     value={imgSize}
                                     max="200"
                                     onChange={newSize => setAttributes({ imgSize: newSize })}
@@ -237,7 +237,7 @@ class edit extends Component {
                             )}
                             {authorImgUrl && (
                                 <ResponsiveSingleRangeControl
-                                    label={__("Border Width (PX)", 'premium-block-for-gutenberg')}
+                                    label={__("Border Width (PX)", 'premium-blocks-for-gutenberg')}
                                     value={imgBorder}
                                     onChange={newSize => setAttributes({ imgBorder: newSize })}
                                     showUnit={false}
@@ -246,7 +246,7 @@ class edit extends Component {
                             )}
                             {authorImgUrl && (
                                 <AdvancedPopColorControl
-                                    label={__("Border Color", 'premium-block-for-gutenberg')}
+                                    label={__("Border Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={imgBorderColor}
                                     colorDefault={''}
                                     onColorChange={newValue => setAttributes({ imgBorderColor: newValue })}
@@ -257,14 +257,14 @@ class edit extends Component {
                             choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                             value={authorStyles[0].authorTag}
                             onChange={(newValue) => saveAuthorStyle({ authorTag: newValue })}
-                            label={__("Author HTML Tag", 'premium-block-for-gutenberg')}
+                            label={__("Author HTML Tag", 'premium-blocks-for-gutenberg')}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={saveAuthorStyle}
                             fontSizeType={{
                                 value: authorStyles[0].authorSizeUnit,
-                                label: __("authorSizeUnit", 'premium-block-for-gutenberg'),
+                                label: __("authorSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
                             fontSize={authorStyles[0].authorSize}
                             fontSizeMobile={authorStyles[0].authorSizeMobile}
@@ -284,19 +284,19 @@ class edit extends Component {
                             onChangeUpper={check => saveAuthorStyle({ authorUpper: check })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Color", 'premium-block-for-gutenberg')}
+                            label={__("Color", 'premium-blocks-for-gutenberg')}
                             colorValue={authorStyles[0].authorColor}
                             colorDefault={''}
                             onColorChange={newValue => saveAuthorStyle({ authorColor: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Content", 'premium-block-for-gutenberg')}
+                        title={__("Content", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ResponsiveRangeControl
-                            label={__("Font Size", 'premium-block-for-gutenberg')}
+                            label={__("Font Size", 'premium-blocks-for-gutenberg')}
                             value={contentStyle[0].bodySize}
                             onChange={value => saveContentStyle({ bodySize: value })}
                             tabletValue={contentStyle[0].bodySizeTablet}
@@ -310,7 +310,7 @@ class edit extends Component {
                             units={["px", "em"]}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Line Height (PX)", 'premium-block-for-gutenberg')}
+                            label={__("Line Height (PX)", 'premium-blocks-for-gutenberg')}
                             value={contentStyle[0].bodyLine}
                             onChange={(value) => saveContentStyle({ bodyLine: value })}
                             defaultValue={1}
@@ -319,20 +319,20 @@ class edit extends Component {
                             max={100}
                         />
                         <AdvancedPopColorControl
-                            label={__("Color", 'premium-block-for-gutenberg')}
+                            label={__("Color", 'premium-blocks-for-gutenberg')}
                             colorValue={contentStyle[0].bodyColor}
                             colorDefault={''}
                             onColorChange={newValue => saveContentStyle({ bodyColor: newValue })}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Margin Top (PX)", 'premium-block-for-gutenberg')}
+                            label={__("Margin Top (PX)", 'premium-blocks-for-gutenberg')}
                             value={contentStyle[0].bodyTop}
                             onChange={newSize => saveContentStyle({ bodyTop: newSize })}
                             showUnit={false}
                             defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Margin Bottom (PX)", 'premium-block-for-gutenberg')}
+                            label={__("Margin Bottom (PX)", 'premium-blocks-for-gutenberg')}
                             value={contentStyle[0].bodyBottom}
                             onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
                             showUnit={false}
@@ -340,7 +340,7 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Company", 'premium-block-for-gutenberg')}
+                        title={__("Company", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -348,10 +348,10 @@ class edit extends Component {
                             choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                             value={authorStyles[0].authorComTag}
                             onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
-                            label={__("HTML Tag", 'premium-block-for-gutenberg')}
+                            label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
                         />
                         <ResponsiveRangeControl
-                            label={__("Font Size", 'premium-block-for-gutenberg')}
+                            label={__("Font Size", 'premium-blocks-for-gutenberg')}
                             value={companyStyles[0].authorComSize}
                             onChange={value => saveCompanyStyle({ authorComSize: value })}
                             tabletValue={companyStyles[0].authorComSizeTablet}
@@ -365,44 +365,44 @@ class edit extends Component {
                             units={["px", "em"]}
                         />
                         <AdvancedPopColorControl
-                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                             colorValue={companyStyles[0].authorComColor}
                             colorDefault={''}
                             onColorChange={newValue => saveCompanyStyle({ authorComColor: newValue })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Dash Color", 'premium-block-for-gutenberg')}
+                            label={__("Dash Color", 'premium-blocks-for-gutenberg')}
                             colorValue={companyStyles[0].dashColor}
                             colorDefault={''}
                             onColorChange={newValue => saveCompanyStyle({ dashColor: newValue })}
                         />
                         <ToggleControl
-                            label={__("URL", 'premium-block-for-gutenberg')}
+                            label={__("URL", 'premium-blocks-for-gutenberg')}
                             checked={companyStyles[0].urlCheck}
                             onChange={newCheck => saveCompanyStyle({ urlCheck: newCheck })}
                         />
                         {companyStyles[0].urlCheck && (
                             <TextControl
-                                label={__("URL", 'premium-block-for-gutenberg')}
+                                label={__("URL", 'premium-blocks-for-gutenberg')}
                                 value={companyStyles[0].urlText}
                                 onChange={newURL => saveCompanyStyle({ urlText: newURL })}
                             />
                         )}
                         {companyStyles[0].urlCheck && (
                             <ToggleControl
-                                label={__("Open Link in a New Tab", 'premium-block-for-gutenberg')}
+                                label={__("Open Link in a New Tab", 'premium-blocks-for-gutenberg')}
                                 checked={companyStyles[0].urlTarget}
                                 onChange={newCheck => saveCompanyStyle({ urlTarget: newCheck })}
                             />
                         )}
                     </PanelBody>
                     <PanelBody
-                        title={__("Quotations", 'premium-block-for-gutenberg')}
+                        title={__("Quotations", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ResponsiveSingleRangeControl
-                            label={__("Size (EM)", 'premium-block-for-gutenberg')}
+                            label={__("Size (EM)", 'premium-blocks-for-gutenberg')}
                             value={quoteStyles[0].quotSize}
                             min="1"
                             max="12"
@@ -411,13 +411,13 @@ class edit extends Component {
                             defaultValue={0}
                         />
                         <AdvancedPopColorControl
-                            label={__("Quotations Color", 'premium-block-for-gutenberg')}
+                            label={__("Quotations Color", 'premium-blocks-for-gutenberg')}
                             colorValue={quoteStyles[0].quotColor}
                             colorDefault={''}
                             onColorChange={newValue => saveQuoteStyles({ quotColor: newValue })}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Opacity", 'premium-block-for-gutenberg')}
+                            label={__("Opacity", 'premium-blocks-for-gutenberg')}
                             value={quoteStyles[0].quotOpacity}
                             onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
                             showUnit={false}
@@ -425,7 +425,7 @@ class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Container", 'premium-block-for-gutenberg')}
+                        title={__("Container", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -460,19 +460,7 @@ class edit extends Component {
                             onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue })}
                             onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
-                        {/* <PremiumPadding
-                            paddingTop={paddingTop}
-                            paddingRight={paddingRight}
-                            paddingBottom={paddingBottom}
-                            paddingLeft={paddingLeft}
-                            onChangePadTop={value => setAttributes({ paddingTop: value })}
-                            onChangePadRight={value => setAttributes({ paddingRight: value })}
-                            onChangePadBottom={value => setAttributes({ paddingBottom: value })}
-                            onChangePadLeft={value => setAttributes({ paddingLeft: value })}
-                            showUnits={true}
-                            selectedUnit={containerStyles[0].paddingUnit}
-                            onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
-                        /> */}
+
                         <PremiumResponsivePadding
                             paddingTop={paddingTop}
                             paddingRight={paddingRight}

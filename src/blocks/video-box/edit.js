@@ -124,19 +124,19 @@ class edit extends Component {
         const TYPE = [
             {
                 value: "youtube",
-                label: __("Youtube", 'premium-block-for-gutenberg')
+                label: __("Youtube", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "vimeo",
-                label: __("Vimeo", 'premium-block-for-gutenberg')
+                label: __("Vimeo", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "daily",
-                label: __("Daily Motion", 'premium-block-for-gutenberg')
+                label: __("Daily Motion", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "self",
-                label: __("Self Hosted", 'premium-block-for-gutenberg')
+                label: __("Self Hosted", 'premium-blocks-for-gutenberg')
             }
         ];
 
@@ -228,12 +228,12 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Video", 'premium-block-for-gutenberg')}
+                        title={__("Video", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={true}
                     >
                         <SelectControl
-                            label={__("Video Type", 'premium-block-for-gutenberg')}
+                            label={__("Video Type", 'premium-blocks-for-gutenberg')}
                             options={TYPE}
                             value={videoType}
                             onChange={changeVideoType}
@@ -241,7 +241,7 @@ class edit extends Component {
                         {"self" !== videoType && (
                             <TextControl
                                 className="premium-text-control"
-                                label={__("Video URL", 'premium-block-for-gutenberg')}
+                                label={__("Video URL", 'premium-blocks-for-gutenberg')}
                                 value={videoURL}
                                 placeholder={__("Enter Video ID, Embed URL or Video URL")}
                                 onChange={newURL => setAttributes({ videoURL: newURL })}
@@ -268,48 +268,48 @@ class edit extends Component {
                             />
                         )}
                         <ToggleControl
-                            label={__("Autoplay", 'premium-block-for-gutenberg')}
+                            label={__("Autoplay", 'premium-blocks-for-gutenberg')}
                             checked={autoPlay}
                             onChange={newCheck => setAttributes({ autoPlay: newCheck })}
                             help={__(
-                                "This option effect works when Overlay Image option is disabled", 'premium-block-for-gutenberg'
+                                "This option effect works when Overlay Image option is disabled", 'premium-blocks-for-gutenberg'
                             )}
                         />
                         {"daily" !== videoType && (
                             <ToggleControl
-                                label={__("Loop", 'premium-block-for-gutenberg')}
+                                label={__("Loop", 'premium-blocks-for-gutenberg')}
                                 checked={loop}
                                 onChange={newCheck => setAttributes({ loop: newCheck })}
                             />
                         )}
                         <ToggleControl
-                            label={__("Mute", 'premium-block-for-gutenberg')}
+                            label={__("Mute", 'premium-blocks-for-gutenberg')}
                             checked={mute}
                             onChange={newCheck => setAttributes({ mute: newCheck })}
                         />
                         {"vimeo" !== videoType && (
                             <ToggleControl
-                                label={__("Player Controls", 'premium-block-for-gutenberg')}
+                                label={__("Player Controls", 'premium-blocks-for-gutenberg')}
                                 checked={controls}
                                 onChange={newCheck => setAttributes({ controls: newCheck })}
                             />
                         )}
                         {"youtube" === videoType && (
                             <ToggleControl
-                                label={__("Show Related Videos", 'premium-block-for-gutenberg')}
+                                label={__("Show Related Videos", 'premium-blocks-for-gutenberg')}
                                 checked={relatedVideos}
                                 onChange={newCheck => setAttributes({ relatedVideos: newCheck })}
                             />
                         )}
                         <ToggleControl
-                            label={__("Overlay Image", 'premium-block-for-gutenberg')}
+                            label={__("Overlay Image", 'premium-blocks-for-gutenberg')}
                             checked={overlay}
                             onChange={newCheck => setAttributes({ overlay: newCheck })}
                         />
                     </PanelBody>
                     {overlay && (
                         <PanelBody
-                            title={__("Overlay", 'premium-block-for-gutenberg')}
+                            title={__("Overlay", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -348,26 +348,26 @@ class edit extends Component {
                     {overlay && (
                         <Fragment>
                             <PanelBody
-                                title={__("Play Icon", 'premium-block-for-gutenberg')}
+                                title={__("Play Icon", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <ToggleControl
-                                    label={__("Enable Play Icon", 'premium-block-for-gutenberg')}
+                                    label={__("Enable Play Icon", 'premium-blocks-for-gutenberg')}
                                     checked={playIcon}
                                     onChange={newCheck => setAttributes({ playIcon: newCheck })}
                                 />
                                 {playIcon && (
                                     <Fragment>
                                         <ResponsiveSingleRangeControl
-                                            label={__("Size (PX)", 'premium-block-for-gutenberg')}
+                                            label={__("Size (PX)", 'premium-blocks-for-gutenberg')}
                                             value={playStyles[0].playSize}
                                             onChange={newValue => savePlayStyles({ playSize: newValue === undefined ? 20 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
                                             value={playStyles[0].playTop}
                                             onChange={newValue => savePlayStyles({ playTop: newValue === undefined ? 50 : newValue })}
                                             showUnit={false}
@@ -406,19 +406,19 @@ class edit extends Component {
                                 )}
                             </PanelBody>
                             <PanelBody
-                                title={__("Video Description", 'premium-block-for-gutenberg')}
+                                title={__("Video Description", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <ToggleControl
-                                    label={__("Enable Video Description", 'premium-block-for-gutenberg')}
+                                    label={__("Enable Video Description", 'premium-blocks-for-gutenberg')}
                                     checked={videoDesc}
                                     onChange={newCheck => setAttributes({ videoDesc: newCheck })}
                                 />
                                 {videoDesc && (
                                     <Fragment>
                                         <TextareaControl
-                                            label={__("Description Text", 'premium-block-for-gutenberg')}
+                                            label={__("Description Text", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].videoDescText}
                                             onChange={newText => saveDescritionStyle({ videoDescText: newText })}
                                         />
@@ -434,7 +434,7 @@ class edit extends Component {
                                             setAttributes={saveDescritionStyle}
                                             fontSizeType={{
                                                 value: descStyles[0].videoDescSizeUnit,
-                                                label: __("videoDescSizeUnit", 'premium-block-for-gutenberg'),
+                                                label: __("videoDescSizeUnit", 'premium-blocks-for-gutenberg'),
                                             }}
                                             fontSize={descStyles[0].videoDescSize}
                                             fontSizeMobile={descStyles[0].videoDescSizeMobile}
@@ -456,14 +456,14 @@ class edit extends Component {
                                             onChangeFamily={(fontFamily) => saveDescritionStyle({ videoDescFamily: fontFamily })}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].descTop}
                                             onChange={newValue => saveDescritionStyle({ descTop: newValue === undefined ? 50 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Border Radius (px)", 'premium-block-for-gutenberg')}
+                                            label={__("Border Radius (px)", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].videoDescBorderRadius}
                                             onChange={newValue => saveDescritionStyle({ videoDescBorderRadius: newValue === undefined ? 0 : newValue })}
                                             showUnit={false}
@@ -480,7 +480,7 @@ class edit extends Component {
                                             onChangeVertical={newValue => saveDescritionStyle({ descShadowVertical: newValue || "0" })}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Padding (PX)", 'premium-block-for-gutenberg')}
+                                            label={__("Padding (PX)", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].videoDescPadding}
                                             onChange={newValue => saveDescritionStyle({ videoDescPadding: newValue === undefined ? 20 : newValue })}
                                             showUnit={false}
@@ -492,7 +492,7 @@ class edit extends Component {
                         </Fragment>
                     )}
                     <PanelBody
-                        title={__("Colors", 'premium-block-for-gutenberg')}
+                        title={__("Colors", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -552,13 +552,13 @@ class edit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Icon Hover Color", 'premium-block-for-gutenberg')}
+                                                label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={playStyles[0].playHoverColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => savePlayStyles({ playHoverColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Icon Hover Background Color", 'premium-block-for-gutenberg')}
+                                                label={__("Icon Hover Background Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={playStyles[0].playHoverBackColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => savePlayStyles({ playHoverBackColor: newValue, })}
@@ -576,7 +576,7 @@ class edit extends Component {
                         </TabPanel>
                     </PanelBody>
                     <PanelBody
-                        title={__("Box Style", 'premium-block-for-gutenberg')}
+                        title={__("Box Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
