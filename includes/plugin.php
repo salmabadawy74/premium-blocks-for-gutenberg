@@ -25,18 +25,18 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 			$this->pbg_setup();
 
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
-			add_action( 'rest_api_init', array( $this, 'register_api_endpoints' ) );
 
 			if ( ! $this->is_gutenberg_active() ) {
-
 				return;
 			}
 		}
 
 		/*
 		 * Triggers initial functions
+		 *
 		 * @since 1.0.0
 		 * @access public
+		 *
 		 * @return void
 		 */
 		public function pbg_setup() {
@@ -48,42 +48,30 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 
 		/*
 		 * Load Premium Block for Gutenberg text domain
+		 *
 		 * @since 1.0.0
 		 * @access public
+		 *
 		 * @return void
 		 */
 		public function load_domain() {
 			load_plugin_textdomain( 'premium-blocks-for-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
 		}
-      
-
-       
-
 
 		/*
 		 * Load necessary files
+		 *
 		 * @since 1.0.0
 		 * @access public
-		 * @return void
-		 */
-		public function load_plugin() {
-			require_once PREMIUM_BLOCKS_PATH . 'includes/newsletter.php';
-			 require_once PREMIUM_BLOCKS_PATH . 'includes/premium-form.php';
-			require_once PREMIUM_BLOCKS_PATH . 'includes/newsletter-mailchimp-rest-api.php';
-			require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-css.php';
-
-		}
-		/**
-		 * Setup the post select API endpoint.
 		 *
 		 * @return void
 		 */
-		function register_api_endpoints() {
+		public function load_plugin() {
 
-			$mailchimp_controller = new Premium_MailChimp_REST_Controller();
-			$mailchimp_controller->register_routes();
+			require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-css.php';
 
 		}
+
 		public function is_gutenberg_active() {
 			return function_exists( 'register_block_type' );
 		}
