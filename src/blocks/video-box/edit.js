@@ -15,10 +15,11 @@ const { withSelect } = wp.data
 const {
     PanelBody,
     SelectControl,
-    TextControl,
     TextareaControl,
     ToggleControl,
     TabPanel,
+    Placeholder,
+    Button
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
@@ -35,6 +36,9 @@ class edit extends Component {
         this.initVideoBox = this.initVideoBox.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
         this.videoboxRef = React.createRef()
+        this.state = {
+            url: ''
+        }
     }
 
     componentDidMount() {
@@ -53,30 +57,33 @@ class edit extends Component {
     }
 
     initVideoBox() {
-        const { videoBoxId } = this.props.attributes;
-        if (!videoBoxId) return null;
+        const { videoBoxId, videoURL } = this.props.attributes;
+        if (!videoBoxId && !videoURL) return null;
         let videoBox = this.videoboxRef.current,
             video, src;
-        videoBox.addEventListener("click", () => {
-            videoBox.classList.add("video-overlay-false");
-            let type = videoBox.getAttribute("data-type");
-            if ("self" !== type) {
-                video = videoBox.getElementsByTagName("iframe")[0];
-                src = video.getAttribute("src");
-            } else {
-                video = videoBox.getElementsByTagName("video")[0];
-            }
-            setTimeout(() => {
+        if (videoBox) {
+            videoBox.addEventListener("click", () => {
+                videoBox.classList.add("video-overlay-false");
+                let type = videoBox.getAttribute("data-type");
                 if ("self" !== type) {
-                    video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                    video = videoBox.getElementsByTagName("iframe")[0];
+                    src = video.getAttribute("src");
                 } else {
-                    videoBox
-                        .getElementsByClassName("premium-video-box__overlay")[0]
-                        .remove();
-                    video.play();
+                    video = videoBox.getElementsByTagName("video")[0];
                 }
-            }, 300);
-        });
+                setTimeout(() => {
+                    if ("self" !== type) {
+                        video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                    } else {
+                        videoBox
+                            .getElementsByClassName("premium-video-box__overlay")[0]
+                            .remove();
+                        video.play();
+                    }
+                }, 300);
+            });
+        }
+
     }
 
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
@@ -141,7 +148,8 @@ class edit extends Component {
         ];
 
         const loopVideo = () => {
-            if ("youtube" === videoType) {
+            if (videoURL && "youtube" === videoType) {
+                console.log(videoURL, "HEllo")
                 if (videoURL.startsWith("http")) {
                     return loop
                         ? `1&playlist=${videoURL.replace(
@@ -223,7 +231,6 @@ class edit extends Component {
             });
             setAttributes({ descStyles: newUpdate });
         };
-
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -238,16 +245,7 @@ class edit extends Component {
                             value={videoType}
                             onChange={changeVideoType}
                         />
-                        {"self" !== videoType && (
-                            <TextControl
-                                className="premium-text-control"
-                                label={__("Video URL", 'premium-blocks-for-gutenberg')}
-                                value={videoURL}
-                                placeholder={__("Enter Video ID, Embed URL or Video URL")}
-                                onChange={newURL => setAttributes({ videoURL: newURL })}
-                                help={getHelp(videoType)}
-                            />
-                        )}
+
                         {"self" === videoType && (
                             <PremiumMediaUpload
                                 type="video"
@@ -271,9 +269,7 @@ class edit extends Component {
                             label={__("Autoplay", 'premium-blocks-for-gutenberg')}
                             checked={autoPlay}
                             onChange={newCheck => setAttributes({ autoPlay: newCheck })}
-                            help={__(
-                                "This option effect works when Overlay Image option is disabled", 'premium-blocks-for-gutenberg'
-                            )}
+                            help={__("This option effect works when Overlay Image option is disabled", 'premium-blocks-for-gutenberg')}
                         />
                         {"daily" !== videoType && (
                             <ToggleControl
@@ -628,117 +624,157 @@ class edit extends Component {
                     />
                 </InspectorControls>
             ),
-            <div
-                ref={this.videoboxRef}
-                id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                data-type={videoType}
-                style={{
-                    borderStyle: boxStyles[0].boxBorderType,
-                    borderWidth: boxStyles[0].borderBoxUpdated
-                        ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
-                        : boxStyles[0].boxBorderWidth + "px",
-                    borderRadius: boxStyles[0].boxBorderRadius + "px",
-                    borderColor: boxStyles[0].boxBorderColor,
-                    boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
-                }}
-            >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#${videoBoxId} .premium-video-box__play:hover {`,
-                            `color: ${playStyles[0].playHoverColor} !important;`,
-                            `background-color: ${playStyles[0].playHoverBackColor} !important;`,
-                            "}"
-                        ].join("\n")
-                    }}
-                />
-                <div className={`premium-video-box__container`}>
-                    {"self" !== videoType && (
-                        <iframe
-                            src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                }`}
-                            frameborder="0"
-                            gesture="media"
-                            allow="encrypted-media"
-                            allowfullscreen
-                        />
-                    )}
-                    {"self" === videoType && (
-                        <video
-                            src={videoURL}
-                            loop={loop ? true : false}
-                            muted={mute ? true : false}
-                            autoplay={overlay ? false : autoPlay}
-                            controls={controls ? true : false}
-                        />
-                    )}
-                </div>
-                {overlay && overlayStyles[0].overlayImgURL && (
-                    <div
-                        className={`premium-video-box__overlay`}
-                        style={{
-                            backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                            filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
-                        }}
-                    />
-                )}
-                {overlay && playIcon && (
-                    <div
-                        className={`premium-video-box__play`}
-                        style={{
-                            top: playStyles[0].playTop + "%",
-                            left: playLeft + "%",
-                            color: playStyles[0].playColor,
-                            backgroundColor: playStyles[0].playBack,
-                            borderStyle: playStyles[0].playBorderType,
-                            borderWidth: playStyles[0].borderPlayUpdated
-                                ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
-                                : playStyles[0].playBorderWidth + "px",
-                            borderRadius: playStyles[0].playBorderRadius + "px",
-                            borderColor: playStyles[0].playBorderColor,
-                            padding: playStyles[0].playPadding + "px"
-                        }}
-                    >
-                        <i
-                            className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
-                            style={{
-                                fontSize: playStyles[0].playSize + "px"
-                            }}
-                        />
-                    </div>
-                )}
-                {overlay && videoDesc && (
-                    <div
-                        className={`premium-video-box__desc`}
-                        style={{
-                            color: descStyles[0].videoDescColor,
-                            backgroundColor: descStyles[0].videoDescBack,
-                            padding: descStyles[0].videoDescPadding,
-                            borderRadius: descStyles[0].videoDescBorderRadius,
-                            top: descStyles[0].descTop + "%",
-                            left: descStyles[0].descLeft + "%"
-                        }}
-                    >
-                        <p
-                            className={`premium-video-box__desc_text`}
-                            style={{
-                                fontFamily: descStyles[0].videoDescFamily,
-                                fontWeight: descStyles[0].videoDescWeight,
-                                letterSpacing: descStyles[0].videoDescLetter + "px",
-                                textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
-                                fontStyle: descStyles[0].videoDescStyle,
-                                fontSize: `${textSize}${descStyles[0].videoDescSizeUnit}`
-                            }}
+            <Fragment>
+                {
+                    !videoURL && "self" !== videoType && (
+                        <Placeholder
+                            label={__('Video Box ', 'premium-blocks-for-gutenberg')}
+                            instructions={getHelp(videoType)}
+                            className={className}
                         >
-                            <span>{descStyles[0].videoDescText}</span>
-                        </p>
+                            <form onSubmit={() => setAttributes({ videoURL: this.state.url })}>
+                                <input
+                                    type="url"
+                                    value={this.state.url}
+                                    className="components-placeholder__input"
+                                    aria-label={__('Video Box', 'premium-blocks-for-gutenberg')}
+                                    placeholder={__('Enter URL to embed here…', 'premium-blocks-for-gutenberg')}
+                                    onChange={e => this.setState({ url: e.target.value })}
+                                />
+                                <Button
+                                    isPrimary
+                                    disabled={!this.state.url}
+                                    type="submit"
+                                >
+                                    {__('Embed', 'premium-blocks-for-gutenberg')}
+                                </Button>
+                            </form>
+                        </Placeholder>
+                    )
+
+                }
+                {
+                    !videoURL && "self" === videoType && (
+                        <p>{__('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")}</p>
+                    )
+                }
+                {videoURL && (
+                    <div
+                        ref={this.videoboxRef}
+                        id={videoBoxId}
+                        className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                        data-type={videoType}
+                        style={{
+                            borderStyle: boxStyles[0].boxBorderType,
+                            borderWidth: boxStyles[0].borderBoxUpdated
+                                ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
+                                : boxStyles[0].boxBorderWidth + "px",
+                            borderRadius: boxStyles[0].boxBorderRadius + "px",
+                            borderColor: boxStyles[0].boxBorderColor,
+                            boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
+                        }}
+                    >
+                        <style
+                            dangerouslySetInnerHTML={{
+                                __html: [
+                                    `#${videoBoxId} .premium-video-box__play:hover {`,
+                                    `color: ${playStyles[0].playHoverColor} !important;`,
+                                    `background-color: ${playStyles[0].playHoverBackColor} !important;`,
+                                    "}"
+                                ].join("\n")
+                            }}
+                        />
+                        <div className={`premium-video-box__container`}>
+                            {"self" !== videoType && (
+                                <iframe
+                                    src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                        }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                        }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                        }`}
+                                    frameborder="0"
+                                    gesture="media"
+                                    allow="encrypted-media"
+                                    allowfullscreen
+                                />
+                            )}
+                            {"self" === videoType && (
+                                <video
+                                    src={videoURL}
+                                    loop={loop ? true : false}
+                                    muted={mute ? true : false}
+                                    autoplay={overlay ? false : autoPlay}
+                                    controls={controls ? true : false}
+                                />
+                            )}
+                        </div>
+                        {overlay && overlayStyles[0].overlayImgURL && (
+                            <div
+                                className={`premium-video-box__overlay`}
+                                style={{
+                                    backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
+                                    filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                                }}
+                            />
+                        )}
+                        {overlay && playIcon && (
+                            <div
+                                className={`premium-video-box__play`}
+                                style={{
+                                    top: playStyles[0].playTop + "%",
+                                    left: playLeft + "%",
+                                    color: playStyles[0].playColor,
+                                    backgroundColor: playStyles[0].playBack,
+                                    borderStyle: playStyles[0].playBorderType,
+                                    borderWidth: playStyles[0].borderPlayUpdated
+                                        ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
+                                        : playStyles[0].playBorderWidth + "px",
+                                    borderRadius: playStyles[0].playBorderRadius + "px",
+                                    borderColor: playStyles[0].playBorderColor,
+                                    padding: playStyles[0].playPadding + "px"
+                                }}
+                            >
+                                <i
+                                    className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
+                                    style={{
+                                        fontSize: playStyles[0].playSize + "px"
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {overlay && videoDesc && (
+                            <div
+                                className={`premium-video-box__desc`}
+                                style={{
+                                    color: descStyles[0].videoDescColor,
+                                    backgroundColor: descStyles[0].videoDescBack,
+                                    padding: descStyles[0].videoDescPadding,
+                                    borderRadius: descStyles[0].videoDescBorderRadius,
+                                    top: descStyles[0].descTop + "%",
+                                    left: descStyles[0].descLeft + "%"
+                                }}
+                            >
+                                <p
+                                    className={`premium-video-box__desc_text`}
+                                    style={{
+                                        fontFamily: descStyles[0].videoDescFamily,
+                                        fontWeight: descStyles[0].videoDescWeight,
+                                        letterSpacing: descStyles[0].videoDescLetter + "px",
+                                        textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                        textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
+                                        fontStyle: descStyles[0].videoDescStyle,
+                                        fontSize: `${textSize}${descStyles[0].videoDescSizeUnit}`
+                                    }}
+                                >
+                                    <span>{descStyles[0].videoDescText}</span>
+                                </p>
+                            </div>
+                        )}
+
+
+
                     </div>
                 )}
-            </div>
+            </Fragment>
         ];
 
     }

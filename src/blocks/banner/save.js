@@ -49,6 +49,7 @@ const save = props => {
     const mainClasses = classnames(className, 'premium-banner');
 
     return (
+        imageURL &&
         <div
             id={`premium-banner-${block_id}`}
             className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}

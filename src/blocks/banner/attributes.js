@@ -15,7 +15,6 @@ const attributes = {
         source: "attribute",
         attribute: "src",
         selector: ".premium-banner__img",
-        default: 'https://jshs.tu.edu.ly/wp-content/uploads/2020/02/placeholder.png'
     },
     titleStyles: {
         type: "array",

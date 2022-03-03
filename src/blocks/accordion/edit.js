@@ -695,6 +695,7 @@ class PremiumAccordion extends Component {
                 </div>
             </Fragment>
         ];
+
     }
 }
 

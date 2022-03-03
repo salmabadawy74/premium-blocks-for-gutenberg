@@ -16,6 +16,7 @@ export class edit extends Component {
         super(...arguments);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {
@@ -30,8 +31,11 @@ export class edit extends Component {
         }
         return desktopSize;
     }
+
     render() {
+
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
+
         const {
             borderButton,
             btnText,
@@ -73,6 +77,7 @@ export class edit extends Component {
                 label: __("Block", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const DIRECTION = [
             {
                 value: "top",
@@ -91,6 +96,7 @@ export class edit extends Component {
                 label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const SHUTTER = [
             {
                 value: "shutouthor",
@@ -117,6 +123,7 @@ export class edit extends Component {
                 label: __("Tilted Right", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const RADIAL = [
             {
                 value: "radialin",
@@ -135,6 +142,7 @@ export class edit extends Component {
                 label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const EFFECTS = [
             {
                 value: "none",
@@ -153,6 +161,7 @@ export class edit extends Component {
                 label: __("Radial", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const onChangeHover = newValue => {
             this.props.setAttributes({ effect: newValue });
             switch (newValue) {
@@ -167,7 +176,9 @@ export class edit extends Component {
                     break;
             }
         };
+
         setAttributes({ block_id: blockId });
+
         const saveTextStyles = (value) => {
             const newUpdate = textStyles.map((item, index) => {
                 if (0 === index) {
@@ -179,6 +190,7 @@ export class edit extends Component {
                 textStyles: newUpdate,
             });
         }
+
         const saveBtnStyles = (value) => {
             const newUpdate = btnStyles.map((item, index) => {
                 if (0 === index) {
@@ -190,6 +202,7 @@ export class edit extends Component {
                 btnStyles: newUpdate,
             });
         }
+
         const mainClasses = classnames(className, "premium-button");
         const btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
         return [

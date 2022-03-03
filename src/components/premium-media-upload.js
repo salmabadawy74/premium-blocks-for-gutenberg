@@ -1,9 +1,6 @@
 const { __ } = wp.i18n;
-
 const { Fragment } = wp.element;
-
 const { Tooltip, Dashicon } = wp.components;
-
 const { MediaUpload } = wp.blockEditor;
 
 export default function PremiumMediaUpload(props) {
@@ -24,7 +21,6 @@ export default function PremiumMediaUpload(props) {
                 <Fragment>
                     {imageURL && (
                         <span className="premium-image-media">
-
                             {type === "image" ? <img src={imageURL} className="premium-image-upload" /> : <iframe src={imageURL} className="premium-image-upload" />}
                             <div className="premium-image-actions">
                                 <Tooltip text={__("Edit")}>

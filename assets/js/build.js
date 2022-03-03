@@ -3238,30 +3238,32 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 var onChangeVideoURL = function onChangeVideoURL(type, URL) {
     var videoUrl = void 0;
-    switch (type) {
-        case "youtube":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://www.youtube.com/embed/" + URL;
-            }
-            break;
-        case "vimeo":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://player.vimeo.com/video/" + URL;
-            }
-            break;
-        case "daily":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://dailymotion.com/embed/video/" + URL;
-            }
-            break;
+    if (URL) {
+        switch (type) {
+            case "youtube":
+                if (URL.startsWith("http")) {
+                    videoUrl = URL.replace("watch?v=", "embed/");
+                } else {
+                    videoUrl = "https://www.youtube.com/embed/" + URL;
+                }
+                break;
+            case "vimeo":
+                if (URL.startsWith("http")) {
+                    videoUrl = URL;
+                } else {
+                    videoUrl = "https://player.vimeo.com/video/" + URL;
+                }
+                break;
+            case "daily":
+                if (URL.startsWith("http")) {
+                    videoUrl = URL;
+                } else {
+                    videoUrl = "https://dailymotion.com/embed/video/" + URL;
+                }
+                break;
+        }
+        return console.log(videoUrl), videoUrl;
     }
-    return videoUrl;
 };
 
 exports.default = onChangeVideoURL;
@@ -7435,8 +7437,7 @@ var videoBoxAttrs = {
         default: "youtube"
     },
     videoURL: {
-        type: "string",
-        default: "07d2dXHYb94"
+        type: "string"
     },
     videoID: {
         type: "string"
@@ -15063,9 +15064,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var withSelect = wp.data.withSelect;
 var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    Fragment = _wp$element.Fragment,
-    Component = _wp$element.Component;
+var Component = wp.element.Component;
 var _wp$components = wp.components,
     IconButton = _wp$components.IconButton,
     Toolbar = _wp$components.Toolbar,
@@ -15077,7 +15076,8 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    RichText = _wp$blockEditor.RichText;
+    RichText = _wp$blockEditor.RichText,
+    MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
 
 var edit = exports.edit = function (_Component) {
     _inherits(edit, _Component);
@@ -15232,6 +15232,7 @@ var edit = exports.edit = function (_Component) {
                 value: "sepia",
                 label: __("Sepia", 'premium-blocks-for-gutenberg')
             }];
+
             var HEIGHT = [{
                 value: "default",
                 label: __("Default", 'premium-blocks-for-gutenberg')
@@ -15239,9 +15240,11 @@ var edit = exports.edit = function (_Component) {
                 value: "custom",
                 label: __("Custom", 'premium-blocks-for-gutenberg')
             }];
+
             var mainClasses = (0, _classnames2.default)(className, "premium-banner");
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
             var descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
+
             var saveStyles = function saveStyles(value) {
                 var newUpdate = titleStyles.map(function (item, index) {
                     if (0 === index) {
@@ -15252,6 +15255,7 @@ var edit = exports.edit = function (_Component) {
 
                 setAttributes({ titleStyles: newUpdate });
             };
+
             var descriptionStyles = function descriptionStyles(value) {
                 var newUpdate = descStyles.map(function (item, index) {
                     if (0 === index) {
@@ -15261,6 +15265,7 @@ var edit = exports.edit = function (_Component) {
                 });
                 setAttributes({ descStyles: newUpdate });
             };
+
             var containerStyle = function containerStyle(value) {
                 var newUpdate = containerStyles.map(function (item, index) {
                     if (0 === index) {
@@ -15270,6 +15275,7 @@ var edit = exports.edit = function (_Component) {
                 });
                 setAttributes({ containerStyles: newUpdate });
             };
+
             var containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
             var containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
             var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
@@ -15296,7 +15302,7 @@ var edit = exports.edit = function (_Component) {
                         return setAttributes({ contentAlign: newAlign });
                     }
                 })
-            ), isSelected && React.createElement(
+            ), isSelected && imageURL && React.createElement(
                 InspectorControls,
                 { key: "inspector" },
                 React.createElement(
@@ -15306,22 +15312,16 @@ var edit = exports.edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: true
                     },
-                    React.createElement(_premiumMediaUpload2.default, {
-                        type: "image",
-                        imageID: imageID,
-                        imageURL: imageURL,
-                        onSelectMedia: function onSelectMedia(media) {
-                            setAttributes({
-                                imageID: media.id,
-                                imageURL: media.url
-                            });
-                        },
-                        onRemoveImage: function onRemoveImage() {
-                            return setAttributes(_defineProperty({
-                                imageURL: ""
-                            }, "imageURL", ""));
-                        }
-                    }),
+                    React.createElement(
+                        "button",
+                        { className: "lottie-remove", onClick: function onClick(e) {
+                                e.preventDefault();
+                                setAttributes(_defineProperty({
+                                    imageURL: ""
+                                }, "imageURL", ""));
+                            } },
+                        __('Remove Image', 'premium-blocks-for-gutenberg')
+                    ),
                     React.createElement(_premiumFilters2.default, {
                         blur: blur,
                         bright: bright,
@@ -15721,7 +15721,24 @@ var edit = exports.edit = function (_Component) {
                         return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
                     }
                 })
-            ), React.createElement(
+            ), !imageURL && React.createElement(MediaPlaceholder, {
+                labels: {
+                    title: __('Premium Banner ', 'premium-blocks-for-gutenberg'),
+                    instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
+                },
+                accept: ['image'],
+                allowedTypes: ['image'],
+                value: imageURL,
+                onSelectURL: function onSelectURL(value) {
+                    return setAttributes({ imageURL: value });
+                },
+                onSelect: function onSelect(media) {
+                    setAttributes({
+                        imageID: media.id,
+                        imageURL: media.url
+                    });
+                }
+            }), imageURL && React.createElement(
                 "div",
                 {
                     id: "premium-banner-" + block_id,
@@ -15738,7 +15755,7 @@ var edit = exports.edit = function (_Component) {
                         __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
                     }
                 }),
-                imageURL && React.createElement(
+                React.createElement(
                     "div",
                     {
                         className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
@@ -15843,9 +15860,7 @@ exports.default = withSelect(function (select, props) {
 
     var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-    return {
-        deviceType: deviceType
-    };
+    return { deviceType: deviceType };
 })(edit);
 
 /***/ }),
@@ -15911,7 +15926,7 @@ var save = function save(props) {
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
 
-    return React.createElement(
+    return imageURL && React.createElement(
         'div',
         {
             id: 'premium-banner-' + block_id,
@@ -17510,8 +17525,7 @@ var attributes = {
         type: "string",
         source: "attribute",
         attribute: "src",
-        selector: ".premium-banner__img",
-        default: 'https://jshs.tu.edu.ly/wp-content/uploads/2020/02/placeholder.png'
+        selector: ".premium-banner__img"
     },
     titleStyles: {
         type: "array",
@@ -17924,6 +17938,7 @@ var edit = exports.edit = function (_Component) {
                 value: "block",
                 label: __("Block", 'premium-blocks-for-gutenberg')
             }];
+
             var DIRECTION = [{
                 value: "top",
                 label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
@@ -17937,6 +17952,7 @@ var edit = exports.edit = function (_Component) {
                 value: "right",
                 label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }];
+
             var SHUTTER = [{
                 value: "shutouthor",
                 label: __("Shutter out Horizontal", 'premium-blocks-for-gutenberg')
@@ -17956,6 +17972,7 @@ var edit = exports.edit = function (_Component) {
                 value: "dshutinhor",
                 label: __("Tilted Right", 'premium-blocks-for-gutenberg')
             }];
+
             var RADIAL = [{
                 value: "radialin",
                 label: __("Radial In", 'premium-blocks-for-gutenberg')
@@ -17969,6 +17986,7 @@ var edit = exports.edit = function (_Component) {
                 value: "rectout",
                 label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
             }];
+
             var EFFECTS = [{
                 value: "none",
                 label: __("None", 'premium-blocks-for-gutenberg')
@@ -17982,6 +18000,7 @@ var edit = exports.edit = function (_Component) {
                 value: "radial",
                 label: __("Radial", 'premium-blocks-for-gutenberg')
             }];
+
             var onChangeHover = function onChangeHover(newValue) {
                 _this2.props.setAttributes({ effect: newValue });
                 switch (newValue) {
@@ -17996,7 +18015,9 @@ var edit = exports.edit = function (_Component) {
                         break;
                 }
             };
+
             setAttributes({ block_id: blockId });
+
             var saveTextStyles = function saveTextStyles(value) {
                 var newUpdate = textStyles.map(function (item, index) {
                     if (0 === index) {
@@ -18008,6 +18029,7 @@ var edit = exports.edit = function (_Component) {
                     textStyles: newUpdate
                 });
             };
+
             var saveBtnStyles = function saveBtnStyles(value) {
                 var newUpdate = btnStyles.map(function (item, index) {
                     if (0 === index) {
@@ -18019,6 +18041,7 @@ var edit = exports.edit = function (_Component) {
                     btnStyles: newUpdate
                 });
             };
+
             var mainClasses = (0, _classnames2.default)(className, "premium-button");
             var btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
             return [isSelected && "block" != btnSize && React.createElement(
@@ -44796,10 +44819,11 @@ var withSelect = wp.data.withSelect;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
-    TextControl = _wp$components.TextControl,
     TextareaControl = _wp$components.TextareaControl,
     ToggleControl = _wp$components.ToggleControl,
-    TabPanel = _wp$components.TabPanel;
+    TabPanel = _wp$components.TabPanel,
+    Placeholder = _wp$components.Placeholder,
+    Button = _wp$components.Button;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -44820,6 +44844,9 @@ var edit = function (_Component) {
         _this.initVideoBox = _this.initVideoBox.bind(_this);
         _this.getPreviewSize = _this.getPreviewSize.bind(_this);
         _this.videoboxRef = React.createRef();
+        _this.state = {
+            url: ''
+        };
         return _this;
     }
 
@@ -44847,30 +44874,34 @@ var edit = function (_Component) {
     }, {
         key: "initVideoBox",
         value: function initVideoBox() {
-            var videoBoxId = this.props.attributes.videoBoxId;
+            var _props$attributes = this.props.attributes,
+                videoBoxId = _props$attributes.videoBoxId,
+                videoURL = _props$attributes.videoURL;
 
-            if (!videoBoxId) return null;
+            if (!videoBoxId && !videoURL) return null;
             var videoBox = this.videoboxRef.current,
                 video = void 0,
                 src = void 0;
-            videoBox.addEventListener("click", function () {
-                videoBox.classList.add("video-overlay-false");
-                var type = videoBox.getAttribute("data-type");
-                if ("self" !== type) {
-                    video = videoBox.getElementsByTagName("iframe")[0];
-                    src = video.getAttribute("src");
-                } else {
-                    video = videoBox.getElementsByTagName("video")[0];
-                }
-                setTimeout(function () {
+            if (videoBox) {
+                videoBox.addEventListener("click", function () {
+                    videoBox.classList.add("video-overlay-false");
+                    var type = videoBox.getAttribute("data-type");
                     if ("self" !== type) {
-                        video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                        video = videoBox.getElementsByTagName("iframe")[0];
+                        src = video.getAttribute("src");
                     } else {
-                        videoBox.getElementsByClassName("premium-video-box__overlay")[0].remove();
-                        video.play();
+                        video = videoBox.getElementsByTagName("video")[0];
                     }
-                }, 300);
-            });
+                    setTimeout(function () {
+                        if ("self" !== type) {
+                            video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                        } else {
+                            videoBox.getElementsByClassName("premium-video-box__overlay")[0].remove();
+                            video.play();
+                        }
+                    }, 300);
+                });
+            }
         }
     }, {
         key: "getPreviewSize",
@@ -44891,33 +44922,35 @@ var edit = function (_Component) {
     }, {
         key: "render",
         value: function render() {
+            var _this2 = this;
+
             var _props2 = this.props,
                 isSelected = _props2.isSelected,
                 setAttributes = _props2.setAttributes,
                 className = _props2.className,
                 clientId = _props2.clientId;
-            var _props$attributes = this.props.attributes,
-                block_id = _props$attributes.block_id,
-                videoBoxId = _props$attributes.videoBoxId,
-                videoType = _props$attributes.videoType,
-                videoURL = _props$attributes.videoURL,
-                videoID = _props$attributes.videoID,
-                autoPlay = _props$attributes.autoPlay,
-                loop = _props$attributes.loop,
-                controls = _props$attributes.controls,
-                relatedVideos = _props$attributes.relatedVideos,
-                mute = _props$attributes.mute,
-                overlay = _props$attributes.overlay,
-                videoDesc = _props$attributes.videoDesc,
-                playIcon = _props$attributes.playIcon,
-                playLeft = _props$attributes.playLeft,
-                hideDesktop = _props$attributes.hideDesktop,
-                hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile,
-                boxStyles = _props$attributes.boxStyles,
-                overlayStyles = _props$attributes.overlayStyles,
-                playStyles = _props$attributes.playStyles,
-                descStyles = _props$attributes.descStyles;
+            var _props$attributes2 = this.props.attributes,
+                block_id = _props$attributes2.block_id,
+                videoBoxId = _props$attributes2.videoBoxId,
+                videoType = _props$attributes2.videoType,
+                videoURL = _props$attributes2.videoURL,
+                videoID = _props$attributes2.videoID,
+                autoPlay = _props$attributes2.autoPlay,
+                loop = _props$attributes2.loop,
+                controls = _props$attributes2.controls,
+                relatedVideos = _props$attributes2.relatedVideos,
+                mute = _props$attributes2.mute,
+                overlay = _props$attributes2.overlay,
+                videoDesc = _props$attributes2.videoDesc,
+                playIcon = _props$attributes2.playIcon,
+                playLeft = _props$attributes2.playLeft,
+                hideDesktop = _props$attributes2.hideDesktop,
+                hideTablet = _props$attributes2.hideTablet,
+                hideMobile = _props$attributes2.hideMobile,
+                boxStyles = _props$attributes2.boxStyles,
+                overlayStyles = _props$attributes2.overlayStyles,
+                playStyles = _props$attributes2.playStyles,
+                descStyles = _props$attributes2.descStyles;
 
 
             var TYPE = [{
@@ -44935,7 +44968,8 @@ var edit = function (_Component) {
             }];
 
             var loopVideo = function loopVideo() {
-                if ("youtube" === videoType) {
+                if (videoURL && "youtube" === videoType) {
+                    console.log(videoURL, "HEllo");
                     if (videoURL.startsWith("http")) {
                         return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
                     } else {
@@ -45006,7 +45040,6 @@ var edit = function (_Component) {
                 });
                 setAttributes({ descStyles: newUpdate });
             };
-
             return [isSelected && React.createElement(
                 InspectorControls,
                 { key: "inspector" },
@@ -45022,16 +45055,6 @@ var edit = function (_Component) {
                         options: TYPE,
                         value: videoType,
                         onChange: changeVideoType
-                    }),
-                    "self" !== videoType && React.createElement(TextControl, {
-                        className: "premium-text-control",
-                        label: __("Video URL", 'premium-blocks-for-gutenberg'),
-                        value: videoURL,
-                        placeholder: __("Enter Video ID, Embed URL or Video URL"),
-                        onChange: function onChange(newURL) {
-                            return setAttributes({ videoURL: newURL });
-                        },
-                        help: getHelp(videoType)
                     }),
                     "self" === videoType && React.createElement(_premiumMediaUpload2.default, {
                         type: "video",
@@ -45509,104 +45532,146 @@ var edit = function (_Component) {
                     }
                 })
             ), React.createElement(
-                "div",
-                {
-                    ref: this.videoboxRef,
-                    id: videoBoxId,
-                    className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
-                    "data-type": videoType,
-                    style: {
-                        borderStyle: boxStyles[0].boxBorderType,
-                        borderWidth: boxStyles[0].borderBoxUpdated ? boxStyles[0].boxBorderTop + "px " + boxStyles[0].boxBorderRight + "px " + boxStyles[0].boxBorderBottom + "px " + boxStyles[0].boxBorderLeft + "px" : boxStyles[0].boxBorderWidth + "px",
-                        borderRadius: boxStyles[0].boxBorderRadius + "px",
-                        borderColor: boxStyles[0].boxBorderColor,
-                        boxShadow: boxStyles[0].shadowHorizontal + "px " + boxStyles[0].shadowVertical + "px " + boxStyles[0].shadowBlur + "px " + boxStyles[0].shadowColor + " " + boxStyles[0].shadowPosition
-                    }
-                },
-                React.createElement("style", {
-                    dangerouslySetInnerHTML: {
-                        __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + playStyles[0].playHoverColor + " !important;", "background-color: " + playStyles[0].playHoverBackColor + " !important;", "}"].join("\n")
-                    }
-                }),
-                React.createElement(
-                    "div",
-                    { className: "premium-video-box__container" },
-                    "self" !== videoType && React.createElement("iframe", {
-                        src: (0, _index2.default)(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
-                        frameborder: "0",
-                        gesture: "media",
-                        allow: "encrypted-media",
-                        allowfullscreen: true
-                    }),
-                    "self" === videoType && React.createElement("video", {
-                        src: videoURL,
-                        loop: loop ? true : false,
-                        muted: mute ? true : false,
-                        autoplay: overlay ? false : autoPlay,
-                        controls: controls ? true : false
-                    })
-                ),
-                overlay && overlayStyles[0].overlayImgURL && React.createElement("div", {
-                    className: "premium-video-box__overlay",
-                    style: {
-                        backgroundImage: "url('" + overlayStyles[0].overlayImgURL + "')",
-                        filter: "brightness( " + overlayStyles[0].bright + "% ) contrast( " + overlayStyles[0].contrast + "% ) saturate( " + overlayStyles[0].saturation + "% ) blur( " + overlayStyles[0].blur + "px ) hue-rotate( " + overlayStyles[0].hue + "deg )"
-                    }
-                }),
-                overlay && playIcon && React.createElement(
-                    "div",
+                Fragment,
+                null,
+                !videoURL && "self" !== videoType && React.createElement(
+                    Placeholder,
                     {
-                        className: "premium-video-box__play",
-                        style: {
-                            top: playStyles[0].playTop + "%",
-                            left: playLeft + "%",
-                            color: playStyles[0].playColor,
-                            backgroundColor: playStyles[0].playBack,
-                            borderStyle: playStyles[0].playBorderType,
-                            borderWidth: playStyles[0].borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
-                            borderRadius: playStyles[0].playBorderRadius + "px",
-                            borderColor: playStyles[0].playBorderColor,
-                            padding: playStyles[0].playPadding + "px"
-                        }
-                    },
-                    React.createElement("i", {
-                        className: "premium-video-box__play_icon dashicons dashicons-controls-play",
-                        style: {
-                            fontSize: playStyles[0].playSize + "px"
-                        }
-                    })
-                ),
-                overlay && videoDesc && React.createElement(
-                    "div",
-                    {
-                        className: "premium-video-box__desc",
-                        style: {
-                            color: descStyles[0].videoDescColor,
-                            backgroundColor: descStyles[0].videoDescBack,
-                            padding: descStyles[0].videoDescPadding,
-                            borderRadius: descStyles[0].videoDescBorderRadius,
-                            top: descStyles[0].descTop + "%",
-                            left: descStyles[0].descLeft + "%"
-                        }
+                        label: __('Video Box ', 'premium-blocks-for-gutenberg'),
+                        instructions: getHelp(videoType),
+                        className: className
                     },
                     React.createElement(
-                        "p",
+                        "form",
+                        { onSubmit: function onSubmit() {
+                                return setAttributes({ videoURL: _this2.state.url });
+                            } },
+                        React.createElement("input", {
+                            type: "url",
+                            value: this.state.url,
+                            className: "components-placeholder__input",
+                            "aria-label": __('Video Box', 'premium-blocks-for-gutenberg'),
+                            placeholder: __('Enter URL to embed here…', 'premium-blocks-for-gutenberg'),
+                            onChange: function onChange(e) {
+                                return _this2.setState({ url: e.target.value });
+                            }
+                        }),
+                        React.createElement(
+                            Button,
+                            {
+                                isPrimary: true,
+                                disabled: !this.state.url,
+                                type: "submit"
+                            },
+                            __('Embed', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                ),
+                !videoURL && "self" === videoType && React.createElement(
+                    "p",
+                    null,
+                    __('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")
+                ),
+                videoURL && React.createElement(
+                    "div",
+                    {
+                        ref: this.videoboxRef,
+                        id: videoBoxId,
+                        className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                        "data-type": videoType,
+                        style: {
+                            borderStyle: boxStyles[0].boxBorderType,
+                            borderWidth: boxStyles[0].borderBoxUpdated ? boxStyles[0].boxBorderTop + "px " + boxStyles[0].boxBorderRight + "px " + boxStyles[0].boxBorderBottom + "px " + boxStyles[0].boxBorderLeft + "px" : boxStyles[0].boxBorderWidth + "px",
+                            borderRadius: boxStyles[0].boxBorderRadius + "px",
+                            borderColor: boxStyles[0].boxBorderColor,
+                            boxShadow: boxStyles[0].shadowHorizontal + "px " + boxStyles[0].shadowVertical + "px " + boxStyles[0].shadowBlur + "px " + boxStyles[0].shadowColor + " " + boxStyles[0].shadowPosition
+                        }
+                    },
+                    React.createElement("style", {
+                        dangerouslySetInnerHTML: {
+                            __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + playStyles[0].playHoverColor + " !important;", "background-color: " + playStyles[0].playHoverBackColor + " !important;", "}"].join("\n")
+                        }
+                    }),
+                    React.createElement(
+                        "div",
+                        { className: "premium-video-box__container" },
+                        "self" !== videoType && React.createElement("iframe", {
+                            src: (0, _index2.default)(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+                            frameborder: "0",
+                            gesture: "media",
+                            allow: "encrypted-media",
+                            allowfullscreen: true
+                        }),
+                        "self" === videoType && React.createElement("video", {
+                            src: videoURL,
+                            loop: loop ? true : false,
+                            muted: mute ? true : false,
+                            autoplay: overlay ? false : autoPlay,
+                            controls: controls ? true : false
+                        })
+                    ),
+                    overlay && overlayStyles[0].overlayImgURL && React.createElement("div", {
+                        className: "premium-video-box__overlay",
+                        style: {
+                            backgroundImage: "url('" + overlayStyles[0].overlayImgURL + "')",
+                            filter: "brightness( " + overlayStyles[0].bright + "% ) contrast( " + overlayStyles[0].contrast + "% ) saturate( " + overlayStyles[0].saturation + "% ) blur( " + overlayStyles[0].blur + "px ) hue-rotate( " + overlayStyles[0].hue + "deg )"
+                        }
+                    }),
+                    overlay && playIcon && React.createElement(
+                        "div",
                         {
-                            className: "premium-video-box__desc_text",
+                            className: "premium-video-box__play",
                             style: {
-                                fontFamily: descStyles[0].videoDescFamily,
-                                fontWeight: descStyles[0].videoDescWeight,
-                                letterSpacing: descStyles[0].videoDescLetter + "px",
-                                textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                                textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor,
-                                fontStyle: descStyles[0].videoDescStyle,
-                                fontSize: "" + textSize + descStyles[0].videoDescSizeUnit
+                                top: playStyles[0].playTop + "%",
+                                left: playLeft + "%",
+                                color: playStyles[0].playColor,
+                                backgroundColor: playStyles[0].playBack,
+                                borderStyle: playStyles[0].playBorderType,
+                                borderWidth: playStyles[0].borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
+                                borderRadius: playStyles[0].playBorderRadius + "px",
+                                borderColor: playStyles[0].playBorderColor,
+                                padding: playStyles[0].playPadding + "px"
+                            }
+                        },
+                        React.createElement("i", {
+                            className: "premium-video-box__play_icon dashicons dashicons-controls-play",
+                            style: {
+                                fontSize: playStyles[0].playSize + "px"
+                            }
+                        })
+                    ),
+                    overlay && videoDesc && React.createElement(
+                        "div",
+                        {
+                            className: "premium-video-box__desc",
+                            style: {
+                                color: descStyles[0].videoDescColor,
+                                backgroundColor: descStyles[0].videoDescBack,
+                                padding: descStyles[0].videoDescPadding,
+                                borderRadius: descStyles[0].videoDescBorderRadius,
+                                top: descStyles[0].descTop + "%",
+                                left: descStyles[0].descLeft + "%"
                             }
                         },
                         React.createElement(
-                            "span",
-                            null,
-                            descStyles[0].videoDescText
+                            "p",
+                            {
+                                className: "premium-video-box__desc_text",
+                                style: {
+                                    fontFamily: descStyles[0].videoDescFamily,
+                                    fontWeight: descStyles[0].videoDescWeight,
+                                    letterSpacing: descStyles[0].videoDescLetter + "px",
+                                    textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                    textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor,
+                                    fontStyle: descStyles[0].videoDescStyle,
+                                    fontSize: "" + textSize + descStyles[0].videoDescSizeUnit
+                                }
+                            },
+                            React.createElement(
+                                "span",
+                                null,
+                                descStyles[0].videoDescText
+                            )
                         )
                     )
                 )
@@ -45677,7 +45742,7 @@ var save = function save(props) {
         descStyles = _props$attributes.descStyles;
 
     var loopVideo = function loopVideo() {
-        if ("youtube" === videoType) {
+        if (videoURL && "youtube" === videoType) {
             if (videoURL.startsWith("http")) {
                 return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
             } else {
@@ -45690,7 +45755,7 @@ var save = function save(props) {
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-video-box');
 
-    return React.createElement(
+    return videoURL && React.createElement(
         "div",
         {
             id: videoBoxId,
