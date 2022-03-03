@@ -16,7 +16,6 @@ const videoBoxAttrs = {
     },
     videoURL: {
         type: "string",
-        default: "07d2dXHYb94"
     },
     videoID: {
         type: "string"

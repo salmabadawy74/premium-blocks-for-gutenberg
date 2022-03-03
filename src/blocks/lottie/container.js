@@ -56,7 +56,6 @@ const BlockPlaceholder = ({
                         placeholder={__('Enter URL to embed here…', 'premium-blocks-for-gutenberg')}
                         onChange={e => setURL(e.target.value)}
                     />
-
                     <Button
                         isPrimary
                         disabled={!url}

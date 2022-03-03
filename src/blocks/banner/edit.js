@@ -10,10 +10,9 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
-
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
-const { Fragment, Component } = wp.element;
+const { Component } = wp.element;
 
 const {
     IconButton,
@@ -29,14 +28,15 @@ const {
     InspectorControls,
     AlignmentToolbar,
     RichText,
+    MediaPlaceholder
 } = wp.blockEditor;
 
 export class edit extends Component {
-
     constructor() {
         super(...arguments);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {
@@ -51,12 +51,15 @@ export class edit extends Component {
         }
         return desktopSize;
     }
+
     componentDidMount() {
         this.props.setAttributes({ block_id: this.props.clientId });
         this.props.setAttributes({ classMigrate: true });
     };
+
     render() {
         const { isSelected, setAttributes, className, clientId: blockID } = this.props;
+
         const {
             block_id,
             borderBanner,
@@ -189,6 +192,7 @@ export class edit extends Component {
                 label: __("Sepia", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const HEIGHT = [
             {
                 value: "default",
@@ -199,9 +203,11 @@ export class edit extends Component {
                 label: __("Custom", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const mainClasses = classnames(className, "premium-banner");
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
         const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
+
         const saveStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -212,6 +218,7 @@ export class edit extends Component {
 
             setAttributes({ titleStyles: newUpdate });
         }
+
         const descriptionStyles = (value) => {
             const newUpdate = descStyles.map((item, index) => {
                 if (0 === index) {
@@ -221,6 +228,7 @@ export class edit extends Component {
             });
             setAttributes({ descStyles: newUpdate });
         }
+
         const containerStyle = (value) => {
             const newUpdate = containerStyles.map((item, index) => {
                 if (0 === index) {
@@ -230,6 +238,7 @@ export class edit extends Component {
             });
             setAttributes({ containerStyles: newUpdate, });
         }
+
         const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
         const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
         const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
@@ -254,29 +263,22 @@ export class edit extends Component {
                     />
                 </BlockControls>
             ),
-            isSelected && (
+            isSelected && imageURL && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
                         title={__("General Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={true}
                     >
-                        <PremiumMediaUpload
-                            type="image"
-                            imageID={imageID}
-                            imageURL={imageURL}
-                            onSelectMedia={media => {
-                                setAttributes({
-                                    imageID: media.id,
-                                    imageURL: media.url
-                                });
-                            }}
-                            onRemoveImage={() => setAttributes({
+                        <button className="lottie-remove" onClick={(e) => {
+                            e.preventDefault();
+                            setAttributes({
                                 imageURL: "",
                                 imageURL: ""
                             })
-                            }
-                        />
+                        }}>
+                            {__('Remove Image', 'premium-blocks-for-gutenberg')}
+                        </button>
                         <PremiumFilters
                             blur={blur}
                             bright={bright}
@@ -331,7 +333,6 @@ export class edit extends Component {
                                 onChange={newValue => setAttributes({ verAlign: newValue })}
                             />
                         )}
-
                         <AdvancedPopColorControl
                             label={__("Overlay", 'premium-blocks-for-gutenberg')}
                             colorValue={background}
@@ -588,32 +589,51 @@ export class edit extends Component {
                     />
                 </InspectorControls>
             ),
-            <div
-                id={`premium-banner-${block_id}`}
-                className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                style={{
-                    paddingTop: containerPaddingTop + containerStyles[0].paddingU,
-                    paddingRight: containerPaddingRight + containerStyles[0].paddingU,
-                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
-                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
-                }}
-            >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                            `background: ${sepColor}`,
-                            "}",
-                            `#premium-banner-${block_id} .premium-banner__inner {`,
-                            `background: ${background}`,
-                            "}",
-                            `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
-                            `opacity: ${background ? 1 - opacity / 100 : 1} `,
-                            "}"
-                        ].join("\n")
+            !imageURL && (
+                <MediaPlaceholder
+                    labels={{
+                        title: __('Premium Banner ', 'premium-blocks-for-gutenberg'),
+                        instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
                     }}
+                    accept={['image']}
+                    allowedTypes={['image']}
+                    value={imageURL}
+                    onSelectURL={(value) => setAttributes({ imageURL: value })}
+                    onSelect={media => {
+                        setAttributes({
+                            imageID: media.id,
+                            imageURL: media.url
+                        });
+                    }
+                    }
                 />
-                {imageURL && (
+            ),
+            imageURL && (
+                <div
+                    id={`premium-banner-${block_id}`}
+                    className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        paddingTop: containerPaddingTop + containerStyles[0].paddingU,
+                        paddingRight: containerPaddingRight + containerStyles[0].paddingU,
+                        paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
+                        paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
+                    }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__inner {`,
+                                `background: ${background}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
                     <div
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
@@ -693,8 +713,8 @@ export class edit extends Component {
                             </div>
                         </div>
                     </div>
-                )}
-            </div>
+
+                </div>)
         ];
     }
 };
@@ -702,7 +722,5 @@ export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-    return {
-        deviceType: deviceType
-    }
+    return { deviceType: deviceType }
 })(edit)
