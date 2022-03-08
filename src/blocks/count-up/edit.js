@@ -152,7 +152,7 @@ class edit extends Component {
         if (counterFamily !== 'Default') {
             const counterconfig = {
                 google: {
-                    families: [counterFamily + (numberStyles[0].numberWeight ? ":" + numberStyles[0].numberWeight : "")],
+                    families: [counterFamily],
                 },
             }
             loadCounterGoogleFonts = (
@@ -163,7 +163,7 @@ class edit extends Component {
         if (titleStyles[0].titleFamily !== "Default") {
             const titleConfig = {
                 google: {
-                    families: [titleStyles[0].titleFamily + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")],
+                    families: [titleStyles[0].titleFamily],
                 },
             }
             loadTitleGoogleFonts = (
@@ -174,7 +174,7 @@ class edit extends Component {
         if (suffixStyles[0].suffixFamily !== "Default") {
             const suffixConfig = {
                 google: {
-                    families: [suffixStyles[0].suffixFamily + (suffixStyles[0].suffixWeight ? ":" + suffixStyles[0].suffixWeight : "")],
+                    families: [suffixStyles[0].suffixFamily],
                 }
             }
             loadSuffixGoogleFonts = (
@@ -185,7 +185,7 @@ class edit extends Component {
         if (prefixStyles[0].prefixFamily !== "Default") {
             const prefixConfig = {
                 google: {
-                    families: [prefixStyles[0].prefixFamily + (prefixStyles[0].prefixWeight ? ":" + prefixStyles[0].prefixWeight : "")],
+                    families: [prefixStyles[0].prefixFamily],
                 }
             }
             loadPrefixGoogleFonts = (

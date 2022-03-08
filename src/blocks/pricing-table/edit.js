@@ -31,13 +31,12 @@ class PremiumPricingTable extends Component {
     }
 
     componentDidMount() {
-
         const { setAttributes, clientId } = this.props;
         setAttributes({ block_id: clientId });
         setAttributes({ classMigrate: true });
-
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {

@@ -237,7 +237,7 @@ class edit extends Component {
         if (descStyles[0].videoDescFamily !== "Default") {
             const descriptionConfig = {
                 google: {
-                    families: [descStyles[0].videoDescFamily + (descStyles[0].videoDescWeight ? ":" + descStyles[0].videoDescWeight : "")],
+                    families: [descStyles[0].videoDescFamily],
                 },
             }
             loadDescriptionGoogleFonts = (

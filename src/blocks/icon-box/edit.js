@@ -295,7 +295,7 @@ class edit extends Component {
         if (titleStyles[0].titleFont !== 'Default') {
             const titleConfig = {
                 google: {
-                    families: [titleStyles[0].titleFont + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")],
+                    families: [titleStyles[0].titleFont],
                 },
             }
             loadTitleGoogleFonts = (
@@ -306,7 +306,7 @@ class edit extends Component {
         if (descStyles[0].descFont !== 'Default') {
             const descriptionConfig = {
                 google: {
-                    families: [descStyles[0].descFont + (descStyles[0].descWeight ? ":" + descStyles[0].descWeight : "")],
+                    families: [descStyles[0].descFont],
                 },
             }
             loadDescriptionGoogleFonts = (

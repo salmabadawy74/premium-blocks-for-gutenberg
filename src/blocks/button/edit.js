@@ -197,7 +197,7 @@ export class edit extends Component {
 
             const btnconfig = {
                 google: {
-                    families: [textStyles[0].textFontFamily + (textStyles[0].textWeight ? ":" + textStyles[0].textWeight : "")],
+                    families: [textStyles[0].textFontFamily],
                 },
             }
 

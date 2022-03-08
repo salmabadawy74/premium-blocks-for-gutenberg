@@ -102,7 +102,7 @@ class edit extends Component {
         if (firstStyles[0].firstFamily !== 'Default') {
             const firstConfig = {
                 google: {
-                    families: [firstStyles[0].firstFamily + (firstStyles[0].firstWeight ? ":" + firstStyles[0].firstWeight : "")],
+                    families: [firstStyles[0].firstFamily],
                 },
             }
             loadFirstGoogleFonts = (
@@ -113,7 +113,7 @@ class edit extends Component {
         if (secondStyles[0].secondFamily !== 'Default') {
             const secondConfig = {
                 google: {
-                    families: [secondStyles[0].secondFamily + (secondStyles[0].secondWeight ? ":" + secondStyles[0].secondWeight : "")],
+                    families: [secondStyles[0].secondFamily],
                 },
             }
             loadSecondGoogleFonts = (
