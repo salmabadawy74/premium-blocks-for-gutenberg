@@ -19420,7 +19420,7 @@ var edit = exports.edit = function (_Component) {
 
                 var btnconfig = {
                     google: {
-                        families: [textStyles[0].textFontFamily + (textStyles[0].textWeight ? ":" + textStyles[0].textWeight : "")]
+                        families: [textStyles[0].textFontFamily]
                     }
                 };
 
@@ -21389,7 +21389,7 @@ var edit = function (_Component) {
             if (counterFamily !== 'Default') {
                 var counterconfig = {
                     google: {
-                        families: [counterFamily + (numberStyles[0].numberWeight ? ":" + numberStyles[0].numberWeight : "")]
+                        families: [counterFamily]
                     }
                 };
                 loadCounterGoogleFonts = React.createElement(_fontLoader2.default, { config: counterconfig });
@@ -21397,7 +21397,7 @@ var edit = function (_Component) {
             if (titleStyles[0].titleFamily !== "Default") {
                 var titleConfig = {
                     google: {
-                        families: [titleStyles[0].titleFamily + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")]
+                        families: [titleStyles[0].titleFamily]
                     }
                 };
                 loadTitleGoogleFonts = React.createElement(_fontLoader2.default, { config: titleConfig });
@@ -21405,7 +21405,7 @@ var edit = function (_Component) {
             if (suffixStyles[0].suffixFamily !== "Default") {
                 var suffixConfig = {
                     google: {
-                        families: [suffixStyles[0].suffixFamily + (suffixStyles[0].suffixWeight ? ":" + suffixStyles[0].suffixWeight : "")]
+                        families: [suffixStyles[0].suffixFamily]
                     }
                 };
                 loadSuffixGoogleFonts = React.createElement(_fontLoader2.default, { config: suffixConfig });
@@ -21413,7 +21413,7 @@ var edit = function (_Component) {
             if (prefixStyles[0].prefixFamily !== "Default") {
                 var prefixConfig = {
                     google: {
-                        families: [prefixStyles[0].prefixFamily + (prefixStyles[0].prefixWeight ? ":" + prefixStyles[0].prefixWeight : "")]
+                        families: [prefixStyles[0].prefixFamily]
                     }
                 };
                 loadPrefixGoogleFonts = React.createElement(_fontLoader2.default, { config: prefixConfig });
@@ -24492,7 +24492,7 @@ var edit = function (_Component) {
             if (firstStyles[0].firstFamily !== 'Default') {
                 var firstConfig = {
                     google: {
-                        families: [firstStyles[0].firstFamily + (firstStyles[0].firstWeight ? ":" + firstStyles[0].firstWeight : "")]
+                        families: [firstStyles[0].firstFamily]
                     }
                 };
                 loadFirstGoogleFonts = React.createElement(_fontLoader2.default, { config: firstConfig });
@@ -24500,7 +24500,7 @@ var edit = function (_Component) {
             if (secondStyles[0].secondFamily !== 'Default') {
                 var secondConfig = {
                     google: {
-                        families: [secondStyles[0].secondFamily + (secondStyles[0].secondWeight ? ":" + secondStyles[0].secondWeight : "")]
+                        families: [secondStyles[0].secondFamily]
                     }
                 };
                 loadSecondGoogleFonts = React.createElement(_fontLoader2.default, { config: secondConfig });
@@ -31928,7 +31928,7 @@ var edit = function (_Component) {
             if (titleStyles[0].titleFont !== 'Default') {
                 var titleConfig = {
                     google: {
-                        families: [titleStyles[0].titleFont + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")]
+                        families: [titleStyles[0].titleFont]
                     }
                 };
                 loadTitleGoogleFonts = React.createElement(_fontLoader2.default, { config: titleConfig });
@@ -31936,7 +31936,7 @@ var edit = function (_Component) {
             if (descStyles[0].descFont !== 'Default') {
                 var descriptionConfig = {
                     google: {
-                        families: [descStyles[0].descFont + (descStyles[0].descWeight ? ":" + descStyles[0].descWeight : "")]
+                        families: [descStyles[0].descFont]
                     }
                 };
                 loadDescriptionGoogleFonts = React.createElement(_fontLoader2.default, { config: descriptionConfig });
@@ -37474,7 +37474,6 @@ var PremiumPricingTable = function (_Component) {
 
             setAttributes({ block_id: clientId });
             setAttributes({ classMigrate: true });
-
             this.getPreviewSize = this.getPreviewSize.bind(this);
         }
     }, {
@@ -46806,7 +46805,7 @@ var edit = function (_Component) {
             if (descStyles[0].videoDescFamily !== "Default") {
                 var descriptionConfig = {
                     google: {
-                        families: [descStyles[0].videoDescFamily + (descStyles[0].videoDescWeight ? ":" + descStyles[0].videoDescWeight : "")]
+                        families: [descStyles[0].videoDescFamily]
                     }
                 };
                 loadDescriptionGoogleFonts = React.createElement(_fontLoader2.default, { config: descriptionConfig });
