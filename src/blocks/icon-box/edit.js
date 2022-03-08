@@ -14,6 +14,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import RadioComponent from '../../components/radio-control';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
+import WebfontLoader from "../../components/typography/fontLoader"
 
 const { __ } = wp.i18n;
 
@@ -288,6 +289,32 @@ class edit extends Component {
                 value: "bottom"
             }
         ];
+
+        let loadTitleGoogleFonts;
+        let loadDescriptionGoogleFonts;
+        if (titleStyles[0].titleFont !== 'Default') {
+            const titleConfig = {
+                google: {
+                    families: [titleStyles[0].titleFont + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (descStyles[0].descFont !== 'Default') {
+            const descriptionConfig = {
+                google: {
+                    families: [descStyles[0].descFont + (descStyles[0].descWeight ? ":" + descStyles[0].descWeight : "")],
+                },
+            }
+            loadDescriptionGoogleFonts = (
+                <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
+        }
+
 
         const mainClasses = classnames(className, "premium-icon-box");
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
@@ -1229,6 +1256,8 @@ class edit extends Component {
                         </div>
                     )}
                 </div>
+                {loadTitleGoogleFonts}
+                {loadDescriptionGoogleFonts}
             </div>
         ];
     }

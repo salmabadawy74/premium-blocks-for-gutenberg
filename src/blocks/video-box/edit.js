@@ -9,6 +9,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import WebfontLoader from "../../components/typography/fontLoader"
 
 const { withSelect } = wp.data
 
@@ -231,6 +232,20 @@ class edit extends Component {
             });
             setAttributes({ descStyles: newUpdate });
         };
+
+        let loadDescriptionGoogleFonts;
+        if (descStyles[0].videoDescFamily !== "Default") {
+            const descriptionConfig = {
+                google: {
+                    families: [descStyles[0].videoDescFamily + (descStyles[0].videoDescWeight ? ":" + descStyles[0].videoDescWeight : "")],
+                },
+            }
+            loadDescriptionGoogleFonts = (
+                <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
+        }
+
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -774,6 +789,7 @@ class edit extends Component {
 
                     </div>
                 )}
+                {loadDescriptionGoogleFonts}
             </Fragment>
         ];
 

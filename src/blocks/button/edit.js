@@ -7,6 +7,7 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
+import WebfontLoader from "../../components/typography/fontLoader"
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
 const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
@@ -189,6 +190,21 @@ export class edit extends Component {
             setAttributes({
                 textStyles: newUpdate,
             });
+        }
+
+        let loadBtnGoogleFonts
+        if (textStyles[0].textFontFamily !== 'Default') {
+
+            const btnconfig = {
+                google: {
+                    families: [textStyles[0].textFontFamily + (textStyles[0].textWeight ? ":" + textStyles[0].textWeight : "")],
+                },
+            }
+
+            loadBtnGoogleFonts = (
+                <WebfontLoader config={btnconfig}>
+                </WebfontLoader>
+            )
         }
 
         const saveBtnStyles = (value) => {
@@ -500,6 +516,7 @@ export class edit extends Component {
                     value={btnLink}
                     onChange={newLink => setAttributes({ btnLink: newLink })}
                 />
+                {loadBtnGoogleFonts}
             </div>
         ];
     }

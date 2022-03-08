@@ -12,6 +12,7 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import RadioComponent from '../../components/radio-control'
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import WebfontLoader from "../../components/typography/fontLoader"
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
@@ -144,6 +145,55 @@ class edit extends Component {
                 setAttributes({ selfAlign: "flex-end" });
                 break;
         }
+        let loadCounterGoogleFonts;
+        let loadTitleGoogleFonts;
+        let loadSuffixGoogleFonts;
+        let loadPrefixGoogleFonts;
+        if (counterFamily !== 'Default') {
+            const counterconfig = {
+                google: {
+                    families: [counterFamily + (numberStyles[0].numberWeight ? ":" + numberStyles[0].numberWeight : "")],
+                },
+            }
+            loadCounterGoogleFonts = (
+                <WebfontLoader config={counterconfig}>
+                </WebfontLoader>
+            )
+        }
+        if (titleStyles[0].titleFamily !== "Default") {
+            const titleConfig = {
+                google: {
+                    families: [titleStyles[0].titleFamily + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (suffixStyles[0].suffixFamily !== "Default") {
+            const suffixConfig = {
+                google: {
+                    families: [suffixStyles[0].suffixFamily + (suffixStyles[0].suffixWeight ? ":" + suffixStyles[0].suffixWeight : "")],
+                }
+            }
+            loadSuffixGoogleFonts = (
+                <WebfontLoader config={suffixConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (prefixStyles[0].prefixFamily !== "Default") {
+            const prefixConfig = {
+                google: {
+                    families: [prefixStyles[0].prefixFamily + (prefixStyles[0].prefixWeight ? ":" + prefixStyles[0].prefixWeight : "")],
+                }
+            }
+            loadPrefixGoogleFonts = (
+                <WebfontLoader config={prefixConfig}>
+                </WebfontLoader>
+            )
+        }
+
         const saveNumberStyles = (value) => {
             const newUpdate = numberStyles.map((item, index) => {
                 if (0 === index) {
@@ -212,6 +262,7 @@ class edit extends Component {
         } else {
             btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
         }
+
         const mainClasses = classnames(className, "premium-countup");
         const numberFontSize = this.getPreviewSize(this.props.deviceType, numberStyles[0].numberSize, numberStyles[0].numberSizeTablet, numberStyles[0].numberSizeMobile);
         const prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
@@ -861,6 +912,10 @@ class edit extends Component {
                         {titleTxt}
                     </h3>
                 )}
+                {loadCounterGoogleFonts}
+                {loadTitleGoogleFonts}
+                {loadSuffixGoogleFonts}
+                {loadPrefixGoogleFonts}
             </div>
         ];
     }
