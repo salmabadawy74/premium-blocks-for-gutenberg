@@ -19217,6 +19217,10 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
+var _fontLoader = __webpack_require__(370);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -19410,6 +19414,18 @@ var edit = exports.edit = function (_Component) {
                     textStyles: newUpdate
                 });
             };
+
+            var loadBtnGoogleFonts = void 0;
+            if (textStyles[0].textFontFamily !== 'Default') {
+
+                var btnconfig = {
+                    google: {
+                        families: [textStyles[0].textFontFamily + (textStyles[0].textWeight ? ":" + textStyles[0].textWeight : "")]
+                    }
+                };
+
+                loadBtnGoogleFonts = React.createElement(_fontLoader2.default, { config: btnconfig });
+            }
 
             var saveBtnStyles = function saveBtnStyles(value) {
                 var newUpdate = btnStyles.map(function (item, index) {
@@ -19777,7 +19793,8 @@ var edit = exports.edit = function (_Component) {
                     onChange: function onChange(newLink) {
                         return setAttributes({ btnLink: newLink });
                     }
-                })
+                }),
+                loadBtnGoogleFonts
             )];
         }
     }]);
@@ -21207,6 +21224,10 @@ var _PremiumResponsivePadding = __webpack_require__(18);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
+var _fontLoader = __webpack_require__(370);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -21361,6 +21382,43 @@ var edit = function (_Component) {
                     setAttributes({ selfAlign: "flex-end" });
                     break;
             }
+            var loadCounterGoogleFonts = void 0;
+            var loadTitleGoogleFonts = void 0;
+            var loadSuffixGoogleFonts = void 0;
+            var loadPrefixGoogleFonts = void 0;
+            if (counterFamily !== 'Default') {
+                var counterconfig = {
+                    google: {
+                        families: [counterFamily + (numberStyles[0].numberWeight ? ":" + numberStyles[0].numberWeight : "")]
+                    }
+                };
+                loadCounterGoogleFonts = React.createElement(_fontLoader2.default, { config: counterconfig });
+            }
+            if (titleStyles[0].titleFamily !== "Default") {
+                var titleConfig = {
+                    google: {
+                        families: [titleStyles[0].titleFamily + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")]
+                    }
+                };
+                loadTitleGoogleFonts = React.createElement(_fontLoader2.default, { config: titleConfig });
+            }
+            if (suffixStyles[0].suffixFamily !== "Default") {
+                var suffixConfig = {
+                    google: {
+                        families: [suffixStyles[0].suffixFamily + (suffixStyles[0].suffixWeight ? ":" + suffixStyles[0].suffixWeight : "")]
+                    }
+                };
+                loadSuffixGoogleFonts = React.createElement(_fontLoader2.default, { config: suffixConfig });
+            }
+            if (prefixStyles[0].prefixFamily !== "Default") {
+                var prefixConfig = {
+                    google: {
+                        families: [prefixStyles[0].prefixFamily + (prefixStyles[0].prefixWeight ? ":" + prefixStyles[0].prefixWeight : "")]
+                    }
+                };
+                loadPrefixGoogleFonts = React.createElement(_fontLoader2.default, { config: prefixConfig });
+            }
+
             var saveNumberStyles = function saveNumberStyles(value) {
                 var newUpdate = numberStyles.map(function (item, index) {
                     if (0 === index) {
@@ -21431,6 +21489,7 @@ var edit = function (_Component) {
             } else {
                 btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
             }
+
             var mainClasses = (0, _classnames2.default)(className, "premium-countup");
             var numberFontSize = this.getPreviewSize(this.props.deviceType, numberStyles[0].numberSize, numberStyles[0].numberSizeTablet, numberStyles[0].numberSizeMobile);
             var prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
@@ -22168,7 +22227,11 @@ var edit = function (_Component) {
                         }
                     },
                     titleTxt
-                )
+                ),
+                loadCounterGoogleFonts,
+                loadTitleGoogleFonts,
+                loadSuffixGoogleFonts,
+                loadPrefixGoogleFonts
             )];
         }
     }]);
@@ -24316,6 +24379,10 @@ var _PremiumBackgroundControl = __webpack_require__(34);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
+var _fontLoader = __webpack_require__(370);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24420,6 +24487,24 @@ var edit = function (_Component) {
                 value: "block",
                 label: __("Block", 'premium-blocks-for-gutenberg')
             }];
+            var loadFirstGoogleFonts = void 0;
+            var loadSecondGoogleFonts = void 0;
+            if (firstStyles[0].firstFamily !== 'Default') {
+                var firstConfig = {
+                    google: {
+                        families: [firstStyles[0].firstFamily + (firstStyles[0].firstWeight ? ":" + firstStyles[0].firstWeight : "")]
+                    }
+                };
+                loadFirstGoogleFonts = React.createElement(_fontLoader2.default, { config: firstConfig });
+            }
+            if (secondStyles[0].secondFamily !== 'Default') {
+                var secondConfig = {
+                    google: {
+                        families: [secondStyles[0].secondFamily + (secondStyles[0].secondWeight ? ":" + secondStyles[0].secondWeight : "")]
+                    }
+                };
+                loadSecondGoogleFonts = React.createElement(_fontLoader2.default, { config: secondConfig });
+            }
 
             var saveSecondStyle = function saveSecondStyle(value) {
                 var newUpdate = secondStyles.map(function (item, index) {
@@ -25068,7 +25153,9 @@ var edit = function (_Component) {
                     onChange: function onChange(newUrl) {
                         return setAttributes({ headingURL: newUrl });
                     }
-                })
+                }),
+                loadFirstGoogleFonts,
+                loadSecondGoogleFonts
             )];
         }
     }]);
@@ -31552,6 +31639,10 @@ var _PremiumResponsiveMargin = __webpack_require__(61);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
+var _fontLoader = __webpack_require__(370);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31831,6 +31922,25 @@ var edit = function (_Component) {
                 label: __("Bottom", 'premium-blocks-for-gutenberg'),
                 value: "bottom"
             }];
+
+            var loadTitleGoogleFonts = void 0;
+            var loadDescriptionGoogleFonts = void 0;
+            if (titleStyles[0].titleFont !== 'Default') {
+                var titleConfig = {
+                    google: {
+                        families: [titleStyles[0].titleFont + (titleStyles[0].titleWeight ? ":" + titleStyles[0].titleWeight : "")]
+                    }
+                };
+                loadTitleGoogleFonts = React.createElement(_fontLoader2.default, { config: titleConfig });
+            }
+            if (descStyles[0].descFont !== 'Default') {
+                var descriptionConfig = {
+                    google: {
+                        families: [descStyles[0].descFont + (descStyles[0].descWeight ? ":" + descStyles[0].descWeight : "")]
+                    }
+                };
+                loadDescriptionGoogleFonts = React.createElement(_fontLoader2.default, { config: descriptionConfig });
+            }
 
             var mainClasses = (0, _classnames2.default)(className, "premium-icon-box");
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
@@ -32892,7 +33002,9 @@ var edit = function (_Component) {
                             }
                         })
                     )
-                )
+                ),
+                loadTitleGoogleFonts,
+                loadDescriptionGoogleFonts
             )];
         }
     }]);
@@ -46452,6 +46564,10 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
+var _fontLoader = __webpack_require__(370);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46685,6 +46801,17 @@ var edit = function (_Component) {
                 });
                 setAttributes({ descStyles: newUpdate });
             };
+
+            var loadDescriptionGoogleFonts = void 0;
+            if (descStyles[0].videoDescFamily !== "Default") {
+                var descriptionConfig = {
+                    google: {
+                        families: [descStyles[0].videoDescFamily + (descStyles[0].videoDescWeight ? ":" + descStyles[0].videoDescWeight : "")]
+                    }
+                };
+                loadDescriptionGoogleFonts = React.createElement(_fontLoader2.default, { config: descriptionConfig });
+            }
+
             return [isSelected && React.createElement(
                 InspectorControls,
                 { key: "inspector" },
@@ -47319,7 +47446,8 @@ var edit = function (_Component) {
                             )
                         )
                     )
-                )
+                ),
+                loadDescriptionGoogleFonts
             )];
         }
     }]);
@@ -52134,7 +52262,6 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl,
     SelectControl = _wp$components.SelectControl,
-    Button = _wp$components.Button,
     TabPanel = _wp$components.TabPanel;
 
 
@@ -56866,6 +56993,127 @@ var attributes = {
 
 };
 exports.default = attributes;
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _webfontloader = __webpack_require__(217);
+
+var _webfontloader2 = _interopRequireDefault(_webfontloader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+if (googlefonts === undefined) {
+    var googlefonts = [];
+}
+var Component = wp.element.Component;
+
+var statuses = {
+    inactive: "inactive",
+    active: "active",
+    loading: "loading"
+};
+
+var noop = function noop() {};
+
+var WebfontLoader = function (_Component) {
+    _inherits(WebfontLoader, _Component);
+
+    function WebfontLoader(props) {
+        _classCallCheck(this, WebfontLoader);
+
+        var _this = _possibleConstructorReturn(this, (WebfontLoader.__proto__ || Object.getPrototypeOf(WebfontLoader)).call(this, props));
+
+        _this.state = {
+            status: undefined
+        };
+
+        _this.handleLoading = function () {
+            _this.setState({ status: statuses.loading });
+        };
+
+        _this.addFont = function (font) {
+            if (!googlefonts.includes(font)) {
+                googlefonts.push(font);
+            }
+        };
+
+        _this.handleActive = function () {
+            _this.setState({ status: statuses.active });
+        };
+
+        _this.handleInactive = function () {
+            _this.setState({ status: statuses.inactive });
+        };
+
+        _this.loadFonts = function () {
+            if (!googlefonts.includes(_this.props.config.google.families[0])) {
+                _webfontloader2.default.load(_extends({}, _this.props.config, {
+                    loading: _this.handleLoading,
+                    active: _this.handleActive,
+                    inactive: _this.handleInactive
+                }));
+                _this.addFont(_this.props.config.google.families[0]);
+            }
+        };
+        return _this;
+    }
+
+    _createClass(WebfontLoader, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.loadFonts();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate(prevProps, prevState) {
+            var _props = this.props,
+                onStatus = _props.onStatus,
+                config = _props.config;
+
+
+            if (prevState.status !== this.state.status) {
+                onStatus(this.state.status);
+            }
+            if (prevProps.config !== config) {
+                this.loadFonts();
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var children = this.props.children;
+
+            return children || null;
+        }
+    }]);
+
+    return WebfontLoader;
+}(Component);
+
+WebfontLoader.defaultProps = {
+    onStatus: noop
+};
+
+exports.default = WebfontLoader;
 
 /***/ })
 /******/ ]);

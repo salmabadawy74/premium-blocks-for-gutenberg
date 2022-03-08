@@ -8,6 +8,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
+import WebfontLoader from "../../components/typography/fontLoader"
 
 
 const { Fragment, Component } = wp.element;
@@ -96,6 +97,30 @@ class edit extends Component {
                 label: __("Block", 'premium-blocks-for-gutenberg')
             }
         ];
+        let loadFirstGoogleFonts;
+        let loadSecondGoogleFonts;
+        if (firstStyles[0].firstFamily !== 'Default') {
+            const firstConfig = {
+                google: {
+                    families: [firstStyles[0].firstFamily + (firstStyles[0].firstWeight ? ":" + firstStyles[0].firstWeight : "")],
+                },
+            }
+            loadFirstGoogleFonts = (
+                <WebfontLoader config={firstConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (secondStyles[0].secondFamily !== 'Default') {
+            const secondConfig = {
+                google: {
+                    families: [secondStyles[0].secondFamily + (secondStyles[0].secondWeight ? ":" + secondStyles[0].secondWeight : "")],
+                },
+            }
+            loadSecondGoogleFonts = (
+                <WebfontLoader config={secondConfig}>
+                </WebfontLoader>
+            )
+        }
 
         const saveSecondStyle = (value) => {
             const newUpdate = secondStyles.map((item, index) => {
@@ -615,6 +640,8 @@ class edit extends Component {
                         onChange={newUrl => setAttributes({ headingURL: newUrl })}
                     />
                 )}
+                {loadFirstGoogleFonts}
+                {loadSecondGoogleFonts}
             </div>
         ];
     }

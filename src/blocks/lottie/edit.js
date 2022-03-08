@@ -24,7 +24,6 @@ const {
     TextControl,
     ToggleControl,
     SelectControl,
-    Button,
     TabPanel,
 } = wp.components
 
