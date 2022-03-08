@@ -279,7 +279,6 @@ export class edit extends Component {
                             fontSizeMobile={textStyles[0].textSizeMobile}
                             fontSizeTablet={textStyles[0].textSizeTablet}
                             fontFamily={textStyles[0].textFontFamily}
-
                             weight={textStyles[0].textWeight}
                             style={textStyles[0].textStyle}
                             spacing={textStyles[0].textLetter}
@@ -288,9 +287,7 @@ export class edit extends Component {
                             onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
                             onChangeTabletSize={newSize => saveTextStyles({ textSizeTablet: newSize })}
                             onChangeMobileSize={newSize => saveTextStyles({ textSizeMobile: newSize })}
-                            onChangeWeight={newWeight =>
-                                saveTextStyles({ textWeight: newWeight })
-                            }
+                            onChangeWeight={newWeight => saveTextStyles({ textWeight: newWeight })}
                             onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
                             onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
                             onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
