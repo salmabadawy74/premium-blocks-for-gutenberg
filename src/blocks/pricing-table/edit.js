@@ -7,22 +7,11 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
-
 const { withSelect } = wp.data
-
 const { __ } = wp.i18n;
-
 const { Component, Fragment } = wp.element;
-
 const { PanelBody, SelectControl, TextControl, ToggleControl, Dropdown, Button } = wp.components;
-
-const {
-    BlockControls,
-    InspectorControls,
-    AlignmentToolbar,
-    RichText,
-    URLInput
-} = wp.blockEditor;
+const { BlockControls, InspectorControls, AlignmentToolbar, RichText, URLInput } = wp.blockEditor;
 
 class PremiumPricingTable extends Component {
 
@@ -106,6 +95,7 @@ class PremiumPricingTable extends Component {
                 label: __("Bottom", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const PRICE = [
             {
                 value: "slash",
@@ -128,6 +118,7 @@ class PremiumPricingTable extends Component {
                 label: __("Duration", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const TYPE = [
             {
                 value: "none",
@@ -150,6 +141,7 @@ class PremiumPricingTable extends Component {
                 label: __("Square", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const POSITION = [
             {
                 value: "right",
@@ -160,7 +152,6 @@ class PremiumPricingTable extends Component {
                 label: __("Left", 'premium-blocks-for-gutenberg')
             }
         ];
-        const FEATURES_ALIGN = ["left", "center", "right"];
 
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -182,6 +173,7 @@ class PremiumPricingTable extends Component {
             });
             setAttributes({ priceStyles: newUpdate });
         }
+
         const saveFeatureStyle = (value) => {
             const newUpdate = featureStyles.map((item, index) => {
                 if (0 === index) {
@@ -201,6 +193,7 @@ class PremiumPricingTable extends Component {
             });
             setAttributes({ buttonStyles: newUpdate });
         }
+
         const saveBadgeStyles = (value) => {
             const newUpdate = badgeStyles.map((item, index) => {
                 if (0 === index) {
@@ -210,6 +203,7 @@ class PremiumPricingTable extends Component {
             });
             setAttributes({ badgeStyles: newUpdate });
         }
+
         const saveTableStyles = (value) => {
             const newUpdate = tableStyles.map((item, index) => {
                 if (0 === index) {
@@ -219,6 +213,7 @@ class PremiumPricingTable extends Component {
             });
             setAttributes({ tableStyles: newUpdate });
         }
+
         const saveDescriptionStyle = (value) => {
             const newUpdate = descStyles.map((item, index) => {
                 if (0 === index) {
@@ -238,7 +233,7 @@ class PremiumPricingTable extends Component {
         const listFontSize = this.getPreviewSize(this.props.deviceType, featureStyles[0].listSize, featureStyles[0].listSizeTablet, featureStyles[0].listSizeMobile);
         const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
         const btnFontSize = this.getPreviewSize(this.props.deviceType, buttonStyles[0].btnSize, buttonStyles[0].btnSizeTablet, buttonStyles[0].btnSizeMobile);
-
+        const badgeFontSize = this.getPreviewSize(this.props.deviceType, badgeStyles[0].badgeTextSize, badgeStyles[0].badgeSizeTablet, badgeStyles[0].badgeSizeMobile);
 
         const mainClasses = classnames(className, "premium-pricing-table");
 
@@ -1016,7 +1011,7 @@ class PremiumPricingTable extends Component {
                                     value: badgeStyles[0].badgeTextUnit,
                                     label: __("badgeTextUnit", 'premium-blocks-for-gutenberg'),
                                 }}
-                                fontSize={badgeStyles[0].badgeSize}
+                                fontSize={badgeStyles[0].badgeTextSize}
                                 fontSizeMobile={badgeStyles[0].badgeSizeMobile}
                                 fontSizeTablet={badgeStyles[0].badgeSizeTablet}
                                 weight={badgeStyles[0].badgeWeight}
@@ -1027,7 +1022,7 @@ class PremiumPricingTable extends Component {
                                 onChangeStyle={newStyle => saveBadgeStyles({ badgeStyle: newStyle })}
                                 onChangeSpacing={newValue => saveBadgeStyles({ badgeLetter: newValue })}
                                 onChangeUpper={check => saveBadgeStyles({ badgeUpper: check })}
-                                onChangeSize={newSize => saveBadgeStyles({ badgeSize: newSize })}
+                                onChangeSize={newSize => saveBadgeStyles({ badgeTextSize: newSize })}
                                 onChangeTabletSize={newSize => saveBadgeStyles({ badgeSizeTablet: newSize })}
                                 onChangeMobileSize={newSize => saveBadgeStyles({ badgeSizeMobile: newSize })}
                             />
@@ -1196,7 +1191,7 @@ class PremiumPricingTable extends Component {
                         >
                             <span
                                 style={{
-                                    color: badgeStyles[0].badgeColor,
+                                    fontSize: badgeFontSize + badgeStyles[0].badgeTextUnit, color: badgeStyles[0].badgeColor,
                                     fontWeight: badgeStyles[0].badgeWeight,
                                     textTransform: badgeStyles[0].badgeUpper ? "uppercase" : "none",
                                     letterSpacing: badgeStyles[0].badgeLetter + "px",
@@ -1435,7 +1430,7 @@ class PremiumPricingTable extends Component {
 
 }
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
