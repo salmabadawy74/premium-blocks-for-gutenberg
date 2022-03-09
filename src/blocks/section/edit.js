@@ -475,14 +475,12 @@ const edit = props => {
             <div
                 className={`premium-container__content_wrap premium-container__${vPos}`}
                 style={{
-                    maxWidth:
-                        "boxed" == innerWidthType && stretchSection
-                            ? innerWidth
-                                ? innerWidth + "px"
-                                : "1140px"
-                            : "100%",
-                    minHeight:
-                        "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    maxWidth: "boxed" == innerWidthType && stretchSection
+                        ? innerWidth
+                            ? innerWidth + "px"
+                            : "1140px"
+                        : "100%",
+                    minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 }}
             >
                 <div className={`premium-container__content_inner`}>

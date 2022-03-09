@@ -150,7 +150,6 @@ class edit extends Component {
 
         const loopVideo = () => {
             if (videoURL && "youtube" === videoType) {
-                console.log(videoURL, "HEllo")
                 if (videoURL.startsWith("http")) {
                     return loop
                         ? `1&playlist=${videoURL.replace(
@@ -260,7 +259,10 @@ class edit extends Component {
                             value={videoType}
                             onChange={changeVideoType}
                         />
-
+                        {videoURL && <button className="lottie-remove" onClick={(e) => {
+                            e.preventDefault();
+                            setAttributes({ videoURL: '' })
+                        }}>{__('Remove Video')}</button>}
                         {"self" === videoType && (
                             <PremiumMediaUpload
                                 type="video"

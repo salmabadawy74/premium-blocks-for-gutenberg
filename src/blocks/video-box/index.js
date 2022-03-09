@@ -24,20 +24,20 @@ const onChangeVideoURL = (type, URL) => {
                 break;
             case "vimeo":
                 if (URL.startsWith("http")) {
-                    videoUrl = URL;
+                    videoUrl = URL.replace("vimeo.com/", "player.vimeo.com/video/");
                 } else {
                     videoUrl = "https://player.vimeo.com/video/" + URL;
                 }
                 break;
             case "daily":
                 if (URL.startsWith("http")) {
-                    videoUrl = URL;
+                    videoUrl = URL.replace('dai.ly/', 'dailymotion.com/embed/video/');
                 } else {
                     videoUrl = "https://dailymotion.com/embed/video/" + URL;
                 }
                 break;
         }
-        return console.log(videoUrl), videoUrl;
+        return videoUrl;
     }
 
 };

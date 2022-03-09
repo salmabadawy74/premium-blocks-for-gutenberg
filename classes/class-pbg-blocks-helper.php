@@ -2193,6 +2193,12 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['buttonStyles'][0]['btnSize'] . $attr['buttonStyles'][0]['btnSizeUnit'] ) );
 			}
 		}
+        if(isset( $attr['badgeStyles'])){
+           if ( isset( $attr['badgeStyles'][0]['badgeTextSize'] ) && isset( $attr['badgeStyles'][0]['badgeTextUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__badge_wrap' . ' > .premium-pricing-table__badge' . '> span');
+				$css->add_property( 'font-size', ( $attr['badgeStyles'][0]['badgeTextSize'] . $attr['badgeStyles'][0]['badgeTextUnit'] ) );
+			} 
+        }
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['titleStyles'] ) ) {
