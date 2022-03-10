@@ -165,22 +165,7 @@ class edit extends Component {
             }
         };
 
-        const getHelp = Type => {
-            switch (Type) {
-                case "youtube":
-                    return __(
-                        "Enter video ID, for example: z1hQgVpfTKU or Embed URL, for example: https://www.youtube.com/embed/07d2dXHYb94"
-                    );
-                case "vimeo":
-                    return __(
-                        "Enter video ID, for example: 243244233 or Embed URL, for example: https://player.vimeo.com/video/243244233"
-                    );
-                case "daily":
-                    return __(
-                        "Enter video ID, for example: x5gifqg or Embed URL, for example: https://dailymotion.com/embed/video/x5gifqg"
-                    );
-            }
-        };
+
 
         const mainClasses = classnames(className, "premium-video-box");
 
@@ -646,7 +631,9 @@ class edit extends Component {
                     !videoURL && "self" !== videoType && (
                         <Placeholder
                             label={__('Video Box ', 'premium-blocks-for-gutenberg')}
-                            instructions={getHelp(videoType)}
+                            instructions={__(
+                                "Enter video ID, for example: z1hQgVpfTKU or Embed URL"
+                            )}
                             className={className}
                         >
                             <form onSubmit={() => setAttributes({ videoURL: this.state.url })}>
