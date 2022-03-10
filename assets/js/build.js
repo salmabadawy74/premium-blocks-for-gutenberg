@@ -46053,7 +46053,6 @@ var save = function save(props) {
         playStyles = _props$attributes.playStyles,
         descStyles = _props$attributes.descStyles;
 
-    console.log(videoURL, "From Save Function 111");
 
     var loopVideo = function loopVideo() {
         if (videoURL && "youtube" === videoType) {
@@ -46068,7 +46067,6 @@ var save = function save(props) {
     };
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-video-box');
-    console.log(videoURL, "From Save Function 222");
 
     return videoURL && React.createElement(
         "div",
@@ -46585,7 +46583,6 @@ var deprecatedContent = [{
             playStyles = _props$attributes.playStyles,
             descStyles = _props$attributes.descStyles;
 
-        console.log(videoURL, "From DeprecatedFunction 111");
         var loopVideo = function loopVideo() {
             if ("youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
@@ -46597,8 +46594,6 @@ var deprecatedContent = [{
                 return loop ? "1" : "0";
             }
         };
-
-        console.log(videoURL, "From DeprecatedFunction 222");
 
         return React.createElement(
             "div",

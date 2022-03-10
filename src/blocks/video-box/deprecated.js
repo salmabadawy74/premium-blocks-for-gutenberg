@@ -397,7 +397,6 @@ const deprecatedContent = [
                 playStyles,
                 descStyles
             } = props.attributes;
-            console.log(videoURL, "From DeprecatedFunction 111")
             const loopVideo = () => {
                 if ("youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
@@ -414,8 +413,6 @@ const deprecatedContent = [
                     return loop ? "1" : "0";
                 }
             };
-
-            console.log(videoURL, "From DeprecatedFunction 222")
 
             return (
                 <div
