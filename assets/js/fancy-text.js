@@ -1,19 +1,13 @@
 jQuery(function ($) {
-
     const $fancyTextBlocks = $(".premium-fancy-text");
-
     $fancyTextBlocks.map((index, elem) => {
-
         let $elem = $(elem),
             id = $elem.attr('id'),
             effect = $elem.data('effect'),
             strings = $elem.data('strings'),
             fancyStrings = strings.split(",")
-
         if (effect === 'typing') {
-
             let instance = null;
-
             instance = new Typed(`#${id} .premium-fancy-text-title`, {
                 strings: fancyStrings,
                 typeSpeed: $elem.data('typespeed'),
@@ -24,7 +18,6 @@ jQuery(function ($) {
                 cursorChar: $elem.data('cursormark'),
                 loop: $elem.data('loop')
             });
-
         }
         else if (effect === 'slide') {
             $elem.find(".premium-fancy-text-title-slide").vTicker({

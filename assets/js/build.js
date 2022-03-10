@@ -15257,20 +15257,12 @@ var save = function save(props) {
         titleBorderBottom = _props$attributes.titleBorderBottom,
         titleBorderLeft = _props$attributes.titleBorderLeft,
         titleBorderUpdated = _props$attributes.titleBorderUpdated,
-        titlePaddingT = _props$attributes.titlePaddingT,
-        titlePaddingR = _props$attributes.titlePaddingR,
-        titlePaddingB = _props$attributes.titlePaddingB,
-        titlePaddingL = _props$attributes.titlePaddingL,
         descBorderWidth = _props$attributes.descBorderWidth,
         descBorderUpdated = _props$attributes.descBorderUpdated,
         descBorderTop = _props$attributes.descBorderTop,
         descBorderRight = _props$attributes.descBorderRight,
         descBorderBottom = _props$attributes.descBorderBottom,
-        descBorderLeft = _props$attributes.descBorderLeft,
-        descPaddingT = _props$attributes.descPaddingT,
-        descPaddingR = _props$attributes.descPaddingR,
-        descPaddingB = _props$attributes.descPaddingB,
-        descPaddingL = _props$attributes.descPaddingL;
+        descBorderLeft = _props$attributes.descBorderLeft;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
@@ -21507,6 +21499,7 @@ var edit = function (_Component) {
             var loadTitleGoogleFonts = void 0;
             var loadSuffixGoogleFonts = void 0;
             var loadPrefixGoogleFonts = void 0;
+
             if (counterFamily !== 'Default') {
                 var counterconfig = {
                     google: {
@@ -21515,6 +21508,7 @@ var edit = function (_Component) {
                 };
                 loadCounterGoogleFonts = React.createElement(_fontLoader2.default, { config: counterconfig });
             }
+
             if (titleStyles[0].titleFamily !== "Default") {
                 var titleConfig = {
                     google: {
@@ -21523,6 +21517,7 @@ var edit = function (_Component) {
                 };
                 loadTitleGoogleFonts = React.createElement(_fontLoader2.default, { config: titleConfig });
             }
+
             if (suffixStyles[0].suffixFamily !== "Default") {
                 var suffixConfig = {
                     google: {
@@ -21531,6 +21526,7 @@ var edit = function (_Component) {
                 };
                 loadSuffixGoogleFonts = React.createElement(_fontLoader2.default, { config: suffixConfig });
             }
+
             if (prefixStyles[0].prefixFamily !== "Default") {
                 var prefixConfig = {
                     google: {
@@ -30260,15 +30256,6 @@ var save = function save(props) {
         hoverEffect = _props$attributes.hoverEffect,
         iconStyles = _props$attributes.iconStyles,
         containerStyles = _props$attributes.containerStyles,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        paddingU = _props$attributes.paddingU,
-        marginT = _props$attributes.marginT,
-        marginR = _props$attributes.marginR,
-        marginB = _props$attributes.marginB,
-        marginL = _props$attributes.marginL,
         borderWidth = _props$attributes.borderWidth,
         iconBorderTop = _props$attributes.iconBorderTop,
         iconBorderRight = _props$attributes.iconBorderRight,
@@ -30279,14 +30266,6 @@ var save = function save(props) {
         wrapBorderRight = _props$attributes.wrapBorderRight,
         wrapBorderBottom = _props$attributes.wrapBorderBottom,
         wrapBorderLeft = _props$attributes.wrapBorderLeft,
-        wrapPaddingT = _props$attributes.wrapPaddingT,
-        wrapPaddingR = _props$attributes.wrapPaddingR,
-        wrapPaddingB = _props$attributes.wrapPaddingB,
-        wrapPaddingL = _props$attributes.wrapPaddingL,
-        wrapMarginT = _props$attributes.wrapMarginT,
-        wrapMarginR = _props$attributes.wrapMarginR,
-        wrapMarginB = _props$attributes.wrapMarginB,
-        wrapMarginL = _props$attributes.wrapMarginL,
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
@@ -36102,7 +36081,7 @@ var attributes = {
         default: [{
 
             titleTag: "H2",
-            titleFont: '',
+            titleFont: __('Default', 'premium - blocks -for-gutenberg'),
             titleColor: '',
             titleSize: 20,
             titleSizeUnit: 'px',
@@ -36124,7 +36103,7 @@ var attributes = {
     descStyles: {
         type: "array",
         default: [{
-            descFont: '',
+            descFont: __('Default', 'premium-blocks-for-gutenberg'),
             descColor: '',
             descSize: 20,
             descSizeUnit: 'px',
@@ -36397,7 +36376,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var className = "premium-maps";
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$components = wp.components,
@@ -42983,14 +42961,6 @@ var save = function save(props) {
         borderRight = _props$attributes.borderRight,
         borderBottom = _props$attributes.borderBottom,
         borderLeft = _props$attributes.borderLeft,
-        marginTop = _props$attributes.marginTop,
-        marginBottom = _props$attributes.marginBottom,
-        marginLeft = _props$attributes.marginLeft,
-        marginRight = _props$attributes.marginRight,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
         backgroundType = _props$attributes.backgroundType;
 
 
@@ -44877,10 +44847,6 @@ var save = function save(props) {
         companyStyles = _props$attributes.companyStyles,
         quoteStyles = _props$attributes.quoteStyles,
         containerStyles = _props$attributes.containerStyles,
-        paddingTop = _props$attributes.paddingTop,
-        paddingRight = _props$attributes.paddingRight,
-        paddingBottom = _props$attributes.paddingBottom,
-        paddingLeft = _props$attributes.paddingLeft,
         backgroundType = _props$attributes.backgroundType;
 
 
@@ -55338,10 +55304,6 @@ function save(props) {
         hideTablet = attributes.hideTablet,
         hideMobile = attributes.hideMobile,
         lottieStyles = attributes.lottieStyles,
-        paddingT = attributes.paddingT,
-        paddingR = attributes.paddingR,
-        paddingB = attributes.paddingB,
-        paddingL = attributes.paddingL,
         borderTop = attributes.borderTop,
         borderRight = attributes.borderRight,
         borderBottom = attributes.borderBottom,

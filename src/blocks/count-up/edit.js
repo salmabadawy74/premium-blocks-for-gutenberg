@@ -149,6 +149,7 @@ class edit extends Component {
         let loadTitleGoogleFonts;
         let loadSuffixGoogleFonts;
         let loadPrefixGoogleFonts;
+
         if (counterFamily !== 'Default') {
             const counterconfig = {
                 google: {
@@ -160,6 +161,7 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
+
         if (titleStyles[0].titleFamily !== "Default") {
             const titleConfig = {
                 google: {
@@ -171,6 +173,7 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
+
         if (suffixStyles[0].suffixFamily !== "Default") {
             const suffixConfig = {
                 google: {
@@ -182,6 +185,7 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
+
         if (prefixStyles[0].prefixFamily !== "Default") {
             const prefixConfig = {
                 google: {

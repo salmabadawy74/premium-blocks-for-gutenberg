@@ -5,32 +5,12 @@ import Typed from "typed.js";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control'
-
-
-import {
-    SortableContainer,
-    SortableElement,
-    arrayMove,
-} from "react-sortable-hoc";
-
+import { SortableContainer, SortableElement, arrayMove } from "react-sortable-hoc";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
-
-
 const { Component, Fragment } = wp.element;
-
-const {
-    BlockControls,
-    AlignmentToolbar,
-    InspectorControls,
-} = wp.blockEditor;
-
-const {
-    PanelBody,
-    SelectControl,
-    TextControl,
-    ToggleControl,
-} = wp.components;
+const { BlockControls, AlignmentToolbar, InspectorControls } = wp.blockEditor;
+const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
 const SortableItem = SortableElement(
     ({ edit, removeItem, newIndex, value, changeFancyValue, items }) => (
