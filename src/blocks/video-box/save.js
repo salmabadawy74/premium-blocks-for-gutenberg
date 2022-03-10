@@ -29,6 +29,8 @@ const save = props => {
         playStyles,
         descStyles
     } = props.attributes;
+    console.log(videoURL, "From Save Function 111")
+
     const loopVideo = () => {
         if (videoURL && "youtube" === videoType) {
             if (videoURL.startsWith("http")) {
@@ -47,6 +49,7 @@ const save = props => {
     };
 
     const mainClasses = classnames(className, 'premium-video-box');
+    console.log(videoURL, "From Save Function 222")
 
     return (
 
