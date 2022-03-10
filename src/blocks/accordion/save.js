@@ -27,20 +27,12 @@ const save = props => {
         titleBorderBottom,
         titleBorderLeft,
         titleBorderUpdated,
-        titlePaddingT,
-        titlePaddingR,
-        titlePaddingB,
-        titlePaddingL,
         descBorderWidth,
         descBorderUpdated,
         descBorderTop,
         descBorderRight,
         descBorderBottom,
         descBorderLeft,
-        descPaddingT,
-        descPaddingR,
-        descPaddingB,
-        descPaddingL,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-accordion');

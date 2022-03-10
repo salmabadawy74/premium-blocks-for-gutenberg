@@ -5,12 +5,8 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
-
-
 const className = "premium-maps";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
 
 const {

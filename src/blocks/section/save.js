@@ -25,14 +25,6 @@ const save = props => {
         borderRight,
         borderBottom,
         borderLeft,
-        marginTop,
-        marginBottom,
-        marginLeft,
-        marginRight,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
         backgroundType
     } = props.attributes;
 

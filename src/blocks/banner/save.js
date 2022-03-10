@@ -3,9 +3,7 @@ import classnames from 'classnames'
 const { RichText } = wp.blockEditor;
 
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         borderBanner,
@@ -43,7 +41,6 @@ const save = props => {
         borderRight,
         borderBottom,
         borderLeft,
-
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-banner');
