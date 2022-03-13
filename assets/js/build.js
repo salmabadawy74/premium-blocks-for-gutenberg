@@ -4275,7 +4275,7 @@ exports.default = PremiumResponsiveMargin;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4291,22 +4291,22 @@ var placeHolder = PremiumBlocksSettings.defaultAuthImg;
 var Component = wp.element.Component;
 
 var DefaultImage = function (_Component) {
-  _inherits(DefaultImage, _Component);
+    _inherits(DefaultImage, _Component);
 
-  function DefaultImage() {
-    _classCallCheck(this, DefaultImage);
+    function DefaultImage() {
+        _classCallCheck(this, DefaultImage);
 
-    return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
-  }
-
-  _createClass(DefaultImage, [{
-    key: "render",
-    value: function render() {
-      return React.createElement("img", { src: placeHolder });
+        return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
     }
-  }]);
 
-  return DefaultImage;
+    _createClass(DefaultImage, [{
+        key: "render",
+        value: function render() {
+            return React.createElement("img", { src: placeHolder });
+        }
+    }]);
+
+    return DefaultImage;
 }(Component);
 
 exports.default = DefaultImage;
@@ -27961,8 +27961,7 @@ function _interopRequireDefault(obj) {
   };
 }
 
-module.exports = _interopRequireDefault;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
+module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 /* 252 */
@@ -35378,6 +35377,33 @@ var PremiumMap = function (_Component) {
                     }),
                     React.createElement(_ColorComponent2.default, {
                         label: __("Text Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: descColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({ descColor: newValue === undefined ? "transparent" : newValue });
+                        }
+                    })
+                ),
+                mapMarker && markerDesc && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Marker Description Style", 'premium-block-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Font Size (PX)", 'premium-block-for-gutenberg'),
+                        value: descSize,
+                        min: "10",
+                        max: "80",
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ descSize: newSize });
+                        },
+                        showUnit: false,
+                        defaultValue: 0
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-block-for-gutenberg'),
                         colorValue: descColor,
                         colorDefault: '',
                         onColorChange: function onColorChange(newValue) {
@@ -51571,6 +51597,9 @@ function _defineProperties(target, props) {
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
   return Constructor;
 }
 
@@ -51613,30 +51642,22 @@ function _possibleConstructorReturn(self, call) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+exports.default = _typeof;
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-    };
-
-    module.exports["default"] = module.exports, module.exports.__esModule = true;
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-    };
-
-    module.exports["default"] = module.exports, module.exports.__esModule = true;
-  }
-
-  return _typeof(obj);
+  return exports.default = _typeof = "function" == typeof Symbol && "symbol" == _typeof2(Symbol.iterator) ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+  }, _typeof(obj);
 }
-
-module.exports = _typeof;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 /* 299 */
@@ -51685,6 +51706,9 @@ function _inherits(subClass, superClass) {
       writable: true,
       configurable: true
     }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
   });
   if (superClass) (0, _setPrototypeOf2.default)(subClass, superClass);
 }
