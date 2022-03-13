@@ -7,6 +7,7 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
+import WebfontLoader from "../../components/typography/fontLoader"
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
 const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
@@ -16,6 +17,7 @@ export class edit extends Component {
         super(...arguments);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {
@@ -30,8 +32,11 @@ export class edit extends Component {
         }
         return desktopSize;
     }
+
     render() {
+
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
+
         const {
             borderButton,
             btnText,
@@ -58,101 +63,106 @@ export class edit extends Component {
         const SIZE = [
             {
                 value: "sm",
-                label: __("Small", 'premium-block-for-gutenberg')
+                label: __("Small", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "md",
-                label: __("Medium", 'premium-block-for-gutenberg')
+                label: __("Medium", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "lg",
-                label: __("Large", 'premium-block-for-gutenberg')
+                label: __("Large", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Block", 'premium-block-for-gutenberg')
+                label: __("Block", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const DIRECTION = [
             {
                 value: "top",
-                label: __("Top to Bottom", 'premium-block-for-gutenberg')
+                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "bottom",
-                label: __("Bottom to Top", 'premium-block-for-gutenberg')
+                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "left",
-                label: __("Left to Right", 'premium-block-for-gutenberg')
+                label: __("Left to Right", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "right",
-                label: __("Right to Left", 'premium-block-for-gutenberg')
+                label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const SHUTTER = [
             {
                 value: "shutouthor",
-                label: __("Shutter out Horizontal", 'premium-block-for-gutenberg')
+                label: __("Shutter out Horizontal", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "shutoutver",
-                label: __("Shutter out Vertical", 'premium-block-for-gutenberg')
+                label: __("Shutter out Vertical", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "scshutoutver",
-                label: __("Scaled Shutter Vertical", 'premium-block-for-gutenberg')
+                label: __("Scaled Shutter Vertical", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "scshutouthor",
-                label: __("Scaled Shutter Horizontal", 'premium-block-for-gutenberg')
+                label: __("Scaled Shutter Horizontal", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "dshutinver",
-                label: __("Tilted Left", 'premium-block-for-gutenberg')
+                label: __("Tilted Left", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "dshutinhor",
-                label: __("Tilted Right", 'premium-block-for-gutenberg')
+                label: __("Tilted Right", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const RADIAL = [
             {
                 value: "radialin",
-                label: __("Radial In", 'premium-block-for-gutenberg')
+                label: __("Radial In", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "radialout",
-                label: __("Radial Out", 'premium-block-for-gutenberg')
+                label: __("Radial Out", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "rectin",
-                label: __("Rectangle In", 'premium-block-for-gutenberg')
+                label: __("Rectangle In", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "rectout",
-                label: __("Rectangle Out", 'premium-block-for-gutenberg')
+                label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const EFFECTS = [
             {
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "slide",
-                label: __("Slide", 'premium-block-for-gutenberg')
+                label: __("Slide", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "shutter",
-                label: __("Shutter", 'premium-block-for-gutenberg')
+                label: __("Shutter", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "radial",
-                label: __("Radial", 'premium-block-for-gutenberg')
+                label: __("Radial", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const onChangeHover = newValue => {
             this.props.setAttributes({ effect: newValue });
             switch (newValue) {
@@ -167,7 +177,9 @@ export class edit extends Component {
                     break;
             }
         };
+
         setAttributes({ block_id: blockId });
+
         const saveTextStyles = (value) => {
             const newUpdate = textStyles.map((item, index) => {
                 if (0 === index) {
@@ -179,6 +191,22 @@ export class edit extends Component {
                 textStyles: newUpdate,
             });
         }
+
+        let loadBtnGoogleFonts
+        if (textStyles[0].textFontFamily !== 'Default') {
+
+            const btnconfig = {
+                google: {
+                    families: [textStyles[0].textFontFamily],
+                },
+            }
+
+            loadBtnGoogleFonts = (
+                <WebfontLoader config={btnconfig}>
+                </WebfontLoader>
+            )
+        }
+
         const saveBtnStyles = (value) => {
             const newUpdate = btnStyles.map((item, index) => {
                 if (0 === index) {
@@ -190,6 +218,7 @@ export class edit extends Component {
                 btnStyles: newUpdate,
             });
         }
+
         const mainClasses = classnames(className, "premium-button");
         const btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
         return [
@@ -204,20 +233,20 @@ export class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("General Settings", 'premium-block-for-gutenberg')}
+                        title={__("General Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
                             options={EFFECTS}
-                            label={__("Hover Effect", 'premium-block-for-gutenberg')}
+                            label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
                             value={effect}
                             onChange={onChangeHover}
                         />
                         {"slide" === effect && (
                             <SelectControl
                                 options={DIRECTION}
-                                label={__("Direction", 'premium-block-for-gutenberg')}
+                                label={__("Direction", 'premium-blocks-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
@@ -225,7 +254,7 @@ export class edit extends Component {
                         {"shutter" === effect && (
                             <SelectControl
                                 options={SHUTTER}
-                                label={__("Shutter Direction", 'premium-block-for-gutenberg')}
+                                label={__("Shutter Direction", 'premium-blocks-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
@@ -233,25 +262,25 @@ export class edit extends Component {
                         {"radial" === effect && (
                             <SelectControl
                                 options={RADIAL}
-                                label={__("Style", 'premium-block-for-gutenberg')}
+                                label={__("Style", 'premium-blocks-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
                         )}
                         <SelectControl
                             options={SIZE}
-                            label={__("Button Size", 'premium-block-for-gutenberg')}
+                            label={__("Button Size", 'premium-blocks-for-gutenberg')}
                             value={btnSize}
                             onChange={newSize => setAttributes({ btnSize: newSize })}
                         />
                         <ToggleControl
-                            label={__("Open link in new tab", 'premium-block-for-gutenberg')}
+                            label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                             checked={btnTarget}
                             onChange={newValue => setAttributes({ btnTarget: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Text Style", 'premium-block-for-gutenberg')}
+                        title={__("Text Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -260,13 +289,12 @@ export class edit extends Component {
                             setAttributes={saveTextStyles}
                             fontSizeType={{
                                 value: textStyles[0].textSizeUnit,
-                                label: __("textSizeUnit", 'premium-block-for-gutenberg'),
+                                label: __("textSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
                             fontSize={textStyles[0].textSize}
                             fontSizeMobile={textStyles[0].textSizeMobile}
                             fontSizeTablet={textStyles[0].textSizeTablet}
                             fontFamily={textStyles[0].textFontFamily}
-
                             weight={textStyles[0].textWeight}
                             style={textStyles[0].textStyle}
                             spacing={textStyles[0].textLetter}
@@ -275,9 +303,7 @@ export class edit extends Component {
                             onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
                             onChangeTabletSize={newSize => saveTextStyles({ textSizeTablet: newSize })}
                             onChangeMobileSize={newSize => saveTextStyles({ textSizeMobile: newSize })}
-                            onChangeWeight={newWeight =>
-                                saveTextStyles({ textWeight: newWeight })
-                            }
+                            onChangeWeight={newWeight => saveTextStyles({ textWeight: newWeight })}
                             onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
                             onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
                             onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
@@ -297,11 +323,11 @@ export class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Button Style", 'premium-block-for-gutenberg')}
+                        title={__("Button Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <strong>{__("Colors", 'premium-block-for-gutenberg')}</strong>
+                        <strong>{__("Colors", 'premium-blocks-for-gutenberg')}</strong>
                         <TabPanel
                             className="premium-color-tabpanel"
                             activeClass="active-tab"
@@ -324,7 +350,7 @@ export class edit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].textColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => saveBtnStyles({ textColor: newValue, })}
@@ -343,15 +369,15 @@ export class edit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Text Hover Color", 'premium-block-for-gutenberg')}
+                                                label={__("Text Hover Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].textHoverColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={"radial" !== effect
-                                                    ? __("Background Hover Color", 'premium-block-for-gutenberg')
-                                                    : __("Background Color", 'premium-block-for-gutenberg')}
+                                                    ? __("Background Hover Color", 'premium-blocks-for-gutenberg')
+                                                    : __("Background Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].backHoverColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue =>
@@ -362,7 +388,7 @@ export class edit extends Component {
                                                 }
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Border Hover Color", 'premium-block-for-gutenberg')}
+                                                label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].borderHoverColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue, })}
@@ -419,7 +445,7 @@ export class edit extends Component {
                             onChangePosition={newValue => saveBtnStyles({ btnShadowPosition: newValue === undefined ? 0 : newValue })}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Padding", 'premium-block-for-gutenberg')}
+                            label={__("Padding", 'premium-blocks-for-gutenberg')}
                             value={btnStyles[0].padding}
                             onChange={newValue => saveBtnStyles({ padding: newValue })}
                             defaultValue={0}
@@ -491,6 +517,7 @@ export class edit extends Component {
                     value={btnLink}
                     onChange={newLink => setAttributes({ btnLink: newLink })}
                 />
+                {loadBtnGoogleFonts}
             </div>
         ];
     }

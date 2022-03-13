@@ -9,16 +9,18 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import WebfontLoader from "../../components/typography/fontLoader"
 
 const { withSelect } = wp.data
 
 const {
     PanelBody,
     SelectControl,
-    TextControl,
     TextareaControl,
     ToggleControl,
     TabPanel,
+    Placeholder,
+    Button
 } = wp.components;
 
 const { Component, Fragment } = wp.element;
@@ -35,6 +37,9 @@ class edit extends Component {
         this.initVideoBox = this.initVideoBox.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
         this.videoboxRef = React.createRef()
+        this.state = {
+            url: ''
+        }
     }
 
     componentDidMount() {
@@ -53,30 +58,33 @@ class edit extends Component {
     }
 
     initVideoBox() {
-        const { videoBoxId } = this.props.attributes;
-        if (!videoBoxId) return null;
+        const { videoBoxId, videoURL } = this.props.attributes;
+        if (!videoBoxId && !videoURL) return null;
         let videoBox = this.videoboxRef.current,
             video, src;
-        videoBox.addEventListener("click", () => {
-            videoBox.classList.add("video-overlay-false");
-            let type = videoBox.getAttribute("data-type");
-            if ("self" !== type) {
-                video = videoBox.getElementsByTagName("iframe")[0];
-                src = video.getAttribute("src");
-            } else {
-                video = videoBox.getElementsByTagName("video")[0];
-            }
-            setTimeout(() => {
+        if (videoBox) {
+            videoBox.addEventListener("click", () => {
+                videoBox.classList.add("video-overlay-false");
+                let type = videoBox.getAttribute("data-type");
                 if ("self" !== type) {
-                    video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                    video = videoBox.getElementsByTagName("iframe")[0];
+                    src = video.getAttribute("src");
                 } else {
-                    videoBox
-                        .getElementsByClassName("premium-video-box__overlay")[0]
-                        .remove();
-                    video.play();
+                    video = videoBox.getElementsByTagName("video")[0];
                 }
-            }, 300);
-        });
+                setTimeout(() => {
+                    if ("self" !== type) {
+                        video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                    } else {
+                        videoBox
+                            .getElementsByClassName("premium-video-box__overlay")[0]
+                            .remove();
+                        video.play();
+                    }
+                }, 300);
+            });
+        }
+
     }
 
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
@@ -124,24 +132,24 @@ class edit extends Component {
         const TYPE = [
             {
                 value: "youtube",
-                label: __("Youtube", 'premium-block-for-gutenberg')
+                label: __("Youtube", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "vimeo",
-                label: __("Vimeo", 'premium-block-for-gutenberg')
+                label: __("Vimeo", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "daily",
-                label: __("Daily Motion", 'premium-block-for-gutenberg')
+                label: __("Daily Motion", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "self",
-                label: __("Self Hosted", 'premium-block-for-gutenberg')
+                label: __("Self Hosted", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const loopVideo = () => {
-            if ("youtube" === videoType) {
+            if (videoURL && "youtube" === videoType) {
                 if (videoURL.startsWith("http")) {
                     return loop
                         ? `1&playlist=${videoURL.replace(
@@ -157,22 +165,7 @@ class edit extends Component {
             }
         };
 
-        const getHelp = Type => {
-            switch (Type) {
-                case "youtube":
-                    return __(
-                        "Enter video ID, for example: z1hQgVpfTKU or Embed URL, for example: https://www.youtube.com/embed/07d2dXHYb94"
-                    );
-                case "vimeo":
-                    return __(
-                        "Enter video ID, for example: 243244233 or Embed URL, for example: https://player.vimeo.com/video/243244233"
-                    );
-                case "daily":
-                    return __(
-                        "Enter video ID, for example: x5gifqg or Embed URL, for example: https://dailymotion.com/embed/video/x5gifqg"
-                    );
-            }
-        };
+
 
         const mainClasses = classnames(className, "premium-video-box");
 
@@ -224,30 +217,37 @@ class edit extends Component {
             setAttributes({ descStyles: newUpdate });
         };
 
+        let loadDescriptionGoogleFonts;
+        if (descStyles[0].videoDescFamily !== "Default") {
+            const descriptionConfig = {
+                google: {
+                    families: [descStyles[0].videoDescFamily],
+                },
+            }
+            loadDescriptionGoogleFonts = (
+                <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
+        }
+
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Video", 'premium-block-for-gutenberg')}
+                        title={__("Video", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={true}
                     >
                         <SelectControl
-                            label={__("Video Type", 'premium-block-for-gutenberg')}
+                            label={__("Video Type", 'premium-blocks-for-gutenberg')}
                             options={TYPE}
                             value={videoType}
                             onChange={changeVideoType}
                         />
-                        {"self" !== videoType && (
-                            <TextControl
-                                className="premium-text-control"
-                                label={__("Video URL", 'premium-block-for-gutenberg')}
-                                value={videoURL}
-                                placeholder={__("Enter Video ID, Embed URL or Video URL")}
-                                onChange={newURL => setAttributes({ videoURL: newURL })}
-                                help={getHelp(videoType)}
-                            />
-                        )}
+                        {videoURL && <button className="lottie-remove" onClick={(e) => {
+                            e.preventDefault();
+                            setAttributes({ videoURL: '' })
+                        }}>{__('Remove Video')}</button>}
                         {"self" === videoType && (
                             <PremiumMediaUpload
                                 type="video"
@@ -268,48 +268,46 @@ class edit extends Component {
                             />
                         )}
                         <ToggleControl
-                            label={__("Autoplay", 'premium-block-for-gutenberg')}
+                            label={__("Autoplay", 'premium-blocks-for-gutenberg')}
                             checked={autoPlay}
                             onChange={newCheck => setAttributes({ autoPlay: newCheck })}
-                            help={__(
-                                "This option effect works when Overlay Image option is disabled", 'premium-block-for-gutenberg'
-                            )}
+                            help={__("This option effect works when Overlay Image option is disabled", 'premium-blocks-for-gutenberg')}
                         />
                         {"daily" !== videoType && (
                             <ToggleControl
-                                label={__("Loop", 'premium-block-for-gutenberg')}
+                                label={__("Loop", 'premium-blocks-for-gutenberg')}
                                 checked={loop}
                                 onChange={newCheck => setAttributes({ loop: newCheck })}
                             />
                         )}
                         <ToggleControl
-                            label={__("Mute", 'premium-block-for-gutenberg')}
+                            label={__("Mute", 'premium-blocks-for-gutenberg')}
                             checked={mute}
                             onChange={newCheck => setAttributes({ mute: newCheck })}
                         />
                         {"vimeo" !== videoType && (
                             <ToggleControl
-                                label={__("Player Controls", 'premium-block-for-gutenberg')}
+                                label={__("Player Controls", 'premium-blocks-for-gutenberg')}
                                 checked={controls}
                                 onChange={newCheck => setAttributes({ controls: newCheck })}
                             />
                         )}
                         {"youtube" === videoType && (
                             <ToggleControl
-                                label={__("Show Related Videos", 'premium-block-for-gutenberg')}
+                                label={__("Show Related Videos", 'premium-blocks-for-gutenberg')}
                                 checked={relatedVideos}
                                 onChange={newCheck => setAttributes({ relatedVideos: newCheck })}
                             />
                         )}
                         <ToggleControl
-                            label={__("Overlay Image", 'premium-block-for-gutenberg')}
+                            label={__("Overlay Image", 'premium-blocks-for-gutenberg')}
                             checked={overlay}
                             onChange={newCheck => setAttributes({ overlay: newCheck })}
                         />
                     </PanelBody>
                     {overlay && (
                         <PanelBody
-                            title={__("Overlay", 'premium-block-for-gutenberg')}
+                            title={__("Overlay", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -348,26 +346,26 @@ class edit extends Component {
                     {overlay && (
                         <Fragment>
                             <PanelBody
-                                title={__("Play Icon", 'premium-block-for-gutenberg')}
+                                title={__("Play Icon", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <ToggleControl
-                                    label={__("Enable Play Icon", 'premium-block-for-gutenberg')}
+                                    label={__("Enable Play Icon", 'premium-blocks-for-gutenberg')}
                                     checked={playIcon}
                                     onChange={newCheck => setAttributes({ playIcon: newCheck })}
                                 />
                                 {playIcon && (
                                     <Fragment>
                                         <ResponsiveSingleRangeControl
-                                            label={__("Size (PX)", 'premium-block-for-gutenberg')}
+                                            label={__("Size (PX)", 'premium-blocks-for-gutenberg')}
                                             value={playStyles[0].playSize}
                                             onChange={newValue => savePlayStyles({ playSize: newValue === undefined ? 20 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
                                             value={playStyles[0].playTop}
                                             onChange={newValue => savePlayStyles({ playTop: newValue === undefined ? 50 : newValue })}
                                             showUnit={false}
@@ -406,19 +404,19 @@ class edit extends Component {
                                 )}
                             </PanelBody>
                             <PanelBody
-                                title={__("Video Description", 'premium-block-for-gutenberg')}
+                                title={__("Video Description", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <ToggleControl
-                                    label={__("Enable Video Description", 'premium-block-for-gutenberg')}
+                                    label={__("Enable Video Description", 'premium-blocks-for-gutenberg')}
                                     checked={videoDesc}
                                     onChange={newCheck => setAttributes({ videoDesc: newCheck })}
                                 />
                                 {videoDesc && (
                                     <Fragment>
                                         <TextareaControl
-                                            label={__("Description Text", 'premium-block-for-gutenberg')}
+                                            label={__("Description Text", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].videoDescText}
                                             onChange={newText => saveDescritionStyle({ videoDescText: newText })}
                                         />
@@ -434,7 +432,7 @@ class edit extends Component {
                                             setAttributes={saveDescritionStyle}
                                             fontSizeType={{
                                                 value: descStyles[0].videoDescSizeUnit,
-                                                label: __("videoDescSizeUnit", 'premium-block-for-gutenberg'),
+                                                label: __("videoDescSizeUnit", 'premium-blocks-for-gutenberg'),
                                             }}
                                             fontSize={descStyles[0].videoDescSize}
                                             fontSizeMobile={descStyles[0].videoDescSizeMobile}
@@ -456,14 +454,14 @@ class edit extends Component {
                                             onChangeFamily={(fontFamily) => saveDescritionStyle({ videoDescFamily: fontFamily })}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Vertical Offset (%)", 'premium-block-for-gutenberg')}
+                                            label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].descTop}
                                             onChange={newValue => saveDescritionStyle({ descTop: newValue === undefined ? 50 : newValue })}
                                             showUnit={false}
                                             defaultValue={0}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Border Radius (px)", 'premium-block-for-gutenberg')}
+                                            label={__("Border Radius (px)", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].videoDescBorderRadius}
                                             onChange={newValue => saveDescritionStyle({ videoDescBorderRadius: newValue === undefined ? 0 : newValue })}
                                             showUnit={false}
@@ -480,7 +478,7 @@ class edit extends Component {
                                             onChangeVertical={newValue => saveDescritionStyle({ descShadowVertical: newValue || "0" })}
                                         />
                                         <ResponsiveSingleRangeControl
-                                            label={__("Padding (PX)", 'premium-block-for-gutenberg')}
+                                            label={__("Padding (PX)", 'premium-blocks-for-gutenberg')}
                                             value={descStyles[0].videoDescPadding}
                                             onChange={newValue => saveDescritionStyle({ videoDescPadding: newValue === undefined ? 20 : newValue })}
                                             showUnit={false}
@@ -492,7 +490,7 @@ class edit extends Component {
                         </Fragment>
                     )}
                     <PanelBody
-                        title={__("Colors", 'premium-block-for-gutenberg')}
+                        title={__("Colors", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -552,13 +550,13 @@ class edit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Icon Hover Color", 'premium-block-for-gutenberg')}
+                                                label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={playStyles[0].playHoverColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => savePlayStyles({ playHoverColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Icon Hover Background Color", 'premium-block-for-gutenberg')}
+                                                label={__("Icon Hover Background Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={playStyles[0].playHoverBackColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => savePlayStyles({ playHoverBackColor: newValue, })}
@@ -576,7 +574,7 @@ class edit extends Component {
                         </TabPanel>
                     </PanelBody>
                     <PanelBody
-                        title={__("Box Style", 'premium-block-for-gutenberg')}
+                        title={__("Box Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -628,117 +626,160 @@ class edit extends Component {
                     />
                 </InspectorControls>
             ),
-            <div
-                ref={this.videoboxRef}
-                id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                data-type={videoType}
-                style={{
-                    borderStyle: boxStyles[0].boxBorderType,
-                    borderWidth: boxStyles[0].borderBoxUpdated
-                        ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
-                        : boxStyles[0].boxBorderWidth + "px",
-                    borderRadius: boxStyles[0].boxBorderRadius + "px",
-                    borderColor: boxStyles[0].boxBorderColor,
-                    boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
-                }}
-            >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#${videoBoxId} .premium-video-box__play:hover {`,
-                            `color: ${playStyles[0].playHoverColor} !important;`,
-                            `background-color: ${playStyles[0].playHoverBackColor} !important;`,
-                            "}"
-                        ].join("\n")
-                    }}
-                />
-                <div className={`premium-video-box__container`}>
-                    {"self" !== videoType && (
-                        <iframe
-                            src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                }`}
-                            frameborder="0"
-                            gesture="media"
-                            allow="encrypted-media"
-                            allowfullscreen
-                        />
-                    )}
-                    {"self" === videoType && (
-                        <video
-                            src={videoURL}
-                            loop={loop ? true : false}
-                            muted={mute ? true : false}
-                            autoplay={overlay ? false : autoPlay}
-                            controls={controls ? true : false}
-                        />
-                    )}
-                </div>
-                {overlay && overlayStyles[0].overlayImgURL && (
-                    <div
-                        className={`premium-video-box__overlay`}
-                        style={{
-                            backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                            filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
-                        }}
-                    />
-                )}
-                {overlay && playIcon && (
-                    <div
-                        className={`premium-video-box__play`}
-                        style={{
-                            top: playStyles[0].playTop + "%",
-                            left: playLeft + "%",
-                            color: playStyles[0].playColor,
-                            backgroundColor: playStyles[0].playBack,
-                            borderStyle: playStyles[0].playBorderType,
-                            borderWidth: playStyles[0].borderPlayUpdated
-                                ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
-                                : playStyles[0].playBorderWidth + "px",
-                            borderRadius: playStyles[0].playBorderRadius + "px",
-                            borderColor: playStyles[0].playBorderColor,
-                            padding: playStyles[0].playPadding + "px"
-                        }}
-                    >
-                        <i
-                            className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
-                            style={{
-                                fontSize: playStyles[0].playSize + "px"
-                            }}
-                        />
-                    </div>
-                )}
-                {overlay && videoDesc && (
-                    <div
-                        className={`premium-video-box__desc`}
-                        style={{
-                            color: descStyles[0].videoDescColor,
-                            backgroundColor: descStyles[0].videoDescBack,
-                            padding: descStyles[0].videoDescPadding,
-                            borderRadius: descStyles[0].videoDescBorderRadius,
-                            top: descStyles[0].descTop + "%",
-                            left: descStyles[0].descLeft + "%"
-                        }}
-                    >
-                        <p
-                            className={`premium-video-box__desc_text`}
-                            style={{
-                                fontFamily: descStyles[0].videoDescFamily,
-                                fontWeight: descStyles[0].videoDescWeight,
-                                letterSpacing: descStyles[0].videoDescLetter + "px",
-                                textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
-                                fontStyle: descStyles[0].videoDescStyle,
-                                fontSize: `${textSize}${descStyles[0].videoDescSizeUnit}`
-                            }}
+            <Fragment>
+                {
+                    !videoURL && "self" !== videoType && (
+                        <Placeholder
+                            label={__('Video Box ', 'premium-blocks-for-gutenberg')}
+                            instructions={__(
+                                "Enter video ID, for example: z1hQgVpfTKU or Embed URL"
+                            )}
+                            className={className}
                         >
-                            <span>{descStyles[0].videoDescText}</span>
-                        </p>
+                            <form onSubmit={() => setAttributes({ videoURL: this.state.url })}>
+                                <input
+                                    type="url"
+                                    value={this.state.url}
+                                    className="components-placeholder__input"
+                                    aria-label={__('Video Box', 'premium-blocks-for-gutenberg')}
+                                    placeholder={__('Enter URL to embed here…', 'premium-blocks-for-gutenberg')}
+                                    onChange={e => this.setState({ url: e.target.value })}
+                                />
+                                <Button
+                                    isPrimary
+                                    disabled={!this.state.url}
+                                    type="submit"
+                                >
+                                    {__('Embed', 'premium-blocks-for-gutenberg')}
+                                </Button>
+                            </form>
+                        </Placeholder>
+                    )
+
+                }
+                {
+                    !videoURL && "self" === videoType && (
+                        <p>{__('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")}</p>
+                    )
+                }
+                {videoURL && (
+                    <div
+                        ref={this.videoboxRef}
+                        id={videoBoxId}
+                        className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                        data-type={videoType}
+                        style={{
+                            borderStyle: boxStyles[0].boxBorderType,
+                            borderWidth: boxStyles[0].borderBoxUpdated
+                                ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
+                                : boxStyles[0].boxBorderWidth + "px",
+                            borderRadius: boxStyles[0].boxBorderRadius + "px",
+                            borderColor: boxStyles[0].boxBorderColor,
+                            boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
+                        }}
+                    >
+                        <style
+                            dangerouslySetInnerHTML={{
+                                __html: [
+                                    `#${videoBoxId} .premium-video-box__play:hover {`,
+                                    `color: ${playStyles[0].playHoverColor} !important;`,
+                                    `background-color: ${playStyles[0].playHoverBackColor} !important;`,
+                                    "}"
+                                ].join("\n")
+                            }}
+                        />
+                        <div className={`premium-video-box__container`}>
+                            {"self" !== videoType && (
+                                <iframe
+                                    src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                        }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                        }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                        }`}
+                                    frameborder="0"
+                                    gesture="media"
+                                    allow="encrypted-media"
+                                    allowfullscreen
+                                />
+                            )}
+                            {"self" === videoType && (
+                                <video
+                                    src={videoURL}
+                                    loop={loop ? true : false}
+                                    muted={mute ? true : false}
+                                    autoplay={overlay ? false : autoPlay}
+                                    controls={controls ? true : false}
+                                />
+                            )}
+                        </div>
+                        {overlay && overlayStyles[0].overlayImgURL && (
+                            <div
+                                className={`premium-video-box__overlay`}
+                                style={{
+                                    backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
+                                    filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                                }}
+                            />
+                        )}
+                        {overlay && playIcon && (
+                            <div
+                                className={`premium-video-box__play`}
+                                style={{
+                                    top: playStyles[0].playTop + "%",
+                                    left: playLeft + "%",
+                                    color: playStyles[0].playColor,
+                                    backgroundColor: playStyles[0].playBack,
+                                    borderStyle: playStyles[0].playBorderType,
+                                    borderWidth: playStyles[0].borderPlayUpdated
+                                        ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
+                                        : playStyles[0].playBorderWidth + "px",
+                                    borderRadius: playStyles[0].playBorderRadius + "px",
+                                    borderColor: playStyles[0].playBorderColor,
+                                    padding: playStyles[0].playPadding + "px"
+                                }}
+                            >
+                                <i
+                                    className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
+                                    style={{
+                                        fontSize: playStyles[0].playSize + "px"
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {overlay && videoDesc && (
+                            <div
+                                className={`premium-video-box__desc`}
+                                style={{
+                                    color: descStyles[0].videoDescColor,
+                                    backgroundColor: descStyles[0].videoDescBack,
+                                    padding: descStyles[0].videoDescPadding,
+                                    borderRadius: descStyles[0].videoDescBorderRadius,
+                                    top: descStyles[0].descTop + "%",
+                                    left: descStyles[0].descLeft + "%"
+                                }}
+                            >
+                                <p
+                                    className={`premium-video-box__desc_text`}
+                                    style={{
+                                        fontFamily: descStyles[0].videoDescFamily,
+                                        fontWeight: descStyles[0].videoDescWeight,
+                                        letterSpacing: descStyles[0].videoDescLetter + "px",
+                                        textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                        textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
+                                        fontStyle: descStyles[0].videoDescStyle,
+                                        fontSize: `${textSize}${descStyles[0].videoDescSizeUnit}`
+                                    }}
+                                >
+                                    <span>{descStyles[0].videoDescText}</span>
+                                </p>
+                            </div>
+                        )}
+
+
+
                     </div>
                 )}
-            </div>
+                {loadDescriptionGoogleFonts}
+            </Fragment>
         ];
 
     }

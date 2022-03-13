@@ -1,7 +1,6 @@
 (function ($) {
     const { isRTL } = siteDirection;
     let isEditMode;
-
     const hideToolbar = () => {
         let $section = $(".premium-container"),
             isStretched = $section.hasClass("premium-container__stretch_true");
@@ -31,7 +30,6 @@
                         : $section.offset().left - $("#adminmenuwrap").outerWidth(),
                     isFixed = "fixed" === $section.css("position"),
                     correctOffset = isFixed ? 0 : offsetLeft;
-
                 if (isEditMode) {
                     width = $(".edit-post-layout__content").outerWidth();
                 }
@@ -39,29 +37,20 @@
                     if (isRTL) {
                         correctOffset = width - ($section.outerWidth() + correctOffset);
                     }
-
                     correctOffset = -correctOffset;
                 }
-
                 css.width = width + "px";
-
                 let direction = isRTL ? "right" : "left";
-
                 css[direction] = correctOffset + "px";
-
                 $section.css(css);
             } else {
                 css.width = "100%";
-
                 let direction = isRTL ? "right" : "left";
-
                 css[direction] = "0px";
-
                 $section.css(css);
             }
         });
     };
-
     jQuery(document).ready(() => {
         setTimeout(() => {
             isEditMode = $(".edit-post-layout__content").length;

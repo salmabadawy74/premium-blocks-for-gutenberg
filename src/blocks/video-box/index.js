@@ -13,30 +13,33 @@ const { registerBlockType } = wp.blocks;
 
 const onChangeVideoURL = (type, URL) => {
     let videoUrl;
-    switch (type) {
-        case "youtube":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://www.youtube.com/embed/" + URL;
-            }
-            break;
-        case "vimeo":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://player.vimeo.com/video/" + URL;
-            }
-            break;
-        case "daily":
-            if (URL.startsWith("http")) {
-                videoUrl = URL;
-            } else {
-                videoUrl = "https://dailymotion.com/embed/video/" + URL;
-            }
-            break;
+    if (URL) {
+        switch (type) {
+            case "youtube":
+                if (URL.startsWith("http")) {
+                    videoUrl = URL.replace("watch?v=", "embed/");
+                } else {
+                    videoUrl = "https://www.youtube.com/embed/" + URL;
+                }
+                break;
+            case "vimeo":
+                if (URL.startsWith("http")) {
+                    videoUrl = URL.replace("vimeo.com/", "player.vimeo.com/video/");
+                } else {
+                    videoUrl = "https://player.vimeo.com/video/" + URL;
+                }
+                break;
+            case "daily":
+                if (URL.startsWith("http")) {
+                    videoUrl = URL.replace('dai.ly/', 'dailymotion.com/embed/video/');
+                } else {
+                    videoUrl = "https://dailymotion.com/embed/video/" + URL;
+                }
+                break;
+        }
+        return videoUrl;
     }
-    return videoUrl;
+
 };
 
 export default onChangeVideoURL;

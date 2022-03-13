@@ -10,10 +10,9 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
-
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
-const { Fragment, Component } = wp.element;
+const { Component } = wp.element;
 
 const {
     IconButton,
@@ -29,14 +28,15 @@ const {
     InspectorControls,
     AlignmentToolbar,
     RichText,
+    MediaPlaceholder
 } = wp.blockEditor;
 
 export class edit extends Component {
-
     constructor() {
         super(...arguments);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {
@@ -51,12 +51,15 @@ export class edit extends Component {
         }
         return desktopSize;
     }
+
     componentDidMount() {
         this.props.setAttributes({ block_id: this.props.clientId });
         this.props.setAttributes({ classMigrate: true });
     };
+
     render() {
         const { isSelected, setAttributes, className, clientId: blockID } = this.props;
+
         const {
             block_id,
             borderBanner,
@@ -112,96 +115,99 @@ export class edit extends Component {
         const ALIGNS = [
             {
                 value: "flex-start",
-                label: __("Top", 'premium-block-for-gutenberg')
+                label: __("Top", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "center",
-                label: __("Middle", 'premium-block-for-gutenberg')
+                label: __("Middle", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "flex-end",
-                label: __("Bottom", 'premium-block-for-gutenberg')
+                label: __("Bottom", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "inherit",
-                label: __("Full", 'premium-block-for-gutenberg')
+                label: __("Full", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const EFFECTS = [
             {
                 value: "effect1",
-                label: __("Style 1", 'premium-block-for-gutenberg')
+                label: __("Style 1", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "effect2",
-                label: __("Style 2", 'premium-block-for-gutenberg')
+                label: __("Style 2", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "effect3",
-                label: __("Style 3", 'premium-block-for-gutenberg')
+                label: __("Style 3", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "effect4",
-                label: __("Style 4", 'premium-block-for-gutenberg')
+                label: __("Style 4", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "effect5",
-                label: __("Style 5", 'premium-block-for-gutenberg')
+                label: __("Style 5", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "effect6",
-                label: __("Style 6", 'premium-block-for-gutenberg')
+                label: __("Style 6", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const HOVER = [
             {
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "zoomin",
-                label: __("Zoom In", 'premium-block-for-gutenberg')
+                label: __("Zoom In", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "zoomout",
-                label: __("Zoom Out", 'premium-block-for-gutenberg')
+                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "scale",
-                label: __("Scale", 'premium-block-for-gutenberg')
+                label: __("Scale", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "gray",
-                label: __("Gray Scale", 'premium-block-for-gutenberg')
+                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "blur",
-                label: __("Blur", 'premium-block-for-gutenberg')
+                label: __("Blur", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "bright",
-                label: __("Bright", 'premium-block-for-gutenberg')
+                label: __("Bright", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "sepia",
-                label: __("Sepia", 'premium-block-for-gutenberg')
+                label: __("Sepia", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const HEIGHT = [
             {
                 value: "default",
-                label: __("Default", 'premium-block-for-gutenberg')
+                label: __("Default", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "custom",
-                label: __("Custom", 'premium-block-for-gutenberg')
+                label: __("Custom", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const mainClasses = classnames(className, "premium-banner");
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
         const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
+
         const saveStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -212,6 +218,7 @@ export class edit extends Component {
 
             setAttributes({ titleStyles: newUpdate });
         }
+
         const descriptionStyles = (value) => {
             const newUpdate = descStyles.map((item, index) => {
                 if (0 === index) {
@@ -221,6 +228,7 @@ export class edit extends Component {
             });
             setAttributes({ descStyles: newUpdate });
         }
+
         const containerStyle = (value) => {
             const newUpdate = containerStyles.map((item, index) => {
                 if (0 === index) {
@@ -230,6 +238,7 @@ export class edit extends Component {
             });
             setAttributes({ containerStyles: newUpdate, });
         }
+
         const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
         const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
         const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
@@ -242,7 +251,7 @@ export class edit extends Component {
                         <IconButton
                             label={__(
                                 "Refresh this button when it conflict with other buttons styles"
-                                , 'premium-block-for-gutenberg')}
+                                , 'premium-blocks-for-gutenberg')}
                             icon="update"
                             className="components-toolbar__control"
                             onClick={() => setAttributes({ block_id: blockID })}
@@ -254,29 +263,22 @@ export class edit extends Component {
                     />
                 </BlockControls>
             ),
-            isSelected && (
+            isSelected && imageURL && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("General Settings", 'premium-block-for-gutenberg')}
+                        title={__("General Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={true}
                     >
-                        <PremiumMediaUpload
-                            type="image"
-                            imageID={imageID}
-                            imageURL={imageURL}
-                            onSelectMedia={media => {
-                                setAttributes({
-                                    imageID: media.id,
-                                    imageURL: media.url
-                                });
-                            }}
-                            onRemoveImage={() => setAttributes({
+                        <button className="lottie-remove" onClick={(e) => {
+                            e.preventDefault();
+                            setAttributes({
                                 imageURL: "",
                                 imageURL: ""
                             })
-                            }
-                        />
+                        }}>
+                            {__('Remove Image', 'premium-blocks-for-gutenberg')}
+                        </button>
                         <PremiumFilters
                             blur={blur}
                             bright={bright}
@@ -290,31 +292,31 @@ export class edit extends Component {
                             onChangeHue={value => setAttributes({ hue: value })}
                         />
                         <SelectControl
-                            label={__("Banner Style", 'premium-block-for-gutenberg')}
+                            label={__("Banner Style", 'premium-blocks-for-gutenberg')}
                             value={effect}
                             onChange={newEffect => setAttributes({ effect: newEffect })}
                             options={EFFECTS}
                         />
                         <SelectControl
-                            label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
+                            label={__("Image Hover Effect", 'premium-blocks-for-gutenberg')}
                             options={HOVER}
                             value={hoverEffect}
                             onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                         />
                         <ToggleControl
-                            label={__("Always Hovered", 'premium-block-for-gutenberg')}
+                            label={__("Always Hovered", 'premium-blocks-for-gutenberg')}
                             checked={hovered}
                             onChange={check => setAttributes({ hovered: check })}
                         />
                         <SelectControl
-                            label={__("Height", 'premium-block-for-gutenberg')}
+                            label={__("Height", 'premium-blocks-for-gutenberg')}
                             options={HEIGHT}
                             value={height}
                             onChange={newHeight => setAttributes({ height: newHeight })}
                         />
                         {"custom" === height && (
                             <ResponsiveSingleRangeControl
-                                label={__("Min Height (PX)", 'premium-block-for-gutenberg')}
+                                label={__("Min Height (PX)", 'premium-blocks-for-gutenberg')}
                                 value={minHeight}
                                 min="10"
                                 max="800"
@@ -325,20 +327,20 @@ export class edit extends Component {
                         )}
                         {"custom" === height && (
                             <SelectControl
-                                label={__("Vertical Align", 'premium-block-for-gutenberg')}
+                                label={__("Vertical Align", 'premium-blocks-for-gutenberg')}
                                 options={ALIGNS}
                                 value={verAlign}
                                 onChange={newValue => setAttributes({ verAlign: newValue })}
                             />
                         )}
                         <AdvancedPopColorControl
-                            label={__("Overlay", 'premium-block-for-gutenberg')}
+                            label={__("Overlay", 'premium-blocks-for-gutenberg')}
                             colorValue={background}
                             colorDefault={''}
                             onColorChange={newValue => setAttributes({ background: newValue === undefined ? "transparent" : newValue })}
                         />
                         <ResponsiveSingleRangeControl
-                            label={__("Overlay Opacity", 'premium-block-for-gutenberg')}
+                            label={__("Overlay Opacity", 'premium-blocks-for-gutenberg')}
                             value={opacity}
                             min="1"
                             max="100"
@@ -347,7 +349,7 @@ export class edit extends Component {
                             defaultValue={''}
                         />
                         <ToggleControl
-                            label={__("Link", 'premium-block-for-gutenberg')}
+                            label={__("Link", 'premium-blocks-for-gutenberg')}
                             checked={urlCheck}
                             onChange={newCheck => setAttributes({ urlCheck: newCheck })}
                         />
@@ -359,19 +361,19 @@ export class edit extends Component {
                         )}
                         {urlCheck && (
                             <ToggleControl
-                                label={__("Open link in new tab", 'premium-block-for-gutenberg')}
+                                label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                                 checked={target}
                                 onChange={newValue => setAttributes({ target: newValue })}
                             />
                         )}
                         <ToggleControl
-                            label={__("Hide Description on Mobiles", 'premium-block-for-gutenberg')}
+                            label={__("Hide Description on Mobiles", 'premium-blocks-for-gutenberg')}
                             checked={responsive}
                             onChange={newValue => setAttributes({ responsive: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Title Settings", 'premium-block-for-gutenberg')}
+                        title={__("Title Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -379,14 +381,14 @@ export class edit extends Component {
                             choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                             value={titleTag}
                             onChange={(newValue) => setAttributes({ titleTag: newValue })}
-                            label={__("HTML Tag", 'premium-block-for-gutenberg')}
+                            label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line"]}
                             setAttributes={saveStyles}
                             fontSizeType={{
                                 value: titleStyles[0].titleSizeUnit,
-                                label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
+                                label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
                             fontSize={titleStyles[0].titleSize}
                             fontSizeMobile={titleStyles[0].titleSizeMobile}
@@ -400,14 +402,14 @@ export class edit extends Component {
                             onChangeLine={newValue => saveStyles({ titleLine: newValue === undefined ? 10 : newValue })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                             colorValue={titleStyles[0].titleColor}
                             colorDefault={''}
                             onColorChange={newValue => saveStyles({ titleColor: newValue === undefined ? "transparent" : newValue })}
                         />
                         {"effect3" === effect && (
                             <AdvancedPopColorControl
-                                label={__("Separator Color", 'premium-block-for-gutenberg')}
+                                label={__("Separator Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={sepColor}
                                 colorDefault={''}
                                 onColorChange={newValue => setAttributes({ sepColor: newValue === undefined ? "transparent" : newValue })}
@@ -415,7 +417,7 @@ export class edit extends Component {
                         )}
                         {"effect2" === effect && (
                             <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={titleStyles[0].titleBack}
                                 colorDefault={''}
                                 onColorChange={newValue => saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue })}
@@ -433,7 +435,7 @@ export class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Description Settings", 'premium-block-for-gutenberg')}
+                        title={__("Description Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -443,7 +445,7 @@ export class edit extends Component {
                             setAttributes={descriptionStyles}
                             fontSizeType={{
                                 value: descStyles[0].descSizeUnit,
-                                label: __("descSizeUnit", 'premium-block-for-gutenberg'),
+                                label: __("descSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
                             fontSize={descStyles[0].descSize}
                             fontSizeMobile={descStyles[0].descSizeMobile}
@@ -457,7 +459,7 @@ export class edit extends Component {
                             onChangeLine={newValue => descriptionStyles({ descLine: newValue === undefined ? 10 : newValue })}
                         />
                         <AdvancedPopColorControl
-                            label={__("Text Color", 'premium-block-for-gutenberg')}
+                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
                             colorValue={descStyles[0].descColor}
                             colorDefault={''}
                             onColorChange={newValue => descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue })}
@@ -474,7 +476,7 @@ export class edit extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Container Style", 'premium-block-for-gutenberg')}
+                        title={__("Container Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -587,32 +589,51 @@ export class edit extends Component {
                     />
                 </InspectorControls>
             ),
-            <div
-                id={`premium-banner-${block_id}`}
-                className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                style={{
-                    paddingTop: containerPaddingTop + containerStyles[0].paddingU,
-                    paddingRight: containerPaddingRight + containerStyles[0].paddingU,
-                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
-                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
-                }}
-            >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                            `background: ${sepColor}`,
-                            "}",
-                            `#premium-banner-${block_id} .premium-banner__inner {`,
-                            `background: ${background}`,
-                            "}",
-                            `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
-                            `opacity: ${background ? 1 - opacity / 100 : 1} `,
-                            "}"
-                        ].join("\n")
+            !imageURL && (
+                <MediaPlaceholder
+                    labels={{
+                        title: __('Premium Banner ', 'premium-blocks-for-gutenberg'),
+                        instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
                     }}
+                    accept={['image']}
+                    allowedTypes={['image']}
+                    value={imageURL}
+                    onSelectURL={(value) => setAttributes({ imageURL: value })}
+                    onSelect={media => {
+                        setAttributes({
+                            imageID: media.id,
+                            imageURL: media.url
+                        });
+                    }
+                    }
                 />
-                {imageURL && (
+            ),
+            imageURL && (
+                <div
+                    id={`premium-banner-${block_id}`}
+                    className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        paddingTop: containerPaddingTop + containerStyles[0].paddingU,
+                        paddingRight: containerPaddingRight + containerStyles[0].paddingU,
+                        paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
+                        paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
+                    }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__inner {`,
+                                `background: ${background}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
                     <div
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
@@ -692,8 +713,8 @@ export class edit extends Component {
                             </div>
                         </div>
                     </div>
-                )}
-            </div>
+
+                </div>)
         ];
     }
 };
@@ -701,7 +722,5 @@ export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-    return {
-        deviceType: deviceType
-    }
+    return { deviceType: deviceType }
 })(edit)

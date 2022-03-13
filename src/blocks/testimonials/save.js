@@ -29,10 +29,6 @@ const save = props => {
         companyStyles,
         quoteStyles,
         containerStyles,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
         backgroundType
     } = props.attributes;
 

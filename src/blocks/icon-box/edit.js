@@ -14,6 +14,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import RadioComponent from '../../components/radio-control';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
+import WebfontLoader from "../../components/typography/fontLoader"
 
 const { __ } = wp.i18n;
 
@@ -182,11 +183,11 @@ class edit extends Component {
 
         const imgIcon = [
             {
-                label: __("Icon", 'premium-block-for-gutenberg'),
+                label: __("Icon", 'premium-blocks-for-gutenberg'),
                 value: "icon"
             },
             {
-                label: __("Image", 'premium-block-for-gutenberg'),
+                label: __("Image", 'premium-blocks-for-gutenberg'),
                 value: "image"
             }
         ];
@@ -194,100 +195,126 @@ class edit extends Component {
         const EFFECTS = [
             {
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "pulse",
-                label: __("Pulse", 'premium-block-for-gutenberg')
+                label: __("Pulse", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "rotate",
-                label: __("Rotate", 'premium-block-for-gutenberg')
+                label: __("Rotate", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "drotate",
-                label: __("3D Rotate", 'premium-block-for-gutenberg')
+                label: __("3D Rotate", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "buzz",
-                label: __("Buzz", 'premium-block-for-gutenberg')
+                label: __("Buzz", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "drop",
-                label: __("Drop Shadow", 'premium-block-for-gutenberg')
+                label: __("Drop Shadow", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "wobble",
-                label: __("Wobble", 'premium-block-for-gutenberg')
+                label: __("Wobble", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const BTN_EFFECTS = [
             {
                 value: "none",
-                label: __("None", 'premium-block-for-gutenberg')
+                label: __("None", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "slide",
-                label: __("Slide", 'premium-block-for-gutenberg')
+                label: __("Slide", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const DIRECTION = [
             {
                 value: "top",
-                label: __("Top to Bottom", 'premium-block-for-gutenberg')
+                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "bottom",
-                label: __("Bottom to Top", 'premium-block-for-gutenberg')
+                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "left",
-                label: __("Left to Right", 'premium-block-for-gutenberg')
+                label: __("Left to Right", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "right",
-                label: __("Right to Left", 'premium-block-for-gutenberg')
+                label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const ICON_POS = [
             {
-                label: __("Inline", 'premium-block-for-gutenberg'),
+                label: __("Inline", 'premium-blocks-for-gutenberg'),
                 value: "inline"
             },
             {
-                label: __("Block", 'premium-block-for-gutenberg'),
+                label: __("Block", 'premium-blocks-for-gutenberg'),
                 value: "block"
             }
         ];
 
         const ICON_HPOS = [
             {
-                label: __("Before", 'premium-block-for-gutenberg'),
+                label: __("Before", 'premium-blocks-for-gutenberg'),
                 value: "before"
             },
             {
-                label: __("After", 'premium-block-for-gutenberg'),
+                label: __("After", 'premium-blocks-for-gutenberg'),
                 value: "after"
             }
         ];
 
         const ICON_VPOS = [
             {
-                label: __("Top", 'premium-block-for-gutenberg'),
+                label: __("Top", 'premium-blocks-for-gutenberg'),
                 value: "top"
             },
             {
-                label: __("Middle", 'premium-block-for-gutenberg'),
+                label: __("Middle", 'premium-blocks-for-gutenberg'),
                 value: "center"
             },
             {
-                label: __("Bottom", 'premium-block-for-gutenberg'),
+                label: __("Bottom", 'premium-blocks-for-gutenberg'),
                 value: "bottom"
             }
         ];
+
+        let loadTitleGoogleFonts;
+        let loadDescriptionGoogleFonts;
+        if (titleStyles[0].titleFont !== 'Default') {
+            const titleConfig = {
+                google: {
+                    families: [titleStyles[0].titleFont],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (descStyles[0].descFont !== 'Default') {
+            const descriptionConfig = {
+                google: {
+                    families: [descStyles[0].descFont],
+                },
+            }
+            loadDescriptionGoogleFonts = (
+                <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
+        }
+
 
         const mainClasses = classnames(className, "premium-icon-box");
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
@@ -320,39 +347,39 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("Display Options", 'premium-block-for-gutenberg')}
+                        title={__("Display Options", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Icon", 'premium-block-for-gutenberg')}
+                            label={__("Icon", 'premium-blocks-for-gutenberg')}
                             checked={iconChecked}
                             onChange={newValue => setAttributes({ iconChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Title", 'premium-block-for-gutenberg')}
+                            label={__("Title", 'premium-blocks-for-gutenberg')}
                             checked={titleChecked}
                             onChange={newValue => setAttributes({ titleChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Description", 'premium-block-for-gutenberg')}
+                            label={__("Description", 'premium-blocks-for-gutenberg')}
                             checked={descChecked}
                             onChange={newValue => setAttributes({ descChecked: newValue })}
                         />
                         <ToggleControl
-                            label={__("Button", 'premium-block-for-gutenberg')}
+                            label={__("Button", 'premium-blocks-for-gutenberg')}
                             checked={btnChecked}
                             onChange={newValue => setAttributes({ btnChecked: newValue })}
                         />
                     </PanelBody>
                     {iconChecked && (
                         <PanelBody
-                            title={__("Icon", 'premium-block-for-gutenberg')}
+                            title={__("Icon", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
-                                label={__("Icon Position", 'premium-block-for-gutenberg')}
+                                label={__("Icon Position", 'premium-blocks-for-gutenberg')}
                                 options={ICON_POS}
                                 value={iconPos}
                                 onChange={newValue => setAttributes({ iconPos: newValue })}
@@ -360,13 +387,13 @@ class edit extends Component {
                             {"inline" === iconPos && (
                                 <Fragment>
                                     <SelectControl
-                                        label={__("Horizontal Position", 'premium-block-for-gutenberg')}
+                                        label={__("Horizontal Position", 'premium-blocks-for-gutenberg')}
                                         options={ICON_HPOS}
                                         value={iconHPos}
                                         onChange={newValue => setAttributes({ iconHPos: newValue })}
                                     />
                                     <SelectControl
-                                        label={__("Vertical Position", 'premium-block-for-gutenberg')}
+                                        label={__("Vertical Position", 'premium-blocks-for-gutenberg')}
                                         options={ICON_VPOS}
                                         value={iconVPos}
                                         onChange={newValue => setAttributes({ iconVPos: newValue })}
@@ -374,21 +401,21 @@ class edit extends Component {
                                 </Fragment>
                             )}
                             <SelectControl
-                                label={__("Icon Type", 'premium-block-for-gutenberg')}
+                                label={__("Icon Type", 'premium-blocks-for-gutenberg')}
                                 options={imgIcon}
                                 value={iconImage}
                                 onChange={newType => setAttributes({ iconImage: newType })}
                             />
                             {"icon" === iconImage && (
                                 <Fragment>
-                                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-block-for-gutenberg')}</p>
+                                    <p className="premium-editor-paragraph">{__("Select Icon", 'premium-blocks-for-gutenberg')}</p>
                                     <FontIconPicker
                                         icons={iconsList}
                                         onChange={newIcon => setAttributes({ selectedIcon: newIcon })}
                                         value={selectedIcon}
                                         isMulti={false}
                                         appendTo="body"
-                                        noSelectedPlaceholder={__("Select Icon", 'premium-block-for-gutenberg')}
+                                        noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                                     />
                                 </Fragment>
                             )}
@@ -412,7 +439,7 @@ class edit extends Component {
                                         }
                                     />
                                     <ResponsiveSingleRangeControl
-                                        label={__("Border Radius (PX)", 'premium-block-for-gutenberg')}
+                                        label={__("Border Radius (PX)", 'premium-blocks-for-gutenberg')}
                                         value={iconRadius}
                                         onChange={newValue => setAttributes({ iconRadius: newValue || 0 })}
                                         showUnit={false}
@@ -421,13 +448,13 @@ class edit extends Component {
                                 </Fragment>
                             )}
                             <SelectControl
-                                label={__("Hover Effect", 'premium-block-for-gutenberg')}
+                                label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
                                 options={EFFECTS}
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Size (PX)", 'premium-block-for-gutenberg')}
+                                label={__("Size (PX)", 'premium-blocks-for-gutenberg')}
                                 value={iconSize}
                                 min="10"
                                 max="200"
@@ -439,12 +466,12 @@ class edit extends Component {
                     )}
                     {titleChecked && (
                         <PanelBody
-                            title={__("Title", 'premium-block-for-gutenberg')}
+                            title={__("Title", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <RadioComponent
-                                label={__("Title", 'premium-block-for-gutenberg')}
+                                label={__("Title", 'premium-blocks-for-gutenberg')}
                                 choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                                 value={titleStyles[0].titleTag}
                                 onChange={(newValue) => saveTitleStyle({ titleTag: newValue })}
@@ -462,7 +489,7 @@ class edit extends Component {
                                 setAttributes={saveTitleStyle}
                                 fontSizeType={{
                                     value: titleStyles[0].titleSizeUnit,
-                                    label: __("titleSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={titleStyles[0].titleSize}
                                 fontSizeMobile={titleStyles[0].titleSizeMobile}
@@ -529,7 +556,7 @@ class edit extends Component {
                     )}
                     {descChecked && (
                         <PanelBody
-                            title={__("Description", 'premium-block-for-gutenberg')}
+                            title={__("Description", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -539,7 +566,7 @@ class edit extends Component {
                                 setAttributes={saveDescriptionStyle}
                                 fontSizeType={{
                                     value: descStyles[0].descSizeUnit,
-                                    label: __("descSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("descSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={descStyles[0].descSize}
                                 fontSizeMobile={descStyles[0].descSizeMobile}
@@ -591,26 +618,26 @@ class edit extends Component {
 
                     {btnChecked && (
                         <PanelBody
-                            title={__("Button", 'premium-block-for-gutenberg')}
+                            title={__("Button", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
                                 options={BTN_EFFECTS}
-                                label={__("Hover Effect", 'premium-block-for-gutenberg')}
+                                label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
                                 value={btnEffect}
                                 onChange={newValue => setAttributes({ btnEffect: newValue })}
                             />
                             {"slide" === btnEffect && (
                                 <SelectControl
                                     options={DIRECTION}
-                                    label={__("Direction", 'premium-block-for-gutenberg')}
+                                    label={__("Direction", 'premium-blocks-for-gutenberg')}
                                     value={effectDir}
                                     onChange={newValue => setAttributes({ effectDir: newValue })}
                                 />
                             )}
                             <ToggleControl
-                                label={__("Open link in new tab", 'premium-block-for-gutenberg')}
+                                label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                                 checked={btnTarget}
                                 onChange={newValue => setAttributes({ btnTarget: newValue })}
                             />
@@ -620,7 +647,7 @@ class edit extends Component {
                                 setAttributes={saveButtonStyle}
                                 fontSizeType={{
                                     value: btnStyles[0].btnSizeUnit,
-                                    label: __("btnSizeUnit", 'premium-block-for-gutenberg'),
+                                    label: __("btnSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={btnStyles[0].btnSize}
                                 fontSizeMobile={btnStyles[0].btnSizeMobile}
@@ -674,7 +701,7 @@ class edit extends Component {
                                 onChangePosition={newValue => saveButtonStyle({ btnShadowPosition: newValue || 0 })}
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Padding", 'premium-block-for-gutenberg')}
+                                label={__("Padding", 'premium-blocks-for-gutenberg')}
                                 value={btnStyles[0].btnPadding}
                                 onChange={newValue => saveButtonStyle({ btnPadding: newValue })}
                                 showUnit={true}
@@ -719,7 +746,7 @@ class edit extends Component {
                         </PanelBody>
                     )}
                     <PanelBody
-                        title={__("Container", 'premium-block-for-gutenberg')}
+                        title={__("Container", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -943,7 +970,7 @@ class edit extends Component {
                                             {iconChecked && (
                                                 <Fragment>
                                                     <AdvancedPopColorControl
-                                                        label={__("Icon Color", 'premium-block-for-gutenberg')}
+                                                        label={__("Icon Color", 'premium-blocks-for-gutenberg')}
                                                         colorValue={iconColor}
                                                         colorDefault={''}
                                                         onColorChange={newValue => setAttributes({ iconColor: newValue || "transparent", })}
@@ -958,7 +985,7 @@ class edit extends Component {
                                             )}
                                             {titleChecked && (
                                                 <AdvancedPopColorControl
-                                                    label={__("Tile Color", 'premium-block-for-gutenberg')}
+                                                    label={__("Tile Color", 'premium-blocks-for-gutenberg')}
                                                     colorValue={titleStyles[0].titleColor}
                                                     colorDefault={''}
                                                     onColorChange={newValue => saveTitleStyle({ titleColor: newValue || "transparent", })}
@@ -966,7 +993,7 @@ class edit extends Component {
                                             )}
                                             {descChecked && (
                                                 <AdvancedPopColorControl
-                                                    label={__("Descreption Color", 'premium-block-for-gutenberg')}
+                                                    label={__("Descreption Color", 'premium-blocks-for-gutenberg')}
                                                     colorValue={descStyles[0].descColor}
                                                     colorDefault={''}
                                                     onColorChange={newValue => saveDescriptionStyle({ descColor: newValue || "transparent", })}
@@ -975,7 +1002,7 @@ class edit extends Component {
                                             {btnChecked && (
                                                 <Fragment>
                                                     <AdvancedPopColorControl
-                                                        label={__("Button Color", 'premium-block-for-gutenberg')}
+                                                        label={__("Button Color", 'premium-blocks-for-gutenberg')}
                                                         colorValue={btnStyles[0].btnColor}
                                                         colorDefault={''}
                                                         onColorChange={newValue => saveButtonStyle({ btnColor: newValue || "#000", })}
@@ -1004,13 +1031,13 @@ class edit extends Component {
                                             {btnChecked && (
                                                 <Fragment>
                                                     <AdvancedPopColorControl
-                                                        label={__("Button Hover Color", 'premium-block-for-gutenberg')}
+                                                        label={__("Button Hover Color", 'premium-blocks-for-gutenberg')}
                                                         colorValue={btnStyles[0].btnHoverColor}
                                                         colorDefault={''}
                                                         onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
                                                     />
                                                     <AdvancedPopColorControl
-                                                        label={__('Background Button Hover Color', 'premium-block-for-gutenberg')}
+                                                        label={__('Background Button Hover Color', 'premium-blocks-for-gutenberg')}
                                                         colorValue={btnStyles[0].btnHoverBack}
                                                         colorDefault={''}
                                                         onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
@@ -1018,7 +1045,7 @@ class edit extends Component {
                                                 </Fragment>
                                             )}
                                             <AdvancedPopColorControl
-                                                label={__('Border Hover Color', 'premium-block-for-gutenberg')}
+                                                label={__('Border Hover Color', 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnHoverBorder}
                                                 colorDefault={''}
                                                 onColorChange={newValue => setAttributes({ btnHoverBorder: newValue || "transparent", })}
@@ -1229,6 +1256,8 @@ class edit extends Component {
                         </div>
                     )}
                 </div>
+                {loadTitleGoogleFonts}
+                {loadDescriptionGoogleFonts}
             </div>
         ];
     }
