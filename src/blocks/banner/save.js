@@ -3,9 +3,7 @@ import classnames from 'classnames'
 const { RichText } = wp.blockEditor;
 
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         borderBanner,
@@ -43,12 +41,12 @@ const save = props => {
         borderRight,
         borderBottom,
         borderLeft,
-
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-banner');
 
     return (
+        imageURL &&
         <div
             id={`premium-banner-${block_id}`}
             className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}

@@ -310,6 +310,7 @@ class PBG_Blocks_Helper {
 	}
 
 	public function on_init() {
+
 		wp_register_style(
 			'premium-blocks-editor-css',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -320,6 +321,7 @@ class PBG_Blocks_Helper {
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
 		}
+
 		register_block_type(
 			'premium/accordion',
 			array(
@@ -329,6 +331,7 @@ class PBG_Blocks_Helper {
 
 			)
 		);
+
 		register_block_type(
 			'premium/banner',
 			array(
@@ -337,6 +340,7 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
 		register_block_type(
 			'premium/button',
 			array(
@@ -345,6 +349,7 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
 		register_block_type(
 			'premium/countup',
 			array(
@@ -353,6 +358,7 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
 		register_block_type(
 			'premium/dheading-block',
 			array(
@@ -361,6 +367,7 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
 		register_block_type(
 			'premium/fancy-text',
 			array(
@@ -379,6 +386,7 @@ class PBG_Blocks_Helper {
 
 			)
 		);
+
 		register_block_type(
 			'premium/lottie',
 			array(
@@ -388,6 +396,7 @@ class PBG_Blocks_Helper {
 
 			)
 		);
+
 		register_block_type(
 			'premium/testimonial',
 			array(
@@ -396,6 +405,7 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
 		register_block_type(
 			'premium/video-box',
 			array(
@@ -404,6 +414,7 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
 		register_block_type(
 			'premium/pricing-table',
 			array(
@@ -412,7 +423,17 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
+		register_block_type(
+			'premium/container',
+			array(
+				'render_callback' => array( $this, 'get_section_css' ),
+				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_script'   => 'pbg-blocks-js',
+			)
+		);
 	}
+
 	/**
 	 * Add Premium Blocks category to Blocks Categories
 	 *
@@ -433,6 +454,7 @@ class PBG_Blocks_Helper {
 			)
 		);
 	}
+
 	/**
 	 * Generate Stylesheet
 	 *
@@ -500,6 +522,7 @@ class PBG_Blocks_Helper {
 		}
 		return $not_amp;
 	}
+
 	/**
 	 * Generates stylesheet in loop.
 	 *
@@ -531,6 +554,7 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
+
 	/**
 	 * Parse Guten Block.
 	 *
@@ -543,6 +567,7 @@ class PBG_Blocks_Helper {
 
 		return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 	}
+
 	/**
 	 * Print Stylsheet
 	 *
@@ -568,6 +593,7 @@ class PBG_Blocks_Helper {
 		<?php
 		ob_end_flush();
 	}
+
 	/**
 	 * Get Block CSS
 	 *
@@ -737,6 +763,7 @@ class PBG_Blocks_Helper {
 		}
 		echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
 	}
+
 	/**
 	 * Get Fancy Text Block CSS
 	 *
@@ -1037,7 +1064,6 @@ class PBG_Blocks_Helper {
 
 		return $css->css_output();
 	}
-
 	/**
 	 * Get Banner Block CSS
 	 *
@@ -1976,6 +2002,12 @@ class PBG_Blocks_Helper {
 			if ( isset( $attr['buttonStyles'][0]['btnSize'] ) && isset( $attr['buttonStyles'][0]['btnSizeUnit'] ) ) {
 				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__button' . ' > .premium-pricing-table__button_link' );
 				$css->add_property( 'font-size', ( $attr['buttonStyles'][0]['btnSize'] . $attr['buttonStyles'][0]['btnSizeUnit'] ) );
+			}
+		}
+		if ( isset( $attr['badgeStyles'] ) ) {
+			if ( isset( $attr['badgeStyles'][0]['badgeTextSize'] ) && isset( $attr['badgeStyles'][0]['badgeTextUnit'] ) ) {
+				$css->set_selector( '#premium-pricing-table-' . $unique_id . '> .premium-pricing-table__badge_wrap' . ' > .premium-pricing-table__badge' . '> span' );
+				$css->add_property( 'font-size', ( $attr['badgeStyles'][0]['badgeTextSize'] . $attr['badgeStyles'][0]['badgeTextUnit'] ) );
 			}
 		}
 		$css->start_media_query( $media_query['tablet'] );

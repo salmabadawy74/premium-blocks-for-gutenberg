@@ -100,19 +100,19 @@ export default class PremiumTypo extends Component {
         const STYLE = [
             {
                 value: "normal",
-                label: __("Normal", 'premium-block-for-gutenberg'),
+                label: __("Normal", 'premium-blocks-for-gutenberg'),
             },
             {
                 value: "italic",
-                label: __("Italic", 'premium-block-for-gutenberg'),
+                label: __("Italic", 'premium-blocks-for-gutenberg'),
             },
             {
                 value: "oblique",
-                label: __("Oblique", 'premium-block-for-gutenberg'),
+                label: __("Oblique", 'premium-blocks-for-gutenberg'),
             },
         ];
         const fonts = [
-            { value: "Default", label: __("Default", 'premium-block-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
+            { value: "Default", label: __("Default", 'premium-blocks-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
             { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
@@ -162,7 +162,7 @@ export default class PremiumTypo extends Component {
             <div className="premium-control-toggle premium-typography">
                 <header>
                     <span className="customize-control-title premium-control-title">
-                        <strong>{__('Typography', 'premium-block-for-gutenberg')}</strong>
+                        <strong>{__('Typography', 'premium-blocks-for-gutenberg')}</strong>
                     </span>
                 </header>
                 <div className="premium-typography-wrapper">
@@ -238,7 +238,7 @@ export default class PremiumTypo extends Component {
                                                     {components.includes("size") && (
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
-                                                                label={__("Font Size (PX)", 'premium-block-for-gutenberg')}
+                                                                label={__("Font Size (PX)", 'premium-blocks-for-gutenberg')}
                                                                 value={size}
                                                                 min="10"
                                                                 max="80"
@@ -251,7 +251,7 @@ export default class PremiumTypo extends Component {
                                                     {components.includes("responsiveSize") && (
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveRangeControl
-                                                                label={__("Font Size", 'premium-block-for-gutenberg')}
+                                                                label={__("Font Size", 'premium-blocks-for-gutenberg')}
                                                                 value={this.props.fontSize}
                                                                 onChange={value => { this.setState({ ...this.state.size, Desktop: value }), onChangeSize(value) }}
                                                                 tabletValue={this.props.fontSizeTablet}
@@ -269,7 +269,7 @@ export default class PremiumTypo extends Component {
                                                     {components.includes("line") && (
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
-                                                                label={__("Line Height (PX)", 'premium-block-for-gutenberg')}
+                                                                label={__("Line Height (PX)", 'premium-blocks-for-gutenberg')}
                                                                 value={line}
                                                                 onChange={(value) => { this.setState({ line: value }), onChangeLine(value) }}
                                                                 defaultValue={1}
@@ -282,7 +282,7 @@ export default class PremiumTypo extends Component {
                                                     {components.includes("spacing") && (
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
-                                                                label={__("Letter Spacing (PX)", 'premium-block-for-gutenberg')}
+                                                                label={__("Letter Spacing (PX)", 'premium-blocks-for-gutenberg')}
                                                                 value={spacing}
                                                                 onChange={(value) => { this.setState({ spacing: value }), onChangeSpacing(value) }}
                                                                 defaultValue={''}
@@ -296,7 +296,7 @@ export default class PremiumTypo extends Component {
                                                     {components.includes("style") && (
                                                         <li className="customize-control-premium-slider">
                                                             <SelectControl
-                                                                label={__("Style", 'premium-block-for-gutenberg')}
+                                                                label={__("Style", 'premium-blocks-for-gutenberg')}
                                                                 options={STYLE}
                                                                 value={style}
                                                                 onChange={(value) => { this.setState({ style: value }), onChangeStyle(value) }}

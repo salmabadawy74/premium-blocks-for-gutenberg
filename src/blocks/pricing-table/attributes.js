@@ -247,6 +247,7 @@ const attributes = {
                 badgeBack: "#6ec1e4",
                 badgeColor: '',
                 badgeSize: '',
+                badgeTextSize: '',
                 badgeTextUnit: 'px',
                 badgeSizeTablet: '',
                 badgeSizeMobile: '',

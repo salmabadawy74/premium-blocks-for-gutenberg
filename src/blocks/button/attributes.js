@@ -6,7 +6,7 @@ const attributes = {
     },
     btnText: {
         type: "string",
-        default: __("Premium Button")
+        default: __("Premium Button", 'premium-blocks-for-gutenberg')
     },
     btnSize: {
         type: "string",
@@ -80,7 +80,7 @@ const attributes = {
                 textSize: 20,
                 textSizeTablet: '',
                 textSizeMobile: '',
-                textFontFamily: __('Default'),
+                textFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
                 textLetter: '',
                 textStyle: '',
                 textUpper: false,

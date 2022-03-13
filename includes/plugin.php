@@ -67,11 +67,14 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 		 * @return void
 		 */
 		public function load_plugin() {
-
 			require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-css.php';
-
 		}
 
+		/**
+		 * Setup the post select API endpoint.
+		 *
+		 * @return void
+		 */
 		public function is_gutenberg_active() {
 			return function_exists( 'register_block_type' );
 		}

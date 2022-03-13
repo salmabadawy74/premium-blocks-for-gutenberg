@@ -14,7 +14,7 @@ const attributes = {
         type: "string",
         source: "attribute",
         attribute: "src",
-        selector: ".premium-banner__img"
+        selector: ".premium-banner__img",
     },
     titleStyles: {
         type: "array",
@@ -84,7 +84,7 @@ const attributes = {
         type: "array",
         source: "children",
         selector: ".premium-banner__desc",
-        default: __("Cool Description!!")
+        default: __("Cool Description!!", 'premium-blocks-for-gutenberg')
     },
     contentAlign: {
         type: "string",

@@ -26,8 +26,8 @@ export default function PremiumBackgroundControl({
     return (
         <Fragment>
             <div className="Premium-btn-size-settings-container">
-                <h2 className="Premium-beside-btn-group">{__('Background Type', 'premium-block-for-gutenberg')}</h2>
-                <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Background Type', 'premium-block-for-gutenberg')}>
+                <h2 className="Premium-beside-btn-group">{__('Background Type', 'premium-blocks-for-gutenberg')}</h2>
+                <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Background Type', 'premium-blocks-for-gutenberg')}>
                     {map(bgType, ({ icon, key, tooltip }) => (
                         <Tooltip text={tooltip}>
                             <Button
@@ -88,7 +88,7 @@ export default function PremiumBackgroundControl({
             {'gradient' === backgroundType && (
                 <div className="Premium-inner-sub-section">
                     <AdvancedPopColorControl
-                        label={__('Gradient Color 1', 'premium-block-for-gutenberg')}
+                        label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
                         colorValue={backgroundColor}
                         colorDefault={''}
                         onColorChange={value => {
@@ -96,7 +96,7 @@ export default function PremiumBackgroundControl({
                         }}
                     />
                     <ResponsiveSingleRangeControl
-                        label={__('Location', 'premium-block-for-gutenberg')}
+                        label={__('Location', 'premium-blocks-for-gutenberg')}
                         value={gradientLocationOne}
                         onChange={(value) => {
                             saveContainerStyle({ gradientLocationOne: value })
@@ -105,7 +105,7 @@ export default function PremiumBackgroundControl({
                         defaultValue={0}
                     />
                     <AdvancedPopColorControl
-                        label={__('Gradient Color 2', 'premium-block-for-gutenberg')}
+                        label={__('Gradient Color 2', 'premium-blocks-for-gutenberg')}
                         colorValue={gradientColorTwo}
                         colorDefault={'#777777'}
                         onColorChange={value => {
@@ -113,7 +113,7 @@ export default function PremiumBackgroundControl({
                         }}
                     />
                     <ResponsiveSingleRangeControl
-                        label={__('Location', 'premium-block-for-gutenberg')}
+                        label={__('Location', 'premium-blocks-for-gutenberg')}
                         value={gradientLocationTwo}
                         onChange={(value) => {
                             saveContainerStyle({ gradientLocationTwo: value })
@@ -122,8 +122,8 @@ export default function PremiumBackgroundControl({
                         defaultValue={0}
                     />
                     <div className="Premium-btn-size-settings-container">
-                        <h2 className="Premium-beside-btn-group">{__('Gradient Type', 'premium-block-for-gutenberg')}</h2>
-                        <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-block-for-gutenberg')}>
+                        <h2 className="Premium-beside-btn-group">{__('Gradient Type', 'premium-blocks-for-gutenberg')}</h2>
+                        <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-blocks-for-gutenberg')}>
                             {map(gradTypes, ({ name, key }) => (
                                 <Button
                                     key={key}
@@ -141,7 +141,7 @@ export default function PremiumBackgroundControl({
                     </div>
                     {'radial' !== (gradientType) && (
                         <ResponsiveSingleRangeControl
-                            label={__('Gradient Angle', 'premium-block-for-gutenberg')}
+                            label={__('Gradient Angle', 'premium-blocks-for-gutenberg')}
                             value={gradientAngle}
                             onChange={(value) => {
                                 saveContainerStyle({ gradientAngle: value })
@@ -154,18 +154,18 @@ export default function PremiumBackgroundControl({
                     )}
                     {'radial' === (gradientType) && (
                         <SelectControl
-                            label={__('Gradient Position', 'premium-block-for-gutenberg')}
+                            label={__('Gradient Position', 'premium-blocks-for-gutenberg')}
                             value={(gradientPosition)}
                             options={[
-                                { value: 'center top', label: __('Center Top', 'premium-block-for-gutenberg') },
-                                { value: 'center center', label: __('Center Center', 'premium-block-for-gutenberg') },
-                                { value: 'center bottom', label: __('Center Bottom', 'premium-block-for-gutenberg') },
-                                { value: 'left top', label: __('Left Top', 'premium-block-for-gutenberg') },
-                                { value: 'left center', label: __('Left Center', 'premium-block-for-gutenberg') },
-                                { value: 'left bottom', label: __('Left Bottom', 'premium-block-for-gutenberg') },
-                                { value: 'right top', label: __('Right Top', 'premium-block-for-gutenberg') },
-                                { value: 'right center', label: __('Right Center', 'premium-block-for-gutenberg') },
-                                { value: 'right bottom', label: __('Right Bottom', 'premium-block-for-gutenberg') },
+                                { value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') },
+                                { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') },
+                                { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') },
+                                { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') },
+                                { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') },
+                                { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') },
+                                { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') },
+                                { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') },
+                                { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') },
                             ]}
                             onChange={value => saveContainerStyle({ gradientPosition: value })}
                         />

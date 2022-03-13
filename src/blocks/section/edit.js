@@ -23,7 +23,7 @@ const {
 } = wp.blockEditor;
 
 const CONTENT = [
-    ["core/paragraph", { content: __("Insert your text or select a block ", 'premium-block-for-gutenberg') }]
+    ["core/paragraph", { content: __("Insert your text or select a block ", 'premium-blocks-for-gutenberg') }]
 ];
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     if (device === 'Mobile') {
@@ -91,35 +91,35 @@ const edit = props => {
     const WIDTH = [
         {
             value: "boxed",
-            label: __("Boxed", 'premium-block-for-gutenberg')
+            label: __("Boxed", 'premium-blocks-for-gutenberg')
         },
         {
             value: "full",
-            label: __("Full Width", 'premium-block-for-gutenberg')
+            label: __("Full Width", 'premium-blocks-for-gutenberg')
         }
     ];
     const HEIGHT = [
         {
             value: "fit",
-            label: __("Fit to Screen", 'premium-block-for-gutenberg')
+            label: __("Fit to Screen", 'premium-blocks-for-gutenberg')
         },
         {
             value: "min",
-            label: __("Min Height", 'premium-block-for-gutenberg')
+            label: __("Min Height", 'premium-blocks-for-gutenberg')
         }
     ];
     const VPOSITION = [
         {
             value: "top",
-            label: __("Top", 'premium-block-for-gutenberg')
+            label: __("Top", 'premium-blocks-for-gutenberg')
         },
         {
             value: "middle",
-            label: __("Middle", 'premium-block-for-gutenberg')
+            label: __("Middle", 'premium-blocks-for-gutenberg')
         },
         {
             value: "bottom",
-            label: __("Bottom", 'premium-block-for-gutenberg')
+            label: __("Bottom", 'premium-blocks-for-gutenberg')
         }
     ];
 
@@ -171,19 +171,19 @@ const edit = props => {
         isSelected && (
             <InspectorControls key="inspector">
                 <PanelBody
-                    title={__("General Settings", 'premium-block-for-gutenberg')}
+                    title={__("General Settings", 'premium-blocks-for-gutenberg')}
                     className={`premium-panel-body premium-stretch-section`}
                     initialOpen={true}
                 >
                     <ToggleControl
-                        label={__("Stretch Section", 'premium-block-for-gutenberg')}
+                        label={__("Stretch Section", 'premium-blocks-for-gutenberg')}
                         checked={stretchSection}
                         onChange={check => setAttributes({ stretchSection: check })}
-                        help={__("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-block-for-gutenberg')}
+                        help={__("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')}
                     />
                     {stretchSection && (
                         <SelectControl
-                            label={__("Content Width", 'premium-block-for-gutenberg')}
+                            label={__("Content Width", 'premium-blocks-for-gutenberg')}
                             options={WIDTH}
                             value={innerWidthType}
                             onChange={newValue => setAttributes({ innerWidthType: newValue })}
@@ -191,7 +191,7 @@ const edit = props => {
                     )}
                     {"boxed" === innerWidthType && stretchSection && (
                         <ResponsiveSingleRangeControl
-                            label={__("Max Width", 'premium-block-for-gutenberg')}
+                            label={__("Max Width", 'premium-blocks-for-gutenberg')}
                             value={innerWidth}
                             min="1"
                             max="1600"
@@ -201,7 +201,7 @@ const edit = props => {
                         />
                     )}
                     <SelectControl
-                        label={__("Height", 'premium-block-for-gutenberg')}
+                        label={__("Height", 'premium-blocks-for-gutenberg')}
                         options={HEIGHT}
                         value={height}
                         onChange={newValue => setAttributes({ height: newValue })}
@@ -209,7 +209,7 @@ const edit = props => {
                     {"min" === height && (
                         <Fragment>
                             <ResponsiveSingleRangeControl
-                                label={__("Min Height", 'premium-block-for-gutenberg')}
+                                label={__("Min Height", 'premium-blocks-for-gutenberg')}
                                 value={minHeight}
                                 min="1"
                                 max="800"
@@ -223,9 +223,9 @@ const edit = props => {
                         </Fragment>
                     )}
                     <SelectControl
-                        label={__("Content Position", 'premium-block-for-gutenberg')}
+                        label={__("Content Position", 'premium-blocks-for-gutenberg')}
                         help={__(
-                            "If you have two or more inner columns then this option will work only on the preview page", 'premium-block-for-gutenberg'
+                            "If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'
                         )}
                         options={VPOSITION}
                         value={vPos}
@@ -233,7 +233,7 @@ const edit = props => {
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__("Background", 'premium-block-for-gutenberg')}
+                    title={__("Background", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
@@ -257,7 +257,7 @@ const edit = props => {
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__("Border", 'premium-block-for-gutenberg')}
+                    title={__("Border", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
@@ -305,7 +305,7 @@ const edit = props => {
                     />
                 </PanelBody>
                 <PanelBody
-                    title={__("Spacings", 'premium-block-for-gutenberg')}
+                    title={__("Spacings", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
@@ -475,12 +475,12 @@ const edit = props => {
             <div
                 className={`premium-container__content_wrap premium-container__${vPos}`}
                 style={{
-                    maxWidth:
-                        "boxed" == innerWidthType && stretchSection
-                            ? innerWidth
-                                ? innerWidth + "px"
-                                : "1140px"
-                            : "100%"
+                    maxWidth: "boxed" == innerWidthType && stretchSection
+                        ? innerWidth
+                            ? innerWidth + "px"
+                            : "1140px"
+                        : "100%",
+                    minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 }}
             >
                 <div className={`premium-container__content_inner`}>

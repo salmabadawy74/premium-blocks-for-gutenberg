@@ -69,7 +69,7 @@ const attributes = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     descText: {
         type: "array",
@@ -103,7 +103,7 @@ const attributes = {
         type: "array",
         source: "children",
         selector: ".premium-icon-box__btn",
-        default: __("Click Here")
+        default: __("Click Here", 'premium-blocks-for-gutenberg')
     },
     btnLink: {
         type: "string",
@@ -143,7 +143,7 @@ const attributes = {
             {
 
                 titleTag: "H2",
-                titleFont: '',
+                titleFont: __('Default', 'premium - blocks -for-gutenberg'),
                 titleColor: '',
                 titleSize: 20,
                 titleSizeUnit: 'px',
@@ -167,7 +167,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                descFont: '',
+                descFont: __('Default', 'premium-blocks-for-gutenberg'),
                 descColor: '',
                 descSize: 20,
                 descSizeUnit: 'px',
