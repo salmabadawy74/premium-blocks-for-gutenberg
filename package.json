@@ -1,8 +1,8 @@
 {
     "name": "premium-blocks-for-gutenberg",
     "slug": "premium-blocks-for-gutenberg",
-    "version": "1.9.2",
-    "prev_stable_version": "1.9.1",
+    "version": "1.9.3",
+    "prev_stable_version": "1.9.2",
     "author": "Leap13",
     "homepage": "https://premiumblocks.io/",
     "main": "index.js",
