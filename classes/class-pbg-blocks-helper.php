@@ -118,13 +118,19 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
 	}
 
-
+	/**
+	 * Load Json Files
+	 */
 
 	public function pbg_mime_types( $mimes ) {
 			$mimes['json'] = 'application/json';
 			$mimes['svg']  = 'image/svg+xml';
 			return $mimes;
 	}
+
+	/**
+	 * Fix File Of type JSON
+	 */
 
 	public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
 		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
@@ -662,7 +668,13 @@ class PBG_Blocks_Helper {
 
 		return $css;
 	}
-
+	/**
+	 * Render Inline CSS helper function
+	 *
+	 * @param array  $css the css for each block.
+	 * @param string $style_id the unique id for the rendered style.
+	 * @param bool   $in_content the bool for whether or not it should run in content.
+	 */
 	public function render_inline_css( $css, $style_id, $in_content = false ) {
 
 		if ( ! is_admin() ) {
@@ -675,7 +687,12 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
-
+	/**
+	 * Check if block should render inline.
+	 *
+	 * @param string $name the blocks name.
+	 * @param string $unique_id the blocks block_id.
+	 */
 	public function should_render_inline( $name, $unique_id ) {
 		if ( doing_filter( 'the_content' ) || apply_filters( 'premium_blocks_force_render_inline_css_in_content', false, $name, $unique_id ) || is_customize_preview() ) {
 			return true;
@@ -731,6 +748,12 @@ class PBG_Blocks_Helper {
 		}
 	}
 
+	/**
+	 * Load Google Font
+	 *
+	 * @since 1.9.2
+	 * @access public
+	 */
 	public function frontend_gfonts() {
 		if ( empty( self::$gfonts ) ) {
 			return;
@@ -743,8 +766,14 @@ class PBG_Blocks_Helper {
 	}
 
 	/**
-	 * Print gFonts
+	 * Print  Google Font
+	 *
+	 * @since 1.9.2
+	 * @access public
+	 *
+	 *  @param object $gfont .
 	 */
+
 	public function load_google_font( $gfonts ) {
 		$link    = '';
 		$subsets = array();
@@ -1177,13 +1206,11 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeMobile'] . 'px' . '!important' ) );
-
 		}
 		// Desc Style
 		if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeMobile'] . 'px' . '!important' ) );
-
 		}
 		// Container Style
 		if ( isset( $attr['paddingTMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
@@ -1661,7 +1688,6 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
-
 	public function get_iconbox_css_style( $attr, $unique_id ) {
 		if ( isset( $attr['titleStyles'][0]['titleFont'] ) ) {
 			$this->add_gfont(
@@ -1916,6 +1942,7 @@ class PBG_Blocks_Helper {
 		$css->stop_media_query();
 		return $css->css_output();
 	}
+
 	/**
 	 * Get Pricing Table Block CSS
 	 *
@@ -2723,6 +2750,10 @@ class PBG_Blocks_Helper {
 
 		return $desktop . $tab_styling_css . $mob_styling_css;
 	}
+
+	/**
+	 * Load Google Fonts in Frontend
+	 */
 	public function frontend_footer_gfonts() {
 		if ( empty( self::$footer_gfonts ) ) {
 			return;
