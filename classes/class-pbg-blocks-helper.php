@@ -46,6 +46,7 @@ class PBG_Blocks_Helper {
 	 * Stylesheet
 	 *
 	 * @since 1.13.4
+     * 
 	 * @var stylesheet
 	 */
 	public static $stylesheet;
@@ -54,6 +55,7 @@ class PBG_Blocks_Helper {
 	 * Page Blocks Variable
 	 *
 	 * @since 1.6.0
+     * 
 	 * @var instance
 	 */
 	public static $page_blocks;
@@ -62,6 +64,7 @@ class PBG_Blocks_Helper {
 	 * Member Variable
 	 *
 	 * @since 0.0.1
+     * 
 	 * @var instance
 	 */
 	public static $block_atts;
@@ -70,6 +73,7 @@ class PBG_Blocks_Helper {
 	 * PBG Block Flag
 	 *
 	 * @since 1.8.2
+     * 
 	 * @var premium_flag
 	*/
 	public static $premium_flag = false;
@@ -78,6 +82,7 @@ class PBG_Blocks_Helper {
 	 * Current Block List
 	 *
 	 * @since 1.8.2
+     * 
 	 * @var current_block_list
 	 */
 	public static $current_block_list = array();
@@ -143,8 +148,11 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Enqueue Editor CSS/JS for Premium Blocks
+     * 
 	 * @since 1.0.0
+     * 
 	 * @access public
+     * 
 	 * @return void
 	 */
 	public function pbg_editor() {
@@ -213,7 +221,9 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Enqueue Settings For blocks 
+     * 
 	 * @since 1.9.2
+     * 
 	 * @access public
 	 */
 	public function load_api_settings() {
@@ -237,6 +247,7 @@ class PBG_Blocks_Helper {
 	 * Enqueue Frontend Assets for Premium Blocks.
 	 *
 	 * @since 1.0.0
+     * 
 	 * @access public
 	 *
 	 * @return void
@@ -423,8 +434,11 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Add Premium Blocks category to Blocks Categories
+     * 
 	 * @since 1.0.0
+     * 
 	 * @access public
+     * 
 	 * @param array $categories blocks categories.
 	 */
 	public function register_premium_category( $categories ) {
@@ -442,8 +456,9 @@ class PBG_Blocks_Helper {
 	}
 
 	/**
-	 * Generate Stylesheet
+     * 
 	 * Generates stylesheet and appends in head tag.
+     * 
 	 * @since 1.8.2
 	 */
 	public function generate_stylesheet() {
@@ -515,7 +530,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Generates stylesheet in loop.
+     * 
 	 * @param object $this_post Current Post Object.
+     * 
 	 * @since 1.8.2
 	 */
 	public function generate_post_stylesheet( $this_post ) {
@@ -523,11 +540,9 @@ class PBG_Blocks_Helper {
 		if ( ! is_object( $this_post ) ) {
 			return;
 		}
-
 		if ( ! isset( $this_post->ID ) ) {
 			return;
 		}
-
 		if ( has_blocks( $this_post->ID ) ) {
 
 			if ( isset( $this_post->post_content ) ) {
@@ -547,7 +562,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Parse Guten Block.
+     * 
 	 * @param string $content the content string.
+     * 
 	 * @since 1.1.0
 	 */
 	public function parse( $content ) {
@@ -559,9 +576,10 @@ class PBG_Blocks_Helper {
     }
 
 	/**
-	 * Print Stylsheet
 	 * Print the Stylesheet in header.
+     * 
 	 * @since 1.8.2
+     * 
 	 * @access public
 	 */
 	public function print_stylesheet() {
@@ -582,10 +600,12 @@ class PBG_Blocks_Helper {
 	}
 
 	/**
-	 * Get Block CSS
 	 * Generates CSS recurrsively.
+     * 
 	 * @since 1.8.2
+     * 
 	 * @access public
+     * 
 	 * @param object $block The block object.
 	 */
 	public function get_block_css( $block ) {
@@ -648,6 +668,7 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Render Inline CSS helper function
+     * 
 	 * @param array  $css the css for each block.
 	 * @param string $style_id the unique id for the rendered style.
 	 * @param bool   $in_content the bool for whether or not it should run in content.
@@ -668,6 +689,7 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Check if block should render inline.
+     * 
 	 * @param string $name the blocks name.
 	 * @param string $unique_id the blocks block_id.
 	 */
@@ -682,6 +704,7 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Adds Google fonts for loading later
+     * 
 	 * @param array $attr the blocks attr.
 	 */
 	public function add_gfont( $attr ) {
@@ -730,7 +753,9 @@ class PBG_Blocks_Helper {
     	
     /**
 	 * Load Google Font
+     * 
      * @since 1.9.2
+     * 
      * @access public
 	 */
 	public function frontend_gfonts() {
@@ -748,8 +773,11 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Print Google Font
+     * 
      * @since 1.9.2
+     * 
      * @access public
+     * 
      * @param object $gfont for google Font.
 	*/
 	public function load_google_font( $gfonts ) {
@@ -775,7 +803,9 @@ class PBG_Blocks_Helper {
 
 	/**
      * Get Accordion Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for Content of Block.
 	 */
@@ -827,8 +857,11 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Get Fancy Text Block CSS
+     * 
 	 * Return Frontend CSS for Fancy Text.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -895,7 +928,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Get Accordion Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes for attribute.
 	 * @param string $content for content of block.
 	 */
@@ -936,8 +971,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Accordion  Block CSS
+     * 
 	 * Return Frontend CSS for Fancy Text.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -1085,7 +1123,9 @@ class PBG_Blocks_Helper {
     
 	/**
 	 * Get Banner Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option For attribute.
 	 * @param string $contnet for content of Block.
 	 */
@@ -1124,8 +1164,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Banner Block CSS
+     * 
 	 * Return Frontend CSS for Banner Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For  block ID.
 	 */
@@ -1230,7 +1273,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Get Button Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -1261,8 +1306,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Button Block CSS
+     * 
 	 * Return Frontend CSS for Button Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -1307,7 +1355,9 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Count-up Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -1361,8 +1411,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Count-up Block CSS
+     * 
 	 * Return Frontend CSS for Count-up Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -1550,7 +1603,9 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Dual-Heading Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -1581,8 +1636,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Dual-Heading Block CSS
+     * 
 	 * Return Frontend CSS for Dual-Heading Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -1661,7 +1719,9 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get icon Box Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -1691,8 +1751,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Icon Box Block CSS
+     * 
 	 * Return Frontend CSS for Icon Box Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -1955,7 +2018,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Get Pricing Table Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -1986,8 +2051,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Pricing Table Block CSS
+     * 
 	 * Return Frontend CSS for Pricing Table Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -2155,7 +2223,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Get Lottie Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -2192,8 +2262,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Lottie Block CSS
+     * 
 	 * Return Frontend CSS for Lottie Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -2293,7 +2366,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Get Testimonial Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -2321,8 +2396,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Testimonial Block CSS
+     * 
 	 * Return Frontend CSS for Testimonial Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -2457,7 +2535,9 @@ class PBG_Blocks_Helper {
 
  	/**
 	 * Get Section Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -2485,8 +2565,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Section Block CSS
+     * 
 	 * Return Frontend CSS for Section Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -2603,7 +2686,9 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Get Video Box Block Content & Style
+     * 
 	 * @access public
+     * 
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
@@ -2640,8 +2725,11 @@ class PBG_Blocks_Helper {
 
     /**
 	 * Get Video Box Block CSS
+     * 
 	 * Return Frontend CSS for Video Box Block.
+     * 
 	 * @access public
+     * 
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -2687,6 +2775,7 @@ class PBG_Blocks_Helper {
 	 * Get CSS value
 	 *
 	 * @since 1.8.2
+     * 
 	 * @access public
 	 *
 	 * @param string $hex_color value of Color.
@@ -2732,8 +2821,10 @@ class PBG_Blocks_Helper {
     
 	/**
 	 * Generates stylesheet for reusable blocks.
+     * 
+     * @since 1.1.0
+     * 
 	 * @param array $blocks Blocks array.
-	 * @since 1.1.0
 	 */
 	public function get_stylesheet( $blocks ) {
 
@@ -2802,8 +2893,11 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Creates and returns an instance of the class
+     * 
 	 * @since 1.0.0
+     * 
 	 * @access public
+     * 
 	 * @return object
 	 */
 	public static function get_instance() {
@@ -2823,6 +2917,7 @@ if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 	 * Returns an instance of the plugin class.
 	 *
 	 * @since  1.0.0
+     * 
 	 * @return object
 	 */
 	function pbg_blocks_helper() {
