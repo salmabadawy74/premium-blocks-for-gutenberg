@@ -2048,7 +2048,3 @@ a.premium-dheading-block__link:hover {
         display: none !important;
     }
 }
-
-.components-tab-panel__tabs-item:focus:not(:disabled) {
-    box-shadow: none !important;
-}
