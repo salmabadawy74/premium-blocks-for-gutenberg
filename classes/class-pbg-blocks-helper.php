@@ -101,18 +101,13 @@ class PBG_Blocks_Helper {
 
 		// Enqueue Editor Assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
-
 		// Enqueue Frontend Styles.
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
-         
-
 		// Register Premium Blocks category.
 		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
-      
 		// Generate Blocks Stylesheet.
 		// add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'generate_stylesheet' ), 20 );
-
 		// Enqueue Generated stylesheet to WP Head.
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
@@ -124,9 +119,11 @@ class PBG_Blocks_Helper {
 	 */
 
     public function pbg_mime_types($mimes) {
+
             $mimes['json'] = 'application/json'; 
             $mimes['svg'] = 'image/svg+xml'; 
             return $mimes; 
+
     } 
 
     /**
@@ -134,6 +131,7 @@ class PBG_Blocks_Helper {
 	 */
 
     public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
+
 		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
 		if ( 1 > strlen( $ext ) ) {
 			$exploded = explode( '.', $filename );
@@ -144,7 +142,7 @@ class PBG_Blocks_Helper {
 			$data['ext']  = 'json';
 		}
 		return $data;
-        
+
 	}
 
 	/**
@@ -156,11 +154,12 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function pbg_editor() {
+
         $allow_json       = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
 		$is_fa_enabled       = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
 		$plugin_dependencies = array( 'wp-blocks', 'react', 'react-dom', 'wp-components', 'wp-compose', 'wp-data', 'wp-edit-post', 'wp-element', 'wp-hooks', 'wp-i18n', 'wp-plugins', 'wp-polyfill', 'wp-primitives', 'wp-api', 'wp-widgets','lodash' );
 	
- wp_register_script( 'pbg-blocks-js', 
+        wp_register_script( 'pbg-blocks-js', 
             PREMIUM_BLOCKS_URL . 'assets/js/build.js',
             array( 'wp-api-fetch', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-api', 'wp-edit-post' ), 
             PREMIUM_BLOCKS_VERSION,
@@ -215,9 +214,11 @@ class PBG_Blocks_Helper {
 			array( 'dashicons' ),
 			PREMIUM_BLOCKS_VERSION
 		);
+
 	}
 
 	public function load_api_settings() {
+
 		register_setting(
 			'mail_chimp_api',
 			'mail_chimp_api',
@@ -238,7 +239,9 @@ class PBG_Blocks_Helper {
 				'default'           => false,
 			)
 		);
+
 	}
+
 	/**
 	 * PBG Frontend
 	 *
@@ -250,6 +253,7 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function pbg_frontend() {
+
 		$is_fa_enabled = isset( self::$config['premium-fa-css'] ) ? self::$config['premium-fa-css'] : true;
 
 		$is_enabled = isset( self::$config['premium-map-api'] ) ? self::$config['premium-map-api'] : true;
@@ -291,7 +295,6 @@ class PBG_Blocks_Helper {
 				)
 			);
 		}
-
 		// Enqueue Google Maps API Script.
 		if ( $is_maps_enabled && $is_enabled ) {
 			if ( ! empty( $api_key ) && '1' != $api_key ) {
@@ -312,15 +315,18 @@ class PBG_Blocks_Helper {
 				'nonce'   => wp_create_nonce( 'pa-blog-block-nonce' ),
 			)
 		);
+
 	}
 
+    /**
+	 * On init startup.
+	 */
 	public function on_init() {
+
         wp_register_style( 'premium-blocks-editor-css',PREMIUM_BLOCKS_URL . 'assets/css/style.css',
 			array( 'dashicons' ),
 			PREMIUM_BLOCKS_VERSION 
         );
-	  
-	   
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
 		}
@@ -373,7 +379,6 @@ class PBG_Blocks_Helper {
                 'editor_script'   => 'pbg-blocks-js',
 			)
 		);
-
 		register_block_type(
 			'premium/icon-box',
 			array(
@@ -416,9 +421,7 @@ class PBG_Blocks_Helper {
                 'editor_script'   => 'pbg-blocks-js',
 			)
 		);
-		
-
-            register_block_type(
+        register_block_type(
 			'premium/container',
 			array(
 				'render_callback' => array( $this, 'get_section_css' ),
@@ -426,13 +429,13 @@ class PBG_Blocks_Helper {
                 'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+        
 	}
+
 	/**
 	 * Add Premium Blocks category to Blocks Categories
-	 *
 	 * @since 1.0.0
 	 * @access public
-	 *
 	 * @param array $categories blocks categories.
 	 */
 	public function register_premium_category( $categories ) {
@@ -446,17 +449,17 @@ class PBG_Blocks_Helper {
 				),
 			)
 		);
+
 	}
+
 	/**
 	 * Generate Stylesheet
-	 *
 	 * Generates stylesheet and appends in head tag.
-	 *
 	 * @since 1.8.2
 	 */
 	public function generate_stylesheet() {
-		$this_post = array();
 
+		$this_post = array();
 		if ( class_exists( 'WooCommerce' ) ) {
 
 			if ( is_cart() ) {
@@ -505,18 +508,24 @@ class PBG_Blocks_Helper {
 				$this->generate_post_stylesheet( $post );
 			}
 		}
+
 	}
 
+    /**
+	 * Render Boolean is amp or Not
+	 */
 	public function it_is_not_amp() {
+
 		$not_amp = true;
 		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
 			$not_amp = false;
 		}
 		return $not_amp;
+
 	}
+
 	/**
 	 * Generates stylesheet in loop.
-	 *
 	 * @param object $this_post Current Post Object.
 	 * @since 1.8.2
 	 */
@@ -544,10 +553,11 @@ class PBG_Blocks_Helper {
 				self::$stylesheet .= $this->get_stylesheet( $blocks );
 			}
 		}
+
 	}
+
 	/**
 	 * Parse Guten Block.
-	 *
 	 * @param string $content the content string.
 	 * @since 1.1.0
 	 */
@@ -556,46 +566,42 @@ class PBG_Blocks_Helper {
 		global $wp_version;
 
 		return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
-	}
+	
+    }
+
 	/**
 	 * Print Stylsheet
-	 *
 	 * Print the Stylesheet in header.
-	 *
 	 * @since 1.8.2
 	 * @access public
 	 */
 	public function print_stylesheet() {
+        
 		global $content_width;
 		if ( is_null( self::$stylesheet ) || '' === self::$stylesheet ) {
 			return;
 		}
-
 		self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
-
 		ob_start();
-
 		?>
 		<style type="text/css" media="all" id="premium-style-frontend">
 		<?php echo self::$stylesheet; ?>
 		</style>
 		<?php
 		ob_end_flush();
+
 	}
+
 	/**
 	 * Get Block CSS
-	 *
 	 * Generates CSS recurrsively.
-	 *
 	 * @since 1.8.2
 	 * @access public
-	 *
 	 * @param object $block The block object.
 	 */
 	public function get_block_css( $block ) {
 
 		$block = (array) $block;
-
 		$name     = $block['blockName'];
 		$css      = array();
 		$block_id = '';
@@ -647,12 +653,12 @@ class PBG_Blocks_Helper {
 		}
 
 		self::$current_block_list = array_unique( self::$current_block_list );
-
 		return $css;
+
 	}
+
     /**
 	 * Render Inline CSS helper function
-	 *
 	 * @param array  $css the css for each block.
 	 * @param string $style_id the unique id for the rendered style.
 	 * @param bool   $in_content the bool for whether or not it should run in content.
@@ -668,23 +674,25 @@ class PBG_Blocks_Helper {
 
 			}
 		}
+
 	}
+
     /**
 	 * Check if block should render inline.
-	 *
 	 * @param string $name the blocks name.
 	 * @param string $unique_id the blocks block_id.
 	 */
 	public function should_render_inline( $name, $unique_id ) {
+
 		if ( doing_filter( 'the_content' ) || apply_filters( 'premium_blocks_force_render_inline_css_in_content', false, $name, $unique_id ) || is_customize_preview() ) {
 			return true;
 		}
 		return false;
+
 	}
 
 	/**
 	 * Adds Google fonts for loading later
-	 *
 	 * @param array $attr the blocks attr.
 	 */
 	public function add_gfont( $attr ) {
@@ -728,15 +736,16 @@ class PBG_Blocks_Helper {
 				}
 			}
 		}
+
 	}
     	
     /**
 	 * Load Google Font
-     *
      * @since 1.9.2
      * @access public
 	 */
 	public function frontend_gfonts() {
+
 		if ( empty( self::$gfonts ) ) {
 			return;
 		}
@@ -745,18 +754,17 @@ class PBG_Blocks_Helper {
 			return;
 		}
 		$this->load_google_font( self::$gfonts );
+
 	}
 
 	/**
-	* Print  Google Font
-     *
+	 * Print Google Font
      * @since 1.9.2
      * @access public
-     * 
-     *  @param object $gfont .
-	 */
-
+     *  @param object $gfont for google Font.
+	*/
 	public function load_google_font( $gfonts ) {
+
 		$link    = '';
 		$subsets = array();
 		foreach ( $gfonts as $key => $gfont_values ) {
@@ -773,18 +781,17 @@ class PBG_Blocks_Helper {
 			$link .= '&amp;display=swap';
 		}
 		echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
+
 	}
+
 	/**
-	 * Get Fancy Text Block CSS
-	 *
-	 * Return Frontend CSS for Fancy Text.
-	 *
+     * Get Accordion Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for Content of Block.
 	 */
 	public function get_fancy_text_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
@@ -826,8 +833,16 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
 
+	/**
+	 * Get Fancy Text Block CSS
+	 * Return Frontend CSS for Fancy Text.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_fancy_text_css_style( $attr, $unique_id ) {
 
 		$css                    = new Premium_Blocks_css();
@@ -885,18 +900,15 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeMobile'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
+
 	}
+
 	/**
-	 * Get Accordion Block CSS
-	 *
-	 * Return Frontend CSS for Accordion.
-	 *
+	 * Get Accordion Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes for attribute.
+	 * @param string $content for content of block.
 	 */
 	public function get_accordion_css( $attributes, $content ) {
 
@@ -932,6 +944,14 @@ class PBG_Blocks_Helper {
 		return $content;
 
 	}
+
+    /**
+	 * Get Accordion  Block CSS
+	 * Return Frontend CSS for Fancy Text.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_accordion_css_style( $attr, $unique_id ) {
 
 		$css                    = new Premium_Blocks_css();
@@ -1052,7 +1072,6 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descSizeMobile'] . 'px' . '!important' ) );
-
 		}
         if ( isset( $attr['descPaddingTMobile'] )  ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
@@ -1071,27 +1090,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['descPaddingLMobile'] . 'px' . '!important' ) );
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
+
 	}
     
 	/**
-	 * Get Banner Block CSS
-	 *
-	 * Return Frontend CSS for Banner.
-	 *
+	 * Get Banner Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option For attribute.
+	 * @param string $contnet for content of Block.
 	 */
-
 	public function get_banner_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -1107,7 +1121,6 @@ class PBG_Blocks_Helper {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_banner_css_style( $attributes, $unique_id );
-
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'banner', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
@@ -1117,8 +1130,18 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Banner Block CSS
+	 * Return Frontend CSS for Banner Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For  block ID.
+	 */
 	public function get_banner_css_style( $attr, $unique_id ) {
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -1212,34 +1235,29 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingU']) );	
 		}
 		$css->stop_media_query();
-
 		return $css->css_output();
 
 	}
+
 	/**
-	 * Get Button Block CSS
-	 *
-	 * Return Frontend CSS for Button.
-	 *
+	 * Get Button Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_button_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 
 		}
-
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_button_css_style( $attributes, $unique_id );
-
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'banner', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
@@ -1249,8 +1267,18 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Button Block CSS
+	 * Return Frontend CSS for Button Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_button_css_style( $attr, $unique_id ) {
+
 		if ( isset( $attr['textStyles'][0]['textFontFamily'] ) ) {
 			$this->add_gfont(
 				array(
@@ -1259,13 +1287,11 @@ class PBG_Blocks_Helper {
 				)
 			);
 		}
-
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-
 		// Title Style
 		if ( isset( $attr['textStyles'] ) ) {
 			if ( isset( $attr['textStyles'][0]['textSize'] ) || isset( $attr['textStyles'][0]['textSizeUnit'] ) ) {
@@ -1273,9 +1299,7 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSize'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 			}
 		}
-
 		$css->start_media_query( $media_query['tablet'] );
-
 		if ( isset( $attr['textStyles'][0]['textSizeTablet'] ) ) {
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
@@ -1289,16 +1313,14 @@ class PBG_Blocks_Helper {
 		}
 		$css->stop_media_query();
 		return $css->css_output();
+        
 	}
-	/**
-	 * Get Count Up Block CSS
-	 *
-	 * Return Frontend CSS for Count Up.
-	 *
+
+    /**
+	 * Get Count-up Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_countup_css( $attributes, $content ) {
 
@@ -1307,9 +1329,7 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
-
 		if ( $this->it_is_not_amp() ) {
-
 			wp_enqueue_script(
 				'pbg-waypoints',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
@@ -1317,7 +1337,6 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-
 			wp_enqueue_script(
 				'pbg-counter',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
@@ -1325,7 +1344,6 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-
 			wp_enqueue_script(
 				'pbg-countup',
 				PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
@@ -1334,7 +1352,6 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -1350,7 +1367,16 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Count-up Block CSS
+	 * Return Frontend CSS for Count-up Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_countup_css_style( $attr, $unique_id ) {
 
 		if ( isset( $attr['titleStyles'][0]['titleFamily'] ) ) {
@@ -1419,23 +1445,22 @@ class PBG_Blocks_Helper {
 			}
 		}
         // Container Style
-			if ( isset( $attr['paddingT'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-top', ( $attr['paddingT'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
-            if ( isset( $attr['paddingR'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-right', ( $attr['paddingR'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
-            if ( isset( $attr['paddingB'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-bottom', ( $attr['paddingB'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
-            if ( isset( $attr['paddingL'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-left', ( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
-		
+        if ( isset( $attr['paddingT'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-top', ( $attr['paddingT'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
+        if ( isset( $attr['paddingR'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-right', ( $attr['paddingR'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
+        if ( isset( $attr['paddingB'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-bottom', ( $attr['paddingB'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
+        if ( isset( $attr['paddingL'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-left', ( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
 		$css->start_media_query( $media_query['tablet'] );
 		// Number Style Tablet
 		if ( isset( $attr['numberStyles'] ) ) {
@@ -1465,23 +1490,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['suffixStyles'][0]['suffixSizeTablet'] . $attr['suffixStyles'][0]['suffixSizeUnit'] ) );
 			}
 		}
-           // Container Style
-			if ( isset( $attr['paddingTTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-top', ( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
-            if ( isset( $attr['paddingRTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-right', ( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
-            if ( isset( $attr['paddingBTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-bottom', ( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
-            if ( isset( $attr['paddingLTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id );
-				$css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
-			}
+        // Container Style
+        if ( isset( $attr['paddingTTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-top', ( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
+        if ( isset( $attr['paddingRTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-right', ( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
+        if ( isset( $attr['paddingBTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-bottom', ( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
+        if ( isset( $attr['paddingLTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
+            $css->set_selector( '#premium-countup-' . $unique_id );
+            $css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU']  ) );
+        }
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		// Number Style Mobile
@@ -1533,15 +1558,12 @@ class PBG_Blocks_Helper {
 		return $css->css_output();
 
 	}
-	/**
-	 * Get Dual Heading Block CSS
-	 *
-	 * Return Frontend CSS for Dual Heading.
-	 *
+
+    /**
+	 * Get Dual-Heading Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_dual_css( $attributes, $content ) {
 
@@ -1565,7 +1587,16 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Dual-Heading Block CSS
+	 * Return Frontend CSS for Dual-Heading Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_dual_css_style( $attr, $unique_id ) {
 
 		if ( isset( $attr['firstStyles'][0]['firstFamily'] ) ) {
@@ -1603,9 +1634,7 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
-
 		$css->start_media_query( $media_query['tablet'] );
-
 		// First Style FontSizeTablet.
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
@@ -1638,18 +1667,17 @@ class PBG_Blocks_Helper {
 		}
 		$css->stop_media_query();
 		return $css->css_output();
+
 	}
-	/**
-	 * Get Icon Box Block CSS
-	 *
-	 * Return Frontend CSS for Icon Box.
-	 *
+
+    /**
+	 * Get icon Box Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_iconbox_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
@@ -1669,8 +1697,18 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Icon Box Block CSS
+	 * Return Frontend CSS for Icon Box Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_iconbox_css_style( $attr, $unique_id ) {
+
 		if ( isset( $attr['titleStyles'][0]['titleFont'] ) ) {
 			$this->add_gfont(
 				array(
@@ -1923,16 +1961,14 @@ class PBG_Blocks_Helper {
         }
 		$css->stop_media_query();
 		return $css->css_output();
+
 	}
+
 	/**
-	 * Get Pricing Table Block CSS
-	 *
-	 * Return Frontend CSS for Pricing Table.
-	 *
+	 * Get Pricing Table Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_pricing_css( $attributes, $content ) {
 
@@ -1956,7 +1992,16 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Pricing Table Block CSS
+	 * Return Frontend CSS for Pricing Table Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_pricing_css_style( $attr, $unique_id ) {
 
 		$css                    = new Premium_Blocks_css();
@@ -2116,23 +2161,21 @@ class PBG_Blocks_Helper {
 		}
 		$css->stop_media_query();
 		return $css->css_output();
+
 	}
+
 	/**
-	 * Get Lottie Animations Block CSS
-	 *
-	 * Return Frontend CSS for Lottie Animations.
-	 *
+	 * Get Lottie Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attributes option attributes.
-	 * @param string $content option for Content of block.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_lottie_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -2143,7 +2186,6 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_lottie_css_style( $attributes, $unique_id );
@@ -2156,9 +2198,18 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
 
+    /**
+	 * Get Lottie Block CSS
+	 * Return Frontend CSS for Lottie Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_lottie_css_style( $attr, $unique_id ) {
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -2248,23 +2299,21 @@ class PBG_Blocks_Helper {
         }
 		$css->stop_media_query();
 		return $css->css_output();
+
 	}
+
 	/**
-	 * Get Testimonial Block CSS
-	 *
-	 * Return Frontend CSS for Testimonial.
-	 *
+	 * Get Testimonial Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_testimonial_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
@@ -2278,8 +2327,18 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Testimonial Block CSS
+	 * Return Frontend CSS for Testimonial Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_testimonial_css_style( $attr, $unique_id ) {
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -2404,24 +2463,21 @@ class PBG_Blocks_Helper {
         }
 		$css->stop_media_query();
 		return $css->css_output();
+
 	}
 
-    /**
-	 * Get Section Block CSS
-	 *
-	 * Return Frontend CSS for Section.
-	 *
+ 	/**
+	 * Get Section Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
     public function get_section_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
@@ -2435,8 +2491,18 @@ class PBG_Blocks_Helper {
 			}
 		};
 		return $content;
+
 	}
+
+    /**
+	 * Get Section Block CSS
+	 * Return Frontend CSS for Section Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_section_css_style( $attr, $unique_id ) {
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -2543,23 +2609,21 @@ class PBG_Blocks_Helper {
         }
 		$css->stop_media_query();
 		return $css->css_output();
+
 	}
+
 	/**
-	 * Get Video Box Block CSS
-	 *
-	 * Return Frontend CSS for Video Box.
-	 *
+	 * Get Video Box Block Content & Style
 	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $id block ID.
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
 	 */
 	public function get_videobox_css( $attributes, $content ) {
+
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 			$unique_id = $attributes['block_id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
-
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -2584,7 +2648,16 @@ class PBG_Blocks_Helper {
 		return $content;
 
 	}
+
+    /**
+	 * Get Video Box Block CSS
+	 * Return Frontend CSS for Video Box Block.
+	 * @access public
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
 	public function get_videobox_css_style( $attr, $unique_id ) {
+
 		if ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ) {
 			$this->add_gfont(
 				array(
@@ -2599,7 +2672,6 @@ class PBG_Blocks_Helper {
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Style Description.
-
 		if ( isset( $attr['descStyles'] ) ) {
 			if ( isset( $attr['descStyles'][0]['videoDescSize'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
 				$css->set_selector( '.premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
@@ -2607,7 +2679,6 @@ class PBG_Blocks_Helper {
 			}
 		}
 		$css->start_media_query( $media_query['tablet'] );
-
 		if ( isset( $attr['descStyles'][0]['videoDescSizeTablet'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
 			$css->set_selector( '.premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
 			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeTablet'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
@@ -2620,6 +2691,7 @@ class PBG_Blocks_Helper {
 		}
 		$css->stop_media_query();
 		return $css->css_output();
+
 	}
 
 	/**
@@ -2632,18 +2704,15 @@ class PBG_Blocks_Helper {
 	 */
 	public function hex_to_rgba( $color, $opacity = false, $is_array = false ) {
 		$default = $color;
-
-			// Return default if no color provided.
+		// Return default if no color provided.
 		if ( empty( $color ) ) {
 			return $default;
 		}
-
-			// Sanitize $color if "#" is provided.
+		// Sanitize $color if "#" is provided.
 		if ( '#' === $color[0] ) {
 			$color = substr( $color, 1 );
 		}
-
-			// Check if color has 6 or 3 characters and get values.
+		// Check if color has 6 or 3 characters and get values.
 		if ( strlen( $color ) === 6 ) {
 				$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
 		} elseif ( strlen( $color ) === 3 ) {
@@ -2651,11 +2720,10 @@ class PBG_Blocks_Helper {
 		} else {
 				return $default;
 		}
+		// Convert hexadec to rgb.
+		$rgb = array_map( 'hexdec', $hex );
+		// Check if opacity is set(rgba or rgb).
 
-			// Convert hexadec to rgb.
-			$rgb = array_map( 'hexdec', $hex );
-
-			// Check if opacity is set(rgba or rgb).
 		if ( false !== $opacity && '' !== $opacity ) {
 			if ( abs( $opacity ) >= 1 ) {
 				$opacity = $opacity / 100;
@@ -2664,14 +2732,15 @@ class PBG_Blocks_Helper {
 		} else {
 			$output = 'rgb(' . implode( ',', $rgb ) . ')';
 		}
-
 		if ( $is_array ) {
 			return $rgb;
 		} else {
 			// Return rgb(a) color string.
 			return $output;
 		}
+
 	}
+    
 	/**
 	 * Generates stylesheet for reusable blocks.
 	 *
@@ -2683,14 +2752,11 @@ class PBG_Blocks_Helper {
 		$desktop = '';
 		$tablet  = '';
 		$mobile  = '';
-
 		$tab_styling_css = '';
 		$mob_styling_css = '';
 
 		foreach ( $blocks as $i => $block ) {
-
 			if ( is_array( $block ) ) {
-
 				if ( '' === $block['blockName'] ) {
 					continue;
 				}
@@ -2716,26 +2782,25 @@ class PBG_Blocks_Helper {
 				}
 			}
 		}
-
 		if ( ! empty( $tablet ) ) {
 			$tab_styling_css .= '@media only screen and (max-width: ' . PBG_TABLET_BREAKPOINT . 'px) {';
 			$tab_styling_css .= $tablet;
 			$tab_styling_css .= '}';
 		}
-
 		if ( ! empty( $mobile ) ) {
 			$mob_styling_css .= '@media only screen and (max-width: ' . PBG_MOBILE_BREAKPOINT . 'px) {';
 			$mob_styling_css .= $mobile;
 			$mob_styling_css .= '}';
 		}
-
 		return $desktop . $tab_styling_css . $mob_styling_css;
+
 	}
 
     /**
-	*Load Google Fonts in Frontend
-	 */
+	 * Load Google Fonts in Frontend
+	*/
 	public function frontend_footer_gfonts() {
+
 		if ( empty( self::$footer_gfonts ) ) {
 			return;
 		}
@@ -2744,7 +2809,9 @@ class PBG_Blocks_Helper {
 			return;
 		}
 		$this->load_google_font( self::$footer_gfonts );
+
 	}
+
 	/**
 	 * Creates and returns an instance of the class
 	 *
@@ -2754,11 +2821,13 @@ class PBG_Blocks_Helper {
 	 * @return object
 	 */
 	public static function get_instance() {
+
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
+
 	}
 }
 if ( ! function_exists( 'pbg_blocks_helper' ) ) {
