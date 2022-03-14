@@ -119,13 +119,19 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
 	}
 
-
+	/**
+	 * Load Json Files
+	 */
 
     public function pbg_mime_types($mimes) {
             $mimes['json'] = 'application/json'; 
             $mimes['svg'] = 'image/svg+xml'; 
             return $mimes; 
     } 
+
+    /**
+	 * Fix File Of type JSON
+	 */
 
     public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
 		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
@@ -644,7 +650,13 @@ class PBG_Blocks_Helper {
 
 		return $css;
 	}
-
+    /**
+	 * Render Inline CSS helper function
+	 *
+	 * @param array  $css the css for each block.
+	 * @param string $style_id the unique id for the rendered style.
+	 * @param bool   $in_content the bool for whether or not it should run in content.
+	 */
 	public function render_inline_css( $css, $style_id, $in_content = false ) {
 
 		if ( ! is_admin() ) {
@@ -657,7 +669,12 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
-
+    /**
+	 * Check if block should render inline.
+	 *
+	 * @param string $name the blocks name.
+	 * @param string $unique_id the blocks block_id.
+	 */
 	public function should_render_inline( $name, $unique_id ) {
 		if ( doing_filter( 'the_content' ) || apply_filters( 'premium_blocks_force_render_inline_css_in_content', false, $name, $unique_id ) || is_customize_preview() ) {
 			return true;
@@ -712,7 +729,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
-
+    	
+    /**
+	 * Load Google Font
+     *
+     * @since 1.9.2
+     * @access public
+	 */
 	public function frontend_gfonts() {
 		if ( empty( self::$gfonts ) ) {
 			return;
@@ -725,8 +748,14 @@ class PBG_Blocks_Helper {
 	}
 
 	/**
-	 * Print gFonts
+	* Print  Google Font
+     *
+     * @since 1.9.2
+     * @access public
+     * 
+     *  @param object $gfont .
 	 */
+
 	public function load_google_font( $gfonts ) {
 		$link    = '';
 		$subsets = array();
@@ -1159,13 +1188,11 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeMobile'] . 'px' . '!important' ) );
-
 		}
 		// Desc Style
 		if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeMobile'] . 'px' . '!important' ) );
-
 		}
         //Container Style
         if ( isset( $attr['paddingTMobile'] ) && isset($attr['containerStyles'][0]['paddingU'])) {
@@ -1643,7 +1670,6 @@ class PBG_Blocks_Helper {
 		};
 		return $content;
 	}
-
 	public function get_iconbox_css_style( $attr, $unique_id ) {
 		if ( isset( $attr['titleStyles'][0]['titleFont'] ) ) {
 			$this->add_gfont(
@@ -2595,139 +2621,7 @@ class PBG_Blocks_Helper {
 		$css->stop_media_query();
 		return $css->css_output();
 	}
-	public function get_newsLetter_css( $attributes, $content ) {
-		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
-		} else {
-			$unique_id = rand( 100, 10000 );
 
-		}
-		if ( $this->it_is_not_amp() ) {
-			wp_enqueue_script(
-				'pbg-newsletter-js',
-				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
-				'pbg-form-js',
-				PREMIUM_BLOCKS_URL . 'assets/js/mailchimp.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-			wp_localize_script(
-				'pbg-newsletter-js',
-				'premium_blocks_form_params',
-				array(
-					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
-					'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
-					'required'      => __( 'is required', 'premium-blocks' ),
-					'mismatch'      => __( 'does not match', 'premium-blocks' ),
-					'validation'    => __( 'is not valid', 'premium-blocks' ),
-					'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
-					'item'          => __( 'Item', 'premium-blocks' ),
-				)
-			);
-			wp_localize_script(
-				'pbg-form-js',
-				'settings',
-				array(
-					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
-					'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
-					'required'      => __( 'is required', 'premium-blocks' ),
-					'mismatch'      => __( 'does not match', 'premium-blocks' ),
-					'validation'    => __( 'is not valid', 'premium-blocks' ),
-					'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
-					'item'          => __( 'Item', 'premium-blocks' ),
-				)
-			);
-
-		}
-		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-			$css = $this->get_newsLetter_css_style( $attributes, $unique_id );
-			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
-					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
-				} else {
-					$this->render_inline_css( $css, $style_id, true );
-				}
-			}
-		};
-		return $content;
-	}
-
-    public function get_newsLetter_css_style( $attr, $unique_id ) {
-		if ( isset( $attr['inputStyles'][0]['textFontFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['inputStyles'][0]['textFontFamily'] ) ? $attr['inputStyles'][0]['textFontFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['inputStyles'][0]['textWeight'] ) ? $attr['inputStyles'][0]['textWeight'] : '' ),
-				)
-			);
-		}
-        if ( isset( $attr['btnStyles'][0]['btnFontFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['btnStyles'][0]['btnFontFamily'] ) ? $attr['btnStyles'][0]['btnFontFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['btnStyles'][0]['btnWeight'] ) ? $attr['btnStyles'][0]['btnWeight'] : '' ),
-				)
-			);
-		}
-		$css                    = new Premium_Blocks_css();
-		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-		// Style Description.
-
-		// if ( isset( $attr['inputStyles'] ) ) {
-		// 	if ( isset( $attr['inputStyles'][0]['textSize'] )  ) {
-		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-input__wrapper' . ' > input' );
-		// 		$css->add_property( 'font-size', ( $attr['inputStyles'][0]['textSize']. 'px') );
-		// 	}
-		// }
-        // if ( isset( $attr['btnStyles'] ) ) {
-		// 	if ( isset( $attr[['btnStyles']][0]['btnSize'] ) && isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
-		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-button__wrapper' . ' > button' );
-		// 		$css->add_property( 'font-size', ( $attr[['btnStyles']][0]['btnSize'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
-		// 	}
-		// }
-		$css->start_media_query( $media_query['tablet'] );
-
-	    // if ( isset( $attr['inputStyles'] ) ) {
-		// 	if ( isset( $attr['inputStyles'][0]['textSizeTablet'] )  ) {
-		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-input__wrapper' . ' > input' );
-		// 		$css->add_property( 'font-size', ( $attr['inputStyles'][0]['textSizeTablet']. 'px') );
-		// 	}
-		// }
-        // if ( isset( $attr['btnStyles'] ) ) {
-		// 	if ( isset( $attr[['btnStyles']][0]['btnSizeTablet'] ) && isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
-		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-button__wrapper' . ' > button' );
-		// 		$css->add_property( 'font-size', ( $attr[['btnStyles']][0]['btnSizeTablet'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
-		// 	}
-		// }
-		$css->stop_media_query();
-		$css->start_media_query( $media_query['mobile'] );
-	    // if ( isset( $attr['inputStyles'] ) ) {
-		// 	if ( isset( $attr['inputStyles'][0]['textSizeMobile'] )  ) {
-		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-input__wrapper' . ' > input' );
-		// 		$css->add_property( 'font-size', ( $attr['inputStyles'][0]['textSizeMobile']. 'px') );
-		// 	}
-		// }
-        // if ( isset( $attr['btnStyles'] ) ) {
-		// 	if ( isset( $attr[['btnStyles']][0]['btnSizeMobile'] ) && isset( $attr['btnStyles'][0]['btnSizeUnit'] ) ) {
-		// 		$css->set_selector( '#premium-newsLetter-' . $unique_id . '> .premium-newsletter-button__wrapper' . ' > button' );
-		// 		$css->add_property( 'font-size', ( $attr[['btnStyles']][0]['btnSizeMobile'] . $attr['btnStyles'][0]['btnSizeUnit'] ) );
-		// 	}
-		// }
-		$css->stop_media_query();
-		return $css->css_output();
-	}
 	/**
 	 * Get CSS value
 	 *
@@ -2837,6 +2731,10 @@ class PBG_Blocks_Helper {
 
 		return $desktop . $tab_styling_css . $mob_styling_css;
 	}
+
+    /**
+	*Load Google Fonts in Frontend
+	 */
 	public function frontend_footer_gfonts() {
 		if ( empty( self::$footer_gfonts ) ) {
 			return;
