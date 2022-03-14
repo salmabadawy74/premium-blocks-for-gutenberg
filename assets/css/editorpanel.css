@@ -3239,7 +3239,8 @@ input[type="number"] {
 .premium-popover-color .components-popover__content {
   overflow-x: visible;
   overflow-y: visible;
-  min-width: 290px; }
+  min-width: 290px;
+  max-width: 310px; }
 
 .premium-color-popover-container .premium-advanced-color-container {
   display: flex;
@@ -3347,9 +3348,10 @@ input[type="number"] {
 .premium-color-picker-skins {
   display: flex;
   margin: 0;
-  justify-content: space-between;
   align-items: center;
-  width: 100%; }
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start; }
   .premium-color-picker-skins li {
     display: flex;
     align-items: center;
@@ -3360,7 +3362,8 @@ input[type="number"] {
     margin-bottom: 0;
     cursor: pointer;
     border-radius: 50%;
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.09); }
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.09);
+    margin-top: 4px; }
     .premium-color-picker-skins li:not(:last-child) {
       margin-right: 6px; }
 
@@ -3389,7 +3392,7 @@ input[type="number"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 17px;
+  padding: 12px;
   border-bottom: 1px solid #eee; }
 
 .premium-color-picker-skins {
