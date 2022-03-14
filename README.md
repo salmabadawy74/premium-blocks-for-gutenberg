@@ -63,6 +63,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 - Tweak: Default layout for Banner and Videobox blocks improved for better UX.
 - Tweak: Improve Videobox block to add Youtube videos links directly without adding embed links.
+- Tweak: Color control UI improved for better editing experience.
 - Fixed: Content Position option not working in Section block.
 - Fixed: Badge Text Font Size control not working in Pricing Table block.
 
