@@ -2925,7 +2925,8 @@ i.fipicon-angle-left:before {
 
 .premium-blocks-range-control .premium-slider-units {
   font-size: 11px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin: 0px; }
   .premium-blocks-range-control .premium-slider-units li.single-unit {
     display: inline-block;
     margin-left: 6px;
