@@ -71,7 +71,7 @@ class PBG_Blocks_Helper {
 	 *
 	 * @since 1.8.2
 	 * @var premium_flag
-	 */
+	*/
 	public static $premium_flag = false;
 
 	/**
@@ -88,7 +88,6 @@ class PBG_Blocks_Helper {
 	public function __construct() {
 		// Gets Active Blocks.
 		self::$blocks = PBG_Admin::get_enabled_keys();
-
 		// Gets Plugin Admin Settings.
 		self::$config = PBG_Settings::get_enabled_keys();
         $allow_json       = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
@@ -98,7 +97,6 @@ class PBG_Blocks_Helper {
 		}
 		add_action( 'init', array( $this, 'load_api_settings' ) );
 		add_action( 'init', array( $this, 'on_init' ), 20 );
-
 		// Enqueue Editor Assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
 		// Enqueue Frontend Styles.
@@ -117,7 +115,6 @@ class PBG_Blocks_Helper {
 	/**
 	 * Load Json Files
 	 */
-
     public function pbg_mime_types($mimes) {
 
             $mimes['json'] = 'application/json'; 
@@ -129,7 +126,6 @@ class PBG_Blocks_Helper {
     /**
 	 * Fix File Of type JSON
 	 */
-
     public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
 
 		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
@@ -147,10 +143,8 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Enqueue Editor CSS/JS for Premium Blocks
-	 *
 	 * @since 1.0.0
 	 * @access public
-	 *
 	 * @return void
 	 */
 	public function pbg_editor() {
@@ -217,18 +211,13 @@ class PBG_Blocks_Helper {
 
 	}
 
+    /**
+	 * Enqueue Settings For blocks 
+	 * @since 1.9.2
+	 * @access public
+	 */
 	public function load_api_settings() {
 
-		register_setting(
-			'mail_chimp_api',
-			'mail_chimp_api',
-			array(
-				'type'         => 'string',
-				'description'  => __( 'Mail Chimp API Key', '' ),
-				'show_in_rest' => true,
-				'default'      => '',
-			)
-		);
         register_setting(
 			'allow_json_upload',
 			'allow_json_upload',
@@ -429,7 +418,7 @@ class PBG_Blocks_Helper {
                 'editor_script'   => 'pbg-blocks-js',
 			)
 		);
-        
+
 	}
 
 	/**
@@ -2743,7 +2732,6 @@ class PBG_Blocks_Helper {
     
 	/**
 	 * Generates stylesheet for reusable blocks.
-	 *
 	 * @param array $blocks Blocks array.
 	 * @since 1.1.0
 	 */
@@ -2814,10 +2802,8 @@ class PBG_Blocks_Helper {
 
 	/**
 	 * Creates and returns an instance of the class
-	 *
 	 * @since 1.0.0
 	 * @access public
-	 *
 	 * @return object
 	 */
 	public static function get_instance() {
@@ -2829,6 +2815,7 @@ class PBG_Blocks_Helper {
 		return self::$instance;
 
 	}
+
 }
 if ( ! function_exists( 'pbg_blocks_helper' ) ) {
 
