@@ -750,7 +750,7 @@ class PBG_Blocks_Helper {
 	 * Print Google Font
      * @since 1.9.2
      * @access public
-     *  @param object $gfont for google Font.
+     * @param object $gfont for google Font.
 	*/
 	public function load_google_font( $gfonts ) {
 
