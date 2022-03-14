@@ -34,3 +34,50 @@ require_once( PREMIUM_BLOCKS_PATH . 'includes/plugin.php' );
  * @return void
  */
 // add_action('init', array('Premium_Blocks_Gutenberg','get_instance') );
+
+/**
+	* Register gutenberg patterns
+    *
+    *
+    * @since 1.8.2
+    * @access public
+    *
+*/
+
+add_action('init','gutenberg_register_gutenberg_patterns');
+
+function gutenberg_register_gutenberg_patterns() {
+
+    // Register categories used for block patterns.
+    $pattern_categories = [
+        'work' => __( 'Work', 'premium_section' ),
+        'carousel' => __( 'Carousel', 'premium_section' ),
+        'brief' => __( 'Brief', 'premium_section' ),
+        'premium_pattern' => __( 'Premium Pattern', 'premium_section' )
+    ];
+
+    if ( ! empty( $pattern_categories ) && is_array($pattern_categories) ) {
+
+        foreach ( $pattern_categories as $pattern_category => $pattern_category_label ) {
+
+            register_block_pattern_category(
+                $pattern_category,
+                [ 'label' => $pattern_category_label ]
+            );
+        }
+    }
+        $response = wp_remote_get( 'https://pg.premiumtemplates.io/wp-json/patemp/v2/templates/premium_section' );
+
+        $content = wp_remote_retrieve_body( $response );
+
+        $pattern = json_decode($content, true);
+
+        foreach ( $pattern['templates'] as $title => $pattern ) {
+
+            $pattern_name = 'core/' . $pattern['title'];
+			
+            if ( ! WP_Block_Patterns_Registry::get_instance()->is_registered( $pattern_name ) ) {
+                register_block_pattern( $pattern_name, $pattern );
+            }
+        }
+}
