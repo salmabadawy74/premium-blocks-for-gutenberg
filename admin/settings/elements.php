@@ -17,7 +17,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie' );
+		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie','image-separator' );
 
 		private $pbg_default;
 
@@ -294,6 +294,15 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 									</td>
 
 								</tr>
+                                <tr>
+                                <th><?php echo __( 'Premium Image Separator', 'premium-gutenberg' ); ?></th>
+									<td>
+										<label class="switch">
+											<input type="checkbox" id="image-separator" name="image-separator" <?php checked( 1, $this->pbg_get_settings['image-separator'], true ); ?>>
+											<span class="slider round"></span>
+										</label>
+									</td>
+                                </tr>
 							</tbody>
 						</table>
 						<input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
@@ -357,6 +366,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 				'videoBox'     => intval( $settings['videoBox'] ? 1 : 0 ),
 				'fancyText'    => intval( $settings['fancyText'] ? 1 : 0 ),
 				'lottie'       => intval( $settings['lottie'] ? 1 : 0 ),
+                'image-separator'  => intval( $settings['image-separator'] ? 1 : 0 ),
 			);
 
 			update_option( 'pbg_settings', $this->pbg_settings );
