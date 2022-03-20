@@ -56521,7 +56521,7 @@ var edit = function (_Component) {
                             label: __("Height", 'premium-blocks-for-gutenberg'),
                             value: imgHeight,
                             onChange: function onChange(value) {
-                                return setAttributes({ imgHeighte: value });
+                                return setAttributes({ imgHeight: value });
                             },
                             tabletValue: imgHeightTablet,
                             onChangeTablet: function onChangeTablet(value) {

@@ -176,7 +176,7 @@ class edit extends Component {
                                 <ResponsiveRangeControl
                                     label={__("Height", 'premium-blocks-for-gutenberg')}
                                     value={imgHeight}
-                                    onChange={value => setAttributes({ imgHeighte: value })}
+                                    onChange={value => setAttributes({ imgHeight: value })}
                                     tabletValue={imgHeightTablet}
                                     onChangeTablet={value => setAttributes({ imgHeightTablet: value })}
                                     mobileValue={imgHeightMobile}
