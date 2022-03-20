@@ -56921,6 +56921,25 @@ var imageSeparatorAttrs = {
         type: 'boolean',
         default: false
     },
+    imgMask: {
+        type: 'boolean',
+        default: false
+    },
+    imgMaskURL: {
+        type: "string"
+
+    },
+    imgMaskID: {
+        type: "number"
+    },
+    imgMaskSize: {
+        type: "string",
+        default: "contain"
+    },
+    imgMaskPosition: {
+        type: "string",
+        default: "center center"
+    },
     iconStyles: {
         type: "array",
         default: [{
