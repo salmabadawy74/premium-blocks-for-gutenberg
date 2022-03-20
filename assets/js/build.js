@@ -56223,10 +56223,29 @@ function save(props) {
         iconType = attributes.iconType,
         icon = attributes.icon,
         imageURL = attributes.imageURL,
+        imageID = attributes.imageID,
         link = attributes.link,
         url = attributes.url,
+        gutter = attributes.gutter,
+        blur = attributes.blur,
+        bright = attributes.bright,
+        contrast = attributes.contrast,
+        saturation = attributes.saturation,
+        hue = attributes.hue,
+        blurHover = attributes.blurHover,
+        brightHover = attributes.brightHover,
+        contrastHover = attributes.contrastHover,
+        saturationHover = attributes.saturationHover,
+        hueHover = attributes.hueHover,
         linkTarget = attributes.linkTarget,
-        iconStyles = attributes.iconStyles;
+        iconStyles = attributes.iconStyles,
+        imgHeight = attributes.imgHeight,
+        imgHeightTablet = attributes.imgHeightTablet,
+        imgHeightMobile = attributes.imgHeightMobile,
+        imgHeightType = attributes.imgHeightType,
+        imgFit = attributes.imgFit,
+        advancedBorder = attributes.advancedBorder,
+        advancedBorderValue = attributes.advancedBorderValue;
 
 
     var target = linkTarget ? "_blank" : "_self";
@@ -56234,10 +56253,8 @@ function save(props) {
     return React.createElement(
         "div",
         {
-            className: (0, _classnames2.default)(className, "premium-block-" + block_id), id: "premium-image-separator-" + block_id,
-            style: {
-                textAlign: align
-            } },
+            className: (0, _classnames2.default)(className, "premium-block-" + block_id),
+            style: { textAlign: align } },
         React.createElement(
             "div",
             { className: "premium-image-separator-container", style: {
