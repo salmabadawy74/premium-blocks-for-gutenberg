@@ -369,8 +369,6 @@ const deprecated_attributes = Object.assign(attributes, new_Attributes)
 const deprecatedContent = [
     {
         attributes: deprecated_attributes,
-
-
         save: (props) => {
 
             const {
@@ -528,7 +526,7 @@ const deprecatedContent = [
         }
     },
     {
-        attributes: attributes,
+        attributes: deprecated_attributes,
         migrate: attributes => {
             let newAttributes = {
                 boxStyles: [
