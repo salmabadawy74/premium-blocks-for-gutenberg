@@ -223,13 +223,9 @@ class edit extends Component {
                                         "premium-blocks-for-gutenberg"
                                     )}
                                     value={imgHeight}
-<<<<<<< HEAD
                                     onChange={(value) =>
-                                        setAttributes({ imgHeighte: value })
+                                        setAttributes({ imgHeight: value })
                                     }
-=======
-                                    onChange={value => setAttributes({ imgHeight: value })}
->>>>>>> a0ba0123cf1446bd5eea86a742677981fc000d48
                                     tabletValue={imgHeightTablet}
                                     onChangeTablet={(value) =>
                                         setAttributes({
