@@ -2099,6 +2099,10 @@ a.premium-dheading-block__link:hover {
     transition: all 0.3s ease-in-out;
     font-style: normal !important;
 }
+.premium-image-separator-container img {
+    width: 200px;
+    height: 200px;
+}
 .premium-image-separator-container .dashicons {
     width: auto !important;
     height: auto !important;

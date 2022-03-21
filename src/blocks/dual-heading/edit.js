@@ -97,6 +97,7 @@ class edit extends Component {
                 label: __("Block", 'premium-blocks-for-gutenberg')
             }
         ];
+
         let loadFirstGoogleFonts;
         let loadSecondGoogleFonts;
         if (firstStyles[0].firstFamily !== 'Default') {
@@ -277,7 +278,7 @@ class edit extends Component {
                                     onColorChange={newValue => saveFirstStyle({ firstColor: newValue })}
                                 />
                                 <AdvancedPopColorControl
-                                    label={__(`Background Color`)}
+                                    label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
                                     colorValue={firstStyles[0].firstBackground}
                                     onColorChange={value => saveFirstStyle({ firstBackground: value, })}
                                     colorDefault={''}
