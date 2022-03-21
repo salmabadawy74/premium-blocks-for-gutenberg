@@ -10,10 +10,29 @@ export default function save(props) {
         iconType,
         icon,
         imageURL,
+        imageID,
         link,
         url,
+        gutter,
+        blur,
+        bright,
+        contrast,
+        saturation,
+        hue,
+        blurHover,
+        brightHover,
+        contrastHover,
+        saturationHover,
+        hueHover,
         linkTarget,
         iconStyles,
+        imgHeight,
+        imgHeightTablet,
+        imgHeightMobile,
+        imgHeightType,
+        imgFit,
+        advancedBorder,
+        advancedBorderValue
 
     } = attributes
 
@@ -21,13 +40,11 @@ export default function save(props) {
 
     return (
         <div
-            className={classnames(
-                className,
-                `premium-block-${block_id}`
-            )} id={`premium-image-separator-${block_id}`}
-            style={{
-                textAlign: align,
-            }}>
+            className={
+                classnames(className,
+                    `premium-block-${block_id}`
+                )}
+            style={{ textAlign: align }} >
             <div className={`premium-image-separator-container`} style={{
                 textAlign: align,
                 transform: `translateY(${gutter}%)`,
