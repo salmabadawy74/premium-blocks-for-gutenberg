@@ -59,6 +59,13 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
+= 1.9.4 =
+
+New: Added Premium Image Separator block.
+Tweak: Replace icons with text for Background Classic/Gradient control when Font Awesome is disabled.
+Fixed: Issues with controls naming.
+Fixed: Pages not loading after updating from older versions.
+
 = 1.9.3 =
 
 - Tweak: Default layout for Banner and Videobox blocks improved for better UX.
