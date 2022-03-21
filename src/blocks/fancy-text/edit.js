@@ -183,43 +183,6 @@ class edit extends Component {
             },
         ];
 
-
-
-        const onResetClickfancyTextTypo = () => {
-            setAttributes({
-                fancyTextWeight: 600,
-                fancyTextfontSizeUnit: "px",
-                fancyTextfontSize: "20",
-                fancyTextfontSizeMobile: "20",
-                fancyTextfontSizeTablet: "20",
-                fancyTextStyle: "normal",
-                fancyTextLetter: "0",
-                fancyTextUpper: false,
-            });
-        };
-
-        const onResetClickTextTypo = () => {
-            setAttributes({
-                textWeight: 600,
-                textfontSizeUnit: "px",
-                textfontSize: "20",
-                textfontSizeMobile: "20",
-                textfontSizeTablet: "20",
-                textStyle: "normal",
-                textLetter: "0",
-                textUpper: false,
-            });
-        };
-
-        const onResetClickLabelTextShadow = () => {
-            setAttributes({
-                shadowColor: "",
-                shadowBlur: "0",
-                shadowHorizontal: "0",
-                shadowVertical: "0",
-            });
-        };
-
         const changeFancyValue = (newText, newIndex) => {
             setAttributes({
                 repeaterFancyText: onRepeaterChange("title", newText, newIndex),
@@ -244,7 +207,6 @@ class edit extends Component {
         };
 
         const onRepeaterChange = (attr, value, index) => {
-
             return repeaterFancyText.map(function (item, currIndex) {
                 if (index == currIndex) {
                     item[attr] = value;
@@ -290,6 +252,7 @@ class edit extends Component {
                 ]),
             });
         };
+
         const saveFancyStyle = (value) => {
             const newUpdate = fancyStyles.map((item, index) => {
                 if (0 === index) {
@@ -299,6 +262,7 @@ class edit extends Component {
             });
             setAttributes({ fancyStyles: newUpdate });
         }
+
         const savePrefixStyle = (value) => {
             const newUpdate = PreStyles.map((item, index) => {
                 if (0 === index) {
@@ -548,7 +512,6 @@ class edit extends Component {
                             onChangeStyle={newStyle => saveFancyStyle({ fancyTextStyle: newStyle })}
                             onChangeSpacing={newValue => saveFancyStyle({ fancyTextLetter: newValue })}
                             onChangeUpper={check => saveFancyStyle({ fancyTextUpper: check })}
-                            onResetClick={onResetClickfancyTextTypo}
                         />
                         <AdvancedPopColorControl
                             label={__('Background Color')}
@@ -565,7 +528,6 @@ class edit extends Component {
                             onChangeBlur={(newBlur) => saveFancyStyle({ shadowBlur: newBlur })}
                             onChangehHorizontal={(newValue) => saveFancyStyle({ shadowHorizontal: newValue })}
                             onChangeVertical={(newValue) => saveFancyStyle({ shadowVertical: newValue })}
-                            onResetClick={onResetClickLabelTextShadow}
                         />
                         {effect == "typing" && cursorShow && (
                             <AdvancedPopColorControl
@@ -615,7 +577,6 @@ class edit extends Component {
                             onChangeStyle={(newStyle) => savePrefixStyle({ textStyle: newStyle })}
                             onChangeSpacing={(newValue) => savePrefixStyle({ textLetter: newValue })}
                             onChangeUpper={(check) => savePrefixStyle({ textUpper: check })}
-                            onResetClick={onResetClickTextTypo}
                         />
                         <AdvancedPopColorControl
                             label={__(`Background Color`)}

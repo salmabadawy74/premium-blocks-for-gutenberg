@@ -93,17 +93,9 @@ const imageSeparatorAttrs = {
         type: "number",
         default: "200"
     },
-    imgHeightType: {
-        type: "string",
-        default: "px"
-    },
     imgFit: {
         type: "string",
         value: 'fill'
-    },
-    advancedBorder: {
-        type: 'boolean',
-        default: false
     },
     imgMask: {
         type: 'boolean',
@@ -116,11 +108,11 @@ const imageSeparatorAttrs = {
     imgMaskID: {
         type: "number"
     },
-    imgMaskSize: {
+    maskSize: {
         type: "string",
         default: "contain"
     },
-    imgMaskPosition: {
+    maskPosition: {
         type: "string",
         default: "center center"
     },
@@ -149,6 +141,9 @@ const imageSeparatorAttrs = {
                 iconPaddingTablet: ".1",
                 iconPaddingType: "em",
                 iconPaddingMobile: ".1",
+                advancedBorder: false,
+                advancedBorderValue: '',
+                imgHeightType: "px",
             }
         ]
     }

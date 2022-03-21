@@ -1,5 +1,7 @@
 import React from 'react'
 const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
+import { FontAwesomeEnabled } from "../../assets/js/settings";
+
 import PremiumBackground from './premium-background'
 import map from 'lodash/map';
 const { __ } = wp.i18n;
@@ -20,7 +22,7 @@ export default function PremiumBackgroundControl({
 
     const bgType = [
         { key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') },
-        { key: 'gradient', icon: "fa fa-barcode", tooltip: __('gradient') },
+        { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient') },
     ];
 
     return (
@@ -34,9 +36,10 @@ export default function PremiumBackgroundControl({
                                 key={key}
                                 className="Premium-btn-size-btn"
                                 isSmall
+                                isPrimary={backgroundType === key}
                                 onClick={() => setAttributes({ backgroundType: key })}
                             >
-                                <i className={icon}></i>
+                                {1 == FontAwesomeEnabled ? <i className={icon}></i> : tooltip}
                             </Button>
                         </Tooltip>
                     ))}

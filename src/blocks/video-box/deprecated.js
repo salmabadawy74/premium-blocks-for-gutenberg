@@ -398,7 +398,7 @@ const deprecatedContent = [
                 descStyles
             } = props.attributes;
             const loopVideo = () => {
-                if ("youtube" === videoType) {
+                if (videoURL && "youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
@@ -684,7 +684,7 @@ const deprecatedContent = [
             } = props.attributes;
 
             const loopVideo = () => {
-                if ("youtube" === videoType) {
+                if (videoURL && "youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
@@ -870,7 +870,7 @@ const deprecatedContent = [
                 shadowPosition
             } = props.attributes;
             const loopVideo = () => {
-                if ("youtube" === videoType) {
+                if (videoURL && "youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
@@ -1056,7 +1056,7 @@ const deprecatedContent = [
                 shadowPosition
             } = props.attributes;
             const loopVideo = () => {
-                if ("youtube" === videoType) {
+                if (videoURL && "youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
@@ -1235,7 +1235,7 @@ const deprecatedContent = [
             } = props.attributes;
             const loopVideo = () => {
                 if ("youtube" === videoType) {
-                    if (videoURL.startsWith("http")) {
+                    if (videoURL && videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
                                 "https://www.youtube.com/embed/",

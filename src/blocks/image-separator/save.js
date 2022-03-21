@@ -26,13 +26,10 @@ export default function save(props) {
         hueHover,
         linkTarget,
         iconStyles,
-        imgHeight,
-        imgHeightTablet,
-        imgHeightMobile,
-        imgHeightType,
         imgFit,
-        advancedBorder,
-        advancedBorderValue
+        imgMaskURL,
+        maskSize,
+        maskPosition,
 
     } = attributes
 
@@ -59,7 +56,17 @@ export default function save(props) {
                     }} />
                 }
                 {
-                    iconType === 'image' && < img src={imageURL} />
+                    iconType === 'image' && < img
+                        src={imageURL}
+                        style={{
+                            maskSize: `${maskSize}`,
+                            maskPosition: `${maskPosition}`,
+                            maskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                            WebkitMaskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                            WebkitMaskSize: `${maskSize}`,
+                            WebkitMaskPosition: `${maskPosition}`,
+                            objectFit: `${imgFit}`,
+                        }} />
                 }
                 {link && <a className="premium-image-separator-link" href={`${url}`} target={target} rel="noopener noreferrer"></a>}
             </div>

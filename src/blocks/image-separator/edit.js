@@ -74,10 +74,7 @@ class edit extends Component {
             imgHeight,
             imgHeightTablet,
             imgHeightMobile,
-            imgHeightType,
             imgFit,
-            advancedBorder,
-            advancedBorderValue,
             imgMask,
             imgMaskID,
             imgMaskURL,
@@ -239,9 +236,9 @@ class edit extends Component {
                                         })
                                     }
                                     onChangeUnit={(key) =>
-                                        setAttributes({ imgHeightType: key })
+                                        saveIconStyle({ imgHeightType: key })
                                     }
-                                    unit={imgHeightType}
+                                    unit={iconStyles[0].imgHeightType}
                                     showUnit={true}
                                     defaultValue={200}
                                     units={["px", "em"]}
@@ -591,7 +588,7 @@ class edit extends Component {
                                 />
                             </Fragment>
                         )}
-                        {!advancedBorder && (
+                        {!iconStyles[0].advancedBorder && (
                             <ResponsiveRangeControl
                                 label={__(
                                     "Border Radius",
@@ -632,9 +629,9 @@ class edit extends Component {
                                 "Advanced Border Radius",
                                 "premium-blocks-for-gutenberg"
                             )}
-                            checked={advancedBorder}
+                            checked={iconStyles[0].advancedBorder}
                             onChange={(value) =>
-                                setAttributes({ advancedBorder: value })
+                                saveIconStyle({ advancedBorder: value })
                             }
                         />
                         <div>
@@ -652,15 +649,15 @@ class edit extends Component {
                                 Here
                             </a>
                         </div>
-                        {advancedBorder && (
+                        {iconStyles[0].advancedBorder && (
                             <TextControl
                                 label={__(
                                     "Border Radius",
                                     "premium-blocks-for-gutenberg"
                                 )}
-                                value={advancedBorderValue}
+                                value={iconStyles[0].advancedBorderValue}
                                 onChange={(value) =>
-                                    setAttributes({
+                                    saveIconStyle({
                                         advancedBorderValue: value,
                                     })
                                 }
@@ -705,10 +702,17 @@ class edit extends Component {
                                 <img
                                     src={imageURL}
                                     style={{
-                                        height: `${imageHeight}${imgHeightType}`,
+                                        maskSize: `${maskSize}`,
+                                        maskPosition: `${maskPosition}`,
+                                        maskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                                        WebkitMaskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                                        WebkitMaskSize: `${maskSize}`,
+                                        WebkitMaskPosition: `${maskPosition}`,
+                                        objectFit: `${imgFit}`,
+                                        height: `${imageHeight}${iconStyles[0].imgHeightType}`,
                                         width: `${iconSize}${iconStyles[0].iconSizeType}`,
-                                        borderRadius: advancedBorder
-                                            ? advancedBorderValue
+                                        borderRadius: iconStyles[0].advancedBorder
+                                            ? iconStyles[0].advancedBorderValue
                                             : `${iconBorderRadius}${iconStyles[0].iconBorderRadiusType}`,
                                     }}
                                 />
@@ -716,7 +720,7 @@ class edit extends Component {
                                 <MediaPlaceholder
                                     labels={{
                                         title: __(
-                                            "Premium Image Separator ",
+                                            "Premium Image Separator",
                                             "premium-blocks-for-gutenberg"
                                         ),
                                         instructions: __(
