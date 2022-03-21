@@ -4,6 +4,7 @@ const { Dropdown, Button } = wp.components;
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 export default function PremiumFilters(props) {
     const {
+        label,
         blur,
         bright,
         contrast,
@@ -18,7 +19,7 @@ export default function PremiumFilters(props) {
 
     return (
         <div className="premium-control-toggle">
-            <strong>{__("CSS Filters")}</strong>
+            <strong>{__(label || "CSS Filters")}</strong>
             <Dropdown
                 className="premium-control-toggle-btn"
                 contentClassName="premium-control-toggle-content"
