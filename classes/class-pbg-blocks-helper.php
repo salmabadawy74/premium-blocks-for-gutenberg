@@ -2808,7 +2808,7 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
-		
+
 		$style_id = 'pbg-block-image-separator-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -2858,16 +2858,16 @@ class PBG_Blocks_Helper {
 				$css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container' .' > img' );
 				$css->add_property( 'width', $css->render_color( $attr['iconStyles'][0]['iconSize'] . $attr['iconStyles'][0]['iconSizeType'] . '!important' ) );
 			}
-       
+
             if ( (isset( $attr['iconStyles'][0]['iconBorderRadius'] ) && isset( $attr['iconStyles'][0]['iconBorderRadiusType'] )) || $attr['iconStyles'][0]['advancedBorder'] ) {
                 $css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container'  .'> img' );
 				$css->add_property( 'border-radius', $css->render_color( $attr['iconStyles'][0]['advancedBorder'] ? $attr['iconStyles'][0]['advancedBorderValue'] : $attr['iconStyles'][0]['iconBorderRadius'] . $attr['iconStyles'][0]['iconBorderRadiusType'] . '!important' ) );
 			}
 		}
-		if ( isset( $attr['imgHeight']  ) && isset( $attr['iconStyles'][0]['imgHeightType']  ) ) { 
+		if ( isset( $attr['imgHeight']  ) && isset( $attr['iconStyles'][0]['imgHeightType']  ) ) {
 				$css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container' . '> img' );
 				$css->add_property( 'height', $css->render_color( $attr['imgHeight'] . $attr['iconStyles'][0]['imgHeightType'] . '!important' ) );
-		}	
+		}
 		$css->start_media_query( $media_query['tablet'] );
         if ( isset( $attr['iconStyles'] ) ) {
 			if ( isset( $attr['iconStyles'][0]['iconSizeTablet'] ) && isset( $attr['iconStyles'][0]['iconSizeType'] ) ) {
@@ -2891,7 +2891,7 @@ class PBG_Blocks_Helper {
 		}
 		if ( isset( $attr['imgHeightTablet']  ) && isset( $attr['iconStyles'][0]['imgHeightType']  ) ) {
 				$css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container' . '> img' );
-				$css->add_property( 'height', $css->render_color( $attr['imgHeightTablet'] . $attr['iconStyles'][0]['imgHeightType'] . '!important' ) );	
+				$css->add_property( 'height', $css->render_color( $attr['imgHeightTablet'] . $attr['iconStyles'][0]['imgHeightType'] . '!important' ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
@@ -2917,7 +2917,7 @@ class PBG_Blocks_Helper {
 		}
 		if ( isset( $attr['imgHeightMobile']  ) && isset( $attr['iconStyles'][0]['imgHeightType']  ) ) {
 				$css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container' . ' > img' );
-				$css->add_property( 'height', $css->render_color( $attr['imgHeightMobile'] . $attr['iconStyles'][0]['imgHeightType'] . '!important' ) );	
+				$css->add_property( 'height', $css->render_color( $attr['imgHeightMobile'] . $attr['iconStyles'][0]['imgHeightType'] . '!important' ) );
 		}
 		$css->stop_media_query();
 		return $css->css_output();
