@@ -56530,6 +56530,10 @@ var _premiumMediaUpload = __webpack_require__(20);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
+var _radioControl = __webpack_require__(12);
+
+var _radioControl2 = _interopRequireDefault(_radioControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -56545,17 +56549,13 @@ var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 var _wp$editor = wp.editor,
-    BlockControls = _wp$editor.BlockControls,
     MediaPlaceholder = _wp$editor.MediaPlaceholder,
-    AlignmentToolbar = _wp$editor.AlignmentToolbar,
-    InspectorControls = _wp$editor.InspectorControls,
-    MediaUpload = _wp$editor.MediaUpload;
+    InspectorControls = _wp$editor.InspectorControls;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl,
-    IconButton = _wp$components.IconButton;
+    ToggleControl = _wp$components.ToggleControl;
 var withSelect = wp.data.withSelect;
 
 var edit = function (_Component) {
@@ -56628,6 +56628,7 @@ var edit = function (_Component) {
                 maskSize = attributes.maskSize,
                 maskPosition = attributes.maskPosition;
 
+
             var ICON = [{
                 value: "icon",
                 label: __("Icon", "premium-blocks-for-gutenberg")
@@ -56635,6 +56636,7 @@ var edit = function (_Component) {
                 value: "image",
                 label: __("Image", "premium-blocks-for-gutenberg")
             }];
+
             var saveIconStyle = function saveIconStyle(value) {
                 var newUpdate = iconStyles.map(function (item, index) {
                     if (0 === index) {
@@ -56644,10 +56646,15 @@ var edit = function (_Component) {
                 });
                 setAttributes({ iconStyles: newUpdate });
             };
+
             var iconSize = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconSize, iconStyles[0].iconSizeTablet, iconStyles[0].iconSizeMobile);
+
             var iconBorderRadius = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconBorderRadius, iconStyles[0].iconBorderRadiusTablet, iconStyles[0].iconBorderRadiusMobile);
+
             var iconPadding = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconPadding, iconStyles[0].iconPaddingTablet, iconStyles[0].iconPaddingMobile);
+
             var imageHeight = this.getPreviewSize(this.props.deviceType, imgHeight, imgHeightTablet, imgHeightMobile);
+
             var renderCss = React.createElement(
                 "style",
                 null,
@@ -56655,15 +56662,6 @@ var edit = function (_Component) {
             );
 
             return [isSelected && React.createElement(
-                BlockControls,
-                null,
-                React.createElement(AlignmentToolbar, {
-                    value: align,
-                    onChange: function onChange(value) {
-                        setAttributes({ align: value });
-                    }
-                })
-            ), isSelected && React.createElement(
                 InspectorControls,
                 null,
                 React.createElement(
@@ -56797,6 +56795,14 @@ var edit = function (_Component) {
                             return setAttributes({ gutter: parseInt(newValue) });
                         },
                         help: "-50% is default. Increase to push the image outside or decrease to pull the image inside."
+                    }),
+                    React.createElement(_radioControl2.default, {
+                        choices: ["left", "center", "right"],
+                        label: __("Alignment "),
+                        onChange: function onChange(value) {
+                            return setAttributes({ align: value });
+                        },
+                        value: align
                     }),
                     React.createElement(ToggleControl, {
                         label: __("Link"),
@@ -56989,9 +56995,7 @@ var edit = function (_Component) {
                             colorDefault: "",
                             colorValue: iconStyles[0].iconColor,
                             onColorChange: function onColorChange(newValue) {
-                                return saveIconStyle({
-                                    iconColor: newValue
-                                });
+                                return saveIconStyle({ iconColor: newValue });
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
@@ -56999,18 +57003,14 @@ var edit = function (_Component) {
                             colorDefault: "",
                             colorValue: iconStyles[0].iconBGColor,
                             onColorChange: function onColorChange(newValue) {
-                                return saveIconStyle({
-                                    iconBGColor: newValue
-                                });
+                                return saveIconStyle({ iconBGColor: newValue });
                             }
                         }),
                         React.createElement(_ColorComponent2.default, {
                             label: __("Hover Color", "premium-blocks-for-gutenberg"),
                             colorValue: iconStyles[0].iconColorHover,
                             onColorChange: function onColorChange(newValue) {
-                                return saveIconStyle({
-                                    iconColorHover: newValue
-                                });
+                                return saveIconStyle({ iconColorHover: newValue });
                             },
                             colorDefault: ""
                         }),
@@ -57018,9 +57018,7 @@ var edit = function (_Component) {
                             label: __("Hover Background Color", "premium-blocks-for-gutenberg"),
                             colorValue: iconStyles[0].iconBGColorHover,
                             onColorChange: function onColorChange(newValue) {
-                                return saveIconStyle({
-                                    iconBGColorHover: newValue
-                                });
+                                return saveIconStyle({ iconBGColorHover: newValue });
                             },
                             colorDefault: ""
                         }),
@@ -57030,24 +57028,16 @@ var edit = function (_Component) {
                             horizontal: iconStyles[0].iconShadowHorizontal,
                             vertical: iconStyles[0].iconShadowVertical,
                             onChangeColor: function onChangeColor(newColor) {
-                                return saveIconStyle({
-                                    iconShadowColor: newColor.hex
-                                });
+                                return saveIconStyle({ iconShadowColor: newColor.hex });
                             },
                             onChangeBlur: function onChangeBlur(newBlur) {
-                                return saveIconStyle({
-                                    iconShadowBlur: newBlur
-                                });
+                                return saveIconStyle({ iconShadowBlur: newBlur });
                             },
                             onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                return saveIconStyle({
-                                    iconShadowHorizontal: newValue
-                                });
+                                return saveIconStyle({ iconShadowHorizontal: newValue });
                             },
                             onChangeVertical: function onChangeVertical(newValue) {
-                                return saveIconStyle({
-                                    iconShadowVertical: newValue
-                                });
+                                return saveIconStyle({ iconShadowVertical: newValue });
                             }
                         }),
                         React.createElement(_responsiveRangeControl2.default, {
@@ -57058,15 +57048,11 @@ var edit = function (_Component) {
                             },
                             tabletValue: iconStyles[0].iconPaddingTablet,
                             onChangeTablet: function onChangeTablet(value) {
-                                return saveIconStyle({
-                                    iconPaddingTablet: value
-                                });
+                                return saveIconStyle({ iconPaddingTablet: value });
                             },
                             mobileValue: iconStyles[0].iconPaddingMobile,
                             onChangeMobile: function onChangeMobile(value) {
-                                return saveIconStyle({
-                                    iconPaddingMobile: value
-                                });
+                                return saveIconStyle({ iconPaddingMobile: value });
                             },
                             onChangeUnit: function onChangeUnit(key) {
                                 return saveIconStyle({ iconPaddingType: key });
@@ -57086,15 +57072,11 @@ var edit = function (_Component) {
                         },
                         tabletValue: iconStyles[0].iconBorderRadiusTablet,
                         onChangeTablet: function onChangeTablet(value) {
-                            return saveIconStyle({
-                                iconBorderRadiusTablet: value
-                            });
+                            return saveIconStyle({ iconBorderRadiusTablet: value });
                         },
                         mobileValue: iconStyles[0].iconBorderRadiusMobile,
                         onChangeMobile: function onChangeMobile(value) {
-                            return saveIconStyle({
-                                iconBorderRadiusMobile: value
-                            });
+                            return saveIconStyle({ iconBorderRadiusMobile: value });
                         },
                         onChangeUnit: function onChangeUnit(key) {
                             return saveIconStyle({ iconBorderRadiusType: key });
@@ -57130,9 +57112,7 @@ var edit = function (_Component) {
                         label: __("Border Radius", "premium-blocks-for-gutenberg"),
                         value: iconStyles[0].advancedBorderValue,
                         onChange: function onChange(value) {
-                            return saveIconStyle({
-                                advancedBorderValue: value
-                            });
+                            return saveIconStyle({ advancedBorderValue: value });
                         }
                     })
                 )
