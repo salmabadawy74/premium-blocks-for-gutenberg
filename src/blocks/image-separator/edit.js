@@ -590,6 +590,10 @@ class edit extends Component {
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
                                 textShadow: `${iconStyles[0].iconShadowHorizontal}px ${iconStyles[0].iconShadowVertical}px ${iconStyles[0].iconShadowBlur}px ${iconStyles[0].iconShadowColor}`,
+                                borderRadius: iconStyles[0].advancedBorder
+                                    ? iconStyles[0].advancedBorderValue
+                                    : `${iconBorderRadius}${iconStyles[0].iconBorderRadiusType}`,
+
                             }}
                         />
                     )}

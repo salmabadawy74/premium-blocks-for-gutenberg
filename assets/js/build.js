@@ -57139,7 +57139,9 @@ var edit = function (_Component) {
                             padding: "" + iconPadding + iconStyles[0].iconPaddingType,
                             color: iconStyles[0].iconColor,
                             backgroundColor: iconStyles[0].iconBGColor,
-                            textShadow: iconStyles[0].iconShadowHorizontal + "px " + iconStyles[0].iconShadowVertical + "px " + iconStyles[0].iconShadowBlur + "px " + iconStyles[0].iconShadowColor
+                            textShadow: iconStyles[0].iconShadowHorizontal + "px " + iconStyles[0].iconShadowVertical + "px " + iconStyles[0].iconShadowBlur + "px " + iconStyles[0].iconShadowColor,
+                            borderRadius: iconStyles[0].advancedBorder ? iconStyles[0].advancedBorderValue : "" + iconBorderRadius + iconStyles[0].iconBorderRadiusType
+
                         }
                     }),
                     iconType === "image" && React.createElement(
