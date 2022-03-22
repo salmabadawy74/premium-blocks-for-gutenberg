@@ -2878,7 +2878,7 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'filter', "brightness(" . (isset( $attr['brightHover'] )? $attr['brightHover'] :'100') . "% ) contrast( " . (isset( $attr['contrastHover'])? $attr['contrastHover'] : '100') . "% ) saturate( " . (isset( $attr['saturationHover'])? $attr['saturationHover'] :'100')  .'% ) blur( ' . (isset($attr['blurHover'])? $attr['blurHover'] :'0') . 'px ) hue-rotate( ' . (isset($attr['hueHover'])? $attr['hueHover'] :'0') ."deg )" );
 		}	
         
-        if ( isset( $attr['imgHeight']  )|| isset( $attr['iconStyles'][0]['imgHeightType']  ) ) {
+        if ( isset( $attr['imgHeight']    ) ) {
 				$css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container' . '> img' );
 				$css->add_property( 'height', $css->render_color( $attr['imgHeight'] . (isset($attr['iconStyles'][0]['imgHeightType'])? $attr['iconStyles'][0]['imgHeightType'] :'px')  . '!important' ) );	
 		}
@@ -2900,7 +2900,7 @@ class PBG_Blocks_Helper {
 			}
             if ( (isset( $attr['iconStyles'][0]['iconBorderRadiusTablet'] ) && isset( $attr['iconStyles'][0]['iconBorderRadiusType'] )) || isset($attr['iconStyles'][0]['advancedBorder']) ) {
 				$css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container' . '> img' );
-				$css->add_property( 'border-radius', $css->render_color( isset($attr['advancedBorder']) ? $attr['advancedBorderValue'] : $attr['iconStyles'][0]['iconBorderRadiusTablet'] . $attr['iconStyles'][0]['iconBorderRadiusType'] . '!important' ) );
+				$css->add_property( 'border-radius', $css->render_color( isset($attr['iconStyles'][0]['advancedBorder']) ? $attr['iconStyles'][0]['advancedBorderValue'] : $attr['iconStyles'][0]['iconBorderRadiusTablet'] . $attr['iconStyles'][0]['iconBorderRadiusType'] . '!important' ) );
 			}
 		}
 		if ( isset( $attr['imgHeightTablet']  ) && isset( $attr['iconStyles'][0]['imgHeightType']  ) ) {
@@ -2926,7 +2926,7 @@ class PBG_Blocks_Helper {
 			}
             if ( (isset( $attr['iconStyles'][0]['iconBorderRadiusMobile'] ) && isset( $attr['iconStyles'][0]['iconBorderRadiusType'] )) || isset($attr['iconStyles'][0]['advancedBorder']) ) {
 				$css->set_selector( '.premium-block-' . $unique_id . '> .premium-image-separator-container' . ' > img' );
-				$css->add_property( 'border-radius', $css->render_color( isset($attr['advancedBorder']) ? $attr['advancedBorderValue'] : $attr['iconStyles'][0]['iconBorderRadiusMobile'] . $attr['iconStyles'][0]['iconBorderRadiusType'] . '!important' ) );
+				$css->add_property( 'border-radius', $css->render_color( isset($attr['iconStyles'][0]['advancedBorder']) ? $attr['iconStyles'][0]['advancedBorderValue'] : $attr['iconStyles'][0]['iconBorderRadiusMobile'] . $attr['iconStyles'][0]['iconBorderRadiusType'] . '!important' ) );
 			}
 		}
 		if ( isset( $attr['imgHeightMobile']  ) && isset( $attr['iconStyles'][0]['imgHeightType']  ) ) {
