@@ -124,6 +124,19 @@ class edit extends Component {
             imgHeightTablet,
             imgHeightMobile
         );
+        const renderCss = (<style>
+            {`
+        .premium-block-${this.props.clientId} .premium-image-separator-container:hover img{
+         filter:  brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg ) !important ;
+        }
+        .premium-block-${this.props.clientId} .premium-image-separator-container i:hover {
+          color: ${iconStyles[0].iconColorHover} !important;
+          background-color: ${iconStyles[0].iconBGColorHover} !important;
+        }
+            `}
+        </style>
+        )
+
         return [
             isSelected && (
                 <BlockControls>
@@ -666,6 +679,7 @@ class edit extends Component {
                     </PanelBody>
                 </InspectorControls>
             ),
+            renderCss,
             <div
                 className={classnames(
                     className,
@@ -767,3 +781,4 @@ export default withSelect((select, props) => {
         deviceType: deviceType,
     };
 })(edit);
+
