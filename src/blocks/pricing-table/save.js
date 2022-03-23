@@ -6,195 +6,93 @@ const save = props => {
     const { className } = props;
 
     const {
+        borderUpdated,
+        btnBorderUpdated,
         contentAlign,
-        tableBack,
-        borderType,
-        borderWidth,
-        borderRadius,
         borderColor,
-        tablePadding,
-        tableShadowBlur,
-        tableShadowColor,
-        tableShadowHorizontal,
-        tableShadowVertical,
-        tableShadowPosition,
-        titleChecked,
         title,
-        titleTag,
-        titleColor,
-        titleSize,
-        titleLetter,
-        titleUpper,
-        titleStyle,
-        titleLine,
-        titleWeight,
-        titleBack,
-        titleShadowBlur,
-        titleShadowColor,
-        titleShadowHorizontal,
-        titleShadowVertical,
-        titleMarginT,
-        titleMarginB,
-        titlePadding,
-        descChecked,
         desc,
-        descColor,
-        descSize,
-        descLine,
-        descWeight,
-        descStyle,
-        descLetter,
-        descBack,
-        descMarginT,
-        descMarginB,
-        descPadding,
+        titleChecked,
+        descChecked,
         priceChecked,
-        priceBack,
-        priceMarginT,
-        priceMarginB,
-        pricePadding,
-        slashPrice,
-        slashColor,
-        slashSize,
-        slashWeight,
-        slashV,
-        currPrice,
-        currColor,
-        currSize,
-        currWeight,
-        currV,
-        valPrice,
-        valColor,
-        valSize,
-        valWeight,
-        valV,
-        divPrice,
-        divColor,
-        divSize,
-        divWeight,
-        divV,
-        durPrice,
-        durColor,
-        durSize,
-        durWeight,
-        durV,
+        selectedStyle,
         btnChecked,
         btnText,
         btnLink,
-        btnTarget,
-        btnColor,
-        btnHoverColor,
-        btnSize,
-        btnWeight,
-        btnLine,
-        btnLetter,
-        btnUpper,
-        btnStyle,
-        btnBack,
-        btnHoverBack,
-        btnMarginT,
-        btnMarginB,
-        btnPadding,
-        btnPaddingU,
-        btnWidth,
-        btnBorderType,
-        btnBorderWidth,
-        btnBorderRadius,
-        btnBorderColor,
         badgeChecked,
-        badgePos,
-        badgeBack,
-        badgeColor,
-        badgeTop,
-        badgeHorizontal,
-        badgeWidth,
-        badgeSize,
-        badgeTextSize,
-        badgeWeight,
-        badgeLetter,
-        badgeStyle,
-        badgeUpper,
-        badgeText,
         listChecked,
-        listColor,
-        listWeight,
-        listSize,
-        listItemsStyle,
-        listLine,
-        listUpper,
-        listLetter,
-        listBack,
         listItems,
-        listMarginB,
-        listMarginT,
-        listPadding,
-        listStyle,
-        featsAlign,
-        id
+        block_id,
+        classMigrate,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        titleStyles,
+        priceStyles,
+        featureStyles,
+        descStyles,
+        buttonStyles,
+        badgeStyles,
+        tableStyles,
+        btnBorderTop,
+        btnBorderRight,
+        btnBorderBottom,
+        btnBorderLeft,
+        borderTop,
+        borderRight,
+        borderBottom,
+        borderLeft,
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-pricing-table");
 
     return (
         <div
-            id={`${mainClasses}-${id}`}
-            className={`${mainClasses}`}
+            id={`${mainClasses}-${block_id}`}
+            className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: contentAlign,
-                background: tableBack,
-                border: borderType,
-                borderWidth: borderWidth + "px",
-                borderRadius: borderRadius + "px",
+                backgroundColor: tableStyles[0].tableBack,
+                borderStyle: tableStyles[0].borderType,
+                borderWidth: borderUpdated
+                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                    : tableStyles[0].borderWidth + "px",
+                borderRadius: tableStyles[0].borderRadius + "px",
                 borderColor: borderColor,
-                padding: tablePadding + "px",
-                boxShadow: `${tableShadowHorizontal}px ${tableShadowVertical}px ${tableShadowBlur}px ${tableShadowColor} ${tableShadowPosition}`
+                padding: tableStyles[0].tablePadding + "px",
+                boxShadow: `${tableStyles[0].tableShadowHorizontal}px ${tableStyles[0].tableShadowVertical}px ${tableStyles[0].tableShadowBlur}px ${tableStyles[0].tableShadowColor} ${tableStyles[0].tableShadowPosition}`
             }}
         >
             {badgeChecked && (
                 <div
-                    className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgePos}`}
+                    className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgeStyles[0].badgePos}`}
                 >
                     <div
                         className={`premium-pricing-table__badge`}
                         style={{
                             borderRightColor:
-                                "right" === badgePos
-                                    ? badgeBack
-                                    : "transparent",
-                            borderTopColor:
-                                "left" === badgePos ? badgeBack : "transparent",
-                            borderBottomWidth: badgeSize + "px",
-                            borderRightWidth: badgeSize + "px",
-                            borderTopWidth:
-                                "left" === badgePos ? badgeSize + "px" : "none",
-                            borderLeftWidth:
-                                "right" === badgePos ? badgeSize + "px" : "none"
+                                "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                            borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                            borderBottomWidth: badgeStyles[0].badgeSize + "px",
+                            borderRightWidth: badgeStyles[0].badgeSize + "px",
+                            borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
+                            borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
                         }}
                     >
                         <span
                             style={{
-                                fontSize: badgeTextSize + "px",
-                                color: badgeColor,
-                                fontWeight: badgeWeight,
-                                textTransform: badgeUpper
-                                    ? "uppercase"
-                                    : "none",
-                                letterSpacing: badgeLetter + "px",
-                                fontStyle: badgeStyle,
-                                width: badgeWidth + "px",
-                                top: badgeTop + "px",
-                                left:
-                                    "left" === badgePos
-                                        ? badgeHorizontal + "px"
-                                        : "auto",
-                                right:
-                                    "right" === badgePos
-                                        ? badgeHorizontal + "px"
-                                        : "auto"
+                                color: badgeStyles[0].badgeColor,
+                                fontWeight: badgeStyles[0].badgeWeight,
+                                textTransform: badgeStyles[0].badgeUpper ? "uppercase" : "none",
+                                letterSpacing: badgeStyles[0].badgeLetter + "px",
+                                fontStyle: badgeStyles[0].badgeStyle,
+                                width: badgeStyles[0].badgeWidth + "px",
+                                top: badgeStyles[0].badgeTop + "px",
+                                left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
+                                right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
                             }}
                         >
-                            {badgeText}
-                        </span>
+                            {badgeStyles[0].badgeText}                       </span>
                     </div>
                 </div>
             )}
@@ -202,26 +100,24 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__title_wrap`}
                     style={{
-                        paddingTop: titleMarginT + "px",
-                        paddingBottom: titleMarginB + "px"
+                        marginTop: titleStyles[0].titleMarginT + "px",
+                        marginBottom: titleStyles[0].titleMarginB + "px",
+                        background: titleStyles[0].titleBack,
                     }}
                 >
                     <RichText.Content
-                        tagName={titleTag.toLowerCase()}
+                        tagName={titleStyles[0].titleTag.toLowerCase()}
                         className={`premium-pricing-table__title`}
                         value={title}
                         style={{
-                            color: titleColor,
-                            background: titleBack,
-                            fontSize: titleSize + "px",
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            lineHeight: titleLine + "px",
-                            marginBottom: titleMarginB + "px",
-                            padding: titlePadding + "px",
-                            textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`
+                            color: titleStyles[0].titleColor,
+                            letterSpacing: titleStyles[0].titleLetter + "px",
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle,
+                            fontWeight: titleStyles[0].titleWeight,
+                            lineHeight: titleStyles[0].titleLine + "px",
+                            padding: titleStyles[0].titlePadding + "px",
+                            textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`
                         }}
                     />
                 </div>
@@ -230,76 +126,71 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__price_wrap`}
                     style={{
-                        background: priceBack,
-                        marginTop: priceMarginT + "px",
-                        marginBottom: priceMarginB + "px",
-                        padding: pricePadding + "px",
+                        backgroundColor: priceStyles[0].priceBack,
+                        marginTop: priceStyles[0].priceMarginT + "px",
+                        marginBottom: priceStyles[0].priceMarginB + "px",
+                        padding: priceStyles[0].pricePadding + "px",
                         justifyContent: contentAlign
                     }}
                 >
-                    {slashPrice && (
+                    {priceStyles[0].slashPrice && (
                         <strike
                             className={`premium-pricing-table__slash`}
                             style={{
-                                color: slashColor,
-                                fontSize: slashSize + "px",
-                                fontWeight: slashWeight,
-                                alignSelf: slashV
+                                color: priceStyles[0].slashColor,
+                                fontWeight: priceStyles[0].slashWeight,
+                                alignSelf: priceStyles[0].slashV
                             }}
                         >
-                            {slashPrice}
+                            { priceStyles[0].slashPrice}
                         </strike>
                     )}
-                    {currPrice && (
+                    {priceStyles[0].currPrice && (
                         <span
                             className={`premium-pricing-table__currency`}
                             style={{
-                                color: currColor,
-                                fontSize: currSize + "px",
-                                fontWeight: currWeight,
-                                alignSelf: currV
+                                color: priceStyles[0].currColor,
+                                fontWeight: priceStyles[0].currWeight,
+                                alignSelf: priceStyles[0].currV
                             }}
                         >
-                            {currPrice}
+                            { priceStyles[0].currPrice}
                         </span>
                     )}
-                    {valPrice && (
+                    {priceStyles[0].valPrice && (
                         <span
                             className={`premium-pricing-table__val`}
                             style={{
-                                color: valColor,
-                                fontSize: valSize + "px",
-                                fontWeight: valWeight,
-                                alignSelf: valV
+                                color: priceStyles[0].valColor,
+                                fontWeight: priceStyles[0].valWeight,
+                                alignSelf: priceStyles[0].valV
                             }}
                         >
-                            {valPrice}
+                            { priceStyles[0].valPrice}
                         </span>
                     )}
-                    {divPrice && (
+                    {priceStyles[0].divPrice && (
                         <span
                             className={`premium-pricing-table__divider`}
                             style={{
-                                color: divColor,
-                                fontSize: divSize + "px",
-                                fontWeight: divWeight,
-                                alignSelf: divV
+                                color: priceStyles[0].divColor,
+                                fontWeight: priceStyles[0].divWeight,
+                                alignSelf: priceStyles[0].divV
                             }}
                         >
-                            {divPrice}
+                            { priceStyles[0].divPrice}
                         </span>
                     )}
-                    {durPrice && (
+                    {priceStyles[0].durPrice && (
                         <span
                             className={`premium-pricing-table__dur`}
                             style={{
-                                color: durColor,
-                                fontSize: durSize + "px",
-                                fontWeight: durWeight,
-                                alignSelf: durV
+                                color: priceStyles[0].durColor,
+                                fontWeight: priceStyles[0].durWeight,
+                                alignSelf: priceStyles[0].durV
                             }}
                         >
-                            {durPrice}
+                            { priceStyles[0].durPrice}
                         </span>
                     )}
                 </div>
@@ -308,26 +199,24 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__list_wrap`}
                     style={{
-                        marginTop: listMarginT + "px",
-                        marginBottom: listMarginB + "px"
+                        marginTop: featureStyles[0].listMarginT + "px",
+                        marginBottom: featureStyles[0].listMarginB + "px"
                     }}
                 >
                     <ul
-                        className={`premium-pricing-table__list list-${listStyle}`}
+                        className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
                         style={{
-                            color: listColor,
-                            fontSize: listSize + "px",
-                            background: listBack,
-                            padding: listPadding + "px",
-                            listStyle:
-                                "check" !== listStyle ? listStyle : "none",
+                            color: featureStyles[0].listColor,
+                            background: featureStyles[0].listBack,
+                            padding: featureStyles[0].listPadding + "px",
+                            listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                             listStylePosition: "inside",
-                            fontWeight: listWeight,
-                            letterSpacing: listLetter + "px",
-                            textTransform: listUpper ? "uppercase" : "none",
-                            fontStyle: listItemsStyle,
-                            lineHeight: listLine + "px",
-                            textAlign: featsAlign ? featsAlign : contentAlign
+                            fontWeight: featureStyles[0].listWeight,
+                            textTransform: featureStyles[0].listUpper ? "uppercase" : "none",
+                            letterSpacing: featureStyles[0].listLetter + "px",
+                            fontStyle: featureStyles[0].listItemsStyle,
+                            lineHeight: featureStyles[0].listLine + "px",
+                            textAlign: featureStyles[0].featsAlign ? featureStyles[0].featsAlign : contentAlign
                         }}
                     >
                         {listItems}
@@ -341,16 +230,15 @@ const save = props => {
                         className={`premium-pricing-table__desc`}
                         value={desc}
                         style={{
-                            color: descColor,
-                            background: descBack,
-                            fontSize: descSize + "px",
-                            fontWeight: descWeight,
-                            lineHeight: descLine + "px",
-                            letterSpacing: descLetter + "px",
-                            fontStyle: descStyle,
-                            marginTop: descMarginT + "px",
-                            marginBottom: descMarginB + "px",
-                            padding: descPadding + "px"
+                            color: descStyles[0].descColor,
+                            background: descStyles[0].descBack,
+                            fontWeight: descStyles[0].descWeight,
+                            letterSpacing: descStyles[0].descLetter + "px",
+                            fontStyle: descStyles[0].descStyle,
+                            lineHeight: descStyles[0].descLine + "px",
+                            marginTop: descStyles[0].descMarginT + "px",
+                            marginBottom: descStyles[0].descMarginB + "px",
+                            padding: descStyles[0].descPadding + "px"
                         }}
                     />
                 </div>
@@ -359,29 +247,30 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__button`}
                     style={{
-                        width: btnWidth + "%"
+                        width: buttonStyles[0].btnWidth + "%"
                     }}
                 >
                     <a
                         class={`premium-pricing-table__button_link`}
                         href={btnLink}
-                        target={btnTarget ? "_blank" : "_self"}
+                        target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
                         rel="noopener noreferrer"
                         style={{
-                            color: btnColor,
-                            background: btnBack ? btnBack : "transparent",
-                            fontSize: btnSize + "px",
-                            fontWeight: btnWeight,
-                            letterSpacing: btnLetter + "px",
-                            fontStyle: btnStyle,
-                            lineHeight: btnLine + "px",
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB,
-                            padding: btnPadding + btnPaddingU,
-                            border: btnBorderType,
-                            borderWidth: btnBorderWidth + "px",
-                            borderRadius: btnBorderRadius + "px",
-                            borderColor: btnBorderColor
+                            color: buttonStyles[0].btnColor,
+                            background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+                            fontWeight: buttonStyles[0].btnWeight,
+                            letterSpacing: buttonStyles[0].btnLetter + "px",
+                            fontStyle: buttonStyles[0].btnStyle,
+                            lineHeight: buttonStyles[0].btnLine + "px",
+                            marginTop: buttonStyles[0].btnMarginT,
+                            marginBottom: buttonStyles[0].btnMarginB,
+                            padding: buttonStyles[0].btnPadding + buttonStyles[0].btnPaddingU,
+                            borderStyle: buttonStyles[0].btnBorderType,
+                            borderWidth: btnBorderUpdated
+                                ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                : buttonStyles[0].btnBorderWidth + "px",
+                            borderRadius: buttonStyles[0].btnBorderRadius + "px",
+                            borderColor: buttonStyles[0].btnBorderColor
                         }}
                     >
                         <RichText.Content
@@ -391,16 +280,16 @@ const save = props => {
                             }
                             value={btnText}
                             style={{
-                                textTransform: btnUpper ? "uppercase" : "none"
+                                textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
                             }}
                         />
                     </a>
                     <style
                         dangerouslySetInnerHTML={{
                             __html: [
-                                `#premium-pricing-table-${id} .premium-pricing-table__button_link:hover {`,
-                                `color: ${btnHoverColor} !important;`,
-                                `background: ${btnHoverBack} !important`,
+                                `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
+                                `color: ${buttonStyles[0].btnHoverColor} !important;`,
+                                `background: ${buttonStyles[0].btnHoverBack} !important`,
                                 "}"
                             ].join("\n")
                         }}

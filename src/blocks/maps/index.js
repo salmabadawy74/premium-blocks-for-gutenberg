@@ -1,24 +1,23 @@
 import { maps } from "../../../assets/js/settings";
+import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
-
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control';
 const className = "premium-maps";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
 
 const {
-    IconButton,
-    Toolbar,
     PanelBody,
     SelectControl,
-    RangeControl,
     TextControl,
     TextareaControl,
-    ToggleControl
+    ToggleControl,
 } = wp.components;
 
-const { InspectorControls, MediaUpload, ColorPalette } = wp.blockEditor;
+const { InspectorControls } = wp.editor;
 
 const { Component, Fragment } = wp.element;
 
@@ -78,11 +77,11 @@ const mapAttrs = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description")
+        default: __("Cool Description", 'premium-blocks-for-gutenberg')
     },
     mapMarker: {
         type: "boolean",
@@ -130,8 +129,157 @@ const mapAttrs = {
     gapBetween: {
         type: "number",
         default: 5
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     }
+
 };
+
+const mapAttrs_1_2 = {
+    mapID: {
+        type: "string"
+    },
+    mapStyle: {
+        type: "string",
+        default: "[]"
+    },
+    mapType: {
+        type: "string",
+        default: "roadmap"
+    },
+    height: {
+        type: "number",
+        default: 500
+    },
+    zoom: {
+        type: "number",
+        default: 6
+    },
+    mapTypeControl: {
+        type: "boolean",
+        default: true
+    },
+    zoomControl: {
+        type: "boolean",
+        default: true
+    },
+    fullscreenControl: {
+        type: "boolean",
+        default: true
+    },
+    streetViewControl: {
+        type: "boolean",
+        default: false
+    },
+    scrollwheel: {
+        type: "boolean",
+        default: false
+    },
+    centerLat: {
+        type: "string",
+        default: "40.7569733"
+    },
+    centerLng: {
+        type: "string",
+        default: " -73.98878250000001"
+    },
+    markerOpen: {
+        type: "boolean",
+        default: false
+    },
+    markerTitle: {
+        type: "string",
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
+    },
+    markerDesc: {
+        type: "string",
+        default: __("Cool Description", 'premium-blocks-for-gutenberg')
+    },
+    mapMarker: {
+        type: "boolean",
+        default: true
+    },
+    markerIconUrl: {
+        type: "string"
+    },
+    markerIconId: {
+        type: "number",
+        default: ""
+    },
+    markerCustom: {
+        type: "boolean",
+        default: false
+    },
+    maxWidth: {
+        type: "number",
+        default: 300
+    },
+    titleColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    titleSize: {
+        type: "number",
+        default: 20
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    descSize: {
+        type: "number",
+        default: 16
+    },
+    boxAlign: {
+        type: "string",
+        default: "center"
+    },
+    boxPadding: {
+        type: "number",
+        default: "0"
+    },
+    gapBetween: {
+        type: "number",
+        default: 5
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+}
+const newAttributes_1_0 = {
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+}
+const mapAttrs_1_3 = Object.assign(mapAttrs_1_2, newAttributes_1_0);
 
 class PremiumMap extends Component {
     constructor() {
@@ -148,7 +296,6 @@ class PremiumMap extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
-
         if (!attributes.mapID) {
             setAttributes({ mapID: "premium-map-" + clientId });
         }
@@ -304,25 +451,28 @@ class PremiumMap extends Component {
             descSize,
             boxAlign,
             boxPadding,
-            gapBetween
+            gapBetween,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = this.props.attributes;
 
         const TYPES = [
             {
                 value: "roadmap",
-                label: __("Road Map")
+                label: __("Road Map", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "satellite",
-                label: __("Satellite")
+                label: __("Satellite", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "terrain",
-                label: __("Terrain")
+                label: __("Terrain", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "hybrid",
-                label: __("Hybrid")
+                label: __("Hybrid", 'premium-blocks-for-gutenberg')
             }
         ];
 
@@ -342,7 +492,7 @@ class PremiumMap extends Component {
                                 __("Get your location coordinates from"),
                                 <a href="https://www.latlong.net/" target="_blank">
                                     &nbsp;
-                  {__("here")}
+                                    {__("here", 'premium-blocks-for-gutenberg')}
                                 </a>
                             ]}
                             onChange={newLng => setAttributes({ centerLng: newLng })}
@@ -354,218 +504,235 @@ class PremiumMap extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Marker")}
+                        title={__("Marker", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Enable Marker")}
+                            label={__("Enable Marker", 'premium-blocks-for-gutenberg')}
                             checked={mapMarker}
                             onChange={check => setAttributes({ mapMarker: check })}
-                            help={__("Disable marker is applied on page reload")}
+                            help={__("Disable marker is applied on page reload", 'premium-blocks-for-gutenberg')}
                         />
                         {mapMarker && (
                             <Fragment>
                                 <TextControl
-                                    label={__("Marker Title")}
+                                    label={__("Marker Title", 'premium-blocks-for-gutenberg')}
                                     value={markerTitle}
                                     onChange={newText => setAttributes({ markerTitle: newText })}
                                 />
                                 <TextareaControl
-                                    label={__("Marker Description")}
+                                    label={__("Marker Description", 'premium-blocks-for-gutenberg')}
                                     value={markerDesc}
                                     onChange={newText => setAttributes({ markerDesc: newText })}
                                 />
-                                <RangeControl
-                                    label={__("Spacing (PX)")}
+                                <ResponsiveSingleRangeControl
+                                    label={__("Spacing (PX)", 'premium-blocks-for-gutenberg')}
                                     value={gapBetween}
                                     min="10"
                                     max="80"
                                     onChange={newSize => setAttributes({ gapBetween: newSize })}
+                                    showUnit={false}
+                                    defaultValue={10}
                                 />
                                 <ToggleControl
-                                    label={__("Description opened by default")}
+                                    label={__("Description opened by default", 'premium-blocks-for-gutenberg')}
                                     checked={markerOpen}
                                     onChange={newValue => setAttributes({ markerOpen: newValue })}
                                 />
-                                <Toolbar
-                                    controls={ALIGNS.map(align => ({
-                                        icon: "editor-align" + align,
-                                        isActive: align === boxAlign,
-                                        onClick: () => setAttributes({ boxAlign: align })
-                                    }))}
+                                <RadioComponent
+                                    choices={["left", "center", "right"]}
+                                    value={boxAlign}
+                                    onChange={newValue => setAttributes({ boxAlign: newValue })}
+                                    label={__("Align", 'premium-blocks-for-gutenberg')}
                                 />
                                 <ToggleControl
-                                    label={__("Custom Marker Icon")}
+                                    label={__("Custom Marker Icon", 'premium-blocks-for-gutenberg')}
                                     checked={markerCustom}
                                     onChange={check => setAttributes({ markerCustom: check })}
                                 />
-                                {markerCustom && markerIconUrl && (
-                                    <img src={markerIconUrl} width="100%" height="auto" />
-                                )}
                                 {markerCustom && (
-                                    <MediaUpload
-                                        allowedTypes={["image"]}
-                                        onSelect={media => {
+                                    <PremiumMediaUpload
+                                        type="image"
+                                        imageID={markerIconId}
+                                        imageURL={markerIconUrl}
+                                        onSelectMedia={media => {
                                             setAttributes({
                                                 markerIconId: media.id,
-                                                markerIconUrl:
-                                                    "undefined" === typeof media.sizes.thumbnail
-                                                        ? media.url
-                                                        : media.sizes.thumbnail.url
+                                                markerIconUrl: media.url
                                             });
                                         }}
-                                        type="image"
-                                        value={markerIconId}
-                                        render={({ open }) => (
-                                            <IconButton
-                                                label={__("Change Marker Icon")}
-                                                icon="edit"
-                                                onClick={open}
-                                            >
-                                                {__("Change Marker Icon")}
-                                            </IconButton>
-                                        )}
+                                        onRemoveImage={() =>
+                                            setAttributes({
+                                                markerIconId: "",
+                                                markerIconUrl: ""
+                                            })
+                                        }
+
                                     />
                                 )}
-                                <RangeControl
-                                    label={__("Description Box Max Width (PX)")}
+                                <ResponsiveSingleRangeControl
+                                    label={__("Description Box Max Width (PX)", 'premium-blocks-for-gutenberg')}
                                     value={maxWidth}
                                     min="10"
                                     max="500"
                                     onChange={newSize => setAttributes({ maxWidth: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
-                                <RangeControl
-                                    label={__("Description Box Padding (PX)")}
+                                <ResponsiveSingleRangeControl
+                                    label={__("Description Box Padding (PX)", 'premium-blocks-for-gutenberg')}
                                     value={boxPadding}
                                     min="1"
                                     max="50"
                                     onChange={newSize => setAttributes({ boxPadding: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                             </Fragment>
                         )}
                     </PanelBody>
                     {mapMarker && markerTitle && (
                         <PanelBody
-                            title={__("Marker Title Style")}
+                            title={__("Marker Title Style", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <RangeControl
-                                label={__("Font Size (PX)")}
+                            <ResponsiveSingleRangeControl
+                                label={__("Font Size (PX)", 'premium-blocks-for-gutenberg')}
                                 value={titleSize}
                                 min="10"
                                 max="80"
                                 onChange={newSize => setAttributes({ titleSize: newSize })}
+                                showUnit={false}
+                                defaultValue={0}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={titleColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            titleColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                colorValue={titleColor}
+                                colorDefault={''}
+                                onColorChange={newValue => setAttributes({ titleColor: newValue === undefined ? "transparent" : newValue })
+                                }
+                            />
                         </PanelBody>
                     )}
                     {mapMarker && markerDesc && (
                         <PanelBody
-                            title={__("Marker Description Style")}
+                            title={__("Marker Description Style", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <RangeControl
-                                label={__("Font Size (PX)")}
+                            <ResponsiveSingleRangeControl
+                                label={__("Font Size (PX)", 'premium-blocks-for-gutenberg')}
                                 value={descSize}
                                 min="10"
                                 max="80"
                                 onChange={newSize => setAttributes({ descSize: newSize })}
+                                showUnit={false}
+                                defaultValue={0}
                             />
-                            <Fragment>
-                                <p>{__("Text Color")}</p>
-                                <ColorPalette
-                                    value={descColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            descColor:
-                                                newValue === undefined ? "transparent" : newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                colorValue={descColor}
+                                colorDefault={''}
+                                onColorChange={newValue => setAttributes({ descColor: newValue === undefined ? "transparent" : newValue })}
+                            />
                         </PanelBody>
                     )}
+                    {
+                        mapMarker && markerDesc && (
+                            <PanelBody
+                                title={__("Marker Description Style", 'premium-block-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <ResponsiveSingleRangeControl
+                                    label={__("Font Size (PX)", 'premium-block-for-gutenberg')}
+                                    value={descSize}
+                                    min="10"
+                                    max="80"
+                                    onChange={newSize => setAttributes({ descSize: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={descColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => setAttributes({ descColor: newValue === undefined ? "transparent" : newValue })}
+                                />
+                            </PanelBody >
+                        )
+                    }
                     <PanelBody
-                        title={__("Controls")}
+                        title={__("Controls", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Map Type")}
+                            label={__("Map Type", 'premium-blocks-for-gutenberg')}
                             options={TYPES}
                             value={mapType}
                             onChange={newType => setAttributes({ mapType: newType })}
                         />
-                        <RangeControl
-                            label={__("Map Height (PX)")}
+                        <ResponsiveSingleRangeControl
+                            label={__("Map Height (PX)", 'premium-blocks-for-gutenberg')}
                             value={height}
                             min="10"
                             max="800"
                             onChange={newSize => setAttributes({ height: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <RangeControl
-                            label={__("Zoom")}
+                        <ResponsiveSingleRangeControl
+                            label={__("Zoom", 'premium-blocks-for-gutenberg')}
                             value={zoom}
                             min="1"
                             max="14"
                             onChange={newSize => setAttributes({ zoom: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
                         <ToggleControl
-                            label={__("Map Type Controls")}
+                            label={__("Map Type Controls", 'premium-blocks-for-gutenberg')}
                             checked={mapTypeControl}
                             onChange={check => setAttributes({ mapTypeControl: check })}
                         />
                         <ToggleControl
-                            label={__("Zoom Controls")}
+                            label={__("Zoom Controls", 'premium-blocks-for-gutenberg')}
                             checked={zoomControl}
                             onChange={check => setAttributes({ zoomControl: check })}
                         />
                         <ToggleControl
-                            label={__("Street View Control")}
+                            label={__("Street View Control", 'premium-blocks-for-gutenberg')}
                             checked={streetViewControl}
                             onChange={check => setAttributes({ streetViewControl: check })}
                         />
 
                         <ToggleControl
-                            label={__("Full Screen Control")}
+                            label={__("Full Screen Control", 'premium-blocks-for-gutenberg')}
                             checked={fullscreenControl}
                             onChange={check => setAttributes({ fullscreenControl: check })}
                         />
                         <ToggleControl
-                            label={__("Scroll Wheel Zoom")}
+                            label={__("Scroll Wheel Zoom", 'premium-blocks-for-gutenberg')}
                             checked={scrollwheel}
                             onChange={check => setAttributes({ scrollwheel: check })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Map Style")}
+                        title={__("Map Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextareaControl
-                            label={__("Maps Style")}
+                            label={__("Maps Style", 'premium-blocks-for-gutenberg')}
                             value={mapStyle}
                             help={[
-                                __("Get your custom styling from"),
+                                __("Get your custom styling from", 'premium-blocks-for-gutenberg'),
                                 <a href="https://snazzymaps.com/" target="_blank">
                                     &nbsp;
-                  {__("here")}
+                                    {__("here")}
                                 </a>
                             ]}
                             onChange={newStyle =>
@@ -573,10 +740,18 @@ class PremiumMap extends Component {
                             }
                         />
                     </PanelBody>
-                </InspectorControls>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                    />
+                </InspectorControls >
             ),
             <div
-                className={`${className}__wrap`}
+                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 id={mapID}
                 style={{
                     height: height + "px"
@@ -622,12 +797,15 @@ registerBlockType("premium/maps", {
             descSize,
             boxAlign,
             boxPadding,
-            gapBetween
+            gapBetween,
+            hideDesktop,
+            hideTablet,
+            hideMobile
         } = props.attributes;
 
         return (
             <div
-                className={`${className}__wrap`}
+                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 id={mapID}
                 style={{
                     height: height + "px"
@@ -692,7 +870,7 @@ registerBlockType("premium/maps", {
                             map			: map,
                             icon        : ${markerCustom} ? markerIcon : ''
                         });
-                        
+
                         let infowindow = new google.maps.InfoWindow({
                             maxWidth    : ${maxWidth},
                             content		: pin.innerHTML
@@ -704,13 +882,139 @@ registerBlockType("premium/maps", {
                             infowindow.open( map, marker );
                         });
                     }
-                    
+
                 });`}
                 </script>
             </div>
         );
     },
     deprecated: [
+        {
+            attributes: mapAttrs_1_3,
+            migrate: attributes => {
+                let newAttributes = {
+                    hideDesktop: false,
+                    hideTablet: false,
+                    hideMobile: false
+                }
+                return Object.assign(attributes, newAttributes)
+            },
+            save: props => {
+                const {
+                    mapID,
+                    height,
+                    mapStyle,
+                    mapType,
+                    zoom,
+                    mapTypeControl,
+                    zoomControl,
+                    fullscreenControl,
+                    streetViewControl,
+                    scrollwheel,
+                    centerLat,
+                    centerLng,
+                    mapMarker,
+                    markerOpen,
+                    markerIconUrl,
+                    markerCustom,
+                    maxWidth,
+                    markerTitle,
+                    markerDesc,
+                    titleColor,
+                    titleSize,
+                    descColor,
+                    descSize,
+                    boxAlign,
+                    boxPadding,
+                    gapBetween,
+                } = props.attributes;
+
+                return (
+                    <div
+                        className={`${className}__wrap `}
+                        id={mapID}
+                        style={{
+                            height: height + "px"
+                        }}
+                    >
+                        <div className={`${className}__marker`}>
+                            <div
+                                className={`${className}__info`}
+                                style={{
+                                    textAlign: boxAlign,
+                                    padding: boxPadding + "px"
+                                }}
+                            >
+                                {markerTitle && (
+                                    <h3
+                                        className={`${className}__title`}
+                                        style={{
+                                            color: titleColor,
+                                            fontSize: titleSize + "px",
+                                            marginBottom: gapBetween + "px"
+                                        }}
+                                    >
+                                        {markerTitle}
+                                    </h3>
+                                )}
+                                {markerDesc && (
+                                    <div
+                                        className={`${className}__desc`}
+                                        style={{
+                                            color: descColor,
+                                            fontSize: descSize + "px"
+                                        }}
+                                    >
+                                        {markerDesc}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <script>
+                            {`window.addEventListener('load',function(){
+                            if( typeof google === 'undefined' ) return;
+                            let mapElem = document.getElementById('${mapID}');
+                            let pin = mapElem.querySelector('.${className}__marker');
+                            let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
+
+                            let map = new google.maps.Map(mapElem, {
+                                zoom: ${zoom},
+                                gestureHandling: 'cooperative',
+                                mapTypeId: '${mapType}',
+                                mapTypeControl: ${mapTypeControl},
+                                zoomControl: ${zoomControl},
+                                fullscreenControl: ${fullscreenControl},
+                                streetViewControl: ${streetViewControl},
+                                scrollwheel: ${scrollwheel},
+                                center: latlng,
+                                styles: ${mapStyle}
+                            });
+                            if( ${mapMarker} ) {
+                                let markerIcon = '${markerIconUrl}';
+                                let marker = new google.maps.Marker({
+                                    position	: latlng,
+                                    map			: map,
+                                    icon        : ${markerCustom} ? markerIcon : ''
+                                });
+
+                                let infowindow = new google.maps.InfoWindow({
+                                    maxWidth    : ${maxWidth},
+                                    content		: pin.innerHTML
+                                });
+                                if (${markerOpen}) {
+                                  infowindow.open( map, marker );
+                                }
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    infowindow.open( map, marker );
+                                });
+                            }
+
+                        });`}
+                        </script>
+                    </div>
+                );
+            }
+        },
         {
             attributes: mapAttrs,
             save: props => {
@@ -790,7 +1094,7 @@ registerBlockType("premium/maps", {
                         let mapElem = document.getElementById('${mapID}');
                         let pin = mapElem.querySelector('.${className}__marker');
                         let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
-    
+
                         let map = new google.maps.Map(mapElem, {
                             zoom: ${zoom},
                             gestureHandling: 'cooperative',
@@ -810,19 +1114,19 @@ registerBlockType("premium/maps", {
                                 map			: map,
                                 icon        : ${markerCustom} ? markerIcon : ''
                             });
-                            
+
                             let infowindow = new google.maps.InfoWindow({
                                 maxWidth    : ${maxWidth},
                                 content		: pin.innerHTML
                             });
                             if (${markerOpen}) {
-                              infowindow.open( map, marker );
+                                infowindow.open( map, marker );
                             }
                             google.maps.event.addListener(marker, 'click', function() {
                                 infowindow.open( map, marker );
                             });
                         }
-                        
+
                     });`}
                         </script>
                     </div>

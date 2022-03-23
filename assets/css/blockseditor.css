@@ -8,14 +8,30 @@
 .components-panel__body .premium-panel-body-inner {
     padding-left: 10px;
 }
-.components-panel__body .premium-panel-body.is-opened .components-panel__body-title,
-.components-panel__body .premium-panel-body.is-opened .components-panel__body-toggle,
-.components-panel__body .premium-panel-body .premium-panel-body-inner.is-opened .components-panel__body-title,
-.components-panel__body .premium-panel-body .premium-panel-body-inner.is-opened .components-panel__body-toggle {
+.components-panel__body
+    .premium-panel-body.is-opened
+    .components-panel__body-title,
+.components-panel__body
+    .premium-panel-body.is-opened
+    .components-panel__body-toggle,
+.components-panel__body
+    .premium-panel-body
+    .premium-panel-body-inner.is-opened
+    .components-panel__body-title,
+.components-panel__body
+    .premium-panel-body
+    .premium-panel-body-inner.is-opened
+    .components-panel__body-toggle {
     background-color: #f3f4f5;
 }
-.components-panel__body .premium-panel-body .premium-panel-body-inner .components-panel__body-title,
-.components-panel__body .premium-panel-body .premium-panel-body-inner .components-panel__body-toggle {
+.components-panel__body
+    .premium-panel-body
+    .premium-panel-body-inner
+    .components-panel__body-title,
+.components-panel__body
+    .premium-panel-body
+    .premium-panel-body-inner
+    .components-panel__body-toggle {
     background-color: #fff;
 }
 .components-panel__body .premium-panel-body-inner.is-opened {
@@ -155,4 +171,7 @@
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon-box__btn {
     color: #000;
+}
+.components-dropdown__content .components-popover__content {
+    min-width: 290px !important;
 }

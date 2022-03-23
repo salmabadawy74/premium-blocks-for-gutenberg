@@ -1,10 +1,13 @@
 const className = "premium-accordion";
 
+import classnames from 'classnames'
+
+
 const { __ } = wp.i18n;
 
 const { RichText, InnerBlocks } = wp.editor;
 
-const deprecated_attributes = {
+const attributes = {
     accordionId: {
         type: "string"
     },
@@ -55,6 +58,22 @@ const deprecated_attributes = {
     titleBorderWidth: {
         type: "number",
         default: "1"
+    },
+    titleBorderTop: {
+        type: "number"
+    },
+    titleBorderRight: {
+        type: "number"
+    },
+    titleBorderBottom: {
+        type: "number"
+    },
+    titleBorderLeft: {
+        type: "number"
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
     },
     titleBorderRadius: {
         type: "number",
@@ -135,6 +154,25 @@ const deprecated_attributes = {
         type: "number",
         default: "1"
     },
+    descBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderTop: {
+        type: "number"
+    },
+    descBorderRight: {
+        type: "number"
+    },
+    descBorderBottom: {
+        type: "number"
+    },
+    descBorderLeft: {
+        type: "number"
+    },
+    titleEditBorder: {
+        type: "boolean"
+    },
     descBorderRadius: {
         type: "number",
         default: "0"
@@ -189,12 +227,436 @@ const deprecated_attributes = {
         type: "number",
         default: 10
     }
-};
+}
+
 
 const deprecated = [
     {
-        attributes: deprecated_attributes,
+        attributes: attributes,
+        migrate: (attributes) => {
+            let newAttributes = {
+                titleStyles: [
+                    {
+                        titleColor: attributes.titleColor,
+                        titleSize: attributes.titleSize,
+                        titleLine: attributes.titleLine,
+                        titleLetter: attributes.titleLetter,
+                        titleStyle: attributes.titleStyle,
+                        titleUpper: attributes.titleUpper,
+                        titleWeight: attributes.titleWeight,
+                        titleBorder: attributes.titleBorder,
+                        titleBorderRadius: attributes.titleBorderRadius,
+                        titleBorderColor: attributes.titleBorderColor,
+                        titleBack: attributes.titleBack,
+                        titleShadowColor: attributes.titleShadowColor,
+                        titleShadowBlur: attributes.titleShadowBlur,
+                        titleShadowHorizontal: attributes.titleShadowHorizontal,
+                        titleShadowVertical: attributes.titleShadowVertical,
+                    }
+                ]
+                ,
+                arrowStyles: [
+                    {
+                        arrowColor: attributes.arrowColor,
+                        arrowBack: attributes.arrowBack,
+                        arrowPos: attributes.arrowPos,
+                        arrowPadding: attributes.arrowPadding,
+                        arrowRadius: attributes.arrowRadius,
+                        arrowSize: attributes.arrowSize
+                    }]
+                ,
+                descStyles: [
+                    {
+                        descAlign: attributes.descAlign,
+                        descColor: attributes.descColor,
+                        descBack: attributes.descBack,
+                        descBorder: attributes.descBorder,
+                        descBorderWidth: attributes.descBorderWidth,
+                        descBorderUpdated: attributes.descBorderUpdated,
+                        descBorderTop: attributes.descBorderTop,
+                        descBorderRight: attributes.descBorderRight,
+                        descBorderBottom: attributes.descBorderBottom,
+                        descBorderLeft: attributes.descBorderLeft,
+                        descBorderRadius: attributes.descBorderRadius,
+                        descBorderColor: attributes.descBorderColor,
+                        descSize: attributes.descSize,
+                        descLine: attributes.descLine,
+                        descLetter: attributes.descLetter,
+                        descStyle: attributes.descStyle,
+                        descUpper: attributes.descUpper,
+                        descWeight: attributes.descWeight,
+                        descPaddingT: attributes.descPaddingT,
+                        descPaddingR: attributes.descPaddingR,
+                        descPaddingB: attributes.descPaddingB,
+                        descPaddingL: attributes.descPaddingL
+                    }
+
+                ],
+                titlePaddingTTablet: "0",
+                titlePaddingRTablet: "0",
+                titlePaddingBTablet: "0",
+                titlePaddingLTablet: "0",
+                titlePaddingTMobile: "0",
+                titlePaddingRMobile: "0",
+                titlePaddingBMobile: "0",
+                titlePaddingLMobile: "0",
+                arrowPaddingTTablet: "0",
+                arrowPaddingRTablet: "0",
+                arrowPaddingBTablet: "0",
+                arrowPaddingLTablet: "0",
+                arrowPaddingTMobile: "0",
+                arrowPaddingRMobile: "0",
+                arrowPaddingBMobile: "0",
+                arrowPaddingLMobile: "0",
+                descPaddingTTablet: "0",
+                descPaddingRTablet: "0",
+                descPaddingBTablet: "0",
+                descPaddingLTablet: "0",
+                descPaddingTMobile: "0",
+                descPaddingRMobile: "0",
+                descPaddingBMobile: "0",
+                descPaddingLMobile: "0",
+
+
+            }
+            return Object.assign(attributes, newAttributes)
+        },
         save: props => {
+            const {
+                accordionId,
+                repeaterItems,
+                direction,
+                titleTag,
+                titleSize,
+                titleLine,
+                titleLetter,
+                titleStyle,
+                titleUpper,
+                titleWeight,
+                titleColor,
+                titleBorder,
+                titleBorderWidth,
+                titleBorderColor,
+                titleBorderTop,
+                titleBorderRight,
+                titleBorderBottom,
+                titleBorderLeft,
+                titleBorderRadius,
+                titleBack,
+                titleShadowBlur,
+                titleShadowColor,
+                titleShadowHorizontal,
+                titleShadowVertical,
+                titlePaddingT,
+                titlePaddingR,
+                titlePaddingB,
+                titlePaddingL,
+                arrowColor,
+                arrowBack,
+                arrowPos,
+                arrowPadding,
+                arrowSize,
+                arrowRadius,
+                contentType,
+                descAlign,
+                descSize,
+                descLine,
+                descLetter,
+                descStyle,
+                descUpper,
+                descWeight,
+                descColor,
+                descBack,
+                descBorder,
+                descBorderColor,
+                descBorderRadius,
+                descBorderWidth,
+                descBorderTop,
+                descBorderRight,
+                descBorderBottom,
+                descBorderLeft,
+                textShadowBlur,
+                textShadowColor,
+                textShadowHorizontal,
+                textShadowVertical,
+                descPaddingT,
+                descPaddingR,
+                descPaddingB,
+                descPaddingL,
+                titleBorderUpdated,
+                descBorderUpdated,
+            } = props.attributes;
+
+            const mainClasses = classnames(className, 'premium-accordion');
+
+            const accordionItems = repeaterItems.map((item, index) => {
+                return (
+                    <div
+                        id={`premium-accordion__layer${index}`}
+                        className={`premium-accordion__content_wrap`}
+                    >
+                        <div
+                            className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+                            style={{
+                                backgroundColor: titleBack,
+                                borderStyle: titleBorder,
+                                borderWidth: titleBorderUpdated
+                                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                    : titleBorderWidth + "px",
+                                borderRadius: titleBorderRadius + "px",
+                                borderColor: titleBorderColor,
+                                paddingTop: titlePaddingT,
+                                paddingRight: titlePaddingR,
+                                paddingBottom: titlePaddingB,
+                                paddingLeft: titlePaddingL
+                            }}
+                        >
+                            <div className={`premium-accordion__title`}>
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-accordion__title_text`}
+                                    value={item.titleText}
+                                    style={{
+                                        color: titleColor,
+                                        fontSize: titleSize + "px",
+                                        letterSpacing: titleLetter + "px",
+                                        textTransform: titleUpper ? "uppercase" : "none",
+                                        fontStyle: titleStyle,
+                                        fontWeight: titleWeight,
+                                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                        lineHeight: titleLine + "px"
+                                    }}
+                                />
+                            </div>
+                            <div className={`premium-accordion__icon_wrap`}>
+                                <svg
+                                    className={`premium-accordion__icon premium-accordion__closed`}
+                                    role="img"
+                                    focusable="false"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={arrowSize}
+                                    height={arrowSize}
+                                    viewBox="0 0 20 20"
+                                    style={{
+                                        fill: arrowColor,
+                                        backgroundColor: arrowBack,
+                                        padding: arrowPadding + "px",
+                                        borderRadius: arrowRadius + "px"
+                                    }}
+                                >
+                                    <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
+                                </svg>
+                            </div>
+                        </div>
+                        <div
+                            className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
+                            style={{
+                                textAlign: descAlign,
+                                backgroundColor: descBack,
+                                borderStyle: descBorder,
+                                borderWidth: descBorderUpdated
+                                    ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
+                                    : descBorderWidth + "px",
+                                borderRadius: descBorderRadius + "px",
+                                borderColor: descBorderColor,
+                                paddingTop: descPaddingT,
+                                paddingRight: descPaddingR,
+                                paddingBottom: descPaddingB,
+                                paddingLeft: descPaddingL
+                            }}
+                        >
+                            {"text" === contentType && (
+                                <RichText.Content
+                                    tagName="p"
+                                    className={`premium-accordion__desc`}
+                                    value={item.descText}
+                                    style={{
+                                        color: descColor,
+                                        fontSize: descSize + "px",
+                                        letterSpacing: descLetter + "px",
+                                        textTransform: descUpper ? "uppercase" : "none",
+                                        textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
+                                        fontStyle: descStyle,
+                                        fontWeight: descWeight,
+                                        lineHeight: descLine + "px"
+                                    }}
+                                />
+                            )}
+                            {"block" === contentType && <InnerBlocks.Content />}
+                        </div>
+                    </div>
+                );
+            });
+            return (
+                <div id={accordionId} className={`${mainClasses}`}>
+                    {accordionItems}
+                </div>
+            );
+        }
+    },
+    {
+        attributes: attributes,
+
+        save: (props) => {
+            const {
+                accordionId,
+                repeaterItems,
+                direction,
+                titleTag,
+                titleSize,
+                titleLine,
+                titleLetter,
+                titleStyle,
+                titleUpper,
+                titleWeight,
+                titleColor,
+                titleBorder,
+                titleBorderColor,
+                titleBorderWidth,
+                titleBorderRadius,
+                titleBack,
+                titleShadowBlur,
+                titleShadowColor,
+                titleShadowHorizontal,
+                titleShadowVertical,
+                titlePaddingT,
+                titlePaddingR,
+                titlePaddingB,
+                titlePaddingL,
+                arrowColor,
+                arrowBack,
+                arrowPos,
+                arrowPadding,
+                arrowSize,
+                arrowRadius,
+                contentType,
+                descAlign,
+                descSize,
+                descLine,
+                descLetter,
+                descStyle,
+                descUpper,
+                descWeight,
+                descColor,
+                descBack,
+                descBorder,
+                descBorderColor,
+                descBorderRadius,
+                descBorderWidth,
+                textShadowBlur,
+                textShadowColor,
+                textShadowHorizontal,
+                textShadowVertical,
+                descPaddingT,
+                descPaddingR,
+                descPaddingB,
+                descPaddingL,
+            } = props.attributes;
+            const accordionItems = repeaterItems.map((item, index) => {
+                return (
+                    <div
+                        id={`premium-accordion__layer${index}`}
+                        className={`premium-accordion__content_wrap`}
+                    >
+                        <div
+                            className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+                            style={{
+                                backgroundColor: titleBack,
+                                border: titleBorder,
+                                borderWidth: titleBorderWidth + "px",
+                                borderRadius: titleBorderRadius + "px",
+                                borderColor: titleBorderColor,
+                                paddingTop: titlePaddingT,
+                                paddingRight: titlePaddingR,
+                                paddingBottom: titlePaddingB,
+                                paddingLeft: titlePaddingL,
+                            }}
+                        >
+                            <div className={`premium-accordion__title`}>
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-accordion__title_text`}
+                                    value={item.titleText}
+                                    style={{
+                                        color: titleColor,
+                                        fontSize: titleSize + "px",
+                                        letterSpacing: titleLetter + "px",
+                                        textTransform: titleUpper ? "uppercase" : "none",
+                                        fontStyle: titleStyle,
+                                        fontWeight: titleWeight,
+                                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
+                                        lineHeight: titleLine + "px",
+                                    }}
+                                />
+                            </div>
+                            <div className={`premium-accordion__icon_wrap`}>
+                                <svg
+                                    className={`premium-accordion__icon premium-accordion__closed`}
+                                    role="img"
+                                    focusable="false"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={arrowSize}
+                                    height={arrowSize}
+                                    viewBox="0 0 20 20"
+                                    style={{
+                                        fill: arrowColor,
+                                        backgroundColor: arrowBack,
+                                        padding: arrowPadding + "px",
+                                        borderRadius: arrowRadius + "px",
+                                    }}
+                                >
+                                    <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
+                                </svg>
+                            </div>
+                        </div>
+                        <div
+                            className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
+                            style={{
+                                textAlign: descAlign,
+                                backgroundColor: descBack,
+                                border: descBorder,
+                                borderWidth: descBorderWidth + "px",
+                                borderRadius: descBorderRadius + "px",
+                                borderColor: descBorderColor,
+                                paddingTop: descPaddingT,
+                                paddingRight: descPaddingR,
+                                paddingBottom: descPaddingB,
+                                paddingLeft: descPaddingL,
+                            }}
+                        >
+                            {"text" === contentType && (
+                                <RichText.Content
+                                    tagName="p"
+                                    className={`premium-accordion__desc`}
+                                    value={item.descText}
+                                    style={{
+                                        color: descColor,
+                                        fontSize: descSize + "px",
+                                        letterSpacing: descLetter + "px",
+                                        textTransform: descUpper ? "uppercase" : "none",
+                                        textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
+                                        fontStyle: descStyle,
+                                        fontWeight: descWeight,
+                                        lineHeight: descLine + "px",
+                                    }}
+                                />
+                            )}
+                            {"block" === contentType && <InnerBlocks.Content />}
+                        </div>
+                    </div>
+                );
+            });
+            return (
+                <div id={accordionId} className={`${className}`}>
+                    {accordionItems}
+                </div>
+            );
+        },
+    },
+
+    {
+        attributes: attributes,
+        save: (props) => {
             const {
                 accordionId,
                 repeaterItems,
@@ -243,7 +705,7 @@ const deprecated = [
                 descPaddingT,
                 descPaddingR,
                 descPaddingB,
-                descPaddingL
+                descPaddingL,
             } = props.attributes;
 
             const accordionItems = repeaterItems.map((item, index) => {
@@ -263,7 +725,7 @@ const deprecated = [
                                 paddingTop: titlePaddingT,
                                 paddingRight: titlePaddingR,
                                 paddingBottom: titlePaddingB,
-                                paddingLeft: titlePaddingL
+                                paddingLeft: titlePaddingL,
                             }}
                         >
                             <div className={`${className}__title`}>
@@ -279,7 +741,7 @@ const deprecated = [
                                         fontStyle: titleStyle,
                                         fontWeight: titleWeight,
                                         textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                        lineHeight: titleLine + "px"
+                                        lineHeight: titleLine + "px",
                                     }}
                                 />
                             </div>
@@ -296,7 +758,7 @@ const deprecated = [
                                         fill: arrowColor,
                                         backgroundColor: arrowBack,
                                         padding: arrowPadding + "px",
-                                        borderRadius: arrowRadius + "px"
+                                        borderRadius: arrowRadius + "px",
                                     }}
                                 >
                                     <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -315,7 +777,7 @@ const deprecated = [
                                 paddingTop: descPaddingT,
                                 paddingRight: descPaddingR,
                                 paddingBottom: descPaddingB,
-                                paddingLeft: descPaddingL
+                                paddingLeft: descPaddingL,
                             }}
                         >
                             {"text" === contentType && (
@@ -330,7 +792,7 @@ const deprecated = [
                                         textTransform: descUpper ? "uppercase" : "none",
                                         fontStyle: descStyle,
                                         fontWeight: descWeight,
-                                        lineHeight: descLine + "px"
+                                        lineHeight: descLine + "px",
                                     }}
                                 />
                             )}
@@ -344,7 +806,7 @@ const deprecated = [
                     {accordionItems}
                 </div>
             );
-        }
-    }
+        },
+    },
 ];
 export default deprecated;

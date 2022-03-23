@@ -1,123 +1,100 @@
 import classnames from 'classnames'
 
 const save = props => {
-   
-  const { className } = props;
-    
-  const {
-    selectedIcon,
-    align,
-    hoverEffect,
-    iconSize,
-    iconSizeUnit,
-    iconColor,
-    iconBack,
-    shadowBlur,
-    shadowColor,
-    shadowHorizontal,
-    shadowVertical,
-    paddingT,
-    paddingR,
-    paddingB,
-    paddingL,
-    paddingU,
-    marginT,
-    marginR,
-    marginB,
-    marginL,
-    borderType,
-    borderWidth,
-    borderRadius,
-    borderColor,
-    backgroundColor,
-    imageURL,
-    fixed,
-    backgroundRepeat,
-    backgroundPosition,
-    backgroundSize,
-    wrapBorderType,
-    wrapBorderWidth,
-    wrapBorderRadius,
-    wrapBorderColor,
-    wrapShadowBlur,
-    wrapShadowColor,
-    wrapShadowHorizontal,
-    wrapShadowVertical,
-    wrapShadowPosition,
-    wrapPaddingT,
-    wrapPaddingR,
-    wrapPaddingB,
-    wrapPaddingL,
-    wrapMarginT,
-    wrapMarginR,
-    wrapMarginB,
-    wrapMarginL,
-    urlCheck,
-    link,
-    target
-  } = props.attributes;
-  
-  const mainClasses = classnames ( className, 'premium-icon' );
 
-  return (
-    <div
-      className={`${mainClasses}__container`}
-      style={{
-        textAlign: align,
-        backgroundColor: backgroundColor,
-        backgroundImage: `url('${imageURL}')`,
-        backgroundRepeat: backgroundRepeat,
-        backgroundPosition: backgroundPosition,
-        backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset",
-        border: wrapBorderType,
-        borderWidth: wrapBorderWidth + "px",
-        borderRadius: wrapBorderRadius + "px",
-        borderColor: wrapBorderColor,
-        boxShadow: `${wrapShadowHorizontal || 0}px ${wrapShadowVertical ||
-          0}px ${wrapShadowBlur ||
-          0}px ${wrapShadowColor} ${wrapShadowPosition}`,
-        paddingTop: wrapPaddingT,
-        paddingRight: wrapPaddingR,
-        paddingBottom: wrapPaddingB,
-        paddingLeft: wrapPaddingL,
-        marginTop: wrapMarginT,
-        marginRight: wrapMarginR,
-        marginBottom: wrapMarginB,
-        marginLeft: wrapMarginL
-      }}
-    >
-      <a
-        className={`premium-icon__link`}
-        href={urlCheck && link}
-        rel="noopener noreferrer"
-        target={target ? "_blank" : "_self"}
-      >
-        <i
-          className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
-          style={{
-            color: iconColor || "#6ec1e4",
-            backgroundColor: iconBack,
-            fontSize: (iconSize || 50) + iconSizeUnit,
-            paddingTop: paddingT + paddingU,
-            paddingRight: paddingR + paddingU,
-            paddingBottom: paddingB + paddingU,
-            paddingLeft: paddingL + paddingU,
-            marginTop: marginT,
-            marginRight: marginR,
-            marginBottom: marginB,
-            marginLeft: marginL,
-            border: borderType,
-            borderWidth: borderWidth + "px",
-            borderRadius: borderRadius || 100 + "px",
-            borderColor: borderColor,
-            textShadow: `${shadowHorizontal || 0}px ${shadowVertical ||
-              0}px ${shadowBlur || 0}px ${shadowColor}`
-          }}
-        />
-      </a>
-    </div>
-  );
+    const { className } = props;
+
+    const {
+        iconBorder,
+        wrapBorder,
+        iconType,
+        selectedIcon,
+        align,
+        hoverEffect,
+        iconStyles,
+        containerStyles,
+        borderWidth,
+        iconBorderTop,
+        iconBorderRight,
+        iconBorderBottom,
+        iconBorderLeft,
+        wrapBorderWidth,
+        wrapBorderTop,
+        wrapBorderRight,
+        wrapBorderBottom,
+        wrapBorderLeft,
+        urlCheck,
+        link,
+        target,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        backgroundType
+    } = props.attributes;
+
+    const mainClasses = classnames(className, 'premium-icon');
+
+    let btnGrad, btnGrad2, btnbg;
+    if ('gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+    }
+
+    return (
+        <div
+            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            style={{
+                textAlign: align,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundImage: btnbg,
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].wrapBorderType,
+                borderWidth: wrapBorder
+                    ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+                    : wrapBorderWidth + "px",
+                borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                borderColor: containerStyles[0].wrapBorderColor,
+                boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
+                    0}px ${containerStyles[0].wrapShadowBlur ||
+                    0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+
+            }}
+        >
+            <a
+                className={`premium-icon__link`}
+                href={urlCheck && link}
+                rel="noopener noreferrer"
+                target={target ? "_blank" : "_self"}
+            >
+                <i
+                    className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                    style={{
+                        color: iconStyles[0].iconColor || "#6ec1e4",
+                        backgroundColor: iconStyles[0].iconBack,
+                        fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                        borderStyle: iconStyles[0].borderType,
+                        borderWidth: iconBorder
+                            ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+                            : borderWidth + "px",
+                        borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                        borderColor: iconStyles[0].borderColor,
+                        textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
+                            0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                    }}
+                />
+            </a>
+        </div>
+    );
 };
 
 export default save;
