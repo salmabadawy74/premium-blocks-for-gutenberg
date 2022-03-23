@@ -53,7 +53,7 @@ export default function ResponsiveRangeControl({
             onChange={(size) => onChangeMobile(size)}
             min={min}
             max={max}
-            step={step}
+            step={unit === "em" ? .1 : 1}
             unit={unit}
             onChangeUnit={onChangeUnit}
             showUnit={false}
@@ -68,7 +68,7 @@ export default function ResponsiveRangeControl({
             onChange={(size) => onChangeTablet(size)}
             min={min}
             max={max}
-            step={step}
+            step={unit === "em" ? .1 : 1}
             unit={unit}
             onChangeUnit={onChangeUnit}
             showUnit={false}
@@ -83,7 +83,7 @@ export default function ResponsiveRangeControl({
             onChange={(size) => onChange(size)}
             min={min}
             max={max}
-            step={step}
+            step={unit === "em" ? .1 : 1}
             unit={unit}
             onChangeUnit={onChangeUnit}
             showUnit={false}
@@ -107,8 +107,7 @@ export default function ResponsiveRangeControl({
                                     <button type="button" className={`preview-${device}${activeClass}`} data-device={device}>
                                         <i class={`dashicons dashicons-${icon}`} onClick={() => {
                                             const nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                            customSetPreviewDeviceType(nextDevice)
-                                                ;
+                                            customSetPreviewDeviceType(nextDevice);
                                         }} ></i>
                                     </button>
                                 </li>
