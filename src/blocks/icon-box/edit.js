@@ -560,7 +560,6 @@ class edit extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "line", "family"]}
                                 setAttributes={saveDescriptionStyle}
@@ -611,7 +610,6 @@ class edit extends Component {
                                         }
                                     }
                                 }
-
                             />
                         </PanelBody>
                     )}
@@ -664,7 +662,6 @@ class edit extends Component {
                                 onChangeTabletSize={newSize => saveButtonStyle({ btnSizeTablet: newSize })}
                                 onChangeMobileSize={newSize => saveButtonStyle({ btnSizeMobile: newSize })}
                             />
-
                             <PremiumBorder
                                 borderType={btnStyles[0].btnBorderType}
                                 borderWidth={btnBorderWidth}
