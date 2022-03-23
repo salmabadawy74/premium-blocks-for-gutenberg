@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+const { __ } = wp.i18n;
 
 const { RichText, InnerBlocks } = wp.blockEditor;
 
@@ -11,54 +12,27 @@ const save = props => {
         repeaterItems,
         direction,
         titleTag,
-        titleSize,
-        titleLine,
-        titleLetter,
-        titleStyle,
-        titleUpper,
-        titleWeight,
-        titleColor,
-        titleBorder,
-        titleBorderColor,
-        titleBorderWidth,
-        titleBorderRadius,
-        titleBack,
-        titleShadowBlur,
-        titleShadowColor,
-        titleShadowHorizontal,
-        titleShadowVertical,
-        titlePaddingT,
-        titlePaddingR,
-        titlePaddingB,
-        titlePaddingL,
-        arrowColor,
-        arrowBack,
-        arrowPos,
-        arrowPadding,
-        arrowSize,
-        arrowRadius,
+        titleStyles,
+        arrowStyles,
+        descStyles,
         contentType,
-        descAlign,
-        descSize,
-        descLine,
-        descLetter,
-        descStyle,
-        descUpper,
-        descWeight,
-        descColor,
-        descBack,
-        descBorder,
-        descBorderColor,
-        descBorderRadius,
-        descBorderWidth,
-        textShadowBlur,
+        titleEditBorder,
         textShadowColor,
+        textShadowBlur,
         textShadowHorizontal,
         textShadowVertical,
-        descPaddingT,
-        descPaddingR,
-        descPaddingB,
-        descPaddingL
+        titleBorderWidth,
+        titleBorderTop,
+        titleBorderRight,
+        titleBorderBottom,
+        titleBorderLeft,
+        titleBorderUpdated,
+        descBorderWidth,
+        descBorderUpdated,
+        descBorderTop,
+        descBorderRight,
+        descBorderBottom,
+        descBorderLeft,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-accordion');
@@ -70,17 +44,15 @@ const save = props => {
                 className={`premium-accordion__content_wrap`}
             >
                 <div
-                    className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowPos}`}
+                    className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
                     style={{
-                        backgroundColor: titleBack,
-                        border: titleBorder,
-                        borderWidth: titleBorderWidth + "px",
-                        borderRadius: titleBorderRadius + "px",
-                        borderColor: titleBorderColor,
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL
+                        backgroundColor: titleStyles[0].titleBack,
+                        borderStyle: titleStyles[0].titleBorder,
+                        borderWidth: titleBorderUpdated
+                            ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                            : titleBorderWidth + "px",
+                        borderRadius: titleStyles[0].titleBorderRadius + "px",
+                        borderColor: titleStyles[0].titleBorderColor
                     }}
                 >
                     <div className={`premium-accordion__title`}>
@@ -89,14 +61,14 @@ const save = props => {
                             className={`premium-accordion__title_text`}
                             value={item.titleText}
                             style={{
-                                color: titleColor,
-                                fontSize: titleSize + "px",
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                lineHeight: titleLine + "px"
+                                color: titleStyles[0].titleColor,
+                                fontSize: titleStyles[0].titleSize + "px",
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle,
+                                fontWeight: titleStyles[0].titleWeight,
+                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                lineHeight: titleStyles[0].titleLine + "px"
                             }}
                         />
                     </div>
@@ -106,14 +78,14 @@ const save = props => {
                             role="img"
                             focusable="false"
                             xmlns="http://www.w3.org/2000/svg"
-                            width={arrowSize}
-                            height={arrowSize}
+                            width={arrowStyles[0].arrowSize}
+                            height={arrowStyles[0].arrowSize}
                             viewBox="0 0 20 20"
                             style={{
-                                fill: arrowColor,
-                                backgroundColor: arrowBack,
-                                padding: arrowPadding + "px",
-                                borderRadius: arrowRadius + "px"
+                                fill: arrowStyles[0].arrowColor,
+                                backgroundColor: arrowStyles[0].arrowBack,
+                                padding: arrowStyles[0].arrowPadding + "px",
+                                borderRadius: arrowStyles[0].arrowRadius + "px"
                             }}
                         >
                             <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
@@ -123,16 +95,15 @@ const save = props => {
                 <div
                     className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
                     style={{
-                        textAlign: descAlign,
-                        backgroundColor: descBack,
-                        border: descBorder,
-                        borderWidth: descBorderWidth + "px",
-                        borderRadius: descBorderRadius + "px",
-                        borderColor: descBorderColor,
-                        paddingTop: descPaddingT,
-                        paddingRight: descPaddingR,
-                        paddingBottom: descPaddingB,
-                        paddingLeft: descPaddingL
+                        textAlign: descStyles[0].descAlign,
+                        backgroundColor: descStyles[0].descBack,
+                        borderStyle: descStyles[0].descBorder,
+                        borderWidth: descBorderUpdated
+                            ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
+                            : descBorderWidth + "px",
+                        borderRadius: descStyles[0].descBorderRadius + "px",
+                        borderColor: descStyles[0].descBorderColor,
+
                     }}
                 >
                     {"text" === contentType && (
@@ -141,14 +112,14 @@ const save = props => {
                             className={`premium-accordion__desc`}
                             value={item.descText}
                             style={{
-                                color: descColor,
-                                fontSize: descSize + "px",
-                                letterSpacing: descLetter + "px",
-                                textTransform: descUpper ? "uppercase" : "none",
+                                color: descStyles[0].descColor,
+                                fontSize: descStyles[0].descSize + "px",
+                                letterSpacing: descStyles[0].descLetter + "px",
+                                textTransform: descStyles[0].descUpper ? "uppercase" : "none",
                                 textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
-                                fontStyle: descStyle,
-                                fontWeight: descWeight,
-                                lineHeight: descLine + "px"
+                                fontStyle: descStyles[0].descStyle,
+                                fontWeight: descStyles[0].descWeight,
+                                lineHeight: descStyles[0].descLine + "px"
                             }}
                         />
                     )}

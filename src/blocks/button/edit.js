@@ -3,530 +3,525 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumSizeUnits from "../../components/premium-size-units";
-import FONTS from "../../components/premium-fonts";
-
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
+import WebfontLoader from "../../components/typography/fontLoader"
+const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
+const { Fragment, Component } = wp.element;
+const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
+const { withSelect } = wp.data
+export class edit extends Component {
+    constructor() {
+        super(...arguments);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
 
-const {
-    PanelBody,
-    SelectControl,
-    RangeControl,
-    ToggleControl,
-    Dropdown,
-    Button
-} = wp.components;
-
-const { Fragment } = wp.element;
-
-const {
-    InspectorControls,
-    ColorPalette,
-    AlignmentToolbar,
-    BlockControls,
-    RichText,
-    URLInput
-} = wp.blockEditor;
-
-const edit = props => {
-    const { isSelected, setAttributes, className, clientId: blockId } = props;
-
-    const {
-        id,
-        btnText,
-        btnSize,
-        btnAlign,
-        btnLink,
-        btnTarget,
-        effect,
-        effectDir,
-        textColor,
-        textHoverColor,
-        backColor,
-        backHoverColor,
-        slideColor,
-        textSize,
-        textFontFamily,
-        textWeight,
-        textLetter,
-        textUpper,
-        textLine,
-        textStyle,
-        borderType,
-        borderWidth,
-        borderRadius,
-        borderColor,
-        borderHoverColor,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        padding,
-        paddingU,
-        btnShadowBlur,
-        btnShadowColor,
-        btnShadowHorizontal,
-        btnShadowVertical,
-        btnShadowPosition
-    } = props.attributes;
-
-    const SIZE = [
-        {
-            value: "sm",
-            label: __("Small")
-        },
-        {
-            value: "md",
-            label: __("Medium")
-        },
-        {
-            value: "lg",
-            label: __("Large")
-        },
-        {
-            value: "block",
-            label: __("Block")
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
         }
-    ];
-    const DIRECTION = [
-        {
-            value: "top",
-            label: __("Top to Bottom")
-        },
-        {
-            value: "bottom",
-            label: __("Bottom to Top")
-        },
-        {
-            value: "left",
-            label: __("Left to Right")
-        },
-        {
-            value: "right",
-            label: __("Right to Left")
-        }
-    ];
-    const SHUTTER = [
-        {
-            value: "shutouthor",
-            label: __("Shutter out Horizontal")
-        },
-        {
-            value: "shutoutver",
-            label: __("Shutter out Vertical")
-        },
-        {
-            value: "scshutoutver",
-            label: __("Scaled Shutter Vertical")
-        },
-        {
-            value: "scshutouthor",
-            label: __("Scaled Shutter Horizontal")
-        },
-        {
-            value: "dshutinver",
-            label: __("Tilted Left")
-        },
-        {
-            value: "dshutinhor",
-            label: __("Tilted Right")
-        }
-    ];
-    const RADIAL = [
-        {
-            value: "radialin",
-            label: __("Radial In")
-        },
-        {
-            value: "radialout",
-            label: __("Radial Out")
-        },
-        {
-            value: "rectin",
-            label: __("Rectangle In")
-        },
-        {
-            value: "rectout",
-            label: __("Rectangle Out")
-        }
-    ];
-    const EFFECTS = [
-        {
-            value: "none",
-            label: __("None")
-        },
-        {
-            value: "slide",
-            label: __("Slide")
-        },
-        {
-            value: "shutter",
-            label: __("Shutter")
-        },
-        {
-            value: "radial",
-            label: __("Radial")
-        }
-    ];
-    const onChangeHover = newValue => {
-        props.setAttributes({ effect: newValue });
-        switch (newValue) {
-            case "slide":
-                props.setAttributes({ effectDir: "top" });
-                break;
-            case "shutter":
-                props.setAttributes({ effectDir: "shutouthor" });
-                break;
-            case "radial":
-                props.setAttributes({ effectDir: "radialin" });
-                break;
-        }
-    };
-    setAttributes({ id: blockId });
+        return desktopSize;
+    }
 
-    const addFontToHead = fontFamily => {
-        const head = document.head;
-        const link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href =
-            "https://fonts.googleapis.com/css?family=" +
-            fontFamily.replace(/\s+/g, "+") +
-            ":" +
-            "regular";
-        head.appendChild(link);
-    };
+    render() {
+        const { isSelected, setAttributes, className, clientId: blockId } = this.props;
+        const {
+            borderButton,
+            btnText,
+            btnSize,
+            btnAlign,
+            btnLink,
+            btnTarget,
+            effect,
+            effectDir,
+            slideColor,
+            block_id,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            borderWidth,
+            borderTop,
+            borderRight,
+            borderBottom,
+            borderLeft,
+            textStyles,
+            btnStyles
+        } = this.props.attributes;
 
-    const onChangeTextFamily = fontFamily => {
-        setAttributes({ textFontFamily: fontFamily });
-        if (!fontFamily) {
-            return;
+        const SIZE = [
+            {
+                value: "sm",
+                label: __("Small", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "md",
+                label: __("Medium", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "lg",
+                label: __("Large", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "block",
+                label: __("Block", 'premium-blocks-for-gutenberg')
+            }
+        ];
+
+        const DIRECTION = [
+            {
+                value: "top",
+                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "bottom",
+                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "left",
+                label: __("Left to Right", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "right",
+                label: __("Right to Left", 'premium-blocks-for-gutenberg')
+            }
+        ];
+
+        const SHUTTER = [
+            {
+                value: "shutouthor",
+                label: __("Shutter out Horizontal", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "shutoutver",
+                label: __("Shutter out Vertical", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "scshutoutver",
+                label: __("Scaled Shutter Vertical", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "scshutouthor",
+                label: __("Scaled Shutter Horizontal", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "dshutinver",
+                label: __("Tilted Left", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "dshutinhor",
+                label: __("Tilted Right", 'premium-blocks-for-gutenberg')
+            }
+        ];
+
+        const RADIAL = [
+            {
+                value: "radialin",
+                label: __("Radial In", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "radialout",
+                label: __("Radial Out", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "rectin",
+                label: __("Rectangle In", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "rectout",
+                label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
+            }
+        ];
+
+        const EFFECTS = [
+            {
+                value: "none",
+                label: __("None", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "slide",
+                label: __("Slide", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "shutter",
+                label: __("Shutter", 'premium-blocks-for-gutenberg')
+            },
+            {
+                value: "radial",
+                label: __("Radial", 'premium-blocks-for-gutenberg')
+            }
+        ];
+
+        const onChangeHover = newValue => {
+            this.props.setAttributes({ effect: newValue });
+            switch (newValue) {
+                case "slide":
+                    this.props.setAttributes({ effectDir: "top" });
+                    break;
+                case "shutter":
+                    this.props.setAttributes({ effectDir: "shutouthor" });
+                    break;
+                case "radial":
+                    this.props.setAttributes({ effectDir: "radialin" });
+                    break;
+            }
+        };
+
+        setAttributes({ block_id: blockId });
+
+        const saveTextStyles = (value) => {
+            const newUpdate = textStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ textStyles: newUpdate });
         }
 
-        addFontToHead(fontFamily);
-    };
+        let loadBtnGoogleFonts
+        if (textStyles[0].textFontFamily !== 'Default') {
+            const btnconfig = {
+                google: {
+                    families: [textStyles[0].textFontFamily],
+                },
+            }
+            loadBtnGoogleFonts = (
+                <WebfontLoader config={btnconfig}>
+                </WebfontLoader>
+            )
+        }
 
-    const mainClasses = classnames(className, "premium-button");
+        const saveBtnStyles = (value) => {
+            const newUpdate = btnStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                btnStyles: newUpdate,
+            });
+        }
 
-    return [
-        isSelected && "block" != btnSize && (
-            <BlockControls key="controls">
-                <AlignmentToolbar
-                    value={btnAlign}
-                    onChange={newAlign => setAttributes({ btnAlign: newAlign })}
-                />
-            </BlockControls>
-        ),
-        isSelected && (
-            <InspectorControls key={"inspector"}>
-                <PanelBody
-                    title={__("General Settings")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <SelectControl
-                        options={EFFECTS}
-                        label={__("Hover Effect")}
-                        value={effect}
-                        onChange={onChangeHover}
+        const mainClasses = classnames(className, "premium-button");
+        const btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
+        return [
+            isSelected && "block" != btnSize && (
+                <BlockControls key="controls">
+                    <AlignmentToolbar
+                        value={btnAlign}
+                        onChange={newAlign => setAttributes({ btnAlign: newAlign })}
                     />
-                    {"slide" === effect && (
+                </BlockControls>
+            ),
+            isSelected && (
+                <InspectorControls key={"inspector"}>
+                    <PanelBody
+                        title={__("General Settings", 'premium-blocks-for-gutenberg')}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
                         <SelectControl
-                            options={DIRECTION}
-                            label={__("Direction")}
-                            value={effectDir}
-                            onChange={newValue => setAttributes({ effectDir: newValue })}
+                            options={EFFECTS}
+                            label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
+                            value={effect}
+                            onChange={onChangeHover}
                         />
-                    )}
-                    {"shutter" === effect && (
+                        {"slide" === effect && (
+                            <SelectControl
+                                options={DIRECTION}
+                                label={__("Direction", 'premium-blocks-for-gutenberg')}
+                                value={effectDir}
+                                onChange={newValue => setAttributes({ effectDir: newValue })}
+                            />
+                        )}
+                        {"shutter" === effect && (
+                            <SelectControl
+                                options={SHUTTER}
+                                label={__("Shutter Direction", 'premium-blocks-for-gutenberg')}
+                                value={effectDir}
+                                onChange={newValue => setAttributes({ effectDir: newValue })}
+                            />
+                        )}
+                        {"radial" === effect && (
+                            <SelectControl
+                                options={RADIAL}
+                                label={__("Style", 'premium-blocks-for-gutenberg')}
+                                value={effectDir}
+                                onChange={newValue => setAttributes({ effectDir: newValue })}
+                            />
+                        )}
                         <SelectControl
-                            options={SHUTTER}
-                            label={__("Shutter Direction")}
-                            value={effectDir}
-                            onChange={newValue => setAttributes({ effectDir: newValue })}
+                            options={SIZE}
+                            label={__("Button Size", 'premium-blocks-for-gutenberg')}
+                            value={btnSize}
+                            onChange={newSize => setAttributes({ btnSize: newSize })}
                         />
-                    )}
-                    {"radial" === effect && (
-                        <SelectControl
-                            options={RADIAL}
-                            label={__("Style")}
-                            value={effectDir}
-                            onChange={newValue => setAttributes({ effectDir: newValue })}
+                        <ToggleControl
+                            label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
+                            checked={btnTarget}
+                            onChange={newValue => setAttributes({ btnTarget: newValue })}
                         />
-                    )}
-                    <SelectControl
-                        options={SIZE}
-                        label={__("Button Size")}
-                        value={btnSize}
-                        onChange={newSize => setAttributes({ btnSize: newSize })}
-                    />
-                    <ToggleControl
-                        label={__("Open link in new tab")}
-                        checked={btnTarget}
-                        onChange={newValue => setAttributes({ btnTarget: newValue })}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Text Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <SelectControl
-                        label={__("Font Family")}
-                        value={textFontFamily}
-                        options={FONTS}
-                        onChange={onChangeTextFamily}
-                    />
-                    <PremiumTypo
-                        components={["size", "weight", "line", "style", "upper", "spacing"]}
-                        size={textSize}
-                        weight={textWeight}
-                        style={textStyle}
-                        spacing={textLetter}
-                        upper={textUpper}
-                        line={textLine}
-                        onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                        onChangeWeight={newWeight =>
-                            setAttributes({ textWeight: newWeight })
-                        }
-                        onChangeLine={newValue => setAttributes({ textLine: newValue })}
-                        onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                        onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
-                        onChangeSpacing={newValue =>
-                            setAttributes({ textLetter: newValue })
-                        }
-                        onChangeUpper={check => setAttributes({ textUpper: check })}
-                    />
-                    <div className="premium-control-toggle">
-                        <strong>{__("Colors")}</strong>
-                        <Dropdown
-                            className="premium-control-toggle-btn"
-                            contentClassName="premium-control-toggle-content"
-                            position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
-                                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                    <i className="dashicons dashicons-edit" />
-                                </Button>
-                            )}
-                            renderContent={() => (
-                                <Fragment>
-                                    <p>{__("Text Color")}</p>
-                                    <ColorPalette
-                                        value={textColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                textColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>{__("Text Hover Color")}</p>
-                                    <ColorPalette
-                                        value={textHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                textHoverColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
-                            )}
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Text Style", 'premium-blocks-for-gutenberg')}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                            setAttributes={saveTextStyles}
+                            fontSizeType={{
+                                value: textStyles[0].textSizeUnit,
+                                label: __("textSizeUnit", 'premium-blocks-for-gutenberg'),
+                            }}
+                            fontSize={textStyles[0].textSize}
+                            fontSizeMobile={textStyles[0].textSizeMobile}
+                            fontSizeTablet={textStyles[0].textSizeTablet}
+                            fontFamily={textStyles[0].textFontFamily}
+                            weight={textStyles[0].textWeight}
+                            style={textStyles[0].textStyle}
+                            spacing={textStyles[0].textLetter}
+                            upper={textStyles[0].textUpper}
+                            line={textStyles[0].textLine}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeTabletSize={newSize => saveTextStyles({ textSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveTextStyles({ textSizeMobile: newSize })}
+                            onChangeWeight={newWeight => saveTextStyles({ textWeight: newWeight })}
+                            onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
+                            onChangeSpacing={newValue => saveTextStyles({ textLetter: newValue })}
+                            onChangeFamily={(fontFamily) => saveTextStyles({ textFontFamily: fontFamily })}
+                            onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
-                    </div>
-                    <PremiumTextShadow
-                        color={shadowColor}
-                        blur={shadowBlur}
-                        horizontal={shadowHorizontal}
-                        vertical={shadowVertical}
-                        onChangeColor={newColor =>
-                            setAttributes({ shadowColor: newColor.hex })
-                        }
-                        onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
-                        onChangehHorizontal={newValue =>
-                            setAttributes({ shadowHorizontal: newValue })
-                        }
-                        onChangeVertical={newValue =>
-                            setAttributes({ shadowVertical: newValue })
-                        }
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Button Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <div className="premium-control-toggle">
-                        <strong>{__("Colors")}</strong>
-                        <Dropdown
-                            className="premium-control-toggle-btn"
-                            contentClassName="premium-control-toggle-content"
-                            position="bottom right"
-                            renderToggle={({ isOpen, onToggle }) => (
-                                <Button isSmall onClick={onToggle} aria-expanded={isOpen}>
-                                    <i className="dashicons dashicons-edit" />
-                                </Button>
-                            )}
-                            renderContent={() => (
-                                <Fragment>
-                                    <p>
-                                        {"radial" !== effect
-                                            ? __("Background Color")
-                                            : __("Background Hover Color")}
-                                    </p>
-                                    <ColorPalette
-                                        value={backColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                backColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                    <p>
-                                        {"radial" !== effect
-                                            ? __("Background Hover Color")
-                                            : __("Background Color")}
-                                    </p>
-                                    <ColorPalette
-                                        value={backHoverColor}
-                                        onChange={newValue =>
-                                            setAttributes({
-                                                backHoverColor: newValue,
-                                                slideColor: newValue
-                                            })
-                                        }
-                                        allowReset={true}
-                                    />
-                                </Fragment>
-                            )}
+                        <PremiumTextShadow
+                            color={textStyles[0].shadowColor}
+                            blur={textStyles[0].shadowBlur}
+                            horizontal={textStyles[0].shadowHorizontal}
+                            vertical={textStyles[0].shadowVertical}
+                            onChangeColor={newColor => saveTextStyles({ shadowColor: newColor })}
+                            onChangeBlur={newBlur => saveTextStyles({ shadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveTextStyles({ shadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveTextStyles({ shadowVertical: newValue })}
                         />
-                    </div>
-                    <PremiumBorder
-                        borderType={borderType}
-                        borderWidth={borderWidth}
-                        borderColor={borderColor}
-                        borderRadius={borderRadius}
-                        onChangeType={newType => setAttributes({ borderType: newType })}
-                        onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
-                        onChangeColor={colorValue =>
-                            setAttributes({ borderColor: colorValue.hex })
-                        }
-                        onChangeRadius={newrRadius =>
-                            setAttributes({ borderRadius: newrRadius })
-                        }
-                    />
-                    <Fragment>
-                        <p>{__("Border Hover Color")}</p>
-                        <ColorPalette
-                            value={borderHoverColor}
-                            onChange={newValue =>
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Button Style", 'premium-blocks-for-gutenberg')}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <strong>{__("Colors", 'premium-blocks-for-gutenberg')}</strong>
+                        <TabPanel
+                            className="premium-color-tabpanel"
+                            activeClass="active-tab"
+                            tabs={[
+                                {
+                                    name: "normal",
+                                    title: "Normal",
+                                    className: "premium-tab",
+                                },
+                                {
+                                    name: "hover",
+                                    title: "Hover",
+                                    className: "premium-tab",
+                                },
+                            ]}
+                        >
+                            {(tab) => {
+                                let tabout;
+                                if ("normal" === tab.name) {
+                                    tabout = (
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].textColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveBtnStyles({ textColor: newValue, })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__('Background Color', 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].backColor}
+                                                colorDefault={''}
+                                                onColorChange={newvalue => saveBtnStyles({ backColor: newvalue, })}
+                                            />
+
+                                        </Fragment>
+                                    );
+                                }
+                                if ("hover" === tab.name) {
+                                    tabout = (
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].textHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue, })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={"radial" !== effect
+                                                    ? __("Background Hover Color", 'premium-blocks-for-gutenberg')
+                                                    : __("Background Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].backHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveBtnStyles({
+                                                        backHoverColor: newValue,
+                                                        slideColor: newValue,
+                                                    })
+                                                }
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].borderHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue, })}
+                                            />
+                                        </Fragment>
+                                    );
+                                }
+                                return (
+                                    <div>
+                                        {tabout}
+                                        <hr />
+                                    </div>
+                                );
+                            }}
+                        </TabPanel>
+                        <PremiumBorder
+                            borderType={btnStyles[0].borderType}
+                            borderWidth={borderWidth}
+                            top={borderTop}
+                            right={borderRight}
+                            bottom={borderBottom}
+                            left={borderLeft}
+                            borderColor={btnStyles[0].borderColor}
+                            borderRadius={btnStyles[0].borderRadius}
+                            onChangeType={(newType) => saveBtnStyles({ borderType: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
-                                    borderHoverColor: newValue
+                                    borderButton: true,
+                                    borderTop: top,
+                                    borderRight: right,
+                                    borderBottom: bottom,
+                                    borderLeft: left,
                                 })
                             }
-                            allowReset={true}
+                            onChangeColor={(colorValue) =>
+                                saveBtnStyles({ borderColor: colorValue })
+                            }
+                            onChangeRadius={(newrRadius) =>
+                                saveBtnStyles({ borderRadius: newrRadius })
+                            }
                         />
-                    </Fragment>
-                    <PremiumBoxShadow
-                        label="Shadow"
-                        inner={true}
-                        color={btnShadowColor}
-                        blur={btnShadowBlur}
-                        horizontal={btnShadowHorizontal}
-                        vertical={btnShadowVertical}
-                        position={btnShadowPosition}
-                        onChangeColor={newColor =>
-                            setAttributes({
-                                btnShadowColor:
-                                    newColor === undefined ? "transparent" : newColor.hex
-                            })
-                        }
-                        onChangeBlur={newBlur =>
-                            setAttributes({
-                                btnShadowBlur: newBlur === undefined ? 0 : newBlur
-                            })
-                        }
-                        onChangehHorizontal={newValue =>
-                            setAttributes({
-                                btnShadowHorizontal: newValue === undefined ? 0 : newValue
-                            })
-                        }
-                        onChangeVertical={newValue =>
-                            setAttributes({
-                                btnShadowVertical: newValue === undefined ? 0 : newValue
-                            })
-                        }
-                        onChangePosition={newValue =>
-                            setAttributes({
-                                btnShadowPosition: newValue === undefined ? 0 : newValue
-                            })
-                        }
+                        <PremiumBoxShadow
+                            label="Shadow"
+                            inner={true}
+                            color={btnStyles[0].btnShadowColor}
+                            blur={btnStyles[0].btnShadowBlur}
+                            horizontal={btnStyles[0].btnShadowHorizontal}
+                            vertical={btnStyles[0].btnShadowVertical}
+                            position={btnStyles[0].btnShadowPosition}
+                            onChangeColor={newColor => saveBtnStyles({ btnShadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => saveBtnStyles({ btnShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => saveBtnStyles({ btnShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => saveBtnStyles({ btnShadowVertical: newValue === undefined ? 0 : newValue })}
+                            onChangePosition={newValue => saveBtnStyles({ btnShadowPosition: newValue === undefined ? 0 : newValue })}
+                        />
+                        <ResponsiveSingleRangeControl
+                            label={__("Padding", 'premium-blocks-for-gutenberg')}
+                            value={btnStyles[0].padding}
+                            onChange={newValue => saveBtnStyles({ padding: newValue })}
+                            defaultValue={0}
+                            onChangeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
+                            showUnit={true}
+                            unit={btnStyles[0].paddingU}
+                        />
+                    </PanelBody>
+                    <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                     />
-                    <PremiumSizeUnits
-                        onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
-                    />
-                    <RangeControl
-                        label={__("Padding")}
-                        value={padding}
-                        onChange={newValue => setAttributes({ padding: newValue })}
-                    />
-                </PanelBody>
-            </InspectorControls>
-        ),
-        <div
-            id={`${mainClasses}-wrap-${id}`}
-            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir}`}
-            style={{ textAlign: btnAlign }}
-        >
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: [
-                        `#premium-button-wrap-${id} .premium-button:hover {`,
-                        `color: ${textHoverColor} !important;`,
-                        `border-color: ${borderHoverColor} !important;`,
-                        "}",
-                        `#premium-button-wrap-${id}.premium-button__none .premium-button:hover {`,
-                        `background-color: ${backHoverColor} !important;`,
-                        "}",
-                        `#premium-button-wrap-${id}.premium-button__slide .premium-button::before,`,
-                        `#premium-button-wrap-${id}.premium-button__shutter .premium-button::before,`,
-                        `#premium-button-wrap-${id}.premium-button__radial .premium-button::before {`,
-                        `background-color: ${slideColor}`,
-                        "}"
-                    ].join("\n")
-                }}
-            />
-            <RichText
-                className={`premium-button premium-button__${btnSize}`}
-                value={btnText}
-                onChange={value => setAttributes({ btnText: value })}
-                style={{
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                    boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
-                    padding: padding + paddingU,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }}
-                keepPlaceholderOnFocus
-            />
-            <URLInput
-                value={btnLink}
-                onChange={newLink => setAttributes({ btnLink: newLink })}
-            />
-        </div>
-    ];
+                </InspectorControls>
+            ),
+            <div
+                id={`premium-button-wrap-${block_id}`}
+                className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                style={{ textAlign: btnAlign }}
+            >
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: [
+                            `#premium-button-wrap-${block_id} .premium-button:hover {`,
+                            `color: ${btnStyles[0].textHoverColor} !important;`,
+                            `border-color: ${btnStyles[0].borderHoverColor} !important;`,
+                            "}",
+                            `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
+                            `background-color: ${btnStyles[0].backHoverColor} !important;`,
+                            "}",
+                            `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
+                            `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
+                            `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
+                            `background-color: ${slideColor}`,
+                            "}"
+                        ].join("\n")
+                    }}
+                />
+                <RichText
+                    className={`premium-button premium-button__${btnSize}`}
+                    value={btnText}
+                    onChange={value => setAttributes({ btnText: value })}
+                    style={{
+                        color: btnStyles[0].textColor,
+                        backgroundColor: btnStyles[0].backColor,
+                        fontFamily: textStyles[0].textFontFamily,
+                        letterSpacing: textStyles[0].textLetter + "px",
+                        fontSize: btnFontSize + textStyles[0].textSizeUnit,
+                        textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                        fontStyle: textStyles[0].textStyle,
+                        lineHeight: textStyles[0].textLine + "px",
+                        fontWeight: textStyles[0].textWeight,
+                        textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
+                        boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
+                        padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                        borderStyle: btnStyles[0].borderType,
+                        borderWidth: borderButton
+                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                            : borderWidth + "px",
+                        borderRadius: btnStyles[0].borderRadius + "px",
+                        borderColor: btnStyles[0].borderColor
+                    }}
+                    keepPlaceholderOnFocus
+                />
+                <URLInput
+                    value={btnLink}
+                    onChange={newLink => setAttributes({ btnLink: newLink })}
+                />
+                {loadBtnGoogleFonts}
+            </div>
+        ];
+    }
 };
 
-export default edit;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

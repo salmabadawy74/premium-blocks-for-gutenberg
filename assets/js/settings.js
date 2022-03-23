@@ -15,8 +15,10 @@ export const {
     accordion,
     iconBox,
     videoBox,
-    fancyText
+    fancyText,
+    lottie,
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
 export const { FontAwesomeEnabled } = FontAwesomeConfig;
+export const { JsonUploadEnabled } = JsonUploadFile;

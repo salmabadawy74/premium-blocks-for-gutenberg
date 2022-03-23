@@ -3,9 +3,9 @@ Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
 Donate link: http://leap13.com
 Requires at least: 4.5
-Tested up to: 5.6.1
+Tested up to: 5.9.2
 Requires PHP: 5.4
-Stable tag: 1.8.4
+Stable tag: 1.9.4
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -58,6 +58,66 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.9.4 =
+
+- New: Added Premium Image Separator block.
+- Tweak: Replace icons with text for Background Classic/Gradient control when Font Awesome is disabled.
+- Fixed: Issues with controls naming.
+- Fixed: Pages not loading after updating from older versions.
+
+= 1.9.3 =
+
+- Tweak: Default layout for Banner and Videobox blocks improved for better UX.
+- Tweak: Improve Videobox block to add Youtube videos links directly without adding embed links.
+- Tweak: Color control UI improved for better editing experience.
+- Fixed: Content Position option not working in Section block.
+- Fixed: Badge Text Font Size control not working in Pricing Table block.
+
+= 1.9.2 =
+
+- Tweak: Added responsive controls for Margin and Padding controls.
+- Tweak: Added option to set a gradient background in Background control.
+- Tweak: Improved Typography control.
+- Tweak: Improved UX for Box/Text Shadow controls.
+- Tweak: Added option to upload JSON file in Lottie Animations block.
+
+= 1.9.1 =
+
+- Tweak: Compatibility improved with WordPress v5.9.
+- Tweak: Color controls improved for better UI/UX.
+
+= 1.9.0 =
+
+- Tweak: Added Padding option for container in Countup block.
+- Tweak: Added option to control transparency for Box Shadow in Countup block.
+- Fixed: All issues related to Font Family option in all blocks.
+- Fixed: Compatibility issues with WordPress 5.8.
+
+= 1.8.9 =
+
+- New: Added Premium Lottie Animation block.
+
+= 1.8.8 =
+
+- Fixed: Call to undefined function premium_gutenberg_get_sysinfo() on System Info tab.
+- Fixed: Image Icon not showing on the editor in Icon Box block.
+
+= 1.8.7 =
+
+- New: Responsive Controls added to Show/Hide Block on specific devices.
+- Tweak: Border control improved to set different value for each direction.
+- Tweak: Added responsive controls to Font Size control in all blocks.
+- Tweak: Added Opacity control to Background Color control in all blocks.
+
+= 1.8.6 =
+
+- Tweak: Normal/Hover Colors tabs added for better UX.
+- Tweak: Added Font Style Oblique option in Typography controls.
+
+= 1.8.5 =
+
+- Tweak: Media upload controls improved for better UX.
 
 = 1.8.4 =
 
@@ -239,15 +299,15 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 = 1.4.2 =
 
-- Tweak: Added `Font Family` option for Number, Prefix, Suffix and Title in Counter block. 
+- Tweak: Added `Font Family` option for Number, Prefix, Suffix and Title in Counter block.
 
 = 1.4.1 =
 
-- Tweak: Added `Font Family` option for Dual Heading block. 
+- Tweak: Added `Font Family` option for Dual Heading block.
 
 = 1.4.0 =
 
-- Tweak: Added `Background Image` options group for container in Icon block. 
+- Tweak: Added `Background Image` options group for container in Icon block.
 - Tweak: Added `Background Color/Image` option for container in Testimonial block.
 - Tweak: Code refactored to minimize size.
 
