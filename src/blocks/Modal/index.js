@@ -1,6 +1,7 @@
 import { icon } from "../../../assets/js/settings";
 import PbgIcon from "../icons";
 import edit from "./edit";
+import attributes from './attributes'
 
 
 const { __ } = wp.i18n;
@@ -9,10 +10,10 @@ const { registerBlockType } = wp.blocks;
 
 
 registerBlockType("premium/modal", {
-    title: __("Icon"),
-    icon: <PbgIcon icon="icon" />,
+    title: __("Modal Box"),
+    icon: <PbgIcon icon="" />,
     category: "premium-blocks",
-    attributes: {},
+    attributes: attributes,
     supports: {
         inserter: icon
     },
