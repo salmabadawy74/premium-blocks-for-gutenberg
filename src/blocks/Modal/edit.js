@@ -7,15 +7,22 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import RadioComponent from '../../components/radio-control';
 import classnames from "classnames";
 const { __ } = wp.i18n;
-
-const { Button, Modal } = wp.components;
+import PremiumTypo from "../../components/premium-typo";
+import PremiumMediaUpload from "../../components/premium-media-upload"
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
+import PremiumBoxShadow from "../../components/premium-box-shadow"
+import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
+import PremiumBackgroundControl from '../../components/Premium-Background-Control'
+import Modal from "react-modal";
+const { Button } = wp.components;
 const { useState, Fragment, useEffect } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
 const {
     PanelBody,
     SelectControl,
     ToggleControl,
-    TextControl
+    TextControl,
+    TabPanel
 } = wp.components;
 
 const { InspectorControls, URLInput } = wp.blockEditor;
@@ -50,7 +57,15 @@ const edit = props => {
         triggerPaddingBMobile,
         triggerPaddingLMobile,
         headerStyles,
+        headerBorderTop,
+        headerBorderRight,
+        headerBorderBottom,
+        headerBorderLeft,
         upperStyles,
+        upperBorderTop,
+        upperBorderRight,
+        upperBorderBottom,
+        upperBorderLeft,
         upperPaddingT,
         upperPaddingR,
         upperPaddingB,
@@ -64,6 +79,10 @@ const edit = props => {
         upperPaddingBMobile,
         upperPaddingLMobile,
         lowerStyles,
+        lowerBorderTop,
+        lowerBorderRight,
+        lowerBorderBottom,
+        lowerBorderLeft,
         lowerPaddingT,
         lowerPaddingR,
         lowerPaddingB,
@@ -1188,14 +1207,33 @@ const edit = props => {
         ),
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} >
             <Button variant="secondary" onClick={openModal}>
-                Open Modal
+                {__("Premium Modal Block", 'premium-blocks-for-gutenberg')}
             </Button>
             {isOpen && (
-                <Modal title="This is my modal" >
-                    <Button variant="secondary" onClick={closeModal}>
-                        <InnerBlocks templateLock={false} />
-                    </Button>
-                </Modal>
+                <div className="premium-popup__modal_wrap">
+                    <div role="presentation" className="premium-popup__modal_wrap_overlay" onClick={() => setOpen(false)}>
+                    </div>
+                    <div className="premium-popup__modal_content">
+                        <div className={`premium-modal-box-modal-header`}>
+                            <h3 className={`premium-modal-box-modal-title`}>
+                                {contentStyles[0].titleText}
+                            </h3>
+                            <div className="premium-modal-box-close-button-container">
+                                <button type="button" className="premium-modal-box-modal-close" onClick={() =>
+                                    setOpen(false)
+                                } >×</button>
+                            </div>
+                        </div>
+                        <div className={`premium-modal-box-modal-body`}>
+                            <InnerBlocks />
+                        </div>
+                        <div className={`premium-modal-box-modal-footer`}>
+                            <button className={`premium-modal-box-modal-lower-close`} role="button" onClick={() => setOpen(false)}>
+                                close
+                            </button>
+                        </div>
+                    </div>
+                </div>
             )}
         </div>
     ];

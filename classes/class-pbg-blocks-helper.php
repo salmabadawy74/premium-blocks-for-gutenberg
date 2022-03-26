@@ -444,6 +444,14 @@ class PBG_Blocks_Helper {
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+        register_block_type(
+			'premium/modal',
+			array(
+				'render_callback' => array( $this, 'get_modal_css' ),
+				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_script'   => 'pbg-blocks-js',
+			)
+		);
 
 	}
 
@@ -2782,6 +2790,68 @@ class PBG_Blocks_Helper {
 		}
 		$css->stop_media_query();
 		return $css->css_output();
+
+	}
+
+    	/**
+	 * Get Video Box Block Content & Style
+	 *
+	 * @access public
+	 *
+	 * @param string $attributes option attribute.
+	 * @param string $content option for content of block.
+	 */
+	public function get_modal_css( $attributes, $content ) {
+
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+		}
+		if ( $this->it_is_not_amp() ) {
+			wp_enqueue_script(
+				'pbg-video-box',
+				PREMIUM_BLOCKS_URL . 'assets/js/modal.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+            wp_enqueue_script(
+				'pbg-lottie',
+				PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+			$css = $this->get_modal_css_style( $attributes, $unique_id );
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
+
+	}
+
+	/**
+	 * Get Video Box Block CSS
+	 *
+	 * Return Frontend CSS for Video Box Block.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For block ID.
+	 */
+	public function get_modal_css_style( $attr, $unique_id ) {
+
+	
 
 	}
 
