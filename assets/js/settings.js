@@ -17,6 +17,7 @@ export const {
     videoBox,
     fancyText,
     lottie,
+    bulletList
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
