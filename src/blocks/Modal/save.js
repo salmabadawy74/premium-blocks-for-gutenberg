@@ -109,7 +109,7 @@ const save = props => {
 
     return (
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} >
-            <Button variant="secondary" onClick={openModal}>
+            <Button variant="secondary" >
                 {__("Premium Modal Block", 'premium-blocks-for-gutenberg')}
             </Button>
             {isOpen && (
