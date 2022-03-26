@@ -155,15 +155,23 @@ const attributes = {
                 headerSpacing: '',
                 headerUpper: '',
                 borderType: 'none',
-                headerBorderTop: '',
-                headerBorderRight: '',
-                headerBorderBottom: '',
-                headerBorderLeft: '',
                 borderColor: '',
                 borderRadius: '',
 
             }
         ]
+    },
+    headerBorderTop: {
+        type: 'number'
+    },
+    headerBorderRight: {
+        type: 'number'
+    },
+    headerBorderBottom: {
+        type: 'number'
+    },
+    headerBorderLeft: {
+        type: 'number'
     },
     upperStyles: {
         type: "array",
@@ -173,14 +181,22 @@ const attributes = {
             color: '',
             backColor: '',
             borderType: 'none',
-            upperBorderTop: '',
-            upperBorderRight: '',
-            upperBorderBottom: '',
-            upperBorderLeft: '',
             borderColor: '',
             borderRadius: '',
 
         }]
+    },
+    upperBorderTop: {
+        type: 'number'
+    },
+    upperBorderRight: {
+        type: 'number'
+    },
+    upperBorderBottom: {
+        type: 'number'
+    },
+    upperBorderLeft: {
+        type: 'number'
     },
     upperPaddingT: {
         type: 'number'
@@ -234,14 +250,22 @@ const attributes = {
                 color: '',
                 backColor: '',
                 borderType: 'none',
-                lowerBorderTop: '',
-                lowerBorderRight: '',
-                lowerBorderBottom: '',
-                lowerBorderLeft: '',
                 borderColor: '',
                 borderRadius: '',
             }
         ]
+    },
+    lowerBorderTop: {
+        type: 'number'
+    },
+    lowerBorderRight: {
+        type: 'number'
+    },
+    lowerBorderBottom: {
+        type: 'number'
+    },
+    lowerBorderLeft: {
+        type: 'number'
     },
     lowerPaddingT: {
         type: 'number'
