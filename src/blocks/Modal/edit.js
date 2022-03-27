@@ -13,10 +13,11 @@ import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin'
 import PremiumBoxShadow from "../../components/premium-box-shadow"
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
-import Modal from "react-modal";
 const { Button } = wp.components;
 const { useState, Fragment, useEffect } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
+import Lottie from 'react-lottie-with-segments';
+
 const {
     PanelBody,
     SelectControl,
@@ -207,6 +208,16 @@ const edit = props => {
             modalStyles: newUpdate,
         });
     }
+    const reversedir = (contentStyles[0].reverseLottie) ? -1 : 1;
+    const renderCss = (<style>
+        {`
+            #premium-modal-box-${block_id} .premium-popup__modal_wrap .premium-popup__modal_content .premium-modal-box-modal-header h3 div{
+                width:${contentStyles[0].iconSize}px !important;
+                height:${contentStyles[0].iconSize}px !important;
+            }
+            `}
+    </style>
+    )
 
     return [
         isSelected && (
@@ -309,14 +320,39 @@ const edit = props => {
                                 value={contentStyles[0].titleText}
                                 onChange={(value) => saveContentStyle({ titleText: value })}
                             />
+
                         </Fragment>
                     )}
                     <hr />
-                    <ToggleControl
+                    <SelectControl
+                        label={__(`Content to Show`, 'premium-blocks-for-gutenberg')}
+                        value={modalStyles[0].contentType}
+                        onChange={(value) => saveModalStyles({ contentType: value })}
+                        options={
+                            [
+                                {
+                                    value: "text",
+                                    label: __("Text", 'premium-blocks-for-gutenberg')
+                                },
+                                {
+                                    value: "block",
+                                    label: __("Gutenberg Block", 'premium-blocks-for-gutenberg')
+                                }
+                            ]
+                        }
+                    />
+                    {modalStyles[0].contentType == "text" && (
+                        <TextControl
+                            label={__("Text", "premium-blocks-for-gutenberg")}
+                            value={modalStyles[0].contentText}
+                            onChange={(value) => saveModalStyles({ contentText: value })}
+                        />
+                    )}
+                    {contentStyles[0].showHeader && <ToggleControl
                         label={__("Upper Close Button", 'premium-blocks-for-gutenberg')}
                         checked={contentStyles[0].showUpperClose}
                         onChange={(value) => saveContentStyle({ showUpperClose: value })}
-                    />
+                    />}
                     <ToggleControl
                         label={__("Lower Close Button", 'premium-blocks-for-gutenberg')}
                         checked={contentStyles[0].showLowerClose}
@@ -325,7 +361,7 @@ const edit = props => {
                     {contentStyles[0].showLowerClose && (
                         <TextControl
                             label={__("Text", 'premium-blocks-for-gutenberg')}
-                            checked={contentStyles[0].lowerCloseText}
+                            value={contentStyles[0].lowerCloseText}
                             onChange={(value) => saveContentStyle({ lowerCloseText: value })}
                         />)
                     }
@@ -355,7 +391,7 @@ const edit = props => {
                             />
                             <ToggleControl
                                 label={__("Icon", 'premium-blocks-for-gutenberg')}
-                                value={triggerSettings[0].showIcon}
+                                checked={triggerSettings[0].showIcon}
                                 onChange={(newValue) => saveTriggerSettings({ showIcon: newValue })}
                             />
                             {
@@ -518,7 +554,6 @@ const edit = props => {
                                         />
                                         <PremiumBorder
                                             borderType={triggerStyles[0].borderType}
-                                            borderWidth={triggerStyles[0].borderWidth}
                                             top={triggerBorderTop}
                                             right={triggerBorderRight}
                                             bottom={triggerBorderBottom}
@@ -653,7 +688,7 @@ const edit = props => {
                         onChangePosition={newValue => saveTriggerStyles({ triggerShadowPosition: newValue })}
                     />
                 </PanelBody>
-                <PanelBody
+                {contentStyles[0].showHeader && <PanelBody
                     title={__("Header", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
@@ -714,8 +749,8 @@ const edit = props => {
                         onChangeColor={(colorValue) => saveHeaderStyles({ borderColor: colorValue })}
                         onChangeRadius={(newRadius) => saveHeaderStyles({ borderRadius: newRadius })}
                     />
-                </PanelBody>
-                <PanelBody
+                </PanelBody>}
+                { contentStyles[0].showUpperClose && contentStyles[0].showHeader && <PanelBody
                     title={__("Upper Close Button", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
@@ -822,8 +857,8 @@ const edit = props => {
                             }
                         }
                     />
-                </PanelBody>
-                <PanelBody
+                </PanelBody>}
+                { contentStyles[0].showLowerClose && <PanelBody
                     title={__("Lower Close Button", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
@@ -855,8 +890,10 @@ const edit = props => {
                         units={['px', '%', 'em']}
                         defaultValue={0}
                         onChangeUnit={newValue =>
-                            saveIconStyle({ iconWidthUnit: newValue })
+                            saveLowerStyles({ iconWidthUnit: newValue })
                         }
+                        min={1}
+                        max={500}
                         showUnit={true}
                         unit={lowerStyles[0].iconWidthUnit}
                     />
@@ -950,49 +987,53 @@ const edit = props => {
                             }
                         }
                     />
-                </PanelBody>
+                </PanelBody>}
                 <PanelBody
                     title={__("Modal Body", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <AdvancedPopColorControl
-                        label={__("Text Color", 'premium-blocks-for-gutenberg')}
-                        colorValue={modalStyles[0].textColor}
-                        colorDefault={''}
-                        onColorChange={(newValue) => saveModalStyles({ color: newValue })}
-                    />
-                    <AdvancedPopColorControl
-                        label={__("Content Background Color", 'premium-blocks-for-gutenberg')}
-                        colorValue={modalStyles[0].textBackColor}
-                        colorDefault={''}
-                        onColorChange={(newValue) => saveModalStyles({ textBackColor: newValue })}
-                    />
-                    <PremiumTypo
-                        components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
-                        setAttributes={saveModalStyles}
-                        fontSizeType={{
-                            value: modalStyles[0].modalSizeUnit,
-                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
-                        }}
-                        fontSize={modalStyles[0].modalSize}
-                        fontSizeMobile={modalStyles[0].modalSizeMobile}
-                        fontSizeTablet={modalStyles[0].modalSizeTablet}
-                        onChangeSize={newSize => saveModalStyles({ modalSize: newSize })}
-                        onChangeTabletSize={newSize => saveModalStyles({ modalSizeTablet: newSize })}
-                        onChangeMobileSize={newSize => saveModalStyles({ modalSizeMobile: newSize })}
-                        fontFamily={modalStyles[0].modalFamily}
-                        weight={modalStyles[0].modalWeight}
-                        style={modalStyles[0].modalStyle}
-                        spacing={modalStyles[0].modalSpacing}
-                        upper={modalStyles[0].modalUpper}
-                        onChangeWeight={newWeight => saveModalStyles({ modalWeight: newWeight })}
-                        onChangeStyle={newStyle => saveModalStyles({ modalStyle: newStyle })}
-                        onChangeSpacing={newValue => saveModalStyles({ modalSpacing: newValue })}
-                        onChangeFamily={(fontFamily) => saveModalStyles({ modalFamily: fontFamily })}
-                        onChangeUpper={check => saveModalStyles({ modalUpper: check })}
-                    />
-                    <hr />
+                    {"text" == modalStyles[0].contentType && (
+                        <Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                colorValue={modalStyles[0].textColor}
+                                colorDefault={''}
+                                onColorChange={(newValue) => saveModalStyles({ color: newValue })}
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Content Background Color", 'premium-blocks-for-gutenberg')}
+                                colorValue={modalStyles[0].textBackColor}
+                                colorDefault={''}
+                                onColorChange={(newValue) => saveModalStyles({ textBackColor: newValue })}
+                            />
+                            <PremiumTypo
+                                components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
+                                setAttributes={saveModalStyles}
+                                fontSizeType={{
+                                    value: modalStyles[0].modalSizeUnit,
+                                    label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
+                                }}
+                                fontSize={modalStyles[0].modalSize}
+                                fontSizeMobile={modalStyles[0].modalSizeMobile}
+                                fontSizeTablet={modalStyles[0].modalSizeTablet}
+                                onChangeSize={newSize => saveModalStyles({ modalSize: newSize })}
+                                onChangeTabletSize={newSize => saveModalStyles({ modalSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveModalStyles({ modalSizeMobile: newSize })}
+                                fontFamily={modalStyles[0].modalFamily}
+                                weight={modalStyles[0].modalWeight}
+                                style={modalStyles[0].modalStyle}
+                                spacing={modalStyles[0].modalSpacing}
+                                upper={modalStyles[0].modalUpper}
+                                onChangeWeight={newWeight => saveModalStyles({ modalWeight: newWeight })}
+                                onChangeStyle={newStyle => saveModalStyles({ modalStyle: newStyle })}
+                                onChangeSpacing={newValue => saveModalStyles({ modalSpacing: newValue })}
+                                onChangeFamily={(fontFamily) => saveModalStyles({ modalFamily: fontFamily })}
+                                onChangeUpper={check => saveModalStyles({ modalUpper: check })}
+                            />
+                            <hr />
+                        </Fragment>
+                    )}
                     <ResponsiveRangeControl
                         label={__('Width', 'premium-blocks-for-gutenberg')}
                         value={modalStyles[0].modalWidth}
@@ -1002,7 +1043,7 @@ const edit = props => {
                         mobileValue={modalStyles[0].modalWidthMobile}
                         onChangeMobile={(value) => saveModalStyles({ modalWidthMobile: (value !== "") ? value : 200 })}
                         min={0}
-                        max={100}
+                        max={1500}
                         step={1}
                         onChangeUnit={newValue => saveModalStyles({ modalWidthUnit: newValue })}
                         unit={modalStyles[0].modalWidthUnit}
@@ -1019,7 +1060,7 @@ const edit = props => {
                         mobileValue={modalStyles[0].modalHeightMobile}
                         onChangeMobile={(value) => saveModalStyles({ modalHeightMobile: (value !== "") ? value : 200 })}
                         min={0}
-                        max={100}
+                        max={1500}
                         step={1}
                         onChangeUnit={newValue => saveModalStyles({ modalHeightUnit: newValue })}
                         unit={modalStyles[0].modalHeightUnit}
@@ -1205,33 +1246,127 @@ const edit = props => {
                 </PanelBody>
             </InspectorControls >
         ),
+        renderCss,
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} >
-            <Button variant="secondary" onClick={openModal}>
-                {__("Premium Modal Block", 'premium-blocks-for-gutenberg')}
-            </Button>
+            <div className={`premium-modal-trigger-container`} style={{ textAlign: triggerSettings[0].align }}>
+                <button className={`premium-button__${triggerSettings[0].btnSize}`} onClick={openModal} style={{
+                    backgroundColor: triggerStyles[0].triggerBack,
+                    borderStyle: triggerStyles[0].borderType,
+                    borderTop: `${triggerBorderTop}px`,
+                    borderRight: `${triggerBorderRight}px`,
+                    borderBottom: `${triggerBorderBottom}px`,
+                    borderLeft: `${triggerBorderLeft}px`,
+                    borderColor: triggerStyles[0].borderColor,
+                    borderRadius: triggerStyles[0].borderRadius,
+                    boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
+                }}>
+                    {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={triggerSettings[0].icon} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
+                    <span style={{ color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing }}> {triggerSettings[0].btnText}</span>
+                    {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && <i className={triggerSettings[0].icon} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginLeft: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }} ></i>}
+                </button>
+            </div>
             {isOpen && (
                 <div className="premium-popup__modal_wrap">
                     <div role="presentation" className="premium-popup__modal_wrap_overlay" onClick={() => setOpen(false)}>
                     </div>
-                    <div className="premium-popup__modal_content">
-                        <div className={`premium-modal-box-modal-header`}>
-                            <h3 className={`premium-modal-box-modal-title`}>
+                    <div className="premium-popup__modal_content" style={{
+                        width: `${modalStyles[0].modalWidth}${modalStyles[0].modalWidthUnit}`,
+                        maxHeight: `${modalStyles[0].modalHeight}${modalStyles[0].modalHeightUnit}`,
+                        borderStyle: `${modalStyles[0].borderType}`,
+                        borderColor: `${modalStyles[0].borderColor}`,
+                        borderTop: `${modalBorderTop}px`,
+                        borderRight: `${modalBorderRight}px`,
+                        borderBottom: `${modalBorderBottom}px`,
+                        borderLeft: `${modalBorderLeft}px`,
+                        borderRadius: `${modalStyles[0].borderRadius}px`,
+                        boxShadow: `${modalStyles[0].modalShadowHorizontal}px ${modalStyles[0].modalShadowVertical}px ${modalStyles[0].modalShadowBlur}px ${modalStyles[0].modalShadowColor} ${modalStyles[0].modalShadowPosition}`,
+                    }}>
+                        {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`} style={{
+                            backgroundColor: headerStyles[0].backColor,
+                            borderStyle: headerStyles[0].borderType,
+                            borderTop: `${headerBorderTop}px`,
+                            borderRight: `${headerBorderRight}px`,
+                            borderBottom: `${headerBorderBottom}px`,
+                            borderLeft: `${headerBorderLeft}px`,
+                            borderColor: `${headerStyles[0].borderColor}`,
+                            borderRadius: `${headerStyles[0].borderRadius}`,
+                        }}>
+                            <h3 className={`premium-modal-box-modal-title`} style={{
+                                color: headerStyles[0].color,
+                                fontFamily: headerStyles[0].headerFamily,
+                                fontStyle: headerStyles[0].headerStyle,
+                                letterSpacing: headerStyles[0].headerSpacing,
+                                fontWeight: headerStyles[0].headerWeight
+                            }}>
+                                {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}></i>}
+                                {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL}></img>}
+                                {contentStyles[0].iconType === "lottie" && <Lottie
+                                    options={{
+                                        loop: contentStyles[0].loopLottie,
+                                        path: contentStyles[0].lottieURL,
+                                        rendererSettings: {
+                                            preserveAspectRatio: 'xMidYMid',
+                                            className: "premium-lottie-inner"
+                                        }
+                                    }}
+                                    isClickToPauseDisabled={true}
+                                    direction={reversedir}
+                                />}
                                 {contentStyles[0].titleText}
                             </h3>
-                            <div className="premium-modal-box-close-button-container">
+                            {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (<div className="premium-modal-box-close-button-container" style={{
+                                backgroundColor: `${upperStyles[0].backColor}`,
+                                borderStyle: `${upperStyles[0].borderType}`,
+                                borderTop: `${upperBorderTop}px`,
+                                borderRight: `${upperBorderRight}px`,
+                                borderBottom: `${upperBorderBottom}px`,
+                                borderLeft: `${upperBorderLeft}px`,
+                                borderColor: `${upperStyles[0].borderColor}`,
+                                borderRadius: `${upperStyles[0].borderRadius}`
+                            }}>
                                 <button type="button" className="premium-modal-box-modal-close" onClick={() =>
                                     setOpen(false)
-                                } >×</button>
-                            </div>
+                                } style={{
+                                    fontSize: `${upperStyles[0].iconWidth}${upperStyles[0].iconWidthUnit}`,
+                                    color: `${upperStyles[0].color}`,
+
+                                }} >×</button>
+                            </div>)}
+                        </div>}
+                        <div className={`premium-modal-box-modal-body`} style={{
+                            color: modalStyles[0].textColor,
+                            background: modalStyles[0].textBackColor,
+                            fontStyle: modalStyles[0].modalStyle,
+                            fontWeight: modalStyles[0].modalWeight,
+                            fontFamily: modalStyles[0].modalFamily,
+                            letterSpacing: modalStyles[0].modalSpacing
+                        }}>
+                            {modalStyles[0].contentType === "text" ? <p >{modalStyles[0].contentText}</p> : <InnerBlocks />}
+
                         </div>
-                        <div className={`premium-modal-box-modal-body`}>
-                            <InnerBlocks />
-                        </div>
-                        <div className={`premium-modal-box-modal-footer`}>
-                            <button className={`premium-modal-box-modal-lower-close`} role="button" onClick={() => setOpen(false)}>
-                                close
+                        {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
+                            backgroundColor: modalStyles[0].footerBackColor
+                        }}>
+                            <button className={`premium-modal-box-modal-lower-close`} role="button" onClick={() => setOpen(false)}
+                                style={{
+                                    fontStyle: lowerStyles[0].lowerStyle,
+                                    fontWeight: lowerStyles[0].lowerWeight,
+                                    letterSpacing: lowerStyles[0].lowerSpacing,
+                                    width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
+                                    color: `${lowerStyles[0].color}`,
+                                    backgroundColor: `${lowerStyles[0].backColor}`,
+                                    borderStyle: `${lowerStyles[0].borderType}`,
+                                    borderTop: `${lowerBorderTop}px`,
+                                    borderRight: `${lowerBorderRight}px`,
+                                    borderBottom: `${lowerBorderBottom}px`,
+                                    borderLeft: `${lowerBorderLeft}px`,
+                                    borderColor: `${lowerStyles[0].borderColor}`,
+                                    borderRadius: `${lowerStyles[0].borderRadius}`
+                                }}
+                            >
+                                {contentStyles[0].lowerCloseText}
                             </button>
-                        </div>
+                        </div>)}
                     </div>
                 </div>
             )}

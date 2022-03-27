@@ -105,8 +105,6 @@ const save = props => {
 
     const mainClasses = classnames(className, 'premium-container');
 
-
-
     return (
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} >
             <Button variant="secondary" >

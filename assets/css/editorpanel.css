@@ -5731,6 +5731,8 @@ input[type="number"] {
     .components-popover__content {
     overflow: hidden;
 }
+/**************** Premium Modal Box *********************/
+/*******************************************************/
 .premium-modal-box .premium-popup__modal_wrap {
-    z-index: 2;
+    z-index: 2 !important;
 }
