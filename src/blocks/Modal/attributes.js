@@ -9,21 +9,21 @@ const attributes = {
         default: [
             {
                 showHeader: false,
-                iconType: 'None',
+                iconType: 'none',
                 contentIcon: '',
                 contentImgID: '',
                 contentImgURL: '',
                 lottieURL: '',
-                loopLottie: '',
-                reverseLottie: '',
+                loopLottie: false,
+                reverseLottie: false,
                 iconSize: '',
                 iconSizeTablet: '',
                 iconSizeMobile: '',
                 iconSizeUnit: 'px',
-                titleText: 'Modal Box Title',
+                titleText: __('Modal Box Title', 'premium-blocks-for-gutenberg'),
                 showUpperClose: true,
                 showLowerClose: true,
-                lowerCloseText: 'Close'
+                lowerCloseText: __('Close', 'premium-blocks-for-gutenberg')
             }
         ]
     },
@@ -40,7 +40,7 @@ const attributes = {
                 iconSpacing: '',
                 btnSize: 'md',
                 align: 'center',
-                delayTime: ''
+                delayTime: 1
             }
         ]
     },
@@ -62,12 +62,12 @@ const attributes = {
                 triggerSpacing: '',
                 triggerUpper: '',
                 triggerBack: '',
-                borderType: '',
+                borderType: 'none',
                 borderWidth: '',
                 borderColor: '',
                 borderRadius: '',
                 triggerHoverBack: '',
-                borderTypeH: '',
+                borderTypeH: 'none',
                 borderWidthH: '',
                 borderColorH: '',
                 borderRadiusH: '',
@@ -307,6 +307,8 @@ const attributes = {
         type: "array",
         default: [
             {
+                contentType: 'text',
+                contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
                 textColor: '',
                 textBackColor: '',
                 modalSizeUnit: 'px',
@@ -344,8 +346,7 @@ const attributes = {
                 gradientPosition: '',
                 gradientType: '',
                 footerBackColor: '',
-                borderType: '',
-                borderWidth: '',
+                borderType: 'none',
                 borderColor: '',
                 borderRadius: '',
                 modalShadowColor: '',

@@ -2122,6 +2122,14 @@ a.premium-dheading-block__link:hover {
     padding: 20px;
     max-width: 100%;
 }
+.premium-modal-box
+    .premium-popup__modal_content
+    .premium-modal-box-modal-header
+    h3
+    div.premium-lottie-inner {
+    width: 50px;
+    height: 60px;
+}
 @media (max-width: 600px) {
     .premium-modal-box .premium-popup__modal_content {
         min-width: 100%;
