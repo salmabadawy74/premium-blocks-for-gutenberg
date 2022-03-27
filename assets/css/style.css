@@ -2122,6 +2122,9 @@ a.premium-dheading-block__link:hover {
   }
   .premium-icon-list__content-icon i {
     font-style: normal !important;
+    vertical-align: text-bottom !important;
+    width: 100% !important;
+    height: 100% !important;
   }
   .components-button-group.premium-size-type-field {
     margin: 0;
