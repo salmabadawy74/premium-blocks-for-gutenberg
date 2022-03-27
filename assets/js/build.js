@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 129);
+/******/ 	return __webpack_require__(__webpack_require__.s = 130);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -148,7 +148,7 @@ var _premiumSizeUnits = __webpack_require__(24);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _rangeControl = __webpack_require__(132);
+var _rangeControl = __webpack_require__(133);
 
 var _rangeControl2 = _interopRequireDefault(_rangeControl);
 
@@ -296,7 +296,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _colord = __webpack_require__(216);
+var _colord = __webpack_require__(217);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1170,7 +1170,7 @@ var _singleRangeControl = __webpack_require__(1);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _fontList = __webpack_require__(218);
+var _fontList = __webpack_require__(219);
 
 var _fontList2 = _interopRequireDefault(_fontList);
 
@@ -2131,11 +2131,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(246)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(247)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(249)();
+  module.exports = __webpack_require__(250)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
@@ -2152,7 +2152,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumPadding = __webpack_require__(217);
+var _premiumPadding = __webpack_require__(218);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -2350,7 +2350,7 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 var global = __webpack_require__(19);
 var core = __webpack_require__(10);
-var ctx = __webpack_require__(117);
+var ctx = __webpack_require__(118);
 var hide = __webpack_require__(27);
 var has = __webpack_require__(23);
 var PROTOTYPE = 'prototype';
@@ -2422,7 +2422,7 @@ module.exports = $export;
 
 
 var anObject = __webpack_require__(37);
-var IE8_DOM_DEFINE = __webpack_require__(118);
+var IE8_DOM_DEFINE = __webpack_require__(119);
 var toPrimitive = __webpack_require__(68);
 var dP = Object.defineProperty;
 
@@ -2515,8 +2515,8 @@ function PremiumSizeUnits(props) {
 "use strict";
 
 
-var baseIsNative = __webpack_require__(142),
-    getValue = __webpack_require__(145);
+var baseIsNative = __webpack_require__(143),
+    getValue = __webpack_require__(146);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -2673,7 +2673,7 @@ module.exports = function (exec) {
 
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(121);
+var IObject = __webpack_require__(122);
 var defined = __webpack_require__(69);
 module.exports = function (it) {
   return IObject(defined(it));
@@ -2705,8 +2705,8 @@ $exports.store = store;
 
 
 var _Symbol = __webpack_require__(39),
-    getRawTag = __webpack_require__(134),
-    objectToString = __webpack_require__(135);
+    getRawTag = __webpack_require__(135),
+    objectToString = __webpack_require__(136);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -3260,11 +3260,11 @@ module.exports = isObject;
 "use strict";
 
 
-var listCacheClear = __webpack_require__(150),
-    listCacheDelete = __webpack_require__(151),
-    listCacheGet = __webpack_require__(152),
-    listCacheHas = __webpack_require__(153),
-    listCacheSet = __webpack_require__(154);
+var listCacheClear = __webpack_require__(151),
+    listCacheDelete = __webpack_require__(152),
+    listCacheGet = __webpack_require__(153),
+    listCacheHas = __webpack_require__(154),
+    listCacheSet = __webpack_require__(155);
 
 /**
  * Creates an list cache object.
@@ -3329,7 +3329,7 @@ module.exports = assocIndexOf;
 "use strict";
 
 
-var isKeyable = __webpack_require__(156);
+var isKeyable = __webpack_require__(157);
 
 /**
  * Gets the data for `map`.
@@ -3422,15 +3422,15 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(282);
+var _edit = __webpack_require__(283);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(283);
+var _save = __webpack_require__(284);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(284);
+var _deprecated = __webpack_require__(285);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -3515,7 +3515,7 @@ module.exports = function (bitmap, value) {
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(120);
+var $keys = __webpack_require__(121);
 var enumBugKeys = __webpack_require__(73);
 
 module.exports = Object.keys || function keys(O) {
@@ -3597,11 +3597,11 @@ module.exports = isKey;
 "use strict";
 
 
-var mapCacheClear = __webpack_require__(139),
-    mapCacheDelete = __webpack_require__(155),
-    mapCacheGet = __webpack_require__(157),
-    mapCacheHas = __webpack_require__(158),
-    mapCacheSet = __webpack_require__(159);
+var mapCacheClear = __webpack_require__(140),
+    mapCacheDelete = __webpack_require__(156),
+    mapCacheGet = __webpack_require__(158),
+    mapCacheHas = __webpack_require__(159),
+    mapCacheSet = __webpack_require__(160);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -3652,8 +3652,8 @@ module.exports = Map;
 "use strict";
 
 
-var arrayLikeKeys = __webpack_require__(187),
-    baseKeys = __webpack_require__(193),
+var arrayLikeKeys = __webpack_require__(188),
+    baseKeys = __webpack_require__(194),
     isArrayLike = __webpack_require__(58);
 
 /**
@@ -4661,11 +4661,11 @@ module.exports = ReactPropTypesSecret;
 
 
 Object.defineProperty(exports, "__esModule", {
-        value: true
+    value: true
 });
 var iconsList = {
-        Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-        "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
 };
 
 exports.default = iconsList;
@@ -4683,7 +4683,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumMargin = __webpack_require__(257);
+var _premiumMargin = __webpack_require__(258);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
@@ -5183,7 +5183,7 @@ var PROTOTYPE = 'prototype';
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var _createDict = function createDict() {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(119)('iframe');
+  var iframe = __webpack_require__(120)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
@@ -5347,8 +5347,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(12),
     isKey = __webpack_require__(53),
-    stringToPath = __webpack_require__(136),
-    toString = __webpack_require__(160);
+    stringToPath = __webpack_require__(137),
+    toString = __webpack_require__(161);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -5380,7 +5380,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(133)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(134)))
 
 /***/ }),
 /* 86 */
@@ -5543,8 +5543,8 @@ module.exports = arrayMap;
 
 
 var arrayMap = __webpack_require__(89),
-    baseIteratee = __webpack_require__(162),
-    baseMap = __webpack_require__(210),
+    baseIteratee = __webpack_require__(163),
+    baseMap = __webpack_require__(211),
     isArray = __webpack_require__(12);
 
 /**
@@ -5604,11 +5604,11 @@ module.exports = map;
 
 
 var ListCache = __webpack_require__(42),
-    stackClear = __webpack_require__(165),
-    stackDelete = __webpack_require__(166),
-    stackGet = __webpack_require__(167),
-    stackHas = __webpack_require__(168),
-    stackSet = __webpack_require__(169);
+    stackClear = __webpack_require__(166),
+    stackDelete = __webpack_require__(167),
+    stackGet = __webpack_require__(168),
+    stackHas = __webpack_require__(169),
+    stackSet = __webpack_require__(170);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -5638,7 +5638,7 @@ module.exports = Stack;
 "use strict";
 
 
-var baseIsEqualDeep = __webpack_require__(170),
+var baseIsEqualDeep = __webpack_require__(171),
     isObjectLike = __webpack_require__(33);
 
 /**
@@ -5674,9 +5674,9 @@ module.exports = baseIsEqual;
 "use strict";
 
 
-var SetCache = __webpack_require__(171),
-    arraySome = __webpack_require__(174),
-    cacheHas = __webpack_require__(175);
+var SetCache = __webpack_require__(172),
+    arraySome = __webpack_require__(175),
+    cacheHas = __webpack_require__(176);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -5788,7 +5788,7 @@ module.exports = baseTimes;
 "use strict";
 
 
-var baseIsArguments = __webpack_require__(188),
+var baseIsArguments = __webpack_require__(189),
     isObjectLike = __webpack_require__(33);
 
 /** Used for built-in method references. */
@@ -5836,7 +5836,7 @@ module.exports = isArguments;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var root = __webpack_require__(13),
-    stubFalse = __webpack_require__(189);
+    stubFalse = __webpack_require__(190);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -5914,9 +5914,9 @@ module.exports = isIndex;
 "use strict";
 
 
-var baseIsTypedArray = __webpack_require__(190),
-    baseUnary = __webpack_require__(191),
-    nodeUtil = __webpack_require__(192);
+var baseIsTypedArray = __webpack_require__(191),
+    baseUnary = __webpack_require__(192),
+    nodeUtil = __webpack_require__(193);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -7511,9 +7511,9 @@ function PremiumBackground(props) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(244);
-} else {
   module.exports = __webpack_require__(245);
+} else {
+  module.exports = __webpack_require__(246);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
@@ -7533,9 +7533,9 @@ module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(250));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(251));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(255));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(256));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(111));
 
@@ -8380,7 +8380,7 @@ var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactLifecyclesCompat = __webpack_require__(109);
 
-var _ChildMapping = __webpack_require__(256);
+var _ChildMapping = __webpack_require__(257);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -8776,6 +8776,1651 @@ exports.default = videoBoxAttrs;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
+
+var _extends2 = __webpack_require__(290);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _slicedToArray2 = __webpack_require__(291);
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
+var _objectSpread2 = __webpack_require__(295);
+
+var _objectSpread3 = _interopRequireDefault(_objectSpread2);
+
+var _classCallCheck2 = __webpack_require__(296);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(297);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(298);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _getPrototypeOf2 = __webpack_require__(300);
+
+var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
+
+var _inherits2 = __webpack_require__(301);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _assertThisInitialized2 = __webpack_require__(117);
+
+var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
+
+var _defineProperty2 = __webpack_require__(116);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _react = __webpack_require__(5);
+
+var _propTypes = __webpack_require__(17);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactDom = __webpack_require__(36);
+
+var _invariant = __webpack_require__(303);
+
+var _invariant2 = _interopRequireDefault(_invariant);
+
+var _toConsumableArray2 = __webpack_require__(304);
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Manager = function () {
+  function Manager() {
+    (0, _classCallCheck3.default)(this, Manager);
+
+    (0, _defineProperty3.default)(this, "refs", {});
+  }
+
+  (0, _createClass3.default)(Manager, [{
+    key: "add",
+    value: function add(collection, ref) {
+      if (!this.refs[collection]) {
+        this.refs[collection] = [];
+      }
+
+      this.refs[collection].push(ref);
+    }
+  }, {
+    key: "remove",
+    value: function remove(collection, ref) {
+      var index = this.getIndex(collection, ref);
+
+      if (index !== -1) {
+        this.refs[collection].splice(index, 1);
+      }
+    }
+  }, {
+    key: "isActive",
+    value: function isActive() {
+      return this.active;
+    }
+  }, {
+    key: "getActive",
+    value: function getActive() {
+      var _this = this;
+
+      return this.refs[this.active.collection].find(function (_ref) {
+        var node = _ref.node;
+        return node.sortableInfo.index == _this.active.index;
+      });
+    }
+  }, {
+    key: "getIndex",
+    value: function getIndex(collection, ref) {
+      return this.refs[collection].indexOf(ref);
+    }
+  }, {
+    key: "getOrderedRefs",
+    value: function getOrderedRefs() {
+      var collection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.active.collection;
+      return this.refs[collection].sort(sortByIndex);
+    }
+  }]);
+
+  return Manager;
+}();
+
+function sortByIndex(_ref2, _ref3) {
+  var index1 = _ref2.node.sortableInfo.index;
+  var index2 = _ref3.node.sortableInfo.index;
+  return index1 - index2;
+}
+
+function arrayMove(array, from, to) {
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof console !== 'undefined') {
+      console.warn("Deprecation warning: arrayMove will no longer be exported by 'react-sortable-hoc' in the next major release. Please install the `array-move` package locally instead. https://www.npmjs.com/package/array-move");
+    }
+  }
+
+  array = array.slice();
+  array.splice(to < 0 ? array.length + to : to, 0, array.splice(from, 1)[0]);
+  return array;
+}
+function omit(obj, keysToOmit) {
+  return Object.keys(obj).reduce(function (acc, key) {
+    if (keysToOmit.indexOf(key) === -1) {
+      acc[key] = obj[key];
+    }
+
+    return acc;
+  }, {});
+}
+var events = {
+  end: ['touchend', 'touchcancel', 'mouseup'],
+  move: ['touchmove', 'mousemove'],
+  start: ['touchstart', 'mousedown']
+};
+var vendorPrefix = function () {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return '';
+  }
+
+  var styles = window.getComputedStyle(document.documentElement, '') || ['-moz-hidden-iframe'];
+  var pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || styles.OLink === '' && ['', 'o'])[1];
+
+  switch (pre) {
+    case 'ms':
+      return 'ms';
+
+    default:
+      return pre && pre.length ? pre[0].toUpperCase() + pre.substr(1) : '';
+  }
+}();
+function setInlineStyles(node, styles) {
+  Object.keys(styles).forEach(function (key) {
+    node.style[key] = styles[key];
+  });
+}
+function setTranslate3d(node, translate) {
+  node.style["".concat(vendorPrefix, "Transform")] = translate == null ? '' : "translate3d(".concat(translate.x, "px,").concat(translate.y, "px,0)");
+}
+function setTransitionDuration(node, duration) {
+  node.style["".concat(vendorPrefix, "TransitionDuration")] = duration == null ? '' : "".concat(duration, "ms");
+}
+function closest(el, fn) {
+  while (el) {
+    if (fn(el)) {
+      return el;
+    }
+
+    el = el.parentNode;
+  }
+
+  return null;
+}
+function limit(min, max, value) {
+  return Math.max(min, Math.min(value, max));
+}
+
+function getPixelValue(stringValue) {
+  if (stringValue.substr(-2) === 'px') {
+    return parseFloat(stringValue);
+  }
+
+  return 0;
+}
+
+function getElementMargin(element) {
+  var style = window.getComputedStyle(element);
+  return {
+    bottom: getPixelValue(style.marginBottom),
+    left: getPixelValue(style.marginLeft),
+    right: getPixelValue(style.marginRight),
+    top: getPixelValue(style.marginTop)
+  };
+}
+function provideDisplayName(prefix, Component$$1) {
+  var componentName = Component$$1.displayName || Component$$1.name;
+  return componentName ? "".concat(prefix, "(").concat(componentName, ")") : prefix;
+}
+function getScrollAdjustedBoundingClientRect(node, scrollDelta) {
+  var boundingClientRect = node.getBoundingClientRect();
+  return {
+    top: boundingClientRect.top + scrollDelta.top,
+    left: boundingClientRect.left + scrollDelta.left
+  };
+}
+function getPosition(event) {
+  if (event.touches && event.touches.length) {
+    return {
+      x: event.touches[0].pageX,
+      y: event.touches[0].pageY
+    };
+  } else if (event.changedTouches && event.changedTouches.length) {
+    return {
+      x: event.changedTouches[0].pageX,
+      y: event.changedTouches[0].pageY
+    };
+  } else {
+    return {
+      x: event.pageX,
+      y: event.pageY
+    };
+  }
+}
+function isTouchEvent(event) {
+  return event.touches && event.touches.length || event.changedTouches && event.changedTouches.length;
+}
+function getEdgeOffset(node, parent) {
+  var offset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+    left: 0,
+    top: 0
+  };
+
+  if (!node) {
+    return undefined;
+  }
+
+  var nodeOffset = {
+    left: offset.left + node.offsetLeft,
+    top: offset.top + node.offsetTop
+  };
+
+  if (node.parentNode === parent) {
+    return nodeOffset;
+  }
+
+  return getEdgeOffset(node.parentNode, parent, nodeOffset);
+}
+function getTargetIndex(newIndex, prevIndex, oldIndex) {
+  if (newIndex < oldIndex && newIndex > prevIndex) {
+    return newIndex - 1;
+  } else if (newIndex > oldIndex && newIndex < prevIndex) {
+    return newIndex + 1;
+  } else {
+    return newIndex;
+  }
+}
+function getLockPixelOffset(_ref) {
+  var lockOffset = _ref.lockOffset,
+      width = _ref.width,
+      height = _ref.height;
+  var offsetX = lockOffset;
+  var offsetY = lockOffset;
+  var unit = 'px';
+
+  if (typeof lockOffset === 'string') {
+    var match = /^[+-]?\d*(?:\.\d*)?(px|%)$/.exec(lockOffset);
+    (0, _invariant2.default)(match !== null, 'lockOffset value should be a number or a string of a ' + 'number followed by "px" or "%". Given %s', lockOffset);
+    offsetX = parseFloat(lockOffset);
+    offsetY = parseFloat(lockOffset);
+    unit = match[1];
+  }
+
+  (0, _invariant2.default)(isFinite(offsetX) && isFinite(offsetY), 'lockOffset value should be a finite. Given %s', lockOffset);
+
+  if (unit === '%') {
+    offsetX = offsetX * width / 100;
+    offsetY = offsetY * height / 100;
+  }
+
+  return {
+    x: offsetX,
+    y: offsetY
+  };
+}
+function getLockPixelOffsets(_ref2) {
+  var height = _ref2.height,
+      width = _ref2.width,
+      lockOffset = _ref2.lockOffset;
+  var offsets = Array.isArray(lockOffset) ? lockOffset : [lockOffset, lockOffset];
+  (0, _invariant2.default)(offsets.length === 2, 'lockOffset prop of SortableContainer should be a single ' + 'value or an array of exactly two values. Given %s', lockOffset);
+
+  var _offsets = (0, _slicedToArray3.default)(offsets, 2),
+      minLockOffset = _offsets[0],
+      maxLockOffset = _offsets[1];
+
+  return [getLockPixelOffset({
+    height: height,
+    lockOffset: minLockOffset,
+    width: width
+  }), getLockPixelOffset({
+    height: height,
+    lockOffset: maxLockOffset,
+    width: width
+  })];
+}
+
+function isScrollable(el) {
+  var computedStyle = window.getComputedStyle(el);
+  var overflowRegex = /(auto|scroll)/;
+  var properties = ['overflow', 'overflowX', 'overflowY'];
+  return properties.find(function (property) {
+    return overflowRegex.test(computedStyle[property]);
+  });
+}
+
+function getScrollingParent(el) {
+  if (!(el instanceof HTMLElement)) {
+    return null;
+  } else if (isScrollable(el)) {
+    return el;
+  } else {
+    return getScrollingParent(el.parentNode);
+  }
+}
+function getContainerGridGap(element) {
+  var style = window.getComputedStyle(element);
+
+  if (style.display === 'grid') {
+    return {
+      x: getPixelValue(style.gridColumnGap),
+      y: getPixelValue(style.gridRowGap)
+    };
+  }
+
+  return {
+    x: 0,
+    y: 0
+  };
+}
+var KEYCODE = {
+  TAB: 9,
+  ESC: 27,
+  SPACE: 32,
+  LEFT: 37,
+  UP: 38,
+  RIGHT: 39,
+  DOWN: 40
+};
+var NodeType = {
+  Anchor: 'A',
+  Button: 'BUTTON',
+  Canvas: 'CANVAS',
+  Input: 'INPUT',
+  Option: 'OPTION',
+  Textarea: 'TEXTAREA',
+  Select: 'SELECT'
+};
+function cloneNode(node) {
+  var selector = 'input, textarea, select, canvas, [contenteditable]';
+  var fields = node.querySelectorAll(selector);
+  var clonedNode = node.cloneNode(true);
+
+  var clonedFields = (0, _toConsumableArray3.default)(clonedNode.querySelectorAll(selector));
+
+  clonedFields.forEach(function (field, i) {
+    if (field.type !== 'file') {
+      field.value = fields[i].value;
+    }
+
+    if (field.type === 'radio' && field.name) {
+      field.name = "__sortableClone__".concat(field.name);
+    }
+
+    if (field.tagName === NodeType.Canvas && fields[i].width > 0 && fields[i].height > 0) {
+      var destCtx = field.getContext('2d');
+      destCtx.drawImage(fields[i], 0, 0);
+    }
+  });
+  return clonedNode;
+}
+
+function sortableHandle(WrappedComponent) {
+  var _class, _temp;
+
+  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    withRef: false
+  };
+  return _temp = _class = function (_React$Component) {
+    (0, _inherits3.default)(WithSortableHandle, _React$Component);
+
+    function WithSortableHandle() {
+      (0, _classCallCheck3.default)(this, WithSortableHandle);
+
+      return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf3.default)(WithSortableHandle).apply(this, arguments));
+    }
+
+    (0, _createClass3.default)(WithSortableHandle, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        var node = (0, _reactDom.findDOMNode)(this);
+        node.sortableHandle = true;
+      }
+    }, {
+      key: "getWrappedInstance",
+      value: function getWrappedInstance() {
+        (0, _invariant2.default)(config.withRef, 'To access the wrapped instance, you need to pass in {withRef: true} as the second argument of the SortableHandle() call');
+        return this.refs.wrappedInstance;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var ref = config.withRef ? 'wrappedInstance' : null;
+        return (0, _react.createElement)(WrappedComponent, (0, _extends3.default)({
+          ref: ref
+        }, this.props));
+      }
+    }]);
+
+    return WithSortableHandle;
+  }(_react.Component), (0, _defineProperty3.default)(_class, "displayName", provideDisplayName('sortableHandle', WrappedComponent)), _temp;
+}
+function isSortableHandle(node) {
+  return node.sortableHandle != null;
+}
+
+var AutoScroller = function () {
+  function AutoScroller(container, onScrollCallback) {
+    (0, _classCallCheck3.default)(this, AutoScroller);
+
+    this.container = container;
+    this.onScrollCallback = onScrollCallback;
+  }
+
+  (0, _createClass3.default)(AutoScroller, [{
+    key: "clear",
+    value: function clear() {
+      if (this.interval == null) {
+        return;
+      }
+
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+  }, {
+    key: "update",
+    value: function update(_ref) {
+      var _this = this;
+
+      var translate = _ref.translate,
+          minTranslate = _ref.minTranslate,
+          maxTranslate = _ref.maxTranslate,
+          width = _ref.width,
+          height = _ref.height;
+      var direction = {
+        x: 0,
+        y: 0
+      };
+      var speed = {
+        x: 1,
+        y: 1
+      };
+      var acceleration = {
+        x: 10,
+        y: 10
+      };
+      var _this$container = this.container,
+          scrollTop = _this$container.scrollTop,
+          scrollLeft = _this$container.scrollLeft,
+          scrollHeight = _this$container.scrollHeight,
+          scrollWidth = _this$container.scrollWidth,
+          clientHeight = _this$container.clientHeight,
+          clientWidth = _this$container.clientWidth;
+      var isTop = scrollTop === 0;
+      var isBottom = scrollHeight - scrollTop - clientHeight === 0;
+      var isLeft = scrollLeft === 0;
+      var isRight = scrollWidth - scrollLeft - clientWidth === 0;
+
+      if (translate.y >= maxTranslate.y - height / 2 && !isBottom) {
+        direction.y = 1;
+        speed.y = acceleration.y * Math.abs((maxTranslate.y - height / 2 - translate.y) / height);
+      } else if (translate.x >= maxTranslate.x - width / 2 && !isRight) {
+        direction.x = 1;
+        speed.x = acceleration.x * Math.abs((maxTranslate.x - width / 2 - translate.x) / width);
+      } else if (translate.y <= minTranslate.y + height / 2 && !isTop) {
+        direction.y = -1;
+        speed.y = acceleration.y * Math.abs((translate.y - height / 2 - minTranslate.y) / height);
+      } else if (translate.x <= minTranslate.x + width / 2 && !isLeft) {
+        direction.x = -1;
+        speed.x = acceleration.x * Math.abs((translate.x - width / 2 - minTranslate.x) / width);
+      }
+
+      if (this.interval) {
+        this.clear();
+        this.isAutoScrolling = false;
+      }
+
+      if (direction.x !== 0 || direction.y !== 0) {
+        this.interval = setInterval(function () {
+          _this.isAutoScrolling = true;
+          var offset = {
+            left: speed.x * direction.x,
+            top: speed.y * direction.y
+          };
+          _this.container.scrollTop += offset.top;
+          _this.container.scrollLeft += offset.left;
+
+          _this.onScrollCallback(offset);
+        }, 5);
+      }
+    }
+  }]);
+
+  return AutoScroller;
+}();
+
+function defaultGetHelperDimensions(_ref) {
+  var node = _ref.node;
+  return {
+    height: node.offsetHeight,
+    width: node.offsetWidth
+  };
+}
+
+function defaultShouldCancelStart(event) {
+  var interactiveElements = [NodeType.Input, NodeType.Textarea, NodeType.Select, NodeType.Option, NodeType.Button];
+
+  if (interactiveElements.indexOf(event.target.tagName) !== -1) {
+    return true;
+  }
+
+  if (closest(event.target, function (el) {
+    return el.contentEditable === 'true';
+  })) {
+    return true;
+  }
+
+  return false;
+}
+
+var propTypes = {
+  axis: _propTypes2.default.oneOf(['x', 'y', 'xy']),
+  contentWindow: _propTypes2.default.any,
+  disableAutoscroll: _propTypes2.default.bool,
+  distance: _propTypes2.default.number,
+  getContainer: _propTypes2.default.func,
+  getHelperDimensions: _propTypes2.default.func,
+  helperClass: _propTypes2.default.string,
+  helperContainer: _propTypes2.default.oneOfType([_propTypes2.default.func, typeof HTMLElement === 'undefined' ? _propTypes2.default.any : _propTypes2.default.instanceOf(HTMLElement)]),
+  hideSortableGhost: _propTypes2.default.bool,
+  keyboardSortingTransitionDuration: _propTypes2.default.number,
+  lockAxis: _propTypes2.default.string,
+  lockOffset: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]))]),
+  lockToContainerEdges: _propTypes2.default.bool,
+  onSortEnd: _propTypes2.default.func,
+  onSortMove: _propTypes2.default.func,
+  onSortOver: _propTypes2.default.func,
+  onSortStart: _propTypes2.default.func,
+  pressDelay: _propTypes2.default.number,
+  pressThreshold: _propTypes2.default.number,
+  keyCodes: _propTypes2.default.shape({
+    lift: _propTypes2.default.arrayOf(_propTypes2.default.number),
+    drop: _propTypes2.default.arrayOf(_propTypes2.default.number),
+    cancel: _propTypes2.default.arrayOf(_propTypes2.default.number),
+    up: _propTypes2.default.arrayOf(_propTypes2.default.number),
+    down: _propTypes2.default.arrayOf(_propTypes2.default.number)
+  }),
+  shouldCancelStart: _propTypes2.default.func,
+  transitionDuration: _propTypes2.default.number,
+  updateBeforeSortStart: _propTypes2.default.func,
+  useDragHandle: _propTypes2.default.bool,
+  useWindowAsScrollContainer: _propTypes2.default.bool
+};
+var defaultKeyCodes = {
+  lift: [KEYCODE.SPACE],
+  drop: [KEYCODE.SPACE],
+  cancel: [KEYCODE.ESC],
+  up: [KEYCODE.UP, KEYCODE.LEFT],
+  down: [KEYCODE.DOWN, KEYCODE.RIGHT]
+};
+var defaultProps = {
+  axis: 'y',
+  disableAutoscroll: false,
+  distance: 0,
+  getHelperDimensions: defaultGetHelperDimensions,
+  hideSortableGhost: true,
+  lockOffset: '50%',
+  lockToContainerEdges: false,
+  pressDelay: 0,
+  pressThreshold: 5,
+  keyCodes: defaultKeyCodes,
+  shouldCancelStart: defaultShouldCancelStart,
+  transitionDuration: 300,
+  useWindowAsScrollContainer: false
+};
+var omittedProps = Object.keys(propTypes);
+function validateProps(props) {
+  (0, _invariant2.default)(!(props.distance && props.pressDelay), 'Attempted to set both `pressDelay` and `distance` on SortableContainer, you may only use one or the other, not both at the same time.');
+}
+
+function _finallyRethrows(body, finalizer) {
+  try {
+    var result = body();
+  } catch (e) {
+    return finalizer(true, e);
+  }
+
+  if (result && result.then) {
+    return result.then(finalizer.bind(null, false), finalizer.bind(null, true));
+  }
+
+  return finalizer(false, value);
+}
+function sortableContainer(WrappedComponent) {
+  var _class, _temp;
+
+  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    withRef: false
+  };
+  return _temp = _class = function (_React$Component) {
+    (0, _inherits3.default)(WithSortableContainer, _React$Component);
+
+    function WithSortableContainer(props) {
+      var _this;
+
+      (0, _classCallCheck3.default)(this, WithSortableContainer);
+
+      _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf3.default)(WithSortableContainer).call(this, props));
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "state", {});
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleStart", function (event) {
+        var _this$props = _this.props,
+            distance = _this$props.distance,
+            shouldCancelStart = _this$props.shouldCancelStart;
+
+        if (event.button === 2 || shouldCancelStart(event)) {
+          return;
+        }
+
+        _this.touched = true;
+        _this.position = getPosition(event);
+        var node = closest(event.target, function (el) {
+          return el.sortableInfo != null;
+        });
+
+        if (node && node.sortableInfo && _this.nodeIsChild(node) && !_this.state.sorting) {
+          var useDragHandle = _this.props.useDragHandle;
+          var _node$sortableInfo = node.sortableInfo,
+              index = _node$sortableInfo.index,
+              collection = _node$sortableInfo.collection,
+              disabled = _node$sortableInfo.disabled;
+
+          if (disabled) {
+            return;
+          }
+
+          if (useDragHandle && !closest(event.target, isSortableHandle)) {
+            return;
+          }
+
+          _this.manager.active = {
+            collection: collection,
+            index: index
+          };
+
+          if (!isTouchEvent(event) && event.target.tagName === NodeType.Anchor) {
+            event.preventDefault();
+          }
+
+          if (!distance) {
+            if (_this.props.pressDelay === 0) {
+              _this.handlePress(event);
+            } else {
+              _this.pressTimer = setTimeout(function () {
+                return _this.handlePress(event);
+              }, _this.props.pressDelay);
+            }
+          }
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "nodeIsChild", function (node) {
+        return node.sortableInfo.manager === _this.manager;
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleMove", function (event) {
+        var _this$props2 = _this.props,
+            distance = _this$props2.distance,
+            pressThreshold = _this$props2.pressThreshold;
+
+        if (!_this.state.sorting && _this.touched && !_this._awaitingUpdateBeforeSortStart) {
+          var position = getPosition(event);
+          var delta = {
+            x: _this.position.x - position.x,
+            y: _this.position.y - position.y
+          };
+          var combinedDelta = Math.abs(delta.x) + Math.abs(delta.y);
+          _this.delta = delta;
+
+          if (!distance && (!pressThreshold || combinedDelta >= pressThreshold)) {
+            clearTimeout(_this.cancelTimer);
+            _this.cancelTimer = setTimeout(_this.cancel, 0);
+          } else if (distance && combinedDelta >= distance && _this.manager.isActive()) {
+            _this.handlePress(event);
+          }
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleEnd", function () {
+        _this.touched = false;
+
+        _this.cancel();
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "cancel", function () {
+        var distance = _this.props.distance;
+        var sorting = _this.state.sorting;
+
+        if (!sorting) {
+          if (!distance) {
+            clearTimeout(_this.pressTimer);
+          }
+
+          _this.manager.active = null;
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handlePress", function (event) {
+        try {
+          var active = _this.manager.getActive();
+
+          var _temp6 = function () {
+            if (active) {
+              var _temp7 = function _temp7() {
+                var index = _node.sortableInfo.index;
+                var margin = getElementMargin(_node);
+                var gridGap = getContainerGridGap(_this.container);
+
+                var containerBoundingRect = _this.scrollContainer.getBoundingClientRect();
+
+                var dimensions = _getHelperDimensions({
+                  index: index,
+                  node: _node,
+                  collection: _collection
+                });
+
+                _this.node = _node;
+                _this.margin = margin;
+                _this.gridGap = gridGap;
+                _this.width = dimensions.width;
+                _this.height = dimensions.height;
+                _this.marginOffset = {
+                  x: _this.margin.left + _this.margin.right + _this.gridGap.x,
+                  y: Math.max(_this.margin.top, _this.margin.bottom, _this.gridGap.y)
+                };
+                _this.boundingClientRect = _node.getBoundingClientRect();
+                _this.containerBoundingRect = containerBoundingRect;
+                _this.index = index;
+                _this.newIndex = index;
+                _this.axis = {
+                  x: _axis.indexOf('x') >= 0,
+                  y: _axis.indexOf('y') >= 0
+                };
+                _this.offsetEdge = getEdgeOffset(_node, _this.container);
+
+                if (_isKeySorting) {
+                  _this.initialOffset = getPosition((0, _objectSpread3.default)({}, event, {
+                    pageX: _this.boundingClientRect.left,
+                    pageY: _this.boundingClientRect.top
+                  }));
+                } else {
+                  _this.initialOffset = getPosition(event);
+                }
+
+                _this.initialScroll = {
+                  left: _this.scrollContainer.scrollLeft,
+                  top: _this.scrollContainer.scrollTop
+                };
+                _this.initialWindowScroll = {
+                  left: window.pageXOffset,
+                  top: window.pageYOffset
+                };
+                _this.helper = _this.helperContainer.appendChild(cloneNode(_node));
+                setInlineStyles(_this.helper, {
+                  boxSizing: 'border-box',
+                  height: "".concat(_this.height, "px"),
+                  left: "".concat(_this.boundingClientRect.left - margin.left, "px"),
+                  pointerEvents: 'none',
+                  position: 'fixed',
+                  top: "".concat(_this.boundingClientRect.top - margin.top, "px"),
+                  width: "".concat(_this.width, "px")
+                });
+
+                if (_isKeySorting) {
+                  _this.helper.focus();
+                }
+
+                if (_hideSortableGhost) {
+                  _this.sortableGhost = _node;
+                  setInlineStyles(_node, {
+                    opacity: 0,
+                    visibility: 'hidden'
+                  });
+                }
+
+                _this.minTranslate = {};
+                _this.maxTranslate = {};
+
+                if (_isKeySorting) {
+                  var _ref = _useWindowAsScrollContainer ? {
+                    top: 0,
+                    left: 0,
+                    width: _this.contentWindow.innerWidth,
+                    height: _this.contentWindow.innerHeight
+                  } : _this.containerBoundingRect,
+                      containerTop = _ref.top,
+                      containerLeft = _ref.left,
+                      containerWidth = _ref.width,
+                      containerHeight = _ref.height;
+
+                  var containerBottom = containerTop + containerHeight;
+                  var containerRight = containerLeft + containerWidth;
+
+                  if (_this.axis.x) {
+                    _this.minTranslate.x = containerLeft - _this.boundingClientRect.left;
+                    _this.maxTranslate.x = containerRight - (_this.boundingClientRect.left + _this.width);
+                  }
+
+                  if (_this.axis.y) {
+                    _this.minTranslate.y = containerTop - _this.boundingClientRect.top;
+                    _this.maxTranslate.y = containerBottom - (_this.boundingClientRect.top + _this.height);
+                  }
+                } else {
+                  if (_this.axis.x) {
+                    _this.minTranslate.x = (_useWindowAsScrollContainer ? 0 : containerBoundingRect.left) - _this.boundingClientRect.left - _this.width / 2;
+                    _this.maxTranslate.x = (_useWindowAsScrollContainer ? _this.contentWindow.innerWidth : containerBoundingRect.left + containerBoundingRect.width) - _this.boundingClientRect.left - _this.width / 2;
+                  }
+
+                  if (_this.axis.y) {
+                    _this.minTranslate.y = (_useWindowAsScrollContainer ? 0 : containerBoundingRect.top) - _this.boundingClientRect.top - _this.height / 2;
+                    _this.maxTranslate.y = (_useWindowAsScrollContainer ? _this.contentWindow.innerHeight : containerBoundingRect.top + containerBoundingRect.height) - _this.boundingClientRect.top - _this.height / 2;
+                  }
+                }
+
+                if (_helperClass) {
+                  _helperClass.split(' ').forEach(function (className) {
+                    return _this.helper.classList.add(className);
+                  });
+                }
+
+                _this.listenerNode = event.touches ? _node : _this.contentWindow;
+
+                if (_isKeySorting) {
+                  _this.listenerNode.addEventListener('wheel', _this.handleKeyEnd, true);
+
+                  _this.listenerNode.addEventListener('mousedown', _this.handleKeyEnd, true);
+
+                  _this.listenerNode.addEventListener('keydown', _this.handleKeyDown);
+                } else {
+                  events.move.forEach(function (eventName) {
+                    return _this.listenerNode.addEventListener(eventName, _this.handleSortMove, false);
+                  });
+                  events.end.forEach(function (eventName) {
+                    return _this.listenerNode.addEventListener(eventName, _this.handleSortEnd, false);
+                  });
+                }
+
+                _this.setState({
+                  sorting: true,
+                  sortingIndex: index
+                });
+
+                if (_onSortStart) {
+                  _onSortStart({
+                    node: _node,
+                    index: index,
+                    collection: _collection,
+                    isKeySorting: _isKeySorting,
+                    nodes: _this.manager.getOrderedRefs(),
+                    helper: _this.helper
+                  }, event);
+                }
+
+                if (_isKeySorting) {
+                  _this.keyMove(0);
+                }
+              };
+
+              var _this$props3 = _this.props,
+                  _axis = _this$props3.axis,
+                  _getHelperDimensions = _this$props3.getHelperDimensions,
+                  _helperClass = _this$props3.helperClass,
+                  _hideSortableGhost = _this$props3.hideSortableGhost,
+                  updateBeforeSortStart = _this$props3.updateBeforeSortStart,
+                  _onSortStart = _this$props3.onSortStart,
+                  _useWindowAsScrollContainer = _this$props3.useWindowAsScrollContainer;
+              var _node = active.node,
+                  _collection = active.collection;
+              var _isKeySorting = _this.manager.isKeySorting;
+
+              var _temp8 = function () {
+                if (typeof updateBeforeSortStart === 'function') {
+                  _this._awaitingUpdateBeforeSortStart = true;
+
+                  var _temp9 = _finallyRethrows(function () {
+                    var index = _node.sortableInfo.index;
+                    return Promise.resolve(updateBeforeSortStart({
+                      collection: _collection,
+                      index: index,
+                      node: _node,
+                      isKeySorting: _isKeySorting
+                    }, event)).then(function () {});
+                  }, function (_wasThrown, _result) {
+                    _this._awaitingUpdateBeforeSortStart = false;
+                    if (_wasThrown) throw _result;
+                    return _result;
+                  });
+
+                  if (_temp9 && _temp9.then) return _temp9.then(function () {});
+                }
+              }();
+
+              return _temp8 && _temp8.then ? _temp8.then(_temp7) : _temp7(_temp8);
+            }
+          }();
+
+          return Promise.resolve(_temp6 && _temp6.then ? _temp6.then(function () {}) : void 0);
+        } catch (e) {
+          return Promise.reject(e);
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleSortMove", function (event) {
+        var onSortMove = _this.props.onSortMove;
+
+        if (typeof event.preventDefault === 'function') {
+          event.preventDefault();
+        }
+
+        _this.updateHelperPosition(event);
+
+        _this.animateNodes();
+
+        _this.autoscroll();
+
+        if (onSortMove) {
+          onSortMove(event);
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleSortEnd", function (event) {
+        var _this$props4 = _this.props,
+            hideSortableGhost = _this$props4.hideSortableGhost,
+            onSortEnd = _this$props4.onSortEnd;
+        var _this$manager = _this.manager,
+            collection = _this$manager.active.collection,
+            isKeySorting = _this$manager.isKeySorting;
+
+        var nodes = _this.manager.getOrderedRefs();
+
+        if (_this.listenerNode) {
+          if (isKeySorting) {
+            _this.listenerNode.removeEventListener('wheel', _this.handleKeyEnd, true);
+
+            _this.listenerNode.removeEventListener('mousedown', _this.handleKeyEnd, true);
+
+            _this.listenerNode.removeEventListener('keydown', _this.handleKeyDown);
+          } else {
+            events.move.forEach(function (eventName) {
+              return _this.listenerNode.removeEventListener(eventName, _this.handleSortMove);
+            });
+            events.end.forEach(function (eventName) {
+              return _this.listenerNode.removeEventListener(eventName, _this.handleSortEnd);
+            });
+          }
+        }
+
+        _this.helper.parentNode.removeChild(_this.helper);
+
+        if (hideSortableGhost && _this.sortableGhost) {
+          setInlineStyles(_this.sortableGhost, {
+            opacity: '',
+            visibility: ''
+          });
+        }
+
+        for (var i = 0, len = nodes.length; i < len; i++) {
+          var _node2 = nodes[i];
+          var el = _node2.node;
+          _node2.edgeOffset = null;
+          _node2.boundingClientRect = null;
+          setTranslate3d(el, null);
+          setTransitionDuration(el, null);
+          _node2.translate = null;
+        }
+
+        _this.autoScroller.clear();
+
+        _this.manager.active = null;
+        _this.manager.isKeySorting = false;
+
+        _this.setState({
+          sorting: false,
+          sortingIndex: null
+        });
+
+        if (typeof onSortEnd === 'function') {
+          onSortEnd({
+            collection: collection,
+            newIndex: _this.newIndex,
+            oldIndex: _this.index,
+            isKeySorting: isKeySorting,
+            nodes: nodes
+          }, event);
+        }
+
+        _this.touched = false;
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "autoscroll", function () {
+        var disableAutoscroll = _this.props.disableAutoscroll;
+        var isKeySorting = _this.manager.isKeySorting;
+
+        if (disableAutoscroll) {
+          _this.autoScroller.clear();
+
+          return;
+        }
+
+        if (isKeySorting) {
+          var translate = (0, _objectSpread3.default)({}, _this.translate);
+
+          var scrollX = 0;
+          var scrollY = 0;
+
+          if (_this.axis.x) {
+            translate.x = Math.min(_this.maxTranslate.x, Math.max(_this.minTranslate.x, _this.translate.x));
+            scrollX = _this.translate.x - translate.x;
+          }
+
+          if (_this.axis.y) {
+            translate.y = Math.min(_this.maxTranslate.y, Math.max(_this.minTranslate.y, _this.translate.y));
+            scrollY = _this.translate.y - translate.y;
+          }
+
+          _this.translate = translate;
+          setTranslate3d(_this.helper, _this.translate);
+          _this.scrollContainer.scrollLeft += scrollX;
+          _this.scrollContainer.scrollTop += scrollY;
+          return;
+        }
+
+        _this.autoScroller.update({
+          height: _this.height,
+          maxTranslate: _this.maxTranslate,
+          minTranslate: _this.minTranslate,
+          translate: _this.translate,
+          width: _this.width
+        });
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "onAutoScroll", function (offset) {
+        _this.translate.x += offset.left;
+        _this.translate.y += offset.top;
+
+        _this.animateNodes();
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleKeyDown", function (event) {
+        var keyCode = event.keyCode;
+        var _this$props5 = _this.props,
+            shouldCancelStart = _this$props5.shouldCancelStart,
+            _this$props5$keyCodes = _this$props5.keyCodes,
+            customKeyCodes = _this$props5$keyCodes === void 0 ? {} : _this$props5$keyCodes;
+
+        var keyCodes = (0, _objectSpread3.default)({}, defaultKeyCodes, customKeyCodes);
+
+        if (_this.manager.active && !_this.manager.isKeySorting || !_this.manager.active && (!keyCodes.lift.includes(keyCode) || shouldCancelStart(event) || !_this.isValidSortingTarget(event))) {
+          return;
+        }
+
+        event.stopPropagation();
+        event.preventDefault();
+
+        if (keyCodes.lift.includes(keyCode) && !_this.manager.active) {
+          _this.keyLift(event);
+        } else if (keyCodes.drop.includes(keyCode) && _this.manager.active) {
+          _this.keyDrop(event);
+        } else if (keyCodes.cancel.includes(keyCode)) {
+          _this.newIndex = _this.manager.active.index;
+
+          _this.keyDrop(event);
+        } else if (keyCodes.up.includes(keyCode)) {
+          _this.keyMove(-1);
+        } else if (keyCodes.down.includes(keyCode)) {
+          _this.keyMove(1);
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "keyLift", function (event) {
+        var target = event.target;
+        var node = closest(target, function (el) {
+          return el.sortableInfo != null;
+        });
+        var _node$sortableInfo2 = node.sortableInfo,
+            index = _node$sortableInfo2.index,
+            collection = _node$sortableInfo2.collection;
+        _this.initialFocusedNode = target;
+        _this.manager.isKeySorting = true;
+        _this.manager.active = {
+          index: index,
+          collection: collection
+        };
+
+        _this.handlePress(event);
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "keyMove", function (shift) {
+        var nodes = _this.manager.getOrderedRefs();
+
+        var lastIndex = nodes[nodes.length - 1].node.sortableInfo.index;
+        var newIndex = _this.newIndex + shift;
+        var prevIndex = _this.newIndex;
+
+        if (newIndex < 0 || newIndex > lastIndex) {
+          return;
+        }
+
+        _this.prevIndex = prevIndex;
+        _this.newIndex = newIndex;
+        var targetIndex = getTargetIndex(_this.newIndex, _this.prevIndex, _this.index);
+        var target = nodes.find(function (_ref2) {
+          var node = _ref2.node;
+          return node.sortableInfo.index === targetIndex;
+        });
+        var targetNode = target.node;
+        var scrollDelta = _this.containerScrollDelta;
+        var targetBoundingClientRect = target.boundingClientRect || getScrollAdjustedBoundingClientRect(targetNode, scrollDelta);
+        var targetTranslate = target.translate || {
+          x: 0,
+          y: 0
+        };
+        var targetPosition = {
+          top: targetBoundingClientRect.top + targetTranslate.y - scrollDelta.top,
+          left: targetBoundingClientRect.left + targetTranslate.x - scrollDelta.left
+        };
+        var shouldAdjustForSize = prevIndex < newIndex;
+        var sizeAdjustment = {
+          x: shouldAdjustForSize && _this.axis.x ? targetNode.offsetWidth - _this.width : 0,
+          y: shouldAdjustForSize && _this.axis.y ? targetNode.offsetHeight - _this.height : 0
+        };
+
+        _this.handleSortMove({
+          pageX: targetPosition.left + sizeAdjustment.x,
+          pageY: targetPosition.top + sizeAdjustment.y,
+          ignoreTransition: shift === 0
+        });
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "keyDrop", function (event) {
+        _this.handleSortEnd(event);
+
+        if (_this.initialFocusedNode) {
+          _this.initialFocusedNode.focus();
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleKeyEnd", function (event) {
+        if (_this.manager.active) {
+          _this.keyDrop(event);
+        }
+      });
+
+      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "isValidSortingTarget", function (event) {
+        var useDragHandle = _this.props.useDragHandle;
+        var target = event.target;
+        var node = closest(target, function (el) {
+          return el.sortableInfo != null;
+        });
+        return node && node.sortableInfo && !node.sortableInfo.disabled && (useDragHandle ? isSortableHandle(target) : target.sortableInfo);
+      });
+
+      validateProps(props);
+      _this.manager = new Manager();
+      _this.events = {
+        end: _this.handleEnd,
+        move: _this.handleMove,
+        start: _this.handleStart
+      };
+      return _this;
+    }
+
+    (0, _createClass3.default)(WithSortableContainer, [{
+      key: "getChildContext",
+      value: function getChildContext() {
+        return {
+          manager: this.manager
+        };
+      }
+    }, {
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        var _this2 = this;
+
+        var useWindowAsScrollContainer = this.props.useWindowAsScrollContainer;
+        var container = this.getContainer();
+        Promise.resolve(container).then(function (containerNode) {
+          _this2.container = containerNode;
+          _this2.document = _this2.container.ownerDocument || document;
+          var contentWindow = _this2.props.contentWindow || _this2.document.defaultView || window;
+          _this2.contentWindow = typeof contentWindow === 'function' ? contentWindow() : contentWindow;
+          _this2.scrollContainer = useWindowAsScrollContainer ? _this2.document.scrollingElement || _this2.document.documentElement : getScrollingParent(_this2.container) || _this2.container;
+          _this2.autoScroller = new AutoScroller(_this2.scrollContainer, _this2.onAutoScroll);
+          Object.keys(_this2.events).forEach(function (key) {
+            return events[key].forEach(function (eventName) {
+              return _this2.container.addEventListener(eventName, _this2.events[key], false);
+            });
+          });
+
+          _this2.container.addEventListener('keydown', _this2.handleKeyDown);
+        });
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        var _this3 = this;
+
+        if (this.helper && this.helper.parentNode) {
+          this.helper.parentNode.removeChild(this.helper);
+        }
+
+        if (!this.container) {
+          return;
+        }
+
+        Object.keys(this.events).forEach(function (key) {
+          return events[key].forEach(function (eventName) {
+            return _this3.container.removeEventListener(eventName, _this3.events[key]);
+          });
+        });
+        this.container.removeEventListener('keydown', this.handleKeyDown);
+      }
+    }, {
+      key: "updateHelperPosition",
+      value: function updateHelperPosition(event) {
+        var _this$props6 = this.props,
+            lockAxis = _this$props6.lockAxis,
+            lockOffset = _this$props6.lockOffset,
+            lockToContainerEdges = _this$props6.lockToContainerEdges,
+            transitionDuration = _this$props6.transitionDuration,
+            _this$props6$keyboard = _this$props6.keyboardSortingTransitionDuration,
+            keyboardSortingTransitionDuration = _this$props6$keyboard === void 0 ? transitionDuration : _this$props6$keyboard;
+        var isKeySorting = this.manager.isKeySorting;
+        var ignoreTransition = event.ignoreTransition;
+        var offset = getPosition(event);
+        var translate = {
+          x: offset.x - this.initialOffset.x,
+          y: offset.y - this.initialOffset.y
+        };
+        translate.y -= window.pageYOffset - this.initialWindowScroll.top;
+        translate.x -= window.pageXOffset - this.initialWindowScroll.left;
+        this.translate = translate;
+
+        if (lockToContainerEdges) {
+          var _getLockPixelOffsets = getLockPixelOffsets({
+            height: this.height,
+            lockOffset: lockOffset,
+            width: this.width
+          }),
+              _getLockPixelOffsets2 = (0, _slicedToArray3.default)(_getLockPixelOffsets, 2),
+              minLockOffset = _getLockPixelOffsets2[0],
+              maxLockOffset = _getLockPixelOffsets2[1];
+
+          var minOffset = {
+            x: this.width / 2 - minLockOffset.x,
+            y: this.height / 2 - minLockOffset.y
+          };
+          var maxOffset = {
+            x: this.width / 2 - maxLockOffset.x,
+            y: this.height / 2 - maxLockOffset.y
+          };
+          translate.x = limit(this.minTranslate.x + minOffset.x, this.maxTranslate.x - maxOffset.x, translate.x);
+          translate.y = limit(this.minTranslate.y + minOffset.y, this.maxTranslate.y - maxOffset.y, translate.y);
+        }
+
+        if (lockAxis === 'x') {
+          translate.y = 0;
+        } else if (lockAxis === 'y') {
+          translate.x = 0;
+        }
+
+        if (isKeySorting && keyboardSortingTransitionDuration && !ignoreTransition) {
+          setTransitionDuration(this.helper, keyboardSortingTransitionDuration);
+        }
+
+        setTranslate3d(this.helper, translate);
+      }
+    }, {
+      key: "animateNodes",
+      value: function animateNodes() {
+        var _this$props7 = this.props,
+            transitionDuration = _this$props7.transitionDuration,
+            hideSortableGhost = _this$props7.hideSortableGhost,
+            onSortOver = _this$props7.onSortOver;
+        var containerScrollDelta = this.containerScrollDelta,
+            windowScrollDelta = this.windowScrollDelta;
+        var nodes = this.manager.getOrderedRefs();
+        var sortingOffset = {
+          left: this.offsetEdge.left + this.translate.x + containerScrollDelta.left,
+          top: this.offsetEdge.top + this.translate.y + containerScrollDelta.top
+        };
+        var isKeySorting = this.manager.isKeySorting;
+        var prevIndex = this.newIndex;
+        this.newIndex = null;
+
+        for (var i = 0, len = nodes.length; i < len; i++) {
+          var _node3 = nodes[i].node;
+          var index = _node3.sortableInfo.index;
+          var width = _node3.offsetWidth;
+          var height = _node3.offsetHeight;
+          var offset = {
+            height: this.height > height ? height / 2 : this.height / 2,
+            width: this.width > width ? width / 2 : this.width / 2
+          };
+          var mustShiftBackward = isKeySorting && index > this.index && index <= prevIndex;
+          var mustShiftForward = isKeySorting && index < this.index && index >= prevIndex;
+          var translate = {
+            x: 0,
+            y: 0
+          };
+          var edgeOffset = nodes[i].edgeOffset;
+
+          if (!edgeOffset) {
+            edgeOffset = getEdgeOffset(_node3, this.container);
+            nodes[i].edgeOffset = edgeOffset;
+
+            if (isKeySorting) {
+              nodes[i].boundingClientRect = getScrollAdjustedBoundingClientRect(_node3, containerScrollDelta);
+            }
+          }
+
+          var nextNode = i < nodes.length - 1 && nodes[i + 1];
+          var prevNode = i > 0 && nodes[i - 1];
+
+          if (nextNode && !nextNode.edgeOffset) {
+            nextNode.edgeOffset = getEdgeOffset(nextNode.node, this.container);
+
+            if (isKeySorting) {
+              nextNode.boundingClientRect = getScrollAdjustedBoundingClientRect(nextNode.node, containerScrollDelta);
+            }
+          }
+
+          if (index === this.index) {
+            if (hideSortableGhost) {
+              this.sortableGhost = _node3;
+              setInlineStyles(_node3, {
+                opacity: 0,
+                visibility: 'hidden'
+              });
+            }
+
+            continue;
+          }
+
+          if (transitionDuration) {
+            setTransitionDuration(_node3, transitionDuration);
+          }
+
+          if (this.axis.x) {
+            if (this.axis.y) {
+              if (mustShiftForward || index < this.index && (sortingOffset.left + windowScrollDelta.left - offset.width <= edgeOffset.left && sortingOffset.top + windowScrollDelta.top <= edgeOffset.top + offset.height || sortingOffset.top + windowScrollDelta.top + offset.height <= edgeOffset.top)) {
+                translate.x = this.width + this.marginOffset.x;
+
+                if (edgeOffset.left + translate.x > this.containerBoundingRect.width - offset.width) {
+                  if (nextNode) {
+                    translate.x = nextNode.edgeOffset.left - edgeOffset.left;
+                    translate.y = nextNode.edgeOffset.top - edgeOffset.top;
+                  }
+                }
+
+                if (this.newIndex === null) {
+                  this.newIndex = index;
+                }
+              } else if (mustShiftBackward || index > this.index && (sortingOffset.left + windowScrollDelta.left + offset.width >= edgeOffset.left && sortingOffset.top + windowScrollDelta.top + offset.height >= edgeOffset.top || sortingOffset.top + windowScrollDelta.top + offset.height >= edgeOffset.top + height)) {
+                translate.x = -(this.width + this.marginOffset.x);
+
+                if (edgeOffset.left + translate.x < this.containerBoundingRect.left + offset.width) {
+                  if (prevNode) {
+                    translate.x = prevNode.edgeOffset.left - edgeOffset.left;
+                    translate.y = prevNode.edgeOffset.top - edgeOffset.top;
+                  }
+                }
+
+                this.newIndex = index;
+              }
+            } else {
+              if (mustShiftBackward || index > this.index && sortingOffset.left + windowScrollDelta.left + offset.width >= edgeOffset.left) {
+                translate.x = -(this.width + this.marginOffset.x);
+                this.newIndex = index;
+              } else if (mustShiftForward || index < this.index && sortingOffset.left + windowScrollDelta.left <= edgeOffset.left + offset.width) {
+                translate.x = this.width + this.marginOffset.x;
+
+                if (this.newIndex == null) {
+                  this.newIndex = index;
+                }
+              }
+            }
+          } else if (this.axis.y) {
+            if (mustShiftBackward || index > this.index && sortingOffset.top + windowScrollDelta.top + offset.height >= edgeOffset.top) {
+              translate.y = -(this.height + this.marginOffset.y);
+              this.newIndex = index;
+            } else if (mustShiftForward || index < this.index && sortingOffset.top + windowScrollDelta.top <= edgeOffset.top + offset.height) {
+              translate.y = this.height + this.marginOffset.y;
+
+              if (this.newIndex == null) {
+                this.newIndex = index;
+              }
+            }
+          }
+
+          setTranslate3d(_node3, translate);
+          nodes[i].translate = translate;
+        }
+
+        if (this.newIndex == null) {
+          this.newIndex = this.index;
+        }
+
+        if (isKeySorting) {
+          this.newIndex = prevIndex;
+        }
+
+        var oldIndex = isKeySorting ? this.prevIndex : prevIndex;
+
+        if (onSortOver && this.newIndex !== oldIndex) {
+          onSortOver({
+            collection: this.manager.active.collection,
+            index: this.index,
+            newIndex: this.newIndex,
+            oldIndex: oldIndex,
+            isKeySorting: isKeySorting,
+            nodes: nodes,
+            helper: this.helper
+          });
+        }
+      }
+    }, {
+      key: "getWrappedInstance",
+      value: function getWrappedInstance() {
+        (0, _invariant2.default)(config.withRef, 'To access the wrapped instance, you need to pass in {withRef: true} as the second argument of the SortableContainer() call');
+        return this.refs.wrappedInstance;
+      }
+    }, {
+      key: "getContainer",
+      value: function getContainer() {
+        var getContainer = this.props.getContainer;
+
+        if (typeof getContainer !== 'function') {
+          return (0, _reactDom.findDOMNode)(this);
+        }
+
+        return getContainer(config.withRef ? this.getWrappedInstance() : undefined);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var ref = config.withRef ? 'wrappedInstance' : null;
+        return (0, _react.createElement)(WrappedComponent, (0, _extends3.default)({
+          ref: ref
+        }, omit(this.props, omittedProps)));
+      }
+    }, {
+      key: "helperContainer",
+      get: function get() {
+        var helperContainer = this.props.helperContainer;
+
+        if (typeof helperContainer === 'function') {
+          return helperContainer();
+        }
+
+        return this.props.helperContainer || this.document.body;
+      }
+    }, {
+      key: "containerScrollDelta",
+      get: function get() {
+        var useWindowAsScrollContainer = this.props.useWindowAsScrollContainer;
+
+        if (useWindowAsScrollContainer) {
+          return {
+            left: 0,
+            top: 0
+          };
+        }
+
+        return {
+          left: this.scrollContainer.scrollLeft - this.initialScroll.left,
+          top: this.scrollContainer.scrollTop - this.initialScroll.top
+        };
+      }
+    }, {
+      key: "windowScrollDelta",
+      get: function get() {
+        return {
+          left: this.contentWindow.pageXOffset - this.initialWindowScroll.left,
+          top: this.contentWindow.pageYOffset - this.initialWindowScroll.top
+        };
+      }
+    }]);
+
+    return WithSortableContainer;
+  }(_react.Component), (0, _defineProperty3.default)(_class, "displayName", provideDisplayName('sortableList', WrappedComponent)), (0, _defineProperty3.default)(_class, "defaultProps", defaultProps), (0, _defineProperty3.default)(_class, "propTypes", propTypes), (0, _defineProperty3.default)(_class, "childContextTypes", {
+    manager: _propTypes2.default.object.isRequired
+  }), _temp;
+}
+
+var propTypes$1 = {
+  index: _propTypes2.default.number.isRequired,
+  collection: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  disabled: _propTypes2.default.bool
+};
+var omittedProps$1 = Object.keys(propTypes$1);
+function sortableElement(WrappedComponent) {
+  var _class, _temp;
+
+  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    withRef: false
+  };
+  return _temp = _class = function (_React$Component) {
+    (0, _inherits3.default)(WithSortableElement, _React$Component);
+
+    function WithSortableElement() {
+      (0, _classCallCheck3.default)(this, WithSortableElement);
+
+      return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf3.default)(WithSortableElement).apply(this, arguments));
+    }
+
+    (0, _createClass3.default)(WithSortableElement, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        this.register();
+      }
+    }, {
+      key: "componentDidUpdate",
+      value: function componentDidUpdate(prevProps) {
+        if (this.node) {
+          if (prevProps.index !== this.props.index) {
+            this.node.sortableInfo.index = this.props.index;
+          }
+
+          if (prevProps.disabled !== this.props.disabled) {
+            this.node.sortableInfo.disabled = this.props.disabled;
+          }
+        }
+
+        if (prevProps.collection !== this.props.collection) {
+          this.unregister(prevProps.collection);
+          this.register();
+        }
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this.unregister();
+      }
+    }, {
+      key: "register",
+      value: function register() {
+        var _this$props = this.props,
+            collection = _this$props.collection,
+            disabled = _this$props.disabled,
+            index = _this$props.index;
+        var node = (0, _reactDom.findDOMNode)(this);
+        node.sortableInfo = {
+          collection: collection,
+          disabled: disabled,
+          index: index,
+          manager: this.context.manager
+        };
+        this.node = node;
+        this.ref = {
+          node: node
+        };
+        this.context.manager.add(collection, this.ref);
+      }
+    }, {
+      key: "unregister",
+      value: function unregister() {
+        var collection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props.collection;
+        this.context.manager.remove(collection, this.ref);
+      }
+    }, {
+      key: "getWrappedInstance",
+      value: function getWrappedInstance() {
+        (0, _invariant2.default)(config.withRef, 'To access the wrapped instance, you need to pass in {withRef: true} as the second argument of the SortableElement() call');
+        return this.refs.wrappedInstance;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var ref = config.withRef ? 'wrappedInstance' : null;
+        return (0, _react.createElement)(WrappedComponent, (0, _extends3.default)({
+          ref: ref
+        }, omit(this.props, omittedProps$1)));
+      }
+    }]);
+
+    return WithSortableElement;
+  }(_react.Component), (0, _defineProperty3.default)(_class, "displayName", provideDisplayName('sortableElement', WrappedComponent)), (0, _defineProperty3.default)(_class, "contextTypes", {
+    manager: _propTypes2.default.object.isRequired
+  }), (0, _defineProperty3.default)(_class, "propTypes", propTypes$1), (0, _defineProperty3.default)(_class, "defaultProps", {
+    collection: 0
+  }), _temp;
+}
+
+exports.SortableContainer = sortableContainer;
+exports.sortableContainer = sortableContainer;
+exports.SortableElement = sortableElement;
+exports.sortableElement = sortableElement;
+exports.SortableHandle = sortableHandle;
+exports.sortableHandle = sortableHandle;
+exports.arrayMove = arrayMove;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -8783,7 +10428,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _unsupportedIterableToArray;
 
-var _arrayLikeToArray = __webpack_require__(114);
+var _arrayLikeToArray = __webpack_require__(115);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -8799,7 +10444,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8820,7 +10465,7 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8846,7 +10491,7 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8865,7 +10510,7 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8896,20 +10541,20 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = !__webpack_require__(22) && !__webpack_require__(29)(function () {
-  return Object.defineProperty(__webpack_require__(119)('div'), 'a', { get: function get() {
+  return Object.defineProperty(__webpack_require__(120)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
 });
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8924,7 +10569,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8951,21 +10596,21 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(122);
+var cof = __webpack_require__(123);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8978,7 +10623,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8999,7 +10644,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 };
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9034,7 +10679,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9042,12 +10687,12 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 var LIBRARY = __webpack_require__(50);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(126);
+var redefine = __webpack_require__(127);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(76);
 var $iterCreate = __webpack_require__(338);
 var setToStringTag = __webpack_require__(78);
-var getPrototypeOf = __webpack_require__(123);
+var getPrototypeOf = __webpack_require__(124);
 var ITERATOR = __webpack_require__(31)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -9122,7 +10767,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9131,14 +10776,14 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 module.exports = __webpack_require__(27);
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(120);
+var $keys = __webpack_require__(121);
 var hiddenKeys = __webpack_require__(73).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -9146,7 +10791,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 };
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9157,7 +10802,7 @@ var createDesc = __webpack_require__(48);
 var toIObject = __webpack_require__(30);
 var toPrimitive = __webpack_require__(68);
 var has = __webpack_require__(23);
-var IE8_DOM_DEFINE = __webpack_require__(118);
+var IE8_DOM_DEFINE = __webpack_require__(119);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -9170,44 +10815,44 @@ exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O
 };
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(130);
+__webpack_require__(131);
 
-__webpack_require__(222);
+__webpack_require__(223);
 
-__webpack_require__(227);
+__webpack_require__(228);
 
-__webpack_require__(232);
+__webpack_require__(233);
 
-__webpack_require__(237);
+__webpack_require__(238);
 
-__webpack_require__(242);
+__webpack_require__(243);
 
-__webpack_require__(261);
-
-__webpack_require__(266);
+__webpack_require__(262);
 
 __webpack_require__(267);
 
-__webpack_require__(272);
+__webpack_require__(268);
 
-__webpack_require__(277);
+__webpack_require__(273);
+
+__webpack_require__(278);
 
 __webpack_require__(47);
 
-__webpack_require__(285);
+__webpack_require__(286);
 
 __webpack_require__(310);
 
 __webpack_require__(368);
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9219,19 +10864,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(131);
+var _edit = __webpack_require__(132);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(219);
+var _save = __webpack_require__(220);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(220);
+var _attributes = __webpack_require__(221);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(221);
+var _deprecated = __webpack_require__(222);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -9256,7 +10901,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10094,7 +11739,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumAccordion);
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10191,7 +11836,7 @@ function PremiumRange(_ref) {
 exports.default = PremiumRange;
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10221,7 +11866,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10275,7 +11920,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10305,13 +11950,13 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoizeCapped = __webpack_require__(137);
+var memoizeCapped = __webpack_require__(138);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -10340,13 +11985,13 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoize = __webpack_require__(138);
+var memoize = __webpack_require__(139);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -10374,7 +12019,7 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10455,13 +12100,13 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Hash = __webpack_require__(140),
+var Hash = __webpack_require__(141),
     ListCache = __webpack_require__(42),
     Map = __webpack_require__(55);
 
@@ -10484,17 +12129,17 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hashClear = __webpack_require__(141),
-    hashDelete = __webpack_require__(146),
-    hashGet = __webpack_require__(147),
-    hashHas = __webpack_require__(148),
-    hashSet = __webpack_require__(149);
+var hashClear = __webpack_require__(142),
+    hashDelete = __webpack_require__(147),
+    hashGet = __webpack_require__(148),
+    hashHas = __webpack_require__(149),
+    hashSet = __webpack_require__(150);
 
 /**
  * Creates a hash object.
@@ -10524,7 +12169,7 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10547,14 +12192,14 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isFunction = __webpack_require__(86),
-    isMasked = __webpack_require__(143),
+    isMasked = __webpack_require__(144),
     isObject = __webpack_require__(41),
     toSource = __webpack_require__(87);
 
@@ -10599,13 +12244,13 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var coreJsData = __webpack_require__(144);
+var coreJsData = __webpack_require__(145);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -10627,7 +12272,7 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10641,7 +12286,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10662,7 +12307,7 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10687,7 +12332,7 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10725,7 +12370,7 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10756,7 +12401,7 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10787,7 +12432,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10808,7 +12453,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10851,7 +12496,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10878,7 +12523,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10902,7 +12547,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10936,7 +12581,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10962,7 +12607,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10985,7 +12630,7 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11009,7 +12654,7 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11033,7 +12678,7 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11063,13 +12708,13 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseToString = __webpack_require__(161);
+var baseToString = __webpack_require__(162);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -11099,7 +12744,7 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11144,7 +12789,7 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11152,11 +12797,11 @@ module.exports = baseToString;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(163),
-    baseMatchesProperty = __webpack_require__(203),
+var baseMatches = __webpack_require__(164),
+    baseMatchesProperty = __webpack_require__(204),
     identity = __webpack_require__(101),
     isArray = __webpack_require__(12),
-    property = __webpack_require__(207);
+    property = __webpack_require__(208);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -11183,14 +12828,14 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsMatch = __webpack_require__(164),
-    getMatchData = __webpack_require__(202),
+var baseIsMatch = __webpack_require__(165),
+    getMatchData = __webpack_require__(203),
     matchesStrictComparable = __webpack_require__(100);
 
 /**
@@ -11213,7 +12858,7 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11277,7 +12922,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11300,7 +12945,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11326,7 +12971,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11348,7 +12993,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11370,7 +13015,7 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11412,7 +13057,7 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11420,9 +13065,9 @@ module.exports = stackSet;
 
 var Stack = __webpack_require__(91),
     equalArrays = __webpack_require__(93),
-    equalByTag = __webpack_require__(176),
-    equalObjects = __webpack_require__(180),
-    getTag = __webpack_require__(197),
+    equalByTag = __webpack_require__(177),
+    equalObjects = __webpack_require__(181),
+    getTag = __webpack_require__(198),
     isArray = __webpack_require__(12),
     isBuffer = __webpack_require__(96),
     isTypedArray = __webpack_require__(98);
@@ -11501,15 +13146,15 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var MapCache = __webpack_require__(54),
-    setCacheAdd = __webpack_require__(172),
-    setCacheHas = __webpack_require__(173);
+    setCacheAdd = __webpack_require__(173),
+    setCacheHas = __webpack_require__(174);
 
 /**
  *
@@ -11536,7 +13181,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11563,7 +13208,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11585,7 +13230,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11616,7 +13261,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11637,18 +13282,18 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _Symbol = __webpack_require__(39),
-    Uint8Array = __webpack_require__(177),
+    Uint8Array = __webpack_require__(178),
     eq = __webpack_require__(88),
     equalArrays = __webpack_require__(93),
-    mapToArray = __webpack_require__(178),
-    setToArray = __webpack_require__(179);
+    mapToArray = __webpack_require__(179),
+    setToArray = __webpack_require__(180);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -11755,7 +13400,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11769,7 +13414,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11795,7 +13440,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11821,13 +13466,13 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getAllKeys = __webpack_require__(181);
+var getAllKeys = __webpack_require__(182);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -11911,14 +13556,14 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetAllKeys = __webpack_require__(182),
-    getSymbols = __webpack_require__(184),
+var baseGetAllKeys = __webpack_require__(183),
+    getSymbols = __webpack_require__(185),
     keys = __webpack_require__(56);
 
 /**
@@ -11935,13 +13580,13 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayPush = __webpack_require__(183),
+var arrayPush = __webpack_require__(184),
     isArray = __webpack_require__(12);
 
 /**
@@ -11963,7 +13608,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11991,14 +13636,14 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayFilter = __webpack_require__(185),
-    stubArray = __webpack_require__(186);
+var arrayFilter = __webpack_require__(186),
+    stubArray = __webpack_require__(187);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -12029,7 +13674,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12062,7 +13707,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12093,7 +13738,7 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12148,7 +13793,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12174,7 +13819,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12200,7 +13845,7 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12256,7 +13901,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12278,7 +13923,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12319,14 +13964,14 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isPrototype = __webpack_require__(194),
-    nativeKeys = __webpack_require__(195);
+var isPrototype = __webpack_require__(195),
+    nativeKeys = __webpack_require__(196);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -12357,7 +14002,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12383,13 +14028,13 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var overArg = __webpack_require__(196);
+var overArg = __webpack_require__(197);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -12397,7 +14042,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12420,17 +14065,17 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var DataView = __webpack_require__(198),
+var DataView = __webpack_require__(199),
     Map = __webpack_require__(55),
-    Promise = __webpack_require__(199),
-    Set = __webpack_require__(200),
-    WeakMap = __webpack_require__(201),
+    Promise = __webpack_require__(200),
+    Set = __webpack_require__(201),
+    WeakMap = __webpack_require__(202),
     baseGetTag = __webpack_require__(32),
     toSource = __webpack_require__(87);
 
@@ -12487,7 +14132,7 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12502,7 +14147,7 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12517,7 +14162,7 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12532,7 +14177,7 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12547,7 +14192,7 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12579,7 +14224,7 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12587,7 +14232,7 @@ module.exports = getMatchData;
 
 var baseIsEqual = __webpack_require__(92),
     get = __webpack_require__(82),
-    hasIn = __webpack_require__(204),
+    hasIn = __webpack_require__(205),
     isKey = __webpack_require__(53),
     isStrictComparable = __webpack_require__(99),
     matchesStrictComparable = __webpack_require__(100),
@@ -12618,14 +14263,14 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseHasIn = __webpack_require__(205),
-    hasPath = __webpack_require__(206);
+var baseHasIn = __webpack_require__(206),
+    hasPath = __webpack_require__(207);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -12660,7 +14305,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12681,7 +14326,7 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12727,14 +14372,14 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseProperty = __webpack_require__(208),
-    basePropertyDeep = __webpack_require__(209),
+var baseProperty = __webpack_require__(209),
+    basePropertyDeep = __webpack_require__(210),
     isKey = __webpack_require__(53),
     toKey = __webpack_require__(45);
 
@@ -12767,7 +14412,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12789,7 +14434,7 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12813,13 +14458,13 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseEach = __webpack_require__(211),
+var baseEach = __webpack_require__(212),
     isArrayLike = __webpack_require__(58);
 
 /**
@@ -12843,14 +14488,14 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseForOwn = __webpack_require__(212),
-    createBaseEach = __webpack_require__(215);
+var baseForOwn = __webpack_require__(213),
+    createBaseEach = __webpack_require__(216);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -12865,13 +14510,13 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseFor = __webpack_require__(213),
+var baseFor = __webpack_require__(214),
     keys = __webpack_require__(56);
 
 /**
@@ -12889,13 +14534,13 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createBaseFor = __webpack_require__(214);
+var createBaseFor = __webpack_require__(215);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -12913,7 +14558,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12946,7 +14591,7 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12986,7 +14631,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13168,7 +14813,7 @@ exports.getFormat = I;
 exports.random = E;
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13421,7 +15066,7 @@ var PremiumPadding = function (_Component) {
 exports.default = PremiumPadding;
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13585,7 +15230,7 @@ var FontsList = function FontsList(_ref3) {
 exports.default = FontsList;
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13743,7 +15388,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13974,7 +15619,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14807,7 +16452,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14819,19 +16464,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(223);
+var _edit = __webpack_require__(224);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(224);
+var _save = __webpack_require__(225);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(225);
+var _deprecated = __webpack_require__(226);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(226);
+var _attributes = __webpack_require__(227);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -14855,7 +16500,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15730,7 +17375,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15895,7 +17540,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17365,7 +19010,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17606,7 +19251,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17614,15 +19259,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _edit = __webpack_require__(228);
+var _edit = __webpack_require__(229);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(229);
+var _save = __webpack_require__(230);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(230);
+var _deprecated = __webpack_require__(231);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -17630,7 +19275,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(231);
+var _attributes = __webpack_require__(232);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -17655,7 +19300,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18302,7 +19947,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18388,7 +20033,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19207,7 +20852,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19335,7 +20980,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19343,15 +20988,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _attributes = __webpack_require__(233);
+var _attributes = __webpack_require__(234);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(234);
+var _edit = __webpack_require__(235);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(235);
+var _save = __webpack_require__(236);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -19359,7 +21004,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(236);
+var _deprecated = __webpack_require__(237);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -19386,7 +21031,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19649,7 +21294,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20743,7 +22388,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20962,7 +22607,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22773,7 +24418,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22785,19 +24430,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(238);
+var _edit = __webpack_require__(239);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(239);
+var _save = __webpack_require__(240);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(240);
+var _deprecated = __webpack_require__(241);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(241);
+var _attributes = __webpack_require__(242);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -22822,7 +24467,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23666,7 +25311,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23824,7 +25469,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25367,7 +27012,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25579,7 +27224,7 @@ var attributes = (_attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25591,19 +27236,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(243);
+var _edit = __webpack_require__(244);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(258);
+var _save = __webpack_require__(259);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(259);
+var _deprecated = __webpack_require__(260);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(260);
+var _attributes = __webpack_require__(261);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -25628,7 +27273,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26400,7 +28045,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26480,7 +28125,7 @@ exports.isValidElementType = function (a) {
 };exports.typeOf = z;
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26669,7 +28314,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26685,11 +28330,11 @@ if (process.env.NODE_ENV !== "production") {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var ReactIs = __webpack_require__(105);
-var assign = __webpack_require__(247);
+var assign = __webpack_require__(248);
 
 var ReactPropTypesSecret = __webpack_require__(62);
 var has = __webpack_require__(106);
-var checkPropTypes = __webpack_require__(248);
+var checkPropTypes = __webpack_require__(249);
 
 var printWarning = function printWarning() {};
 
@@ -27260,7 +28905,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27356,7 +29001,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27455,7 +29100,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27522,7 +29167,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27533,9 +29178,9 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(17));
 
-var _addClass = _interopRequireDefault(__webpack_require__(251));
+var _addClass = _interopRequireDefault(__webpack_require__(252));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(254));
+var _removeClass = _interopRequireDefault(__webpack_require__(255));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -27922,18 +29567,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(252);
+var _interopRequireDefault = __webpack_require__(253);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(253));
+var _hasClass = _interopRequireDefault(__webpack_require__(254));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -27942,7 +29587,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27957,7 +29602,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27973,7 +29618,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27988,7 +29633,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28153,7 +29798,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28308,7 +29953,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28574,7 +30219,7 @@ var PremiumMargin = function (_Component) {
 exports.default = PremiumMargin;
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28685,7 +30330,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29630,7 +31275,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29959,7 +31604,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29971,19 +31616,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(262);
+var _edit = __webpack_require__(263);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(263);
+var _save = __webpack_require__(264);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(264);
+var _deprecated = __webpack_require__(265);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(265);
+var _attributes = __webpack_require__(266);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -30008,7 +31653,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31472,7 +33117,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31682,7 +33327,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34273,7 +35918,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34678,7 +36323,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35802,7 +37447,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35814,19 +37459,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(268);
+var _edit = __webpack_require__(269);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(269);
+var _save = __webpack_require__(270);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(270);
+var _deprecated = __webpack_require__(271);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(271);
+var _attributes = __webpack_require__(272);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -35850,7 +37495,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37690,7 +39335,7 @@ exports.default = withSelect(function (select) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38009,7 +39654,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40377,7 +42022,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40682,7 +42327,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40690,15 +42335,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _edit = __webpack_require__(273);
+var _edit = __webpack_require__(274);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(274);
+var _save = __webpack_require__(275);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(275);
+var _deprecated = __webpack_require__(276);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -40706,7 +42351,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(276);
+var _attributes = __webpack_require__(277);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -40738,7 +42383,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41293,7 +42938,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41394,7 +43039,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42164,7 +43809,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42345,7 +43990,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42353,15 +43998,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _edit = __webpack_require__(278);
+var _edit = __webpack_require__(279);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(279);
+var _save = __webpack_require__(280);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(280);
+var _deprecated = __webpack_require__(281);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -42369,7 +44014,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(281);
+var _attributes = __webpack_require__(282);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42394,7 +44039,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43251,7 +44896,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43457,7 +45102,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44861,7 +46506,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45057,7 +46702,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46015,7 +47660,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46182,7 +47827,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47480,7 +49125,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47488,11 +49133,11 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(2);
 
-var _save = __webpack_require__(286);
+var _save = __webpack_require__(287);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(287);
+var _edit = __webpack_require__(288);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -47527,7 +49172,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47731,7 +49376,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47757,7 +49402,7 @@ var _premiumTextShadow = __webpack_require__(14);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(288);
+var _typed = __webpack_require__(289);
 
 var _typed2 = _interopRequireDefault(_typed);
 
@@ -47773,7 +49418,7 @@ var _radioControl = __webpack_require__(11);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _reactSortableHoc = __webpack_require__(289);
+var _reactSortableHoc = __webpack_require__(113);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48622,7 +50267,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49735,1651 +51380,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
 
 /***/ }),
-/* 289 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
-
-var _extends2 = __webpack_require__(290);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _slicedToArray2 = __webpack_require__(291);
-
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
-
-var _objectSpread2 = __webpack_require__(295);
-
-var _objectSpread3 = _interopRequireDefault(_objectSpread2);
-
-var _classCallCheck2 = __webpack_require__(296);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(297);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(298);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _getPrototypeOf2 = __webpack_require__(300);
-
-var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
-
-var _inherits2 = __webpack_require__(301);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _assertThisInitialized2 = __webpack_require__(116);
-
-var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
-
-var _defineProperty2 = __webpack_require__(115);
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _react = __webpack_require__(5);
-
-var _propTypes = __webpack_require__(17);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactDom = __webpack_require__(36);
-
-var _invariant = __webpack_require__(303);
-
-var _invariant2 = _interopRequireDefault(_invariant);
-
-var _toConsumableArray2 = __webpack_require__(304);
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Manager = function () {
-  function Manager() {
-    (0, _classCallCheck3.default)(this, Manager);
-
-    (0, _defineProperty3.default)(this, "refs", {});
-  }
-
-  (0, _createClass3.default)(Manager, [{
-    key: "add",
-    value: function add(collection, ref) {
-      if (!this.refs[collection]) {
-        this.refs[collection] = [];
-      }
-
-      this.refs[collection].push(ref);
-    }
-  }, {
-    key: "remove",
-    value: function remove(collection, ref) {
-      var index = this.getIndex(collection, ref);
-
-      if (index !== -1) {
-        this.refs[collection].splice(index, 1);
-      }
-    }
-  }, {
-    key: "isActive",
-    value: function isActive() {
-      return this.active;
-    }
-  }, {
-    key: "getActive",
-    value: function getActive() {
-      var _this = this;
-
-      return this.refs[this.active.collection].find(function (_ref) {
-        var node = _ref.node;
-        return node.sortableInfo.index == _this.active.index;
-      });
-    }
-  }, {
-    key: "getIndex",
-    value: function getIndex(collection, ref) {
-      return this.refs[collection].indexOf(ref);
-    }
-  }, {
-    key: "getOrderedRefs",
-    value: function getOrderedRefs() {
-      var collection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.active.collection;
-      return this.refs[collection].sort(sortByIndex);
-    }
-  }]);
-
-  return Manager;
-}();
-
-function sortByIndex(_ref2, _ref3) {
-  var index1 = _ref2.node.sortableInfo.index;
-  var index2 = _ref3.node.sortableInfo.index;
-  return index1 - index2;
-}
-
-function arrayMove(array, from, to) {
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof console !== 'undefined') {
-      console.warn("Deprecation warning: arrayMove will no longer be exported by 'react-sortable-hoc' in the next major release. Please install the `array-move` package locally instead. https://www.npmjs.com/package/array-move");
-    }
-  }
-
-  array = array.slice();
-  array.splice(to < 0 ? array.length + to : to, 0, array.splice(from, 1)[0]);
-  return array;
-}
-function omit(obj, keysToOmit) {
-  return Object.keys(obj).reduce(function (acc, key) {
-    if (keysToOmit.indexOf(key) === -1) {
-      acc[key] = obj[key];
-    }
-
-    return acc;
-  }, {});
-}
-var events = {
-  end: ['touchend', 'touchcancel', 'mouseup'],
-  move: ['touchmove', 'mousemove'],
-  start: ['touchstart', 'mousedown']
-};
-var vendorPrefix = function () {
-  if (typeof window === 'undefined' || typeof document === 'undefined') {
-    return '';
-  }
-
-  var styles = window.getComputedStyle(document.documentElement, '') || ['-moz-hidden-iframe'];
-  var pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || styles.OLink === '' && ['', 'o'])[1];
-
-  switch (pre) {
-    case 'ms':
-      return 'ms';
-
-    default:
-      return pre && pre.length ? pre[0].toUpperCase() + pre.substr(1) : '';
-  }
-}();
-function setInlineStyles(node, styles) {
-  Object.keys(styles).forEach(function (key) {
-    node.style[key] = styles[key];
-  });
-}
-function setTranslate3d(node, translate) {
-  node.style["".concat(vendorPrefix, "Transform")] = translate == null ? '' : "translate3d(".concat(translate.x, "px,").concat(translate.y, "px,0)");
-}
-function setTransitionDuration(node, duration) {
-  node.style["".concat(vendorPrefix, "TransitionDuration")] = duration == null ? '' : "".concat(duration, "ms");
-}
-function closest(el, fn) {
-  while (el) {
-    if (fn(el)) {
-      return el;
-    }
-
-    el = el.parentNode;
-  }
-
-  return null;
-}
-function limit(min, max, value) {
-  return Math.max(min, Math.min(value, max));
-}
-
-function getPixelValue(stringValue) {
-  if (stringValue.substr(-2) === 'px') {
-    return parseFloat(stringValue);
-  }
-
-  return 0;
-}
-
-function getElementMargin(element) {
-  var style = window.getComputedStyle(element);
-  return {
-    bottom: getPixelValue(style.marginBottom),
-    left: getPixelValue(style.marginLeft),
-    right: getPixelValue(style.marginRight),
-    top: getPixelValue(style.marginTop)
-  };
-}
-function provideDisplayName(prefix, Component$$1) {
-  var componentName = Component$$1.displayName || Component$$1.name;
-  return componentName ? "".concat(prefix, "(").concat(componentName, ")") : prefix;
-}
-function getScrollAdjustedBoundingClientRect(node, scrollDelta) {
-  var boundingClientRect = node.getBoundingClientRect();
-  return {
-    top: boundingClientRect.top + scrollDelta.top,
-    left: boundingClientRect.left + scrollDelta.left
-  };
-}
-function getPosition(event) {
-  if (event.touches && event.touches.length) {
-    return {
-      x: event.touches[0].pageX,
-      y: event.touches[0].pageY
-    };
-  } else if (event.changedTouches && event.changedTouches.length) {
-    return {
-      x: event.changedTouches[0].pageX,
-      y: event.changedTouches[0].pageY
-    };
-  } else {
-    return {
-      x: event.pageX,
-      y: event.pageY
-    };
-  }
-}
-function isTouchEvent(event) {
-  return event.touches && event.touches.length || event.changedTouches && event.changedTouches.length;
-}
-function getEdgeOffset(node, parent) {
-  var offset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
-    left: 0,
-    top: 0
-  };
-
-  if (!node) {
-    return undefined;
-  }
-
-  var nodeOffset = {
-    left: offset.left + node.offsetLeft,
-    top: offset.top + node.offsetTop
-  };
-
-  if (node.parentNode === parent) {
-    return nodeOffset;
-  }
-
-  return getEdgeOffset(node.parentNode, parent, nodeOffset);
-}
-function getTargetIndex(newIndex, prevIndex, oldIndex) {
-  if (newIndex < oldIndex && newIndex > prevIndex) {
-    return newIndex - 1;
-  } else if (newIndex > oldIndex && newIndex < prevIndex) {
-    return newIndex + 1;
-  } else {
-    return newIndex;
-  }
-}
-function getLockPixelOffset(_ref) {
-  var lockOffset = _ref.lockOffset,
-      width = _ref.width,
-      height = _ref.height;
-  var offsetX = lockOffset;
-  var offsetY = lockOffset;
-  var unit = 'px';
-
-  if (typeof lockOffset === 'string') {
-    var match = /^[+-]?\d*(?:\.\d*)?(px|%)$/.exec(lockOffset);
-    (0, _invariant2.default)(match !== null, 'lockOffset value should be a number or a string of a ' + 'number followed by "px" or "%". Given %s', lockOffset);
-    offsetX = parseFloat(lockOffset);
-    offsetY = parseFloat(lockOffset);
-    unit = match[1];
-  }
-
-  (0, _invariant2.default)(isFinite(offsetX) && isFinite(offsetY), 'lockOffset value should be a finite. Given %s', lockOffset);
-
-  if (unit === '%') {
-    offsetX = offsetX * width / 100;
-    offsetY = offsetY * height / 100;
-  }
-
-  return {
-    x: offsetX,
-    y: offsetY
-  };
-}
-function getLockPixelOffsets(_ref2) {
-  var height = _ref2.height,
-      width = _ref2.width,
-      lockOffset = _ref2.lockOffset;
-  var offsets = Array.isArray(lockOffset) ? lockOffset : [lockOffset, lockOffset];
-  (0, _invariant2.default)(offsets.length === 2, 'lockOffset prop of SortableContainer should be a single ' + 'value or an array of exactly two values. Given %s', lockOffset);
-
-  var _offsets = (0, _slicedToArray3.default)(offsets, 2),
-      minLockOffset = _offsets[0],
-      maxLockOffset = _offsets[1];
-
-  return [getLockPixelOffset({
-    height: height,
-    lockOffset: minLockOffset,
-    width: width
-  }), getLockPixelOffset({
-    height: height,
-    lockOffset: maxLockOffset,
-    width: width
-  })];
-}
-
-function isScrollable(el) {
-  var computedStyle = window.getComputedStyle(el);
-  var overflowRegex = /(auto|scroll)/;
-  var properties = ['overflow', 'overflowX', 'overflowY'];
-  return properties.find(function (property) {
-    return overflowRegex.test(computedStyle[property]);
-  });
-}
-
-function getScrollingParent(el) {
-  if (!(el instanceof HTMLElement)) {
-    return null;
-  } else if (isScrollable(el)) {
-    return el;
-  } else {
-    return getScrollingParent(el.parentNode);
-  }
-}
-function getContainerGridGap(element) {
-  var style = window.getComputedStyle(element);
-
-  if (style.display === 'grid') {
-    return {
-      x: getPixelValue(style.gridColumnGap),
-      y: getPixelValue(style.gridRowGap)
-    };
-  }
-
-  return {
-    x: 0,
-    y: 0
-  };
-}
-var KEYCODE = {
-  TAB: 9,
-  ESC: 27,
-  SPACE: 32,
-  LEFT: 37,
-  UP: 38,
-  RIGHT: 39,
-  DOWN: 40
-};
-var NodeType = {
-  Anchor: 'A',
-  Button: 'BUTTON',
-  Canvas: 'CANVAS',
-  Input: 'INPUT',
-  Option: 'OPTION',
-  Textarea: 'TEXTAREA',
-  Select: 'SELECT'
-};
-function cloneNode(node) {
-  var selector = 'input, textarea, select, canvas, [contenteditable]';
-  var fields = node.querySelectorAll(selector);
-  var clonedNode = node.cloneNode(true);
-
-  var clonedFields = (0, _toConsumableArray3.default)(clonedNode.querySelectorAll(selector));
-
-  clonedFields.forEach(function (field, i) {
-    if (field.type !== 'file') {
-      field.value = fields[i].value;
-    }
-
-    if (field.type === 'radio' && field.name) {
-      field.name = "__sortableClone__".concat(field.name);
-    }
-
-    if (field.tagName === NodeType.Canvas && fields[i].width > 0 && fields[i].height > 0) {
-      var destCtx = field.getContext('2d');
-      destCtx.drawImage(fields[i], 0, 0);
-    }
-  });
-  return clonedNode;
-}
-
-function sortableHandle(WrappedComponent) {
-  var _class, _temp;
-
-  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    withRef: false
-  };
-  return _temp = _class = function (_React$Component) {
-    (0, _inherits3.default)(WithSortableHandle, _React$Component);
-
-    function WithSortableHandle() {
-      (0, _classCallCheck3.default)(this, WithSortableHandle);
-
-      return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf3.default)(WithSortableHandle).apply(this, arguments));
-    }
-
-    (0, _createClass3.default)(WithSortableHandle, [{
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        var node = (0, _reactDom.findDOMNode)(this);
-        node.sortableHandle = true;
-      }
-    }, {
-      key: "getWrappedInstance",
-      value: function getWrappedInstance() {
-        (0, _invariant2.default)(config.withRef, 'To access the wrapped instance, you need to pass in {withRef: true} as the second argument of the SortableHandle() call');
-        return this.refs.wrappedInstance;
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        var ref = config.withRef ? 'wrappedInstance' : null;
-        return (0, _react.createElement)(WrappedComponent, (0, _extends3.default)({
-          ref: ref
-        }, this.props));
-      }
-    }]);
-
-    return WithSortableHandle;
-  }(_react.Component), (0, _defineProperty3.default)(_class, "displayName", provideDisplayName('sortableHandle', WrappedComponent)), _temp;
-}
-function isSortableHandle(node) {
-  return node.sortableHandle != null;
-}
-
-var AutoScroller = function () {
-  function AutoScroller(container, onScrollCallback) {
-    (0, _classCallCheck3.default)(this, AutoScroller);
-
-    this.container = container;
-    this.onScrollCallback = onScrollCallback;
-  }
-
-  (0, _createClass3.default)(AutoScroller, [{
-    key: "clear",
-    value: function clear() {
-      if (this.interval == null) {
-        return;
-      }
-
-      clearInterval(this.interval);
-      this.interval = null;
-    }
-  }, {
-    key: "update",
-    value: function update(_ref) {
-      var _this = this;
-
-      var translate = _ref.translate,
-          minTranslate = _ref.minTranslate,
-          maxTranslate = _ref.maxTranslate,
-          width = _ref.width,
-          height = _ref.height;
-      var direction = {
-        x: 0,
-        y: 0
-      };
-      var speed = {
-        x: 1,
-        y: 1
-      };
-      var acceleration = {
-        x: 10,
-        y: 10
-      };
-      var _this$container = this.container,
-          scrollTop = _this$container.scrollTop,
-          scrollLeft = _this$container.scrollLeft,
-          scrollHeight = _this$container.scrollHeight,
-          scrollWidth = _this$container.scrollWidth,
-          clientHeight = _this$container.clientHeight,
-          clientWidth = _this$container.clientWidth;
-      var isTop = scrollTop === 0;
-      var isBottom = scrollHeight - scrollTop - clientHeight === 0;
-      var isLeft = scrollLeft === 0;
-      var isRight = scrollWidth - scrollLeft - clientWidth === 0;
-
-      if (translate.y >= maxTranslate.y - height / 2 && !isBottom) {
-        direction.y = 1;
-        speed.y = acceleration.y * Math.abs((maxTranslate.y - height / 2 - translate.y) / height);
-      } else if (translate.x >= maxTranslate.x - width / 2 && !isRight) {
-        direction.x = 1;
-        speed.x = acceleration.x * Math.abs((maxTranslate.x - width / 2 - translate.x) / width);
-      } else if (translate.y <= minTranslate.y + height / 2 && !isTop) {
-        direction.y = -1;
-        speed.y = acceleration.y * Math.abs((translate.y - height / 2 - minTranslate.y) / height);
-      } else if (translate.x <= minTranslate.x + width / 2 && !isLeft) {
-        direction.x = -1;
-        speed.x = acceleration.x * Math.abs((translate.x - width / 2 - minTranslate.x) / width);
-      }
-
-      if (this.interval) {
-        this.clear();
-        this.isAutoScrolling = false;
-      }
-
-      if (direction.x !== 0 || direction.y !== 0) {
-        this.interval = setInterval(function () {
-          _this.isAutoScrolling = true;
-          var offset = {
-            left: speed.x * direction.x,
-            top: speed.y * direction.y
-          };
-          _this.container.scrollTop += offset.top;
-          _this.container.scrollLeft += offset.left;
-
-          _this.onScrollCallback(offset);
-        }, 5);
-      }
-    }
-  }]);
-
-  return AutoScroller;
-}();
-
-function defaultGetHelperDimensions(_ref) {
-  var node = _ref.node;
-  return {
-    height: node.offsetHeight,
-    width: node.offsetWidth
-  };
-}
-
-function defaultShouldCancelStart(event) {
-  var interactiveElements = [NodeType.Input, NodeType.Textarea, NodeType.Select, NodeType.Option, NodeType.Button];
-
-  if (interactiveElements.indexOf(event.target.tagName) !== -1) {
-    return true;
-  }
-
-  if (closest(event.target, function (el) {
-    return el.contentEditable === 'true';
-  })) {
-    return true;
-  }
-
-  return false;
-}
-
-var propTypes = {
-  axis: _propTypes2.default.oneOf(['x', 'y', 'xy']),
-  contentWindow: _propTypes2.default.any,
-  disableAutoscroll: _propTypes2.default.bool,
-  distance: _propTypes2.default.number,
-  getContainer: _propTypes2.default.func,
-  getHelperDimensions: _propTypes2.default.func,
-  helperClass: _propTypes2.default.string,
-  helperContainer: _propTypes2.default.oneOfType([_propTypes2.default.func, typeof HTMLElement === 'undefined' ? _propTypes2.default.any : _propTypes2.default.instanceOf(HTMLElement)]),
-  hideSortableGhost: _propTypes2.default.bool,
-  keyboardSortingTransitionDuration: _propTypes2.default.number,
-  lockAxis: _propTypes2.default.string,
-  lockOffset: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]))]),
-  lockToContainerEdges: _propTypes2.default.bool,
-  onSortEnd: _propTypes2.default.func,
-  onSortMove: _propTypes2.default.func,
-  onSortOver: _propTypes2.default.func,
-  onSortStart: _propTypes2.default.func,
-  pressDelay: _propTypes2.default.number,
-  pressThreshold: _propTypes2.default.number,
-  keyCodes: _propTypes2.default.shape({
-    lift: _propTypes2.default.arrayOf(_propTypes2.default.number),
-    drop: _propTypes2.default.arrayOf(_propTypes2.default.number),
-    cancel: _propTypes2.default.arrayOf(_propTypes2.default.number),
-    up: _propTypes2.default.arrayOf(_propTypes2.default.number),
-    down: _propTypes2.default.arrayOf(_propTypes2.default.number)
-  }),
-  shouldCancelStart: _propTypes2.default.func,
-  transitionDuration: _propTypes2.default.number,
-  updateBeforeSortStart: _propTypes2.default.func,
-  useDragHandle: _propTypes2.default.bool,
-  useWindowAsScrollContainer: _propTypes2.default.bool
-};
-var defaultKeyCodes = {
-  lift: [KEYCODE.SPACE],
-  drop: [KEYCODE.SPACE],
-  cancel: [KEYCODE.ESC],
-  up: [KEYCODE.UP, KEYCODE.LEFT],
-  down: [KEYCODE.DOWN, KEYCODE.RIGHT]
-};
-var defaultProps = {
-  axis: 'y',
-  disableAutoscroll: false,
-  distance: 0,
-  getHelperDimensions: defaultGetHelperDimensions,
-  hideSortableGhost: true,
-  lockOffset: '50%',
-  lockToContainerEdges: false,
-  pressDelay: 0,
-  pressThreshold: 5,
-  keyCodes: defaultKeyCodes,
-  shouldCancelStart: defaultShouldCancelStart,
-  transitionDuration: 300,
-  useWindowAsScrollContainer: false
-};
-var omittedProps = Object.keys(propTypes);
-function validateProps(props) {
-  (0, _invariant2.default)(!(props.distance && props.pressDelay), 'Attempted to set both `pressDelay` and `distance` on SortableContainer, you may only use one or the other, not both at the same time.');
-}
-
-function _finallyRethrows(body, finalizer) {
-  try {
-    var result = body();
-  } catch (e) {
-    return finalizer(true, e);
-  }
-
-  if (result && result.then) {
-    return result.then(finalizer.bind(null, false), finalizer.bind(null, true));
-  }
-
-  return finalizer(false, value);
-}
-function sortableContainer(WrappedComponent) {
-  var _class, _temp;
-
-  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    withRef: false
-  };
-  return _temp = _class = function (_React$Component) {
-    (0, _inherits3.default)(WithSortableContainer, _React$Component);
-
-    function WithSortableContainer(props) {
-      var _this;
-
-      (0, _classCallCheck3.default)(this, WithSortableContainer);
-
-      _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf3.default)(WithSortableContainer).call(this, props));
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "state", {});
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleStart", function (event) {
-        var _this$props = _this.props,
-            distance = _this$props.distance,
-            shouldCancelStart = _this$props.shouldCancelStart;
-
-        if (event.button === 2 || shouldCancelStart(event)) {
-          return;
-        }
-
-        _this.touched = true;
-        _this.position = getPosition(event);
-        var node = closest(event.target, function (el) {
-          return el.sortableInfo != null;
-        });
-
-        if (node && node.sortableInfo && _this.nodeIsChild(node) && !_this.state.sorting) {
-          var useDragHandle = _this.props.useDragHandle;
-          var _node$sortableInfo = node.sortableInfo,
-              index = _node$sortableInfo.index,
-              collection = _node$sortableInfo.collection,
-              disabled = _node$sortableInfo.disabled;
-
-          if (disabled) {
-            return;
-          }
-
-          if (useDragHandle && !closest(event.target, isSortableHandle)) {
-            return;
-          }
-
-          _this.manager.active = {
-            collection: collection,
-            index: index
-          };
-
-          if (!isTouchEvent(event) && event.target.tagName === NodeType.Anchor) {
-            event.preventDefault();
-          }
-
-          if (!distance) {
-            if (_this.props.pressDelay === 0) {
-              _this.handlePress(event);
-            } else {
-              _this.pressTimer = setTimeout(function () {
-                return _this.handlePress(event);
-              }, _this.props.pressDelay);
-            }
-          }
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "nodeIsChild", function (node) {
-        return node.sortableInfo.manager === _this.manager;
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleMove", function (event) {
-        var _this$props2 = _this.props,
-            distance = _this$props2.distance,
-            pressThreshold = _this$props2.pressThreshold;
-
-        if (!_this.state.sorting && _this.touched && !_this._awaitingUpdateBeforeSortStart) {
-          var position = getPosition(event);
-          var delta = {
-            x: _this.position.x - position.x,
-            y: _this.position.y - position.y
-          };
-          var combinedDelta = Math.abs(delta.x) + Math.abs(delta.y);
-          _this.delta = delta;
-
-          if (!distance && (!pressThreshold || combinedDelta >= pressThreshold)) {
-            clearTimeout(_this.cancelTimer);
-            _this.cancelTimer = setTimeout(_this.cancel, 0);
-          } else if (distance && combinedDelta >= distance && _this.manager.isActive()) {
-            _this.handlePress(event);
-          }
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleEnd", function () {
-        _this.touched = false;
-
-        _this.cancel();
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "cancel", function () {
-        var distance = _this.props.distance;
-        var sorting = _this.state.sorting;
-
-        if (!sorting) {
-          if (!distance) {
-            clearTimeout(_this.pressTimer);
-          }
-
-          _this.manager.active = null;
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handlePress", function (event) {
-        try {
-          var active = _this.manager.getActive();
-
-          var _temp6 = function () {
-            if (active) {
-              var _temp7 = function _temp7() {
-                var index = _node.sortableInfo.index;
-                var margin = getElementMargin(_node);
-                var gridGap = getContainerGridGap(_this.container);
-
-                var containerBoundingRect = _this.scrollContainer.getBoundingClientRect();
-
-                var dimensions = _getHelperDimensions({
-                  index: index,
-                  node: _node,
-                  collection: _collection
-                });
-
-                _this.node = _node;
-                _this.margin = margin;
-                _this.gridGap = gridGap;
-                _this.width = dimensions.width;
-                _this.height = dimensions.height;
-                _this.marginOffset = {
-                  x: _this.margin.left + _this.margin.right + _this.gridGap.x,
-                  y: Math.max(_this.margin.top, _this.margin.bottom, _this.gridGap.y)
-                };
-                _this.boundingClientRect = _node.getBoundingClientRect();
-                _this.containerBoundingRect = containerBoundingRect;
-                _this.index = index;
-                _this.newIndex = index;
-                _this.axis = {
-                  x: _axis.indexOf('x') >= 0,
-                  y: _axis.indexOf('y') >= 0
-                };
-                _this.offsetEdge = getEdgeOffset(_node, _this.container);
-
-                if (_isKeySorting) {
-                  _this.initialOffset = getPosition((0, _objectSpread3.default)({}, event, {
-                    pageX: _this.boundingClientRect.left,
-                    pageY: _this.boundingClientRect.top
-                  }));
-                } else {
-                  _this.initialOffset = getPosition(event);
-                }
-
-                _this.initialScroll = {
-                  left: _this.scrollContainer.scrollLeft,
-                  top: _this.scrollContainer.scrollTop
-                };
-                _this.initialWindowScroll = {
-                  left: window.pageXOffset,
-                  top: window.pageYOffset
-                };
-                _this.helper = _this.helperContainer.appendChild(cloneNode(_node));
-                setInlineStyles(_this.helper, {
-                  boxSizing: 'border-box',
-                  height: "".concat(_this.height, "px"),
-                  left: "".concat(_this.boundingClientRect.left - margin.left, "px"),
-                  pointerEvents: 'none',
-                  position: 'fixed',
-                  top: "".concat(_this.boundingClientRect.top - margin.top, "px"),
-                  width: "".concat(_this.width, "px")
-                });
-
-                if (_isKeySorting) {
-                  _this.helper.focus();
-                }
-
-                if (_hideSortableGhost) {
-                  _this.sortableGhost = _node;
-                  setInlineStyles(_node, {
-                    opacity: 0,
-                    visibility: 'hidden'
-                  });
-                }
-
-                _this.minTranslate = {};
-                _this.maxTranslate = {};
-
-                if (_isKeySorting) {
-                  var _ref = _useWindowAsScrollContainer ? {
-                    top: 0,
-                    left: 0,
-                    width: _this.contentWindow.innerWidth,
-                    height: _this.contentWindow.innerHeight
-                  } : _this.containerBoundingRect,
-                      containerTop = _ref.top,
-                      containerLeft = _ref.left,
-                      containerWidth = _ref.width,
-                      containerHeight = _ref.height;
-
-                  var containerBottom = containerTop + containerHeight;
-                  var containerRight = containerLeft + containerWidth;
-
-                  if (_this.axis.x) {
-                    _this.minTranslate.x = containerLeft - _this.boundingClientRect.left;
-                    _this.maxTranslate.x = containerRight - (_this.boundingClientRect.left + _this.width);
-                  }
-
-                  if (_this.axis.y) {
-                    _this.minTranslate.y = containerTop - _this.boundingClientRect.top;
-                    _this.maxTranslate.y = containerBottom - (_this.boundingClientRect.top + _this.height);
-                  }
-                } else {
-                  if (_this.axis.x) {
-                    _this.minTranslate.x = (_useWindowAsScrollContainer ? 0 : containerBoundingRect.left) - _this.boundingClientRect.left - _this.width / 2;
-                    _this.maxTranslate.x = (_useWindowAsScrollContainer ? _this.contentWindow.innerWidth : containerBoundingRect.left + containerBoundingRect.width) - _this.boundingClientRect.left - _this.width / 2;
-                  }
-
-                  if (_this.axis.y) {
-                    _this.minTranslate.y = (_useWindowAsScrollContainer ? 0 : containerBoundingRect.top) - _this.boundingClientRect.top - _this.height / 2;
-                    _this.maxTranslate.y = (_useWindowAsScrollContainer ? _this.contentWindow.innerHeight : containerBoundingRect.top + containerBoundingRect.height) - _this.boundingClientRect.top - _this.height / 2;
-                  }
-                }
-
-                if (_helperClass) {
-                  _helperClass.split(' ').forEach(function (className) {
-                    return _this.helper.classList.add(className);
-                  });
-                }
-
-                _this.listenerNode = event.touches ? _node : _this.contentWindow;
-
-                if (_isKeySorting) {
-                  _this.listenerNode.addEventListener('wheel', _this.handleKeyEnd, true);
-
-                  _this.listenerNode.addEventListener('mousedown', _this.handleKeyEnd, true);
-
-                  _this.listenerNode.addEventListener('keydown', _this.handleKeyDown);
-                } else {
-                  events.move.forEach(function (eventName) {
-                    return _this.listenerNode.addEventListener(eventName, _this.handleSortMove, false);
-                  });
-                  events.end.forEach(function (eventName) {
-                    return _this.listenerNode.addEventListener(eventName, _this.handleSortEnd, false);
-                  });
-                }
-
-                _this.setState({
-                  sorting: true,
-                  sortingIndex: index
-                });
-
-                if (_onSortStart) {
-                  _onSortStart({
-                    node: _node,
-                    index: index,
-                    collection: _collection,
-                    isKeySorting: _isKeySorting,
-                    nodes: _this.manager.getOrderedRefs(),
-                    helper: _this.helper
-                  }, event);
-                }
-
-                if (_isKeySorting) {
-                  _this.keyMove(0);
-                }
-              };
-
-              var _this$props3 = _this.props,
-                  _axis = _this$props3.axis,
-                  _getHelperDimensions = _this$props3.getHelperDimensions,
-                  _helperClass = _this$props3.helperClass,
-                  _hideSortableGhost = _this$props3.hideSortableGhost,
-                  updateBeforeSortStart = _this$props3.updateBeforeSortStart,
-                  _onSortStart = _this$props3.onSortStart,
-                  _useWindowAsScrollContainer = _this$props3.useWindowAsScrollContainer;
-              var _node = active.node,
-                  _collection = active.collection;
-              var _isKeySorting = _this.manager.isKeySorting;
-
-              var _temp8 = function () {
-                if (typeof updateBeforeSortStart === 'function') {
-                  _this._awaitingUpdateBeforeSortStart = true;
-
-                  var _temp9 = _finallyRethrows(function () {
-                    var index = _node.sortableInfo.index;
-                    return Promise.resolve(updateBeforeSortStart({
-                      collection: _collection,
-                      index: index,
-                      node: _node,
-                      isKeySorting: _isKeySorting
-                    }, event)).then(function () {});
-                  }, function (_wasThrown, _result) {
-                    _this._awaitingUpdateBeforeSortStart = false;
-                    if (_wasThrown) throw _result;
-                    return _result;
-                  });
-
-                  if (_temp9 && _temp9.then) return _temp9.then(function () {});
-                }
-              }();
-
-              return _temp8 && _temp8.then ? _temp8.then(_temp7) : _temp7(_temp8);
-            }
-          }();
-
-          return Promise.resolve(_temp6 && _temp6.then ? _temp6.then(function () {}) : void 0);
-        } catch (e) {
-          return Promise.reject(e);
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleSortMove", function (event) {
-        var onSortMove = _this.props.onSortMove;
-
-        if (typeof event.preventDefault === 'function') {
-          event.preventDefault();
-        }
-
-        _this.updateHelperPosition(event);
-
-        _this.animateNodes();
-
-        _this.autoscroll();
-
-        if (onSortMove) {
-          onSortMove(event);
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleSortEnd", function (event) {
-        var _this$props4 = _this.props,
-            hideSortableGhost = _this$props4.hideSortableGhost,
-            onSortEnd = _this$props4.onSortEnd;
-        var _this$manager = _this.manager,
-            collection = _this$manager.active.collection,
-            isKeySorting = _this$manager.isKeySorting;
-
-        var nodes = _this.manager.getOrderedRefs();
-
-        if (_this.listenerNode) {
-          if (isKeySorting) {
-            _this.listenerNode.removeEventListener('wheel', _this.handleKeyEnd, true);
-
-            _this.listenerNode.removeEventListener('mousedown', _this.handleKeyEnd, true);
-
-            _this.listenerNode.removeEventListener('keydown', _this.handleKeyDown);
-          } else {
-            events.move.forEach(function (eventName) {
-              return _this.listenerNode.removeEventListener(eventName, _this.handleSortMove);
-            });
-            events.end.forEach(function (eventName) {
-              return _this.listenerNode.removeEventListener(eventName, _this.handleSortEnd);
-            });
-          }
-        }
-
-        _this.helper.parentNode.removeChild(_this.helper);
-
-        if (hideSortableGhost && _this.sortableGhost) {
-          setInlineStyles(_this.sortableGhost, {
-            opacity: '',
-            visibility: ''
-          });
-        }
-
-        for (var i = 0, len = nodes.length; i < len; i++) {
-          var _node2 = nodes[i];
-          var el = _node2.node;
-          _node2.edgeOffset = null;
-          _node2.boundingClientRect = null;
-          setTranslate3d(el, null);
-          setTransitionDuration(el, null);
-          _node2.translate = null;
-        }
-
-        _this.autoScroller.clear();
-
-        _this.manager.active = null;
-        _this.manager.isKeySorting = false;
-
-        _this.setState({
-          sorting: false,
-          sortingIndex: null
-        });
-
-        if (typeof onSortEnd === 'function') {
-          onSortEnd({
-            collection: collection,
-            newIndex: _this.newIndex,
-            oldIndex: _this.index,
-            isKeySorting: isKeySorting,
-            nodes: nodes
-          }, event);
-        }
-
-        _this.touched = false;
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "autoscroll", function () {
-        var disableAutoscroll = _this.props.disableAutoscroll;
-        var isKeySorting = _this.manager.isKeySorting;
-
-        if (disableAutoscroll) {
-          _this.autoScroller.clear();
-
-          return;
-        }
-
-        if (isKeySorting) {
-          var translate = (0, _objectSpread3.default)({}, _this.translate);
-
-          var scrollX = 0;
-          var scrollY = 0;
-
-          if (_this.axis.x) {
-            translate.x = Math.min(_this.maxTranslate.x, Math.max(_this.minTranslate.x, _this.translate.x));
-            scrollX = _this.translate.x - translate.x;
-          }
-
-          if (_this.axis.y) {
-            translate.y = Math.min(_this.maxTranslate.y, Math.max(_this.minTranslate.y, _this.translate.y));
-            scrollY = _this.translate.y - translate.y;
-          }
-
-          _this.translate = translate;
-          setTranslate3d(_this.helper, _this.translate);
-          _this.scrollContainer.scrollLeft += scrollX;
-          _this.scrollContainer.scrollTop += scrollY;
-          return;
-        }
-
-        _this.autoScroller.update({
-          height: _this.height,
-          maxTranslate: _this.maxTranslate,
-          minTranslate: _this.minTranslate,
-          translate: _this.translate,
-          width: _this.width
-        });
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "onAutoScroll", function (offset) {
-        _this.translate.x += offset.left;
-        _this.translate.y += offset.top;
-
-        _this.animateNodes();
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleKeyDown", function (event) {
-        var keyCode = event.keyCode;
-        var _this$props5 = _this.props,
-            shouldCancelStart = _this$props5.shouldCancelStart,
-            _this$props5$keyCodes = _this$props5.keyCodes,
-            customKeyCodes = _this$props5$keyCodes === void 0 ? {} : _this$props5$keyCodes;
-
-        var keyCodes = (0, _objectSpread3.default)({}, defaultKeyCodes, customKeyCodes);
-
-        if (_this.manager.active && !_this.manager.isKeySorting || !_this.manager.active && (!keyCodes.lift.includes(keyCode) || shouldCancelStart(event) || !_this.isValidSortingTarget(event))) {
-          return;
-        }
-
-        event.stopPropagation();
-        event.preventDefault();
-
-        if (keyCodes.lift.includes(keyCode) && !_this.manager.active) {
-          _this.keyLift(event);
-        } else if (keyCodes.drop.includes(keyCode) && _this.manager.active) {
-          _this.keyDrop(event);
-        } else if (keyCodes.cancel.includes(keyCode)) {
-          _this.newIndex = _this.manager.active.index;
-
-          _this.keyDrop(event);
-        } else if (keyCodes.up.includes(keyCode)) {
-          _this.keyMove(-1);
-        } else if (keyCodes.down.includes(keyCode)) {
-          _this.keyMove(1);
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "keyLift", function (event) {
-        var target = event.target;
-        var node = closest(target, function (el) {
-          return el.sortableInfo != null;
-        });
-        var _node$sortableInfo2 = node.sortableInfo,
-            index = _node$sortableInfo2.index,
-            collection = _node$sortableInfo2.collection;
-        _this.initialFocusedNode = target;
-        _this.manager.isKeySorting = true;
-        _this.manager.active = {
-          index: index,
-          collection: collection
-        };
-
-        _this.handlePress(event);
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "keyMove", function (shift) {
-        var nodes = _this.manager.getOrderedRefs();
-
-        var lastIndex = nodes[nodes.length - 1].node.sortableInfo.index;
-        var newIndex = _this.newIndex + shift;
-        var prevIndex = _this.newIndex;
-
-        if (newIndex < 0 || newIndex > lastIndex) {
-          return;
-        }
-
-        _this.prevIndex = prevIndex;
-        _this.newIndex = newIndex;
-        var targetIndex = getTargetIndex(_this.newIndex, _this.prevIndex, _this.index);
-        var target = nodes.find(function (_ref2) {
-          var node = _ref2.node;
-          return node.sortableInfo.index === targetIndex;
-        });
-        var targetNode = target.node;
-        var scrollDelta = _this.containerScrollDelta;
-        var targetBoundingClientRect = target.boundingClientRect || getScrollAdjustedBoundingClientRect(targetNode, scrollDelta);
-        var targetTranslate = target.translate || {
-          x: 0,
-          y: 0
-        };
-        var targetPosition = {
-          top: targetBoundingClientRect.top + targetTranslate.y - scrollDelta.top,
-          left: targetBoundingClientRect.left + targetTranslate.x - scrollDelta.left
-        };
-        var shouldAdjustForSize = prevIndex < newIndex;
-        var sizeAdjustment = {
-          x: shouldAdjustForSize && _this.axis.x ? targetNode.offsetWidth - _this.width : 0,
-          y: shouldAdjustForSize && _this.axis.y ? targetNode.offsetHeight - _this.height : 0
-        };
-
-        _this.handleSortMove({
-          pageX: targetPosition.left + sizeAdjustment.x,
-          pageY: targetPosition.top + sizeAdjustment.y,
-          ignoreTransition: shift === 0
-        });
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "keyDrop", function (event) {
-        _this.handleSortEnd(event);
-
-        if (_this.initialFocusedNode) {
-          _this.initialFocusedNode.focus();
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "handleKeyEnd", function (event) {
-        if (_this.manager.active) {
-          _this.keyDrop(event);
-        }
-      });
-
-      (0, _defineProperty3.default)((0, _assertThisInitialized3.default)((0, _assertThisInitialized3.default)(_this)), "isValidSortingTarget", function (event) {
-        var useDragHandle = _this.props.useDragHandle;
-        var target = event.target;
-        var node = closest(target, function (el) {
-          return el.sortableInfo != null;
-        });
-        return node && node.sortableInfo && !node.sortableInfo.disabled && (useDragHandle ? isSortableHandle(target) : target.sortableInfo);
-      });
-
-      validateProps(props);
-      _this.manager = new Manager();
-      _this.events = {
-        end: _this.handleEnd,
-        move: _this.handleMove,
-        start: _this.handleStart
-      };
-      return _this;
-    }
-
-    (0, _createClass3.default)(WithSortableContainer, [{
-      key: "getChildContext",
-      value: function getChildContext() {
-        return {
-          manager: this.manager
-        };
-      }
-    }, {
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        var _this2 = this;
-
-        var useWindowAsScrollContainer = this.props.useWindowAsScrollContainer;
-        var container = this.getContainer();
-        Promise.resolve(container).then(function (containerNode) {
-          _this2.container = containerNode;
-          _this2.document = _this2.container.ownerDocument || document;
-          var contentWindow = _this2.props.contentWindow || _this2.document.defaultView || window;
-          _this2.contentWindow = typeof contentWindow === 'function' ? contentWindow() : contentWindow;
-          _this2.scrollContainer = useWindowAsScrollContainer ? _this2.document.scrollingElement || _this2.document.documentElement : getScrollingParent(_this2.container) || _this2.container;
-          _this2.autoScroller = new AutoScroller(_this2.scrollContainer, _this2.onAutoScroll);
-          Object.keys(_this2.events).forEach(function (key) {
-            return events[key].forEach(function (eventName) {
-              return _this2.container.addEventListener(eventName, _this2.events[key], false);
-            });
-          });
-
-          _this2.container.addEventListener('keydown', _this2.handleKeyDown);
-        });
-      }
-    }, {
-      key: "componentWillUnmount",
-      value: function componentWillUnmount() {
-        var _this3 = this;
-
-        if (this.helper && this.helper.parentNode) {
-          this.helper.parentNode.removeChild(this.helper);
-        }
-
-        if (!this.container) {
-          return;
-        }
-
-        Object.keys(this.events).forEach(function (key) {
-          return events[key].forEach(function (eventName) {
-            return _this3.container.removeEventListener(eventName, _this3.events[key]);
-          });
-        });
-        this.container.removeEventListener('keydown', this.handleKeyDown);
-      }
-    }, {
-      key: "updateHelperPosition",
-      value: function updateHelperPosition(event) {
-        var _this$props6 = this.props,
-            lockAxis = _this$props6.lockAxis,
-            lockOffset = _this$props6.lockOffset,
-            lockToContainerEdges = _this$props6.lockToContainerEdges,
-            transitionDuration = _this$props6.transitionDuration,
-            _this$props6$keyboard = _this$props6.keyboardSortingTransitionDuration,
-            keyboardSortingTransitionDuration = _this$props6$keyboard === void 0 ? transitionDuration : _this$props6$keyboard;
-        var isKeySorting = this.manager.isKeySorting;
-        var ignoreTransition = event.ignoreTransition;
-        var offset = getPosition(event);
-        var translate = {
-          x: offset.x - this.initialOffset.x,
-          y: offset.y - this.initialOffset.y
-        };
-        translate.y -= window.pageYOffset - this.initialWindowScroll.top;
-        translate.x -= window.pageXOffset - this.initialWindowScroll.left;
-        this.translate = translate;
-
-        if (lockToContainerEdges) {
-          var _getLockPixelOffsets = getLockPixelOffsets({
-            height: this.height,
-            lockOffset: lockOffset,
-            width: this.width
-          }),
-              _getLockPixelOffsets2 = (0, _slicedToArray3.default)(_getLockPixelOffsets, 2),
-              minLockOffset = _getLockPixelOffsets2[0],
-              maxLockOffset = _getLockPixelOffsets2[1];
-
-          var minOffset = {
-            x: this.width / 2 - minLockOffset.x,
-            y: this.height / 2 - minLockOffset.y
-          };
-          var maxOffset = {
-            x: this.width / 2 - maxLockOffset.x,
-            y: this.height / 2 - maxLockOffset.y
-          };
-          translate.x = limit(this.minTranslate.x + minOffset.x, this.maxTranslate.x - maxOffset.x, translate.x);
-          translate.y = limit(this.minTranslate.y + minOffset.y, this.maxTranslate.y - maxOffset.y, translate.y);
-        }
-
-        if (lockAxis === 'x') {
-          translate.y = 0;
-        } else if (lockAxis === 'y') {
-          translate.x = 0;
-        }
-
-        if (isKeySorting && keyboardSortingTransitionDuration && !ignoreTransition) {
-          setTransitionDuration(this.helper, keyboardSortingTransitionDuration);
-        }
-
-        setTranslate3d(this.helper, translate);
-      }
-    }, {
-      key: "animateNodes",
-      value: function animateNodes() {
-        var _this$props7 = this.props,
-            transitionDuration = _this$props7.transitionDuration,
-            hideSortableGhost = _this$props7.hideSortableGhost,
-            onSortOver = _this$props7.onSortOver;
-        var containerScrollDelta = this.containerScrollDelta,
-            windowScrollDelta = this.windowScrollDelta;
-        var nodes = this.manager.getOrderedRefs();
-        var sortingOffset = {
-          left: this.offsetEdge.left + this.translate.x + containerScrollDelta.left,
-          top: this.offsetEdge.top + this.translate.y + containerScrollDelta.top
-        };
-        var isKeySorting = this.manager.isKeySorting;
-        var prevIndex = this.newIndex;
-        this.newIndex = null;
-
-        for (var i = 0, len = nodes.length; i < len; i++) {
-          var _node3 = nodes[i].node;
-          var index = _node3.sortableInfo.index;
-          var width = _node3.offsetWidth;
-          var height = _node3.offsetHeight;
-          var offset = {
-            height: this.height > height ? height / 2 : this.height / 2,
-            width: this.width > width ? width / 2 : this.width / 2
-          };
-          var mustShiftBackward = isKeySorting && index > this.index && index <= prevIndex;
-          var mustShiftForward = isKeySorting && index < this.index && index >= prevIndex;
-          var translate = {
-            x: 0,
-            y: 0
-          };
-          var edgeOffset = nodes[i].edgeOffset;
-
-          if (!edgeOffset) {
-            edgeOffset = getEdgeOffset(_node3, this.container);
-            nodes[i].edgeOffset = edgeOffset;
-
-            if (isKeySorting) {
-              nodes[i].boundingClientRect = getScrollAdjustedBoundingClientRect(_node3, containerScrollDelta);
-            }
-          }
-
-          var nextNode = i < nodes.length - 1 && nodes[i + 1];
-          var prevNode = i > 0 && nodes[i - 1];
-
-          if (nextNode && !nextNode.edgeOffset) {
-            nextNode.edgeOffset = getEdgeOffset(nextNode.node, this.container);
-
-            if (isKeySorting) {
-              nextNode.boundingClientRect = getScrollAdjustedBoundingClientRect(nextNode.node, containerScrollDelta);
-            }
-          }
-
-          if (index === this.index) {
-            if (hideSortableGhost) {
-              this.sortableGhost = _node3;
-              setInlineStyles(_node3, {
-                opacity: 0,
-                visibility: 'hidden'
-              });
-            }
-
-            continue;
-          }
-
-          if (transitionDuration) {
-            setTransitionDuration(_node3, transitionDuration);
-          }
-
-          if (this.axis.x) {
-            if (this.axis.y) {
-              if (mustShiftForward || index < this.index && (sortingOffset.left + windowScrollDelta.left - offset.width <= edgeOffset.left && sortingOffset.top + windowScrollDelta.top <= edgeOffset.top + offset.height || sortingOffset.top + windowScrollDelta.top + offset.height <= edgeOffset.top)) {
-                translate.x = this.width + this.marginOffset.x;
-
-                if (edgeOffset.left + translate.x > this.containerBoundingRect.width - offset.width) {
-                  if (nextNode) {
-                    translate.x = nextNode.edgeOffset.left - edgeOffset.left;
-                    translate.y = nextNode.edgeOffset.top - edgeOffset.top;
-                  }
-                }
-
-                if (this.newIndex === null) {
-                  this.newIndex = index;
-                }
-              } else if (mustShiftBackward || index > this.index && (sortingOffset.left + windowScrollDelta.left + offset.width >= edgeOffset.left && sortingOffset.top + windowScrollDelta.top + offset.height >= edgeOffset.top || sortingOffset.top + windowScrollDelta.top + offset.height >= edgeOffset.top + height)) {
-                translate.x = -(this.width + this.marginOffset.x);
-
-                if (edgeOffset.left + translate.x < this.containerBoundingRect.left + offset.width) {
-                  if (prevNode) {
-                    translate.x = prevNode.edgeOffset.left - edgeOffset.left;
-                    translate.y = prevNode.edgeOffset.top - edgeOffset.top;
-                  }
-                }
-
-                this.newIndex = index;
-              }
-            } else {
-              if (mustShiftBackward || index > this.index && sortingOffset.left + windowScrollDelta.left + offset.width >= edgeOffset.left) {
-                translate.x = -(this.width + this.marginOffset.x);
-                this.newIndex = index;
-              } else if (mustShiftForward || index < this.index && sortingOffset.left + windowScrollDelta.left <= edgeOffset.left + offset.width) {
-                translate.x = this.width + this.marginOffset.x;
-
-                if (this.newIndex == null) {
-                  this.newIndex = index;
-                }
-              }
-            }
-          } else if (this.axis.y) {
-            if (mustShiftBackward || index > this.index && sortingOffset.top + windowScrollDelta.top + offset.height >= edgeOffset.top) {
-              translate.y = -(this.height + this.marginOffset.y);
-              this.newIndex = index;
-            } else if (mustShiftForward || index < this.index && sortingOffset.top + windowScrollDelta.top <= edgeOffset.top + offset.height) {
-              translate.y = this.height + this.marginOffset.y;
-
-              if (this.newIndex == null) {
-                this.newIndex = index;
-              }
-            }
-          }
-
-          setTranslate3d(_node3, translate);
-          nodes[i].translate = translate;
-        }
-
-        if (this.newIndex == null) {
-          this.newIndex = this.index;
-        }
-
-        if (isKeySorting) {
-          this.newIndex = prevIndex;
-        }
-
-        var oldIndex = isKeySorting ? this.prevIndex : prevIndex;
-
-        if (onSortOver && this.newIndex !== oldIndex) {
-          onSortOver({
-            collection: this.manager.active.collection,
-            index: this.index,
-            newIndex: this.newIndex,
-            oldIndex: oldIndex,
-            isKeySorting: isKeySorting,
-            nodes: nodes,
-            helper: this.helper
-          });
-        }
-      }
-    }, {
-      key: "getWrappedInstance",
-      value: function getWrappedInstance() {
-        (0, _invariant2.default)(config.withRef, 'To access the wrapped instance, you need to pass in {withRef: true} as the second argument of the SortableContainer() call');
-        return this.refs.wrappedInstance;
-      }
-    }, {
-      key: "getContainer",
-      value: function getContainer() {
-        var getContainer = this.props.getContainer;
-
-        if (typeof getContainer !== 'function') {
-          return (0, _reactDom.findDOMNode)(this);
-        }
-
-        return getContainer(config.withRef ? this.getWrappedInstance() : undefined);
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        var ref = config.withRef ? 'wrappedInstance' : null;
-        return (0, _react.createElement)(WrappedComponent, (0, _extends3.default)({
-          ref: ref
-        }, omit(this.props, omittedProps)));
-      }
-    }, {
-      key: "helperContainer",
-      get: function get() {
-        var helperContainer = this.props.helperContainer;
-
-        if (typeof helperContainer === 'function') {
-          return helperContainer();
-        }
-
-        return this.props.helperContainer || this.document.body;
-      }
-    }, {
-      key: "containerScrollDelta",
-      get: function get() {
-        var useWindowAsScrollContainer = this.props.useWindowAsScrollContainer;
-
-        if (useWindowAsScrollContainer) {
-          return {
-            left: 0,
-            top: 0
-          };
-        }
-
-        return {
-          left: this.scrollContainer.scrollLeft - this.initialScroll.left,
-          top: this.scrollContainer.scrollTop - this.initialScroll.top
-        };
-      }
-    }, {
-      key: "windowScrollDelta",
-      get: function get() {
-        return {
-          left: this.contentWindow.pageXOffset - this.initialWindowScroll.left,
-          top: this.contentWindow.pageYOffset - this.initialWindowScroll.top
-        };
-      }
-    }]);
-
-    return WithSortableContainer;
-  }(_react.Component), (0, _defineProperty3.default)(_class, "displayName", provideDisplayName('sortableList', WrappedComponent)), (0, _defineProperty3.default)(_class, "defaultProps", defaultProps), (0, _defineProperty3.default)(_class, "propTypes", propTypes), (0, _defineProperty3.default)(_class, "childContextTypes", {
-    manager: _propTypes2.default.object.isRequired
-  }), _temp;
-}
-
-var propTypes$1 = {
-  index: _propTypes2.default.number.isRequired,
-  collection: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
-  disabled: _propTypes2.default.bool
-};
-var omittedProps$1 = Object.keys(propTypes$1);
-function sortableElement(WrappedComponent) {
-  var _class, _temp;
-
-  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    withRef: false
-  };
-  return _temp = _class = function (_React$Component) {
-    (0, _inherits3.default)(WithSortableElement, _React$Component);
-
-    function WithSortableElement() {
-      (0, _classCallCheck3.default)(this, WithSortableElement);
-
-      return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf3.default)(WithSortableElement).apply(this, arguments));
-    }
-
-    (0, _createClass3.default)(WithSortableElement, [{
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        this.register();
-      }
-    }, {
-      key: "componentDidUpdate",
-      value: function componentDidUpdate(prevProps) {
-        if (this.node) {
-          if (prevProps.index !== this.props.index) {
-            this.node.sortableInfo.index = this.props.index;
-          }
-
-          if (prevProps.disabled !== this.props.disabled) {
-            this.node.sortableInfo.disabled = this.props.disabled;
-          }
-        }
-
-        if (prevProps.collection !== this.props.collection) {
-          this.unregister(prevProps.collection);
-          this.register();
-        }
-      }
-    }, {
-      key: "componentWillUnmount",
-      value: function componentWillUnmount() {
-        this.unregister();
-      }
-    }, {
-      key: "register",
-      value: function register() {
-        var _this$props = this.props,
-            collection = _this$props.collection,
-            disabled = _this$props.disabled,
-            index = _this$props.index;
-        var node = (0, _reactDom.findDOMNode)(this);
-        node.sortableInfo = {
-          collection: collection,
-          disabled: disabled,
-          index: index,
-          manager: this.context.manager
-        };
-        this.node = node;
-        this.ref = {
-          node: node
-        };
-        this.context.manager.add(collection, this.ref);
-      }
-    }, {
-      key: "unregister",
-      value: function unregister() {
-        var collection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props.collection;
-        this.context.manager.remove(collection, this.ref);
-      }
-    }, {
-      key: "getWrappedInstance",
-      value: function getWrappedInstance() {
-        (0, _invariant2.default)(config.withRef, 'To access the wrapped instance, you need to pass in {withRef: true} as the second argument of the SortableElement() call');
-        return this.refs.wrappedInstance;
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        var ref = config.withRef ? 'wrappedInstance' : null;
-        return (0, _react.createElement)(WrappedComponent, (0, _extends3.default)({
-          ref: ref
-        }, omit(this.props, omittedProps$1)));
-      }
-    }]);
-
-    return WithSortableElement;
-  }(_react.Component), (0, _defineProperty3.default)(_class, "displayName", provideDisplayName('sortableElement', WrappedComponent)), (0, _defineProperty3.default)(_class, "contextTypes", {
-    manager: _propTypes2.default.object.isRequired
-  }), (0, _defineProperty3.default)(_class, "propTypes", propTypes$1), (0, _defineProperty3.default)(_class, "defaultProps", {
-    collection: 0
-  }), _temp;
-}
-
-exports.SortableContainer = sortableContainer;
-exports.sortableContainer = sortableContainer;
-exports.SortableElement = sortableElement;
-exports.sortableElement = sortableElement;
-exports.SortableHandle = sortableHandle;
-exports.sortableHandle = sortableHandle;
-exports.arrayMove = arrayMove;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
-
-/***/ }),
 /* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -51428,7 +51428,7 @@ var _iterableToArrayLimit = __webpack_require__(293);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _unsupportedIterableToArray = __webpack_require__(113);
+var _unsupportedIterableToArray = __webpack_require__(114);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
@@ -51525,7 +51525,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _objectSpread;
 
-var _defineProperty = __webpack_require__(115);
+var _defineProperty = __webpack_require__(116);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -51613,7 +51613,7 @@ var _typeof2 = __webpack_require__(299);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _assertThisInitialized = __webpack_require__(116);
+var _assertThisInitialized = __webpack_require__(117);
 
 var _assertThisInitialized2 = _interopRequireDefault(_assertThisInitialized);
 
@@ -51800,7 +51800,7 @@ var _iterableToArray = __webpack_require__(306);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
-var _unsupportedIterableToArray = __webpack_require__(113);
+var _unsupportedIterableToArray = __webpack_require__(114);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
@@ -51826,7 +51826,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _arrayWithoutHoles;
 
-var _arrayLikeToArray = __webpack_require__(114);
+var _arrayLikeToArray = __webpack_require__(115);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -53822,7 +53822,7 @@ var getKeys = __webpack_require__(49);
 var gOPS = __webpack_require__(74);
 var pIE = __webpack_require__(52);
 var toObject = __webpack_require__(75);
-var IObject = __webpack_require__(121);
+var IObject = __webpack_require__(122);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -53946,7 +53946,7 @@ module.exports = __webpack_require__(10).Object.getPrototypeOf;
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = __webpack_require__(75);
-var $getPrototypeOf = __webpack_require__(123);
+var $getPrototypeOf = __webpack_require__(124);
 
 __webpack_require__(327)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
@@ -54066,7 +54066,7 @@ $export($export.S + $export.F * !__webpack_require__(22), 'Object', { defineProp
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(124);
+var _typeof2 = __webpack_require__(125);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -54112,7 +54112,7 @@ module.exports = __webpack_require__(79).f('iterator');
 var $at = __webpack_require__(337)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(125)(String, 'String', function (iterated) {
+__webpack_require__(126)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -54242,7 +54242,7 @@ var toIObject = __webpack_require__(30);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(125)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(126)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -54323,7 +54323,7 @@ var global = __webpack_require__(19);
 var has = __webpack_require__(23);
 var DESCRIPTORS = __webpack_require__(22);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(126);
+var redefine = __webpack_require__(127);
 var META = __webpack_require__(348).KEY;
 var $fails = __webpack_require__(29);
 var shared = __webpack_require__(72);
@@ -54341,7 +54341,7 @@ var toPrimitive = __webpack_require__(68);
 var createDesc = __webpack_require__(48);
 var _create = __webpack_require__(77);
 var gOPNExt = __webpack_require__(351);
-var $GOPD = __webpack_require__(128);
+var $GOPD = __webpack_require__(129);
 var $DP = __webpack_require__(21);
 var $keys = __webpack_require__(49);
 var gOPD = $GOPD.f;
@@ -54469,7 +54469,7 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(127).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(128).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(52).f = $propertyIsEnumerable;
   __webpack_require__(74).f = $getOwnPropertySymbols;
 
@@ -54655,7 +54655,7 @@ module.exports = function (it) {
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(122);
+var cof = __webpack_require__(123);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
@@ -54671,7 +54671,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(30);
-var gOPN = __webpack_require__(127).f;
+var gOPN = __webpack_require__(128).f;
 var toString = {}.toString;
 
 var windowNames = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -54730,7 +54730,7 @@ var _create = __webpack_require__(360);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(124);
+var _typeof2 = __webpack_require__(125);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -54803,7 +54803,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(117)(Function.call, __webpack_require__(128).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(118)(Function.call, __webpack_require__(129).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -56222,12 +56222,90 @@ var bulletListAttrs = {
             icon_bg_hover_color: "",
             item_bg_color: "",
             item_bg_hover_color: "",
-            // link: "#",
+            link: "#",
             target: false,
             disableLink: false,
             showContent: false,
-            showBulletIcon: true
+            showBulletIcon: true,
+            linkTarget: false
         }]
+    },
+    bulletIconStyles: {
+        type: "array",
+        default: [{
+            bulletListfontSize: 20,
+            bulletListfontSizeType: "px",
+            bulletListfontSizeMobile: 20,
+            bulletListfontSizeTablet: 20,
+            bulletIconHoverColor: '',
+            bulletIconColor: "#3a3a3a",
+            bulletIconBackgroundColor: '',
+            bulletIconHoverBackgroundColor: '',
+            bulletIconborderType: "none",
+            bulletIconborderWidth: "1",
+            bulletIconborderRadius: 0,
+            bulletIconborderColor: ''
+        }]
+    },
+    bulletIconBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    bulletIconBorderTop: {
+        type: "number"
+    },
+    bulletIconBorderRight: {
+        type: "number"
+    },
+    bulletIconBorderBottom: {
+        type: "number"
+    },
+    bulletIconBorderLeft: {
+        type: "number"
+    },
+    bulletIconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    bulletIconmarginType: {
+        type: "string",
+        default: "px"
+    },
+    bulletIconmarginT: {
+        type: "number"
+    },
+    bulletIconmarginR: {
+        type: "number"
+    },
+    bulletIconmarginB: {
+        type: "number"
+    },
+    bulletIconmarginL: {
+        type: "number"
+    },
+    bulletIconmarginTTablet: {
+        type: "number"
+    },
+    bulletIconmarginRTablet: {
+        type: "number"
+    },
+    bulletIconmarginBTablet: {
+        type: "number"
+    },
+    bulletIconmarginLTablet: {
+        type: "number"
+    },
+    bulletIconmarginTMobile: {
+        type: "number"
+    },
+    bulletIconmarginRMobile: {
+        type: "number"
+    },
+    bulletIconmarginBMobile: {
+        type: "number"
+    },
+    bulletIconmarginLMobile: {
+        type: "number"
     },
     classMigrate: {
         type: "boolean",
@@ -56241,26 +56319,30 @@ var bulletListAttrs = {
         type: "string",
         default: "left"
     },
-    linkTarget: {
-        type: "boolean",
-        default: false
-    },
-    sizeType: {
+    bulletAlign: {
         type: "string",
-        default: "px"
+        default: "center"
     },
-    size: {
-        type: "number",
-        default: 20
-    },
-    sizeMobile: {
-        type: "number",
-        default: 20
-    },
-    sizeTablet: {
-        type: "number",
-        default: 20
-    },
+    // linkTarget: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // sizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // size: {
+    //     type: "number",
+    //     default: 20
+    // },
+    // sizeMobile: {
+    //     type: "number",
+    //     default: 20
+    // },
+    // sizeTablet: {
+    //     type: "number",
+    //     default: 20
+    // },
     fontSize: {
         type: "number",
         default: 20
@@ -56293,21 +56375,21 @@ var bulletListAttrs = {
     titleFont: {
         type: "string"
     },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number",
-        default: 0
-    },
-    borderColor: {
-        type: "string"
-    },
+    // borderType: {
+    //     type: "string",
+    //     default: "none"
+    // },
+    // borderWidth: {
+    //     type: "number",
+    //     default: "1"
+    // },
+    // borderRadius: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // borderColor: {
+    //     type: "string"
+    // },
     iconSpacing: {
         type: "number",
         default: 10
@@ -56457,7 +56539,7 @@ function save(props) {
     var attributes = props.attributes,
         className = props.className;
     var block_id = attributes.block_id,
-        icons = attributes.icons,
+        repeaterBulletList = attributes.repeaterBulletList,
         multiTitleCount = attributes.multiTitleCount,
         layoutPos = attributes.layoutPos,
         linkTarget = attributes.linkTarget,
@@ -56488,27 +56570,29 @@ function save(props) {
                     textAlign: align,
                     justifyContent: align == "right" ? "flex-end" : align
                 } },
-            icons.map(function (icon, index) {
+            repeaterBulletList.map(function (icon, index) {
 
-                if (multiTitleCount <= index) {
-                    return;
-                }
+                // if (multiTitleCount <= index) {
+                //     return
+                // }
                 var image_icon_html = "";
-                if (icon.image_icon == "icon") {
-                    if (icon.icon) {
-                        image_icon_html = React.createElement(
-                            "span",
-                            { className: "premium-icon-list__content-icon" },
-                            React.createElement("i", { className: "" + icon.icon })
-                        );
-                    }
-                } else {
-                    if (icon.image) {
-                        image_icon_html = React.createElement("img", { src: icon.image.url });
+                if (icon.showBulletIcon) {
+                    if (icon.image_icon == "icon") {
+                        if (icon.icon) {
+                            image_icon_html = React.createElement(
+                                "span",
+                                { className: "premium-icon-list__content-icon" },
+                                React.createElement("i", { className: "" + icon.icon })
+                            );
+                        }
+                    } else {
+                        if (icon.image) {
+                            image_icon_html = React.createElement("img", { src: icon.image.url });
+                        }
                     }
                 }
 
-                var target = linkTarget ? "_blank" : "_self";
+                var target = icon.linkTarget ? "_blank" : "_self";
                 var link_url = icon.disableLink ? icon.link : "/";
 
                 if (!icon.disableLink) {
@@ -56516,14 +56600,18 @@ function save(props) {
                         "div",
                         {
                             className: (0, _classnames2.default)("premium-icon-list-content" + index, "premium-icon-list__wrapper"),
-                            key: index
+                            key: index,
+                            style: {
+                                textAlign: align,
+                                justifyContent: align == "right" ? "flex-end" : align
+                            }
                         },
                         React.createElement(
                             "div",
                             { className: "premium-icon-list__content-wrap", style: {
                                     justifyContent: align == "right" ? align : align,
-                                    display: iconPosition == "left" ? "flex" : "inline-flex",
-                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                    display: iconPosition == "before" ? "flex" : "inline-flex",
+                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                 } },
                             React.createElement(
                                 "span",
@@ -56533,7 +56621,7 @@ function save(props) {
                                         borderWidth: borderWidth + "px",
                                         borderRadius: borderRadius || 0 + "px",
                                         borderColor: borderColor,
-                                        overflow: icons[index].image_icon == 'image' ? "hidden" : ""
+                                        overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : ""
                                     }
                                 },
                                 image_icon_html
@@ -56543,7 +56631,7 @@ function save(props) {
                                 { className: "premium-icon-list__label-wrap" },
                                 React.createElement(RichText.Content, {
                                     tagName: "span",
-                                    value: icons[index].label,
+                                    value: repeaterBulletList[index].label,
                                     className: "premium-icon-list__label",
                                     style: {
                                         fontFamily: titleFont,
@@ -56564,14 +56652,18 @@ function save(props) {
                             key: index,
                             target: target,
                             rel: "noopener noreferrer",
-                            href: link_url
+                            href: link_url,
+                            style: {
+                                textAlign: align,
+                                justifyContent: align == "right" ? "flex-end" : align
+                            }
                         },
                         React.createElement(
                             "div",
                             { className: "premium-icon-list__content-wrap", style: {
                                     justifyContent: align == "right" ? align : align,
-                                    display: iconPosition == "left" ? "flex" : "inline-flex",
-                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                    display: iconPosition == "before" ? "flex" : "inline-flex",
+                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                 } },
                             React.createElement(
                                 "span",
@@ -56581,7 +56673,7 @@ function save(props) {
                                         borderWidth: borderWidth + "px",
                                         borderRadius: borderRadius || 0 + "px",
                                         borderColor: borderColor,
-                                        overflow: icons[index].image_icon == 'image' ? "hidden" : ""
+                                        overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : ""
                                     }
                                 },
                                 image_icon_html
@@ -56591,7 +56683,7 @@ function save(props) {
                                 { className: "premium-icon-list__label-wrap" },
                                 React.createElement(RichText.Content, {
                                     tagName: "span",
-                                    value: icons[index].label,
+                                    value: repeaterBulletList[index].label,
                                     className: "premium-icon-list__label",
                                     style: {
                                         fontFamily: titleFont,
@@ -56652,7 +56744,23 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _reactSortableHoc = __webpack_require__(289);
+var _radioControl = __webpack_require__(11);
+
+var _radioControl2 = _interopRequireDefault(_radioControl);
+
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+var _PremiumResponsiveMargin = __webpack_require__(64);
+
+var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
+
+var _responsiveRangeControl = __webpack_require__(59);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
+var _reactSortableHoc = __webpack_require__(113);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56666,7 +56774,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // import styling from "./styling"
 
 // import PremiumMarginR from "../../components/premium-margin-responsive";
-// import PremiumRange from "../../components/premium-range-responsive";
 
 
 var __ = wp.i18n.__;
@@ -56706,6 +56813,13 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
         showContent = _ref.showContent,
         changeLabel = _ref.changeLabel,
         toggleShowBulletIcon = _ref.toggleShowBulletIcon,
+        selectIconType = _ref.selectIconType,
+        changeIcons = _ref.changeIcons,
+        selectImage = _ref.selectImage,
+        removeImage = _ref.removeImage,
+        toggleIconLink = _ref.toggleIconLink,
+        saveLink = _ref.saveLink,
+        openLink = _ref.openLink,
         changeTabValue = _ref.changeTabValue,
         changeContentValue = _ref.changeContentValue,
         changeEnableIcon = _ref.changeEnableIcon,
@@ -56721,7 +56835,7 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
             React.createElement(
                 "div",
                 { className: "premium-bulletList__content", onClick: function onClick() {
-                        return showContent(newIndex, value);
+                        return showContent(newIndex);
                     } },
                 React.createElement("span", { className: "premium-bulletList__label" }),
                 value.label
@@ -56755,7 +56869,7 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
                     options: ICONTYPE,
                     value: value.image_icon,
                     onChange: function onChange(value) {
-                        return undefined.saveIcons({ image_icon: value }, index);
+                        return selectIconType(value, newIndex);
                     }
                 }),
                 "icon" == value.image_icon && React.createElement(
@@ -56770,7 +56884,7 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
                         icons: _premiumIconsList2.default,
                         value: value.icon,
                         onChange: function onChange(value) {
-                            undefined.saveIcons({ icon: value }, index);
+                            return changeIcons(value, newIndex);
                         },
                         isMulti: false,
                         appendTo: "body",
@@ -56780,11 +56894,11 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
                 "image" == value.image_icon && React.createElement(
                     Fragment,
                     null,
-                    valueimage ? React.createElement("img", { src: value.image.url, width: "100%", height: "auto" }) : "",
+                    value.image ? React.createElement("img", { src: value.image.url, width: "100%", height: "auto" }) : "",
                     React.createElement(MediaUpload, {
                         title: __("Select Image"),
                         onSelect: function onSelect(value) {
-                            undefined.saveIcons({ image: value }, index);
+                            return selectImage(value, newIndex);
                         },
                         allowedTypes: ["image"],
                         value: value.image,
@@ -56800,13 +56914,44 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
                     value.image && React.createElement(
                         Button,
                         {
-                            onClick: function onClick(value) {
-                                undefined.saveIcons({ image: "" }, index);
+                            onClick: function onClick() {
+                                return removeImage(newIndex);
                             },
                             isLink: true, isDestructive: true },
                         __("Remove Image")
                     )
                 )
+            ),
+            React.createElement("hr", null),
+            React.createElement(ToggleControl, {
+                label: __("Link"),
+                checked: value.disableLink,
+                onChange: function onChange(value) {
+                    return toggleIconLink(value, newIndex);
+                }
+            }),
+            value.disableLink && React.createElement(
+                Fragment,
+                null,
+                React.createElement(
+                    "p",
+                    null,
+                    __("URL")
+                ),
+                React.createElement(TextControl, {
+                    value: value.link,
+                    onChange: function onChange(value) {
+                        return saveLink(value, newIndex);
+                    },
+                    placeholder: __("Enter URL")
+                }),
+                React.createElement(ToggleControl, {
+                    label: __("Open links in new tab"),
+                    checked: value.linkTarget,
+                    onChange: function onChange(value) {
+                        return openLink(value, newIndex);
+                    }
+                })
             )
         )
     );
@@ -56818,6 +56963,13 @@ var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
         showContent = _ref3.showContent,
         changeLabel = _ref3.changeLabel,
         toggleShowBulletIcon = _ref3.toggleShowBulletIcon,
+        selectIconType = _ref3.selectIconType,
+        changeIcons = _ref3.changeIcons,
+        selectImage = _ref3.selectImage,
+        removeImage = _ref3.removeImage,
+        toggleIconLink = _ref3.toggleIconLink,
+        saveLink = _ref3.saveLink,
+        openLink = _ref3.openLink,
         edit = _ref3.edit,
         changeTabValue = _ref3.changeTabValue,
         changeEnableIcon = _ref3.changeEnableIcon,
@@ -56836,7 +56988,14 @@ var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
                 onRemove: onRemove,
                 showContent: showContent,
                 changeLabel: changeLabel,
-                toggleShowBulletIcon: toggleShowBulletIcon
+                toggleShowBulletIcon: toggleShowBulletIcon,
+                selectIconType: selectIconType,
+                changeIcons: changeIcons,
+                selectImage: selectImage,
+                removeImage: removeImage,
+                toggleIconLink: toggleIconLink,
+                saveLink: saveLink,
+                openLink: openLink
                 // edit={edit}
                 // changeEnableIcon={changeEnableIcon}
                 // changeIcon={changeIcon}
@@ -56872,6 +57031,23 @@ var edit = function (_Component) {
             var $style = document.createElement("style");
             $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId);
             document.head.appendChild($style);
+            this.getPreviewSize = this.getPreviewSize.bind(this);
+        }
+    }, {
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
         }
     }, {
         key: "saveIcons",
@@ -56908,6 +57084,27 @@ var edit = function (_Component) {
                 className = attributes.className,
                 icons = attributes.icons,
                 repeaterBulletList = attributes.repeaterBulletList,
+                bulletAlign = attributes.bulletAlign,
+                bulletIconStyles = attributes.bulletIconStyles,
+                bulletIconBorderUpdated = attributes.bulletIconBorderUpdated,
+                bulletIconBorderTop = attributes.bulletIconBorderTop,
+                bulletIconBorderRight = attributes.bulletIconBorderRight,
+                bulletIconBorderBottom = attributes.bulletIconBorderBottom,
+                bulletIconBorderLeft = attributes.bulletIconBorderLeft,
+                bulletIconBorderWidth = attributes.bulletIconBorderWidth,
+                bulletIconmarginT = attributes.bulletIconmarginT,
+                bulletIconmarginR = attributes.bulletIconmarginR,
+                bulletIconmarginB = attributes.bulletIconmarginB,
+                bulletIconmarginL = attributes.bulletIconmarginL,
+                bulletIconmarginTTablet = attributes.bulletIconmarginTTablet,
+                bulletIconmarginRTablet = attributes.bulletIconmarginRTablet,
+                bulletIconmarginBTablet = attributes.bulletIconmarginBTablet,
+                bulletIconmarginLTablet = attributes.bulletIconmarginLTablet,
+                bulletIconmarginTMobile = attributes.bulletIconmarginTMobile,
+                bulletIconmarginRMobile = attributes.bulletIconmarginRMobile,
+                bulletIconmarginBMobile = attributes.bulletIconmarginBMobile,
+                bulletIconmarginLMobile = attributes.bulletIconmarginLMobile,
+                bulletIconmarginType = attributes.bulletIconmarginType,
                 sizeType = attributes.sizeType,
                 size = attributes.size,
                 sizeMobile = attributes.sizeMobile,
@@ -56963,11 +57160,11 @@ var edit = function (_Component) {
                 value: "inline"
             }];
             var POSITION = [{
-                label: __("Left"),
-                value: "left"
+                label: __("After"),
+                value: "after"
             }, {
-                label: __("Right"),
-                value: "right"
+                label: __("Before"),
+                value: "before"
             }, {
                 label: __("Top"),
                 value: "top"
@@ -56989,6 +57186,12 @@ var edit = function (_Component) {
                 name: "hover",
                 title: __("Hover")
             }];
+
+            var BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
+            var BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmarginT, bulletIconmarginTTablet, bulletIconmarginTMobile);
+            var BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmarginR, bulletIconmarginRTablet, bulletIconmarginRMobile);
+            var BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmarginB, bulletIconmarginBTablet, bulletIconmarginBMobile);
+            var BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmarginL, bulletIconmarginLTablet, bulletIconmarginLMobile);
 
             var addNewBulletList = function addNewBulletList() {
                 var cloneIcons = [].concat(_toConsumableArray(repeaterBulletList));
@@ -57052,39 +57255,162 @@ var edit = function (_Component) {
                 });
             };
 
-            var _showContent = function _showContent(index, item) {
-                console.log(index, item);
-                var array = repeaterBulletList.map(function (bulletList, currIndex) {
-                    return bulletList;
+            var onRepeaterChange = function onRepeaterChange(attr, value, index) {
+                var items = repeaterBulletList;
+                return items.map(function (item, currIndex) {
+                    if (index == currIndex) {
+                        item[attr] = value;
+                    }
+                    return item;
                 });
-                array[index].showContent = item;
-                console.log(array[index]);
-                setAttributes({
-                    repeaterBulletList: array
+            };
+
+            var _showContent = function _showContent(index, item) {
+                return repeaterBulletList.map(function (item, i) {
+                    if (index == i) {
+                        setAttributes({
+                            repeatertabs: onRepeaterChange("showContent", item.showContent ? false : true, index)
+                        });
+                    } else {
+                        setAttributes({
+                            repeaterBulletList: onRepeaterChange("showContent", false, i)
+                        });
+                    }
                 });
             };
 
             var _changeLabel = function _changeLabel(item, index) {
-                console.log(index, item);
-                var array = repeaterBulletList.map(function (bulletList, currIndex) {
-                    return bulletList;
-                });
-                array[index].label = item;
-                console.log(array);
+                // console.log(index, item)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].label = item;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
                 setAttributes({
-                    repeaterBulletList: array
+                    repeaterBulletList: onRepeaterChange("label", item, index)
                 });
             };
 
             var _toggleShowBulletIcon = function _toggleShowBulletIcon(value, index) {
-                console.log(index, value);
-                var array = repeaterBulletList.map(function (bulletList, currIndex) {
-                    return bulletList;
-                });
-                array[index].showBulletIcon = value;
-                console.log(array);
+                // console.log(index, value)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
                 setAttributes({
-                    repeaterBulletList: array
+                    repeaterBulletList: onRepeaterChange("showBulletIcon", value, index)
+                });
+            };
+
+            var _selectIconType = function _selectIconType(value, index) {
+                // console.log(index, value)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange("image_icon", value, index)
+                });
+            };
+
+            var _changeIcons = function _changeIcons(value, index) {
+                // console.log(index, value)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange("icon", value, index)
+                });
+            };
+
+            var _selectImage = function _selectImage(value, index) {
+                // console.log(index, value)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange("image", value, index)
+                });
+            };
+
+            var _removeImage = function _removeImage(index) {
+                // console.log(index, value)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange("image", '', index)
+                });
+            };
+
+            var _toggleIconLink = function _toggleIconLink(value, index) {
+                // console.log(index, value)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange("disableLink", value, index)
+                });
+            };
+
+            var _saveLink = function _saveLink(value, index) {
+                // console.log(index, value)
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange("link", value, index)
+                });
+            };
+
+            var _openLink = function _openLink(value, index) {
+                console.log(index, value);
+                // let array = repeaterBulletList.map((bulletList, currIndex) => {
+                //     return bulletList
+                // })
+                // array[index].showBulletIcon = value;
+                // console.log(array)
+                // setAttributes({
+                //     repeaterBulletList: array
+                // });
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange("linkTarget", value, index)
                 });
             };
 
@@ -57106,6 +57432,19 @@ var edit = function (_Component) {
                 if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
+            };
+
+            var saveBulletIconStyles = function saveBulletIconStyles(value) {
+                console.log(value);
+                var newUpdate = bulletIconStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    bulletIconStyles: newUpdate
+                });
             };
 
             var addmultiTitleCount = function addmultiTitleCount(newCount) {
@@ -57574,11 +57913,30 @@ var edit = function (_Component) {
                         },
                         toggleShowBulletIcon: function toggleShowBulletIcon(value, i) {
                             return _toggleShowBulletIcon(value, i);
-                        }
-                        // edit={(value) => edit(value)}
-                        , shouldCancelStart: shouldCancelStart
-                        // changeFancyValue={changeFancyValue}
-                        , helperClass: "premium-fancy-text__sortableHelper"
+                        },
+                        selectIconType: function selectIconType(value, i) {
+                            return _selectIconType(value, i);
+                        },
+                        changeIcons: function changeIcons(value, i) {
+                            return _changeIcons(value, i);
+                        },
+                        selectImage: function selectImage(value, i) {
+                            return _selectImage(value, i);
+                        },
+                        removeImage: function removeImage(value, i) {
+                            return _removeImage(value, i);
+                        },
+                        toggleIconLink: function toggleIconLink(value, i) {
+                            return _toggleIconLink(value, i);
+                        },
+                        saveLink: function saveLink(value, i) {
+                            return _saveLink(value, i);
+                        },
+                        openLink: function openLink(value, i) {
+                            return _openLink(value, i);
+                        },
+                        shouldCancelStart: shouldCancelStart,
+                        helperClass: "premium-fancy-text__sortableHelper"
                     }),
                     React.createElement(
                         "div",
@@ -57594,18 +57952,17 @@ var edit = function (_Component) {
                             React.createElement("i", { className: "dashicons dashicons-plus premium-fancy-text-icon" }),
                             __("Add New Item")
                         )
-                    ),
-                    React.createElement(RangeControl, {
-                        label: __("Number of Items"),
-                        value: multiTitleCount,
-                        min: "1",
-                        max: "10",
-                        onChange: function onChange(value) {
-                            return addmultiTitleCount(value);
-                        }
-                    }),
+                    )
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Display Options"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
                     React.createElement(SelectControl, {
-                        label: __("Layout"),
+                        label: __("Layout Type"),
                         options: LAYOUT,
                         value: layoutPos,
                         onChange: function onChange(newValue) {
@@ -57613,48 +57970,187 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(SelectControl, {
-                        label: __("Icon Position"),
+                        label: __("Bullet Position"),
                         options: POSITION,
                         value: iconPosition,
                         onChange: function onChange(newValue) {
                             return setAttributes({ iconPosition: newValue });
                         }
                     }),
-                    React.createElement(ToggleControl, {
-                        label: __("Open links in new tab"),
-                        checked: linkTarget,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ linkTarget: newValue });
-                        }
+                    iconPosition == 'top' ? React.createElement(_radioControl2.default, {
+                        choices: ["left", "center", "right"],
+                        label: __("Bullet Alignment "),
+                        onChange: function onChange(align) {
+                            return setAttributes({ bulletAlign: align });
+                        },
+                        value: bulletAlign
+                    }) : React.createElement(_radioControl2.default, {
+                        choices: ["top", "center", "bottom"],
+                        label: __("Bullet Alignment "),
+                        onChange: function onChange(align) {
+                            return setAttributes({ bulletAlign: align });
+                        },
+                        value: bulletAlign
                     })
                 ),
-                (0, _times2.default)(multiTitleCount, function (n) {
-                    return iconControls(n);
-                }),
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("Icon Style"),
+                        title: __("Bullet Style"),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(_premiumBorder2.default, {
-                        borderType: borderType,
-                        borderWidth: borderWidth,
-                        borderColor: borderColor,
-                        borderRadius: borderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ borderType: newType });
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Size", 'premium-block-for-gutenberg'),
+                        value: bulletIconStyles[0].bulletListfontSize,
+                        tabletValue: bulletIconStyles[0].bulletListfontSizeTablet,
+                        mobileValue: bulletIconStyles[0].bulletListfontSizeMobile,
+                        onChange: function onChange(value) {
+                            return saveBulletIconStyles({ bulletListfontSize: value });
                         },
-                        onChangeWidth: function onChangeWidth(newWidth) {
-                            return setAttributes({ borderWidth: newWidth });
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveBulletIconStyles({ bulletListfontSizeTablet: value });
+                        },
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveBulletIconStyles({ bulletListfontSizeMobile: value });
+                        },
+                        onChangeUnit: function onChangeUnit(key) {
+                            return saveBulletIconStyles({ bulletListfontSizeType: key });
+                        },
+                        unit: bulletIconStyles[0].bulletListfontSizeType,
+                        showUnit: true,
+                        defaultValue: 20,
+                        min: 1,
+                        max: 100
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", 'premium-block-for-gutenberg'),
+                        colorValue: bulletIconStyles[0].bulletIconColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveBulletIconStyles({
+                                bulletIconColor: newValue
+                            });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Hover Color", 'premium-block-for-gutenberg'),
+                        colorValue: bulletIconStyles[0].bulletIconHoverColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveBulletIconStyles({
+                                bulletIconHoverColor: newValue
+                            });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: bulletIconStyles[0].bulletIconBackgroundColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveBulletIconStyles({
+                                bulletIconBackgroundColor: newValue
+                            });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Hover Background Color", 'premium-block-for-gutenberg'),
+                        colorValue: bulletIconStyles[0].bulletIconHoverBackgroundColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveBulletIconStyles({
+                                bulletIconHoverBackgroundColor: newValue
+                            });
+                        }
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        borderType: bulletIconStyles[0].bulletIconborderType,
+                        borderWidth: bulletIconBorderWidth,
+                        top: bulletIconBorderTop,
+                        right: bulletIconBorderRight,
+                        bottom: bulletIconBorderBottom,
+                        left: bulletIconBorderLeft,
+                        borderColor: bulletIconStyles[0].bulletIconborderColor,
+                        borderRadius: bulletIconStyles[0].bulletIconborderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return saveBulletIconStyles({ bulletIconborderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref6) {
+                            var top = _ref6.top,
+                                right = _ref6.right,
+                                bottom = _ref6.bottom,
+                                left = _ref6.left;
+                            return setAttributes({
+                                bulletIconBorderUpdated: true,
+                                bulletIconBorderTop: top,
+                                bulletIconBorderRight: right,
+                                bulletIconBorderBottom: bottom,
+                                bulletIconBorderLeft: left
+                            });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ borderColor: colorValue.hex });
+                            return saveBulletIconStyles({ bulletIconborderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ borderRadius: newrRadius });
+                            return saveBulletIconStyles({ bulletIconborderRadius: newrRadius });
                         }
+                    }),
+                    React.createElement(_PremiumResponsiveMargin2.default, {
+                        directions: ["all"],
+                        marginTop: bulletIconmarginT,
+                        marginRight: bulletIconmarginR,
+                        marginBottom: bulletIconmarginB,
+                        marginLeft: bulletIconmarginL,
+                        marginTopTablet: bulletIconmarginTTablet,
+                        marginRightTablet: bulletIconmarginRTablet,
+                        marginBottomTablet: bulletIconmarginBTablet,
+                        marginLeftTablet: bulletIconmarginLTablet,
+                        marginTopMobile: bulletIconmarginTMobile,
+                        marginRightMobile: bulletIconmarginRMobile,
+                        marginBottomMobile: bulletIconmarginBMobile,
+                        marginLeftMobile: bulletIconmarginLMobile,
+                        showUnits: true,
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                            return setAttributes({ bulletIconmarginType: newvalue });
+                        },
+                        selectedUnit: bulletIconmarginType,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ bulletIconmarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ bulletIconmarginTTablet: newValue });
+                            } else {
+                                setAttributes({ bulletIconmarginTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ bulletIconmarginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ bulletIconmarginRTablet: newValue });
+                            } else {
+                                setAttributes({ bulletIconmarginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ bulletIconmarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ bulletIconmarginBTablet: newValue });
+                            } else {
+                                setAttributes({ bulletIconmarginBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ bulletIconmarginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ bulletIconmarginLTablet: newValue });
+                            } else {
+                                setAttributes({ bulletIconmarginLMobile: newValue });
+                            }
+                        }
+
                     })
                 ),
                 React.createElement(
@@ -57703,6 +58199,11 @@ var edit = function (_Component) {
                 { className: (0, _classnames2.default)(className, "premium-block-" + this.props.clientId), style: {
                         textAlign: align
                     }, id: mainClasses + "-wrap-" + this.props.clientId },
+                React.createElement("style", {
+                    dangerouslySetInnerHTML: {
+                        __html: [".premium-icon-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}"].join("\n")
+                    }
+                }),
                 React.createElement(
                     "div",
                     { className: "premium-icon-list-" + layoutPos,
@@ -57723,17 +58224,30 @@ var edit = function (_Component) {
                                     image_icon_html = React.createElement(
                                         "span",
                                         { className: "premium-icon-list__content-icon" },
-                                        React.createElement("i", { className: "" + icon.icon })
+                                        React.createElement("i", {
+                                            className: "" + icon.icon,
+                                            style: {
+                                                fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
+                                                color: bulletIconStyles[0].bulletIconColor,
+                                                backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor
+                                            }
+                                        })
                                     );
                                 }
                             } else {
                                 if (icon.image) {
-                                    image_icon_html = React.createElement("img", { src: icon.image.url });
+                                    image_icon_html = React.createElement("img", {
+                                        src: icon.image.url,
+                                        style: {
+                                            width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
+                                            height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType
+                                        }
+                                    });
                                 }
                             }
                         }
 
-                        var target = linkTarget ? "_blank" : "_self";
+                        var target = icon.linkTarget ? "_blank" : "_self";
 
                         return React.createElement(
                             "div",
@@ -57741,24 +58255,32 @@ var edit = function (_Component) {
                                 className: (0, _classnames2.default)("premium-icon-list-content" + index, "premium-icon-list__wrapper"),
                                 key: index,
                                 target: target,
-                                rel: "noopener noreferrer"
+                                rel: "noopener noreferrer",
+                                style: {
+                                    justifyContent: align == "right" ? align : align
+                                }
                             },
                             React.createElement(
                                 "div",
                                 { className: "premium-icon-list__content-wrap", style: {
                                         justifyContent: align == "right" ? align : align,
-                                        display: iconPosition == "left" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                        display: iconPosition == "before" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                     } },
                                 React.createElement(
                                     "span",
                                     { className: "premium-icon-list__icon-wrap",
                                         style: {
-                                            borderStyle: borderType,
-                                            borderWidth: borderWidth + "px",
-                                            borderRadius: borderRadius || 0 + "px",
-                                            borderColor: borderColor,
-                                            overflow: "hidden"
+                                            borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                            borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
+                                            borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                            borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            overflow: "hidden",
+                                            alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                            marginTop: BulletIconMarginTop + bulletIconmarginType,
+                                            marginBottom: BulletIconMarginBottom + bulletIconmarginType,
+                                            marginLeft: BulletIconMarginLeft + bulletIconmarginType,
+                                            marginRight: BulletIconMarginRight + bulletIconmarginType
                                         }
                                     },
                                     image_icon_html

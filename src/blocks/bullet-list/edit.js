@@ -6,8 +6,11 @@ import iconsList from "../../components/premium-icons-list";
 import PremiumTypo from "../../components/premium-typo";
 import FONTS from "../../components/premium-fonts";
 import PremiumBorder from "../../components/premium-border";
+import RadioComponent from '../../components/radio-control';
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 // import PremiumMarginR from "../../components/premium-margin-responsive";
-// import PremiumRange from "../../components/premium-range-responsive";
+import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 
 const { __ } = wp.i18n
@@ -55,6 +58,13 @@ const SortableItem = SortableElement(({
     showContent,
     changeLabel,
     toggleShowBulletIcon,
+    selectIconType,
+    changeIcons,
+    selectImage,
+    removeImage,
+    toggleIconLink,
+    saveLink,
+    openLink,
     changeTabValue,
     changeContentValue,
     changeEnableIcon,
@@ -63,7 +73,7 @@ const SortableItem = SortableElement(({
 }) => <li tabIndex={0} style={{ listStyle: 'none' }}>
         <span className="premium-bulletList__container">
             <span className="premium-bulletList__dragHandle"></span>
-            <div className="premium-bulletList__content" onClick={() => showContent(newIndex, value)}>
+            <div className="premium-bulletList__content" onClick={() => showContent(newIndex)}>
                 <span className={`premium-bulletList__label`}></span>
                 {value.label}
             </div>
@@ -85,7 +95,7 @@ const SortableItem = SortableElement(({
                     label={__("Icon Type")}
                     options={ICONTYPE}
                     value={value.image_icon}
-                    onChange={value => this.saveIcons({ image_icon: value }, index)}
+                    onChange={value => selectIconType(value, newIndex)}
                 />
                     {"icon" == value.image_icon &&
                         <Fragment>
@@ -93,7 +103,7 @@ const SortableItem = SortableElement(({
                             <FontIconPicker
                                 icons={iconsList}
                                 value={value.icon}
-                                onChange={value => { this.saveIcons({ icon: value }, index) }}
+                                onChange={value => changeIcons(value, newIndex)}
                                 isMulti={false}
                                 appendTo="body"
                                 noSelectedPlaceholder={__("Select Icon")}
@@ -102,12 +112,12 @@ const SortableItem = SortableElement(({
 
                     {"image" == value.image_icon &&
                         <Fragment>
-                            {valueimage ?
+                            {value.image ?
                                 <img src={value.image.url} width="100%" height="auto" />
                                 : ""}
                             <MediaUpload
                                 title={__("Select Image")}
-                                onSelect={value => { this.saveIcons({ image: value }, index) }}
+                                onSelect={value => selectImage(value, newIndex)}
                                 allowedTypes={["image"]}
                                 value={value.image}
                                 render={({ open }) => (
@@ -118,7 +128,7 @@ const SortableItem = SortableElement(({
                             />
                             {value.image &&
                                 <Button
-                                    onClick={value => { this.saveIcons({ image: "" }, index) }}
+                                    onClick={() => removeImage(newIndex)}
                                     isLink isDestructive>
                                     {__("Remove Image")}
                                 </Button>
@@ -126,6 +136,27 @@ const SortableItem = SortableElement(({
                         </Fragment>
                     }
                 </div>
+                }
+                <hr />
+                <ToggleControl
+                    label={__("Link")}
+                    checked={value.disableLink}
+                    onChange={value => toggleIconLink(value, newIndex)}
+                />
+                {value.disableLink &&
+                    <Fragment>
+                        <p>{__("URL")}</p>
+                        <TextControl
+                            value={value.link}
+                            onChange={value => saveLink(value, newIndex)}
+                            placeholder={__("Enter URL")}
+                        />
+                        <ToggleControl
+                            label={__("Open links in new tab")}
+                            checked={value.linkTarget}
+                            onChange={value => openLink(value, newIndex)}
+                        />
+                    </Fragment>
                 }
                 {/* <button className="premium-bulletList__saveButton" onClick={() => saveLink(value.changeinput, value, personIndex)}>Save</button> */}
             </div>
@@ -138,6 +169,13 @@ const SortableList = SortableContainer(({
     showContent,
     changeLabel,
     toggleShowBulletIcon,
+    selectIconType,
+    changeIcons,
+    selectImage,
+    removeImage,
+    toggleIconLink,
+    saveLink,
+    openLink,
     edit,
     changeTabValue,
     changeEnableIcon,
@@ -154,6 +192,13 @@ const SortableList = SortableContainer(({
                 showContent={showContent}
                 changeLabel={changeLabel}
                 toggleShowBulletIcon={toggleShowBulletIcon}
+                selectIconType={selectIconType}
+                changeIcons={changeIcons}
+                selectImage={selectImage}
+                removeImage={removeImage}
+                toggleIconLink={toggleIconLink}
+                saveLink={saveLink}
+                openLink={openLink}
                 // edit={edit}
                 // changeEnableIcon={changeEnableIcon}
                 // changeIcon={changeIcon}
@@ -182,8 +227,25 @@ class edit extends Component {
         // Pushing Style tag for this block css.
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
-        document.head.appendChild($style)
+        document.head.appendChild($style);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
+    }
+
 
     saveIcons(value, index) {
         const { attributes, setAttributes } = this.props
@@ -211,6 +273,27 @@ class edit extends Component {
             className,
             icons,
             repeaterBulletList,
+            bulletAlign,
+            bulletIconStyles,
+            bulletIconBorderUpdated,
+            bulletIconBorderTop,
+            bulletIconBorderRight,
+            bulletIconBorderBottom,
+            bulletIconBorderLeft,
+            bulletIconBorderWidth,
+            bulletIconmarginT,
+            bulletIconmarginR,
+            bulletIconmarginB,
+            bulletIconmarginL,
+            bulletIconmarginTTablet,
+            bulletIconmarginRTablet,
+            bulletIconmarginBTablet,
+            bulletIconmarginLTablet,
+            bulletIconmarginTMobile,
+            bulletIconmarginRMobile,
+            bulletIconmarginBMobile,
+            bulletIconmarginLMobile,
+            bulletIconmarginType,
             sizeType,
             size,
             sizeMobile,
@@ -270,12 +353,12 @@ class edit extends Component {
         ];
         const POSITION = [
             {
-                label: __("Left"),
-                value: "left"
+                label: __("After"),
+                value: "after"
             },
             {
-                label: __("Right"),
-                value: "right"
+                label: __("Before"),
+                value: "before"
             },
             {
                 label: __("Top"),
@@ -302,6 +385,13 @@ class edit extends Component {
                 title: __("Hover")
             },
         ];
+
+        const BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
+        const BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmarginT, bulletIconmarginTTablet, bulletIconmarginTMobile);
+        const BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmarginR, bulletIconmarginRTablet, bulletIconmarginRMobile);
+        const BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmarginB, bulletIconmarginBTablet, bulletIconmarginBMobile);
+        const BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmarginL, bulletIconmarginLTablet, bulletIconmarginLMobile);
+
 
         const addNewBulletList = () => {
             let cloneIcons = [...repeaterBulletList]
@@ -361,40 +451,208 @@ class edit extends Component {
             });
         }
 
-        const showContent = (index, item) => {
-            console.log(index, item)
-            let array = repeaterBulletList.map((bulletList, currIndex) => {
-                return bulletList
-            })
-            array[index].showContent = item;
-            console.log(array[index])
-            setAttributes({
-                repeaterBulletList: array
+        const onRepeaterChange = (attr, value, index) => {
+            const items = repeaterBulletList;
+            return items.map(function (item, currIndex) {
+                if (index == currIndex) {
+                    item[attr] = value;
+                }
+                return item;
             });
+        };
+
+        const showContent = (index, item) => {
+            return repeaterBulletList.map((item, i) => {
+                if (index == i) {
+                    setAttributes({
+                        repeatertabs: onRepeaterChange(
+                            "showContent",
+                            item.showContent ? false : true,
+                            index
+                        )
+                    })
+                }
+                else {
+                    setAttributes({
+                        repeaterBulletList: onRepeaterChange(
+                            "showContent",
+                            false,
+                            i
+                        )
+                    })
+                }
+            })
         }
 
         const changeLabel = (item, index) => {
-            console.log(index, item)
-            let array = repeaterBulletList.map((bulletList, currIndex) => {
-                return bulletList
-            })
-            array[index].label = item;
-            console.log(array)
+            // console.log(index, item)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].label = item;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
             setAttributes({
-                repeaterBulletList: array
-            });
+                repeaterBulletList: onRepeaterChange(
+                    "label",
+                    item,
+                    index
+                )
+            })
         }
 
         const toggleShowBulletIcon = (value, index) => {
-            console.log(index, value)
-            let array = repeaterBulletList.map((bulletList, currIndex) => {
-                return bulletList
-            })
-            array[index].showBulletIcon = value;
-            console.log(array)
+            // console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
             setAttributes({
-                repeaterBulletList: array
-            });
+                repeaterBulletList: onRepeaterChange(
+                    "showBulletIcon",
+                    value,
+                    index
+                )
+            })
+        }
+
+        const selectIconType = (value, index) => {
+            // console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
+            setAttributes({
+                repeaterBulletList: onRepeaterChange(
+                    "image_icon",
+                    value,
+                    index
+                )
+            })
+        }
+
+        const changeIcons = (value, index) => {
+            // console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
+            setAttributes({
+                repeaterBulletList: onRepeaterChange(
+                    "icon",
+                    value,
+                    index
+                )
+            })
+        }
+
+        const selectImage = (value, index) => {
+            // console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
+            setAttributes({
+                repeaterBulletList: onRepeaterChange(
+                    "image",
+                    value,
+                    index
+                )
+            })
+        }
+
+        const removeImage = (index) => {
+            // console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
+            setAttributes({
+                repeaterBulletList: onRepeaterChange(
+                    "image",
+                    '',
+                    index
+                )
+            })
+        }
+
+        const toggleIconLink = (value, index) => {
+            // console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
+            setAttributes({
+                repeaterBulletList: onRepeaterChange(
+                    "disableLink",
+                    value,
+                    index
+                )
+            })
+        }
+
+        const saveLink = (value, index) => {
+            // console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
+            setAttributes({
+                repeaterBulletList: onRepeaterChange(
+                    "link",
+                    value,
+                    index
+                )
+            })
+        }
+
+        const openLink = (value, index) => {
+            console.log(index, value)
+            // let array = repeaterBulletList.map((bulletList, currIndex) => {
+            //     return bulletList
+            // })
+            // array[index].showBulletIcon = value;
+            // console.log(array)
+            // setAttributes({
+            //     repeaterBulletList: array
+            // });
+            setAttributes({
+                repeaterBulletList: onRepeaterChange(
+                    "linkTarget",
+                    value,
+                    index
+                )
+            })
         }
 
         const onSortEndSingle = ({
@@ -416,6 +674,19 @@ class edit extends Component {
             if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                 return true; // Return true to cancel sorting
             }
+        }
+
+        const saveBulletIconStyles = (value) => {
+            console.log(value)
+            const newUpdate = bulletIconStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                bulletIconStyles: newUpdate,
+            });
         }
 
         const addmultiTitleCount = (newCount) => {
@@ -696,9 +967,14 @@ class edit extends Component {
                             showContent={(value, i) => showContent(value, i)}
                             changeLabel={(value, i) => changeLabel(value, i)}
                             toggleShowBulletIcon={(value, i) => toggleShowBulletIcon(value, i)}
-                            // edit={(value) => edit(value)}
+                            selectIconType={(value, i) => selectIconType(value, i)}
+                            changeIcons={(value, i) => changeIcons(value, i)}
+                            selectImage={(value, i) => selectImage(value, i)}
+                            removeImage={(value, i) => removeImage(value, i)}
+                            toggleIconLink={(value, i) => toggleIconLink(value, i)}
+                            saveLink={(value, i) => saveLink(value, i)}
+                            openLink={(value, i) => openLink(value, i)}
                             shouldCancelStart={shouldCancelStart}
-                            // changeFancyValue={changeFancyValue}
                             helperClass='premium-fancy-text__sortableHelper'
                         />
                         < div className="premium-fancy-text-btn__wrap" >
@@ -710,58 +986,188 @@ class edit extends Component {
                                 {__("Add New Item")}
                             </button>
                         </div>
-                        <RangeControl
-                            label={__("Number of Items")}
-                            value={multiTitleCount}
-                            min="1"
-                            max="10"
-                            onChange={value => addmultiTitleCount(value)}
-                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Display Options")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
                         <SelectControl
-                            label={__("Layout")}
+                            label={__("Layout Type")}
                             options={LAYOUT}
                             value={layoutPos}
                             onChange={newValue => setAttributes({ layoutPos: newValue })}
                         />
                         <SelectControl
-                            label={__("Icon Position")}
+                            label={__("Bullet Position")}
                             options={POSITION}
                             value={iconPosition}
                             onChange={newValue => setAttributes({ iconPosition: newValue })}
                         />
-                        <ToggleControl
-                            label={__("Open links in new tab")}
-                            checked={linkTarget}
-                            onChange={newValue => setAttributes({ linkTarget: newValue })}
+                        {iconPosition == 'top' ? <RadioComponent
+                            choices={["left", "center", "right"]}
+                            label={__(`Bullet Alignment `)}
+                            onChange={(align) => setAttributes({ bulletAlign: align })}
+                            value={bulletAlign}
                         />
+                            : <RadioComponent
+                                choices={["top", "center", "bottom"]}
+                                label={__(`Bullet Alignment `)}
+                                onChange={(align) => setAttributes({ bulletAlign: align })}
+                                value={bulletAlign}
+                            />
+                        }
                     </PanelBody>
-                    {times(multiTitleCount, n => iconControls(n))}
                     <PanelBody
-                        title={__("Icon Style")}
+                        title={__("Bullet Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        {/* <PremiumRange
-                            setAttributes={setAttributes}
-                            rangeType={{ value: sizeType, label: __("sizeType") }}
-                            range={{ value: size, label: __("size") }}
-                            rangeMobile={{ value: sizeMobile, label: __("sizeMobile") }}
-                            rangeTablet={{ value: sizeTablet, label: __("sizeTablet") }}
-                            rangeLabel={__("Icon Size ")}
-                        /> */}
+                        <ResponsiveRangeControl
+                            label={__("Size", 'premium-block-for-gutenberg')}
+                            value={bulletIconStyles[0].bulletListfontSize}
+                            tabletValue={bulletIconStyles[0].bulletListfontSizeTablet}
+                            mobileValue={bulletIconStyles[0].bulletListfontSizeMobile}
+                            onChange={(value) => saveBulletIconStyles({ bulletListfontSize: value })}
+                            onChangeTablet={(value) => saveBulletIconStyles({ bulletListfontSizeTablet: value })}
+                            onChangeMobile={(value) => saveBulletIconStyles({ bulletListfontSizeMobile: value })}
+                            onChangeUnit={(key) =>
+                                saveBulletIconStyles({ bulletListfontSizeType: key })
+                            }
+                            unit={bulletIconStyles[0].bulletListfontSizeType}
+                            showUnit={true}
+                            defaultValue={20}
+                            min={1}
+                            max={100}
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Color", 'premium-block-for-gutenberg')}
+                            colorValue={bulletIconStyles[0].bulletIconColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveBulletIconStyles({
+                                    bulletIconColor: newValue
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Hover Color", 'premium-block-for-gutenberg')}
+                            colorValue={bulletIconStyles[0].bulletIconHoverColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveBulletIconStyles({
+                                    bulletIconHoverColor: newValue
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                            colorValue={bulletIconStyles[0].bulletIconBackgroundColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveBulletIconStyles({
+                                    bulletIconBackgroundColor: newValue
+                                })
+                            }
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Hover Background Color", 'premium-block-for-gutenberg')}
+                            colorValue={bulletIconStyles[0].bulletIconHoverBackgroundColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveBulletIconStyles({
+                                    bulletIconHoverBackgroundColor: newValue
+                                })
+                            }
+                        />
                         <PremiumBorder
-                            borderType={borderType}
-                            borderWidth={borderWidth}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={newType => setAttributes({ borderType: newType })}
-                            onChangeWidth={newWidth => setAttributes({ borderWidth: newWidth })}
+                            borderType={bulletIconStyles[0].bulletIconborderType}
+                            borderWidth={bulletIconBorderWidth}
+                            top={bulletIconBorderTop}
+                            right={bulletIconBorderRight}
+                            bottom={bulletIconBorderBottom}
+                            left={bulletIconBorderLeft}
+                            borderColor={bulletIconStyles[0].bulletIconborderColor}
+                            borderRadius={bulletIconStyles[0].bulletIconborderRadius}
+                            onChangeType={newType => saveBulletIconStyles({ bulletIconborderType: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    bulletIconBorderUpdated: true,
+                                    bulletIconBorderTop: top,
+                                    bulletIconBorderRight: right,
+                                    bulletIconBorderBottom: bottom,
+                                    bulletIconBorderLeft: left,
+                                })
+                            }
                             onChangeColor={colorValue =>
-                                setAttributes({ borderColor: colorValue.hex })
+                                saveBulletIconStyles({ bulletIconborderColor: colorValue })
                             }
                             onChangeRadius={newrRadius =>
-                                setAttributes({ borderRadius: newrRadius })
+                                saveBulletIconStyles({ bulletIconborderRadius: newrRadius })
                             }
+                        />
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            marginTop={bulletIconmarginT}
+                            marginRight={bulletIconmarginR}
+                            marginBottom={bulletIconmarginB}
+                            marginLeft={bulletIconmarginL}
+                            marginTopTablet={bulletIconmarginTTablet}
+                            marginRightTablet={bulletIconmarginRTablet}
+                            marginBottomTablet={bulletIconmarginBTablet}
+                            marginLeftTablet={bulletIconmarginLTablet}
+                            marginTopMobile={bulletIconmarginTMobile}
+                            marginRightMobile={bulletIconmarginRMobile}
+                            marginBottomMobile={bulletIconmarginBMobile}
+                            marginLeftMobile={bulletIconmarginLMobile}
+                            showUnits={true}
+                            onChangeMarSizeUnit={newvalue => setAttributes({ bulletIconmarginType: newvalue })}
+                            selectedUnit={bulletIconmarginType}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconmarginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconmarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconmarginTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconmarginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconmarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconmarginRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconmarginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconmarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconmarginBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconmarginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconmarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconmarginLMobile: newValue })
+                                    }
+                                }
+                            }
+
                         />
                         {/* <PremiumRange
                             setAttributes={setAttributes}
@@ -856,6 +1262,16 @@ class edit extends Component {
             )} style={{
                 textAlign: align,
             }} id={`${mainClasses}-wrap-${this.props.clientId}`}>
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: [
+                            `.premium-icon-list__content-icon i:hover {`,
+                            `color: ${bulletIconStyles[0].bulletIconHoverColor} !important;`,
+                            `background-color: ${bulletIconStyles[0].bulletIconHoverBackgroundColor} !important;`,
+                            "}"
+                        ].join("\n")
+                    }}
+                />
                 <div className={`premium-icon-list-${layoutPos}`}
                     style={{
                         textAlign: align,
@@ -873,18 +1289,31 @@ class edit extends Component {
                                 if (icon.image_icon == "icon") {
                                     if (icon.icon) {
                                         image_icon_html = <span className="premium-icon-list__content-icon">
-                                            <i className={`${icon.icon}`} />
+                                            <i
+                                                className={`${icon.icon}`}
+                                                style={{
+                                                    fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
+                                                    color: bulletIconStyles[0].bulletIconColor,
+                                                    backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
+                                                }}
+                                            />
                                         </span>
                                     }
                                 } else {
                                     if (icon.image) {
-                                        image_icon_html = <img src={icon.image.url} />
+                                        image_icon_html = <img
+                                            src={icon.image.url}
+                                            style={{
+                                                width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
+                                                height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
+                                            }}
+                                        />
                                     }
                                 }
                             }
 
 
-                            let target = (linkTarget) ? "_blank" : "_self"
+                            let target = (icon.linkTarget) ? "_blank" : "_self"
 
                             return (
                                 <div
@@ -895,19 +1324,29 @@ class edit extends Component {
                                     key={index}
                                     target={target}
                                     rel="noopener noreferrer"
+                                    style={{
+                                        justifyContent: align == "right" ? align : align
+                                    }}
                                 >
                                     <div className="premium-icon-list__content-wrap" style={{
                                         justifyContent: align == "right" ? align : align,
-                                        display: iconPosition == "left" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "right" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                        display: iconPosition == "before" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                     }}>
                                         <span className="premium-icon-list__icon-wrap"
                                             style={{
-                                                borderStyle: borderType,
-                                                borderWidth: borderWidth + "px",
-                                                borderRadius: borderRadius || 0 + "px",
-                                                borderColor: borderColor,
-                                                overflow: "hidden"
+                                                borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                                borderWidth: bulletIconBorderUpdated
+                                                    ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
+                                                    : bulletIconBorderWidth + "px",
+                                                borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                                borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                overflow: "hidden",
+                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                marginTop: BulletIconMarginTop + bulletIconmarginType,
+                                                marginBottom: BulletIconMarginBottom + bulletIconmarginType,
+                                                marginLeft: BulletIconMarginLeft + bulletIconmarginType,
+                                                marginRight: BulletIconMarginRight + bulletIconmarginType,
                                             }}
                                         >{image_icon_html}</span>
                                         <div className="premium-icon-list__label-wrap">
