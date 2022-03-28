@@ -22,31 +22,6 @@ const bulletListAttrs = {
         type: "string",
         default: "left"
     },
-    multiTitleCount: {
-        type: "number",
-        default: 1
-    },
-    icons: {
-        type: "array",
-        default: [{
-            id: 1,
-            label: "Title #" + 1,
-            image_icon: "icon",
-            icon: "fa fa-arrow-circle-right",
-            image: "",
-            icon_color: "#3a3a3a",
-            label_color: "",
-            icon_hover_color: "",
-            label_hover_color: "",
-            icon_bg_color: "",
-            icon_bg_hover_color: "",
-            item_bg_color: "",
-            item_bg_hover_color: "",
-            link: "#",
-            target: false,
-            disableLink: false,
-        }],
-    },
     repeaterBulletList: {
         type: "array",
         default: [{
@@ -83,7 +58,6 @@ const bulletListAttrs = {
             bulletIconBackgroundColor: '',
             bulletIconHoverBackgroundColor: '',
             bulletIconborderType: "none",
-            bulletIconborderWidth: "1",
             bulletIconborderRadius: 0,
             bulletIconborderColor: '',
         }],
@@ -148,6 +122,227 @@ const bulletListAttrs = {
     bulletIconmarginLMobile: {
         type: "number"
     },
+    bulletIconpaddingUnit: {
+        type: "string",
+        default: "px"
+    },
+    bulletIconpaddingTop: {
+        type: "number"
+    },
+    bulletIconpaddingRight: {
+        type: "number"
+    },
+    bulletIconpaddingBottom: {
+        type: "number"
+    },
+    bulletIconpaddingLeft: {
+        type: "number"
+    },
+    bulletIconpaddingTTablet: {
+        type: "number"
+    },
+    bulletIconpaddingRTablet: {
+        type: "number"
+    },
+    bulletIconpaddingBTablet: {
+        type: "number"
+    },
+    bulletIconpaddingLTablet: {
+        type: "number"
+    },
+    bulletIconpaddingTMobile: {
+        type: "number"
+    },
+    bulletIconpaddingRMobile: {
+        type: "number"
+    },
+    bulletIconpaddingBMobile: {
+        type: "number"
+    },
+    bulletIconpaddingLMobile: {
+        type: "number"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleLetter: 0,
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleLine: 0,
+            titleSize: 20,
+            titlefontSizeType: "px",
+            titlefontSizeMobile: 20,
+            titlefontSizeTablet: 20,
+            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleColor: "",
+            titleHoverColor: "",
+            titleshadowColor: '',
+            titleshadowBlur: 0,
+            titleshadowHorizontal: 0,
+            titleshadowVertical: 0,
+        }],
+    },
+    titlemarginType: {
+        type: "string",
+        default: "px"
+    },
+    titlemarginT: {
+        type: "number"
+    },
+    titlemarginR: {
+        type: "number"
+    },
+    titlemarginB: {
+        type: "number"
+    },
+    titlemarginL: {
+        type: "number"
+    },
+    titlemarginTTablet: {
+        type: "number"
+    },
+    titlemarginRTablet: {
+        type: "number"
+    },
+    titlemarginBTablet: {
+        type: "number"
+    },
+    titlemarginLTablet: {
+        type: "number"
+    },
+    titlemarginTMobile: {
+        type: "number"
+    },
+    titlemarginRMobile: {
+        type: "number"
+    },
+    titlemarginBMobile: {
+        type: "number"
+    },
+    titlemarginLMobile: {
+        type: "number"
+    },
+    generalStyles: {
+        type: "array",
+        default: [{
+            generalBackgroundColor: "",
+            generalHoverBackgroundColor: '',
+            generalborderType: "none",
+            generalborderRadius: 0,
+            generalborderColor: '',
+            generalShadowColor: '',
+            generalShadowBlur: 0,
+            generalShadowHorizontal: 0,
+            generalShadowVertical: 0,
+            generalShadowPosition: '',
+            generalHoverShadowColor: '',
+            generalHoverShadowBlur: '',
+            generalHoverShadowHorizontal: '',
+            generalHoverShadowVertical: '',
+            generalHoverShadowPosition: '',
+        }],
+    },
+    generalBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    generalBorderTop: {
+        type: "number"
+    },
+    generalBorderRight: {
+        type: "number"
+    },
+    generalBorderBottom: {
+        type: "number"
+    },
+    generalBorderLeft: {
+        type: "number"
+    },
+    generalBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    generalmarginType: {
+        type: "string",
+        default: "px"
+    },
+    generalmarginT: {
+        type: "number"
+    },
+    generalmarginR: {
+        type: "number"
+    },
+    generalmarginB: {
+        type: "number"
+    },
+    generalmarginL: {
+        type: "number"
+    },
+    generalmarginTTablet: {
+        type: "number"
+    },
+    generalmarginRTablet: {
+        type: "number"
+    },
+    generalmarginBTablet: {
+        type: "number"
+    },
+    generalmarginLTablet: {
+        type: "number"
+    },
+    generalmarginTMobile: {
+        type: "number"
+    },
+    generalmarginRMobile: {
+        type: "number"
+    },
+    generalmarginBMobile: {
+        type: "number"
+    },
+    generalmarginLMobile: {
+        type: "number"
+    },
+    generalpaddingUnit: {
+        type: "string",
+        default: "px"
+    },
+    generalpaddingTop: {
+        type: "number"
+    },
+    generalpaddingRight: {
+        type: "number"
+    },
+    generalpaddingBottom: {
+        type: "number"
+    },
+    generalpaddingLeft: {
+        type: "number"
+    },
+    generalpaddingTTablet: {
+        type: "number"
+    },
+    generalpaddingRTablet: {
+        type: "number"
+    },
+    generalpaddingBTablet: {
+        type: "number"
+    },
+    generalpaddingLTablet: {
+        type: "number"
+    },
+    generalpaddingTMobile: {
+        type: "number"
+    },
+    generalpaddingRMobile: {
+        type: "number"
+    },
+    generalpaddingBMobile: {
+        type: "number"
+    },
+    generalpaddingLMobile: {
+        type: "number"
+    },
     classMigrate: {
         type: "boolean",
         default: false
@@ -164,185 +359,9 @@ const bulletListAttrs = {
         type: "string",
         default: "center"
     },
-    // linkTarget: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // sizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // size: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // sizeMobile: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // sizeTablet: {
-    //     type: "number",
-    //     default: 20
-    // },
-    fontSize: {
-        type: "number",
-        default: 20
-    },
-    fontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    fontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    fontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "string"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
     titleFont: {
         type: "string"
-    },
-    // borderType: {
-    //     type: "string",
-    //     default: "none"
-    // },
-    // borderWidth: {
-    //     type: "number",
-    //     default: "1"
-    // },
-    // borderRadius: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // borderColor: {
-    //     type: "string"
-    // },
-    iconSpacing: {
-        type: "number",
-        default: 10
-    },
-    iconSpacingMobile: {
-        type: "number",
-        default: 10
-    },
-    iconSpacingTablet: {
-        type: "number",
-        default: 10
-    },
-    iconSpacingType: {
-        type: "string",
-        default: "px"
-    },
-    titlePadding: {
-        type: "number",
-        default: 10
-    },
-    titlePaddingMobile: {
-        type: "number",
-        default: 10
-    },
-    titlePaddingTablet: {
-        type: "number",
-        default: 10
-    },
-    titlePaddingType: {
-        type: "string",
-        default: "px"
-    },
-    iconPaddingType: {
-        type: "string",
-        default: "px"
-    },
-    iconPadding: {
-        type: "number",
-        default: 0
-    },
-    iconPaddingMobile: {
-        type: "number",
-        default: 0
-    },
-    iconPaddingTablet: {
-        type: "number",
-        default: 0
-    },
-    marginTop: {
-        type: "number",
-        default: 0
-    },
-    marginTopType: {
-        type: "string",
-        default: "px"
-    },
-    marginTopMobile: {
-        type: "number",
-        default: 0
-    },
-    marginTopTablet: {
-        type: "number",
-        default: 0
-    },
-    marginRight: {
-        type: "number",
-        default: 0
-    },
-    marginRightType: {
-        type: "string",
-        default: "px"
-    },
-    marginRightMobile: {
-        type: "number",
-        default: 0
-    },
-    marginRightTablet: {
-        type: "number",
-        default: 0
-    },
-    marginBottom: {
-        type: "number",
-        default: 0
-    },
-    marginBottomType: {
-        type: "string",
-        default: "px"
-    },
-    marginBottomMobile: {
-        type: "number",
-        default: 0
-    },
-    marginBottomTablet: {
-        type: "number",
-        default: 0
-    },
-    marginLeft: {
-        type: "number",
-        default: 0
-    },
-    marginLeftType: {
-        type: "string",
-        default: "px"
-    },
-    marginLeftMobile: {
-        type: "number",
-        default: 0
-    },
-    marginLeftTablet: {
-        type: "number",
-        default: 0
-    },
+    }
 };
 
 registerBlockType("premium/bullet-list", {

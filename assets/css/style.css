@@ -2032,7 +2032,7 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium bullet-list *********************/
 /*******************************************************/
-.premium-icon-list__content-wrap{
+.premium-bullet-list__content-wrap{
     color: #3a3a3a;
       -js-display: flex;
       display: -webkit-box;
@@ -2044,20 +2044,20 @@ a.premium-dheading-block__link:hover {
       -o-transition: 0.3s ease-in-out;
       transition: 0.3s ease-in-out;
   }
-  .premium-icon-list__wrapper{
+  .premium-bullet-list__wrapper{
     display: inline-flex;
   }
-  .premium-icon-list__label{
+  .premium-bullet-list__label{
     -webkit-transition: 0.3s ease-in-out;
       -o-transition: 0.3s ease-in-out;
       transition: 0.3s ease-in-out;
   }
-  .premium-icon-list__content-icon{
+  .premium-bullet-list__content-icon{
     -webkit-transition: 0.2s ease-in-out;
       -o-transition: 0.2s ease-in-out;
       transition: 0.2s ease-in-out;
   }
-  .premium-icon-list__icon-wrap{
+  .premium-bullet-list__icon-wrap{
     text-align: center;
     display: inherit;
     align-items: center;
@@ -2065,7 +2065,7 @@ a.premium-dheading-block__link:hover {
       -o-transition: 0.2s ease-in-out;
       transition: 0.2s ease-in-out;
   }
-  .premium-icon-list-inline{
+  .premium-bullet-list-inline{
     -js-display: flex;
       display: -webkit-box;
       display: -webkit-flex;
@@ -2089,18 +2089,18 @@ a.premium-dheading-block__link:hover {
       -ms-flex-align: flex-start;
       align-items: flex-start;
   }
-  .premium-icon-list-inline .premium-icon-list__content-wrap{
+  .premium-bullet-list-inline .premium-bullet-list__content-wrap{
     margin-left: 5px;
     margin-right: 5px;
   }
-  .premium-icon-list-block{
+  .premium-bullet-list-block{
     display: flex;
     flex-direction: column;
   }
-  .premium-icon-list-tab-panel .components-tab-panel__tabs{
+  .premium-bullet-list-tab-panel .components-tab-panel__tabs{
     margin-bottom: 15px;
   }
-  .premium-icon-list-tab-panel .components-tab-panel__tabs button{
+  .premium-bullet-list-tab-panel .components-tab-panel__tabs button{
     width: 50%;
     padding: 10px;
     background: transparent;
@@ -2115,12 +2115,12 @@ a.premium-dheading-block__link:hover {
     -o-transition: all 0.2s;
     transition: all 0.2s;
   }
-  .premium-icon-list-tab-panel button.active-tab{
+  .premium-bullet-list-tab-panel button.active-tab{
     background: #eee !important;
     outline: none;
     font-weight: 500;
   }
-  .premium-icon-list__content-icon i {
+  .premium-bullet-list__content-icon i {
     font-style: normal !important;
     vertical-align: text-bottom !important;
     width: 100% !important;
@@ -2298,10 +2298,12 @@ a.premium-dheading-block__link:hover {
     line-height: 2.5em;
     flex: 2 1 0%;
     text-align: center;
+    border: none;
+    background-color: white;
   }
   .premium-bulletList__trashicon:hover{
-    background: #f44336;
-    color: #ffffff;
+    background: #fff;
+    /* color: #ffffff; */
     cursor: pointer;
   }
   .premium-bulletList__link{
@@ -2314,6 +2316,36 @@ a.premium-dheading-block__link:hover {
   .premium-bulletList__saveButton{
     height: 4vh;
     margin-left: 10%;
+  }
+
+  .premium-bullet-list-btn__wrap {
+    text-align: center;
+    padding-top: 5px; 
+  }
+  .premium-bullet-list-btn{
+    display: inline-block;
+    background-color: #a4afb7;
+    color: #fff;
+    font-size: 11px;
+    padding: 7px 21px;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition-property: background,color,opacity,-webkit-box-shadow;
+    transition-property: background,color,opacity,-webkit-box-shadow;
+    -o-transition-property: background,color,box-shadow,opacity;
+    transition-property: background,color,box-shadow,opacity;
+    transition-property: background,color,box-shadow,opacity,-webkit-box-shadow;
+    -webkit-transition-duration: .3s;
+    -o-transition-duration: .3s;
+    transition-duration: .3s;
+  }
+  .premium-bullet-list-icon{
+    margin-right: 10px;
   }
   
   /* Responsive typography */
