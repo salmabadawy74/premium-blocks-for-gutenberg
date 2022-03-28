@@ -1,15 +1,13 @@
 import classnames from "classnames"
-import times from "lodash/times"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-// import styling from "./styling"
 import iconsList from "../../components/premium-icons-list";
 import PremiumTypo from "../../components/premium-typo";
-import FONTS from "../../components/premium-fonts";
 import PremiumBorder from "../../components/premium-border";
-import RadioComponent from '../../components/radio-control';
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
-// import PremiumMarginR from "../../components/premium-margin-responsive";
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumBoxShadow from "../../components/premium-box-shadow";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 
@@ -32,7 +30,7 @@ const {
 const {
     PanelBody,
     SelectControl,
-    RangeControl,
+    Toolbar,
     Button,
     TextControl,
     ToggleControl,
@@ -51,7 +49,6 @@ const ICONTYPE = [
 ];
 
 const SortableItem = SortableElement(({
-    edit,
     onRemove,
     newIndex,
     value,
@@ -64,12 +61,7 @@ const SortableItem = SortableElement(({
     removeImage,
     toggleIconLink,
     saveLink,
-    openLink,
-    changeTabValue,
-    changeContentValue,
-    changeEnableIcon,
-    changeIcon,
-    items
+    openLink
 }) => <li tabIndex={0} style={{ listStyle: 'none' }}>
         <span className="premium-bulletList__container">
             <span className="premium-bulletList__dragHandle"></span>
@@ -158,7 +150,6 @@ const SortableItem = SortableElement(({
                         />
                     </Fragment>
                 }
-                {/* <button className="premium-bulletList__saveButton" onClick={() => saveLink(value.changeinput, value, personIndex)}>Save</button> */}
             </div>
         )}
     </li>);
@@ -175,12 +166,7 @@ const SortableList = SortableContainer(({
     removeImage,
     toggleIconLink,
     saveLink,
-    openLink,
-    edit,
-    changeTabValue,
-    changeEnableIcon,
-    changeIcon,
-    changeContentValue
+    openLink
 }) => {
     return (<div > {
         (items).map((value, index) => (
@@ -199,15 +185,6 @@ const SortableList = SortableContainer(({
                 toggleIconLink={toggleIconLink}
                 saveLink={saveLink}
                 openLink={openLink}
-                // edit={edit}
-                // changeEnableIcon={changeEnableIcon}
-                // changeIcon={changeIcon}
-                // changeTabValue={
-                //     changeTabValue
-                // }
-                // changeContentValue={
-                //     changeContentValue
-                // }
                 items={
                     items
                 }
@@ -265,13 +242,10 @@ class edit extends Component {
         const { attributes, setAttributes, isSelected } = this.props
 
         const {
-            multiTitleCount,
             layoutPos,
             iconPosition,
-            linkTarget,
             align,
             className,
-            icons,
             repeaterBulletList,
             bulletAlign,
             bulletIconStyles,
@@ -294,51 +268,67 @@ class edit extends Component {
             bulletIconmarginBMobile,
             bulletIconmarginLMobile,
             bulletIconmarginType,
-            sizeType,
-            size,
-            sizeMobile,
-            sizeTablet,
-            titleLetter,
-            titleStyle,
-            titleUpper,
-            titleWeight,
-            titleFont,
-            borderType,
-            borderWidth,
-            borderRadius,
-            borderColor,
-            iconSpacing,
-            iconSpacingType,
-            iconSpacingMobile,
-            iconSpacingTablet,
-            titlePadding,
-            titlePaddingMobile,
-            titlePaddingTablet,
-            titlePaddingType,
-            iconPaddingType,
-            iconPadding,
-            iconPaddingTablet,
-            iconPaddingMobile,
-            fontSize,
-            fontSizeType,
-            fontSizeMobile,
-            fontSizeTablet,
-            marginTop,
-            marginTopType,
-            marginTopMobile,
-            marginTopTablet,
-            marginBottom,
-            marginBottomType,
-            marginBottomMobile,
-            marginBottomTablet,
-            marginRight,
-            marginRightType,
-            marginRightMobile,
-            marginRightTablet,
-            marginLeft,
-            marginLeftType,
-            marginLeftMobile,
-            marginLeftTablet,
+            bulletIconpaddingUnit,
+            bulletIconpaddingTop,
+            bulletIconpaddingRight,
+            bulletIconpaddingBottom,
+            bulletIconpaddingLeft,
+            bulletIconpaddingTTablet,
+            bulletIconpaddingRTablet,
+            bulletIconpaddingBTablet,
+            bulletIconpaddingLTablet,
+            bulletIconpaddingTMobile,
+            bulletIconpaddingRMobile,
+            bulletIconpaddingBMobile,
+            bulletIconpaddingLMobile,
+            titleStyles,
+            titlemarginT,
+            titlemarginR,
+            titlemarginB,
+            titlemarginL,
+            titlemarginTTablet,
+            titlemarginRTablet,
+            titlemarginBTablet,
+            titlemarginLTablet,
+            titlemarginTMobile,
+            titlemarginRMobile,
+            titlemarginBMobile,
+            titlemarginLMobile,
+            titlemarginType,
+            generalStyles,
+            generalBorderWidth,
+            generalBorderTop,
+            generalBorderRight,
+            generalBorderBottom,
+            generalBorderLeft,
+            generalBorderUpdated,
+            generalmarginT,
+            generalmarginR,
+            generalmarginB,
+            generalmarginL,
+            generalmarginTTablet,
+            generalmarginRTablet,
+            generalmarginBTablet,
+            generalmarginLTablet,
+            generalmarginTMobile,
+            generalmarginRMobile,
+            generalmarginBMobile,
+            generalmarginLMobile,
+            generalmarginType,
+            generalpaddingUnit,
+            generalpaddingTop,
+            generalpaddingRight,
+            generalpaddingBottom,
+            generalpaddingLeft,
+            generalpaddingTTablet,
+            generalpaddingRTablet,
+            generalpaddingBTablet,
+            generalpaddingLTablet,
+            generalpaddingTMobile,
+            generalpaddingRMobile,
+            generalpaddingBMobile,
+            generalpaddingLMobile,
+            titleFont
         } = attributes
 
         const LAYOUT = [
@@ -351,6 +341,7 @@ class edit extends Component {
                 value: "inline"
             }
         ];
+
         const POSITION = [
             {
                 label: __("After"),
@@ -365,16 +356,7 @@ class edit extends Component {
                 value: "top"
             }
         ];
-        // const ICONTYPE = [
-        //     {
-        //         label: __("Icon"),
-        //         value: "icon"
-        //     },
-        //     {
-        //         label: __("Image"),
-        //         value: "image"
-        //     }
-        // ];
+
         const COLORTAB = [
             {
                 name: "normal",
@@ -386,22 +368,36 @@ class edit extends Component {
             },
         ];
 
+        const ALIGNS = ["left", "center", "right"];
+
         const BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
         const BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmarginT, bulletIconmarginTTablet, bulletIconmarginTMobile);
         const BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmarginR, bulletIconmarginRTablet, bulletIconmarginRMobile);
         const BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmarginB, bulletIconmarginBTablet, bulletIconmarginBMobile);
         const BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmarginL, bulletIconmarginLTablet, bulletIconmarginLMobile);
-
+        const BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpaddingTop, bulletIconpaddingTTablet, bulletIconpaddingTMobile);
+        const BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpaddingRight, bulletIconpaddingRTablet, bulletIconpaddingRMobile);
+        const BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpaddingBottom, bulletIconpaddingBTablet, bulletIconpaddingBMobile);
+        const BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpaddingLeft, bulletIconpaddingLTablet, bulletIconpaddingLMobile);
+        const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
+        const TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemarginT, titlemarginTTablet, titlemarginTMobile);
+        const TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemarginR, titlemarginRTablet, titlemarginRMobile);
+        const TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemarginB, titlemarginBTablet, titlemarginBMobile);
+        const TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemarginL, titlemarginLTablet, titlemarginLMobile);
+        const GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmarginT, generalmarginTTablet, generalmarginTMobile);
+        const GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmarginR, generalmarginRTablet, generalmarginRMobile);
+        const GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmarginB, generalmarginBTablet, generalmarginBMobile);
+        const GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmarginL, generalmarginLTablet, generalmarginLMobile);
+        const GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpaddingTop, generalpaddingTTablet, generalpaddingTMobile);
+        const GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpaddingRight, generalpaddingRTablet, generalpaddingRMobile);
+        const GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpaddingBottom, generalpaddingBTablet, generalpaddingBMobile);
+        const GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpaddingLeft, generalpaddingLTablet, generalpaddingLMobile);
 
         const addNewBulletList = () => {
             let cloneIcons = [...repeaterBulletList]
-            // if (cloneIcons.length < newCount) {
-            //     const incAmount = Math.abs(newCount - cloneIcons.length)
-            //     {
-            //         times(incAmount, n => {
             cloneIcons.push({
                 id: cloneIcons.length + 1,
-                label: "Title #" + (cloneIcons.length + 1),
+                label: "Title ",
                 image_icon: cloneIcons[0].image_icon,
                 icon: cloneIcons[0].icon,
                 image: cloneIcons[0].image,
@@ -416,22 +412,7 @@ class edit extends Component {
                 showContent: cloneIcons[0].showContent,
                 showBulletIcon: cloneIcons[0].showBulletIcon,
             })
-            //     })
-            // }
             setAttributes({ repeaterBulletList: cloneIcons })
-            // }
-            // else {
-            //     for (let i = multiTitleCount; i > newCount; i--) {
-            //         repeaterBulletList.splice(i - 1, 1)
-            //     }
-            // }
-            // setAttributes({ multiTitleCount: newCount })
-            // setAttributes({
-            //     repeaterBulletList: repeaterBulletList.concat([{
-            //         title: __("Title"),
-            //         edit: true
-            //     }])
-            // });
         }
 
         const onRemove = (index, item) => {
@@ -485,15 +466,6 @@ class edit extends Component {
         }
 
         const changeLabel = (item, index) => {
-            // console.log(index, item)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].label = item;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "label",
@@ -504,15 +476,6 @@ class edit extends Component {
         }
 
         const toggleShowBulletIcon = (value, index) => {
-            // console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "showBulletIcon",
@@ -523,15 +486,6 @@ class edit extends Component {
         }
 
         const selectIconType = (value, index) => {
-            // console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "image_icon",
@@ -542,15 +496,6 @@ class edit extends Component {
         }
 
         const changeIcons = (value, index) => {
-            // console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "icon",
@@ -561,15 +506,6 @@ class edit extends Component {
         }
 
         const selectImage = (value, index) => {
-            // console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "image",
@@ -580,15 +516,6 @@ class edit extends Component {
         }
 
         const removeImage = (index) => {
-            // console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "image",
@@ -599,15 +526,6 @@ class edit extends Component {
         }
 
         const toggleIconLink = (value, index) => {
-            // console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "disableLink",
@@ -618,15 +536,6 @@ class edit extends Component {
         }
 
         const saveLink = (value, index) => {
-            // console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "link",
@@ -637,15 +546,6 @@ class edit extends Component {
         }
 
         const openLink = (value, index) => {
-            console.log(index, value)
-            // let array = repeaterBulletList.map((bulletList, currIndex) => {
-            //     return bulletList
-            // })
-            // array[index].showBulletIcon = value;
-            // console.log(array)
-            // setAttributes({
-            //     repeaterBulletList: array
-            // });
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
                     "linkTarget",
@@ -689,230 +589,28 @@ class edit extends Component {
             });
         }
 
-        const addmultiTitleCount = (newCount) => {
-            let cloneIcons = [...icons]
-            if (cloneIcons.length < newCount) {
-                const incAmount = Math.abs(newCount - cloneIcons.length)
-                {
-                    times(incAmount, n => {
-                        cloneIcons.push({
-                            id: cloneIcons.length + 1,
-                            label: "Title #" + (cloneIcons.length + 1),
-                            image_icon: cloneIcons[0].image_icon,
-                            icon: cloneIcons[0].icon,
-                            image: cloneIcons[0].image,
-                            icon_color: cloneIcons[0].icon_color,
-                            icon_hover_color: cloneIcons[0].icon_hover_color,
-                            icon_bg_color: cloneIcons[0].icon_bg_color,
-                            icon_bg_hover_color: cloneIcons[0].icon_bg_hover_color,
-                            item_bg_color: cloneIcons[0].item_bg_color,
-                            item_bg_hover_color: cloneIcons[0].item_bg_hover_color,
-                            link: cloneIcons[0].link,
-                            disableLink: cloneIcons[0].disableLink,
-                        })
-                    })
+        const saveTitleStyles = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
                 }
-                setAttributes({ icons: cloneIcons })
-            }
-            else {
-                for (let i = multiTitleCount; i > newCount; i--) {
-                    icons.splice(i - 1, 1)
+                return item;
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+        }
+
+        const saveGeneralStyles = (value) => {
+            const newUpdate = generalStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
                 }
-            }
-            setAttributes({ multiTitleCount: newCount })
-        };
-        const iconControls = (index) => {
-            let color_control = ""
-            let color_control_hover = ""
-            if ("image" == icons[index].image_icon) {
-                color_control = (
-                    <Fragment>
-                        <p>{__("Label Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].label_color}
-                            onChange={(value) => this.saveIcons({ label_color: value }, index)}
-                            allowReset
-                        />
-                        <p>{__("Image Background Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_bg_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].icon_bg_color}
-                            onChange={(value) => this.saveIcons({ icon_bg_color: value }, index)}
-                            allowReset
-                        />
-                        <p>{__("Item Background Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].item_bg_color}
-                            onChange={(value) => this.saveIcons({ item_bg_color: value }, index)}
-                            allowReset
-                        />
-                    </Fragment>
-                )
-                color_control_hover = (
-                    <Fragment>
-                        <p>{__("Label Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_hover_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].label_hover_color}
-                            onChange={(value) => this.saveIcons({ label_hover_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Image Background Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_bg_hover_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].icon_bg_hover_color}
-                            onChange={(value) => this.saveIcons({ icon_bg_hover_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Item Background Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_hover_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].item_bg_hover_color}
-                            onChange={(value) => this.saveIcons({ item_bg_hover_color: value }, index)}
-                            allowReset
-                        />
-                    </Fragment>
-                )
-            } else {
-                color_control = (
-                    <Fragment>
-                        <p >{__("Label Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].label_color}
-                            onChange={(value) => this.saveIcons({ label_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Icon Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].icon_color}
-                            onChange={(value) => this.saveIcons({ icon_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Icon Background Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_bg_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].icon_bg_color}
-                            onChange={(value) => this.saveIcons({ icon_bg_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Item Background Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].item_bg_color}
-                            onChange={(value) => this.saveIcons({ item_bg_color: value }, index)}
-                            allowReset
-                        />
-                    </Fragment>
-                )
-                color_control_hover = (
-                    <Fragment>
-                        <p >{__("Label Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].label_hover_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].label_hover_color}
-                            onChange={(value) => this.saveIcons({ label_hover_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Icon Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_hover_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].icon_hover_color}
-                            onChange={(value) => this.saveIcons({ icon_hover_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Icon Background Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].icon_bg_hover_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].icon_bg_hover_color}
-                            onChange={(value) => this.saveIcons({ icon_bg_hover_color: value }, index)}
-                            allowReset
-                        />
-                        <p >{__("Item Background Hover Color")}<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[index].item_bg_hover_color }} ></span></span></p>
-                        <ColorPalette
-                            value={icons[index].item_bg_hover_color}
-                            onChange={(value) => this.saveIcons({ item_bg_hover_color: value }, index)}
-                            allowReset
-                        />
-                    </Fragment>
-                )
-            }
-            return (
-                <PanelBody
-                    key={index}
-                    title={__("Icon #") + " " + (index + 1) + " " + __("Settings")}
-                    initialOpen={false}
-                >
-                    <SelectControl
-                        label={__("Icon Type")}
-                        options={ICONTYPE}
-                        value={icons[index].image_icon}
-                        onChange={value => this.saveIcons({ image_icon: value }, index)}
-                    />
-                    {"icon" == icons[index].image_icon &&
-                        <Fragment>
-                            <p>{__("Icon")}</p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                value={icons[index].icon}
-                                onChange={value => { this.saveIcons({ icon: value }, index) }}
-                                isMulti={false}
-                                appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon")}
-                            />
-                        </Fragment>
-                    }
-                    {"image" == icons[index].image_icon &&
-                        <Fragment>
-                            {icons[index].image ?
-                                <img src={icons[index].image.url} width="100%" height="auto" />
-                                : ""}
-                            <MediaUpload
-                                title={__("Select Image")}
-                                onSelect={value => { this.saveIcons({ image: value }, index) }}
-                                allowedTypes={["image"]}
-                                value={icons[index].image}
-                                render={({ open }) => (
-                                    <Button isDefault onClick={open}>
-                                        {!icons[index].image ? __("Select Image") : __("Replace image")}
-                                    </Button>
-                                )}
-                            />
-                            {icons[index].image &&
-                                <Button
-                                    onClick={value => { this.saveIcons({ image: "" }, index) }}
-                                    isLink isDestructive>
-                                    {__("Remove Image")}
-                                </Button>
-                            }
-                        </Fragment>
-                    }
-                    <hr />
-                    <ToggleControl
-                        label={__("Link")}
-                        checked={icons[index].disableLink}
-                        onChange={value => { this.saveIcons({ disableLink: value }, index) }}
-                    />
-                    {icons[index].disableLink &&
-                        <Fragment>
-                            <p>{__("URL")}</p>
-                            <TextControl
-                                value={icons[index].link}
-                                onChange={value => { this.saveIcons({ link: value }, index) }}
-                                placeholder={__("Enter URL")}
-                            />
-                        </Fragment>
-                    }
-                    <hr />
-                    <h2>{__(" Color Settings")}</h2>
-                    <TabPanel
-                        className="premium-icon-list-tab-panel"
-                        activeClass="active-tab"
-                        tabs={COLORTAB}>
-                        {
-                            (tabName) => {
-                                let color_tab
-                                if ("normal" === tabName.name) {
-                                    color_tab = color_control
-                                } else {
-                                    color_tab = color_control_hover
-                                }
-                                return <div>{color_tab}</div>
-                            }
-                        }
-                    </TabPanel>
-                </PanelBody>
-            )
+                return item;
+            });
+            setAttributes({
+                generalStyles: newUpdate,
+            });
         }
 
         var element = document.getElementById("premium-style-icon-list-" + this.props.clientId)
@@ -921,27 +619,8 @@ class edit extends Component {
             // element.innerHTML = styling(this.props)
         }
 
-        const addFontToHead = fontFamily => {
-            const head = document.head;
-            const link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href =
-                "https://fonts.googleapis.com/css?family=" +
-                fontFamily.replace(/\s+/g, "+") +
-                ":" +
-                "regular";
-            head.appendChild(link);
-        };
+        const mainClasses = classnames(className, "premium-bullet-list");
 
-        const onChangeTitleFamily = fontFamily => {
-            setAttributes({ titleFont: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-            addFontToHead(fontFamily);
-        };
-        const mainClasses = classnames(className, "premium-icon-list");
         return [
             isSelected && (
                 <BlockControls>
@@ -975,14 +654,13 @@ class edit extends Component {
                             saveLink={(value, i) => saveLink(value, i)}
                             openLink={(value, i) => openLink(value, i)}
                             shouldCancelStart={shouldCancelStart}
-                            helperClass='premium-fancy-text__sortableHelper'
                         />
-                        < div className="premium-fancy-text-btn__wrap" >
+                        < div className="premium-bullet-list-btn__wrap" >
                             <button
-                                className={"premium-fancy-text-btn"}
+                                className={"premium-bullet-list-btn"}
                                 onClick={() => addNewBulletList()}
                             >
-                                <i className="dashicons dashicons-plus premium-fancy-text-icon" />
+                                <i className="dashicons dashicons-plus premium-bullet-list-icon" />
                                 {__("Add New Item")}
                             </button>
                         </div>
@@ -1004,19 +682,221 @@ class edit extends Component {
                             value={iconPosition}
                             onChange={newValue => setAttributes({ iconPosition: newValue })}
                         />
-                        {iconPosition == 'top' ? <RadioComponent
-                            choices={["left", "center", "right"]}
-                            label={__(`Bullet Alignment `)}
-                            onChange={(align) => setAttributes({ bulletAlign: align })}
-                            value={bulletAlign}
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === bulletAlign,
+                                onClick: () => setAttributes({ bulletAlign: contentAlign })
+                            }))}
                         />
-                            : <RadioComponent
-                                choices={["top", "center", "bottom"]}
-                                label={__(`Bullet Alignment `)}
-                                onChange={(align) => setAttributes({ bulletAlign: align })}
-                                value={bulletAlign}
+                    </PanelBody>
+                    <PanelBody
+                        title={__("General Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <div className="premium-control-toggle">
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={generalStyles[0].generalBackgroundColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveGeneralStyles({
+                                        generalBackgroundColor: newValue
+                                    })
+                                }
                             />
-                        }
+                        </div>
+                        <div className="premium-control-toggle">
+                            <AdvancedPopColorControl
+                                label={__("Hover Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={generalStyles[0].generalHoverBackgroundColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveGeneralStyles({
+                                        generalHoverBackgroundColor: newValue
+                                    })
+                                }
+                            />
+                        </div>
+                        <PremiumBoxShadow
+                            label="Box Shadow"
+                            inner={true}
+                            color={generalStyles[0].generalShadowColor}
+                            blur={generalStyles[0].generalShadowBlur}
+                            horizontal={generalStyles[0].generalShadowHorizontal}
+                            vertical={generalStyles[0].generalShadowVertical}
+                            position={generalStyles[0].generalShadowPosition}
+                            onChangeColor={newColor => saveGeneralStyles({ generalShadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => saveGeneralStyles({ generalShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => saveGeneralStyles({ generalShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => saveGeneralStyles({ generalShadowVertical: newValue === undefined ? 0 : newValue })}
+                            onChangePosition={newValue => saveGeneralStyles({ generalShadowPosition: newValue === undefined ? 0 : newValue })}
+                        />
+                        <PremiumBoxShadow
+                            label="Hover Box Shadow"
+                            inner={true}
+                            color={generalStyles[0].generalHoverShadowColor}
+                            blur={generalStyles[0].generalHoverShadowBlur}
+                            horizontal={generalStyles[0].generalHoverShadowHorizontal}
+                            vertical={generalStyles[0].generalHoverShadowVertical}
+                            position={generalStyles[0].generalHoverShadowPosition}
+                            onChangeColor={newColor => saveGeneralStyles({ generalHoverShadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => saveGeneralStyles({ generalHoverShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => saveGeneralStyles({ generalHoverShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => saveGeneralStyles({ generalHoverShadowVertical: newValue === undefined ? 0 : newValue })}
+                            onChangePosition={newValue => saveGeneralStyles({ generalHoverShadowPosition: newValue === undefined ? 0 : newValue })}
+                        />
+                        <PremiumBorder
+                            borderType={generalStyles[0].generalborderType}
+                            borderWidth={generalBorderWidth}
+                            top={generalBorderTop}
+                            right={generalBorderRight}
+                            bottom={generalBorderBottom}
+                            left={generalBorderLeft}
+                            borderColor={generalStyles[0].generalborderColor}
+                            borderRadius={generalStyles[0].generalborderRadius}
+                            onChangeType={newType => saveGeneralStyles({ generalborderType: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    generalBorderUpdated: true,
+                                    generalBorderTop: top,
+                                    generalBorderRight: right,
+                                    generalBorderBottom: bottom,
+                                    generalBorderLeft: left,
+                                })
+                            }
+                            onChangeColor={colorValue =>
+                                saveGeneralStyles({ generalborderColor: colorValue })
+                            }
+                            onChangeRadius={newrRadius =>
+                                saveGeneralStyles({ generalborderRadius: newrRadius })
+                            }
+                        />
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            marginTop={generalmarginT}
+                            marginRight={generalmarginR}
+                            marginBottom={generalmarginB}
+                            marginLeft={generalmarginL}
+                            marginTopTablet={generalmarginTTablet}
+                            marginRightTablet={generalmarginRTablet}
+                            marginBottomTablet={generalmarginBTablet}
+                            marginLeftTablet={generalmarginLTablet}
+                            marginTopMobile={generalmarginTMobile}
+                            marginRightMobile={generalmarginRMobile}
+                            marginBottomMobile={generalmarginBMobile}
+                            marginLeftMobile={generalmarginLMobile}
+                            showUnits={true}
+                            onChangeMarSizeUnit={newvalue => setAttributes({ generalmarginType: newvalue })}
+                            selectedUnit={generalmarginType}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalmarginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalmarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalmarginTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalmarginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalmarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalmarginRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalmarginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalmarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalmarginBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalmarginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalmarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalmarginLMobile: newValue })
+                                    }
+                                }
+                            }
+
+                        />
+                        <PremiumResponsivePadding
+                            paddingTop={generalpaddingTop}
+                            paddingRight={generalpaddingRight}
+                            paddingBottom={generalpaddingBottom}
+                            paddingLeft={generalpaddingLeft}
+                            paddingTopTablet={generalpaddingTTablet}
+                            paddingRightTablet={generalpaddingRTablet}
+                            paddingBottomTablet={generalpaddingBTablet}
+                            paddingLeftTablet={generalpaddingLTablet}
+                            paddingTopMobile={generalpaddingTMobile}
+                            paddingRightMobile={generalpaddingRMobile}
+                            paddingBottomMobile={generalpaddingBMobile}
+                            paddingLeftMobile={generalpaddingLMobile}
+                            showUnits={true}
+                            selectedUnit={generalpaddingUnit}
+                            onChangePadSizeUnit={newvalue => setAttributes({ generalpaddingUnit: newvalue })}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalpaddingTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalpaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalpaddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalpaddingRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalpaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalpaddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalpaddingBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalpaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalpaddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ generalpaddingLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ generalpaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ generalpaddingLMobile: newValue })
+                                    }
+                                }
+                            }
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Bullet Style")}
@@ -1169,90 +1049,205 @@ class edit extends Component {
                             }
 
                         />
-                        {/* <PremiumRange
-                            setAttributes={setAttributes}
-                            rangeType={{ value: iconSpacingType, label: __("iconSpacingType") }}
-                            range={{ value: iconSpacing, label: __("iconSpacing") }}
-                            rangeMobile={{ value: iconSpacingMobile, label: __("iconSpacingMobile") }}
-                            rangeTablet={{ value: iconSpacingTablet, label: __("iconSpacingTablet") }}
-                            rangeLabel={__("Icons Spacing ")}
+                        <PremiumResponsivePadding
+                            paddingTop={bulletIconpaddingTop}
+                            paddingRight={bulletIconpaddingRight}
+                            paddingBottom={bulletIconpaddingBottom}
+                            paddingLeft={bulletIconpaddingLeft}
+                            paddingTopTablet={bulletIconpaddingTTablet}
+                            paddingRightTablet={bulletIconpaddingRTablet}
+                            paddingBottomTablet={bulletIconpaddingBTablet}
+                            paddingLeftTablet={bulletIconpaddingLTablet}
+                            paddingTopMobile={bulletIconpaddingTMobile}
+                            paddingRightMobile={bulletIconpaddingRMobile}
+                            paddingBottomMobile={bulletIconpaddingBMobile}
+                            paddingLeftMobile={bulletIconpaddingLMobile}
+                            showUnits={true}
+                            selectedUnit={bulletIconpaddingUnit}
+                            onChangePadSizeUnit={newvalue => setAttributes({ bulletIconpaddingUnit: newvalue })}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconpaddingTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconpaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconpaddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconpaddingRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconpaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconpaddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconpaddingBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconpaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconpaddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ bulletIconpaddingLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ bulletIconpaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ bulletIconpaddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
-                        <PremiumRange
-                            setAttributes={setAttributes}
-                            rangeType={{ value: iconPaddingType, label: __("iconPaddingType") }}
-                            range={{ value: iconPadding, label: __("iconPadding") }}
-                            rangeMobile={{ value: iconPaddingMobile, label: __("iconPaddingMobile") }}
-                            rangeTablet={{ value: iconPaddingTablet, label: __("iconPaddingTablet") }}
-                            rangeLabel={__("Icon Padding ")}
-                        /> */}
                     </PanelBody>
                     <PanelBody
-                        title={__("Item Style")}
+                        title={__("Title Style")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <PremiumTypo
-                            components={["respsize", "weight", "style", "upper", "spacing"]}
-                            setAttributes={setAttributes}
-                            fontSizeType={{ value: fontSizeType, label: __("fontSizeType") }}
-                            fontSize={{ value: fontSize, label: __("fontSize") }}
-                            fontSizeMobile={{ value: fontSizeMobile, label: __("fontSizeMobile") }}
-                            fontSizeTablet={{ value: fontSizeTablet, label: __("fontSizeTablet") }}
-                            weight={titleWeight}
-                            style={titleStyle}
-                            spacing={titleLetter}
-                            upper={titleUpper}
-                            onChangeRespSize={newSize => setAttributes({ titleSize: newSize })}
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                            setAttributes={saveTitleStyles}
+                            fontSizeType={{ value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") }}
+                            fontSize={titleStyles[0].titleSize}
+                            fontSizeMobile={titleStyles[0].titlefontSizeMobile}
+                            fontSizeTablet={titleStyles[0].titlefontSizeTablet}
+                            onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
+                            onChangeTabletSize={newSize => saveTitleStyles({ titlefontSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveTitleStyles({ titlefontSizeMobile: newSize })}
+                            weight={titleStyles[0].titleWeight}
+                            style={titleStyles[0].titleStyle}
+                            spacing={titleStyles[0].titleLetter}
+                            upper={titleStyles[0].titleUpper}
+                            line={titleStyles[0].titleLine}
+                            fontFamily={titleStyles[0].titleFontFamily}
                             onChangeWeight={newWeight =>
-                                setAttributes({ titleWeight: newWeight || 500 })
+                                saveTitleStyles({ titleWeight: newWeight || 500 })
                             }
                             onChangeStyle={newStyle =>
-                                setAttributes({ titleStyle: newStyle })
+                                saveTitleStyles({ titleStyle: newStyle })
                             }
                             onChangeSpacing={newValue =>
-                                setAttributes({ titleLetter: newValue })
+                                saveTitleStyles({ titleLetter: newValue })
                             }
-                            onChangeUpper={check => setAttributes({ titleUpper: check })}
+                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
+                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
+                            onChangeFamily={(fontFamily) => saveTitleStyles({ titleFontFamily: fontFamily })}
                         />
-                        <SelectControl
-                            label={__("Font Family")}
-                            value={titleFont}
-                            options={FONTS}
-                            onChange={onChangeTitleFamily}
-                        />
-                        {/* <PremiumRange
-                            setAttributes={setAttributes}
-                            rangeType={{ value: titlePaddingType, label: __("titlePaddingType") }}
-                            range={{ value: titlePadding, label: __("titlePadding") }}
-                            rangeMobile={{ value: titlePaddingMobile, label: __("titlePaddingMobile") }}
-                            rangeTablet={{ value: titlePaddingTablet, label: __("titlePaddingTablet") }}
-                            rangeLabel={__("Item Padding ")}
-                        /> */}
-                        {/* {layoutPos == "block" ? <PremiumMarginR
-                            directions={["top", "bottom"]}
-                            setAttributes={setAttributes}
-                            marginTopType={{ value: marginTopType, label: __("marginTopType") }}
-                            marginTop={{ value: marginTop, label: __("marginTop") }}
-                            marginTopMobile={{ value: marginTopMobile, label: __("marginTopMobile") }}
-                            marginTopTablet={{ value: marginTopTablet, label: __("marginTopTablet") }}
-                            marginBottomType={{ value: marginBottomType, label: __("marginBottomType") }}
-                            marginBottom={{ value: marginBottom, label: __("marginBottom") }}
-                            marginBottomMobile={{ value: marginBottomMobile, label: __("marginBottomMobile") }}
-                            marginBottomTablet={{ value: marginBottomTablet, label: __("marginBottomTablet") }}
-                        /> :
-                            <PremiumMarginR
-                                directions={["left", "right"]}
-                                setAttributes={setAttributes}
-                                marginLeftType={{ value: marginLeftType, label: __("marginLeftType") }}
-                                marginLeft={{ value: marginLeft, label: __("marginLeft") }}
-                                marginLeftMobile={{ value: marginLeftMobile, label: __("marginLeftMobile") }}
-                                marginLeftTablet={{ value: marginLeftTablet, label: __("marginLeftTablet") }}
-                                marginRightType={{ value: marginRightType, label: __("marginRightType") }}
-                                marginRight={{ value: marginRight, label: __("marginRight") }}
-                                marginRightMobile={{ value: marginRightMobile, label: __("marginRightMobile") }}
-                                marginRightTablet={{ value: marginRightTablet, label: __("marginRightTablet") }}
+                        <div className="premium-control-toggle">
+                            <AdvancedPopColorControl
+                                label={__("Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleStyles[0].titleColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTitleStyles({
+                                        titleColor: newValue
+                                    })
+                                }
                             />
-                        } */}
+                        </div>
+                        <div className="premium-control-toggle">
+                            <AdvancedPopColorControl
+                                label={__("Hover Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleStyles[0].titleHoverColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTitleStyles({
+                                        titleHoverColor: newValue
+                                    })
+                                }
+                            />
+                        </div>
+                        <PremiumTextShadow
+                            color={titleStyles[0].titleshadowColor}
+                            blur={titleStyles[0].titleshadowBlur}
+                            horizontal={titleStyles[0].titleshadowHorizontal}
+                            vertical={titleStyles[0].titleshadowVertical}
+                            onChangeColor={newColor =>
+                                saveTitleStyles({ titleshadowColor: newColor })
+                            }
+                            onChangeBlur={newBlur => saveTitleStyles({ titleshadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                                saveTitleStyles({ titleshadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                                saveTitleStyles({ titleshadowVertical: newValue })
+                            }
+                        />
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            marginTop={titlemarginT}
+                            marginRight={titlemarginR}
+                            marginBottom={titlemarginB}
+                            marginLeft={titlemarginL}
+                            marginTopTablet={titlemarginTTablet}
+                            marginRightTablet={titlemarginRTablet}
+                            marginBottomTablet={titlemarginBTablet}
+                            marginLeftTablet={titlemarginLTablet}
+                            marginTopMobile={titlemarginTMobile}
+                            marginRightMobile={titlemarginRMobile}
+                            marginBottomMobile={titlemarginBMobile}
+                            marginLeftMobile={titlemarginLMobile}
+                            showUnits={true}
+                            onChangeMarSizeUnit={newvalue => setAttributes({ titlemarginType: newvalue })}
+                            selectedUnit={titlemarginType}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlemarginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlemarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlemarginTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlemarginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlemarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlemarginRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlemarginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlemarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlemarginBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ titlemarginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ titlemarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ titlemarginLMobile: newValue })
+                                    }
+                                }
+                            }
+
+                        />
                     </PanelBody>
                 </InspectorControls >
             ),
@@ -1265,14 +1260,21 @@ class edit extends Component {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `.premium-icon-list__content-icon i:hover {`,
+                            `.premium-bullet-list__content-icon i:hover {`,
                             `color: ${bulletIconStyles[0].bulletIconHoverColor} !important;`,
                             `background-color: ${bulletIconStyles[0].bulletIconHoverBackgroundColor} !important;`,
-                            "}"
+                            "}",
+                            `.premium-bullet-list__label-wrap .premium-bullet-list__label:hover {`,
+                            `color: ${titleStyles[0].titleHoverColor} !important;`,
+                            "}",
+                            `.premium-bullet-list__wrapper:hover {`,
+                            `background-color: ${generalStyles[0].generalHoverBackgroundColor} !important;`,
+                            `box-shadow: ${generalStyles[0].generalHoverShadowHorizontal}px ${generalStyles[0].generalHoverShadowVertical}px ${generalStyles[0].generalHoverShadowBlur}px ${generalStyles[0].generalHoverShadowColor} ${generalStyles[0].generalHoverShadowPosition} !important;`,
+                            "}",
                         ].join("\n")
                     }}
                 />
-                <div className={`premium-icon-list-${layoutPos}`}
+                <div className={`premium-bullet-list-${layoutPos}`}
                     style={{
                         textAlign: align,
                         justifyContent: align == "right" ? "flex-end" : align
@@ -1280,92 +1282,135 @@ class edit extends Component {
                     {
                         repeaterBulletList.map((icon, index) => {
 
-                            // if (multiTitleCount <= index) {
-                            //     return
-                            // }
-
                             let image_icon_html = ""
                             if (icon.showBulletIcon) {
                                 if (icon.image_icon == "icon") {
                                     if (icon.icon) {
-                                        image_icon_html = <span className="premium-icon-list__content-icon">
+
+                                        image_icon_html = <span className="premium-bullet-list__content-icon">
                                             <i
                                                 className={`${icon.icon}`}
                                                 style={{
                                                     fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                     color: bulletIconStyles[0].bulletIconColor,
                                                     backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
+                                                    paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
+                                                    paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
+                                                    paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
+                                                    paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
+                                                    borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                                    borderWidth: bulletIconBorderUpdated
+                                                        ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
+                                                        : bulletIconBorderWidth + "px",
+                                                    borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                                    borderColor: bulletIconStyles[0].bulletIconborderColor,
                                                 }}
                                             />
                                         </span>
                                     }
                                 } else {
                                     if (icon.image) {
+
                                         image_icon_html = <img
                                             src={icon.image.url}
                                             style={{
                                                 width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                 height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                            }}
-                                        />
-                                    }
-                                }
-                            }
-
-
-                            let target = (icon.linkTarget) ? "_blank" : "_self"
-
-                            return (
-                                <div
-                                    className={classnames(
-                                        `premium-icon-list-content${index}`,
-                                        "premium-icon-list__wrapper"
-                                    )}
-                                    key={index}
-                                    target={target}
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        justifyContent: align == "right" ? align : align
-                                    }}
-                                >
-                                    <div className="premium-icon-list__content-wrap" style={{
-                                        justifyContent: align == "right" ? align : align,
-                                        display: iconPosition == "before" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
-                                    }}>
-                                        <span className="premium-icon-list__icon-wrap"
-                                            style={{
+                                                paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
+                                                paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
+                                                paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
+                                                paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
                                                 borderStyle: bulletIconStyles[0].bulletIconborderType,
                                                 borderWidth: bulletIconBorderUpdated
                                                     ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
                                                     : bulletIconBorderWidth + "px",
                                                 borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                 borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            }}
+                                        />
+                                    }
+                                }
+                            }
+
+                            let target = (icon.linkTarget) ? "_blank" : "_self"
+
+                            return (
+                                <div
+                                    className={classnames(
+                                        `premium-bullet-list-content${index}`,
+                                        "premium-bullet-list__wrapper"
+                                    )}
+                                    key={index}
+                                    target={target}
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        justifyContent: align == "right" ? align : align,
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated
+                                            ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
+                                            : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        paddingTop: GeneralPaddingTop + generalpaddingUnit,
+                                        paddingBottom: GeneralPaddingBottom + generalpaddingUnit,
+                                        paddingLeft: GeneralPaddingLeft + generalpaddingUnit,
+                                        paddingRight: GeneralPaddingRight + generalpaddingUnit,
+                                        marginTop: GeneralMarginTop + generalmarginType,
+                                        marginBottom: GeneralMarginBottom + generalmarginType,
+                                        marginLeft: GeneralMarginLeft + generalmarginType,
+                                        marginRight: GeneralMarginRight + generalmarginType,
+                                        boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
+                                    }}
+                                >
+                                    <div className="premium-bullet-list__content-wrap" style={{
+                                        justifyContent: align == "right" ? align : align,
+                                        display: iconPosition == "before" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
+                                        marginTop: TitleMarginTop + titlemarginType,
+                                        marginBottom: TitleMarginBottom + titlemarginType,
+                                        marginLeft: TitleMarginLeft + titlemarginType,
+                                        marginRight: TitleMarginRight + titlemarginType,
+                                    }}>
+                                        <span className="premium-bullet-list__icon-wrap"
+                                            style={{
+                                                // borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                                // borderWidth: bulletIconBorderUpdated
+                                                //     ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
+                                                //     : bulletIconBorderWidth + "px",
+                                                // borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                                // borderColor: bulletIconStyles[0].bulletIconborderColor,
                                                 overflow: "hidden",
                                                 alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                                 marginTop: BulletIconMarginTop + bulletIconmarginType,
                                                 marginBottom: BulletIconMarginBottom + bulletIconmarginType,
                                                 marginLeft: BulletIconMarginLeft + bulletIconmarginType,
                                                 marginRight: BulletIconMarginRight + bulletIconmarginType,
+                                                textAlign: bulletAlign,
+                                                justifyContent: bulletAlign,
                                             }}
                                         >{image_icon_html}</span>
-                                        <div className="premium-icon-list__label-wrap">
+                                        <div className="premium-bullet-list__label-wrap">
                                             <RichText
                                                 tagName="div"
                                                 placeholder={__("Title Name")}
                                                 value={icon.label}
-                                                className='premium-icon-list__label'
+                                                className='premium-bullet-list__label'
                                                 onChange={value => {
                                                     this.saveIcons({ label: value }, index)
                                                 }}
-                                                // placeholder={__("Title")}
                                                 multiline={false}
                                                 style={{
                                                     fontFamily: titleFont,
-                                                    letterSpacing: titleLetter + "px",
-                                                    textTransform: titleUpper ? "uppercase" : "none",
-                                                    fontStyle: titleStyle,
-                                                    fontWeight: titleWeight
+                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                                    lineHeight: titleStyles[0].titleLine + "px",
+                                                    fontStyle: titleStyles[0].titleStyle,
+                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                    fontFamily: titleStyles[0].titleFontFamily,
+                                                    color: titleStyles[0].titleColor,
+                                                    textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
                                                 }}
                                             />
                                         </div>
