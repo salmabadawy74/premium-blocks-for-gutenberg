@@ -23,7 +23,10 @@ const attributes = {
                 titleText: __('Modal Box Title', 'premium-blocks-for-gutenberg'),
                 showUpperClose: true,
                 showLowerClose: true,
-                lowerCloseText: __('Close', 'premium-blocks-for-gutenberg')
+                lowerCloseText: __('Close', 'premium-blocks-for-gutenberg'),
+                animationType: 'fadeInDown',
+                animationSpeed: '',
+                animationDelay: ''
             }
         ]
     },
@@ -324,10 +327,6 @@ const attributes = {
                 modalWidthTablet: '',
                 modalWidthMobile: '',
                 modalWidthUnit: 'px',
-                modalHeight: '',
-                modalHeightTablet: '',
-                modalHeightMobile: '',
-                modalHeightUnit: 'px',
                 modalHeight: '',
                 modalHeightTablet: '',
                 modalHeightMobile: '',
