@@ -7,6 +7,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import RadioComponent from '../../components/radio-control';
 import classnames from "classnames";
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
 import PremiumTypo from "../../components/premium-typo";
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
@@ -27,10 +28,25 @@ const {
 } = wp.components;
 
 const { InspectorControls, URLInput } = wp.blockEditor;
+
+function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+    if (device === 'Mobile') {
+        if (undefined !== mobileSize && '' !== mobileSize) {
+            return mobileSize;
+        } else if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    } else if (device === 'Tablet') {
+        if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    }
+    return desktopSize;
+}
+
 const edit = props => {
     const [isOpen, setOpen] = useState(false);
     const openModal = () => setOpen(true);
-    const closeModal = () => setOpen(false);
     const { isSelected, setAttributes, className } = props;
     const {
         block_id,
@@ -127,6 +143,7 @@ const edit = props => {
         modalPaddingBMobile,
         modalPaddingLMobile
     } = props.attributes;
+
     useEffect(() => {
         setAttributes({ block_id: props.clientId })
     }, [])
@@ -208,16 +225,52 @@ const edit = props => {
             modalStyles: newUpdate,
         });
     }
-    const reversedir = (contentStyles[0].reverseLottie) ? -1 : 1;
-    const renderCss = (<style>
-        {`
+    const renderCss = (
+        <style>
+            {`
             #premium-modal-box-${block_id} .premium-popup__modal_wrap .premium-popup__modal_content .premium-modal-box-modal-header h3 div{
                 width:${contentStyles[0].iconSize}px !important;
                 height:${contentStyles[0].iconSize}px !important;
             }
-            `}
-    </style>
-    )
+            #premium-modal-box-${block_id} .premium-modal-trigger-container button:hover {
+              background-color: ${triggerStyles[0].triggerHoverBack} !important;
+              border-style: ${triggerStyles[0].borderTypeH} !important;
+              border-top: ${triggerBorderTopH}px !important;
+              border-right: ${triggerBorderRightH}px !important;
+              border-bottom: ${triggerBorderBottomH}px !important;
+              border-left: ${triggerBorderLeftH}px !important;
+              border-color: ${triggerStyles[0].borderColorH} !important;
+              border-radius: ${triggerStyles[0].borderRadiusH} !important;
+            }
+        `}
+        </style>
+    );
+    const triggerFontSize = getPreviewSize(props.deviceType, triggerStyles[0].triggerSize, triggerStyles[0].triggerSizeTablet, triggerStyles[0].triggerSizeMobile);
+    const triggerPaddingTop = getPreviewSize(props.deviceType, triggerPaddingT, triggerPaddingTTablet, triggerPaddingTMobile);
+    const triggerPaddingRight = getPreviewSize(props.deviceType, triggerPaddingR, triggerPaddingRTablet, triggerPaddingRMobile);
+    const triggerPaddingBottom = getPreviewSize(props.deviceType, triggerPaddingB, triggerPaddingBTablet, triggerPaddingBMobile);
+    const triggerPaddingLeft = getPreviewSize(props.deviceType, triggerPaddingL, triggerPaddingLTablet, triggerPaddingLMobile);
+    const headerFontSize = getPreviewSize(props.deviceType, headerStyles[0].headerSize, headerStyles[0].headerSizeTablet, headerStyles[0].headerSizeMobile);
+    const upperPaddingTop = getPreviewSize(props.deviceType, upperPaddingT, upperPaddingTTablet, upperPaddingTMobile);
+    const upperPaddingRight = getPreviewSize(props.deviceType, upperPaddingR, upperPaddingRTablet, upperPaddingRMobile);
+    const upperPaddingBottom = getPreviewSize(props.deviceType, upperPaddingB, upperPaddingBTablet, upperPaddingBMobile);
+    const upperPaddingLeft = getPreviewSize(props.deviceType, upperPaddingL, upperPaddingLTablet, upperPaddingLMobile);
+    const lowerFontSize = getPreviewSize(props.deviceType, lowerStyles[0].lowerSize, lowerStyles[0].lowerSizeTablet, lowerStyles[0].lowerSizeMobile);
+    const lowerPaddingTop = getPreviewSize(props.deviceType, lowerPaddingT, lowerPaddingTTablet, lowerPaddingTMobile);
+    const lowerPaddingRight = getPreviewSize(props.deviceType, lowerPaddingR, lowerPaddingRTablet, lowerPaddingRMobile);
+    const lowerPaddingBottom = getPreviewSize(props.deviceType, lowerPaddingB, lowerPaddingBTablet, lowerPaddingBMobile);
+    const lowerPaddingLeft = getPreviewSize(props.deviceType, lowerPaddingL, lowerPaddingLTablet, lowerPaddingLMobile);
+    const modalWidth = getPreviewSize(props.deviceType, modalStyles[0].modalWidth, modalStyles[0].modalWidthTablet, modalStyles[0].modalWidthMobile);
+    const modalMaxHeight = getPreviewSize(props.deviceType, modalStyles[0].modalHeight, modalStyles[0].modalHeightTablet, modalStyles[0].modalHeightMobile);
+    const modalFontSize = getPreviewSize(props.deviceType, modalStyles[0].modalSize, modalStyles[0].modalSizeTablet, modalStyles[0].modalSizeMobile);
+    const modalPaddingTop = getPreviewSize(props.deviceType, modalPaddingT, modalPaddingTTablet, modalPaddingTMobile);
+    const modalPaddingRight = getPreviewSize(props.deviceType, modalPaddingR, modalPaddingRTablet, modalPaddingRMobile);
+    const modalPaddingBottom = getPreviewSize(props.deviceType, modalPaddingB, modalPaddingBTablet, modalPaddingBMobile);
+    const modalPaddingLeft = getPreviewSize(props.deviceType, modalPaddingL, modalPaddingLTablet, modalPaddingLMobile);
+    const modalMarginTop = getPreviewSize(props.deviceType, modalMarginT, modalMarginTTablet, modalMarginTMobile);
+    const modalMarginRight = getPreviewSize(props.deviceType, modalMarginR, modalMarginRTablet, modalMarginRMobile);
+    const modalMarginBottom = getPreviewSize(props.deviceType, modalMarginB, modalMarginBTablet, modalMarginBMobile);
+    const modalMarginLeft = getPreviewSize(props.deviceType, modalMarginL, modalMarginLTablet, modalMarginLMobile);
 
     return [
         isSelected && (
@@ -320,7 +373,6 @@ const edit = props => {
                                 value={contentStyles[0].titleText}
                                 onChange={(value) => saveContentStyle({ titleText: value })}
                             />
-
                         </Fragment>
                     )}
                     <hr />
@@ -365,6 +417,71 @@ const edit = props => {
                             onChange={(value) => saveContentStyle({ lowerCloseText: value })}
                         />)
                     }
+                    <SelectControl
+                        label={__("Animation")}
+                        value={contentStyles[0].animationType}
+                        onChange={(value) => saveContentStyle({ animationType: value })}
+                        options={[
+                            { value: "none", label: __("None", 'premium-blocks-for-gutenberg') },
+                            { value: "fadeInDown", label: __("Fade In Down", 'premium-blocks-for-gutenberg') },
+                            { value: "fadeInUp", label: __("Fade In Up", 'premium-blocks-for-gutenberg') },
+                            { value: "fadeIn", label: __("Fade In", 'premium-blocks-for-gutenberg') },
+                            { value: "fadeInLeft", label: __("Fade In Left", 'premium-blocks-for-gutenberg') },
+                            { value: "fadeInRight", label: __("Fade In Right", 'premium-blocks-for-gutenberg') },
+                            { value: "zoomInDown", label: __("Zoom In Down", 'premium-blocks-for-gutenberg') },
+                            { value: "zoomInUp", label: __("Zoom In Up", 'premium-blocks-for-gutenberg') },
+                            { value: "zoomIn", label: __("Zoom In", 'premium-blocks-for-gutenberg') },
+                            { value: "zoomInLeft", label: __("Zoom In Left", 'premium-blocks-for-gutenberg') },
+                            { value: "zoomInRight", label: __("Zoom In Right", 'premium-blocks-for-gutenberg') },
+                            { value: "bounceInDown", label: __("Bouncing In Down", 'premium-blocks-for-gutenberg') },
+                            { value: "bounceInUp", label: __("Bouncing In Up", 'premium-blocks-for-gutenberg') },
+                            { value: "bounceIn", label: __("Bouncing In", 'premium-blocks-for-gutenberg') },
+                            { value: "bounceInLeft", label: __("Bouncing In Left", 'premium-blocks-for-gutenberg') },
+                            { value: "bounceInRight", label: __("Bouncing In Right", 'premium-blocks-for-gutenberg') },
+                            { value: "slideInUp", label: __("Slide In Up", 'premium-blocks-for-gutenberg') },
+                            { value: "slideInLeft", label: __("Slide In Left", 'premium-blocks-for-gutenberg') },
+                            { value: "slideInRight", label: __("Slide In Right", 'premium-blocks-for-gutenberg') },
+                            { value: "slideInDown", label: __("Slide In Down", 'premium-blocks-for-gutenberg') },
+                            { value: "rotateInUpLeft", label: __("Rotating Up Left", 'premium-blocks-for-gutenberg') },
+                            { value: "rotateInUpRight", label: __("Rotating Up Right", 'premium-blocks-for-gutenberg') },
+                            { value: "rotateIn", label: __("Rotating In", 'premium-blocks-for-gutenberg') },
+                            { value: "rotateInDownLeft", label: __("Rotating In Left", 'premium-blocks-for-gutenberg') },
+                            { value: "rotateInDownRight", label: __("Rotating In Right", 'premium-blocks-for-gutenberg') },
+                            { value: "bounce", label: __("Bounce", 'premium-blocks-for-gutenberg') },
+                            { value: "flash", label: __("Flash", 'premium-blocks-for-gutenberg') },
+                            { value: "pulse", label: __("Pulse", 'premium-blocks-for-gutenberg') },
+                            { value: "rubberBand", label: __("Rubber Band", 'premium-blocks-for-gutenberg') },
+                            { value: "headShake", label: __("Head Shake", 'premium-blocks-for-gutenberg') },
+                            { value: "swing", label: __("Swing", 'premium-blocks-for-gutenberg') },
+                            { value: "tada", label: __("Tada", 'premium-blocks-for-gutenberg') },
+                            { value: "wobble", label: __("Wobble", 'premium-blocks-for-gutenberg') },
+                            { value: "jello", label: __("Jolle", 'premium-blocks-for-gutenberg') },
+                            { value: "lightSpeedIn", label: __("Light Speed", 'premium-blocks-for-gutenberg') },
+                            { value: "rollIn", label: __("Roll In", 'premium-blocks-for-gutenberg') },
+
+                        ]}
+                    />
+                    <SelectControl
+                        label={__("Animation Duration", 'premium-blocks-for-gutenberg')}
+                        value={contentStyles[0].animationSpeed}
+                        options={[{
+                            label: __("Fast", 'premium-blocks-for-gutenberg'),
+                            value: "fast"
+                        }, {
+                            label: __("Normal", 'premium-blocks-for-gutenberg'),
+                            value: ""
+                        }, {
+                            label: __("Slow", 'premium-blocks-for-gutenberg'),
+                            value: 'slow'
+                        }]}
+                        onChange={(value) => saveContentStyle({ animationSpeed: value })}
+                    />
+                    <ResponsiveSingleRangeControl
+                        label={__("Animation Delay", "premium-blocks-for-gutenberg")}
+                        value={contentStyles[0].animationDelay}
+                        onChange={(value) => saveContentStyle({ animationDelay: value })}
+                        step={.1}
+                    />
                 </PanelBody>
                 <PanelBody
                     title={__("Trigger Option", 'premium-blocks-for-gutenberg')}
@@ -461,15 +578,18 @@ const edit = props => {
                         </Fragment>
                     )}
                     {triggerSettings[0].triggerType === "load" && (
-                        <ResponsiveSingleRangeControl
-                            label={__("Delay in Popup Display (Sec)", 'premium-blocks-for-gutenberg')}
-                            value={triggerSettings[0].delayTime}
-                            min="1"
-                            max="100"
-                            onChange={newValue => saveTriggerSettings({ delayTime: newValue })}
-                            defaultValue={0}
-                            showUnit={false}
-                        />
+                        <Fragment>
+                            <p>{__('the Button will be removed in the preview mode ', "premium-blocks-for-gutenberg")}</p>
+                            <ResponsiveSingleRangeControl
+                                label={__("Delay in Popup Display (Sec)", 'premium-blocks-for-gutenberg')}
+                                value={triggerSettings[0].delayTime}
+                                min="1"
+                                max="100"
+                                onChange={newValue => saveTriggerSettings({ delayTime: newValue })}
+                                defaultValue={0}
+                                showUnit={false}
+                            />
+                        </Fragment>
                     )}
                 </PanelBody>
                 <PanelBody
@@ -506,7 +626,7 @@ const edit = props => {
                         setAttributes={saveTriggerStyles}
                         fontSizeType={{
                             value: triggerStyles[0].triggerSizeUnit,
-                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
+                            label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg'),
                         }}
                         fontSize={triggerStyles[0].triggerSize}
                         fontSizeMobile={triggerStyles[0].triggerSizeMobile}
@@ -710,7 +830,7 @@ const edit = props => {
                         setAttributes={saveHeaderStyles}
                         fontSizeType={{
                             value: headerStyles[0].headerSizeUnit,
-                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
+                            label: __("headerSizeUnit", 'premium-blocks-for-gutenberg'),
                         }}
                         fontSize={headerStyles[0].headerSize}
                         fontSizeMobile={headerStyles[0].headerSizeMobile}
@@ -868,7 +988,7 @@ const edit = props => {
                         setAttributes={saveLowerStyles}
                         fontSizeType={{
                             value: lowerStyles[0].lowerSizeUnit,
-                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
+                            label: __("lowerSizeUnit", 'premium-blocks-for-gutenberg'),
                         }}
                         fontSize={lowerStyles[0].lowerSize}
                         fontSizeMobile={lowerStyles[0].lowerSizeMobile}
@@ -1012,7 +1132,7 @@ const edit = props => {
                                 setAttributes={saveModalStyles}
                                 fontSizeType={{
                                     value: modalStyles[0].modalSizeUnit,
-                                    label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
+                                    label: __("modalSizeUnit", 'premium-blocks-for-gutenberg'),
                                 }}
                                 fontSize={modalStyles[0].modalSize}
                                 fontSizeMobile={modalStyles[0].modalSizeMobile}
@@ -1250,6 +1370,11 @@ const edit = props => {
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} >
             <div className={`premium-modal-trigger-container`} style={{ textAlign: triggerSettings[0].align }}>
                 <button className={`premium-button__${triggerSettings[0].btnSize}`} onClick={openModal} style={{
+                    fontSize: `${triggerFontSize}${triggerStyles[0].triggerSizeUnit}`,
+                    paddingTop: `${triggerPaddingTop}px`,
+                    paddingRight: `${triggerPaddingRight}px`,
+                    paddingBottom: `${triggerPaddingBottom}px`,
+                    paddingLeft: `${triggerPaddingLeft}px`,
                     backgroundColor: triggerStyles[0].triggerBack,
                     borderStyle: triggerStyles[0].borderType,
                     borderTop: `${triggerBorderTop}px`,
@@ -1269,9 +1394,13 @@ const edit = props => {
                 <div className="premium-popup__modal_wrap">
                     <div role="presentation" className="premium-popup__modal_wrap_overlay" onClick={() => setOpen(false)}>
                     </div>
-                    <div className="premium-popup__modal_content" style={{
-                        width: `${modalStyles[0].modalWidth}${modalStyles[0].modalWidthUnit}`,
-                        maxHeight: `${modalStyles[0].modalHeight}${modalStyles[0].modalHeightUnit}`,
+                    <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`} style={{
+                        width: `${modalWidth}${modalStyles[0].modalWidthUnit}`,
+                        maxHeight: `${modalMaxHeight}${modalStyles[0].modalHeightUnit}`,
+                        marginTop: `${modalMarginTop}px`,
+                        marginRight: `${modalMarginRight}px`,
+                        marginBottom: `${modalMarginBottom}px`,
+                        marginLeft: `${modalMarginLeft}px`,
                         borderStyle: `${modalStyles[0].borderType}`,
                         borderColor: `${modalStyles[0].borderColor}`,
                         borderTop: `${modalBorderTop}px`,
@@ -1296,7 +1425,8 @@ const edit = props => {
                                 fontFamily: headerStyles[0].headerFamily,
                                 fontStyle: headerStyles[0].headerStyle,
                                 letterSpacing: headerStyles[0].headerSpacing,
-                                fontWeight: headerStyles[0].headerWeight
+                                fontWeight: headerStyles[0].headerWeight,
+                                fontSize: `${headerFontSize}${headerStyles[0].headerSizeUnit}`
                             }}>
                                 {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}></i>}
                                 {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL}></img>}
@@ -1310,7 +1440,7 @@ const edit = props => {
                                         }
                                     }}
                                     isClickToPauseDisabled={true}
-                                    direction={reversedir}
+                                    direction={(contentStyles[0].reverseLottie) ? -1 : 1}
                                 />}
                                 {contentStyles[0].titleText}
                             </h3>
@@ -1322,7 +1452,11 @@ const edit = props => {
                                 borderBottom: `${upperBorderBottom}px`,
                                 borderLeft: `${upperBorderLeft}px`,
                                 borderColor: `${upperStyles[0].borderColor}`,
-                                borderRadius: `${upperStyles[0].borderRadius}`
+                                borderRadius: `${upperStyles[0].borderRadius}`,
+                                paddingTop: `${upperPaddingTop}px`,
+                                paddingRight: `${upperPaddingRight}px`,
+                                paddingBottom: `${upperPaddingBottom}px`,
+                                paddingLeft: `${upperPaddingLeft}px`
                             }}>
                                 <button type="button" className="premium-modal-box-modal-close" onClick={() =>
                                     setOpen(false)
@@ -1339,9 +1473,15 @@ const edit = props => {
                             fontStyle: modalStyles[0].modalStyle,
                             fontWeight: modalStyles[0].modalWeight,
                             fontFamily: modalStyles[0].modalFamily,
-                            letterSpacing: modalStyles[0].modalSpacing
+                            letterSpacing: modalStyles[0].modalSpacing,
+                            paddingTop: `${modalPaddingTop}px`,
+                            paddingRight: `${modalPaddingRight}px`,
+                            paddingBottom: `${modalPaddingBottom}px`,
+                            paddingLeft: `${modalPaddingLeft}px`
                         }}>
-                            {modalStyles[0].contentType === "text" ? <p >{modalStyles[0].contentText}</p> : <InnerBlocks />}
+                            {modalStyles[0].contentType === "text" ? <p style={{
+                                fontSize: `${modalFontSize}${modalStyles[0].modalSizeUnit}`
+                            }} >{modalStyles[0].contentText}</p> : <InnerBlocks />}
 
                         </div>
                         {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
@@ -1352,6 +1492,7 @@ const edit = props => {
                                     fontStyle: lowerStyles[0].lowerStyle,
                                     fontWeight: lowerStyles[0].lowerWeight,
                                     letterSpacing: lowerStyles[0].lowerSpacing,
+                                    fontSize: `${lowerFontSize}${lowerStyles[0].lowerSizeUnit}`,
                                     width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
                                     color: `${lowerStyles[0].color}`,
                                     backgroundColor: `${lowerStyles[0].backColor}`,
@@ -1361,7 +1502,11 @@ const edit = props => {
                                     borderBottom: `${lowerBorderBottom}px`,
                                     borderLeft: `${lowerBorderLeft}px`,
                                     borderColor: `${lowerStyles[0].borderColor}`,
-                                    borderRadius: `${lowerStyles[0].borderRadius}`
+                                    borderRadius: `${lowerStyles[0].borderRadius}`,
+                                    paddingTop: `${lowerPaddingTop}px`,
+                                    paddingRight: `${lowerPaddingRight}px`,
+                                    paddingBottom: `${lowerPaddingBottom}px`,
+                                    paddingLeft: `${lowerPaddingLeft}px`
                                 }}
                             >
                                 {contentStyles[0].lowerCloseText}
@@ -1373,4 +1518,11 @@ const edit = props => {
         </div>
     ];
 };
-export default edit
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)

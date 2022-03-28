@@ -1,11 +1,10 @@
-(function ($) {
+jQuery(document).ready(function ($) {
+    let $modals = $(".premium-modal-box-container");
+    $modals.map((index, modal) => {
 
-    const PremiumModalBoxHandler = ($scope, $) => {
-
-        var $modalElem = $scope.find(".premium-modal-box-container"),
-            settings = $modalElem.data("settings"),
-            $modal = $modalElem.find(".premium-modal-box-modal-dialog");
-
+        let settings = modal.data("settings");
+        let $modal = modal.find(".premium-modal-box-modal-dialog");
+        console.log($modal, settings, modal, "hello");
         if (!settings) {
             return;
         }
@@ -31,11 +30,8 @@
                 offset: Waypoint.viewportHeight() - 150,
             });
         }
-
-    };
-    jQuery(document).ready(() => {
-        PremiumModalBoxHandler()
-
     })
-})(jQuery);
+
+});
+
 

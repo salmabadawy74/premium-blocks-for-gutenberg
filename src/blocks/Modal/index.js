@@ -2,7 +2,7 @@ import { icon } from "../../../assets/js/settings";
 import PbgIcon from "../icons";
 import edit from "./edit";
 import attributes from './attributes'
-
+import save from './save'
 
 const { __ } = wp.i18n;
 
@@ -19,5 +19,5 @@ registerBlockType("premium/modal", {
     },
     example: {},
     edit: edit,
-    save: () => { },
+    save: save,
 });
