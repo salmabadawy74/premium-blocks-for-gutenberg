@@ -56753,7 +56753,7 @@ var edit = function edit(props) {
                 null,
                 React.createElement(SelectControl, {
                     label: __('Icon Type', 'premium-blocks-for-gutenberg'),
-                    options: [{ label: __("None", "premium-blocks-for-gutenberg"), value: 'none' }, { label: __("Icon", "premium-blocks-for-gutenberg"), value: 'icon' }, { label: __('Custom Image', 'premium-blocks-for-gutenberg'), value: 'image' }],
+                    options: [{ label: __("None", "premium-blocks-for-gutenberg"), value: 'none' }, { label: __("Icon", "premium-blocks-for-gutenberg"), value: 'icon' }, { label: __('Custom Image', 'premium-blocks-for-gutenberg'), value: 'image' }, { label: __('Lottie Animations', 'premium-blocks-for-gutenberg'), value: 'lottie' }],
                     value: contentStyles[0].iconType,
                     onChange: function onChange(value) {
                         return saveContentStyle({ iconType: value });
@@ -56795,6 +56795,31 @@ var edit = function edit(props) {
                         });
                     }
                 }),
+                contentStyles[0].iconType === "lottie" && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(TextControl, {
+                        label: __("Animation JSON URL", "premium-blocks-for-gutenberg"),
+                        value: contentStyles[0].lottieURL,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ lottieURL: value });
+                        }
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Loop", 'premium-blocks-for-gutenberg'),
+                        checked: contentStyles[0].loopLottie,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ loopLottie: value });
+                        }
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Reverse", 'premium-blocks-for-gutenberg'),
+                        checked: contentStyles[0].reverseLottie,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ reverseLottie: value });
+                        }
+                    })
+                ),
                 contentStyles[0].iconType !== "none" && React.createElement(_responsiveRangeControl2.default, {
                     label: __('Icon Size', 'premium-blocks-for-gutenberg'),
                     value: contentStyles[0].iconSize,
@@ -56915,7 +56940,7 @@ var edit = function edit(props) {
             React.createElement(SelectControl, {
                 label: __("Trigger", "premium-blocks-for-gutenberg"),
                 value: triggerSettings[0].triggerType,
-                options: [{ label: __("Button", 'premium-blocks-for-gutenberg'), value: 'button' }, { label: __("On Page Load", 'premium-blocks-for-gutenberg'), value: 'load' }],
+                options: [{ label: __("Button", 'premium-blocks-for-gutenberg'), value: 'button' }, { label: __("Image", 'premium-blocks-for-gutenberg'), value: 'image' }, { label: __("Text", 'premium-blocks-for-gutenberg'), value: 'text' }, { label: __("Lottie Animation", 'premium-blocks-for-gutenberg'), value: 'lottie' }, { label: __("On Page Load", 'premium-blocks-for-gutenberg'), value: 'load' }],
                 onChange: function onChange(value) {
                     return saveTriggerSettings({ triggerType: value });
                 }
@@ -56994,16 +57019,88 @@ var edit = function edit(props) {
                     onChange: function onChange(newValue) {
                         return saveTriggerSettings({ btnSize: newValue });
                     }
-                }),
-                React.createElement(_radioControl2.default, {
-                    choices: ["right", "center", "left"],
-                    value: triggerSettings[0].align,
-                    onChange: function onChange(newValue) {
-                        return saveTriggerSettings({ align: newValue });
-                    },
-                    label: __("Align", 'premium-blocks-for-gutenberg')
                 })
             ),
+            triggerSettings[0].triggerType === "image" && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_premiumMediaUpload2.default, {
+                    type: "image",
+                    imageID: triggerSettings[0].triggerImgID,
+                    imageURL: triggerSettings[0].triggerImgURL,
+                    onSelectMedia: function onSelectMedia(media) {
+                        saveTriggerSettings({
+                            triggerImgID: media.id,
+                            triggerImgURL: media.url
+                        });
+                    },
+                    onRemoveImage: function onRemoveImage() {
+                        return saveTriggerSettings({
+                            triggerImgID: "",
+                            triggerImgURL: ""
+                        });
+                    }
+                })
+            ),
+            triggerSettings[0].triggerType === "text" && React.createElement(TextControl, {
+                label: __("Text", 'premium-blocks-for-gutenberg'),
+                value: triggerSettings[0].triggerText,
+                onChange: function onChange(value) {
+                    return saveTriggerSettings({ triggerText: value });
+                }
+            }),
+            triggerSettings[0].triggerType === "lottie" && React.createElement(
+                Fragment,
+                null,
+                React.createElement(TextControl, {
+                    label: __('Animation JSON URL', 'premium-blocks-for-gutenberg'),
+                    value: triggerSettings[0].lottieTriggerURL,
+                    onChange: function onChange(value) {
+                        return saveTriggerSettings({ lottieTriggerURL: value });
+                    }
+                }),
+                React.createElement(ToggleControl, {
+                    label: __("Loop", 'premium-blocks-for-gutenberg'),
+                    checked: triggerSettings[0].triggerLoopLottie,
+                    onChange: function onChange(value) {
+                        return saveTriggerSettings({ triggerLoopLottie: value });
+                    }
+                }),
+                React.createElement(ToggleControl, {
+                    label: __("Reverse", 'premium-blocks-for-gutenberg'),
+                    checked: triggerSettings[0].triggerReverseLottie,
+                    onChange: function onChange(value) {
+                        return saveTriggerSettings({ triggerReverseLottie: value });
+                    }
+                }),
+                React.createElement(ToggleControl, {
+                    label: __("Only Play on Hover", 'premium-blocks-for-gutenberg'),
+                    checked: triggerSettings[0].triggerPlayLottie,
+                    onChange: function onChange(value) {
+                        return saveTriggerSettings({ triggerPlayLottie: value });
+                    }
+                })
+            ),
+            (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && React.createElement(_responsiveRangeControl2.default, {
+                label: __('Size', 'premium-blocks-for-gutenberg'),
+                value: triggerSettings[0].imageWidth,
+                onChange: function onChange(value) {
+                    return saveTriggerSettings({ imageWidth: value });
+                },
+                tabletValue: triggerSettings[0].imageWidthTablet,
+                onChangeTablet: function onChangeTablet(value) {
+                    return saveTriggerSettings({ imageWidthTablet: value });
+                },
+                mobileValue: triggerSettings[0].imageWidthMobile,
+                onChangeMobile: function onChangeMobile(value) {
+                    return saveTriggerSettings({ imageWidthMobile: value });
+                },
+                min: 0,
+                max: 800,
+                step: 1,
+                showUnit: false,
+                defaultValue: 0
+            }),
             triggerSettings[0].triggerType === "load" && React.createElement(
                 Fragment,
                 null,
@@ -57023,7 +57120,15 @@ var edit = function edit(props) {
                     defaultValue: 0,
                     showUnit: false
                 })
-            )
+            ),
+            triggerSettings[0].triggerType !== "load" && React.createElement(_radioControl2.default, {
+                choices: ["right", "center", "left"],
+                value: triggerSettings[0].align,
+                onChange: function onChange(newValue) {
+                    return saveTriggerSettings({ align: newValue });
+                },
+                label: __("Align", 'premium-blocks-for-gutenberg')
+            })
         ),
         React.createElement(
             PanelBody,
@@ -58045,6 +58150,18 @@ var edit = function edit(props) {
                                 width: "" + headerIconSize + contentStyles[0].iconSizeUnit,
                                 height: "" + headerIconSize + contentStyles[0].iconSizeUnit
                             } }),
+                        contentStyles[0].iconType === "lottie" && React.createElement(Lottie, {
+                            options: {
+                                loop: contentStyles[0].loopLottie,
+                                path: contentStyles[0].lottieURL,
+                                rendererSettings: {
+                                    preserveAspectRatio: 'xMidYMid',
+                                    className: "premium-lottie-inner"
+                                }
+                            },
+                            isClickToPauseDisabled: true,
+                            direction: contentStyles[0].reverseLottie ? -1 : 1
+                        }),
                         contentStyles[0].titleText
                     ),
                     contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(
@@ -58717,6 +58834,11 @@ var save = function save(props) {
                             } },
                         contentStyles[0].iconType === "icon" && React.createElement('i', { className: contentStyles[0].contentIcon }),
                         contentStyles[0].iconType === "image" && React.createElement('img', { src: contentStyles[0].contentImgURL }),
+                        contentStyles[0].iconType === "lottie" && React.createElement('div', { className: 'premium-lottie-animation',
+                            'data-lottieurl': contentStyles[0].lottieURL,
+                            'data-loop': contentStyles[0].loopLottie,
+                            'data-reverse': contentStyles[0].reverseLottie
+                        }),
                         contentStyles[0].titleText
                     ),
                     contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(

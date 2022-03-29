@@ -104,7 +104,11 @@ const save = props => {
                         }}>
                             {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}></i>}
                             {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL}></img>}
-
+                            {contentStyles[0].iconType === "lottie" && <div className={`premium-lottie-animation`}
+                                data-lottieurl={contentStyles[0].lottieURL}
+                                data-loop={contentStyles[0].loopLottie}
+                                data-reverse={contentStyles[0].reverseLottie}
+                            ></div>}
                             {contentStyles[0].titleText}
                         </h3>
                         {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (<div className="premium-modal-box-close-button-container" style={{
