@@ -320,6 +320,7 @@ const edit = props => {
                                     { label: __("None", "premium-blocks-for-gutenberg"), value: 'none' },
                                     { label: __("Icon", "premium-blocks-for-gutenberg"), value: 'icon' },
                                     { label: __('Custom Image', 'premium-blocks-for-gutenberg'), value: 'image' },
+                                    { label: __('Lottie Animations', 'premium-blocks-for-gutenberg'), value: 'lottie' }
                                 ]}
                                 value={contentStyles[0].iconType}
                                 onChange={(value) => saveContentStyle({ iconType: value })}
@@ -356,6 +357,25 @@ const edit = props => {
                                     }
                                 />)
                             }
+                            {contentStyles[0].iconType === "lottie" && (
+                                <Fragment>
+                                    <TextControl
+                                        label={__("Animation JSON URL", "premium-blocks-for-gutenberg")}
+                                        value={contentStyles[0].lottieURL}
+                                        onChange={(value) => saveContentStyle({ lottieURL: value })}
+                                    />
+                                    <ToggleControl
+                                        label={__("Loop", 'premium-blocks-for-gutenberg')}
+                                        checked={contentStyles[0].loopLottie}
+                                        onChange={(value) => saveContentStyle({ loopLottie: value })}
+                                    />
+                                    <ToggleControl
+                                        label={__("Reverse", 'premium-blocks-for-gutenberg')}
+                                        checked={contentStyles[0].reverseLottie}
+                                        onChange={(value) => saveContentStyle({ reverseLottie: value })}
+                                    />
+                                </Fragment>
+                            )}
 
                             {contentStyles[0].iconType !== "none" && (
                                 <ResponsiveRangeControl
@@ -502,6 +522,9 @@ const edit = props => {
                         options={
                             [
                                 { label: __("Button", 'premium-blocks-for-gutenberg'), value: 'button' },
+                                { label: __("Image", 'premium-blocks-for-gutenberg'), value: 'image' },
+                                { label: __("Text", 'premium-blocks-for-gutenberg'), value: 'text' },
+                                { label: __("Lottie Animation", 'premium-blocks-for-gutenberg'), value: 'lottie' },
                                 { label: __("On Page Load", 'premium-blocks-for-gutenberg'), value: 'load' }
                             ]
                         }
@@ -577,14 +600,78 @@ const edit = props => {
                                 ]}
                                 onChange={newValue => saveTriggerSettings({ btnSize: newValue })}
                             />
-                            <RadioComponent
-                                choices={["right", "center", "left"]}
-                                value={triggerSettings[0].align}
-                                onChange={newValue => saveTriggerSettings({ align: newValue })}
-                                label={__("Align", 'premium-blocks-for-gutenberg')}
-                            />
+
                         </Fragment>
                     )}
+                    {triggerSettings[0].triggerType === "image" && (
+                        <Fragment>
+                            <PremiumMediaUpload
+                                type="image"
+                                imageID={triggerSettings[0].triggerImgID}
+                                imageURL={triggerSettings[0].triggerImgURL}
+                                onSelectMedia={(media) => {
+                                    saveTriggerSettings({
+                                        triggerImgID: media.id,
+                                        triggerImgURL: media.url,
+                                    });
+                                }}
+                                onRemoveImage={() =>
+                                    saveTriggerSettings({
+                                        triggerImgID: "",
+                                        triggerImgURL: "",
+                                    })
+                                }
+                            />
+
+                        </Fragment>
+                    )}
+                    {triggerSettings[0].triggerType === "text" && (
+                        <TextControl
+                            label={__("Text", 'premium-blocks-for-gutenberg')}
+                            value={triggerSettings[0].triggerText}
+                            onChange={(value) => saveTriggerSettings({ triggerText: value })}
+                        />
+                    )}
+                    {triggerSettings[0].triggerType === "lottie" && (
+                        <Fragment>
+                            <TextControl
+                                label={__('Animation JSON URL', 'premium-blocks-for-gutenberg')}
+                                value={triggerSettings[0].lottieTriggerURL}
+                                onChange={value => saveTriggerSettings({ lottieTriggerURL: value })}
+                            />
+                            <ToggleControl
+                                label={__("Loop", 'premium-blocks-for-gutenberg')}
+                                checked={triggerSettings[0].triggerLoopLottie}
+                                onChange={(value) => saveTriggerSettings({ triggerLoopLottie: value })}
+                            />
+                            <ToggleControl
+                                label={__("Reverse", 'premium-blocks-for-gutenberg')}
+                                checked={triggerSettings[0].triggerReverseLottie}
+                                onChange={(value) => saveTriggerSettings({ triggerReverseLottie: value })}
+                            />
+                            <ToggleControl
+                                label={__("Only Play on Hover", 'premium-blocks-for-gutenberg')}
+                                checked={triggerSettings[0].triggerPlayLottie}
+                                onChange={(value) => saveTriggerSettings({ triggerPlayLottie: value })}
+                            />
+
+                        </Fragment>
+                    )}
+                    {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && (<ResponsiveRangeControl
+                        label={__('Size', 'premium-blocks-for-gutenberg')}
+                        value={triggerSettings[0].imageWidth}
+                        onChange={(value) => saveTriggerSettings({ imageWidth: value })}
+                        tabletValue={triggerSettings[0].imageWidthTablet}
+                        onChangeTablet={(value) => saveTriggerSettings({ imageWidthTablet: value })}
+                        mobileValue={triggerSettings[0].imageWidthMobile}
+                        onChangeMobile={(value) => saveTriggerSettings({ imageWidthMobile: value })}
+                        min={0}
+                        max={800}
+                        step={1}
+                        showUnit={false}
+                        defaultValue={0}
+                    />)}
+
                     {triggerSettings[0].triggerType === "load" && (
                         <Fragment>
                             <p>{__('the Button will be removed in the preview mode ', "premium-blocks-for-gutenberg")}</p>
@@ -598,6 +685,14 @@ const edit = props => {
                                 showUnit={false}
                             />
                         </Fragment>
+                    )}
+                    {triggerSettings[0].triggerType !== "load" && (
+                        <RadioComponent
+                            choices={["right", "center", "left"]}
+                            value={triggerSettings[0].align}
+                            onChange={newValue => saveTriggerSettings({ align: newValue })}
+                            label={__("Align", 'premium-blocks-for-gutenberg')}
+                        />
                     )}
                 </PanelBody>
                 <PanelBody
@@ -1446,6 +1541,18 @@ const edit = props => {
                                 width: `${headerIconSize}${contentStyles[0].iconSizeUnit}`,
                                 height: `${headerIconSize}${contentStyles[0].iconSizeUnit}`
                             }}></img>}
+                            {contentStyles[0].iconType === "lottie" && <Lottie
+                                options={{
+                                    loop: contentStyles[0].loopLottie,
+                                    path: contentStyles[0].lottieURL,
+                                    rendererSettings: {
+                                        preserveAspectRatio: 'xMidYMid',
+                                        className: "premium-lottie-inner"
+                                    }
+                                }}
+                                isClickToPauseDisabled={true}
+                                direction={(contentStyles[0].reverseLottie) ? -1 : 1}
+                            />}
 
                             {contentStyles[0].titleText}
                         </h3>
