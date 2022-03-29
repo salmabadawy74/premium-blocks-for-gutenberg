@@ -7706,7 +7706,10 @@ var videoBoxAttrs = {
         type: 'boolean',
         default: false
     },
-
+    ratioValue: {
+        type: "string",
+        default: '169'
+    },
     boxStyles: {
         type: 'array',
         default: [{
@@ -45621,6 +45624,7 @@ var edit = function (_Component) {
                 hideDesktop = _props$attributes2.hideDesktop,
                 hideTablet = _props$attributes2.hideTablet,
                 hideMobile = _props$attributes2.hideMobile,
+                ratioValue = _props$attributes2.ratioValue,
                 boxStyles = _props$attributes2.boxStyles,
                 overlayStyles = _props$attributes2.overlayStyles,
                 playStyles = _props$attributes2.playStyles,
@@ -45795,6 +45799,14 @@ var edit = function (_Component) {
                         checked: overlay,
                         onChange: function onChange(newCheck) {
                             return setAttributes({ overlay: newCheck });
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __('Aspect Ratio', 'premium-blocks-for-gutenberg'),
+                        value: ratioValue,
+                        options: [{ label: '1:1', value: '11' }, { label: '16:9', value: '169' }, { label: '4:3', value: '43' }, { label: '3:2', value: '32' }, { label: '21:9', value: '219' }, { label: '9:16', value: '916' }],
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ ratioValue: newValue });
                         }
                     })
                 ),
@@ -46258,7 +46270,7 @@ var edit = function (_Component) {
                     {
                         ref: this.videoboxRef,
                         id: videoBoxId,
-                        className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                        className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-aspect-ratio-" + ratioValue,
                         "data-type": videoType,
                         style: {
                             borderStyle: boxStyles[0].boxBorderType,
@@ -46276,20 +46288,32 @@ var edit = function (_Component) {
                     React.createElement(
                         "div",
                         { className: "premium-video-box__container" },
-                        "self" !== videoType && React.createElement("iframe", {
-                            src: (0, _index2.default)(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
-                            frameborder: "0",
-                            gesture: "media",
-                            allow: "encrypted-media",
-                            allowfullscreen: true
-                        }),
-                        "self" === videoType && React.createElement("video", {
-                            src: videoURL,
-                            loop: loop ? true : false,
-                            muted: mute ? true : false,
-                            autoplay: overlay ? false : autoPlay,
-                            controls: controls ? true : false
-                        })
+                        React.createElement(
+                            "div",
+                            null,
+                            React.createElement(
+                                "div",
+                                { className: "premium-video-box-inner-wrap" },
+                                React.createElement(
+                                    "div",
+                                    { className: "premium-video-box-video-container" },
+                                    "self" !== videoType && React.createElement("iframe", {
+                                        src: (0, _index2.default)(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+                                        frameborder: "0",
+                                        gesture: "media",
+                                        allow: "encrypted-media",
+                                        allowfullscreen: true
+                                    }),
+                                    "self" === videoType && React.createElement("video", {
+                                        src: videoURL,
+                                        loop: loop ? true : false,
+                                        muted: mute ? true : false,
+                                        autoplay: overlay ? false : autoPlay,
+                                        controls: controls ? true : false
+                                    })
+                                )
+                            )
+                        )
                     ),
                     overlay && overlayStyles[0].overlayImgURL && React.createElement("div", {
                         className: "premium-video-box__overlay",
@@ -46421,7 +46445,8 @@ var save = function save(props) {
         boxStyles = _props$attributes.boxStyles,
         overlayStyles = _props$attributes.overlayStyles,
         playStyles = _props$attributes.playStyles,
-        descStyles = _props$attributes.descStyles;
+        descStyles = _props$attributes.descStyles,
+        ratioValue = _props$attributes.ratioValue;
 
 
     var loopVideo = function loopVideo() {
@@ -46442,7 +46467,7 @@ var save = function save(props) {
         "div",
         {
             id: videoBoxId,
-            className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+            className: mainClasses + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-aspect-ratio-" + ratioValue,
             "data-type": videoType,
             style: {
                 borderStyle: boxStyles[0].boxBorderType,
@@ -46460,20 +46485,32 @@ var save = function save(props) {
         React.createElement(
             "div",
             { className: "premium-video-box__container" },
-            "self" !== videoType && React.createElement("iframe", {
-                src: (0, _index2.default)(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
-                frameborder: "0",
-                gesture: "media",
-                allow: "encrypted-media",
-                allowfullscreen: true
-            }),
-            "self" === videoType && React.createElement("video", {
-                src: videoURL,
-                loop: loop ? true : false,
-                muted: mute ? true : false,
-                autoplay: overlay ? false : autoPlay,
-                controls: controls ? true : false
-            })
+            React.createElement(
+                "div",
+                null,
+                React.createElement(
+                    "div",
+                    { className: "premium-video-box-inner-wrap" },
+                    React.createElement(
+                        "div",
+                        { className: "premium-video-box-video-container" },
+                        "self" !== videoType && React.createElement("iframe", {
+                            src: (0, _index2.default)(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+                            frameborder: "0",
+                            gesture: "media",
+                            allow: "encrypted-media",
+                            allowfullscreen: true
+                        }),
+                        "self" === videoType && React.createElement("video", {
+                            src: videoURL,
+                            loop: loop ? true : false,
+                            muted: mute ? true : false,
+                            autoplay: overlay ? false : autoPlay,
+                            controls: controls ? true : false
+                        })
+                    )
+                )
+            )
         ),
         overlay && overlayStyles[0].overlayImgURL && React.createElement("div", {
             className: "premium-video-box__overlay",
@@ -46924,10 +46961,16 @@ var new_Attributes = {
         }]
     }
 };
+var new_deprecated_Attributes = {
+    ratioValue: {
+        type: "string",
+        default: '169'
+    }
+};
 var deprecated_attributes = Object.assign(attributes, new_Attributes);
+var deprecated_attributes_1_2 = Object.assign(deprecated_attributes, new_deprecated_Attributes);
 var deprecatedContent = [{
-    attributes: deprecated_attributes,
-
+    attributes: deprecated_attributes_1_2,
     save: function save(props) {
         var _props$attributes = props.attributes,
             block_id = _props$attributes.block_id,
@@ -46952,6 +46995,148 @@ var deprecatedContent = [{
             overlayStyles = _props$attributes.overlayStyles,
             playStyles = _props$attributes.playStyles,
             descStyles = _props$attributes.descStyles;
+
+
+        var loopVideo = function loopVideo() {
+            if (videoURL && "youtube" === videoType) {
+                if (videoURL.startsWith("http")) {
+                    return loop ? "1&playlist=" + videoURL.replace("https://www.youtube.com/embed/", "") : "0";
+                } else {
+                    return loop ? "1&playlist=" + videoURL : "0";
+                }
+            } else {
+                return loop ? "1" : "0";
+            }
+        };
+
+        return videoURL && React.createElement(
+            "div",
+            {
+                id: videoBoxId,
+                className: className + " video-overlay-" + overlay + " premium-video-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                "data-type": videoType,
+                style: {
+                    borderStyle: boxStyles[0].boxBorderType,
+                    borderWidth: boxStyles[0].borderBoxUpdated ? boxStyles[0].boxBorderTop + "px " + boxStyles[0].boxBorderRight + "px " + boxStyles[0].boxBorderBottom + "px " + boxStyles[0].boxBorderLeft + "px" : boxStyles[0].boxBorderWidth + "px",
+                    borderRadius: boxStyles[0].boxBorderRadius + "px",
+                    borderColor: boxStyles[0].boxBorderColor,
+                    boxShadow: boxStyles[0].shadowHorizontal + "px " + boxStyles[0].shadowVertical + "px " + boxStyles[0].shadowBlur + "px " + boxStyles[0].shadowColor + " " + boxStyles[0].shadowPosition
+                }
+            },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#" + videoBoxId + " .premium-video-box__play:hover {", "color: " + playStyles[0].playHoverColor + " !important;", "background-color: " + playStyles[0].playHoverBackColor + " !important;", "}"].join("\n")
+                }
+            }),
+            React.createElement(
+                "div",
+                { className: "premium-video-box__container" },
+                "self" !== videoType && React.createElement("iframe", {
+                    src: (0, _index2.default)(videoType, videoURL) + "?autoplay=" + (overlay ? 0 : autoPlay) + "&loop=" + loopVideo() + "&mute" + ("vimeo" == videoType ? "d" : "") + "=" + mute + "&rel=" + (relatedVideos ? "1" : "0") + "&controls=" + (controls ? "1" : "0"),
+                    frameborder: "0",
+                    gesture: "media",
+                    allow: "encrypted-media",
+                    allowfullscreen: true
+                }),
+                "self" === videoType && React.createElement("video", {
+                    src: videoURL,
+                    loop: loop ? true : false,
+                    muted: mute ? true : false,
+                    autoplay: overlay ? false : autoPlay,
+                    controls: controls ? true : false
+                })
+            ),
+            overlay && overlayStyles[0].overlayImgURL && React.createElement("div", {
+                className: "premium-video-box__overlay",
+                style: {
+                    backgroundImage: "url('" + overlayStyles[0].overlayImgURL + "')",
+                    filter: "brightness( " + overlayStyles[0].bright + "% ) contrast( " + overlayStyles[0].contrast + "% ) saturate( " + overlayStyles[0].saturation + "% ) blur( " + overlayStyles[0].blur + "px ) hue-rotate( " + overlayStyles[0].hue + "deg )"
+                }
+            }),
+            overlay && playIcon && React.createElement(
+                "div",
+                {
+                    className: "premium-video-box__play",
+                    style: {
+                        top: playStyles[0].playTop + "%",
+                        left: playLeft + "%",
+                        color: playStyles[0].playColor,
+                        backgroundColor: playStyles[0].playBack,
+                        borderStyle: playStyles[0].playBorderType,
+                        borderWidth: playStyles[0].borderPlayUpdated ? playStyles[0].playBorderTop + "px " + playStyles[0].playBorderRight + "px " + playStyles[0].playBorderBottom + "px " + playStyles[0].playBorderLeft + "px" : playStyles[0].playBorderWidth + "px",
+                        borderRadius: playStyles[0].playBorderRadius + "px",
+                        borderColor: playStyles[0].playBorderColor,
+                        padding: playStyles[0].playPadding + "px"
+                    }
+                },
+                React.createElement("i", {
+                    className: "premium-video-box__play_icon dashicons dashicons-controls-play",
+                    style: {
+                        fontSize: playStyles[0].playSize + "px"
+                    }
+                })
+            ),
+            overlay && videoDesc && React.createElement(
+                "div",
+                {
+                    className: "premium-video-box__desc",
+                    style: {
+                        color: descStyles[0].videoDescColor,
+                        backgroundColor: descStyles[0].videoDescBack,
+                        padding: descStyles[0].videoDescPadding,
+                        borderRadius: descStyles[0].videoDescBorderRadius,
+                        top: descStyles[0].descTop + "%",
+                        left: descStyles[0].descLeft + "%"
+                    }
+                },
+                React.createElement(
+                    "p",
+                    {
+                        className: "premium-video-box__desc_text",
+                        style: {
+                            fontFamily: descStyles[0].videoDescFamily,
+                            fontWeight: descStyles[0].videoDescWeight,
+                            letterSpacing: descStyles[0].videoDescLetter + "px",
+                            textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                            textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor,
+                            fontStyle: descStyles[0].videoDescStyle
+                        }
+                    },
+                    React.createElement(
+                        "span",
+                        null,
+                        descStyles[0].videoDescText
+                    )
+                )
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes,
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            block_id = _props$attributes2.block_id,
+            videoBoxId = _props$attributes2.videoBoxId,
+            videoType = _props$attributes2.videoType,
+            videoURL = _props$attributes2.videoURL,
+            videoID = _props$attributes2.videoID,
+            autoPlay = _props$attributes2.autoPlay,
+            loop = _props$attributes2.loop,
+            controls = _props$attributes2.controls,
+            relatedVideos = _props$attributes2.relatedVideos,
+            mute = _props$attributes2.mute,
+            overlay = _props$attributes2.overlay,
+            videoDesc = _props$attributes2.videoDesc,
+            playIcon = _props$attributes2.playIcon,
+            playLeft = _props$attributes2.playLeft,
+            classMigrate = _props$attributes2.classMigrate,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile,
+            boxStyles = _props$attributes2.boxStyles,
+            overlayStyles = _props$attributes2.overlayStyles,
+            playStyles = _props$attributes2.playStyles,
+            descStyles = _props$attributes2.descStyles;
 
         var loopVideo = function loopVideo() {
             if ("youtube" === videoType) {
@@ -47142,77 +47327,77 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            block_id = _props$attributes2.block_id,
-            borderPlayUpdated = _props$attributes2.borderPlayUpdated,
-            borderBoxUpdated = _props$attributes2.borderBoxUpdated,
-            videoBoxId = _props$attributes2.videoBoxId,
-            videoType = _props$attributes2.videoType,
-            videoURL = _props$attributes2.videoURL,
-            autoPlay = _props$attributes2.autoPlay,
-            loop = _props$attributes2.loop,
-            mute = _props$attributes2.mute,
-            relatedVideos = _props$attributes2.relatedVideos,
-            controls = _props$attributes2.controls,
-            overlay = _props$attributes2.overlay,
-            overlayImgURL = _props$attributes2.overlayImgURL,
-            blur = _props$attributes2.blur,
-            contrast = _props$attributes2.contrast,
-            saturation = _props$attributes2.saturation,
-            bright = _props$attributes2.bright,
-            hue = _props$attributes2.hue,
-            playTop = _props$attributes2.playTop,
-            playLeft = _props$attributes2.playLeft,
-            playIcon = _props$attributes2.playIcon,
-            playColor = _props$attributes2.playColor,
-            playHoverColor = _props$attributes2.playHoverColor,
-            playHoverBackColor = _props$attributes2.playHoverBackColor,
-            playSize = _props$attributes2.playSize,
-            playPadding = _props$attributes2.playPadding,
-            playBack = _props$attributes2.playBack,
-            playOpacity = _props$attributes2.playOpacity,
-            playBorderColor = _props$attributes2.playBorderColor,
-            playBorderWidth = _props$attributes2.playBorderWidth,
-            playBorderRadius = _props$attributes2.playBorderRadius,
-            playBorderType = _props$attributes2.playBorderType,
-            videoDesc = _props$attributes2.videoDesc,
-            descTop = _props$attributes2.descTop,
-            descLeft = _props$attributes2.descLeft,
-            videoDescText = _props$attributes2.videoDescText,
-            videoDescColor = _props$attributes2.videoDescColor,
-            videoDescBack = _props$attributes2.videoDescBack,
-            videoDescOpacity = _props$attributes2.videoDescOpacity,
-            videoDescPadding = _props$attributes2.videoDescPadding,
-            videoDescFamily = _props$attributes2.videoDescFamily,
-            videoDescWeight = _props$attributes2.videoDescWeight,
-            videoDescLetter = _props$attributes2.videoDescLetter,
-            videoDescStyle = _props$attributes2.videoDescStyle,
-            videoDescUpper = _props$attributes2.videoDescUpper,
-            videoDescBorderRadius = _props$attributes2.videoDescBorderRadius,
-            descShadowBlur = _props$attributes2.descShadowBlur,
-            descShadowColor = _props$attributes2.descShadowColor,
-            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
-            descShadowVertical = _props$attributes2.descShadowVertical,
-            boxBorderColor = _props$attributes2.boxBorderColor,
-            boxBorderWidth = _props$attributes2.boxBorderWidth,
-            boxBorderTop = _props$attributes2.boxBorderTop,
-            boxBorderRight = _props$attributes2.boxBorderRight,
-            boxBorderBottom = _props$attributes2.boxBorderBottom,
-            boxBorderLeft = _props$attributes2.boxBorderLeft,
-            playBorderTop = _props$attributes2.playBorderTop,
-            playBorderRight = _props$attributes2.playBorderRight,
-            playBorderBottom = _props$attributes2.playBorderBottom,
-            playBorderLeft = _props$attributes2.playBorderLeft,
-            boxBorderRadius = _props$attributes2.boxBorderRadius,
-            boxBorderType = _props$attributes2.boxBorderType,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hideDesktop = _props$attributes2.hideDesktop,
-            hideTablet = _props$attributes2.hideTablet,
-            hideMobile = _props$attributes2.hideMobile;
+        var _props$attributes3 = props.attributes,
+            block_id = _props$attributes3.block_id,
+            borderPlayUpdated = _props$attributes3.borderPlayUpdated,
+            borderBoxUpdated = _props$attributes3.borderBoxUpdated,
+            videoBoxId = _props$attributes3.videoBoxId,
+            videoType = _props$attributes3.videoType,
+            videoURL = _props$attributes3.videoURL,
+            autoPlay = _props$attributes3.autoPlay,
+            loop = _props$attributes3.loop,
+            mute = _props$attributes3.mute,
+            relatedVideos = _props$attributes3.relatedVideos,
+            controls = _props$attributes3.controls,
+            overlay = _props$attributes3.overlay,
+            overlayImgURL = _props$attributes3.overlayImgURL,
+            blur = _props$attributes3.blur,
+            contrast = _props$attributes3.contrast,
+            saturation = _props$attributes3.saturation,
+            bright = _props$attributes3.bright,
+            hue = _props$attributes3.hue,
+            playTop = _props$attributes3.playTop,
+            playLeft = _props$attributes3.playLeft,
+            playIcon = _props$attributes3.playIcon,
+            playColor = _props$attributes3.playColor,
+            playHoverColor = _props$attributes3.playHoverColor,
+            playHoverBackColor = _props$attributes3.playHoverBackColor,
+            playSize = _props$attributes3.playSize,
+            playPadding = _props$attributes3.playPadding,
+            playBack = _props$attributes3.playBack,
+            playOpacity = _props$attributes3.playOpacity,
+            playBorderColor = _props$attributes3.playBorderColor,
+            playBorderWidth = _props$attributes3.playBorderWidth,
+            playBorderRadius = _props$attributes3.playBorderRadius,
+            playBorderType = _props$attributes3.playBorderType,
+            videoDesc = _props$attributes3.videoDesc,
+            descTop = _props$attributes3.descTop,
+            descLeft = _props$attributes3.descLeft,
+            videoDescText = _props$attributes3.videoDescText,
+            videoDescColor = _props$attributes3.videoDescColor,
+            videoDescBack = _props$attributes3.videoDescBack,
+            videoDescOpacity = _props$attributes3.videoDescOpacity,
+            videoDescPadding = _props$attributes3.videoDescPadding,
+            videoDescFamily = _props$attributes3.videoDescFamily,
+            videoDescWeight = _props$attributes3.videoDescWeight,
+            videoDescLetter = _props$attributes3.videoDescLetter,
+            videoDescStyle = _props$attributes3.videoDescStyle,
+            videoDescUpper = _props$attributes3.videoDescUpper,
+            videoDescBorderRadius = _props$attributes3.videoDescBorderRadius,
+            descShadowBlur = _props$attributes3.descShadowBlur,
+            descShadowColor = _props$attributes3.descShadowColor,
+            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
+            descShadowVertical = _props$attributes3.descShadowVertical,
+            boxBorderColor = _props$attributes3.boxBorderColor,
+            boxBorderWidth = _props$attributes3.boxBorderWidth,
+            boxBorderTop = _props$attributes3.boxBorderTop,
+            boxBorderRight = _props$attributes3.boxBorderRight,
+            boxBorderBottom = _props$attributes3.boxBorderBottom,
+            boxBorderLeft = _props$attributes3.boxBorderLeft,
+            playBorderTop = _props$attributes3.playBorderTop,
+            playBorderRight = _props$attributes3.playBorderRight,
+            playBorderBottom = _props$attributes3.playBorderBottom,
+            playBorderLeft = _props$attributes3.playBorderLeft,
+            boxBorderRadius = _props$attributes3.boxBorderRadius,
+            boxBorderType = _props$attributes3.boxBorderType,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            hideDesktop = _props$attributes3.hideDesktop,
+            hideTablet = _props$attributes3.hideTablet,
+            hideMobile = _props$attributes3.hideMobile;
 
 
         var loopVideo = function loopVideo() {
@@ -47332,58 +47517,58 @@ var deprecatedContent = [{
 }, {
     attributes: _attributes2.default,
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            videoBoxId = _props$attributes3.videoBoxId,
-            videoType = _props$attributes3.videoType,
-            videoURL = _props$attributes3.videoURL,
-            autoPlay = _props$attributes3.autoPlay,
-            loop = _props$attributes3.loop,
-            mute = _props$attributes3.mute,
-            relatedVideos = _props$attributes3.relatedVideos,
-            controls = _props$attributes3.controls,
-            overlay = _props$attributes3.overlay,
-            overlayImgURL = _props$attributes3.overlayImgURL,
-            blur = _props$attributes3.blur,
-            contrast = _props$attributes3.contrast,
-            saturation = _props$attributes3.saturation,
-            bright = _props$attributes3.bright,
-            hue = _props$attributes3.hue,
-            playTop = _props$attributes3.playTop,
-            playLeft = _props$attributes3.playLeft,
-            playIcon = _props$attributes3.playIcon,
-            playColor = _props$attributes3.playColor,
-            playHoverColor = _props$attributes3.playHoverColor,
-            playHoverBackColor = _props$attributes3.playHoverBackColor,
-            playSize = _props$attributes3.playSize,
-            playPadding = _props$attributes3.playPadding,
-            playBack = _props$attributes3.playBack,
-            playBorderColor = _props$attributes3.playBorderColor,
-            playBorderWidth = _props$attributes3.playBorderWidth,
-            playBorderRadius = _props$attributes3.playBorderRadius,
-            playBorderType = _props$attributes3.playBorderType,
-            videoDesc = _props$attributes3.videoDesc,
-            descTop = _props$attributes3.descTop,
-            descLeft = _props$attributes3.descLeft,
-            videoDescText = _props$attributes3.videoDescText,
-            videoDescColor = _props$attributes3.videoDescColor,
-            videoDescBack = _props$attributes3.videoDescBack,
-            videoDescPadding = _props$attributes3.videoDescPadding,
-            videoDescSize = _props$attributes3.videoDescSize,
-            videoDescFamily = _props$attributes3.videoDescFamily,
-            videoDescWeight = _props$attributes3.videoDescWeight,
-            videoDescLetter = _props$attributes3.videoDescLetter,
-            videoDescStyle = _props$attributes3.videoDescStyle,
-            videoDescUpper = _props$attributes3.videoDescUpper,
-            videoDescBorderRadius = _props$attributes3.videoDescBorderRadius,
-            boxBorderColor = _props$attributes3.boxBorderColor,
-            boxBorderWidth = _props$attributes3.boxBorderWidth,
-            boxBorderRadius = _props$attributes3.boxBorderRadius,
-            boxBorderType = _props$attributes3.boxBorderType,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition;
+        var _props$attributes4 = props.attributes,
+            videoBoxId = _props$attributes4.videoBoxId,
+            videoType = _props$attributes4.videoType,
+            videoURL = _props$attributes4.videoURL,
+            autoPlay = _props$attributes4.autoPlay,
+            loop = _props$attributes4.loop,
+            mute = _props$attributes4.mute,
+            relatedVideos = _props$attributes4.relatedVideos,
+            controls = _props$attributes4.controls,
+            overlay = _props$attributes4.overlay,
+            overlayImgURL = _props$attributes4.overlayImgURL,
+            blur = _props$attributes4.blur,
+            contrast = _props$attributes4.contrast,
+            saturation = _props$attributes4.saturation,
+            bright = _props$attributes4.bright,
+            hue = _props$attributes4.hue,
+            playTop = _props$attributes4.playTop,
+            playLeft = _props$attributes4.playLeft,
+            playIcon = _props$attributes4.playIcon,
+            playColor = _props$attributes4.playColor,
+            playHoverColor = _props$attributes4.playHoverColor,
+            playHoverBackColor = _props$attributes4.playHoverBackColor,
+            playSize = _props$attributes4.playSize,
+            playPadding = _props$attributes4.playPadding,
+            playBack = _props$attributes4.playBack,
+            playBorderColor = _props$attributes4.playBorderColor,
+            playBorderWidth = _props$attributes4.playBorderWidth,
+            playBorderRadius = _props$attributes4.playBorderRadius,
+            playBorderType = _props$attributes4.playBorderType,
+            videoDesc = _props$attributes4.videoDesc,
+            descTop = _props$attributes4.descTop,
+            descLeft = _props$attributes4.descLeft,
+            videoDescText = _props$attributes4.videoDescText,
+            videoDescColor = _props$attributes4.videoDescColor,
+            videoDescBack = _props$attributes4.videoDescBack,
+            videoDescPadding = _props$attributes4.videoDescPadding,
+            videoDescSize = _props$attributes4.videoDescSize,
+            videoDescFamily = _props$attributes4.videoDescFamily,
+            videoDescWeight = _props$attributes4.videoDescWeight,
+            videoDescLetter = _props$attributes4.videoDescLetter,
+            videoDescStyle = _props$attributes4.videoDescStyle,
+            videoDescUpper = _props$attributes4.videoDescUpper,
+            videoDescBorderRadius = _props$attributes4.videoDescBorderRadius,
+            boxBorderColor = _props$attributes4.boxBorderColor,
+            boxBorderWidth = _props$attributes4.boxBorderWidth,
+            boxBorderRadius = _props$attributes4.boxBorderRadius,
+            boxBorderType = _props$attributes4.boxBorderType,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition;
 
         var loopVideo = function loopVideo() {
             if ("youtube" === videoType) {
@@ -47507,57 +47692,57 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            videoBoxId = _props$attributes4.videoBoxId,
-            videoType = _props$attributes4.videoType,
-            videoURL = _props$attributes4.videoURL,
-            autoPlay = _props$attributes4.autoPlay,
-            loop = _props$attributes4.loop,
-            mute = _props$attributes4.mute,
-            relatedVideos = _props$attributes4.relatedVideos,
-            controls = _props$attributes4.controls,
-            overlay = _props$attributes4.overlay,
-            overlayImgURL = _props$attributes4.overlayImgURL,
-            blur = _props$attributes4.blur,
-            contrast = _props$attributes4.contrast,
-            saturation = _props$attributes4.saturation,
-            bright = _props$attributes4.bright,
-            hue = _props$attributes4.hue,
-            playTop = _props$attributes4.playTop,
-            playLeft = _props$attributes4.playLeft,
-            playIcon = _props$attributes4.playIcon,
-            playColor = _props$attributes4.playColor,
-            playHoverColor = _props$attributes4.playHoverColor,
-            playHoverBackColor = _props$attributes4.playHoverBackColor,
-            playSize = _props$attributes4.playSize,
-            playPadding = _props$attributes4.playPadding,
-            playBack = _props$attributes4.playBack,
-            playBorderColor = _props$attributes4.playBorderColor,
-            playBorderWidth = _props$attributes4.playBorderWidth,
-            playBorderRadius = _props$attributes4.playBorderRadius,
-            playBorderType = _props$attributes4.playBorderType,
-            videoDesc = _props$attributes4.videoDesc,
-            descTop = _props$attributes4.descTop,
-            descLeft = _props$attributes4.descLeft,
-            videoDescText = _props$attributes4.videoDescText,
-            videoDescColor = _props$attributes4.videoDescColor,
-            videoDescBack = _props$attributes4.videoDescBack,
-            videoDescPadding = _props$attributes4.videoDescPadding,
-            videoDescSize = _props$attributes4.videoDescSize,
-            videoDescWeight = _props$attributes4.videoDescWeight,
-            videoDescLetter = _props$attributes4.videoDescLetter,
-            videoDescStyle = _props$attributes4.videoDescStyle,
-            videoDescUpper = _props$attributes4.videoDescUpper,
-            videoDescBorderRadius = _props$attributes4.videoDescBorderRadius,
-            boxBorderColor = _props$attributes4.boxBorderColor,
-            boxBorderWidth = _props$attributes4.boxBorderWidth,
-            boxBorderRadius = _props$attributes4.boxBorderRadius,
-            boxBorderType = _props$attributes4.boxBorderType,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition;
+        var _props$attributes5 = props.attributes,
+            videoBoxId = _props$attributes5.videoBoxId,
+            videoType = _props$attributes5.videoType,
+            videoURL = _props$attributes5.videoURL,
+            autoPlay = _props$attributes5.autoPlay,
+            loop = _props$attributes5.loop,
+            mute = _props$attributes5.mute,
+            relatedVideos = _props$attributes5.relatedVideos,
+            controls = _props$attributes5.controls,
+            overlay = _props$attributes5.overlay,
+            overlayImgURL = _props$attributes5.overlayImgURL,
+            blur = _props$attributes5.blur,
+            contrast = _props$attributes5.contrast,
+            saturation = _props$attributes5.saturation,
+            bright = _props$attributes5.bright,
+            hue = _props$attributes5.hue,
+            playTop = _props$attributes5.playTop,
+            playLeft = _props$attributes5.playLeft,
+            playIcon = _props$attributes5.playIcon,
+            playColor = _props$attributes5.playColor,
+            playHoverColor = _props$attributes5.playHoverColor,
+            playHoverBackColor = _props$attributes5.playHoverBackColor,
+            playSize = _props$attributes5.playSize,
+            playPadding = _props$attributes5.playPadding,
+            playBack = _props$attributes5.playBack,
+            playBorderColor = _props$attributes5.playBorderColor,
+            playBorderWidth = _props$attributes5.playBorderWidth,
+            playBorderRadius = _props$attributes5.playBorderRadius,
+            playBorderType = _props$attributes5.playBorderType,
+            videoDesc = _props$attributes5.videoDesc,
+            descTop = _props$attributes5.descTop,
+            descLeft = _props$attributes5.descLeft,
+            videoDescText = _props$attributes5.videoDescText,
+            videoDescColor = _props$attributes5.videoDescColor,
+            videoDescBack = _props$attributes5.videoDescBack,
+            videoDescPadding = _props$attributes5.videoDescPadding,
+            videoDescSize = _props$attributes5.videoDescSize,
+            videoDescWeight = _props$attributes5.videoDescWeight,
+            videoDescLetter = _props$attributes5.videoDescLetter,
+            videoDescStyle = _props$attributes5.videoDescStyle,
+            videoDescUpper = _props$attributes5.videoDescUpper,
+            videoDescBorderRadius = _props$attributes5.videoDescBorderRadius,
+            boxBorderColor = _props$attributes5.boxBorderColor,
+            boxBorderWidth = _props$attributes5.boxBorderWidth,
+            boxBorderRadius = _props$attributes5.boxBorderRadius,
+            boxBorderType = _props$attributes5.boxBorderType,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition;
 
         var loopVideo = function loopVideo() {
             if ("youtube" === videoType) {
@@ -47674,56 +47859,56 @@ var deprecatedContent = [{
 }, {
     attributes: _attributes2.default,
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            videoBoxId = _props$attributes5.videoBoxId,
-            videoType = _props$attributes5.videoType,
-            videoURL = _props$attributes5.videoURL,
-            autoPlay = _props$attributes5.autoPlay,
-            loop = _props$attributes5.loop,
-            mute = _props$attributes5.mute,
-            controls = _props$attributes5.controls,
-            overlay = _props$attributes5.overlay,
-            overlayImgURL = _props$attributes5.overlayImgURL,
-            blur = _props$attributes5.blur,
-            contrast = _props$attributes5.contrast,
-            saturation = _props$attributes5.saturation,
-            bright = _props$attributes5.bright,
-            hue = _props$attributes5.hue,
-            playTop = _props$attributes5.playTop,
-            playLeft = _props$attributes5.playLeft,
-            playIcon = _props$attributes5.playIcon,
-            playColor = _props$attributes5.playColor,
-            playHoverColor = _props$attributes5.playHoverColor,
-            playHoverBackColor = _props$attributes5.playHoverBackColor,
-            playSize = _props$attributes5.playSize,
-            playPadding = _props$attributes5.playPadding,
-            playBack = _props$attributes5.playBack,
-            playBorderColor = _props$attributes5.playBorderColor,
-            playBorderWidth = _props$attributes5.playBorderWidth,
-            playBorderRadius = _props$attributes5.playBorderRadius,
-            playBorderType = _props$attributes5.playBorderType,
-            videoDesc = _props$attributes5.videoDesc,
-            descTop = _props$attributes5.descTop,
-            descLeft = _props$attributes5.descLeft,
-            videoDescText = _props$attributes5.videoDescText,
-            videoDescColor = _props$attributes5.videoDescColor,
-            videoDescBack = _props$attributes5.videoDescBack,
-            videoDescPadding = _props$attributes5.videoDescPadding,
-            videoDescSize = _props$attributes5.videoDescSize,
-            videoDescWeight = _props$attributes5.videoDescWeight,
-            videoDescLetter = _props$attributes5.videoDescLetter,
-            videoDescStyle = _props$attributes5.videoDescStyle,
-            videoDescUpper = _props$attributes5.videoDescUpper,
-            videoDescBorderRadius = _props$attributes5.videoDescBorderRadius,
-            boxBorderColor = _props$attributes5.boxBorderColor,
-            boxBorderWidth = _props$attributes5.boxBorderWidth,
-            boxBorderRadius = _props$attributes5.boxBorderRadius,
-            boxBorderType = _props$attributes5.boxBorderType,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition;
+        var _props$attributes6 = props.attributes,
+            videoBoxId = _props$attributes6.videoBoxId,
+            videoType = _props$attributes6.videoType,
+            videoURL = _props$attributes6.videoURL,
+            autoPlay = _props$attributes6.autoPlay,
+            loop = _props$attributes6.loop,
+            mute = _props$attributes6.mute,
+            controls = _props$attributes6.controls,
+            overlay = _props$attributes6.overlay,
+            overlayImgURL = _props$attributes6.overlayImgURL,
+            blur = _props$attributes6.blur,
+            contrast = _props$attributes6.contrast,
+            saturation = _props$attributes6.saturation,
+            bright = _props$attributes6.bright,
+            hue = _props$attributes6.hue,
+            playTop = _props$attributes6.playTop,
+            playLeft = _props$attributes6.playLeft,
+            playIcon = _props$attributes6.playIcon,
+            playColor = _props$attributes6.playColor,
+            playHoverColor = _props$attributes6.playHoverColor,
+            playHoverBackColor = _props$attributes6.playHoverBackColor,
+            playSize = _props$attributes6.playSize,
+            playPadding = _props$attributes6.playPadding,
+            playBack = _props$attributes6.playBack,
+            playBorderColor = _props$attributes6.playBorderColor,
+            playBorderWidth = _props$attributes6.playBorderWidth,
+            playBorderRadius = _props$attributes6.playBorderRadius,
+            playBorderType = _props$attributes6.playBorderType,
+            videoDesc = _props$attributes6.videoDesc,
+            descTop = _props$attributes6.descTop,
+            descLeft = _props$attributes6.descLeft,
+            videoDescText = _props$attributes6.videoDescText,
+            videoDescColor = _props$attributes6.videoDescColor,
+            videoDescBack = _props$attributes6.videoDescBack,
+            videoDescPadding = _props$attributes6.videoDescPadding,
+            videoDescSize = _props$attributes6.videoDescSize,
+            videoDescWeight = _props$attributes6.videoDescWeight,
+            videoDescLetter = _props$attributes6.videoDescLetter,
+            videoDescStyle = _props$attributes6.videoDescStyle,
+            videoDescUpper = _props$attributes6.videoDescUpper,
+            videoDescBorderRadius = _props$attributes6.videoDescBorderRadius,
+            boxBorderColor = _props$attributes6.boxBorderColor,
+            boxBorderWidth = _props$attributes6.boxBorderWidth,
+            boxBorderRadius = _props$attributes6.boxBorderRadius,
+            boxBorderType = _props$attributes6.boxBorderType,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition;
 
         var loopVideo = function loopVideo() {
             if ("youtube" === videoType) {
@@ -56210,8 +56395,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 var _reactFonticonpicker = __webpack_require__(62);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
@@ -56268,19 +56451,15 @@ var _PremiumBackgroundControl = __webpack_require__(27);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _reactLottieWithSegments = __webpack_require__(113);
-
-var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 var withSelect = wp.data.withSelect;
-var Button = wp.components.Button;
 var _wp$element = wp.element,
     useState = _wp$element.useState,
     Fragment = _wp$element.Fragment,
-    useEffect = _wp$element.useEffect;
+    useEffect = _wp$element.useEffect,
+    useRef = _wp$element.useRef;
 var InnerBlocks = wp.blockEditor.InnerBlocks;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
@@ -56309,14 +56488,10 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
 }
 
 var edit = function edit(props) {
-    var _useState = useState(false),
-        _useState2 = _slicedToArray(_useState, 2),
-        isOpen = _useState2[0],
-        setOpen = _useState2[1];
-
-    var openModal = function openModal() {
-        return setOpen(true);
-    };
+    var closeButton = useRef(null);
+    var triggerRef = useRef(null);
+    var modalRef = useRef(null);
+    var wrapRef = useRef(null);
     var isSelected = props.isSelected,
         setAttributes = props.setAttributes,
         className = props.className;
@@ -56420,6 +56595,18 @@ var edit = function edit(props) {
         setAttributes({ block_id: props.clientId });
     }, []);
 
+    useEffect(function () {
+        closeButton.current.addEventListener('click', function () {
+            modalRef.current.style.display = "none";
+        });
+        wrapRef.current.addEventListener('click', function () {
+            modalRef.current.style.display = "none";
+        });
+        triggerRef.current.addEventListener("click", function () {
+            modalRef.current.style.display = "flex";
+        });
+    }, [props.attributes]);
+
     var saveContentStyle = function saveContentStyle(value) {
         var newUpdate = contentStyles.map(function (item, index) {
             if (0 === index) {
@@ -56500,8 +56687,9 @@ var edit = function edit(props) {
     var renderCss = React.createElement(
         "style",
         null,
-        "\n            #premium-modal-box-" + block_id + " .premium-popup__modal_wrap .premium-popup__modal_content .premium-modal-box-modal-header h3 div{\n                width:" + contentStyles[0].iconSize + "px !important;\n                height:" + contentStyles[0].iconSize + "px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover {\n              background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top: " + triggerBorderTopH + "px !important;\n              border-right: " + triggerBorderRightH + "px !important;\n              border-bottom: " + triggerBorderBottomH + "px !important;\n              border-left: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + " !important;\n            }\n        "
+        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover {\n              background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n        "
     );
+    var headerIconSize = getPreviewSize(props.deviceType, contentStyles[0].iconSize, contentStyles[0].iconSizeTablet, contentStyles[0].iconSizeMobile);
     var triggerFontSize = getPreviewSize(props.deviceType, triggerStyles[0].triggerSize, triggerStyles[0].triggerSizeTablet, triggerStyles[0].triggerSizeMobile);
     var triggerPaddingTop = getPreviewSize(props.deviceType, triggerPaddingT, triggerPaddingTTablet, triggerPaddingTMobile);
     var triggerPaddingRight = getPreviewSize(props.deviceType, triggerPaddingR, triggerPaddingRTablet, triggerPaddingRMobile);
@@ -56529,6 +56717,20 @@ var edit = function edit(props) {
     var modalMarginBottom = getPreviewSize(props.deviceType, modalMarginB, modalMarginBTablet, modalMarginBMobile);
     var modalMarginLeft = getPreviewSize(props.deviceType, modalMarginL, modalMarginLTablet, modalMarginLMobile);
 
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === modalStyles[0].containerBack || undefined === modalStyles[0].containerBack ? 'rgba(255,255,255,0)' : modalStyles[0].containerBack;
+        btnGrad2 = undefined !== modalStyles[0].gradientColorTwo && undefined !== modalStyles[0].gradientColorTwo && '' !== modalStyles[0].gradientColorTwo ? modalStyles[0].gradientColorTwo : '#777';
+        if ('radial' === modalStyles[0].gradientType) {
+            btnbg = "radial-gradient(at " + modalStyles[0].gradientPosition + ", " + btnGrad + " " + modalStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + modalStyles[0].gradientLocationTwo + "%)";
+        } else if ('radial' !== modalStyles[0].gradientType) {
+            btnbg = "linear-gradient(" + modalStyles[0].gradientAngle + "deg, " + btnGrad + " " + modalStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + modalStyles[0].gradientLocationTwo + "%)";
+        }
+    } else {
+        btnbg = modalStyles[0].backgroundImageURL ? "url('" + modalStyles[0].backgroundImageURL + "')" : '';
+    }
     return [isSelected && React.createElement(
         InspectorControls,
         { key: "inspector" },
@@ -56551,7 +56753,7 @@ var edit = function edit(props) {
                 null,
                 React.createElement(SelectControl, {
                     label: __('Icon Type', 'premium-blocks-for-gutenberg'),
-                    options: [{ label: __("None", "premium-blocks-for-gutenberg"), value: 'none' }, { label: __("Icon", "premium-blocks-for-gutenberg"), value: 'icon' }, { label: __('Custom Image', 'premium-blocks-for-gutenberg'), value: 'image' }, { label: __('Lottie Animations', 'premium-blocks-for-gutenberg'), value: 'lottie' }],
+                    options: [{ label: __("None", "premium-blocks-for-gutenberg"), value: 'none' }, { label: __("Icon", "premium-blocks-for-gutenberg"), value: 'icon' }, { label: __('Custom Image', 'premium-blocks-for-gutenberg'), value: 'image' }],
                     value: contentStyles[0].iconType,
                     onChange: function onChange(value) {
                         return saveContentStyle({ iconType: value });
@@ -56593,44 +56795,19 @@ var edit = function edit(props) {
                         });
                     }
                 }),
-                contentStyles[0].iconType === "lottie" && React.createElement(
-                    Fragment,
-                    null,
-                    React.createElement(TextControl, {
-                        label: __("Animation JSON URL", "premium-blocks-for-gutenberg"),
-                        value: contentStyles[0].lottieURL,
-                        onChange: function onChange(value) {
-                            return saveContentStyle({ lottieURL: value });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Loop", 'premium-blocks-for-gutenberg'),
-                        checked: contentStyles[0].loopLottie,
-                        onChange: function onChange(value) {
-                            return saveContentStyle({ loopLottie: value });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Reverse", 'premium-blocks-for-gutenberg'),
-                        checked: contentStyles[0].reverseLottie,
-                        onChange: function onChange(value) {
-                            return saveContentStyle({ reverseLottie: value });
-                        }
-                    })
-                ),
                 contentStyles[0].iconType !== "none" && React.createElement(_responsiveRangeControl2.default, {
                     label: __('Icon Size', 'premium-blocks-for-gutenberg'),
                     value: contentStyles[0].iconSize,
                     onChange: function onChange(value) {
-                        return saveContentStyle({ iconSize: value !== "" ? value : 200 });
+                        return saveContentStyle({ iconSize: value });
                     },
                     tabletValue: contentStyles[0].iconSizeTablet,
                     onChangeTablet: function onChangeTablet(value) {
-                        return saveContentStyle({ iconSizeTablet: value !== "" ? value : 200 });
+                        return saveContentStyle({ iconSizeTablet: value });
                     },
                     mobileValue: contentStyles[0].iconSizeMobile,
                     onChangeMobile: function onChangeMobile(value) {
-                        return saveContentStyle({ iconSizeMobile: value !== "" ? value : 200 });
+                        return saveContentStyle({ iconSizeMobile: value });
                     },
                     min: 0,
                     max: 100,
@@ -56710,7 +56887,7 @@ var edit = function edit(props) {
                     value: "fast"
                 }, {
                     label: __("Normal", 'premium-blocks-for-gutenberg'),
-                    value: ""
+                    value: "normal"
                 }, {
                     label: __("Slow", 'premium-blocks-for-gutenberg'),
                     value: 'slow'
@@ -57494,7 +57671,7 @@ var edit = function edit(props) {
                     colorValue: modalStyles[0].textColor,
                     colorDefault: '',
                     onColorChange: function onColorChange(newValue) {
-                        return saveModalStyles({ color: newValue });
+                        return saveModalStyles({ textColor: newValue });
                     }
                 }),
                 React.createElement(_ColorComponent2.default, {
@@ -57781,13 +57958,13 @@ var edit = function edit(props) {
         )
     ), renderCss, React.createElement(
         "div",
-        { id: "premium-modal-box-" + block_id, className: (0, _classnames2.default)(className, "premium-modal-box") },
+        { id: "premium-modal-box-" + block_id, className: (0, _classnames2.default)(className, "premium-modal-box"), "data-trigger": triggerSettings[0].triggerType },
         React.createElement(
             "div",
             { className: "premium-modal-trigger-container", style: { textAlign: triggerSettings[0].align } },
             React.createElement(
                 "button",
-                { className: "premium-button__" + triggerSettings[0].btnSize, onClick: openModal, style: {
+                { className: "premium-button__" + triggerSettings[0].btnSize, ref: triggerRef, style: {
                         fontSize: "" + triggerFontSize + triggerStyles[0].triggerSizeUnit,
                         paddingTop: triggerPaddingTop + "px",
                         paddingRight: triggerPaddingRight + "px",
@@ -57795,12 +57972,12 @@ var edit = function edit(props) {
                         paddingLeft: triggerPaddingLeft + "px",
                         backgroundColor: triggerStyles[0].triggerBack,
                         borderStyle: triggerStyles[0].borderType,
-                        borderTop: triggerBorderTop + "px",
-                        borderRight: triggerBorderRight + "px",
-                        borderBottom: triggerBorderBottom + "px",
-                        borderLeft: triggerBorderLeft + "px",
+                        borderTopWidth: triggerBorderTop + "px",
+                        borderRightWidth: triggerBorderRight + "px",
+                        borderBottomWidth: triggerBorderBottom + "px",
+                        borderLeftWidth: triggerBorderLeft + "px",
                         borderColor: triggerStyles[0].borderColor,
-                        borderRadius: triggerStyles[0].borderRadius,
+                        borderRadius: triggerStyles[0].borderRadius + "px",
                         boxShadow: triggerStyles[0].triggerShadowHorizontal + "px " + triggerStyles[0].triggerShadowVertical + "px " + triggerStyles[0].triggerShadowBlur + "px " + triggerStyles[0].triggerShadowColor + " " + triggerStyles[0].triggerShadowPosition
                     } },
                 triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement("i", { className: triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginRight: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } }),
@@ -57813,15 +57990,19 @@ var edit = function edit(props) {
                 triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && React.createElement("i", { className: triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginLeft: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } })
             )
         ),
-        isOpen && React.createElement(
+        React.createElement(
             "div",
-            { className: "premium-popup__modal_wrap" },
-            React.createElement("div", { role: "presentation", className: "premium-popup__modal_wrap_overlay", onClick: function onClick() {
-                    return setOpen(false);
+            { ref: modalRef, className: "premium-popup__modal_wrap", style: { display: "none" }, role: "dialog" },
+            React.createElement("div", { role: "presentation", className: "premium-popup__modal_wrap_overlay", ref: wrapRef, style: {
+                    backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
+                    backgroundImage: btnbg
                 } }),
             React.createElement(
                 "div",
-                { className: "premium-popup__modal_content animated animation-" + contentStyles[0].animationType + " animation-" + contentStyles[0].animationSpeed, style: {
+                { className: "premium-popup__modal_content animated animation-" + contentStyles[0].animationType + " animation-" + contentStyles[0].animationSpeed,
+                    "data-delay": contentStyles[0].animationDelay,
+                    "data-animation": contentStyles[0].animationType + " " + contentStyles[0].animationSpeed,
+                    style: {
                         width: "" + modalWidth + modalStyles[0].modalWidthUnit,
                         maxHeight: "" + modalMaxHeight + modalStyles[0].modalHeightUnit,
                         marginTop: modalMarginTop + "px",
@@ -57830,10 +58011,10 @@ var edit = function edit(props) {
                         marginLeft: modalMarginLeft + "px",
                         borderStyle: "" + modalStyles[0].borderType,
                         borderColor: "" + modalStyles[0].borderColor,
-                        borderTop: modalBorderTop + "px",
-                        borderRight: modalBorderRight + "px",
-                        borderBottom: modalBorderBottom + "px",
-                        borderLeft: modalBorderLeft + "px",
+                        borderTopWidth: modalBorderTop + "px",
+                        borderRightWidth: modalBorderRight + "px",
+                        borderBottomWidth: modalBorderBottom + "px",
+                        borderLeftWidth: modalBorderLeft + "px",
                         borderRadius: modalStyles[0].borderRadius + "px",
                         boxShadow: modalStyles[0].modalShadowHorizontal + "px " + modalStyles[0].modalShadowVertical + "px " + modalStyles[0].modalShadowBlur + "px " + modalStyles[0].modalShadowColor + " " + modalStyles[0].modalShadowPosition
                     } },
@@ -57842,12 +58023,12 @@ var edit = function edit(props) {
                     { className: "premium-modal-box-modal-header", style: {
                             backgroundColor: headerStyles[0].backColor,
                             borderStyle: headerStyles[0].borderType,
-                            borderTop: headerBorderTop + "px",
-                            borderRight: headerBorderRight + "px",
-                            borderBottom: headerBorderBottom + "px",
-                            borderLeft: headerBorderLeft + "px",
+                            borderTopWidth: headerBorderTop + "px",
+                            borderRightWidth: headerBorderRight + "px",
+                            borderBottomWidth: headerBorderBottom + "px",
+                            borderLeftWidth: headerBorderLeft + "px",
                             borderColor: "" + headerStyles[0].borderColor,
-                            borderRadius: "" + headerStyles[0].borderRadius
+                            borderRadius: headerStyles[0].borderRadius + "px"
                         } },
                     React.createElement(
                         "h3",
@@ -57859,20 +58040,11 @@ var edit = function edit(props) {
                                 fontWeight: headerStyles[0].headerWeight,
                                 fontSize: "" + headerFontSize + headerStyles[0].headerSizeUnit
                             } },
-                        contentStyles[0].iconType === "icon" && React.createElement("i", { className: contentStyles[0].contentIcon }),
-                        contentStyles[0].iconType === "image" && React.createElement("img", { src: contentStyles[0].contentImgURL }),
-                        contentStyles[0].iconType === "lottie" && React.createElement(_reactLottieWithSegments2.default, {
-                            options: {
-                                loop: contentStyles[0].loopLottie,
-                                path: contentStyles[0].lottieURL,
-                                rendererSettings: {
-                                    preserveAspectRatio: 'xMidYMid',
-                                    className: "premium-lottie-inner"
-                                }
-                            },
-                            isClickToPauseDisabled: true,
-                            direction: contentStyles[0].reverseLottie ? -1 : 1
-                        }),
+                        contentStyles[0].iconType === "icon" && React.createElement("i", { className: contentStyles[0].contentIcon, style: { fontSize: "" + headerIconSize + contentStyles[0].iconSizeUnit } }),
+                        contentStyles[0].iconType === "image" && React.createElement("img", { src: contentStyles[0].contentImgURL, style: {
+                                width: "" + headerIconSize + contentStyles[0].iconSizeUnit,
+                                height: "" + headerIconSize + contentStyles[0].iconSizeUnit
+                            } }),
                         contentStyles[0].titleText
                     ),
                     contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(
@@ -57880,12 +58052,12 @@ var edit = function edit(props) {
                         { className: "premium-modal-box-close-button-container", style: {
                                 backgroundColor: "" + upperStyles[0].backColor,
                                 borderStyle: "" + upperStyles[0].borderType,
-                                borderTop: upperBorderTop + "px",
-                                borderRight: upperBorderRight + "px",
-                                borderBottom: upperBorderBottom + "px",
-                                borderLeft: upperBorderLeft + "px",
+                                borderTopWidth: upperBorderTop + "px",
+                                borderRightWidth: upperBorderRight + "px",
+                                borderBottomWidth: upperBorderBottom + "px",
+                                borderLeftWidth: upperBorderLeft + "px",
                                 borderColor: "" + upperStyles[0].borderColor,
-                                borderRadius: "" + upperStyles[0].borderRadius,
+                                borderRadius: upperStyles[0].borderRadius + "px",
                                 paddingTop: upperPaddingTop + "px",
                                 paddingRight: upperPaddingRight + "px",
                                 paddingBottom: upperPaddingBottom + "px",
@@ -57893,13 +58065,12 @@ var edit = function edit(props) {
                             } },
                         React.createElement(
                             "button",
-                            { type: "button", className: "premium-modal-box-modal-close", onClick: function onClick() {
-                                    return setOpen(false);
-                                }, style: {
+                            { type: "button", className: "premium-modal-box-modal-close", ref: closeButton,
+                                style: {
                                     fontSize: "" + upperStyles[0].iconWidth + upperStyles[0].iconWidthUnit,
                                     color: "" + upperStyles[0].color
 
-                                } },
+                                }, "data-dismiss": "premium-modal" },
                             "\xD7"
                         )
                     )
@@ -57907,12 +58078,7 @@ var edit = function edit(props) {
                 React.createElement(
                     "div",
                     { className: "premium-modal-box-modal-body", style: {
-                            color: modalStyles[0].textColor,
                             background: modalStyles[0].textBackColor,
-                            fontStyle: modalStyles[0].modalStyle,
-                            fontWeight: modalStyles[0].modalWeight,
-                            fontFamily: modalStyles[0].modalFamily,
-                            letterSpacing: modalStyles[0].modalSpacing,
                             paddingTop: modalPaddingTop + "px",
                             paddingRight: modalPaddingRight + "px",
                             paddingBottom: modalPaddingBottom + "px",
@@ -57921,7 +58087,12 @@ var edit = function edit(props) {
                     modalStyles[0].contentType === "text" ? React.createElement(
                         "p",
                         { style: {
-                                fontSize: "" + modalFontSize + modalStyles[0].modalSizeUnit
+                                fontSize: "" + modalFontSize + modalStyles[0].modalSizeUnit,
+                                color: modalStyles[0].textColor,
+                                fontWeight: modalStyles[0].modalWeight,
+                                fontFamily: modalStyles[0].modalFamily,
+                                letterSpacing: modalStyles[0].modalSpacing,
+                                fontStyle: modalStyles[0].modalStyle
                             } },
                         modalStyles[0].contentText
                     ) : React.createElement(InnerBlocks, null)
@@ -57933,9 +58104,8 @@ var edit = function edit(props) {
                         } },
                     React.createElement(
                         "button",
-                        { className: "premium-modal-box-modal-lower-close", role: "button", onClick: function onClick() {
-                                return setOpen(false);
-                            },
+                        { className: "premium-modal-box-modal-lower-close", role: "button", "data-dismiss": "premium-modal",
+                            ref: closeButton,
                             style: {
                                 fontStyle: lowerStyles[0].lowerStyle,
                                 fontWeight: lowerStyles[0].lowerWeight,
@@ -57945,12 +58115,12 @@ var edit = function edit(props) {
                                 color: "" + lowerStyles[0].color,
                                 backgroundColor: "" + lowerStyles[0].backColor,
                                 borderStyle: "" + lowerStyles[0].borderType,
-                                borderTop: lowerBorderTop + "px",
-                                borderRight: lowerBorderRight + "px",
-                                borderBottom: lowerBorderBottom + "px",
-                                borderLeft: lowerBorderLeft + "px",
+                                borderTopWidth: lowerBorderTop + "px",
+                                borderRightWidth: lowerBorderRight + "px",
+                                borderBottomWidth: lowerBorderBottom + "px",
+                                borderLeftWidth: lowerBorderLeft + "px",
                                 borderColor: "" + lowerStyles[0].borderColor,
-                                borderRadius: "" + lowerStyles[0].borderRadius,
+                                borderRadius: lowerStyles[0].borderRadius + "px",
                                 paddingTop: lowerPaddingTop + "px",
                                 paddingRight: lowerPaddingRight + "px",
                                 paddingBottom: lowerPaddingBottom + "px",
@@ -57986,6 +58156,11 @@ exports.default = withSelect(function (select, props) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _ref;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var __ = wp.i18n.__;
 
 
@@ -58013,7 +58188,7 @@ var attributes = {
             showLowerClose: true,
             lowerCloseText: __('Close', 'premium-blocks-for-gutenberg'),
             animationType: 'fadeInDown',
-            animationSpeed: '',
+            animationSpeed: 'normal',
             animationDelay: ''
         }]
     },
@@ -58287,7 +58462,7 @@ var attributes = {
     },
     modalStyles: {
         type: "array",
-        default: [{
+        default: [(_ref = {
             contentType: 'text',
             contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
             textColor: '',
@@ -58316,22 +58491,13 @@ var attributes = {
             backgroundRepeat: '',
             backgroundSize: '',
             fixed: false,
-            gradientLocationOne: '',
+            gradientLocationOne: '0',
             gradientColorTwo: '',
-            gradientLocationTwo: '',
-            gradientAngle: '',
-            gradientPosition: '',
-            gradientType: '',
-            footerBackColor: '',
-            borderType: 'none',
-            borderColor: '',
-            borderRadius: '',
-            modalShadowColor: '',
-            modalShadowBlur: '',
-            modalShadowHorizontal: '',
-            modalShadowVertical: '',
-            modalShadowPosition: ''
-        }]
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+        }, _defineProperty(_ref, 'gradientType', ''), _defineProperty(_ref, 'footerBackColor', ''), _defineProperty(_ref, 'borderType', 'none'), _defineProperty(_ref, 'borderColor', ''), _defineProperty(_ref, 'borderRadius', ''), _defineProperty(_ref, 'modalShadowColor', ''), _defineProperty(_ref, 'modalShadowBlur', ''), _defineProperty(_ref, 'modalShadowHorizontal', ''), _defineProperty(_ref, 'modalShadowVertical', ''), _defineProperty(_ref, 'modalShadowPosition', ''), _ref)]
     },
     backgroundType: {
         type: "string"
@@ -58455,22 +58621,6 @@ var save = function save(props) {
         triggerBorderRight = _props$attributes.triggerBorderRight,
         triggerBorderBottom = _props$attributes.triggerBorderBottom,
         triggerBorderLeft = _props$attributes.triggerBorderLeft,
-        triggerBorderTopH = _props$attributes.triggerBorderTopH,
-        triggerBorderRightH = _props$attributes.triggerBorderRightH,
-        triggerBorderBottomH = _props$attributes.triggerBorderBottomH,
-        triggerBorderLeftH = _props$attributes.triggerBorderLeftH,
-        triggerPaddingT = _props$attributes.triggerPaddingT,
-        triggerPaddingR = _props$attributes.triggerPaddingR,
-        triggerPaddingB = _props$attributes.triggerPaddingB,
-        triggerPaddingL = _props$attributes.triggerPaddingL,
-        triggerPaddingTTablet = _props$attributes.triggerPaddingTTablet,
-        triggerPaddingRTablet = _props$attributes.triggerPaddingRTablet,
-        triggerPaddingBTablet = _props$attributes.triggerPaddingBTablet,
-        triggerPaddingLTablet = _props$attributes.triggerPaddingLTablet,
-        triggerPaddingTMobile = _props$attributes.triggerPaddingTMobile,
-        triggerPaddingRMobile = _props$attributes.triggerPaddingRMobile,
-        triggerPaddingBMobile = _props$attributes.triggerPaddingBMobile,
-        triggerPaddingLMobile = _props$attributes.triggerPaddingLMobile,
         headerStyles = _props$attributes.headerStyles,
         headerBorderTop = _props$attributes.headerBorderTop,
         headerBorderRight = _props$attributes.headerBorderRight,
@@ -58481,72 +58631,24 @@ var save = function save(props) {
         upperBorderRight = _props$attributes.upperBorderRight,
         upperBorderBottom = _props$attributes.upperBorderBottom,
         upperBorderLeft = _props$attributes.upperBorderLeft,
-        upperPaddingT = _props$attributes.upperPaddingT,
-        upperPaddingR = _props$attributes.upperPaddingR,
-        upperPaddingB = _props$attributes.upperPaddingB,
-        upperPaddingL = _props$attributes.upperPaddingL,
-        upperPaddingTTablet = _props$attributes.upperPaddingTTablet,
-        upperPaddingRTablet = _props$attributes.upperPaddingRTablet,
-        upperPaddingBTablet = _props$attributes.upperPaddingBTablet,
-        upperPaddingLTablet = _props$attributes.upperPaddingLTablet,
-        upperPaddingTMobile = _props$attributes.upperPaddingTMobile,
-        upperPaddingRMobile = _props$attributes.upperPaddingRMobile,
-        upperPaddingBMobile = _props$attributes.upperPaddingBMobile,
-        upperPaddingLMobile = _props$attributes.upperPaddingLMobile,
         lowerStyles = _props$attributes.lowerStyles,
         lowerBorderTop = _props$attributes.lowerBorderTop,
         lowerBorderRight = _props$attributes.lowerBorderRight,
         lowerBorderBottom = _props$attributes.lowerBorderBottom,
         lowerBorderLeft = _props$attributes.lowerBorderLeft,
-        lowerPaddingT = _props$attributes.lowerPaddingT,
-        lowerPaddingR = _props$attributes.lowerPaddingR,
-        lowerPaddingB = _props$attributes.lowerPaddingB,
-        lowerPaddingL = _props$attributes.lowerPaddingL,
-        lowerPaddingTTablet = _props$attributes.lowerPaddingTTablet,
-        lowerPaddingRTablet = _props$attributes.lowerPaddingRTablet,
-        lowerPaddingBTablet = _props$attributes.lowerPaddingBTablet,
-        lowerPaddingLTablet = _props$attributes.lowerPaddingLTablet,
-        lowerPaddingTMobile = _props$attributes.lowerPaddingTMobile,
-        lowerPaddingRMobile = _props$attributes.lowerPaddingRMobile,
-        lowerPaddingBMobile = _props$attributes.lowerPaddingBMobile,
-        lowerPaddingLMobile = _props$attributes.lowerPaddingLMobile,
         modalStyles = _props$attributes.modalStyles,
         backgroundType = _props$attributes.backgroundType,
         modalBorderTop = _props$attributes.modalBorderTop,
         modalBorderRight = _props$attributes.modalBorderRight,
         modalBorderBottom = _props$attributes.modalBorderBottom,
-        modalBorderLeft = _props$attributes.modalBorderLeft,
-        modalMarginT = _props$attributes.modalMarginT,
-        modalMarginR = _props$attributes.modalMarginR,
-        modalMarginB = _props$attributes.modalMarginB,
-        modalMarginL = _props$attributes.modalMarginL,
-        modalMarginTTablet = _props$attributes.modalMarginTTablet,
-        modalMarginRTablet = _props$attributes.modalMarginRTablet,
-        modalMarginBTablet = _props$attributes.modalMarginBTablet,
-        modalMarginLTablet = _props$attributes.modalMarginLTablet,
-        modalMarginTMobile = _props$attributes.modalMarginTMobile,
-        modalMarginRMobile = _props$attributes.modalMarginRMobile,
-        modalMarginBMobile = _props$attributes.modalMarginBMobile,
-        modalMarginLMobile = _props$attributes.modalMarginLMobile,
-        modalPaddingT = _props$attributes.modalPaddingT,
-        modalPaddingR = _props$attributes.modalPaddingR,
-        modalPaddingB = _props$attributes.modalPaddingB,
-        modalPaddingL = _props$attributes.modalPaddingL,
-        modalPaddingTTablet = _props$attributes.modalPaddingTTablet,
-        modalPaddingRTablet = _props$attributes.modalPaddingRTablet,
-        modalPaddingBTablet = _props$attributes.modalPaddingBTablet,
-        modalPaddingLTablet = _props$attributes.modalPaddingLTablet,
-        modalPaddingTMobile = _props$attributes.modalPaddingTMobile,
-        modalPaddingRMobile = _props$attributes.modalPaddingRMobile,
-        modalPaddingBMobile = _props$attributes.modalPaddingBMobile,
-        modalPaddingLMobile = _props$attributes.modalPaddingLMobile;
+        modalBorderLeft = _props$attributes.modalBorderLeft;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-container');
 
     return React.createElement(
         'div',
-        { id: 'premium-modal-box-' + block_id, className: (0, _classnames2.default)(className, "premium-modal-box") },
+        { id: 'premium-modal-box-' + block_id, className: (0, _classnames2.default)(className, "premium-modal-box"), 'data-trigger': triggerSettings[0].triggerType },
         triggerSettings[0].triggerType === "button" && React.createElement(
             'div',
             { className: 'premium-modal-trigger-container', style: { textAlign: triggerSettings[0].align } },
@@ -58575,15 +58677,14 @@ var save = function save(props) {
         ),
         React.createElement(
             'div',
-            { className: 'premium-popup__modal_wrap' },
-            React.createElement('div', { role: 'presentation', className: 'premium-popup__modal_wrap_overlay', onClick: function onClick() {
-                    return setOpen(false);
-                } }),
+            { className: 'premium-popup__modal_wrap', style: { display: 'none' }, role: 'dialog' },
+            React.createElement('div', { role: 'presentation', className: 'premium-popup__modal_wrap_overlay' }),
             React.createElement(
                 'div',
-                { className: 'premium-popup__modal_content', style: {
-                        width: '' + modalStyles[0].modalWidth + modalStyles[0].modalWidthUnit,
-                        maxHeight: '' + modalStyles[0].modalHeight + modalStyles[0].modalHeightUnit,
+                { className: 'premium-popup__modal_content animated animation-' + contentStyles[0].animationType + ' animation-' + contentStyles[0].animationSpeed,
+                    'data-delay': contentStyles[0].animationDelay,
+                    'data-animation': contentStyles[0].animationType + ' ' + contentStyles[0].animationSpeed,
+                    style: {
                         borderStyle: '' + modalStyles[0].borderType,
                         borderColor: '' + modalStyles[0].borderColor,
                         borderTop: modalBorderTop + 'px',
@@ -58616,11 +58717,6 @@ var save = function save(props) {
                             } },
                         contentStyles[0].iconType === "icon" && React.createElement('i', { className: contentStyles[0].contentIcon }),
                         contentStyles[0].iconType === "image" && React.createElement('img', { src: contentStyles[0].contentImgURL }),
-                        contentStyles[0].iconType === "lottie" && React.createElement('div', { className: 'premium-lottie-animation',
-                            'data-lottieurl': contentStyles[0].lottieURL,
-                            'data-loop': contentStyles[0].loopLottie,
-                            'data-reverse': contentStyles[0].reverseLottie
-                        }),
                         contentStyles[0].titleText
                     ),
                     contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(
@@ -58634,16 +58730,15 @@ var save = function save(props) {
                                 borderLeft: upperBorderLeft + 'px',
                                 borderColor: '' + upperStyles[0].borderColor,
                                 borderRadius: '' + upperStyles[0].borderRadius
+
                             } },
                         React.createElement(
                             'button',
-                            { type: 'button', className: 'premium-modal-box-modal-close', onClick: function onClick() {
-                                    return setOpen(false);
-                                }, style: {
+                            { type: 'button', className: 'premium-modal-box-modal-close', style: {
                                     fontSize: '' + upperStyles[0].iconWidth + upperStyles[0].iconWidthUnit,
                                     color: '' + upperStyles[0].color
 
-                                } },
+                                }, 'data-dismiss': 'premium-modal' },
                             '\xD7'
                         )
                     )
@@ -58657,12 +58752,13 @@ var save = function save(props) {
                             fontWeight: modalStyles[0].modalWeight,
                             fontFamily: modalStyles[0].modalFamily,
                             letterSpacing: modalStyles[0].modalSpacing
+
                         } },
                     modalStyles[0].contentType === "text" ? React.createElement(
                         'p',
                         null,
                         modalStyles[0].contentText
-                    ) : React.createElement(InnerBlocks.Content, null)
+                    ) : React.createElement(InnerBlocks, null)
                 ),
                 contentStyles[0].showLowerClose && React.createElement(
                     'div',
@@ -58671,9 +58767,8 @@ var save = function save(props) {
                         } },
                     React.createElement(
                         'button',
-                        { className: 'premium-modal-box-modal-lower-close', role: 'button', onClick: function onClick() {
-                                return setOpen(false);
-                            },
+                        { className: 'premium-modal-box-modal-lower-close', role: 'button',
+                            'data-dismiss': 'premium-modal',
                             style: {
                                 fontStyle: lowerStyles[0].lowerStyle,
                                 fontWeight: lowerStyles[0].lowerWeight,

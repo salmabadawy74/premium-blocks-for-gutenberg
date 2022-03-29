@@ -123,6 +123,7 @@ class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
+            ratioValue,
             boxStyles,
             overlayStyles,
             playStyles,
@@ -164,8 +165,6 @@ class edit extends Component {
                 return loop ? "1" : "0";
             }
         };
-
-
 
         const mainClasses = classnames(className, "premium-video-box");
 
@@ -303,6 +302,21 @@ class edit extends Component {
                             label={__("Overlay Image", 'premium-blocks-for-gutenberg')}
                             checked={overlay}
                             onChange={newCheck => setAttributes({ overlay: newCheck })}
+                        />
+                        <SelectControl
+                            label={__('Aspect Ratio', 'premium-blocks-for-gutenberg')}
+                            value={ratioValue}
+                            options={
+                                [
+                                    { label: '1:1', value: '11' },
+                                    { label: '16:9', value: '169' },
+                                    { label: '4:3', value: '43' },
+                                    { label: '3:2', value: '32' },
+                                    { label: '21:9', value: '219' },
+                                    { label: '9:16', value: '916' }
+                                ]
+                            }
+                            onChange={(newValue) => setAttributes({ ratioValue: newValue })}
                         />
                     </PanelBody>
                     {overlay && (
@@ -666,7 +680,7 @@ class edit extends Component {
                     <div
                         ref={this.videoboxRef}
                         id={videoBoxId}
-                        className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                        className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`}
                         data-type={videoType}
                         style={{
                             borderStyle: boxStyles[0].boxBorderType,
@@ -689,27 +703,33 @@ class edit extends Component {
                             }}
                         />
                         <div className={`premium-video-box__container`}>
-                            {"self" !== videoType && (
-                                <iframe
-                                    src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                        }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                        }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                        }`}
-                                    frameborder="0"
-                                    gesture="media"
-                                    allow="encrypted-media"
-                                    allowfullscreen
-                                />
-                            )}
-                            {"self" === videoType && (
-                                <video
-                                    src={videoURL}
-                                    loop={loop ? true : false}
-                                    muted={mute ? true : false}
-                                    autoplay={overlay ? false : autoPlay}
-                                    controls={controls ? true : false}
-                                />
-                            )}
+                            <div>
+                                <div className={`premium-video-box-inner-wrap`}>
+                                    <div className={`premium-video-box-video-container`}>
+                                        {"self" !== videoType && (
+                                            <iframe
+                                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                                    }`}
+                                                frameborder="0"
+                                                gesture="media"
+                                                allow="encrypted-media"
+                                                allowfullscreen
+                                            />
+                                        )}
+                                        {"self" === videoType && (
+                                            <video
+                                                src={videoURL}
+                                                loop={loop ? true : false}
+                                                muted={mute ? true : false}
+                                                autoplay={overlay ? false : autoPlay}
+                                                controls={controls ? true : false}
+                                            />
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         {overlay && overlayStyles[0].overlayImgURL && (
                             <div
