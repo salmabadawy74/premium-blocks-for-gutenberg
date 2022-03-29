@@ -330,6 +330,7 @@ class edit extends Component {
             generalpaddingLMobile,
             titleFont
         } = attributes
+        console.log(iconPosition)
 
         const LAYOUT = [
             {
@@ -682,6 +683,7 @@ class edit extends Component {
                             value={iconPosition}
                             onChange={newValue => setAttributes({ iconPosition: newValue })}
                         />
+                        <p>Bullet Alignment</p>
                         <Toolbar
                             controls={ALIGNS.map(contentAlign => ({
                                 icon: "editor-align" + contentAlign,
@@ -1388,6 +1390,7 @@ class edit extends Component {
                                                 marginRight: BulletIconMarginRight + bulletIconmarginType,
                                                 textAlign: bulletAlign,
                                                 justifyContent: bulletAlign,
+                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                             }}
                                         >{image_icon_html}</span>
                                         <div className="premium-bullet-list__label-wrap">
@@ -1396,9 +1399,7 @@ class edit extends Component {
                                                 placeholder={__("Title Name")}
                                                 value={icon.label}
                                                 className='premium-bullet-list__label'
-                                                onChange={value => {
-                                                    this.saveIcons({ label: value }, index)
-                                                }}
+                                                onChange={(val) => changeLabel(val, index)}
                                                 multiline={false}
                                                 style={{
                                                     fontFamily: titleFont,

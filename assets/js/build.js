@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 130);
+/******/ 	return __webpack_require__(__webpack_require__.s = 127);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -148,7 +148,7 @@ var _premiumSizeUnits = __webpack_require__(24);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _rangeControl = __webpack_require__(133);
+var _rangeControl = __webpack_require__(130);
 
 var _rangeControl2 = _interopRequireDefault(_rangeControl);
 
@@ -296,7 +296,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _colord = __webpack_require__(217);
+var _colord = __webpack_require__(216);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1158,11 +1158,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumFonts = __webpack_require__(102);
+var _premiumFonts = __webpack_require__(218);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _responsiveRangeControl = __webpack_require__(47);
+var _responsiveRangeControl = __webpack_require__(45);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -1659,143 +1659,11 @@ exports.default = PremiumTypo;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _wp$element = wp.element,
-    useState = _wp$element.useState,
-    Fragment = _wp$element.Fragment;
-var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
-
-
-var RadioComponent = function RadioComponent(_ref) {
-    var value = _ref.value,
-        onChange = _ref.onChange,
-        label = _ref.label,
-        choices = _ref.choices;
-
-    var HandleChange = function HandleChange(newVal) {
-        onChange(newVal);
-        setState(newVal);
-    };
-    var defaultVal = '';
-    value = value ? value : defaultVal;
-
-    var _useState = useState(value),
-        _useState2 = _slicedToArray(_useState, 2),
-        state = _useState2[0],
-        setState = _useState2[1];
-
-    var renderButtons = function renderButtons() {
-        var currentChoices = choices;
-        return React.createElement(
-            Fragment,
-            null,
-            currentChoices.map(function (choice) {
-                var currentValue = state;
-                return React.createElement(
-                    Button,
-                    {
-                        isTertiary: true,
-                        className: choice === currentValue ? 'active-radio' : '',
-                        onClick: function onClick() {
-                            HandleChange(choice);
-                        }
-                    },
-                    choice
-                );
-            })
-        );
-    };
-    return React.createElement(
-        Fragment,
-        null,
-        React.createElement(
-            'span',
-            { className: 'customize-control-title premium-control-title' },
-            label
-        ),
-        React.createElement(
-            ButtonGroup,
-            { className: 'premium-radio-container-control' },
-            renderButtons()
-        )
-    );
-};
-
-exports.default = React.memo(RadioComponent);
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var core = module.exports = { version: '2.5.7' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-module.exports = isArray;
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var freeGlobal = __webpack_require__(85);
-
-/** Detect free variable `self`. */
-var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-/***/ }),
-/* 14 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1907,7 +1775,86 @@ function PremiumTextShadow(props) {
 }
 
 /***/ }),
-/* 15 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    Fragment = _wp$element.Fragment;
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    ButtonGroup = _wp$components.ButtonGroup,
+    Button = _wp$components.Button;
+
+
+var RadioComponent = function RadioComponent(_ref) {
+    var value = _ref.value,
+        onChange = _ref.onChange,
+        label = _ref.label,
+        choices = _ref.choices;
+
+    var HandleChange = function HandleChange(newVal) {
+        onChange(newVal);
+        setState(newVal);
+    };
+    var defaultVal = '';
+    value = value ? value : defaultVal;
+
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
+
+    var renderButtons = function renderButtons() {
+        var currentChoices = choices;
+        return React.createElement(
+            Fragment,
+            null,
+            currentChoices.map(function (choice) {
+                var currentValue = state;
+                return React.createElement(
+                    Button,
+                    {
+                        isTertiary: true,
+                        className: choice === currentValue ? 'active-radio' : '',
+                        onClick: function onClick() {
+                            HandleChange(choice);
+                        }
+                    },
+                    choice
+                );
+            })
+        );
+    };
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            'span',
+            { className: 'customize-control-title premium-control-title' },
+            label
+        ),
+        React.createElement(
+            ButtonGroup,
+            { className: 'premium-radio-container-control' },
+            renderButtons()
+        )
+    );
+};
+
+exports.default = React.memo(RadioComponent);
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2037,110 +1984,60 @@ function PremiumBoxShadow(props) {
 }
 
 /***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+module.exports = isArray;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var freeGlobal = __webpack_require__(85);
+
+/** Detect free variable `self`. */
+var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+/***/ }),
 /* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var removeHash = function removeHash(hex) {
-  return hex.charAt(0) === '#' ? hex.slice(1) : hex;
-};
-
-var parseHex = function parseHex(nakedHex) {
-  var isShort = nakedHex.length === 3 || nakedHex.length === 4;
-  var twoDigitHexR = isShort ? "".concat(nakedHex.slice(0, 1)).concat(nakedHex.slice(0, 1)) : nakedHex.slice(0, 2);
-  var twoDigitHexG = isShort ? "".concat(nakedHex.slice(1, 2)).concat(nakedHex.slice(1, 2)) : nakedHex.slice(2, 4);
-  var twoDigitHexB = isShort ? "".concat(nakedHex.slice(2, 3)).concat(nakedHex.slice(2, 3)) : nakedHex.slice(4, 6);
-  var twoDigitHexA = (isShort ? "".concat(nakedHex.slice(3, 4)).concat(nakedHex.slice(3, 4)) : nakedHex.slice(6, 8)) || 'ff'; // const numericA = +((parseInt(a, 16) / 255).toFixed(2));
-
-  return {
-    r: twoDigitHexR,
-    g: twoDigitHexG,
-    b: twoDigitHexB,
-    a: twoDigitHexA
-  };
-};
-
-var hexToDecimal = function hexToDecimal(hex) {
-  return parseInt(hex, 16);
-};
-
-var hexesToDecimals = function hexesToDecimals(_ref) {
-  var r = _ref.r,
-      g = _ref.g,
-      b = _ref.b,
-      a = _ref.a;
-  return {
-    r: hexToDecimal(r),
-    g: hexToDecimal(g),
-    b: hexToDecimal(b),
-    a: +(hexToDecimal(a) / 255).toFixed(2)
-  };
-};
-
-var isNumeric = function isNumeric(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-}; // eslint-disable-line no-restricted-globals, max-len
-
-
-var formatRgb = function formatRgb(decimalObject, parameterA) {
-  var r = decimalObject.r,
-      g = decimalObject.g,
-      b = decimalObject.b,
-      parsedA = decimalObject.a;
-  var a = isNumeric(parameterA) ? parameterA : parsedA;
-  return "rgba(".concat(r, ", ").concat(g, ", ").concat(b, ", ").concat(a, ")");
-};
-/**
- * Turns an old-fashioned css hex color value into a rgb color value.
- *
- * If you specify an alpha value, you'll get a rgba() value instead.
- *
- * @param The hex value to convert. ('123456'. '#123456', ''123', '#123')
- * @param An alpha value to apply. (optional) ('0.5', '0.25')
- * @return An rgb or rgba value. ('rgb(11, 22, 33)'. 'rgba(11, 22, 33, 0.5)')
- */
-
-var hexToRgba = function hexToRgba(hex, a) {
-  var hashlessHex = removeHash(hex);
-  var hexObject = parseHex(hashlessHex);
-  var decimalObject = hexesToDecimals(hexObject);
-  return formatRgb(decimalObject, a);
-};
-
-module.exports = hexToRgba;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(105);
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(247)(ReactIs.isElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(250)();
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
-
-/***/ }),
-/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2152,7 +2049,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumPadding = __webpack_require__(218);
+var _premiumPadding = __webpack_require__(217);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -2329,6 +2226,109 @@ function PremiumResponsivePadding(props) {
 exports.default = PremiumResponsivePadding;
 
 /***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var removeHash = function removeHash(hex) {
+  return hex.charAt(0) === '#' ? hex.slice(1) : hex;
+};
+
+var parseHex = function parseHex(nakedHex) {
+  var isShort = nakedHex.length === 3 || nakedHex.length === 4;
+  var twoDigitHexR = isShort ? "".concat(nakedHex.slice(0, 1)).concat(nakedHex.slice(0, 1)) : nakedHex.slice(0, 2);
+  var twoDigitHexG = isShort ? "".concat(nakedHex.slice(1, 2)).concat(nakedHex.slice(1, 2)) : nakedHex.slice(2, 4);
+  var twoDigitHexB = isShort ? "".concat(nakedHex.slice(2, 3)).concat(nakedHex.slice(2, 3)) : nakedHex.slice(4, 6);
+  var twoDigitHexA = (isShort ? "".concat(nakedHex.slice(3, 4)).concat(nakedHex.slice(3, 4)) : nakedHex.slice(6, 8)) || 'ff'; // const numericA = +((parseInt(a, 16) / 255).toFixed(2));
+
+  return {
+    r: twoDigitHexR,
+    g: twoDigitHexG,
+    b: twoDigitHexB,
+    a: twoDigitHexA
+  };
+};
+
+var hexToDecimal = function hexToDecimal(hex) {
+  return parseInt(hex, 16);
+};
+
+var hexesToDecimals = function hexesToDecimals(_ref) {
+  var r = _ref.r,
+      g = _ref.g,
+      b = _ref.b,
+      a = _ref.a;
+  return {
+    r: hexToDecimal(r),
+    g: hexToDecimal(g),
+    b: hexToDecimal(b),
+    a: +(hexToDecimal(a) / 255).toFixed(2)
+  };
+};
+
+var isNumeric = function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}; // eslint-disable-line no-restricted-globals, max-len
+
+
+var formatRgb = function formatRgb(decimalObject, parameterA) {
+  var r = decimalObject.r,
+      g = decimalObject.g,
+      b = decimalObject.b,
+      parsedA = decimalObject.a;
+  var a = isNumeric(parameterA) ? parameterA : parsedA;
+  return "rgba(".concat(r, ", ").concat(g, ", ").concat(b, ", ").concat(a, ")");
+};
+/**
+ * Turns an old-fashioned css hex color value into a rgb color value.
+ *
+ * If you specify an alpha value, you'll get a rgba() value instead.
+ *
+ * @param The hex value to convert. ('123456'. '#123456', ''123', '#123')
+ * @param An alpha value to apply. (optional) ('0.5', '0.25')
+ * @return An rgb or rgba value. ('rgb(11, 22, 33)'. 'rgba(11, 22, 33, 0.5)')
+ */
+
+var hexToRgba = function hexToRgba(hex, a) {
+  var hashlessHex = removeHash(hex);
+  var hexObject = parseHex(hashlessHex);
+  var decimalObject = hexesToDecimals(hexObject);
+  return formatRgb(decimalObject, a);
+};
+
+module.exports = hexToRgba;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactIs = __webpack_require__(102);
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(247)(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(250)();
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+
+/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2349,8 +2349,8 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 
 var global = __webpack_require__(19);
-var core = __webpack_require__(11);
-var ctx = __webpack_require__(118);
+var core = __webpack_require__(10);
+var ctx = __webpack_require__(115);
 var hide = __webpack_require__(27);
 var has = __webpack_require__(23);
 var PROTOTYPE = 'prototype';
@@ -2422,7 +2422,7 @@ module.exports = $export;
 
 
 var anObject = __webpack_require__(37);
-var IE8_DOM_DEFINE = __webpack_require__(119);
+var IE8_DOM_DEFINE = __webpack_require__(116);
 var toPrimitive = __webpack_require__(68);
 var dP = Object.defineProperty;
 
@@ -2515,8 +2515,8 @@ function PremiumSizeUnits(props) {
 "use strict";
 
 
-var baseIsNative = __webpack_require__(143),
-    getValue = __webpack_require__(146);
+var baseIsNative = __webpack_require__(140),
+    getValue = __webpack_require__(143);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -2629,7 +2629,7 @@ function PremiumMediaUpload(props) {
 
 
 var dP = __webpack_require__(21);
-var createDesc = __webpack_require__(50);
+var createDesc = __webpack_require__(48);
 module.exports = __webpack_require__(22) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -2673,7 +2673,7 @@ module.exports = function (exec) {
 
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(122);
+var IObject = __webpack_require__(119);
 var defined = __webpack_require__(69);
 module.exports = function (it) {
   return IObject(defined(it));
@@ -2687,7 +2687,7 @@ module.exports = function (it) {
 
 
 var store = __webpack_require__(72)('wks');
-var uid = __webpack_require__(53);
+var uid = __webpack_require__(51);
 var _Symbol = __webpack_require__(19).Symbol;
 var USE_SYMBOL = typeof _Symbol == 'function';
 
@@ -2704,9 +2704,9 @@ $exports.store = store;
 "use strict";
 
 
-var _Symbol = __webpack_require__(39),
-    getRawTag = __webpack_require__(135),
-    objectToString = __webpack_require__(136);
+var _Symbol = __webpack_require__(38),
+    getRawTag = __webpack_require__(132),
+    objectToString = __webpack_require__(133);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -2785,7 +2785,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _webfontloader = __webpack_require__(103);
+var _webfontloader = __webpack_require__(100);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
@@ -2907,7 +2907,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumBackground = __webpack_require__(104);
+var _premiumBackground = __webpack_require__(101);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -3153,45 +3153,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var baseGetTag = __webpack_require__(32),
-    isObjectLike = __webpack_require__(33);
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
-}
-
-module.exports = isSymbol;
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var root = __webpack_require__(13);
+var root = __webpack_require__(15);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -3199,7 +3161,7 @@ var _Symbol = root.Symbol;
 module.exports = _Symbol;
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3213,58 +3175,17 @@ var nativeCreate = getNative(Object, 'create');
 module.exports = nativeCreate;
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  return value != null && (type == 'object' || type == 'function');
-}
-
-module.exports = isObject;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var listCacheClear = __webpack_require__(151),
-    listCacheDelete = __webpack_require__(152),
-    listCacheGet = __webpack_require__(153),
-    listCacheHas = __webpack_require__(154),
-    listCacheSet = __webpack_require__(155);
+var listCacheClear = __webpack_require__(148),
+    listCacheDelete = __webpack_require__(149),
+    listCacheGet = __webpack_require__(150),
+    listCacheHas = __webpack_require__(151),
+    listCacheSet = __webpack_require__(152);
 
 /**
  * Creates an list cache object.
@@ -3294,7 +3215,7 @@ ListCache.prototype.set = listCacheSet;
 module.exports = ListCache;
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3323,13 +3244,13 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isKeyable = __webpack_require__(157);
+var isKeyable = __webpack_require__(154);
 
 /**
  * Gets the data for `map`.
@@ -3347,13 +3268,13 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 45 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isSymbol = __webpack_require__(38);
+var isSymbol = __webpack_require__(54);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -3376,7 +3297,7 @@ function toKey(value) {
 module.exports = toKey;
 
 /***/ }),
-/* 46 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3406,7 +3327,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 47 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3582,7 +3503,7 @@ function ResponsiveRangeControl(_ref) {
 exports.default = ResponsiveRangeControl;
 
 /***/ }),
-/* 48 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3775,7 +3696,7 @@ function PremiumResponsiveMargin(props) {
 exports.default = PremiumResponsiveMargin;
 
 /***/ }),
-/* 49 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3803,7 +3724,7 @@ var _deprecated = __webpack_require__(285);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(112);
+var _attributes = __webpack_require__(109);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -3861,7 +3782,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 50 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3877,14 +3798,14 @@ module.exports = function (bitmap, value) {
 };
 
 /***/ }),
-/* 51 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(121);
+var $keys = __webpack_require__(118);
 var enumBugKeys = __webpack_require__(73);
 
 module.exports = Object.keys || function keys(O) {
@@ -3892,7 +3813,7 @@ module.exports = Object.keys || function keys(O) {
 };
 
 /***/ }),
-/* 52 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3901,7 +3822,7 @@ module.exports = Object.keys || function keys(O) {
 module.exports = true;
 
 /***/ }),
-/* 53 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3914,7 +3835,7 @@ module.exports = function (key) {
 };
 
 /***/ }),
-/* 54 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3923,7 +3844,7 @@ module.exports = function (key) {
 exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
-/* 55 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3931,8 +3852,8 @@ exports.f = {}.propertyIsEnumerable;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var isArray = __webpack_require__(12),
-    isSymbol = __webpack_require__(38);
+var isArray = __webpack_require__(14),
+    isSymbol = __webpack_require__(54);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -3960,17 +3881,55 @@ function isKey(value, object) {
 module.exports = isKey;
 
 /***/ }),
-/* 56 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var mapCacheClear = __webpack_require__(140),
-    mapCacheDelete = __webpack_require__(156),
-    mapCacheGet = __webpack_require__(158),
-    mapCacheHas = __webpack_require__(159),
-    mapCacheSet = __webpack_require__(160);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var baseGetTag = __webpack_require__(32),
+    isObjectLike = __webpack_require__(33);
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
+}
+
+module.exports = isSymbol;
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var mapCacheClear = __webpack_require__(137),
+    mapCacheDelete = __webpack_require__(153),
+    mapCacheGet = __webpack_require__(155),
+    mapCacheHas = __webpack_require__(156),
+    mapCacheSet = __webpack_require__(157);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -4000,6 +3959,47 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  return value != null && (type == 'object' || type == 'function');
+}
+
+module.exports = isObject;
+
+/***/ }),
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4007,7 +4007,7 @@ module.exports = MapCache;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -4021,8 +4021,8 @@ module.exports = Map;
 "use strict";
 
 
-var arrayLikeKeys = __webpack_require__(188),
-    baseKeys = __webpack_require__(194),
+var arrayLikeKeys = __webpack_require__(185),
+    baseKeys = __webpack_require__(192),
     isArrayLike = __webpack_require__(60);
 
 /**
@@ -4284,7 +4284,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(107)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(107)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(18), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(104)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(18), __webpack_require__(5), __webpack_require__(0), __webpack_require__(36), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -4826,7 +4826,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
 
 /***/ }),
 /* 63 */
@@ -4854,11 +4854,11 @@ module.exports = ReactPropTypesSecret;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 var iconsList = {
-    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+        Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+        "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
 };
 
 exports.default = iconsList;
@@ -5099,7 +5099,7 @@ module.exports = function (it) {
 
 
 var shared = __webpack_require__(72)('keys');
-var uid = __webpack_require__(53);
+var uid = __webpack_require__(51);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
@@ -5111,7 +5111,7 @@ module.exports = function (key) {
 "use strict";
 
 
-var core = __webpack_require__(11);
+var core = __webpack_require__(10);
 var global = __webpack_require__(19);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
@@ -5120,7 +5120,7 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(52) ? 'pure' : 'global',
+  mode: __webpack_require__(50) ? 'pure' : 'global',
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
@@ -5183,7 +5183,7 @@ var PROTOTYPE = 'prototype';
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var _createDict = function createDict() {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(120)('iframe');
+  var iframe = __webpack_require__(117)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
@@ -5247,8 +5247,8 @@ exports.f = __webpack_require__(31);
 
 
 var global = __webpack_require__(19);
-var core = __webpack_require__(11);
-var LIBRARY = __webpack_require__(52);
+var core = __webpack_require__(10);
+var LIBRARY = __webpack_require__(50);
 var wksExt = __webpack_require__(79);
 var defineProperty = __webpack_require__(21).f;
 module.exports = function (name) {
@@ -5314,7 +5314,7 @@ module.exports = get;
 
 
 var castPath = __webpack_require__(84),
-    toKey = __webpack_require__(45);
+    toKey = __webpack_require__(43);
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -5345,10 +5345,10 @@ module.exports = baseGet;
 "use strict";
 
 
-var isArray = __webpack_require__(12),
-    isKey = __webpack_require__(55),
-    stringToPath = __webpack_require__(137),
-    toString = __webpack_require__(161);
+var isArray = __webpack_require__(14),
+    isKey = __webpack_require__(53),
+    stringToPath = __webpack_require__(134),
+    toString = __webpack_require__(158);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -5380,7 +5380,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(134)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(131)))
 
 /***/ }),
 /* 86 */
@@ -5390,7 +5390,7 @@ module.exports = freeGlobal;
 
 
 var baseGetTag = __webpack_require__(32),
-    isObject = __webpack_require__(41);
+    isObject = __webpack_require__(56);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -5543,9 +5543,9 @@ module.exports = arrayMap;
 
 
 var arrayMap = __webpack_require__(89),
-    baseIteratee = __webpack_require__(163),
-    baseMap = __webpack_require__(211),
-    isArray = __webpack_require__(12);
+    baseIteratee = __webpack_require__(160),
+    baseMap = __webpack_require__(210),
+    isArray = __webpack_require__(14);
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -5603,12 +5603,12 @@ module.exports = map;
 "use strict";
 
 
-var ListCache = __webpack_require__(42),
-    stackClear = __webpack_require__(166),
-    stackDelete = __webpack_require__(167),
-    stackGet = __webpack_require__(168),
-    stackHas = __webpack_require__(169),
-    stackSet = __webpack_require__(170);
+var ListCache = __webpack_require__(40),
+    stackClear = __webpack_require__(163),
+    stackDelete = __webpack_require__(164),
+    stackGet = __webpack_require__(165),
+    stackHas = __webpack_require__(166),
+    stackSet = __webpack_require__(167);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -5638,7 +5638,7 @@ module.exports = Stack;
 "use strict";
 
 
-var baseIsEqualDeep = __webpack_require__(171),
+var baseIsEqualDeep = __webpack_require__(168),
     isObjectLike = __webpack_require__(33);
 
 /**
@@ -5674,9 +5674,9 @@ module.exports = baseIsEqual;
 "use strict";
 
 
-var SetCache = __webpack_require__(172),
-    arraySome = __webpack_require__(175),
-    cacheHas = __webpack_require__(176);
+var SetCache = __webpack_require__(169),
+    arraySome = __webpack_require__(172),
+    cacheHas = __webpack_require__(173);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -5760,35 +5760,7 @@ module.exports = equalArrays;
 "use strict";
 
 
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */
-function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
-
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-
-module.exports = baseTimes;
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsArguments = __webpack_require__(189),
+var baseIsArguments = __webpack_require__(187),
     isObjectLike = __webpack_require__(33);
 
 /** Used for built-in method references. */
@@ -5827,7 +5799,7 @@ var isArguments = baseIsArguments(function () {
 module.exports = isArguments;
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5835,8 +5807,8 @@ module.exports = isArguments;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var root = __webpack_require__(13),
-    stubFalse = __webpack_require__(190);
+var root = __webpack_require__(15),
+    stubFalse = __webpack_require__(188);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -5873,10 +5845,10 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5908,15 +5880,15 @@ function isIndex(value, length) {
 module.exports = isIndex;
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsTypedArray = __webpack_require__(191),
-    baseUnary = __webpack_require__(192),
-    nodeUtil = __webpack_require__(193);
+var baseIsTypedArray = __webpack_require__(189),
+    baseUnary = __webpack_require__(190),
+    nodeUtil = __webpack_require__(191);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -5943,13 +5915,13 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 module.exports = isTypedArray;
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isObject = __webpack_require__(41);
+var isObject = __webpack_require__(56);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -5966,7 +5938,7 @@ function isStrictComparable(value) {
 module.exports = isStrictComparable;
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5993,941 +5965,7 @@ function matchesStrictComparable(key, srcValue) {
 module.exports = matchesStrictComparable;
 
 /***/ }),
-/* 101 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * This method returns the first argument it receives.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {*} value Any value.
- * @returns {*} Returns `value`.
- * @example
- *
- * var object = { 'a': 1 };
- *
- * console.log(_.identity(object) === object);
- * // => true
- */
-function identity(value) {
-  return value;
-}
-
-module.exports = identity;
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * Google Fonts for the FontFamily component.
- */
-
-var fonts = {};
-fonts["ABeeZee"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Abel"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Abhaya Libre"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["latin-ext", "sinhala", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Abril Fatface"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Aclonica"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Acme"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Actor"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Adamina"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Advent Pro"] = { "v": ["100", "200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "greek", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Aguafina Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Akronim"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Aladin"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Aldrich"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Alef"] = { "v": ["regular", "700"], "subset": ["hebrew", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Alegreya"] = { "v": ["regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Alegreya SC"] = { "v": ["regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Alegreya Sans"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Alegreya Sans SC"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Alex Brush"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Alfa Slab One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Alice"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Alike"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Alike Angular"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Allan"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Allerta"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Allerta Stencil"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Allura"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Almendra"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Almendra Display"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Almendra SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Amarante"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Amaranth"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Amatic SC"] = { "v": ["regular", "700"], "subset": ["cyrillic", "latin-ext", "hebrew", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Amethysta"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Amiko"] = { "v": ["regular", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "600", "700"], "i": ["normal"] };
-fonts["Amiri"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Amita"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Anaheim"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Andada"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Andika"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Angkor"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Annie Use Your Telescope"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Anonymous Pro"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Antic"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Antic Didone"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Antic Slab"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Anton"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Arapey"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Arbutus"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Arbutus Slab"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Architects Daughter"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Archivo"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Archivo Black"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Archivo Narrow"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Aref Ruqaa"] = { "v": ["regular", "700"], "subset": ["arabic", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Arima Madurai"] = { "v": ["100", "200", "300", "regular", "500", "700", "800", "900"], "subset": ["latin-ext", "tamil", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
-fonts["Arimo"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Arizonia"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Armata"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Arsenal"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Artifika"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Arvo"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Arya"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Asap"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Asap Condensed"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Asar"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Asset"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Assistant"] = { "v": ["200", "300", "regular", "600", "700", "800"], "subset": ["hebrew", "latin"], "weight": ["200", "300", "400", "600", "700", "800"], "i": ["normal"] };
-fonts["Astloch"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Asul"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Athiti"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Atma"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "bengali", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Atomic Age"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Aubrey"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Audiowide"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Autour One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Average"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Average Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Averia Gruesa Libre"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Averia Libre"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
-fonts["Averia Sans Libre"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
-fonts["Averia Serif Libre"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
-fonts["Bad Script"] = { "v": ["regular"], "subset": ["cyrillic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bahiana"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Bhai"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Bhaijaan"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Bhaina"] = { "v": ["regular"], "subset": ["latin-ext", "oriya", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Chettan"] = { "v": ["regular"], "subset": ["malayalam", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Da"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "bengali", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Paaji"] = { "v": ["regular"], "subset": ["latin-ext", "gurmukhi", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Tamma"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin", "kannada"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Tammudu"] = { "v": ["regular"], "subset": ["latin-ext", "telugu", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Baloo Thambi"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Balthazar"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bangers"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Barlow"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Barlow Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Barlow Semi Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Barrio"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Basic"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Battambang"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Baumans"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bayon"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Belgrano"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bellefair"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Belleza"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["BenchNine"] = { "v": ["300", "regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
-fonts["Bentham"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Berkshire Swash"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bevan"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bigelow Rules"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bigshot One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bilbo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bilbo Swash Caps"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["BioRhyme"] = { "v": ["200", "300", "regular", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "700", "800"], "i": ["normal"] };
-fonts["BioRhyme Expanded"] = { "v": ["200", "300", "regular", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "700", "800"], "i": ["normal"] };
-fonts["Biryani"] = { "v": ["200", "300", "regular", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Bitter"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Black And White Picture"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Black Han Sans"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Black Ops One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bokor"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Bonbon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Boogaloo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bowlby One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bowlby One SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Brawler"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bree Serif"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bubblegum Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bubbler One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Buda"] = { "v": ["300"], "subset": ["latin"], "weight": ["300"], "i": [] };
-fonts["Buenard"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Bungee"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bungee Hairline"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bungee Inline"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bungee Outline"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Bungee Shade"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Butcherman"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Butterfly Kids"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cabin"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Cabin Condensed"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
-fonts["Cabin Sketch"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Caesar Dressing"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cagliostro"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cairo"] = { "v": ["200", "300", "regular", "600", "700", "900"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["200", "300", "400", "600", "700", "900"], "i": ["normal"] };
-fonts["Calligraffitti"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cambay"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Cambo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Candal"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cantarell"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Cantata One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cantora One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Capriola"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cardo"] = { "v": ["regular", "italic", "700"], "subset": ["greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Carme"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Carrois Gothic"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Carrois Gothic SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Carter One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Catamaran"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Caudex"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Caveat"] = { "v": ["regular", "700"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Caveat Brush"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cedarville Cursive"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ceviche One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Changa"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Changa One"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Chango"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Chathura"] = { "v": ["100", "300", "regular", "700", "800"], "subset": ["telugu", "latin"], "weight": ["100", "300", "400", "700", "800"], "i": ["normal"] };
-fonts["Chau Philomene One"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Chela One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Chelsea Market"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Chenla"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Cherry Cream Soda"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cherry Swash"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Chewy"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Chicle"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Chivo"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700", "900"], "i": ["normal", "italic"] };
-fonts["Chonburi"] = { "v": ["regular"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cinzel"] = { "v": ["regular", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
-fonts["Cinzel Decorative"] = { "v": ["regular", "700", "900"], "subset": ["latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
-fonts["Clicker Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Coda"] = { "v": ["regular", "800"], "subset": ["latin-ext", "latin"], "weight": ["400", "800"], "i": ["normal"] };
-fonts["Coda Caption"] = { "v": ["800"], "subset": ["latin-ext", "latin"], "weight": ["800"], "i": [] };
-fonts["Codystar"] = { "v": ["300", "regular"], "subset": ["latin-ext", "latin"], "weight": ["300", "400"], "i": ["normal"] };
-fonts["Coiny"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Combo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Comfortaa"] = { "v": ["300", "regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
-fonts["Coming Soon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Concert One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Condiment"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Content"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Contrail One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Convergence"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cookie"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Copse"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Corben"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Cormorant"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Cormorant Garamond"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Cormorant Infant"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Cormorant SC"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Cormorant Unicase"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Cormorant Upright"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Courgette"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cousine"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Coustard"] = { "v": ["regular", "900"], "subset": ["latin"], "weight": ["400", "900"], "i": ["normal"] };
-fonts["Covered By Your Grace"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Crafty Girls"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Creepster"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Crete Round"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Crimson Text"] = { "v": ["regular", "italic", "600", "600italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "600", "700"], "i": ["normal", "italic"] };
-fonts["Croissant One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Crushed"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cuprum"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Cute Font"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cutive"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Cutive Mono"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Damion"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Dancing Script"] = { "v": ["regular", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Dangrek"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["David Libre"] = { "v": ["regular", "500", "700"], "subset": ["latin-ext", "hebrew", "vietnamese", "latin"], "weight": ["400", "500", "700"], "i": ["normal"] };
-fonts["Dawning of a New Day"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Days One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Dekko"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Delius"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Delius Swash Caps"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Delius Unicase"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Della Respira"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Denk One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Devonshire"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Dhurjati"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Didact Gothic"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Diplomata"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Diplomata SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Do Hyeon"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Dokdo"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Domine"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Donegal One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Doppio One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Dorsa"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Dosis"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Dr Sugiyama"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Duru Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Dynalight"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["EB Garamond"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
-fonts["Eagle Lake"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["East Sea Dokdo"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Eater"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Economica"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Eczar"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["El Messiri"] = { "v": ["regular", "500", "600", "700"], "subset": ["cyrillic", "arabic", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
-fonts["Electrolize"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Elsie"] = { "v": ["regular", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "900"], "i": ["normal"] };
-fonts["Elsie Swash Caps"] = { "v": ["regular", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "900"], "i": ["normal"] };
-fonts["Emblema One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Emilys Candy"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Encode Sans"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Encode Sans Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Encode Sans Expanded"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Encode Sans Semi Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Encode Sans Semi Expanded"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Engagement"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Englebert"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Enriqueta"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Erica One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Esteban"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Euphoria Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ewert"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Exo"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Exo 2"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Expletus Sans"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Fanwood Text"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Farsan"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fascinate"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fascinate Inline"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Faster One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fasthand"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Fauna One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Faustina"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Federant"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Federo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Felipa"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fenix"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Finger Paint"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fira Mono"] = { "v": ["regular", "500", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "500", "700"], "i": ["normal"] };
-fonts["Fira Sans"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Fira Sans Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Fira Sans Extra Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Fjalla One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fjord One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Flamenco"] = { "v": ["300", "regular"], "subset": ["latin"], "weight": ["300", "400"], "i": ["normal"] };
-fonts["Flavors"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fondamento"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Fontdiner Swanky"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Forum"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Francois One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Frank Ruhl Libre"] = { "v": ["300", "regular", "500", "700", "900"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["300", "400", "500", "700", "900"], "i": ["normal"] };
-fonts["Freckle Face"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fredericka the Great"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fredoka One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Freehand"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Fresca"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Frijole"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fruktur"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Fugaz One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["GFS Didot"] = { "v": ["regular"], "subset": ["greek"], "weight": ["400"], "i": ["normal"] };
-fonts["GFS Neohellenic"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["greek"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Gabriela"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gaegu"] = { "v": ["300", "regular", "700"], "subset": ["korean", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
-fonts["Gafata"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Galada"] = { "v": ["regular"], "subset": ["bengali", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Galdeano"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Galindo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gamja Flower"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gentium Basic"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Gentium Book Basic"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Geo"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Geostar"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Geostar Fill"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Germania One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gidugu"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gilda Display"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Give You Glory"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Glass Antiqua"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Glegoo"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Gloria Hallelujah"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Goblin One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gochi Hand"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gorditas"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Gothic A1"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["korean", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Goudy Bookletter 1911"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Graduate"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Grand Hotel"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gravitas One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Great Vibes"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Griffy"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gruppo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gudea"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Gugi"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Gurajada"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Habibi"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Halant"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Hammersmith One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Hanalei"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Hanalei Fill"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Handlee"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Hanuman"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Happy Monkey"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Harmattan"] = { "v": ["regular"], "subset": ["arabic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Headland One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Heebo"] = { "v": ["100", "300", "regular", "500", "700", "800", "900"], "subset": ["hebrew", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
-fonts["Henny Penny"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Herr Von Muellerhoff"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Hi Melody"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Hind"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Hind Guntur"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "telugu", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Hind Madurai"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Hind Siliguri"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "bengali", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Hind Vadodara"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Holtwood One SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Homemade Apple"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Homenaje"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["IBM Plex Mono"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["IBM Plex Sans"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["IBM Plex Sans Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["IBM Plex Serif"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["IM Fell DW Pica"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["IM Fell DW Pica SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["IM Fell Double Pica"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["IM Fell Double Pica SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["IM Fell English"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["IM Fell English SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["IM Fell French Canon"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["IM Fell French Canon SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["IM Fell Great Primer"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["IM Fell Great Primer SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Iceberg"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Iceland"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Imprima"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Inconsolata"] = { "v": ["regular", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Inder"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Indie Flower"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Inika"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Inknut Antiqua"] = { "v": ["300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Irish Grover"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Istok Web"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Italiana"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Italianno"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Itim"] = { "v": ["regular"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jacques Francois"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jacques Francois Shadow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jaldi"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Jim Nightshade"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jockey One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jolly Lodger"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jomhuria"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Josefin Sans"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "300", "400", "600", "700"], "i": ["normal", "italic"] };
-fonts["Josefin Slab"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic"], "subset": ["latin"], "weight": ["100", "300", "400", "600", "700"], "i": ["normal", "italic"] };
-fonts["Joti One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jua"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Judson"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Julee"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Julius Sans One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Junge"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Jura"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Just Another Hand"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Just Me Again Down Here"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kadwa"] = { "v": ["regular", "700"], "subset": ["devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Kalam"] = { "v": ["300", "regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
-fonts["Kameron"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Kanit"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Kantumruy"] = { "v": ["300", "regular", "700"], "subset": ["khmer"], "weight": ["300", "400", "700"], "i": ["normal"] };
-fonts["Karla"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Karma"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Katibeh"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kaushan Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kavivanar"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kavoon"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kdam Thmor"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Keania One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kelly Slab"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kenia"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Khand"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Khmer"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Khula"] = { "v": ["300", "regular", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "600", "700", "800"], "i": ["normal"] };
-fonts["Kirang Haerang"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kite One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Knewave"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kosugi"] = { "v": ["regular"], "subset": ["cyrillic", "japanese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kosugi Maru"] = { "v": ["regular"], "subset": ["cyrillic", "japanese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kotta One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Koulen"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Kranky"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kreon"] = { "v": ["300", "regular", "700"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
-fonts["Kristi"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Krona One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kumar One"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kumar One Outline"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Kurale"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["La Belle Aurore"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Laila"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Lakki Reddy"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lalezar"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lancelot"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lateef"] = { "v": ["regular"], "subset": ["arabic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lato"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "300", "400", "700", "900"], "i": ["normal", "italic"] };
-fonts["League Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Leckerli One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ledger"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lekton"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Lemon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lemonada"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
-fonts["Libre Barcode 128"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Libre Barcode 128 Text"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Libre Barcode 39"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Libre Barcode 39 Extended"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Libre Barcode 39 Extended Text"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Libre Barcode 39 Text"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Libre Baskerville"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Libre Franklin"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Life Savers"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Lilita One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lily Script One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Limelight"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Linden Hill"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Lobster"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lobster Two"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Londrina Outline"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Londrina Shadow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Londrina Sketch"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Londrina Solid"] = { "v": ["100", "300", "regular", "900"], "subset": ["latin"], "weight": ["100", "300", "400", "900"], "i": ["normal"] };
-fonts["Lora"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Love Ya Like A Sister"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Loved by the King"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lovers Quarrel"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Luckiest Guy"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Lusitana"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Lustria"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["M PLUS 1p"] = { "v": ["100", "300", "regular", "500", "700", "800", "900"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "japanese", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
-fonts["M PLUS Rounded 1c"] = { "v": ["100", "300", "regular", "500", "700", "800", "900"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "japanese", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
-fonts["Macondo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Macondo Swash Caps"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mada"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["arabic", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
-fonts["Magra"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Maiden Orange"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Maitree"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Mako"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mallanna"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mandali"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Manuale"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Marcellus"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Marcellus SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Marck Script"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Margarine"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Markazi Text"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
-fonts["Marko One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Marmelad"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Martel"] = { "v": ["200", "300", "regular", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Martel Sans"] = { "v": ["200", "300", "regular", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Marvel"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Mate"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Mate SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Maven Pro"] = { "v": ["regular", "500", "700", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "700", "900"], "i": ["normal"] };
-fonts["McLaren"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Meddon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["MedievalSharp"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Medula One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Meera Inimai"] = { "v": ["regular"], "subset": ["tamil", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Megrim"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Meie Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Merienda"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Merienda One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Merriweather"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "700", "900"], "i": ["normal", "italic"] };
-fonts["Merriweather Sans"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic", "800", "800italic"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700", "800"], "i": ["normal", "italic"] };
-fonts["Metal"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Metal Mania"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Metamorphous"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Metrophobic"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Michroma"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Milonga"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Miltonian"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Miltonian Tattoo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mina"] = { "v": ["regular", "700"], "subset": ["latin-ext", "bengali", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Miniver"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Miriam Libre"] = { "v": ["regular", "700"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Mirza"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
-fonts["Miss Fajardose"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mitr"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Modak"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Modern Antiqua"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mogra"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Molengo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Molle"] = { "v": ["italic"], "subset": ["latin-ext", "latin"], "weight": [], "i": ["italic"] };
-fonts["Monda"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Monofett"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Monoton"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Monsieur La Doulaise"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Montaga"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Montez"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Montserrat"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Montserrat Alternates"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Montserrat Subrayada"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Moul"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Moulpali"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Mountains of Christmas"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Mouse Memoirs"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mr Bedfort"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mr Dafoe"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mr De Haviland"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mrs Saint Delafield"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mrs Sheppards"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Mukta"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Mukta Mahee"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "gurmukhi", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Mukta Malar"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Mukta Vaani"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Muli"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Mystery Quest"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["NTR"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nanum Brush Script"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nanum Gothic"] = { "v": ["regular", "700", "800"], "subset": ["korean", "latin"], "weight": ["400", "700", "800"], "i": ["normal"] };
-fonts["Nanum Gothic Coding"] = { "v": ["regular", "700"], "subset": ["korean", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Nanum Myeongjo"] = { "v": ["regular", "700", "800"], "subset": ["korean", "latin"], "weight": ["400", "700", "800"], "i": ["normal"] };
-fonts["Nanum Pen Script"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Neucha"] = { "v": ["regular"], "subset": ["cyrillic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Neuton"] = { "v": ["200", "300", "regular", "italic", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "700", "800"], "i": ["normal", "italic"] };
-fonts["New Rocker"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["News Cycle"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Niconne"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nixie One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nobile"] = { "v": ["regular", "italic", "500", "500italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "500", "700"], "i": ["normal", "italic"] };
-fonts["Nokora"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Norican"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nosifer"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nothing You Could Do"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Noticia Text"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Noto Sans"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "devanagari", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Noto Sans JP"] = { "v": ["100", "300", "regular", "500", "700", "900"], "subset": ["japanese", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal"] };
-fonts["Noto Sans KR"] = { "v": ["100", "300", "regular", "500", "700", "900"], "subset": ["korean", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal"] };
-fonts["Noto Serif"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Noto Serif JP"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["japanese", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
-fonts["Noto Serif KR"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["korean", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
-fonts["Nova Cut"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nova Flat"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nova Mono"] = { "v": ["regular"], "subset": ["greek", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nova Oval"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nova Round"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nova Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nova Slim"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nova Square"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Numans"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Nunito"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Nunito Sans"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Odor Mean Chey"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Offside"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Old Standard TT"] = { "v": ["regular", "italic", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Oldenburg"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Oleo Script"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Oleo Script Swash Caps"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Open Sans"] = { "v": ["300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "600", "700", "800"], "i": ["normal", "italic"] };
-fonts["Open Sans Condensed"] = { "v": ["300", "300italic", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "700"], "i": [] };
-fonts["Oranienbaum"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Orbitron"] = { "v": ["regular", "500", "700", "900"], "subset": ["latin"], "weight": ["400", "500", "700", "900"], "i": ["normal"] };
-fonts["Oregano"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Orienta"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Original Surfer"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Oswald"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Over the Rainbow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Overlock"] = { "v": ["regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal", "italic"] };
-fonts["Overlock SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Overpass"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Overpass Mono"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
-fonts["Ovo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Oxygen"] = { "v": ["300", "regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
-fonts["Oxygen Mono"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["PT Mono"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["PT Sans"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["PT Sans Caption"] = { "v": ["regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["PT Sans Narrow"] = { "v": ["regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["PT Serif"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["PT Serif Caption"] = { "v": ["regular", "italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Pacifico"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Padauk"] = { "v": ["regular", "700"], "subset": ["myanmar", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Palanquin"] = { "v": ["100", "200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Palanquin Dark"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
-fonts["Pangolin"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Paprika"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Parisienne"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Passero One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Passion One"] = { "v": ["regular", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
-fonts["Pathway Gothic One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Patrick Hand"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Patrick Hand SC"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Pattaya"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Patua One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Pavanam"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Paytone One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Peddana"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Peralta"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Permanent Marker"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Petit Formal Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Petrona"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Philosopher"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Piedra"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Pinyon Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Pirata One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Plaster"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Play"] = { "v": ["regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Playball"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Playfair Display"] = { "v": ["regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700", "900"], "i": ["normal", "italic"] };
-fonts["Playfair Display SC"] = { "v": ["regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700", "900"], "i": ["normal", "italic"] };
-fonts["Podkova"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Poiret One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Poller One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Poly"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Pompiere"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Pontano Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Poor Story"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Poppins"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Port Lligat Sans"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Port Lligat Slab"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Pragati Narrow"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Prata"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Preahvihear"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Press Start 2P"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Pridi"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Princess Sofia"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Prociono"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Prompt"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Prosto One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Proza Libre"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
-fonts["Puritan"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Purple Purse"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Quando"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Quantico"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Quattrocento"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Quattrocento Sans"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Questrial"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Quicksand"] = { "v": ["300", "regular", "500", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "700"], "i": ["normal"] };
-fonts["Quintessential"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Qwigley"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Racing Sans One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Radley"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Rajdhani"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Rakkas"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Raleway"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Raleway Dots"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ramabhadra"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ramaraja"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rambla"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Rammetto One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ranchers"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rancho"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ranga"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Rasa"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Rationale"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ravi Prakash"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Redressed"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Reem Kufi"] = { "v": ["regular"], "subset": ["arabic", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Reenie Beanie"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Revalia"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rhodium Libre"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ribeye"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ribeye Marrow"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Righteous"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Risque"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Roboto"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal", "italic"] };
-fonts["Roboto Condensed"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
-fonts["Roboto Mono"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700"], "i": ["normal", "italic"] };
-fonts["Roboto Slab"] = { "v": ["100", "300", "regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "700"], "i": ["normal"] };
-fonts["Rochester"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rock Salt"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rokkitt"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Romanesco"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ropa Sans"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Rosario"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Rosarivo"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Rouge Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rozha One"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rubik"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "hebrew", "latin"], "weight": ["300", "400", "500", "700", "900"], "i": ["normal", "italic"] };
-fonts["Rubik Mono One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ruda"] = { "v": ["regular", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
-fonts["Rufina"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Ruge Boogie"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ruluko"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rum Raisin"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ruslan Display"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Russo One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ruthie"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Rye"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sacramento"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sahitya"] = { "v": ["regular", "700"], "subset": ["devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Sail"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Saira"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Saira Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Saira Extra Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Saira Semi Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Salsa"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sanchez"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Sancreek"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sansita"] = { "v": ["regular", "italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Sarala"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Sarina"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sarpanch"] = { "v": ["regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Satisfy"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sawarabi Gothic"] = { "v": ["regular"], "subset": ["cyrillic", "japanese", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sawarabi Mincho"] = { "v": ["regular"], "subset": ["japanese", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Scada"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Scheherazade"] = { "v": ["regular", "700"], "subset": ["arabic", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Schoolbell"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Scope One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Seaweed Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Secular One"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sedgwick Ave"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sedgwick Ave Display"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sevillana"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Seymour One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Shadows Into Light"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Shadows Into Light Two"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Shanti"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Share"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Share Tech"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Share Tech Mono"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Shojumaru"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Short Stack"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Shrikhand"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Siemreap"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Sigmar One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Signika"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
-fonts["Signika Negative"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
-fonts["Simonetta"] = { "v": ["regular", "italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "900"], "i": ["normal", "italic"] };
-fonts["Sintony"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Sirin Stencil"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Six Caps"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Skranji"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Slabo 13px"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Slabo 27px"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Slackey"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Smokum"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Smythe"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sniglet"] = { "v": ["regular", "800"], "subset": ["latin-ext", "latin"], "weight": ["400", "800"], "i": ["normal"] };
-fonts["Snippet"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Snowburst One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sofadi One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sofia"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Song Myung"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sonsie One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sorts Mill Goudy"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
-fonts["Source Code Pro"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
-fonts["Source Sans Pro"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "900"], "i": ["normal", "italic"] };
-fonts["Source Serif Pro"] = { "v": ["regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "600", "700"], "i": ["normal"] };
-fonts["Space Mono"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Special Elite"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Spectral"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
-fonts["Spectral SC"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
-fonts["Spicy Rice"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Spinnaker"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Spirax"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Squada One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sree Krushnadevaraya"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sriracha"] = { "v": ["regular"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Stalemate"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Stalinist One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Stardos Stencil"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Stint Ultra Condensed"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Stint Ultra Expanded"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Stoke"] = { "v": ["300", "regular"], "subset": ["latin-ext", "latin"], "weight": ["300", "400"], "i": ["normal"] };
-fonts["Strait"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Stylish"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sue Ellen Francisco"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Suez One"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sumana"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Sunflower"] = { "v": ["300", "500", "700"], "subset": ["korean", "latin"], "weight": ["300", "500", "700"], "i": [] };
-fonts["Sunshiney"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Supermercado One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Sura"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Suranna"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Suravaram"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Suwannaphum"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Swanky and Moo Moo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Syncopate"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Tajawal"] = { "v": ["200", "300", "regular", "500", "700", "800", "900"], "subset": ["arabic", "latin"], "weight": ["200", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
-fonts["Tangerine"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Taprom"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
-fonts["Tauri"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Taviraj"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Teko"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Telex"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Tenali Ramakrishna"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Tenor Sans"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Text Me One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["The Girl Next Door"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Tienne"] = { "v": ["regular", "700", "900"], "subset": ["latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
-fonts["Tillana"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
-fonts["Timmana"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Tinos"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Titan One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Titillium Web"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "900"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "600", "700", "900"], "i": ["normal", "italic"] };
-fonts["Trade Winds"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Trirong"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
-fonts["Trocchi"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Trochut"] = { "v": ["regular", "italic", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Trykker"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Tulpen One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ubuntu"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["300", "400", "500", "700"], "i": ["normal", "italic"] };
-fonts["Ubuntu Condensed"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Ubuntu Mono"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Ultra"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Uncial Antiqua"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Underdog"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Unica One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["UnifrakturCook"] = { "v": ["700"], "subset": ["latin"], "weight": ["700"], "i": [] };
-fonts["UnifrakturMaguntia"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Unkempt"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
-fonts["Unlock"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Unna"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["VT323"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Vampiro One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Varela"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Varela Round"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Vast Shadow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Vesper Libre"] = { "v": ["regular", "500", "700", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "700", "900"], "i": ["normal"] };
-fonts["Vibur"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Vidaloka"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Viga"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Voces"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Volkhov"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
-fonts["Vollkorn"] = { "v": ["regular", "italic", "600", "600italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "600", "700", "900"], "i": ["normal", "italic"] };
-fonts["Vollkorn SC"] = { "v": ["regular", "600", "700", "900"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "600", "700", "900"], "i": ["normal"] };
-fonts["Voltaire"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Waiting for the Sunrise"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Wallpoet"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Walter Turncoat"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Warnes"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Wellfleet"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Wendy One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Wire One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Work Sans"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
-fonts["Yanone Kaffeesatz"] = { "v": ["200", "300", "regular", "700"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "700"], "i": ["normal"] };
-fonts["Yantramanav"] = { "v": ["100", "300", "regular", "500", "700", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal"] };
-fonts["Yatra One"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Yellowtail"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Yeon Sung"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Yeseva One"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Yesteryear"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Yrsa"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
-fonts["Zeyada"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
-fonts["Zilla Slab"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
-fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
-exports.default = fonts;
-
-/***/ }),
-/* 103 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7285,7 +6323,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 104 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7504,7 +6542,7 @@ function PremiumBackground(props) {
 }
 
 /***/ }),
-/* 105 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7518,7 +6556,7 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 106 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7527,7 +6565,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 
 /***/ }),
-/* 107 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7537,9 +6575,9 @@ var _CSSTransition = _interopRequireDefault(__webpack_require__(251));
 
 var _ReplaceTransition = _interopRequireDefault(__webpack_require__(256));
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(111));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(108));
 
-var _Transition = _interopRequireDefault(__webpack_require__(108));
+var _Transition = _interopRequireDefault(__webpack_require__(105));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -7553,7 +6591,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 108 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7562,15 +6600,15 @@ module.exports = {
 exports.__esModule = true;
 exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(17));
+var PropTypes = _interopRequireWildcard(__webpack_require__(18));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(36));
 
-var _reactLifecyclesCompat = __webpack_require__(109);
+var _reactLifecyclesCompat = __webpack_require__(106);
 
-var _PropTypes = __webpack_require__(110);
+var _PropTypes = __webpack_require__(107);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -8193,7 +7231,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 109 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8328,7 +7366,7 @@ function polyfill(Component) {
 exports.polyfill = polyfill;
 
 /***/ }),
-/* 110 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8337,7 +7375,7 @@ exports.polyfill = polyfill;
 exports.__esModule = true;
 exports.classNamesShape = exports.timeoutsShape = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(17));
+var _propTypes = _interopRequireDefault(__webpack_require__(18));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -8365,7 +7403,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 111 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8374,11 +7412,11 @@ exports.classNamesShape = classNamesShape;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(17));
+var _propTypes = _interopRequireDefault(__webpack_require__(18));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
-var _reactLifecyclesCompat = __webpack_require__(109);
+var _reactLifecyclesCompat = __webpack_require__(106);
 
 var _ChildMapping = __webpack_require__(257);
 
@@ -8602,7 +7640,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 112 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8772,7 +7810,7 @@ var videoBoxAttrs = {
 exports.default = videoBoxAttrs;
 
 /***/ }),
-/* 113 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8815,17 +7853,17 @@ var _inherits2 = __webpack_require__(301);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _assertThisInitialized2 = __webpack_require__(117);
+var _assertThisInitialized2 = __webpack_require__(114);
 
 var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
 
-var _defineProperty2 = __webpack_require__(116);
+var _defineProperty2 = __webpack_require__(113);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
 var _react = __webpack_require__(5);
 
-var _propTypes = __webpack_require__(17);
+var _propTypes = __webpack_require__(18);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -10417,7 +9455,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 114 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10428,7 +9466,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _unsupportedIterableToArray;
 
-var _arrayLikeToArray = __webpack_require__(115);
+var _arrayLikeToArray = __webpack_require__(112);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -10444,7 +9482,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 115 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10465,7 +9503,7 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 116 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10491,7 +9529,7 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 117 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10510,7 +9548,7 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 118 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10541,20 +9579,20 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
-/* 119 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = !__webpack_require__(22) && !__webpack_require__(29)(function () {
-  return Object.defineProperty(__webpack_require__(120)('div'), 'a', { get: function get() {
+  return Object.defineProperty(__webpack_require__(117)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
 });
 
 /***/ }),
-/* 120 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10569,7 +9607,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 121 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10596,21 +9634,21 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 122 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(123);
+var cof = __webpack_require__(120);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 123 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10623,7 +9661,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 124 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10644,7 +9682,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 };
 
 /***/ }),
-/* 125 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10679,20 +9717,20 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 126 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var LIBRARY = __webpack_require__(52);
+var LIBRARY = __webpack_require__(50);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(127);
+var redefine = __webpack_require__(124);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(76);
 var $iterCreate = __webpack_require__(338);
 var setToStringTag = __webpack_require__(78);
-var getPrototypeOf = __webpack_require__(124);
+var getPrototypeOf = __webpack_require__(121);
 var ITERATOR = __webpack_require__(31)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -10767,7 +9805,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
-/* 127 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10776,14 +9814,14 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 module.exports = __webpack_require__(27);
 
 /***/ }),
-/* 128 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(121);
+var $keys = __webpack_require__(118);
 var hiddenKeys = __webpack_require__(73).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -10791,18 +9829,18 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 };
 
 /***/ }),
-/* 129 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var pIE = __webpack_require__(54);
-var createDesc = __webpack_require__(50);
+var pIE = __webpack_require__(52);
+var createDesc = __webpack_require__(48);
 var toIObject = __webpack_require__(30);
 var toPrimitive = __webpack_require__(68);
 var has = __webpack_require__(23);
-var IE8_DOM_DEFINE = __webpack_require__(119);
+var IE8_DOM_DEFINE = __webpack_require__(116);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -10815,13 +9853,13 @@ exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O
 };
 
 /***/ }),
-/* 130 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(131);
+__webpack_require__(128);
 
 __webpack_require__(223);
 
@@ -10843,7 +9881,7 @@ __webpack_require__(273);
 
 __webpack_require__(278);
 
-__webpack_require__(49);
+__webpack_require__(47);
 
 __webpack_require__(286);
 
@@ -10852,7 +9890,7 @@ __webpack_require__(310);
 __webpack_require__(368);
 
 /***/ }),
-/* 131 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10864,7 +9902,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(132);
+var _edit = __webpack_require__(129);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -10901,7 +9939,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 132 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10923,7 +9961,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -10931,7 +9969,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -10939,7 +9977,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -11739,7 +10777,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumAccordion);
 
 /***/ }),
-/* 133 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11836,7 +10874,7 @@ function PremiumRange(_ref) {
 exports.default = PremiumRange;
 
 /***/ }),
-/* 134 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11866,13 +10904,13 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 135 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(39);
+var _Symbol = __webpack_require__(38);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11920,7 +10958,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 136 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11950,13 +10988,13 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 137 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoizeCapped = __webpack_require__(138);
+var memoizeCapped = __webpack_require__(135);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -11985,13 +11023,13 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 138 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoize = __webpack_require__(139);
+var memoize = __webpack_require__(136);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -12019,13 +11057,13 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 139 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var MapCache = __webpack_require__(56);
+var MapCache = __webpack_require__(55);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -12100,14 +11138,14 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 140 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Hash = __webpack_require__(141),
-    ListCache = __webpack_require__(42),
+var Hash = __webpack_require__(138),
+    ListCache = __webpack_require__(40),
     Map = __webpack_require__(57);
 
 /**
@@ -12129,17 +11167,17 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 141 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hashClear = __webpack_require__(142),
-    hashDelete = __webpack_require__(147),
-    hashGet = __webpack_require__(148),
-    hashHas = __webpack_require__(149),
-    hashSet = __webpack_require__(150);
+var hashClear = __webpack_require__(139),
+    hashDelete = __webpack_require__(144),
+    hashGet = __webpack_require__(145),
+    hashHas = __webpack_require__(146),
+    hashSet = __webpack_require__(147);
 
 /**
  * Creates a hash object.
@@ -12169,13 +11207,13 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 142 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(40);
+var nativeCreate = __webpack_require__(39);
 
 /**
  * Removes all key-value entries from the hash.
@@ -12192,15 +11230,15 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 143 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isFunction = __webpack_require__(86),
-    isMasked = __webpack_require__(144),
-    isObject = __webpack_require__(41),
+    isMasked = __webpack_require__(141),
+    isObject = __webpack_require__(56),
     toSource = __webpack_require__(87);
 
 /**
@@ -12244,13 +11282,13 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 144 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var coreJsData = __webpack_require__(145);
+var coreJsData = __webpack_require__(142);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -12272,13 +11310,13 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 145 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var root = __webpack_require__(13);
+var root = __webpack_require__(15);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -12286,7 +11324,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 146 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12307,7 +11345,7 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 147 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12332,13 +11370,13 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 148 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(40);
+var nativeCreate = __webpack_require__(39);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -12370,13 +11408,13 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 149 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(40);
+var nativeCreate = __webpack_require__(39);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -12401,13 +11439,13 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 150 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(40);
+var nativeCreate = __webpack_require__(39);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -12432,7 +11470,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 151 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12453,13 +11491,13 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 152 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(43);
+var assocIndexOf = __webpack_require__(41);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -12496,13 +11534,13 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 153 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(43);
+var assocIndexOf = __webpack_require__(41);
 
 /**
  * Gets the list cache value for `key`.
@@ -12523,13 +11561,13 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 154 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(43);
+var assocIndexOf = __webpack_require__(41);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -12547,13 +11585,13 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 155 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(43);
+var assocIndexOf = __webpack_require__(41);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -12581,13 +11619,13 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 156 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(44);
+var getMapData = __webpack_require__(42);
 
 /**
  * Removes `key` and its value from the map.
@@ -12607,7 +11645,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 157 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12630,13 +11668,13 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 158 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(44);
+var getMapData = __webpack_require__(42);
 
 /**
  * Gets the map value for `key`.
@@ -12654,13 +11692,13 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 159 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(44);
+var getMapData = __webpack_require__(42);
 
 /**
  * Checks if a map value for `key` exists.
@@ -12678,13 +11716,13 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 160 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(44);
+var getMapData = __webpack_require__(42);
 
 /**
  * Sets the map `key` to `value`.
@@ -12708,13 +11746,13 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 161 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseToString = __webpack_require__(162);
+var baseToString = __webpack_require__(159);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -12744,16 +11782,16 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 162 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(39),
+var _Symbol = __webpack_require__(38),
     arrayMap = __webpack_require__(89),
-    isArray = __webpack_require__(12),
-    isSymbol = __webpack_require__(38);
+    isArray = __webpack_require__(14),
+    isSymbol = __webpack_require__(54);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -12789,7 +11827,7 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 163 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12797,11 +11835,11 @@ module.exports = baseToString;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(164),
-    baseMatchesProperty = __webpack_require__(204),
-    identity = __webpack_require__(101),
-    isArray = __webpack_require__(12),
-    property = __webpack_require__(208);
+var baseMatches = __webpack_require__(161),
+    baseMatchesProperty = __webpack_require__(202),
+    identity = __webpack_require__(206),
+    isArray = __webpack_require__(14),
+    property = __webpack_require__(207);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -12828,15 +11866,15 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 164 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsMatch = __webpack_require__(165),
-    getMatchData = __webpack_require__(203),
-    matchesStrictComparable = __webpack_require__(100);
+var baseIsMatch = __webpack_require__(162),
+    getMatchData = __webpack_require__(201),
+    matchesStrictComparable = __webpack_require__(99);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -12858,7 +11896,7 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 165 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12922,13 +11960,13 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 166 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ListCache = __webpack_require__(42);
+var ListCache = __webpack_require__(40);
 
 /**
  * Removes all key-value entries from the stack.
@@ -12945,7 +11983,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 167 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12971,7 +12009,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 168 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12993,7 +12031,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 169 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13015,15 +12053,15 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 170 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ListCache = __webpack_require__(42),
+var ListCache = __webpack_require__(40),
     Map = __webpack_require__(57),
-    MapCache = __webpack_require__(56);
+    MapCache = __webpack_require__(55);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -13057,7 +12095,7 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 171 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13065,12 +12103,12 @@ module.exports = stackSet;
 
 var Stack = __webpack_require__(91),
     equalArrays = __webpack_require__(93),
-    equalByTag = __webpack_require__(177),
-    equalObjects = __webpack_require__(181),
-    getTag = __webpack_require__(198),
-    isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(96),
-    isTypedArray = __webpack_require__(98);
+    equalByTag = __webpack_require__(174),
+    equalObjects = __webpack_require__(178),
+    getTag = __webpack_require__(196),
+    isArray = __webpack_require__(14),
+    isBuffer = __webpack_require__(95),
+    isTypedArray = __webpack_require__(97);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -13146,15 +12184,15 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 172 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var MapCache = __webpack_require__(56),
-    setCacheAdd = __webpack_require__(173),
-    setCacheHas = __webpack_require__(174);
+var MapCache = __webpack_require__(55),
+    setCacheAdd = __webpack_require__(170),
+    setCacheHas = __webpack_require__(171);
 
 /**
  *
@@ -13181,7 +12219,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 173 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13208,7 +12246,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 174 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13230,7 +12268,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 175 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13261,7 +12299,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 176 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13282,18 +12320,18 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 177 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(39),
-    Uint8Array = __webpack_require__(178),
+var _Symbol = __webpack_require__(38),
+    Uint8Array = __webpack_require__(175),
     eq = __webpack_require__(88),
     equalArrays = __webpack_require__(93),
-    mapToArray = __webpack_require__(179),
-    setToArray = __webpack_require__(180);
+    mapToArray = __webpack_require__(176),
+    setToArray = __webpack_require__(177);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -13400,13 +12438,13 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 178 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var root = __webpack_require__(13);
+var root = __webpack_require__(15);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -13414,7 +12452,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 179 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13440,7 +12478,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 180 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13466,13 +12504,13 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 181 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getAllKeys = __webpack_require__(182);
+var getAllKeys = __webpack_require__(179);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -13556,14 +12594,14 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 182 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetAllKeys = __webpack_require__(183),
-    getSymbols = __webpack_require__(185),
+var baseGetAllKeys = __webpack_require__(180),
+    getSymbols = __webpack_require__(182),
     keys = __webpack_require__(58);
 
 /**
@@ -13580,14 +12618,14 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 183 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayPush = __webpack_require__(184),
-    isArray = __webpack_require__(12);
+var arrayPush = __webpack_require__(181),
+    isArray = __webpack_require__(14);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -13608,7 +12646,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 184 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13636,14 +12674,14 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 185 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayFilter = __webpack_require__(186),
-    stubArray = __webpack_require__(187);
+var arrayFilter = __webpack_require__(183),
+    stubArray = __webpack_require__(184);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13674,7 +12712,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 186 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13707,7 +12745,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 187 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13738,18 +12776,18 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 188 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTimes = __webpack_require__(94),
-    isArguments = __webpack_require__(95),
-    isArray = __webpack_require__(12),
-    isBuffer = __webpack_require__(96),
-    isIndex = __webpack_require__(97),
-    isTypedArray = __webpack_require__(98);
+var baseTimes = __webpack_require__(186),
+    isArguments = __webpack_require__(94),
+    isArray = __webpack_require__(14),
+    isBuffer = __webpack_require__(95),
+    isIndex = __webpack_require__(96),
+    isTypedArray = __webpack_require__(97);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13793,7 +12831,35 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 189 */
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
+
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
+}
+
+module.exports = baseTimes;
+
+/***/ }),
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13819,7 +12885,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 190 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13845,7 +12911,7 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 191 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13901,7 +12967,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 192 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13923,7 +12989,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 193 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13961,17 +13027,17 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
 
 /***/ }),
-/* 194 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isPrototype = __webpack_require__(195),
-    nativeKeys = __webpack_require__(196);
+var isPrototype = __webpack_require__(193),
+    nativeKeys = __webpack_require__(194);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -14002,7 +13068,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 195 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14028,13 +13094,13 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 196 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var overArg = __webpack_require__(197);
+var overArg = __webpack_require__(195);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -14042,7 +13108,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 197 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14065,17 +13131,17 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 198 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var DataView = __webpack_require__(199),
+var DataView = __webpack_require__(197),
     Map = __webpack_require__(57),
-    Promise = __webpack_require__(200),
-    Set = __webpack_require__(201),
-    WeakMap = __webpack_require__(202),
+    Promise = __webpack_require__(198),
+    Set = __webpack_require__(199),
+    WeakMap = __webpack_require__(200),
     baseGetTag = __webpack_require__(32),
     toSource = __webpack_require__(87);
 
@@ -14132,6 +13198,36 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getNative = __webpack_require__(25),
+    root = __webpack_require__(15);
+
+/* Built-in method references that are verified to be native. */
+var DataView = getNative(root, 'DataView');
+
+module.exports = DataView;
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getNative = __webpack_require__(25),
+    root = __webpack_require__(15);
+
+/* Built-in method references that are verified to be native. */
+var Promise = getNative(root, 'Promise');
+
+module.exports = Promise;
+
+/***/ }),
 /* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14139,12 +13235,12 @@ module.exports = getTag;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
-var DataView = getNative(root, 'DataView');
+var Set = getNative(root, 'Set');
 
-module.exports = DataView;
+module.exports = Set;
 
 /***/ }),
 /* 200 */
@@ -14154,12 +13250,12 @@ module.exports = DataView;
 
 
 var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
+    root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
-var Promise = getNative(root, 'Promise');
+var WeakMap = getNative(root, 'WeakMap');
 
-module.exports = Promise;
+module.exports = WeakMap;
 
 /***/ }),
 /* 201 */
@@ -14168,37 +13264,7 @@ module.exports = Promise;
 "use strict";
 
 
-var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
-
-/* Built-in method references that are verified to be native. */
-var Set = getNative(root, 'Set');
-
-module.exports = Set;
-
-/***/ }),
-/* 202 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getNative = __webpack_require__(25),
-    root = __webpack_require__(13);
-
-/* Built-in method references that are verified to be native. */
-var WeakMap = getNative(root, 'WeakMap');
-
-module.exports = WeakMap;
-
-/***/ }),
-/* 203 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isStrictComparable = __webpack_require__(99),
+var isStrictComparable = __webpack_require__(98),
     keys = __webpack_require__(58);
 
 /**
@@ -14224,7 +13290,7 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 204 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14232,11 +13298,11 @@ module.exports = getMatchData;
 
 var baseIsEqual = __webpack_require__(92),
     get = __webpack_require__(82),
-    hasIn = __webpack_require__(205),
-    isKey = __webpack_require__(55),
-    isStrictComparable = __webpack_require__(99),
-    matchesStrictComparable = __webpack_require__(100),
-    toKey = __webpack_require__(45);
+    hasIn = __webpack_require__(203),
+    isKey = __webpack_require__(53),
+    isStrictComparable = __webpack_require__(98),
+    matchesStrictComparable = __webpack_require__(99),
+    toKey = __webpack_require__(43);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -14263,14 +13329,14 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 205 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseHasIn = __webpack_require__(206),
-    hasPath = __webpack_require__(207);
+var baseHasIn = __webpack_require__(204),
+    hasPath = __webpack_require__(205);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -14305,7 +13371,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 206 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14326,18 +13392,18 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 207 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var castPath = __webpack_require__(84),
-    isArguments = __webpack_require__(95),
-    isArray = __webpack_require__(12),
-    isIndex = __webpack_require__(97),
+    isArguments = __webpack_require__(94),
+    isArray = __webpack_require__(14),
+    isIndex = __webpack_require__(96),
     isLength = __webpack_require__(59),
-    toKey = __webpack_require__(45);
+    toKey = __webpack_require__(43);
 
 /**
  * Checks if `path` exists on `object`.
@@ -14372,16 +13438,45 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 208 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseProperty = __webpack_require__(209),
-    basePropertyDeep = __webpack_require__(210),
-    isKey = __webpack_require__(55),
-    toKey = __webpack_require__(45);
+/**
+ * This method returns the first argument it receives.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {*} value Any value.
+ * @returns {*} Returns `value`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ *
+ * console.log(_.identity(object) === object);
+ * // => true
+ */
+function identity(value) {
+  return value;
+}
+
+module.exports = identity;
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseProperty = __webpack_require__(208),
+    basePropertyDeep = __webpack_require__(209),
+    isKey = __webpack_require__(53),
+    toKey = __webpack_require__(43);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -14412,7 +13507,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14434,7 +13529,7 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14458,13 +13553,13 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseEach = __webpack_require__(212),
+var baseEach = __webpack_require__(211),
     isArrayLike = __webpack_require__(60);
 
 /**
@@ -14488,14 +13583,14 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 212 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseForOwn = __webpack_require__(213),
-    createBaseEach = __webpack_require__(216);
+var baseForOwn = __webpack_require__(212),
+    createBaseEach = __webpack_require__(215);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -14510,13 +13605,13 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 213 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseFor = __webpack_require__(214),
+var baseFor = __webpack_require__(213),
     keys = __webpack_require__(58);
 
 /**
@@ -14534,13 +13629,13 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 214 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createBaseFor = __webpack_require__(215);
+var createBaseFor = __webpack_require__(214);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -14558,7 +13653,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 215 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14591,7 +13686,7 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 216 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14631,7 +13726,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 217 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14813,7 +13908,7 @@ exports.getFormat = I;
 exports.random = E;
 
 /***/ }),
-/* 218 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15066,6 +14161,911 @@ var PremiumPadding = function (_Component) {
 exports.default = PremiumPadding;
 
 /***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Google Fonts for the FontFamily component.
+ */
+
+var fonts = {};
+fonts["ABeeZee"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Abel"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Abhaya Libre"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["latin-ext", "sinhala", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Abril Fatface"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Aclonica"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Acme"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Actor"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Adamina"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Advent Pro"] = { "v": ["100", "200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "greek", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Aguafina Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Akronim"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Aladin"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Aldrich"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Alef"] = { "v": ["regular", "700"], "subset": ["hebrew", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Alegreya"] = { "v": ["regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Alegreya SC"] = { "v": ["regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Alegreya Sans"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Alegreya Sans SC"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Alex Brush"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Alfa Slab One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Alice"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Alike"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Alike Angular"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Allan"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Allerta"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Allerta Stencil"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Allura"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Almendra"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Almendra Display"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Almendra SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Amarante"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Amaranth"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Amatic SC"] = { "v": ["regular", "700"], "subset": ["cyrillic", "latin-ext", "hebrew", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Amethysta"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Amiko"] = { "v": ["regular", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "600", "700"], "i": ["normal"] };
+fonts["Amiri"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Amita"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Anaheim"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Andada"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Andika"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Angkor"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Annie Use Your Telescope"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Anonymous Pro"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Antic"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Antic Didone"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Antic Slab"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Anton"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Arapey"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Arbutus"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Arbutus Slab"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Architects Daughter"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Archivo"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Archivo Black"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Archivo Narrow"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Aref Ruqaa"] = { "v": ["regular", "700"], "subset": ["arabic", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Arima Madurai"] = { "v": ["100", "200", "300", "regular", "500", "700", "800", "900"], "subset": ["latin-ext", "tamil", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
+fonts["Arimo"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Arizonia"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Armata"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Arsenal"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Artifika"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Arvo"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Arya"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Asap"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Asap Condensed"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Asar"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Asset"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Assistant"] = { "v": ["200", "300", "regular", "600", "700", "800"], "subset": ["hebrew", "latin"], "weight": ["200", "300", "400", "600", "700", "800"], "i": ["normal"] };
+fonts["Astloch"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Asul"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Athiti"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Atma"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "bengali", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Atomic Age"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Aubrey"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Audiowide"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Autour One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Average"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Average Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Averia Gruesa Libre"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Averia Libre"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
+fonts["Averia Sans Libre"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
+fonts["Averia Serif Libre"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
+fonts["Bad Script"] = { "v": ["regular"], "subset": ["cyrillic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bahiana"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Bhai"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Bhaijaan"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Bhaina"] = { "v": ["regular"], "subset": ["latin-ext", "oriya", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Chettan"] = { "v": ["regular"], "subset": ["malayalam", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Da"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "bengali", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Paaji"] = { "v": ["regular"], "subset": ["latin-ext", "gurmukhi", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Tamma"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin", "kannada"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Tammudu"] = { "v": ["regular"], "subset": ["latin-ext", "telugu", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Baloo Thambi"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Balthazar"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bangers"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Barlow"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Barlow Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Barlow Semi Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Barrio"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Basic"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Battambang"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Baumans"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bayon"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Belgrano"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bellefair"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Belleza"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["BenchNine"] = { "v": ["300", "regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
+fonts["Bentham"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Berkshire Swash"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bevan"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bigelow Rules"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bigshot One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bilbo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bilbo Swash Caps"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["BioRhyme"] = { "v": ["200", "300", "regular", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "700", "800"], "i": ["normal"] };
+fonts["BioRhyme Expanded"] = { "v": ["200", "300", "regular", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "700", "800"], "i": ["normal"] };
+fonts["Biryani"] = { "v": ["200", "300", "regular", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Bitter"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Black And White Picture"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Black Han Sans"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Black Ops One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bokor"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Bonbon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Boogaloo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bowlby One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bowlby One SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Brawler"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bree Serif"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bubblegum Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bubbler One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Buda"] = { "v": ["300"], "subset": ["latin"], "weight": ["300"], "i": [] };
+fonts["Buenard"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Bungee"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bungee Hairline"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bungee Inline"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bungee Outline"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Bungee Shade"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Butcherman"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Butterfly Kids"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cabin"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Cabin Condensed"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
+fonts["Cabin Sketch"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Caesar Dressing"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cagliostro"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cairo"] = { "v": ["200", "300", "regular", "600", "700", "900"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["200", "300", "400", "600", "700", "900"], "i": ["normal"] };
+fonts["Calligraffitti"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cambay"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Cambo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Candal"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cantarell"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Cantata One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cantora One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Capriola"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cardo"] = { "v": ["regular", "italic", "700"], "subset": ["greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Carme"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Carrois Gothic"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Carrois Gothic SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Carter One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Catamaran"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Caudex"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Caveat"] = { "v": ["regular", "700"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Caveat Brush"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cedarville Cursive"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ceviche One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Changa"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Changa One"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Chango"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Chathura"] = { "v": ["100", "300", "regular", "700", "800"], "subset": ["telugu", "latin"], "weight": ["100", "300", "400", "700", "800"], "i": ["normal"] };
+fonts["Chau Philomene One"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Chela One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Chelsea Market"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Chenla"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Cherry Cream Soda"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cherry Swash"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Chewy"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Chicle"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Chivo"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700", "900"], "i": ["normal", "italic"] };
+fonts["Chonburi"] = { "v": ["regular"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cinzel"] = { "v": ["regular", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
+fonts["Cinzel Decorative"] = { "v": ["regular", "700", "900"], "subset": ["latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
+fonts["Clicker Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Coda"] = { "v": ["regular", "800"], "subset": ["latin-ext", "latin"], "weight": ["400", "800"], "i": ["normal"] };
+fonts["Coda Caption"] = { "v": ["800"], "subset": ["latin-ext", "latin"], "weight": ["800"], "i": [] };
+fonts["Codystar"] = { "v": ["300", "regular"], "subset": ["latin-ext", "latin"], "weight": ["300", "400"], "i": ["normal"] };
+fonts["Coiny"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Combo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Comfortaa"] = { "v": ["300", "regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
+fonts["Coming Soon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Concert One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Condiment"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Content"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Contrail One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Convergence"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cookie"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Copse"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Corben"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Cormorant"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Cormorant Garamond"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Cormorant Infant"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Cormorant SC"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Cormorant Unicase"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Cormorant Upright"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Courgette"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cousine"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Coustard"] = { "v": ["regular", "900"], "subset": ["latin"], "weight": ["400", "900"], "i": ["normal"] };
+fonts["Covered By Your Grace"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Crafty Girls"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Creepster"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Crete Round"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Crimson Text"] = { "v": ["regular", "italic", "600", "600italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "600", "700"], "i": ["normal", "italic"] };
+fonts["Croissant One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Crushed"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cuprum"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Cute Font"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cutive"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Cutive Mono"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Damion"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Dancing Script"] = { "v": ["regular", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Dangrek"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["David Libre"] = { "v": ["regular", "500", "700"], "subset": ["latin-ext", "hebrew", "vietnamese", "latin"], "weight": ["400", "500", "700"], "i": ["normal"] };
+fonts["Dawning of a New Day"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Days One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Dekko"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Delius"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Delius Swash Caps"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Delius Unicase"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Della Respira"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Denk One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Devonshire"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Dhurjati"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Didact Gothic"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Diplomata"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Diplomata SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Do Hyeon"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Dokdo"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Domine"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Donegal One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Doppio One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Dorsa"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Dosis"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Dr Sugiyama"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Duru Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Dynalight"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["EB Garamond"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
+fonts["Eagle Lake"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["East Sea Dokdo"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Eater"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Economica"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Eczar"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["El Messiri"] = { "v": ["regular", "500", "600", "700"], "subset": ["cyrillic", "arabic", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
+fonts["Electrolize"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Elsie"] = { "v": ["regular", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "900"], "i": ["normal"] };
+fonts["Elsie Swash Caps"] = { "v": ["regular", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "900"], "i": ["normal"] };
+fonts["Emblema One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Emilys Candy"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Encode Sans"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Encode Sans Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Encode Sans Expanded"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Encode Sans Semi Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Encode Sans Semi Expanded"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Engagement"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Englebert"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Enriqueta"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Erica One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Esteban"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Euphoria Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ewert"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Exo"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Exo 2"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Expletus Sans"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Fanwood Text"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Farsan"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fascinate"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fascinate Inline"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Faster One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fasthand"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Fauna One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Faustina"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Federant"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Federo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Felipa"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fenix"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Finger Paint"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fira Mono"] = { "v": ["regular", "500", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "500", "700"], "i": ["normal"] };
+fonts["Fira Sans"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Fira Sans Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Fira Sans Extra Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Fjalla One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fjord One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Flamenco"] = { "v": ["300", "regular"], "subset": ["latin"], "weight": ["300", "400"], "i": ["normal"] };
+fonts["Flavors"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fondamento"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Fontdiner Swanky"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Forum"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Francois One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Frank Ruhl Libre"] = { "v": ["300", "regular", "500", "700", "900"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["300", "400", "500", "700", "900"], "i": ["normal"] };
+fonts["Freckle Face"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fredericka the Great"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fredoka One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Freehand"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Fresca"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Frijole"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fruktur"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Fugaz One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["GFS Didot"] = { "v": ["regular"], "subset": ["greek"], "weight": ["400"], "i": ["normal"] };
+fonts["GFS Neohellenic"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["greek"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Gabriela"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gaegu"] = { "v": ["300", "regular", "700"], "subset": ["korean", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
+fonts["Gafata"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Galada"] = { "v": ["regular"], "subset": ["bengali", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Galdeano"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Galindo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gamja Flower"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gentium Basic"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Gentium Book Basic"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Geo"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Geostar"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Geostar Fill"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Germania One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gidugu"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gilda Display"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Give You Glory"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Glass Antiqua"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Glegoo"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Gloria Hallelujah"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Goblin One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gochi Hand"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gorditas"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Gothic A1"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["korean", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Goudy Bookletter 1911"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Graduate"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Grand Hotel"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gravitas One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Great Vibes"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Griffy"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gruppo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gudea"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Gugi"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Gurajada"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Habibi"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Halant"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Hammersmith One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Hanalei"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Hanalei Fill"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Handlee"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Hanuman"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Happy Monkey"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Harmattan"] = { "v": ["regular"], "subset": ["arabic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Headland One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Heebo"] = { "v": ["100", "300", "regular", "500", "700", "800", "900"], "subset": ["hebrew", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
+fonts["Henny Penny"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Herr Von Muellerhoff"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Hi Melody"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Hind"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Hind Guntur"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "telugu", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Hind Madurai"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Hind Siliguri"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "bengali", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Hind Vadodara"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Holtwood One SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Homemade Apple"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Homenaje"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["IBM Plex Mono"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["IBM Plex Sans"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["IBM Plex Sans Condensed"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["IBM Plex Serif"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["IM Fell DW Pica"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["IM Fell DW Pica SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["IM Fell Double Pica"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["IM Fell Double Pica SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["IM Fell English"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["IM Fell English SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["IM Fell French Canon"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["IM Fell French Canon SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["IM Fell Great Primer"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["IM Fell Great Primer SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Iceberg"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Iceland"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Imprima"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Inconsolata"] = { "v": ["regular", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Inder"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Indie Flower"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Inika"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Inknut Antiqua"] = { "v": ["300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Irish Grover"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Istok Web"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Italiana"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Italianno"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Itim"] = { "v": ["regular"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jacques Francois"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jacques Francois Shadow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jaldi"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Jim Nightshade"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jockey One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jolly Lodger"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jomhuria"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Josefin Sans"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "300", "400", "600", "700"], "i": ["normal", "italic"] };
+fonts["Josefin Slab"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic"], "subset": ["latin"], "weight": ["100", "300", "400", "600", "700"], "i": ["normal", "italic"] };
+fonts["Joti One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jua"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Judson"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Julee"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Julius Sans One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Junge"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Jura"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Just Another Hand"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Just Me Again Down Here"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kadwa"] = { "v": ["regular", "700"], "subset": ["devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Kalam"] = { "v": ["300", "regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
+fonts["Kameron"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Kanit"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Kantumruy"] = { "v": ["300", "regular", "700"], "subset": ["khmer"], "weight": ["300", "400", "700"], "i": ["normal"] };
+fonts["Karla"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Karma"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Katibeh"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kaushan Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kavivanar"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kavoon"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kdam Thmor"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Keania One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kelly Slab"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kenia"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Khand"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Khmer"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Khula"] = { "v": ["300", "regular", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "600", "700", "800"], "i": ["normal"] };
+fonts["Kirang Haerang"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kite One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Knewave"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kosugi"] = { "v": ["regular"], "subset": ["cyrillic", "japanese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kosugi Maru"] = { "v": ["regular"], "subset": ["cyrillic", "japanese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kotta One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Koulen"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Kranky"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kreon"] = { "v": ["300", "regular", "700"], "subset": ["latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
+fonts["Kristi"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Krona One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kumar One"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kumar One Outline"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Kurale"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["La Belle Aurore"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Laila"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Lakki Reddy"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lalezar"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lancelot"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lateef"] = { "v": ["regular"], "subset": ["arabic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lato"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "300", "400", "700", "900"], "i": ["normal", "italic"] };
+fonts["League Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Leckerli One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ledger"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lekton"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Lemon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lemonada"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
+fonts["Libre Barcode 128"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Libre Barcode 128 Text"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Libre Barcode 39"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Libre Barcode 39 Extended"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Libre Barcode 39 Extended Text"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Libre Barcode 39 Text"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Libre Baskerville"] = { "v": ["regular", "italic", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Libre Franklin"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Life Savers"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Lilita One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lily Script One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Limelight"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Linden Hill"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Lobster"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lobster Two"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Londrina Outline"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Londrina Shadow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Londrina Sketch"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Londrina Solid"] = { "v": ["100", "300", "regular", "900"], "subset": ["latin"], "weight": ["100", "300", "400", "900"], "i": ["normal"] };
+fonts["Lora"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Love Ya Like A Sister"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Loved by the King"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lovers Quarrel"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Luckiest Guy"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Lusitana"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Lustria"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["M PLUS 1p"] = { "v": ["100", "300", "regular", "500", "700", "800", "900"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "japanese", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
+fonts["M PLUS Rounded 1c"] = { "v": ["100", "300", "regular", "500", "700", "800", "900"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "japanese", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
+fonts["Macondo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Macondo Swash Caps"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mada"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["arabic", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
+fonts["Magra"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Maiden Orange"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Maitree"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Mako"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mallanna"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mandali"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Manuale"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Marcellus"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Marcellus SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Marck Script"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Margarine"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Markazi Text"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "arabic", "vietnamese", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
+fonts["Marko One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Marmelad"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Martel"] = { "v": ["200", "300", "regular", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Martel Sans"] = { "v": ["200", "300", "regular", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Marvel"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Mate"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Mate SC"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Maven Pro"] = { "v": ["regular", "500", "700", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "700", "900"], "i": ["normal"] };
+fonts["McLaren"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Meddon"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["MedievalSharp"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Medula One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Meera Inimai"] = { "v": ["regular"], "subset": ["tamil", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Megrim"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Meie Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Merienda"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Merienda One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Merriweather"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "700", "900"], "i": ["normal", "italic"] };
+fonts["Merriweather Sans"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic", "800", "800italic"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700", "800"], "i": ["normal", "italic"] };
+fonts["Metal"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Metal Mania"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Metamorphous"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Metrophobic"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Michroma"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Milonga"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Miltonian"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Miltonian Tattoo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mina"] = { "v": ["regular", "700"], "subset": ["latin-ext", "bengali", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Miniver"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Miriam Libre"] = { "v": ["regular", "700"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Mirza"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
+fonts["Miss Fajardose"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mitr"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Modak"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Modern Antiqua"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mogra"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Molengo"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Molle"] = { "v": ["italic"], "subset": ["latin-ext", "latin"], "weight": [], "i": ["italic"] };
+fonts["Monda"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Monofett"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Monoton"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Monsieur La Doulaise"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Montaga"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Montez"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Montserrat"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Montserrat Alternates"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Montserrat Subrayada"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Moul"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Moulpali"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Mountains of Christmas"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Mouse Memoirs"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mr Bedfort"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mr Dafoe"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mr De Haviland"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mrs Saint Delafield"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mrs Sheppards"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Mukta"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Mukta Mahee"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "gurmukhi", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Mukta Malar"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Mukta Vaani"] = { "v": ["200", "300", "regular", "500", "600", "700", "800"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Muli"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Mystery Quest"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["NTR"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nanum Brush Script"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nanum Gothic"] = { "v": ["regular", "700", "800"], "subset": ["korean", "latin"], "weight": ["400", "700", "800"], "i": ["normal"] };
+fonts["Nanum Gothic Coding"] = { "v": ["regular", "700"], "subset": ["korean", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Nanum Myeongjo"] = { "v": ["regular", "700", "800"], "subset": ["korean", "latin"], "weight": ["400", "700", "800"], "i": ["normal"] };
+fonts["Nanum Pen Script"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Neucha"] = { "v": ["regular"], "subset": ["cyrillic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Neuton"] = { "v": ["200", "300", "regular", "italic", "700", "800"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "700", "800"], "i": ["normal", "italic"] };
+fonts["New Rocker"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["News Cycle"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Niconne"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nixie One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nobile"] = { "v": ["regular", "italic", "500", "500italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "500", "700"], "i": ["normal", "italic"] };
+fonts["Nokora"] = { "v": ["regular", "700"], "subset": ["khmer"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Norican"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nosifer"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nothing You Could Do"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Noticia Text"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Noto Sans"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "devanagari", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Noto Sans JP"] = { "v": ["100", "300", "regular", "500", "700", "900"], "subset": ["japanese", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal"] };
+fonts["Noto Sans KR"] = { "v": ["100", "300", "regular", "500", "700", "900"], "subset": ["korean", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal"] };
+fonts["Noto Serif"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Noto Serif JP"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["japanese", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
+fonts["Noto Serif KR"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["korean", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
+fonts["Nova Cut"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nova Flat"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nova Mono"] = { "v": ["regular"], "subset": ["greek", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nova Oval"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nova Round"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nova Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nova Slim"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nova Square"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Numans"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Nunito"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Nunito Sans"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Odor Mean Chey"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Offside"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Old Standard TT"] = { "v": ["regular", "italic", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Oldenburg"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Oleo Script"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Oleo Script Swash Caps"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Open Sans"] = { "v": ["300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "600", "700", "800"], "i": ["normal", "italic"] };
+fonts["Open Sans Condensed"] = { "v": ["300", "300italic", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "700"], "i": [] };
+fonts["Oranienbaum"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Orbitron"] = { "v": ["regular", "500", "700", "900"], "subset": ["latin"], "weight": ["400", "500", "700", "900"], "i": ["normal"] };
+fonts["Oregano"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Orienta"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Original Surfer"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Oswald"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Over the Rainbow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Overlock"] = { "v": ["regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal", "italic"] };
+fonts["Overlock SC"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Overpass"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Overpass Mono"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
+fonts["Ovo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Oxygen"] = { "v": ["300", "regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "700"], "i": ["normal"] };
+fonts["Oxygen Mono"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["PT Mono"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["PT Sans"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["PT Sans Caption"] = { "v": ["regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["PT Sans Narrow"] = { "v": ["regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["PT Serif"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["PT Serif Caption"] = { "v": ["regular", "italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Pacifico"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Padauk"] = { "v": ["regular", "700"], "subset": ["myanmar", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Palanquin"] = { "v": ["100", "200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Palanquin Dark"] = { "v": ["regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700"], "i": ["normal"] };
+fonts["Pangolin"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Paprika"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Parisienne"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Passero One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Passion One"] = { "v": ["regular", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
+fonts["Pathway Gothic One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Patrick Hand"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Patrick Hand SC"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Pattaya"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Patua One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Pavanam"] = { "v": ["regular"], "subset": ["latin-ext", "tamil", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Paytone One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Peddana"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Peralta"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Permanent Marker"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Petit Formal Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Petrona"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Philosopher"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Piedra"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Pinyon Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Pirata One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Plaster"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Play"] = { "v": ["regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Playball"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Playfair Display"] = { "v": ["regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700", "900"], "i": ["normal", "italic"] };
+fonts["Playfair Display SC"] = { "v": ["regular", "italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["400", "700", "900"], "i": ["normal", "italic"] };
+fonts["Podkova"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Poiret One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Poller One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Poly"] = { "v": ["regular", "italic"], "subset": ["latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Pompiere"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Pontano Sans"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Poor Story"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Poppins"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Port Lligat Sans"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Port Lligat Slab"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Pragati Narrow"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Prata"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Preahvihear"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Press Start 2P"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Pridi"] = { "v": ["200", "300", "regular", "500", "600", "700"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Princess Sofia"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Prociono"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Prompt"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Prosto One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Proza Libre"] = { "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
+fonts["Puritan"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Purple Purse"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Quando"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Quantico"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Quattrocento"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Quattrocento Sans"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Questrial"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Quicksand"] = { "v": ["300", "regular", "500", "700"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["300", "400", "500", "700"], "i": ["normal"] };
+fonts["Quintessential"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Qwigley"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Racing Sans One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Radley"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Rajdhani"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Rakkas"] = { "v": ["regular"], "subset": ["latin-ext", "arabic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Raleway"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Raleway Dots"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ramabhadra"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ramaraja"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rambla"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Rammetto One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ranchers"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rancho"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ranga"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Rasa"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Rationale"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ravi Prakash"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Redressed"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Reem Kufi"] = { "v": ["regular"], "subset": ["arabic", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Reenie Beanie"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Revalia"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rhodium Libre"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ribeye"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ribeye Marrow"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Righteous"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Risque"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Roboto"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal", "italic"] };
+fonts["Roboto Condensed"] = { "v": ["300", "300italic", "regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["300", "400", "700"], "i": ["normal", "italic"] };
+fonts["Roboto Mono"] = { "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "500", "700"], "i": ["normal", "italic"] };
+fonts["Roboto Slab"] = { "v": ["100", "300", "regular", "700"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["100", "300", "400", "700"], "i": ["normal"] };
+fonts["Rochester"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rock Salt"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rokkitt"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Romanesco"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ropa Sans"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Rosario"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Rosarivo"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Rouge Script"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rozha One"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rubik"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "latin-ext", "hebrew", "latin"], "weight": ["300", "400", "500", "700", "900"], "i": ["normal", "italic"] };
+fonts["Rubik Mono One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ruda"] = { "v": ["regular", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
+fonts["Rufina"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Ruge Boogie"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ruluko"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rum Raisin"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ruslan Display"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Russo One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ruthie"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Rye"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sacramento"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sahitya"] = { "v": ["regular", "700"], "subset": ["devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Sail"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Saira"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Saira Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Saira Extra Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Saira Semi Condensed"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Salsa"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sanchez"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Sancreek"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sansita"] = { "v": ["regular", "italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Sarala"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Sarina"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sarpanch"] = { "v": ["regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Satisfy"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sawarabi Gothic"] = { "v": ["regular"], "subset": ["cyrillic", "japanese", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sawarabi Mincho"] = { "v": ["regular"], "subset": ["japanese", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Scada"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Scheherazade"] = { "v": ["regular", "700"], "subset": ["arabic", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Schoolbell"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Scope One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Seaweed Script"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Secular One"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sedgwick Ave"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sedgwick Ave Display"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sevillana"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Seymour One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Shadows Into Light"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Shadows Into Light Two"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Shanti"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Share"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Share Tech"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Share Tech Mono"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Shojumaru"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Short Stack"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Shrikhand"] = { "v": ["regular"], "subset": ["latin-ext", "gujarati", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Siemreap"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Sigmar One"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Signika"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
+fonts["Signika Negative"] = { "v": ["300", "regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "600", "700"], "i": ["normal"] };
+fonts["Simonetta"] = { "v": ["regular", "italic", "900", "900italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "900"], "i": ["normal", "italic"] };
+fonts["Sintony"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Sirin Stencil"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Six Caps"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Skranji"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Slabo 13px"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Slabo 27px"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Slackey"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Smokum"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Smythe"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sniglet"] = { "v": ["regular", "800"], "subset": ["latin-ext", "latin"], "weight": ["400", "800"], "i": ["normal"] };
+fonts["Snippet"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Snowburst One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sofadi One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sofia"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Song Myung"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sonsie One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sorts Mill Goudy"] = { "v": ["regular", "italic"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal", "italic"] };
+fonts["Source Code Pro"] = { "v": ["200", "300", "regular", "500", "600", "700", "900"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "900"], "i": ["normal"] };
+fonts["Source Sans Pro"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["200", "300", "400", "600", "700", "900"], "i": ["normal", "italic"] };
+fonts["Source Serif Pro"] = { "v": ["regular", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "600", "700"], "i": ["normal"] };
+fonts["Space Mono"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Special Elite"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Spectral"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
+fonts["Spectral SC"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "500", "600", "700", "800"], "i": ["normal", "italic"] };
+fonts["Spicy Rice"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Spinnaker"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Spirax"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Squada One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sree Krushnadevaraya"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sriracha"] = { "v": ["regular"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Stalemate"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Stalinist One"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Stardos Stencil"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Stint Ultra Condensed"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Stint Ultra Expanded"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Stoke"] = { "v": ["300", "regular"], "subset": ["latin-ext", "latin"], "weight": ["300", "400"], "i": ["normal"] };
+fonts["Strait"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Stylish"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sue Ellen Francisco"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Suez One"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sumana"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Sunflower"] = { "v": ["300", "500", "700"], "subset": ["korean", "latin"], "weight": ["300", "500", "700"], "i": [] };
+fonts["Sunshiney"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Supermercado One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Sura"] = { "v": ["regular", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Suranna"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Suravaram"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Suwannaphum"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Swanky and Moo Moo"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Syncopate"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Tajawal"] = { "v": ["200", "300", "regular", "500", "700", "800", "900"], "subset": ["arabic", "latin"], "weight": ["200", "300", "400", "500", "700", "800", "900"], "i": ["normal"] };
+fonts["Tangerine"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Taprom"] = { "v": ["regular"], "subset": ["khmer"], "weight": ["400"], "i": ["normal"] };
+fonts["Tauri"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Taviraj"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Teko"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Telex"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Tenali Ramakrishna"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Tenor Sans"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Text Me One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["The Girl Next Door"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Tienne"] = { "v": ["regular", "700", "900"], "subset": ["latin"], "weight": ["400", "700", "900"], "i": ["normal"] };
+fonts["Tillana"] = { "v": ["regular", "500", "600", "700", "800"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "600", "700", "800"], "i": ["normal"] };
+fonts["Timmana"] = { "v": ["regular"], "subset": ["telugu", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Tinos"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Titan One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Titillium Web"] = { "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "900"], "subset": ["latin-ext", "latin"], "weight": ["200", "300", "400", "600", "700", "900"], "i": ["normal", "italic"] };
+fonts["Trade Winds"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Trirong"] = { "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"], "subset": ["latin-ext", "thai", "vietnamese", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal", "italic"] };
+fonts["Trocchi"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Trochut"] = { "v": ["regular", "italic", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Trykker"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Tulpen One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ubuntu"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["300", "400", "500", "700"], "i": ["normal", "italic"] };
+fonts["Ubuntu Condensed"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Ubuntu Mono"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Ultra"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Uncial Antiqua"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Underdog"] = { "v": ["regular"], "subset": ["cyrillic", "latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Unica One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["UnifrakturCook"] = { "v": ["700"], "subset": ["latin"], "weight": ["700"], "i": [] };
+fonts["UnifrakturMaguntia"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Unkempt"] = { "v": ["regular", "700"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal"] };
+fonts["Unlock"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Unna"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["VT323"] = { "v": ["regular"], "subset": ["latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Vampiro One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Varela"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Varela Round"] = { "v": ["regular"], "subset": ["latin-ext", "hebrew", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Vast Shadow"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Vesper Libre"] = { "v": ["regular", "500", "700", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400", "500", "700", "900"], "i": ["normal"] };
+fonts["Vibur"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Vidaloka"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Viga"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Voces"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Volkhov"] = { "v": ["regular", "italic", "700", "700italic"], "subset": ["latin"], "weight": ["400", "700"], "i": ["normal", "italic"] };
+fonts["Vollkorn"] = { "v": ["regular", "italic", "600", "600italic", "700", "700italic", "900", "900italic"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"], "weight": ["400", "600", "700", "900"], "i": ["normal", "italic"] };
+fonts["Vollkorn SC"] = { "v": ["regular", "600", "700", "900"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400", "600", "700", "900"], "i": ["normal"] };
+fonts["Voltaire"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Waiting for the Sunrise"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Wallpoet"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Walter Turncoat"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Warnes"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Wellfleet"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Wendy One"] = { "v": ["regular"], "subset": ["latin-ext", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Wire One"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Work Sans"] = { "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"], "subset": ["latin-ext", "latin"], "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"], "i": ["normal"] };
+fonts["Yanone Kaffeesatz"] = { "v": ["200", "300", "regular", "700"], "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"], "weight": ["200", "300", "400", "700"], "i": ["normal"] };
+fonts["Yantramanav"] = { "v": ["100", "300", "regular", "500", "700", "900"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["100", "300", "400", "500", "700", "900"], "i": ["normal"] };
+fonts["Yatra One"] = { "v": ["regular"], "subset": ["latin-ext", "devanagari", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Yellowtail"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Yeon Sung"] = { "v": ["regular"], "subset": ["korean", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Yeseva One"] = { "v": ["regular"], "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Yesteryear"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Yrsa"] = { "v": ["300", "regular", "500", "600", "700"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal"] };
+fonts["Zeyada"] = { "v": ["regular"], "subset": ["latin"], "weight": ["400"], "i": ["normal"] };
+fonts["Zilla Slab"] = { "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"], "subset": ["latin-ext", "latin"], "weight": ["300", "400", "500", "600", "700"], "i": ["normal", "italic"] };
+fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext", "latin"], "weight": ["400", "700"], "i": ["normal"] };
+exports.default = fonts;
+
+/***/ }),
 /* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15084,7 +15084,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _webfontloader = __webpack_require__(103);
+var _webfontloader = __webpack_require__(100);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
@@ -16527,11 +16527,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -16539,7 +16539,7 @@ var _premiumFilters = __webpack_require__(61);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -16559,7 +16559,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -19327,11 +19327,11 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -20047,7 +20047,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -21318,7 +21318,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -21346,11 +21346,11 @@ var _PremiumBackgroundControl = __webpack_require__(35);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -22617,7 +22617,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -24493,7 +24493,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -25483,7 +25483,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -27303,11 +27303,11 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -27327,15 +27327,15 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(48);
+var _PremiumResponsiveMargin = __webpack_require__(46);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -28329,11 +28329,11 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(105);
+var ReactIs = __webpack_require__(102);
 var assign = __webpack_require__(248);
 
 var ReactPropTypesSecret = __webpack_require__(63);
-var has = __webpack_require__(106);
+var has = __webpack_require__(103);
 var checkPropTypes = __webpack_require__(249);
 
 var printWarning = function printWarning() {};
@@ -29021,7 +29021,7 @@ var printWarning = function printWarning() {};
 if (process.env.NODE_ENV !== 'production') {
   var ReactPropTypesSecret = __webpack_require__(63);
   var loggedTypeFailures = {};
-  var has = __webpack_require__(106);
+  var has = __webpack_require__(103);
 
   printWarning = function printWarning(text) {
     var message = 'Warning: ' + text;
@@ -29176,7 +29176,7 @@ module.exports = function () {
 exports.__esModule = true;
 exports.default = void 0;
 
-var PropTypes = _interopRequireWildcard(__webpack_require__(17));
+var PropTypes = _interopRequireWildcard(__webpack_require__(18));
 
 var _addClass = _interopRequireDefault(__webpack_require__(252));
 
@@ -29184,9 +29184,9 @@ var _removeClass = _interopRequireDefault(__webpack_require__(255));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
-var _Transition = _interopRequireDefault(__webpack_require__(108));
+var _Transition = _interopRequireDefault(__webpack_require__(105));
 
-var _PropTypes = __webpack_require__(110);
+var _PropTypes = __webpack_require__(107);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -29642,13 +29642,13 @@ module.exports = function removeClass(element, className) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var _propTypes = _interopRequireDefault(__webpack_require__(17));
+var _propTypes = _interopRequireDefault(__webpack_require__(18));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactDom = __webpack_require__(36);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(111));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(108));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30340,7 +30340,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -31689,15 +31689,15 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumBackground = __webpack_require__(104);
+var _premiumBackground = __webpack_require__(101);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
@@ -31717,15 +31717,15 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(48);
+var _PremiumResponsiveMargin = __webpack_require__(46);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -33337,7 +33337,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -36353,7 +36353,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -37521,11 +37521,11 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -37541,7 +37541,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
@@ -39664,7 +39664,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -42403,7 +42403,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -42419,11 +42419,11 @@ var _PremiumBackgroundControl = __webpack_require__(35);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(48);
+var _PremiumResponsiveMargin = __webpack_require__(46);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -43049,7 +43049,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -44073,11 +44073,11 @@ var _lowerQuote = __webpack_require__(67);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -44101,11 +44101,11 @@ var _PremiumBackgroundControl = __webpack_require__(35);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(47);
+var _responsiveRangeControl = __webpack_require__(45);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -45124,7 +45124,7 @@ var _lowerQuote = __webpack_require__(67);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -46728,11 +46728,11 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
@@ -46740,7 +46740,7 @@ var _premiumFilters = __webpack_require__(61);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _index = __webpack_require__(49);
+var _index = __webpack_require__(47);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -47674,7 +47674,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _index = __webpack_require__(49);
+var _index = __webpack_require__(47);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -47837,15 +47837,15 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(112);
+var _attributes = __webpack_require__(109);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _index = __webpack_require__(49);
+var _index = __webpack_require__(47);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _hexToRgba = __webpack_require__(16);
+var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
@@ -49398,7 +49398,7 @@ var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
@@ -49414,11 +49414,11 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _reactSortableHoc = __webpack_require__(113);
+var _reactSortableHoc = __webpack_require__(110);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51377,7 +51377,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	);
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
 
 /***/ }),
 /* 290 */
@@ -51428,7 +51428,7 @@ var _iterableToArrayLimit = __webpack_require__(293);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _unsupportedIterableToArray = __webpack_require__(114);
+var _unsupportedIterableToArray = __webpack_require__(111);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
@@ -51525,7 +51525,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _objectSpread;
 
-var _defineProperty = __webpack_require__(116);
+var _defineProperty = __webpack_require__(113);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -51613,7 +51613,7 @@ var _typeof2 = __webpack_require__(299);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _assertThisInitialized = __webpack_require__(117);
+var _assertThisInitialized = __webpack_require__(114);
 
 var _assertThisInitialized2 = _interopRequireDefault(_assertThisInitialized);
 
@@ -51800,7 +51800,7 @@ var _iterableToArray = __webpack_require__(306);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
-var _unsupportedIterableToArray = __webpack_require__(114);
+var _unsupportedIterableToArray = __webpack_require__(111);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
@@ -51826,7 +51826,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _arrayWithoutHoles;
 
-var _arrayLikeToArray = __webpack_require__(115);
+var _arrayLikeToArray = __webpack_require__(112);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -52630,7 +52630,7 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -52646,11 +52646,11 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _radioControl = __webpack_require__(10);
+var _radioControl = __webpack_require__(12);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(47);
+var _responsiveRangeControl = __webpack_require__(45);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -53402,7 +53402,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(17);
+var _propTypes = __webpack_require__(18);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -53729,7 +53729,7 @@ module.exports = { "default": __webpack_require__(314), __esModule: true };
 "use strict";
 
 
-var core = __webpack_require__(11);
+var core = __webpack_require__(10);
 var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
 module.exports = function stringify(it) {
   // eslint-disable-line no-unused-vars
@@ -53784,7 +53784,7 @@ module.exports = { "default": __webpack_require__(317), __esModule: true };
 
 
 __webpack_require__(318);
-module.exports = __webpack_require__(11).Object.assign;
+module.exports = __webpack_require__(10).Object.assign;
 
 /***/ }),
 /* 318 */
@@ -53818,11 +53818,11 @@ module.exports = function (it) {
 
 // 19.1.2.1 Object.assign(target, source, ...)
 
-var getKeys = __webpack_require__(51);
+var getKeys = __webpack_require__(49);
 var gOPS = __webpack_require__(74);
-var pIE = __webpack_require__(54);
+var pIE = __webpack_require__(52);
 var toObject = __webpack_require__(75);
-var IObject = __webpack_require__(122);
+var IObject = __webpack_require__(119);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -53935,7 +53935,7 @@ module.exports = { "default": __webpack_require__(325), __esModule: true };
 
 
 __webpack_require__(326);
-module.exports = __webpack_require__(11).Object.getPrototypeOf;
+module.exports = __webpack_require__(10).Object.getPrototypeOf;
 
 /***/ }),
 /* 326 */
@@ -53946,7 +53946,7 @@ module.exports = __webpack_require__(11).Object.getPrototypeOf;
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = __webpack_require__(75);
-var $getPrototypeOf = __webpack_require__(124);
+var $getPrototypeOf = __webpack_require__(121);
 
 __webpack_require__(327)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
@@ -53963,7 +53963,7 @@ __webpack_require__(327)('getPrototypeOf', function () {
 
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(20);
-var core = __webpack_require__(11);
+var core = __webpack_require__(10);
 var fails = __webpack_require__(29);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
@@ -54041,7 +54041,7 @@ module.exports = { "default": __webpack_require__(331), __esModule: true };
 
 
 __webpack_require__(332);
-var $Object = __webpack_require__(11).Object;
+var $Object = __webpack_require__(10).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
@@ -54066,7 +54066,7 @@ $export($export.S + $export.F * !__webpack_require__(22), 'Object', { defineProp
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(125);
+var _typeof2 = __webpack_require__(122);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -54112,7 +54112,7 @@ module.exports = __webpack_require__(79).f('iterator');
 var $at = __webpack_require__(337)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(126)(String, 'String', function (iterated) {
+__webpack_require__(123)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -54157,7 +54157,7 @@ module.exports = function (TO_STRING) {
 
 
 var create = __webpack_require__(77);
-var descriptor = __webpack_require__(50);
+var descriptor = __webpack_require__(48);
 var setToStringTag = __webpack_require__(78);
 var IteratorPrototype = {};
 
@@ -54180,7 +54180,7 @@ module.exports = function (Constructor, NAME, next) {
 
 var dP = __webpack_require__(21);
 var anObject = __webpack_require__(37);
-var getKeys = __webpack_require__(51);
+var getKeys = __webpack_require__(49);
 
 module.exports = __webpack_require__(22) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -54242,7 +54242,7 @@ var toIObject = __webpack_require__(30);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(126)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(123)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -54307,7 +54307,7 @@ __webpack_require__(347);
 __webpack_require__(352);
 __webpack_require__(353);
 __webpack_require__(354);
-module.exports = __webpack_require__(11).Symbol;
+module.exports = __webpack_require__(10).Symbol;
 
 /***/ }),
 /* 347 */
@@ -54323,12 +54323,12 @@ var global = __webpack_require__(19);
 var has = __webpack_require__(23);
 var DESCRIPTORS = __webpack_require__(22);
 var $export = __webpack_require__(20);
-var redefine = __webpack_require__(127);
+var redefine = __webpack_require__(124);
 var META = __webpack_require__(348).KEY;
 var $fails = __webpack_require__(29);
 var shared = __webpack_require__(72);
 var setToStringTag = __webpack_require__(78);
-var uid = __webpack_require__(53);
+var uid = __webpack_require__(51);
 var wks = __webpack_require__(31);
 var wksExt = __webpack_require__(79);
 var wksDefine = __webpack_require__(80);
@@ -54338,12 +54338,12 @@ var anObject = __webpack_require__(37);
 var isObject = __webpack_require__(28);
 var toIObject = __webpack_require__(30);
 var toPrimitive = __webpack_require__(68);
-var createDesc = __webpack_require__(50);
+var createDesc = __webpack_require__(48);
 var _create = __webpack_require__(77);
 var gOPNExt = __webpack_require__(351);
-var $GOPD = __webpack_require__(129);
+var $GOPD = __webpack_require__(126);
 var $DP = __webpack_require__(21);
-var $keys = __webpack_require__(51);
+var $keys = __webpack_require__(49);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -54469,11 +54469,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(128).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(54).f = $propertyIsEnumerable;
+  __webpack_require__(125).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(52).f = $propertyIsEnumerable;
   __webpack_require__(74).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(52)) {
+  if (DESCRIPTORS && !__webpack_require__(50)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -54568,7 +54568,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var META = __webpack_require__(53)('meta');
+var META = __webpack_require__(51)('meta');
 var isObject = __webpack_require__(28);
 var has = __webpack_require__(23);
 var setDesc = __webpack_require__(21).f;
@@ -54630,9 +54630,9 @@ var meta = module.exports = {
 
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(51);
+var getKeys = __webpack_require__(49);
 var gOPS = __webpack_require__(74);
-var pIE = __webpack_require__(54);
+var pIE = __webpack_require__(52);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -54655,7 +54655,7 @@ module.exports = function (it) {
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(123);
+var cof = __webpack_require__(120);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
@@ -54671,7 +54671,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(30);
-var gOPN = __webpack_require__(128).f;
+var gOPN = __webpack_require__(125).f;
 var toString = {}.toString;
 
 var windowNames = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -54730,7 +54730,7 @@ var _create = __webpack_require__(360);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(125);
+var _typeof2 = __webpack_require__(122);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -54771,7 +54771,7 @@ module.exports = { "default": __webpack_require__(357), __esModule: true };
 
 
 __webpack_require__(358);
-module.exports = __webpack_require__(11).Object.setPrototypeOf;
+module.exports = __webpack_require__(10).Object.setPrototypeOf;
 
 /***/ }),
 /* 358 */
@@ -54803,7 +54803,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(118)(Function.call, __webpack_require__(129).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(115)(Function.call, __webpack_require__(126).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -54835,7 +54835,7 @@ module.exports = { "default": __webpack_require__(361), __esModule: true };
 
 
 __webpack_require__(362);
-var $Object = __webpack_require__(11).Object;
+var $Object = __webpack_require__(10).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
 };
@@ -56203,6 +56203,46 @@ var bulletListAttrs = {
             showContent: false,
             showBulletIcon: true,
             linkTarget: false
+        }, {
+            id: 2,
+            label: "Title #" + 2,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }, {
+            id: 3,
+            label: "Title #" + 3,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
         }]
     },
     bulletIconStyles: {
@@ -56512,7 +56552,7 @@ var bulletListAttrs = {
     },
     iconPosition: {
         type: "string",
-        default: "left"
+        default: "before"
     },
     bulletAlign: {
         type: "string",
@@ -56650,8 +56690,8 @@ function save(props) {
 
     return React.createElement(
         "div",
-        { className: (0, _classnames2.default)(className, "premium-block-" + block_id),
-            id: "premium-block-" + block_id,
+        { className: (0, _classnames2.default)(className, "premium-bullet-list-" + block_id),
+            id: "premium-bullet-list-" + block_id,
             style: {
                 textAlign: align
             } },
@@ -56912,27 +56952,27 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumResponsiveMargin = __webpack_require__(48);
+var _PremiumResponsiveMargin = __webpack_require__(46);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _PremiumResponsivePadding = __webpack_require__(18);
+var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumTextShadow = __webpack_require__(14);
+var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumBoxShadow = __webpack_require__(15);
+var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _responsiveRangeControl = __webpack_require__(47);
+var _responsiveRangeControl = __webpack_require__(45);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _reactSortableHoc = __webpack_require__(113);
+var _reactSortableHoc = __webpack_require__(110);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57220,8 +57260,6 @@ var edit = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            var _this2 = this;
-
             var _props2 = this.props,
                 attributes = _props2.attributes,
                 setAttributes = _props2.setAttributes,
@@ -57314,6 +57352,7 @@ var edit = function (_Component) {
                 generalpaddingLMobile = attributes.generalpaddingLMobile,
                 titleFont = attributes.titleFont;
 
+            console.log(iconPosition);
 
             var LAYOUT = [{
                 label: __("Block"),
@@ -57651,6 +57690,11 @@ var edit = function (_Component) {
                             return setAttributes({ iconPosition: newValue });
                         }
                     }),
+                    React.createElement(
+                        "p",
+                        null,
+                        "Bullet Alignment"
+                    ),
                     React.createElement(Toolbar, {
                         controls: ALIGNS.map(function (contentAlign) {
                             return {
@@ -58381,7 +58425,8 @@ var edit = function (_Component) {
                                             marginLeft: BulletIconMarginLeft + bulletIconmarginType,
                                             marginRight: BulletIconMarginRight + bulletIconmarginType,
                                             textAlign: bulletAlign,
-                                            justifyContent: bulletAlign
+                                            justifyContent: bulletAlign,
+                                            alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
                                         }
                                     },
                                     image_icon_html
@@ -58394,8 +58439,8 @@ var edit = function (_Component) {
                                         placeholder: __("Title Name"),
                                         value: icon.label,
                                         className: "premium-bullet-list__label",
-                                        onChange: function onChange(value) {
-                                            _this2.saveIcons({ label: value }, index);
+                                        onChange: function onChange(val) {
+                                            return _changeLabel(val, index);
                                         },
                                         multiline: false,
                                         style: (_ref7 = {

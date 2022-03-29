@@ -101,9 +101,9 @@ export default function save(props) {
     return (
         <div className={classnames(
             className,
-            `premium-block-${block_id}`
+            `premium-bullet-list-${block_id}`
         )}
-            id={`premium-block-${block_id}`}
+            id={`premium-bullet-list-${block_id}`}
             style={{
                 textAlign: align,
             }}>

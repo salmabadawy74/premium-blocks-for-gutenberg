@@ -44,7 +44,50 @@ const bulletListAttrs = {
             showContent: false,
             showBulletIcon: true,
             linkTarget: false
-        }],
+        },
+        {
+            id: 2,
+            label: "Title #" + 2,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        },
+        {
+            id: 3,
+            label: "Title #" + 3,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }
+        ],
     },
     bulletIconStyles: {
         type: "array",
@@ -353,7 +396,7 @@ const bulletListAttrs = {
     },
     iconPosition: {
         type: "string",
-        default: "left"
+        default: "before"
     },
     bulletAlign: {
         type: "string",
