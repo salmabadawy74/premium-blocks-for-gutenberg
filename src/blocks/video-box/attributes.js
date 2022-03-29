@@ -71,7 +71,10 @@ const videoBoxAttrs = {
         type: 'boolean',
         default: false
     },
-
+    ratioValue: {
+        type: "string",
+        default: '169'
+    },
     boxStyles: {
         type: 'array',
         default: [

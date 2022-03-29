@@ -27,7 +27,8 @@ const save = props => {
         boxStyles,
         overlayStyles,
         playStyles,
-        descStyles
+        descStyles,
+        ratioValue
     } = props.attributes;
 
     const loopVideo = () => {
@@ -50,11 +51,10 @@ const save = props => {
     const mainClasses = classnames(className, 'premium-video-box');
 
     return (
-
         videoURL && (
             <div
                 id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`}
                 data-type={videoType}
                 style={{
                     borderStyle: boxStyles[0].boxBorderType,
@@ -77,27 +77,33 @@ const save = props => {
                     }}
                 />
                 <div className={`premium-video-box__container`}>
-                    {"self" !== videoType && (
-                        <iframe
-                            src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                }`}
-                            frameborder="0"
-                            gesture="media"
-                            allow="encrypted-media"
-                            allowfullscreen
-                        />
-                    )}
-                    {"self" === videoType && (
-                        <video
-                            src={videoURL}
-                            loop={loop ? true : false}
-                            muted={mute ? true : false}
-                            autoplay={overlay ? false : autoPlay}
-                            controls={controls ? true : false}
-                        />
-                    )}
+                    <div>
+                        <div className={`premium-video-box-inner-wrap`}>
+                            <div className={`premium-video-box-video-container`}>
+                                {"self" !== videoType && (
+                                    <iframe
+                                        src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                            }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                            }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                            }`}
+                                        frameborder="0"
+                                        gesture="media"
+                                        allow="encrypted-media"
+                                        allowfullscreen
+                                    />
+                                )}
+                                {"self" === videoType && (
+                                    <video
+                                        src={videoURL}
+                                        loop={loop ? true : false}
+                                        muted={mute ? true : false}
+                                        autoplay={overlay ? false : autoPlay}
+                                        controls={controls ? true : false}
+                                    />
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {overlay && overlayStyles[0].overlayImgURL && (
                     <div

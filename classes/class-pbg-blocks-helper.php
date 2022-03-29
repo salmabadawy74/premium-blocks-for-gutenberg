@@ -2809,6 +2809,7 @@ class PBG_Blocks_Helper {
 			$unique_id = rand( 100, 10000 );
 		}
 		if ( $this->it_is_not_amp() ) {
+           
 			wp_enqueue_script(
 				'pbg-modal',
 				PREMIUM_BLOCKS_URL . 'assets/js/modal.js',
@@ -2824,12 +2825,21 @@ class PBG_Blocks_Helper {
 				true
 			);
             wp_enqueue_script(
-				'pbg-modal-box',
-				PREMIUM_BLOCKS_URL . 'assets/js/modal-box.js',
+				'pbg-waypoints',
+				PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
+              wp_enqueue_script(
+				'pbg-modal-box',
+				PREMIUM_BLOCKS_URL . 'assets/js/modal-box.js',
+				array( 'jquery' ,'pbg-modal','pbg-lottie','pbg-waypoints'),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+            
+           
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
