@@ -103,6 +103,8 @@ const bulletListAttrs = {
             bulletIconborderType: "none",
             bulletIconborderRadius: 0,
             bulletIconborderColor: '',
+            bulletIconpaddingUnit: 'px',
+            bulletIconmarginType: 'px'
         }],
     },
     bulletIconBorderWidth: {
@@ -124,10 +126,6 @@ const bulletListAttrs = {
     bulletIconBorderUpdated: {
         type: "boolean",
         default: false
-    },
-    bulletIconmarginType: {
-        type: "string",
-        default: "px"
     },
     bulletIconmarginT: {
         type: "number"
@@ -164,10 +162,6 @@ const bulletListAttrs = {
     },
     bulletIconmarginLMobile: {
         type: "number"
-    },
-    bulletIconpaddingUnit: {
-        type: "string",
-        default: "px"
     },
     bulletIconpaddingTop: {
         type: "number"
@@ -224,11 +218,8 @@ const bulletListAttrs = {
             titleshadowBlur: 0,
             titleshadowHorizontal: 0,
             titleshadowVertical: 0,
+            titlemarginType: 'px'
         }],
-    },
-    titlemarginType: {
-        type: "string",
-        default: "px"
     },
     titlemarginT: {
         type: "number"
@@ -284,6 +275,8 @@ const bulletListAttrs = {
             generalHoverShadowHorizontal: '',
             generalHoverShadowVertical: '',
             generalHoverShadowPosition: '',
+            generalpaddingUnit: 'px',
+            generalmarginType: 'px'
         }],
     },
     generalBorderWidth: {
@@ -305,10 +298,6 @@ const bulletListAttrs = {
     generalBorderUpdated: {
         type: "boolean",
         default: false
-    },
-    generalmarginType: {
-        type: "string",
-        default: "px"
     },
     generalmarginT: {
         type: "number"
@@ -345,10 +334,6 @@ const bulletListAttrs = {
     },
     generalmarginLMobile: {
         type: "number"
-    },
-    generalpaddingUnit: {
-        type: "string",
-        default: "px"
     },
     generalpaddingTop: {
         type: "number"

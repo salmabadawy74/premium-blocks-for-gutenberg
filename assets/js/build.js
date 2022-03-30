@@ -56258,7 +56258,9 @@ var bulletListAttrs = {
             bulletIconHoverBackgroundColor: '',
             bulletIconborderType: "none",
             bulletIconborderRadius: 0,
-            bulletIconborderColor: ''
+            bulletIconborderColor: '',
+            bulletIconpaddingUnit: 'px',
+            bulletIconmarginType: 'px'
         }]
     },
     bulletIconBorderWidth: {
@@ -56280,10 +56282,6 @@ var bulletListAttrs = {
     bulletIconBorderUpdated: {
         type: "boolean",
         default: false
-    },
-    bulletIconmarginType: {
-        type: "string",
-        default: "px"
     },
     bulletIconmarginT: {
         type: "number"
@@ -56320,10 +56318,6 @@ var bulletListAttrs = {
     },
     bulletIconmarginLMobile: {
         type: "number"
-    },
-    bulletIconpaddingUnit: {
-        type: "string",
-        default: "px"
     },
     bulletIconpaddingTop: {
         type: "number"
@@ -56379,12 +56373,9 @@ var bulletListAttrs = {
             titleshadowColor: '',
             titleshadowBlur: 0,
             titleshadowHorizontal: 0,
-            titleshadowVertical: 0
+            titleshadowVertical: 0,
+            titlemarginType: 'px'
         }]
-    },
-    titlemarginType: {
-        type: "string",
-        default: "px"
     },
     titlemarginT: {
         type: "number"
@@ -56439,7 +56430,9 @@ var bulletListAttrs = {
             generalHoverShadowBlur: '',
             generalHoverShadowHorizontal: '',
             generalHoverShadowVertical: '',
-            generalHoverShadowPosition: ''
+            generalHoverShadowPosition: '',
+            generalpaddingUnit: 'px',
+            generalmarginType: 'px'
         }]
     },
     generalBorderWidth: {
@@ -56461,10 +56454,6 @@ var bulletListAttrs = {
     generalBorderUpdated: {
         type: "boolean",
         default: false
-    },
-    generalmarginType: {
-        type: "string",
-        default: "px"
     },
     generalmarginT: {
         type: "number"
@@ -56501,10 +56490,6 @@ var bulletListAttrs = {
     },
     generalmarginLMobile: {
         type: "number"
-    },
-    generalpaddingUnit: {
-        type: "string",
-        default: "px"
     },
     generalpaddingTop: {
         type: "number"
@@ -56612,46 +56597,7 @@ function save(props) {
         bulletIconBorderBottom = attributes.bulletIconBorderBottom,
         bulletIconBorderLeft = attributes.bulletIconBorderLeft,
         bulletIconBorderWidth = attributes.bulletIconBorderWidth,
-        bulletIconmarginT = attributes.bulletIconmarginT,
-        bulletIconmarginR = attributes.bulletIconmarginR,
-        bulletIconmarginB = attributes.bulletIconmarginB,
-        bulletIconmarginL = attributes.bulletIconmarginL,
-        bulletIconmarginTTablet = attributes.bulletIconmarginTTablet,
-        bulletIconmarginRTablet = attributes.bulletIconmarginRTablet,
-        bulletIconmarginBTablet = attributes.bulletIconmarginBTablet,
-        bulletIconmarginLTablet = attributes.bulletIconmarginLTablet,
-        bulletIconmarginTMobile = attributes.bulletIconmarginTMobile,
-        bulletIconmarginRMobile = attributes.bulletIconmarginRMobile,
-        bulletIconmarginBMobile = attributes.bulletIconmarginBMobile,
-        bulletIconmarginLMobile = attributes.bulletIconmarginLMobile,
-        bulletIconmarginType = attributes.bulletIconmarginType,
-        bulletIconpaddingUnit = attributes.bulletIconpaddingUnit,
-        bulletIconpaddingTop = attributes.bulletIconpaddingTop,
-        bulletIconpaddingRight = attributes.bulletIconpaddingRight,
-        bulletIconpaddingBottom = attributes.bulletIconpaddingBottom,
-        bulletIconpaddingLeft = attributes.bulletIconpaddingLeft,
-        bulletIconpaddingTTablet = attributes.bulletIconpaddingTTablet,
-        bulletIconpaddingRTablet = attributes.bulletIconpaddingRTablet,
-        bulletIconpaddingBTablet = attributes.bulletIconpaddingBTablet,
-        bulletIconpaddingLTablet = attributes.bulletIconpaddingLTablet,
-        bulletIconpaddingTMobile = attributes.bulletIconpaddingTMobile,
-        bulletIconpaddingRMobile = attributes.bulletIconpaddingRMobile,
-        bulletIconpaddingBMobile = attributes.bulletIconpaddingBMobile,
-        bulletIconpaddingLMobile = attributes.bulletIconpaddingLMobile,
         titleStyles = attributes.titleStyles,
-        titlemarginT = attributes.titlemarginT,
-        titlemarginR = attributes.titlemarginR,
-        titlemarginB = attributes.titlemarginB,
-        titlemarginL = attributes.titlemarginL,
-        titlemarginTTablet = attributes.titlemarginTTablet,
-        titlemarginRTablet = attributes.titlemarginRTablet,
-        titlemarginBTablet = attributes.titlemarginBTablet,
-        titlemarginLTablet = attributes.titlemarginLTablet,
-        titlemarginTMobile = attributes.titlemarginTMobile,
-        titlemarginRMobile = attributes.titlemarginRMobile,
-        titlemarginBMobile = attributes.titlemarginBMobile,
-        titlemarginLMobile = attributes.titlemarginLMobile,
-        titlemarginType = attributes.titlemarginType,
         generalStyles = attributes.generalStyles,
         generalBorderWidth = attributes.generalBorderWidth,
         generalBorderTop = attributes.generalBorderTop,
@@ -56659,32 +56605,6 @@ function save(props) {
         generalBorderBottom = attributes.generalBorderBottom,
         generalBorderLeft = attributes.generalBorderLeft,
         generalBorderUpdated = attributes.generalBorderUpdated,
-        generalmarginT = attributes.generalmarginT,
-        generalmarginR = attributes.generalmarginR,
-        generalmarginB = attributes.generalmarginB,
-        generalmarginL = attributes.generalmarginL,
-        generalmarginTTablet = attributes.generalmarginTTablet,
-        generalmarginRTablet = attributes.generalmarginRTablet,
-        generalmarginBTablet = attributes.generalmarginBTablet,
-        generalmarginLTablet = attributes.generalmarginLTablet,
-        generalmarginTMobile = attributes.generalmarginTMobile,
-        generalmarginRMobile = attributes.generalmarginRMobile,
-        generalmarginBMobile = attributes.generalmarginBMobile,
-        generalmarginLMobile = attributes.generalmarginLMobile,
-        generalmarginType = attributes.generalmarginType,
-        generalpaddingUnit = attributes.generalpaddingUnit,
-        generalpaddingTop = attributes.generalpaddingTop,
-        generalpaddingRight = attributes.generalpaddingRight,
-        generalpaddingBottom = attributes.generalpaddingBottom,
-        generalpaddingLeft = attributes.generalpaddingLeft,
-        generalpaddingTTablet = attributes.generalpaddingTTablet,
-        generalpaddingRTablet = attributes.generalpaddingRTablet,
-        generalpaddingBTablet = attributes.generalpaddingBTablet,
-        generalpaddingLTablet = attributes.generalpaddingLTablet,
-        generalpaddingTMobile = attributes.generalpaddingTMobile,
-        generalpaddingRMobile = attributes.generalpaddingRMobile,
-        generalpaddingBMobile = attributes.generalpaddingBMobile,
-        generalpaddingLMobile = attributes.generalpaddingLMobile,
         titleFont = attributes.titleFont;
 
 
@@ -56719,13 +56639,8 @@ function save(props) {
                                 React.createElement("i", {
                                     className: "" + icon.icon,
                                     style: {
-                                        // fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                         color: bulletIconStyles[0].bulletIconColor,
                                         backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                        // paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
-                                        // paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
-                                        // paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
-                                        // paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
                                         borderStyle: bulletIconStyles[0].bulletIconborderType,
                                         borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                         borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
@@ -56739,12 +56654,6 @@ function save(props) {
                             image_icon_html = React.createElement("img", {
                                 src: icon.image.url,
                                 style: {
-                                    // width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                    // height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                    // paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
-                                    // paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
-                                    // paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
-                                    // paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
                                     borderStyle: bulletIconStyles[0].bulletIconborderType,
                                     borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                     borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
@@ -56762,72 +56671,59 @@ function save(props) {
                     var _ref;
 
                     return React.createElement(
-                        "div",
-                        {
-                            className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
-                            key: index,
-                            style: {
-                                textAlign: align,
-                                justifyContent: align == "right" ? "flex-end" : align,
-                                backgroundColor: generalStyles[0].generalBackgroundColor,
-                                borderStyle: generalStyles[0].generalborderType,
-                                borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                borderColor: generalStyles[0].generalborderColor,
-                                // paddingTop: GeneralPaddingTop + generalpaddingUnit,
-                                // paddingBottom: GeneralPaddingBottom + generalpaddingUnit,
-                                // paddingLeft: GeneralPaddingLeft + generalpaddingUnit,
-                                // paddingRight: GeneralPaddingRight + generalpaddingUnit,
-                                // marginTop: GeneralMarginTop + generalmarginType,
-                                // marginBottom: GeneralMarginBottom + generalmarginType,
-                                // marginLeft: GeneralMarginLeft + generalmarginType,
-                                // marginRight: GeneralMarginRight + generalmarginType,
-                                boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
-                            }
-                        },
+                        "ul",
+                        null,
                         React.createElement(
-                            "div",
-                            { className: "premium-bullet-list__content-wrap", style: {
-                                    justifyContent: align == "right" ? align : align,
-                                    display: iconPosition == "before" ? "flex" : "inline-flex",
-                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
-                                } },
-                            React.createElement(
-                                "span",
-                                { className: "premium-bullet-list__icon-wrap",
-                                    style: {
-                                        // borderStyle: borderType,
-                                        // borderWidth: borderWidth + "px",
-                                        // borderRadius: borderRadius || 0 + "px",
-                                        // borderColor: borderColor,
-                                        overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
-                                        alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                        // marginTop: BulletIconMarginTop + bulletIconmarginType,
-                                        // marginBottom: BulletIconMarginBottom + bulletIconmarginType,
-                                        // marginLeft: BulletIconMarginLeft + bulletIconmarginType,
-                                        // marginRight: BulletIconMarginRight + bulletIconmarginType,
-                                        textAlign: bulletAlign,
-                                        justifyContent: bulletAlign
-                                    }
-                                },
-                                image_icon_html
-                            ),
+                            "li",
+                            {
+                                className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                key: index,
+                                style: {
+                                    textAlign: align,
+                                    justifyContent: align == "right" ? "flex-end" : align,
+                                    backgroundColor: generalStyles[0].generalBackgroundColor,
+                                    borderStyle: generalStyles[0].generalborderType,
+                                    borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                    borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                    borderColor: generalStyles[0].generalborderColor,
+                                    boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                }
+                            },
                             React.createElement(
                                 "div",
-                                { className: "premium-bullet-list__label-wrap" },
-                                React.createElement(RichText.Content, {
-                                    tagName: "span",
-                                    value: repeaterBulletList[index].label,
-                                    className: "premium-bullet-list__label",
-                                    style: (_ref = {
-                                        fontFamily: titleFont,
-                                        // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                        fontWeight: titleStyles[0].titleWeight,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        lineHeight: titleStyles[0].titleLine + "px",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                    }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref) })
+                                { className: "premium-bullet-list__content-wrap", style: {
+                                        justifyContent: align == "right" ? align : align,
+                                        display: iconPosition == "before" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                    } },
+                                React.createElement(
+                                    "span",
+                                    { className: "premium-bullet-list__icon-wrap",
+                                        style: {
+                                            overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                            alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                            textAlign: bulletAlign,
+                                            justifyContent: bulletAlign
+                                        }
+                                    },
+                                    image_icon_html
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { className: "premium-bullet-list__label-wrap" },
+                                    React.createElement(RichText.Content, {
+                                        tagName: "span",
+                                        value: repeaterBulletList[index].label,
+                                        className: "premium-bullet-list__label",
+                                        style: (_ref = {
+                                            fontFamily: titleFont,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                        }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref) })
+                                )
                             )
                         )
                     );
@@ -56835,75 +56731,66 @@ function save(props) {
                     var _ref2;
 
                     return React.createElement(
-                        "a",
-                        {
-                            className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
-                            key: index,
-                            target: target,
-                            rel: "noopener noreferrer",
-                            href: link_url,
-                            style: {
-                                textAlign: align,
-                                justifyContent: align == "right" ? "flex-end" : align,
-                                backgroundColor: generalStyles[0].generalBackgroundColor,
-                                borderStyle: generalStyles[0].generalborderType,
-                                borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                borderColor: generalStyles[0].generalborderColor,
-                                // paddingTop: GeneralPaddingTop + generalpaddingUnit,
-                                // paddingBottom: GeneralPaddingBottom + generalpaddingUnit,
-                                // paddingLeft: GeneralPaddingLeft + generalpaddingUnit,
-                                // paddingRight: GeneralPaddingRight + generalpaddingUnit,
-                                // marginTop: GeneralMarginTop + generalmarginType,
-                                // marginBottom: GeneralMarginBottom + generalmarginType,
-                                // marginLeft: GeneralMarginLeft + generalmarginType,
-                                // marginRight: GeneralMarginRight + generalmarginType,
-                                boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
-                            }
-                        },
+                        "ul",
+                        null,
                         React.createElement(
-                            "div",
-                            { className: "premium-bullet-list__content-wrap", style: {
-                                    justifyContent: align == "right" ? align : align,
-                                    display: iconPosition == "before" ? "flex" : "inline-flex",
-                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
-                                } },
+                            "li",
+                            null,
                             React.createElement(
-                                "span",
-                                { className: "premium-bullet-list__icon-wrap",
+                                "a",
+                                {
+                                    className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                    key: index,
+                                    target: target,
+                                    rel: "noopener noreferrer",
+                                    href: link_url,
                                     style: {
-                                        // borderStyle: borderType,
-                                        // borderWidth: borderWidth + "px",
-                                        // borderRadius: borderRadius || 0 + "px",
-                                        // borderColor: borderColor,
-                                        overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
-                                        alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                        // marginTop: BulletIconMarginTop + bulletIconmarginType,
-                                        // marginBottom: BulletIconMarginBottom + bulletIconmarginType,
-                                        // marginLeft: BulletIconMarginLeft + bulletIconmarginType,
-                                        // marginRight: BulletIconMarginRight + bulletIconmarginType,
-                                        textAlign: bulletAlign,
-                                        justifyContent: bulletAlign
+                                        textAlign: align,
+                                        justifyContent: align == "right" ? "flex-end" : align,
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
                                     }
                                 },
-                                image_icon_html
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "premium-bullet-list__label-wrap" },
-                                React.createElement(RichText.Content, {
-                                    tagName: "span",
-                                    value: repeaterBulletList[index].label,
-                                    className: "premium-bullet-list__label",
-                                    style: (_ref2 = {
-                                        fontFamily: titleFont,
-                                        // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                        fontWeight: titleStyles[0].titleWeight,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        lineHeight: titleStyles[0].titleLine + "px",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                    }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
+                                React.createElement(
+                                    "div",
+                                    { className: "premium-bullet-list__content-wrap", style: {
+                                            justifyContent: align == "right" ? align : align,
+                                            display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                        } },
+                                    React.createElement(
+                                        "span",
+                                        { className: "premium-bullet-list__icon-wrap",
+                                            style: {
+                                                overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                textAlign: bulletAlign,
+                                                justifyContent: bulletAlign
+                                            }
+                                        },
+                                        image_icon_html
+                                    ),
+                                    React.createElement(
+                                        "div",
+                                        { className: "premium-bullet-list__label-wrap" },
+                                        React.createElement(RichText.Content, {
+                                            tagName: "span",
+                                            value: repeaterBulletList[index].label,
+                                            className: "premium-bullet-list__label",
+                                            style: (_ref2 = {
+                                                fontFamily: titleFont,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                            }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
+                                    )
+                                )
                             )
                         )
                     );
@@ -56986,6 +56873,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var withSelect = wp.data.withSelect;
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -56995,7 +56883,6 @@ var _wp$blockEditor = wp.blockEditor,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     InspectorControls = _wp$blockEditor.InspectorControls,
     MediaUpload = _wp$blockEditor.MediaUpload,
-    ColorPalette = _wp$blockEditor.ColorPalette,
     RichText = _wp$blockEditor.RichText;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
@@ -57003,8 +56890,7 @@ var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     Button = _wp$components.Button,
     TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl,
-    TabPanel = _wp$components.TabPanel;
+    ToggleControl = _wp$components.ToggleControl;
 
 
 var ICONTYPE = [{
@@ -57240,30 +57126,12 @@ var edit = function (_Component) {
             return desktopSize;
         }
     }, {
-        key: "saveIcons",
-        value: function saveIcons(value, index) {
-            var _props = this.props,
-                attributes = _props.attributes,
-                setAttributes = _props.setAttributes;
-            var icons = attributes.icons;
-
-            var newItems = icons.map(function (item, thisIndex) {
-                if (index === thisIndex) {
-                    item = _extends({}, item, value);
-                }
-                return item;
-            });
-            setAttributes({
-                icons: newItems
-            });
-        }
-    }, {
         key: "render",
         value: function render() {
-            var _props2 = this.props,
-                attributes = _props2.attributes,
-                setAttributes = _props2.setAttributes,
-                isSelected = _props2.isSelected;
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes,
+                isSelected = _props.isSelected;
             var layoutPos = attributes.layoutPos,
                 iconPosition = attributes.iconPosition,
                 align = attributes.align,
@@ -57289,8 +57157,6 @@ var edit = function (_Component) {
                 bulletIconmarginRMobile = attributes.bulletIconmarginRMobile,
                 bulletIconmarginBMobile = attributes.bulletIconmarginBMobile,
                 bulletIconmarginLMobile = attributes.bulletIconmarginLMobile,
-                bulletIconmarginType = attributes.bulletIconmarginType,
-                bulletIconpaddingUnit = attributes.bulletIconpaddingUnit,
                 bulletIconpaddingTop = attributes.bulletIconpaddingTop,
                 bulletIconpaddingRight = attributes.bulletIconpaddingRight,
                 bulletIconpaddingBottom = attributes.bulletIconpaddingBottom,
@@ -57316,7 +57182,6 @@ var edit = function (_Component) {
                 titlemarginRMobile = attributes.titlemarginRMobile,
                 titlemarginBMobile = attributes.titlemarginBMobile,
                 titlemarginLMobile = attributes.titlemarginLMobile,
-                titlemarginType = attributes.titlemarginType,
                 generalStyles = attributes.generalStyles,
                 generalBorderWidth = attributes.generalBorderWidth,
                 generalBorderTop = attributes.generalBorderTop,
@@ -57336,8 +57201,6 @@ var edit = function (_Component) {
                 generalmarginRMobile = attributes.generalmarginRMobile,
                 generalmarginBMobile = attributes.generalmarginBMobile,
                 generalmarginLMobile = attributes.generalmarginLMobile,
-                generalmarginType = attributes.generalmarginType,
-                generalpaddingUnit = attributes.generalpaddingUnit,
                 generalpaddingTop = attributes.generalpaddingTop,
                 generalpaddingRight = attributes.generalpaddingRight,
                 generalpaddingBottom = attributes.generalpaddingBottom,
@@ -57352,7 +57215,6 @@ var edit = function (_Component) {
                 generalpaddingLMobile = attributes.generalpaddingLMobile,
                 titleFont = attributes.titleFont;
 
-            console.log(iconPosition);
 
             var LAYOUT = [{
                 label: __("Block"),
@@ -57371,14 +57233,6 @@ var edit = function (_Component) {
             }, {
                 label: __("Top"),
                 value: "top"
-            }];
-
-            var COLORTAB = [{
-                name: "normal",
-                title: __("Normal")
-            }, {
-                name: "hover",
-                title: __("Hover")
             }];
 
             var ALIGNS = ["left", "center", "right"];
@@ -57542,7 +57396,7 @@ var edit = function (_Component) {
 
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
-                if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
             };
@@ -57838,9 +57692,9 @@ var edit = function (_Component) {
                         marginLeftMobile: generalmarginLMobile,
                         showUnits: true,
                         onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return setAttributes({ generalmarginType: newvalue });
+                            return saveGeneralStyles({ generalmarginType: newvalue });
                         },
-                        selectedUnit: generalmarginType,
+                        selectedUnit: generalStyles[0].generalmarginType,
                         onChangeMarginTop: function onChangeMarginTop(device, newValue) {
                             if (device === "desktop") {
                                 setAttributes({ generalmarginT: newValue });
@@ -57893,9 +57747,9 @@ var edit = function (_Component) {
                         paddingBottomMobile: generalpaddingBMobile,
                         paddingLeftMobile: generalpaddingLMobile,
                         showUnits: true,
-                        selectedUnit: generalpaddingUnit,
+                        selectedUnit: generalStyles[0].generalpaddingUnit,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ generalpaddingUnit: newvalue });
+                            return saveGeneralStyles({ generalpaddingUnit: newvalue });
                         },
                         onChangePaddingTop: function onChangePaddingTop(device, newValue) {
                             if (device === "desktop") {
@@ -58053,9 +57907,9 @@ var edit = function (_Component) {
                         marginLeftMobile: bulletIconmarginLMobile,
                         showUnits: true,
                         onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return setAttributes({ bulletIconmarginType: newvalue });
+                            return saveBulletIconStyles({ bulletIconmarginType: newvalue });
                         },
-                        selectedUnit: bulletIconmarginType,
+                        selectedUnit: bulletIconStyles[0].bulletIconmarginType,
                         onChangeMarginTop: function onChangeMarginTop(device, newValue) {
                             if (device === "desktop") {
                                 setAttributes({ bulletIconmarginT: newValue });
@@ -58108,9 +57962,9 @@ var edit = function (_Component) {
                         paddingBottomMobile: bulletIconpaddingBMobile,
                         paddingLeftMobile: bulletIconpaddingLMobile,
                         showUnits: true,
-                        selectedUnit: bulletIconpaddingUnit,
+                        selectedUnit: bulletIconStyles[0].bulletIconpaddingUnit,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ bulletIconpaddingUnit: newvalue });
+                            return saveBulletIconStyles({ bulletIconpaddingUnit: newvalue });
                         },
                         onChangePaddingTop: function onChangePaddingTop(device, newValue) {
                             if (device === "desktop") {
@@ -58260,9 +58114,9 @@ var edit = function (_Component) {
                         marginLeftMobile: titlemarginLMobile,
                         showUnits: true,
                         onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return setAttributes({ titlemarginType: newvalue });
+                            return saveTitleStyles({ titlemarginType: newvalue });
                         },
-                        selectedUnit: titlemarginType,
+                        selectedUnit: titleStyles[0].titlemarginType,
                         onChangeMarginTop: function onChangeMarginTop(device, newValue) {
                             if (device === "desktop") {
                                 setAttributes({ titlemarginT: newValue });
@@ -58336,10 +58190,10 @@ var edit = function (_Component) {
                                                 fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                 color: bulletIconStyles[0].bulletIconColor,
                                                 backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                                paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
-                                                paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
-                                                paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
-                                                paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
+                                                paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
                                                 borderStyle: bulletIconStyles[0].bulletIconborderType,
                                                 borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                                 borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
@@ -58356,10 +58210,10 @@ var edit = function (_Component) {
                                         style: {
                                             width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                             height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                            paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
-                                            paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
-                                            paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
-                                            paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
+                                            paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
+                                            paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
+                                            paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
+                                            paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
                                             borderStyle: bulletIconStyles[0].bulletIconborderType,
                                             borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                             borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
@@ -58373,86 +58227,84 @@ var edit = function (_Component) {
                         var target = icon.linkTarget ? "_blank" : "_self";
 
                         return React.createElement(
-                            "div",
-                            {
-                                className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
-                                key: index,
-                                target: target,
-                                rel: "noopener noreferrer",
-                                style: {
-                                    justifyContent: align == "right" ? align : align,
-                                    backgroundColor: generalStyles[0].generalBackgroundColor,
-                                    borderStyle: generalStyles[0].generalborderType,
-                                    borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                    borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                    borderColor: generalStyles[0].generalborderColor,
-                                    paddingTop: GeneralPaddingTop + generalpaddingUnit,
-                                    paddingBottom: GeneralPaddingBottom + generalpaddingUnit,
-                                    paddingLeft: GeneralPaddingLeft + generalpaddingUnit,
-                                    paddingRight: GeneralPaddingRight + generalpaddingUnit,
-                                    marginTop: GeneralMarginTop + generalmarginType,
-                                    marginBottom: GeneralMarginBottom + generalmarginType,
-                                    marginLeft: GeneralMarginLeft + generalmarginType,
-                                    marginRight: GeneralMarginRight + generalmarginType,
-                                    boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
-                                }
-                            },
+                            "ul",
+                            null,
                             React.createElement(
-                                "div",
-                                { className: "premium-bullet-list__content-wrap", style: {
+                                "li",
+                                {
+                                    className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                    key: index,
+                                    target: target,
+                                    rel: "noopener noreferrer",
+                                    style: {
                                         justifyContent: align == "right" ? align : align,
-                                        display: iconPosition == "before" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
-                                        marginTop: TitleMarginTop + titlemarginType,
-                                        marginBottom: TitleMarginBottom + titlemarginType,
-                                        marginLeft: TitleMarginLeft + titlemarginType,
-                                        marginRight: TitleMarginRight + titlemarginType
-                                    } },
-                                React.createElement(
-                                    "span",
-                                    { className: "premium-bullet-list__icon-wrap",
-                                        style: {
-                                            // borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                            // borderWidth: bulletIconBorderUpdated
-                                            //     ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
-                                            //     : bulletIconBorderWidth + "px",
-                                            // borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                            // borderColor: bulletIconStyles[0].bulletIconborderColor,
-                                            overflow: "hidden",
-                                            alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                            marginTop: BulletIconMarginTop + bulletIconmarginType,
-                                            marginBottom: BulletIconMarginBottom + bulletIconmarginType,
-                                            marginLeft: BulletIconMarginLeft + bulletIconmarginType,
-                                            marginRight: BulletIconMarginRight + bulletIconmarginType,
-                                            textAlign: bulletAlign,
-                                            justifyContent: bulletAlign,
-                                            alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
-                                        }
-                                    },
-                                    image_icon_html
-                                ),
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
+                                        paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
+                                        paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
+                                        paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
+                                        marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
+                                        marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
+                                        marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
+                                        marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
+                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                    }
+                                },
                                 React.createElement(
                                     "div",
-                                    { className: "premium-bullet-list__label-wrap" },
-                                    React.createElement(RichText, {
-                                        tagName: "div",
-                                        placeholder: __("Title Name"),
-                                        value: icon.label,
-                                        className: "premium-bullet-list__label",
-                                        onChange: function onChange(val) {
-                                            return _changeLabel(val, index);
+                                    { className: "premium-bullet-list__content-wrap", style: {
+                                            justifyContent: align == "right" ? align : align,
+                                            display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
+                                            marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
+                                            marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
+                                            marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
+                                            marginRight: TitleMarginRight + titleStyles[0].titlemarginType
+                                        } },
+                                    icon.showBulletIcon && React.createElement(
+                                        "span",
+                                        { className: "premium-bullet-list__icon-wrap",
+                                            style: {
+                                                // overflow: "hidden",
+                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
+                                                marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
+                                                marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
+                                                marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
+                                                textAlign: bulletAlign,
+                                                justifyContent: bulletAlign,
+                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                            }
                                         },
-                                        multiline: false,
-                                        style: (_ref7 = {
-                                            fontFamily: titleFont,
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                            fontWeight: titleStyles[0].titleWeight,
-                                            letterSpacing: titleStyles[0].titleLetter + "px",
-                                            lineHeight: titleStyles[0].titleLine + "px",
-                                            fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                        }, _defineProperty(_ref7, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref7, "color", titleStyles[0].titleColor), _defineProperty(_ref7, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref7)
-                                    })
+                                        image_icon_html
+                                    ),
+                                    React.createElement(
+                                        "div",
+                                        { className: "premium-bullet-list__label-wrap" },
+                                        React.createElement(RichText, {
+                                            tagName: "div",
+                                            placeholder: __("Title Name"),
+                                            value: icon.label,
+                                            className: "premium-bullet-list__label",
+                                            onChange: function onChange(val) {
+                                                return _changeLabel(val, index);
+                                            },
+                                            multiline: false,
+                                            style: (_ref7 = {
+                                                fontFamily: titleFont,
+                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                            }, _defineProperty(_ref7, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref7, "color", titleStyles[0].titleColor), _defineProperty(_ref7, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref7)
+                                        })
+                                    )
                                 )
                             )
                         );
@@ -58465,7 +58317,15 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-exports.default = edit;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return { deviceType: deviceType };
+})(edit);
 
 /***/ })
 /******/ ]);

@@ -11,6 +11,8 @@ import PremiumBoxShadow from "../../components/premium-box-shadow";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 
+const { withSelect } = wp.data
+
 const { __ } = wp.i18n
 
 const {
@@ -23,7 +25,6 @@ const {
     AlignmentToolbar,
     InspectorControls,
     MediaUpload,
-    ColorPalette,
     RichText
 } = wp.blockEditor
 
@@ -33,8 +34,7 @@ const {
     Toolbar,
     Button,
     TextControl,
-    ToggleControl,
-    TabPanel,
+    ToggleControl
 } = wp.components
 
 const ICONTYPE = [
@@ -223,21 +223,6 @@ class edit extends Component {
         return desktopSize;
     }
 
-
-    saveIcons(value, index) {
-        const { attributes, setAttributes } = this.props
-        const { icons } = attributes
-        const newItems = icons.map((item, thisIndex) => {
-            if (index === thisIndex) {
-                item = { ...item, ...value }
-            }
-            return item
-        })
-        setAttributes({
-            icons: newItems,
-        })
-    }
-
     render() {
         const { attributes, setAttributes, isSelected } = this.props
 
@@ -267,8 +252,6 @@ class edit extends Component {
             bulletIconmarginRMobile,
             bulletIconmarginBMobile,
             bulletIconmarginLMobile,
-            bulletIconmarginType,
-            bulletIconpaddingUnit,
             bulletIconpaddingTop,
             bulletIconpaddingRight,
             bulletIconpaddingBottom,
@@ -294,7 +277,6 @@ class edit extends Component {
             titlemarginRMobile,
             titlemarginBMobile,
             titlemarginLMobile,
-            titlemarginType,
             generalStyles,
             generalBorderWidth,
             generalBorderTop,
@@ -314,8 +296,6 @@ class edit extends Component {
             generalmarginRMobile,
             generalmarginBMobile,
             generalmarginLMobile,
-            generalmarginType,
-            generalpaddingUnit,
             generalpaddingTop,
             generalpaddingRight,
             generalpaddingBottom,
@@ -330,7 +310,6 @@ class edit extends Component {
             generalpaddingLMobile,
             titleFont
         } = attributes
-        console.log(iconPosition)
 
         const LAYOUT = [
             {
@@ -356,17 +335,6 @@ class edit extends Component {
                 label: __("Top"),
                 value: "top"
             }
-        ];
-
-        const COLORTAB = [
-            {
-                name: "normal",
-                title: __("Normal")
-            },
-            {
-                name: "hover",
-                title: __("Hover")
-            },
         ];
 
         const ALIGNS = ["left", "center", "right"];
@@ -572,7 +540,7 @@ class edit extends Component {
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
-            if (['button', 'div', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+            if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                 return true; // Return true to cancel sorting
             }
         }
@@ -790,8 +758,8 @@ class edit extends Component {
                             marginBottomMobile={generalmarginBMobile}
                             marginLeftMobile={generalmarginLMobile}
                             showUnits={true}
-                            onChangeMarSizeUnit={newvalue => setAttributes({ generalmarginType: newvalue })}
-                            selectedUnit={generalmarginType}
+                            onChangeMarSizeUnit={newvalue => saveGeneralStyles({ generalmarginType: newvalue })}
+                            selectedUnit={generalStyles[0].generalmarginType}
                             onChangeMarginTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
@@ -852,8 +820,8 @@ class edit extends Component {
                             paddingBottomMobile={generalpaddingBMobile}
                             paddingLeftMobile={generalpaddingLMobile}
                             showUnits={true}
-                            selectedUnit={generalpaddingUnit}
-                            onChangePadSizeUnit={newvalue => setAttributes({ generalpaddingUnit: newvalue })}
+                            selectedUnit={generalStyles[0].generalpaddingUnit}
+                            onChangePadSizeUnit={newvalue => saveGeneralStyles({ generalpaddingUnit: newvalue })}
                             onChangePaddingTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
@@ -1003,8 +971,8 @@ class edit extends Component {
                             marginBottomMobile={bulletIconmarginBMobile}
                             marginLeftMobile={bulletIconmarginLMobile}
                             showUnits={true}
-                            onChangeMarSizeUnit={newvalue => setAttributes({ bulletIconmarginType: newvalue })}
-                            selectedUnit={bulletIconmarginType}
+                            onChangeMarSizeUnit={newvalue => saveBulletIconStyles({ bulletIconmarginType: newvalue })}
+                            selectedUnit={bulletIconStyles[0].bulletIconmarginType}
                             onChangeMarginTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
@@ -1065,8 +1033,8 @@ class edit extends Component {
                             paddingBottomMobile={bulletIconpaddingBMobile}
                             paddingLeftMobile={bulletIconpaddingLMobile}
                             showUnits={true}
-                            selectedUnit={bulletIconpaddingUnit}
-                            onChangePadSizeUnit={newvalue => setAttributes({ bulletIconpaddingUnit: newvalue })}
+                            selectedUnit={bulletIconStyles[0].bulletIconpaddingUnit}
+                            onChangePadSizeUnit={newvalue => saveBulletIconStyles({ bulletIconpaddingUnit: newvalue })}
                             onChangePaddingTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
@@ -1202,8 +1170,8 @@ class edit extends Component {
                             marginBottomMobile={titlemarginBMobile}
                             marginLeftMobile={titlemarginLMobile}
                             showUnits={true}
-                            onChangeMarSizeUnit={newvalue => setAttributes({ titlemarginType: newvalue })}
-                            selectedUnit={titlemarginType}
+                            onChangeMarSizeUnit={newvalue => saveTitleStyles({ titlemarginType: newvalue })}
+                            selectedUnit={titleStyles[0].titlemarginType}
                             onChangeMarginTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
@@ -1296,10 +1264,10 @@ class edit extends Component {
                                                     fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                     color: bulletIconStyles[0].bulletIconColor,
                                                     backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                                    paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
-                                                    paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
-                                                    paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
-                                                    paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
+                                                    paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                    paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                    paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                    paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
                                                     borderStyle: bulletIconStyles[0].bulletIconborderType,
                                                     borderWidth: bulletIconBorderUpdated
                                                         ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
@@ -1318,10 +1286,10 @@ class edit extends Component {
                                             style={{
                                                 width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                 height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                                paddingTop: BulletIconPaddingTop + bulletIconpaddingUnit,
-                                                paddingBottom: BulletIconPaddingBottom + bulletIconpaddingUnit,
-                                                paddingLeft: BulletIconPaddingLeft + bulletIconpaddingUnit,
-                                                paddingRight: BulletIconPaddingRight + bulletIconpaddingUnit,
+                                                paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
                                                 borderStyle: bulletIconStyles[0].bulletIconborderType,
                                                 borderWidth: bulletIconBorderUpdated
                                                     ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
@@ -1337,86 +1305,82 @@ class edit extends Component {
                             let target = (icon.linkTarget) ? "_blank" : "_self"
 
                             return (
-                                <div
-                                    className={classnames(
-                                        `premium-bullet-list-content${index}`,
-                                        "premium-bullet-list__wrapper"
-                                    )}
-                                    key={index}
-                                    target={target}
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        justifyContent: align == "right" ? align : align,
-                                        backgroundColor: generalStyles[0].generalBackgroundColor,
-                                        borderStyle: generalStyles[0].generalborderType,
-                                        borderWidth: generalBorderUpdated
-                                            ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
-                                            : generalBorderWidth + "px",
-                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                        borderColor: generalStyles[0].generalborderColor,
-                                        paddingTop: GeneralPaddingTop + generalpaddingUnit,
-                                        paddingBottom: GeneralPaddingBottom + generalpaddingUnit,
-                                        paddingLeft: GeneralPaddingLeft + generalpaddingUnit,
-                                        paddingRight: GeneralPaddingRight + generalpaddingUnit,
-                                        marginTop: GeneralMarginTop + generalmarginType,
-                                        marginBottom: GeneralMarginBottom + generalmarginType,
-                                        marginLeft: GeneralMarginLeft + generalmarginType,
-                                        marginRight: GeneralMarginRight + generalmarginType,
-                                        boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
-                                    }}
-                                >
-                                    <div className="premium-bullet-list__content-wrap" style={{
-                                        justifyContent: align == "right" ? align : align,
-                                        display: iconPosition == "before" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
-                                        marginTop: TitleMarginTop + titlemarginType,
-                                        marginBottom: TitleMarginBottom + titlemarginType,
-                                        marginLeft: TitleMarginLeft + titlemarginType,
-                                        marginRight: TitleMarginRight + titlemarginType,
-                                    }}>
-                                        <span className="premium-bullet-list__icon-wrap"
-                                            style={{
-                                                // borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                                // borderWidth: bulletIconBorderUpdated
-                                                //     ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
-                                                //     : bulletIconBorderWidth + "px",
-                                                // borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                                // borderColor: bulletIconStyles[0].bulletIconborderColor,
-                                                overflow: "hidden",
-                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                                marginTop: BulletIconMarginTop + bulletIconmarginType,
-                                                marginBottom: BulletIconMarginBottom + bulletIconmarginType,
-                                                marginLeft: BulletIconMarginLeft + bulletIconmarginType,
-                                                marginRight: BulletIconMarginRight + bulletIconmarginType,
-                                                textAlign: bulletAlign,
-                                                justifyContent: bulletAlign,
-                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                            }}
-                                        >{image_icon_html}</span>
-                                        <div className="premium-bullet-list__label-wrap">
-                                            <RichText
-                                                tagName="div"
-                                                placeholder={__("Title Name")}
-                                                value={icon.label}
-                                                className='premium-bullet-list__label'
-                                                onChange={(val) => changeLabel(val, index)}
-                                                multiline={false}
+                                <ul>
+                                    <li
+                                        className={classnames(
+                                            `premium-bullet-list-content${index}`,
+                                            "premium-bullet-list__wrapper"
+                                        )}
+                                        key={index}
+                                        target={target}
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            justifyContent: align == "right" ? align : align,
+                                            backgroundColor: generalStyles[0].generalBackgroundColor,
+                                            borderStyle: generalStyles[0].generalborderType,
+                                            borderWidth: generalBorderUpdated
+                                                ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
+                                                : generalBorderWidth + "px",
+                                            borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                            borderColor: generalStyles[0].generalborderColor,
+                                            paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
+                                            paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
+                                            paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
+                                            paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
+                                            marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
+                                            marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
+                                            marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
+                                            marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
+                                            boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
+                                        }}
+                                    >
+                                        <div className="premium-bullet-list__content-wrap" style={{
+                                            justifyContent: align == "right" ? align : align,
+                                            display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
+                                            marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
+                                            marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
+                                            marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
+                                            marginRight: TitleMarginRight + titleStyles[0].titlemarginType,
+                                        }}>
+                                            {icon.showBulletIcon && <span className="premium-bullet-list__icon-wrap"
                                                 style={{
-                                                    fontFamily: titleFont,
-                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                    fontWeight: titleStyles[0].titleWeight,
-                                                    letterSpacing: titleStyles[0].titleLetter + "px",
-                                                    lineHeight: titleStyles[0].titleLine + "px",
-                                                    fontStyle: titleStyles[0].titleStyle,
-                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                    fontFamily: titleStyles[0].titleFontFamily,
-                                                    color: titleStyles[0].titleColor,
-                                                    textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                                    // overflow: "hidden",
+                                                    alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                    marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
+                                                    marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
+                                                    marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
+                                                    marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
+                                                    textAlign: bulletAlign,
+                                                    justifyContent: bulletAlign,
+                                                    alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                                 }}
-                                            />
+                                            >{image_icon_html}</span>}
+                                            <div className="premium-bullet-list__label-wrap">
+                                                <RichText
+                                                    tagName="div"
+                                                    placeholder={__("Title Name")}
+                                                    value={icon.label}
+                                                    className='premium-bullet-list__label'
+                                                    onChange={(val) => changeLabel(val, index)}
+                                                    multiline={false}
+                                                    style={{
+                                                        fontFamily: titleFont,
+                                                        fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                        fontWeight: titleStyles[0].titleWeight,
+                                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                                        lineHeight: titleStyles[0].titleLine + "px",
+                                                        fontStyle: titleStyles[0].titleStyle,
+                                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                        fontFamily: titleStyles[0].titleFontFamily,
+                                                        color: titleStyles[0].titleColor,
+                                                        textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                                    }}
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
                             )
                         })
                     }
@@ -1427,4 +1391,9 @@ class edit extends Component {
     }
 }
 
-export default edit
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return { deviceType: deviceType }
+})(edit)
