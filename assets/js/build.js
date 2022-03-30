@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 126);
+/******/ 	return __webpack_require__(__webpack_require__.s = 125);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -142,7 +142,7 @@ var _premiumSizeUnits = __webpack_require__(25);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _rangeControl = __webpack_require__(129);
+var _rangeControl = __webpack_require__(128);
 
 var _rangeControl2 = _interopRequireDefault(_rangeControl);
 
@@ -238,7 +238,8 @@ var banner = _PremiumBlocksSetting.banner,
     iconBox = _PremiumBlocksSetting.iconBox,
     videoBox = _PremiumBlocksSetting.videoBox,
     fancyText = _PremiumBlocksSetting.fancyText,
-    lottie = _PremiumBlocksSetting.lottie;
+    lottie = _PremiumBlocksSetting.lottie,
+    modal = _PremiumBlocksSetting.modal;
 
 //Plugin Config Keys
 
@@ -256,6 +257,7 @@ exports.iconBox = iconBox;
 exports.videoBox = videoBox;
 exports.fancyText = fancyText;
 exports.lottie = lottie;
+exports.modal = modal;
 var _FontAwesomeConfig = FontAwesomeConfig;
 var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
 exports.FontAwesomeEnabled = FontAwesomeEnabled;
@@ -288,7 +290,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _colord = __webpack_require__(215);
+var _colord = __webpack_require__(214);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1150,7 +1152,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumFonts = __webpack_require__(217);
+var _premiumFonts = __webpack_require__(216);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
@@ -1162,7 +1164,7 @@ var _singleRangeControl = __webpack_require__(1);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _fontList = __webpack_require__(218);
+var _fontList = __webpack_require__(217);
 
 var _fontList2 = _interopRequireDefault(_fontList);
 
@@ -1929,7 +1931,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumPadding = __webpack_require__(216);
+var _premiumPadding = __webpack_require__(215);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
@@ -2312,11 +2314,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(246)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(245)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(249)();
+  module.exports = __webpack_require__(248)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
@@ -2430,7 +2432,7 @@ function PremiumMediaUpload(props) {
 
 var global = __webpack_require__(19);
 var core = __webpack_require__(11);
-var ctx = __webpack_require__(114);
+var ctx = __webpack_require__(113);
 var hide = __webpack_require__(28);
 var has = __webpack_require__(24);
 var PROTOTYPE = 'prototype';
@@ -2502,7 +2504,7 @@ module.exports = $export;
 
 
 var anObject = __webpack_require__(37);
-var IE8_DOM_DEFINE = __webpack_require__(115);
+var IE8_DOM_DEFINE = __webpack_require__(114);
 var toPrimitive = __webpack_require__(68);
 var dP = Object.defineProperty;
 
@@ -2595,8 +2597,8 @@ function PremiumSizeUnits(props) {
 "use strict";
 
 
-var baseIsNative = __webpack_require__(139),
-    getValue = __webpack_require__(142);
+var baseIsNative = __webpack_require__(138),
+    getValue = __webpack_require__(141);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -2901,7 +2903,7 @@ module.exports = function (exec) {
 
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(118);
+var IObject = __webpack_require__(117);
 var defined = __webpack_require__(69);
 module.exports = function (it) {
   return IObject(defined(it));
@@ -2933,8 +2935,8 @@ $exports.store = store;
 
 
 var _Symbol = __webpack_require__(38),
-    getRawTag = __webpack_require__(131),
-    objectToString = __webpack_require__(132);
+    getRawTag = __webpack_require__(130),
+    objectToString = __webpack_require__(131);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -3173,11 +3175,11 @@ module.exports = nativeCreate;
 "use strict";
 
 
-var listCacheClear = __webpack_require__(147),
-    listCacheDelete = __webpack_require__(148),
-    listCacheGet = __webpack_require__(149),
-    listCacheHas = __webpack_require__(150),
-    listCacheSet = __webpack_require__(151);
+var listCacheClear = __webpack_require__(146),
+    listCacheDelete = __webpack_require__(147),
+    listCacheGet = __webpack_require__(148),
+    listCacheHas = __webpack_require__(149),
+    listCacheSet = __webpack_require__(150);
 
 /**
  * Creates an list cache object.
@@ -3242,7 +3244,7 @@ module.exports = assocIndexOf;
 "use strict";
 
 
-var isKeyable = __webpack_require__(153);
+var isKeyable = __webpack_require__(152);
 
 /**
  * Gets the data for `map`.
@@ -3507,7 +3509,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumMargin = __webpack_require__(257);
+var _premiumMargin = __webpack_require__(256);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
@@ -3704,15 +3706,15 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(282);
+var _edit = __webpack_require__(281);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(283);
+var _save = __webpack_require__(282);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(284);
+var _deprecated = __webpack_require__(283);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -3797,7 +3799,7 @@ module.exports = function (bitmap, value) {
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(117);
+var $keys = __webpack_require__(116);
 var enumBugKeys = __webpack_require__(73);
 
 module.exports = Object.keys || function keys(O) {
@@ -3917,11 +3919,11 @@ module.exports = isSymbol;
 "use strict";
 
 
-var mapCacheClear = __webpack_require__(136),
-    mapCacheDelete = __webpack_require__(152),
-    mapCacheGet = __webpack_require__(154),
-    mapCacheHas = __webpack_require__(155),
-    mapCacheSet = __webpack_require__(156);
+var mapCacheClear = __webpack_require__(135),
+    mapCacheDelete = __webpack_require__(151),
+    mapCacheGet = __webpack_require__(153),
+    mapCacheHas = __webpack_require__(154),
+    mapCacheSet = __webpack_require__(155);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -4013,8 +4015,8 @@ module.exports = Map;
 "use strict";
 
 
-var arrayLikeKeys = __webpack_require__(184),
-    baseKeys = __webpack_require__(191),
+var arrayLikeKeys = __webpack_require__(183),
+    baseKeys = __webpack_require__(190),
     isArrayLike = __webpack_require__(60);
 
 /**
@@ -5175,7 +5177,7 @@ var PROTOTYPE = 'prototype';
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var _createDict = function createDict() {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(116)('iframe');
+  var iframe = __webpack_require__(115)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
@@ -5339,8 +5341,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(13),
     isKey = __webpack_require__(53),
-    stringToPath = __webpack_require__(133),
-    toString = __webpack_require__(157);
+    stringToPath = __webpack_require__(132),
+    toString = __webpack_require__(156);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -5372,7 +5374,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(130)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(129)))
 
 /***/ }),
 /* 86 */
@@ -5535,8 +5537,8 @@ module.exports = arrayMap;
 
 
 var arrayMap = __webpack_require__(89),
-    baseIteratee = __webpack_require__(159),
-    baseMap = __webpack_require__(209),
+    baseIteratee = __webpack_require__(158),
+    baseMap = __webpack_require__(208),
     isArray = __webpack_require__(13);
 
 /**
@@ -5596,11 +5598,11 @@ module.exports = map;
 
 
 var ListCache = __webpack_require__(40),
-    stackClear = __webpack_require__(162),
-    stackDelete = __webpack_require__(163),
-    stackGet = __webpack_require__(164),
-    stackHas = __webpack_require__(165),
-    stackSet = __webpack_require__(166);
+    stackClear = __webpack_require__(161),
+    stackDelete = __webpack_require__(162),
+    stackGet = __webpack_require__(163),
+    stackHas = __webpack_require__(164),
+    stackSet = __webpack_require__(165);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -5630,7 +5632,7 @@ module.exports = Stack;
 "use strict";
 
 
-var baseIsEqualDeep = __webpack_require__(167),
+var baseIsEqualDeep = __webpack_require__(166),
     isObjectLike = __webpack_require__(34);
 
 /**
@@ -5666,9 +5668,9 @@ module.exports = baseIsEqual;
 "use strict";
 
 
-var SetCache = __webpack_require__(168),
-    arraySome = __webpack_require__(171),
-    cacheHas = __webpack_require__(172);
+var SetCache = __webpack_require__(167),
+    arraySome = __webpack_require__(170),
+    cacheHas = __webpack_require__(171);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -5752,7 +5754,7 @@ module.exports = equalArrays;
 "use strict";
 
 
-var baseIsArguments = __webpack_require__(186),
+var baseIsArguments = __webpack_require__(185),
     isObjectLike = __webpack_require__(34);
 
 /** Used for built-in method references. */
@@ -5800,7 +5802,7 @@ module.exports = isArguments;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var root = __webpack_require__(14),
-    stubFalse = __webpack_require__(187);
+    stubFalse = __webpack_require__(186);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -5878,9 +5880,9 @@ module.exports = isIndex;
 "use strict";
 
 
-var baseIsTypedArray = __webpack_require__(188),
-    baseUnary = __webpack_require__(189),
-    nodeUtil = __webpack_require__(190);
+var baseIsTypedArray = __webpack_require__(187),
+    baseUnary = __webpack_require__(188),
+    nodeUtil = __webpack_require__(189);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -6541,9 +6543,9 @@ function PremiumBackground(props) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(244);
+  module.exports = __webpack_require__(243);
 } else {
-  module.exports = __webpack_require__(245);
+  module.exports = __webpack_require__(244);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
@@ -6554,9 +6556,9 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(250));
+var _CSSTransition = _interopRequireDefault(__webpack_require__(249));
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(255));
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(254));
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(107));
 
@@ -7401,7 +7403,7 @@ var _react = _interopRequireDefault(__webpack_require__(5));
 
 var _reactLifecyclesCompat = __webpack_require__(105);
 
-var _ChildMapping = __webpack_require__(256);
+var _ChildMapping = __webpack_require__(255);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -7895,360 +7897,6 @@ function _assertThisInitialized(self) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _stringify = __webpack_require__(312);
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-var _extends2 = __webpack_require__(314);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _getPrototypeOf = __webpack_require__(323);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(327);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(328);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(332);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(354);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(18);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _lottieWeb = __webpack_require__(362);
-
-var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var Lottie = function (_React$Component) {
-  (0, _inherits3.default)(Lottie, _React$Component);
-
-  function Lottie() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, Lottie);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Lottie.__proto__ || (0, _getPrototypeOf2.default)(Lottie)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickToPause = function () {
-      // The pause() method is for handling pausing by passing a prop isPaused
-      // This method is for handling the ability to pause by clicking on the animation
-      if (_this.anim.isPaused) {
-        _this.anim.play();
-      } else {
-        _this.anim.pause();
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-
-  (0, _createClass3.default)(Lottie, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _props = this.props,
-          options = _props.options,
-          playSegments = _props.playSegments,
-          goToAndPlay = _props.goToAndPlay,
-          goToAndStop = _props.goToAndStop,
-          eventListeners = _props.eventListeners;
-      var loop = options.loop,
-          autoplay = options.autoplay,
-          animationData = options.animationData,
-          rendererSettings = options.rendererSettings;
-
-      this.options = {
-        container: this.el,
-        renderer: 'svg',
-        loop: loop !== false,
-        autoplay: autoplay !== false,
-        playSegments: playSegments.segments !== null,
-        goToAndPlay: goToAndPlay.value !== null,
-        goToAndStop: goToAndStop.value !== null,
-        animationData: animationData,
-        rendererSettings: rendererSettings
-      };
-
-      this.options = (0, _extends3.default)({}, this.options, options);
-      this.anim = _lottieWeb2.default.loadAnimation(this.options);
-
-      // Immediately handle goTo's if necessary.
-      if (this.options.goToAndPlay) {
-        this.goToAndPlay();
-      }
-      if (this.options.goToAndStop) {
-        this.goToAndStop();
-      }
-      if (this.options.playSegments) {
-        this.playSegments();
-      }
-      this.registerEvents(eventListeners);
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate(nextProps /* , nextState */) {
-      /* Recreate the animation handle if the data is changed */
-      if (this.options.animationData !== nextProps.options.animationData) {
-        this.deRegisterEvents(this.props.eventListeners);
-        this.destroy();
-        this.options = (0, _extends3.default)({}, this.options, nextProps.options);
-        this.anim = _lottieWeb2.default.loadAnimation(this.options);
-        this.registerEvents(nextProps.eventListeners);
-      }
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps) {
-      if (this.props.isStopped) {
-        this.stop();
-      } else if (this.options.playSegments) {
-        this.playSegments();
-      } else {
-        this.play();
-      }
-
-      if ((0, _stringify2.default)(this.props.goToAndPlay) !== (0, _stringify2.default)(prevProps.goToAndPlay)) {
-        this.goToAndPlay();
-      }
-
-      if ((0, _stringify2.default)(this.props.goToAndStop) !== (0, _stringify2.default)(prevProps.goToAndStop)) {
-        this.goToAndStop();
-      }
-
-      this.pause();
-      this.setSpeed();
-      this.setDirection();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.deRegisterEvents(this.props.eventListeners);
-      this.destroy();
-      this.options.animationData = null;
-      this.anim = null;
-    }
-  }, {
-    key: 'setSpeed',
-    value: function setSpeed() {
-      this.anim.setSpeed(this.props.speed);
-    }
-  }, {
-    key: 'setDirection',
-    value: function setDirection() {
-      this.anim.setDirection(this.props.direction);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.anim.play();
-    }
-  }, {
-    key: 'playSegments',
-    value: function playSegments() {
-      var _props$playSegments = this.props.playSegments,
-          segments = _props$playSegments.segments,
-          forceFlag = _props$playSegments.forceFlag;
-
-      this.anim.playSegments(segments, forceFlag);
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.anim.stop();
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      if (this.props.isPaused && !this.anim.isPaused) {
-        this.anim.pause();
-      } else if (!this.props.isPaused && this.anim.isPaused) {
-        this.anim.pause();
-      }
-    }
-  }, {
-    key: 'goToAndPlay',
-    value: function goToAndPlay() {
-      console.log('#goToAndPlay ', this.props.goToAndPlay);
-      var _props$goToAndPlay = this.props.goToAndPlay,
-          value = _props$goToAndPlay.value,
-          isFrame = _props$goToAndPlay.isFrame;
-
-      this.anim.goToAndPlay(value, isFrame);
-    }
-  }, {
-    key: 'goToAndStop',
-    value: function goToAndStop() {
-      var _props$goToAndStop = this.props.goToAndStop,
-          value = _props$goToAndStop.value,
-          isFrame = _props$goToAndStop.isFrame;
-
-      this.anim.goToAndStop(value, isFrame);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.anim.destroy();
-    }
-  }, {
-    key: 'registerEvents',
-    value: function registerEvents(eventListeners) {
-      var _this2 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this2.anim.addEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'deRegisterEvents',
-    value: function deRegisterEvents(eventListeners) {
-      var _this3 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this3.anim.removeEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var _props2 = this.props,
-          width = _props2.width,
-          height = _props2.height,
-          ariaRole = _props2.ariaRole,
-          ariaLabel = _props2.ariaLabel,
-          isClickToPauseDisabled = _props2.isClickToPauseDisabled,
-          title = _props2.title;
-
-      var getSize = function getSize(initial) {
-        var size = void 0;
-
-        if (typeof initial === 'number') {
-          size = initial + 'px';
-        } else {
-          size = initial || '100%';
-        }
-
-        return size;
-      };
-
-      var lottieStyles = (0, _extends3.default)({
-        width: getSize(width),
-        height: getSize(height),
-        overflow: 'hidden',
-        margin: '0 auto',
-        outline: 'none'
-      }, this.props.style);
-
-      var onClickHandler = isClickToPauseDisabled ? function () {
-        return null;
-      } : this.handleClickToPause;
-
-      return (
-        // Bug with eslint rules https://github.com/airbnb/javascript/issues/1374
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        _react2.default.createElement('div', {
-          ref: function ref(c) {
-            _this4.el = c;
-          },
-          style: lottieStyles,
-          onClick: onClickHandler,
-          title: title,
-          role: ariaRole,
-          'aria-label': ariaLabel,
-          tabIndex: '0'
-        })
-      );
-    }
-  }]);
-  return Lottie;
-}(_react2.default.Component);
-
-exports.default = Lottie;
-
-Lottie.propTypes = {
-  eventListeners: _propTypes2.default.arrayOf(_propTypes2.default.object),
-  options: _propTypes2.default.object.isRequired,
-  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  isStopped: _propTypes2.default.bool,
-  isPaused: _propTypes2.default.bool,
-  goToAndPlay: _propTypes2.default.shape({
-    value: _propTypes2.default.number,
-    isFrame: _propTypes2.default.bool
-  }),
-  goToAndStop: _propTypes2.default.shape({
-    value: _propTypes2.default.number,
-    isFrame: _propTypes2.default.bool
-  }),
-  speed: _propTypes2.default.number,
-  playSegments: _propTypes2.default.shape({
-    segments: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.number), _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.number))]),
-    forceFlag: _propTypes2.default.bool
-  }),
-  direction: _propTypes2.default.number,
-  ariaRole: _propTypes2.default.string,
-  ariaLabel: _propTypes2.default.string,
-  isClickToPauseDisabled: _propTypes2.default.bool,
-  title: _propTypes2.default.string,
-  style: _propTypes2.default.string
-};
-
-Lottie.defaultProps = {
-  eventListeners: [],
-  isStopped: false,
-  isPaused: false,
-  goToAndPlay: {
-    value: null,
-    isFrame: false
-  },
-  goToAndStop: {
-    value: null,
-    isFrame: false
-  },
-  playSegments: {
-    segments: null,
-    forceFlag: false
-  },
-  speed: 1,
-  ariaRole: 'button',
-  ariaLabel: 'animation',
-  isClickToPauseDisabled: false,
-  title: ''
-};
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 // optional / simple context binding
 var aFunction = __webpack_require__(318);
 module.exports = function (fn, that, length) {
@@ -8274,20 +7922,20 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
-/* 115 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = !__webpack_require__(23) && !__webpack_require__(30)(function () {
-  return Object.defineProperty(__webpack_require__(116)('div'), 'a', { get: function get() {
+  return Object.defineProperty(__webpack_require__(115)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
 });
 
 /***/ }),
-/* 116 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8302,7 +7950,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 117 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8329,21 +7977,21 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 118 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(119);
+var cof = __webpack_require__(118);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 119 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8356,7 +8004,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8377,7 +8025,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 };
 
 /***/ }),
-/* 121 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8412,7 +8060,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 122 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8420,12 +8068,12 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 var LIBRARY = __webpack_require__(50);
 var $export = __webpack_require__(21);
-var redefine = __webpack_require__(123);
+var redefine = __webpack_require__(122);
 var hide = __webpack_require__(28);
 var Iterators = __webpack_require__(76);
 var $iterCreate = __webpack_require__(337);
 var setToStringTag = __webpack_require__(78);
-var getPrototypeOf = __webpack_require__(120);
+var getPrototypeOf = __webpack_require__(119);
 var ITERATOR = __webpack_require__(32)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -8500,7 +8148,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8509,14 +8157,14 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 module.exports = __webpack_require__(28);
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(117);
+var $keys = __webpack_require__(116);
 var hiddenKeys = __webpack_require__(73).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -8524,7 +8172,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 };
 
 /***/ }),
-/* 125 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8535,7 +8183,7 @@ var createDesc = __webpack_require__(48);
 var toIObject = __webpack_require__(31);
 var toPrimitive = __webpack_require__(68);
 var has = __webpack_require__(24);
-var IE8_DOM_DEFINE = __webpack_require__(115);
+var IE8_DOM_DEFINE = __webpack_require__(114);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(23) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -8548,44 +8196,44 @@ exports.f = __webpack_require__(23) ? gOPD : function getOwnPropertyDescriptor(O
 };
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(127);
+__webpack_require__(126);
 
-__webpack_require__(222);
+__webpack_require__(221);
 
-__webpack_require__(227);
+__webpack_require__(226);
 
-__webpack_require__(232);
+__webpack_require__(231);
 
-__webpack_require__(237);
+__webpack_require__(236);
 
-__webpack_require__(242);
+__webpack_require__(241);
 
-__webpack_require__(261);
+__webpack_require__(260);
+
+__webpack_require__(265);
 
 __webpack_require__(266);
 
-__webpack_require__(267);
+__webpack_require__(271);
 
-__webpack_require__(272);
-
-__webpack_require__(277);
+__webpack_require__(276);
 
 __webpack_require__(47);
 
-__webpack_require__(285);
+__webpack_require__(284);
 
-__webpack_require__(310);
+__webpack_require__(309);
 
 __webpack_require__(367);
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8597,19 +8245,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(128);
+var _edit = __webpack_require__(127);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(219);
+var _save = __webpack_require__(218);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(220);
+var _attributes = __webpack_require__(219);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(221);
+var _deprecated = __webpack_require__(220);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -8634,7 +8282,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9472,7 +9120,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumAccordion);
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9569,7 +9217,7 @@ function PremiumRange(_ref) {
 exports.default = PremiumRange;
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9599,7 +9247,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9653,7 +9301,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9683,13 +9331,13 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoizeCapped = __webpack_require__(134);
+var memoizeCapped = __webpack_require__(133);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -9718,13 +9366,13 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoize = __webpack_require__(135);
+var memoize = __webpack_require__(134);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -9752,7 +9400,7 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9833,13 +9481,13 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Hash = __webpack_require__(137),
+var Hash = __webpack_require__(136),
     ListCache = __webpack_require__(40),
     Map = __webpack_require__(57);
 
@@ -9862,17 +9510,17 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hashClear = __webpack_require__(138),
-    hashDelete = __webpack_require__(143),
-    hashGet = __webpack_require__(144),
-    hashHas = __webpack_require__(145),
-    hashSet = __webpack_require__(146);
+var hashClear = __webpack_require__(137),
+    hashDelete = __webpack_require__(142),
+    hashGet = __webpack_require__(143),
+    hashHas = __webpack_require__(144),
+    hashSet = __webpack_require__(145);
 
 /**
  * Creates a hash object.
@@ -9902,7 +9550,7 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9925,14 +9573,14 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isFunction = __webpack_require__(86),
-    isMasked = __webpack_require__(140),
+    isMasked = __webpack_require__(139),
     isObject = __webpack_require__(56),
     toSource = __webpack_require__(87);
 
@@ -9977,13 +9625,13 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var coreJsData = __webpack_require__(141);
+var coreJsData = __webpack_require__(140);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -10005,7 +9653,7 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10019,7 +9667,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10040,7 +9688,7 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 143 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10065,7 +9713,7 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 144 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10103,7 +9751,7 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 145 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10134,7 +9782,7 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 146 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10165,7 +9813,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 147 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10186,7 +9834,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 148 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10229,7 +9877,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 149 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10256,7 +9904,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 150 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10280,7 +9928,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 151 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10314,7 +9962,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 152 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10340,7 +9988,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 153 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10363,7 +10011,7 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 154 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10387,7 +10035,7 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 155 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10411,7 +10059,7 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 156 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10441,13 +10089,13 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 157 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseToString = __webpack_require__(158);
+var baseToString = __webpack_require__(157);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -10477,7 +10125,7 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 158 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10522,7 +10170,7 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 159 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10530,11 +10178,11 @@ module.exports = baseToString;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(160),
-    baseMatchesProperty = __webpack_require__(201),
-    identity = __webpack_require__(205),
+var baseMatches = __webpack_require__(159),
+    baseMatchesProperty = __webpack_require__(200),
+    identity = __webpack_require__(204),
     isArray = __webpack_require__(13),
-    property = __webpack_require__(206);
+    property = __webpack_require__(205);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -10561,14 +10209,14 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 160 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsMatch = __webpack_require__(161),
-    getMatchData = __webpack_require__(200),
+var baseIsMatch = __webpack_require__(160),
+    getMatchData = __webpack_require__(199),
     matchesStrictComparable = __webpack_require__(99);
 
 /**
@@ -10591,7 +10239,7 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 161 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10655,7 +10303,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 162 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10678,7 +10326,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 163 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10704,7 +10352,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 164 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10726,7 +10374,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 165 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10748,7 +10396,7 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 166 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10790,7 +10438,7 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 167 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10798,9 +10446,9 @@ module.exports = stackSet;
 
 var Stack = __webpack_require__(91),
     equalArrays = __webpack_require__(93),
-    equalByTag = __webpack_require__(173),
-    equalObjects = __webpack_require__(177),
-    getTag = __webpack_require__(195),
+    equalByTag = __webpack_require__(172),
+    equalObjects = __webpack_require__(176),
+    getTag = __webpack_require__(194),
     isArray = __webpack_require__(13),
     isBuffer = __webpack_require__(95),
     isTypedArray = __webpack_require__(97);
@@ -10879,15 +10527,15 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 168 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var MapCache = __webpack_require__(55),
-    setCacheAdd = __webpack_require__(169),
-    setCacheHas = __webpack_require__(170);
+    setCacheAdd = __webpack_require__(168),
+    setCacheHas = __webpack_require__(169);
 
 /**
  *
@@ -10914,7 +10562,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 169 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10941,7 +10589,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 170 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10963,7 +10611,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 171 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10994,7 +10642,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 172 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11015,18 +10663,18 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _Symbol = __webpack_require__(38),
-    Uint8Array = __webpack_require__(174),
+    Uint8Array = __webpack_require__(173),
     eq = __webpack_require__(88),
     equalArrays = __webpack_require__(93),
-    mapToArray = __webpack_require__(175),
-    setToArray = __webpack_require__(176);
+    mapToArray = __webpack_require__(174),
+    setToArray = __webpack_require__(175);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -11133,7 +10781,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11147,7 +10795,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11173,7 +10821,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11199,13 +10847,13 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 177 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getAllKeys = __webpack_require__(178);
+var getAllKeys = __webpack_require__(177);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -11289,14 +10937,14 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetAllKeys = __webpack_require__(179),
-    getSymbols = __webpack_require__(181),
+var baseGetAllKeys = __webpack_require__(178),
+    getSymbols = __webpack_require__(180),
     keys = __webpack_require__(58);
 
 /**
@@ -11313,13 +10961,13 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 179 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayPush = __webpack_require__(180),
+var arrayPush = __webpack_require__(179),
     isArray = __webpack_require__(13);
 
 /**
@@ -11341,7 +10989,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11369,14 +11017,14 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayFilter = __webpack_require__(182),
-    stubArray = __webpack_require__(183);
+var arrayFilter = __webpack_require__(181),
+    stubArray = __webpack_require__(182);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11407,7 +11055,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11440,7 +11088,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 183 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11471,13 +11119,13 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTimes = __webpack_require__(185),
+var baseTimes = __webpack_require__(184),
     isArguments = __webpack_require__(94),
     isArray = __webpack_require__(13),
     isBuffer = __webpack_require__(95),
@@ -11526,7 +11174,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11554,7 +11202,7 @@ function baseTimes(n, iteratee) {
 module.exports = baseTimes;
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11580,7 +11228,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11606,7 +11254,7 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 188 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11662,7 +11310,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11684,7 +11332,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11725,14 +11373,14 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isPrototype = __webpack_require__(192),
-    nativeKeys = __webpack_require__(193);
+var isPrototype = __webpack_require__(191),
+    nativeKeys = __webpack_require__(192);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11763,7 +11411,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11789,13 +11437,13 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var overArg = __webpack_require__(194);
+var overArg = __webpack_require__(193);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -11803,7 +11451,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11826,17 +11474,17 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var DataView = __webpack_require__(196),
+var DataView = __webpack_require__(195),
     Map = __webpack_require__(57),
-    Promise = __webpack_require__(197),
-    Set = __webpack_require__(198),
-    WeakMap = __webpack_require__(199),
+    Promise = __webpack_require__(196),
+    Set = __webpack_require__(197),
+    WeakMap = __webpack_require__(198),
     baseGetTag = __webpack_require__(33),
     toSource = __webpack_require__(87);
 
@@ -11893,7 +11541,7 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11908,7 +11556,7 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11923,7 +11571,7 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11938,7 +11586,7 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11953,7 +11601,7 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11985,7 +11633,7 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 201 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11993,7 +11641,7 @@ module.exports = getMatchData;
 
 var baseIsEqual = __webpack_require__(92),
     get = __webpack_require__(82),
-    hasIn = __webpack_require__(202),
+    hasIn = __webpack_require__(201),
     isKey = __webpack_require__(53),
     isStrictComparable = __webpack_require__(98),
     matchesStrictComparable = __webpack_require__(99),
@@ -12024,14 +11672,14 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 202 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseHasIn = __webpack_require__(203),
-    hasPath = __webpack_require__(204);
+var baseHasIn = __webpack_require__(202),
+    hasPath = __webpack_require__(203);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -12066,7 +11714,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12087,7 +11735,7 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 204 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12133,7 +11781,7 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 205 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12162,14 +11810,14 @@ function identity(value) {
 module.exports = identity;
 
 /***/ }),
-/* 206 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseProperty = __webpack_require__(207),
-    basePropertyDeep = __webpack_require__(208),
+var baseProperty = __webpack_require__(206),
+    basePropertyDeep = __webpack_require__(207),
     isKey = __webpack_require__(53),
     toKey = __webpack_require__(43);
 
@@ -12202,7 +11850,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12224,7 +11872,7 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 208 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12248,13 +11896,13 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseEach = __webpack_require__(210),
+var baseEach = __webpack_require__(209),
     isArrayLike = __webpack_require__(60);
 
 /**
@@ -12278,14 +11926,14 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseForOwn = __webpack_require__(211),
-    createBaseEach = __webpack_require__(214);
+var baseForOwn = __webpack_require__(210),
+    createBaseEach = __webpack_require__(213);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -12300,13 +11948,13 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseFor = __webpack_require__(212),
+var baseFor = __webpack_require__(211),
     keys = __webpack_require__(58);
 
 /**
@@ -12324,13 +11972,13 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 212 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createBaseFor = __webpack_require__(213);
+var createBaseFor = __webpack_require__(212);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -12348,7 +11996,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 213 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12381,7 +12029,7 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 214 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12421,7 +12069,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 215 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12603,7 +12251,7 @@ exports.getFormat = I;
 exports.random = E;
 
 /***/ }),
-/* 216 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12856,7 +12504,7 @@ var PremiumPadding = function (_Component) {
 exports.default = PremiumPadding;
 
 /***/ }),
-/* 217 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13761,7 +13409,7 @@ fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext
 exports.default = fonts;
 
 /***/ }),
-/* 218 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13925,7 +13573,7 @@ var FontsList = function FontsList(_ref3) {
 exports.default = FontsList;
 
 /***/ }),
-/* 219 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14083,7 +13731,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 220 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14314,7 +13962,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 221 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15147,7 +14795,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 222 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15159,19 +14807,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(223);
+var _edit = __webpack_require__(222);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(224);
+var _save = __webpack_require__(223);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(225);
+var _deprecated = __webpack_require__(224);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(226);
+var _attributes = __webpack_require__(225);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -15195,7 +14843,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 223 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16070,7 +15718,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 224 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16235,7 +15883,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 225 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17705,7 +17353,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 226 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17946,7 +17594,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 227 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17954,15 +17602,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _edit = __webpack_require__(228);
+var _edit = __webpack_require__(227);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(229);
+var _save = __webpack_require__(228);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(230);
+var _deprecated = __webpack_require__(229);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -17970,7 +17618,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(231);
+var _attributes = __webpack_require__(230);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -17995,7 +17643,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 228 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18642,7 +18290,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 229 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18728,7 +18376,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 230 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19547,7 +19195,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 231 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19675,7 +19323,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 232 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19683,15 +19331,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _attributes = __webpack_require__(233);
+var _attributes = __webpack_require__(232);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(234);
+var _edit = __webpack_require__(233);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(235);
+var _save = __webpack_require__(234);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -19699,7 +19347,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(236);
+var _deprecated = __webpack_require__(235);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -19726,7 +19374,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 233 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19989,7 +19637,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 234 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21083,7 +20731,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 235 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21302,7 +20950,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 236 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23113,7 +22761,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 237 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23125,19 +22773,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(238);
+var _edit = __webpack_require__(237);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(239);
+var _save = __webpack_require__(238);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(240);
+var _deprecated = __webpack_require__(239);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(241);
+var _attributes = __webpack_require__(240);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -23162,7 +22810,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 238 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24006,7 +23654,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 239 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24164,7 +23812,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 240 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25707,7 +25355,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 241 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25919,7 +25567,7 @@ var attributes = (_attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 242 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25931,19 +25579,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(243);
+var _edit = __webpack_require__(242);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(258);
+var _save = __webpack_require__(257);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(259);
+var _deprecated = __webpack_require__(258);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(260);
+var _attributes = __webpack_require__(259);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -25968,7 +25616,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 243 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26740,7 +26388,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 244 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26815,7 +26463,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 245 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27049,7 +26697,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 246 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27065,10 +26713,10 @@ if (process.env.NODE_ENV !== "production") {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var ReactIs = __webpack_require__(102);
-var assign = __webpack_require__(247);
+var assign = __webpack_require__(246);
 
 var ReactPropTypesSecret = __webpack_require__(63);
-var checkPropTypes = __webpack_require__(248);
+var checkPropTypes = __webpack_require__(247);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -27627,7 +27275,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 247 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27723,7 +27371,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 248 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27822,7 +27470,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 249 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27888,7 +27536,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 250 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27899,9 +27547,9 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(18));
 
-var _addClass = _interopRequireDefault(__webpack_require__(251));
+var _addClass = _interopRequireDefault(__webpack_require__(250));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(254));
+var _removeClass = _interopRequireDefault(__webpack_require__(253));
 
 var _react = _interopRequireDefault(__webpack_require__(5));
 
@@ -28288,18 +27936,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 251 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(252);
+var _interopRequireDefault = __webpack_require__(251);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(253));
+var _hasClass = _interopRequireDefault(__webpack_require__(252));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -28308,7 +27956,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 252 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28323,7 +27971,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 253 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28339,7 +27987,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 254 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28354,7 +28002,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 255 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28519,7 +28167,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 256 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28674,7 +28322,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 257 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28940,7 +28588,7 @@ var PremiumMargin = function (_Component) {
 exports.default = PremiumMargin;
 
 /***/ }),
-/* 258 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29051,7 +28699,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 259 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29996,7 +29644,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 260 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30325,7 +29973,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 261 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30337,19 +29985,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(262);
+var _edit = __webpack_require__(261);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(263);
+var _save = __webpack_require__(262);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(264);
+var _deprecated = __webpack_require__(263);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(265);
+var _attributes = __webpack_require__(264);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -30374,7 +30022,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 262 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31837,7 +31485,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 263 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32047,7 +31695,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 264 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34638,7 +34286,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 265 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35043,7 +34691,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 266 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36167,7 +35815,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 267 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36179,19 +35827,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(268);
+var _edit = __webpack_require__(267);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(269);
+var _save = __webpack_require__(268);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(270);
+var _deprecated = __webpack_require__(269);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(271);
+var _attributes = __webpack_require__(270);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -36215,7 +35863,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 268 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38055,7 +37703,7 @@ exports.default = withSelect(function (select) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 269 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38374,7 +38022,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 270 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40742,7 +40390,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 271 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41047,7 +40695,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 272 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41055,15 +40703,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _edit = __webpack_require__(273);
+var _edit = __webpack_require__(272);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(274);
+var _save = __webpack_require__(273);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(275);
+var _deprecated = __webpack_require__(274);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -41071,7 +40719,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(276);
+var _attributes = __webpack_require__(275);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -41103,7 +40751,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 273 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41658,7 +41306,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 274 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41759,7 +41407,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 275 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42529,7 +42177,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 276 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42710,7 +42358,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 277 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42718,15 +42366,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(2);
 
-var _edit = __webpack_require__(278);
+var _edit = __webpack_require__(277);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(279);
+var _save = __webpack_require__(278);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(280);
+var _deprecated = __webpack_require__(279);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -42734,7 +42382,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(281);
+var _attributes = __webpack_require__(280);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42759,7 +42407,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 278 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43616,7 +43264,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 279 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43822,7 +43470,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 280 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45226,7 +44874,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 281 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45422,7 +45070,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 282 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46401,7 +46049,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 283 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46581,7 +46229,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 284 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48027,7 +47675,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 285 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48035,15 +47683,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(2);
 
-var _save = __webpack_require__(286);
+var _save = __webpack_require__(285);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(287);
+var _edit = __webpack_require__(286);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(308);
+var _deprecated = __webpack_require__(307);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -48051,7 +47699,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(309);
+var _attributes = __webpack_require__(308);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -48074,7 +47722,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 286 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48278,7 +47926,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 287 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48304,7 +47952,7 @@ var _premiumTextShadow = __webpack_require__(16);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _typed = __webpack_require__(288);
+var _typed = __webpack_require__(287);
 
 var _typed2 = _interopRequireDefault(_typed);
 
@@ -48320,7 +47968,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _reactSortableHoc = __webpack_require__(289);
+var _reactSortableHoc = __webpack_require__(288);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49169,7 +48817,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 288 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50281,7 +49929,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44)(module)))
 
 /***/ }),
-/* 289 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50292,35 +49940,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(290);
+var _extends2 = __webpack_require__(289);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(291);
+var _slicedToArray2 = __webpack_require__(290);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(295);
+var _objectSpread2 = __webpack_require__(294);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(296);
+var _classCallCheck2 = __webpack_require__(295);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(297);
+var _createClass2 = __webpack_require__(296);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(298);
+var _possibleConstructorReturn2 = __webpack_require__(297);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(300);
+var _getPrototypeOf2 = __webpack_require__(299);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(301);
+var _inherits2 = __webpack_require__(300);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -50340,11 +49988,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(36);
 
-var _invariant = __webpack_require__(303);
+var _invariant = __webpack_require__(302);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(304);
+var _toConsumableArray2 = __webpack_require__(303);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -51926,7 +51574,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 290 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51955,7 +51603,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 291 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51966,11 +51614,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(292);
+var _arrayWithHoles = __webpack_require__(291);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(293);
+var _iterableToArrayLimit = __webpack_require__(292);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
@@ -51978,7 +51626,7 @@ var _unsupportedIterableToArray = __webpack_require__(109);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(294);
+var _nonIterableRest = __webpack_require__(293);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -51989,7 +51637,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 292 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52004,7 +51652,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 293 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52045,7 +51693,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 294 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52060,7 +51708,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 295 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52097,7 +51745,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 296 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52114,7 +51762,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 297 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52144,7 +51792,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 298 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52155,7 +51803,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(299);
+var _typeof2 = __webpack_require__(298);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -52176,7 +51824,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 299 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52200,7 +51848,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 300 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52218,7 +51866,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 301 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52229,7 +51877,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(302);
+var _setPrototypeOf = __webpack_require__(301);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -52254,7 +51902,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 302 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52274,7 +51922,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 303 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52327,7 +51975,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 304 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52338,11 +51986,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(305);
+var _arrayWithoutHoles = __webpack_require__(304);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(306);
+var _iterableToArray = __webpack_require__(305);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
@@ -52350,7 +51998,7 @@ var _unsupportedIterableToArray = __webpack_require__(109);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableSpread = __webpack_require__(307);
+var _nonIterableSpread = __webpack_require__(306);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -52361,7 +52009,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 305 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52383,7 +52031,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 306 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52398,7 +52046,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 307 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52413,7 +52061,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 308 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52952,7 +52600,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 309 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53097,7 +52745,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 310 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53107,7 +52755,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(311);
+var _edit = __webpack_require__(310);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -53146,7 +52794,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 311 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53164,7 +52812,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(113);
+var _reactLottieWithSegments = __webpack_require__(311);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -53906,6 +53554,360 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _stringify = __webpack_require__(312);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _extends2 = __webpack_require__(314);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = __webpack_require__(323);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(327);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(328);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(332);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(354);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(18);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _lottieWeb = __webpack_require__(362);
+
+var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var Lottie = function (_React$Component) {
+  (0, _inherits3.default)(Lottie, _React$Component);
+
+  function Lottie() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, Lottie);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Lottie.__proto__ || (0, _getPrototypeOf2.default)(Lottie)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickToPause = function () {
+      // The pause() method is for handling pausing by passing a prop isPaused
+      // This method is for handling the ability to pause by clicking on the animation
+      if (_this.anim.isPaused) {
+        _this.anim.play();
+      } else {
+        _this.anim.pause();
+      }
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
+
+  (0, _createClass3.default)(Lottie, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _props = this.props,
+          options = _props.options,
+          playSegments = _props.playSegments,
+          goToAndPlay = _props.goToAndPlay,
+          goToAndStop = _props.goToAndStop,
+          eventListeners = _props.eventListeners;
+      var loop = options.loop,
+          autoplay = options.autoplay,
+          animationData = options.animationData,
+          rendererSettings = options.rendererSettings;
+
+      this.options = {
+        container: this.el,
+        renderer: 'svg',
+        loop: loop !== false,
+        autoplay: autoplay !== false,
+        playSegments: playSegments.segments !== null,
+        goToAndPlay: goToAndPlay.value !== null,
+        goToAndStop: goToAndStop.value !== null,
+        animationData: animationData,
+        rendererSettings: rendererSettings
+      };
+
+      this.options = (0, _extends3.default)({}, this.options, options);
+      this.anim = _lottieWeb2.default.loadAnimation(this.options);
+
+      // Immediately handle goTo's if necessary.
+      if (this.options.goToAndPlay) {
+        this.goToAndPlay();
+      }
+      if (this.options.goToAndStop) {
+        this.goToAndStop();
+      }
+      if (this.options.playSegments) {
+        this.playSegments();
+      }
+      this.registerEvents(eventListeners);
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate(nextProps /* , nextState */) {
+      /* Recreate the animation handle if the data is changed */
+      if (this.options.animationData !== nextProps.options.animationData) {
+        this.deRegisterEvents(this.props.eventListeners);
+        this.destroy();
+        this.options = (0, _extends3.default)({}, this.options, nextProps.options);
+        this.anim = _lottieWeb2.default.loadAnimation(this.options);
+        this.registerEvents(nextProps.eventListeners);
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.isStopped) {
+        this.stop();
+      } else if (this.options.playSegments) {
+        this.playSegments();
+      } else {
+        this.play();
+      }
+
+      if ((0, _stringify2.default)(this.props.goToAndPlay) !== (0, _stringify2.default)(prevProps.goToAndPlay)) {
+        this.goToAndPlay();
+      }
+
+      if ((0, _stringify2.default)(this.props.goToAndStop) !== (0, _stringify2.default)(prevProps.goToAndStop)) {
+        this.goToAndStop();
+      }
+
+      this.pause();
+      this.setSpeed();
+      this.setDirection();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.deRegisterEvents(this.props.eventListeners);
+      this.destroy();
+      this.options.animationData = null;
+      this.anim = null;
+    }
+  }, {
+    key: 'setSpeed',
+    value: function setSpeed() {
+      this.anim.setSpeed(this.props.speed);
+    }
+  }, {
+    key: 'setDirection',
+    value: function setDirection() {
+      this.anim.setDirection(this.props.direction);
+    }
+  }, {
+    key: 'play',
+    value: function play() {
+      this.anim.play();
+    }
+  }, {
+    key: 'playSegments',
+    value: function playSegments() {
+      var _props$playSegments = this.props.playSegments,
+          segments = _props$playSegments.segments,
+          forceFlag = _props$playSegments.forceFlag;
+
+      this.anim.playSegments(segments, forceFlag);
+    }
+  }, {
+    key: 'stop',
+    value: function stop() {
+      this.anim.stop();
+    }
+  }, {
+    key: 'pause',
+    value: function pause() {
+      if (this.props.isPaused && !this.anim.isPaused) {
+        this.anim.pause();
+      } else if (!this.props.isPaused && this.anim.isPaused) {
+        this.anim.pause();
+      }
+    }
+  }, {
+    key: 'goToAndPlay',
+    value: function goToAndPlay() {
+      console.log('#goToAndPlay ', this.props.goToAndPlay);
+      var _props$goToAndPlay = this.props.goToAndPlay,
+          value = _props$goToAndPlay.value,
+          isFrame = _props$goToAndPlay.isFrame;
+
+      this.anim.goToAndPlay(value, isFrame);
+    }
+  }, {
+    key: 'goToAndStop',
+    value: function goToAndStop() {
+      var _props$goToAndStop = this.props.goToAndStop,
+          value = _props$goToAndStop.value,
+          isFrame = _props$goToAndStop.isFrame;
+
+      this.anim.goToAndStop(value, isFrame);
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      this.anim.destroy();
+    }
+  }, {
+    key: 'registerEvents',
+    value: function registerEvents(eventListeners) {
+      var _this2 = this;
+
+      eventListeners.forEach(function (eventListener) {
+        _this2.anim.addEventListener(eventListener.eventName, eventListener.callback);
+      });
+    }
+  }, {
+    key: 'deRegisterEvents',
+    value: function deRegisterEvents(eventListeners) {
+      var _this3 = this;
+
+      eventListeners.forEach(function (eventListener) {
+        _this3.anim.removeEventListener(eventListener.eventName, eventListener.callback);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var _props2 = this.props,
+          width = _props2.width,
+          height = _props2.height,
+          ariaRole = _props2.ariaRole,
+          ariaLabel = _props2.ariaLabel,
+          isClickToPauseDisabled = _props2.isClickToPauseDisabled,
+          title = _props2.title;
+
+      var getSize = function getSize(initial) {
+        var size = void 0;
+
+        if (typeof initial === 'number') {
+          size = initial + 'px';
+        } else {
+          size = initial || '100%';
+        }
+
+        return size;
+      };
+
+      var lottieStyles = (0, _extends3.default)({
+        width: getSize(width),
+        height: getSize(height),
+        overflow: 'hidden',
+        margin: '0 auto',
+        outline: 'none'
+      }, this.props.style);
+
+      var onClickHandler = isClickToPauseDisabled ? function () {
+        return null;
+      } : this.handleClickToPause;
+
+      return (
+        // Bug with eslint rules https://github.com/airbnb/javascript/issues/1374
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        _react2.default.createElement('div', {
+          ref: function ref(c) {
+            _this4.el = c;
+          },
+          style: lottieStyles,
+          onClick: onClickHandler,
+          title: title,
+          role: ariaRole,
+          'aria-label': ariaLabel,
+          tabIndex: '0'
+        })
+      );
+    }
+  }]);
+  return Lottie;
+}(_react2.default.Component);
+
+exports.default = Lottie;
+
+Lottie.propTypes = {
+  eventListeners: _propTypes2.default.arrayOf(_propTypes2.default.object),
+  options: _propTypes2.default.object.isRequired,
+  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  isStopped: _propTypes2.default.bool,
+  isPaused: _propTypes2.default.bool,
+  goToAndPlay: _propTypes2.default.shape({
+    value: _propTypes2.default.number,
+    isFrame: _propTypes2.default.bool
+  }),
+  goToAndStop: _propTypes2.default.shape({
+    value: _propTypes2.default.number,
+    isFrame: _propTypes2.default.bool
+  }),
+  speed: _propTypes2.default.number,
+  playSegments: _propTypes2.default.shape({
+    segments: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.number), _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.number))]),
+    forceFlag: _propTypes2.default.bool
+  }),
+  direction: _propTypes2.default.number,
+  ariaRole: _propTypes2.default.string,
+  ariaLabel: _propTypes2.default.string,
+  isClickToPauseDisabled: _propTypes2.default.bool,
+  title: _propTypes2.default.string,
+  style: _propTypes2.default.string
+};
+
+Lottie.defaultProps = {
+  eventListeners: [],
+  isStopped: false,
+  isPaused: false,
+  goToAndPlay: {
+    value: null,
+    isFrame: false
+  },
+  goToAndStop: {
+    value: null,
+    isFrame: false
+  },
+  playSegments: {
+    segments: null,
+    forceFlag: false
+  },
+  speed: 1,
+  ariaRole: 'button',
+  ariaLabel: 'animation',
+  isClickToPauseDisabled: false,
+  title: ''
+};
+
+/***/ }),
 /* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -54014,7 +54016,7 @@ var getKeys = __webpack_require__(49);
 var gOPS = __webpack_require__(74);
 var pIE = __webpack_require__(52);
 var toObject = __webpack_require__(75);
-var IObject = __webpack_require__(118);
+var IObject = __webpack_require__(117);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -54138,7 +54140,7 @@ module.exports = __webpack_require__(11).Object.getPrototypeOf;
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = __webpack_require__(75);
-var $getPrototypeOf = __webpack_require__(120);
+var $getPrototypeOf = __webpack_require__(119);
 
 __webpack_require__(326)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
@@ -54258,7 +54260,7 @@ $export($export.S + $export.F * !__webpack_require__(23), 'Object', { defineProp
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(121);
+var _typeof2 = __webpack_require__(120);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -54304,7 +54306,7 @@ module.exports = __webpack_require__(79).f('iterator');
 var $at = __webpack_require__(336)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(122)(String, 'String', function (iterated) {
+__webpack_require__(121)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -54434,7 +54436,7 @@ var toIObject = __webpack_require__(31);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(122)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(121)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -54515,7 +54517,7 @@ var global = __webpack_require__(19);
 var has = __webpack_require__(24);
 var DESCRIPTORS = __webpack_require__(23);
 var $export = __webpack_require__(21);
-var redefine = __webpack_require__(123);
+var redefine = __webpack_require__(122);
 var META = __webpack_require__(347).KEY;
 var $fails = __webpack_require__(30);
 var shared = __webpack_require__(72);
@@ -54533,7 +54535,7 @@ var toPrimitive = __webpack_require__(68);
 var createDesc = __webpack_require__(48);
 var _create = __webpack_require__(77);
 var gOPNExt = __webpack_require__(350);
-var $GOPD = __webpack_require__(125);
+var $GOPD = __webpack_require__(124);
 var $DP = __webpack_require__(22);
 var $keys = __webpack_require__(49);
 var gOPD = $GOPD.f;
@@ -54661,7 +54663,7 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(124).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(123).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(52).f = $propertyIsEnumerable;
   __webpack_require__(74).f = $getOwnPropertySymbols;
 
@@ -54847,7 +54849,7 @@ module.exports = function (it) {
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(119);
+var cof = __webpack_require__(118);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
@@ -54863,7 +54865,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(31);
-var gOPN = __webpack_require__(124).f;
+var gOPN = __webpack_require__(123).f;
 var toString = {}.toString;
 
 var windowNames = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -54922,7 +54924,7 @@ var _create = __webpack_require__(359);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(121);
+var _typeof2 = __webpack_require__(120);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -54995,7 +54997,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(114)(Function.call, __webpack_require__(125).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(113)(Function.call, __webpack_require__(124).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -56375,7 +56377,7 @@ registerBlockType("premium/modal", {
     category: "premium-blocks",
     attributes: _attributes2.default,
     supports: {
-        inserter: _settings.icon
+        inserter: _settings.modal
     },
     example: {},
     edit: _edit2.default,
@@ -56451,25 +56453,41 @@ var _PremiumBackgroundControl = __webpack_require__(27);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
+var _premiumTextShadow = __webpack_require__(16);
+
+var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
+
+var _premiumFilters = __webpack_require__(61);
+
+var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
+
+var _reactLottieWithSegments = __webpack_require__(311);
+
+var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
+
+var _settings = __webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 var withSelect = wp.data.withSelect;
 var _wp$element = wp.element,
-    useState = _wp$element.useState,
     Fragment = _wp$element.Fragment,
     useEffect = _wp$element.useEffect,
     useRef = _wp$element.useRef;
-var InnerBlocks = wp.blockEditor.InnerBlocks;
+var _wp$blockEditor = wp.blockEditor,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
+    MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     ToggleControl = _wp$components.ToggleControl,
     TextControl = _wp$components.TextControl,
-    TabPanel = _wp$components.TabPanel;
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    URLInput = _wp$blockEditor.URLInput;
+    TabPanel = _wp$components.TabPanel,
+    ExternalLink = _wp$components.ExternalLink;
+var _wp$blockEditor2 = wp.blockEditor,
+    InspectorControls = _wp$blockEditor2.InspectorControls,
+    URLInput = _wp$blockEditor2.URLInput;
 
 
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
@@ -56596,6 +56614,7 @@ var edit = function edit(props) {
     }, []);
 
     useEffect(function () {
+        if (!triggerRef.current) return null;
         closeButton.current.addEventListener('click', function () {
             modalRef.current.style.display = "none";
         });
@@ -56687,7 +56706,7 @@ var edit = function edit(props) {
     var renderCss = React.createElement(
         "style",
         null,
-        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover {\n              background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n        "
+        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover {\n              background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].bright + "% ) contrast( " + triggerStyles[0].contrast + "% ) saturate( " + triggerStyles[0].saturation + "% ) blur( " + triggerStyles[0].blur + "px ) hue-rotate( " + triggerStyles[0].hue + "deg );\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].brightH + "% ) contrast( " + triggerStyles[0].contrastH + "% ) saturate( " + triggerStyles[0].saturationH + "% ) blur( " + triggerStyles[0].blurH + "px ) hue-rotate( " + triggerStyles[0].hueH + "deg ) !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container img:hover {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n\n        "
     );
     var headerIconSize = getPreviewSize(props.deviceType, contentStyles[0].iconSize, contentStyles[0].iconSizeTablet, contentStyles[0].iconSizeMobile);
     var triggerFontSize = getPreviewSize(props.deviceType, triggerStyles[0].triggerSize, triggerStyles[0].triggerSizeTablet, triggerStyles[0].triggerSizeMobile);
@@ -56716,6 +56735,7 @@ var edit = function edit(props) {
     var modalMarginRight = getPreviewSize(props.deviceType, modalMarginR, modalMarginRTablet, modalMarginRMobile);
     var modalMarginBottom = getPreviewSize(props.deviceType, modalMarginB, modalMarginBTablet, modalMarginBMobile);
     var modalMarginLeft = getPreviewSize(props.deviceType, modalMarginL, modalMarginLTablet, modalMarginLMobile);
+    var triggerSize = getPreviewSize(props.deviceType, triggerSettings[0].imageWidth, triggerSettings[0].imageWidthTablet, triggerSettings[0].imageWidthMobile);
 
     var btnGrad = void 0,
         btnGrad2 = void 0,
@@ -56798,6 +56818,17 @@ var edit = function edit(props) {
                 contentStyles[0].iconType === "lottie" && React.createElement(
                     Fragment,
                     null,
+                    _settings.JsonUploadEnabled == 1 ? '' : React.createElement(
+                        "p",
+                        null,
+                        __('Make Sure that allow "JSON file Upload " from '),
+                        " ",
+                        React.createElement(
+                            ExternalLink,
+                            { href: window.PremiumBlocksSettings.settingPath },
+                            "plugin Settings"
+                        )
+                    ),
                     React.createElement(TextControl, {
                         label: __("Animation JSON URL", "premium-blocks-for-gutenberg"),
                         value: contentStyles[0].lottieURL,
@@ -57052,13 +57083,17 @@ var edit = function edit(props) {
             triggerSettings[0].triggerType === "lottie" && React.createElement(
                 Fragment,
                 null,
-                React.createElement(TextControl, {
-                    label: __('Animation JSON URL', 'premium-blocks-for-gutenberg'),
-                    value: triggerSettings[0].lottieTriggerURL,
-                    onChange: function onChange(value) {
-                        return saveTriggerSettings({ lottieTriggerURL: value });
-                    }
-                }),
+                _settings.JsonUploadEnabled == 1 ? '' : React.createElement(
+                    "p",
+                    null,
+                    __('Make Sure that allow "JSON file Upload " from '),
+                    " ",
+                    React.createElement(
+                        ExternalLink,
+                        { href: window.PremiumBlocksSettings.settingPath },
+                        "plugin Settings"
+                    )
+                ),
                 React.createElement(ToggleControl, {
                     label: __("Loop", 'premium-blocks-for-gutenberg'),
                     checked: triggerSettings[0].triggerLoopLottie,
@@ -57130,250 +57165,269 @@ var edit = function edit(props) {
                 label: __("Align", 'premium-blocks-for-gutenberg')
             })
         ),
-        React.createElement(
+        triggerSettings[0].triggerType !== "load" && React.createElement(
             PanelBody,
             {
                 title: __("Triger", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },
-            React.createElement(_ColorComponent2.default, {
-                label: __("Color", 'premium-blocks-for-gutenberg'),
-                colorValue: triggerStyles[0].color,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveTriggerStyles({ color: newValue });
-                }
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Hover Color", 'premium-blocks-for-gutenberg'),
-                colorValue: triggerStyles[0].hoverColor,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveTriggerStyles({ hoverColor: newValue });
-                }
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Icon Color", 'premium-blocks-for-gutenberg'),
-                colorValue: triggerStyles[0].iconColor,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveTriggerStyles({ iconColor: newValue });
-                }
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Icon Hover Color", 'premium-blocks-for-gutenberg'),
-                colorValue: triggerStyles[0].iconHoverColor,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveTriggerStyles({ iconHoverColor: newValue });
-                }
-            }),
-            React.createElement(_premiumTypo2.default, {
-                components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
-                setAttributes: saveTriggerStyles,
-                fontSizeType: {
-                    value: triggerStyles[0].triggerSizeUnit,
-                    label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg')
-                },
-                fontSize: triggerStyles[0].triggerSize,
-                fontSizeMobile: triggerStyles[0].triggerSizeMobile,
-                fontSizeTablet: triggerStyles[0].triggerSizeTablet,
-                onChangeSize: function onChangeSize(newSize) {
-                    return saveTriggerStyles({ triggerSize: newSize });
-                },
-                onChangeTabletSize: function onChangeTabletSize(newSize) {
-                    return saveTriggerStyles({ triggerSizeTablet: newSize });
-                },
-                onChangeMobileSize: function onChangeMobileSize(newSize) {
-                    return saveTriggerStyles({ triggerSizeMobile: newSize });
-                },
-                fontFamily: triggerStyles[0].triggerFamily,
-                weight: triggerStyles[0].triggerWeight,
-                style: triggerStyles[0].triggerStyle,
-                spacing: triggerStyles[0].triggerSpacing,
-                upper: triggerStyles[0].triggerUpper,
-                onChangeWeight: function onChangeWeight(newWeight) {
-                    return saveTriggerStyles({ triggerWeight: newWeight });
-                },
-                onChangeStyle: function onChangeStyle(newStyle) {
-                    return saveTriggerStyles({ triggerStyle: newStyle });
-                },
-                onChangeSpacing: function onChangeSpacing(newValue) {
-                    return saveTriggerStyles({ triggerSpacing: newValue });
-                },
-                onChangeFamily: function onChangeFamily(fontFamily) {
-                    return saveTriggerStyles({ triggerFamily: fontFamily });
-                },
-                onChangeUpper: function onChangeUpper(check) {
-                    return saveTriggerStyles({ triggerUpper: check });
-                }
-            }),
-            React.createElement(
-                TabPanel,
-                {
-                    className: "premium-color-tabpanel",
-                    activeClass: "active-tab",
-                    tabs: [{
-                        name: "normal",
-                        title: "Normal",
-                        className: "premium-tab"
-                    }, {
-                        name: "hover",
-                        title: "Hover",
-                        className: "premium-tab"
-                    }]
-                },
-                function (tab) {
-                    var tabout = void 0;
-                    if ("normal" === tab.name) {
-                        tabout = React.createElement(
-                            Fragment,
-                            null,
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Background Color", 'premium-blocks-for-gutenberg'),
-                                colorValue: triggerStyles[0].triggerBack,
-                                colorDefault: '',
-                                onColorChange: function onColorChange(newValue) {
-                                    return saveTriggerStyles({ triggerBack: newValue || "transparent" });
-                                }
-                            }),
-                            React.createElement(_premiumBorder2.default, {
-                                borderType: triggerStyles[0].borderType,
-                                top: triggerBorderTop,
-                                right: triggerBorderRight,
-                                bottom: triggerBorderBottom,
-                                left: triggerBorderLeft,
-                                borderColor: triggerStyles[0].borderColor,
-                                borderRadius: triggerStyles[0].borderRadius,
-                                onChangeType: function onChangeType(newType) {
-                                    return saveTriggerStyles({ borderType: newType });
-                                },
-                                onChangeWidth: function onChangeWidth(_ref) {
-                                    var top = _ref.top,
-                                        right = _ref.right,
-                                        bottom = _ref.bottom,
-                                        left = _ref.left;
-                                    return setAttributes({
-                                        triggerBorderTop: top,
-                                        triggerBorderRight: right,
-                                        triggerBorderBottom: bottom,
-                                        triggerBorderLeft: left
-                                    });
-                                },
-                                onChangeColor: function onChangeColor(colorValue) {
-                                    return saveTriggerStyles({ borderColor: colorValue });
-                                },
-                                onChangeRadius: function onChangeRadius(newRadius) {
-                                    return saveTriggerStyles({ borderRadius: newRadius });
-                                }
-                            })
-                        );
+            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_ColorComponent2.default, {
+                    label: __("Color", 'premium-blocks-for-gutenberg'),
+                    colorValue: triggerStyles[0].color,
+                    colorDefault: '',
+                    onColorChange: function onColorChange(newValue) {
+                        return saveTriggerStyles({ color: newValue });
                     }
-                    if ("hover" === tab.name) {
-                        tabout = React.createElement(
-                            Fragment,
-                            null,
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Background Hover Color", 'premium-blocks-for-gutenberg'),
-                                colorValue: triggerStyles[0].triggerHoverBack,
-                                colorDefault: '',
-                                onColorChange: function onColorChange(newValue) {
-                                    return saveTriggerStyles({ triggerHoverBack: newValue || "transparent" });
-                                }
-                            }),
-                            React.createElement(_premiumBorder2.default, {
-                                borderType: triggerStyles[0].borderTypeH,
-                                borderWidth: triggerStyles[0].borderWidthH,
-                                top: triggerBorderTopH,
-                                right: triggerBorderRightH,
-                                bottom: triggerBorderBottomH,
-                                left: triggerBorderLeftH,
-                                borderColor: triggerStyles[0].borderColorH,
-                                borderRadius: triggerStyles[0].borderRadiusH,
-                                onChangeType: function onChangeType(newType) {
-                                    return saveTriggerStyles({ borderTypeH: newType });
-                                },
-                                onChangeWidth: function onChangeWidth(_ref2) {
-                                    var top = _ref2.top,
-                                        right = _ref2.right,
-                                        bottom = _ref2.bottom,
-                                        left = _ref2.left;
-                                    return setAttributes({
-                                        triggerBorderTopH: top,
-                                        triggerBorderRightH: right,
-                                        triggerBorderBottomH: bottom,
-                                        triggerBorderLeftH: left
-                                    });
-                                },
-                                onChangeColor: function onChangeColor(colorValue) {
-                                    return saveTriggerStyles({ borderColorH: colorValue });
-                                },
-                                onChangeRadius: function onChangeRadius(newRadius) {
-                                    return saveTriggerStyles({ borderRadiusH: newRadius });
-                                }
-                            })
-                        );
+                }),
+                React.createElement(_ColorComponent2.default, {
+                    label: __("Hover Color", 'premium-blocks-for-gutenberg'),
+                    colorValue: triggerStyles[0].hoverColor,
+                    colorDefault: '',
+                    onColorChange: function onColorChange(newValue) {
+                        return saveTriggerStyles({ hoverColor: newValue });
                     }
-                    return React.createElement(
-                        "div",
-                        null,
-                        tabout,
-                        React.createElement("hr", null)
-                    );
-                }
+                })
             ),
-            React.createElement(_PremiumResponsivePadding2.default, {
-                paddingT: triggerPaddingT,
-                paddingR: triggerPaddingR,
-                paddingB: triggerPaddingB,
-                paddingL: triggerPaddingL,
-                paddingTTablet: triggerPaddingTTablet,
-                paddingRTablet: triggerPaddingRTablet,
-                paddingBTablet: triggerPaddingBTablet,
-                paddingLTablet: triggerPaddingLTablet,
-                paddingTMobile: triggerPaddingTMobile,
-                paddingRMobile: triggerPaddingRMobile,
-                paddingBMobile: triggerPaddingBMobile,
-                paddingLMobile: triggerPaddingLMobile,
-                onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ triggerPaddingT: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ triggerPaddingTTablet: newValue });
-                    } else {
-                        setAttributes({ triggerPaddingTMobile: newValue });
+            triggerSettings[0].triggerType === "button" && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_ColorComponent2.default, {
+                    label: __("Icon Color", 'premium-blocks-for-gutenberg'),
+                    colorValue: triggerStyles[0].iconColor,
+                    colorDefault: '',
+                    onColorChange: function onColorChange(newValue) {
+                        return saveTriggerStyles({ iconColor: newValue });
                     }
-                },
-                onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ triggerPaddingR: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ triggerPaddingRTablet: newValue });
-                    } else {
-                        setAttributes({ triggerPaddingRMobile: newValue });
+                }),
+                React.createElement(_ColorComponent2.default, {
+                    label: __("Icon Hover Color", 'premium-blocks-for-gutenberg'),
+                    colorValue: triggerStyles[0].iconHoverColor,
+                    colorDefault: '',
+                    onColorChange: function onColorChange(newValue) {
+                        return saveTriggerStyles({ iconHoverColor: newValue });
                     }
-                },
-                onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ triggerPaddingB: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ triggerPaddingBTablet: newValue });
-                    } else {
-                        setAttributes({ triggerPaddingBMobile: newValue });
+                })
+            ),
+            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_premiumTypo2.default, {
+                    components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
+                    setAttributes: saveTriggerStyles,
+                    fontSizeType: {
+                        value: triggerStyles[0].triggerSizeUnit,
+                        label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg')
+                    },
+                    fontSize: triggerStyles[0].triggerSize,
+                    fontSizeMobile: triggerStyles[0].triggerSizeMobile,
+                    fontSizeTablet: triggerStyles[0].triggerSizeTablet,
+                    onChangeSize: function onChangeSize(newSize) {
+                        return saveTriggerStyles({ triggerSize: newSize });
+                    },
+                    onChangeTabletSize: function onChangeTabletSize(newSize) {
+                        return saveTriggerStyles({ triggerSizeTablet: newSize });
+                    },
+                    onChangeMobileSize: function onChangeMobileSize(newSize) {
+                        return saveTriggerStyles({ triggerSizeMobile: newSize });
+                    },
+                    fontFamily: triggerStyles[0].triggerFamily,
+                    weight: triggerStyles[0].triggerWeight,
+                    style: triggerStyles[0].triggerStyle,
+                    spacing: triggerStyles[0].triggerSpacing,
+                    upper: triggerStyles[0].triggerUpper,
+                    onChangeWeight: function onChangeWeight(newWeight) {
+                        return saveTriggerStyles({ triggerWeight: newWeight });
+                    },
+                    onChangeStyle: function onChangeStyle(newStyle) {
+                        return saveTriggerStyles({ triggerStyle: newStyle });
+                    },
+                    onChangeSpacing: function onChangeSpacing(newValue) {
+                        return saveTriggerStyles({ triggerSpacing: newValue });
+                    },
+                    onChangeFamily: function onChangeFamily(fontFamily) {
+                        return saveTriggerStyles({ triggerFamily: fontFamily });
+                    },
+                    onChangeUpper: function onChangeUpper(check) {
+                        return saveTriggerStyles({ triggerUpper: check });
                     }
-                },
-                onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ triggerPaddingL: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ triggerPaddingLTablet: newValue });
-                    } else {
-                        setAttributes({ triggerPaddingLMobile: newValue });
+                })
+            ),
+            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text' || triggerSettings[0].triggerType === 'image') && React.createElement(
+                Fragment,
+                null,
+                React.createElement(
+                    TabPanel,
+                    {
+                        className: "premium-color-tabpanel",
+                        activeClass: "active-tab",
+                        tabs: [{
+                            name: "normal",
+                            title: "Normal",
+                            className: "premium-tab"
+                        }, {
+                            name: "hover",
+                            title: "Hover",
+                            className: "premium-tab"
+                        }]
+                    },
+                    function (tab) {
+                        var tabout = void 0;
+                        if ("normal" === tab.name) {
+                            tabout = React.createElement(
+                                Fragment,
+                                null,
+                                triggerSettings[0].triggerType === 'button' && React.createElement(_ColorComponent2.default, {
+                                    label: __("Background Color", 'premium-blocks-for-gutenberg'),
+                                    colorValue: triggerStyles[0].triggerBack,
+                                    colorDefault: '',
+                                    onColorChange: function onColorChange(newValue) {
+                                        return saveTriggerStyles({ triggerBack: newValue || "transparent" });
+                                    }
+                                }),
+                                React.createElement(_premiumBorder2.default, {
+                                    borderType: triggerStyles[0].borderType,
+                                    top: triggerBorderTop,
+                                    right: triggerBorderRight,
+                                    bottom: triggerBorderBottom,
+                                    left: triggerBorderLeft,
+                                    borderColor: triggerStyles[0].borderColor,
+                                    borderRadius: triggerStyles[0].borderRadius,
+                                    onChangeType: function onChangeType(newType) {
+                                        return saveTriggerStyles({ borderType: newType });
+                                    },
+                                    onChangeWidth: function onChangeWidth(_ref) {
+                                        var top = _ref.top,
+                                            right = _ref.right,
+                                            bottom = _ref.bottom,
+                                            left = _ref.left;
+                                        return setAttributes({
+                                            triggerBorderTop: top,
+                                            triggerBorderRight: right,
+                                            triggerBorderBottom: bottom,
+                                            triggerBorderLeft: left
+                                        });
+                                    },
+                                    onChangeColor: function onChangeColor(colorValue) {
+                                        return saveTriggerStyles({ borderColor: colorValue });
+                                    },
+                                    onChangeRadius: function onChangeRadius(newRadius) {
+                                        return saveTriggerStyles({ borderRadius: newRadius });
+                                    }
+                                })
+                            );
+                        }
+                        if ("hover" === tab.name) {
+                            tabout = React.createElement(
+                                Fragment,
+                                null,
+                                triggerSettings[0].triggerType === 'button' && React.createElement(_ColorComponent2.default, {
+                                    label: __("Background Hover Color", 'premium-blocks-for-gutenberg'),
+                                    colorValue: triggerStyles[0].triggerHoverBack,
+                                    colorDefault: '',
+                                    onColorChange: function onColorChange(newValue) {
+                                        return saveTriggerStyles({ triggerHoverBack: newValue || "transparent" });
+                                    }
+                                }),
+                                React.createElement(_premiumBorder2.default, {
+                                    borderType: triggerStyles[0].borderTypeH,
+                                    top: triggerBorderTopH,
+                                    right: triggerBorderRightH,
+                                    bottom: triggerBorderBottomH,
+                                    left: triggerBorderLeftH,
+                                    borderColor: triggerStyles[0].borderColorH,
+                                    borderRadius: triggerStyles[0].borderRadiusH,
+                                    onChangeType: function onChangeType(newType) {
+                                        return saveTriggerStyles({ borderTypeH: newType });
+                                    },
+                                    onChangeWidth: function onChangeWidth(_ref2) {
+                                        var top = _ref2.top,
+                                            right = _ref2.right,
+                                            bottom = _ref2.bottom,
+                                            left = _ref2.left;
+                                        return setAttributes({
+                                            triggerBorderTopH: top,
+                                            triggerBorderRightH: right,
+                                            triggerBorderBottomH: bottom,
+                                            triggerBorderLeftH: left
+                                        });
+                                    },
+                                    onChangeColor: function onChangeColor(colorValue) {
+                                        return saveTriggerStyles({ borderColorH: colorValue });
+                                    },
+                                    onChangeRadius: function onChangeRadius(newRadius) {
+                                        return saveTriggerStyles({ borderRadiusH: newRadius });
+                                    }
+                                })
+                            );
+                        }
+                        return React.createElement(
+                            "div",
+                            null,
+                            tabout,
+                            React.createElement("hr", null)
+                        );
                     }
-                }
-            }),
-            React.createElement(_premiumBoxShadow2.default, {
+                )
+            ),
+            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_PremiumResponsivePadding2.default, {
+                    paddingT: triggerPaddingT,
+                    paddingR: triggerPaddingR,
+                    paddingB: triggerPaddingB,
+                    paddingL: triggerPaddingL,
+                    paddingTTablet: triggerPaddingTTablet,
+                    paddingRTablet: triggerPaddingRTablet,
+                    paddingBTablet: triggerPaddingBTablet,
+                    paddingLTablet: triggerPaddingLTablet,
+                    paddingTMobile: triggerPaddingTMobile,
+                    paddingRMobile: triggerPaddingRMobile,
+                    paddingBMobile: triggerPaddingBMobile,
+                    paddingLMobile: triggerPaddingLMobile,
+                    onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                        if (device === "desktop") {
+                            setAttributes({ triggerPaddingT: newValue });
+                        } else if (device === "tablet") {
+                            setAttributes({ triggerPaddingTTablet: newValue });
+                        } else {
+                            setAttributes({ triggerPaddingTMobile: newValue });
+                        }
+                    },
+                    onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                        if (device === "desktop") {
+                            setAttributes({ triggerPaddingR: newValue });
+                        } else if (device === "tablet") {
+                            setAttributes({ triggerPaddingRTablet: newValue });
+                        } else {
+                            setAttributes({ triggerPaddingRMobile: newValue });
+                        }
+                    },
+                    onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                        if (device === "desktop") {
+                            setAttributes({ triggerPaddingB: newValue });
+                        } else if (device === "tablet") {
+                            setAttributes({ triggerPaddingBTablet: newValue });
+                        } else {
+                            setAttributes({ triggerPaddingBMobile: newValue });
+                        }
+                    },
+                    onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                        if (device === "desktop") {
+                            setAttributes({ triggerPaddingL: newValue });
+                        } else if (device === "tablet") {
+                            setAttributes({ triggerPaddingLTablet: newValue });
+                        } else {
+                            setAttributes({ triggerPaddingLMobile: newValue });
+                        }
+                    }
+                })
+            ),
+            (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "button") && React.createElement(_premiumBoxShadow2.default, {
                 inner: true,
                 color: triggerStyles[0].triggerShadowColor,
                 blur: triggerStyles[0].triggerShadowBlur,
@@ -57395,7 +57449,73 @@ var edit = function edit(props) {
                 onChangePosition: function onChangePosition(newValue) {
                     return saveTriggerStyles({ triggerShadowPosition: newValue });
                 }
-            })
+            }),
+            triggerSettings[0].triggerType === "text" && React.createElement(_premiumTextShadow2.default, {
+                color: triggerStyles[0].textShadowColor,
+                blur: triggerStyles[0].textShadowBlur,
+                horizontal: triggerStyles[0].textShadowHorizontal,
+                vertical: triggerStyles[0].textShadowVertical,
+                onChangeColor: function onChangeColor(newColor) {
+                    return saveTriggerStyles({ textShadowColor: newColor || "transparent" });
+                },
+                onChangeBlur: function onChangeBlur(newBlur) {
+                    return saveTriggerStyles({ textShadowBlur: newBlur || "0" });
+                },
+                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                    return saveTriggerStyles({ textShadowHorizontal: newValue || "0" });
+                },
+                onChangeVertical: function onChangeVertical(newValue) {
+                    return saveTriggerStyles({ textShadowVertical: newValue || "0" });
+                }
+            }),
+            triggerSettings[0].triggerType === "lottie" && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_premiumFilters2.default, {
+                    blur: triggerStyles[0].blur,
+                    bright: triggerStyles[0].bright,
+                    contrast: triggerStyles[0].contrast,
+                    saturation: triggerStyles[0].saturation,
+                    hue: triggerStyles[0].hue,
+                    onChangeBlur: function onChangeBlur(value) {
+                        return saveTriggerStyles({ blur: value });
+                    },
+                    onChangeBright: function onChangeBright(value) {
+                        return saveTriggerStyles({ bright: value });
+                    },
+                    onChangeContrast: function onChangeContrast(value) {
+                        return saveTriggerStyles({ contrast: value });
+                    },
+                    onChangeSat: function onChangeSat(value) {
+                        return saveTriggerStyles({ saturation: value });
+                    },
+                    onChangeHue: function onChangeHue(value) {
+                        return saveTriggerStyles({ hue: value });
+                    }
+                }),
+                React.createElement(_premiumFilters2.default, {
+                    blur: triggerStyles[0].blurH,
+                    bright: triggerStyles[0].brightH,
+                    contrast: triggerStyles[0].contrastH,
+                    saturation: triggerStyles[0].saturationH,
+                    hue: triggerStyles[0].hueH,
+                    onChangeBlur: function onChangeBlur(value) {
+                        return saveTriggerStyles({ blurH: value });
+                    },
+                    onChangeBright: function onChangeBright(value) {
+                        return saveTriggerStyles({ brightH: value });
+                    },
+                    onChangeContrast: function onChangeContrast(value) {
+                        return saveTriggerStyles({ contrastH: value });
+                    },
+                    onChangeSat: function onChangeSat(value) {
+                        return saveTriggerStyles({ saturationH: value });
+                    },
+                    onChangeHue: function onChangeHue(value) {
+                        return saveTriggerStyles({ hueH: value });
+                    }
+                })
+            )
         ),
         contentStyles[0].showHeader && React.createElement(
             PanelBody,
@@ -58067,9 +58187,9 @@ var edit = function edit(props) {
         React.createElement(
             "div",
             { className: "premium-modal-trigger-container", style: { textAlign: triggerSettings[0].align } },
-            React.createElement(
+            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && React.createElement(
                 "button",
-                { className: "premium-button__" + triggerSettings[0].btnSize, ref: triggerRef, style: {
+                { className: " premium-modal-trigger-btn premium-button__" + triggerSettings[0].btnSize + " ", ref: triggerRef, style: {
                         fontSize: "" + triggerFontSize + triggerStyles[0].triggerSizeUnit,
                         paddingTop: triggerPaddingTop + "px",
                         paddingRight: triggerPaddingRight + "px",
@@ -58085,14 +58205,110 @@ var edit = function edit(props) {
                         borderRadius: triggerStyles[0].borderRadius + "px",
                         boxShadow: triggerStyles[0].triggerShadowHorizontal + "px " + triggerStyles[0].triggerShadowVertical + "px " + triggerStyles[0].triggerShadowBlur + "px " + triggerStyles[0].triggerShadowColor + " " + triggerStyles[0].triggerShadowPosition
                     } },
-                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement("i", { className: triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginRight: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } }),
+                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement("i", { className: " premium-modal-box-icon " + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginRight: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } }),
                 React.createElement(
                     "span",
                     { style: { color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing } },
                     " ",
                     triggerSettings[0].btnText
                 ),
-                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && React.createElement("i", { className: triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginLeft: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } })
+                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && React.createElement("i", { className: " premium-modal-box-icon " + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginLeft: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } })
+            ),
+            triggerSettings[0].triggerType === "image" && React.createElement(
+                Fragment,
+                null,
+                triggerSettings[0].triggerImgURL ? React.createElement("img", { className: "premium-modal-trigger-img", ref: triggerRef, src: triggerSettings[0].triggerImgURL, style: {
+                        width: triggerSize + "px",
+                        height: triggerSize + "px",
+                        borderStyle: triggerStyles[0].borderType,
+                        borderTopWidth: triggerBorderTop + "px",
+                        borderRightWidth: triggerBorderRight + "px",
+                        borderBottomWidth: triggerBorderBottom + "px",
+                        borderLeftWidth: triggerBorderLeft + "px",
+                        borderColor: triggerStyles[0].borderColor,
+                        borderRadius: triggerStyles[0].borderRadius + "px",
+                        boxShadow: triggerStyles[0].triggerShadowHorizontal + "px " + triggerStyles[0].triggerShadowVertical + "px " + triggerStyles[0].triggerShadowBlur + "px " + triggerStyles[0].triggerShadowColor + " " + triggerStyles[0].triggerShadowPosition
+                    } }) : React.createElement(MediaPlaceholder, {
+                    labels: {
+                        title: __('Premium Modal ', 'premium-blocks-for-gutenberg'),
+                        instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
+                    },
+                    accept: ['image'],
+                    allowedTypes: ['image'],
+                    value: triggerSettings[0].triggerImgURL,
+                    onSelectURL: function onSelectURL(value) {
+                        return saveTriggerSettings({ triggerImgURL: value });
+                    },
+                    onSelect: function onSelect(media) {
+                        saveTriggerSettings({
+                            triggerImgID: media.id,
+                            triggerImgURL: media.url
+                        });
+                    }
+                })
+            ),
+            triggerSettings[0].triggerType === "text" && React.createElement(
+                "span",
+                { ref: triggerRef, className: "premium-modal-trigger-text", style: {
+                        color: triggerStyles[0].color,
+                        fontSize: "" + triggerFontSize + triggerStyles[0].triggerSizeUnit,
+                        paddingTop: triggerPaddingTop + "px",
+                        paddingRight: triggerPaddingRight + "px",
+                        paddingBottom: triggerPaddingBottom + "px",
+                        paddingLeft: triggerPaddingLeft + "px",
+                        borderStyle: triggerStyles[0].borderType,
+                        borderTopWidth: triggerBorderTop + "px",
+                        borderRightWidth: triggerBorderRight + "px",
+                        borderBottomWidth: triggerBorderBottom + "px",
+                        borderLeftWidth: triggerBorderLeft + "px",
+                        borderColor: triggerStyles[0].borderColor,
+                        borderRadius: triggerStyles[0].borderRadius + "px",
+                        textShadow: triggerStyles[0].textShadowHorizontal + "px " + triggerStyles[0].textShadowVertical + "px " + triggerStyles[0].textShadowBlur + "px " + triggerStyles[0].textShadowColor,
+                        fontFamily: triggerStyles[0].triggerFamily,
+                        fontWeight: triggerStyles[0].triggerWeight,
+                        fontStyle: triggerStyles[0].triggerStyle,
+                        letterSpacing: triggerStyles[0].triggerSpacing
+                    } },
+                triggerSettings[0].triggerText
+            ),
+            triggerSettings[0].triggerType === "lottie" && React.createElement(
+                Fragment,
+                null,
+                triggerSettings[0].lottieTriggerURL ? React.createElement(
+                    "div",
+                    { ref: triggerRef, className: "premium-lottie-animation" },
+                    React.createElement(_reactLottieWithSegments2.default, {
+                        height: triggerSize,
+                        width: triggerSize,
+                        options: {
+                            loop: triggerSettings[0].triggerLoopLottie,
+                            path: triggerSettings[0].lottieTriggerURL,
+                            rendererSettings: {
+                                preserveAspectRatio: 'xMidYMid',
+                                className: "premium-lottie-inner"
+                            }
+                        },
+                        isClickToPauseDisabled: true,
+                        direction: triggerSettings[0].triggerReverseLottie ? -1 : 1
+                    }),
+                    " "
+                ) : React.createElement(MediaPlaceholder, {
+                    labels: {
+                        title: __('Lottie', 'premium-blocks-for-gutenberg'),
+                        instructions: __('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg')
+                    },
+                    accept: ['application/json'],
+                    allowedTypes: ['application/json'],
+                    value: triggerSettings[0].lottieTriggerURL,
+                    onSelectURL: function onSelectURL(value) {
+                        return saveTriggerSettings({ lottieTriggerURL: value });
+                    },
+                    onSelect: function onSelect(media) {
+                        return saveTriggerSettings({
+                            lottieTriggerURL: media.url
+                        });
+                    }
+                })
             )
         ),
         React.createElement(
@@ -58105,7 +58321,8 @@ var edit = function edit(props) {
             React.createElement(
                 "div",
                 { className: "premium-popup__modal_content animated animation-" + contentStyles[0].animationType + " animation-" + contentStyles[0].animationSpeed,
-                    "data-delay": contentStyles[0].animationDelay,
+                    "data-delay": triggerSettings[0].delayTime,
+                    "data-delayanimation": contentStyles[0].animationDelay,
                     "data-animation": contentStyles[0].animationType + " " + contentStyles[0].animationSpeed,
                     style: {
                         width: "" + modalWidth + modalStyles[0].modalWidthUnit,
@@ -58150,18 +58367,26 @@ var edit = function edit(props) {
                                 width: "" + headerIconSize + contentStyles[0].iconSizeUnit,
                                 height: "" + headerIconSize + contentStyles[0].iconSizeUnit
                             } }),
-                        contentStyles[0].iconType === "lottie" && React.createElement(Lottie, {
-                            options: {
-                                loop: contentStyles[0].loopLottie,
-                                path: contentStyles[0].lottieURL,
-                                rendererSettings: {
-                                    preserveAspectRatio: 'xMidYMid',
-                                    className: "premium-lottie-inner"
+                        contentStyles[0].iconType === "lottie" && React.createElement(
+                            "div",
+                            { className: "premium-lottie-animation",
+                                style: {
+                                    width: "" + headerIconSize + contentStyles[0].iconSizeUnit,
+                                    height: "" + headerIconSize + contentStyles[0].iconSizeUnit
                                 }
                             },
-                            isClickToPauseDisabled: true,
-                            direction: contentStyles[0].reverseLottie ? -1 : 1
-                        }),
+                            React.createElement(_reactLottieWithSegments2.default, {
+                                options: {
+                                    loop: contentStyles[0].loopLottie,
+                                    path: contentStyles[0].lottieURL,
+                                    rendererSettings: {
+                                        preserveAspectRatio: 'xMidYMid',
+                                        className: "premium-lottie-inner"
+                                    }
+                                },
+                                direction: contentStyles[0].reverseLottie ? -1 : 1
+                            })
+                        ),
                         contentStyles[0].titleText
                     ),
                     contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(
@@ -58182,7 +58407,7 @@ var edit = function edit(props) {
                             } },
                         React.createElement(
                             "button",
-                            { type: "button", className: "premium-modal-box-modal-close", ref: closeButton,
+                            { role: "button", className: "premium-modal-box-modal-close close-button", ref: closeButton,
                                 style: {
                                     fontSize: "" + upperStyles[0].iconWidth + upperStyles[0].iconWidthUnit,
                                     color: "" + upperStyles[0].color
@@ -58221,7 +58446,7 @@ var edit = function edit(props) {
                         } },
                     React.createElement(
                         "button",
-                        { className: "premium-modal-box-modal-lower-close", role: "button", "data-dismiss": "premium-modal",
+                        { className: "premium-modal-box-modal-lower-close close-button", role: "button", "data-dismiss": "premium-modal",
                             ref: closeButton,
                             style: {
                                 fontStyle: lowerStyles[0].lowerStyle,
@@ -58288,13 +58513,13 @@ var attributes = {
     contentStyles: {
         type: 'array',
         default: [{
-            showHeader: false,
+            showHeader: true,
             iconType: 'none',
             contentIcon: '',
             contentImgID: '',
             contentImgURL: '',
             lottieURL: '',
-            loopLottie: false,
+            loopLottie: true,
             reverseLottie: false,
             iconSize: '',
             iconSizeTablet: '',
@@ -58313,13 +58538,23 @@ var attributes = {
         type: "array",
         default: [{
             triggerType: 'button',
-            btnText: 'Premium Blocks',
+            btnText: __('Premium Blocks', 'premium-blocks-for-gutenberg'),
             showIcon: false,
             icon: '',
             iconPosition: 'before',
-            iconSize: '',
+            iconSize: '50',
             iconSpacing: '',
             btnSize: 'md',
+            triggerImgID: '',
+            triggerImgURL: '',
+            triggerText: __('Premium Blocks', 'premium-blocks-for-gutenberg'),
+            lottieTriggerURL: '',
+            triggerLoopLottie: true,
+            triggerReverseLottie: false,
+            triggerPlayLottie: false,
+            imageWidth: '',
+            imageWidthTablet: '',
+            imageWidthMobile: '',
             align: 'center',
             delayTime: 1
         }]
@@ -58342,19 +58577,31 @@ var attributes = {
             triggerUpper: '',
             triggerBack: '',
             borderType: 'none',
-            borderWidth: '',
             borderColor: '',
             borderRadius: '',
             triggerHoverBack: '',
             borderTypeH: 'none',
-            borderWidthH: '',
             borderColorH: '',
             borderRadiusH: '',
             triggerShadowColor: '',
             triggerShadowBlur: '',
             triggerShadowHorizontal: '',
             triggerShadowVertical: '',
-            triggerShadowPosition: ''
+            triggerShadowPosition: '',
+            textShadowColor: '',
+            textShadowBlur: '',
+            textShadowHorizontal: '',
+            textShadowVertical: '',
+            blur: '',
+            bright: '',
+            contrast: '',
+            saturation: '',
+            hue: '',
+            blurH: '',
+            brightH: '',
+            contrastH: '',
+            saturationH: '',
+            hueH: ''
         }]
     },
     triggerBorderTop: {
@@ -58760,54 +59007,114 @@ var save = function save(props) {
         modalBorderBottom = _props$attributes.modalBorderBottom,
         modalBorderLeft = _props$attributes.modalBorderLeft;
 
+    var renderCss = React.createElement(
+        'style',
+        null,
+        '\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover {\n              background-color: ' + triggerStyles[0].triggerHoverBack + ' !important;\n              border-style: ' + triggerStyles[0].borderTypeH + ' !important;\n            \n              border-color: ' + triggerStyles[0].borderColorH + ' !important;\n              border-radius: ' + triggerStyles[0].borderRadiusH + 'px !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover i{\n                color:' + triggerStyles[0].iconHoverColor + ' !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover span{\n                color:' + triggerStyles[0].hoverColor + ' !important;\n            }\n             #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:' + triggerStyles[0].hoverColor + ' !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( ' + triggerStyles[0].bright + '% ) contrast( ' + triggerStyles[0].contrast + '% ) saturate( ' + triggerStyles[0].saturation + '% ) blur( ' + triggerStyles[0].blur + 'px ) hue-rotate( ' + triggerStyles[0].hue + 'deg );\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( ' + triggerStyles[0].brightH + '% ) contrast( ' + triggerStyles[0].contrastH + '% ) saturate( ' + triggerStyles[0].saturationH + '% ) blur( ' + triggerStyles[0].blurH + 'px ) hue-rotate( ' + triggerStyles[0].hueH + 'deg ) !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container img:hover {\n              border-style: ' + triggerStyles[0].borderTypeH + ' !important;\n              border-color: ' + triggerStyles[0].borderColorH + ' !important;\n              border-radius: ' + triggerStyles[0].borderRadiusH + 'px !important;\n            }\n             #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n              border-style: ' + triggerStyles[0].borderTypeH + ' !important;\n              border-color: ' + triggerStyles[0].borderColorH + ' !important;\n              border-radius: ' + triggerStyles[0].borderRadiusH + 'px !important;\n            }\n\n        '
+    );
 
-    var mainClasses = (0, _classnames2.default)(className, 'premium-container');
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === modalStyles[0].containerBack || undefined === modalStyles[0].containerBack ? 'rgba(255,255,255,0)' : modalStyles[0].containerBack;
+        btnGrad2 = undefined !== modalStyles[0].gradientColorTwo && undefined !== modalStyles[0].gradientColorTwo && '' !== modalStyles[0].gradientColorTwo ? modalStyles[0].gradientColorTwo : '#777';
+        if ('radial' === modalStyles[0].gradientType) {
+            btnbg = 'radial-gradient(at ' + modalStyles[0].gradientPosition + ', ' + btnGrad + ' ' + modalStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + modalStyles[0].gradientLocationTwo + '%)';
+        } else if ('radial' !== modalStyles[0].gradientType) {
+            btnbg = 'linear-gradient(' + modalStyles[0].gradientAngle + 'deg, ' + btnGrad + ' ' + modalStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + modalStyles[0].gradientLocationTwo + '%)';
+        }
+    } else {
+        btnbg = modalStyles[0].backgroundImageURL ? 'url(\'' + modalStyles[0].backgroundImageURL + '\')' : '';
+    }
+    console.log(triggerSettings[0].triggerImgURL);
 
     return React.createElement(
         'div',
         { id: 'premium-modal-box-' + block_id, className: (0, _classnames2.default)(className, "premium-modal-box"), 'data-trigger': triggerSettings[0].triggerType },
-        triggerSettings[0].triggerType === "button" && React.createElement(
+        renderCss,
+        React.createElement(
             'div',
             { className: 'premium-modal-trigger-container', style: { textAlign: triggerSettings[0].align } },
-            React.createElement(
+            triggerSettings[0].triggerType === "button" && React.createElement(
                 'button',
-                { className: 'premium-button__' + triggerSettings[0].btnSize, style: {
+                { className: ' premium-modal-trigger-btn premium-button__' + triggerSettings[0].btnSize + ' ', style: {
                         backgroundColor: triggerStyles[0].triggerBack,
                         borderStyle: triggerStyles[0].borderType,
-                        borderTop: triggerBorderTop + 'px',
-                        borderRight: triggerBorderRight + 'px',
-                        borderBottom: triggerBorderBottom + 'px',
-                        borderLeft: triggerBorderLeft + 'px',
+                        borderTopWidth: triggerBorderTop + 'px',
+                        borderRightWidth: triggerBorderRight + 'px',
+                        borderBottomWidth: triggerBorderBottom + 'px',
+                        borderLeftWidth: triggerBorderLeft + 'px',
                         borderColor: triggerStyles[0].borderColor,
-                        borderRadius: triggerStyles[0].borderRadius,
+                        borderRadius: triggerStyles[0].borderRadius + 'px',
                         boxShadow: triggerStyles[0].triggerShadowHorizontal + 'px ' + triggerStyles[0].triggerShadowVertical + 'px ' + triggerStyles[0].triggerShadowBlur + 'px ' + triggerStyles[0].triggerShadowColor + ' ' + triggerStyles[0].triggerShadowPosition
                     } },
-                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement('i', { className: triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + 'px', marginRight: triggerSettings[0].iconSpacing + 'px', color: triggerStyles[0].iconColor } }),
+                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement('i', { className: ' premium-modal-box-icon ' + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + 'px', marginRight: triggerSettings[0].iconSpacing + 'px', color: triggerStyles[0].iconColor } }),
                 React.createElement(
                     'span',
                     { style: { color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing } },
                     ' ',
                     triggerSettings[0].btnText
                 ),
-                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && React.createElement('i', { className: triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + 'px', marginLeft: triggerSettings[0].iconSpacing + 'px', color: triggerStyles[0].iconColor } })
-            )
+                triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && React.createElement('i', { className: 'premium-modal-box-icon ' + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + 'px', marginLeft: triggerSettings[0].iconSpacing + 'px', color: triggerStyles[0].iconColor } })
+            ),
+            triggerSettings[0].triggerType === "image" && React.createElement('img', { src: triggerSettings[0].triggerImgURL, className: 'premium-modal-trigger-img',
+                style: {
+                    borderStyle: triggerStyles[0].borderType,
+                    borderTopWidth: triggerBorderTop + 'px',
+                    borderRightWidth: triggerBorderRight + 'px',
+                    borderBottomWidth: triggerBorderBottom + 'px',
+                    borderLeftWidth: triggerBorderLeft + 'px',
+                    borderColor: triggerStyles[0].borderColor,
+                    borderRadius: triggerStyles[0].borderRadius + 'px',
+                    boxShadow: triggerStyles[0].triggerShadowHorizontal + 'px ' + triggerStyles[0].triggerShadowVertical + 'px ' + triggerStyles[0].triggerShadowBlur + 'px ' + triggerStyles[0].triggerShadowColor + ' ' + triggerStyles[0].triggerShadowPosition
+                } }),
+            triggerSettings[0].triggerType === "text" && React.createElement(
+                'span',
+                { className: 'premium-modal-trigger-text', style: {
+                        color: triggerStyles[0].color,
+                        borderStyle: triggerStyles[0].borderType,
+                        borderTopWidth: triggerBorderTop + 'px',
+                        borderRightWidth: triggerBorderRight + 'px',
+                        borderBottomWidth: triggerBorderBottom + 'px',
+                        borderLeftWidth: triggerBorderLeft + 'px',
+                        borderColor: triggerStyles[0].borderColor,
+                        borderRadius: triggerStyles[0].borderRadius + 'px',
+                        textShadow: triggerStyles[0].textShadowHorizontal + 'px ' + triggerStyles[0].textShadowVertical + 'px ' + triggerStyles[0].textShadowBlur + 'px ' + triggerStyles[0].textShadowColor,
+                        fontFamily: triggerStyles[0].triggerFamily,
+                        fontWeight: triggerStyles[0].triggerWeight,
+                        fontStyle: triggerStyles[0].triggerStyle,
+                        letterSpacing: triggerStyles[0].triggerSpacing
+                    } },
+                triggerSettings[0].triggerText
+            ),
+            triggerSettings[0].triggerType === "lottie" && React.createElement('div', { className: 'premium-lottie-animation',
+                'data-lottieurl': triggerSettings[0].lottieTriggerURL,
+                'data-loop': triggerSettings[0].triggerLoopLottie,
+                'data-reverse': triggerSettings[0].triggerReverseLottie,
+                'data-trigger': triggerSettings[0].triggerPlayLottie ? "hover" : "none"
+            })
         ),
         React.createElement(
             'div',
-            { className: 'premium-popup__modal_wrap', style: { display: 'none' }, role: 'dialog' },
-            React.createElement('div', { role: 'presentation', className: 'premium-popup__modal_wrap_overlay' }),
+            { className: 'premium-popup__modal_wrap', style: { display: "none" }, role: 'dialog' },
+            React.createElement('div', { role: 'presentation', className: 'premium-popup__modal_wrap_overlay', style: {
+                    backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
+                    backgroundImage: btnbg
+                } }),
             React.createElement(
                 'div',
                 { className: 'premium-popup__modal_content animated animation-' + contentStyles[0].animationType + ' animation-' + contentStyles[0].animationSpeed,
-                    'data-delay': contentStyles[0].animationDelay,
+                    'data-delay': triggerSettings[0].delayTime,
+                    'data-delayanimation': contentStyles[0].animationDelay,
                     'data-animation': contentStyles[0].animationType + ' ' + contentStyles[0].animationSpeed,
                     style: {
                         borderStyle: '' + modalStyles[0].borderType,
                         borderColor: '' + modalStyles[0].borderColor,
-                        borderTop: modalBorderTop + 'px',
-                        borderRight: modalBorderRight + 'px',
-                        borderBottom: modalBorderBottom + 'px',
-                        borderLeft: modalBorderLeft + 'px',
+                        borderTopWidth: modalBorderTop + 'px',
+                        borderRightWidth: modalBorderRight + 'px',
+                        borderBottomWidth: modalBorderBottom + 'px',
+                        borderLeftWidth: modalBorderLeft + 'px',
                         borderRadius: modalStyles[0].borderRadius + 'px',
                         boxShadow: modalStyles[0].modalShadowHorizontal + 'px ' + modalStyles[0].modalShadowVertical + 'px ' + modalStyles[0].modalShadowBlur + 'px ' + modalStyles[0].modalShadowColor + ' ' + modalStyles[0].modalShadowPosition
                     } },
@@ -58816,12 +59123,12 @@ var save = function save(props) {
                     { className: 'premium-modal-box-modal-header', style: {
                             backgroundColor: headerStyles[0].backColor,
                             borderStyle: headerStyles[0].borderType,
-                            borderTop: headerBorderTop + 'px',
-                            borderRight: headerBorderRight + 'px',
-                            borderBottom: headerBorderBottom + 'px',
-                            borderLeft: headerBorderLeft + 'px',
+                            borderTopWidth: headerBorderTop + 'px',
+                            borderRightWidth: headerBorderRight + 'px',
+                            borderBottomWidth: headerBorderBottom + 'px',
+                            borderLeftWidth: headerBorderLeft + 'px',
                             borderColor: '' + headerStyles[0].borderColor,
-                            borderRadius: '' + headerStyles[0].borderRadius
+                            borderRadius: headerStyles[0].borderRadius + 'px'
                         } },
                     React.createElement(
                         'h3',
@@ -58833,11 +59140,12 @@ var save = function save(props) {
                                 fontWeight: headerStyles[0].headerWeight
                             } },
                         contentStyles[0].iconType === "icon" && React.createElement('i', { className: contentStyles[0].contentIcon }),
-                        contentStyles[0].iconType === "image" && React.createElement('img', { src: contentStyles[0].contentImgURL }),
+                        contentStyles[0].iconType === "image" && React.createElement('img', { src: contentStyles[0].contentImgURL, style: {} }),
                         contentStyles[0].iconType === "lottie" && React.createElement('div', { className: 'premium-lottie-animation',
                             'data-lottieurl': contentStyles[0].lottieURL,
                             'data-loop': contentStyles[0].loopLottie,
-                            'data-reverse': contentStyles[0].reverseLottie
+                            'data-reverse': contentStyles[0].reverseLottie,
+                            'data-trigger': "none"
                         }),
                         contentStyles[0].titleText
                     ),
@@ -58846,17 +59154,18 @@ var save = function save(props) {
                         { className: 'premium-modal-box-close-button-container', style: {
                                 backgroundColor: '' + upperStyles[0].backColor,
                                 borderStyle: '' + upperStyles[0].borderType,
-                                borderTop: upperBorderTop + 'px',
-                                borderRight: upperBorderRight + 'px',
-                                borderBottom: upperBorderBottom + 'px',
-                                borderLeft: upperBorderLeft + 'px',
+                                borderTopWidth: upperBorderTop + 'px',
+                                borderRightWidth: upperBorderRight + 'px',
+                                borderBottomWidth: upperBorderBottom + 'px',
+                                borderLeftWidth: upperBorderLeft + 'px',
                                 borderColor: '' + upperStyles[0].borderColor,
-                                borderRadius: '' + upperStyles[0].borderRadius
+                                borderRadius: upperStyles[0].borderRadius + 'px'
 
                             } },
                         React.createElement(
                             'button',
-                            { type: 'button', className: 'premium-modal-box-modal-close', style: {
+                            { type: 'button', className: 'premium-modal-box-modal-close close-button',
+                                style: {
                                     fontSize: '' + upperStyles[0].iconWidth + upperStyles[0].iconWidthUnit,
                                     color: '' + upperStyles[0].color
 
@@ -58868,17 +59177,18 @@ var save = function save(props) {
                 React.createElement(
                     'div',
                     { className: 'premium-modal-box-modal-body', style: {
-                            color: modalStyles[0].textColor,
-                            background: modalStyles[0].textBackColor,
-                            fontStyle: modalStyles[0].modalStyle,
-                            fontWeight: modalStyles[0].modalWeight,
-                            fontFamily: modalStyles[0].modalFamily,
-                            letterSpacing: modalStyles[0].modalSpacing
+                            background: modalStyles[0].textBackColor
 
                         } },
                     modalStyles[0].contentType === "text" ? React.createElement(
                         'p',
-                        null,
+                        { style: {
+                                color: modalStyles[0].textColor,
+                                fontWeight: modalStyles[0].modalWeight,
+                                fontFamily: modalStyles[0].modalFamily,
+                                letterSpacing: modalStyles[0].modalSpacing,
+                                fontStyle: modalStyles[0].modalStyle
+                            } },
                         modalStyles[0].contentText
                     ) : React.createElement(InnerBlocks, null)
                 ),
@@ -58889,8 +59199,7 @@ var save = function save(props) {
                         } },
                     React.createElement(
                         'button',
-                        { className: 'premium-modal-box-modal-lower-close', role: 'button',
-                            'data-dismiss': 'premium-modal',
+                        { className: 'premium-modal-box-modal-lower-close close-button', role: 'button', 'data-dismiss': 'premium-modal',
                             style: {
                                 fontStyle: lowerStyles[0].lowerStyle,
                                 fontWeight: lowerStyles[0].lowerWeight,
@@ -58899,12 +59208,12 @@ var save = function save(props) {
                                 color: '' + lowerStyles[0].color,
                                 backgroundColor: '' + lowerStyles[0].backColor,
                                 borderStyle: '' + lowerStyles[0].borderType,
-                                borderTop: lowerBorderTop + 'px',
-                                borderRight: lowerBorderRight + 'px',
-                                borderBottom: lowerBorderBottom + 'px',
-                                borderLeft: lowerBorderLeft + 'px',
+                                borderTopWidth: lowerBorderTop + 'px',
+                                borderRightWidth: lowerBorderRight + 'px',
+                                borderBottomWidth: lowerBorderBottom + 'px',
+                                borderLeftWidth: lowerBorderLeft + 'px',
                                 borderColor: '' + lowerStyles[0].borderColor,
-                                borderRadius: '' + lowerStyles[0].borderRadius
+                                borderRadius: lowerStyles[0].borderRadius + 'px'
                             }
                         },
                         contentStyles[0].lowerCloseText

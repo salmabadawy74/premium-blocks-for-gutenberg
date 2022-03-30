@@ -14,15 +14,22 @@ import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin'
 import PremiumBoxShadow from "../../components/premium-box-shadow"
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
-const { useState, Fragment, useEffect, useRef } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
+import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumFilters from "../../components/premium-filters";
+import Lottie from 'react-lottie-with-segments';
+import { JsonUploadEnabled } from "../../../assets/js/settings";
+
+
+const { Fragment, useEffect, useRef } = wp.element;
+const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
 
 const {
     PanelBody,
     SelectControl,
     ToggleControl,
     TextControl,
-    TabPanel
+    TabPanel,
+    ExternalLink
 } = wp.components;
 
 const { InspectorControls, URLInput } = wp.blockEditor;
@@ -149,6 +156,7 @@ const edit = props => {
     }, [])
 
     useEffect(() => {
+        if (!triggerRef.current) return null
         closeButton.current.addEventListener('click', () => {
             modalRef.current.style.display = "none"
         })
@@ -256,6 +264,34 @@ const edit = props => {
             #premium-modal-box-${block_id} .premium-modal-trigger-container button:hover span{
                 color:${triggerStyles[0].hoverColor} !important;
             }
+             #premium-modal-box-${block_id} .premium-modal-trigger-container:hover .premium-modal-trigger-text {
+                color:${triggerStyles[0].hoverColor} !important;
+            }
+            #premium-modal-box-${block_id} .premium-modal-trigger-container .premium-lottie-animation{
+            filter: brightness( ${triggerStyles[0].bright}% ) contrast( ${triggerStyles[0].contrast}% ) saturate( ${triggerStyles[0].saturation}% ) blur( ${triggerStyles[0].blur}px ) hue-rotate( ${triggerStyles[0].hue}deg );
+            }
+            #premium-modal-box-${block_id} .premium-modal-trigger-container:hover .premium-lottie-animation{
+            filter: brightness( ${triggerStyles[0].brightH}% ) contrast( ${triggerStyles[0].contrastH}% ) saturate( ${triggerStyles[0].saturationH}% ) blur( ${triggerStyles[0].blurH}px ) hue-rotate( ${triggerStyles[0].hueH}deg ) !important;
+            }
+            #premium-modal-box-${block_id} .premium-modal-trigger-container img:hover {
+              border-style: ${triggerStyles[0].borderTypeH} !important;
+              border-top-width: ${triggerBorderTopH}px !important;
+              border-right-width: ${triggerBorderRightH}px !important;
+              border-bottom-width: ${triggerBorderBottomH}px !important;
+              border-left-width: ${triggerBorderLeftH}px !important;
+              border-color: ${triggerStyles[0].borderColorH} !important;
+              border-radius: ${triggerStyles[0].borderRadiusH}px !important;
+            }
+             #premium-modal-box-${block_id} .premium-modal-trigger-container:hover .premium-modal-trigger-text {
+              border-style: ${triggerStyles[0].borderTypeH} !important;
+              border-top-width: ${triggerBorderTopH}px !important;
+              border-right-width: ${triggerBorderRightH}px !important;
+              border-bottom-width: ${triggerBorderBottomH}px !important;
+              border-left-width: ${triggerBorderLeftH}px !important;
+              border-color: ${triggerStyles[0].borderColorH} !important;
+              border-radius: ${triggerStyles[0].borderRadiusH}px !important;
+            }
+
         `}
         </style>
     );
@@ -286,6 +322,7 @@ const edit = props => {
     const modalMarginRight = getPreviewSize(props.deviceType, modalMarginR, modalMarginRTablet, modalMarginRMobile);
     const modalMarginBottom = getPreviewSize(props.deviceType, modalMarginB, modalMarginBTablet, modalMarginBMobile);
     const modalMarginLeft = getPreviewSize(props.deviceType, modalMarginL, modalMarginLTablet, modalMarginLMobile);
+    const triggerSize = getPreviewSize(props.deviceType, triggerSettings[0].imageWidth, triggerSettings[0].imageWidthTablet, triggerSettings[0].imageWidthMobile);
 
     let btnGrad, btnGrad2, btnbg;
     if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -359,6 +396,7 @@ const edit = props => {
                             }
                             {contentStyles[0].iconType === "lottie" && (
                                 <Fragment>
+                                    {JsonUploadEnabled == 1 ? '' : <p>{__('Make Sure that allow "JSON file Upload " from ')} <ExternalLink href={window.PremiumBlocksSettings.settingPath}>plugin Settings</ExternalLink></p>}
                                     <TextControl
                                         label={__("Animation JSON URL", "premium-blocks-for-gutenberg")}
                                         value={contentStyles[0].lottieURL}
@@ -634,11 +672,8 @@ const edit = props => {
                     )}
                     {triggerSettings[0].triggerType === "lottie" && (
                         <Fragment>
-                            <TextControl
-                                label={__('Animation JSON URL', 'premium-blocks-for-gutenberg')}
-                                value={triggerSettings[0].lottieTriggerURL}
-                                onChange={value => saveTriggerSettings({ lottieTriggerURL: value })}
-                            />
+                            {JsonUploadEnabled == 1 ? '' : <p>{__('Make Sure that allow "JSON file Upload " from ')} <ExternalLink href={window.PremiumBlocksSettings.settingPath}>plugin Settings</ExternalLink></p>}
+
                             <ToggleControl
                                 label={__("Loop", 'premium-blocks-for-gutenberg')}
                                 checked={triggerSettings[0].triggerLoopLottie}
@@ -695,222 +730,279 @@ const edit = props => {
                         />
                     )}
                 </PanelBody>
-                <PanelBody
+                {triggerSettings[0].triggerType !== "load" && <PanelBody
                     title={__("Triger", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <AdvancedPopColorControl
-                        label={__("Color", 'premium-blocks-for-gutenberg')}
-                        colorValue={triggerStyles[0].color}
-                        colorDefault={''}
-                        onColorChange={(newValue) => saveTriggerStyles({ color: newValue })}
-                    />
-                    <AdvancedPopColorControl
-                        label={__("Hover Color", 'premium-blocks-for-gutenberg')}
-                        colorValue={triggerStyles[0].hoverColor}
-                        colorDefault={''}
-                        onColorChange={(newValue) => saveTriggerStyles({ hoverColor: newValue })}
-                    />
-                    <AdvancedPopColorControl
-                        label={__("Icon Color", 'premium-blocks-for-gutenberg')}
-                        colorValue={triggerStyles[0].iconColor}
-                        colorDefault={''}
-                        onColorChange={(newValue) => saveTriggerStyles({ iconColor: newValue })}
-                    />
-                    <AdvancedPopColorControl
-                        label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
-                        colorValue={triggerStyles[0].iconHoverColor}
-                        colorDefault={''}
-                        onColorChange={(newValue) => saveTriggerStyles({ iconHoverColor: newValue })}
-                    />
-                    <PremiumTypo
-                        components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
-                        setAttributes={saveTriggerStyles}
-                        fontSizeType={{
-                            value: triggerStyles[0].triggerSizeUnit,
-                            label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg'),
-                        }}
-                        fontSize={triggerStyles[0].triggerSize}
-                        fontSizeMobile={triggerStyles[0].triggerSizeMobile}
-                        fontSizeTablet={triggerStyles[0].triggerSizeTablet}
-                        onChangeSize={newSize => saveTriggerStyles({ triggerSize: newSize })}
-                        onChangeTabletSize={newSize => saveTriggerStyles({ triggerSizeTablet: newSize })}
-                        onChangeMobileSize={newSize => saveTriggerStyles({ triggerSizeMobile: newSize })}
-                        fontFamily={triggerStyles[0].triggerFamily}
-                        weight={triggerStyles[0].triggerWeight}
-                        style={triggerStyles[0].triggerStyle}
-                        spacing={triggerStyles[0].triggerSpacing}
-                        upper={triggerStyles[0].triggerUpper}
-                        onChangeWeight={newWeight => saveTriggerStyles({ triggerWeight: newWeight })}
-                        onChangeStyle={newStyle => saveTriggerStyles({ triggerStyle: newStyle })}
-                        onChangeSpacing={newValue => saveTriggerStyles({ triggerSpacing: newValue })}
-                        onChangeFamily={(fontFamily) => saveTriggerStyles({ triggerFamily: fontFamily })}
-                        onChangeUpper={check => saveTriggerStyles({ triggerUpper: check })}
-                    />
-                    <TabPanel
-                        className="premium-color-tabpanel"
-                        activeClass="active-tab"
-                        tabs={[
-                            {
-                                name: "normal",
-                                title: "Normal",
-                                className: "premium-tab",
-                            },
-                            {
-                                name: "hover",
-                                title: "Hover",
-                                className: "premium-tab",
-                            },
-                        ]}
-                    >
-                        {(tab) => {
-                            let tabout;
-                            if ("normal" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles[0].triggerBack}
-                                            colorDefault={''}
-                                            onColorChange={newValue => saveTriggerStyles({ triggerBack: newValue || "transparent", })}
-                                        />
-                                        <PremiumBorder
-                                            borderType={triggerStyles[0].borderType}
-                                            top={triggerBorderTop}
-                                            right={triggerBorderRight}
-                                            bottom={triggerBorderBottom}
-                                            left={triggerBorderLeft}
-                                            borderColor={triggerStyles[0].borderColor}
-                                            borderRadius={triggerStyles[0].borderRadius}
-                                            onChangeType={(newType) => saveTriggerStyles({ borderType: newType })}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    triggerBorderTop: top,
-                                                    triggerBorderRight: right,
-                                                    triggerBorderBottom: bottom,
-                                                    triggerBorderLeft: left,
-                                                })
-                                            }
-                                            onChangeColor={(colorValue) => saveTriggerStyles({ borderColor: colorValue })}
-                                            onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadius: newRadius })}
-                                        />
-                                    </Fragment>
+                    {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (<Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Color", 'premium-blocks-for-gutenberg')}
+                            colorValue={triggerStyles[0].color}
+                            colorDefault={''}
+                            onColorChange={(newValue) => saveTriggerStyles({ color: newValue })}
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Hover Color", 'premium-blocks-for-gutenberg')}
+                            colorValue={triggerStyles[0].hoverColor}
+                            colorDefault={''}
+                            onColorChange={(newValue) => saveTriggerStyles({ hoverColor: newValue })}
+                        />
+                    </Fragment>)}
+                    {triggerSettings[0].triggerType === "button" && (<Fragment>
+                        <AdvancedPopColorControl
+                            label={__("Icon Color", 'premium-blocks-for-gutenberg')}
+                            colorValue={triggerStyles[0].iconColor}
+                            colorDefault={''}
+                            onColorChange={(newValue) => saveTriggerStyles({ iconColor: newValue })}
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
+                            colorValue={triggerStyles[0].iconHoverColor}
+                            colorDefault={''}
+                            onColorChange={(newValue) => saveTriggerStyles({ iconHoverColor: newValue })}
+                        />
+                    </Fragment>)}
+                    {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (<Fragment>
+
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
+                            setAttributes={saveTriggerStyles}
+                            fontSizeType={{
+                                value: triggerStyles[0].triggerSizeUnit,
+                                label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg'),
+                            }}
+                            fontSize={triggerStyles[0].triggerSize}
+                            fontSizeMobile={triggerStyles[0].triggerSizeMobile}
+                            fontSizeTablet={triggerStyles[0].triggerSizeTablet}
+                            onChangeSize={newSize => saveTriggerStyles({ triggerSize: newSize })}
+                            onChangeTabletSize={newSize => saveTriggerStyles({ triggerSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveTriggerStyles({ triggerSizeMobile: newSize })}
+                            fontFamily={triggerStyles[0].triggerFamily}
+                            weight={triggerStyles[0].triggerWeight}
+                            style={triggerStyles[0].triggerStyle}
+                            spacing={triggerStyles[0].triggerSpacing}
+                            upper={triggerStyles[0].triggerUpper}
+                            onChangeWeight={newWeight => saveTriggerStyles({ triggerWeight: newWeight })}
+                            onChangeStyle={newStyle => saveTriggerStyles({ triggerStyle: newStyle })}
+                            onChangeSpacing={newValue => saveTriggerStyles({ triggerSpacing: newValue })}
+                            onChangeFamily={(fontFamily) => saveTriggerStyles({ triggerFamily: fontFamily })}
+                            onChangeUpper={check => saveTriggerStyles({ triggerUpper: check })}
+                        />
+                    </Fragment>)}
+                    {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text' || triggerSettings[0].triggerType === 'image') && (<Fragment>
+
+                        <TabPanel
+                            className="premium-color-tabpanel"
+                            activeClass="active-tab"
+                            tabs={[
+                                {
+                                    name: "normal",
+                                    title: "Normal",
+                                    className: "premium-tab",
+                                },
+                                {
+                                    name: "hover",
+                                    title: "Hover",
+                                    className: "premium-tab",
+                                },
+                            ]}
+                        >
+                            {(tab) => {
+                                let tabout;
+                                if ("normal" === tab.name) {
+                                    tabout = (
+                                        <Fragment>
+                                            {triggerSettings[0].triggerType === 'button' && <AdvancedPopColorControl
+                                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={triggerStyles[0].triggerBack}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveTriggerStyles({ triggerBack: newValue || "transparent", })}
+                                            />}
+
+                                            <PremiumBorder
+                                                borderType={triggerStyles[0].borderType}
+                                                top={triggerBorderTop}
+                                                right={triggerBorderRight}
+                                                bottom={triggerBorderBottom}
+                                                left={triggerBorderLeft}
+                                                borderColor={triggerStyles[0].borderColor}
+                                                borderRadius={triggerStyles[0].borderRadius}
+                                                onChangeType={(newType) => saveTriggerStyles({ borderType: newType })}
+                                                onChangeWidth={({ top, right, bottom, left }) =>
+                                                    setAttributes({
+                                                        triggerBorderTop: top,
+                                                        triggerBorderRight: right,
+                                                        triggerBorderBottom: bottom,
+                                                        triggerBorderLeft: left,
+                                                    })
+                                                }
+                                                onChangeColor={(colorValue) => saveTriggerStyles({ borderColor: colorValue })}
+                                                onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadius: newRadius })}
+                                            />
+                                        </Fragment>
+                                    );
+                                }
+                                if ("hover" === tab.name) {
+                                    tabout = (
+                                        <Fragment>
+                                            {triggerSettings[0].triggerType === 'button' &&
+                                                <AdvancedPopColorControl
+                                                    label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles[0].triggerHoverBack}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => saveTriggerStyles({ triggerHoverBack: newValue || "transparent", })}
+                                                />}
+                                            <PremiumBorder
+                                                borderType={triggerStyles[0].borderTypeH}
+                                                top={triggerBorderTopH}
+                                                right={triggerBorderRightH}
+                                                bottom={triggerBorderBottomH}
+                                                left={triggerBorderLeftH}
+                                                borderColor={triggerStyles[0].borderColorH}
+                                                borderRadius={triggerStyles[0].borderRadiusH}
+                                                onChangeType={(newType) => saveTriggerStyles({ borderTypeH: newType })}
+                                                onChangeWidth={({ top, right, bottom, left }) =>
+                                                    setAttributes({
+                                                        triggerBorderTopH: top,
+                                                        triggerBorderRightH: right,
+                                                        triggerBorderBottomH: bottom,
+                                                        triggerBorderLeftH: left,
+                                                    })
+                                                }
+                                                onChangeColor={(colorValue) => saveTriggerStyles({ borderColorH: colorValue })}
+                                                onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadiusH: newRadius })}
+                                            />
+                                        </Fragment>
+                                    );
+                                }
+                                return (
+                                    <div>
+                                        {tabout}
+                                        <hr />
+                                    </div>
                                 );
-                            }
-                            if ("hover" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles[0].triggerHoverBack}
-                                            colorDefault={''}
-                                            onColorChange={newValue => saveTriggerStyles({ triggerHoverBack: newValue || "transparent", })}
-                                        />
-                                        <PremiumBorder
-                                            borderType={triggerStyles[0].borderTypeH}
-                                            borderWidth={triggerStyles[0].borderWidthH}
-                                            top={triggerBorderTopH}
-                                            right={triggerBorderRightH}
-                                            bottom={triggerBorderBottomH}
-                                            left={triggerBorderLeftH}
-                                            borderColor={triggerStyles[0].borderColorH}
-                                            borderRadius={triggerStyles[0].borderRadiusH}
-                                            onChangeType={(newType) => saveTriggerStyles({ borderTypeH: newType })}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    triggerBorderTopH: top,
-                                                    triggerBorderRightH: right,
-                                                    triggerBorderBottomH: bottom,
-                                                    triggerBorderLeftH: left,
-                                                })
-                                            }
-                                            onChangeColor={(colorValue) => saveTriggerStyles({ borderColorH: colorValue })}
-                                            onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadiusH: newRadius })}
-                                        />
-                                    </Fragment>
-                                );
-                            }
-                            return (
-                                <div>
-                                    {tabout}
-                                    <hr />
-                                </div>
-                            );
-                        }}
-                    </TabPanel>
-                    <PremiumResponsivePadding
-                        paddingT={triggerPaddingT}
-                        paddingR={triggerPaddingR}
-                        paddingB={triggerPaddingB}
-                        paddingL={triggerPaddingL}
-                        paddingTTablet={triggerPaddingTTablet}
-                        paddingRTablet={triggerPaddingRTablet}
-                        paddingBTablet={triggerPaddingBTablet}
-                        paddingLTablet={triggerPaddingLTablet}
-                        paddingTMobile={triggerPaddingTMobile}
-                        paddingRMobile={triggerPaddingRMobile}
-                        paddingBMobile={triggerPaddingBMobile}
-                        paddingLMobile={triggerPaddingLMobile}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingTMobile: newValue })
+                            }}
+                        </TabPanel>
+                    </Fragment>)}
+                    {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (<Fragment>
+                        <PremiumResponsivePadding
+                            paddingT={triggerPaddingT}
+                            paddingR={triggerPaddingR}
+                            paddingB={triggerPaddingB}
+                            paddingL={triggerPaddingL}
+                            paddingTTablet={triggerPaddingTTablet}
+                            paddingRTablet={triggerPaddingRTablet}
+                            paddingBTablet={triggerPaddingBTablet}
+                            paddingLTablet={triggerPaddingLTablet}
+                            paddingTMobile={triggerPaddingTMobile}
+                            paddingRMobile={triggerPaddingRMobile}
+                            paddingBMobile={triggerPaddingBMobile}
+                            paddingLMobile={triggerPaddingLMobile}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ triggerPaddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ triggerPaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ triggerPaddingTMobile: newValue })
+                                    }
                                 }
                             }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingRMobile: newValue })
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ triggerPaddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ triggerPaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ triggerPaddingRMobile: newValue })
+                                    }
                                 }
                             }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingBMobile: newValue })
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ triggerPaddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ triggerPaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ triggerPaddingBMobile: newValue })
+                                    }
                                 }
                             }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingLMobile: newValue })
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ triggerPaddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ triggerPaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ triggerPaddingLMobile: newValue })
+                                    }
                                 }
                             }
-                        }
-                    />
-                    <PremiumBoxShadow
-                        inner={true}
-                        color={triggerStyles[0].triggerShadowColor}
-                        blur={triggerStyles[0].triggerShadowBlur}
-                        horizontal={triggerStyles[0].triggerShadowHorizontal}
-                        vertical={triggerStyles[0].triggerShadowVertical}
-                        position={triggerStyles[0].triggerShadowPosition}
-                        onChangeColor={newColor => saveTriggerStyles({ triggerShadowColor: newColor })}
-                        onChangeBlur={newBlur => saveTriggerStyles({ triggerShadowBlur: newBlur })}
-                        onChangehHorizontal={newValue => saveTriggerStyles({ triggerShadowHorizontal: newValue })}
-                        onChangeVertical={newValue => saveTriggerStyles({ triggerShadowVertical: newValue })}
-                        onChangePosition={newValue => saveTriggerStyles({ triggerShadowPosition: newValue })}
-                    />
+                        />
+                    </Fragment>)}
+                    {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "button") && (
+                        <PremiumBoxShadow
+                            inner={true}
+                            color={triggerStyles[0].triggerShadowColor}
+                            blur={triggerStyles[0].triggerShadowBlur}
+                            horizontal={triggerStyles[0].triggerShadowHorizontal}
+                            vertical={triggerStyles[0].triggerShadowVertical}
+                            position={triggerStyles[0].triggerShadowPosition}
+                            onChangeColor={newColor => saveTriggerStyles({ triggerShadowColor: newColor })}
+                            onChangeBlur={newBlur => saveTriggerStyles({ triggerShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveTriggerStyles({ triggerShadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveTriggerStyles({ triggerShadowVertical: newValue })}
+                            onChangePosition={newValue => saveTriggerStyles({ triggerShadowPosition: newValue })}
+                        />
+                    )}
+                    {triggerSettings[0].triggerType === "text" &&
+                        <PremiumTextShadow
+                            color={triggerStyles[0].textShadowColor}
+                            blur={triggerStyles[0].textShadowBlur}
+                            horizontal={triggerStyles[0].textShadowHorizontal}
+                            vertical={triggerStyles[0].textShadowVertical}
+                            onChangeColor={newColor => saveTriggerStyles({ textShadowColor: newColor || "transparent" })}
+                            onChangeBlur={newBlur => saveTriggerStyles({ textShadowBlur: newBlur || "0" })}
+                            onChangehHorizontal={newValue => saveTriggerStyles({ textShadowHorizontal: newValue || "0" })}
+                            onChangeVertical={newValue => saveTriggerStyles({ textShadowVertical: newValue || "0" })}
+                        />
+                    }
+                    {triggerSettings[0].triggerType === "lottie" && (
+                        <Fragment>
+                            <PremiumFilters
+                                blur={triggerStyles[0].blur}
+                                bright={triggerStyles[0].bright}
+                                contrast={triggerStyles[0].contrast}
+                                saturation={triggerStyles[0].saturation}
+                                hue={triggerStyles[0].hue}
+                                onChangeBlur={(value) => saveTriggerStyles({ blur: value })}
+                                onChangeBright={(value) => saveTriggerStyles({ bright: value })}
+                                onChangeContrast={(value) => saveTriggerStyles({ contrast: value })}
+                                onChangeSat={(value) => saveTriggerStyles({ saturation: value })}
+                                onChangeHue={(value) => saveTriggerStyles({ hue: value })}
+                            />
+                            <PremiumFilters
+                                blur={triggerStyles[0].blurH}
+                                bright={triggerStyles[0].brightH}
+                                contrast={triggerStyles[0].contrastH}
+                                saturation={triggerStyles[0].saturationH}
+                                hue={triggerStyles[0].hueH}
+                                onChangeBlur={(value) => saveTriggerStyles({ blurH: value })}
+                                onChangeBright={(value) => saveTriggerStyles({ brightH: value })}
+                                onChangeContrast={(value) => saveTriggerStyles({ contrastH: value })}
+                                onChangeSat={(value) => saveTriggerStyles({ saturationH: value })}
+                                onChangeHue={(value) => saveTriggerStyles({ hueH: value })}
+                            />
+                        </Fragment>
+                    )}
+
                 </PanelBody>
+                }
                 {contentStyles[0].showHeader && <PanelBody
                     title={__("Header", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
@@ -973,7 +1065,7 @@ const edit = props => {
                         onChangeRadius={(newRadius) => saveHeaderStyles({ borderRadius: newRadius })}
                     />
                 </PanelBody>}
-                { contentStyles[0].showUpperClose && contentStyles[0].showHeader && <PanelBody
+                {contentStyles[0].showUpperClose && contentStyles[0].showHeader && <PanelBody
                     title={__("Upper Close Button", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
@@ -1081,7 +1173,7 @@ const edit = props => {
                         }
                     />
                 </PanelBody>}
-                { contentStyles[0].showLowerClose && <PanelBody
+                {contentStyles[0].showLowerClose && <PanelBody
                     title={__("Lower Close Button", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
                     initialOpen={false}
@@ -1472,7 +1564,7 @@ const edit = props => {
         renderCss,
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} data-trigger={triggerSettings[0].triggerType}>
             <div className={`premium-modal-trigger-container`} style={{ textAlign: triggerSettings[0].align }}>
-                <button className={`premium-button__${triggerSettings[0].btnSize}`} ref={triggerRef} style={{
+                {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `} ref={triggerRef} style={{
                     fontSize: `${triggerFontSize}${triggerStyles[0].triggerSizeUnit}`,
                     paddingTop: `${triggerPaddingTop}px`,
                     paddingRight: `${triggerPaddingRight}px`,
@@ -1488,10 +1580,102 @@ const edit = props => {
                     borderRadius: `${triggerStyles[0].borderRadius}px`,
                     boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
                 }}>
-                    {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={triggerSettings[0].icon} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
+                    {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
                     <span style={{ color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing }}> {triggerSettings[0].btnText}</span>
-                    {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && <i className={triggerSettings[0].icon} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginLeft: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }} ></i>}
+                    {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginLeft: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }} ></i>}
                 </button>
+                }
+                {triggerSettings[0].triggerType === "image" && (<Fragment>
+                    {triggerSettings[0].triggerImgURL ? <img className={`premium-modal-trigger-img`} ref={triggerRef} src={triggerSettings[0].triggerImgURL} style={{
+                        width: `${triggerSize}px`,
+                        height: `${triggerSize}px`,
+                        borderStyle: triggerStyles[0].borderType,
+                        borderTopWidth: `${triggerBorderTop}px`,
+                        borderRightWidth: `${triggerBorderRight}px`,
+                        borderBottomWidth: `${triggerBorderBottom}px`,
+                        borderLeftWidth: `${triggerBorderLeft}px`,
+                        borderColor: triggerStyles[0].borderColor,
+                        borderRadius: `${triggerStyles[0].borderRadius}px`,
+                        boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
+                    }} /> : <MediaPlaceholder
+                        labels={{
+                            title: __('Premium Modal ', 'premium-blocks-for-gutenberg'),
+                            instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
+                        }}
+                        accept={['image']}
+                        allowedTypes={['image']}
+                        value={triggerSettings[0].triggerImgURL}
+                        onSelectURL={(value) => saveTriggerSettings({ triggerImgURL: value })}
+                        onSelect={media => {
+                            saveTriggerSettings({
+                                triggerImgID: media.id,
+                                triggerImgURL: media.url
+                            });
+                        }
+                        }
+                    />}
+                </Fragment>)
+                }
+                {triggerSettings[0].triggerType === "text" && (
+                    <span ref={triggerRef} className={`premium-modal-trigger-text`} style={{
+                        color: triggerStyles[0].color,
+                        fontSize: `${triggerFontSize}${triggerStyles[0].triggerSizeUnit}`,
+                        paddingTop: `${triggerPaddingTop}px`,
+                        paddingRight: `${triggerPaddingRight}px`,
+                        paddingBottom: `${triggerPaddingBottom}px`,
+                        paddingLeft: `${triggerPaddingLeft}px`,
+                        borderStyle: triggerStyles[0].borderType,
+                        borderTopWidth: `${triggerBorderTop}px`,
+                        borderRightWidth: `${triggerBorderRight}px`,
+                        borderBottomWidth: `${triggerBorderBottom}px`,
+                        borderLeftWidth: `${triggerBorderLeft}px`,
+                        borderColor: triggerStyles[0].borderColor,
+                        borderRadius: `${triggerStyles[0].borderRadius}px`,
+                        textShadow: `${triggerStyles[0].textShadowHorizontal}px ${triggerStyles[0].textShadowVertical}px ${triggerStyles[0].textShadowBlur}px ${triggerStyles[0].textShadowColor}`,
+                        fontFamily: triggerStyles[0].triggerFamily,
+                        fontWeight: triggerStyles[0].triggerWeight,
+                        fontStyle: triggerStyles[0].triggerStyle,
+                        letterSpacing: triggerStyles[0].triggerSpacing
+                    }}>
+                        {triggerSettings[0].triggerText}
+                    </span>
+                )}
+                {triggerSettings[0].triggerType === "lottie" && (
+                    <Fragment>
+                        {
+                            triggerSettings[0].lottieTriggerURL ?
+                                <div ref={triggerRef} className={`premium-lottie-animation`}>
+                                    <Lottie
+                                        height={triggerSize}
+                                        width={triggerSize}
+                                        options={{
+                                            loop: triggerSettings[0].triggerLoopLottie,
+                                            path: triggerSettings[0].lottieTriggerURL,
+                                            rendererSettings: {
+                                                preserveAspectRatio: 'xMidYMid',
+                                                className: "premium-lottie-inner"
+                                            }
+                                        }}
+                                        isClickToPauseDisabled={true}
+                                        direction={(triggerSettings[0].triggerReverseLottie) ? -1 : 1}
+                                    /> </div> :
+                                <MediaPlaceholder
+                                    labels={{
+                                        title: __('Lottie', 'premium-blocks-for-gutenberg'),
+                                        instructions: __('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg')
+                                    }}
+                                    accept={['application/json']}
+                                    allowedTypes={['application/json']}
+                                    value={triggerSettings[0].lottieTriggerURL}
+                                    onSelectURL={(value) => saveTriggerSettings({ lottieTriggerURL: value })}
+                                    onSelect={(media) => saveTriggerSettings({
+                                        lottieTriggerURL: media.url
+                                    })}
+                                />
+                        }
+
+                    </Fragment>
+                )}
             </div>
             <div ref={modalRef} className="premium-popup__modal_wrap" style={{ display: "none" }} role="dialog">
                 <div role="presentation" className="premium-popup__modal_wrap_overlay" ref={wrapRef} style={{
@@ -1500,7 +1684,8 @@ const edit = props => {
                 }} >
                 </div>
                 <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
-                    data-delay={contentStyles[0].animationDelay}
+                    data-delay={triggerSettings[0].delayTime}
+                    data-delayanimation={contentStyles[0].animationDelay}
                     data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
                     style={{
                         width: `${modalWidth}${modalStyles[0].modalWidthUnit}`,
@@ -1541,18 +1726,25 @@ const edit = props => {
                                 width: `${headerIconSize}${contentStyles[0].iconSizeUnit}`,
                                 height: `${headerIconSize}${contentStyles[0].iconSizeUnit}`
                             }}></img>}
-                            {contentStyles[0].iconType === "lottie" && <Lottie
-                                options={{
-                                    loop: contentStyles[0].loopLottie,
-                                    path: contentStyles[0].lottieURL,
-                                    rendererSettings: {
-                                        preserveAspectRatio: 'xMidYMid',
-                                        className: "premium-lottie-inner"
-                                    }
-                                }}
-                                isClickToPauseDisabled={true}
-                                direction={(contentStyles[0].reverseLottie) ? -1 : 1}
-                            />}
+                            {contentStyles[0].iconType === "lottie" &&
+                                <div className={`premium-lottie-animation`}
+                                    style={{
+                                        width: `${headerIconSize}${contentStyles[0].iconSizeUnit}`,
+                                        height: `${headerIconSize}${contentStyles[0].iconSizeUnit}`
+                                    }}
+                                >
+                                    <Lottie
+                                        options={{
+                                            loop: contentStyles[0].loopLottie,
+                                            path: contentStyles[0].lottieURL,
+                                            rendererSettings: {
+                                                preserveAspectRatio: 'xMidYMid',
+                                                className: "premium-lottie-inner"
+                                            }
+                                        }}
+                                        direction={(contentStyles[0].reverseLottie) ? -1 : 1}
+                                    />
+                                </div>}
 
                             {contentStyles[0].titleText}
                         </h3>
@@ -1570,7 +1762,7 @@ const edit = props => {
                             paddingBottom: `${upperPaddingBottom}px`,
                             paddingLeft: `${upperPaddingLeft}px`
                         }}>
-                            <button type="button" className="premium-modal-box-modal-close" ref={closeButton}
+                            <button role="button" className="premium-modal-box-modal-close close-button" ref={closeButton}
                                 style={{
                                     fontSize: `${upperStyles[0].iconWidth}${upperStyles[0].iconWidthUnit}`,
                                     color: `${upperStyles[0].color}`,
@@ -1598,7 +1790,7 @@ const edit = props => {
                     {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
                         backgroundColor: modalStyles[0].footerBackColor
                     }}>
-                        <button className={`premium-modal-box-modal-lower-close`} role="button" data-dismiss="premium-modal"
+                        <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
                             ref={closeButton}
                             style={{
                                 fontStyle: lowerStyles[0].lowerStyle,
