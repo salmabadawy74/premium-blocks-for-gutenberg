@@ -34,9 +34,7 @@ export class edit extends Component {
     }
 
     render() {
-
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
-
         const {
             borderButton,
             btnText,
@@ -187,20 +185,16 @@ export class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                textStyles: newUpdate,
-            });
+            setAttributes({ textStyles: newUpdate });
         }
 
         let loadBtnGoogleFonts
         if (textStyles[0].textFontFamily !== 'Default') {
-
             const btnconfig = {
                 google: {
                     families: [textStyles[0].textFontFamily],
                 },
             }
-
             loadBtnGoogleFonts = (
                 <WebfontLoader config={btnconfig}>
                 </WebfontLoader>
@@ -356,7 +350,7 @@ export class edit extends Component {
                                                 onColorChange={newValue => saveBtnStyles({ textColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
-                                                label={__('Background Color')}
+                                                label={__('Background Color', 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].backColor}
                                                 colorDefault={''}
                                                 onColorChange={newvalue => saveBtnStyles({ backColor: newvalue, })}

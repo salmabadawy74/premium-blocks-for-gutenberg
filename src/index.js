@@ -13,3 +13,4 @@ import "./blocks/video-box";
 import "./blocks/fancy-text"
 import "./blocks/lottie";
 import "./blocks/Modal"
+import "./blocks/image-separator"

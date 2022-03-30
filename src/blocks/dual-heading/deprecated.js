@@ -345,9 +345,109 @@ const attributes = {
         default: false
     }
 }
+const new_attributes = {
+    firstStyles: {
+        type: "array",
+        default: [
+            {
+                firstClip: false,
+                firstAnim: false,
+                firstStroke: false,
+                firstFamily: __('Default', 'premium-blocks-for-gutenebrg'),
+                firstSizeUnit: 'px',
+                firstSize: '',
+                firstSizeMobile: '',
+                firstWeight: '',
+                firstStyle: '',
+                firstLetter: '',
+                firstUpper: false,
+                firstColor: '',
+                firstBackground: '',
+                firstOpacity: '1',
+                firstClipColor: "#54595f",
+                firstBorderType: 'none',
+                firstBorderWidth: '',
+                firstBorderColor: '',
+                firstBorderRadius: 0,
+                firstShadowColor: '',
+                firstShadowBlur: 0,
+                firstShadowHorizontal: 0,
+                firstShadowVertical: 0,
+                firstMarginL: 0,
+                firstMarginR: 0,
+                firstPadding: 0,
+            }
+        ]
+    },
+    secondStyles: {
+        type: "array",
+        default: [
+            {
+                secondClip: false,
+                secondAnim: false,
+                secondStroke: false,
+                secondFamily: __('Default', 'premium-blocks-for-gutenberg'),
+                secondSizeUnit: 'px',
+                secondSize: '20',
+                secondSizeTablet: '',
+                secondSizeMobile: '',
+                secondWeight: '',
+                secondStyle: '',
+                secondLetter: '',
+                secondUpper: false,
+                secondColor: "#54595f",
+                secondBackground: '',
+                secondOpacity: '',
+                secondClipColor: "#6ec1e4",
+                secondBorderType: "none",
+                secondBorderWidth: '1',
+                secondBorderColor: '',
+                secondBorderRadius: '0',
+                secondShadowColor: '',
+                secondShadowBlur: '0',
+                secondShadowHorizontal: '0',
+                secondShadowVertical: '0',
+                secondMarginL: '0',
+                secondMarginR: '0',
+                secondPadding: '0',
+
+            }
+        ]
+    },
+    containerStyles: {
+        type: 'array',
+        default: [
+            {
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
+                backgroundSize: 'auto',
+                fixed: false,
+                containerBorderType: "none",
+                containerBorderWidth: "1",
+                containerBorderColor: '',
+                containerBorderRadius: '0',
+                containerBack: '',
+                containerOpacity: 1,
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }
+        ]
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
+}
+const deprecated_attributes = Object.assign(attributes, new_attributes)
 const deprecatedContent = [
     {
-        attributes: attributes,
+        attributes: deprecated_attributes,
         migrate: attributes => {
             let newAttributes = {
                 firstStyles: [
@@ -632,9 +732,9 @@ const deprecatedContent = [
         attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
-                firstBorder: "",
-                secondBorder: "",
-                containerBorder: "",
+                firstBorder: attributes.firstBorder,
+                secondBorder: attributes.secondBorder,
+                containerBorder: attributes.containerBorder,
                 containerBorderTop: "",
                 containerBorderRight: "",
                 containerBorderBottom: "",

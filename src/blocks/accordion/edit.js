@@ -173,9 +173,7 @@ class PremiumAccordion extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                arrowStyles: newUpdate,
-            });
+            setAttributes({ arrowStyles: newUpdate });
         }
 
         const SaveDescStyles = (value) => {

@@ -973,7 +973,7 @@ class edit extends Component {
                                                         onColorChange={newValue => setAttributes({ iconColor: newValue || "transparent", })}
                                                     />
                                                     <AdvancedPopColorControl
-                                                        label={__(`Background Color`)}
+                                                        label={__(`Icon Background Color`)}
                                                         colorValue={iconBackColor}
                                                         onColorChange={newvalue => setAttributes({ iconBackColor: newvalue, })}
                                                         colorDefault={``}
@@ -982,7 +982,7 @@ class edit extends Component {
                                             )}
                                             {titleChecked && (
                                                 <AdvancedPopColorControl
-                                                    label={__("Tile Color", 'premium-blocks-for-gutenberg')}
+                                                    label={__("Title Color", 'premium-blocks-for-gutenberg')}
                                                     colorValue={titleStyles[0].titleColor}
                                                     colorDefault={''}
                                                     onColorChange={newValue => saveTitleStyle({ titleColor: newValue || "transparent", })}
@@ -990,7 +990,7 @@ class edit extends Component {
                                             )}
                                             {descChecked && (
                                                 <AdvancedPopColorControl
-                                                    label={__("Descreption Color", 'premium-blocks-for-gutenberg')}
+                                                    label={__("Description Color", 'premium-blocks-for-gutenberg')}
                                                     colorValue={descStyles[0].descColor}
                                                     colorDefault={''}
                                                     onColorChange={newValue => saveDescriptionStyle({ descColor: newValue || "transparent", })}
@@ -1006,7 +1006,7 @@ class edit extends Component {
                                                     />
 
                                                     <AdvancedPopColorControl
-                                                        label={__(`Background Color`)}
+                                                        label={__(`Button Background Color`)}
                                                         colorValue={btnStyles[0].btnBack}
                                                         onColorChange={newvalue => saveButtonStyle({ btnBack: newvalue, })}
                                                         colorDefault={``}
@@ -1014,7 +1014,7 @@ class edit extends Component {
                                                 </Fragment>
                                             )}
                                             <AdvancedPopColorControl
-                                                label={__(`Background Color`)}
+                                                label={__(`Container Background Color`)}
                                                 colorValue={containerStyles[0].backColor}
                                                 onColorChange={newvalue => saveContainerStyle({ backColor: newvalue })}
                                                 colorDefault={``}
@@ -1034,7 +1034,7 @@ class edit extends Component {
                                                         onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
                                                     />
                                                     <AdvancedPopColorControl
-                                                        label={__('Background Button Hover Color', 'premium-blocks-for-gutenberg')}
+                                                        label={__('Button Background Hover Color', 'premium-blocks-for-gutenberg')}
                                                         colorValue={btnStyles[0].btnHoverBack}
                                                         colorDefault={''}
                                                         onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
@@ -1042,7 +1042,7 @@ class edit extends Component {
                                                 </Fragment>
                                             )}
                                             <AdvancedPopColorControl
-                                                label={__('Border Hover Color', 'premium-blocks-for-gutenberg')}
+                                                label={__('Button Border Hover Color', 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnHoverBorder}
                                                 colorDefault={''}
                                                 onColorChange={newValue => setAttributes({ btnHoverBorder: newValue || "transparent", })}

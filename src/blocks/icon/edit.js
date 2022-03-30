@@ -227,7 +227,7 @@ const edit = props => {
                         onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                     />
                     <RadioComponent
-                        choices={["right", "center", "left"]}
+                        choices={["left", "center", "right"]}
                         value={align}
                         onChange={newValue => setAttributes({ align: newValue })}
                         label={__("Align", 'premium-blocks-for-gutenberg')}
@@ -450,7 +450,6 @@ const edit = props => {
                         gradientPosition={containerStyles[0].gradientPosition}
                         gradientType={containerStyles[0].gradientType}
                     />
-
                     <PremiumBorder
                         borderType={containerStyles[0].wrapBorderType}
                         borderWidth={containerStyles[0].wrapBorderWidth}
