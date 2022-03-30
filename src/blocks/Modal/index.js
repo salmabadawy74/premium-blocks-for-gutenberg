@@ -1,4 +1,4 @@
-import { icon } from "../../../assets/js/settings";
+import { modal } from "../../../assets/js/settings";
 import PbgIcon from "../icons";
 import edit from "./edit";
 import attributes from './attributes'
@@ -15,7 +15,7 @@ registerBlockType("premium/modal", {
     category: "premium-blocks",
     attributes: attributes,
     supports: {
-        inserter: icon
+        inserter: modal
     },
     example: {},
     edit: edit,

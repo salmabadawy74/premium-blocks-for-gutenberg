@@ -2413,7 +2413,7 @@ button.premium-modal-box-modal-close {
     cursor: pointer;
 }
 
-.premium-modal-trigger-container .premium-modal-trigger-animation {
+.premium-modal-trigger-container .premium-lottie-animation {
     display: inline-block;
     width: 200px;
     height: 200px;
