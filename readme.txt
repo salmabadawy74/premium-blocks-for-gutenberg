@@ -5,7 +5,7 @@ Donate link: http://leap13.com
 Requires at least: 4.5
 Tested up to: 5.9.2
 Requires PHP: 5.4
-Stable tag: 1.9.3
+Stable tag: 1.9.4
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -58,6 +58,13 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+= 1.9.4 =
+
+- New: Added Premium Image Separator block.
+- Tweak: Replace icons with text for Background Classic/Gradient control when Font Awesome is disabled.
+- Fixed: Issues with controls naming.
+- Fixed: Pages not loading after updating from older versions.
 
 = 1.9.3 =
 

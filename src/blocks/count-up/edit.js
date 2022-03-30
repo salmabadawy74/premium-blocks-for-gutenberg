@@ -95,7 +95,9 @@ class edit extends Component {
             paddingBMobile,
             paddingLMobile,
         } = this.props.attributes;
+
         let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+
         const ICONS = [
             {
                 value: "icon",
@@ -205,9 +207,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                numberStyles: newUpdate,
-            });
+            setAttributes({ numberStyles: newUpdate });
         }
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -216,9 +216,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                titleStyles: newUpdate,
-            });
+            setAttributes({ titleStyles: newUpdate });
         }
         const savePrefixStyle = (value) => {
             const newUpdate = prefixStyles.map((item, index) => {
@@ -227,9 +225,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                prefixStyles: newUpdate,
-            });
+            setAttributes({ prefixStyles: newUpdate });
         }
         const saveSuffixStyle = (value) => {
             const newUpdate = suffixStyles.map((item, index) => {
@@ -238,9 +234,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                suffixStyles: newUpdate,
-            });
+            setAttributes({ suffixStyles: newUpdate });
         }
         const saveContainerStyle = (value) => {
             const newUpdate = containerStyles.map((item, index) => {
@@ -249,9 +243,7 @@ class edit extends Component {
                 }
                 return item;
             });
-            setAttributes({
-                containerStyles: newUpdate,
-            });
+            setAttributes({ containerStyles: newUpdate });
         }
         let btnGrad, btnGrad2, btnbg;
 
@@ -597,7 +589,7 @@ class edit extends Component {
                                 onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", '')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={titleStyles[0].titleColor}
                                 colorDefault={''}
                                 onColorChange={newValue => saveTitleStyles({ titleColor: newValue === undefined ? "transparent" : newValue })}
@@ -641,7 +633,6 @@ class edit extends Component {
                             backgroundRepeat={containerStyles[0].backgroundRepeat}
                             backgroundSize={containerStyles[0].backgroundSize}
                             fixed={containerStyles[0].fixed}
-                            gradientType={containerStyles[0].gradientType}
                             gradientLocationOne={containerStyles[0].gradientLocationOne}
                             gradientColorTwo={containerStyles[0].gradientColorTwo}
                             gradientLocationTwo={containerStyles[0].gradientLocationTwo}
