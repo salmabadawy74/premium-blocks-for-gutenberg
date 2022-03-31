@@ -4,32 +4,30 @@ const { Fragment } = wp.element;
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 import AdvancedColorControl from './Color Control/ColorComponent'
 
-export default function PremiumBoxShadow(props) {
+export default function PremiumShadow(props) {
     const {
-        inner,
-        withAlpha,
         label,
         color,
         blur,
         horizontal,
         vertical,
-        position,
+        position = "outline",
         onChangeColor = () => { },
         onChangeBlur = () => { },
         onChangehHorizontal = () => { },
         onChangeVertical = () => { },
         onChangePosition = () => { },
-        boxShadow
+        boxShadow = false
     } = props;
 
     const POSITION = [
         {
             value: "inset",
-            label: __("Inset")
+            label: __("Inset", 'premium-blocks-for-gutenberg')
         },
         {
             value: "",
-            label: __("Outline")
+            label: __("Outline", 'premium-blocks-for-gutenberg')
         }
     ];
 

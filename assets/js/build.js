@@ -8672,9 +8672,9 @@ var _premiumTypo = __webpack_require__(10);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(11);
+var _PremiumShadow = __webpack_require__(376);
 
-var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 var _ColorComponent = __webpack_require__(3);
 
@@ -9125,7 +9125,8 @@ var PremiumAccordion = function (_Component) {
                             return saveTitleStyles({ titleBorderRadius: newrRadius });
                         }
                     }),
-                    React.createElement(_premiumTextShadow2.default, {
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                         color: titleStyles[0].titleShadowColor,
                         blur: titleStyles[0].titleShadowBlur,
                         horizontal: titleStyles[0].titleShadowHorizontal,
@@ -9356,7 +9357,8 @@ var PremiumAccordion = function (_Component) {
                             return SaveDescStyles({ descBorderRadius: newrRadius });
                         }
                     }),
-                    "text" === contentType && React.createElement(_premiumTextShadow2.default, {
+                    "text" === contentType && React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow ", "premium-blocks-for-gutenberg"),
                         color: textShadowColor,
                         blur: textShadowBlur,
                         horizontal: textShadowHorizontal,
@@ -15228,14 +15230,6 @@ var _premiumTypo = __webpack_require__(10);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(11);
-
-var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
-
-var _premiumBoxShadow = __webpack_require__(13);
-
-var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
-
 var _premiumFilters = __webpack_require__(36);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
@@ -15263,6 +15257,10 @@ var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 var _radioControl = __webpack_require__(8);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
+
+var _PremiumShadow = __webpack_require__(376);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15720,7 +15718,8 @@ var edit = exports.edit = function (_Component) {
                             return saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
-                    React.createElement(_premiumTextShadow2.default, {
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
                         color: titleStyles[0].shadowColor,
                         blur: titleStyles[0].shadowBlur,
                         horizontal: titleStyles[0].shadowHorizontal,
@@ -15782,7 +15781,8 @@ var edit = exports.edit = function (_Component) {
                             return descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue });
                         }
                     }),
-                    React.createElement(_premiumTextShadow2.default, {
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
                         color: descStyles[0].descShadowColor,
                         blur: descStyles[0].descShadowBlur,
                         horizontal: descStyles[0].descShadowHorizontal,
@@ -15840,8 +15840,9 @@ var edit = exports.edit = function (_Component) {
                             return containerStyle({ borderRadius: newRadius === undefined ? 0 : newRadius });
                         }
                     }),
-                    React.createElement(_premiumBoxShadow2.default, {
-                        inner: true,
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Box Shadow", "Premium-blocks-for-gutenberg"),
+                        boxShadow: true,
                         color: containerStyles[0].containerShadowColor,
                         blur: containerStyles[0].containerShadowBlur,
                         horizontal: containerStyles[0].containerShadowHorizontal,
@@ -18028,14 +18029,6 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTextShadow = __webpack_require__(11);
-
-var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
-
-var _premiumBoxShadow = __webpack_require__(13);
-
-var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
-
 var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
@@ -18051,6 +18044,10 @@ var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 var _fontLoader = __webpack_require__(37);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
+var _PremiumShadow = __webpack_require__(376);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18382,7 +18379,8 @@ var edit = exports.edit = function (_Component) {
                     }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
                         return saveTextStyles({ textUpper: check });
                     }), _React$createElement)),
-                    React.createElement(_premiumTextShadow2.default, {
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
                         color: textStyles[0].shadowColor,
                         blur: textStyles[0].shadowBlur,
                         horizontal: textStyles[0].shadowHorizontal,
@@ -18525,9 +18523,9 @@ var edit = exports.edit = function (_Component) {
                             return saveBtnStyles({ borderRadius: newrRadius });
                         }
                     }),
-                    React.createElement(_premiumBoxShadow2.default, {
-                        label: "Shadow",
-                        inner: true,
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
+                        boxShadow: true,
                         color: btnStyles[0].btnShadowColor,
                         blur: btnStyles[0].btnShadowBlur,
                         horizontal: btnStyles[0].btnShadowHorizontal,
@@ -20015,9 +20013,9 @@ var _premiumTypo = __webpack_require__(10);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBoxShadow = __webpack_require__(13);
+var _PremiumShadow = __webpack_require__(376);
 
-var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 var _premiumBorder = __webpack_require__(7);
 
@@ -20811,14 +20809,13 @@ var edit = function (_Component) {
                             return saveContainerStyle({ borderRadius: newRadius });
                         }
                     }),
-                    React.createElement(_premiumBoxShadow2.default, {
-                        inner: true,
+                    React.createElement(_PremiumShadow2.default, {
+                        boxShadow: true,
                         color: containerStyles[0].shadowColor,
                         blur: containerStyles[0].shadowBlur,
                         horizontal: containerStyles[0].shadowHorizontal,
                         vertical: containerStyles[0].shadowVertical,
                         position: containerStyles[0].shadowPosition,
-                        withAlpha: true,
                         onChangeColor: function onChangeColor(newColor) {
                             saveContainerStyle({ shadowColor: newColor });
                         },
@@ -23182,10 +23179,6 @@ var _premiumTypo = __webpack_require__(10);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(11);
-
-var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
-
 var _premiumResponsiveTabs = __webpack_require__(6);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
@@ -23205,6 +23198,10 @@ var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundContro
 var _fontLoader = __webpack_require__(37);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
+var _PremiumShadow = __webpack_require__(376);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23583,7 +23580,8 @@ var edit = function (_Component) {
                             return saveFirstStyle({ firstBorderRadius: newrRadius || "0" });
                         }
                     }),
-                    React.createElement(_premiumTextShadow2.default, {
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                         color: firstStyles[0].firstShadowColor,
                         blur: firstStyles[0].firstShadowBlur,
                         horizontal: firstStyles[0].firstShadowHorizontal,
@@ -23773,7 +23771,8 @@ var edit = function (_Component) {
                             return saveSecondStyle({ secondBorderRadius: newrRadius || "0" });
                         }
                     }),
-                    React.createElement(_premiumTextShadow2.default, {
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
                         color: secondStyles[0].secondShadowColor,
                         blur: secondStyles[0].secondShadowBlur,
                         horizontal: secondStyles[0].secondShadowHorizontal,
@@ -26087,14 +26086,6 @@ var _premiumBorder = __webpack_require__(7);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumBoxShadow = __webpack_require__(13);
-
-var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
-
-var _premiumTextShadow = __webpack_require__(11);
-
-var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
-
 var _PremiumBackgroundControl = __webpack_require__(27);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
@@ -26122,6 +26113,10 @@ var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePaddin
 var _PremiumResponsiveMargin = __webpack_require__(49);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
+
+var _PremiumShadow = __webpack_require__(376);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26435,8 +26430,8 @@ var edit = function edit(props) {
                     return saveIconStyle({ borderRadius: newrRadius });
                 }
             }),
-            React.createElement(_premiumTextShadow2.default, {
-                label: "Shadow",
+            React.createElement(_PremiumShadow2.default, {
+                label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                 color: iconStyles[0].shadowColor,
                 blur: iconStyles[0].shadowBlur,
                 horizontal: iconStyles[0].shadowHorizontal,
@@ -26614,8 +26609,9 @@ var edit = function edit(props) {
                     return saveContainerStyle({ wrapBorderRadius: newrRadius });
                 }
             }),
-            React.createElement(_premiumBoxShadow2.default, {
-                inner: true,
+            React.createElement(_PremiumShadow2.default, {
+                label: ("Box Shadow", 'premium-blocks-for-gutenberg'),
+                boxShadow: true,
                 color: containerStyles[0].wrapShadowColor,
                 blur: containerStyles[0].wrapShadowBlur,
                 horizontal: containerStyles[0].wrapShadowHorizontal,
@@ -48547,10 +48543,6 @@ var _premiumTypo = __webpack_require__(10);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumTextShadow = __webpack_require__(11);
-
-var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
-
 var _typed = __webpack_require__(288);
 
 var _typed2 = _interopRequireDefault(_typed);
@@ -48568,6 +48560,10 @@ var _radioControl = __webpack_require__(8);
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
 var _reactSortableHoc = __webpack_require__(289);
+
+var _PremiumShadow = __webpack_require__(376);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49157,7 +49153,8 @@ var edit = function (_Component) {
                             return saveFancyStyle({ fancyTextBGColor: newvalue });
                         }
                     }),
-                    React.createElement(_premiumTextShadow2.default, {
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                         color: fancyStyles[0].shadowColor,
                         blur: fancyStyles[0].shadowBlur,
                         horizontal: fancyStyles[0].shadowHorizontal,
@@ -60562,6 +60559,137 @@ var imageSeparatorAttrs = {
     }
 };
 exports.default = imageSeparatorAttrs;
+
+/***/ }),
+/* 376 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumShadow;
+
+var _singleRangeControl = __webpack_require__(2);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button,
+    ColorPicker = _wp$components.ColorPicker;
+var Fragment = wp.element.Fragment;
+function PremiumShadow(props) {
+    var label = props.label,
+        color = props.color,
+        blur = props.blur,
+        horizontal = props.horizontal,
+        vertical = props.vertical,
+        _props$position = props.position,
+        position = _props$position === undefined ? "outline" : _props$position,
+        _props$onChangeColor = props.onChangeColor,
+        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+        _props$onChangeBlur = props.onChangeBlur,
+        onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
+        _props$onChangehHoriz = props.onChangehHorizontal,
+        onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
+        _props$onChangeVertic = props.onChangeVertical,
+        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
+        _props$onChangePositi = props.onChangePosition,
+        onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi,
+        _props$boxShadow = props.boxShadow,
+        boxShadow = _props$boxShadow === undefined ? false : _props$boxShadow;
+
+
+    var POSITION = [{
+        value: "inset",
+        label: __("Inset", 'premium-blocks-for-gutenberg')
+    }, {
+        value: "",
+        label: __("Outline", 'premium-blocks-for-gutenberg')
+    }];
+
+    return React.createElement(
+        "div",
+        { className: "premium-control-toggle premium-shadow-control__container" },
+        React.createElement(
+            "strong",
+            null,
+            __(label || "Box Shadow")
+        ),
+        React.createElement(
+            "div",
+            { className: "premium-shadow-control__wrapper" },
+            React.createElement(_ColorComponent2.default, {
+                colorValue: color,
+                colorDefault: '',
+                onColorChange: onChangeColor,
+                disableReset: true
+            }),
+            React.createElement(Dropdown, {
+                className: "premium-control-toggle-btn",
+                contentClassName: "premium-control-toggle-content",
+                position: "bottom right",
+                renderToggle: function renderToggle(_ref) {
+                    var isOpen = _ref.isOpen,
+                        onToggle = _ref.onToggle;
+                    return React.createElement(
+                        Button,
+                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                        React.createElement("i", { className: "dashicons dashicons-edit" })
+                    );
+                },
+                renderContent: function renderContent() {
+                    return React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Horizontal"),
+                            value: horizontal,
+                            onChange: onChangehHorizontal,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
+                        }),
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Vertical"),
+                            value: vertical,
+                            onChange: onChangeVertical,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
+                        }),
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Blur"),
+                            value: blur,
+                            onChange: onChangeBlur,
+                            showUnit: false,
+                            defaultValue: 0
+                        }),
+                        boxShadow && React.createElement(SelectControl, {
+                            label: __("Position"),
+                            options: POSITION,
+                            value: position,
+                            onChange: onChangePosition
+                        })
+                    );
+                }
+            })
+        )
+    );
+}
 
 /***/ })
 /******/ ]);
