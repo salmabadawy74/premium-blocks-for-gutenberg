@@ -4,7 +4,7 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import Lottie from 'react-lottie-with-segments';
 import Inspector from "./inspector";
-const { Fragment, useEffect, useRef } = wp.element;
+const { Fragment, useEffect, useState } = wp.element;
 const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
 
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
@@ -23,11 +23,8 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
 }
 
 const edit = props => {
-    const closeButton = useRef(null)
-    const triggerRef = useRef(null)
-    const modalRef = useRef(null)
-    const wrapRef = useRef(null)
-    const upperCloseButton = useRef(null)
+
+    const [openModal, setOpenModal] = useState(false)
     const { isSelected, setAttributes, className } = props;
     const {
         block_id,
@@ -128,23 +125,17 @@ const edit = props => {
     useEffect(() => {
         setAttributes({ block_id: props.clientId })
     }, [])
-
-    useEffect(() => {
-        if (!triggerRef.current || !upperCloseButton) return null
-        closeButton.current.addEventListener('click', () => {
-            modalRef.current.style.display = "none"
-        })
-        upperCloseButton.current.addEventListener('click', () => {
-            modalRef.current.style.display = "none"
-        })
-        wrapRef.current.addEventListener('click', () => {
-            modalRef.current.style.display = "none"
-        })
-        triggerRef.current.addEventListener("click", () => {
-            modalRef.current.style.display = "flex"
-        })
-    }, [props.attributes])
-
+    const saveTriggerSettings = (value) => {
+        const newUpdate = triggerSettings.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            triggerSettings: newUpdate,
+        });
+    }
 
     const renderCss = (
         <style>
@@ -248,7 +239,7 @@ const edit = props => {
         renderCss,
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} data-trigger={triggerSettings[0].triggerType}>
             <div className={`premium-modal-trigger-container`} style={{ textAlign: triggerSettings[0].align }}>
-                {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `} ref={triggerRef} style={{
+                {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `} onClick={() => setOpenModal(true)} style={{
                     fontSize: `${triggerFontSize}${triggerStyles[0].triggerSizeUnit}`,
                     paddingTop: `${triggerPaddingTop}px`,
                     paddingRight: `${triggerPaddingRight}px`,
@@ -270,7 +261,7 @@ const edit = props => {
                 </button>
                 }
                 {triggerSettings[0].triggerType === "image" && (<Fragment>
-                    {triggerSettings[0].triggerImgURL ? <img className={`premium-modal-trigger-img`} ref={triggerRef} src={triggerSettings[0].triggerImgURL} style={{
+                    {triggerSettings[0].triggerImgURL ? <img className={`premium-modal-trigger-img`} onClick={() => setOpenModal(true)} src={triggerSettings[0].triggerImgURL} style={{
                         width: `${triggerSize}px`,
                         height: `${triggerSize}px`,
                         borderStyle: triggerStyles[0].borderType,
@@ -301,7 +292,7 @@ const edit = props => {
                 </Fragment>)
                 }
                 {triggerSettings[0].triggerType === "text" && (
-                    <span ref={triggerRef} className={`premium-modal-trigger-text`} style={{
+                    <span onClick={() => setOpenModal(true)} className={`premium-modal-trigger-text`} style={{
                         color: triggerStyles[0].color,
                         fontSize: `${triggerFontSize}${triggerStyles[0].triggerSizeUnit}`,
                         paddingTop: `${triggerPaddingTop}px`,
@@ -328,7 +319,7 @@ const edit = props => {
                     <Fragment>
                         {
                             triggerSettings[0].lottieTriggerURL ?
-                                <div ref={triggerRef} className={`premium-lottie-animation`}>
+                                <div onClick={() => setOpenModal(true)} className={`premium-lottie-animation`}>
                                     <Lottie
                                         height={triggerSize}
                                         width={triggerSize}
@@ -361,146 +352,149 @@ const edit = props => {
                     </Fragment>
                 )}
             </div>
-            <div ref={modalRef} className="premium-popup__modal_wrap" style={{ display: "none" }} role="dialog">
-                <div role="presentation" className="premium-popup__modal_wrap_overlay" ref={wrapRef} style={{
-                    backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
-                    backgroundImage: btnbg
-                }} >
-                </div>
-                <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
-                    data-delay={triggerSettings[0].delayTime}
-                    data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
-                    style={{
-                        width: `${modalWidth}${modalStyles[0].modalWidthUnit}`,
-                        maxHeight: `${modalMaxHeight}${modalStyles[0].modalHeightUnit}`,
-                        marginTop: `${modalMarginTop}px`,
-                        marginRight: `${modalMarginRight}px`,
-                        marginBottom: `${modalMarginBottom}px`,
-                        marginLeft: `${modalMarginLeft}px`,
-                        borderStyle: `${modalStyles[0].borderType}`,
-                        borderColor: `${modalStyles[0].borderColor}`,
-                        borderTopWidth: `${modalBorderTop}px`,
-                        borderRightWidth: `${modalBorderRight}px`,
-                        borderBottomWidth: `${modalBorderBottom}px`,
-                        borderLeftWidth: `${modalBorderLeft}px`,
-                        borderRadius: `${modalStyles[0].borderRadius}px`,
-                        boxShadow: `${modalStyles[0].modalShadowHorizontal}px ${modalStyles[0].modalShadowVertical}px ${modalStyles[0].modalShadowBlur}px ${modalStyles[0].modalShadowColor} ${modalStyles[0].modalShadowPosition}`,
-                    }}>
-                    {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`} style={{
-                        backgroundColor: headerStyles[0].backColor,
-                        borderStyle: headerStyles[0].borderType,
-                        borderTopWidth: `${headerBorderTop}px`,
-                        borderRightWidth: `${headerBorderRight}px`,
-                        borderBottomWidth: `${headerBorderBottom}px`,
-                        borderLeftWidth: `${headerBorderLeft}px`,
-                        borderColor: `${headerStyles[0].borderColor}`,
-                        borderRadius: `${headerStyles[0].borderRadius}px`,
-                    }}>
-                        <h3 className={`premium-modal-box-modal-title`} style={{
-                            color: headerStyles[0].color,
-                            fontFamily: headerStyles[0].headerFamily,
-                            fontStyle: headerStyles[0].headerStyle,
-                            letterSpacing: headerStyles[0].headerSpacing,
-                            fontWeight: headerStyles[0].headerWeight,
-                            fontSize: `${headerFontSize}${headerStyles[0].headerSizeUnit}`
-                        }}>
-                            {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon} style={{ fontSize: `${headerIconSize}${contentStyles[0].iconSizeUnit}` }} ></i>}
-                            {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL} style={{
-                                width: `${headerIconSize}${contentStyles[0].iconSizeUnit}`,
-                                height: `${headerIconSize}${contentStyles[0].iconSizeUnit}`
-                            }}></img>}
-                            {contentStyles[0].iconType === "lottie" &&
-                                <div className={`premium-lottie-animation`}
-                                    style={{
-                                        width: `${headerIconSize}${contentStyles[0].iconSizeUnit}`,
-                                        height: `${headerIconSize}${contentStyles[0].iconSizeUnit}`
-                                    }}
-                                >
-                                    <Lottie
-                                        options={{
-                                            loop: contentStyles[0].loopLottie,
-                                            path: contentStyles[0].lottieURL,
-                                            rendererSettings: {
-                                                preserveAspectRatio: 'xMidYMid',
-                                                className: "premium-lottie-inner"
-                                            }
-                                        }}
-                                        direction={(contentStyles[0].reverseLottie) ? -1 : 1}
-                                    />
-                                </div>}
-
-                            {contentStyles[0].titleText}
-                        </h3>
-                        {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (<div className="premium-modal-box-close-button-container" style={{
-                            backgroundColor: `${upperStyles[0].backColor}`,
-                            borderStyle: `${upperStyles[0].borderType}`,
-                            borderTopWidth: `${upperBorderTop}px`,
-                            borderRightWidth: `${upperBorderRight}px`,
-                            borderBottomWidth: `${upperBorderBottom}px`,
-                            borderLeftWidth: `${upperBorderLeft}px`,
-                            borderColor: `${upperStyles[0].borderColor}`,
-                            borderRadius: `${upperStyles[0].borderRadius}px`,
-                            paddingTop: `${upperPaddingTop}px`,
-                            paddingRight: `${upperPaddingRight}px`,
-                            paddingBottom: `${upperPaddingBottom}px`,
-                            paddingLeft: `${upperPaddingLeft}px`
-                        }}>
-                            <button role="button" className="premium-modal-box-modal-close close-button" ref={upperCloseButton}
-                                style={{
-                                    fontSize: `${upperStyles[0].iconWidth}${upperStyles[0].iconWidthUnit}`,
-                                    color: `${upperStyles[0].color}`,
-
-                                }} data-dismiss="premium-modal" >×</button>
-                        </div>)}
-                    </div>}
-                    <div className={`premium-modal-box-modal-body`} style={{
-                        background: modalStyles[0].textBackColor,
-                        paddingTop: `${modalPaddingTop}px`,
-                        paddingRight: `${modalPaddingRight}px`,
-                        paddingBottom: `${modalPaddingBottom}px`,
-                        paddingLeft: `${modalPaddingLeft}px`
-                    }}>
-                        {modalStyles[0].contentType === "text" ? <p style={{
-                            fontSize: `${modalFontSize}${modalStyles[0].modalSizeUnit}`,
-                            color: modalStyles[0].textColor,
-                            fontWeight: modalStyles[0].modalWeight,
-                            fontFamily: modalStyles[0].modalFamily,
-                            letterSpacing: modalStyles[0].modalSpacing,
-                            fontStyle: modalStyles[0].modalStyle,
-                        }} >{modalStyles[0].contentText}</p> : <InnerBlocks />}
-
+            {openModal && (
+                <div className="premium-popup__modal_wrap" role="dialog">
+                    <div role="presentation" className="premium-popup__modal_wrap_overlay" onClick={() => setOpenModal(false)} style={{
+                        backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
+                        backgroundImage: btnbg
+                    }} >
                     </div>
-                    {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
-                        backgroundColor: modalStyles[0].footerBackColor
-                    }}>
-                        <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
-                            ref={closeButton}
-                            style={{
-                                fontStyle: lowerStyles[0].lowerStyle,
-                                fontWeight: lowerStyles[0].lowerWeight,
-                                letterSpacing: lowerStyles[0].lowerSpacing,
-                                fontSize: `${lowerFontSize}${lowerStyles[0].lowerSizeUnit}`,
-                                width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
-                                color: `${lowerStyles[0].color}`,
-                                backgroundColor: `${lowerStyles[0].backColor}`,
-                                borderStyle: `${lowerStyles[0].borderType}`,
-                                borderTopWidth: `${lowerBorderTop}px`,
-                                borderRightWidth: `${lowerBorderRight}px`,
-                                borderBottomWidth: `${lowerBorderBottom}px`,
-                                borderLeftWidth: `${lowerBorderLeft}px`,
-                                borderColor: `${lowerStyles[0].borderColor}`,
-                                borderRadius: `${lowerStyles[0].borderRadius}px`,
-                                paddingTop: `${lowerPaddingTop}px`,
-                                paddingRight: `${lowerPaddingRight}px`,
-                                paddingBottom: `${lowerPaddingBottom}px`,
-                                paddingLeft: `${lowerPaddingLeft}px`
-                            }}
-                        >
-                            {contentStyles[0].lowerCloseText}
-                        </button>
-                    </div>)}
+                    <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
+                        data-delay={triggerSettings[0].delayTime}
+                        data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
+                        style={{
+                            width: `${modalWidth}${modalStyles[0].modalWidthUnit}`,
+                            maxHeight: `${modalMaxHeight}${modalStyles[0].modalHeightUnit}`,
+                            marginTop: `${modalMarginTop}px`,
+                            marginRight: `${modalMarginRight}px`,
+                            marginBottom: `${modalMarginBottom}px`,
+                            marginLeft: `${modalMarginLeft}px`,
+                            borderStyle: `${modalStyles[0].borderType}`,
+                            borderColor: `${modalStyles[0].borderColor}`,
+                            borderTopWidth: `${modalBorderTop}px`,
+                            borderRightWidth: `${modalBorderRight}px`,
+                            borderBottomWidth: `${modalBorderBottom}px`,
+                            borderLeftWidth: `${modalBorderLeft}px`,
+                            borderRadius: `${modalStyles[0].borderRadius}px`,
+                            boxShadow: `${modalStyles[0].modalShadowHorizontal}px ${modalStyles[0].modalShadowVertical}px ${modalStyles[0].modalShadowBlur}px ${modalStyles[0].modalShadowColor} ${modalStyles[0].modalShadowPosition}`,
+                        }}>
+                        {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`} style={{
+                            backgroundColor: headerStyles[0].backColor,
+                            borderStyle: headerStyles[0].borderType,
+                            borderTopWidth: `${headerBorderTop}px`,
+                            borderRightWidth: `${headerBorderRight}px`,
+                            borderBottomWidth: `${headerBorderBottom}px`,
+                            borderLeftWidth: `${headerBorderLeft}px`,
+                            borderColor: `${headerStyles[0].borderColor}`,
+                            borderRadius: `${headerStyles[0].borderRadius}px`,
+                        }}>
+                            <h3 className={`premium-modal-box-modal-title`} style={{
+                                color: headerStyles[0].color,
+                                fontFamily: headerStyles[0].headerFamily,
+                                fontStyle: headerStyles[0].headerStyle,
+                                letterSpacing: headerStyles[0].headerSpacing,
+                                fontWeight: headerStyles[0].headerWeight,
+                                fontSize: `${headerFontSize}${headerStyles[0].headerSizeUnit}`
+                            }}>
+                                {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon} style={{ fontSize: `${headerIconSize}${contentStyles[0].iconSizeUnit}` }} ></i>}
+                                {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL} style={{
+                                    width: `${headerIconSize}${contentStyles[0].iconSizeUnit}`,
+                                    height: `${headerIconSize}${contentStyles[0].iconSizeUnit}`
+                                }}></img>}
+                                {contentStyles[0].iconType === "lottie" &&
+                                    <div className={`premium-lottie-animation`}
+                                        style={{
+                                            width: `${headerIconSize}${contentStyles[0].iconSizeUnit}`,
+                                            height: `${headerIconSize}${contentStyles[0].iconSizeUnit}`
+                                        }}
+                                    >
+                                        <Lottie
+                                            options={{
+                                                loop: contentStyles[0].loopLottie,
+                                                path: contentStyles[0].lottieURL,
+                                                rendererSettings: {
+                                                    preserveAspectRatio: 'xMidYMid',
+                                                    className: "premium-lottie-inner"
+                                                }
+                                            }}
+                                            direction={(contentStyles[0].reverseLottie) ? -1 : 1}
+                                        />
+                                    </div>}
+
+                                {contentStyles[0].titleText}
+                            </h3>
+                            {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (<div className="premium-modal-box-close-button-container" style={{
+                                backgroundColor: `${upperStyles[0].backColor}`,
+                                borderStyle: `${upperStyles[0].borderType}`,
+                                borderTopWidth: `${upperBorderTop}px`,
+                                borderRightWidth: `${upperBorderRight}px`,
+                                borderBottomWidth: `${upperBorderBottom}px`,
+                                borderLeftWidth: `${upperBorderLeft}px`,
+                                borderColor: `${upperStyles[0].borderColor}`,
+                                borderRadius: `${upperStyles[0].borderRadius}px`,
+                                paddingTop: `${upperPaddingTop}px`,
+                                paddingRight: `${upperPaddingRight}px`,
+                                paddingBottom: `${upperPaddingBottom}px`,
+                                paddingLeft: `${upperPaddingLeft}px`
+                            }}>
+                                <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
+                                    style={{
+                                        fontSize: `${upperStyles[0].iconWidth}${upperStyles[0].iconWidthUnit}`,
+                                        color: `${upperStyles[0].color}`,
+
+                                    }} data-dismiss="premium-modal" >×</button>
+                            </div>)}
+                        </div>}
+                        <div className={`premium-modal-box-modal-body`} style={{
+                            background: modalStyles[0].textBackColor,
+                            paddingTop: `${modalPaddingTop}px`,
+                            paddingRight: `${modalPaddingRight}px`,
+                            paddingBottom: `${modalPaddingBottom}px`,
+                            paddingLeft: `${modalPaddingLeft}px`
+                        }}>
+                            {modalStyles[0].contentType === "text" ? <p style={{
+                                fontSize: `${modalFontSize}${modalStyles[0].modalSizeUnit}`,
+                                color: modalStyles[0].textColor,
+                                fontWeight: modalStyles[0].modalWeight,
+                                fontFamily: modalStyles[0].modalFamily,
+                                letterSpacing: modalStyles[0].modalSpacing,
+                                fontStyle: modalStyles[0].modalStyle,
+                            }} >{modalStyles[0].contentText}</p> : <InnerBlocks />}
+
+                        </div>
+                        {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
+                            backgroundColor: modalStyles[0].footerBackColor
+                        }}>
+                            <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
+                                onClick={() => setOpenModal(false)}
+                                style={{
+                                    fontStyle: lowerStyles[0].lowerStyle,
+                                    fontWeight: lowerStyles[0].lowerWeight,
+                                    letterSpacing: lowerStyles[0].lowerSpacing,
+                                    fontSize: `${lowerFontSize}${lowerStyles[0].lowerSizeUnit}`,
+                                    width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
+                                    color: `${lowerStyles[0].color}`,
+                                    backgroundColor: `${lowerStyles[0].backColor}`,
+                                    borderStyle: `${lowerStyles[0].borderType}`,
+                                    borderTopWidth: `${lowerBorderTop}px`,
+                                    borderRightWidth: `${lowerBorderRight}px`,
+                                    borderBottomWidth: `${lowerBorderBottom}px`,
+                                    borderLeftWidth: `${lowerBorderLeft}px`,
+                                    borderColor: `${lowerStyles[0].borderColor}`,
+                                    borderRadius: `${lowerStyles[0].borderRadius}px`,
+                                    paddingTop: `${lowerPaddingTop}px`,
+                                    paddingRight: `${lowerPaddingRight}px`,
+                                    paddingBottom: `${lowerPaddingBottom}px`,
+                                    paddingLeft: `${lowerPaddingLeft}px`
+                                }}
+                            >
+                                {contentStyles[0].lowerCloseText}
+                            </button>
+                        </div>)}
+                    </div>
                 </div>
-            </div>
+
+            )}
         </div >
     ];
 };
