@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
-import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import PremiumMediaUpload from "../../components/premium-media-upload";
@@ -481,7 +480,8 @@ class edit extends Component {
                                             showUnit={false}
                                             defaultValue={0}
                                         />
-                                        <PremiumTextShadow
+                                        <PremiumShadow
+                                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                                             color={descStyles[0].descShadowColor}
                                             blur={descStyles[0].descShadowBlur}
                                             horizontal={descStyles[0].descShadowHorizontal}

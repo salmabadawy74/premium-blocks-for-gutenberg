@@ -473,7 +473,7 @@ const edit = props => {
                     />
 
                     <PremiumShadow
-                        label={"Box Shadow", 'premium-blocks-for-gutenberg'}
+                        label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
                         color={containerStyles[0].wrapShadowColor}
                         blur={containerStyles[0].wrapShadowBlur}
