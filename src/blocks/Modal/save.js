@@ -156,7 +156,11 @@ const save = props => {
             <div className="premium-popup__modal_wrap" style={{ display: "none" }} role="dialog">
                 <div role="presentation" className="premium-popup__modal_wrap_overlay" style={{
                     backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
-                    backgroundImage: btnbg
+                    backgroundImage: btnbg,
+                    backgroundRepeat: modalStyles[0].backgroundRepeat,
+                    backgroundPosition: modalStyles[0].backgroundPosition,
+                    backgroundSize: modalStyles[0].backgroundSize,
+                    backgroundAttachment: modalStyles[0].fixed ? "fixed" : "unset",
                 }} >
                 </div>
                 <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
