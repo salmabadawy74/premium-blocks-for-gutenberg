@@ -2,7 +2,7 @@ import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumTypo from "../../components/premium-typo";
-import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumShadow from "../../components/PremiumShadow";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
@@ -401,7 +401,8 @@ class PremiumAccordion extends Component {
                             onChangeColor={(colorValue) => saveTitleStyles({ titleBorderColor: colorValue })}
                             onChangeRadius={(newrRadius) => saveTitleStyles({ titleBorderRadius: newrRadius })}
                         />
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                             color={titleStyles[0].titleShadowColor}
                             blur={titleStyles[0].titleShadowBlur}
                             horizontal={titleStyles[0].titleShadowHorizontal}
@@ -596,7 +597,8 @@ class PremiumAccordion extends Component {
                             onChangeRadius={(newrRadius) => SaveDescStyles({ descBorderRadius: newrRadius })}
                         />
                         {"text" === contentType && (
-                            <PremiumTextShadow
+                            <PremiumShadow
+                                label={__("Text Shadow ", "premium-blocks-for-gutenberg")}
                                 color={textShadowColor}
                                 blur={textShadowBlur}
                                 horizontal={textShadowHorizontal}

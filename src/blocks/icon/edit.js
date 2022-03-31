@@ -3,8 +3,6 @@ import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
 import PremiumBorder from "../../components/premium-border";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
@@ -13,6 +11,7 @@ const { __ } = wp.i18n;
 import RadioComponent from '../../components/radio-control';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
+import PremiumShadow from "../../components/PremiumShadow";
 
 const {
     PanelBody,
@@ -297,8 +296,8 @@ const edit = props => {
                         onChangeRadius={(newrRadius) => saveIconStyle({ borderRadius: newrRadius })}
                     />
 
-                    <PremiumTextShadow
-                        label="Shadow"
+                    <PremiumShadow
+                        label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                         color={iconStyles[0].shadowColor}
                         blur={iconStyles[0].shadowBlur}
                         horizontal={iconStyles[0].shadowHorizontal}
@@ -473,8 +472,9 @@ const edit = props => {
                         onChangeRadius={(newrRadius) => saveContainerStyle({ wrapBorderRadius: newrRadius })}
                     />
 
-                    <PremiumBoxShadow
-                        inner={true}
+                    <PremiumShadow
+                        label={"Box Shadow", 'premium-blocks-for-gutenberg'}
+                        boxShadow={true}
                         color={containerStyles[0].wrapShadowColor}
                         blur={containerStyles[0].wrapShadowBlur}
                         horizontal={containerStyles[0].wrapShadowHorizontal}

@@ -1,7 +1,7 @@
 import classnames from "classnames"
 import { FontAwesomeEnabled } from "../../../assets/js/settings"
 import PremiumTypo from "../../components/premium-typo"
-import PremiumBoxShadow from "../../components/premium-box-shadow"
+import PremiumShadow from "../../components/PremiumShadow"
 import PremiumBorder from "../../components/premium-border"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
@@ -662,14 +662,13 @@ class edit extends Component {
                             onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
                             onChangeRadius={(newRadius) => saveContainerStyle({ borderRadius: newRadius })}
                         />
-                        <PremiumBoxShadow
-                            inner={true}
+                        <PremiumShadow
+                            boxShadow={true}
                             color={containerStyles[0].shadowColor}
                             blur={containerStyles[0].shadowBlur}
                             horizontal={containerStyles[0].shadowHorizontal}
                             vertical={containerStyles[0].shadowVertical}
                             position={containerStyles[0].shadowPosition}
-                            withAlpha={true}
                             onChangeColor={newColor => { saveContainerStyle({ shadowColor: newColor }) }}
                             onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur })}
                             onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue })}

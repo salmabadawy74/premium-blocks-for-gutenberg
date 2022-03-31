@@ -1,11 +1,11 @@
 import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
-import PremiumTextShadow from "../../components/premium-text-shadow";
 import Typed from "typed.js";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control'
 import { SortableContainer, SortableElement, arrayMove } from "react-sortable-hoc";
+import PremiumShadow from "../../components/PremiumShadow";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const { Component, Fragment } = wp.element;
@@ -519,7 +519,8 @@ class edit extends Component {
                             colorDefault={''}
                             onColorChange={newvalue => saveFancyStyle({ fancyTextBGColor: newvalue })}
                         />
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                             color={fancyStyles[0].shadowColor}
                             blur={fancyStyles[0].shadowBlur}
                             horizontal={fancyStyles[0].shadowHorizontal}

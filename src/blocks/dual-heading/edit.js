@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
-import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -9,6 +8,7 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import WebfontLoader from "../../components/typography/fontLoader"
+import PremiumShadow from "../../components/PremiumShadow";
 
 
 const { Fragment, Component } = wp.element;
@@ -328,7 +328,8 @@ class edit extends Component {
                             onChangeRadius={(newrRadius) => saveFirstStyle({ firstBorderRadius: newrRadius || "0" })}
                         />
 
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                             color={firstStyles[0].firstShadowColor}
                             blur={firstStyles[0].firstShadowBlur}
                             horizontal={firstStyles[0].firstShadowHorizontal}
@@ -464,7 +465,8 @@ class edit extends Component {
                             onChangeRadius={(newrRadius) => saveSecondStyle({ secondBorderRadius: newrRadius || "0" })}
                         />
 
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                             color={secondStyles[0].secondShadowColor}
                             blur={secondStyles[0].secondShadowBlur}
                             horizontal={secondStyles[0].secondShadowHorizontal}

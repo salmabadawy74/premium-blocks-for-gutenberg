@@ -1,8 +1,6 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
-import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMediaUpload from "../../components/premium-media-upload";
@@ -10,6 +8,7 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
+import PremiumShadow from "../../components/PremiumShadow";
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
 const { Component } = wp.element;
@@ -423,7 +422,8 @@ export class edit extends Component {
                                 onColorChange={newValue => saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue })}
                             />
                         )}
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                             color={titleStyles[0].shadowColor}
                             blur={titleStyles[0].shadowBlur}
                             horizontal={titleStyles[0].shadowHorizontal}
@@ -464,7 +464,8 @@ export class edit extends Component {
                             colorDefault={''}
                             onColorChange={newValue => descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue })}
                         />
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                             color={descStyles[0].descShadowColor}
                             blur={descStyles[0].descShadowBlur}
                             horizontal={descStyles[0].descShadowHorizontal}
@@ -502,8 +503,9 @@ export class edit extends Component {
                             onChangeColor={(colorValue) => containerStyle({ borderColor: colorValue === undefined ? "transparent" : colorValue, })}
                             onChangeRadius={(newRadius) => containerStyle({ borderRadius: newRadius === undefined ? 0 : newRadius, })}
                         />
-                        <PremiumBoxShadow
-                            inner={true}
+                        <PremiumShadow
+                            label={__("Box Shadow", "Premium-blocks-for-gutenberg")}
+                            boxShadow={true}
                             color={containerStyles[0].containerShadowColor}
                             blur={containerStyles[0].containerShadowBlur}
                             horizontal={containerStyles[0].containerShadowHorizontal}

@@ -1,13 +1,12 @@
 import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
-import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
 import WebfontLoader from "../../components/typography/fontLoader"
+import PremiumShadow from "../../components/PremiumShadow";
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
 const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
@@ -305,7 +304,8 @@ export class edit extends Component {
                             onChangeFamily={(fontFamily) => saveTextStyles({ textFontFamily: fontFamily })}
                             onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                             color={textStyles[0].shadowColor}
                             blur={textStyles[0].shadowBlur}
                             horizontal={textStyles[0].shadowHorizontal}
@@ -424,9 +424,9 @@ export class edit extends Component {
                                 saveBtnStyles({ borderRadius: newrRadius })
                             }
                         />
-                        <PremiumBoxShadow
-                            label="Shadow"
-                            inner={true}
+                        <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
                             color={btnStyles[0].btnShadowColor}
                             blur={btnStyles[0].btnShadowBlur}
                             horizontal={btnStyles[0].btnShadowHorizontal}
