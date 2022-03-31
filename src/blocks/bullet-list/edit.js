@@ -1223,7 +1223,7 @@ class edit extends Component {
             ),
             <div className={classnames(
                 className,
-                `premium-block-${this.props.clientId}`
+                `premium-block-${this.props.clientId} premium-bullet-list-${this.props.clientId}`
             )} style={{
                 textAlign: align,
             }} id={`${mainClasses}-wrap-${this.props.clientId}`}>
@@ -1244,7 +1244,7 @@ class edit extends Component {
                         ].join("\n")
                     }}
                 />
-                <div className={`premium-bullet-list-${layoutPos}`}
+                <div className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
                     style={{
                         textAlign: align,
                         justifyContent: align == "right" ? "flex-end" : align
@@ -1315,7 +1315,8 @@ class edit extends Component {
                                         target={target}
                                         rel="noopener noreferrer"
                                         style={{
-                                            justifyContent: align == "right" ? align : align,
+                                            textAlign: align,
+                                            justifyContent: align == "right" ? "flex-end" : align,
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
                                             borderStyle: generalStyles[0].generalborderType,
                                             borderWidth: generalBorderUpdated

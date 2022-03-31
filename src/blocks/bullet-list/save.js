@@ -59,7 +59,7 @@ export default function save(props) {
                     ].join("\n")
                 }}
             />
-            <div className={`premium-bullet-list-${layoutPos}`}
+            <div className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
                 style={{
                     textAlign: align,
                     justifyContent: align == "right" ? "flex-end" : align
@@ -140,6 +140,7 @@ export default function save(props) {
                                                     alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                                     textAlign: bulletAlign,
                                                     justifyContent: bulletAlign,
+                                                    alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                                 }}
                                             >{image_icon_html}</span>
                                             <div className="premium-bullet-list__label-wrap">
@@ -201,6 +202,7 @@ export default function save(props) {
                                                         alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                                         textAlign: bulletAlign,
                                                         justifyContent: bulletAlign,
+                                                        alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                                     }}
                                                 >{image_icon_html}</span>
                                                 <div className="premium-bullet-list__label-wrap">
