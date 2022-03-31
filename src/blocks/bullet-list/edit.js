@@ -10,6 +10,7 @@ import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
+import icons from '../../components/align';
 
 const { withSelect } = wp.data
 
@@ -34,7 +35,8 @@ const {
     Toolbar,
     Button,
     TextControl,
-    ToggleControl
+    ToggleControl,
+    Tooltip
 } = wp.components
 
 const ICONTYPE = [
@@ -367,19 +369,21 @@ class edit extends Component {
             cloneIcons.push({
                 id: cloneIcons.length + 1,
                 label: "Title ",
-                image_icon: cloneIcons[0].image_icon,
-                icon: cloneIcons[0].icon,
-                image: cloneIcons[0].image,
+                image_icon: "icon",
+                icon: "fa fa-arrow-circle-right",
+                image: '',
                 icon_color: cloneIcons[0].icon_color,
                 icon_hover_color: cloneIcons[0].icon_hover_color,
                 icon_bg_color: cloneIcons[0].icon_bg_color,
                 icon_bg_hover_color: cloneIcons[0].icon_bg_hover_color,
                 item_bg_color: cloneIcons[0].item_bg_color,
                 item_bg_hover_color: cloneIcons[0].item_bg_hover_color,
-                link: cloneIcons[0].link,
-                disableLink: cloneIcons[0].disableLink,
-                showContent: cloneIcons[0].showContent,
-                showBulletIcon: cloneIcons[0].showBulletIcon,
+                link: "#",
+                target: false,
+                disableLink: false,
+                showContent: false,
+                showBulletIcon: true,
+                linkTarget: false
             })
             setAttributes({ repeaterBulletList: cloneIcons })
         }
@@ -651,14 +655,39 @@ class edit extends Component {
                             value={iconPosition}
                             onChange={newValue => setAttributes({ iconPosition: newValue })}
                         />
-                        <p>Bullet Alignment</p>
-                        <Toolbar
-                            controls={ALIGNS.map(contentAlign => ({
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === bulletAlign,
-                                onClick: () => setAttributes({ bulletAlign: contentAlign })
-                            }))}
-                        />
+                        <div>
+                            <label>{__('Bullet Alignment')}</label>
+                            {iconPosition !== 'top' ? <div className="bullet-list-button-list">
+                                <Tooltip text={__('Top')}>
+                                    <button
+                                        onClick={() => setAttributes({ bulletAlign: 'flex-start' })}
+                                        className={"bullet-list-button" + (bulletAlign === 'flex-start' ? ' active' : '')}
+                                    >{icons.vertical_top}</button>
+                                </Tooltip>
+
+                                <Tooltip text={__('Middle')} >
+                                    <button
+                                        onClick={() => setAttributes({ bulletAlign: 'center' })}
+                                        className={"bullet-list-button" + (bulletAlign === 'center' ? ' active' : '')}
+                                    >{icons.vertical_middle}</button>
+                                </Tooltip>
+
+                                <Tooltip text={__('Bottom')} >
+                                    <button
+                                        onClick={() => setAttributes({ bulletAlign: 'flex-end' })}
+                                        className={"bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')}
+                                    >{icons.vertical_bottom}</button>
+                                </Tooltip>
+                            </div>
+                                : <Toolbar
+                                    controls={ALIGNS.map(contentAlign => ({
+                                        icon: "editor-align" + contentAlign,
+                                        isActive: contentAlign === bulletAlign,
+                                        onClick: () => setAttributes({ bulletAlign: contentAlign })
+                                    }))}
+                                />
+                            }
+                        </div>
                     </PanelBody>
                     <PanelBody
                         title={__("General Style")}
@@ -1223,10 +1252,10 @@ class edit extends Component {
             ),
             <div className={classnames(
                 className,
-                `premium-block-${this.props.clientId} premium-bullet-list-${this.props.clientId}`
+                `premium-bullet-list-${this.props.clientId}`
             )} style={{
                 textAlign: align,
-            }} id={`${mainClasses}-wrap-${this.props.clientId}`}>
+            }} id={`premium-bullet-list-${this.props.clientId}`}>
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
@@ -1244,11 +1273,13 @@ class edit extends Component {
                         ].join("\n")
                     }}
                 />
-                <div className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
+                <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
                     style={{
                         textAlign: align,
-                        justifyContent: align == "right" ? "flex-end" : align
+                        justifyContent: align == "right" ? "flex-end" : align,
+                        // margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important'
                     }}>
+                    {/* <ul style={{ margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important' }}> */}
                     {
                         repeaterBulletList.map((icon, index) => {
 
@@ -1274,6 +1305,7 @@ class edit extends Component {
                                                         : bulletIconBorderWidth + "px",
                                                     borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                     borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                    // verticalAlign: bulletAlign == 'left' ?
                                                 }}
                                             />
                                         </span>
@@ -1305,87 +1337,85 @@ class edit extends Component {
                             let target = (icon.linkTarget) ? "_blank" : "_self"
 
                             return (
-                                <ul>
-                                    <li
-                                        className={classnames(
-                                            `premium-bullet-list-content${index}`,
-                                            "premium-bullet-list__wrapper"
-                                        )}
-                                        key={index}
-                                        target={target}
-                                        rel="noopener noreferrer"
-                                        style={{
-                                            textAlign: align,
-                                            justifyContent: align == "right" ? "flex-end" : align,
-                                            backgroundColor: generalStyles[0].generalBackgroundColor,
-                                            borderStyle: generalStyles[0].generalborderType,
-                                            borderWidth: generalBorderUpdated
-                                                ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
-                                                : generalBorderWidth + "px",
-                                            borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                            borderColor: generalStyles[0].generalborderColor,
-                                            paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
-                                            paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
-                                            paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
-                                            paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
-                                            marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
-                                            marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
-                                            marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
-                                            marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
-                                            boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
-                                        }}
-                                    >
-                                        <div className="premium-bullet-list__content-wrap" style={{
-                                            justifyContent: align == "right" ? align : align,
-                                            display: iconPosition == "before" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
-                                            marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titlemarginType,
-                                        }}>
-                                            {icon.showBulletIcon && <span className="premium-bullet-list__icon-wrap"
+                                <li
+                                    className={classnames(
+                                        `premium-bullet-list-content${index}`,
+                                        "premium-bullet-list__wrapper"
+                                    )}
+                                    key={index}
+                                    target={target}
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        textAlign: align,
+                                        justifyContent: align == "right" ? "flex-end" : align,
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated
+                                            ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
+                                            : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
+                                        paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
+                                        paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
+                                        paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
+                                        marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
+                                        marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
+                                        marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
+                                        marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
+                                        boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
+                                    }}
+                                >
+                                    <div className="premium-bullet-list__content-wrap" style={{
+                                        justifyContent: align == "right" ? align : align,
+                                        display: iconPosition == "before" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
+                                        marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
+                                        marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
+                                        marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
+                                        marginRight: TitleMarginRight + titleStyles[0].titlemarginType,
+                                    }}>
+                                        {icon.showBulletIcon && <span className={`premium-bullet-list__content-wrap-${bulletAlign}`}
+                                            style={{
+                                                // overflow: "hidden",
+                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
+                                                marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
+                                                marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
+                                                marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
+                                                textAlign: bulletAlign,
+                                                justifyContent: bulletAlign,
+                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                            }}
+                                        >{image_icon_html}</span>}
+                                        <div className="premium-bullet-list__label-wrap">
+                                            <RichText
+                                                tagName="span"
+                                                placeholder={__("Title Name")}
+                                                value={icon.label}
+                                                className='premium-bullet-list__label'
+                                                onChange={(val) => changeLabel(val, index)}
+                                                multiline={false}
                                                 style={{
-                                                    // overflow: "hidden",
-                                                    alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                                    marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
-                                                    marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
-                                                    marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
-                                                    marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
-                                                    textAlign: bulletAlign,
-                                                    justifyContent: bulletAlign,
-                                                    alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                    fontFamily: titleFont,
+                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                                    lineHeight: titleStyles[0].titleLine + "px",
+                                                    fontStyle: titleStyles[0].titleStyle,
+                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                    fontFamily: titleStyles[0].titleFontFamily,
+                                                    color: titleStyles[0].titleColor,
+                                                    textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
                                                 }}
-                                            >{image_icon_html}</span>}
-                                            <div className="premium-bullet-list__label-wrap">
-                                                <RichText
-                                                    tagName="div"
-                                                    placeholder={__("Title Name")}
-                                                    value={icon.label}
-                                                    className='premium-bullet-list__label'
-                                                    onChange={(val) => changeLabel(val, index)}
-                                                    multiline={false}
-                                                    style={{
-                                                        fontFamily: titleFont,
-                                                        fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                        fontWeight: titleStyles[0].titleWeight,
-                                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                                        lineHeight: titleStyles[0].titleLine + "px",
-                                                        fontStyle: titleStyles[0].titleStyle,
-                                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                        fontFamily: titleStyles[0].titleFontFamily,
-                                                        color: titleStyles[0].titleColor,
-                                                        textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
-                                                    }}
-                                                />
-                                            </div>
+                                            />
                                         </div>
-                                    </li>
-                                </ul>
+                                    </div>
+                                </li>
                             )
                         })
                     }
-                </div>
+                </ul>
             </div>
 
         ]
