@@ -1235,7 +1235,7 @@ var _premiumFonts = __webpack_require__(217);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _responsiveRangeControl = __webpack_require__(35);
+var _responsiveRangeControl = __webpack_require__(36);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -2433,7 +2433,7 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 var global = __webpack_require__(20);
 var core = __webpack_require__(12);
 var ctx = __webpack_require__(114);
-var hide = __webpack_require__(28);
+var hide = __webpack_require__(29);
 var has = __webpack_require__(24);
 var PROTOTYPE = 'prototype';
 
@@ -2528,7 +2528,7 @@ exports.f = __webpack_require__(23) ? Object.defineProperty : function definePro
 
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(30)(function () {
+module.exports = !__webpack_require__(31)(function () {
   return Object.defineProperty({}, 'a', { get: function get() {
       return 7;
     } }).a != 7;
@@ -2617,6 +2617,127 @@ module.exports = getNative;
 
 /***/ }),
 /* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _webfontloader = __webpack_require__(100);
+
+var _webfontloader2 = _interopRequireDefault(_webfontloader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+if (googlefonts === undefined) {
+    var googlefonts = [];
+}
+var Component = wp.element.Component;
+
+var statuses = {
+    inactive: "inactive",
+    active: "active",
+    loading: "loading"
+};
+
+var noop = function noop() {};
+
+var WebfontLoader = function (_Component) {
+    _inherits(WebfontLoader, _Component);
+
+    function WebfontLoader(props) {
+        _classCallCheck(this, WebfontLoader);
+
+        var _this = _possibleConstructorReturn(this, (WebfontLoader.__proto__ || Object.getPrototypeOf(WebfontLoader)).call(this, props));
+
+        _this.state = {
+            status: undefined
+        };
+
+        _this.handleLoading = function () {
+            _this.setState({ status: statuses.loading });
+        };
+
+        _this.addFont = function (font) {
+            if (!googlefonts.includes(font)) {
+                googlefonts.push(font);
+            }
+        };
+
+        _this.handleActive = function () {
+            _this.setState({ status: statuses.active });
+        };
+
+        _this.handleInactive = function () {
+            _this.setState({ status: statuses.inactive });
+        };
+
+        _this.loadFonts = function () {
+            if (!googlefonts.includes(_this.props.config.google.families[0])) {
+                _webfontloader2.default.load(_extends({}, _this.props.config, {
+                    loading: _this.handleLoading,
+                    active: _this.handleActive,
+                    inactive: _this.handleInactive
+                }));
+                _this.addFont(_this.props.config.google.families[0]);
+            }
+        };
+        return _this;
+    }
+
+    _createClass(WebfontLoader, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.loadFonts();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate(prevProps, prevState) {
+            var _props = this.props,
+                onStatus = _props.onStatus,
+                config = _props.config;
+
+
+            if (prevState.status !== this.state.status) {
+                onStatus(this.state.status);
+            }
+            if (prevProps.config !== config) {
+                this.loadFonts();
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var children = this.props.children;
+
+            return children || null;
+        }
+    }]);
+
+    return WebfontLoader;
+}(Component);
+
+WebfontLoader.defaultProps = {
+    onStatus: noop
+};
+
+exports.default = WebfontLoader;
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2855,7 +2976,7 @@ function PremiumBackgroundControl(_ref) {
 }
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2871,7 +2992,7 @@ module.exports = __webpack_require__(23) ? function (object, key, value) {
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2884,7 +3005,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2899,7 +3020,7 @@ module.exports = function (exec) {
 };
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2913,7 +3034,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2931,7 +3052,7 @@ var $exports = module.exports = function (name) {
 $exports.store = store;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2965,7 +3086,7 @@ function baseGetTag(value) {
 module.exports = baseGetTag;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3004,7 +3125,7 @@ function isObjectLike(value) {
 module.exports = isObjectLike;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3180,7 +3301,7 @@ function ResponsiveRangeControl(_ref) {
 exports.default = ResponsiveRangeControl;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3296,127 +3417,6 @@ function PremiumFilters(props) {
 }
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _webfontloader = __webpack_require__(100);
-
-var _webfontloader2 = _interopRequireDefault(_webfontloader);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-if (googlefonts === undefined) {
-    var googlefonts = [];
-}
-var Component = wp.element.Component;
-
-var statuses = {
-    inactive: "inactive",
-    active: "active",
-    loading: "loading"
-};
-
-var noop = function noop() {};
-
-var WebfontLoader = function (_Component) {
-    _inherits(WebfontLoader, _Component);
-
-    function WebfontLoader(props) {
-        _classCallCheck(this, WebfontLoader);
-
-        var _this = _possibleConstructorReturn(this, (WebfontLoader.__proto__ || Object.getPrototypeOf(WebfontLoader)).call(this, props));
-
-        _this.state = {
-            status: undefined
-        };
-
-        _this.handleLoading = function () {
-            _this.setState({ status: statuses.loading });
-        };
-
-        _this.addFont = function (font) {
-            if (!googlefonts.includes(font)) {
-                googlefonts.push(font);
-            }
-        };
-
-        _this.handleActive = function () {
-            _this.setState({ status: statuses.active });
-        };
-
-        _this.handleInactive = function () {
-            _this.setState({ status: statuses.inactive });
-        };
-
-        _this.loadFonts = function () {
-            if (!googlefonts.includes(_this.props.config.google.families[0])) {
-                _webfontloader2.default.load(_extends({}, _this.props.config, {
-                    loading: _this.handleLoading,
-                    active: _this.handleActive,
-                    inactive: _this.handleInactive
-                }));
-                _this.addFont(_this.props.config.google.families[0]);
-            }
-        };
-        return _this;
-    }
-
-    _createClass(WebfontLoader, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            this.loadFonts();
-        }
-    }, {
-        key: "componentDidUpdate",
-        value: function componentDidUpdate(prevProps, prevState) {
-            var _props = this.props,
-                onStatus = _props.onStatus,
-                config = _props.config;
-
-
-            if (prevState.status !== this.state.status) {
-                onStatus(this.state.status);
-            }
-            if (prevProps.config !== config) {
-                this.loadFonts();
-            }
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var children = this.props.children;
-
-            return children || null;
-        }
-    }]);
-
-    return WebfontLoader;
-}(Component);
-
-WebfontLoader.defaultProps = {
-    onStatus: noop
-};
-
-exports.default = WebfontLoader;
-
-/***/ }),
 /* 38 */
 /***/ (function(module, exports) {
 
@@ -3429,7 +3429,7 @@ module.exports = ReactDOM;
 "use strict";
 
 
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -4590,8 +4590,8 @@ module.exports = isKey;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseGetTag = __webpack_require__(33),
-    isObjectLike = __webpack_require__(34);
+var baseGetTag = __webpack_require__(34),
+    isObjectLike = __webpack_require__(35);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -5050,7 +5050,7 @@ exports.default = PremiumUpperQuote;
 
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -5222,7 +5222,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 var def = __webpack_require__(22).f;
 var has = __webpack_require__(24);
-var TAG = __webpack_require__(32)('toStringTag');
+var TAG = __webpack_require__(33)('toStringTag');
 
 module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -5235,7 +5235,7 @@ module.exports = function (it, tag, stat) {
 "use strict";
 
 
-exports.f = __webpack_require__(32);
+exports.f = __webpack_require__(33);
 
 /***/ }),
 /* 80 */
@@ -5387,7 +5387,7 @@ module.exports = freeGlobal;
 "use strict";
 
 
-var baseGetTag = __webpack_require__(33),
+var baseGetTag = __webpack_require__(34),
     isObject = __webpack_require__(59);
 
 /** `Object#toString` result references. */
@@ -5637,7 +5637,7 @@ module.exports = Stack;
 
 
 var baseIsEqualDeep = __webpack_require__(167),
-    isObjectLike = __webpack_require__(34);
+    isObjectLike = __webpack_require__(35);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -5759,7 +5759,7 @@ module.exports = equalArrays;
 
 
 var baseIsArguments = __webpack_require__(186),
-    isObjectLike = __webpack_require__(34);
+    isObjectLike = __webpack_require__(35);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -8286,7 +8286,7 @@ module.exports = function (fn, that, length) {
 "use strict";
 
 
-module.exports = !__webpack_require__(23) && !__webpack_require__(30)(function () {
+module.exports = !__webpack_require__(23) && !__webpack_require__(31)(function () {
   return Object.defineProperty(__webpack_require__(116)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
@@ -8299,7 +8299,7 @@ module.exports = !__webpack_require__(23) && !__webpack_require__(30)(function (
 "use strict";
 
 
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var document = __webpack_require__(20).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -8315,7 +8315,7 @@ module.exports = function (it) {
 
 
 var has = __webpack_require__(24);
-var toIObject = __webpack_require__(31);
+var toIObject = __webpack_require__(32);
 var arrayIndexOf = __webpack_require__(320)(false);
 var IE_PROTO = __webpack_require__(71)('IE_PROTO');
 
@@ -8427,12 +8427,12 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 var LIBRARY = __webpack_require__(53);
 var $export = __webpack_require__(21);
 var redefine = __webpack_require__(123);
-var hide = __webpack_require__(28);
+var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(76);
 var $iterCreate = __webpack_require__(337);
 var setToStringTag = __webpack_require__(78);
 var getPrototypeOf = __webpack_require__(120);
-var ITERATOR = __webpack_require__(32)('iterator');
+var ITERATOR = __webpack_require__(33)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -8512,7 +8512,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 "use strict";
 
 
-module.exports = __webpack_require__(28);
+module.exports = __webpack_require__(29);
 
 /***/ }),
 /* 124 */
@@ -8538,7 +8538,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 var pIE = __webpack_require__(55);
 var createDesc = __webpack_require__(51);
-var toIObject = __webpack_require__(31);
+var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(68);
 var has = __webpack_require__(24);
 var IE8_DOM_DEFINE = __webpack_require__(115);
@@ -11566,8 +11566,8 @@ module.exports = baseTimes;
 "use strict";
 
 
-var baseGetTag = __webpack_require__(33),
-    isObjectLike = __webpack_require__(34);
+var baseGetTag = __webpack_require__(34),
+    isObjectLike = __webpack_require__(35);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -11618,9 +11618,9 @@ module.exports = stubFalse;
 "use strict";
 
 
-var baseGetTag = __webpack_require__(33),
+var baseGetTag = __webpack_require__(34),
     isLength = __webpack_require__(62),
-    isObjectLike = __webpack_require__(34);
+    isObjectLike = __webpack_require__(35);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -11843,7 +11843,7 @@ var DataView = __webpack_require__(196),
     Promise = __webpack_require__(197),
     Set = __webpack_require__(198),
     WeakMap = __webpack_require__(199),
-    baseGetTag = __webpack_require__(33),
+    baseGetTag = __webpack_require__(34),
     toSource = __webpack_require__(87);
 
 /** `Object#toString` result references. */
@@ -15236,7 +15236,7 @@ var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumFilters = __webpack_require__(36);
+var _premiumFilters = __webpack_require__(37);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -18048,7 +18048,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(37);
+var _fontLoader = __webpack_require__(27);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -20039,7 +20039,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(27);
+var _PremiumBackgroundControl = __webpack_require__(28);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -20051,7 +20051,7 @@ var _PremiumResponsivePadding = __webpack_require__(16);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _fontLoader = __webpack_require__(37);
+var _fontLoader = __webpack_require__(27);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -23198,11 +23198,11 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(27);
+var _PremiumBackgroundControl = __webpack_require__(28);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _fontLoader = __webpack_require__(37);
+var _fontLoader = __webpack_require__(27);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -26095,7 +26095,7 @@ var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _PremiumBackgroundControl = __webpack_require__(27);
+var _PremiumBackgroundControl = __webpack_require__(28);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -30697,7 +30697,7 @@ var _PremiumResponsiveMargin = __webpack_require__(49);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _fontLoader = __webpack_require__(37);
+var _fontLoader = __webpack_require__(27);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -41382,7 +41382,7 @@ var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(27);
+var _PremiumBackgroundControl = __webpack_require__(28);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -43064,7 +43064,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(27);
+var _PremiumBackgroundControl = __webpack_require__(28);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -43072,7 +43072,7 @@ var _radioControl = __webpack_require__(8);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(35);
+var _responsiveRangeControl = __webpack_require__(36);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -45703,7 +45703,7 @@ var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _premiumFilters = __webpack_require__(36);
+var _premiumFilters = __webpack_require__(37);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -45727,7 +45727,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(37);
+var _fontLoader = __webpack_require__(27);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -53378,7 +53378,7 @@ var _reactLottieWithSegments = __webpack_require__(113);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _premiumFilters = __webpack_require__(36);
+var _premiumFilters = __webpack_require__(37);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -53406,7 +53406,7 @@ var _radioControl = __webpack_require__(8);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(35);
+var _responsiveRangeControl = __webpack_require__(36);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -54228,7 +54228,7 @@ var IObject = __webpack_require__(118);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(30)(function () {
+module.exports = !$assign || __webpack_require__(31)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -54267,7 +54267,7 @@ module.exports = !$assign || __webpack_require__(30)(function () {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(31);
+var toIObject = __webpack_require__(32);
 var toLength = __webpack_require__(321);
 var toAbsoluteIndex = __webpack_require__(322);
 module.exports = function (IS_INCLUDES) {
@@ -54366,7 +54366,7 @@ __webpack_require__(326)('getPrototypeOf', function () {
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(21);
 var core = __webpack_require__(12);
-var fails = __webpack_require__(30);
+var fails = __webpack_require__(31);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
   var exp = {};
@@ -54564,7 +54564,7 @@ var setToStringTag = __webpack_require__(78);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(28)(IteratorPrototype, __webpack_require__(32)('iterator'), function () {
+__webpack_require__(29)(IteratorPrototype, __webpack_require__(33)('iterator'), function () {
   return this;
 });
 
@@ -54614,9 +54614,9 @@ module.exports = document && document.documentElement;
 
 __webpack_require__(341);
 var global = __webpack_require__(20);
-var hide = __webpack_require__(28);
+var hide = __webpack_require__(29);
 var Iterators = __webpack_require__(76);
-var TO_STRING_TAG = __webpack_require__(32)('toStringTag');
+var TO_STRING_TAG = __webpack_require__(33)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' + 'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' + 'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' + 'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' + 'TextTrackList,TouchList').split(',');
 
@@ -54638,7 +54638,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 var addToUnscopables = __webpack_require__(342);
 var step = __webpack_require__(343);
 var Iterators = __webpack_require__(76);
-var toIObject = __webpack_require__(31);
+var toIObject = __webpack_require__(32);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
@@ -54727,18 +54727,18 @@ var DESCRIPTORS = __webpack_require__(23);
 var $export = __webpack_require__(21);
 var redefine = __webpack_require__(123);
 var META = __webpack_require__(347).KEY;
-var $fails = __webpack_require__(30);
+var $fails = __webpack_require__(31);
 var shared = __webpack_require__(72);
 var setToStringTag = __webpack_require__(78);
 var uid = __webpack_require__(54);
-var wks = __webpack_require__(32);
+var wks = __webpack_require__(33);
 var wksExt = __webpack_require__(79);
 var wksDefine = __webpack_require__(80);
 var enumKeys = __webpack_require__(348);
 var isArray = __webpack_require__(349);
 var anObject = __webpack_require__(39);
-var isObject = __webpack_require__(29);
-var toIObject = __webpack_require__(31);
+var isObject = __webpack_require__(30);
+var toIObject = __webpack_require__(32);
 var toPrimitive = __webpack_require__(68);
 var createDesc = __webpack_require__(51);
 var _create = __webpack_require__(77);
@@ -54953,7 +54953,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(28)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(29)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -54971,14 +54971,14 @@ setToStringTag(global.JSON, 'JSON', true);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var META = __webpack_require__(54)('meta');
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var has = __webpack_require__(24);
 var setDesc = __webpack_require__(22).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(30)(function () {
+var FREEZE = !__webpack_require__(31)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function setMeta(it) {
@@ -55072,7 +55072,7 @@ module.exports = Array.isArray || function isArray(arg) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(31);
+var toIObject = __webpack_require__(32);
 var gOPN = __webpack_require__(124).f;
 var toString = {}.toString;
 
@@ -55195,7 +55195,7 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(358).set });
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var anObject = __webpack_require__(39);
 var check = function check(O, proto) {
   anObject(O);
@@ -56619,6 +56619,10 @@ var _inspector = __webpack_require__(369);
 
 var _inspector2 = _interopRequireDefault(_inspector);
 
+var _fontLoader = __webpack_require__(27);
+
+var _fontLoader2 = _interopRequireDefault(_fontLoader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -56770,7 +56774,7 @@ var edit = function edit(props) {
     var renderCss = React.createElement(
         "style",
         null,
-        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover {\n              background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].bright + "% ) contrast( " + triggerStyles[0].contrast + "% ) saturate( " + triggerStyles[0].saturation + "% ) blur( " + triggerStyles[0].blur + "px ) hue-rotate( " + triggerStyles[0].hue + "deg );\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].brightH + "% ) contrast( " + triggerStyles[0].contrastH + "% ) saturate( " + triggerStyles[0].saturationH + "% ) blur( " + triggerStyles[0].blurH + "px ) hue-rotate( " + triggerStyles[0].hueH + "deg ) !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container img:hover {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n\n        "
+        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover {\n              background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].bright + "% ) contrast( " + triggerStyles[0].contrast + "% ) saturate( " + triggerStyles[0].saturation + "% ) blur( " + triggerStyles[0].blur + "px ) hue-rotate( " + triggerStyles[0].hue + "deg );\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].brightH + "% ) contrast( " + triggerStyles[0].contrastH + "% ) saturate( " + triggerStyles[0].saturationH + "% ) blur( " + triggerStyles[0].blurH + "px ) hue-rotate( " + triggerStyles[0].hueH + "deg ) !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container img:hover {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n\n        "
     );
     var headerIconSize = getPreviewSize(props.deviceType, contentStyles[0].iconSize, contentStyles[0].iconSizeTablet, contentStyles[0].iconSizeMobile);
     var triggerFontSize = getPreviewSize(props.deviceType, triggerStyles[0].triggerSize, triggerStyles[0].triggerSizeTablet, triggerStyles[0].triggerSizeMobile);
@@ -56814,6 +56818,33 @@ var edit = function edit(props) {
         }
     } else {
         btnbg = modalStyles[0].backgroundImageURL ? "url('" + modalStyles[0].backgroundImageURL + "')" : '';
+    }
+    var loadTriggerGoogleFonts = void 0;
+    var loadHeaderGoogleFonts = void 0;
+    var loadModalGoogleFonts = void 0;
+    if (triggerStyles[0].triggerFamily !== 'Default') {
+        var triggerConfig = {
+            google: {
+                families: [triggerStyles[0].triggerFamily]
+            }
+        };
+        loadTriggerGoogleFonts = React.createElement(_fontLoader2.default, { config: triggerConfig });
+    }
+    if (headerStyles[0].headerFamily !== 'Default') {
+        var headerConfig = {
+            google: {
+                families: [headerStyles[0].headerFamily]
+            }
+        };
+        loadHeaderGoogleFonts = React.createElement(_fontLoader2.default, { config: headerConfig });
+    }
+    if (modalStyles[0].modalFamily !== 'Default') {
+        var modalConfig = {
+            google: {
+                families: [modalStyles[0].modalFamily]
+            }
+        };
+        loadModalGoogleFonts = React.createElement(_fontLoader2.default, { config: modalConfig });
     }
     return [isSelected && React.createElement(_inspector2.default, {
         attributes: props.attributes,
@@ -57128,7 +57159,10 @@ var edit = function edit(props) {
                     )
                 )
             )
-        )
+        ),
+        loadTriggerGoogleFonts,
+        loadHeaderGoogleFonts,
+        loadModalGoogleFonts
     )];
 };
 exports.default = withSelect(function (select, props) {
@@ -57200,11 +57234,11 @@ var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
-var _responsiveRangeControl = __webpack_require__(35);
+var _responsiveRangeControl = __webpack_require__(36);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(27);
+var _PremiumBackgroundControl = __webpack_require__(28);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -57212,7 +57246,7 @@ var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumFilters = __webpack_require__(36);
+var _premiumFilters = __webpack_require__(37);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -59729,7 +59763,7 @@ var _reactFonticonpicker = __webpack_require__(47);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _responsiveRangeControl = __webpack_require__(35);
+var _responsiveRangeControl = __webpack_require__(36);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -59741,7 +59775,7 @@ var _premiumTextShadow = __webpack_require__(11);
 
 var _premiumTextShadow2 = _interopRequireDefault(_premiumTextShadow);
 
-var _premiumFilters = __webpack_require__(36);
+var _premiumFilters = __webpack_require__(37);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 

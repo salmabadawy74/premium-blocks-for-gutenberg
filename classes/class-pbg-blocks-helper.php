@@ -3044,35 +3044,30 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-    //   style For Icon /Image/Lottie in Header 
+        // style For Icon /Image/Lottie in Header 
         if(isset( $attr['contentStyles'])){
             if(isset( $attr['contentStyles'][0]['iconSize']) && isset( $attr['contentStyles'][0]['iconSizeUnit']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 i' );
 			$css->add_property( 'font-size', ($attr['contentStyles'][0]['iconSize'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
-                $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 img' );
+            $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 img' );
 			$css->add_property( 'width', ($attr['contentStyles'][0]['iconSize'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
             $css->add_property( 'height', ($attr['contentStyles'][0]['iconSize'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
-                  $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
+            $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
 			$css->add_property( 'width', ($attr['contentStyles'][0]['iconSize'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
             $css->add_property( 'height', ($attr['contentStyles'][0]['iconSize'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
-
             }
         }
-
         // Trigger Sizr for Image/Lottie 
-
         if (isset( $attr['triggerSettings'])){
             if(isset( $attr['triggerSettings'][0]['imageWidth'])){
-             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container img'  );
+            $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container img'  );
 			$css->add_property( 'width', ($attr['triggerSettings'][0]['imageWidth'] .'px' ) );
             $css->add_property( 'height', ($attr['triggerSettings'][0]['imageWidth'] . 'px' ) );
-
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container ' . '> .premium-lottie-animation'  );
 			$css->add_property( 'width', ($attr['triggerSettings'][0]['imageWidth'] .'px' ) );
             $css->add_property( 'height', ($attr['triggerSettings'][0]['imageWidth'] . 'px' ) );
             }
         }
-      
         // Style For Button Trigger 
         if ( isset( $attr['triggerStyles'] ) ) {
             if(isset( $attr['triggerStyles'][0]['triggerSize']) && isset( $attr['triggerStyles'][0]['triggerSizeUnit'])){
@@ -3099,7 +3094,6 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ($attr['triggerPaddingL'].'px' ) );
         }
          // Style For Header in Modal
-
         if(isset( $attr['headerStyles'])){
             if( isset( $attr['headerStyles'][0]['headerSize'] ) && isset( $attr['headerStyles'][0]['headerSizeUnit'] )){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3' );
@@ -3123,7 +3117,6 @@ class PBG_Blocks_Helper {
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-left', ($attr['upperPaddingL'].'px' ) );
         }
-
         // Style For font Size in  lower Close Button
         if(isset( $attr['lowerStyles'])){
             if( isset( $attr['lowerStyles'][0]['lowerSize'] ) && isset( $attr['lowerStyles'][0]['lowerSizeUnit'] )){
@@ -3131,9 +3124,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', ( $attr['lowerStyles'][0]['lowerSize'] . $attr['lowerStyles'][0]['lowerSizeUnit'] ) );
             }
         }
-
         // style for Padding in lower Close Button 
-
         if(isset( $attr['lowerPaddingT']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
             $css->add_property( 'padding-top', ($attr['lowerPaddingT'].'px' ) );
@@ -3150,9 +3141,7 @@ class PBG_Blocks_Helper {
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-left', ($attr['lowerPaddingL'].'px' ) );
         }
-
         //  Width & Height for Modal 
-
         if(isset($attr['modalStyles'])){
             if(isset($attr['modalStyles'][0]['modalWidth']) && isset($attr['modalStyles'][0]['modalWidthUnit'])){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
@@ -3169,7 +3158,6 @@ class PBG_Blocks_Helper {
 
         }
         // padding & margin for Modal 
-
         if(isset( $attr['modalMarginT']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
             $css->add_property( 'margin-top', ($attr['modalMarginT'].'px' ) );
@@ -3203,24 +3191,20 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ($attr['modalPaddingL'].'px' ) );
         }
 		$css->start_media_query( $media_query['tablet'] );
-    //   style For Icon /Image/Lottie in Header 
-
+        //style For Icon /Image/Lottie in Header 
          if(isset( $attr['contentStyles'])){
             if(isset( $attr['contentStyles'][0]['iconSizeTablet']) && isset( $attr['contentStyles'][0]['iconSizeUnit']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 i' );
 			$css->add_property( 'font-size', ($attr['contentStyles'][0]['iconSizeTablet'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
-                $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 img' );
+            $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 img' );
 			$css->add_property( 'width', ($attr['contentStyles'][0]['iconSizeTablet'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
             $css->add_property( 'height', ($attr['contentStyles'][0]['iconSizeTablet'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
-                  $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
+            $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
 			$css->add_property( 'width', ($attr['contentStyles'][0]['iconSizeTablet'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
             $css->add_property( 'height', ($attr['contentStyles'][0]['iconSizeTablet'] . $attr['contentStyles'][0]['iconSizeUnit'] ) );
-
             }
         }
-
-         // Trigger Sizr for Image/Lottie 
-
+        // Trigger Sizr for Image/Lottie 
         if (isset( $attr['triggerSettings'])){
             if(isset( $attr['triggerSettings'][0]['imageWidthTablet'])){
              $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container img'  );
@@ -3241,7 +3225,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSize'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
             }
         }
-         if(isset( $attr['triggerPaddingTTablet']) ){
+        if(isset( $attr['triggerPaddingTTablet']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-top', ($attr['triggerPaddingTTablet'].'px' ) );
             }
@@ -3282,7 +3266,6 @@ class PBG_Blocks_Helper {
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-left', ($attr['upperPaddingLTablet'].'px' ) );
         }
-
         // Style For font Size in  lower Close Button
         if(isset( $attr['lowerStyles'])){
             if( isset( $attr['lowerStyles'][0]['lowerSizeTablet'] ) && isset( $attr['lowerStyles'][0]['lowerSizeUnit'] )){
@@ -3290,9 +3273,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', ( $attr['lowerStyles'][0]['lowerSizeTablet'] . $attr['lowerStyles'][0]['lowerSizeUnit'] ) );
             }
         }
-
         // style for Padding in lower Close Button 
-
         if(isset( $attr['lowerPaddingTTablet']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
             $css->add_property( 'padding-top', ($attr['lowerPaddingTTablet'].'px' ) );
@@ -3309,9 +3290,7 @@ class PBG_Blocks_Helper {
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-left', ($attr['lowerPaddingLTablet'].'px' ) );
         }
-
         //  Width & Height for Modal 
-
         if(isset($attr['modalStyles'])){
             if(isset($attr['modalStyles'][0]['modalWidthTablet']) && isset($attr['modalStyles'][0]['modalWidthUnit'])){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
@@ -3327,7 +3306,6 @@ class PBG_Blocks_Helper {
             }
         }
         // padding & margin for Modal 
-
         if(isset( $attr['modalMarginTTablet']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
             $css->add_property( 'margin-top', ($attr['modalMarginTTablet'].'px' ) );
@@ -3362,9 +3340,7 @@ class PBG_Blocks_Helper {
         }
         $css->stop_media_query();
         $css->start_media_query( $media_query['mobile'] );
-
-         //   style For Icon /Image/Lottie in Header 
-
+        //   style For Icon /Image/Lottie in Header 
          if(isset( $attr['contentStyles'])){
             if(isset( $attr['contentStyles'][0]['iconSizeMobile']) && isset( $attr['contentStyles'][0]['iconSizeUnit']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3 i' );
@@ -3378,9 +3354,7 @@ class PBG_Blocks_Helper {
 
             }
         }
-
-                 // Trigger Sizr for Image/Lottie 
-
+        // Trigger Size for Image/Lottie 
         if (isset( $attr['triggerSettings'])){
             if(isset( $attr['triggerSettings'][0]['imageWidthMobile'])){
              $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container img'  );
@@ -3392,34 +3366,32 @@ class PBG_Blocks_Helper {
             $css->add_property( 'height', ($attr['triggerSettings'][0]['imageWidthMobile'] . 'px' ) );
             }
         }
-
         // Style For Button Trigger 
         if ( isset( $attr['triggerStyles'] ) ) {
             if(isset( $attr['triggerStyles'][0]['triggerSizeMobile']) && isset( $attr['triggerStyles'][0]['triggerSizeUnit'])){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSizeMobile'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
-              $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
+            $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
 			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSizeMobile'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
             }
         }
-         if(isset( $attr['triggerPaddingTMobile']) ){
+        if(isset( $attr['triggerPaddingTMobile']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-top', ($attr['triggerPaddingTMobile'].'px' ) );
-            }
-            if(isset( $attr['triggerPaddingRMobile']) ){
+        }
+        if(isset( $attr['triggerPaddingRMobile']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-right', ($attr['triggerPaddingRMobile'].'px' ) );
-            }
-            if(isset( $attr['triggerPaddingBMobile']) ){
+        }
+        if(isset( $attr['triggerPaddingBMobile']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-bottom', ($attr['triggerPaddingBMobile'].'px' ) );
-            }
-            if(isset( $attr['triggerPaddingLMobile']) ){
+        }
+        if(isset( $attr['triggerPaddingLMobile']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-left', ($attr['triggerPaddingLMobile'].'px' ) );
-            }
-         // Style For Header in Modal
-
+        }
+        // Style For Header in Modal
         if(isset( $attr['headerStyles'])){
             if( isset( $attr['headerStyles'][0]['headerSizeMobile'] ) && isset( $attr['headerStyles'][0]['headerSizeUnit'] )){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header h3' );
@@ -3443,7 +3415,6 @@ class PBG_Blocks_Helper {
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-left', ($attr['upperPaddingLMobile'].'px' ) );
         }
-
         // Style For font Size in  lower Close Button
         if(isset( $attr['lowerStyles'])){
             if( isset( $attr['lowerStyles'][0]['lowerSizeMobile'] ) && isset( $attr['lowerStyles'][0]['lowerSizeUnit'] )){
@@ -3451,9 +3422,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', ( $attr['lowerStyles'][0]['lowerSizeMobile'] . $attr['lowerStyles'][0]['lowerSizeUnit'] ) );
             }
         }
-
         // style for Padding in lower Close Button 
-
         if(isset( $attr['lowerPaddingTMobile']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' .' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
             $css->add_property( 'padding-top', ($attr['lowerPaddingTMobile'].'px' ) );
@@ -3472,7 +3441,6 @@ class PBG_Blocks_Helper {
         }
 
         //  Width & Height for Modal 
-
         if(isset($attr['modalStyles'])){
             if(isset($attr['modalStyles'][0]['modalWidthMobile']) && isset($attr['modalStyles'][0]['modalWidthUnit'])){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
@@ -3486,10 +3454,8 @@ class PBG_Blocks_Helper {
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body p' );
 			$css->add_property( 'font-size', ( $attr['modalStyles'][0]['modalSizeMobile'] . $attr['modalStyles'][0]['modalSizeUnit'] ) );
             }
-
         }
         // padding & margin for Modal 
-
         if(isset( $attr['modalMarginTMobile']) ){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
             $css->add_property( 'margin-top', ($attr['modalMarginTMobile'].'px' ) );
@@ -3523,7 +3489,6 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ($attr['modalPaddingLMobile'].'px' ) );
         }
         $css->stop_media_query();
-
 		return $css->css_output();
 	}
 
