@@ -3078,6 +3078,8 @@ class PBG_Blocks_Helper {
             if(isset( $attr['triggerStyles'][0]['triggerSize']) && isset( $attr['triggerStyles'][0]['triggerSizeUnit'])){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSize'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
+              $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
+			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSize'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
             }
         }
         if(isset( $attr['triggerPaddingT']) ){
@@ -3234,6 +3236,8 @@ class PBG_Blocks_Helper {
         if ( isset( $attr['triggerStyles'] ) ) {
             if(isset( $attr['triggerStyles'][0]['triggerSizeTablet']) && isset( $attr['triggerStyles'][0]['triggerSizeUnit'])){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
+			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSize'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
+               $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
 			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSize'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
             }
         }
@@ -3393,6 +3397,8 @@ class PBG_Blocks_Helper {
         if ( isset( $attr['triggerStyles'] ) ) {
             if(isset( $attr['triggerStyles'][0]['triggerSizeMobile']) && isset( $attr['triggerStyles'][0]['triggerSizeUnit'])){
             $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
+			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSizeMobile'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
+              $css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
 			$css->add_property( 'font-size', ( $attr['triggerStyles'][0]['triggerSizeMobile'] . $attr['triggerStyles'][0]['triggerSizeUnit'] ) );
             }
         }
