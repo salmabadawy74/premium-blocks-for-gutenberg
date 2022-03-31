@@ -26,7 +26,6 @@ const attributes = {
                 lowerCloseText: __('Close', 'premium-blocks-for-gutenberg'),
                 animationType: 'fadeInDown',
                 animationSpeed: 'normal',
-                animationDelay: ''
             }
         ]
     },
@@ -356,9 +355,9 @@ const attributes = {
                 containerBack: '',
                 backgroundImageID: '',
                 backgroundImageURL: '',
-                backgroundPosition: '',
-                backgroundRepeat: '',
-                backgroundSize: '',
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'auto',
                 fixed: false,
                 gradientLocationOne: '0',
                 gradientColorTwo: '',

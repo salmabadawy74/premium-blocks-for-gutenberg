@@ -2398,9 +2398,12 @@ button.premium-modal-box-modal-close {
     margin: 0;
     padding: 0;
 }
-.premium-modal-box-modal-header .premium-modal-box-modal-title svg {
+.premium-modal-box-modal-header .premium-modal-box-modal-title svg,
+.premium-modal-box-modal-header
+    .premium-modal-box-modal-title
+    .premium-lottie-animation {
     width: 50px;
-    height: 60px;
+    height: 40px;
 }
 
 .premium-modal-box-modal-body {
