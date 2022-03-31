@@ -2044,12 +2044,8 @@ a.premium-dheading-block__link:hover {
       -o-transition: 0.3s ease-in-out;
       transition: 0.3s ease-in-out;
   }
-  .premium-bullet-list-block ul {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .premium-bullet-list-inline ul {
-    margin: 0 !important;
+  .premium-bullet-list ul {
+    /* margin: 10px 0px 10px 0px !important; */
     padding: 0 !important;
   }
   .premium-bullet-list__wrapper{
@@ -2102,8 +2098,12 @@ a.premium-dheading-block__link:hover {
     margin-right: 5px;
   }
   .premium-bullet-list-block{
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
+  }
+  .premium-bullet-list__content-icon .dashicons {
+    width: 100% !important;
+    height: 100% !important;
   }
   .premium-bullet-list-tab-panel .components-tab-panel__tabs{
     margin-bottom: 15px;
@@ -2128,11 +2128,14 @@ a.premium-dheading-block__link:hover {
     outline: none;
     font-weight: 500;
   }
-  .premium-bullet-list__content-icon i {
+  .premium-bullet-list__content-wrap-center .premium-bullet-list__content-icon i {
     font-style: normal !important;
     vertical-align: text-bottom !important;
     /* width: 100% !important;
     height: 100% !important; */
+  }
+  .premium-bullet-list__content-icon i {
+    font-style: normal !important;
   }
   .premium-bullet-list__label-wrap{ 
     margin: 0 5px;
@@ -2358,6 +2361,35 @@ a.premium-dheading-block__link:hover {
   .premium-bullet-list-icon{
     margin-right: 10px;
   }
+  .bullet-list-button-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  .bullet-list-button-list .bullet-list-button{
+    position: relative;
+    flex: 1 1 auto;
+  }
+  .bullet-list-button{ 
+    background: #fff;
+    border: 1px solid #e5e7ea;
+    min-height: 26px;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    text-align: center;
+    color: #8d96a0;
+    transition: all 400ms;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .bullet-list-button-list .bullet-list-button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.bullet-list-button-list .bullet-list-button {
+    width: 100%;
+    justify-content: center;
+}
   
   /* Responsive typography */
   .premium-typography-advanced {

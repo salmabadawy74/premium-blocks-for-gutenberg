@@ -56167,392 +56167,21 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
+var _attributes = __webpack_require__(372);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-var bulletListAttrs = {
-    block_id: {
-        type: "string"
-    },
-    align: {
-        type: "string",
-        default: "left"
-    },
-    repeaterBulletList: {
-        type: "array",
-        default: [{
-            id: 1,
-            label: "Title #" + 1,
-            image_icon: "icon",
-            icon: "fa fa-arrow-circle-right",
-            image: "",
-            icon_color: "#3a3a3a",
-            label_color: "",
-            icon_hover_color: "",
-            label_hover_color: "",
-            icon_bg_color: "",
-            icon_bg_hover_color: "",
-            item_bg_color: "",
-            item_bg_hover_color: "",
-            link: "#",
-            target: false,
-            disableLink: false,
-            showContent: false,
-            showBulletIcon: true,
-            linkTarget: false
-        }, {
-            id: 2,
-            label: "Title #" + 2,
-            image_icon: "icon",
-            icon: "fa fa-arrow-circle-right",
-            image: "",
-            icon_color: "#3a3a3a",
-            label_color: "",
-            icon_hover_color: "",
-            label_hover_color: "",
-            icon_bg_color: "",
-            icon_bg_hover_color: "",
-            item_bg_color: "",
-            item_bg_hover_color: "",
-            link: "#",
-            target: false,
-            disableLink: false,
-            showContent: false,
-            showBulletIcon: true,
-            linkTarget: false
-        }, {
-            id: 3,
-            label: "Title #" + 3,
-            image_icon: "icon",
-            icon: "fa fa-arrow-circle-right",
-            image: "",
-            icon_color: "#3a3a3a",
-            label_color: "",
-            icon_hover_color: "",
-            label_hover_color: "",
-            icon_bg_color: "",
-            icon_bg_hover_color: "",
-            item_bg_color: "",
-            item_bg_hover_color: "",
-            link: "#",
-            target: false,
-            disableLink: false,
-            showContent: false,
-            showBulletIcon: true,
-            linkTarget: false
-        }]
-    },
-    bulletIconStyles: {
-        type: "array",
-        default: [{
-            bulletListfontSize: 20,
-            bulletListfontSizeType: "px",
-            bulletListfontSizeMobile: 20,
-            bulletListfontSizeTablet: 20,
-            bulletIconHoverColor: '',
-            bulletIconColor: "#3a3a3a",
-            bulletIconBackgroundColor: '',
-            bulletIconHoverBackgroundColor: '',
-            bulletIconborderType: "none",
-            bulletIconborderRadius: 0,
-            bulletIconborderColor: '',
-            bulletIconpaddingUnit: 'px',
-            bulletIconmarginType: 'px'
-        }]
-    },
-    bulletIconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    bulletIconBorderTop: {
-        type: "number"
-    },
-    bulletIconBorderRight: {
-        type: "number"
-    },
-    bulletIconBorderBottom: {
-        type: "number"
-    },
-    bulletIconBorderLeft: {
-        type: "number"
-    },
-    bulletIconBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    bulletIconmarginT: {
-        type: "number"
-    },
-    bulletIconmarginR: {
-        type: "number"
-    },
-    bulletIconmarginB: {
-        type: "number"
-    },
-    bulletIconmarginL: {
-        type: "number"
-    },
-    bulletIconmarginTTablet: {
-        type: "number"
-    },
-    bulletIconmarginRTablet: {
-        type: "number"
-    },
-    bulletIconmarginBTablet: {
-        type: "number"
-    },
-    bulletIconmarginLTablet: {
-        type: "number"
-    },
-    bulletIconmarginTMobile: {
-        type: "number"
-    },
-    bulletIconmarginRMobile: {
-        type: "number"
-    },
-    bulletIconmarginBMobile: {
-        type: "number"
-    },
-    bulletIconmarginLMobile: {
-        type: "number"
-    },
-    bulletIconpaddingTop: {
-        type: "number"
-    },
-    bulletIconpaddingRight: {
-        type: "number"
-    },
-    bulletIconpaddingBottom: {
-        type: "number"
-    },
-    bulletIconpaddingLeft: {
-        type: "number"
-    },
-    bulletIconpaddingTTablet: {
-        type: "number"
-    },
-    bulletIconpaddingRTablet: {
-        type: "number"
-    },
-    bulletIconpaddingBTablet: {
-        type: "number"
-    },
-    bulletIconpaddingLTablet: {
-        type: "number"
-    },
-    bulletIconpaddingTMobile: {
-        type: "number"
-    },
-    bulletIconpaddingRMobile: {
-        type: "number"
-    },
-    bulletIconpaddingBMobile: {
-        type: "number"
-    },
-    bulletIconpaddingLMobile: {
-        type: "number"
-    },
-    titleStyles: {
-        type: "array",
-        default: [{
-            titleLetter: 0,
-            titleStyle: '',
-            titleUpper: false,
-            titleWeight: 500,
-            titleLine: 0,
-            titleSize: 20,
-            titlefontSizeType: "px",
-            titlefontSizeMobile: 20,
-            titlefontSizeTablet: 20,
-            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
-            titleColor: "",
-            titleHoverColor: "",
-            titleshadowColor: '',
-            titleshadowBlur: 0,
-            titleshadowHorizontal: 0,
-            titleshadowVertical: 0,
-            titlemarginType: 'px'
-        }]
-    },
-    titlemarginT: {
-        type: "number"
-    },
-    titlemarginR: {
-        type: "number"
-    },
-    titlemarginB: {
-        type: "number"
-    },
-    titlemarginL: {
-        type: "number"
-    },
-    titlemarginTTablet: {
-        type: "number"
-    },
-    titlemarginRTablet: {
-        type: "number"
-    },
-    titlemarginBTablet: {
-        type: "number"
-    },
-    titlemarginLTablet: {
-        type: "number"
-    },
-    titlemarginTMobile: {
-        type: "number"
-    },
-    titlemarginRMobile: {
-        type: "number"
-    },
-    titlemarginBMobile: {
-        type: "number"
-    },
-    titlemarginLMobile: {
-        type: "number"
-    },
-    generalStyles: {
-        type: "array",
-        default: [{
-            generalBackgroundColor: "",
-            generalHoverBackgroundColor: '',
-            generalborderType: "none",
-            generalborderRadius: 0,
-            generalborderColor: '',
-            generalShadowColor: '',
-            generalShadowBlur: 0,
-            generalShadowHorizontal: 0,
-            generalShadowVertical: 0,
-            generalShadowPosition: '',
-            generalHoverShadowColor: '',
-            generalHoverShadowBlur: '',
-            generalHoverShadowHorizontal: '',
-            generalHoverShadowVertical: '',
-            generalHoverShadowPosition: '',
-            generalpaddingUnit: 'px',
-            generalmarginType: 'px'
-        }]
-    },
-    generalBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    generalBorderTop: {
-        type: "number"
-    },
-    generalBorderRight: {
-        type: "number"
-    },
-    generalBorderBottom: {
-        type: "number"
-    },
-    generalBorderLeft: {
-        type: "number"
-    },
-    generalBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    generalmarginT: {
-        type: "number"
-    },
-    generalmarginR: {
-        type: "number"
-    },
-    generalmarginB: {
-        type: "number"
-    },
-    generalmarginL: {
-        type: "number"
-    },
-    generalmarginTTablet: {
-        type: "number"
-    },
-    generalmarginRTablet: {
-        type: "number"
-    },
-    generalmarginBTablet: {
-        type: "number"
-    },
-    generalmarginLTablet: {
-        type: "number"
-    },
-    generalmarginTMobile: {
-        type: "number"
-    },
-    generalmarginRMobile: {
-        type: "number"
-    },
-    generalmarginBMobile: {
-        type: "number"
-    },
-    generalmarginLMobile: {
-        type: "number"
-    },
-    generalpaddingTop: {
-        type: "number"
-    },
-    generalpaddingRight: {
-        type: "number"
-    },
-    generalpaddingBottom: {
-        type: "number"
-    },
-    generalpaddingLeft: {
-        type: "number"
-    },
-    generalpaddingTTablet: {
-        type: "number"
-    },
-    generalpaddingRTablet: {
-        type: "number"
-    },
-    generalpaddingBTablet: {
-        type: "number"
-    },
-    generalpaddingLTablet: {
-        type: "number"
-    },
-    generalpaddingTMobile: {
-        type: "number"
-    },
-    generalpaddingRMobile: {
-        type: "number"
-    },
-    generalpaddingBMobile: {
-        type: "number"
-    },
-    generalpaddingLMobile: {
-        type: "number"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    layoutPos: {
-        type: "string",
-        default: "block"
-    },
-    iconPosition: {
-        type: "string",
-        default: "before"
-    },
-    bulletAlign: {
-        type: "string",
-        default: "center"
-    },
-    titleFont: {
-        type: "string"
-    }
-};
-
 registerBlockType("premium/bullet-list", {
     title: __("Bullet List"),
     icon: React.createElement(_icons2.default, { icon: "bullet-list" }),
     category: "premium-blocks",
-    attributes: bulletListAttrs,
+    attributes: _attributes2.default,
     supports: {
         inserter: _settings.bulletList
     },
@@ -56621,7 +56250,7 @@ function save(props) {
             }
         }),
         React.createElement(
-            "div",
+            "ul",
             { className: "premium-bullet-list-" + layoutPos + " premium-bullet-list",
                 style: {
                     textAlign: align,
@@ -56654,6 +56283,8 @@ function save(props) {
                             image_icon_html = React.createElement("img", {
                                 src: icon.image.url,
                                 style: {
+                                    width: '20px',
+                                    height: '20px',
                                     borderStyle: bulletIconStyles[0].bulletIconborderType,
                                     borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                     borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
@@ -56671,60 +56302,56 @@ function save(props) {
                     var _ref;
 
                     return React.createElement(
-                        "ul",
-                        null,
+                        "li",
+                        {
+                            className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                            key: index,
+                            style: {
+                                textAlign: align,
+                                justifyContent: align == "right" ? "flex-end" : align,
+                                backgroundColor: generalStyles[0].generalBackgroundColor,
+                                borderStyle: generalStyles[0].generalborderType,
+                                borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                borderColor: generalStyles[0].generalborderColor,
+                                boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                            }
+                        },
                         React.createElement(
-                            "li",
-                            {
-                                className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
-                                key: index,
-                                style: {
-                                    textAlign: align,
-                                    justifyContent: align == "right" ? "flex-end" : align,
-                                    backgroundColor: generalStyles[0].generalBackgroundColor,
-                                    borderStyle: generalStyles[0].generalborderType,
-                                    borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                    borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                    borderColor: generalStyles[0].generalborderColor,
-                                    boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
-                                }
-                            },
+                            "div",
+                            { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
+                                    justifyContent: align == "right" ? align : align,
+                                    display: iconPosition == "before" ? "flex" : "inline-flex",
+                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                } },
+                            React.createElement(
+                                "span",
+                                { className: "premium-bullet-list__icon-wrap",
+                                    style: {
+                                        overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                        alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                        textAlign: bulletAlign,
+                                        justifyContent: bulletAlign,
+                                        alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                    }
+                                },
+                                image_icon_html
+                            ),
                             React.createElement(
                                 "div",
-                                { className: "premium-bullet-list__content-wrap", style: {
-                                        justifyContent: align == "right" ? align : align,
-                                        display: iconPosition == "before" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
-                                    } },
-                                React.createElement(
-                                    "span",
-                                    { className: "premium-bullet-list__icon-wrap",
-                                        style: {
-                                            overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
-                                            alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                            textAlign: bulletAlign,
-                                            justifyContent: bulletAlign,
-                                            alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
-                                        }
-                                    },
-                                    image_icon_html
-                                ),
-                                React.createElement(
-                                    "div",
-                                    { className: "premium-bullet-list__label-wrap" },
-                                    React.createElement(RichText.Content, {
-                                        tagName: "span",
-                                        value: repeaterBulletList[index].label,
-                                        className: "premium-bullet-list__label",
-                                        style: (_ref = {
-                                            fontFamily: titleFont,
-                                            fontWeight: titleStyles[0].titleWeight,
-                                            letterSpacing: titleStyles[0].titleLetter + "px",
-                                            lineHeight: titleStyles[0].titleLine + "px",
-                                            fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                        }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref) })
-                                )
+                                { className: "premium-bullet-list__label-wrap" },
+                                React.createElement(RichText.Content, {
+                                    tagName: "span",
+                                    value: repeaterBulletList[index].label,
+                                    className: "premium-bullet-list__label",
+                                    style: (_ref = {
+                                        fontFamily: titleFont,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                        lineHeight: titleStyles[0].titleLine + "px",
+                                        fontStyle: titleStyles[0].titleStyle,
+                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                    }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref) })
                             )
                         )
                     );
@@ -56863,6 +56490,10 @@ var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
 var _reactSortableHoc = __webpack_require__(110);
 
+var _align = __webpack_require__(371);
+
+var _align2 = _interopRequireDefault(_align);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -56892,7 +56523,8 @@ var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     Button = _wp$components.Button,
     TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl;
+    ToggleControl = _wp$components.ToggleControl,
+    Tooltip = _wp$components.Tooltip;
 
 
 var ICONTYPE = [{
@@ -57267,19 +56899,21 @@ var edit = function (_Component) {
                 cloneIcons.push({
                     id: cloneIcons.length + 1,
                     label: "Title ",
-                    image_icon: cloneIcons[0].image_icon,
-                    icon: cloneIcons[0].icon,
-                    image: cloneIcons[0].image,
+                    image_icon: "icon",
+                    icon: "fa fa-arrow-circle-right",
+                    image: '',
                     icon_color: cloneIcons[0].icon_color,
                     icon_hover_color: cloneIcons[0].icon_hover_color,
                     icon_bg_color: cloneIcons[0].icon_bg_color,
                     icon_bg_hover_color: cloneIcons[0].icon_bg_hover_color,
                     item_bg_color: cloneIcons[0].item_bg_color,
                     item_bg_hover_color: cloneIcons[0].item_bg_hover_color,
-                    link: cloneIcons[0].link,
-                    disableLink: cloneIcons[0].disableLink,
-                    showContent: cloneIcons[0].showContent,
-                    showBulletIcon: cloneIcons[0].showBulletIcon
+                    link: "#",
+                    target: false,
+                    disableLink: false,
+                    showContent: false,
+                    showBulletIcon: true,
+                    linkTarget: false
                 });
                 setAttributes({ repeaterBulletList: cloneIcons });
             };
@@ -57547,21 +57181,70 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(
-                        "p",
+                        "div",
                         null,
-                        "Bullet Alignment"
-                    ),
-                    React.createElement(Toolbar, {
-                        controls: ALIGNS.map(function (contentAlign) {
-                            return {
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === bulletAlign,
-                                onClick: function onClick() {
-                                    return setAttributes({ bulletAlign: contentAlign });
-                                }
-                            };
+                        React.createElement(
+                            "label",
+                            null,
+                            __('Bullet Alignment')
+                        ),
+                        iconPosition !== 'top' ? React.createElement(
+                            "div",
+                            { className: "bullet-list-button-list" },
+                            React.createElement(
+                                Tooltip,
+                                { text: __('Top') },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        onClick: function onClick() {
+                                            return setAttributes({ bulletAlign: 'flex-start' });
+                                        },
+                                        className: "bullet-list-button" + (bulletAlign === 'flex-start' ? ' active' : '')
+                                    },
+                                    _align2.default.vertical_top
+                                )
+                            ),
+                            React.createElement(
+                                Tooltip,
+                                { text: __('Middle') },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        onClick: function onClick() {
+                                            return setAttributes({ bulletAlign: 'center' });
+                                        },
+                                        className: "bullet-list-button" + (bulletAlign === 'center' ? ' active' : '')
+                                    },
+                                    _align2.default.vertical_middle
+                                )
+                            ),
+                            React.createElement(
+                                Tooltip,
+                                { text: __('Bottom') },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        onClick: function onClick() {
+                                            return setAttributes({ bulletAlign: 'flex-end' });
+                                        },
+                                        className: "bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')
+                                    },
+                                    _align2.default.vertical_bottom
+                                )
+                            )
+                        ) : React.createElement(Toolbar, {
+                            controls: ALIGNS.map(function (contentAlign) {
+                                return {
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === bulletAlign,
+                                    onClick: function onClick() {
+                                        return setAttributes({ bulletAlign: contentAlign });
+                                    }
+                                };
+                            })
                         })
-                    })
+                    )
                 ),
                 React.createElement(
                     PanelBody,
@@ -58160,20 +57843,21 @@ var edit = function (_Component) {
                 )
             ), React.createElement(
                 "div",
-                { className: (0, _classnames2.default)(className, "premium-block-" + this.props.clientId + " premium-bullet-list-" + this.props.clientId), style: {
+                { className: (0, _classnames2.default)(className, "premium-bullet-list-" + this.props.clientId), style: {
                         textAlign: align
-                    }, id: mainClasses + "-wrap-" + this.props.clientId },
+                    }, id: "premium-bullet-list-" + this.props.clientId },
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
                         __html: [".premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", ".premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", ".premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + generalStyles[0].generalHoverShadowHorizontal + "px " + generalStyles[0].generalHoverShadowVertical + "px " + generalStyles[0].generalHoverShadowBlur + "px " + generalStyles[0].generalHoverShadowColor + " " + generalStyles[0].generalHoverShadowPosition + " !important;", "}"].join("\n")
                     }
                 }),
                 React.createElement(
-                    "div",
+                    "ul",
                     { className: "premium-bullet-list-" + layoutPos + " premium-bullet-list",
                         style: {
                             textAlign: align,
                             justifyContent: align == "right" ? "flex-end" : align
+                            // margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important'
                         } },
                     repeaterBulletList.map(function (icon, index) {
                         var _ref7;
@@ -58200,6 +57884,7 @@ var edit = function (_Component) {
                                                 borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                                 borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                 borderColor: bulletIconStyles[0].bulletIconborderColor
+                                                // verticalAlign: bulletAlign == 'left' ?
                                             }
                                         })
                                     );
@@ -58229,85 +57914,81 @@ var edit = function (_Component) {
                         var target = icon.linkTarget ? "_blank" : "_self";
 
                         return React.createElement(
-                            "ul",
-                            null,
+                            "li",
+                            {
+                                className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                key: index,
+                                target: target,
+                                rel: "noopener noreferrer",
+                                style: {
+                                    textAlign: align,
+                                    justifyContent: align == "right" ? "flex-end" : align,
+                                    backgroundColor: generalStyles[0].generalBackgroundColor,
+                                    borderStyle: generalStyles[0].generalborderType,
+                                    borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                    borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                    borderColor: generalStyles[0].generalborderColor,
+                                    paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
+                                    paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
+                                    paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
+                                    paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
+                                    marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
+                                    marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
+                                    marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
+                                    marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
+                                    boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                }
+                            },
                             React.createElement(
-                                "li",
-                                {
-                                    className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
-                                    key: index,
-                                    target: target,
-                                    rel: "noopener noreferrer",
-                                    style: {
-                                        textAlign: align,
-                                        justifyContent: align == "right" ? "flex-end" : align,
-                                        backgroundColor: generalStyles[0].generalBackgroundColor,
-                                        borderStyle: generalStyles[0].generalborderType,
-                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                        borderColor: generalStyles[0].generalborderColor,
-                                        paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
-                                        paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
-                                        paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
-                                        paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
-                                        marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
-                                        marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
-                                        marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
-                                        marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
-                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
-                                    }
-                                },
+                                "div",
+                                { className: "premium-bullet-list__content-wrap", style: {
+                                        justifyContent: align == "right" ? align : align,
+                                        display: iconPosition == "before" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
+                                        marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
+                                        marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
+                                        marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
+                                        marginRight: TitleMarginRight + titleStyles[0].titlemarginType
+                                    } },
+                                icon.showBulletIcon && React.createElement(
+                                    "span",
+                                    { className: "premium-bullet-list__content-wrap-" + bulletAlign,
+                                        style: {
+                                            // overflow: "hidden",
+                                            alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                            marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
+                                            marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
+                                            marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
+                                            marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
+                                            textAlign: bulletAlign,
+                                            justifyContent: bulletAlign,
+                                            alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                        }
+                                    },
+                                    image_icon_html
+                                ),
                                 React.createElement(
                                     "div",
-                                    { className: "premium-bullet-list__content-wrap", style: {
-                                            justifyContent: align == "right" ? align : align,
-                                            display: iconPosition == "before" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
-                                            marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titlemarginType
-                                        } },
-                                    icon.showBulletIcon && React.createElement(
-                                        "span",
-                                        { className: "premium-bullet-list__icon-wrap",
-                                            style: {
-                                                // overflow: "hidden",
-                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                                marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
-                                                marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
-                                                marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
-                                                marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
-                                                textAlign: bulletAlign,
-                                                justifyContent: bulletAlign,
-                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
-                                            }
+                                    { className: "premium-bullet-list__label-wrap" },
+                                    React.createElement(RichText, {
+                                        tagName: "span",
+                                        placeholder: __("Title Name"),
+                                        value: icon.label,
+                                        className: "premium-bullet-list__label",
+                                        onChange: function onChange(val) {
+                                            return _changeLabel(val, index);
                                         },
-                                        image_icon_html
-                                    ),
-                                    React.createElement(
-                                        "div",
-                                        { className: "premium-bullet-list__label-wrap" },
-                                        React.createElement(RichText, {
-                                            tagName: "div",
-                                            placeholder: __("Title Name"),
-                                            value: icon.label,
-                                            className: "premium-bullet-list__label",
-                                            onChange: function onChange(val) {
-                                                return _changeLabel(val, index);
-                                            },
-                                            multiline: false,
-                                            style: (_ref7 = {
-                                                fontFamily: titleFont,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                            }, _defineProperty(_ref7, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref7, "color", titleStyles[0].titleColor), _defineProperty(_ref7, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref7)
-                                        })
-                                    )
+                                        multiline: false,
+                                        style: (_ref7 = {
+                                            fontFamily: titleFont,
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                        }, _defineProperty(_ref7, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref7, "color", titleStyles[0].titleColor), _defineProperty(_ref7, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref7)
+                                    })
                                 )
                             )
                         );
@@ -58329,6 +58010,446 @@ exports.default = withSelect(function (select, props) {
 
     return { deviceType: deviceType };
 })(edit);
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var __ = wp.i18n.__;
+
+var icons = {};
+
+icons.vertical_top = React.createElement(
+  "svg",
+  { width: "16", height: "16", viewBox: "0 0 16 16", xmlns: "http://www.w3.org/2000/svg" },
+  React.createElement(
+    "g",
+    { transform: "translate(1)", fill: "none" },
+    React.createElement("rect", { "class": "qubely-svg-fill", x: "4", y: "4", width: "6", height: "12", rx: "1" }),
+    React.createElement("path", { "class": "qubely-svg-stroke", d: "M0 1h14", "stroke-width": "2", "stroke-linecap": "square" })
+  )
+);
+icons.vertical_middle = React.createElement(
+  "svg",
+  { width: "16", height: "16", viewBox: "0 0 16 16", xmlns: "http://www.w3.org/2000/svg" },
+  React.createElement(
+    "g",
+    { fill: "none" },
+    React.createElement(
+      "g",
+      { transform: "translate(1 1)" },
+      React.createElement("rect", { "class": "qubely-svg-fill", x: "4", width: "6", height: "14", rx: "1" }),
+      React.createElement("path", { d: "M0 7h2", "class": "qubely-svg-stroke", "stroke-width": "2", "stroke-linecap": "square" })
+    ),
+    React.createElement("path", { d: "M13 8h2", "class": "qubely-svg-stroke", "stroke-width": "2", "stroke-linecap": "square" })
+  )
+);
+icons.vertical_bottom = React.createElement(
+  "svg",
+  { width: "16", height: "16", viewBox: "0 0 16 16", xmlns: "http://www.w3.org/2000/svg" },
+  React.createElement(
+    "g",
+    { transform: "translate(1)", fill: "none" },
+    React.createElement("rect", { "class": "qubely-svg-fill", x: "4", width: "6", height: "12", rx: "1" }),
+    React.createElement("path", { d: "M0 15h14", "class": "qubely-svg-stroke", "stroke-width": "2", "stroke-linecap": "square" })
+  )
+);
+
+exports.default = icons;
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    align: {
+        type: "string",
+        default: "left"
+    },
+    repeaterBulletList: {
+        type: "array",
+        default: [{
+            id: 1,
+            label: "Title #" + 1,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }, {
+            id: 2,
+            label: "Title #" + 2,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }, {
+            id: 3,
+            label: "Title #" + 3,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            image: "",
+            icon_color: "#3a3a3a",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }]
+    },
+    bulletIconStyles: {
+        type: "array",
+        default: [{
+            bulletListfontSize: 20,
+            bulletListfontSizeType: "px",
+            bulletListfontSizeMobile: 20,
+            bulletListfontSizeTablet: 20,
+            bulletIconHoverColor: '',
+            bulletIconColor: "#3a3a3a",
+            bulletIconBackgroundColor: '',
+            bulletIconHoverBackgroundColor: '',
+            bulletIconborderType: "none",
+            bulletIconborderRadius: 0,
+            bulletIconborderColor: '',
+            bulletIconpaddingUnit: 'px',
+            bulletIconmarginType: 'px'
+        }]
+    },
+    bulletIconBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    bulletIconBorderTop: {
+        type: "number"
+    },
+    bulletIconBorderRight: {
+        type: "number"
+    },
+    bulletIconBorderBottom: {
+        type: "number"
+    },
+    bulletIconBorderLeft: {
+        type: "number"
+    },
+    bulletIconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    bulletIconmarginT: {
+        type: "number"
+    },
+    bulletIconmarginR: {
+        type: "number"
+    },
+    bulletIconmarginB: {
+        type: "number"
+    },
+    bulletIconmarginL: {
+        type: "number"
+    },
+    bulletIconmarginTTablet: {
+        type: "number"
+    },
+    bulletIconmarginRTablet: {
+        type: "number"
+    },
+    bulletIconmarginBTablet: {
+        type: "number"
+    },
+    bulletIconmarginLTablet: {
+        type: "number"
+    },
+    bulletIconmarginTMobile: {
+        type: "number"
+    },
+    bulletIconmarginRMobile: {
+        type: "number"
+    },
+    bulletIconmarginBMobile: {
+        type: "number"
+    },
+    bulletIconmarginLMobile: {
+        type: "number"
+    },
+    bulletIconpaddingTop: {
+        type: "number"
+    },
+    bulletIconpaddingRight: {
+        type: "number"
+    },
+    bulletIconpaddingBottom: {
+        type: "number"
+    },
+    bulletIconpaddingLeft: {
+        type: "number"
+    },
+    bulletIconpaddingTTablet: {
+        type: "number"
+    },
+    bulletIconpaddingRTablet: {
+        type: "number"
+    },
+    bulletIconpaddingBTablet: {
+        type: "number"
+    },
+    bulletIconpaddingLTablet: {
+        type: "number"
+    },
+    bulletIconpaddingTMobile: {
+        type: "number"
+    },
+    bulletIconpaddingRMobile: {
+        type: "number"
+    },
+    bulletIconpaddingBMobile: {
+        type: "number"
+    },
+    bulletIconpaddingLMobile: {
+        type: "number"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleLetter: 0,
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleLine: 0,
+            titleSize: 20,
+            titlefontSizeType: "px",
+            titlefontSizeMobile: 20,
+            titlefontSizeTablet: 20,
+            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleColor: "",
+            titleHoverColor: "",
+            titleshadowColor: '',
+            titleshadowBlur: 0,
+            titleshadowHorizontal: 0,
+            titleshadowVertical: 0,
+            titlemarginType: 'px'
+        }]
+    },
+    titlemarginT: {
+        type: "number"
+    },
+    titlemarginR: {
+        type: "number"
+    },
+    titlemarginB: {
+        type: "number"
+    },
+    titlemarginL: {
+        type: "number"
+    },
+    titlemarginTTablet: {
+        type: "number"
+    },
+    titlemarginRTablet: {
+        type: "number"
+    },
+    titlemarginBTablet: {
+        type: "number"
+    },
+    titlemarginLTablet: {
+        type: "number"
+    },
+    titlemarginTMobile: {
+        type: "number"
+    },
+    titlemarginRMobile: {
+        type: "number"
+    },
+    titlemarginBMobile: {
+        type: "number"
+    },
+    titlemarginLMobile: {
+        type: "number"
+    },
+    generalStyles: {
+        type: "array",
+        default: [{
+            generalBackgroundColor: "",
+            generalHoverBackgroundColor: '',
+            generalborderType: "none",
+            generalborderRadius: 0,
+            generalborderColor: '',
+            generalShadowColor: '',
+            generalShadowBlur: 0,
+            generalShadowHorizontal: 0,
+            generalShadowVertical: 0,
+            generalShadowPosition: '',
+            generalHoverShadowColor: '',
+            generalHoverShadowBlur: '',
+            generalHoverShadowHorizontal: '',
+            generalHoverShadowVertical: '',
+            generalHoverShadowPosition: '',
+            generalpaddingUnit: 'px',
+            generalmarginType: 'px'
+        }]
+    },
+    generalBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    generalBorderTop: {
+        type: "number"
+    },
+    generalBorderRight: {
+        type: "number"
+    },
+    generalBorderBottom: {
+        type: "number"
+    },
+    generalBorderLeft: {
+        type: "number"
+    },
+    generalBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    generalmarginT: {
+        type: "number"
+    },
+    generalmarginR: {
+        type: "number"
+    },
+    generalmarginB: {
+        type: "number"
+    },
+    generalmarginL: {
+        type: "number"
+    },
+    generalmarginTTablet: {
+        type: "number"
+    },
+    generalmarginRTablet: {
+        type: "number"
+    },
+    generalmarginBTablet: {
+        type: "number"
+    },
+    generalmarginLTablet: {
+        type: "number"
+    },
+    generalmarginTMobile: {
+        type: "number"
+    },
+    generalmarginRMobile: {
+        type: "number"
+    },
+    generalmarginBMobile: {
+        type: "number"
+    },
+    generalmarginLMobile: {
+        type: "number"
+    },
+    generalpaddingTop: {
+        type: "number"
+    },
+    generalpaddingRight: {
+        type: "number"
+    },
+    generalpaddingBottom: {
+        type: "number"
+    },
+    generalpaddingLeft: {
+        type: "number"
+    },
+    generalpaddingTTablet: {
+        type: "number"
+    },
+    generalpaddingRTablet: {
+        type: "number"
+    },
+    generalpaddingBTablet: {
+        type: "number"
+    },
+    generalpaddingLTablet: {
+        type: "number"
+    },
+    generalpaddingTMobile: {
+        type: "number"
+    },
+    generalpaddingRMobile: {
+        type: "number"
+    },
+    generalpaddingBMobile: {
+        type: "number"
+    },
+    generalpaddingLMobile: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    layoutPos: {
+        type: "string",
+        default: "block"
+    },
+    iconPosition: {
+        type: "string",
+        default: "before"
+    },
+    bulletAlign: {
+        type: "string",
+        default: "center"
+    },
+    titleFont: {
+        type: "string"
+    }
+};
+exports.default = attributes;
 
 /***/ })
 /******/ ]);
