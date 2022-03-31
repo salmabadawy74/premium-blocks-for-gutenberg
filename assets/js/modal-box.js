@@ -6,11 +6,8 @@ jQuery(function ($) {
         const wrapClass = $modal.find('.premium-popup__modal_content')
         const closes = wrapClass.find('button.close-button');
         const wrapOverlay = $modal.find('.premium-popup__modal_wrap_overlay')
-        let delayAnimationTime = wrapClass.data('delayanimation')
         function ShowModal() {
-            setTimeout(function () {
-                $modal.find(".premium-popup__modal_wrap").css("display", "flex");
-            }, delayAnimationTime * 1000)
+            $modal.find(".premium-popup__modal_wrap").css("display", "flex");
         }
         function hideModal() {
             $modal.find(".premium-popup__modal_wrap").css("display", "none");

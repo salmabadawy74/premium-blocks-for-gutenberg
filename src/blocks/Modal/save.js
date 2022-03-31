@@ -89,7 +89,6 @@ const save = props => {
     } else {
         btnbg = modalStyles[0].backgroundImageURL ? `url('${modalStyles[0].backgroundImageURL}')` : ''
     }
-    console.log(triggerSettings[0].triggerImgURL)
 
     return (
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} data-trigger={triggerSettings[0].triggerType}>
@@ -162,9 +161,9 @@ const save = props => {
                 </div>
                 <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
                     data-delay={triggerSettings[0].delayTime}
-                    data-delayanimation={contentStyles[0].animationDelay}
                     data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
                     style={{
+
                         borderStyle: `${modalStyles[0].borderType}`,
                         borderColor: `${modalStyles[0].borderColor}`,
                         borderTopWidth: `${modalBorderTop}px`,
@@ -226,7 +225,6 @@ const save = props => {
                     </div>}
                     <div className={`premium-modal-box-modal-body`} style={{
                         background: modalStyles[0].textBackColor,
-
                     }}>
                         {modalStyles[0].contentType === "text" ? <p style={{
                             color: modalStyles[0].textColor,
@@ -234,7 +232,7 @@ const save = props => {
                             fontFamily: modalStyles[0].modalFamily,
                             letterSpacing: modalStyles[0].modalSpacing,
                             fontStyle: modalStyles[0].modalStyle,
-                        }} >{modalStyles[0].contentText}</p> : <InnerBlocks />}
+                        }} >{modalStyles[0].contentText}</p> : <InnerBlocks.Content />}
 
                     </div>
                     {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
