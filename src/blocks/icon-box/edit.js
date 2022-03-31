@@ -13,6 +13,7 @@ import RadioComponent from '../../components/radio-control';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import WebfontLoader from "../../components/typography/fontLoader"
+import PremiumShadow from "../../components/PremiumShadow";
 
 const { __ } = wp.i18n;
 
@@ -789,6 +790,7 @@ class edit extends Component {
                             onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
                         />
                         <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                             boxShadow={true}
                             color={containerStyles[0].shadowColor}
                             blur={containerStyles[0].shadowBlur}
