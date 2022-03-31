@@ -6,6 +6,7 @@ import Lottie from 'react-lottie-with-segments';
 import Inspector from "./inspector";
 const { Fragment, useEffect, useState } = wp.element;
 const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
+import WebfontLoader from "../../components/typography/fontLoader"
 
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     if (device === 'Mobile') {
@@ -140,7 +141,7 @@ const edit = props => {
     const renderCss = (
         <style>
             {`
-            #premium-modal-box-${block_id} .premium-modal-trigger-container button:hover {
+            #premium-modal-box-${block_id} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover {
               background-color: ${triggerStyles[0].triggerHoverBack} !important;
               border-style: ${triggerStyles[0].borderTypeH} !important;
               border-top-width: ${triggerBorderTopH}px !important;
@@ -150,10 +151,10 @@ const edit = props => {
               border-color: ${triggerStyles[0].borderColorH} !important;
               border-radius: ${triggerStyles[0].borderRadiusH}px !important;
             }
-            #premium-modal-box-${block_id} .premium-modal-trigger-container button:hover i{
+            #premium-modal-box-${block_id} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i{
                 color:${triggerStyles[0].iconHoverColor} !important;
             }
-            #premium-modal-box-${block_id} .premium-modal-trigger-container button:hover span{
+            #premium-modal-box-${block_id} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span{
                 color:${triggerStyles[0].hoverColor} !important;
             }
              #premium-modal-box-${block_id} .premium-modal-trigger-container:hover .premium-modal-trigger-text {
@@ -227,6 +228,42 @@ const edit = props => {
         }
     } else {
         btnbg = modalStyles[0].backgroundImageURL ? `url('${modalStyles[0].backgroundImageURL}')` : ''
+    }
+    let loadTriggerGoogleFonts;
+    let loadHeaderGoogleFonts;
+    let loadModalGoogleFonts;
+    if (triggerStyles[0].triggerFamily !== 'Default') {
+        const triggerConfig = {
+            google: {
+                families: [triggerStyles[0].triggerFamily],
+            },
+        }
+        loadTriggerGoogleFonts = (
+            <WebfontLoader config={triggerConfig}>
+            </WebfontLoader>
+        )
+    }
+    if (headerStyles[0].headerFamily !== 'Default') {
+        const headerConfig = {
+            google: {
+                families: [headerStyles[0].headerFamily],
+            },
+        }
+        loadHeaderGoogleFonts = (
+            <WebfontLoader config={headerConfig}>
+            </WebfontLoader>
+        )
+    }
+    if (modalStyles[0].modalFamily !== 'Default') {
+        const modalConfig = {
+            google: {
+                families: [modalStyles[0].modalFamily],
+            },
+        }
+        loadModalGoogleFonts = (
+            <WebfontLoader config={modalConfig}>
+            </WebfontLoader>
+        )
     }
     return [
         isSelected && (
@@ -499,6 +536,9 @@ const edit = props => {
                 </div>
 
             )}
+            {loadTriggerGoogleFonts}
+            {loadHeaderGoogleFonts}
+            {loadModalGoogleFonts}
         </div >
     ];
 };
