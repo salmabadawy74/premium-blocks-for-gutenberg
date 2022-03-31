@@ -56964,7 +56964,11 @@ var edit = function edit(props) {
                     return setOpenModal(false);
                 }, style: {
                     backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
-                    backgroundImage: btnbg
+                    backgroundImage: btnbg,
+                    backgroundRepeat: modalStyles[0].backgroundRepeat,
+                    backgroundPosition: modalStyles[0].backgroundPosition,
+                    backgroundSize: modalStyles[0].backgroundSize,
+                    backgroundAttachment: modalStyles[0].fixed ? "fixed" : "unset"
                 } }),
             React.createElement(
                 "div",
@@ -58877,8 +58881,7 @@ var attributes = {
             showLowerClose: true,
             lowerCloseText: __('Close', 'premium-blocks-for-gutenberg'),
             animationType: 'fadeInDown',
-            animationSpeed: 'normal',
-            animationDelay: ''
+            animationSpeed: 'normal'
         }]
     },
     triggerSettings: {
@@ -59198,9 +59201,9 @@ var attributes = {
             containerBack: '',
             backgroundImageID: '',
             backgroundImageURL: '',
-            backgroundPosition: '',
-            backgroundRepeat: '',
-            backgroundSize: '',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'auto',
             fixed: false,
             gradientLocationOne: '0',
             gradientColorTwo: '',
@@ -59446,7 +59449,11 @@ var save = function save(props) {
             { className: 'premium-popup__modal_wrap', style: { display: "none" }, role: 'dialog' },
             React.createElement('div', { role: 'presentation', className: 'premium-popup__modal_wrap_overlay', style: {
                     backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
-                    backgroundImage: btnbg
+                    backgroundImage: btnbg,
+                    backgroundRepeat: modalStyles[0].backgroundRepeat,
+                    backgroundPosition: modalStyles[0].backgroundPosition,
+                    backgroundSize: modalStyles[0].backgroundSize,
+                    backgroundAttachment: modalStyles[0].fixed ? "fixed" : "unset"
                 } }),
             React.createElement(
                 'div',
