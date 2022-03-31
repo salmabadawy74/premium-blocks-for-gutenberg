@@ -4,8 +4,6 @@ import PremiumTypo from "../../components/premium-typo"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import iconsList from "../../components/premium-icons-list"
 import PremiumBorder from "../../components/premium-border"
-import PremiumTextShadow from "../../components/premium-text-shadow"
-import PremiumBoxShadow from "../../components/premium-box-shadow"
 import PremiumBackground from "../../components/premium-background"
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
@@ -510,7 +508,8 @@ class edit extends Component {
                                 onChangeUpper={check => saveTitleStyle({ titleUpper: check })}
                                 onChangeFamily={(fontFamily) => saveTitleStyle({ titleFont: fontFamily })}
                             />
-                            <PremiumTextShadow
+                            <PremiumShadow
+                                label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                                 color={titleStyles[0].titleShadowColor}
                                 blur={titleStyles[0].titleShadowBlur}
                                 horizontal={titleStyles[0].titleShadowHorizontal}
@@ -684,8 +683,9 @@ class edit extends Component {
                                 onChangeColor={(colorValue) => saveButtonStyle({ btnBorderColor: colorValue })}
                                 onChangeRadius={(newrRadius) => saveButtonStyle({ btnBorderRadius: newrRadius })}
                             />
-                            <PremiumBoxShadow
-                                inner={true}
+                            <PremiumShadow
+                                label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                boxShadow={true}
                                 color={btnStyles[0].btnShadowColor}
                                 blur={btnStyles[0].btnShadowBlur}
                                 horizontal={btnStyles[0].btnShadowHorizontal}
@@ -788,8 +788,8 @@ class edit extends Component {
                             onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
                             onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
                         />
-                        <PremiumBoxShadow
-                            inner={true}
+                        <PremiumShadow
+                            boxShadow={true}
                             color={containerStyles[0].shadowColor}
                             blur={containerStyles[0].shadowBlur}
                             horizontal={containerStyles[0].shadowHorizontal}
@@ -801,9 +801,9 @@ class edit extends Component {
                             onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue || 0 })}
                             onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
                         />
-                        <PremiumBoxShadow
-                            inner={true}
-                            label={__("Hover Box Shadow")}
+                        <PremiumShadow
+                            label={__("Hover Box Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
                             color={containerStyles[0].hoverShadowColor}
                             blur={containerStyles[0].hoverShadowBlur}
                             horizontal={containerStyles[0].hoverShadowHorizontal}

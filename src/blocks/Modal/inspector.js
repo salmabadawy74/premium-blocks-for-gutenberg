@@ -9,10 +9,9 @@ const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
-import PremiumBoxShadow from "../../components/premium-box-shadow"
+import PremiumShadow from "../../components/PremiumShadow"
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
-import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import { JsonUploadEnabled } from "../../../assets/js/settings";
 const {
@@ -806,8 +805,8 @@ const Inspector = ({
                     />
                 </Fragment>)}
                 {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "button") && (
-                    <PremiumBoxShadow
-                        inner={true}
+                    <PremiumShadow
+                        boxShadow={true}
                         color={triggerStyles[0].triggerShadowColor}
                         blur={triggerStyles[0].triggerShadowBlur}
                         horizontal={triggerStyles[0].triggerShadowHorizontal}
@@ -821,7 +820,8 @@ const Inspector = ({
                     />
                 )}
                 {triggerSettings[0].triggerType === "text" &&
-                    <PremiumTextShadow
+                    <PremiumShadow
+                        label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                         color={triggerStyles[0].textShadowColor}
                         blur={triggerStyles[0].textShadowBlur}
                         horizontal={triggerStyles[0].textShadowHorizontal}
@@ -1288,8 +1288,8 @@ const Inspector = ({
                     onChangeColor={(colorValue) => saveModalStyles({ borderColor: colorValue })}
                     onChangeRadius={(newRadius) => saveModalStyles({ borderRadius: newRadius })}
                 />
-                <PremiumBoxShadow
-                    inner={true}
+                <PremiumShadow
+                    boxShadow={true}
                     color={modalStyles[0].modalShadowColor}
                     blur={modalStyles[0].modalShadowBlur}
                     horizontal={modalStyles[0].modalShadowHorizontal}

@@ -3,7 +3,6 @@ import PremiumTypo from "../../components/premium-typo";
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
@@ -12,6 +11,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
 import RadioComponent from '../../components/radio-control'
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
+import PremiumShadow from "../../components/PremiumShadow";
 
 const { __ } = wp.i18n;
 
@@ -447,8 +447,8 @@ class edit extends Component {
                             gradientPosition={containerStyles[0].gradientPosition}
                             gradientType={containerStyles[0].gradientType}
                         />
-                        <PremiumBoxShadow
-                            inner={true}
+                        <PremiumShadow
+                            boxShadow={true}
                             color={containerStyles[0].shadowColor}
                             blur={containerStyles[0].shadowBlur}
                             horizontal={containerStyles[0].shadowHorizontal}

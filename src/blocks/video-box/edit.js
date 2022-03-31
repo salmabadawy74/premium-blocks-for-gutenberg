@@ -2,7 +2,6 @@ import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
 import PremiumMediaUpload from "../../components/premium-media-upload";
@@ -10,6 +9,7 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import WebfontLoader from "../../components/typography/fontLoader"
+import PremiumShadow from "../../components/PremiumShadow";
 
 const { withSelect } = wp.data
 
@@ -616,8 +616,8 @@ class edit extends Component {
                             onChangeColor={(colorValue) => saveBoxStyle({ boxBorderColor: colorValue })}
                             onChangeRadius={(newrRadius) => saveBoxStyle({ boxBorderRadius: newrRadius })}
                         />
-                        <PremiumBoxShadow
-                            inner={true}
+                        <PremiumShadow
+                            boxShadow={true}
                             color={boxStyles[0].shadowColor}
                             blur={boxStyles[0].shadowBlur}
                             horizontal={boxStyles[0].shadowHorizontal}

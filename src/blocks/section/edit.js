@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumShadow from "../../components/PremiumShadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
@@ -283,8 +283,8 @@ const edit = props => {
                         onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
                         onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
                     />
-                    <PremiumBoxShadow
-                        inner={false}
+                    <PremiumShadow
+                        boxShadow={true}
                         color={containerStyles[0].shadowColor}
                         blur={containerStyles[0].shadowBlur}
                         horizontal={containerStyles[0].shadowHorizontal}

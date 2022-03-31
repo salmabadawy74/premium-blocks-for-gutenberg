@@ -3,7 +3,6 @@ import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import RadioComponent from '../../components/radio-control';
@@ -491,7 +490,8 @@ class edit extends Component {
                                     onColorChange={(newValue) => saveIconStyle({ iconBGColorHover: newValue, })}
                                     colorDefault={""}
                                 />
-                                <PremiumTextShadow
+                                <PremiumShadow
+                                    label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     color={iconStyles[0].iconShadowColor}
                                     blur={iconStyles[0].iconShadowBlur}
                                     horizontal={iconStyles[0].iconShadowHorizontal}

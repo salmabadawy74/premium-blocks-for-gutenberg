@@ -1,8 +1,7 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumShadow from "../../components/PremiumShadow";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
@@ -340,7 +339,8 @@ class PremiumPricingTable extends Component {
                                 colorDefault={''}
                                 onColorChange={newColor => saveTitleStyles({ titleBack: newColor })}
                             />
-                            <PremiumTextShadow
+                            <PremiumShadow
+                                label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                                 color={titleStyles[0].titleShadowColor}
                                 blur={titleStyles[0].titleShadowBlur}
                                 horizontal={titleStyles[0].titleShadowHorizontal}
@@ -1107,8 +1107,9 @@ class PremiumPricingTable extends Component {
                             onChangeColor={(colorValue) => setAttributes({ borderColor: colorValue })}
                             onChangeRadius={(newrRadius) => saveTableStyles({ borderRadius: newrRadius })}
                         />
-                        <PremiumBoxShadow
-                            inner={true}
+                        <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
                             color={tableStyles[0].tableShadowColor}
                             blur={tableStyles[0].tableShadowBlur}
                             horizontal={tableStyles[0].tableShadowHorizontal}
