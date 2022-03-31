@@ -2045,7 +2045,11 @@ a.premium-dheading-block__link:hover {
       transition: 0.3s ease-in-out;
   }
   .premium-bullet-list-block ul {
-    /* margin: 0 !important; */
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .premium-bullet-list-inline ul {
+    margin: 0 !important;
     padding: 0 !important;
   }
   .premium-bullet-list__wrapper{
@@ -2098,7 +2102,7 @@ a.premium-dheading-block__link:hover {
     margin-right: 5px;
   }
   .premium-bullet-list-block{
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
   }
   .premium-bullet-list-tab-panel .components-tab-panel__tabs{
