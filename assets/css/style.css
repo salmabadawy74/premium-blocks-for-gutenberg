@@ -2130,7 +2130,7 @@ a.premium-dheading-block__link:hover {
   }
   .premium-bullet-list__content-wrap-center .premium-bullet-list__content-icon i {
     font-style: normal !important;
-    vertical-align: text-bottom !important;
+    vertical-align: middle !important;
     /* width: 100% !important;
     height: 100% !important; */
   }
@@ -2139,6 +2139,9 @@ a.premium-dheading-block__link:hover {
   }
   .premium-bullet-list__label-wrap{ 
     margin: 0 5px;
+  }
+  .premium-bullet-list-inline li {
+    align-self: center;
   }
   .components-button-group.premium-size-type-field {
     margin: 0;

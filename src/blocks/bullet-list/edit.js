@@ -708,7 +708,7 @@ class edit extends Component {
                         </div>
                         <div className="premium-control-toggle">
                             <AdvancedPopColorControl
-                                label={__("Hover Background Color", 'premium-block-for-gutenberg')}
+                                label={__("Background Hover Color", 'premium-block-for-gutenberg')}
                                 colorValue={generalStyles[0].generalHoverBackgroundColor}
                                 colorDefault={''}
                                 onColorChange={newValue =>
