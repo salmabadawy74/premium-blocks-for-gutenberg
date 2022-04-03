@@ -2570,7 +2570,7 @@ function PremiumMediaUpload(props) {
                 Fragment,
                 null,
                 imageURL && React.createElement(
-                    "span",
+                    "div",
                     { className: "premium-image-media" },
                     type === "image" ? React.createElement("img", { src: imageURL, className: "premium-image-upload" }) : React.createElement("iframe", { src: imageURL, className: "premium-image-upload" }),
                     React.createElement(
@@ -2587,7 +2587,7 @@ function PremiumMediaUpload(props) {
                                     onClick: open,
                                     role: "button"
                                 },
-                                React.createElement("span", { "aria-label": __("Edit"), className: "fa fa-pencil" })
+                                React.createElement("div", { "aria-label": __("Edit"), className: "fa fa-pencil" })
                             )
                         ),
                         React.createElement(
@@ -2601,7 +2601,7 @@ function PremiumMediaUpload(props) {
                                     onClick: onRemoveImage,
                                     role: "button"
                                 },
-                                React.createElement("span", { "aria-label": __("Close"), className: "fa fa-trash-o" })
+                                React.createElement("div", { "aria-label": __("Close"), className: "fa fa-trash-o" })
                             )
                         )
                     )
@@ -2611,7 +2611,7 @@ function PremiumMediaUpload(props) {
                     { onClick: open, className: "premium-placeholder-image" },
                     React.createElement(Dashicon, { icon: "insert" }),
                     React.createElement(
-                        "span",
+                        "div",
                         null,
                         __("Insert")
                     )
@@ -57015,7 +57015,7 @@ var edit = function (_Component) {
 
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
-                if (['button', 'div', 'input', 'i', 'select', 'option', 'span'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
             };
