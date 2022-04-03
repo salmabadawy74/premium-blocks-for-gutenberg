@@ -540,7 +540,7 @@ class edit extends Component {
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
-            if (['button', 'div', 'input', 'i', 'select', 'option', 'span'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+            if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                 return true; // Return true to cancel sorting
             }
         }
