@@ -1390,9 +1390,9 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-button__block {
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1;
-    padding: 12px 24px;
+    padding: 20px 0;
     width: 100%;
     text-align: center;
 }
