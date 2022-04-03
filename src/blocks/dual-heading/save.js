@@ -96,9 +96,6 @@ const save = props => {
                                 : firstStyles[0].firstBorderWidth + "px",
                             borderRadius: firstStyles[0].firstBorderRadius + "px",
                             borderColor: firstStyles[0].firstBorderColor,
-                            padding: firstStyles[0].firstPadding + "px",
-                            marginLeft: firstStyles[0].firstMarginL + "px",
-                            marginRight: firstStyles[0].firstMarginR + "px",
                             textShadow: `${firstStyles[0].firstShadowHorizontal}px ${firstStyles[0].firstShadowVertical}px ${firstStyles[0].firstShadowBlur}px ${firstStyles[0].firstShadowColor}`
                         }}
                     >
@@ -124,9 +121,6 @@ const save = props => {
                                 : secondStyles[0].secondBorderWidth + "px",
                             borderRadius: secondStyles[0].secondBorderRadius + "px",
                             borderColor: secondStyles[0].secondBorderColor,
-                            padding: secondStyles[0].secondPadding + "px",
-                            marginLeft: secondStyles[0].secondMarginL + "px",
-                            marginRight: secondStyles[0].secondMarginR + "px",
                             textShadow: `${secondStyles[0].secondShadowHorizontal}px ${secondStyles[0].secondShadowVertical}px ${secondStyles[0].secondShadowBlur}px ${secondStyles[0].secondShadowColor}`
                         }}
                     >

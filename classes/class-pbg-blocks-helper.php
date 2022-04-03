@@ -1705,6 +1705,40 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
 		}
+        if ( isset( $attr['firstMarginTop'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-top', ( $attr['firstMarginTop'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginRight'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-right', ( $attr['firstMarginRight'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginBottom'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-bottom', ( $attr['firstMarginBottom'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginLeft'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-left', ( $attr['firstMarginLeft'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingTop'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-top', ( $attr['firstPaddingTop'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingRight'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-right', ( $attr['firstPaddingRight'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingBottom'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-bottom', ( $attr['firstPaddingBottom'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingLeft'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-left', ( $attr['firstPaddingLeft'] . 'px' ) );
+		}
+
+
 		// Second Style FontSize.
 		if ( isset( $attr['secondStyles'] ) ) {
 			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
@@ -1712,20 +1746,117 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
+        if ( isset( $attr['secondMarginTop'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-top', ( $attr['secondMarginTop'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginRight'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-right', ( $attr['secondMarginRight'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginBottom'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-bottom', ( $attr['secondMarginBottom'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginLeft'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-left', ( $attr['secondMarginLeft'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingTop'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-top', ( $attr['secondPaddingTop'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingRight'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-right', ( $attr['secondPaddingRight'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingBottom'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-bottom', ( $attr['secondPaddingBottom'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingLeft'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-left', ( $attr['secondPaddingLeft'] . 'px' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
 		// First Style FontSizeTablet.
 		if ( isset( $attr['firstStyles'] ) ) {
-			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
+			if ( isset( $attr['firstStyles'][0]['firstSizeTablet'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
 				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
-				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
+				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSizeTablet'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
+		}
+        if ( isset( $attr['firstMarginTTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-top', ( $attr['firstMarginTTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginRTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-right', ( $attr['firstMarginRTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginBTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-bottom', ( $attr['firstMarginBTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginLTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-left', ( $attr['firstMarginLTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingTTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-top', ( $attr['firstPaddingTTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingRTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-right', ( $attr['firstPaddingRTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingBTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-bottom', ( $attr['firstPaddingBTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingLTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-left', ( $attr['firstPaddingLTablet'] . 'px' ) );
 		}
 		// Second Style FontSizeTablet.
 		if ( isset( $attr['secondStyles'] ) ) {
-			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
+			if ( isset( $attr['secondStyles'][0]['secondSizeTablet'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
 				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
-				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
+				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSizeTablet'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
+		}
+        if ( isset( $attr['secondMarginTTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-top', ( $attr['secondMarginTTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginRTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-right', ( $attr['secondMarginRTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginBTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-bottom', ( $attr['secondMarginBTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginLTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-left', ( $attr['secondMarginLTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingTTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-top', ( $attr['secondPaddingTTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingRTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-right', ( $attr['secondPaddingRTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingBTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-bottom', ( $attr['secondPaddingBTablet'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingLTablet'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-left', ( $attr['secondPaddingLTablet'] . 'px' ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
@@ -1733,15 +1864,79 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
 				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
-				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
+				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSizeMobile'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
+		}
+        if ( isset( $attr['firstMarginTMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-top', ( $attr['firstMarginTMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginRMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-right', ( $attr['firstMarginRMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginBMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-bottom', ( $attr['firstMarginBMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['firstMarginLMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'margin-left', ( $attr['firstMarginLMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingTMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-top', ( $attr['firstPaddingTMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingRMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-right', ( $attr['firstPaddingRMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingBMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-bottom', ( $attr['firstPaddingBMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['firstPaddingLMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->add_property( 'padding-left', ( $attr['firstPaddingLMobile'] . 'px' ) );
 		}
 		// Second Style FontSizeMobile.
 		if ( isset( $attr['secondStyles'] ) ) {
-			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
+			if ( isset( $attr['secondStyles'][0]['secondSizeMobile'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
 				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
-				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
+				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSizeMobile'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
+		}
+        if ( isset( $attr['secondMarginTMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-top', ( $attr['secondMarginTMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginRMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-right', ( $attr['secondMarginRMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginBMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-bottom', ( $attr['secondMarginBMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['secondMarginLMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'margin-left', ( $attr['secondMarginLMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingTMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-top', ( $attr['secondPaddingTMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingRMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-right', ( $attr['secondPaddingRMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingBMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-bottom', ( $attr['secondPaddingBMobile'] . 'px' ) );
+		}
+        if ( isset( $attr['secondPaddingLMobile'] )  ) {
+				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->add_property( 'padding-left', ( $attr['secondPaddingLMobile'] . 'px' ) );
 		}
 		$css->stop_media_query();
 		return $css->css_output();

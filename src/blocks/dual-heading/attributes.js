@@ -41,6 +41,7 @@ const attributes = {
                 firstWeight: '',
                 firstStyle: '',
                 firstLetter: '',
+                firstLine: '',
                 firstUpper: false,
                 firstColor: '',
                 firstBackground: '',
@@ -73,6 +74,7 @@ const attributes = {
                 secondSizeTablet: '',
                 secondSizeMobile: '',
                 secondWeight: '',
+                secondLine: '',
                 secondStyle: '',
                 secondLetter: '',
                 secondUpper: false,
@@ -166,6 +168,150 @@ const attributes = {
         type: 'number'
     },
     secondBorderLeft: {
+        type: 'number'
+    },
+    firstMarginTop: {
+        type: 'number'
+    },
+    firstMarginRight: {
+        type: 'number'
+    },
+    firstMarginBottom: {
+        type: 'number'
+    },
+    firstMarginLeft: {
+        type: 'number'
+    },
+    firstMarginTTablet: {
+        type: 'number'
+    },
+    firstMarginRTablet: {
+        type: 'number'
+    },
+    firstMarginBTablet: {
+        type: 'number'
+    },
+    firstMarginLTablet: {
+        type: 'number'
+    },
+    firstMarginTMobile: {
+        type: 'number'
+    },
+    firstMarginRMobile: {
+        type: 'number'
+    },
+    firstMarginBMobile: {
+        type: 'number'
+    },
+    firstMarginLMobile: {
+        type: 'number'
+    },
+    firstPaddingTop: {
+        type: 'number'
+    },
+    firstPaddingRight: {
+        type: 'number'
+    },
+    firstPaddingBottom: {
+        type: 'number'
+    },
+    firstPaddingLeft: {
+        type: 'number'
+    },
+    firstPaddingTTablet: {
+        type: 'number'
+    },
+    firstPaddingRTablet: {
+        type: 'number'
+    },
+    firstPaddingBTablet: {
+        type: 'number'
+    },
+    firstPaddingLTablet: {
+        type: 'number'
+    },
+    firstPaddingTMobile: {
+        type: 'number'
+    },
+    firstPaddingRMobile: {
+        type: 'number'
+    },
+    firstPaddingBMobile: {
+        type: 'number'
+    },
+    firstPaddingLMobile: {
+        type: 'number'
+    },
+    secondMarginTop: {
+        type: 'number'
+    },
+    secondMarginRight: {
+        type: 'number'
+    },
+    secondMarginBottom: {
+        type: 'number'
+    },
+    secondMarginLeft: {
+        type: 'number'
+    },
+    secondMarginTTablet: {
+        type: 'number'
+    },
+    secondMarginRTablet: {
+        type: 'number'
+    },
+    secondMarginBTablet: {
+        type: 'number'
+    },
+    secondMarginLTablet: {
+        type: 'number'
+    },
+    secondMarginTMobile: {
+        type: 'number'
+    },
+    secondMarginRMobile: {
+        type: 'number'
+    },
+    secondMarginBMobile: {
+        type: 'number'
+    },
+    secondMarginLMobile: {
+        type: 'number'
+    },
+    secondPaddingTop: {
+        type: 'number'
+    },
+    secondPaddingRight: {
+        type: 'number'
+    },
+    secondPaddingBottom: {
+        type: 'number'
+    },
+    secondPaddingLeft: {
+        type: 'number'
+    },
+    secondPaddingTTablet: {
+        type: 'number'
+    },
+    secondPaddingRTablet: {
+        type: 'number'
+    },
+    secondPaddingBTablet: {
+        type: 'number'
+    },
+    secondPaddingLTablet: {
+        type: 'number'
+    },
+    secondPaddingTMobile: {
+        type: 'number'
+    },
+    secondPaddingRMobile: {
+        type: 'number'
+    },
+    secondPaddingBMobile: {
+        type: 'number'
+    },
+    secondPaddingLMobile: {
         type: 'number'
     },
     link: {

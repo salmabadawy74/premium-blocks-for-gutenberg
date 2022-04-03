@@ -9,7 +9,8 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import WebfontLoader from "../../components/typography/fontLoader"
 import PremiumShadow from "../../components/PremiumShadow";
-
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 
 const { Fragment, Component } = wp.element;
 
@@ -84,7 +85,55 @@ class edit extends Component {
             firstBorder,
             secondBorder,
             containerBorder,
-            backgroundType
+            backgroundType,
+            firstMarginTop,
+            firstMarginRight,
+            firstMarginBottom,
+            firstMarginLeft,
+            firstMarginTTablet,
+            firstMarginRTablet,
+            firstMarginBTablet,
+            firstMarginLTablet,
+            firstMarginTMobile,
+            firstMarginRMobile,
+            firstMarginBMobile,
+            firstMarginLMobile,
+            firstPaddingTop,
+            firstPaddingRight,
+            firstPaddingBottom,
+            firstPaddingLeft,
+            firstPaddingTTablet,
+            firstPaddingRTablet,
+            firstPaddingBTablet,
+            firstPaddingLTablet,
+            firstPaddingTMobile,
+            firstPaddingRMobile,
+            firstPaddingBMobile,
+            firstPaddingLMobile,
+            secondMarginTop,
+            secondMarginRight,
+            secondMarginBottom,
+            secondMarginLeft,
+            secondMarginTTablet,
+            secondMarginRTablet,
+            secondMarginBTablet,
+            secondMarginLTablet,
+            secondMarginTMobile,
+            secondMarginRMobile,
+            secondMarginBMobile,
+            secondMarginLMobile,
+            secondPaddingTop,
+            secondPaddingRight,
+            secondPaddingBottom,
+            secondPaddingLeft,
+            secondPaddingTTablet,
+            secondPaddingRTablet,
+            secondPaddingBTablet,
+            secondPaddingLTablet,
+            secondPaddingTMobile,
+            secondPaddingRMobile,
+            secondPaddingBMobile,
+            secondPaddingLMobile,
         } = this.props.attributes;
 
         const DISPLAY = [
@@ -160,6 +209,23 @@ class edit extends Component {
 
         const firstFontSize = this.getPreviewSize(this.props.deviceType, firstStyles[0].firstSize, firstStyles[0].firstSizeTablet, firstStyles[0].firstSizeMobile);
         const secondFontSize = this.getPreviewSize(this.props.deviceType, secondStyles[0].secondSize, secondStyles[0].secondSizeTablet, secondStyles[0].secondSizeMobile);
+        const firstMarTop = this.getPreviewSize(this.props.deviceType, firstMarginTop, firstMarginTTablet, firstMarginTMobile);
+        const firstMarRight = this.getPreviewSize(this.props.deviceType, firstMarginRight, firstMarginRTablet, firstMarginRMobile);
+        const firstMarBottom = this.getPreviewSize(this.props.deviceType, firstMarginBottom, firstMarginBTablet, firstMarginBMobile);
+        const firstMarLeft = this.getPreviewSize(this.props.deviceType, firstMarginLeft, firstMarginLTablet, firstMarginLMobile);
+        const firstPadTop = this.getPreviewSize(this.props.deviceType, firstPaddingTop, firstPaddingTTablet, firstPaddingTMobile);
+        const firstPadRight = this.getPreviewSize(this.props.deviceType, firstPaddingRight, firstPaddingRTablet, firstPaddingRMobile);
+        const firstPadBottom = this.getPreviewSize(this.props.deviceType, firstPaddingBottom, firstPaddingBTablet, firstPaddingBMobile);
+        const firstPadLeft = this.getPreviewSize(this.props.deviceType, firstPaddingLeft, firstPaddingLTablet, firstPaddingLMobile);
+        const secondMarTop = this.getPreviewSize(this.props.deviceType, secondMarginTop, secondMarginTTablet, secondMarginTMobile);
+        const secondMarRight = this.getPreviewSize(this.props.deviceType, secondMarginRight, secondMarginRTablet, secondMarginRMobile);
+        const secondMarBottom = this.getPreviewSize(this.props.deviceType, secondMarginBottom, secondMarginBTablet, secondMarginBMobile);
+        const secondMarLeft = this.getPreviewSize(this.props.deviceType, secondMarginLeft, secondMarginLTablet, secondMarginLMobile);
+        const secondPadTop = this.getPreviewSize(this.props.deviceType, secondPaddingTop, secondPaddingTTablet, secondPaddingTMobile);
+        const secondPadRight = this.getPreviewSize(this.props.deviceType, secondPaddingRight, secondPaddingRTablet, secondPaddingRMobile);
+        const secondPadBottom = this.getPreviewSize(this.props.deviceType, secondPaddingBottom, secondPaddingBTablet, secondPaddingBMobile);
+        const secondPadLeft = this.getPreviewSize(this.props.deviceType, secondPaddingLeft, secondPaddingLTablet, secondPaddingLMobile);
+
         let btnGrad, btnGrad2, btnbg;
         if (undefined !== backgroundType && 'gradient' === backgroundType) {
             btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
@@ -245,7 +311,7 @@ class edit extends Component {
                             </Fragment>
                         )}
                         <PremiumTypo
-                            components={["responsiveSize", "weight", "style", "upper", "spacing", "family"]}
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                             setAttributes={saveFirstStyle}
                             fontSizeType={{
                                 value: firstStyles[0].firstSizeUnit,
@@ -262,11 +328,14 @@ class edit extends Component {
                             style={firstStyles[0].firstStyle}
                             spacing={firstStyles[0].firstLetter}
                             upper={firstStyles[0].firstUpper}
+                            line={firstStyles[0].firstLine}
                             onChangeWeight={newWeight => saveFirstStyle({ firstWeight: newWeight || 500 })}
                             onChangeStyle={newStyle => saveFirstStyle({ firstStyle: newStyle })}
                             onChangeSpacing={newValue => saveFirstStyle({ firstLetter: newValue })}
                             onChangeUpper={check => saveFirstStyle({ firstUpper: check })}
                             onChangeFamily={(fontFamily) => saveFirstStyle({ firstFamily: fontFamily })}
+                            onChangeLine={newValue => saveFirstStyle({ firstLine: newValue })}
+
                         />
 
                         {!firstStyles[0].firstClip && (
@@ -339,26 +408,124 @@ class edit extends Component {
                             onChangehHorizontal={newValue => saveFirstStyle({ firstShadowHorizontal: newValue || "0" })}
                             onChangeVertical={newValue => saveFirstStyle({ firstShadowVertical: newValue || "0" })}
                         />
-                        <ResponsiveSingleRangeControl
-                            label={__("Margin Left", 'premium-blocks-for-gutenberg')}
-                            value={firstStyles[0].firstMarginL}
-                            onChange={newMargin => saveFirstStyle({ firstMarginL: newMargin })}
-                            showUnit={false}
-                            defaultValue={0}
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            marginTop={firstMarginTop}
+                            marginRight={firstMarginRight}
+                            marginBottom={firstMarginBottom}
+                            marginLeft={firstMarginLeft}
+                            marginTopTablet={firstMarginTTablet}
+                            marginRightTablet={firstMarginRTablet}
+                            marginBottomTablet={firstMarginBTablet}
+                            marginLeftTablet={firstMarginLTablet}
+                            marginTopMobile={firstMarginTMobile}
+                            marginRightMobile={firstMarginRMobile}
+                            marginBottomMobile={firstMarginBMobile}
+                            marginLeftMobile={firstMarginLMobile}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstMarginTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstMarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstMarginTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstMarginRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstMarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstMarginRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstMarginBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstMarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstMarginBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstMarginLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstMarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstMarginLMobile: newValue })
+                                    }
+                                }
+                            }
+                            showUnits={false}
                         />
-                        <ResponsiveSingleRangeControl
-                            label={__("Margin Right", 'premium-blocks-for-gutenberg')}
-                            value={firstStyles[0].firstMarginR}
-                            onChange={newMargin => saveFirstStyle({ firstMarginR: newMargin })}
-                            showUnit={false}
-                            defaultValue={0}
-                        />
-                        <ResponsiveSingleRangeControl
-                            label={__("Padding", 'premium-blocks-for-gutenberg')}
-                            value={firstStyles[0].firstPadding}
-                            onChange={newPadding => saveFirstStyle({ firstPadding: newPadding })}
-                            showUnit={false}
-                            defaultValue={0}
+                        <PremiumResponsivePadding
+                            paddingTop={firstPaddingTop}
+                            paddingRight={firstPaddingRight}
+                            paddingBottom={firstPaddingBottom}
+                            paddingLeft={firstPaddingLeft}
+                            paddingTopTablet={firstPaddingTTablet}
+                            paddingRightTablet={firstPaddingRTablet}
+                            paddingBottomTablet={firstPaddingBTablet}
+                            paddingLeftTablet={firstPaddingLTablet}
+                            paddingTopMobile={firstPaddingTMobile}
+                            paddingRightMobile={firstPaddingRMobile}
+                            paddingBottomMobile={firstPaddingBMobile}
+                            paddingLeftMobile={firstPaddingLMobile}
+                            showUnits={false}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstPaddingTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstPaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstPaddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstPaddingRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstPaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstPaddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstPaddingBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstPaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstPaddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ firstPaddingLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ firstPaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ firstPaddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
                     </PanelBody>
                     <PanelBody
@@ -386,7 +553,7 @@ class edit extends Component {
                             </Fragment>
                         )}
                         <PremiumTypo
-                            components={["responsiveSize", "weight", "style", "upper", "spacing", "family"]}
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                             setAttributes={saveSecondStyle}
                             fontSizeType={{
                                 value: secondStyles[0].secondSizeUnit,
@@ -403,11 +570,13 @@ class edit extends Component {
                             style={secondStyles[0].secondStyle}
                             spacing={secondStyles[0].secondLetter}
                             upper={secondStyles[0].secondUpper}
+                            line={secondStyles[0].secondLine}
                             onChangeWeight={newWeight => saveSecondStyle({ secondWeight: newWeight || 500 })}
                             onChangeStyle={newStyle => saveSecondStyle({ secondStyle: newStyle })}
                             onChangeSpacing={newValue => saveSecondStyle({ secondLetter: newValue })}
                             onChangeUpper={check => saveSecondStyle({ secondUpper: check })}
                             onChangeFamily={(fontFamily) => saveSecondStyle({ secondFamily: fontFamily })}
+                            onChangeLine={(newLine) => saveSecondStyle({ secondLine: newLine })}
                         />
                         {!secondStyles[0].secondClip && (
                             <Fragment>
@@ -476,26 +645,125 @@ class edit extends Component {
                             onChangehHorizontal={newValue => saveSecondStyle({ secondShadowHorizontal: newValue || "0" })}
                             onChangeVertical={newValue => saveSecondStyle({ secondShadowVertical: newValue || "0" })}
                         />
-                        <ResponsiveSingleRangeControl
-                            label={__("Margin Left", 'premium-blocks-for-gutenberg')}
-                            value={secondStyles[0].secondMarginL}
-                            onChange={newMargin => saveSecondStyle({ secondMarginL: newMargin })}
-                            showUnit={false}
-                            defaultValue={0}
+
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            marginTop={secondMarginTop}
+                            marginRight={secondMarginRight}
+                            marginBottom={secondMarginBottom}
+                            marginLeft={secondMarginLeft}
+                            marginTopTablet={secondMarginTTablet}
+                            marginRightTablet={secondMarginRTablet}
+                            marginBottomTablet={secondMarginBTablet}
+                            marginLeftTablet={secondMarginLTablet}
+                            marginTopMobile={secondMarginTMobile}
+                            marginRightMobile={secondMarginRMobile}
+                            marginBottomMobile={secondMarginBMobile}
+                            marginLeftMobile={secondMarginLMobile}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondMarginTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondMarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondMarginTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondMarginRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondMarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondMarginRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondMarginBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondMarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondMarginBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondMarginLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondMarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondMarginLMobile: newValue })
+                                    }
+                                }
+                            }
+                            showUnits={false}
                         />
-                        <ResponsiveSingleRangeControl
-                            label={__("Margin Right", 'premium-blocks-for-gutenberg')}
-                            value={secondStyles[0].secondMarginR}
-                            onChange={newMargin => saveSecondStyle({ secondMarginR: newMargin || "0" })}
-                            showUnit={false}
-                            defaultValue={0}
-                        />
-                        <ResponsiveSingleRangeControl
-                            label={__("Padding", 'premium-blocks-for-gutenberg')}
-                            value={secondStyles[0].secondPadding}
-                            onChange={newPadding => saveSecondStyle({ secondPadding: newPadding || "0" })}
-                            showUnit={false}
-                            defaultValue={0}
+                        <PremiumResponsivePadding
+                            paddingTop={secondPaddingTop}
+                            paddingRight={secondPaddingRight}
+                            paddingBottom={secondPaddingBottom}
+                            paddingLeft={secondPaddingLeft}
+                            paddingTopTablet={secondPaddingTTablet}
+                            paddingRightTablet={secondPaddingRTablet}
+                            paddingBottomTablet={secondPaddingBTablet}
+                            paddingLeftTablet={secondPaddingLTablet}
+                            paddingTopMobile={secondPaddingTMobile}
+                            paddingRightMobile={secondPaddingRMobile}
+                            paddingBottomMobile={secondPaddingBMobile}
+                            paddingLeftMobile={secondPaddingLMobile}
+                            showUnits={false}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondPaddingTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondPaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondPaddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondPaddingRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondPaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondPaddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondPaddingBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondPaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondPaddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ secondPaddingLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ secondPaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ secondPaddingLMobile: newValue })
+                                    }
+                                }
+                            }
                         />
                     </PanelBody>
                     <PanelBody
@@ -591,6 +859,7 @@ class edit extends Component {
                                 letterSpacing: firstStyles[0].firstLetter + "px",
                                 textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
                                 fontStyle: firstStyles[0].firstStyle,
+                                lineHeight: `${firstStyles[0].firstLine}px`,
                                 fontWeight: firstStyles[0].firstWeight,
                                 borderStyle: firstStyles[0].firstBorderType,
                                 borderWidth: firstBorder
@@ -598,9 +867,14 @@ class edit extends Component {
                                     : firstStyles[0].firstBorderWidth + "px",
                                 borderRadius: firstStyles[0].firstBorderRadius + "px",
                                 borderColor: firstStyles[0].firstBorderColor,
-                                padding: firstStyles[0].firstPadding + "px",
-                                marginLeft: firstStyles[0].firstMarginL + "px",
-                                marginRight: firstStyles[0].firstMarginR + "px",
+                                paddingTop: `${firstPadTop}px`,
+                                paddingRight: `${firstPadRight}px`,
+                                paddingBottom: `${firstPadBottom}px`,
+                                paddingLeft: `${firstPadLeft}px`,
+                                marginTop: `${firstMarTop}px`,
+                                marginRight: `${firstMarRight}px`,
+                                marginBottom: `${firstMarBottom}px`,
+                                marginLeft: `${firstMarLeft}px`,
                                 textShadow: `${firstStyles[0].firstShadowHorizontal}px ${firstStyles[0].firstShadowVertical}px ${firstStyles[0].firstShadowBlur}px ${firstStyles[0].firstShadowColor}`
                             }}
                         >
@@ -621,15 +895,21 @@ class edit extends Component {
                                 textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
                                 fontStyle: secondStyles[0].secondStyle,
                                 fontWeight: secondStyles[0].secondWeight,
+                                lineHeight: `${secondStyles[0].secondLine}px`,
                                 borderStyle: secondStyles[0].secondBorderType,
                                 borderWidth: secondBorder
                                     ? `${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`
                                     : secondStyles[0].secondBorderWidth + "px",
                                 borderRadius: secondStyles[0].secondBorderRadius + "px",
                                 borderColor: secondStyles[0].secondBorderColor,
-                                padding: secondStyles[0].secondPadding + "px",
-                                marginLeft: secondStyles[0].secondMarginL + "px",
-                                marginRight: secondStyles[0].secondMarginR + "px",
+                                paddingTop: `${secondPadTop}px`,
+                                paddingRight: `${secondPadRight}px`,
+                                paddingBottom: `${secondPadBottom}px`,
+                                paddingLeft: `${secondPadLeft}px`,
+                                marginTop: `${secondMarTop}px`,
+                                marginRight: `${secondMarRight}px`,
+                                marginBottom: `${secondMarBottom}px`,
+                                marginLeft: `${secondMarLeft}px`,
                                 textShadow: `${secondStyles[0].secondShadowHorizontal}px ${secondStyles[0].secondShadowVertical}px ${secondStyles[0].secondShadowBlur}px ${secondStyles[0].secondShadowColor}`
                             }}
                         >
