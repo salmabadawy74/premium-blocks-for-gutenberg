@@ -56264,10 +56264,11 @@ function save(props) {
                         if (icon.icon) {
                             image_icon_html = React.createElement(
                                 "span",
-                                { className: "premium-bullet-list__content-icon" },
+                                { className: "premium-bullet-list__content-icon", key: index },
                                 React.createElement("i", {
                                     className: "" + icon.icon,
                                     style: {
+                                        overflow: 'hidden',
                                         color: bulletIconStyles[0].bulletIconColor,
                                         backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
                                         borderStyle: bulletIconStyles[0].bulletIconborderType,
@@ -56283,9 +56284,11 @@ function save(props) {
                         if (icon.imageURL) {
                             image_icon_html = React.createElement("img", {
                                 src: icon.imageURL,
+                                key: index,
                                 style: {
                                     width: '20px',
                                     height: '20px',
+                                    overflow: 'hidden',
                                     borderStyle: bulletIconStyles[0].bulletIconborderType,
                                     borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                     borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
@@ -56329,7 +56332,7 @@ function save(props) {
                                 } },
                             React.createElement(
                                 "span",
-                                { className: "premium-bullet-list__content-wrap-" + bulletAlign,
+                                { className: "premium-bullet-list__icon-wrap",
                                     style: {
                                         overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                         alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -56395,7 +56398,7 @@ function save(props) {
                                     } },
                                 React.createElement(
                                     "span",
-                                    { className: "premium-bullet-list__content-wrap-" + bulletAlign,
+                                    { className: "premium-bullet-list__icon-wrap",
                                         style: {
                                             overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                             alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -56555,7 +56558,7 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
         openLink = _ref.openLink;
     return React.createElement(
         "li",
-        { tabIndex: 0, style: { listStyle: 'none' } },
+        { tabIndex: 0, key: newIndex, style: { listStyle: 'none' } },
         React.createElement(
             "span",
             { className: "premium-bulletList__container" },
@@ -56727,9 +56730,9 @@ var edit = function (_Component) {
             this.props.setAttributes({ block_id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
             // Pushing Style tag for this block css.
-            var $style = document.createElement("style");
-            $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId);
-            document.head.appendChild($style);
+            // const $style = document.createElement("style")
+            // $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
+            // document.head.appendChild($style);
             this.getPreviewSize = this.getPreviewSize.bind(this);
         }
     }, {
@@ -57066,11 +57069,11 @@ var edit = function (_Component) {
                 });
             };
 
-            var element = document.getElementById("premium-style-icon-list-" + this.props.clientId);
+            // var element = document.getElementById("premium-style-icon-list-" + this.props.clientId)
 
-            if (null != element && "undefined" != typeof element) {
-                // element.innerHTML = styling(this.props)
-            }
+            // if (null != element && "undefined" != typeof element) {
+            //     // element.innerHTML = styling(this.props)
+            // }
 
             var mainClasses = (0, _classnames2.default)(className, "premium-bullet-list");
 
@@ -57840,7 +57843,7 @@ var edit = function (_Component) {
                     }, id: "premium-bullet-list-" + this.props.clientId },
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: [".premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", ".premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", ".premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + generalStyles[0].generalHoverShadowHorizontal + "px " + generalStyles[0].generalHoverShadowVertical + "px " + generalStyles[0].generalHoverShadowBlur + "px " + generalStyles[0].generalHoverShadowColor + " " + generalStyles[0].generalHoverShadowPosition + " !important;", "}"].join("\n")
+                        __html: ["#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + generalStyles[0].generalHoverShadowHorizontal + "px " + generalStyles[0].generalHoverShadowVertical + "px " + generalStyles[0].generalHoverShadowBlur + "px " + generalStyles[0].generalHoverShadowColor + " " + generalStyles[0].generalHoverShadowPosition + " !important;", "}"].join("\n")
                     }
                 }),
                 React.createElement(
@@ -57852,7 +57855,6 @@ var edit = function (_Component) {
                             // margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important'
                         } },
                     repeaterBulletList.map(function (icon, index) {
-                        var _ref6;
 
                         var image_icon_html = "";
                         if (icon.showBulletIcon) {
@@ -57861,10 +57863,11 @@ var edit = function (_Component) {
 
                                     image_icon_html = React.createElement(
                                         "span",
-                                        { className: "premium-bullet-list__content-icon" },
+                                        { className: "premium-bullet-list__content-icon", key: index },
                                         React.createElement("i", {
                                             className: "" + icon.icon,
                                             style: {
+                                                overflow: 'hidden',
                                                 fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                 color: bulletIconStyles[0].bulletIconColor,
                                                 backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
@@ -57886,7 +57889,9 @@ var edit = function (_Component) {
 
                                     image_icon_html = React.createElement("img", {
                                         src: icon.imageURL,
+                                        key: index,
                                         style: {
+                                            overflow: 'hidden',
                                             width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                             height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                             paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
@@ -57935,7 +57940,7 @@ var edit = function (_Component) {
                             },
                             React.createElement(
                                 "div",
-                                { className: "premium-bullet-list__content-wrap", style: {
+                                { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
                                         justifyContent: align == "right" ? align : align,
                                         display: iconPosition == "before" ? "flex" : "inline-flex",
                                         flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
@@ -57946,7 +57951,7 @@ var edit = function (_Component) {
                                     } },
                                 icon.showBulletIcon && React.createElement(
                                     "span",
-                                    { className: "premium-bullet-list__content-wrap-" + bulletAlign,
+                                    { className: "premium-bullet-list__icon-wrap",
                                         style: {
                                             // overflow: "hidden",
                                             alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -57966,7 +57971,9 @@ var edit = function (_Component) {
                                     {
                                         className: "premium-bullet-list__label-wrap",
                                         style: {
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType
+                                            fontFamily: titleFont,
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            fontWeight: titleStyles[0].titleWeight
                                         }
                                     },
                                     React.createElement(RichText, {
@@ -57978,15 +57985,18 @@ var edit = function (_Component) {
                                             return _changeLabel(val, index);
                                         },
                                         multiline: false,
-                                        style: (_ref6 = {
-                                            fontFamily: titleFont,
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                            fontWeight: titleStyles[0].titleWeight,
+                                        style: {
+                                            // fontFamily: titleFont,
+                                            // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            // fontWeight: titleStyles[0].titleWeight,
                                             letterSpacing: titleStyles[0].titleLetter + "px",
                                             lineHeight: titleStyles[0].titleLine + "px",
                                             fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                        }, _defineProperty(_ref6, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref6, "color", titleStyles[0].titleColor), _defineProperty(_ref6, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref6)
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                            fontFamily: titleStyles[0].titleFontFamily,
+                                            color: titleStyles[0].titleColor,
+                                            textShadow: titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor
+                                        }
                                     })
                                 )
                             )

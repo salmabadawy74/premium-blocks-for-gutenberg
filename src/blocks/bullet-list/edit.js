@@ -63,7 +63,7 @@ const SortableItem = SortableElement(({
     toggleIconLink,
     saveLink,
     openLink
-}) => <li tabIndex={0} style={{ listStyle: 'none' }}>
+}) => <li tabIndex={0} key={newIndex} style={{ listStyle: 'none' }}>
         <span className="premium-bulletList__container">
             <span className="premium-bulletList__dragHandle"></span>
             <div className="premium-bulletList__content" onClick={() => showContent(newIndex)}>
@@ -189,9 +189,9 @@ class edit extends Component {
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style")
-        $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
-        document.head.appendChild($style);
+        // const $style = document.createElement("style")
+        // $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
+        // document.head.appendChild($style);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
@@ -584,11 +584,11 @@ class edit extends Component {
             });
         }
 
-        var element = document.getElementById("premium-style-icon-list-" + this.props.clientId)
+        // var element = document.getElementById("premium-style-icon-list-" + this.props.clientId)
 
-        if (null != element && "undefined" != typeof element) {
-            // element.innerHTML = styling(this.props)
-        }
+        // if (null != element && "undefined" != typeof element) {
+        //     // element.innerHTML = styling(this.props)
+        // }
 
         const mainClasses = classnames(className, "premium-bullet-list");
 
@@ -1257,14 +1257,14 @@ class edit extends Component {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `.premium-bullet-list__content-icon i:hover {`,
+                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__content-icon i:hover {`,
                             `color: ${bulletIconStyles[0].bulletIconHoverColor} !important;`,
                             `background-color: ${bulletIconStyles[0].bulletIconHoverBackgroundColor} !important;`,
                             "}",
-                            `.premium-bullet-list__label-wrap .premium-bullet-list__label:hover {`,
+                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {`,
                             `color: ${titleStyles[0].titleHoverColor} !important;`,
                             "}",
-                            `.premium-bullet-list__wrapper:hover {`,
+                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__wrapper:hover {`,
                             `background-color: ${generalStyles[0].generalHoverBackgroundColor} !important;`,
                             `box-shadow: ${generalStyles[0].generalHoverShadowHorizontal}px ${generalStyles[0].generalHoverShadowVertical}px ${generalStyles[0].generalHoverShadowBlur}px ${generalStyles[0].generalHoverShadowColor} ${generalStyles[0].generalHoverShadowPosition} !important;`,
                             "}",
@@ -1285,10 +1285,11 @@ class edit extends Component {
                                 if (icon.image_icon == "icon") {
                                     if (icon.icon) {
 
-                                        image_icon_html = <span className="premium-bullet-list__content-icon">
+                                        image_icon_html = <span className="premium-bullet-list__content-icon" key={index}>
                                             <i
                                                 className={`${icon.icon}`}
                                                 style={{
+                                                    overflow: 'hidden',
                                                     fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                     color: bulletIconStyles[0].bulletIconColor,
                                                     backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
@@ -1312,7 +1313,9 @@ class edit extends Component {
 
                                         image_icon_html = <img
                                             src={icon.imageURL}
+                                            key={index}
                                             style={{
+                                                overflow: 'hidden',
                                                 width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                 height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                 paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
@@ -1365,7 +1368,7 @@ class edit extends Component {
                                         boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
                                     }}
                                 >
-                                    <div className="premium-bullet-list__content-wrap" style={{
+                                    <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign}`} style={{
                                         justifyContent: align == "right" ? align : align,
                                         display: iconPosition == "before" ? "flex" : "inline-flex",
                                         flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
@@ -1374,7 +1377,7 @@ class edit extends Component {
                                         marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
                                         marginRight: TitleMarginRight + titleStyles[0].titlemarginType,
                                     }}>
-                                        {icon.showBulletIcon && <span className={`premium-bullet-list__content-wrap-${bulletAlign}`}
+                                        {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
                                             style={{
                                                 // overflow: "hidden",
                                                 alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -1390,7 +1393,9 @@ class edit extends Component {
                                         <div
                                             className="premium-bullet-list__label-wrap"
                                             style={{
+                                                fontFamily: titleFont,
                                                 fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                fontWeight: titleStyles[0].titleWeight,
                                             }}
                                         >
                                             <RichText
@@ -1401,9 +1406,9 @@ class edit extends Component {
                                                 onChange={(val) => changeLabel(val, index)}
                                                 multiline={false}
                                                 style={{
-                                                    fontFamily: titleFont,
-                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    // fontFamily: titleFont,
+                                                    // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                    // fontWeight: titleStyles[0].titleWeight,
                                                     letterSpacing: titleStyles[0].titleLetter + "px",
                                                     lineHeight: titleStyles[0].titleLine + "px",
                                                     fontStyle: titleStyles[0].titleStyle,
