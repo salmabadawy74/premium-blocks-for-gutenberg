@@ -2965,7 +2965,7 @@ class PBG_Blocks_Helper {
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' . ' > .premium-bullet-list__label' );
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titlefontSizeType'] ) );
 			}
 		}
@@ -3094,7 +3094,7 @@ class PBG_Blocks_Helper {
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titlefontSizeTablet'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' . ' > .premium-bullet-list__label' );
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap');
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeTablet'] . $attr['titleStyles'][0]['titlefontSizeType'] ) );
 			}
 		}
@@ -3225,7 +3225,7 @@ class PBG_Blocks_Helper {
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titlefontSizeMobile'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' . ' > .premium-bullet-list__label' );
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeMobile'] . $attr['titleStyles'][0]['titlefontSizeType'] ) );
 			}
 		}

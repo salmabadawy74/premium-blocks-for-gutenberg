@@ -56310,6 +56310,7 @@ function save(props) {
                             key: index,
                             style: {
                                 textAlign: align,
+                                overflow: 'hidden',
                                 justifyContent: align == "right" ? "flex-end" : align,
                                 backgroundColor: generalStyles[0].generalBackgroundColor,
                                 borderStyle: generalStyles[0].generalborderType,
@@ -56367,6 +56368,7 @@ function save(props) {
                             key: index,
                             style: {
                                 listStyleType: 'none',
+                                overflow: 'hidden',
                                 textAlign: align,
                                 justifyContent: align == "right" ? "flex-end" : align,
                                 backgroundColor: generalStyles[0].generalBackgroundColor,
@@ -56890,12 +56892,14 @@ var edit = function (_Component) {
                     icon: "fa fa-arrow-circle-right",
                     imageURL: "",
                     imageID: '',
-                    icon_color: cloneIcons[0].icon_color,
-                    icon_hover_color: cloneIcons[0].icon_hover_color,
-                    icon_bg_color: cloneIcons[0].icon_bg_color,
-                    icon_bg_hover_color: cloneIcons[0].icon_bg_hover_color,
-                    item_bg_color: cloneIcons[0].item_bg_color,
-                    item_bg_hover_color: cloneIcons[0].item_bg_hover_color,
+                    icon_color: "#3a3a3a",
+                    label_color: "",
+                    icon_hover_color: "",
+                    label_hover_color: "",
+                    icon_bg_color: "",
+                    icon_bg_hover_color: "",
+                    item_bg_color: "",
+                    item_bg_hover_color: "",
                     link: "#",
                     target: false,
                     disableLink: false,
@@ -57911,6 +57915,7 @@ var edit = function (_Component) {
                                 rel: "noopener noreferrer",
                                 style: {
                                     textAlign: align,
+                                    overflow: 'hidden',
                                     justifyContent: align == "right" ? "flex-end" : align,
                                     backgroundColor: generalStyles[0].generalBackgroundColor,
                                     borderStyle: generalStyles[0].generalborderType,
@@ -57958,7 +57963,12 @@ var edit = function (_Component) {
                                 ),
                                 React.createElement(
                                     "div",
-                                    { className: "premium-bullet-list__label-wrap" },
+                                    {
+                                        className: "premium-bullet-list__label-wrap",
+                                        style: {
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType
+                                        }
+                                    },
                                     React.createElement(RichText, {
                                         tagName: "span",
                                         placeholder: __("Title Name"),
