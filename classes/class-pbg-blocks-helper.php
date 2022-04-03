@@ -2853,20 +2853,19 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
 		// Style for icon.
 		if ( isset( $attr['bulletIconStyles'] ) ) {
 			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSize'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
 				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
 				$css->add_property( 'font-size', $css->render_color( $attr['bulletIconStyles'][0]['bulletListfontSize'] . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
 			}
-			// if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSize'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-				$css->add_property( 'width', $css->render_color( (isset($attr['bulletIconStyles'][0]['bulletListfontSize']) ? $attr['bulletIconStyles'][0]['bulletListfontSize'] : '20') . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
-			// }
-			// if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSize'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-				$css->add_property( 'height', $css->render_color( (isset($attr['bulletIconStyles'][0]['bulletListfontSize'])? $attr['bulletIconStyles'][0]['bulletListfontSize'] :'20') . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
-			// }
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->render_color( (isset($attr['bulletIconStyles'][0]['bulletListfontSize']) ? $attr['bulletIconStyles'][0]['bulletListfontSize'] : '20') . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
+			
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_color( (isset($attr['bulletIconStyles'][0]['bulletListfontSize'])? $attr['bulletIconStyles'][0]['bulletListfontSize'] :'20') . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingTop'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
@@ -2885,105 +2884,182 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['bulletIconpaddingLeft'] . (isset($attr['bulletIconStyles'][0]['bulletIconpaddingUnit'])? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] :'px')  . '!important' ) );
 		}
 
-		// Style for image.
-		// if ( isset( $attr['bulletIconStyles'] ) ) {
-		// 	if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSize'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
-		// 		$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > img' );
-		// 	$css->add_property( 'width', $css->render_color( $attr['bulletIconStyles'][0]['bulletListfontSize'] . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
-		// 	}
-		// 	if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSize'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
-		// 		$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > img' );
-		// 		$css->add_property( 'height', $css->render_color( $attr['bulletIconStyles'][0]['bulletListfontSize'] . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
-		// 	}
-		// }
 		if ( isset( $attr['bulletIconpaddingTop'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['bulletIconpaddingTop'] . (isset($attr['bulletIconStyles'][0]['bulletIconpaddingUnit'])? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] :'px')  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingRight'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRight'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRight'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingBottom'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBottom'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBottom'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingLeft'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLeft'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLeft'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		// Style for general setting.
 		if ( isset( $attr['generalpaddingTop'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' );
-			$css->add_property( 'padding-top',( $attr['generalpaddingTop'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-top',( $attr['generalpaddingTop'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingRight'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-right', ( $attr['generalpaddingRight'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['generalpaddingRight'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingBottom'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-bottom', ( $attr['generalpaddingBottom'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['generalpaddingBottom'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingLeft'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-left', ( $attr['generalpaddingLeft'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['generalpaddingLeft'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginT'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-top', ( $attr['generalmarginT'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['generalmarginT'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginR'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-right', ( $attr['generalmarginR'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['generalmarginR'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginB'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-bottom', ( $attr['generalmarginB'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['generalmarginB'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginL'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-left', ( $attr['generalmarginL'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['generalmarginL'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		// Bullet Icon Style
 		if ( isset( $attr['bulletIconmarginT'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-top', ( $attr['bulletIconmarginT'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['bulletIconmarginT'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginR'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-right', ( $attr['bulletIconmarginR'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['bulletIconmarginR'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginB'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginB'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginB'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginL'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-left', ( $attr['bulletIconmarginL'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['bulletIconmarginL'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
 				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
-				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titlefontSizeType'] ) );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
 			}
 		}
 		if ( isset( $attr['titlemarginT'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-top', ( $attr['titlemarginT'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['titlemarginT'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginR'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-right', ( $attr['titlemarginR'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['titlemarginR'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginB'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-bottom', ( $attr['titlemarginB'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['titlemarginB'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginL'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-left', ( $attr['titlemarginL'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['titlemarginL'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+
+		//style for link
+		// Style for icon.
+		if ( isset( $attr['bulletIconStyles'] ) ) {
+			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSize'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+				$css->add_property( 'font-size', $css->render_color( $attr['bulletIconStyles'][0]['bulletListfontSize'] . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
+			}
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->render_color( (isset($attr['bulletIconStyles'][0]['bulletListfontSize']) ? $attr['bulletIconStyles'][0]['bulletListfontSize'] : '20') . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
+			
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_color( (isset($attr['bulletIconStyles'][0]['bulletListfontSize'])? $attr['bulletIconStyles'][0]['bulletListfontSize'] :'20') . (isset($attr['bulletIconStyles'][0]['bulletListfontSizeType'])? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingTop'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-top', $css->render_color( $attr['bulletIconpaddingTop'] . (isset($attr['bulletIconStyles'][0]['bulletIconpaddingUnit'])? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingRight'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-right', $css->render_color( $attr['bulletIconpaddingRight'] . (isset($attr['bulletIconStyles'][0]['bulletIconpaddingUnit'])? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingBottom'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-bottom', $css->render_color( $attr['bulletIconpaddingBottom'] . (isset($attr['bulletIconStyles'][0]['bulletIconpaddingUnit'])? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingLeft'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-left', $css->render_color( $attr['bulletIconpaddingLeft'] . (isset($attr['bulletIconStyles'][0]['bulletIconpaddingUnit'])? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] :'px')  . '!important' ) );
+		}
+
+		if ( isset( $attr['bulletIconpaddingTop'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-top', $css->render_color( $attr['bulletIconpaddingTop'] . (isset($attr['bulletIconStyles'][0]['bulletIconpaddingUnit'])? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingRight'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRight'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingBottom'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBottom'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingLeft'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLeft'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		// Bullet Icon Style
+		if ( isset( $attr['bulletIconmarginT'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-top', ( $attr['bulletIconmarginT'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginR'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-right', ( $attr['bulletIconmarginR'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginB'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginB'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginL'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-left', ( $attr['bulletIconmarginL'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		// Style for title.
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['titlemarginT'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-top', ( $attr['titlemarginT'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginR'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-right', ( $attr['titlemarginR'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginB'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-bottom', ( $attr['titlemarginB'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginL'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-left', ( $attr['titlemarginL'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -2992,127 +3068,210 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['bulletIconStyles'] ) ) {
 			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
 				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-				$css->add_property( 'font-size', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) );
+				$css->add_property( 'font-size', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType']  . '!important' ) );
 			}
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
+		
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
+				
 		}
 		if ( isset( $attr['bulletIconpaddingTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingRTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingBTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingLTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 
 		// Style for image.
-		if ( isset( $attr['bulletIconStyles'] ) ) {
-			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-				$css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
-				// $css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSize'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) );
-			}
-			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-				// $css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSize'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) );
-				$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
-			}
-		}
 		if ( isset( $attr['bulletIconpaddingTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingRTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingBTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingLTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		// Style for general setting.
 		if ( isset( $attr['generalpaddingTTablet'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' );
-			$css->add_property( 'padding-top',( $attr['generalpaddingTTablet'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-top',( $attr['generalpaddingTTablet'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingRTablet'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-right', ( $attr['generalpaddingRTablet'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['generalpaddingRTablet'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingBTablet'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-bottom', ( $attr['generalpaddingBTablet'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['generalpaddingBTablet'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingLTablet'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-left', ( $attr['generalpaddingLTablet'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['generalpaddingLTablet'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginTTablet'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-top', ( $attr['generalmarginTTablet'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['generalmarginTTablet'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginRTablet'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-right', ( $attr['generalmarginRTablet'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['generalmarginRTablet'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginBTablet'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-bottom', ( $attr['generalmarginBTablet'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['generalmarginBTablet'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginLTablet'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-left', ( $attr['generalmarginLTablet'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['generalmarginLTablet'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		// Bullet Icon Style
 		if ( isset( $attr['bulletIconmarginTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-top', ( $attr['bulletIconmarginTTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['bulletIconmarginTTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginRTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-right', ( $attr['bulletIconmarginRTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['bulletIconmarginRTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginBTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginBTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginBTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginLTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titlefontSizeTablet'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
 				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap');
-				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeTablet'] . $attr['titleStyles'][0]['titlefontSizeType'] ) );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeTablet'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
 			}
 		}
 		if ( isset( $attr['titlemarginTTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-top', ( $attr['titlemarginTTablet'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['titlemarginTTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginRTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-right', ( $attr['titlemarginRTablet'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['titlemarginRTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginBTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-bottom', ( $attr['titlemarginBTablet'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['titlemarginBTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginLTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-left', ( $attr['titlemarginLTablet'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['titlemarginLTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+
+		//style for link
+		// Style for icon.
+		if ( isset( $attr['bulletIconStyles'] ) ) {
+			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+				$css->add_property( 'font-size', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType']  . '!important' ) );
+			}
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
+		
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
+				
+		}
+		if ( isset( $attr['bulletIconpaddingTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingRTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingBTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingLTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+
+		// Style for image.
+		if ( isset( $attr['bulletIconpaddingTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingRTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingBTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingLTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		// Bullet Icon Style
+		if ( isset( $attr['bulletIconmarginTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-top', ( $attr['bulletIconmarginTTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginRTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-right', ( $attr['bulletIconmarginRTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginBTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginBTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginLTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		// Style for title.
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titlefontSizeTablet'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap');
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeTablet'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['titlemarginTTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-top', ( $attr['titlemarginTTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginRTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-right', ( $attr['titlemarginRTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginBTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-bottom', ( $attr['titlemarginBTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginLTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-left', ( $attr['titlemarginLTablet'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 
 		$css->stop_media_query();
@@ -3123,127 +3282,210 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['bulletIconStyles'] ) ) {
 			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
 				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-				$css->add_property( 'font-size', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) );
+				$css->add_property( 'font-size', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType']  . '!important' ) );
 			}
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
+		
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingRMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingBMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingLMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 
 		// Style for image.
-		if ( isset( $attr['bulletIconStyles'] ) ) {
-			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-				$css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
-				// $css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSize'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) );
-			}
-			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
-				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-				// $css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSize'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) );
-				$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
-			}
-		}
 		if ( isset( $attr['bulletIconpaddingTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingRMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingBMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconpaddingLMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' .' > img' );
-			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
 		}
 		// Style for general setting.
 		if ( isset( $attr['generalpaddingTMobile'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' );
-			$css->add_property( 'padding-top',( $attr['generalpaddingTMobile'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-top',( $attr['generalpaddingTMobile'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingRMobile'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-right', ( $attr['generalpaddingRMobile'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-right', ( $attr['generalpaddingRMobile'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingBMobile'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-bottom', ( $attr['generalpaddingBMobile'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-bottom', ( $attr['generalpaddingBMobile'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalpaddingLMobile'] ) && isset( $attr['generalStyles'][0]['generalpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'padding-left', ( $attr['generalpaddingLMobile'] . $attr['generalStyles'][0]['generalpaddingUnit'] ) );
+			$css->add_property( 'padding-left', ( $attr['generalpaddingLMobile'] . $attr['generalStyles'][0]['generalpaddingUnit']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginTMobile'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-top', ( $attr['generalmarginTMobile'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['generalmarginTMobile'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginRMobile'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-right', ( $attr['generalmarginRMobile'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['generalmarginRMobile'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginBMobile'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-bottom', ( $attr['generalmarginBMobile'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['generalmarginBMobile'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['generalmarginLMobile'] ) && isset( $attr['generalStyles'][0]['generalmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper');
-			$css->add_property( 'margin-left', ( $attr['generalmarginLMobile'] . $attr['generalStyles'][0]['generalmarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['generalmarginLMobile'] . $attr['generalStyles'][0]['generalmarginType']  . '!important' ) );
 		}
 		// Bullet Icon Style
 		if ( isset( $attr['bulletIconmarginTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-top', ( $attr['bulletIconmarginTMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['bulletIconmarginTMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginRMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-right', ( $attr['bulletIconmarginRMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['bulletIconmarginRMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginBMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginBMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginBMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['bulletIconmarginLMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
-			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
 		}
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titlefontSizeMobile'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
 				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
-				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeMobile'] . $attr['titleStyles'][0]['titlefontSizeType'] ) );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeMobile'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
 			}
 		}
 		if ( isset( $attr['titlemarginTMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-top', ( $attr['titlemarginTMobile'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-top', ( $attr['titlemarginTMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginRMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-right', ( $attr['titlemarginRMobile'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-right', ( $attr['titlemarginRMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginBMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-bottom', ( $attr['titlemarginBMobile'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-bottom', ( $attr['titlemarginBMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 		if ( isset( $attr['titlemarginLMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap');
-			$css->add_property( 'margin-left', ( $attr['titlemarginLMobile'] . $attr['titleStyles'][0]['titlemarginType'] ) );
+			$css->add_property( 'margin-left', ( $attr['titlemarginLMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+
+		//style for link
+		// Style for icon.
+		if ( isset( $attr['bulletIconStyles'] ) ) {
+			if ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ) {
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+				$css->add_property( 'font-size', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType']  . '!important' ) );
+			}
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
+		
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingRMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingBMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingLMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+
+		// Style for image.
+		if ( isset( $attr['bulletIconpaddingTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-top',( $attr['bulletIconpaddingTMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingRMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-right', ( $attr['bulletIconpaddingRMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingBMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'padding-bottom', ( $attr['bulletIconpaddingBMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconpaddingLMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' .' > img' );
+			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit']  . '!important' ) );
+		}
+		// Bullet Icon Style
+		if ( isset( $attr['bulletIconmarginTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-top', ( $attr['bulletIconmarginTMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginRMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-right', ( $attr['bulletIconmarginRMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginBMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-bottom', ( $attr['bulletIconmarginBMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['bulletIconmarginLMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap');
+			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType']  . '!important' ) );
+		}
+		// Style for title.
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titlefontSizeMobile'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
+				$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeMobile'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['titlemarginTMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-top', ( $attr['titlemarginTMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginRMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-right', ( $attr['titlemarginRMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginBMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-bottom', ( $attr['titlemarginBMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
+		}
+		if ( isset( $attr['titlemarginLMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list'  .  '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap');
+			$css->add_property( 'margin-left', ( $attr['titlemarginLMobile'] . $attr['titleStyles'][0]['titlemarginType']  . '!important' ) );
 		}
 
 		$css->stop_media_query();

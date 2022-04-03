@@ -71,10 +71,11 @@ export default function save(props) {
                         if (icon.showBulletIcon) {
                             if (icon.image_icon == "icon") {
                                 if (icon.icon) {
-                                    image_icon_html = <span className="premium-bullet-list__content-icon">
+                                    image_icon_html = <span className="premium-bullet-list__content-icon" key={index}>
                                         <i
                                             className={`${icon.icon}`}
                                             style={{
+                                                overflow: 'hidden',
                                                 color: bulletIconStyles[0].bulletIconColor,
                                                 backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
                                                 borderStyle: bulletIconStyles[0].bulletIconborderType,
@@ -92,9 +93,11 @@ export default function save(props) {
                                 if (icon.imageURL) {
                                     image_icon_html = <img
                                         src={icon.imageURL}
+                                        key={index}
                                         style={{
                                             width: '20px',
                                             height: '20px',
+                                            overflow: 'hidden',
                                             borderStyle: bulletIconStyles[0].bulletIconborderType,
                                             borderWidth: bulletIconBorderUpdated
                                                 ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
@@ -138,7 +141,7 @@ export default function save(props) {
                                         display: iconPosition == "before" ? "flex" : "inline-flex",
                                         flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
                                     }}>
-                                        <span className={`premium-bullet-list__content-wrap-${bulletAlign}`}
+                                        <span className={`premium-bullet-list__icon-wrap`}
                                             style={{
                                                 overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                                 alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -201,7 +204,7 @@ export default function save(props) {
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
                                             flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                         }}>
-                                            <span className={`premium-bullet-list__content-wrap-${bulletAlign}`}
+                                            <span className={`premium-bullet-list__icon-wrap`}
                                                 style={{
                                                     overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                                     alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
