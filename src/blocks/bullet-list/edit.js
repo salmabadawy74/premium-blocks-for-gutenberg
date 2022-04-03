@@ -185,13 +185,81 @@ const SortableList = SortableContainer(({
 class edit extends Component {
 
     componentDidMount() {
+        if (!this.props.attributes.classMigrate) {
+            this.props.setAttributes({
+                repeaterBulletList: [{
+                    id: 1,
+                    label: "Title #" + 1,
+                    image_icon: "icon",
+                    icon: "fa fa-arrow-circle-right",
+                    imageURL: "",
+                    imageID: '',
+                    icon_color: "#3a3a3a",
+                    label_color: "",
+                    icon_hover_color: "",
+                    label_hover_color: "",
+                    icon_bg_color: "",
+                    icon_bg_hover_color: "",
+                    item_bg_color: "",
+                    item_bg_hover_color: "",
+                    link: "#",
+                    target: false,
+                    disableLink: false,
+                    showContent: false,
+                    showBulletIcon: true,
+                    linkTarget: false
+                },
+                {
+                    id: 2,
+                    label: "Title #" + 2,
+                    image_icon: "icon",
+                    icon: "fa fa-arrow-circle-right",
+                    imageURL: "",
+                    imageID: '',
+                    icon_color: "#3a3a3a",
+                    label_color: "",
+                    icon_hover_color: "",
+                    label_hover_color: "",
+                    icon_bg_color: "",
+                    icon_bg_hover_color: "",
+                    item_bg_color: "",
+                    item_bg_hover_color: "",
+                    link: "#",
+                    target: false,
+                    disableLink: false,
+                    showContent: false,
+                    showBulletIcon: true,
+                    linkTarget: false
+                },
+                {
+                    id: 3,
+                    label: "Title #" + 3,
+                    image_icon: "icon",
+                    icon: "fa fa-arrow-circle-right",
+                    imageURL: "",
+                    imageID: '',
+                    icon_color: "#3a3a3a",
+                    label_color: "",
+                    icon_hover_color: "",
+                    label_hover_color: "",
+                    icon_bg_color: "",
+                    icon_bg_hover_color: "",
+                    item_bg_color: "",
+                    item_bg_hover_color: "",
+                    link: "#",
+                    target: false,
+                    disableLink: false,
+                    showContent: false,
+                    showBulletIcon: true,
+                    linkTarget: false
+                }
+                ]
+            })
+        }
+
         // Assigning id in the attribute.
         this.props.setAttributes({ block_id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
-        // Pushing Style tag for this block css.
-        // const $style = document.createElement("style")
-        // $style.setAttribute("id", "premium-style-icon-list-" + this.props.clientId)
-        // document.head.appendChild($style);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
@@ -548,7 +616,6 @@ class edit extends Component {
         }
 
         const saveBulletIconStyles = (value) => {
-            console.log(value)
             const newUpdate = bulletIconStyles.map((item, index) => {
                 if (0 === index) {
                     item = { ...item, ...value };
