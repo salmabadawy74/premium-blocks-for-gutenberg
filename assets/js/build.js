@@ -56280,16 +56280,17 @@ function save(props) {
                             );
                         }
                     } else {
-                        if (icon.image) {
+                        if (icon.imageURL) {
                             image_icon_html = React.createElement("img", {
-                                src: icon.image.url,
+                                src: icon.imageURL,
                                 style: {
                                     width: '20px',
                                     height: '20px',
                                     borderStyle: bulletIconStyles[0].bulletIconborderType,
                                     borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                     borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                    borderColor: bulletIconStyles[0].bulletIconborderColor
+                                    borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                    verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : ''
                                 }
                             });
                         }
@@ -56327,7 +56328,7 @@ function save(props) {
                                 } },
                             React.createElement(
                                 "span",
-                                { className: "premium-bullet-list__icon-wrap",
+                                { className: "premium-bullet-list__content-wrap-" + bulletAlign,
                                     style: {
                                         overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                         alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -56388,7 +56389,7 @@ function save(props) {
                                 } },
                             React.createElement(
                                 "span",
-                                { className: "premium-bullet-list__icon-wrap",
+                                { className: "premium-bullet-list__content-wrap-" + bulletAlign,
                                     style: {
                                         overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                         alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -56415,8 +56416,7 @@ function save(props) {
                                         textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
                                     }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
                             )
-                        ),
-                        React.createElement("a", { className: "" })
+                        )
                     );
                 }
             })
@@ -56479,6 +56479,10 @@ var _premiumBoxShadow = __webpack_require__(13);
 
 var _premiumBoxShadow2 = _interopRequireDefault(_premiumBoxShadow);
 
+var _premiumMediaUpload = __webpack_require__(26);
+
+var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
+
 var _responsiveRangeControl = __webpack_require__(45);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
@@ -56510,13 +56514,11 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     InspectorControls = _wp$blockEditor.InspectorControls,
-    MediaUpload = _wp$blockEditor.MediaUpload,
     RichText = _wp$blockEditor.RichText;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     Toolbar = _wp$components.Toolbar,
-    Button = _wp$components.Button,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl,
     Tooltip = _wp$components.Tooltip;
@@ -56613,32 +56615,17 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
                 "image" == value.image_icon && React.createElement(
                     Fragment,
                     null,
-                    value.image ? React.createElement("img", { src: value.image.url, width: "100%", height: "auto" }) : "",
-                    React.createElement(MediaUpload, {
-                        title: __("Select Image"),
-                        onSelect: function onSelect(value) {
-                            return selectImage(value, newIndex);
+                    React.createElement(_premiumMediaUpload2.default, {
+                        type: "image",
+                        imageID: value.imageID,
+                        imageURL: value.imageURL,
+                        onSelectMedia: function onSelectMedia(media) {
+                            return selectImage(media, newIndex);
                         },
-                        allowedTypes: ["image"],
-                        value: value.image,
-                        render: function render(_ref2) {
-                            var open = _ref2.open;
-                            return React.createElement(
-                                Button,
-                                { isDefault: true, onClick: open },
-                                !value.image ? __("Select Image") : __("Replace image")
-                            );
+                        onRemoveImage: function onRemoveImage() {
+                            return removeImage(newIndex);
                         }
-                    }),
-                    value.image && React.createElement(
-                        Button,
-                        {
-                            onClick: function onClick() {
-                                return removeImage(newIndex);
-                            },
-                            isLink: true, isDestructive: true },
-                        __("Remove Image")
-                    )
+                    })
                 )
             ),
             React.createElement("hr", null),
@@ -56676,19 +56663,19 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
     );
 });
 
-var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
-    var items = _ref3.items,
-        onRemove = _ref3.onRemove,
-        showContent = _ref3.showContent,
-        changeLabel = _ref3.changeLabel,
-        toggleShowBulletIcon = _ref3.toggleShowBulletIcon,
-        selectIconType = _ref3.selectIconType,
-        changeIcons = _ref3.changeIcons,
-        selectImage = _ref3.selectImage,
-        removeImage = _ref3.removeImage,
-        toggleIconLink = _ref3.toggleIconLink,
-        saveLink = _ref3.saveLink,
-        openLink = _ref3.openLink;
+var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
+    var items = _ref2.items,
+        onRemove = _ref2.onRemove,
+        showContent = _ref2.showContent,
+        changeLabel = _ref2.changeLabel,
+        toggleShowBulletIcon = _ref2.toggleShowBulletIcon,
+        selectIconType = _ref2.selectIconType,
+        changeIcons = _ref2.changeIcons,
+        selectImage = _ref2.selectImage,
+        removeImage = _ref2.removeImage,
+        toggleIconLink = _ref2.toggleIconLink,
+        saveLink = _ref2.saveLink,
+        openLink = _ref2.openLink;
 
     return React.createElement(
         "div",
@@ -56896,7 +56883,8 @@ var edit = function (_Component) {
                     label: "Title ",
                     image_icon: "icon",
                     icon: "fa fa-arrow-circle-right",
-                    image: '',
+                    imageURL: "",
+                    imageID: '',
                     icon_color: cloneIcons[0].icon_color,
                     icon_hover_color: cloneIcons[0].icon_hover_color,
                     icon_bg_color: cloneIcons[0].icon_bg_color,
@@ -56983,15 +56971,15 @@ var edit = function (_Component) {
             };
 
             var _selectImage = function _selectImage(value, index) {
-                setAttributes({
-                    repeaterBulletList: onRepeaterChange("image", value, index)
-                });
+                setAttributes(_defineProperty({
+                    repeaterBulletList: onRepeaterChange("imageURL", value.url, index)
+                }, "repeaterBulletList", onRepeaterChange("imageID", value.id, index)));
             };
 
             var _removeImage = function _removeImage(index) {
-                setAttributes({
-                    repeaterBulletList: onRepeaterChange("image", '', index)
-                });
+                setAttributes(_defineProperty({
+                    repeaterBulletList: onRepeaterChange("imageURL", '', index)
+                }, "repeaterBulletList", onRepeaterChange("imageID", '', index)));
             };
 
             var _toggleIconLink = function _toggleIconLink(value, index) {
@@ -57012,9 +57000,9 @@ var edit = function (_Component) {
                 });
             };
 
-            var onSortEndSingle = function onSortEndSingle(_ref4) {
-                var oldIndex = _ref4.oldIndex,
-                    newIndex = _ref4.newIndex;
+            var onSortEndSingle = function onSortEndSingle(_ref3) {
+                var oldIndex = _ref3.oldIndex,
+                    newIndex = _ref3.newIndex;
 
                 var arrayItem = repeaterBulletList.map(function (cont) {
                     return cont;
@@ -57027,7 +57015,7 @@ var edit = function (_Component) {
 
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
-                if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                if (['button', 'div', 'input', 'i', 'select', 'option', 'span'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                     return true; // Return true to cancel sorting
                 }
             };
@@ -57336,11 +57324,11 @@ var edit = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveGeneralStyles({ generalborderType: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref5) {
-                            var top = _ref5.top,
-                                right = _ref5.right,
-                                bottom = _ref5.bottom,
-                                left = _ref5.left;
+                        onChangeWidth: function onChangeWidth(_ref4) {
+                            var top = _ref4.top,
+                                right = _ref4.right,
+                                bottom = _ref4.bottom,
+                                left = _ref4.left;
                             return setAttributes({
                                 generalBorderUpdated: true,
                                 generalBorderTop: top,
@@ -57551,11 +57539,11 @@ var edit = function (_Component) {
                         onChangeType: function onChangeType(newType) {
                             return saveBulletIconStyles({ bulletIconborderType: newType });
                         },
-                        onChangeWidth: function onChangeWidth(_ref6) {
-                            var top = _ref6.top,
-                                right = _ref6.right,
-                                bottom = _ref6.bottom,
-                                left = _ref6.left;
+                        onChangeWidth: function onChangeWidth(_ref5) {
+                            var top = _ref5.top,
+                                right = _ref5.right,
+                                bottom = _ref5.bottom,
+                                left = _ref5.left;
                             return setAttributes({
                                 bulletIconBorderUpdated: true,
                                 bulletIconBorderTop: top,
@@ -57855,7 +57843,7 @@ var edit = function (_Component) {
                             // margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important'
                         } },
                     repeaterBulletList.map(function (icon, index) {
-                        var _ref7;
+                        var _ref6;
 
                         var image_icon_html = "";
                         if (icon.showBulletIcon) {
@@ -57885,10 +57873,10 @@ var edit = function (_Component) {
                                     );
                                 }
                             } else {
-                                if (icon.image) {
+                                if (icon.imageURL) {
 
                                     image_icon_html = React.createElement("img", {
-                                        src: icon.image.url,
+                                        src: icon.imageURL,
                                         style: {
                                             width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                             height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
@@ -57899,7 +57887,8 @@ var edit = function (_Component) {
                                             borderStyle: bulletIconStyles[0].bulletIconborderType,
                                             borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
                                             borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                            borderColor: bulletIconStyles[0].bulletIconborderColor
+                                            borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : ''
                                         }
                                     });
                                 }
@@ -57974,7 +57963,7 @@ var edit = function (_Component) {
                                             return _changeLabel(val, index);
                                         },
                                         multiline: false,
-                                        style: (_ref7 = {
+                                        style: (_ref6 = {
                                             fontFamily: titleFont,
                                             fontSize: TitleSize + titleStyles[0].titlefontSizeType,
                                             fontWeight: titleStyles[0].titleWeight,
@@ -57982,7 +57971,7 @@ var edit = function (_Component) {
                                             lineHeight: titleStyles[0].titleLine + "px",
                                             fontStyle: titleStyles[0].titleStyle,
                                             textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                        }, _defineProperty(_ref7, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref7, "color", titleStyles[0].titleColor), _defineProperty(_ref7, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref7)
+                                        }, _defineProperty(_ref6, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref6, "color", titleStyles[0].titleColor), _defineProperty(_ref6, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref6)
                                     })
                                 )
                             )
@@ -58085,7 +58074,8 @@ var attributes = {
             label: "Title #" + 1,
             image_icon: "icon",
             icon: "fa fa-arrow-circle-right",
-            image: "",
+            imageURL: "",
+            imageID: '',
             icon_color: "#3a3a3a",
             label_color: "",
             icon_hover_color: "",
@@ -58105,7 +58095,8 @@ var attributes = {
             label: "Title #" + 2,
             image_icon: "icon",
             icon: "fa fa-arrow-circle-right",
-            image: "",
+            imageURL: "",
+            imageID: '',
             icon_color: "#3a3a3a",
             label_color: "",
             icon_hover_color: "",
@@ -58125,7 +58116,8 @@ var attributes = {
             label: "Title #" + 3,
             image_icon: "icon",
             icon: "fa fa-arrow-circle-right",
-            image: "",
+            imageURL: "",
+            imageID: '',
             icon_color: "#3a3a3a",
             label_color: "",
             icon_hover_color: "",
