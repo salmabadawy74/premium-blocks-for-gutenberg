@@ -83,6 +83,7 @@ export default function save(props) {
                                                     : bulletIconBorderWidth + "px",
                                                 borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                 borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'unset'
                                             }}
                                         />
                                     </span>

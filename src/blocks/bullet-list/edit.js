@@ -1305,7 +1305,7 @@ class edit extends Component {
                                                         : bulletIconBorderWidth + "px",
                                                     borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                     borderColor: bulletIconStyles[0].bulletIconborderColor,
-                                                    // verticalAlign: bulletAlign == 'left' ?
+                                                    verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'unset'
                                                 }}
                                             />
                                         </span>

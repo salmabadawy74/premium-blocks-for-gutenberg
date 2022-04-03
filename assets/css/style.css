@@ -2130,7 +2130,7 @@ a.premium-dheading-block__link:hover {
   }
   .premium-bullet-list__content-wrap-center .premium-bullet-list__content-icon i {
     font-style: normal !important;
-    vertical-align: middle !important;
+    /* vertical-align: middle !important; */
     /* width: 100% !important;
     height: 100% !important; */
   }
@@ -2392,6 +2392,12 @@ a.premium-dheading-block__link:hover {
 .bullet-list-button-list .bullet-list-button {
     width: 100%;
     justify-content: center;
+}
+.premium-svg-fill {
+    fill: #8d96a0;
+}
+.premium-svg-stroke {
+    stroke: #8d96a0;
 }
   
   /* Responsive typography */
