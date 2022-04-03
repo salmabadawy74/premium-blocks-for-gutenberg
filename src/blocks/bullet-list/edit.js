@@ -8,6 +8,7 @@ import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin'
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumBoxShadow from "../../components/premium-box-shadow";
+import PremiumMediaUpload from "../../components/premium-media-upload";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import icons from '../../components/align';
@@ -25,7 +26,6 @@ const {
     BlockControls,
     AlignmentToolbar,
     InspectorControls,
-    MediaUpload,
     RichText
 } = wp.blockEditor
 
@@ -33,7 +33,6 @@ const {
     PanelBody,
     SelectControl,
     Toolbar,
-    Button,
     TextControl,
     ToggleControl,
     Tooltip
@@ -106,27 +105,13 @@ const SortableItem = SortableElement(({
 
                     {"image" == value.image_icon &&
                         <Fragment>
-                            {value.image ?
-                                <img src={value.image.url} width="100%" height="auto" />
-                                : ""}
-                            <MediaUpload
-                                title={__("Select Image")}
-                                onSelect={value => selectImage(value, newIndex)}
-                                allowedTypes={["image"]}
-                                value={value.image}
-                                render={({ open }) => (
-                                    <Button isDefault onClick={open}>
-                                        {!value.image ? __("Select Image") : __("Replace image")}
-                                    </Button>
-                                )}
+                            <PremiumMediaUpload
+                                type="image"
+                                imageID={value.imageID}
+                                imageURL={value.imageURL}
+                                onSelectMedia={media => selectImage(media, newIndex)}
+                                onRemoveImage={() => removeImage(newIndex)}
                             />
-                            {value.image &&
-                                <Button
-                                    onClick={() => removeImage(newIndex)}
-                                    isLink isDestructive>
-                                    {__("Remove Image")}
-                                </Button>
-                            }
                         </Fragment>
                     }
                 </div>
@@ -371,7 +356,8 @@ class edit extends Component {
                 label: "Title ",
                 image_icon: "icon",
                 icon: "fa fa-arrow-circle-right",
-                image: '',
+                imageURL: "",
+                imageID: '',
                 icon_color: cloneIcons[0].icon_color,
                 icon_hover_color: cloneIcons[0].icon_hover_color,
                 icon_bg_color: cloneIcons[0].icon_bg_color,
@@ -481,8 +467,13 @@ class edit extends Component {
         const selectImage = (value, index) => {
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
-                    "image",
-                    value,
+                    "imageURL",
+                    value.url,
+                    index
+                ),
+                repeaterBulletList: onRepeaterChange(
+                    "imageID",
+                    value.id,
                     index
                 )
             })
@@ -491,10 +482,15 @@ class edit extends Component {
         const removeImage = (index) => {
             setAttributes({
                 repeaterBulletList: onRepeaterChange(
-                    "image",
+                    "imageURL",
                     '',
                     index
-                )
+                ),
+                repeaterBulletList: onRepeaterChange(
+                    "imageID",
+                    '',
+                    index
+                ),
             })
         }
 
@@ -544,7 +540,7 @@ class edit extends Component {
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
-            if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+            if (['button', 'div', 'input', 'i', 'select', 'option', 'span'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                 return true; // Return true to cancel sorting
             }
         }
@@ -1279,7 +1275,6 @@ class edit extends Component {
                         justifyContent: align == "right" ? "flex-end" : align,
                         // margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important'
                     }}>
-                    {/* <ul style={{ margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important' }}> */}
                     {
                         repeaterBulletList.map((icon, index) => {
 
@@ -1311,10 +1306,10 @@ class edit extends Component {
                                         </span>
                                     }
                                 } else {
-                                    if (icon.image) {
+                                    if (icon.imageURL) {
 
                                         image_icon_html = <img
-                                            src={icon.image.url}
+                                            src={icon.imageURL}
                                             style={{
                                                 width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
                                                 height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
@@ -1328,6 +1323,7 @@ class edit extends Component {
                                                     : bulletIconBorderWidth + "px",
                                                 borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                 borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : ''
                                             }}
                                         />
                                     }

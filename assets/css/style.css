@@ -2061,14 +2061,6 @@ a.premium-dheading-block__link:hover {
       -o-transition: 0.2s ease-in-out;
       transition: 0.2s ease-in-out;
   }
-  .premium-bullet-list__icon-wrap{
-    text-align: center;
-    display: inherit;
-    align-items: center;
-    -webkit-transition: 0.2s ease-in-out;
-      -o-transition: 0.2s ease-in-out;
-      transition: 0.2s ease-in-out;
-  }
   .premium-bullet-list-inline{
     -js-display: flex;
       display: -webkit-box;

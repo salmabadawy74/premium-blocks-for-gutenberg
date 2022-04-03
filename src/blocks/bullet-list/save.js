@@ -89,9 +89,9 @@ export default function save(props) {
                                     </span>
                                 }
                             } else {
-                                if (icon.image) {
+                                if (icon.imageURL) {
                                     image_icon_html = <img
-                                        src={icon.image.url}
+                                        src={icon.imageURL}
                                         style={{
                                             width: '20px',
                                             height: '20px',
@@ -101,6 +101,7 @@ export default function save(props) {
                                                 : bulletIconBorderWidth + "px",
                                             borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                             borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : ''
                                         }}
                                     />
                                 }
@@ -136,7 +137,7 @@ export default function save(props) {
                                         display: iconPosition == "before" ? "flex" : "inline-flex",
                                         flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
                                     }}>
-                                        <span className="premium-bullet-list__icon-wrap"
+                                        <span className={`premium-bullet-list__content-wrap-${bulletAlign}`}
                                             style={{
                                                 overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                                 alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -211,7 +212,7 @@ export default function save(props) {
                                         display: iconPosition == "before" ? "flex" : "inline-flex",
                                         flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
                                     }}>
-                                        <span className="premium-bullet-list__icon-wrap"
+                                        <span className={`premium-bullet-list__content-wrap-${bulletAlign}`}
                                             style={{
                                                 overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
                                                 alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -238,8 +239,6 @@ export default function save(props) {
                                                 }} />
                                         </div>
                                     </div>
-                                    <a className="">
-                                    </a>
                                 </li>
                             )
                         }
