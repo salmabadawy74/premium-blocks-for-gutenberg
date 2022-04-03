@@ -358,12 +358,14 @@ class edit extends Component {
                 icon: "fa fa-arrow-circle-right",
                 imageURL: "",
                 imageID: '',
-                icon_color: cloneIcons[0].icon_color,
-                icon_hover_color: cloneIcons[0].icon_hover_color,
-                icon_bg_color: cloneIcons[0].icon_bg_color,
-                icon_bg_hover_color: cloneIcons[0].icon_bg_hover_color,
-                item_bg_color: cloneIcons[0].item_bg_color,
-                item_bg_hover_color: cloneIcons[0].item_bg_hover_color,
+                icon_color: "#3a3a3a",
+                label_color: "",
+                icon_hover_color: "",
+                label_hover_color: "",
+                icon_bg_color: "",
+                icon_bg_hover_color: "",
+                item_bg_color: "",
+                item_bg_hover_color: "",
                 link: "#",
                 target: false,
                 disableLink: false,
@@ -1343,6 +1345,7 @@ class edit extends Component {
                                     rel="noopener noreferrer"
                                     style={{
                                         textAlign: align,
+                                        overflow: 'hidden',
                                         justifyContent: align == "right" ? "flex-end" : align,
                                         backgroundColor: generalStyles[0].generalBackgroundColor,
                                         borderStyle: generalStyles[0].generalborderType,
@@ -1384,7 +1387,12 @@ class edit extends Component {
                                                 alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                             }}
                                         >{image_icon_html}</span>}
-                                        <div className="premium-bullet-list__label-wrap">
+                                        <div
+                                            className="premium-bullet-list__label-wrap"
+                                            style={{
+                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            }}
+                                        >
                                             <RichText
                                                 tagName="span"
                                                 placeholder={__("Title Name")}

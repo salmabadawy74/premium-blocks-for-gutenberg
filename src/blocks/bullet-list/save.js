@@ -121,6 +121,7 @@ export default function save(props) {
                                     key={index}
                                     style={{
                                         textAlign: align,
+                                        overflow: 'hidden',
                                         justifyContent: align == "right" ? "flex-end" : align,
                                         backgroundColor: generalStyles[0].generalBackgroundColor,
                                         borderStyle: generalStyles[0].generalborderType,
@@ -177,6 +178,7 @@ export default function save(props) {
                                     key={index}
                                     style={{
                                         listStyleType: 'none',
+                                        overflow: 'hidden',
                                         textAlign: align,
                                         justifyContent: align == "right" ? "flex-end" : align,
                                         backgroundColor: generalStyles[0].generalBackgroundColor,
