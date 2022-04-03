@@ -56365,9 +56365,6 @@ function save(props) {
                         {
                             className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
                             key: index,
-                            target: target,
-                            rel: "noopener noreferrer",
-                            href: link_url,
                             style: {
                                 listStyleType: 'none',
                                 textAlign: align,
@@ -56381,40 +56378,48 @@ function save(props) {
                             }
                         },
                         React.createElement(
-                            "div",
-                            { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
-                                    justifyContent: align == "right" ? align : align,
-                                    display: iconPosition == "before" ? "flex" : "inline-flex",
-                                    flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
-                                } },
-                            React.createElement(
-                                "span",
-                                { className: "premium-bullet-list__content-wrap-" + bulletAlign,
-                                    style: {
-                                        overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
-                                        alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                        textAlign: bulletAlign,
-                                        justifyContent: bulletAlign,
-                                        alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
-                                    }
-                                },
-                                image_icon_html
-                            ),
+                            "a",
+                            {
+                                href: link_url,
+                                target: target,
+                                rel: "noopener noreferrer"
+                            },
                             React.createElement(
                                 "div",
-                                { className: "premium-bullet-list__label-wrap" },
-                                React.createElement(RichText.Content, {
-                                    tagName: "span",
-                                    value: repeaterBulletList[index].label,
-                                    className: "premium-bullet-list__label",
-                                    style: (_ref2 = {
-                                        fontFamily: titleFont,
-                                        fontWeight: titleStyles[0].titleWeight,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        lineHeight: titleStyles[0].titleLine + "px",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                    }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
+                                { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
+                                        justifyContent: align == "right" ? align : align,
+                                        display: iconPosition == "before" ? "flex" : "inline-flex",
+                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : ""
+                                    } },
+                                React.createElement(
+                                    "span",
+                                    { className: "premium-bullet-list__content-wrap-" + bulletAlign,
+                                        style: {
+                                            overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                            alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                            textAlign: bulletAlign,
+                                            justifyContent: bulletAlign,
+                                            alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                        }
+                                    },
+                                    image_icon_html
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { className: "premium-bullet-list__label-wrap" },
+                                    React.createElement(RichText.Content, {
+                                        tagName: "span",
+                                        value: repeaterBulletList[index].label,
+                                        className: "premium-bullet-list__label",
+                                        style: (_ref2 = {
+                                            fontFamily: titleFont,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                        }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
+                                )
                             )
                         )
                     );
