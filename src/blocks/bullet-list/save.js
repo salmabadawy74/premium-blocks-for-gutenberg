@@ -45,14 +45,14 @@ export default function save(props) {
             <style
                 dangerouslySetInnerHTML={{
                     __html: [
-                        `.premium-bullet-list__content-icon i:hover {`,
+                        `#premium-bullet-list-${block_id} .premium-bullet-list__content-icon i:hover {`,
                         `color: ${bulletIconStyles[0].bulletIconHoverColor} !important;`,
                         `background-color: ${bulletIconStyles[0].bulletIconHoverBackgroundColor} !important;`,
                         "}",
-                        `.premium-bullet-list__label-wrap .premium-bullet-list__label:hover {`,
+                        `#premium-bullet-list-${block_id} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {`,
                         `color: ${titleStyles[0].titleHoverColor} !important;`,
                         "}",
-                        `.premium-bullet-list__wrapper:hover {`,
+                        `#premium-bullet-list-${block_id} .premium-bullet-list__wrapper:hover {`,
                         `background-color: ${generalStyles[0].generalHoverBackgroundColor} !important;`,
                         `box-shadow: ${generalStyles[0].generalHoverShadowHorizontal}px ${generalStyles[0].generalHoverShadowVertical}px ${generalStyles[0].generalHoverShadowBlur}px ${generalStyles[0].generalHoverShadowColor} ${generalStyles[0].generalHoverShadowPosition} !important;`,
                         "}",
@@ -84,7 +84,7 @@ export default function save(props) {
                                                     : bulletIconBorderWidth + "px",
                                                 borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                 borderColor: bulletIconStyles[0].bulletIconborderColor,
-                                                verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'unset'
+                                                verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                             }}
                                         />
                                     </span>
@@ -104,7 +104,7 @@ export default function save(props) {
                                                 : bulletIconBorderWidth + "px",
                                             borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                             borderColor: bulletIconStyles[0].bulletIconborderColor,
-                                            verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : ''
+                                            verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                         }}
                                     />
                                 }
