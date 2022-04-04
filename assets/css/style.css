@@ -2033,7 +2033,7 @@ a.premium-dheading-block__link:hover {
 /**************** Premium bullet-list *********************/
 /*******************************************************/
 .premium-bullet-list__content-wrap{
-    color: #3a3a3a;
+    /* color: #3a3a3a; */
       -js-display: flex;
       display: -webkit-box;
       display: -webkit-flex;

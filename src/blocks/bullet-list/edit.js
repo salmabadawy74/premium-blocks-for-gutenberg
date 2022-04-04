@@ -194,8 +194,8 @@ class edit extends Component {
                     icon: "fa fa-arrow-circle-right",
                     imageURL: "",
                     imageID: '',
-                    icon_color: "#3a3a3a",
-                    label_color: "",
+                    icon_color: "#6EC1E4",
+                    label_color: "#6EC1E4",
                     icon_hover_color: "",
                     label_hover_color: "",
                     icon_bg_color: "",
@@ -216,8 +216,8 @@ class edit extends Component {
                     icon: "fa fa-arrow-circle-right",
                     imageURL: "",
                     imageID: '',
-                    icon_color: "#3a3a3a",
-                    label_color: "",
+                    icon_color: "#6EC1E4",
+                    label_color: "#6EC1E4",
                     icon_hover_color: "",
                     label_hover_color: "",
                     icon_bg_color: "",
@@ -238,8 +238,8 @@ class edit extends Component {
                     icon: "fa fa-arrow-circle-right",
                     imageURL: "",
                     imageID: '',
-                    icon_color: "#3a3a3a",
-                    label_color: "",
+                    icon_color: "#6EC1E4",
+                    label_color: "#6EC1E4",
                     icon_hover_color: "",
                     label_hover_color: "",
                     icon_bg_color: "",
@@ -426,8 +426,8 @@ class edit extends Component {
                 icon: "fa fa-arrow-circle-right",
                 imageURL: "",
                 imageID: '',
-                icon_color: "#3a3a3a",
-                label_color: "",
+                icon_color: "#6EC1E4",
+                label_color: "#6EC1E4",
                 icon_hover_color: "",
                 label_hover_color: "",
                 icon_bg_color: "",
@@ -1370,7 +1370,7 @@ class edit extends Component {
                                                         : bulletIconBorderWidth + "px",
                                                     borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                     borderColor: bulletIconStyles[0].bulletIconborderColor,
-                                                    verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'unset'
+                                                    verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                                 }}
                                             />
                                         </span>
@@ -1395,7 +1395,7 @@ class edit extends Component {
                                                     : bulletIconBorderWidth + "px",
                                                 borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
                                                 borderColor: bulletIconStyles[0].bulletIconborderColor,
-                                                verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : ''
+                                                verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                             }}
                                         />
                                     }
