@@ -67,6 +67,7 @@ const SortableItem = SortableElement(({
         <span className="premium-bulletList__container">
             <span className="premium-bulletList__dragHandle"></span>
             <div className="premium-bulletList__content" onClick={() => showContent(newIndex)}>
+                {value.showBulletIcon && <i className={`${value.icon}`} />}
                 <span className={`premium-bulletList__label`}></span>
                 {value.label}
             </div>
@@ -363,34 +364,60 @@ class edit extends Component {
             generalpaddingRMobile,
             generalpaddingBMobile,
             generalpaddingLMobile,
-            titleFont
+            titleFont,
+            divider,
+            dividerStyle,
+            dividerStyles
         } = attributes
 
         const LAYOUT = [
             {
-                label: __("Block"),
+                label: __("Block", 'premium-blocks-for-gutenberg'),
                 value: "block"
             },
             {
-                label: __("Inline"),
+                label: __("Inline", 'premium-blocks-for-gutenberg'),
                 value: "inline"
             }
         ];
 
         const POSITION = [
             {
-                label: __("After"),
+                label: __("After", 'premium-blocks-for-gutenberg'),
                 value: "after"
             },
             {
-                label: __("Before"),
+                label: __("Before", 'premium-blocks-for-gutenberg'),
                 value: "before"
             },
             {
-                label: __("Top"),
+                label: __("Top", 'premium-blocks-for-gutenberg'),
                 value: "top"
             }
         ];
+
+        const DividerStyle = [
+            {
+                label: __("Solid", 'premium-blocks-for-gutenberg'),
+                value: "solid"
+            },
+            {
+                label: __("Double", 'premium-blocks-for-gutenberg'),
+                value: "double"
+            },
+            {
+                label: __("Dotted", 'premium-blocks-for-gutenberg'),
+                value: "dotted"
+            },
+            {
+                label: __("Dashed", 'premium-blocks-for-gutenberg'),
+                value: "dashed"
+            },
+            {
+                label: __("Groove", 'premium-blocks-for-gutenberg'),
+                value: "groove"
+            }
+        ]
 
         const ALIGNS = ["left", "center", "right"];
 
@@ -416,6 +443,8 @@ class edit extends Component {
         const GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpaddingRight, generalpaddingRTablet, generalpaddingRMobile);
         const GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpaddingBottom, generalpaddingBTablet, generalpaddingBMobile);
         const GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpaddingLeft, generalpaddingLTablet, generalpaddingLMobile);
+        const DividerWidth = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerWidth, dividerStyles[0].dividerWidthTablet, dividerStyles[0].dividerWidthMobile);
+        const DividerHeight = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerHeight, dividerStyles[0].dividerHeightTablet, dividerStyles[0].dividerHeightMobile);
 
         const addNewBulletList = () => {
             let cloneIcons = [...repeaterBulletList]
@@ -651,6 +680,18 @@ class edit extends Component {
             });
         }
 
+        const saveDividerStyles = (value) => {
+            const newUpdate = dividerStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                dividerStyles: newUpdate,
+            });
+        }
+
         // var element = document.getElementById("premium-style-icon-list-" + this.props.clientId)
 
         // if (null != element && "undefined" != typeof element) {
@@ -753,6 +794,12 @@ class edit extends Component {
                                 />
                             }
                         </div>
+                        <hr />
+                        <ToggleControl
+                            label={__("Divider")}
+                            checked={divider}
+                            onChange={value => setAttributes({ divider: value })}
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("General Style")}
@@ -1313,6 +1360,64 @@ class edit extends Component {
 
                         />
                     </PanelBody>
+                    {divider &&
+                        <PanelBody
+                            title={__("Divider")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <SelectControl
+                                label={__("Divider Style")}
+                                options={DividerStyle}
+                                value={dividerStyle}
+                                onChange={newValue => setAttributes({ dividerStyle: newValue })}
+                            />
+                            <ResponsiveRangeControl
+                                label={__("Width", 'premium-block-for-gutenberg')}
+                                value={dividerStyles[0].dividerWidth}
+                                tabletValue={dividerStyles[0].dividerWidthTablet}
+                                mobileValue={dividerStyles[0].dividerWidthMobile}
+                                onChange={(value) => saveDividerStyles({ dividerWidth: value })}
+                                onChangeTablet={(value) => saveDividerStyles({ dividerWidthTablet: value })}
+                                onChangeMobile={(value) => saveDividerStyles({ dividerWidthMobile: value })}
+                                onChangeUnit={(key) =>
+                                    saveDividerStyles({ dividerWidthType: key })
+                                }
+                                unit={dividerStyles[0].dividerWidthType}
+                                showUnit={true}
+                                defaultValue={0}
+                                min={1}
+                                max={600}
+                            />
+                            <ResponsiveRangeControl
+                                label={__("Height", 'premium-block-for-gutenberg')}
+                                value={dividerStyles[0].dividerHeight}
+                                tabletValue={dividerStyles[0].dividerHeightTablet}
+                                mobileValue={dividerStyles[0].dividerHeightMobile}
+                                onChange={(value) => saveDividerStyles({ dividerHeight: value })}
+                                onChangeTablet={(value) => saveDividerStyles({ dividerHeightTablet: value })}
+                                onChangeMobile={(value) => saveDividerStyles({ dividerHeightMobile: value })}
+                                onChangeUnit={(key) =>
+                                    saveDividerStyles({ dividerHeightType: key })
+                                }
+                                unit={dividerStyles[0].dividerHeightType}
+                                showUnit={true}
+                                defaultValue={0}
+                                min={1}
+                                max={600}
+                            />
+                            <AdvancedPopColorControl
+                                label={__("Color", 'premium-block-for-gutenberg')}
+                                colorValue={dividerStyles[0].dividerColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveDividerStyles({
+                                        dividerColor: newValue
+                                    })
+                                }
+                            />
+                        </PanelBody>
+                    }
                 </InspectorControls >
             ),
             <div className={classnames(
@@ -1334,6 +1439,18 @@ class edit extends Component {
                             `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__wrapper:hover {`,
                             `background-color: ${generalStyles[0].generalHoverBackgroundColor} !important;`,
                             `box-shadow: ${generalStyles[0].generalHoverShadowHorizontal}px ${generalStyles[0].generalHoverShadowVertical}px ${generalStyles[0].generalHoverShadowBlur}px ${generalStyles[0].generalHoverShadowColor} ${generalStyles[0].generalHoverShadowPosition} !important;`,
+                            "}",
+                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list-divider-block:not(:last-child)::after {`,
+                            `border-top-width: ${DividerHeight}${dividerStyles[0].dividerHeightType};`,
+                            `border-top-style: ${dividerStyle};`,
+                            `border-top-color: ${dividerStyles[0].dividerColor};`,
+                            `width: ${DividerWidth}${dividerStyles[0].dividerWidthType};`,
+                            "}",
+                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list-divider-inline:not(:last-child)::after {`,
+                            `height: ${DividerHeight}${dividerStyles[0].dividerHeightType};`,
+                            `border-left-style: ${dividerStyle};`,
+                            `border-left-color: ${dividerStyles[0].dividerColor};`,
+                            `border-left-width: ${DividerWidth}${dividerStyles[0].dividerWidthType};`,
                             "}",
                         ].join("\n")
                     }}
@@ -1405,89 +1522,94 @@ class edit extends Component {
                             let target = (icon.linkTarget) ? "_blank" : "_self"
 
                             return (
-                                <li
-                                    className={classnames(
-                                        `premium-bullet-list-content${index}`,
-                                        "premium-bullet-list__wrapper"
-                                    )}
-                                    key={index}
-                                    target={target}
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        textAlign: align,
-                                        overflow: 'hidden',
-                                        justifyContent: align == "right" ? "flex-end" : align,
-                                        backgroundColor: generalStyles[0].generalBackgroundColor,
-                                        borderStyle: generalStyles[0].generalborderType,
-                                        borderWidth: generalBorderUpdated
-                                            ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
-                                            : generalBorderWidth + "px",
-                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                        borderColor: generalStyles[0].generalborderColor,
-                                        paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
-                                        paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
-                                        paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
-                                        paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
-                                        marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
-                                        marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
-                                        marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
-                                        marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
-                                        boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
-                                    }}
-                                >
-                                    <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign}`} style={{
-                                        justifyContent: align == "right" ? align : align,
-                                        display: iconPosition == "before" ? "flex" : "inline-flex",
-                                        flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? align == "right" ? "row-reverse" : "row-reverse" : align == "right" ? "row-reverse" : "",
-                                        marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
-                                        marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
-                                        marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
-                                        marginRight: TitleMarginRight + titleStyles[0].titlemarginType,
-                                    }}>
-                                        {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
-                                            style={{
-                                                // overflow: "hidden",
-                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                                marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
-                                                marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
-                                                marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
-                                                marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
-                                                textAlign: bulletAlign,
-                                                justifyContent: bulletAlign,
-                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                            }}
-                                        >{image_icon_html}</span>}
-                                        <div
-                                            className="premium-bullet-list__label-wrap"
-                                            style={{
-                                                fontFamily: titleFont,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                            }}
-                                        >
-                                            <RichText
-                                                tagName="span"
-                                                placeholder={__("Title Name")}
-                                                value={icon.label}
-                                                className='premium-bullet-list__label'
-                                                onChange={(val) => changeLabel(val, index)}
-                                                multiline={false}
+                                <Fragment>
+                                    <li
+                                        className={classnames(
+                                            `premium-bullet-list-content${index}`,
+                                            "premium-bullet-list__wrapper"
+                                        )}
+                                        key={index}
+                                        target={target}
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            textAlign: align,
+                                            overflow: 'hidden',
+                                            justifyContent: align == "right" ? "flex-end" : align,
+                                            backgroundColor: generalStyles[0].generalBackgroundColor,
+                                            borderStyle: generalStyles[0].generalborderType,
+                                            borderWidth: generalBorderUpdated
+                                                ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
+                                                : generalBorderWidth + "px",
+                                            borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                            borderColor: generalStyles[0].generalborderColor,
+                                            paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
+                                            paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
+                                            paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
+                                            paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
+                                            marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
+                                            marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
+                                            marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
+                                            marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
+                                            boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
+                                        }}
+                                    >
+                                        <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign}`} style={{
+                                            justifyContent: align == "right" ? align : align,
+                                            display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
+                                            marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
+                                            marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
+                                            marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
+                                            marginRight: TitleMarginRight + titleStyles[0].titlemarginType,
+                                        }}>
+                                            {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
                                                 style={{
-                                                    // fontFamily: titleFont,
-                                                    // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                    // fontWeight: titleStyles[0].titleWeight,
-                                                    letterSpacing: titleStyles[0].titleLetter + "px",
-                                                    lineHeight: titleStyles[0].titleLine + "px",
-                                                    fontStyle: titleStyles[0].titleStyle,
-                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                    fontFamily: titleStyles[0].titleFontFamily,
-                                                    color: titleStyles[0].titleColor,
-                                                    textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                                    // overflow: "hidden",
+                                                    alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                    marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
+                                                    marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
+                                                    marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
+                                                    marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
+                                                    textAlign: bulletAlign,
+                                                    justifyContent: bulletAlign,
+                                                    alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
                                                 }}
-                                            />
+                                            >{image_icon_html}</span>}
+                                            <div
+                                                className="premium-bullet-list__label-wrap"
+                                                style={{
+                                                    fontFamily: titleFont,
+                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                }}
+                                            >
+                                                <RichText
+                                                    tagName="span"
+                                                    placeholder={__("Title Name")}
+                                                    value={icon.label}
+                                                    className='premium-bullet-list__label'
+                                                    onChange={(val) => changeLabel(val, index)}
+                                                    multiline={false}
+                                                    style={{
+                                                        // fontFamily: titleFont,
+                                                        // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                        // fontWeight: titleStyles[0].titleWeight,
+                                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                                        lineHeight: titleStyles[0].titleLine + "px",
+                                                        fontStyle: titleStyles[0].titleStyle,
+                                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                        fontFamily: titleStyles[0].titleFontFamily,
+                                                        color: titleStyles[0].titleColor,
+                                                        textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                                    }}
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                    {divider &&
+                                        <div className={`premium-bullet-list-divider-${layoutPos}`}></div>
+                                    }
+                                </Fragment>
                             )
                         })
                     }

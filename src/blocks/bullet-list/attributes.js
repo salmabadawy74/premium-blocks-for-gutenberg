@@ -377,6 +377,28 @@ const attributes = {
     },
     titleFont: {
         type: "string"
+    },
+    divider: {
+        type: "boolean",
+        default: false
+    },
+    dividerStyle: {
+        type: "string",
+        default: "solid"
+    },
+    dividerStyles: {
+        type: "array",
+        default: [{
+            dividerWidth: '0',
+            dividerWidthTablet: '0',
+            dividerWidthMobile: '0',
+            dividerWidthType: 'px',
+            dividerHeight: '0',
+            dividerHeightTablet: '0',
+            dividerHeightMobile: '0',
+            dividerHeightType: 'px',
+            dividerColor: '#ddd'
+        }]
     }
 }
 export default attributes

@@ -2267,8 +2267,8 @@ a.premium-dheading-block__link:hover {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid;
+    /* margin-bottom: 10px; */
+    border: 1px solid #d5dadf;
     line-height: 2.5em;
   }
   .premium-bulletList__dragHandle{
@@ -2297,6 +2297,10 @@ a.premium-dheading-block__link:hover {
     flex: 12;
     line-height: 2.5em;
   }
+  .premium-bulletList__content i{
+    margin-right: 5px;
+    vertical-align: middle !important;
+  }
   .premium-bulletList__label{
     padding-right: 2%;
   }
@@ -2311,16 +2315,19 @@ a.premium-dheading-block__link:hover {
     background-color: white;
   }
   .premium-bulletList__trashicon:hover{
-    background: #fff;
+    background:#dcdcde;
     /* color: #ffffff; */
     cursor: pointer;
   }
   .premium-bulletList__link{
-    margin-top: 10px;
+    /* margin-top: 10px; */
     /* display: grid; */
     grid-template-columns: 70% 30%;
-    margin-right: 3%;
+    /* margin-right: 3%; */
     height: auto !important;
+    border: 1px solid #d5dadf;
+    border-top: 0 solid #d5dadf;
+    padding-top: 15px;
   }
   .premium-bulletList__saveButton{
     height: 4vh;
@@ -2401,6 +2408,40 @@ a.premium-dheading-block__link:hover {
 }
 .bullet-list-button-list .active .premium-svg-stroke{
     stroke: #fff;
+}
+.premium-bullet-list-divider-block:not(:last-child){
+    width: 100%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -moz-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    overflow: hidden;
+    position: relative;
+}
+.premium-bullet-list-divider-block:not(:last-child)::after{
+    content: "";
+    display: block;
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+.premium-bullet-list-divider-inline:not(:last-child){
+    float: right;
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    margin: 0 3px;
+}
+.premium-bullet-list-divider-inline:not(:last-child)::after{
+    content: "";
+    display: block;
+    border-left-width: 1px;
+    height: 33px;
+    /* border-left-style: solid; */
 }
   
   /* Responsive typography */
