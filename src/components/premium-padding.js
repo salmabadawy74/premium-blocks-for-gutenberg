@@ -7,20 +7,18 @@ class PremiumPadding extends Component {
         super(props);
         this.state = {
             isLinked: false,
-            top: this.props.paddingTop || 0,
-            right: this.props.paddingRight || 0,
-            bottom: this.props.paddingBottom || 0,
-            left: this.props.paddingLeft || 0,
-            showUnits: this.props.showUnits || false,
-            unit: this.props.unit || 'px',
-            label: this.props.label
+            top: this.props.paddingTop || '',
+            right: this.props.paddingRight || '',
+            bottom: this.props.paddingBottom || '',
+            left: this.props.paddingLeft || '',
+
         };
         this.defaultValue = {
             isLinked: false,
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
+            top: '',
+            right: '',
+            bottom: '',
+            left: '',
         }
         this.onInputChange = this.onInputChange.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
@@ -51,16 +49,18 @@ class PremiumPadding extends Component {
             });
         }
     }
+
     render() {
-        const { top, right, bottom, left, showUnits, isLinked, unit, label } = this.state;
+        const { top, right, bottom, left, isLinked } = this.state;
         const { onChangePadSizeUnit = () => { }, selectedUnit } = this.props;
+
         return (
             <div className={`premium-spacing-responsive`}>
-                {  label && <header className="premium-control-label-container">
+                {  this.props.label && <header className="premium-control-label-container">
                     <div className={`premium-slider-title-wrap`}>
-                        {__("Padding")}
+                        {__("Padding", 'premium-blocks-for-gutenberg')}
                     </div>
-                    {showUnits && (
+                    {this.props.showUnits && (
                         <PremiumSizeUnits
                             activeUnit={selectedUnit}
                             onChangeSizeUnit={newValue =>
@@ -76,7 +76,7 @@ class PremiumPadding extends Component {
                                 <input
                                     type="number"
                                     name="top"
-                                    value={top || 0}
+                                    value={top}
                                     onChange={this.onInputChange}
                                     className={`premium-spacing-input`}
                                 />
@@ -86,7 +86,7 @@ class PremiumPadding extends Component {
                                 <input
                                     type="number"
                                     name="right"
-                                    value={right || 0}
+                                    value={right}
                                     onChange={this.onInputChange}
                                     className={`premium-spacing-input`}
                                 />
@@ -96,7 +96,7 @@ class PremiumPadding extends Component {
                                 <input
                                     type="number"
                                     name="bottom"
-                                    value={bottom || 0}
+                                    value={bottom}
                                     onChange={this.onInputChange}
                                     className={`premium-spacing-input`}
                                 />
@@ -106,7 +106,7 @@ class PremiumPadding extends Component {
                                 <input
                                     type="number"
                                     name="left"
-                                    value={left || 0}
+                                    value={left}
                                     onChange={this.onInputChange}
                                     className={`premium-spacing-input`}
                                 />

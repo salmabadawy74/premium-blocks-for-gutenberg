@@ -413,18 +413,18 @@ class PremiumAccordion extends Component {
                             onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
                         />
                         <PremiumResponsivePadding
-                            paddingT={titlePaddingT}
-                            paddingR={titlePaddingR}
-                            paddingB={titlePaddingB}
-                            paddingL={titlePaddingL}
-                            paddingTTablet={titlePaddingTTablet}
-                            paddingRTablet={titlePaddingRTablet}
-                            paddingBTablet={titlePaddingBTablet}
-                            paddingLTablet={titlePaddingLTablet}
-                            paddingTMobile={titlePaddingTMobile}
-                            paddingRMobile={titlePaddingRMobile}
-                            paddingBMobile={titlePaddingBMobile}
-                            paddingLMobile={titlePaddingLMobile}
+                            paddingTop={titlePaddingT}
+                            paddingRight={titlePaddingR}
+                            paddingBottom={titlePaddingB}
+                            paddingLeft={titlePaddingL}
+                            paddingTopTablet={titlePaddingTTablet}
+                            paddingRightTablet={titlePaddingRTablet}
+                            paddingBottomTablet={titlePaddingBTablet}
+                            paddingLeftTablet={titlePaddingLTablet}
+                            paddingTopMobile={titlePaddingTMobile}
+                            paddingRightMobile={titlePaddingRMobile}
+                            paddingBottomMobile={titlePaddingBMobile}
+                            paddingLeftMobile={titlePaddingLMobile}
                             onChangePaddingTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
