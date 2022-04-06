@@ -1,0 +1,46 @@
+{
+    "apiVersion": 2,
+    "name": "premium/breadcrumbs",
+    "title": "Breadcrumbs",
+    "icon": "universal-access-alt",
+    "category": "premium-blocks",
+    "editorScript": "file:./build/block.js",
+    "style": "file:./build/style-block.css",
+    "usesContext": ["postId", "postType", "queryId"],
+    "attributes": {
+        "textAlign": {
+            "type": "string"
+        },
+        "prefix": {
+            "type": "string"
+        },
+        "divider": {
+            "type": "string",
+            "default": "»"
+        },
+        "homeItemType": {
+            "type": "string",
+            "default": "text"
+        },
+        "colors": {
+            "type": "object",
+            "default": {
+                "text": "",
+                "background": "",
+                "link": "",
+                "linkHover": ""
+            }
+        },
+        "spacing": {
+            "type": "object",
+            "default": {
+                "padding": null,
+                "margin": null
+            }
+        }
+    },
+    "supports": {
+        "align": ["wide", "full"],
+        "html": false
+    }
+}
