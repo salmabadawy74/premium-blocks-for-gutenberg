@@ -12,6 +12,8 @@ import ResponsiveRangeControl from "../../components/RangeControl/responsive-ran
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import times from "lodash/times"
 
+const { withSelect } = wp.data
+
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -67,7 +69,7 @@ const SortableList = SortableContainer(({ items, onRemove, saveLink, changeLinkV
     );
 });
 
-class PremiumPerson extends Component {
+class edit extends Component {
     constructor() {
         super(...arguments);
     }
@@ -676,22 +678,22 @@ class PremiumPerson extends Component {
                     )}
                 />
                 <TextControl
-                    label={__("Name")}
+                    label={__("Name", 'premium-block-for-gutenberg')}
                     value={multiPersonContent[index].name}
                     onChange={value => { this.save({ name: value }, index) }}
                 />
                 <TextControl
-                    label={__("Title")}
+                    label={__("Title", 'premium-block-for-gutenberg')}
                     value={multiPersonContent[index].title}
                     onChange={value => { this.save({ title: value }, index) }}
                 />
                 <TextareaControl
-                    label={__("Description")}
+                    label={__("Description", 'premium-block-for-gutenberg')}
                     value={multiPersonContent[index].desc}
                     onChange={value => { this.save({ desc: value }, index) }}
                 />
                 <ToggleControl
-                    label={__("Enable Social Icons")}
+                    label={__("Enable Social Icons", 'premium-block-for-gutenberg')}
                     checked={multiPersonContent[index].socialIcon}
                     onChange={value => { this.save({ socialIcon: value }, index) }}
                 />
@@ -740,19 +742,19 @@ class PremiumPerson extends Component {
                             min={1}
                         />
                         {multiPersonChecked > 1 ? <SelectControl
-                            label={__("Persons/Row")}
+                            label={__("Persons/Row", 'premium-block-for-gutenberg')}
                             value={rowPerson}
                             onChange={newColumn => setAttributes({ rowPerson: newColumn })}
                             options={ROWS}
                         /> : ""}
                         <SelectControl
-                            label={__("Style")}
+                            label={__("Style", 'premium-block-for-gutenberg')}
                             value={effectPersonStyle}
                             onChange={newEffect => setAttributes({ effectPersonStyle: newEffect })}
                             options={EFFECTS}
                         />
                         <SelectControl
-                            label={__("Image Hover Effect")}
+                            label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
                             options={HOVER}
                             value={hoverEffectPerson}
                             onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
@@ -1013,7 +1015,7 @@ class PremiumPerson extends Component {
                             />
                         </div>
                         <ToggleControl
-                            label={__("Brands Default Colors")}
+                            label={__("Brands Default Colors", 'premium-block-for-gutenberg')}
                             checked={defaultIconColor}
                             onChange={newCheck => setAttributes({ defaultIconColor: newCheck })}
                         />
@@ -1068,7 +1070,10 @@ class PremiumPerson extends Component {
                         <div className="premium-control-toggle">
                             <PremiumMargin
                                 directions={["left", "right"]}
-                                label={'Margin'}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 left={socialIconStyles[0].iconMarginL}
                                 right={socialIconStyles[0].iconMarginR}
                                 onChangeMarLeft={value =>
@@ -1137,7 +1142,7 @@ class PremiumPerson extends Component {
                                 />
                             </div>
                             <ToggleControl
-                                label={__("Brands Default Colors")}
+                                label={__("Brands Default Colors", "premium-blocks-for-gutenberg")}
                                 checked={defaultIconColor}
                                 onChange={newCheck => setAttributes({ defaultIconColor: newCheck })}
                             />
@@ -1227,12 +1232,16 @@ class PremiumPerson extends Component {
                             />
                         </div>
                         {effectPersonStyle === 'effect1' ?
-                            <RangeControl
-                                label={__("Bottom Offset")}
+                            <ResponsiveSingleRangeControl
+                                label={__("Bottom Offset", 'premium-block-for-gutenberg')}
                                 value={bottomInfo}
-                                min={15}
                                 onChange={newValue => setAttributes({ bottomInfo: newValue })}
-                            /> : ""}
+                                showUnit={false}
+                                defaultValue={15}
+                                min={15}
+                            />
+                            : ""
+                        }
                     </PanelBody>
                 </InspectorControls>
             ),
@@ -1247,7 +1256,7 @@ class PremiumPerson extends Component {
                             `#premium-person-${id} .premium-person:hover {`,
                             `border-color: ${borderHoverColor} !important;`,
                             "}",
-                            `.premium-person__social-List li:hover i{`,
+                            `#premium-person-${id} .premium-person__social-List li:hover i{`,
                             `color: ${socialIconStyles[0].socialIconHoverColor} !important;`,
                             `-webkit-transition: all .2s ease-in-out;`,
                             `transition: all .2s ease-in-out;`,
@@ -1260,4 +1269,9 @@ class PremiumPerson extends Component {
         ];
     };
 }
-export default PremiumPerson;
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return { deviceType: deviceType }
+})(edit)

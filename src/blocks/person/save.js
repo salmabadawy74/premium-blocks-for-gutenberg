@@ -17,6 +17,9 @@ const save = props => {
         nameWeight,
         nameV,
         titleStyles,
+        socialIconStyles,
+        nameStyles,
+        descStyles,
         titleColor,
         titleSize,
         titleWeight,
@@ -88,19 +91,19 @@ const save = props => {
         return <ul className="premium-person__social-List">{(v).map((value) => (
             <li>
                 <a className={`premium-person__socialIcon__link_content ${defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                    padding: socialIconPadding + socialIconPaddingU,
-                    borderStyle: borderTypeIcon,
-                    borderWidth: borderWidthIcon + "px",
-                    borderRadius: borderRadiusIcon || 100 + "px",
-                    borderColor: borderColorIcon,
-                    marginLeft: iconMarginL + "px",
-                    marginRight: iconMarginR + "px",
-                    background: socialIconBackgroundColor,
+                    //    padding: SocialIconPadding + socialIconStyles[0].socialIconPaddingType,
+                    borderStyle: socialIconStyles[0].borderTypeIcon,
+                    borderWidth: socialIconStyles[0].borderWidthIcon + "px",
+                    borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
+                    borderColor: socialIconStyles[0].borderColorIcon,
+                    marginLeft: socialIconStyles[0].iconMarginL + "px",
+                    marginRight: socialIconStyles[0].iconMarginR + "px",
+                    background: socialIconStyles[0].socialIconBackgroundColor,
                 }}>
                     <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
                         style={{
-                            color: socialIconColor,
-                            fontSize: (socialIconSize || 50) + iconSizeUnit,
+                            color: socialIconStyles[0].socialIconColor,
+                            // fontSize: (SocialIconSize || 50) + socialIconStyles[0].socialIconfontSizeType,
                         }}
                     />
                 </a>
@@ -122,7 +125,6 @@ const save = props => {
                                 src={`${value.personImgUrl.url}`}
                                 alt="Person"
                                 style={{
-
                                     borderWidth: imgBorder + "px",
                                     borderColor: imgBorderColor,
                                     width: imgSize + "px",
@@ -149,15 +151,15 @@ const save = props => {
                             <span
                                 className={`premium-person__name`}
                                 style={{
-                                    color: nameColor,
-                                    fontSize: nameSize + "px",
-                                    fontWeight: nameWeight,
+                                    color: nameStyles[0].nameColor,
+                                    // fontSize: nameSize + "px",
+                                    fontWeight: nameStyles[0].nameWeight,
                                     alignSelf: nameV,
-                                    letterSpacing: nameLetter + "px",
-                                    lineHeight: nameLine + "px",
-                                    fontStyle: nameStyle,
-                                    textTransform: nameUpper ? "uppercase" : "none",
-                                    textShadow: `${nameshadowHorizontal}px ${nameshadowVertical}px ${nameshadowBlur}px ${nameshadowColor}`
+                                    letterSpacing: nameStyles[0].nameLetter + "px",
+                                    lineHeight: nameStyles[0].nameLine + "px",
+                                    fontStyle: nameStyles[0].nameStyle,
+                                    textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
+                                    textShadow: `${nameStyles[0].nameshadowHorizontal}px ${nameStyles[0].nameshadowVertical}px ${nameStyles[0].nameshadowBlur}px ${nameStyles[0].nameshadowColor}`
                                 }}
                             >
                                 {value.name}
@@ -189,15 +191,15 @@ const save = props => {
                             <span
                                 className={`premium-person__desc`}
                                 style={{
-                                    color: descColor,
-                                    fontSize: descSize + "px",
-                                    fontWeight: descWeight,
+                                    color: descStyles[0].descColor,
+                                    // fontSize: DescSize + descStyles[0].descfontSizeType,
+                                    fontWeight: descStyles[0].descWeight,
                                     alignSelf: descV,
-                                    letterSpacing: descLetter + "px",
-                                    lineHeight: descLine + "px",
-                                    fontStyle: descStyle,
-                                    textTransform: descUpper ? "uppercase" : "none",
-                                    textShadow: `${descshadowHorizontal}px ${descshadowVertical}px ${descshadowBlur}px ${descshadowColor}`,
+                                    letterSpacing: descStyles[0].descLetter + "px",
+                                    lineHeight: descStyles[0].descLine + "px",
+                                    fontStyle: descStyles[0].descStyle,
+                                    textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                                    textShadow: `${descStyles[0].descshadowHorizontal}px ${descStyles[0].descshadowVertical}px ${descStyles[0].descshadowBlur}px ${descStyles[0].descshadowColor}`,
                                 }}
                             >
                                 {value.desc}
@@ -225,8 +227,8 @@ const save = props => {
                         `#premium-person-${id} .premium-person:hover {`,
                         `border-color: ${borderHoverColor} !important;`,
                         "}",
-                        `.premium-person__social-List li:hover i{`,
-                        `color: ${socialIconHoverColor} !important;`,
+                        `#premium-person-${id} .premium-person__social-List li:hover i{`,
+                        `color: ${socialIconStyles[0].socialIconHoverColor} !important;`,
                         `-webkit-transition: all .2s ease-in-out;`,
                         `transition: all .2s ease-in-out;`,
                         "}"
