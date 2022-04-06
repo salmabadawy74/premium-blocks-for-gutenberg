@@ -22,6 +22,7 @@ import { PanelBody, CustomSelectControl, TextControl, Dashicon, TabPanel } from 
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
+import PremiumTypo from "../../components/premium-typo"
 
 export default function Edit({ attributes, setAttributes, context: { postType, postId } }) {
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
@@ -74,11 +75,18 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
             bottom: '',
             left: ''
         }
-    }
+    };
+    const defaultSize = {
+        desktop: "",
+        tablet: "",
+        mobile: "",
+        unit: "px"
+    };
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
-    const { textAlign, colors, spacing } = attributes;
+    const { textAlign, colors, spacing, typography } = attributes;
     let margin = spacing.margin ? spacing.margin : defaultSpacingValue;
     let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+    const fontSize = typography.size ? typography.size : defaultSize;
     const blockProps = useBlockProps({
         className: classnames({
             [`has-text-align-${textAlign}`]: textAlign
@@ -93,7 +101,14 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
             paddingBottom: `${padding.desktop.bottom}px`,
             paddingLeft: `${padding.desktop.left}px`,
             color: colors.text,
-            backgroundColor: colors.background
+            backgroundColor: colors.background,
+            fontSize: `${fontSize.desktop}${fontSize.unit}`,
+            fontFamily: typography.family,
+            fontWeight: typography.weight,
+            letterSpacing: typography.letterSpacing,
+            textDecoration: typography.textDecoration,
+            textTransform: typography.textTransform,
+            lineHeight: `${typography.lineHeight}px`
         }
     });
 
@@ -101,7 +116,7 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
     const divider = attributes.divider ? attributes.divider : "»";
     const prefix = attributes.prefix;
     const separator = <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>{divider}</span>;
-    const homeItemType = attributes.homeItemType === 'text' ? __('Home') : <Dashicon icon='admin-home' />;
+    const homeItemType = attributes.homeItemType === 'text' ? __('Home') : <Dashicon style={{ lineHeight: 'inherit' }} icon='admin-home' />;
     const selectOptions = [
         {
             key: 'text',
@@ -121,7 +136,6 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
     const onChangeMargin = (side, value, device) => {
         const newMargin = { ...margin };
         newMargin[device][side] = value;
-        console.log(newMargin);
         setAttributes({ spacing: { ...spacing, margin: newMargin } });
     }
 
@@ -129,6 +143,16 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         const newPadding = { ...padding };
         newPadding[device][side] = value;
         setAttributes({ spacing: { ...spacing, padding: newPadding } });
+    }
+
+    const onChangeFontSize = (value, device) => {
+        const newSize = { ...fontSize };
+        newSize[device] = value;
+        setAttributes({ typography: { ...typography, size: newSize } });
+    }
+
+    const onChangeFont = (value, attr) => {
+        setAttributes({ typography: { ...typography, [attr]: value } });
     }
 
     return (
@@ -142,6 +166,23 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                 />
             </BlockControls>
             <div {...blockProps}>
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: [
+                            `#${blockProps.id} a {`,
+                            `color: ${colors.link};`,
+                            `font-family: ${typography.family};`,
+                            `font-weight: ${typography.weight};`,
+                            `font-size: ${fontSize.desktop}${fontSize.unit};`,
+                            `text-decoration: ${typography.textDecoration};`,
+                            `font-style: ${typography.style || 'normal'};`,
+                            "}",
+                            `#${blockProps.id} a:hover {`,
+                            `color: ${colors.linkHover};`,
+                            "}"
+                        ].join("\n")
+                    }}
+                />
                 {prefix && <span className='prefix' style={{ padding: '0 .4em' }}>{prefix}</span>}
                 <a
                     href="#home-pseudo-link"
@@ -316,6 +357,42 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                                 onChangePadding('left', newValue, device);
                             }
                         }
+                    />
+                </PanelBody>
+                <PanelBody
+                    title={__("Typography", 'premium-blocks-for-gutenberg')}
+                    className="premium-panel-body"
+                    initialOpen={false}
+                >
+                    <PremiumTypo
+                        components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                        setAttributes={value => onChangeFontSize(value.SizeUnit, 'unit')}
+                        fontSizeType={{
+                            value: fontSize.unit,
+                            label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
+                        }}
+                        fontSize={fontSize.desktop}
+                        fontSizeMobile={fontSize.mobile}
+                        fontSizeTablet={fontSize.tablet}
+                        onChangeSize={newSize => onChangeFontSize(newSize, 'desktop')}
+                        onChangeTabletSize={newSize => onChangeFontSize(newSize, 'tablet')}
+                        onChangeMobileSize={newSize => onChangeFontSize(newSize, 'mobile')}
+                        fontFamily={typography.family}
+                        weight={typography.weight}
+                        onChangeWeight={newWeight =>
+                            onChangeFont(newWeight, 'weight')
+                        }
+                        onChangeFamily={(fontFamily) => onChangeFont(fontFamily, 'family')}
+                        line={typography.lineHeight}
+                        onChangeLine={(lineHeight) => onChangeFont(lineHeight, 'lineHeight')}
+                        style={typography.style}
+                        onChangeStyle={(newStyle) => onChangeFont(newStyle, 'style')}
+                        spacing={typography.letterSpacing}
+                        onChangeSpacing={(letterSpacing) => onChangeFont(letterSpacing, 'letterSpacing')}
+                        textTransform={typography.textTransform}
+                        onChangeTextTransform={(textTransform) => onChangeFont(textTransform, 'textTransform')}
+                        textDecoration={typography.textDecoration}
+                        onChangeTextDecoration={(textDecoration) => onChangeFont(textDecoration, 'textDecoration')}
                     />
                 </PanelBody>
             </InspectorControls>

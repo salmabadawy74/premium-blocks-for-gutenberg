@@ -37,6 +37,19 @@
                 "padding": null,
                 "margin": null
             }
+        },
+        "typography": {
+            "type": "object",
+            "default": {
+                "size": null,
+                "weight": 400,
+                "family": "Default",
+                "letterSpacing": "",
+                "textTransform": "",
+                "textDecoration": "",
+                "lineHeight": "",
+                "style": ""
+            }
         }
     },
     "supports": {
