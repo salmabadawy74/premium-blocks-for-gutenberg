@@ -6,46 +6,31 @@ import PremiumBorder from "../../components/premium-border";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
-import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import icons from '../../components/align';
+import PremiumShadow from "../../components/PremiumShadow";
+import WebfontLoader from "../../components/typography/fontLoader";
+import RadioComponent from '../../components/radio-control';
+
 
 const { withSelect } = wp.data
 
 const { __ } = wp.i18n
 
-const {
-    Component,
-    Fragment,
-} = wp.element
+const { Component, Fragment } = wp.element
 
-const {
-    BlockControls,
-    AlignmentToolbar,
-    InspectorControls,
-    RichText
-} = wp.blockEditor
+const { BlockControls, AlignmentToolbar, InspectorControls, RichText } = wp.blockEditor
 
-const {
-    PanelBody,
-    SelectControl,
-    Toolbar,
-    TextControl,
-    ToggleControl,
-    Tooltip
-} = wp.components
+const { PanelBody, SelectControl, Toolbar, TextControl, ToggleControl, Tooltip } = wp.components
 
 const ICONTYPE = [
     {
-        label: __("Icon"),
-        value: "icon"
+        label: __("Icon", 'premium-blocks-for-gutenberg'), value: "icon"
     },
     {
-        label: __("Image"),
-        value: "image"
+        label: __("Image", 'premium-blocks-for-gutenberg'), value: "image"
     }
 ];
 
@@ -86,21 +71,21 @@ const SortableItem = SortableElement(({
                     onChange={value => toggleShowBulletIcon(value, newIndex)}
                 />
                 {value.showBulletIcon && <div><SelectControl
-                    label={__("Icon Type")}
+                    label={__("Icon Type", 'premium-blocks-for-gutenberg')}
                     options={ICONTYPE}
                     value={value.image_icon}
                     onChange={value => selectIconType(value, newIndex)}
                 />
                     {"icon" == value.image_icon &&
                         <Fragment>
-                            <p>{__("Icon")}</p>
+                            <p>{__("Icon", 'premium-blocks-for-gutenberg')}</p>
                             <FontIconPicker
                                 icons={iconsList}
                                 value={value.icon}
                                 onChange={value => changeIcons(value, newIndex)}
                                 isMulti={false}
                                 appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon")}
+                                noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                             />
                         </Fragment>}
 
@@ -119,20 +104,20 @@ const SortableItem = SortableElement(({
                 }
                 <hr />
                 <ToggleControl
-                    label={__("Link")}
+                    label={__("Link", 'premium-blocks-for-gutenberg')}
                     checked={value.disableLink}
                     onChange={value => toggleIconLink(value, newIndex)}
                 />
                 {value.disableLink &&
                     <Fragment>
-                        <p>{__("URL")}</p>
+                        <p>{__("URL", 'premium-blocks-for-gutenberg')}</p>
                         <TextControl
                             value={value.link}
                             onChange={value => saveLink(value, newIndex)}
                             placeholder={__("Enter URL")}
                         />
                         <ToggleControl
-                            label={__("Open links in new tab")}
+                            label={__("Open links in new tab", 'premium-blocks-for-gutenberg')}
                             checked={value.linkTarget}
                             onChange={value => openLink(value, newIndex)}
                         />
@@ -692,14 +677,21 @@ class edit extends Component {
             });
         }
 
-        // var element = document.getElementById("premium-style-icon-list-" + this.props.clientId)
-
-        // if (null != element && "undefined" != typeof element) {
-        //     // element.innerHTML = styling(this.props)
-        // }
-
         const mainClasses = classnames(className, "premium-bullet-list");
 
+        let loadTitleGoogleFonts;
+
+        if (titleStyles[0].titleFontFamily !== "Default") {
+            const titleConfig = {
+                google: {
+                    families: [titleStyles[0].titleFontFamily],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
         return [
             isSelected && (
                 <BlockControls>
@@ -784,14 +776,12 @@ class edit extends Component {
                                         className={"bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')}
                                     >{icons.vertical_bottom}</button>
                                 </Tooltip>
-                            </div>
-                                : <Toolbar
-                                    controls={ALIGNS.map(contentAlign => ({
-                                        icon: "editor-align" + contentAlign,
-                                        isActive: contentAlign === bulletAlign,
-                                        onClick: () => setAttributes({ bulletAlign: contentAlign })
-                                    }))}
-                                />
+                            </div> : <RadioComponent
+                                choices={ALIGNS}
+                                value={bulletAlign}
+                                onChange={(newValue) => setAttributes({ bulletAlign: newValue })}
+                                label={__("", 'premium-blocks-for-gutenberg')}
+                            />
                             }
                         </div>
                         <hr />
@@ -830,9 +820,9 @@ class edit extends Component {
                                 }
                             />
                         </div>
-                        <PremiumBoxShadow
-                            label="Box Shadow"
-                            inner={true}
+                        <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
                             color={generalStyles[0].generalShadowColor}
                             blur={generalStyles[0].generalShadowBlur}
                             horizontal={generalStyles[0].generalShadowHorizontal}
@@ -844,9 +834,9 @@ class edit extends Component {
                             onChangeVertical={newValue => saveGeneralStyles({ generalShadowVertical: newValue === undefined ? 0 : newValue })}
                             onChangePosition={newValue => saveGeneralStyles({ generalShadowPosition: newValue === undefined ? 0 : newValue })}
                         />
-                        <PremiumBoxShadow
-                            label="Hover Box Shadow"
-                            inner={true}
+                        <PremiumShadow
+                            label={__("Hover Box Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
                             color={generalStyles[0].generalHoverShadowColor}
                             blur={generalStyles[0].generalHoverShadowBlur}
                             horizontal={generalStyles[0].generalHoverShadowHorizontal}
@@ -1280,7 +1270,9 @@ class edit extends Component {
                                 }
                             />
                         </div>
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={false}
                             color={titleStyles[0].titleshadowColor}
                             blur={titleStyles[0].titleshadowBlur}
                             horizontal={titleStyles[0].titleshadowHorizontal}
@@ -1420,12 +1412,9 @@ class edit extends Component {
                     }
                 </InspectorControls >
             ),
-            <div className={classnames(
-                className,
-                `premium-bullet-list-${this.props.clientId}`
-            )} style={{
-                textAlign: align,
-            }} id={`premium-bullet-list-${this.props.clientId}`}>
+            <div className={classnames(className, `premium-bullet-list-${this.props.clientId}`)}
+                style={{ textAlign: align }}
+                id={`premium-bullet-list-${this.props.clientId}`}>
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
@@ -1463,12 +1452,10 @@ class edit extends Component {
                     }}>
                     {
                         repeaterBulletList.map((icon, index) => {
-
                             let image_icon_html = ""
                             if (icon.showBulletIcon) {
                                 if (icon.image_icon == "icon") {
                                     if (icon.icon) {
-
                                         image_icon_html = <span className="premium-bullet-list__content-icon" key={index}>
                                             <i
                                                 className={`${icon.icon}`}
@@ -1614,6 +1601,7 @@ class edit extends Component {
                         })
                     }
                 </ul>
+                {loadTitleGoogleFonts}
             </div>
 
         ]
