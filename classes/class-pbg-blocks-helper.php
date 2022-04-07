@@ -3554,6 +3554,14 @@ class PBG_Blocks_Helper {
 	 * @param string $unique_id option For  block ID.
 	 */
 	public function get_bulletList_css_style( $attr, $unique_id ) {
+        if ( isset( $attr['titleStyles'][0]['titleFontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['titleStyles'][0]['titleFontFamily'] ) ? $attr['titleStyles'][0]['titleFontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['titleStyles'][0]['titleWeight'] ) ? $attr['titleStyles'][0]['titleWeight'] : '' ),
+				)
+			);
+		}
 
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
