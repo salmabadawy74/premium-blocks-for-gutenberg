@@ -1,7 +1,8 @@
 import React from 'react'
-const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
+const { SelectControl, Button, ButtonGroup, Tooltip, TextControl
+} = wp.components;
 import { FontAwesomeEnabled } from "../../assets/js/settings";
-
+import PremiumMediaUpload from './premium-media-upload'
 import PremiumBackground from './premium-background'
 import map from 'lodash/map';
 const { __ } = wp.i18n;
@@ -13,20 +14,33 @@ export default function PremiumBackgroundControl({
     backgroundImageURL, backgroundPosition, backgroundRepeat,
     backgroundSize, fixed, gradientType, setAttributes,
     saveContainerStyle, gradientLocationOne, gradientColorTwo,
-    gradientLocationTwo, gradientAngle, gradientPosition }) {
+    gradientLocationTwo, gradientAngle, gradientPosition,
+    videoSource, videoID, videoURL, bgExternalVideo, bgVideoFallbackID,
+    bgVideoFallbackURL
+}) {
 
     const gradTypes = [
-        { key: 'linear', name: __('Linear') },
-        { key: 'radial', name: __('Radial') },
+        { key: 'linear', name: __('Linear', 'premium-blocks-for-gutenberg') },
+        { key: 'radial', name: __('Radial', 'premium-blocks-for-gutenberg') },
     ];
 
     const bgType = [
-        { key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') },
-        { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient') },
+        { key: 'solid', icon: "fa fa-image", tooltip: __('Classic', 'premium-blocks-for-gutenberg') },
+        { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient', 'premium-blocks-for-gutenberg') },
+        { key: "video", icon: 'fa fa-video-camera', tooltip: __('Video', 'premium-blocks-for-gutenberg') }
     ];
 
     return (
         <Fragment>
+            <PremiumBackground
+                type="color"
+                colorValue={backgroundColor}
+                onChangeColor={newValue =>
+                    saveContainerStyle({
+                        containerBack: newValue,
+                    })
+                }
+            />
             <div className="Premium-btn-size-settings-container">
                 <h2 className="Premium-beside-btn-group">{__('Background Type', 'premium-blocks-for-gutenberg')}</h2>
                 <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Background Type', 'premium-blocks-for-gutenberg')}>
@@ -47,15 +61,7 @@ export default function PremiumBackgroundControl({
             </div>
             {'solid' === backgroundType && (
                 <div className="Premium-inner-sub-section">
-                    <PremiumBackground
-                        type="color"
-                        colorValue={backgroundColor}
-                        onChangeColor={newValue =>
-                            saveContainerStyle({
-                                containerBack: newValue,
-                            })
-                        }
-                    />
+
                     <PremiumBackground
                         imageID={backgroundImageID}
                         imageURL={backgroundImageURL}
@@ -175,6 +181,67 @@ export default function PremiumBackgroundControl({
                     )}
                 </div>
             )}
+            {
+                'video' === backgroundType && (
+                    <Fragment>
+                        <SelectControl
+                            label={__('Video Source', 'premium-blocks-for-gutenberg')}
+                            value={videoSource}
+                            options={[
+                                { value: 'local', label: __('Local', 'premium-blocks-for-gutenberg') },
+                                { value: 'external', label: __('External', 'premium-blocks-for-gutenberg') }
+                            ]}
+                            onChange={(val) => saveContainerStyle({ videoSource: val })}
+                        />
+                        {videoSource === 'external' ?
+                            <TextControl
+                                label={__('Video URL', "premium-blocks-for-gutenberg")}
+                                value={bgExternalVideo || ""}
+                                onChange={val => saveContainerStyle({ bgExternalVideo: val })}
+                            />
+                            :
+                            <Fragment>
+                                <p>{__('Video', "premium-blocks-for-gutenberg")}</p>
+                                <PremiumMediaUpload
+                                    type="video"
+                                    imageID={videoID}
+                                    imageURL={videoURL}
+                                    onSelectMedia={media => {
+                                        saveContainerStyle({
+                                            videoID: media.id,
+                                            videoURL: media.url
+                                        });
+                                    }}
+                                    onRemoveImage={() =>
+                                        saveContainerStyle({
+                                            videoID: "",
+                                            videoURL: ""
+                                        })
+                                    }
+                                />
+                            </Fragment>
+                        }
+                        <p>{__('Fallback Image (Poster)', 'premium-blocks-for-gutenberg')}</p>
+                        <PremiumMediaUpload
+                            type="image"
+                            imageID={bgVideoFallbackID}
+                            imageURL={bgVideoFallbackURL}
+                            onSelectMedia={media => {
+                                saveContainerStyle({
+                                    bgVideoFallbackID: media.id,
+                                    bgVideoFallbackURL: media.url
+                                });
+                            }}
+                            onRemoveImage={() =>
+                                saveContainerStyle({
+                                    bgVideoFallbackURL: "",
+                                    bgVideoFallbackURL: ""
+                                })
+                            }
+                        />
+                    </Fragment>
+                )
+            }
         </Fragment>
     )
 }

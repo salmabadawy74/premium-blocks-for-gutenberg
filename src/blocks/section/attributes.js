@@ -112,7 +112,13 @@ const attributes = {
                 gradientLocationTwo: '100',
                 gradientType: 'linear',
                 gradientAngle: '180',
-                gradientPosition: 'center center'
+                gradientPosition: 'center center',
+                videoSource: 'local',
+                bgExternalVideo: '',
+                videoURL: '',
+                videoID: '',
+                bgVideoFallbackID: '',
+                bgVideoFallbackURL: ''
             }
         ]
     },

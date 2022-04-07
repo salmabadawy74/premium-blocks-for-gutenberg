@@ -7,6 +7,8 @@ import PremiumBackgroundControl from '../../components/Premium-Background-Contro
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 
+import { videoBackground, gradientBackground } from '../../components/HelperFunction';
+
 const { __ } = wp.i18n;
 
 const { PanelBody, ToggleControl, SelectControl, Button, ButtonGroup } = wp.components;
@@ -254,6 +256,12 @@ const edit = props => {
                         gradientAngle={containerStyles[0].gradientAngle}
                         gradientPosition={containerStyles[0].gradientPosition}
                         gradientType={containerStyles[0].gradientType}
+                        videoSource={containerStyles[0].videoSource}
+                        bgExternalVideo={containerStyles[0].bgExternalVideo}
+                        videoURL={containerStyles[0].videoURL}
+                        videoID={containerStyles[0].videoID}
+                        bgVideoFallbackID={containerStyles[0].bgVideoFallbackID}
+                        bgVideoFallbackURL={containerStyles[0].bgVideoFallbackURL}
                     />
                 </PanelBody>
                 <PanelBody
@@ -456,7 +464,7 @@ const edit = props => {
                     : containerStyles[0].borderWidth + "px",
                 borderRadius: containerStyles[0].borderRadius + "px",
                 borderColor: containerStyles[0].borderColor,
-                backgroundImage: btnbg,
+                backgroundImage: gradientBackground(backgroundType, containerStyles[0].containerBack, containerStyles[0].gradientColorTwo, containerStyles[0].gradientType, containerStyles[0].gradientPosition, containerStyles[0].gradientLocationOne, containerStyles[0].gradientLocationTwo, containerStyles[0].gradientAngle, containerStyles[0].backgroundImageURL),
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
@@ -472,6 +480,8 @@ const edit = props => {
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
             }}
         >
+            {videoBackground(backgroundType, containerStyles[0].videoSource, containerStyles[0].videoURL, containerStyles[0].bgExternalVideo)}
+
             <div
                 className={`premium-container__content_wrap premium-container__${vPos}`}
                 style={{
@@ -483,6 +493,7 @@ const edit = props => {
                     minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 }}
             >
+
                 <div className={`premium-container__content_inner`}>
                     <InnerBlocks template={CONTENT} />
                 </div>
