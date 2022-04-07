@@ -12,67 +12,28 @@ const save = props => {
         imgBorder,
         imgBorderColor,
         imgSize,
-        nameColor,
-        nameSize,
-        nameWeight,
         nameV,
         titleStyles,
         socialIconStyles,
+        socialIconBorderWidth,
+        socialIconBorderTop,
+        socialIconBorderRight,
+        socialIconBorderBottom,
+        socialIconBorderLeft,
+        socialIconBorderUpdated,
         nameStyles,
         descStyles,
-        titleColor,
-        titleSize,
-        titleWeight,
         titleV,
-        descColor,
-        descSize,
-        descWeight,
         descV,
-        descLine,
-        descLetter,
-        descStyle,
-        descUpper,
-        descshadowBlur,
-        descshadowColor,
-        descshadowHorizontal,
-        descshadowVertical,
-        iconSizeUnit,
-        socialIconSize,
-        socialIconColor,
         socialIconHoverColor,
         defaultIconColor,
-        iconMarginL,
-        iconMarginR,
         effect,
         effectDir,
-        nameLine,
-        nameLetter,
-        titleLine,
-        titleLetter,
         multiPersonChecked,
-        nameStyle,
-        nameUpper,
-        titleStyle,
-        titleUpper,
-        borderTypeIcon,
-        borderWidthIcon,
-        borderRadiusIcon,
-        borderColorIcon,
         borderHoverColor,
-        nameshadowBlur,
-        nameshadowColor,
-        nameshadowHorizontal,
-        nameshadowVertical,
-        titleshadowBlur,
-        titleshadowColor,
-        titleshadowHorizontal,
-        titleshadowVertical,
         hoverEffectPerson,
         effectPersonStyle,
         multiPersonContent,
-        socialIconPadding,
-        socialIconPaddingU,
-        socialIconBackgroundColor,
         rowPerson,
         change,
         blur,
@@ -91,13 +52,12 @@ const save = props => {
         return <ul className="premium-person__social-List">{(v).map((value) => (
             <li>
                 <a className={`premium-person__socialIcon__link_content ${defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                    //    padding: SocialIconPadding + socialIconStyles[0].socialIconPaddingType,
                     borderStyle: socialIconStyles[0].borderTypeIcon,
-                    borderWidth: socialIconStyles[0].borderWidthIcon + "px",
+                    borderWidth: socialIconBorderUpdated
+                        ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
+                        : socialIconBorderWidth + "px",
                     borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
                     borderColor: socialIconStyles[0].borderColorIcon,
-                    marginLeft: socialIconStyles[0].iconMarginL + "px",
-                    marginRight: socialIconStyles[0].iconMarginR + "px",
                     background: socialIconStyles[0].socialIconBackgroundColor,
                 }}>
                     <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
@@ -112,7 +72,7 @@ const save = props => {
         </ul>
     }
     const content = () => {
-        return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""} ${id}`}
+        return <div className={`premium-person-content ${id} ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
         > {multiPersonContent.map((value) => (
             <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                 <div className={`premium-person__img__container`}>
@@ -152,7 +112,6 @@ const save = props => {
                                 className={`premium-person__name`}
                                 style={{
                                     color: nameStyles[0].nameColor,
-                                    // fontSize: nameSize + "px",
                                     fontWeight: nameStyles[0].nameWeight,
                                     alignSelf: nameV,
                                     letterSpacing: nameStyles[0].nameLetter + "px",
@@ -172,7 +131,6 @@ const save = props => {
                                 className={`premium-person__title`}
                                 style={{
                                     color: titleStyles[0].titleColor,
-                                    // fontSize: titleSize + "px",
                                     fontWeight: titleStyles[0].titleWeight,
                                     alignSelf: titleV,
                                     letterSpacing: titleStyles[0].titleLetter + "px",
@@ -192,7 +150,6 @@ const save = props => {
                                 className={`premium-person__desc`}
                                 style={{
                                     color: descStyles[0].descColor,
-                                    // fontSize: DescSize + descStyles[0].descfontSizeType,
                                     fontWeight: descStyles[0].descWeight,
                                     alignSelf: descV,
                                     letterSpacing: descStyles[0].descLetter + "px",

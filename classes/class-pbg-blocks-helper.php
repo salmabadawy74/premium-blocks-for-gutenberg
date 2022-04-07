@@ -2803,8 +2803,8 @@ class PBG_Blocks_Helper {
 	 * @param string $content option for content of block.
 	 */
 	public function get_person_css( $attributes, $content ) {
-		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
+		if ( isset( $attributes['id'] ) && ! empty( $attributes['id'] ) ) {
+			$unique_id = $attributes['id'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
@@ -2818,10 +2818,12 @@ class PBG_Blocks_Helper {
 			);
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'person', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_person_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+				if ( $this->should_render_inline( 'person', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -2843,41 +2845,332 @@ class PBG_Blocks_Helper {
 	 * @param string $unique_id option For block ID.
 	 */
 	public function get_person_css_style( $attr, $unique_id ) {
-echo  $attr['nameStyles'][0]['namefontSize'];
-echo $attr['nameStyles'][0]['namefontSizeType'];
+		
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
-		// Style for icon.
+		// Style for Name.
 		if ( isset( $attr['nameStyles'] ) ) {
 			if ( isset( $attr['nameStyles'][0]['namefontSize'] ) && isset( $attr['nameStyles'][0]['namefontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > .' . $unique_id);
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name_wrap' );
 				$css->add_property( 'font-size', $css->render_color( $attr['nameStyles'][0]['namefontSize'] . (isset($attr['nameStyles'][0]['namefontSizeType'])? $attr['nameStyles'][0]['namefontSizeType'] :'px')  . '!important' ) );
 			}
 		}
-		
-		$css->start_media_query( $media_query['tablet'] );
-		// Style for icon.
-		if ( isset( $attr['nameStyles'] ) ) {
-			if ( isset( $attr['nameStyles'][0]['namefontSizeTablet'] ) && isset( $attr['nameStyles'][0]['namefontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > div' . ' > .premium-person__inner'  .  '> .premium-person__info' . ' > .premium-person__name_wrap' . ' > .premium-person__name');
-				$css->add_property( 'font-size', $css->render_color( $attr['nameStyles'][0]['namefontSizeTablet'] . (isset($attr['nameStyles'][0]['namefontSizeType'])? $attr['nameStyles'][0]['namefontSizeType'] :'px')  . '!important' ) );
+
+		// Style for Title.
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__title_wrap' );
+				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSize'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
 			}
 		}
+
+		// Style for Desc.
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descSize'] ) && isset( $attr['descStyles'][0]['descfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__desc_wrap' );
+				$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSize'] . (isset($attr['descStyles'][0]['descfontSizeType'])? $attr['descStyles'][0]['descfontSizeType'] :'px')  . '!important' ) );
+			}
+		}
+
+		// Style for Social Icon Effect2.
+		if ( isset( $attr['socialIconStyles'] ) ) {
+			if ( isset( $attr['socialIconStyles'][0]['socialIconSize'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconSize'] . (isset($attr['socialIconStyles'][0]['socialIconfontSizeType'])? $attr['socialIconStyles'][0]['socialIconfontSizeType'] :'px')  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['socialIconPaddingTop'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-top',( $attr['socialIconPaddingTop'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingRight'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-right', ( $attr['socialIconPaddingRight'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingBottom'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-bottom', ( $attr['socialIconPaddingBottom'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingLeft'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-left', ( $attr['socialIconPaddingLeft'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginT'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-top', ( $attr['socialIconMarginT'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginR'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-right', ( $attr['socialIconMarginR'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginB'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-bottom', ( $attr['socialIconMarginB'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginL'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-left', ( $attr['socialIconMarginL'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+
+		// Style for Social Icon Effect1.
+		if ( isset( $attr['socialIconStyles'] ) ) {
+			if ( isset( $attr['socialIconStyles'][0]['socialIconSize'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconSize'] . (isset($attr['socialIconStyles'][0]['socialIconfontSizeType'])? $attr['socialIconStyles'][0]['socialIconfontSizeType'] :'px')  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['socialIconPaddingTop'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-top',( $attr['socialIconPaddingTop'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingRight'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-right', ( $attr['socialIconPaddingRight'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingBottom'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-bottom', ( $attr['socialIconPaddingBottom'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingLeft'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-left', ( $attr['socialIconPaddingLeft'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginT'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-top', ( $attr['socialIconMarginT'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginR'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-right', ( $attr['socialIconMarginR'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginB'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-bottom', ( $attr['socialIconMarginB'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginL'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-left', ( $attr['socialIconMarginL'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+
+		$css->start_media_query( $media_query['tablet'] );
+
+		// Style for Name.
+		if ( isset( $attr['nameStyles'] ) ) {
+			if ( isset( $attr['nameStyles'][0]['namefontSizeTablet'] ) && isset( $attr['nameStyles'][0]['namefontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name_wrap' );
+				$css->add_property( 'font-size', ( $attr['nameStyles'][0]['namefontSizeTablet'] . $attr['nameStyles'][0]['namefontSizeType']  . '!important' ) );
+			}
+		}
+
+		// Style for Title.
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titlefontSizeTablet'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__title_wrap' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeTablet'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
+			}
+		}
+
+		// Style for Desc.
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descfontSizeTablet'] ) && isset( $attr['descStyles'][0]['descfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__desc_wrap' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descfontSizeTablet'] . $attr['descStyles'][0]['descfontSizeType']  . '!important' ) );
+			}
+		}
+
+		// Style for Social Icon Effect2.
+		if ( isset( $attr['socialIconStyles'] ) ) {
+			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] . (isset($attr['socialIconStyles'][0]['socialIconfontSizeType'])? $attr['socialIconStyles'][0]['socialIconfontSizeType'] :'px')  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['socialIconPaddingTTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-top',( $attr['socialIconPaddingTTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingRTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-right', ( $attr['socialIconPaddingRTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingBTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-bottom', ( $attr['socialIconPaddingBTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingLTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-left', ( $attr['socialIconPaddingLTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginTTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-top', ( $attr['socialIconMarginTTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginRTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-right', ( $attr['socialIconMarginRTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginBTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-bottom', ( $attr['socialIconMarginBTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginLTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-left', ( $attr['socialIconMarginLTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+
+		// Style for Social Icon Effect1.
+		if ( isset( $attr['socialIconStyles'] ) ) {
+			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] . (isset($attr['socialIconStyles'][0]['socialIconfontSizeType'])? $attr['socialIconStyles'][0]['socialIconfontSizeType'] :'px')  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['socialIconPaddingTTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-top',( $attr['socialIconPaddingTTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingRTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-right', ( $attr['socialIconPaddingRTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingBTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-bottom', ( $attr['socialIconPaddingBTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingLTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-left', ( $attr['socialIconPaddingLTablet'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginTTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-top', ( $attr['socialIconMarginTTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginRTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-right', ( $attr['socialIconMarginRTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginBTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-bottom', ( $attr['socialIconMarginBTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginLTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-left', ( $attr['socialIconMarginLTablet'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+
 		$css->stop_media_query();
 
 		$css->start_media_query( $media_query['mobile'] );
-		
-		// Style for icon.
+
+		// Style for Name.
 		if ( isset( $attr['nameStyles'] ) ) {
 			if ( isset( $attr['nameStyles'][0]['namefontSizeMobile'] ) && isset( $attr['nameStyles'][0]['namefontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > div' . ' > .premium-person__inner'  .  '> .premium-person__info' . ' > .premium-person__name_wrap' . ' > .premium-person__name');
-				$css->add_property( 'font-size', $css->render_color( $attr['nameStyles'][0]['namefontSizeMobile'] . (isset($attr['nameStyles'][0]['namefontSizeType'])? $attr['nameStyles'][0]['namefontSizeType'] :'px')  . '!important' ) );
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name_wrap' );
+				$css->add_property( 'font-size', ( $attr['nameStyles'][0]['namefontSizeMobile'] . $attr['nameStyles'][0]['namefontSizeType']  . '!important' ) );
 			}
 		}
+
+		// Style for Title.
+		if ( isset( $attr['titleStyles'] ) ) {
+			if ( isset( $attr['titleStyles'][0]['titlefontSizeMobile'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__title_wrap' );
+				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeMobile'] . $attr['titleStyles'][0]['titlefontSizeType']  . '!important' ) );
+			}
+		}
+
+		// Style for Desc.
+		if ( isset( $attr['descStyles'] ) ) {
+			if ( isset( $attr['descStyles'][0]['descfontSizeMobile'] ) && isset( $attr['descStyles'][0]['descfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__desc_wrap' );
+				$css->add_property( 'font-size', ( $attr['descStyles'][0]['descfontSizeMobile'] . $attr['descStyles'][0]['descfontSizeType']  . '!important' ) );
+			}
+		}
+
+		// Style for Social Icon Effect2.
+		if ( isset( $attr['socialIconStyles'] ) ) {
+			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] . (isset($attr['socialIconStyles'][0]['socialIconfontSizeType'])? $attr['socialIconStyles'][0]['socialIconfontSizeType'] :'px')  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['socialIconPaddingTMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-top',( $attr['socialIconPaddingTMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingRMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-right', ( $attr['socialIconPaddingRMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingBMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-bottom', ( $attr['socialIconPaddingBMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingLMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'padding-left', ( $attr['socialIconPaddingLMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginTMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-top', ( $attr['socialIconMarginTMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginRMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-right', ( $attr['socialIconMarginRMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginBMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-bottom', ( $attr['socialIconMarginBMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginLMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'margin-left', ( $attr['socialIconMarginLMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+
+		// Style for Social Icon Effect1.
+		if ( isset( $attr['socialIconStyles'] ) ) {
+			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
+				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] . (isset($attr['socialIconStyles'][0]['socialIconfontSizeType'])? $attr['socialIconStyles'][0]['socialIconfontSizeType'] :'px')  . '!important' ) );
+			}
+		}
+		if ( isset( $attr['socialIconPaddingTMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-top',( $attr['socialIconPaddingTMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingRMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-right', ( $attr['socialIconPaddingRMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingBMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-bottom', ( $attr['socialIconPaddingBMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconPaddingLMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconPaddingType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'padding-left', ( $attr['socialIconPaddingLMobile'] . (isset($attr['socialIconStyles'][0]['socialIconPaddingType'])? $attr['socialIconStyles'][0]['socialIconPaddingType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginTMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-top', ( $attr['socialIconMarginTMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginRMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-right', ( $attr['socialIconMarginRMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginBMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-bottom', ( $attr['socialIconMarginBMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+		if ( isset( $attr['socialIconMarginLMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconMarginType'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content'  .  ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'margin-left', ( $attr['socialIconMarginLMobile'] . (isset($attr['socialIconStyles'][0]['socialIconMarginType'])? $attr['socialIconStyles'][0]['socialIconMarginType'] :'px')  . '!important' ) );
+		}
+
+
 		$css->stop_media_query();
 		return $css->css_output();
 

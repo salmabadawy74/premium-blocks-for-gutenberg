@@ -4,11 +4,12 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTextShadow from "../../components/premium-text-shadow";
 import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
-import PremiumMargin from "../../components/premium-margin";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
+import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import times from "lodash/times"
 
@@ -21,17 +22,13 @@ const {
     IconButton,
     PanelBody,
     SelectControl,
-    RangeControl,
     ToggleControl,
-    Dropdown,
-    Button,
     TextControl,
     TextareaControl
 } = wp.components;
 
 const {
     InspectorControls,
-    ColorPalette,
     AlignmentToolbar,
     BlockControls,
     MediaUpload,
@@ -123,6 +120,36 @@ class edit extends Component {
             titleStyles,
             descStyles,
             socialIconStyles,
+            socialIconBorderWidth,
+            socialIconBorderTop,
+            socialIconBorderRight,
+            socialIconBorderBottom,
+            socialIconBorderLeft,
+            socialIconBorderUpdated,
+            socialIconMarginT,
+            socialIconMarginR,
+            socialIconMarginB,
+            socialIconMarginL,
+            socialIconMarginTTablet,
+            socialIconMarginRTablet,
+            socialIconMarginBTablet,
+            socialIconMarginLTablet,
+            socialIconMarginTMobile,
+            socialIconMarginRMobile,
+            socialIconMarginBMobile,
+            socialIconMarginLMobile,
+            socialIconPaddingTop,
+            socialIconPaddingRight,
+            socialIconPaddingBottom,
+            socialIconPaddingLeft,
+            socialIconPaddingTTablet,
+            socialIconPaddingRTablet,
+            socialIconPaddingBTablet,
+            socialIconPaddingLTablet,
+            socialIconPaddingTMobile,
+            socialIconPaddingRMobile,
+            socialIconPaddingBMobile,
+            socialIconPaddingLMobile,
             nameV,
             titleV,
             descV,
@@ -324,7 +351,14 @@ class edit extends Component {
 
         const SocialIconSize = this.getPreviewSize(this.props.deviceType, socialIconStyles[0].socialIconSize, socialIconStyles[0].socialIconfontSizeTablet, socialIconStyles[0].socialIconfontSizeMobile);
 
-        const SocialIconPadding = this.getPreviewSize(this.props.deviceType, socialIconStyles[0].socialIconPadding, socialIconStyles[0].socialIconPaddingTablet, socialIconStyles[0].socialIconPaddingMobile);
+        const SocialIconMarginTop = this.getPreviewSize(this.props.deviceType, socialIconMarginT, socialIconMarginTTablet, socialIconMarginTMobile);
+        const SocialIconMarginRight = this.getPreviewSize(this.props.deviceType, socialIconMarginR, socialIconMarginRTablet, socialIconMarginRMobile);
+        const SocialIconMarginBottom = this.getPreviewSize(this.props.deviceType, socialIconMarginB, socialIconMarginBTablet, socialIconMarginBMobile);
+        const SocialIconMarginLeft = this.getPreviewSize(this.props.deviceType, socialIconMarginL, socialIconMarginLTablet, socialIconMarginLMobile);
+        const SocialIconPaddingTop = this.getPreviewSize(this.props.deviceType, socialIconPaddingTop, socialIconPaddingTTablet, socialIconPaddingTMobile);
+        const SocialIconPaddingRight = this.getPreviewSize(this.props.deviceType, socialIconPaddingRight, socialIconPaddingRTablet, socialIconPaddingRMobile);
+        const SocialIconPaddingBottom = this.getPreviewSize(this.props.deviceType, socialIconPaddingBottom, socialIconPaddingBTablet, socialIconPaddingBMobile);
+        const SocialIconPaddingLeft = this.getPreviewSize(this.props.deviceType, socialIconPaddingLeft, socialIconPaddingLTablet, socialIconPaddingLMobile);
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -446,13 +480,20 @@ class edit extends Component {
             return <ul className="premium-person__social-List">{(v).map((value) => (
                 <li>
                     <a className={`premium-person__socialIcon__link_content ${defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                        padding: SocialIconPadding + socialIconStyles[0].socialIconPaddingType,
                         borderStyle: socialIconStyles[0].borderTypeIcon,
-                        borderWidth: socialIconStyles[0].borderWidthIcon + "px",
+                        borderWidth: socialIconBorderUpdated
+                            ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
+                            : socialIconBorderWidth + "px",
                         borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
                         borderColor: socialIconStyles[0].borderColorIcon,
-                        marginLeft: socialIconStyles[0].iconMarginL + "px",
-                        marginRight: socialIconStyles[0].iconMarginR + "px",
+                        marginTop: SocialIconMarginTop + socialIconStyles[0].socialIconMarginType,
+                        marginBottom: SocialIconMarginBottom + socialIconStyles[0].socialIconMarginType,
+                        marginLeft: SocialIconMarginLeft + socialIconStyles[0].socialIconMarginType,
+                        marginRight: SocialIconMarginRight + socialIconStyles[0].socialIconMarginType,
+                        paddingTop: SocialIconPaddingTop + socialIconStyles[0].socialIconPaddingType,
+                        paddingBottom: SocialIconPaddingBottom + socialIconStyles[0].socialIconPaddingType,
+                        paddingLeft: SocialIconPaddingLeft + socialIconStyles[0].socialIconPaddingType,
+                        paddingRight: SocialIconPaddingRight + socialIconStyles[0].socialIconPaddingType,
                         background: socialIconStyles[0].socialIconBackgroundColor,
                     }}>
                         <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconStyles[0].socialIconHoverColor}`}
@@ -467,7 +508,7 @@ class edit extends Component {
             </ul>
         }
         const content = () => {
-            return <div className={`${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""} ${id}`}
+            return <div className={`premium-person-content ${id} ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
             > {multiPersonContent.map((value) => (
                 <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                     <div className={`premium-person__img__container`}>
@@ -502,7 +543,12 @@ class edit extends Component {
                             bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                         }}
                     >
-                        <div className={`premium-person__name_wrap`}>
+                        <div
+                            className={`premium-person__name_wrap`}
+                            style={{
+                                fontSize: NameSize + nameStyles[0].namefontSizeType,
+                            }}
+                        >
                             {value.name && (
                                 <span
                                     className={`premium-person__name`}
@@ -522,7 +568,12 @@ class edit extends Component {
                                 </span>
                             )}
                         </div>
-                        <div className={`premium-person__title_wrap`}>
+                        <div
+                            className={`premium-person__title_wrap`}
+                            style={{
+                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                            }}
+                        >
                             {value.title && (
                                 <span
                                     className={`premium-person__title`}
@@ -542,7 +593,12 @@ class edit extends Component {
                                 </span>
                             )}
                         </div>
-                        <div className={`premium-person__desc_wrap`}>
+                        <div
+                            className={`premium-person__desc_wrap`}
+                            style={{
+                                fontSize: DescSize + descStyles[0].descfontSizeType,
+                            }}
+                        >
                             {value.desc && (
                                 <span
                                     className={`premium-person__desc`}
@@ -975,7 +1031,11 @@ class edit extends Component {
                             onChange={(value) => saveSocialIconStyles({ socialIconSize: value })}
                             onChangeTablet={(value) => saveSocialIconStyles({ socialIconfontSizeTablet: value })}
                             onChangeMobile={(value) => saveSocialIconStyles({ socialIconfontSizeMobile: value })}
-                            showUnit={false}
+                            onChangeUnit={(key) =>
+                                saveSocialIconStyles({ socialIconfontSizeType: key })
+                            }
+                            unit={socialIconStyles[0].socialIconfontSizeType}
+                            showUnit={true}
                             defaultValue={20}
                             min={1}
                             max={100}
@@ -1019,7 +1079,7 @@ class edit extends Component {
                             checked={defaultIconColor}
                             onChange={newCheck => setAttributes({ defaultIconColor: newCheck })}
                         />
-                        <PremiumBorder
+                        {/* <PremiumBorder
                             borderType={socialIconStyles[0].borderTypeIcon}
                             borderWidth={socialIconStyles[0].borderWidthIcon}
                             borderColor={socialIconStyles[0].borderColorIcon}
@@ -1032,62 +1092,157 @@ class edit extends Component {
                             onChangeRadius={newrRadius =>
                                 saveSocialIconStyles({ borderRadiusIcon: newrRadius })
                             }
-                        />
-                        <ResponsiveRangeControl
-                            label={__(
-                                "Padding",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            value={socialIconStyles[0].socialIconPadding}
-                            onChange={(value) =>
-                                saveSocialIconStyles({ socialIconPadding: value })
-                            }
-                            tabletValue={
-                                socialIconStyles[0].socialIconPaddingTablet
-                            }
-                            onChangeTablet={(value) =>
-                                saveSocialIconStyles({
-                                    socialIconPaddingTablet: value,
+                        /> */}
+                        <PremiumBorder
+                            borderType={socialIconStyles[0].borderTypeIcon}
+                            borderWidth={socialIconBorderWidth}
+                            top={socialIconBorderTop}
+                            right={socialIconBorderRight}
+                            bottom={socialIconBorderBottom}
+                            left={socialIconBorderLeft}
+                            borderColor={socialIconStyles[0].borderColorIcon}
+                            borderRadius={socialIconStyles[0].borderRadiusIcon}
+                            onChangeType={newType => saveSocialIconStyles({ borderTypeIcon: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    socialIconBorderUpdated: true,
+                                    socialIconBorderTop: top,
+                                    socialIconBorderRight: right,
+                                    socialIconBorderBottom: bottom,
+                                    socialIconBorderLeft: left,
                                 })
                             }
-                            mobileValue={
-                                socialIconStyles[0].socialIconPaddingMobile
+                            onChangeColor={colorValue =>
+                                saveSocialIconStyles({ borderColorIcon: colorValue })
                             }
-                            onChangeMobile={(value) =>
-                                saveSocialIconStyles({
-                                    socialIconPaddingMobile: value,
-                                })
+                            onChangeRadius={newrRadius =>
+                                saveSocialIconStyles({ borderRadiusIcon: newrRadius })
                             }
-                            onChangeUnit={(key) =>
-                                saveSocialIconStyles({ socialIconPaddingType: key })
-                            }
-                            unit={socialIconStyles[0].socialIconPaddingType}
-                            showUnit={true}
-                            defaultValue={0}
-                            min={0}
-                            max={100}
                         />
-                        <div className="premium-control-toggle">
-                            <PremiumMargin
-                                directions={["left", "right"]}
-                                label={__(
-                                    "Margin",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                left={socialIconStyles[0].iconMarginL}
-                                right={socialIconStyles[0].iconMarginR}
-                                onChangeMarLeft={value =>
-                                    saveSocialIconStyles({
-                                        iconMarginL: value || 1
-                                    })
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            marginTop={socialIconMarginT}
+                            marginRight={socialIconMarginR}
+                            marginBottom={socialIconMarginB}
+                            marginLeft={socialIconMarginL}
+                            marginTopTablet={socialIconMarginTTablet}
+                            marginRightTablet={socialIconMarginRTablet}
+                            marginBottomTablet={socialIconMarginBTablet}
+                            marginLeftTablet={socialIconMarginLTablet}
+                            marginTopMobile={socialIconMarginTMobile}
+                            marginRightMobile={socialIconMarginRMobile}
+                            marginBottomMobile={socialIconMarginBMobile}
+                            marginLeftMobile={socialIconMarginLMobile}
+                            showUnits={true}
+                            onChangeMarSizeUnit={newvalue => saveSocialIconStyles({ socialIconMarginType: newvalue })}
+                            selectedUnit={socialIconStyles[0].socialIconMarginType}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconMarginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconMarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconMarginTMobile: newValue })
+                                    }
                                 }
-                                onChangeMarRight={value =>
-                                    saveSocialIconStyles({
-                                        iconMarginR: value || 1
-                                    })
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconMarginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconMarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconMarginRMobile: newValue })
+                                    }
                                 }
-                            />
-                        </div>
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconMarginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconMarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconMarginBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconMarginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconMarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconMarginLMobile: newValue })
+                                    }
+                                }
+                            }
+
+                        />
+                        <PremiumResponsivePadding
+                            paddingTop={socialIconPaddingTop}
+                            paddingRight={socialIconPaddingRight}
+                            paddingBottom={socialIconPaddingBottom}
+                            paddingLeft={socialIconPaddingLeft}
+                            paddingTopTablet={socialIconPaddingTTablet}
+                            paddingRightTablet={socialIconPaddingRTablet}
+                            paddingBottomTablet={socialIconPaddingBTablet}
+                            paddingLeftTablet={socialIconPaddingLTablet}
+                            paddingTopMobile={socialIconPaddingTMobile}
+                            paddingRightMobile={socialIconPaddingRMobile}
+                            paddingBottomMobile={socialIconPaddingBMobile}
+                            paddingLeftMobile={socialIconPaddingLMobile}
+                            showUnits={true}
+                            selectedUnit={socialIconStyles[0].socialIconPaddingType}
+                            onChangePadSizeUnit={newvalue => saveSocialIconStyles({ socialIconPaddingType: newvalue })}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconPaddingTop: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconPaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconPaddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconPaddingRight: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconPaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconPaddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconPaddingBottom: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconPaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconPaddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ socialIconPaddingLeft: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ socialIconPaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ socialIconPaddingLMobile: newValue })
+                                    }
+                                }
+                            }
+                        />
                     </PanelBody>)
                         : multiPersonContent[0].socialIcon && (<PanelBody
                             title={__("Social Icon")}
@@ -1102,7 +1257,11 @@ class edit extends Component {
                                 onChange={(value) => saveSocialIconStyles({ socialIconSize: value })}
                                 onChangeTablet={(value) => saveSocialIconStyles({ socialIconfontSizeTablet: value })}
                                 onChangeMobile={(value) => saveSocialIconStyles({ socialIconfontSizeMobile: value })}
-                                showUnit={false}
+                                onChangeUnit={(key) =>
+                                    saveSocialIconStyles({ socialIconfontSizeType: key })
+                                }
+                                unit={socialIconStyles[0].socialIconfontSizeType}
+                                showUnit={true}
                                 defaultValue={20}
                                 min={1}
                                 max={100}
@@ -1146,7 +1305,7 @@ class edit extends Component {
                                 checked={defaultIconColor}
                                 onChange={newCheck => setAttributes({ defaultIconColor: newCheck })}
                             />
-                            <PremiumBorder
+                            {/* <PremiumBorder
                                 borderType={socialIconStyles[0].borderTypeIcon}
                                 borderWidth={socialIconStyles[0].borderWidthIcon}
                                 borderColor={socialIconStyles[0].borderColorIcon}
@@ -1159,59 +1318,157 @@ class edit extends Component {
                                 onChangeRadius={newrRadius =>
                                     saveSocialIconStyles({ borderRadiusIcon: newrRadius })
                                 }
-                            />
-                            <ResponsiveRangeControl
-                                label={__(
-                                    "Padding",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={socialIconStyles[0].socialIconPadding}
-                                onChange={(value) =>
-                                    saveSocialIconStyles({ socialIconPadding: value })
-                                }
-                                tabletValue={
-                                    socialIconStyles[0].socialIconPaddingTablet
-                                }
-                                onChangeTablet={(value) =>
-                                    saveSocialIconStyles({
-                                        socialIconPaddingTablet: value,
+                            /> */}
+                            <PremiumBorder
+                                borderType={socialIconStyles[0].borderTypeIcon}
+                                borderWidth={socialIconBorderWidth}
+                                top={socialIconBorderTop}
+                                right={socialIconBorderRight}
+                                bottom={socialIconBorderBottom}
+                                left={socialIconBorderLeft}
+                                borderColor={socialIconStyles[0].borderColorIcon}
+                                borderRadius={socialIconStyles[0].borderRadiusIcon}
+                                onChangeType={newType => saveSocialIconStyles({ borderTypeIcon: newType })}
+                                onChangeWidth={({ top, right, bottom, left }) =>
+                                    setAttributes({
+                                        socialIconBorderUpdated: true,
+                                        socialIconBorderTop: top,
+                                        socialIconBorderRight: right,
+                                        socialIconBorderBottom: bottom,
+                                        socialIconBorderLeft: left,
                                     })
                                 }
-                                mobileValue={
-                                    socialIconStyles[0].socialIconPaddingMobile
+                                onChangeColor={colorValue =>
+                                    saveSocialIconStyles({ borderColorIcon: colorValue })
                                 }
-                                onChangeMobile={(value) =>
-                                    saveSocialIconStyles({
-                                        socialIconPaddingMobile: value,
-                                    })
+                                onChangeRadius={newrRadius =>
+                                    saveSocialIconStyles({ borderRadiusIcon: newrRadius })
                                 }
-                                onChangeUnit={(key) =>
-                                    saveSocialIconStyles({ socialIconPaddingType: key })
-                                }
-                                unit={socialIconStyles[0].socialIconPaddingType}
-                                showUnit={true}
-                                defaultValue={0}
-                                min={0}
-                                max={100}
                             />
-                            <div className="premium-control-toggle">
-                                <PremiumMargin
-                                    directions={["left", "right"]}
-                                    label={'Margin'}
-                                    left={socialIconStyles[0].iconMarginL}
-                                    right={socialIconStyles[0].iconMarginR}
-                                    onChangeMarLeft={value =>
-                                        saveSocialIconStyles({
-                                            iconMarginL: value || 1
-                                        })
+                            <PremiumResponsiveMargin
+                                directions={["all"]}
+                                marginTop={socialIconMarginT}
+                                marginRight={socialIconMarginR}
+                                marginBottom={socialIconMarginB}
+                                marginLeft={socialIconMarginL}
+                                marginTopTablet={socialIconMarginTTablet}
+                                marginRightTablet={socialIconMarginRTablet}
+                                marginBottomTablet={socialIconMarginBTablet}
+                                marginLeftTablet={socialIconMarginLTablet}
+                                marginTopMobile={socialIconMarginTMobile}
+                                marginRightMobile={socialIconMarginRMobile}
+                                marginBottomMobile={socialIconMarginBMobile}
+                                marginLeftMobile={socialIconMarginLMobile}
+                                showUnits={true}
+                                onChangeMarSizeUnit={newvalue => saveSocialIconStyles({ socialIconMarginType: newvalue })}
+                                selectedUnit={socialIconStyles[0].socialIconMarginType}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconMarginT: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconMarginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconMarginTMobile: newValue })
+                                        }
                                     }
-                                    onChangeMarRight={value =>
-                                        saveSocialIconStyles({
-                                            iconMarginR: value || 1
-                                        })
+                                }
+                                onChangeMarginRight={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconMarginR: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconMarginRTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconMarginRMobile: newValue })
+                                        }
                                     }
-                                />
-                            </div>
+                                }
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconMarginB: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconMarginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconMarginBMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangeMarginLeft={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconMarginL: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconMarginLTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconMarginLMobile: newValue })
+                                        }
+                                    }
+                                }
+
+                            />
+                            <PremiumResponsivePadding
+                                paddingTop={socialIconPaddingTop}
+                                paddingRight={socialIconPaddingRight}
+                                paddingBottom={socialIconPaddingBottom}
+                                paddingLeft={socialIconPaddingLeft}
+                                paddingTopTablet={socialIconPaddingTTablet}
+                                paddingRightTablet={socialIconPaddingRTablet}
+                                paddingBottomTablet={socialIconPaddingBTablet}
+                                paddingLeftTablet={socialIconPaddingLTablet}
+                                paddingTopMobile={socialIconPaddingTMobile}
+                                paddingRightMobile={socialIconPaddingRMobile}
+                                paddingBottomMobile={socialIconPaddingBMobile}
+                                paddingLeftMobile={socialIconPaddingLMobile}
+                                showUnits={true}
+                                selectedUnit={socialIconStyles[0].socialIconPaddingType}
+                                onChangePadSizeUnit={newvalue => saveSocialIconStyles({ socialIconPaddingType: newvalue })}
+                                onChangePaddingTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconPaddingTop: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconPaddingTTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconPaddingTMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingRight={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconPaddingRight: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconPaddingRTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconPaddingRMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconPaddingBottom: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconPaddingBTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconPaddingBMobile: newValue })
+                                        }
+                                    }
+                                }
+                                onChangePaddingLeft={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ socialIconPaddingLeft: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ socialIconPaddingLTablet: newValue })
+                                        } else {
+                                            setAttributes({ socialIconPaddingLMobile: newValue })
+                                        }
+                                    }
+                                }
+                            />
                         </PanelBody>
                         )}
                     <PanelBody
