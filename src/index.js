@@ -12,5 +12,6 @@ import "./blocks/testimonials";
 import "./blocks/video-box";
 import "./blocks/fancy-text"
 import "./blocks/lottie";
-import "./blocks/Modal"
-import "./blocks/image-separator"
+import "./blocks/Modal";
+import "./blocks/image-separator";
+import "./blocks/bullet-list";
