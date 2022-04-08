@@ -3,9 +3,9 @@
 **Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks  
 **Donate link:** http://leap13.com  
 **Requires at least:** 4.5  
-**Tested up to:** 5.9.2  
+**Tested up to:** 5.9.3  
 **Requires PHP:** 5.4  
-**Stable tag:** 1.9.5  
+**Stable tag:** 1.9.6  
 **License:** GPL v3.0  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
 
@@ -58,6 +58,11 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 ## Changelog ##
+
+### 1.9.6 ###
+
+- New: Added Premium Bullet List block.
+- Fixed: Responsive Margin/Padding controls not working properly.
 
 ### 1.9.5 ###
 
