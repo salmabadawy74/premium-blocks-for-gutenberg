@@ -2,19 +2,16 @@ import { maps } from "../../../assets/js/settings";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PbgIcon from "../icons";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import AdvancedPopColorControl from '../../components/premium-color-control'
-
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import RadioComponent from '../../components/radio-control';
 const className = "premium-maps";
-
 const { __ } = wp.i18n;
-
 const { registerBlockType } = wp.blocks;
 
 const {
-    Toolbar,
     PanelBody,
     SelectControl,
-    RangeControl,
     TextControl,
     TextareaControl,
     ToggleControl,
@@ -80,11 +77,11 @@ const mapAttrs = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description")
+        default: __("Cool Description", 'premium-blocks-for-gutenberg')
     },
     mapMarker: {
         type: "boolean",
@@ -202,11 +199,11 @@ const mapAttrs_1_2 = {
     },
     markerTitle: {
         type: "string",
-        default: __("Awesome Title")
+        default: __("Awesome Title", 'premium-blocks-for-gutenberg')
     },
     markerDesc: {
         type: "string",
-        default: __("Cool Description")
+        default: __("Cool Description", 'premium-blocks-for-gutenberg')
     },
     mapMarker: {
         type: "boolean",
@@ -299,7 +296,6 @@ class PremiumMap extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
-
         if (!attributes.mapID) {
             setAttributes({ mapID: "premium-map-" + clientId });
         }
@@ -464,19 +460,19 @@ class PremiumMap extends Component {
         const TYPES = [
             {
                 value: "roadmap",
-                label: __("Road Map")
+                label: __("Road Map", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "satellite",
-                label: __("Satellite")
+                label: __("Satellite", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "terrain",
-                label: __("Terrain")
+                label: __("Terrain", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "hybrid",
-                label: __("Hybrid")
+                label: __("Hybrid", 'premium-blocks-for-gutenberg')
             }
         ];
 
@@ -496,7 +492,7 @@ class PremiumMap extends Component {
                                 __("Get your location coordinates from"),
                                 <a href="https://www.latlong.net/" target="_blank">
                                     &nbsp;
-                  {__("here")}
+                                    {__("here", 'premium-blocks-for-gutenberg')}
                                 </a>
                             ]}
                             onChange={newLng => setAttributes({ centerLng: newLng })}
@@ -508,49 +504,50 @@ class PremiumMap extends Component {
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Marker")}
+                        title={__("Marker", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <ToggleControl
-                            label={__("Enable Marker")}
+                            label={__("Enable Marker", 'premium-blocks-for-gutenberg')}
                             checked={mapMarker}
                             onChange={check => setAttributes({ mapMarker: check })}
-                            help={__("Disable marker is applied on page reload")}
+                            help={__("Disable marker is applied on page reload", 'premium-blocks-for-gutenberg')}
                         />
                         {mapMarker && (
                             <Fragment>
                                 <TextControl
-                                    label={__("Marker Title")}
+                                    label={__("Marker Title", 'premium-blocks-for-gutenberg')}
                                     value={markerTitle}
                                     onChange={newText => setAttributes({ markerTitle: newText })}
                                 />
                                 <TextareaControl
-                                    label={__("Marker Description")}
+                                    label={__("Marker Description", 'premium-blocks-for-gutenberg')}
                                     value={markerDesc}
                                     onChange={newText => setAttributes({ markerDesc: newText })}
                                 />
-                                <RangeControl
-                                    label={__("Spacing (PX)")}
+                                <ResponsiveSingleRangeControl
+                                    label={__("Spacing (PX)", 'premium-blocks-for-gutenberg')}
                                     value={gapBetween}
                                     min="10"
                                     max="80"
                                     onChange={newSize => setAttributes({ gapBetween: newSize })}
+                                    showUnit={false}
+                                    defaultValue={10}
                                 />
                                 <ToggleControl
-                                    label={__("Description opened by default")}
+                                    label={__("Description opened by default", 'premium-blocks-for-gutenberg')}
                                     checked={markerOpen}
                                     onChange={newValue => setAttributes({ markerOpen: newValue })}
                                 />
-                                <Toolbar
-                                    controls={ALIGNS.map(align => ({
-                                        icon: "editor-align" + align,
-                                        isActive: align === boxAlign,
-                                        onClick: () => setAttributes({ boxAlign: align })
-                                    }))}
+                                <RadioComponent
+                                    choices={["left", "center", "right"]}
+                                    value={boxAlign}
+                                    onChange={newValue => setAttributes({ boxAlign: newValue })}
+                                    label={__("Align", 'premium-blocks-for-gutenberg')}
                                 />
                                 <ToggleControl
-                                    label={__("Custom Marker Icon")}
+                                    label={__("Custom Marker Icon", 'premium-blocks-for-gutenberg')}
                                     checked={markerCustom}
                                     onChange={check => setAttributes({ markerCustom: check })}
                                 />
@@ -574,140 +571,168 @@ class PremiumMap extends Component {
 
                                     />
                                 )}
-                                <RangeControl
-                                    label={__("Description Box Max Width (PX)")}
+                                <ResponsiveSingleRangeControl
+                                    label={__("Description Box Max Width (PX)", 'premium-blocks-for-gutenberg')}
                                     value={maxWidth}
                                     min="10"
                                     max="500"
                                     onChange={newSize => setAttributes({ maxWidth: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
-                                <RangeControl
-                                    label={__("Description Box Padding (PX)")}
+                                <ResponsiveSingleRangeControl
+                                    label={__("Description Box Padding (PX)", 'premium-blocks-for-gutenberg')}
                                     value={boxPadding}
                                     min="1"
                                     max="50"
                                     onChange={newSize => setAttributes({ boxPadding: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                 />
                             </Fragment>
                         )}
                     </PanelBody>
                     {mapMarker && markerTitle && (
                         <PanelBody
-                            title={__("Marker Title Style")}
+                            title={__("Marker Title Style", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <RangeControl
-                                label={__("Font Size (PX)")}
+                            <ResponsiveSingleRangeControl
+                                label={__("Font Size (PX)", 'premium-blocks-for-gutenberg')}
                                 value={titleSize}
                                 min="10"
                                 max="80"
                                 onChange={newSize => setAttributes({ titleSize: newSize })}
+                                showUnit={false}
+                                defaultValue={0}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={titleColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    setAttributes({
-                                        titleColor:
-                                            newValue === undefined ? "transparent" : newValue
-                                    })
+                                onColorChange={newValue => setAttributes({ titleColor: newValue === undefined ? "transparent" : newValue })
                                 }
                             />
                         </PanelBody>
                     )}
                     {mapMarker && markerDesc && (
                         <PanelBody
-                            title={__("Marker Description Style")}
+                            title={__("Marker Description Style", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <RangeControl
-                                label={__("Font Size (PX)")}
+                            <ResponsiveSingleRangeControl
+                                label={__("Font Size (PX)", 'premium-blocks-for-gutenberg')}
                                 value={descSize}
                                 min="10"
                                 max="80"
                                 onChange={newSize => setAttributes({ descSize: newSize })}
+                                showUnit={false}
+                                defaultValue={0}
                             />
                             <AdvancedPopColorControl
-                                label={__("Text Color", 'premium-block-for-gutenberg')}
+                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={descColor}
                                 colorDefault={''}
-                                onColorChange={newValue =>
-                                    setAttributes({
-                                        descColor:
-                                            newValue === undefined ? "transparent" : newValue
-                                    })
-                                }
+                                onColorChange={newValue => setAttributes({ descColor: newValue === undefined ? "transparent" : newValue })}
                             />
                         </PanelBody>
                     )}
+                    {
+                        mapMarker && markerDesc && (
+                            <PanelBody
+                                title={__("Marker Description Style", 'premium-block-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <ResponsiveSingleRangeControl
+                                    label={__("Font Size (PX)", 'premium-block-for-gutenberg')}
+                                    value={descSize}
+                                    min="10"
+                                    max="80"
+                                    onChange={newSize => setAttributes({ descSize: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                    colorValue={descColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => setAttributes({ descColor: newValue === undefined ? "transparent" : newValue })}
+                                />
+                            </PanelBody >
+                        )
+                    }
                     <PanelBody
-                        title={__("Controls")}
+                        title={__("Controls", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
-                            label={__("Map Type")}
+                            label={__("Map Type", 'premium-blocks-for-gutenberg')}
                             options={TYPES}
                             value={mapType}
                             onChange={newType => setAttributes({ mapType: newType })}
                         />
-                        <RangeControl
-                            label={__("Map Height (PX)")}
+                        <ResponsiveSingleRangeControl
+                            label={__("Map Height (PX)", 'premium-blocks-for-gutenberg')}
                             value={height}
                             min="10"
                             max="800"
                             onChange={newSize => setAttributes({ height: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
-                        <RangeControl
-                            label={__("Zoom")}
+                        <ResponsiveSingleRangeControl
+                            label={__("Zoom", 'premium-blocks-for-gutenberg')}
                             value={zoom}
                             min="1"
                             max="14"
                             onChange={newSize => setAttributes({ zoom: newSize })}
+                            showUnit={false}
+                            defaultValue={0}
                         />
                         <ToggleControl
-                            label={__("Map Type Controls")}
+                            label={__("Map Type Controls", 'premium-blocks-for-gutenberg')}
                             checked={mapTypeControl}
                             onChange={check => setAttributes({ mapTypeControl: check })}
                         />
                         <ToggleControl
-                            label={__("Zoom Controls")}
+                            label={__("Zoom Controls", 'premium-blocks-for-gutenberg')}
                             checked={zoomControl}
                             onChange={check => setAttributes({ zoomControl: check })}
                         />
                         <ToggleControl
-                            label={__("Street View Control")}
+                            label={__("Street View Control", 'premium-blocks-for-gutenberg')}
                             checked={streetViewControl}
                             onChange={check => setAttributes({ streetViewControl: check })}
                         />
 
                         <ToggleControl
-                            label={__("Full Screen Control")}
+                            label={__("Full Screen Control", 'premium-blocks-for-gutenberg')}
                             checked={fullscreenControl}
                             onChange={check => setAttributes({ fullscreenControl: check })}
                         />
                         <ToggleControl
-                            label={__("Scroll Wheel Zoom")}
+                            label={__("Scroll Wheel Zoom", 'premium-blocks-for-gutenberg')}
                             checked={scrollwheel}
                             onChange={check => setAttributes({ scrollwheel: check })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Map Style")}
+                        title={__("Map Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <TextareaControl
-                            label={__("Maps Style")}
+                            label={__("Maps Style", 'premium-blocks-for-gutenberg')}
                             value={mapStyle}
                             help={[
-                                __("Get your custom styling from"),
+                                __("Get your custom styling from", 'premium-blocks-for-gutenberg'),
                                 <a href="https://snazzymaps.com/" target="_blank">
                                     &nbsp;
-                  {__("here")}
+                                    {__("here")}
                                 </a>
                             ]}
                             onChange={newStyle =>
@@ -723,7 +748,7 @@ class PremiumMap extends Component {
                         onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
                         onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                     />
-                </InspectorControls>
+                </InspectorControls >
             ),
             <div
                 className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}

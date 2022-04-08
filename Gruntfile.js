@@ -55,6 +55,8 @@ module.exports = function (grunt) {
                     "!package.json",
                     "!package-lock.json",
 
+                    "!assets/sass/**",
+
                     "!.babelrc",
                     "!webpack.config.js",
                     "!.gitignore",

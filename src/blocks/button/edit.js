@@ -1,57 +1,40 @@
 import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
-import PremiumTextShadow from "../../components/premium-text-shadow";
-import PremiumBoxShadow from "../../components/premium-box-shadow";
-import PremiumSizeUnits from "../../components/premium-size-units";
-import FONTS from "../../components/premium-fonts";
-import hexToRgba from "hex-to-rgba";
-import styling from './styling';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import AdvancedPopColorControl from '../../components/premium-color-control'
-
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
-
-const {
-    PanelBody,
-    SelectControl,
-    RangeControl,
-    ToggleControl,
-    TabPanel,
-} = wp.components;
-
+import WebfontLoader from "../../components/typography/fontLoader"
+import PremiumShadow from "../../components/PremiumShadow";
+const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
-
-const {
-    InspectorControls,
-    AlignmentToolbar,
-    BlockControls,
-    RichText,
-    URLInput,
-} = wp.blockEditor;
-
-export default class edit extends Component {
-
+const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
+const { withSelect } = wp.data
+export class edit extends Component {
     constructor() {
         super(...arguments);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
-    componentDidMount() {
-        this.props.setAttributes({ classMigrate: true });
-
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style");
-        $style.setAttribute(
-            "id",
-            "premium-style-button-" + this.props.clientId.substr(0, 6)
-        );
-        document.head.appendChild($style);
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
+
     render() {
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
-
         const {
-            block_id,
             borderButton,
             btnText,
             btnSize,
@@ -60,192 +43,177 @@ export default class edit extends Component {
             btnTarget,
             effect,
             effectDir,
-            textColor,
-            textHoverColor,
-            backColor,
-            backOpacity,
-            backHoverColor,
             slideColor,
-            textSizeUnit,
-            textSize,
-            textSizeTablet,
-            textSizeMobile,
-            textFontFamily,
-            textWeight,
-            textLetter,
-            textUpper,
-            textLine,
-            textStyle,
-            borderType,
+            block_id,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
             borderWidth,
             borderTop,
             borderRight,
             borderBottom,
             borderLeft,
-            borderRadius,
-            borderColor,
-            borderHoverColor,
-            shadowBlur,
-            shadowColor,
-            shadowHorizontal,
-            shadowVertical,
-            padding,
-            paddingU,
-            btnShadowBlur,
-            btnShadowColor,
-            btnShadowHorizontal,
-            btnShadowVertical,
-            btnShadowPosition,
-            hideDesktop,
-            hideTablet,
-            hideMobile
+            textStyles,
+            btnStyles
         } = this.props.attributes;
 
         const SIZE = [
             {
                 value: "sm",
-                label: __("Small")
+                label: __("Small", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "md",
-                label: __("Medium")
+                label: __("Medium", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "lg",
-                label: __("Large")
+                label: __("Large", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "block",
-                label: __("Block")
+                label: __("Block", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const DIRECTION = [
             {
                 value: "top",
-                label: __("Top to Bottom")
+                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "bottom",
-                label: __("Bottom to Top")
+                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "left",
-                label: __("Left to Right")
+                label: __("Left to Right", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "right",
-                label: __("Right to Left")
+                label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const SHUTTER = [
             {
                 value: "shutouthor",
-                label: __("Shutter out Horizontal")
+                label: __("Shutter out Horizontal", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "shutoutver",
-                label: __("Shutter out Vertical")
+                label: __("Shutter out Vertical", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "scshutoutver",
-                label: __("Scaled Shutter Vertical")
+                label: __("Scaled Shutter Vertical", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "scshutouthor",
-                label: __("Scaled Shutter Horizontal")
+                label: __("Scaled Shutter Horizontal", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "dshutinver",
-                label: __("Tilted Left")
+                label: __("Tilted Left", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "dshutinhor",
-                label: __("Tilted Right")
+                label: __("Tilted Right", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const RADIAL = [
             {
                 value: "radialin",
-                label: __("Radial In")
+                label: __("Radial In", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "radialout",
-                label: __("Radial Out")
+                label: __("Radial Out", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "rectin",
-                label: __("Rectangle In")
+                label: __("Rectangle In", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "rectout",
-                label: __("Rectangle Out")
+                label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const EFFECTS = [
             {
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "slide",
-                label: __("Slide")
+                label: __("Slide", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "shutter",
-                label: __("Shutter")
+                label: __("Shutter", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "radial",
-                label: __("Radial")
+                label: __("Radial", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const onChangeHover = newValue => {
-            setAttributes({ effect: newValue });
+            this.props.setAttributes({ effect: newValue });
             switch (newValue) {
                 case "slide":
-                    setAttributes({ effectDir: "top" });
+                    this.props.setAttributes({ effectDir: "top" });
                     break;
                 case "shutter":
-                    setAttributes({ effectDir: "shutouthor" });
+                    this.props.setAttributes({ effectDir: "shutouthor" });
                     break;
                 case "radial":
-                    setAttributes({ effectDir: "radialin" });
+                    this.props.setAttributes({ effectDir: "radialin" });
                     break;
             }
         };
+
         setAttributes({ block_id: blockId });
 
-        const addFontToHead = fontFamily => {
-            const head = document.head;
-            const link = document.createElement("link");
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.href =
-                "https://fonts.googleapis.com/css2?family=" +
-                fontFamily.replace(/\s/g, '+').replace(/\"/g, "") + "&display=swap";
-            head.appendChild(link);
-        };
-
-        const onChangeTextFamily = fontFamily => {
-            setAttributes({ textFontFamily: fontFamily });
-            if (!fontFamily) {
-                return;
-            }
-
-            addFontToHead(fontFamily);
-        };
-
-        const mainClasses = classnames(className, "premium-button");
-
-        var element = document.getElementById(
-            "premium-style-button-" + blockId.substr(0, 6)
-        );
-
-        if (null != element && "undefined" != typeof element) {
-            element.innerHTML = styling(this.props);
+        const saveTextStyles = (value) => {
+            const newUpdate = textStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({ textStyles: newUpdate });
         }
 
+        let loadBtnGoogleFonts
+        if (textStyles[0].textFontFamily !== 'Default') {
+            const btnconfig = {
+                google: {
+                    families: [textStyles[0].textFontFamily],
+                },
+            }
+            loadBtnGoogleFonts = (
+                <WebfontLoader config={btnconfig}>
+                </WebfontLoader>
+            )
+        }
+
+        const saveBtnStyles = (value) => {
+            const newUpdate = btnStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                btnStyles: newUpdate,
+            });
+        }
+
+        const mainClasses = classnames(className, "premium-button");
+        const btnFontSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textSize, textStyles[0].textSizeTablet, textStyles[0].textSizeMobile);
         return [
             isSelected && "block" != btnSize && (
                 <BlockControls key="controls">
@@ -258,20 +226,20 @@ export default class edit extends Component {
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <PanelBody
-                        title={__("General Settings")}
+                        title={__("General Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
                         <SelectControl
                             options={EFFECTS}
-                            label={__("Hover Effect")}
+                            label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
                             value={effect}
                             onChange={onChangeHover}
                         />
                         {"slide" === effect && (
                             <SelectControl
                                 options={DIRECTION}
-                                label={__("Direction")}
+                                label={__("Direction", 'premium-blocks-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
@@ -279,7 +247,7 @@ export default class edit extends Component {
                         {"shutter" === effect && (
                             <SelectControl
                                 options={SHUTTER}
-                                label={__("Shutter Direction")}
+                                label={__("Shutter Direction", 'premium-blocks-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
@@ -287,95 +255,73 @@ export default class edit extends Component {
                         {"radial" === effect && (
                             <SelectControl
                                 options={RADIAL}
-                                label={__("Style")}
+                                label={__("Style", 'premium-blocks-for-gutenberg')}
                                 value={effectDir}
                                 onChange={newValue => setAttributes({ effectDir: newValue })}
                             />
                         )}
                         <SelectControl
                             options={SIZE}
-                            label={__("Button Size")}
+                            label={__("Button Size", 'premium-blocks-for-gutenberg')}
                             value={btnSize}
                             onChange={newSize => setAttributes({ btnSize: newSize })}
                         />
                         <ToggleControl
-                            label={__("Open link in new tab")}
+                            label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                             checked={btnTarget}
                             onChange={newValue => setAttributes({ btnTarget: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Text Style")}
+                        title={__("Text Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <SelectControl
-                            label={__("Font Family")}
-                            value={textFontFamily}
-                            options={FONTS}
-                            onChange={onChangeTextFamily}
-                        />
                         <PremiumTypo
-                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={setAttributes}
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                            setAttributes={saveTextStyles}
                             fontSizeType={{
-                                value: textSizeUnit,
-                                label: __("textSizeUnit"),
+                                value: textStyles[0].textSizeUnit,
+                                label: __("textSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
-                            fontSize={{
-                                value: textSize,
-                                label: __("textSize"),
-                            }}
-                            fontSizeMobile={{
-                                value: textSizeMobile,
-                                label: __("textSizeMobile"),
-                            }}
-                            fontSizeTablet={{
-                                value: textSizeTablet,
-                                label: __("textSizeTablet"),
-                            }}
-                            weight={textWeight}
-                            style={textStyle}
-                            spacing={textLetter}
-                            upper={textUpper}
-                            line={textLine}
-                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                            onChangeSizeTablet={newSize => setAttributes({ textSizeTablet: newSize })}
-                            onChangeSizeMobile={newSize => setAttributes({ textSizeMobile: newSize })}
-                            onChangeWeight={newWeight =>
-                                setAttributes({ textWeight: newWeight })
-                            }
-                            onChangeLine={newValue => setAttributes({ textLine: newValue })}
-                            onChangeSize={newSize => setAttributes({ textSize: newSize })}
-                            onChangeStyle={newStyle => setAttributes({ textStyle: newStyle })}
-                            onChangeSpacing={newValue =>
-                                setAttributes({ textLetter: newValue })
-                            }
-                            onChangeUpper={check => setAttributes({ textUpper: check })}
+                            fontSize={textStyles[0].textSize}
+                            fontSizeMobile={textStyles[0].textSizeMobile}
+                            fontSizeTablet={textStyles[0].textSizeTablet}
+                            fontFamily={textStyles[0].textFontFamily}
+                            weight={textStyles[0].textWeight}
+                            style={textStyles[0].textStyle}
+                            spacing={textStyles[0].textLetter}
+                            upper={textStyles[0].textUpper}
+                            line={textStyles[0].textLine}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeTabletSize={newSize => saveTextStyles({ textSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveTextStyles({ textSizeMobile: newSize })}
+                            onChangeWeight={newWeight => saveTextStyles({ textWeight: newWeight })}
+                            onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
+                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
+                            onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
+                            onChangeSpacing={newValue => saveTextStyles({ textLetter: newValue })}
+                            onChangeFamily={(fontFamily) => saveTextStyles({ textFontFamily: fontFamily })}
+                            onChangeUpper={check => saveTextStyles({ textUpper: check })}
                         />
-                        <PremiumTextShadow
-                            color={shadowColor}
-                            blur={shadowBlur}
-                            horizontal={shadowHorizontal}
-                            vertical={shadowVertical}
-                            onChangeColor={newColor =>
-                                setAttributes({ shadowColor: newColor })
-                            }
-                            onChangeBlur={newBlur => setAttributes({ shadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                setAttributes({ shadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({ shadowVertical: newValue })
-                            }
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                            color={textStyles[0].shadowColor}
+                            blur={textStyles[0].shadowBlur}
+                            horizontal={textStyles[0].shadowHorizontal}
+                            vertical={textStyles[0].shadowVertical}
+                            onChangeColor={newColor => saveTextStyles({ shadowColor: newColor })}
+                            onChangeBlur={newBlur => saveTextStyles({ shadowBlur: newBlur })}
+                            onChangehHorizontal={newValue => saveTextStyles({ shadowHorizontal: newValue })}
+                            onChangeVertical={newValue => saveTextStyles({ shadowVertical: newValue })}
                         />
                     </PanelBody>
                     <PanelBody
-                        title={__("Button Style")}
+                        title={__("Button Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <strong>{__("Colors")}</strong>
+                        <strong>{__("Colors", 'premium-blocks-for-gutenberg')}</strong>
                         <TabPanel
                             className="premium-color-tabpanel"
                             activeClass="active-tab"
@@ -398,25 +344,16 @@ export default class edit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Text Color", 'premium-block-for-gutenberg')}
-                                                colorValue={textColor}
+                                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].textColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    setAttributes({
-                                                        textColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => saveBtnStyles({ textColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
-                                                label={"radial" !== effect
-                                                    ? __("Background Color")
-                                                    : __("Background Hover Color")}
-                                                colorValue={backColor}
+                                                label={__('Background Color', 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].backColor}
                                                 colorDefault={''}
-                                                onColorChange={newvalue =>
-                                                    setAttributes({
-                                                        backColor: newvalue,
-                                                    })}
+                                                onColorChange={newvalue => saveBtnStyles({ backColor: newvalue, })}
                                             />
 
                                         </Fragment>
@@ -426,37 +363,29 @@ export default class edit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Text Hover Color", 'premium-block-for-gutenberg')}
-                                                colorValue={textHoverColor}
+                                                label={__("Text Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].textHoverColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    setAttributes({
-                                                        textHoverColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue, })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={"radial" !== effect
-                                                    ? __("Background Hover Color", 'premium-block-for-gutenberg')
-                                                    : __("Background Color", 'premium-block-for-gutenberg')}
-                                                colorValue={backHoverColor}
+                                                    ? __("Background Hover Color", 'premium-blocks-for-gutenberg')
+                                                    : __("Background Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].backHoverColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue =>
-                                                    setAttributes({
+                                                    saveBtnStyles({
                                                         backHoverColor: newValue,
                                                         slideColor: newValue,
                                                     })
                                                 }
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Border Hover Color", 'premium-block-for-gutenberg')}
-                                                colorValue={borderHoverColor}
+                                                label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].borderHoverColor}
                                                 colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    setAttributes({
-                                                        borderHoverColor: newValue,
-                                                    })
-                                                }
+                                                onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue, })}
                                             />
                                         </Fragment>
                                     );
@@ -470,15 +399,15 @@ export default class edit extends Component {
                             }}
                         </TabPanel>
                         <PremiumBorder
-                            borderType={borderType}
+                            borderType={btnStyles[0].borderType}
                             borderWidth={borderWidth}
                             top={borderTop}
                             right={borderRight}
                             bottom={borderBottom}
                             left={borderLeft}
-                            borderColor={borderColor}
-                            borderRadius={borderRadius}
-                            onChangeType={(newType) => setAttributes({ borderType: newType })}
+                            borderColor={btnStyles[0].borderColor}
+                            borderRadius={btnStyles[0].borderRadius}
+                            onChangeType={(newType) => saveBtnStyles({ borderType: newType })}
                             onChangeWidth={({ top, right, bottom, left }) =>
                                 setAttributes({
                                     borderButton: true,
@@ -489,54 +418,34 @@ export default class edit extends Component {
                                 })
                             }
                             onChangeColor={(colorValue) =>
-                                setAttributes({ borderColor: colorValue })
+                                saveBtnStyles({ borderColor: colorValue })
                             }
                             onChangeRadius={(newrRadius) =>
-                                setAttributes({ borderRadius: newrRadius })
+                                saveBtnStyles({ borderRadius: newrRadius })
                             }
                         />
-                        <PremiumBoxShadow
-                            label="Shadow"
-                            inner={true}
-                            color={btnShadowColor}
-                            blur={btnShadowBlur}
-                            horizontal={btnShadowHorizontal}
-                            vertical={btnShadowVertical}
-                            position={btnShadowPosition}
-                            onChangeColor={newColor =>
-                                setAttributes({
-                                    btnShadowColor:
-                                        newColor === undefined ? "transparent" : newColor
-                                })
-                            }
-                            onChangeBlur={newBlur =>
-                                setAttributes({
-                                    btnShadowBlur: newBlur === undefined ? 0 : newBlur
-                                })
-                            }
-                            onChangehHorizontal={newValue =>
-                                setAttributes({
-                                    btnShadowHorizontal: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({
-                                    btnShadowVertical: newValue === undefined ? 0 : newValue
-                                })
-                            }
-                            onChangePosition={newValue =>
-                                setAttributes({
-                                    btnShadowPosition: newValue === undefined ? 0 : newValue
-                                })
-                            }
+                        <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
+                            color={btnStyles[0].btnShadowColor}
+                            blur={btnStyles[0].btnShadowBlur}
+                            horizontal={btnStyles[0].btnShadowHorizontal}
+                            vertical={btnStyles[0].btnShadowVertical}
+                            position={btnStyles[0].btnShadowPosition}
+                            onChangeColor={newColor => saveBtnStyles({ btnShadowColor: newColor === undefined ? "transparent" : newColor })}
+                            onChangeBlur={newBlur => saveBtnStyles({ btnShadowBlur: newBlur === undefined ? 0 : newBlur })}
+                            onChangehHorizontal={newValue => saveBtnStyles({ btnShadowHorizontal: newValue === undefined ? 0 : newValue })}
+                            onChangeVertical={newValue => saveBtnStyles({ btnShadowVertical: newValue === undefined ? 0 : newValue })}
+                            onChangePosition={newValue => saveBtnStyles({ btnShadowPosition: newValue === undefined ? 0 : newValue })}
                         />
-                        <PremiumSizeUnits
-                            onChangeSizeUnit={newValue => setAttributes({ paddingU: newValue })}
-                        />
-                        <RangeControl
-                            label={__("Padding")}
-                            value={padding}
-                            onChange={newValue => setAttributes({ padding: newValue })}
+                        <ResponsiveSingleRangeControl
+                            label={__("Padding", 'premium-blocks-for-gutenberg')}
+                            value={btnStyles[0].padding}
+                            onChange={newValue => saveBtnStyles({ padding: newValue })}
+                            defaultValue={0}
+                            onChangeUnit={newValue => saveBtnStyles({ paddingU: newValue })}
+                            showUnit={true}
+                            unit={btnStyles[0].paddingU}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -558,11 +467,11 @@ export default class edit extends Component {
                     dangerouslySetInnerHTML={{
                         __html: [
                             `#premium-button-wrap-${block_id} .premium-button:hover {`,
-                            `color: ${textHoverColor} !important;`,
-                            `border-color: ${borderHoverColor} !important;`,
+                            `color: ${btnStyles[0].textHoverColor} !important;`,
+                            `border-color: ${btnStyles[0].borderHoverColor} !important;`,
                             "}",
                             `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
-                            `background-color: ${backHoverColor} !important;`,
+                            `background-color: ${btnStyles[0].backHoverColor} !important;`,
                             "}",
                             `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
                             `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
@@ -577,25 +486,24 @@ export default class edit extends Component {
                     value={btnText}
                     onChange={value => setAttributes({ btnText: value })}
                     style={{
-                        color: textColor,
-                        backgroundColor: backColor
-                            ? hexToRgba(backColor, backOpacity)
-                            : "transparent",
-                        fontFamily: textFontFamily,
-                        letterSpacing: textLetter + "px",
-                        textTransform: textUpper ? "uppercase" : "none",
-                        fontStyle: textStyle,
-                        lineHeight: textLine + "px",
-                        fontWeight: textWeight,
-                        textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                        boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
-                        padding: padding + paddingU,
-                        borderStyle: borderType,
+                        color: btnStyles[0].textColor,
+                        backgroundColor: btnStyles[0].backColor,
+                        fontFamily: textStyles[0].textFontFamily,
+                        letterSpacing: textStyles[0].textLetter + "px",
+                        fontSize: btnFontSize + textStyles[0].textSizeUnit,
+                        textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                        fontStyle: textStyles[0].textStyle,
+                        lineHeight: textStyles[0].textLine + "px",
+                        fontWeight: textStyles[0].textWeight,
+                        textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
+                        boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
+                        padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                        borderStyle: btnStyles[0].borderType,
                         borderWidth: borderButton
                             ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                             : borderWidth + "px",
-                        borderRadius: borderRadius + "px",
-                        borderColor: borderColor
+                        borderRadius: btnStyles[0].borderRadius + "px",
+                        borderColor: btnStyles[0].borderColor
                     }}
                     keepPlaceholderOnFocus
                 />
@@ -603,8 +511,17 @@ export default class edit extends Component {
                     value={btnLink}
                     onChange={newLink => setAttributes({ btnLink: newLink })}
                 />
+                {loadBtnGoogleFonts}
             </div>
         ];
     }
 };
 
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)
