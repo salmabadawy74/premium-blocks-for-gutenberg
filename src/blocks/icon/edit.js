@@ -368,18 +368,18 @@ const edit = props => {
 
                     />
                     <PremiumResponsivePadding
-                        paddingT={paddingT}
-                        paddingR={paddingR}
-                        paddingB={paddingB}
-                        paddingL={paddingL}
-                        paddingTTablet={paddingTTablet}
-                        paddingRTablet={paddingRTablet}
-                        paddingBTablet={paddingBTablet}
-                        paddingLTablet={paddingLTablet}
-                        paddingTMobile={paddingTMobile}
-                        paddingRMobile={paddingRMobile}
-                        paddingBMobile={paddingBMobile}
-                        paddingLMobile={paddingLMobile}
+                        paddingTop={paddingT}
+                        paddingRight={paddingR}
+                        paddingBottom={paddingB}
+                        paddingLeft={paddingL}
+                        paddingTopTablet={paddingTTablet}
+                        paddingRightTablet={paddingRTablet}
+                        paddingBottomTablet={paddingBTablet}
+                        paddingLeftTablet={paddingLTablet}
+                        paddingTopMobile={paddingTMobile}
+                        paddingRightMobile={paddingRMobile}
+                        paddingBottomMobile={paddingBMobile}
+                        paddingLeftMobile={paddingLMobile}
                         onChangePaddingTop={
                             (device, newValue) => {
                                 if (device === "desktop") {
@@ -547,18 +547,18 @@ const edit = props => {
 
                     />
                     <PremiumResponsivePadding
-                        paddingT={wrapPaddingT}
-                        paddingR={wrapPaddingR}
-                        paddingB={wrapPaddingB}
-                        paddingL={wrapPaddingL}
-                        paddingTTablet={wrapPaddingTTablet}
-                        paddingRTablet={wrapPaddingRTablet}
-                        paddingBTablet={wrapPaddingBTablet}
-                        paddingLTablet={wrapPaddingLTablet}
-                        paddingTMobile={wrapPaddingTMobile}
-                        paddingRMobile={wrapPaddingRMobile}
-                        paddingBMobile={wrapPaddingBMobile}
-                        paddingLMobile={wrapPaddingLMobile}
+                        paddingTop={wrapPaddingT}
+                        paddingRight={wrapPaddingR}
+                        paddingBottom={wrapPaddingB}
+                        paddingLeft={wrapPaddingL}
+                        paddingTopTablet={wrapPaddingTTablet}
+                        paddingRightTablet={wrapPaddingRTablet}
+                        paddingBottomTablet={wrapPaddingBTablet}
+                        paddingLeftTablet={wrapPaddingLTablet}
+                        paddingTopMobile={wrapPaddingTMobile}
+                        paddingRightMobile={wrapPaddingRMobile}
+                        paddingBottomMobile={wrapPaddingBMobile}
+                        paddingLeftMobile={wrapPaddingLMobile}
                         onChangePaddingTop={
                             (device, newValue) => {
                                 if (device === "desktop") {

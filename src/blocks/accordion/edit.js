@@ -6,17 +6,10 @@ import PremiumShadow from "../../components/PremiumShadow";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-
 const { Component, Fragment } = wp.element;
-
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
-
-const {
-    PanelBody,
-    SelectControl,
-} = wp.components;
-
+const { PanelBody, SelectControl } = wp.components;
 const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
 
 let isAccUpdated = null;
@@ -28,6 +21,7 @@ class PremiumAccordion extends Component {
         this.getPreviewSize = this.getPreviewSize.bind(this);
         this.accordionRef = React.createRef();
     }
+
     getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
         if (device === 'Mobile') {
             if (undefined !== mobileSize && '' !== mobileSize) {
@@ -42,6 +36,7 @@ class PremiumAccordion extends Component {
         }
         return desktopSize;
     }
+
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
         if (!attributes.accordionId) {
@@ -49,6 +44,7 @@ class PremiumAccordion extends Component {
         }
         this.initAccordion();
     }
+
     componentDidUpdate(prevProps, prevState) {
         clearTimeout(isAccUpdated);
         isAccUpdated = setTimeout(this.initAccordion, 500);
@@ -413,18 +409,18 @@ class PremiumAccordion extends Component {
                             onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
                         />
                         <PremiumResponsivePadding
-                            paddingT={titlePaddingT}
-                            paddingR={titlePaddingR}
-                            paddingB={titlePaddingB}
-                            paddingL={titlePaddingL}
-                            paddingTTablet={titlePaddingTTablet}
-                            paddingRTablet={titlePaddingRTablet}
-                            paddingBTablet={titlePaddingBTablet}
-                            paddingLTablet={titlePaddingLTablet}
-                            paddingTMobile={titlePaddingTMobile}
-                            paddingRMobile={titlePaddingRMobile}
-                            paddingBMobile={titlePaddingBMobile}
-                            paddingLMobile={titlePaddingLMobile}
+                            paddingTop={titlePaddingT}
+                            paddingRight={titlePaddingR}
+                            paddingBottom={titlePaddingB}
+                            paddingLeft={titlePaddingL}
+                            paddingTopTablet={titlePaddingTTablet}
+                            paddingRightTablet={titlePaddingRTablet}
+                            paddingBottomTablet={titlePaddingBTablet}
+                            paddingLeftTablet={titlePaddingLTablet}
+                            paddingTopMobile={titlePaddingTMobile}
+                            paddingRightMobile={titlePaddingRMobile}
+                            paddingBottomMobile={titlePaddingBMobile}
+                            paddingLeftMobile={titlePaddingLMobile}
                             onChangePaddingTop={
                                 (device, newValue) => {
                                     if (device === "desktop") {
