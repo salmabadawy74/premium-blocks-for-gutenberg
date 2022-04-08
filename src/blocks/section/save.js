@@ -1,5 +1,4 @@
 import classnames from 'classnames'
-import hexToRgba from 'hex-to-rgba'
 
 const { InnerBlocks } = wp.blockEditor;
 
@@ -8,53 +7,42 @@ const save = props => {
     const { className } = props;
 
     const {
-        block_id,
-        isUpdated,
         stretchSection,
-        horAlign,
         innerWidthType,
-        innerWidth,
+        isUpdated,
+        horAlign,
         height,
-        vPos,
+        innerWidth,
         minHeight,
         minHeightUnit,
-        color,
-        opacity,
-        imageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        borderType,
-        borderWidth,
+        vPos,
+        block_id,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        containerStyles,
         borderTop,
         borderRight,
         borderBottom,
         borderLeft,
-        borderColor,
-        borderRadius,
-        marginTop,
-        marginBottom,
-        marginLeft,
-        marginRight,
-        marginUnit,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
-        paddingUnit,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition,
-        hideDesktop,
-        hideTablet,
-        hideMobile
+        backgroundType
     } = props.attributes;
 
 
     const mainClasses = classnames(className, 'premium-container');
+
+    let btnGrad, btnGrad2, btnbg;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+    }
 
     return (
         <div
@@ -63,29 +51,19 @@ const save = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: color
-                    ? hexToRgba(color, opacity)
-                    : "transparent",
-                borderStyle: borderType,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                backgroundImage: `url('${imageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                marginTop: marginTop + marginUnit,
-                marginBottom: marginBottom + marginUnit,
-                marginLeft: marginLeft + marginUnit,
-                marginRight: marginRight + marginUnit,
-                paddingTop: paddingTop + paddingUnit,
-                paddingBottom: paddingBottom + paddingUnit,
-                paddingLeft: paddingLeft + paddingUnit,
-                paddingRight: paddingRight + paddingUnit,
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                    : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
+                backgroundImage: btnbg,
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
             }}
         >
             <div
@@ -96,7 +74,9 @@ const save = props => {
                             ? innerWidth
                                 ? innerWidth + "px"
                                 : "1140px"
-                            : "100%"
+                            : "100%",
+                    minHeight:
+                        "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 }}
             >
                 <div className={`premium-container__content_inner`}>

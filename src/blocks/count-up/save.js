@@ -1,10 +1,6 @@
 import classnames from 'classnames'
-import hexToRgba from "hex-to-rgba"
-
 const save = props => {
-
     const { className } = props;
-
     const {
         block_id,
         borderCount,
@@ -13,73 +9,57 @@ const save = props => {
         delay,
         align,
         flexDir,
-        numberColor,
-        numberWeight,
         prefix,
-        prefixTxt,
-        prefixColor,
-        prefixWeight,
-        prefixGap,
         suffix,
-        suffixTxt,
-        suffixColor,
-        suffixWeight,
-        suffixGap,
-        iconCheck,
         icon,
         iconSpacing,
-        iconType,
+        imageID,
         imageURL,
+        iconType,
+        iconCheck,
         iconSize,
         iconColor,
         selfAlign,
         titleCheck,
         titleTxt,
-        titleColor,
-        titleSpacing,
-        titleStyle,
-        titleUpper,
-        titleT,
-        titleB,
-        titleWeight,
         faIcon,
-        containerBack,
-        containerOpacity,
-        shadowBlur,
-        shadowColor,
-        shadowHorizontal,
-        shadowVertical,
-        shadowPosition,
-        backgroundImageURL,
-        fixed,
-        backgroundRepeat,
-        backgroundPosition,
-        backgroundSize,
-        borderType,
-        borderColor,
-        borderRadius,
-        borderWidth,
+        counterFamily,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        numberStyles,
+        titleStyles,
+        containerStyles,
+        suffixStyles,
+        prefixStyles,
         borderTop,
         borderRight,
         borderBottom,
         borderLeft,
-        titleFamily,
-        counterFamily,
-        prefixFamily,
-        suffixFamily,
         paddingT,
         paddingR,
         paddingB,
         paddingL,
-        paddingU,
-        hideDesktop,
-        hideTablet,
-        hideMobile
+        backgroundType
     } = props.attributes;
 
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
     const mainClasses = classnames(className, 'premium-countup');
+
+    let btnGrad, btnGrad2, btnbg;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+        if ('radial' === containerStyles[0].gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles[0].gradientType) {
+            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+    }
+
 
     return (
         <div
@@ -88,25 +68,19 @@ const save = props => {
             style={{
                 justifyContent: align,
                 flexDirection: flexDir,
-                backgroundColor: containerBack
-                    ? hexToRgba(containerBack, containerOpacity)
-                    : "transparent",
-                boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px rgba(${shadowColor.r},${shadowColor.g},${shadowColor.b}, ${shadowColor.a}) ${shadowPosition}`,
-                backgroundImage: `url('${backgroundImageURL}')`,
-                backgroundRepeat: backgroundRepeat,
-                backgroundPosition: backgroundPosition,
-                backgroundSize: backgroundSize,
-                backgroundAttachment: fixed ? "fixed" : "unset",
-                borderStyle: borderType,
+                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px rgba(${containerStyles[0].shadowColor.r},${containerStyles[0].shadowColor.g},${containerStyles[0].shadowColor.b}, ${containerStyles[0].shadowColor.a}) ${containerStyles[0].shadowPosition}`,
+                backgroundImage: btnbg,
+                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                backgroundPosition: containerStyles[0].backgroundPosition,
+                backgroundSize: containerStyles[0].backgroundSize,
+                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                borderStyle: containerStyles[0].borderType,
                 borderWidth: borderCount
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : borderWidth + "px",
-                borderRadius: borderRadius + "px",
-                borderColor: borderColor,
-                paddingTop: paddingT + paddingU,
-                paddingRight: paddingR + paddingU,
-                paddingBottom: paddingB + paddingU,
-                paddingLeft: paddingL + paddingU,
+                    : containerStyles[0].borderWidth + "px",
+                borderRadius: containerStyles[0].borderRadius + "px",
+                borderColor: containerStyles[0].borderColor,
             }}
         >
             {iconCheck && (
@@ -147,14 +121,13 @@ const save = props => {
                     )}
                 </div>
             )}
-
             <div
                 className={`premium-countup__info`}
                 style={{
                     alignSelf:
                         "row-reverse" === flexDir || "row" === flexDir
                             ? "center"
-                            : selfAlign
+                            : selfAlign,
                 }}
             >
                 <div className={`premium-countup__desc`}>
@@ -162,13 +135,13 @@ const save = props => {
                         <p
                             className={`premium-countup__prefix`}
                             style={{
-                                fontFamily: prefixFamily,
-                                color: prefixColor,
-                                fontWeight: prefixWeight,
-                                marginRight: prefixGap + "px"
+                                fontFamily: prefixStyles[0].prefixFamily,
+                                color: prefixStyles[0].prefixColor,
+                                fontWeight: prefixStyles[0].prefixWeight,
+                                marginRight: prefixStyles[0].prefixGap + "px"
                             }}
                         >
-                            {prefixTxt}
+                            {prefixStyles[0].prefixTxt}
                         </p>
                     )}
                     <p
@@ -177,8 +150,8 @@ const save = props => {
                         data-delay={delay}
                         style={{
                             fontFamily: counterFamily,
-                            color: numberColor,
-                            fontWeight: numberWeight
+                            color: numberStyles[0].numberColor,
+                            fontWeight: numberStyles[0].numberWeight
                         }}
                     >
                         {increment}
@@ -187,13 +160,13 @@ const save = props => {
                         <p
                             className={`premium-countup__suffix`}
                             style={{
-                                fontFamily: suffixFamily,
-                                color: suffixColor,
-                                fontWeight: suffixWeight,
-                                marginLeft: suffixGap + "px"
+                                fontFamily: suffixStyles[0].suffixFamily,
+                                color: suffixStyles[0].suffixColor,
+                                fontWeight: suffixStyles[0].suffixWeight,
+                                marginLeft: suffixStyles[0].suffixGap + "px"
                             }}
                         >
-                            {suffixTxt}
+                            {suffixStyles[0].suffixTxt}
                         </p>
                     )}
                 </div>
@@ -201,14 +174,14 @@ const save = props => {
                     <h3
                         className={`premium-countup__title`}
                         style={{
-                            fontFamily: titleFamily,
-                            marginTop: titleT + "px",
-                            marginBottom: titleB + "px",
-                            color: titleColor,
-                            letterSpacing: titleSpacing + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight
+                            fontFamily: titleStyles[0].titleFamily,
+                            marginTop: titleStyles[0].titleT + "px",
+                            marginBottom: titleStyles[0].titleB + "px",
+                            color: titleStyles[0].titleColor,
+                            letterSpacing: titleStyles[0].titleSpacing + "px",
+                            fontWeight: titleStyles[0].titleWeight,
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle
                         }}
                     >
                         {titleTxt}
@@ -219,14 +192,14 @@ const save = props => {
                 <h3
                     className={`premium-countup__title`}
                     style={{
-                        fontFamily: titleFamily,
-                        marginTop: titleT + "px",
-                        marginBottom: titleB + "px",
-                        color: titleColor,
-                        letterSpacing: titleSpacing + "px",
-                        fontWeight: titleWeight,
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
+                        fontFamily: titleStyles[0].titleFamily,
+                        marginTop: titleStyles[0].titleT + "px",
+                        marginBottom: titleStyles[0].titleB + "px",
+                        color: titleStyles[0].titleColor,
+                        letterSpacing: titleStyles[0].titleSpacing + "px",
+                        fontWeight: titleStyles[0].titleWeight,
+                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyles[0].titleStyle,
                         alignSelf: selfAlign
                     }}
                 >

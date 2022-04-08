@@ -1,39 +1,33 @@
 const { __ } = wp.i18n;
-const {
-    RangeControl,
-    SelectControl,
-    Dropdown,
-    Button,
-    ColorPicker
-} = wp.components;
+const { SelectControl, Dropdown, Button, ColorPicker } = wp.components;
 const { Fragment } = wp.element;
-import AdvancedColorControl from './premium-color-control'
+import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
+import AdvancedColorControl from './Color Control/ColorComponent'
 
-export default function PremiumBoxShadow(props) {
+export default function PremiumShadow(props) {
     const {
-        inner,
-        withAlpha,
         label,
         color,
         blur,
         horizontal,
         vertical,
-        position,
+        position = "outline",
         onChangeColor = () => { },
         onChangeBlur = () => { },
         onChangehHorizontal = () => { },
         onChangeVertical = () => { },
         onChangePosition = () => { },
+        boxShadow = false
     } = props;
 
     const POSITION = [
         {
             value: "inset",
-            label: __("Inset")
+            label: __("Inset", 'premium-blocks-for-gutenberg')
         },
         {
             value: "",
-            label: __("Outline")
+            label: __("Outline", 'premium-blocks-for-gutenberg')
         }
     ];
 
@@ -58,27 +52,37 @@ export default function PremiumBoxShadow(props) {
                     )}
                     renderContent={() => (
                         <Fragment>
-                            <RangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Horizontal")}
                                 value={horizontal}
                                 onChange={onChangehHorizontal}
+                                showUnit={false}
+                                defaultValue={0}
+                                min={-100}
+                                max={100}
                             />
-                            <RangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Vertical")}
                                 value={vertical}
                                 onChange={onChangeVertical}
+                                showUnit={false}
+                                defaultValue={0}
+                                min={-100}
+                                max={100}
                             />
-                            <RangeControl
+                            <ResponsiveSingleRangeControl
                                 label={__("Blur")}
                                 value={blur}
                                 onChange={onChangeBlur}
+                                showUnit={false}
+                                defaultValue={0}
                             />
-                            <SelectControl
+                            {boxShadow && <SelectControl
                                 label={__("Position")}
                                 options={POSITION}
                                 value={position}
                                 onChange={onChangePosition}
-                            />
+                            />}
                         </Fragment>
                     )}
                 />

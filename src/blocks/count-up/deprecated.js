@@ -1,14 +1,426 @@
-import attributes from "./attributes"
-import hexToRgba from "hex-to-rgba"
-import classnames from 'classnames'
+const className = "premium-countup";
+const { __ } = wp.i18n;
+import hexToRgba from 'hex-to-rgba'
 
-const className = "premium-countup"
+const attributes = {
+    block_id: {
+        type: "string"
+    },
+    borderCount: {
+        type: "boolean",
+        default: false
+    },
+    increment: {
+        type: "string",
+        default: 500
+    },
+    time: {
+        type: "string",
+        default: 1000
+    },
+    delay: {
+        type: "string",
+        default: 10
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    flexDir: {
+        type: "string",
+        default: "column"
+    },
+    numberSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    numberSize: {
+        type: "number",
+        default: 30
+    },
+    numberSizeTablet: {
+        type: "number"
+    },
+    numberSizeMobile: {
+        type: "number"
+    },
+    numberColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    numberWeight: {
+        type: "number",
+        default: 900
+    },
+    prefix: {
+        type: "boolean",
+        default: true
+    },
+    prefixTxt: {
+        type: "string",
+        default: "Prefix"
+    },
+    prefixSize: {
+        type: "number",
+        default: 20
+    },
+    prefixSizeUnit: {
+        type: 'string',
+        default: 'px'
+    },
+    prefixSizeTablet: {
+        type: "number"
+    },
+    prefixSizeMobile: {
+        type: "number"
+    },
+    prefixColor: {
+        type: "string"
+    },
+    prefixWeight: {
+        type: "number"
+    },
+    prefixGap: {
+        type: "number",
+        default: 2
+    },
+    suffix: {
+        type: "boolean",
+        default: true
+    },
+    suffixTxt: {
+        type: "string",
+        default: "Suffix"
+    },
+    suffixSizeUnit: {
+        type: "string",
+        default: 'px'
+    },
+    suffixSize: {
+        type: "number",
+        default: 20
+    },
+    suffixSizeTablet: {
+        type: "number"
+    },
+    suffixSizeMobile: {
+        type: 'number'
+    },
+    suffixColor: {
+        type: "string"
+    },
+    suffixWeight: {
+        type: "number"
+    },
+    suffixGap: {
+        type: "number",
+        default: 2
+    },
+    icon: {
+        type: "string",
+        default: "icon"
+    },
+    iconSpacing: {
+        type: "number",
+        default: 10
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    iconCheck: {
+        type: "boolean",
+        default: true
+    },
+    iconSize: {
+        type: "number",
+        default: 40
+    },
+    iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    selfAlign: {
+        type: "string",
+        default: "center"
+    },
+    titleCheck: {
+        type: "boolean",
+        default: true
+    },
+    titleTxt: {
+        type: "string",
+        default: "Premium Count Up"
+    },
+    titleSize: {
+        type: "number",
+        default: 20
+    },
+    titleSizeUnit: {
+        type: "string",
+        default: "px"
+    },
+    titleSizeTablet: {
+        type: "number"
+    },
+    titleSizeMobile: {
+        type: "number"
+    },
+    titleSpacing: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleT: {
+        type: "number",
+        default: 1
+    },
+    titleB: {
+        type: "number",
+        default: 1
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    faIcon: {
+        type: "string",
+        default: "dashicons-clock"
+    },
+    containerBack: {
+        type: "string"
+    },
+    containerOpacity: {
+        type: "number",
+        default: "1"
+    },
+    shadowColor: {
+        type: "object",
+        default: {}
+    },
+    shadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    shadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    shadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    shadowPosition: {
+        type: "string",
+        default: ""
+    },
+    backgroundImageID: {
+        type: "string"
+    },
+    backgroundImageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        default: "no-repeat"
+    },
+    backgroundPosition: {
+        type: "string",
+        default: "top center"
+    },
+    backgroundSize: {
+        type: "string",
+        default: "auto"
+    },
+    fixed: {
+        type: "boolean",
+        default: false
+    },
+    borderType: {
+        type: "string",
+        default: "none"
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    borderRadius: {
+        type: "number",
+        default: "0"
+    },
+    borderColor: {
+        type: "string"
+    },
+    titleFamily: {
+        type: "string"
+    },
+    counterFamily: {
+        type: "string"
+    },
+    prefixFamily: {
+        type: "string"
+    },
+    suffixFamily: {
+        type: "string"
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingU: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    }
+}
+
+const new_Attributes = {
+
+}
+
 
 const deprecatedContent = [
     {
-        attributes,
-        save: function (props) {
-
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                numberStyles: [
+                    {
+                        numberSizeUnit: attributes.numberSizeUnit,
+                        numberSize: attributes.numberSize,
+                        numberSizeTablet: attributes.numberSizeTablet,
+                        numberSizeMobile: attributes.numberSizeMobile,
+                        numberColor: attributes.numberColor,
+                        numberWeight: attributes.numberWeight,
+                    }
+                ],
+                titleStyles: [
+                    {
+                        titleFamily: attributes.titleFamily,
+                        titleSize: attributes.titleSize,
+                        titleSizeUnit: attributes.titleSizeUnit,
+                        titleSizeTablet: attributes.titleSizeTablet,
+                        titleSizeMobile: attributes.titleSizeMobile,
+                        titleSpacing: attributes.titleSpacing,
+                        titleStyle: attributes.titleStyle,
+                        titleUpper: attributes.titleUpper,
+                        titleColor: attributes.titleColor,
+                        titleT: attributes.titleT,
+                        titleB: attributes.titleB,
+                        titleColor: attributes.titleColor,
+                        titleWeight: attributes.titleWeight,
+                    }
+                ],
+                containerStyles: [
+                    {
+                        containerBack: attributes.containerBack,
+                        containerOpacity: attributes.containerOpacity,
+                        backgroundImageID: attributes.imageID,
+                        backgroundImageURL: attributes.imageURL,
+                        backgroundRepeat: attributes.backgroundRepeat,
+                        backgroundPosition: attributes.backgroundPosition,
+                        backgroundSize: attributes.backgroundSize,
+                        fixed: attributes.fixed,
+                        borderType: attributes.borderType,
+                        borderWidth: attributes.borderWidth,
+                        borderRadius: attributes.borderRadius,
+                        borderColor: attributes.borderColor,
+                        shadowColor: attributes.shadowColor,
+                        shadowBlur: attributes.shadowBlur,
+                        shadowHorizontal: attributes.shadowHorizontal,
+                        shadowVertical: attributes.shadowVertical,
+                        shadowPosition: attributes.shadowPosition,
+                        paddingU: attributes.paddingU,
+                        gradientLocationOne: '',
+                        gradientColorTwo: '',
+                        gradientLocationTwo: '100',
+                        gradientType: 'linear',
+                        gradientAngle: '180',
+                        gradientPosition: 'center center'
+                    }
+                ],
+                suffixStyles: [
+                    {
+                        suffixTxt: attributes.suffixTxt,
+                        suffixSizeUnit: attributes.suffixSizeUnit,
+                        suffixSize: attributes.suffixSize,
+                        suffixSizeTablet: attributes.suffixSizeTablet,
+                        suffixSizeMobile: attributes.suffixSizeMobile,
+                        suffixColor: attributes.suffixColor,
+                        suffixWeight: attributes.suffixWeight,
+                        suffixGap: attributes.suffixGap,
+                        suffixFamily: attributes.suffixFamily,
+                    }
+                ],
+                prefixStyles: [
+                    {
+                        prefixTxt: attributes.prefixTxt,
+                        prefixSize: attributes.prefixSize,
+                        prefixSizeUnit: attributes.prefixSizeUnit,
+                        prefixSizeTablet: attributes.prefixSizeTablet,
+                        prefixSizeMobile: attributes.prefixSizeMobile,
+                        prefixColor: attributes.prefixColor,
+                        prefixWeight: attributes.prefixWeight,
+                        prefixGap: attributes.prefixGap,
+                        prefixFamily: attributes.prefixFamily,
+                    }
+                ],
+                backgroundType: 'solid',
+                paddingTTablet: '',
+                paddingRTablet: '',
+                paddingBTablet: '',
+                paddingLTablet: '',
+                paddingTMobile: '',
+                paddingRMobile: '',
+                paddingBMobile: '',
+                paddingLMobile: '',
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
             const {
                 block_id,
                 borderCount,
@@ -71,26 +483,27 @@ const deprecatedContent = [
                 counterFamily,
                 prefixFamily,
                 suffixFamily,
+                paddingT,
+                paddingR,
+                paddingB,
+                paddingL,
+                paddingU,
                 hideDesktop,
                 hideTablet,
                 hideMobile
             } = props.attributes;
-
             let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
-
-            const mainClasses = classnames(className, 'premium-countup');
-
             return (
                 <div
                     id={`premium-countup-${block_id}`}
-                    className={`${mainClasses}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    className={`${className}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
                         justifyContent: align,
                         flexDirection: flexDir,
                         backgroundColor: containerBack
                             ? hexToRgba(containerBack, containerOpacity)
                             : "transparent",
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px rgba(${shadowColor.r},${shadowColor.g},${shadowColor.b}, ${shadowColor.a}) ${shadowPosition}`,
                         backgroundImage: `url('${backgroundImageURL}')`,
                         backgroundRepeat: backgroundRepeat,
                         backgroundPosition: backgroundPosition,
@@ -101,7 +514,11 @@ const deprecatedContent = [
                             ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
                             : borderWidth + "px",
                         borderRadius: borderRadius + "px",
-                        borderColor: borderColor
+                        borderColor: borderColor,
+                        paddingTop: paddingT + paddingU,
+                        paddingRight: paddingR + paddingU,
+                        paddingBottom: paddingB + paddingU,
+                        paddingLeft: paddingL + paddingU,
                     }}
                 >
                     {iconCheck && (
@@ -230,11 +647,10 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-
         }
     },
     {
-        attributes,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 borderTop: "",
@@ -479,7 +895,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 borderType: "",
@@ -698,7 +1114,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 titleFamily: "",
@@ -906,7 +1322,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
@@ -1111,7 +1527,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 shadowColor: "",
@@ -1304,7 +1720,7 @@ const deprecatedContent = [
         },
     },
     {
-        attributes,
+        attributes: attributes,
         save: (props) => {
             const {
                 increment,

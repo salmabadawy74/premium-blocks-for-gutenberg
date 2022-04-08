@@ -1,8 +1,8 @@
 {
     "name": "premium-blocks-for-gutenberg",
     "slug": "premium-blocks-for-gutenberg",
-    "version": "1.9.1",
-    "prev_stable_version": "1.9.0",
+    "version": "1.9.5",
+    "prev_stable_version": "1.9.4",
     "author": "Leap13",
     "homepage": "https://premiumblocks.io/",
     "main": "index.js",
@@ -55,6 +55,7 @@
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-lottie-with-segments": "^1.4.8",
+        "react-modal": "^3.14.4",
         "react-select": "^2.2.0",
         "react-sortable-hoc": "^1.11.0",
         "react-spring": "^8.0.1",
