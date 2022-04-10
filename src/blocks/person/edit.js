@@ -10,16 +10,16 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumMediaUpload from "../../components/premium-media-upload"
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import times from "lodash/times"
 
 const { withSelect } = wp.data
 
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 
 const {
-    IconButton,
     PanelBody,
     SelectControl,
     ToggleControl,
@@ -30,8 +30,7 @@ const {
 const {
     InspectorControls,
     AlignmentToolbar,
-    BlockControls,
-    MediaUpload,
+    BlockControls
 } = wp.editor;
 
 const SortableItem = SortableElement(({ onRemove, saveLink, changeLinkValue, value, addLink, personIndex }) => <li tabIndex={0}>
@@ -72,6 +71,9 @@ class edit extends Component {
     }
 
     componentDidMount() {
+        // Assigning id in the attribute.
+        this.props.setAttributes({ id: this.props.clientId })
+        this.props.setAttributes({ classMigrate: true })
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
@@ -99,7 +101,7 @@ class edit extends Component {
             }
             return item
         })
-
+        console.log(newItems)
         setAttributes({
             multiPersonContent: newItems,
         })
@@ -112,7 +114,6 @@ class edit extends Component {
             id,
             personSize,
             personAlign,
-            personImgId,
             imgSize,
             imgBorder,
             imgBorderColor,
@@ -153,7 +154,6 @@ class edit extends Component {
             nameV,
             titleV,
             descV,
-            defaultIconColor,
             contentColor,
             effect,
             effectDir,
@@ -428,6 +428,7 @@ class edit extends Component {
             multiPersonContent[i] = array[0]
             setAttributes(multiPersonContent[i] = array[0]);
         }
+
         const saveLink = (value, i, personIndex) => {
             i.value = value
             let arrayItem = multiPersonContent.map((cont) => (
@@ -441,6 +442,7 @@ class edit extends Component {
             multiPersonContent[personIndex] = arrayItem[0]
             setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
         }
+
         const changeLinkValue = (value, i, personIndex) => {
             if (personIndex + 1 > 0) {
                 i.changeinput = value
@@ -465,6 +467,7 @@ class edit extends Component {
                 setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
             }
         }
+
         const onRemove = (value, i) => {
             let array = multiPersonContent.map((cont) => (
                 cont
@@ -476,10 +479,11 @@ class edit extends Component {
             multiPersonContent[i] = array[0]
             setAttributes(multiPersonContent[i] = array[0]);
         };
+
         const socialIconfn = (v) => {
             return <ul className="premium-person__social-List">{(v).map((value) => (
                 <li>
-                    <a className={`premium-person__socialIcon__link_content ${defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
+                    <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
                         borderStyle: socialIconStyles[0].borderTypeIcon,
                         borderWidth: socialIconBorderUpdated
                             ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
@@ -507,6 +511,7 @@ class edit extends Component {
             ))}
             </ul>
         }
+
         const content = () => {
             return <div className={`premium-person-content ${id} ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
             > {multiPersonContent.map((value) => (
@@ -518,7 +523,7 @@ class edit extends Component {
                             {value.personImgUrl && (
                                 <img
                                     className={`premium-person__img`}
-                                    src={`${value.personImgUrl.url}`}
+                                    src={`${value.personImgUrl}`}
                                     alt="Person"
                                     style={{
 
@@ -626,6 +631,7 @@ class edit extends Component {
             ))}
             </div>
         }
+
         const addSocialIcon = (newsocial, index) => {
             let array = iconsList.map((i) => (
                 i
@@ -651,6 +657,7 @@ class edit extends Component {
                 }
             }
         };
+
         const addMultiPerson = (newP) => {
             let multi = [...multiPersonContent]
             if (multi.length < newP) {
@@ -660,6 +667,7 @@ class edit extends Component {
                         multi.push({
                             id: multi.length + 1,
                             personImgUrl: multi[0].personImgUrl,
+                            personImgId: '',
                             name: multi[0].name,
                             title: multi[0].title,
                             desc: multi[0].desc,
@@ -694,44 +702,23 @@ class edit extends Component {
         };
 
         const MultiPersonSetting = (index) => {
-            return <PanelBody key={index} title={__(`Person #${index + 1} Setting`)}
-                initialOpen={false}>
-                <p>{__("Image")}</p>
-                {multiPersonContent[index].personImgUrl && (
-                    <img src={multiPersonContent[index].personImgUrl.url} width="100%" height="auto" />
-                )}
-                {!multiPersonContent[index].personImgUrl && <DefaultImage />}
-                {/* <PremiumMediaUpload
-                                            type="image"
-                                            imageID={imgMaskID}
-                                            imageURL={imgMaskURL}
-                                            onSelectMedia={(media) => {
-                                                setAttributes({
-                                                    imgMaskID: media.id,
-                                                    imgMaskURL: media.url,
-                                                });
-                                            }}
-                                            onRemoveImage={() =>
-                                                setAttributes({
-                                                    imgMaskURL: "",
-                                                    imgMaskID: "",
-                                                })
-                                            }
-                                        /> */}
-                <MediaUpload
-                    allowedTypes={["image"]}
-                    onSelect={value => { this.save({ personImgUrl: value }, index) }}
+            return <PanelBody
+                key={index}
+                title={__(`Person #${index + 1} Setting`)}
+                initialOpen={false}
+            >
+                <PremiumMediaUpload
                     type="image"
-                    value={personImgId}
-                    render={({ open }) => (
-                        <IconButton
-                            label={__("Change Image")}
-                            icon="edit"
-                            onClick={open}
-                        >
-                            {__("Change Image")}
-                        </IconButton>
-                    )}
+                    imageID={multiPersonContent[index].personImgId}
+                    imageURL={multiPersonContent[index].personImgUrl}
+                    onSelectMedia={(media) => {
+                        this.save({ personImgUrl: media.url }, index)
+                        this.save({ personImgId: media.id }, index)
+                    }}
+                    onRemoveImage={() => {
+                        this.save({ personImgId: '' }, index)
+                        this.save({ personImgUrl: '' }, index)
+                    }}
                 />
                 <TextControl
                     label={__("Name", 'premium-block-for-gutenberg')}
@@ -1018,7 +1005,7 @@ class edit extends Component {
                             }
                         />
                     </PanelBody>
-                    {multiPersonChecked > 1 ? (multiPersonContent.map(i => i.socialIcon)) && (<PanelBody
+                    {multiPersonChecked > 1 ? (multiPersonContent.map(i => i.socialIcon && (<PanelBody
                         title={__("Social Icon")}
                         className="premium-panel-body"
                         initialOpen={false}
@@ -1076,23 +1063,9 @@ class edit extends Component {
                         </div>
                         <ToggleControl
                             label={__("Brands Default Colors", 'premium-block-for-gutenberg')}
-                            checked={defaultIconColor}
-                            onChange={newCheck => setAttributes({ defaultIconColor: newCheck })}
+                            checked={socialIconStyles[0].defaultIconColor}
+                            onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
                         />
-                        {/* <PremiumBorder
-                            borderType={socialIconStyles[0].borderTypeIcon}
-                            borderWidth={socialIconStyles[0].borderWidthIcon}
-                            borderColor={socialIconStyles[0].borderColorIcon}
-                            borderRadius={socialIconStyles[0].borderRadiusIcon}
-                            onChangeType={newType => saveSocialIconStyles({ borderTypeIcon: newType })}
-                            onChangeWidth={newWidth => saveSocialIconStyles({ borderWidthIcon: newWidth })}
-                            onChangeColor={colorValue =>
-                                saveSocialIconStyles({ borderColorIcon: colorValue })
-                            }
-                            onChangeRadius={newrRadius =>
-                                saveSocialIconStyles({ borderRadiusIcon: newrRadius })
-                            }
-                        /> */}
                         <PremiumBorder
                             borderType={socialIconStyles[0].borderTypeIcon}
                             borderWidth={socialIconBorderWidth}
@@ -1196,6 +1169,9 @@ class edit extends Component {
                             paddingBottomMobile={socialIconPaddingBMobile}
                             paddingLeftMobile={socialIconPaddingLMobile}
                             showUnits={true}
+                            defaultValue={0}
+                            min={0}
+                            max={100}
                             selectedUnit={socialIconStyles[0].socialIconPaddingType}
                             onChangePadSizeUnit={newvalue => saveSocialIconStyles({ socialIconPaddingType: newvalue })}
                             onChangePaddingTop={
@@ -1243,7 +1219,7 @@ class edit extends Component {
                                 }
                             }
                         />
-                    </PanelBody>)
+                    </PanelBody>)))
                         : multiPersonContent[0].socialIcon && (<PanelBody
                             title={__("Social Icon")}
                             className="premium-panel-body"
@@ -1302,23 +1278,9 @@ class edit extends Component {
                             </div>
                             <ToggleControl
                                 label={__("Brands Default Colors", "premium-blocks-for-gutenberg")}
-                                checked={defaultIconColor}
-                                onChange={newCheck => setAttributes({ defaultIconColor: newCheck })}
+                                checked={socialIconStyles[0].defaultIconColor}
+                                onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
                             />
-                            {/* <PremiumBorder
-                                borderType={socialIconStyles[0].borderTypeIcon}
-                                borderWidth={socialIconStyles[0].borderWidthIcon}
-                                borderColor={socialIconStyles[0].borderColorIcon}
-                                borderRadius={socialIconStyles[0].borderRadiusIcon}
-                                onChangeType={newType => saveSocialIconStyles({ borderTypeIcon: newType })}
-                                onChangeWidth={newWidth => saveSocialIconStyles({ borderWidthIcon: newWidth })}
-                                onChangeColor={colorValue =>
-                                    saveSocialIconStyles({ borderColorIcon: colorValue })
-                                }
-                                onChangeRadius={newrRadius =>
-                                    saveSocialIconStyles({ borderRadiusIcon: newrRadius })
-                                }
-                            /> */}
                             <PremiumBorder
                                 borderType={socialIconStyles[0].borderTypeIcon}
                                 borderWidth={socialIconBorderWidth}
@@ -1422,6 +1384,9 @@ class edit extends Component {
                                 paddingBottomMobile={socialIconPaddingBMobile}
                                 paddingLeftMobile={socialIconPaddingLMobile}
                                 showUnits={true}
+                                defaultValue={0}
+                                min={0}
+                                max={100}
                                 selectedUnit={socialIconStyles[0].socialIconPaddingType}
                                 onChangePadSizeUnit={newvalue => saveSocialIconStyles({ socialIconPaddingType: newvalue })}
                                 onChangePaddingTop={

@@ -26,7 +26,6 @@ const save = props => {
         titleV,
         descV,
         socialIconHoverColor,
-        defaultIconColor,
         effect,
         effectDir,
         multiPersonChecked,
@@ -51,7 +50,7 @@ const save = props => {
     const socialIconfn = (v) => {
         return <ul className="premium-person__social-List">{(v).map((value) => (
             <li>
-                <a className={`premium-person__socialIcon__link_content ${defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
+                <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
                     borderStyle: socialIconStyles[0].borderTypeIcon,
                     borderWidth: socialIconBorderUpdated
                         ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
@@ -62,8 +61,7 @@ const save = props => {
                 }}>
                     <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
                         style={{
-                            color: socialIconStyles[0].socialIconColor,
-                            // fontSize: (SocialIconSize || 50) + socialIconStyles[0].socialIconfontSizeType,
+                            color: socialIconStyles[0].socialIconColor
                         }}
                     />
                 </a>
@@ -82,7 +80,7 @@ const save = props => {
                         {value.personImgUrl && (
                             <img
                                 className={`premium-person__img`}
-                                src={`${value.personImgUrl.url}`}
+                                src={`${value.personImgUrl}`}
                                 alt="Person"
                                 style={{
                                     borderWidth: imgBorder + "px",

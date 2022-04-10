@@ -8,9 +8,6 @@ const attributes = {
         type: "string",
         default: "center"
     },
-    personImgId: {
-        type: "string"
-    },
     imgSize: {
         type: "number"
     },
@@ -258,6 +255,10 @@ const attributes = {
     id: {
         type: "string"
     },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
     hoverEffectPerson: {
         type: "string",
         default: "none"
@@ -279,6 +280,7 @@ const attributes = {
             {
                 id: 1,
                 personImgUrl: "",
+                personImgId: '',
                 name: "John Doe",
                 title: "Senior Developer",
                 desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
