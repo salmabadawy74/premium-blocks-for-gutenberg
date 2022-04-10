@@ -11,9 +11,20 @@
  */
 function render_block_kemet_navigation_submenu( $attributes, $content, $block ) {
 
+	$mega_menu              = isset( $attributes['megaMenu'] ) ? $attributes['megaMenu'] : false;
 	$navigation_link_has_id = isset( $attributes['id'] ) && is_numeric( $attributes['id'] );
 	$is_post_type           = isset( $attributes['kind'] ) && 'post-type' === $attributes['kind'];
 	$is_post_type           = $is_post_type || isset( $attributes['type'] ) && ( 'post' === $attributes['type'] || 'page' === $attributes['type'] );
+
+	if ( $mega_menu ) {
+		wp_enqueue_script(
+			'premium-navigation-submenu-view',
+			PREMIUM_BLOCKS_URL . 'src/blocks/navigation-submenu/view.js',
+			array(),
+			PREMIUM_BLOCKS_VERSION,
+			true
+		);
+	}
 
 	// Don't render the block's subtree if it is a draft.
 	if ( $is_post_type && $navigation_link_has_id && 'publish' !== get_post_status( $attributes['id'] ) ) {
@@ -46,7 +57,7 @@ function render_block_kemet_navigation_submenu( $attributes, $content, $block ) 
 		array(
 			'class' => $css_classes . ' wp-block-navigation-item' . ( $has_submenu ? ' has-child' : '' ) .
 			( $open_on_click ? ' open-on-click' : '' ) . ( $open_on_hover_and_click ? ' open-on-hover-click' : '' ) .
-			( $is_active ? ' current-menu-item' : '' ),
+			( $is_active ? ' current-menu-item' : '' ) . ( $mega_menu ? ' premiun-mega-menu' : '' ),
 			'style' => $style_attribute,
 		)
 	);

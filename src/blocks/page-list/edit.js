@@ -18,7 +18,7 @@ import { useMemo, useState, memo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import {
 	store as coreStore,
-	__experimentalUseEntityRecords as useEntityRecords,
+	useEntityProp,
 } from '@wordpress/core-data';
 
 /**
@@ -31,161 +31,161 @@ import { ItemSubmenuIcon } from '../navigation-link/icons';
 // Performance of Navigation Links is not good past this value.
 const MAX_PAGE_COUNT = 100;
 
-export default function PageListEdit( { context, clientId } ) {
+export default function PageListEdit({ context, clientId }) {
 	const { pagesByParentId, totalPages, hasResolvedPages } = usePageData();
 
 	const isNavigationChild = 'showSubmenuIcon' in context;
 	const allowConvertToLinks =
 		isNavigationChild && totalPages <= MAX_PAGE_COUNT;
 
-	const [ isOpen, setOpen ] = useState( false );
-	const openModal = () => setOpen( true );
-	const closeModal = () => setOpen( false );
+	const [isOpen, setOpen] = useState(false);
+	const openModal = () => setOpen(true);
+	const closeModal = () => setOpen(false);
 
-	const blockProps = useBlockProps( {
-		className: classnames( 'wp-block-page-list', {
-			'has-text-color': !! context.textColor,
-			[ getColorClassName(
+	const blockProps = useBlockProps({
+		className: classnames('wp-block-page-list', {
+			'has-text-color': !!context.textColor,
+			[getColorClassName(
 				'color',
 				context.textColor
-			) ]: !! context.textColor,
-			'has-background': !! context.backgroundColor,
-			[ getColorClassName(
+			)]: !!context.textColor,
+			'has-background': !!context.backgroundColor,
+			[getColorClassName(
 				'background-color',
 				context.backgroundColor
-			) ]: !! context.backgroundColor,
-		} ),
+			)]: !!context.backgroundColor,
+		}),
 		style: { ...context.style?.color },
-	} );
+	});
 
 	return (
 		<>
-			{ allowConvertToLinks && (
+			{allowConvertToLinks && (
 				<BlockControls group="other">
-					<ToolbarButton title={ __( 'Edit' ) } onClick={ openModal }>
-						{ __( 'Edit' ) }
+					<ToolbarButton title={__('Edit')} onClick={openModal}>
+						{__('Edit')}
 					</ToolbarButton>
 				</BlockControls>
-			) }
-			{ allowConvertToLinks && isOpen && (
+			)}
+			{allowConvertToLinks && isOpen && (
 				<ConvertToLinksModal
-					onClose={ closeModal }
-					clientId={ clientId }
+					onClose={closeModal}
+					clientId={clientId}
 				/>
-			) }
-			{ ! hasResolvedPages && (
-				<div { ...blockProps }>
+			)}
+			{!hasResolvedPages && (
+				<div {...blockProps}>
 					<Spinner />
 				</div>
-			) }
+			)}
 
-			{ hasResolvedPages && totalPages === null && (
-				<div { ...blockProps }>
-					<div { ...blockProps }>
-						<Notice status={ 'warning' } isDismissible={ false }>
-							{ __( 'Page List: Cannot retrieve Pages.' ) }
+			{hasResolvedPages && totalPages === null && (
+				<div {...blockProps}>
+					<div {...blockProps}>
+						<Notice status={'warning'} isDismissible={false}>
+							{__('Page List: Cannot retrieve Pages.')}
 						</Notice>
 					</div>
 				</div>
-			) }
+			)}
 
-			{ totalPages === 0 && (
-				<div { ...blockProps }>
-					<Notice status={ 'info' } isDismissible={ false }>
-						{ __( 'Page List: Cannot retrieve Pages.' ) }
+			{totalPages === 0 && (
+				<div {...blockProps}>
+					<Notice status={'info'} isDismissible={false}>
+						{__('Page List: Cannot retrieve Pages.')}
 					</Notice>
 				</div>
-			) }
-			{ totalPages > 0 && (
-				<ul { ...blockProps }>
+			)}
+			{totalPages > 0 && (
+				<ul {...blockProps}>
 					<PageItems
-						context={ context }
-						pagesByParentId={ pagesByParentId }
+						context={context}
+						pagesByParentId={pagesByParentId}
 					/>
 				</ul>
-			) }
+			)}
 		</>
 	);
 }
 
 function useFrontPageId() {
-	return useSelect( ( select ) => {
-		const site = select( coreStore ).getEntityRecord( 'root', 'site' );
+	return useSelect((select) => {
+		const site = select(coreStore).getEntityRecord('root', 'site');
 		return site?.show_on_front === 'page' && site?.page_on_front;
-	}, [] );
+	}, []);
 }
 
 function usePageData() {
-	const { records: pages, hasResolved: hasResolvedPages } = useEntityRecords(
+	const { records: pages, hasResolved: hasResolvedPages } = useEntityProp(
 		'postType',
 		'page',
 		{
 			orderby: 'menu_order',
 			order: 'asc',
-			_fields: [ 'id', 'link', 'parent', 'title', 'menu_order' ],
+			_fields: ['id', 'link', 'parent', 'title', 'menu_order'],
 			per_page: -1,
 		}
 	);
 
-	return useMemo( () => {
+	return useMemo(() => {
 		// TODO: Once the REST API supports passing multiple values to
 		// 'orderby', this can be removed.
 		// https://core.trac.wordpress.org/ticket/39037
-		const sortedPages = sortBy( pages, [ 'menu_order', 'title.rendered' ] );
-		const pagesByParentId = sortedPages.reduce( ( accumulator, page ) => {
+		const sortedPages = sortBy(pages, ['menu_order', 'title.rendered']);
+		const pagesByParentId = sortedPages.reduce((accumulator, page) => {
 			const { parent } = page;
-			if ( accumulator.has( parent ) ) {
-				accumulator.get( parent ).push( page );
+			if (accumulator.has(parent)) {
+				accumulator.get(parent).push(page);
 			} else {
-				accumulator.set( parent, [ page ] );
+				accumulator.set(parent, [page]);
 			}
 			return accumulator;
-		}, new Map() );
+		}, new Map());
 
 		return {
 			pagesByParentId,
 			hasResolvedPages,
 			totalPages: pages?.length ?? null,
 		};
-	}, [ pages, hasResolvedPages ] );
+	}, [pages, hasResolvedPages]);
 }
 
-const PageItems = memo( function PageItems( {
+const PageItems = memo(function PageItems({
 	context,
 	pagesByParentId,
 	parentId = 0,
 	depth = 0,
-} ) {
-	const pages = pagesByParentId.get( parentId );
+}) {
+	const pages = pagesByParentId.get(parentId);
 	const frontPageId = useFrontPageId();
 
-	if ( ! pages?.length ) {
+	if (!pages?.length) {
 		return [];
 	}
 
-	return pages.map( ( page ) => {
-		const hasChildren = pagesByParentId.has( page.id );
+	return pages.map((page) => {
+		const hasChildren = pagesByParentId.has(page.id);
 		const isNavigationChild = 'showSubmenuIcon' in context;
 		return (
 			<li
-				key={ page.id }
-				className={ classnames( 'wp-block-pages-list__item', {
+				key={page.id}
+				className={classnames('wp-block-pages-list__item', {
 					'has-child': hasChildren,
 					'wp-block-navigation-item': isNavigationChild,
 					'open-on-click': context.openSubmenusOnClick,
 					'open-on-hover-click':
-						! context.openSubmenusOnClick &&
+						!context.openSubmenusOnClick &&
 						context.showSubmenuIcon,
 					'menu-item-home': page.id === frontPageId,
-				} ) }
+				})}
 			>
-				{ hasChildren && context.openSubmenusOnClick ? (
+				{hasChildren && context.openSubmenusOnClick ? (
 					<>
 						<button
 							className="wp-block-navigation-item__content wp-block-navigation-submenu__toggle"
 							aria-expanded="false"
 						>
-							{ page.title?.rendered }
+							{page.title?.rendered}
 						</button>
 						<span className="wp-block-page-list__submenu-icon wp-block-navigation__submenu-icon">
 							<ItemSubmenuIcon />
@@ -193,20 +193,20 @@ const PageItems = memo( function PageItems( {
 					</>
 				) : (
 					<a
-						className={ classnames(
+						className={classnames(
 							'wp-block-pages-list__item__link',
 							{
 								'wp-block-navigation-item__content': isNavigationChild,
 							}
-						) }
-						href={ page.link }
+						)}
+						href={page.link}
 					>
-						{ page.title?.rendered }
+						{page.title?.rendered}
 					</a>
-				) }
-				{ hasChildren && (
+				)}
+				{hasChildren && (
 					<>
-						{ ! context.openSubmenusOnClick &&
+						{!context.openSubmenusOnClick &&
 							context.showSubmenuIcon && (
 								<button
 									className="wp-block-navigation-item__content wp-block-navigation-submenu__toggle wp-block-page-list__submenu-icon wp-block-navigation__submenu-icon"
@@ -214,22 +214,22 @@ const PageItems = memo( function PageItems( {
 								>
 									<ItemSubmenuIcon />
 								</button>
-							) }
+							)}
 						<ul
-							className={ classnames( 'submenu-container', {
+							className={classnames('submenu-container', {
 								'wp-block-navigation__submenu-container': isNavigationChild,
-							} ) }
+							})}
 						>
 							<PageItems
-								context={ context }
-								pagesByParentId={ pagesByParentId }
-								parentId={ page.id }
-								depth={ depth + 1 }
+								context={context}
+								pagesByParentId={pagesByParentId}
+								parentId={page.id}
+								depth={depth + 1}
 							/>
 						</ul>
 					</>
-				) }
+				)}
 			</li>
 		);
-	} );
-} );
+	});
+});

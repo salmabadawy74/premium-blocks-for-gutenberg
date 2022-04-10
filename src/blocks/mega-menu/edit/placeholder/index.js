@@ -14,7 +14,7 @@ import useNavigationEntities from '../../use-navigation-entities';
 import PlaceholderPreview from './placeholder-preview';
 import NavigationMenuSelector from '../navigation-menu-selector';
 
-export default function NavigationPlaceholder( {
+export default function NavigationPlaceholder({
 	isSelected,
 	currentMenuId,
 	clientId,
@@ -22,22 +22,22 @@ export default function NavigationPlaceholder( {
 	isResolvingCanUserCreateNavigationMenu,
 	onFinish,
 	onCreateEmpty,
-} ) {
+}) {
 	const { isResolvingMenus, hasResolvedMenus } = useNavigationEntities();
 
-	useEffect( () => {
-		if ( ! isSelected ) {
+	useEffect(() => {
+		if (!isSelected) {
 			return;
 		}
 
-		if ( isResolvingMenus ) {
-			speak( __( 'Loading Navigation block setup options.' ) );
+		if (isResolvingMenus) {
+			speak(__('Loading Navigation block setup options.'));
 		}
 
-		if ( hasResolvedMenus ) {
-			speak( __( 'Navigation block setup options ready.' ) );
+		if (hasResolvedMenus) {
+			speak(__('Navigation block setup options ready.'));
 		}
-	}, [ isResolvingMenus, isSelected ] );
+	}, [isResolvingMenus, isSelected]);
 
 	const isResolvingActions =
 		isResolvingMenus && isResolvingCanUserCreateNavigationMenu;
@@ -49,22 +49,22 @@ export default function NavigationPlaceholder( {
 					// The <PlaceholderPreview> component is displayed conditionally via CSS depending on
 					// whether the block is selected or not. This is achieved via CSS to avoid
 					// component re-renders
-				 }
-				<PlaceholderPreview isVisible={ ! isSelected } />
+				}
+				<PlaceholderPreview isVisible={!isSelected} />
 				<div
-					aria-hidden={ ! isSelected ? true : undefined }
+					aria-hidden={!isSelected ? true : undefined}
 					className="wp-block-navigation-placeholder__controls"
 				>
 					<div className="wp-block-navigation-placeholder__actions">
 						<div className="wp-block-navigation-placeholder__actions__indicator">
-							<Icon icon={ navigation } /> { __( 'Navigation' ) }
+							<Icon icon={navigation} /> {__('Navigation')}
 						</div>
 
 						<hr />
 
-						{ isResolvingActions && <Spinner /> }
+						{isResolvingActions && <Spinner />}
 
-						<NavigationMenuSelector
+						{/* <NavigationMenuSelector
 							currentMenuId={ currentMenuId }
 							clientId={ clientId }
 							onSelect={ onFinish }
@@ -74,18 +74,18 @@ export default function NavigationPlaceholder( {
 								className:
 									'wp-block-navigation-placeholder__actions__dropdown',
 							} }
-						/>
+						/> */}
 
 						<hr />
 
-						{ canUserCreateNavigationMenu && (
+						{canUserCreateNavigationMenu && (
 							<Button
 								variant="tertiary"
-								onClick={ onCreateEmpty }
+								onClick={onCreateEmpty}
 							>
-								{ __( 'Start empty' ) }
+								{__('Start empty')}
 							</Button>
-						) }
+						)}
 					</div>
 				</div>
 			</Placeholder>

@@ -4,7 +4,7 @@
 import { useSelect } from '@wordpress/data';
 import {
 	store as coreStore,
-	__experimentalUseEntityRecords as useEntityRecords,
+	useEntityProp,
 } from '@wordpress/core-data';
 
 /**
@@ -28,16 +28,16 @@ import {
  * @param {number} menuId the menu for which to retrieve menuItem data.
  * @return { NavigationEntitiesData } the entity data.
  */
-export default function useNavigationEntities( menuId ) {
+export default function useNavigationEntities(menuId) {
 	return {
 		...usePageEntities(),
 		...useMenuEntities(),
-		...useMenuItemEntities( menuId ),
+		...useMenuItemEntities(menuId),
 	};
 }
 
 function useMenuEntities() {
-	const { records, isResolving, hasResolved } = useEntityRecords(
+	const { records, isResolving, hasResolved } = useEntityProp(
 		'root',
 		'menu',
 		{ per_page: -1, context: 'view' }
@@ -47,39 +47,39 @@ function useMenuEntities() {
 		menus: records,
 		isResolvingMenus: isResolving,
 		hasResolvedMenus: hasResolved,
-		hasMenus: !! ( hasResolved && records?.length ),
+		hasMenus: !!(hasResolved && records?.length),
 	};
 }
 
-function useMenuItemEntities( menuId ) {
+function useMenuItemEntities(menuId) {
 	const { menuItems, hasResolvedMenuItems } = useSelect(
-		( select ) => {
-			const { getMenuItems, hasFinishedResolution } = select( coreStore );
+		(select) => {
+			const { getMenuItems, hasFinishedResolution } = select(coreStore);
 
 			const hasSelectedMenu = menuId !== undefined;
 			const menuItemsParameters = hasSelectedMenu
 				? [
-						{
-							menus: menuId,
-							per_page: -1,
-							context: 'view',
-						},
-				  ]
+					{
+						menus: menuId,
+						per_page: -1,
+						context: 'view',
+					},
+				]
 				: undefined;
 
 			return {
 				menuItems: hasSelectedMenu
-					? getMenuItems( ...menuItemsParameters )
+					? getMenuItems(...menuItemsParameters)
 					: undefined,
 				hasResolvedMenuItems: hasSelectedMenu
 					? hasFinishedResolution(
-							'getMenuItems',
-							menuItemsParameters
-					  )
+						'getMenuItems',
+						menuItemsParameters
+					)
 					: false,
 			};
 		},
-		[ menuId ]
+		[menuId]
 	);
 
 	return {
@@ -89,7 +89,7 @@ function useMenuItemEntities( menuId ) {
 }
 
 function usePageEntities() {
-	const { records, isResolving, hasResolved } = useEntityRecords(
+	const { records, isResolving, hasResolved } = useEntityProp(
 		'postType',
 		'page',
 		{
@@ -105,6 +105,6 @@ function usePageEntities() {
 		pages: records,
 		isResolvingPages: isResolving,
 		hasResolvedPages: hasResolved,
-		hasPages: !! ( hasResolved && records?.length ),
+		hasPages: !!(hasResolved && records?.length),
 	};
 }

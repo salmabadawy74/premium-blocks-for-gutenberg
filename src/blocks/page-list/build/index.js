@@ -180,7 +180,7 @@ function ConvertToLinksModal(_ref3) {
   const {
     records: pages,
     hasResolved: pagesFinished
-  } = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.__experimentalUseEntityRecords)('postType', 'page', {
+  } = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.useEntityProp)('postType', 'page', {
     per_page: MAX_PAGE_COUNT,
     _fields: PAGE_FIELDS,
     // TODO: When https://core.trac.wordpress.org/ticket/39037 REST API support for multiple orderby
@@ -337,7 +337,7 @@ function usePageData() {
   const {
     records: pages,
     hasResolved: hasResolvedPages
-  } = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_7__.__experimentalUseEntityRecords)('postType', 'page', {
+  } = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_7__.useEntityProp)('postType', 'page', {
     orderby: 'menu_order',
     order: 'asc',
     _fields: ['id', 'link', 'parent', 'title', 'menu_order'],

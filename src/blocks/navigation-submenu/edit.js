@@ -15,6 +15,7 @@ import {
 	TextareaControl,
 	ToolbarButton,
 	ToolbarGroup,
+	ToggleControl
 } from '@wordpress/components';
 import { displayShortcut, isKeyboardEvent } from '@wordpress/keycodes';
 import { __, sprintf } from '@wordpress/i18n';
@@ -288,6 +289,7 @@ export default function NavigationSubmenuEdit({
 		rel,
 		title,
 		kind,
+		megaMenu
 	} = attributes;
 	const link = {
 		url,
@@ -583,7 +585,14 @@ export default function NavigationSubmenuEdit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title={__('Link settings')}>
+				<PanelBody title={__('Mega Menu Settings')}>
+					<ToggleControl
+						label={__("Enable Mega Menu", 'premium-blocks-for-gutenberg')}
+						checked={megaMenu}
+						onChange={check => setAttributes({ megaMenu: check })}
+					/>
+				</PanelBody>
+				<PanelBody title={__('Link settings 2')}>
 					<TextareaControl
 						value={description || ''}
 						onChange={(descriptionValue) => {

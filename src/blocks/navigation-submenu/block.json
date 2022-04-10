@@ -38,6 +38,9 @@
         },
         "isTopLevelItem": {
             "type": "boolean"
+        },
+        "megaMenu": {
+            "type": "boolean"
         }
     },
     "usesContext": [

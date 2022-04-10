@@ -4,7 +4,7 @@
 import { Button, Modal } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
-import { __experimentalUseEntityRecords as useEntityRecords } from '@wordpress/core-data';
+import { useEntityProp } from '@wordpress/core-data';
 import { createBlock as create } from '@wordpress/blocks';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 
@@ -74,7 +74,7 @@ export const convertSelectedBlockToNavigationLinks = ({
 };
 
 export default function ConvertToLinksModal({ onClose, clientId }) {
-	const { records: pages, hasResolved: pagesFinished } = useEntityRecords(
+	const { records: pages, hasResolved: pagesFinished } = useEntityProp(
 		'postType',
 		'page',
 		{

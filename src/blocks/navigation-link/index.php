@@ -105,7 +105,7 @@ function render_block_kemet_navigation_link( $attributes, $content, $block ) {
 	}
 
 	$html .= '</li>';
-
+	error_log( 'kemet mega menu' );
 	return $html;
 }
 
