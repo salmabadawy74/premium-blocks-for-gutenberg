@@ -1,0 +1,22 @@
+{
+    "apiVersion": 2,
+    "version": "0.1.0",
+    "name": "premium/trigger",
+    "title": "Trigger Icon",
+    "icon": "menu-alt",
+    "category": "premium-blocks",
+	"description": "Example static block scaffolded with Create Block tool.",
+	"keywords": ["trigger", "overlay-canvas", "canvas"],
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./build/block.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css",
+	"attributes": {
+		"text": {
+			"type": "string"
+		}
+	}
+
+}
