@@ -249,91 +249,91 @@ class edit extends Component {
 
         const iconsList = [
             {
-                value: "fab fa-facebook-f",
+                value: "fa fa-facebook-f",
                 label: __("facebook")
             },
             {
-                value: "fab fa-twitter",
+                value: "fa fa-twitter",
                 label: __("twitter")
             },
             {
-                value: "fab fa-instagram",
+                value: "fa fa-instagram",
                 label: __("instagram")
             },
             {
-                value: "fab fa-youtube",
+                value: "fa fa-youtube",
                 label: __("youtube")
             },
             {
-                value: "fab fa-linkedin",
+                value: "fa fa-linkedin",
                 label: __("linkedin")
             },
             {
-                value: "fab fa-flickr",
+                value: "fa fa-flickr",
                 label: __("flickr")
             },
             {
-                value: "fab fa-github",
+                value: "fa fa-github",
                 label: __("github")
             },
             {
-                value: "fab fa-google-plus",
+                value: "fa fa-google-plus",
                 label: __("google-plus")
             },
             {
-                value: "fab fa-pinterest",
+                value: "fa fa-pinterest",
                 label: __("pinterest")
             },
             {
-                value: "fab fa-reddit",
+                value: "fa fa-reddit",
                 label: __("reddit")
             },
             {
-                value: "fab fa-skype",
+                value: "fa fa-skype",
                 label: __("skype")
             },
             {
-                value: "fab fa-stack-overflow",
+                value: "fa fa-stack-overflow",
                 label: __("stack-overflow")
             },
             {
-                value: "fab fa-whatsapp",
+                value: "fa fa-whatsapp",
                 label: __("whatsapp")
             },
             {
-                value: "fab fa-vimeo-v",
-                label: __("vimeo-v")
+                value: "fa fa-vimeo",
+                label: __("vimeo")
             },
             {
-                value: "fab fa-tumblr",
+                value: "fa fa-tumblr",
                 label: __("tumblr")
             },
             {
-                value: "fab fa-dribbble",
+                value: "fa fa-dribbble",
                 label: __("dribbble")
             },
             {
-                value: "fab fa-quora",
+                value: "fa fa-quora",
                 label: __("quora")
             },
             {
-                value: "fab fa-foursquare",
+                value: "fa fa-foursquare",
                 label: __("foursquare")
             },
             {
-                value: "fab fa-wordpress",
+                value: "fa fa-wordpress",
                 label: __("wordpress")
             },
             {
-                value: "fab fa-stumbleupon",
+                value: "fa fa-stumbleupon",
                 label: __("stumbleupon")
             },
             {
-                value: "fab fa-yahoo",
+                value: "fa fa-yahoo",
                 label: __("yahoo")
             },
             {
-                value: "fab fa-soundcloud",
+                value: "fa fa-soundcloud",
                 label: __("soundcloud")
             },
         ];

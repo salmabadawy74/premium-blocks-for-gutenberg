@@ -3649,7 +3649,8 @@ var _wp$components = wp.components,
     Dropdown = _wp$components.Dropdown,
     Button = _wp$components.Button;
 function PremiumFilters(props) {
-    var blur = props.blur,
+    var label = props.label,
+        blur = props.blur,
         bright = props.bright,
         contrast = props.contrast,
         saturation = props.saturation,
@@ -3665,14 +3666,13 @@ function PremiumFilters(props) {
         _props$onChangeHue = props.onChangeHue,
         onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
 
-
     return React.createElement(
         "div",
         { className: "premium-control-toggle" },
         React.createElement(
             "strong",
             null,
-            __("CSS Filters")
+            __(label || "CSS Filters")
         ),
         React.createElement(Dropdown, {
             className: "premium-control-toggle-btn",
@@ -3696,7 +3696,7 @@ function PremiumFilters(props) {
                         value: blur,
                         onChange: onChangeBlur,
                         showUnit: false,
-                        defaultValue: ''
+                        defaultValue: 0
                     }),
                     React.createElement(_singleRangeControl2.default, {
                         label: __("Brightness"),
@@ -3705,7 +3705,7 @@ function PremiumFilters(props) {
                         value: bright,
                         onChange: onChangeBright,
                         showUnit: false,
-                        defaultValue: ''
+                        defaultValue: 100
                     }),
                     React.createElement(_singleRangeControl2.default, {
                         label: __("Contrast"),
@@ -3714,7 +3714,7 @@ function PremiumFilters(props) {
                         value: contrast,
                         onChange: onChangeContrast,
                         showUnit: false,
-                        defaultValue: ''
+                        defaultValue: 100
                     }),
                     React.createElement(_singleRangeControl2.default, {
                         label: __("Saturation"),
@@ -3723,7 +3723,7 @@ function PremiumFilters(props) {
                         value: saturation,
                         onChange: onChangeSat,
                         showUnit: false,
-                        defaultValue: ''
+                        defaultValue: 100
                     }),
                     React.createElement(_singleRangeControl2.default, {
                         label: __("Hue"),
@@ -3732,7 +3732,7 @@ function PremiumFilters(props) {
                         value: hue,
                         onChange: onChangeHue,
                         showUnit: false,
-                        defaultValue: ''
+                        defaultValue: 0
                     })
                 );
             }
@@ -56757,70 +56757,70 @@ var edit = function (_Component) {
             }];
 
             var iconsList = [{
-                value: "fab fa-facebook-f",
+                value: "fa fa-facebook-f",
                 label: __("facebook")
             }, {
-                value: "fab fa-twitter",
+                value: "fa fa-twitter",
                 label: __("twitter")
             }, {
-                value: "fab fa-instagram",
+                value: "fa fa-instagram",
                 label: __("instagram")
             }, {
-                value: "fab fa-youtube",
+                value: "fa fa-youtube",
                 label: __("youtube")
             }, {
-                value: "fab fa-linkedin",
+                value: "fa fa-linkedin",
                 label: __("linkedin")
             }, {
-                value: "fab fa-flickr",
+                value: "fa fa-flickr",
                 label: __("flickr")
             }, {
-                value: "fab fa-github",
+                value: "fa fa-github",
                 label: __("github")
             }, {
-                value: "fab fa-google-plus",
+                value: "fa fa-google-plus",
                 label: __("google-plus")
             }, {
-                value: "fab fa-pinterest",
+                value: "fa fa-pinterest",
                 label: __("pinterest")
             }, {
-                value: "fab fa-reddit",
+                value: "fa fa-reddit",
                 label: __("reddit")
             }, {
-                value: "fab fa-skype",
+                value: "fa fa-skype",
                 label: __("skype")
             }, {
-                value: "fab fa-stack-overflow",
+                value: "fa fa-stack-overflow",
                 label: __("stack-overflow")
             }, {
-                value: "fab fa-whatsapp",
+                value: "fa fa-whatsapp",
                 label: __("whatsapp")
             }, {
-                value: "fab fa-vimeo-v",
-                label: __("vimeo-v")
+                value: "fa fa-vimeo",
+                label: __("vimeo")
             }, {
-                value: "fab fa-tumblr",
+                value: "fa fa-tumblr",
                 label: __("tumblr")
             }, {
-                value: "fab fa-dribbble",
+                value: "fa fa-dribbble",
                 label: __("dribbble")
             }, {
-                value: "fab fa-quora",
+                value: "fa fa-quora",
                 label: __("quora")
             }, {
-                value: "fab fa-foursquare",
+                value: "fa fa-foursquare",
                 label: __("foursquare")
             }, {
-                value: "fab fa-wordpress",
+                value: "fa fa-wordpress",
                 label: __("wordpress")
             }, {
-                value: "fab fa-stumbleupon",
+                value: "fa fa-stumbleupon",
                 label: __("stumbleupon")
             }, {
-                value: "fab fa-yahoo",
+                value: "fa fa-yahoo",
                 label: __("yahoo")
             }, {
-                value: "fab fa-soundcloud",
+                value: "fa fa-soundcloud",
                 label: __("soundcloud")
             }];
 
