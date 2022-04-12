@@ -1641,7 +1641,7 @@ a.premium-dheading-block__link:hover {
 .premium-container__stretch_true.alignfull {
     max-width: 100vw;
 }
-.premium-container .premium-blocks-bg-wrap {
+.premium-container .premium-blocks-video-bg-wrap {
     position: absolute;
     top: 0px;
     bottom: 0px;
@@ -1650,7 +1650,7 @@ a.premium-dheading-block__link:hover {
     overflow: hidden;
 }
 
-.premium-container .premium-blocks-bg-wrap iframe {
+.premium-container .premium-blocks-video-bg-wrap iframe {
     height: 1300px;
     position: absolute;
     left: 50%;
