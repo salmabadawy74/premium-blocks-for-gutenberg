@@ -3,7 +3,7 @@ export const videoBackground = (backgroundType, videoSource, videoURL, bgExterna
         if (videoSource == 'local') {
             if (videoURL) {
                 return (
-                    <div className="premium-blocks-bg-wrap">
+                    <div className="premium-blocks-video-bg-wrap">
                         <video className="premium-blocks-video-bg" autoPlay muted loop>
                             <source src={videoURL} />
                         </video>
