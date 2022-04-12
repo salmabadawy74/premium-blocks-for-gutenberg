@@ -36,7 +36,7 @@ export default function PremiumFilters(props) {
                             value={blur}
                             onChange={onChangeBlur}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Brightness")}
@@ -45,7 +45,7 @@ export default function PremiumFilters(props) {
                             value={bright}
                             onChange={onChangeBright}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={100}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Contrast")}
@@ -54,7 +54,7 @@ export default function PremiumFilters(props) {
                             value={contrast}
                             onChange={onChangeContrast}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={100}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Saturation")}
@@ -63,7 +63,7 @@ export default function PremiumFilters(props) {
                             value={saturation}
                             onChange={onChangeSat}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={100}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Hue")}
@@ -72,7 +72,7 @@ export default function PremiumFilters(props) {
                             value={hue}
                             onChange={onChangeHue}
                             showUnit={false}
-                            defaultValue={''}
+                            defaultValue={0}
                         />
                     </Fragment>
                 )}
