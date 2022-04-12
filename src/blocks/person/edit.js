@@ -101,7 +101,6 @@ class edit extends Component {
             }
             return item
         })
-        console.log(newItems)
         setAttributes({
             multiPersonContent: newItems,
         })
