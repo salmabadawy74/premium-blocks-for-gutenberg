@@ -414,7 +414,7 @@ class edit extends Component {
                                             defaultValue={.1}
                                         />
                                         <PremiumFilters
-                                            blur={blur}
+                                            blur={lottieStyles[0].blur}
                                             bright={lottieStyles[0].bright}
                                             contrast={lottieStyles[0].contrast}
                                             saturation={lottieStyles[0].saturation}
