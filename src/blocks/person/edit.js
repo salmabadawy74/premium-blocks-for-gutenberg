@@ -174,167 +174,167 @@ class edit extends Component {
         const HOVER = [
             {
                 value: "none",
-                label: __("None")
+                label: __("None", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "zoomin",
-                label: __("Zoom In")
+                label: __("Zoom In", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "zoomout",
-                label: "Zoom Out"
+                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "scale",
-                label: __("Scale")
+                label: __("Scale", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "gray",
-                label: __("Gray Scale")
+                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "blur",
-                label: __("Blur")
+                label: __("Blur", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "bright",
-                label: __("Bright")
+                label: __("Bright", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "sepia",
-                label: __("Sepia")
+                label: __("Sepia", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "translate",
-                label: __("Translate")
+                label: __("Translate", 'premium-blocks-for-gutenberg')
             }
         ];
 
         const EFFECTS = [
             {
                 value: "effect1",
-                label: __("Style 1")
+                label: __("Style 1", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "effect2",
-                label: __("Style 2")
+                label: __("Style 2", 'premium-blocks-for-gutenberg')
             }
         ];
         const ROWS = [
             {
                 value: "column1",
-                label: __("1 Column")
+                label: __("1 Column", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "column2",
-                label: __("2 Columns")
+                label: __("2 Columns", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "column3",
-                label: __("3 Columns")
+                label: __("3 Columns", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "column4",
-                label: __("4 Columns")
+                label: __("4 Columns", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "column5",
-                label: __("5 Columns")
+                label: __("5 Columns", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "column6",
-                label: __("6 Columns")
+                label: __("6 Columns", 'premium-blocks-for-gutenberg')
             }
         ]
 
         const iconsList = [
             {
                 value: "fa fa-facebook-f",
-                label: __("facebook")
+                label: __("facebook", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-twitter",
-                label: __("twitter")
+                label: __("twitter", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-instagram",
-                label: __("instagram")
+                label: __("instagram", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-youtube",
-                label: __("youtube")
+                label: __("youtube", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-linkedin",
-                label: __("linkedin")
+                label: __("linkedin", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-flickr",
-                label: __("flickr")
+                label: __("flickr", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-github",
-                label: __("github")
+                label: __("github", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-google-plus",
-                label: __("google-plus")
+                label: __("google-plus", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-pinterest",
-                label: __("pinterest")
+                label: __("pinterest", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-reddit",
-                label: __("reddit")
+                label: __("reddit", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-skype",
-                label: __("skype")
+                label: __("skype", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-stack-overflow",
-                label: __("stack-overflow")
+                label: __("stack-overflow", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-whatsapp",
-                label: __("whatsapp")
+                label: __("whatsapp", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-vimeo",
-                label: __("vimeo")
+                label: __("vimeo", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-tumblr",
-                label: __("tumblr")
+                label: __("tumblr", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-dribbble",
-                label: __("dribbble")
+                label: __("dribbble", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-quora",
-                label: __("quora")
+                label: __("quora", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-foursquare",
-                label: __("foursquare")
+                label: __("foursquare", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-wordpress",
-                label: __("wordpress")
+                label: __("wordpress", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-stumbleupon",
-                label: __("stumbleupon")
+                label: __("stumbleupon", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-yahoo",
-                label: __("yahoo")
+                label: __("yahoo", 'premium-blocks-for-gutenberg')
             },
             {
                 value: "fa fa-soundcloud",
-                label: __("soundcloud")
+                label: __("soundcloud", 'premium-blocks-for-gutenberg')
             },
         ];
 
