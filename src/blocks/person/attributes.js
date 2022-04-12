@@ -123,100 +123,76 @@ const attributes = {
         default: false
     },
     socialIconMarginT: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginR: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginB: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginL: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginTTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginRTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginBTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginLTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginTMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginRMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginBMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconMarginLMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingTop: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingRight: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingBottom: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingLeft: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingTTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingRTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingBTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingLTablet: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingTMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingRMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingBMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     socialIconPaddingLMobile: {
-        type: "number",
-        default: 0
+        type: "number"
     },
     titleTag: {
         type: "string",
