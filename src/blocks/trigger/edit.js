@@ -1,5 +1,13 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText} from '@wordpress/block-editor';
+import { useBlockProps, RichText, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import {
+    Fragment,
+    useEffect,
+    useState,
+    button
+} from '@wordpress/element';
+import { Button } from '@wordpress/components';
+
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -17,15 +25,53 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
+
+ 
+
 export default function Edit({attributes, setAttributes}) {
-	const {text} = attributes;
-	return (
-		<RichText { ...useBlockProps() } 
-			onChange= { ( value ) => setAttributes( { text: value } )}
-			value= { text }
-			placeholder={ __( 'your Text is here', 'pnj-text' ) }
-			tagName= "h4"
-			allowedFormats={ [ 'core/bold', 'core/italic' ] }
-		/>
-	);
+// const trigger = () => {
+//         return (
+//             <a href="javascript:void(0)" className="bod-block-popup-trigger type_image">
+                
+//             </a>
+//         );
+// }
+
+const [ isEditing, setEditing ] = useState( false );
+const red = '#000';
+
+    return(
+        <Fragment>
+            <InspectorControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+			/>
+
+            <div { ...useBlockProps }>
+        
+                <Button
+                    isPrimary
+                    onClick={ () => setEditing( true ) }
+                >
+					<i
+                    className={`dashicon dashicons dashicons-menu-alt`}
+                />
+                    { __( 'Edit Popup', 'premium-blocks-for-gutenberg' ) }
+                </Button>
+				{isEditing && (
+					<div className="overlaynermin" role="presentation">
+						<div 
+						className="premium-popup__modal_wrap_overlay" 
+						onClick={() => setEditing(false)} 
+						 >
+							<InnerBlocks />
+						</div>
+					</div>
+				)}
+				
+
+            </div>
+        </Fragment>
+    )
 }
+
