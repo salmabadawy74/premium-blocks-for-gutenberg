@@ -557,7 +557,7 @@ export default function NavigationLinkEdit({
 		backgroundColor,
 		customBackgroundColor,
 	} = getColors(context, !isTopLevelLink);
-
+	// console.log(context);
 	function onKeyDown(event) {
 		if (
 			isKeyboardEvent.primary(event, 'k') ||
@@ -569,7 +569,7 @@ export default function NavigationLinkEdit({
 
 	const blockProps = useBlockProps({
 		ref: listItemRef,
-		className: classnames('wp-block-navigation-item', {
+		className: classnames('premium-navigation-item', {
 			'is-editing': isSelected || isParentOfSelectedBlock,
 			'is-dragging-within': isDraggingWithin,
 			'has-link': !!url,
@@ -593,8 +593,8 @@ export default function NavigationLinkEdit({
 		blockProps.onClick = () => setIsLinkOpen(true);
 	}
 
-	const classes = classnames('wp-block-navigation-item__content', {
-		'wp-block-navigation-link__placeholder': !url,
+	const classes = classnames('premium-navigation-item__content', {
+		'premium-navigation-link__placeholder': !url,
 	});
 
 	let missingText = '';
@@ -676,7 +676,7 @@ export default function NavigationLinkEdit({
 				<a className={classes}>
 					{ /* eslint-enable */}
 					{!url ? (
-						<div className="wp-block-navigation-link__placeholder-text">
+						<div className="premium-navigation-link__placeholder-text">
 							<Tooltip
 								position="top center"
 								text={__('This item is missing a link')}
@@ -688,7 +688,7 @@ export default function NavigationLinkEdit({
 						<RichText
 							ref={ref}
 							identifier="label"
-							className="wp-block-navigation-item__label"
+							className="premium-navigation-item__label"
 							value={label}
 							onChange={(labelValue) =>
 								setAttributes({
@@ -727,7 +727,7 @@ export default function NavigationLinkEdit({
 							<LinkControl
 								hasTextControl
 								hasRichPreviews
-								className="wp-block-navigation-link__inline-link-input"
+								className="premium-navigation-link__inline-link-input"
 								value={link}
 								showInitialSuggestions={true}
 								withCreateSuggestion={userCanCreate}

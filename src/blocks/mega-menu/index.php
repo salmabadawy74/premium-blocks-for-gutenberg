@@ -1,13 +1,13 @@
 <?php
 /**
- * Server-side rendering of the `core/navigation` block.
+ * Server-side rendering of the `kemet/mega-menu` block.
  *
  * @package WordPress
  */
 
 
 /**
- * Renders the `core/navigation` block on server.
+ * Renders the `kemet/mega-menu` block on server.
  *
  * @param array    $attributes The block attributes.
  * @param string   $content    The saved content.
@@ -139,16 +139,16 @@ function kemet_render_block_mega_menu( $attributes, $content, $block ) {
 	$inner_blocks_html = '';
 	$is_list_open      = false;
 	foreach ( $inner_blocks as $inner_block ) {
-		if ( ( 'kemet/navigation-link' === $inner_block->name || 'core/home-link' === $inner_block->name || 'core/site-title' === $inner_block->name || 'core/site-logo' === $inner_block->name || 'core/navigation-submenu' === $inner_block->name ) && ! $is_list_open ) {
+		if ( ( 'kemet/navigation-link' === $inner_block->name || 'core/home-link' === $inner_block->name || 'core/site-title' === $inner_block->name || 'core/site-logo' === $inner_block->name || 'kemet/navigation-submenu' === $inner_block->name ) && ! $is_list_open ) {
 			$is_list_open       = true;
-			$inner_blocks_html .= '<ul class="wp-block-navigation__container">';
+			$inner_blocks_html .= '<ul class="premium-navigation__container">';
 		}
-		if ( 'kemet/navigation-link' !== $inner_block->name && 'core/home-link' !== $inner_block->name && 'core/site-title' !== $inner_block->name && 'core/site-logo' !== $inner_block->name && 'core/navigation-submenu' !== $inner_block->name && $is_list_open ) {
+		if ( 'kemet/navigation-link' !== $inner_block->name && 'core/home-link' !== $inner_block->name && 'core/site-title' !== $inner_block->name && 'core/site-logo' !== $inner_block->name && 'kemet/navigation-submenu' !== $inner_block->name && $is_list_open ) {
 			$is_list_open       = false;
 			$inner_blocks_html .= '</ul>';
 		}
 		if ( 'core/site-title' === $inner_block->name || 'core/site-logo' === $inner_block->name ) {
-			$inner_blocks_html .= '<li class="wp-block-navigation-item">' . $inner_block->render() . '</li>';
+			$inner_blocks_html .= '<li class="premium-navigation-item">' . $inner_block->render() . '</li>';
 		} else {
 			$inner_blocks_html .= $inner_block->render();
 		}
@@ -182,12 +182,12 @@ function kemet_render_block_mega_menu( $attributes, $content, $block ) {
 	$is_hidden_by_default = isset( $attributes['overlayMenu'] ) && 'always' === $attributes['overlayMenu'];
 
 	$responsive_container_classes = array(
-		'wp-block-navigation__responsive-container',
+		'premium-navigation__responsive-container',
 		$is_hidden_by_default ? 'hidden-by-default' : '',
 		implode( ' ', $colors['overlay_css_classes'] ),
 	);
 	$open_button_classes          = array(
-		'wp-block-navigation__responsive-container-open',
+		'premium-navigation__responsive-container-open',
 		$is_hidden_by_default ? 'always-shown' : '',
 	);
 
@@ -198,10 +198,10 @@ function kemet_render_block_mega_menu( $attributes, $content, $block ) {
 	$responsive_container_markup = sprintf(
 		'<button aria-haspopup="true" aria-label="%3$s" class="%6$s" data-micromodal-trigger="%1$s">%9$s</button>
 			<div class="%5$s" style="%7$s" id="%1$s">
-				<div class="wp-block-navigation__responsive-close" tabindex="-1" data-micromodal-close>
-					<div class="wp-block-navigation__responsive-dialog" aria-label="%8$s">
-							<button aria-label="%4$s" data-micromodal-close class="wp-block-navigation__responsive-container-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
-						<div class="wp-block-navigation__responsive-container-content" id="%1$s-content">
+				<div class="premium-navigation__responsive-close" tabindex="-1" data-micromodal-close>
+					<div class="premium-navigation__responsive-dialog" aria-label="%8$s">
+							<button aria-label="%4$s" data-micromodal-close class="premium-navigation__responsive-container-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></button>
+						<div class="premium-navigation__responsive-container-content" id="%1$s-content">
 							%2$s
 						</div>
 					</div>
@@ -242,36 +242,3 @@ function register_block_mega_menu() {
 
 add_action( 'init', 'register_block_mega_menu' );
 
-// /**
-// * Filter that changes the parsed attribute values of navigation blocks contain typographic presets to contain the values directly.
-// *
-// * @param array $parsed_block The block being rendered.
-// *
-// * @return array The block being rendered without typographic presets.
-// */
-// function block_core_navigation_typographic_presets_backcompatibility( $parsed_block ) {
-// if ( 'core/navigation' === $parsed_block['blockName'] ) {
-// $attribute_to_prefix_map = array(
-// 'fontStyle'      => 'var:preset|font-style|',
-// 'fontWeight'     => 'var:preset|font-weight|',
-// 'textDecoration' => 'var:preset|text-decoration|',
-// 'textTransform'  => 'var:preset|text-transform|',
-// );
-// foreach ( $attribute_to_prefix_map as $style_attribute => $prefix ) {
-// if ( ! empty( $parsed_block['attrs']['style']['typography'][ $style_attribute ] ) ) {
-// $prefix_len      = strlen( $prefix );
-// $attribute_value = &$parsed_block['attrs']['style']['typography'][ $style_attribute ];
-// if ( 0 === strncmp( $attribute_value, $prefix, $prefix_len ) ) {
-// $attribute_value = substr( $attribute_value, $prefix_len );
-// }
-// if ( 'textDecoration' === $style_attribute && 'strikethrough' === $attribute_value ) {
-// $attribute_value = 'line-through';
-// }
-// }
-// }
-// }
-
-// return $parsed_block;
-// }
-
-// add_filter( 'render_block_data', 'block_core_navigation_typographic_presets_backcompatibility' );

@@ -98,12 +98,6 @@
 .wp-block-navigation .has-child {
   cursor: pointer;
 }
-.wp-block-navigation .has-child .wp-block-navigation__submenu-container {
-  z-index: 28;
-}
-.wp-block-navigation .has-child:hover .wp-block-navigation__submenu-container {
-  z-index: 29;
-}
 .wp-block-navigation .has-child.is-selected > .wp-block-navigation__submenu-container, .wp-block-navigation .has-child.has-child-selected > .wp-block-navigation__submenu-container {
   visibility: visible !important;
   opacity: 1 !important;

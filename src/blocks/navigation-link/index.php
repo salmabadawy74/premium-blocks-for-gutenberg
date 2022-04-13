@@ -41,13 +41,13 @@ function render_block_kemet_navigation_link( $attributes, $content, $block ) {
 
 	$wrapper_attributes = get_block_wrapper_attributes(
 		array(
-			'class' => $css_classes . ' wp-block-navigation-item' . ( $has_submenu ? ' has-child' : '' ) .
+			'class' => $css_classes . ' premium-navigation-item' . ( $has_submenu ? ' has-child' : '' ) .
 				( $is_active ? ' current-menu-item' : '' ),
 			'style' => $style_attribute,
 		)
 	);
 	$html               = '<li ' . $wrapper_attributes . '>' .
-		'<a class="wp-block-navigation-item__content" ';
+		'<a class="premium-navigation-item__content" ';
 
 	// Start appending HTML attributes to anchor tag.
 	if ( isset( $attributes['url'] ) ) {
@@ -77,7 +77,7 @@ function render_block_kemet_navigation_link( $attributes, $content, $block ) {
 	// Start anchor tag content.
 	$html .= '>' .
 		// Wrap title with span to isolate it from submenu icon.
-		'<span class="wp-block-navigation-item__label">';
+		'<span class="premium-navigation-item__label">';
 
 	if ( isset( $attributes['label'] ) ) {
 		$html .= wp_kses_post( $attributes['label'] );
@@ -89,7 +89,7 @@ function render_block_kemet_navigation_link( $attributes, $content, $block ) {
 
 	if ( isset( $block->context['showSubmenuIcon'] ) && $block->context['showSubmenuIcon'] && $has_submenu ) {
 		// The submenu icon can be hidden by a CSS rule on the Navigation Block.
-		$html .= '<span class="wp-block-navigation__submenu-icon">' . block_core_navigation_link_render_submenu_icon() . '</span>';
+		$html .= '<span class="premium-navigation__submenu-icon">' . block_core_navigation_link_render_submenu_icon() . '</span>';
 	}
 
 	if ( $has_submenu ) {
@@ -99,13 +99,12 @@ function render_block_kemet_navigation_link( $attributes, $content, $block ) {
 		}
 
 		$html .= sprintf(
-			'<ul class="wp-block-navigation__submenu-container">%s</ul>',
+			'<ul class="premium-navigation__submenu-container">%s</ul>',
 			$inner_blocks_html
 		);
 	}
 
 	$html .= '</li>';
-	error_log( 'kemet mega menu' );
 	return $html;
 }
 

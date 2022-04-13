@@ -196,14 +196,14 @@ function ConvertToLinksModal(_ref3) {
     closeLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Close'),
     onRequestClose: onClose,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Convert to links'),
-    className: 'wp-block-page-list-modal',
+    className: 'premium-page-list-modal',
     aria: {
-      describedby: 'wp-block-page-list-modal__description'
+      describedby: 'premium-page-list-modal__description'
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    id: 'wp-block-page-list-modal__description'
+    id: 'premium-page-list-modal__description'
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('To edit this navigation menu, convert it to single page links. This allows you to add, re-order, remove items, or edit their labels.')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Note: if you add new pages to your site, you'll need to add them to your navigation menu.")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-page-list-modal-buttons"
+    className: "premium-page-list-modal-buttons"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "tertiary",
     onClick: onClose
@@ -297,7 +297,7 @@ function PageListEdit(_ref) {
   const closeModal = () => setOpen(false);
 
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-page-list', {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-page-list', {
       'has-text-color': !!context.textColor,
       [(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.getColorClassName)('color', context.textColor)]: !!context.textColor,
       'has-background': !!context.backgroundColor,
@@ -392,29 +392,29 @@ const PageItems = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
     const isNavigationChild = ('showSubmenuIcon' in context);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       key: page.id,
-      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-pages-list__item', {
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-pages-list__item', {
         'has-child': hasChildren,
-        'wp-block-navigation-item': isNavigationChild,
+        'premium-navigation-item': isNavigationChild,
         'open-on-click': context.openSubmenusOnClick,
         'open-on-hover-click': !context.openSubmenusOnClick && context.showSubmenuIcon,
         'menu-item-home': page.id === frontPageId
       })
     }, hasChildren && context.openSubmenusOnClick ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "wp-block-navigation-item__content wp-block-navigation-submenu__toggle",
+      className: "premium-navigation-item__content premium-navigation-submenu__toggle",
       "aria-expanded": "false"
     }, (_page$title = page.title) === null || _page$title === void 0 ? void 0 : _page$title.rendered), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "wp-block-page-list__submenu-icon wp-block-navigation__submenu-icon"
+      className: "premium-page-list__submenu-icon premium-navigation__submenu-icon"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_navigation_link_icons__WEBPACK_IMPORTED_MODULE_9__.ItemSubmenuIcon, null))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-pages-list__item__link', {
-        'wp-block-navigation-item__content': isNavigationChild
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-pages-list__item__link', {
+        'premium-navigation-item__content': isNavigationChild
       }),
       href: page.link
     }, (_page$title2 = page.title) === null || _page$title2 === void 0 ? void 0 : _page$title2.rendered), hasChildren && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !context.openSubmenusOnClick && context.showSubmenuIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "wp-block-navigation-item__content wp-block-navigation-submenu__toggle wp-block-page-list__submenu-icon wp-block-navigation__submenu-icon",
+      className: "premium-navigation-item__content premium-navigation-submenu__toggle premium-page-list__submenu-icon premium-navigation__submenu-icon",
       "aria-expanded": "false"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_navigation_link_icons__WEBPACK_IMPORTED_MODULE_9__.ItemSubmenuIcon, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('submenu-container', {
-        'wp-block-navigation__submenu-container': isNavigationChild
+        'premium-navigation__submenu-container': isNavigationChild
       })
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PageItems, {
       context: context,

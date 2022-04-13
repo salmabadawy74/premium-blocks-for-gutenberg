@@ -6,43 +6,43 @@
 @import "node_modules/@wordpress/base-styles/z-index";
 @import "node_modules/@wordpress/base-styles/default-custom-properties";
 
-.wp-block-navigation {
+.premium-navigation {
     // Block wrapper gets the classes in the editor, and there's an extra div wrapper for now, so background styles need to be inherited.
-    .wp-block-page-list > div,
-    .wp-block-page-list {
+    .premium-page-list > div,
+    .premium-page-list {
         background-color: inherit;
     }
 
     // space-between justification.
     &.items-justified-space-between {
-        .wp-block-page-list > div,
-        .wp-block-page-list {
+        .premium-page-list > div,
+        .premium-page-list {
             display: contents;
             flex: 1;
         }
 
-        &.has-child-selected .wp-block-page-list > div,
-        &.has-child-selected .wp-block-page-list,
-        &.is-selected .wp-block-page-list > div,
-        &.is-selected .wp-block-page-list {
+        &.has-child-selected .premium-page-list > div,
+        &.has-child-selected .premium-page-list,
+        &.is-selected .premium-page-list > div,
+        &.is-selected .premium-page-list {
             flex: inherit;
         }
     }
 }
 
 // Make links unclickable in the editor.
-.wp-block-pages-list__item__link {
+.premium-pages-list__item__link {
     pointer-events: none;
 }
 
 // Modal that shows conversion option.
-.wp-block-page-list-modal {
+.premium-page-list-modal {
     @include break-small() {
         max-width: $break-mobile;
     }
 }
 
-.wp-block-page-list-modal-buttons {
+.premium-page-list-modal-buttons {
     display: flex;
     justify-content: flex-end;
     gap: $grid-unit-15;
@@ -50,9 +50,9 @@
 
 // Simulate open on click behaviour in the editor by opening on focus instead.
 
-.wp-block-page-list {
+.premium-page-list {
     .open-on-click:focus-within {
-        > .wp-block-navigation__submenu-container {
+        > .premium-navigation__submenu-container {
             visibility: visible;
             opacity: 1;
             width: auto;
@@ -62,6 +62,6 @@
     }
 }
 
-.wp-block-page-list .components-notice {
+.premium-page-list .components-notice {
     margin-left: 0;
 }

@@ -92,36 +92,36 @@
   }
 }
 
-.wp-block-navigation .wp-block-page-list > div,
-.wp-block-navigation .wp-block-page-list {
+.premium-navigation .premium-page-list > div,
+.premium-navigation .premium-page-list {
   background-color: inherit;
 }
-.wp-block-navigation.items-justified-space-between .wp-block-page-list > div,
-.wp-block-navigation.items-justified-space-between .wp-block-page-list {
+.premium-navigation.items-justified-space-between .premium-page-list > div,
+.premium-navigation.items-justified-space-between .premium-page-list {
   display: contents;
   flex: 1;
 }
-.wp-block-navigation.items-justified-space-between.has-child-selected .wp-block-page-list > div, .wp-block-navigation.items-justified-space-between.has-child-selected .wp-block-page-list, .wp-block-navigation.items-justified-space-between.is-selected .wp-block-page-list > div, .wp-block-navigation.items-justified-space-between.is-selected .wp-block-page-list {
+.premium-navigation.items-justified-space-between.has-child-selected .premium-page-list > div, .premium-navigation.items-justified-space-between.has-child-selected .premium-page-list, .premium-navigation.items-justified-space-between.is-selected .premium-page-list > div, .premium-navigation.items-justified-space-between.is-selected .premium-page-list {
   flex: inherit;
 }
 
-.wp-block-pages-list__item__link {
+.premium-pages-list__item__link {
   pointer-events: none;
 }
 
 @media (min-width: 600px) {
-  .wp-block-page-list-modal {
+  .premium-page-list-modal {
     max-width: 480px;
   }
 }
 
-.wp-block-page-list-modal-buttons {
+.premium-page-list-modal-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
 }
 
-.wp-block-page-list .open-on-click:focus-within > .wp-block-navigation__submenu-container {
+.premium-page-list .open-on-click:focus-within > .premium-navigation__submenu-container {
   visibility: visible;
   opacity: 1;
   width: auto;
@@ -129,7 +129,7 @@
   min-width: 200px;
 }
 
-.wp-block-page-list .components-notice {
+.premium-page-list .components-notice {
   margin-left: 0;
 }
 

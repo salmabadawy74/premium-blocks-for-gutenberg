@@ -15,7 +15,10 @@ import {
 	TextareaControl,
 	ToolbarButton,
 	ToolbarGroup,
-	ToggleControl
+	ToggleControl,
+	SelectControl,
+	__experimentalRadio as Radio,
+	__experimentalRadioGroup as RadioGroup,
 } from '@wordpress/components';
 import { displayShortcut, isKeyboardEvent } from '@wordpress/keycodes';
 import { __, sprintf } from '@wordpress/i18n';
@@ -29,6 +32,7 @@ import {
 	useBlockProps,
 	store as blockEditorStore,
 	getColorClassName,
+	useSetting
 } from '@wordpress/block-editor';
 import { isURL, prependHTTP, safeDecodeURI } from '@wordpress/url';
 import {
@@ -47,6 +51,7 @@ import { createBlock } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
+import RadioComponent from '../../components/radio-control';
 import { ItemSubmenuIcon } from './icons';
 import { name } from './block.json';
 
@@ -289,7 +294,9 @@ export default function NavigationSubmenuEdit({
 		rel,
 		title,
 		kind,
-		megaMenu
+		megaMenu,
+		megaMenuWidth,
+		megaMenuColumns
 	} = attributes;
 	const link = {
 		url,
@@ -297,7 +304,7 @@ export default function NavigationSubmenuEdit({
 	};
 	const { showSubmenuIcon, openSubmenusOnClick } = context;
 	const { saveEntityRecord } = useDispatch(coreStore);
-
+	const { contentSize, wideSize } = useSetting('layout');
 	const {
 		__unstableMarkNextChangeAsNotPersistent,
 		replaceBlock,
@@ -481,7 +488,7 @@ export default function NavigationSubmenuEdit({
 
 	const blockProps = useBlockProps({
 		ref: listItemRef,
-		className: classnames('wp-block-navigation-item', {
+		className: classnames('premium-navigation-item', {
 			'is-editing': isSelected || isParentOfSelectedBlock,
 			'is-dragging-within': isDraggingWithin,
 			'has-link': !!url,
@@ -511,7 +518,7 @@ export default function NavigationSubmenuEdit({
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			className: classnames('wp-block-navigation__submenu-container', {
+			className: classnames('premium-navigation__submenu-container', {
 				'is-parent-of-selected-block': isParentOfSelectedBlock,
 				'has-text-color': !!(
 					innerBlocksColors.textColor ||
@@ -579,7 +586,7 @@ export default function NavigationSubmenuEdit({
 						icon={removeSubmenu}
 						title={__('Convert to Link')}
 						onClick={transformToLink}
-						className="wp-block-navigation__submenu__revert"
+						className="premium-navigation__submenu__revert"
 						isDisabled={!canConvertToLink}
 					/>
 				</ToolbarGroup>
@@ -591,6 +598,29 @@ export default function NavigationSubmenuEdit({
 						checked={megaMenu}
 						onChange={check => setAttributes({ megaMenu: check })}
 					/>
+					{megaMenu && <SelectControl
+						label={__("Direction", 'premium-blocks-for-gutenberg')}
+						options={[
+							{
+								value: "content",
+								label: __("Content", 'premium-blocks-for-gutenberg')
+							},
+							{
+								value: "full",
+								label: __("Wide", 'premium-blocks-for-gutenberg')
+							}
+						]}
+						value={megaMenuWidth}
+						onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
+					/>}
+					<RadioGroup label="Width" onChange={(value) => setAttributes({ megaMenuColumns: value })} checked={megaMenuColumns}>
+						<Radio value="1">1</Radio>
+						<Radio value="2">2</Radio>
+						<Radio value="3">3</Radio>
+						<Radio value="4">4</Radio>
+						<Radio value="5">5</Radio>
+						<Radio value="6">6</Radio>
+					</RadioGroup>
 				</PanelBody>
 				<PanelBody title={__('Link settings 2')}>
 					<TextareaControl
@@ -625,13 +655,13 @@ export default function NavigationSubmenuEdit({
 			</InspectorControls>
 			<div {...blockProps}>
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}
-				<ParentElement className="wp-block-navigation-item__content">
+				<ParentElement className="premium-navigation-item__content">
 					{ /* eslint-enable */}
 					{
 						<RichText
 							ref={ref}
 							identifier="label"
-							className="wp-block-navigation-item__label"
+							className="premium-navigation-item__label"
 							value={label}
 							onChange={(labelValue) =>
 								setAttributes({ label: labelValue })
@@ -661,7 +691,7 @@ export default function NavigationSubmenuEdit({
 							anchorRef={listItemRef.current}
 						>
 							<LinkControl
-								className="wp-block-navigation-link__inline-link-input"
+								className="premium-navigation-link__inline-link-input"
 								value={link}
 								showInitialSuggestions={true}
 								withCreateSuggestion={userCanCreate}
@@ -706,7 +736,7 @@ export default function NavigationSubmenuEdit({
 					)}
 				</ParentElement>
 				{(showSubmenuIcon || openSubmenusOnClick) && (
-					<span className="wp-block-navigation__submenu-icon">
+					<span className="premium-navigation__submenu-icon">
 						<ItemSubmenuIcon />
 					</span>
 				)}

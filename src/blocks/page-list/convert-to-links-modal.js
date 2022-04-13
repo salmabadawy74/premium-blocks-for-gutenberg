@@ -95,10 +95,10 @@ export default function ConvertToLinksModal({ onClose, clientId }) {
 			closeLabel={__('Close')}
 			onRequestClose={onClose}
 			title={__('Convert to links')}
-			className={'wp-block-page-list-modal'}
-			aria={{ describedby: 'wp-block-page-list-modal__description' }}
+			className={'premium-page-list-modal'}
+			aria={{ describedby: 'premium-page-list-modal__description' }}
 		>
-			<p id={'wp-block-page-list-modal__description'}>
+			<p id={'premium-page-list-modal__description'}>
 				{__(
 					'To edit this navigation menu, convert it to single page links. This allows you to add, re-order, remove items, or edit their labels.'
 				)}
@@ -108,7 +108,7 @@ export default function ConvertToLinksModal({ onClose, clientId }) {
 					"Note: if you add new pages to your site, you'll need to add them to your navigation menu."
 				)}
 			</p>
-			<div className="wp-block-page-list-modal-buttons">
+			<div className="premium-page-list-modal-buttons">
 				<Button variant="tertiary" onClick={onClose}>
 					{__('Cancel')}
 				</Button>

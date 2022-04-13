@@ -796,7 +796,7 @@ function NavigationLinkEdit(_ref2) {
     customTextColor,
     backgroundColor,
     customBackgroundColor
-  } = getColors(context, !isTopLevelLink);
+  } = getColors(context, !isTopLevelLink); // console.log(context);
 
   function onKeyDown(event) {
     if (_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_6__.isKeyboardEvent.primary(event, 'k') || !url && event.keyCode === _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_6__.ENTER) {
@@ -806,7 +806,7 @@ function NavigationLinkEdit(_ref2) {
 
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.useBlockProps)({
     ref: listItemRef,
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-navigation-item', {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-navigation-item', {
       'is-editing': isSelected || isParentOfSelectedBlock,
       'is-dragging-within': isDraggingWithin,
       'has-link': !!url,
@@ -827,8 +827,8 @@ function NavigationLinkEdit(_ref2) {
     blockProps.onClick = () => setIsLinkOpen(true);
   }
 
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-navigation-item__content', {
-    'wp-block-navigation-link__placeholder': !url
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-navigation-item__content', {
+    'premium-navigation-link__placeholder': !url
   });
   let missingText = '';
 
@@ -901,14 +901,14 @@ function NavigationLinkEdit(_ref2) {
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: classes
   }, !url ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-navigation-link__placeholder-text"
+    className: "premium-navigation-link__placeholder-text"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Tooltip, {
     position: "top center",
     text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('This item is missing a link')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, missingText))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.RichText, {
     ref: ref,
     identifier: "label",
-    className: "wp-block-navigation-item__label",
+    className: "premium-navigation-item__label",
     value: label,
     onChange: labelValue => setAttributes({
       label: labelValue
@@ -932,7 +932,7 @@ function NavigationLinkEdit(_ref2) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.__experimentalLinkControl, {
     hasTextControl: true,
     hasRichPreviews: true,
-    className: "wp-block-navigation-link__inline-link-input",
+    className: "premium-navigation-link__inline-link-input",
     value: link,
     showInitialSuggestions: true,
     withCreateSuggestion: userCanCreate,
@@ -1627,7 +1627,7 @@ module.exports = window["wp"]["url"];
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"kemet/navigation-link","title":"Custom Link","category":"design","parent":["kemet/mega-menu"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"}},"usesContext":["textColor","customTextColor","backgroundColor","customBackgroundColor","overlayTextColor","customOverlayTextColor","overlayBackgroundColor","customOverlayBackgroundColor","fontSize","customFontSize","showSubmenuIcon","style"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"kemet/navigation-link","title":"Custom Link","category":"design","parent":["kemet/mega-menu"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"}},"usesContext":["textColor","customTextColor","backgroundColor","customBackgroundColor","overlayTextColor","customOverlayTextColor","overlayBackgroundColor","customOverlayBackgroundColor","fontSize","customFontSize","showSubmenuIcon","style","megaMenu"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

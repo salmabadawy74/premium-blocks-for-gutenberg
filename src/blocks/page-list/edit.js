@@ -43,7 +43,7 @@ export default function PageListEdit({ context, clientId }) {
 	const closeModal = () => setOpen(false);
 
 	const blockProps = useBlockProps({
-		className: classnames('wp-block-page-list', {
+		className: classnames('premium-page-list', {
 			'has-text-color': !!context.textColor,
 			[getColorClassName(
 				'color',
@@ -169,9 +169,9 @@ const PageItems = memo(function PageItems({
 		return (
 			<li
 				key={page.id}
-				className={classnames('wp-block-pages-list__item', {
+				className={classnames('premium-pages-list__item', {
 					'has-child': hasChildren,
-					'wp-block-navigation-item': isNavigationChild,
+					'premium-navigation-item': isNavigationChild,
 					'open-on-click': context.openSubmenusOnClick,
 					'open-on-hover-click':
 						!context.openSubmenusOnClick &&
@@ -182,21 +182,21 @@ const PageItems = memo(function PageItems({
 				{hasChildren && context.openSubmenusOnClick ? (
 					<>
 						<button
-							className="wp-block-navigation-item__content wp-block-navigation-submenu__toggle"
+							className="premium-navigation-item__content premium-navigation-submenu__toggle"
 							aria-expanded="false"
 						>
 							{page.title?.rendered}
 						</button>
-						<span className="wp-block-page-list__submenu-icon wp-block-navigation__submenu-icon">
+						<span className="premium-page-list__submenu-icon premium-navigation__submenu-icon">
 							<ItemSubmenuIcon />
 						</span>
 					</>
 				) : (
 					<a
 						className={classnames(
-							'wp-block-pages-list__item__link',
+							'premium-pages-list__item__link',
 							{
-								'wp-block-navigation-item__content': isNavigationChild,
+								'premium-navigation-item__content': isNavigationChild,
 							}
 						)}
 						href={page.link}
@@ -209,7 +209,7 @@ const PageItems = memo(function PageItems({
 						{!context.openSubmenusOnClick &&
 							context.showSubmenuIcon && (
 								<button
-									className="wp-block-navigation-item__content wp-block-navigation-submenu__toggle wp-block-page-list__submenu-icon wp-block-navigation__submenu-icon"
+									className="premium-navigation-item__content premium-navigation-submenu__toggle premium-page-list__submenu-icon premium-navigation__submenu-icon"
 									aria-expanded="false"
 								>
 									<ItemSubmenuIcon />
@@ -217,7 +217,7 @@ const PageItems = memo(function PageItems({
 							)}
 						<ul
 							className={classnames('submenu-container', {
-								'wp-block-navigation__submenu-container': isNavigationChild,
+								'premium-navigation__submenu-container': isNavigationChild,
 							})}
 						>
 							<PageItems

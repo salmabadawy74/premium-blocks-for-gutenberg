@@ -1,0 +1,26 @@
+.wp-block-kemet-mega-menu {
+    .premiun-mega-menu {
+        .wp-block-navigation__submenu-container {
+            display: grid;
+            grid-template-columns: var(--gridTemplateColummns, 1fr);
+            &.col-1 {
+                --gridTemplateColummns: minmax(0, 1fr);
+            }
+            &.col-2 {
+                --gridTemplateColummns: repeat(2, minmax(0, 1fr));
+            }
+            &.col-3 {
+                --gridTemplateColummns: repeat(3, minmax(0, 1fr));
+            }
+            &.col-4 {
+                --gridTemplateColummns: repeat(4, minmax(0, 1fr));
+            }
+            &.col-5 {
+                --gridTemplateColummns: repeat(5, minmax(0, 1fr));
+            }
+            &.col-6 {
+                --gridTemplateColummns: repeat(6, minmax(0, 1fr));
+            }
+        }
+    }
+}

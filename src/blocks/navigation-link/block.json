@@ -52,7 +52,8 @@
         "fontSize",
         "customFontSize",
         "showSubmenuIcon",
-        "style"
+        "style",
+        "megaMenu"
     ],
     "supports": {
         "reusable": false,

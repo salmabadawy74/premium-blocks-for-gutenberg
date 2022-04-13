@@ -12,9 +12,12 @@
 function render_block_kemet_navigation_submenu( $attributes, $content, $block ) {
 
 	$mega_menu              = isset( $attributes['megaMenu'] ) ? $attributes['megaMenu'] : false;
+	$mega_menu_width        = isset( $attributes['megaMenuWidth'] ) ? $attributes['megaMenuWidth'] : 'content';
+	$mega_menu_columns      = isset( $attributes['megaMenuColumns'] ) ? $attributes['megaMenuColumns'] : '2';
 	$navigation_link_has_id = isset( $attributes['id'] ) && is_numeric( $attributes['id'] );
 	$is_post_type           = isset( $attributes['kind'] ) && 'post-type' === $attributes['kind'];
 	$is_post_type           = $is_post_type || isset( $attributes['type'] ) && ( 'post' === $attributes['type'] || 'page' === $attributes['type'] );
+	$layout                 = wp_get_global_settings( array( 'layout' ) );
 
 	if ( $mega_menu ) {
 		wp_enqueue_script(
@@ -23,6 +26,13 @@ function render_block_kemet_navigation_submenu( $attributes, $content, $block ) 
 			array(),
 			PREMIUM_BLOCKS_VERSION,
 			true
+		);
+		wp_localize_script(
+			'premium-navigation-submenu-view',
+			'PBGMegaMenu',
+			array(
+				'layout' => $layout,
+			)
 		);
 	}
 
@@ -52,15 +62,16 @@ function render_block_kemet_navigation_submenu( $attributes, $content, $block ) 
 	$open_on_click           = isset( $block->context['openSubmenusOnClick'] ) && $block->context['openSubmenusOnClick'];
 	$open_on_hover_and_click = isset( $block->context['openSubmenusOnClick'] ) && ! $block->context['openSubmenusOnClick'] &&
 		$show_submenu_indicators;
-
-	$wrapper_attributes = get_block_wrapper_attributes(
-		array(
-			'class' => $css_classes . ' wp-block-navigation-item' . ( $has_submenu ? ' has-child' : '' ) .
-			( $open_on_click ? ' open-on-click' : '' ) . ( $open_on_hover_and_click ? ' open-on-hover-click' : '' ) .
-			( $is_active ? ' current-menu-item' : '' ) . ( $mega_menu ? ' premiun-mega-menu' : '' ),
-			'style' => $style_attribute,
-		)
+	$wrapper_attrs           = array(
+		'class' => $css_classes . ' premium-navigation-item' . ( $has_submenu ? ' has-child' : '' ) .
+		( $open_on_click ? ' open-on-click' : '' ) . ( $open_on_hover_and_click ? ' open-on-hover-click' : '' ) .
+		( $is_active ? ' current-menu-item' : '' ) . ( $mega_menu ? ' premiun-mega-menu' : '' ),
+		'style' => $style_attribute,
 	);
+	if ( $mega_menu ) {
+		$wrapper_attrs['data-width'] = esc_attr( $mega_menu_width );
+	}
+	$wrapper_attributes = get_block_wrapper_attributes( $wrapper_attrs );
 
 	$label = '';
 
@@ -81,7 +92,7 @@ function render_block_kemet_navigation_submenu( $attributes, $content, $block ) 
 	if ( ! $open_on_click ) {
 		$item_url = isset( $attributes['url'] ) ? $attributes['url'] : '';
 		// Start appending HTML attributes to anchor tag.
-		$html .= '<a class="wp-block-navigation-item__content" href="' . esc_url( $item_url ) . '"';
+		$html .= '<a class="premium-navigation-item__content" href="' . esc_url( $item_url ) . '"';
 
 		if ( $is_active ) {
 			$html .= ' aria-current="page"';
@@ -112,14 +123,14 @@ function render_block_kemet_navigation_submenu( $attributes, $content, $block ) 
 		if ( $show_submenu_indicators ) {
 			// The submenu icon is rendered in a button here
 			// so that there's a clickable element to open the submenu.
-			$html .= '<button aria-label="' . esc_attr( $aria_label ) . '" class="wp-block-navigation__submenu-icon wp-block-navigation-submenu__toggle" aria-expanded="false">' . block_core_navigation_submenu_render_submenu_icon() . '</button>';
+			$html .= '<button aria-label="' . esc_attr( $aria_label ) . '" class="premium-navigation__submenu-icon premium-navigation-submenu__toggle" aria-expanded="false">' . block_core_navigation_submenu_render_submenu_icon() . '</button>';
 		}
 	} else {
 		// If menus open on click, we render the parent as a button.
-		$html .= '<button aria-label="' . esc_attr( $aria_label ) . '" class="wp-block-navigation-item__content wp-block-navigation-submenu__toggle" aria-expanded="false">';
+		$html .= '<button aria-label="' . esc_attr( $aria_label ) . '" class="premium-navigation-item__content premium-navigation-submenu__toggle" aria-expanded="false">';
 
 		// Wrap title with span to isolate it from submenu icon.
-		$html .= '<span class="wp-block-navigation-item__label">';
+		$html .= '<span class="premium-navigation-item__label">';
 
 		$html .= $label;
 
@@ -127,7 +138,7 @@ function render_block_kemet_navigation_submenu( $attributes, $content, $block ) 
 
 		$html .= '</button>';
 
-		$html .= '<span class="wp-block-navigation__submenu-icon">' . block_core_navigation_submenu_render_submenu_icon() . '</span>';
+		$html .= '<span class="premium-navigation__submenu-icon">' . block_core_navigation_submenu_render_submenu_icon() . '</span>';
 
 	}
 
@@ -138,7 +149,7 @@ function render_block_kemet_navigation_submenu( $attributes, $content, $block ) 
 		}
 
 		$html .= sprintf(
-			'<ul class="wp-block-navigation__submenu-container">%s</ul>',
+			'<ul class="premium-navigation__submenu-container' . ( $mega_menu ? ' col-' . esc_attr( $mega_menu_columns ) : '' ) . '">%s</ul>',
 			$inner_blocks_html
 		);
 	}

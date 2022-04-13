@@ -343,7 +343,6 @@
   position: relative;
   z-index: 1;
   float: left;
-  width: 100%;
 }
 .wp-block-kemet-mega-menu.is-selected .wp-block-navigation-placeholder__controls {
   display: flex;

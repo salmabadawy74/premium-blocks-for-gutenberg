@@ -59,25 +59,19 @@ export default function NavigationPlaceholder({
 						<div className="wp-block-navigation-placeholder__actions__indicator">
 							<Icon icon={navigation} /> {__('Navigation')}
 						</div>
-
-						<hr />
-
 						{isResolvingActions && <Spinner />}
 
 						{/* <NavigationMenuSelector
-							currentMenuId={ currentMenuId }
-							clientId={ clientId }
-							onSelect={ onFinish }
-							toggleProps={ {
+							currentMenuId={currentMenuId}
+							clientId={clientId}
+							onSelect={onFinish}
+							toggleProps={{
 								variant: 'tertiary',
 								iconPosition: 'right',
 								className:
 									'wp-block-navigation-placeholder__actions__dropdown',
-							} }
+							}}
 						/> */}
-
-						<hr />
-
 						{canUserCreateNavigationMenu && (
 							<Button
 								variant="tertiary"

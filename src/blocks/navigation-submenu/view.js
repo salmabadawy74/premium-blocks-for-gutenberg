@@ -1,15 +1,33 @@
-console.log('kk mega menu');
-const megaMenu = document.querySelectorAll('.premiun-mega-menu');
+const getOffSet = (el) => {
+	if (el instanceof HTMLElement) {
+		var rect = el.getBoundingClientRect();
 
-if (megaMenu.length) {
+		return {
+			top: rect.top + window.pageYOffset,
+			left: rect.left + window.pageXOffset,
+		};
+	}
+
+	return {
+		top: null,
+		left: null,
+	};
+};
+
+let megaMenus = document.querySelectorAll('.premiun-mega-menu');
+if (megaMenus.length) {
 	let container = document.body;
-	const submenu = megaMenu[0].querySelector('.wp-block-navigation__submenu-container');
-
-	submenu.addEventListener("mouseenter", function (event) {
-		// highlight the mouseenter target
-		console.log(container.clientWidth, 'hello');
-		submenu.style.width = `${container.clientWidth}px`;
-		submenu.style.left = '0';
-	}, false);
-
+	megaMenus = Array.from(megaMenus);
+	megaMenus.forEach(menu => {
+		const submenu = menu.querySelector('.premium-navigation__submenu-container');
+		const width = menu.dataset.width;
+		const { contentSize, wideSize } = PBGMegaMenu.layout;
+		menu.addEventListener("mouseover", function (event) {
+			// highlight the mouseover target
+			submenu.style.left = `0`;
+			submenu.style.width = width === 'content' ? contentSize : wideSize;
+			const left = (container.clientWidth - submenu.clientWidth) / 2 - getOffSet(submenu).left;
+			submenu.style.left = `${left}px`;
+		}, false);
+	});
 }
