@@ -4,6 +4,6 @@ const { Component } = wp.element;
 
 export default class DefaultImage extends Component {
     render() {
-        return <img src={placeHolder} />;
+        return <img src={placeHolder} className={this.props.className} />;
     }
 }
