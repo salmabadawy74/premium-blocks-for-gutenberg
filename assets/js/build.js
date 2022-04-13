@@ -590,6 +590,137 @@ exports.default = PbgIcon;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.default = PremiumShadow;
+
+var _singleRangeControl = __webpack_require__(2);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button,
+    ColorPicker = _wp$components.ColorPicker;
+var Fragment = wp.element.Fragment;
+function PremiumShadow(props) {
+    var label = props.label,
+        color = props.color,
+        blur = props.blur,
+        horizontal = props.horizontal,
+        vertical = props.vertical,
+        _props$position = props.position,
+        position = _props$position === undefined ? "outline" : _props$position,
+        _props$onChangeColor = props.onChangeColor,
+        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+        _props$onChangeBlur = props.onChangeBlur,
+        onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
+        _props$onChangehHoriz = props.onChangehHorizontal,
+        onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
+        _props$onChangeVertic = props.onChangeVertical,
+        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
+        _props$onChangePositi = props.onChangePosition,
+        onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi,
+        _props$boxShadow = props.boxShadow,
+        boxShadow = _props$boxShadow === undefined ? false : _props$boxShadow;
+
+
+    var POSITION = [{
+        value: "inset",
+        label: __("Inset", 'premium-blocks-for-gutenberg')
+    }, {
+        value: "",
+        label: __("Outline", 'premium-blocks-for-gutenberg')
+    }];
+
+    return React.createElement(
+        "div",
+        { className: "premium-control-toggle premium-shadow-control__container" },
+        React.createElement(
+            "strong",
+            null,
+            __(label || "Box Shadow")
+        ),
+        React.createElement(
+            "div",
+            { className: "premium-shadow-control__wrapper" },
+            React.createElement(_ColorComponent2.default, {
+                colorValue: color,
+                colorDefault: '',
+                onColorChange: onChangeColor,
+                disableReset: true
+            }),
+            React.createElement(Dropdown, {
+                className: "premium-control-toggle-btn",
+                contentClassName: "premium-control-toggle-content",
+                position: "bottom right",
+                renderToggle: function renderToggle(_ref) {
+                    var isOpen = _ref.isOpen,
+                        onToggle = _ref.onToggle;
+                    return React.createElement(
+                        Button,
+                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
+                        React.createElement("i", { className: "dashicons dashicons-edit" })
+                    );
+                },
+                renderContent: function renderContent() {
+                    return React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Horizontal"),
+                            value: horizontal,
+                            onChange: onChangehHorizontal,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
+                        }),
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Vertical"),
+                            value: vertical,
+                            onChange: onChangeVertical,
+                            showUnit: false,
+                            defaultValue: 0,
+                            min: -100,
+                            max: 100
+                        }),
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Blur"),
+                            value: blur,
+                            onChange: onChangeBlur,
+                            showUnit: false,
+                            defaultValue: 0
+                        }),
+                        boxShadow && React.createElement(SelectControl, {
+                            label: __("Position"),
+                            options: POSITION,
+                            value: position,
+                            onChange: onChangePosition
+                        })
+                    );
+                }
+            })
+        )
+    );
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -888,137 +1019,6 @@ var PremiumBorder = function (_Component) {
 }(_react.Component);
 
 exports.default = PremiumBorder;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumShadow;
-
-var _singleRangeControl = __webpack_require__(2);
-
-var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
-
-var _ColorComponent = __webpack_require__(3);
-
-var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    SelectControl = _wp$components.SelectControl,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button,
-    ColorPicker = _wp$components.ColorPicker;
-var Fragment = wp.element.Fragment;
-function PremiumShadow(props) {
-    var label = props.label,
-        color = props.color,
-        blur = props.blur,
-        horizontal = props.horizontal,
-        vertical = props.vertical,
-        _props$position = props.position,
-        position = _props$position === undefined ? "outline" : _props$position,
-        _props$onChangeColor = props.onChangeColor,
-        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-        _props$onChangeBlur = props.onChangeBlur,
-        onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-        _props$onChangehHoriz = props.onChangehHorizontal,
-        onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
-        _props$onChangeVertic = props.onChangeVertical,
-        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
-        _props$onChangePositi = props.onChangePosition,
-        onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi,
-        _props$boxShadow = props.boxShadow,
-        boxShadow = _props$boxShadow === undefined ? false : _props$boxShadow;
-
-
-    var POSITION = [{
-        value: "inset",
-        label: __("Inset", 'premium-blocks-for-gutenberg')
-    }, {
-        value: "",
-        label: __("Outline", 'premium-blocks-for-gutenberg')
-    }];
-
-    return React.createElement(
-        "div",
-        { className: "premium-control-toggle premium-shadow-control__container" },
-        React.createElement(
-            "strong",
-            null,
-            __(label || "Box Shadow")
-        ),
-        React.createElement(
-            "div",
-            { className: "premium-shadow-control__wrapper" },
-            React.createElement(_ColorComponent2.default, {
-                colorValue: color,
-                colorDefault: '',
-                onColorChange: onChangeColor,
-                disableReset: true
-            }),
-            React.createElement(Dropdown, {
-                className: "premium-control-toggle-btn",
-                contentClassName: "premium-control-toggle-content",
-                position: "bottom right",
-                renderToggle: function renderToggle(_ref) {
-                    var isOpen = _ref.isOpen,
-                        onToggle = _ref.onToggle;
-                    return React.createElement(
-                        Button,
-                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                        React.createElement("i", { className: "dashicons dashicons-edit" })
-                    );
-                },
-                renderContent: function renderContent() {
-                    return React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(_singleRangeControl2.default, {
-                            label: __("Horizontal"),
-                            value: horizontal,
-                            onChange: onChangehHorizontal,
-                            showUnit: false,
-                            defaultValue: 0,
-                            min: -100,
-                            max: 100
-                        }),
-                        React.createElement(_singleRangeControl2.default, {
-                            label: __("Vertical"),
-                            value: vertical,
-                            onChange: onChangeVertical,
-                            showUnit: false,
-                            defaultValue: 0,
-                            min: -100,
-                            max: 100
-                        }),
-                        React.createElement(_singleRangeControl2.default, {
-                            label: __("Blur"),
-                            value: blur,
-                            onChange: onChangeBlur,
-                            showUnit: false,
-                            defaultValue: 0
-                        }),
-                        boxShadow && React.createElement(SelectControl, {
-                            label: __("Position"),
-                            options: POSITION,
-                            value: position,
-                            onChange: onChangePosition
-                        })
-                    );
-                }
-            })
-        )
-    );
-}
 
 /***/ }),
 /* 7 */
@@ -2845,6 +2845,7 @@ function PremiumFilters(props) {
         onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
         _props$onChangeHue = props.onChangeHue,
         onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
+
 
     return React.createElement(
         "div",
@@ -10258,7 +10259,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -10270,7 +10271,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -16759,7 +16760,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -16795,7 +16796,7 @@ var _radioControl = __webpack_require__(9);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -19562,7 +19563,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -19582,7 +19583,7 @@ var _fontLoader = __webpack_require__(21);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -21550,11 +21551,11 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -24708,7 +24709,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -24736,7 +24737,7 @@ var _fontLoader = __webpack_require__(21);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -27619,7 +27620,7 @@ var _premiumIconsList = __webpack_require__(40);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -27651,7 +27652,7 @@ var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -32186,7 +32187,7 @@ var _premiumIconsList = __webpack_require__(40);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -32226,7 +32227,7 @@ var _fontLoader = __webpack_require__(21);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -38012,7 +38013,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -38020,7 +38021,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -42896,11 +42897,11 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -44602,7 +44603,7 @@ var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -47221,7 +47222,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -47253,7 +47254,7 @@ var _fontLoader = __webpack_require__(21);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -50092,7 +50093,7 @@ var _radioControl2 = _interopRequireDefault(_radioControl);
 
 var _reactSortableHoc = __webpack_require__(67);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -53265,7 +53266,7 @@ var _premiumFilters = __webpack_require__(28);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -53768,7 +53769,7 @@ var edit = function (_Component) {
                                         defaultValue: .1
                                     }),
                                     React.createElement(_premiumFilters2.default, {
-                                        blur: blur,
+                                        blur: lottieStyles[0].blur,
                                         bright: lottieStyles[0].bright,
                                         contrast: lottieStyles[0].contrast,
                                         saturation: lottieStyles[0].saturation,
@@ -57085,7 +57086,7 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -57113,7 +57114,7 @@ var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -60827,7 +60828,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
@@ -60857,7 +60858,7 @@ var _align = __webpack_require__(378);
 
 var _align2 = _interopRequireDefault(_align);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
@@ -63330,11 +63331,11 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumBorder = __webpack_require__(5);
+var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumShadow = __webpack_require__(6);
+var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
