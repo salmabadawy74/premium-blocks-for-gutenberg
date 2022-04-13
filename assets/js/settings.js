@@ -18,7 +18,8 @@ export const {
     fancyText,
     lottie,
     modal,
-    bulletList
+    bulletList,
+    title
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

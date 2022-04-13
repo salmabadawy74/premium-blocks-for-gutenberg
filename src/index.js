@@ -15,3 +15,4 @@ import "./blocks/lottie";
 import "./blocks/Modal";
 import "./blocks/image-separator";
 import "./blocks/bullet-list";
+import "./blocks/title";
