@@ -8,6 +8,10 @@ import PremiumResponsivePadding from '../../components/Premium-Responsive-Paddin
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import Shape from '../../components/premium-shape'
 import { videoBackground, gradientBackground } from '../../components/HelperFunction';
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
+import Tabs from '../../components/Tabs'
+import Tab from '../../components/Tab'
 
 const { __ } = wp.i18n;
 
@@ -175,287 +179,302 @@ const edit = props => {
         ),
         isSelected && (
             <InspectorControls key="inspector">
-                <PanelBody
-                    title={__("General Settings", 'premium-blocks-for-gutenberg')}
-                    className={`premium-panel-body premium-stretch-section`}
-                    initialOpen={true}
-                >
-                    <ToggleControl
-                        label={__("Stretch Section", 'premium-blocks-for-gutenberg')}
-                        checked={stretchSection}
-                        onChange={check => setAttributes({ stretchSection: check })}
-                        help={__("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')}
-                    />
-                    {stretchSection && (
-                        <SelectControl
-                            label={__("Content Width", 'premium-blocks-for-gutenberg')}
-                            options={WIDTH}
-                            value={innerWidthType}
-                            onChange={newValue => setAttributes({ innerWidthType: newValue })}
-                        />
-                    )}
-                    {"boxed" === innerWidthType && stretchSection && (
-                        <ResponsiveSingleRangeControl
-                            label={__("Max Width", 'premium-blocks-for-gutenberg')}
-                            value={innerWidth}
-                            min="1"
-                            max="1600"
-                            onChange={newValue => setAttributes({ innerWidth: newValue })}
-                            defaultValue={0}
-                            showUnit={false}
-                        />
-                    )}
-                    <SelectControl
-                        label={__("Height", 'premium-blocks-for-gutenberg')}
-                        options={HEIGHT}
-                        value={height}
-                        onChange={newValue => setAttributes({ height: newValue })}
-                    />
-                    {"min" === height && (
-                        <Fragment>
-                            <ResponsiveSingleRangeControl
-                                label={__("Min Height", 'premium-blocks-for-gutenberg')}
-                                value={minHeight}
-                                min="1"
-                                max="800"
-                                onChange={newValue => setAttributes({ minHeight: newValue })}
-                                units={["px", "vh", "vw"]}
-                                defaultValue={0}
-                                onChangeUnit={newValue => setAttributes({ minHeightUnit: newValue })}
-                                showUnit={true}
-                                unit={minHeightUnit}
+                <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                    <InspectorTab key={'layout'}>
+                        <PanelBody
+                            title={__("Border", 'premium-blocks-for-gutenberg')}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumBorder
+                                borderType={containerStyles[0].borderType}
+                                borderWidth={containerStyles[0].borderWidth}
+                                top={borderTop}
+                                right={borderRight}
+                                bottom={borderBottom}
+                                left={borderLeft}
+                                borderColor={containerStyles[0].borderColor}
+                                borderRadius={containerStyles[0].borderRadius}
+                                onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
+                                onChangeWidth={({ top, right, bottom, left }) =>
+                                    setAttributes({
+                                        borderTop: top,
+                                        borderRight: right,
+                                        borderBottom: bottom,
+                                        borderLeft: left,
+                                        isUpdated: true,
+                                    })
+                                }
+                                onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
+                                onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
                             />
-                        </Fragment>
-                    )}
-                    <SelectControl
-                        label={__("Content Position", 'premium-blocks-for-gutenberg')}
-                        help={__(
-                            "If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'
-                        )}
-                        options={VPOSITION}
-                        value={vPos}
-                        onChange={newValue => setAttributes({ vPos: newValue })}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Background", 'premium-blocks-for-gutenberg')}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <PremiumBackgroundControl
-                        setAttributes={setAttributes}
-                        saveContainerStyle={saveContainerStyle}
-                        backgroundType={backgroundType}
-                        backgroundColor={containerStyles[0].containerBack}
-                        backgroundImageID={containerStyles[0].backgroundImageID}
-                        backgroundImageURL={containerStyles[0].backgroundImageURL}
-                        backgroundPosition={containerStyles[0].backgroundPosition}
-                        backgroundRepeat={containerStyles[0].backgroundRepeat}
-                        backgroundSize={containerStyles[0].backgroundSize}
-                        fixed={containerStyles[0].fixed}
-                        gradientLocationOne={containerStyles[0].gradientLocationOne}
-                        gradientColorTwo={containerStyles[0].gradientColorTwo}
-                        gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                        gradientAngle={containerStyles[0].gradientAngle}
-                        gradientPosition={containerStyles[0].gradientPosition}
-                        gradientType={containerStyles[0].gradientType}
-                        videoSource={containerStyles[0].videoSource}
-                        bgExternalVideo={containerStyles[0].bgExternalVideo}
-                        videoURL={containerStyles[0].videoURL}
-                        videoID={containerStyles[0].videoID}
-                        bgVideoFallbackID={containerStyles[0].bgVideoFallbackID}
-                        bgVideoFallbackURL={containerStyles[0].bgVideoFallbackURL}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Border", 'premium-blocks-for-gutenberg')}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <PremiumBorder
-                        borderType={containerStyles[0].borderType}
-                        borderWidth={containerStyles[0].borderWidth}
-                        top={borderTop}
-                        right={borderRight}
-                        bottom={borderBottom}
-                        left={borderLeft}
-                        borderColor={containerStyles[0].borderColor}
-                        borderRadius={containerStyles[0].borderRadius}
-                        onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                borderTop: top,
-                                borderRight: right,
-                                borderBottom: bottom,
-                                borderLeft: left,
-                                isUpdated: true,
-                            })
-                        }
-                        onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
-                        onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
-                    />
-                    <PremiumShadow
-                        boxShadow={true}
-                        color={containerStyles[0].shadowColor}
-                        blur={containerStyles[0].shadowBlur}
-                        horizontal={containerStyles[0].shadowHorizontal}
-                        vertical={containerStyles[0].shadowVertical}
-                        position={containerStyles[0].shadowPosition}
-                        onChangeColor={newColor =>
-                            saveContainerStyle({
-                                shadowColor:
-                                    newColor === undefined
-                                        ? "transparent"
-                                        : newColor
-                            })
-                        }
-                        onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
-                        onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
-                        onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue })}
-                        onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue })}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Spacings", 'premium-blocks-for-gutenberg')}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <PremiumResponsiveMargin
-                        directions={["all"]}
-                        marginTop={marginTop}
-                        marginRight={marginRight}
-                        marginBottom={marginBottom}
-                        marginLeft={marginLeft}
-                        marginTopTablet={marginTTablet}
-                        marginRightTablet={marginRTablet}
-                        marginBottomTablet={marginBTablet}
-                        marginLeftTablet={marginLTablet}
-                        marginTopMobile={marginTMobile}
-                        marginRightMobile={marginRMobile}
-                        marginBottomMobile={marginBMobile}
-                        marginLeftMobile={marginLMobile}
-                        onChangeMarginTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginTop: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginTTablet: newValue })
-                                } else {
-                                    setAttributes({ marginTMobile: newValue })
+                            <PremiumShadow
+                                boxShadow={true}
+                                color={containerStyles[0].shadowColor}
+                                blur={containerStyles[0].shadowBlur}
+                                horizontal={containerStyles[0].shadowHorizontal}
+                                vertical={containerStyles[0].shadowVertical}
+                                position={containerStyles[0].shadowPosition}
+                                onChangeColor={newColor =>
+                                    saveContainerStyle({
+                                        shadowColor:
+                                            newColor === undefined
+                                                ? "transparent"
+                                                : newColor
+                                    })
                                 }
-                            }
-                        }
-                        onChangeMarginRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginRight: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginRTablet: newValue })
-                                } else {
-                                    setAttributes({ marginRMobile: newValue })
+                                onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
+                                onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
+                                onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue })}
+                                onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue })}
+                            />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Spacings", 'premium-blocks-for-gutenberg')}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumResponsiveMargin
+                                directions={["all"]}
+                                marginTop={marginTop}
+                                marginRight={marginRight}
+                                marginBottom={marginBottom}
+                                marginLeft={marginLeft}
+                                marginTopTablet={marginTTablet}
+                                marginRightTablet={marginRTablet}
+                                marginBottomTablet={marginBTablet}
+                                marginLeftTablet={marginLTablet}
+                                marginTopMobile={marginTMobile}
+                                marginRightMobile={marginRMobile}
+                                marginBottomMobile={marginBMobile}
+                                marginLeftMobile={marginLMobile}
+                                onChangeMarginTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ marginTop: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ marginTTablet: newValue })
+                                        } else {
+                                            setAttributes({ marginTMobile: newValue })
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        onChangeMarginBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginBottom: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginBTablet: newValue })
-                                } else {
-                                    setAttributes({ marginBMobile: newValue })
+                                onChangeMarginRight={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ marginRight: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ marginRTablet: newValue })
+                                        } else {
+                                            setAttributes({ marginRMobile: newValue })
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        onChangeMarginLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginLeft: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginLTablet: newValue })
-                                } else {
-                                    setAttributes({ marginLMobile: newValue })
+                                onChangeMarginBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ marginBottom: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ marginBTablet: newValue })
+                                        } else {
+                                            setAttributes({ marginBMobile: newValue })
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        showUnits={true}
-                        onChangeMarSizeUnit={newvalue => saveContainerStyle({ marginUnit: newvalue })}
-                        selectedUnit={containerStyles[0].marginUnit}
-                    />
-                    <PremiumResponsivePadding
-                        paddingTop={paddingTop}
-                        paddingRight={paddingRight}
-                        paddingBottom={paddingBottom}
-                        paddingLeft={paddingLeft}
-                        paddingTopTablet={paddingTTablet}
-                        paddingRightTablet={paddingRTablet}
-                        paddingBottomTablet={paddingBTablet}
-                        paddingLeftTablet={paddingLTablet}
-                        paddingTopMobile={paddingTMobile}
-                        paddingRightMobile={paddingRMobile}
-                        paddingBottomMobile={paddingBMobile}
-                        paddingLeftMobile={paddingLMobile}
-                        showUnits={true}
-                        selectedUnit={containerStyles[0].paddingUnit}
-                        onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingTop: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingTMobile: newValue })
+                                onChangeMarginLeft={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ marginLeft: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ marginLTablet: newValue })
+                                        } else {
+                                            setAttributes({ marginLMobile: newValue })
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingRight: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingRMobile: newValue })
+                                showUnits={true}
+                                onChangeMarSizeUnit={newvalue => saveContainerStyle({ marginUnit: newvalue })}
+                                selectedUnit={containerStyles[0].marginUnit}
+                            />
+                            <PremiumResponsivePadding
+                                paddingTop={paddingTop}
+                                paddingRight={paddingRight}
+                                paddingBottom={paddingBottom}
+                                paddingLeft={paddingLeft}
+                                paddingTopTablet={paddingTTablet}
+                                paddingRightTablet={paddingRTablet}
+                                paddingBottomTablet={paddingBTablet}
+                                paddingLeftTablet={paddingLTablet}
+                                paddingTopMobile={paddingTMobile}
+                                paddingRightMobile={paddingRMobile}
+                                paddingBottomMobile={paddingBMobile}
+                                paddingLeftMobile={paddingLMobile}
+                                showUnits={true}
+                                selectedUnit={containerStyles[0].paddingUnit}
+                                onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
+                                onChangePaddingTop={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ paddingTop: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ paddingTTablet: newValue })
+                                        } else {
+                                            setAttributes({ paddingTMobile: newValue })
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingBottom: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingBMobile: newValue })
+                                onChangePaddingRight={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ paddingRight: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ paddingRTablet: newValue })
+                                        } else {
+                                            setAttributes({ paddingRMobile: newValue })
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingLeft: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingLMobile: newValue })
+                                onChangePaddingBottom={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ paddingBottom: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ paddingBTablet: newValue })
+                                        } else {
+                                            setAttributes({ paddingBMobile: newValue })
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    />
-                </PanelBody>
+                                onChangePaddingLeft={
+                                    (device, newValue) => {
+                                        if (device === "desktop") {
+                                            setAttributes({ paddingLeft: newValue })
+                                        } else if (device === "tablet") {
+                                            setAttributes({ paddingLTablet: newValue })
+                                        } else {
+                                            setAttributes({ paddingLMobile: newValue })
+                                        }
+                                    }
+                                }
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'style'}>
+                        <PanelBody
+                            title={__("General Settings", 'premium-blocks-for-gutenberg')}
+                            className={`premium-panel-body premium-stretch-section`}
+                            initialOpen={true}
+                        >
+                            <ToggleControl
+                                label={__("Stretch Section", 'premium-blocks-for-gutenberg')}
+                                checked={stretchSection}
+                                onChange={check => setAttributes({ stretchSection: check })}
+                                help={__("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')}
+                            />
+                            {stretchSection && (
+                                <SelectControl
+                                    label={__("Content Width", 'premium-blocks-for-gutenberg')}
+                                    options={WIDTH}
+                                    value={innerWidthType}
+                                    onChange={newValue => setAttributes({ innerWidthType: newValue })}
+                                />
+                            )}
+                            {"boxed" === innerWidthType && stretchSection && (
+                                <ResponsiveSingleRangeControl
+                                    label={__("Max Width", 'premium-blocks-for-gutenberg')}
+                                    value={innerWidth}
+                                    min="1"
+                                    max="1600"
+                                    onChange={newValue => setAttributes({ innerWidth: newValue })}
+                                    defaultValue={0}
+                                    showUnit={false}
+                                />
+                            )}
+                            <SelectControl
+                                label={__("Height", 'premium-blocks-for-gutenberg')}
+                                options={HEIGHT}
+                                value={height}
+                                onChange={newValue => setAttributes({ height: newValue })}
+                            />
+                            {"min" === height && (
+                                <Fragment>
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Min Height", 'premium-blocks-for-gutenberg')}
+                                        value={minHeight}
+                                        min="1"
+                                        max="800"
+                                        onChange={newValue => setAttributes({ minHeight: newValue })}
+                                        units={["px", "vh", "vw"]}
+                                        defaultValue={0}
+                                        onChangeUnit={newValue => setAttributes({ minHeightUnit: newValue })}
+                                        showUnit={true}
+                                        unit={minHeightUnit}
+                                    />
+                                </Fragment>
+                            )}
+                            <SelectControl
+                                label={__("Content Position", 'premium-blocks-for-gutenberg')}
+                                help={__(
+                                    "If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'
+                                )}
+                                options={VPOSITION}
+                                value={vPos}
+                                onChange={newValue => setAttributes({ vPos: newValue })}
+                            />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Background", 'premium-blocks-for-gutenberg')}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumBackgroundControl
+                                setAttributes={setAttributes}
+                                saveContainerStyle={saveContainerStyle}
+                                backgroundType={backgroundType}
+                                backgroundColor={containerStyles[0].containerBack}
+                                backgroundImageID={containerStyles[0].backgroundImageID}
+                                backgroundImageURL={containerStyles[0].backgroundImageURL}
+                                backgroundPosition={containerStyles[0].backgroundPosition}
+                                backgroundRepeat={containerStyles[0].backgroundRepeat}
+                                backgroundSize={containerStyles[0].backgroundSize}
+                                fixed={containerStyles[0].fixed}
+                                gradientLocationOne={containerStyles[0].gradientLocationOne}
+                                gradientColorTwo={containerStyles[0].gradientColorTwo}
+                                gradientLocationTwo={containerStyles[0].gradientLocationTwo}
+                                gradientAngle={containerStyles[0].gradientAngle}
+                                gradientPosition={containerStyles[0].gradientPosition}
+                                gradientType={containerStyles[0].gradientType}
+                                videoSource={containerStyles[0].videoSource}
+                                bgExternalVideo={containerStyles[0].bgExternalVideo}
+                                videoURL={containerStyles[0].videoURL}
+                                videoID={containerStyles[0].videoID}
+                                bgVideoFallbackID={containerStyles[0].bgVideoFallbackID}
+                                bgVideoFallbackURL={containerStyles[0].bgVideoFallbackURL}
+                            />
+                        </PanelBody>
 
-                <PanelBody initialOpen={false} title={__('Shape Divider')}>
-                    <Shape shapeType="top" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
-                </PanelBody>
-                <PremiumResponsiveTabs
-                    Desktop={hideDesktop}
-                    Tablet={hideTablet}
-                    Mobile={hideMobile}
-                    onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                    onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                    onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
-                />
+                    </InspectorTab>
+                    <InspectorTab key={'advance'}>
+                        <PanelBody initialOpen={false} title={__('Shape Divider')}>
+                            <Tabs>
+                                <Tab tabTitle={__('Top Shape')}>
+                                    <Shape shapeType="top" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
+                                </Tab>
+                                <Tab tabTitle={__('Bottom Shape')}>
+                                    <Shape shapeType="bottom" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
+                                </Tab>
+                            </Tabs>
+                        </PanelBody>
+                        <PremiumResponsiveTabs
+                            Desktop={hideDesktop}
+                            Tablet={hideTablet}
+                            Mobile={hideMobile}
+                            onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                            onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                            onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                        />
+                    </InspectorTab>
+                </InspectorTabs>
             </InspectorControls>
         ),
         <div

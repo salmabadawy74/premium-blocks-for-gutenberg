@@ -41374,6 +41374,22 @@ var _premiumShape2 = _interopRequireDefault(_premiumShape);
 
 var _HelperFunction = __webpack_require__(274);
 
+var _inspectorTabs = __webpack_require__(377);
+
+var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
+
+var _inspectorTab = __webpack_require__(378);
+
+var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
+
+var _Tabs = __webpack_require__(379);
+
+var _Tabs2 = _interopRequireDefault(_Tabs);
+
+var _Tab = __webpack_require__(380);
+
+var _Tab2 = _interopRequireDefault(_Tab);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -41533,314 +41549,345 @@ var edit = function edit(props) {
         InspectorControls,
         { key: "inspector" },
         React.createElement(
-            PanelBody,
-            {
-                title: __("General Settings", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body premium-stretch-section",
-                initialOpen: true
-            },
-            React.createElement(ToggleControl, {
-                label: __("Stretch Section", 'premium-blocks-for-gutenberg'),
-                checked: stretchSection,
-                onChange: function onChange(check) {
-                    return setAttributes({ stretchSection: check });
-                },
-                help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')
-            }),
-            stretchSection && React.createElement(SelectControl, {
-                label: __("Content Width", 'premium-blocks-for-gutenberg'),
-                options: WIDTH,
-                value: innerWidthType,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ innerWidthType: newValue });
-                }
-            }),
-            "boxed" === innerWidthType && stretchSection && React.createElement(_singleRangeControl2.default, {
-                label: __("Max Width", 'premium-blocks-for-gutenberg'),
-                value: innerWidth,
-                min: "1",
-                max: "1600",
-                onChange: function onChange(newValue) {
-                    return setAttributes({ innerWidth: newValue });
-                },
-                defaultValue: 0,
-                showUnit: false
-            }),
-            React.createElement(SelectControl, {
-                label: __("Height", 'premium-blocks-for-gutenberg'),
-                options: HEIGHT,
-                value: height,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ height: newValue });
-                }
-            }),
-            "min" === height && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_singleRangeControl2.default, {
-                    label: __("Min Height", 'premium-blocks-for-gutenberg'),
-                    value: minHeight,
-                    min: "1",
-                    max: "800",
-                    onChange: function onChange(newValue) {
-                        return setAttributes({ minHeight: newValue });
+            _inspectorTabs2.default,
+            { tabs: ['layout', 'style', 'advance'] },
+            React.createElement(
+                _inspectorTab2.default,
+                { key: 'layout' },
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Border", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
                     },
-                    units: ["px", "vh", "vw"],
-                    defaultValue: 0,
-                    onChangeUnit: function onChangeUnit(newValue) {
-                        return setAttributes({ minHeightUnit: newValue });
+                    React.createElement(_premiumBorder2.default, {
+                        borderType: containerStyles[0].borderType,
+                        borderWidth: containerStyles[0].borderWidth,
+                        top: borderTop,
+                        right: borderRight,
+                        bottom: borderBottom,
+                        left: borderLeft,
+                        borderColor: containerStyles[0].borderColor,
+                        borderRadius: containerStyles[0].borderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return saveContainerStyle({ borderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref) {
+                            var top = _ref.top,
+                                right = _ref.right,
+                                bottom = _ref.bottom,
+                                left = _ref.left;
+                            return setAttributes({
+                                borderTop: top,
+                                borderRight: right,
+                                borderBottom: bottom,
+                                borderLeft: left,
+                                isUpdated: true
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return saveContainerStyle({ borderColor: colorValue });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return saveContainerStyle({ borderRadius: newrRadius });
+                        }
+                    }),
+                    React.createElement(_PremiumShadow2.default, {
+                        boxShadow: true,
+                        color: containerStyles[0].shadowColor,
+                        blur: containerStyles[0].shadowBlur,
+                        horizontal: containerStyles[0].shadowHorizontal,
+                        vertical: containerStyles[0].shadowVertical,
+                        position: containerStyles[0].shadowPosition,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveContainerStyle({
+                                shadowColor: newColor === undefined ? "transparent" : newColor
+                            });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue });
+                        },
+                        onChangePosition: function onChangePosition(newValue) {
+                            return saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Spacings", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
                     },
-                    showUnit: true,
-                    unit: minHeightUnit
-                })
+                    React.createElement(_PremiumResponsiveMargin2.default, {
+                        directions: ["all"],
+                        marginTop: marginTop,
+                        marginRight: marginRight,
+                        marginBottom: marginBottom,
+                        marginLeft: marginLeft,
+                        marginTopTablet: marginTTablet,
+                        marginRightTablet: marginRTablet,
+                        marginBottomTablet: marginBTablet,
+                        marginLeftTablet: marginLTablet,
+                        marginTopMobile: marginTMobile,
+                        marginRightMobile: marginRMobile,
+                        marginBottomMobile: marginBMobile,
+                        marginLeftMobile: marginLMobile,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginTop: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginTTablet: newValue });
+                            } else {
+                                setAttributes({ marginTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginRight: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginRTablet: newValue });
+                            } else {
+                                setAttributes({ marginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginBottom: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginBTablet: newValue });
+                            } else {
+                                setAttributes({ marginBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ marginLeft: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ marginLTablet: newValue });
+                            } else {
+                                setAttributes({ marginLMobile: newValue });
+                            }
+                        },
+                        showUnits: true,
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                            return saveContainerStyle({ marginUnit: newvalue });
+                        },
+                        selectedUnit: containerStyles[0].marginUnit
+                    }),
+                    React.createElement(_PremiumResponsivePadding2.default, {
+                        paddingTop: paddingTop,
+                        paddingRight: paddingRight,
+                        paddingBottom: paddingBottom,
+                        paddingLeft: paddingLeft,
+                        paddingTopTablet: paddingTTablet,
+                        paddingRightTablet: paddingRTablet,
+                        paddingBottomTablet: paddingBTablet,
+                        paddingLeftTablet: paddingLTablet,
+                        paddingTopMobile: paddingTMobile,
+                        paddingRightMobile: paddingRMobile,
+                        paddingBottomMobile: paddingBMobile,
+                        paddingLeftMobile: paddingLMobile,
+                        showUnits: true,
+                        selectedUnit: containerStyles[0].paddingUnit,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                            return saveContainerStyle({ paddingUnit: newvalue });
+                        },
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingTop: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingTTablet: newValue });
+                            } else {
+                                setAttributes({ paddingTMobile: newValue });
+                            }
+                        },
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingRight: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingRTablet: newValue });
+                            } else {
+                                setAttributes({ paddingRMobile: newValue });
+                            }
+                        },
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingBottom: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingBTablet: newValue });
+                            } else {
+                                setAttributes({ paddingBMobile: newValue });
+                            }
+                        },
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ paddingLeft: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ paddingLTablet: newValue });
+                            } else {
+                                setAttributes({ paddingLMobile: newValue });
+                            }
+                        }
+                    })
+                )
             ),
-            React.createElement(SelectControl, {
-                label: __("Content Position", 'premium-blocks-for-gutenberg'),
-                help: __("If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'),
-                options: VPOSITION,
-                value: vPos,
-                onChange: function onChange(newValue) {
-                    return setAttributes({ vPos: newValue });
-                }
-            })
-        ),
-        React.createElement(
-            PanelBody,
-            {
-                title: __("Background", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            React.createElement(_PremiumBackgroundControl2.default, {
-                setAttributes: setAttributes,
-                saveContainerStyle: saveContainerStyle,
-                backgroundType: backgroundType,
-                backgroundColor: containerStyles[0].containerBack,
-                backgroundImageID: containerStyles[0].backgroundImageID,
-                backgroundImageURL: containerStyles[0].backgroundImageURL,
-                backgroundPosition: containerStyles[0].backgroundPosition,
-                backgroundRepeat: containerStyles[0].backgroundRepeat,
-                backgroundSize: containerStyles[0].backgroundSize,
-                fixed: containerStyles[0].fixed,
-                gradientLocationOne: containerStyles[0].gradientLocationOne,
-                gradientColorTwo: containerStyles[0].gradientColorTwo,
-                gradientLocationTwo: containerStyles[0].gradientLocationTwo,
-                gradientAngle: containerStyles[0].gradientAngle,
-                gradientPosition: containerStyles[0].gradientPosition,
-                gradientType: containerStyles[0].gradientType,
-                videoSource: containerStyles[0].videoSource,
-                bgExternalVideo: containerStyles[0].bgExternalVideo,
-                videoURL: containerStyles[0].videoURL,
-                videoID: containerStyles[0].videoID,
-                bgVideoFallbackID: containerStyles[0].bgVideoFallbackID,
-                bgVideoFallbackURL: containerStyles[0].bgVideoFallbackURL
-            })
-        ),
-        React.createElement(
-            PanelBody,
-            {
-                title: __("Border", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            React.createElement(_premiumBorder2.default, {
-                borderType: containerStyles[0].borderType,
-                borderWidth: containerStyles[0].borderWidth,
-                top: borderTop,
-                right: borderRight,
-                bottom: borderBottom,
-                left: borderLeft,
-                borderColor: containerStyles[0].borderColor,
-                borderRadius: containerStyles[0].borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveContainerStyle({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref) {
-                    var top = _ref.top,
-                        right = _ref.right,
-                        bottom = _ref.bottom,
-                        left = _ref.left;
-                    return setAttributes({
-                        borderTop: top,
-                        borderRight: right,
-                        borderBottom: bottom,
-                        borderLeft: left,
-                        isUpdated: true
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveContainerStyle({ borderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newrRadius) {
-                    return saveContainerStyle({ borderRadius: newrRadius });
-                }
-            }),
-            React.createElement(_PremiumShadow2.default, {
-                boxShadow: true,
-                color: containerStyles[0].shadowColor,
-                blur: containerStyles[0].shadowBlur,
-                horizontal: containerStyles[0].shadowHorizontal,
-                vertical: containerStyles[0].shadowVertical,
-                position: containerStyles[0].shadowPosition,
-                onChangeColor: function onChangeColor(newColor) {
-                    return saveContainerStyle({
-                        shadowColor: newColor === undefined ? "transparent" : newColor
-                    });
-                },
-                onChangeBlur: function onChangeBlur(newBlur) {
-                    return saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur });
-                },
-                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue });
-                },
-                onChangeVertical: function onChangeVertical(newValue) {
-                    return saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue });
-                },
-                onChangePosition: function onChangePosition(newValue) {
-                    return saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue });
-                }
-            })
-        ),
-        React.createElement(
-            PanelBody,
-            {
-                title: __("Spacings", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            React.createElement(_PremiumResponsiveMargin2.default, {
-                directions: ["all"],
-                marginTop: marginTop,
-                marginRight: marginRight,
-                marginBottom: marginBottom,
-                marginLeft: marginLeft,
-                marginTopTablet: marginTTablet,
-                marginRightTablet: marginRTablet,
-                marginBottomTablet: marginBTablet,
-                marginLeftTablet: marginLTablet,
-                marginTopMobile: marginTMobile,
-                marginRightMobile: marginRMobile,
-                marginBottomMobile: marginBMobile,
-                marginLeftMobile: marginLMobile,
-                onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ marginTop: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ marginTTablet: newValue });
-                    } else {
-                        setAttributes({ marginTMobile: newValue });
+            React.createElement(
+                _inspectorTab2.default,
+                { key: 'style' },
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("General Settings", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body premium-stretch-section",
+                        initialOpen: true
+                    },
+                    React.createElement(ToggleControl, {
+                        label: __("Stretch Section", 'premium-blocks-for-gutenberg'),
+                        checked: stretchSection,
+                        onChange: function onChange(check) {
+                            return setAttributes({ stretchSection: check });
+                        },
+                        help: __("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')
+                    }),
+                    stretchSection && React.createElement(SelectControl, {
+                        label: __("Content Width", 'premium-blocks-for-gutenberg'),
+                        options: WIDTH,
+                        value: innerWidthType,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ innerWidthType: newValue });
+                        }
+                    }),
+                    "boxed" === innerWidthType && stretchSection && React.createElement(_singleRangeControl2.default, {
+                        label: __("Max Width", 'premium-blocks-for-gutenberg'),
+                        value: innerWidth,
+                        min: "1",
+                        max: "1600",
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ innerWidth: newValue });
+                        },
+                        defaultValue: 0,
+                        showUnit: false
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Height", 'premium-blocks-for-gutenberg'),
+                        options: HEIGHT,
+                        value: height,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ height: newValue });
+                        }
+                    }),
+                    "min" === height && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Min Height", 'premium-blocks-for-gutenberg'),
+                            value: minHeight,
+                            min: "1",
+                            max: "800",
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ minHeight: newValue });
+                            },
+                            units: ["px", "vh", "vw"],
+                            defaultValue: 0,
+                            onChangeUnit: function onChangeUnit(newValue) {
+                                return setAttributes({ minHeightUnit: newValue });
+                            },
+                            showUnit: true,
+                            unit: minHeightUnit
+                        })
+                    ),
+                    React.createElement(SelectControl, {
+                        label: __("Content Position", 'premium-blocks-for-gutenberg'),
+                        help: __("If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'),
+                        options: VPOSITION,
+                        value: vPos,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ vPos: newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Background", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_PremiumBackgroundControl2.default, {
+                        setAttributes: setAttributes,
+                        saveContainerStyle: saveContainerStyle,
+                        backgroundType: backgroundType,
+                        backgroundColor: containerStyles[0].containerBack,
+                        backgroundImageID: containerStyles[0].backgroundImageID,
+                        backgroundImageURL: containerStyles[0].backgroundImageURL,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        fixed: containerStyles[0].fixed,
+                        gradientLocationOne: containerStyles[0].gradientLocationOne,
+                        gradientColorTwo: containerStyles[0].gradientColorTwo,
+                        gradientLocationTwo: containerStyles[0].gradientLocationTwo,
+                        gradientAngle: containerStyles[0].gradientAngle,
+                        gradientPosition: containerStyles[0].gradientPosition,
+                        gradientType: containerStyles[0].gradientType,
+                        videoSource: containerStyles[0].videoSource,
+                        bgExternalVideo: containerStyles[0].bgExternalVideo,
+                        videoURL: containerStyles[0].videoURL,
+                        videoID: containerStyles[0].videoID,
+                        bgVideoFallbackID: containerStyles[0].bgVideoFallbackID,
+                        bgVideoFallbackURL: containerStyles[0].bgVideoFallbackURL
+                    })
+                )
+            ),
+            React.createElement(
+                _inspectorTab2.default,
+                { key: 'advance' },
+                React.createElement(
+                    PanelBody,
+                    { initialOpen: false, title: __('Shape Divider') },
+                    React.createElement(
+                        _Tabs2.default,
+                        null,
+                        React.createElement(
+                            _Tab2.default,
+                            { tabTitle: __('Top Shape') },
+                            React.createElement(_premiumShape2.default, { shapeType: "top", value: shapeTop, responsive: true, onChange: function onChange(val) {
+                                    return setAttributes({ shapeTop: val });
+                                } })
+                        ),
+                        React.createElement(
+                            _Tab2.default,
+                            { tabTitle: __('Bottom Shape') },
+                            React.createElement(_premiumShape2.default, { shapeType: "bottom", value: shapeTop, responsive: true, onChange: function onChange(val) {
+                                    return setAttributes({ shapeTop: val });
+                                } })
+                        )
+                    )
+                ),
+                React.createElement(_premiumResponsiveTabs2.default, {
+                    Desktop: hideDesktop,
+                    Tablet: hideTablet,
+                    Mobile: hideMobile,
+                    onChangeDesktop: function onChangeDesktop(value) {
+                        return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
+                    },
+                    onChangeTablet: function onChangeTablet(value) {
+                        return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
+                    },
+                    onChangeMobile: function onChangeMobile(value) {
+                        return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
                     }
-                },
-                onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ marginRight: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ marginRTablet: newValue });
-                    } else {
-                        setAttributes({ marginRMobile: newValue });
-                    }
-                },
-                onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ marginBottom: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ marginBTablet: newValue });
-                    } else {
-                        setAttributes({ marginBMobile: newValue });
-                    }
-                },
-                onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ marginLeft: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ marginLTablet: newValue });
-                    } else {
-                        setAttributes({ marginLMobile: newValue });
-                    }
-                },
-                showUnits: true,
-                onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                    return saveContainerStyle({ marginUnit: newvalue });
-                },
-                selectedUnit: containerStyles[0].marginUnit
-            }),
-            React.createElement(_PremiumResponsivePadding2.default, {
-                paddingTop: paddingTop,
-                paddingRight: paddingRight,
-                paddingBottom: paddingBottom,
-                paddingLeft: paddingLeft,
-                paddingTopTablet: paddingTTablet,
-                paddingRightTablet: paddingRTablet,
-                paddingBottomTablet: paddingBTablet,
-                paddingLeftTablet: paddingLTablet,
-                paddingTopMobile: paddingTMobile,
-                paddingRightMobile: paddingRMobile,
-                paddingBottomMobile: paddingBMobile,
-                paddingLeftMobile: paddingLMobile,
-                showUnits: true,
-                selectedUnit: containerStyles[0].paddingUnit,
-                onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                    return saveContainerStyle({ paddingUnit: newvalue });
-                },
-                onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ paddingTop: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ paddingTTablet: newValue });
-                    } else {
-                        setAttributes({ paddingTMobile: newValue });
-                    }
-                },
-                onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ paddingRight: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ paddingRTablet: newValue });
-                    } else {
-                        setAttributes({ paddingRMobile: newValue });
-                    }
-                },
-                onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ paddingBottom: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ paddingBTablet: newValue });
-                    } else {
-                        setAttributes({ paddingBMobile: newValue });
-                    }
-                },
-                onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                    if (device === "desktop") {
-                        setAttributes({ paddingLeft: newValue });
-                    } else if (device === "tablet") {
-                        setAttributes({ paddingLTablet: newValue });
-                    } else {
-                        setAttributes({ paddingLMobile: newValue });
-                    }
-                }
-            })
-        ),
-        React.createElement(
-            PanelBody,
-            { initialOpen: false, title: __('Shape Divider') },
-            React.createElement(_premiumShape2.default, { shapeType: "top", value: shapeTop, responsive: true, onChange: function onChange(val) {
-                    return setAttributes({ shapeTop: val });
-                } })
-        ),
-        React.createElement(_premiumResponsiveTabs2.default, {
-            Desktop: hideDesktop,
-            Tablet: hideTablet,
-            Mobile: hideMobile,
-            onChangeDesktop: function onChangeDesktop(value) {
-                return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
-            },
-            onChangeTablet: function onChangeTablet(value) {
-                return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
-            },
-            onChangeMobile: function onChangeMobile(value) {
-                return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
-            }
-        })
+                })
+            )
+        )
     ), React.createElement(
         "div",
         {
@@ -60915,6 +60962,403 @@ var imageSeparatorAttrs = {
     }
 };
 exports.default = imageSeparatorAttrs;
+
+/***/ }),
+/* 377 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    cloneElement = _wp$element.cloneElement,
+    Children = _wp$element.Children;
+var Tooltip = wp.components.Tooltip;
+var _wp$element2 = wp.element,
+    useState = _wp$element2.useState,
+    useRef = _wp$element2.useRef,
+    useEffect = _wp$element2.useEffect,
+    LAYOUT = 'layout',
+    STYLE = 'style',
+    ADVANCE = 'advance';
+
+
+var InspectorTabs = function InspectorTabs(props) {
+    var defaultTab = props.defaultTab,
+        children = props.children,
+        tabs = props.tabs,
+        _useState = useState(defaultTab ? defaultTab : tabs[0]),
+        _useState2 = _slicedToArray(_useState, 2),
+        currentTab = _useState2[0],
+        setCurrentTab = _useState2[1],
+        tabContainer = useRef(),
+        offset = useRef(undefined);
+
+    var sidebarPanel = void 0;
+
+    useEffect(function () {
+        sidebarPanel = tabContainer.current.closest('.components-panel');
+    });
+
+    var observer = new IntersectionObserver(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            e = _ref2[0];
+
+        return e.target.classList.toggle('qubely-is-sticky', e.intersectionRatio < 1);
+    }, { threshold: [1] });
+
+    // component did mount
+    useEffect(function () {
+        // sticky tabs menu
+        var container = document.querySelector('.qubely-inspector-tabs-container');
+        if (container) {
+            observer.observe(container);
+        }
+
+        // component will unmount
+        return function () {
+            sidebarPanel && sidebarPanel.removeAttribute('data-qubely-tab');
+        };
+    }, []);
+
+    useEffect(function () {
+
+        sidebarPanel && sidebarPanel.setAttribute('data-qubely-tab', defaultTab);
+    }, [defaultTab]);
+
+    var _onTabChange = function _onTabChange(tab) {
+        setCurrentTab(tab);
+        sidebarPanel && sidebarPanel.setAttribute('data-qubely-tab', tab);
+    };
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            'div',
+            { className: 'qubely-inspector-tabs-container' },
+            React.createElement(
+                'div',
+                { ref: tabContainer, className: (0, _classnames2.default)('qubely-inspector-tabs', 'qubely-inspector-tabs-count-' + tabs.length, currentTab) },
+                tabs.indexOf(LAYOUT) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Layout') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'qubely-active': currentTab === LAYOUT }), onClick: function onClick() {
+                                return _onTabChange(LAYOUT);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { xmlns: 'http://www.w3.org/2000/svg', width: '16', height: '15' },
+                            React.createElement('path', { fill: '#565D66', fillRule: 'nonzero', d: 'M14.346 0H1.654C1.017 0 .5.517.5 1.154v12.692C.5 14.483 1.017 15 1.654 15h12.692c.637 0 1.154-.517 1.154-1.154V1.154C15.5.517 14.983 0 14.346 0zm-5.77 13.846v-5.77h5.77v5.77h-5.77z' })
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Layout')
+                        )
+                    )
+                ),
+                tabs.indexOf(STYLE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Style') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'qubely-active': currentTab === STYLE }), onClick: function onClick() {
+                                return _onTabChange(STYLE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21' },
+                            React.createElement(
+                                'g',
+                                { fill: '#565D66', fillRule: 'nonzero' },
+                                React.createElement('path', { d: 'M15.12 12.091a.814.814 0 00-.68-.378.814.814 0 00-.68.378c-.531.863-2.252 3.807-2.252 5.09 0 1.598 1.317 2.901 2.932 2.901s2.933-1.303 2.933-2.902c0-1.303-1.722-4.226-2.253-5.089zm-1.041 3.828c-.043.063-.744 1.198-.213 1.976a.52.52 0 01.064.358.409.409 0 01-.191.294.608.608 0 01-.255.084.476.476 0 01-.383-.21c-.871-1.283.149-2.902.192-2.986a.517.517 0 01.297-.21.534.534 0 01.361.063c.192.126.255.42.128.63zM13.314 10.388l1.36-.147c.446-.042.807-.337.935-.736.127-.4.042-.862-.276-1.157L7.258.294c-.255-.252-.68-.252-.957 0a.68.68 0 000 .947l.34.336-5.1 5.047C.82 7.339.5 8.348.67 9.379c.128.652.489 1.24.956 1.703l3.082 3.05c.467.462 1.062.82 1.72.946a3.134 3.134 0 002.785-.863l3.612-3.575a.74.74 0 01.489-.252zM7.576 2.502l5.759 5.7H2.073c.085-.232.212-.463.403-.653l5.1-5.047z' })
+                            )
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Style')
+                        )
+                    )
+                ),
+                tabs.indexOf(ADVANCE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Advanced') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'qubely-active': currentTab === ADVANCE }), onClick: function onClick() {
+                                return _onTabChange(ADVANCE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { xmlns: 'http://www.w3.org/2000/svg', width: '17', height: '16' },
+                            React.createElement('path', { fill: '#565D66', fillRule: 'nonzero', d: 'M15.666 6.325c-.277-.05-.572-.082-.85-.115a6.385 6.385 0 00-.571-1.389c.18-.229.343-.457.523-.686a.994.994 0 00-.098-1.291l-.997-.997a.994.994 0 00-1.291-.098c-.23.163-.458.343-.687.523a6.954 6.954 0 00-1.39-.589c-.032-.277-.08-.572-.113-.85A.987.987 0 009.21 0H7.805a1 1 0 00-.98.834c-.05.277-.082.572-.115.85-.474.13-.947.326-1.389.571-.229-.18-.457-.343-.686-.523a.994.994 0 00-1.291.098l-.997.997a.994.994 0 00-.098 1.291c.163.23.343.458.523.687a6.954 6.954 0 00-.589 1.39c-.277.032-.572.08-.85.113A.987.987 0 00.5 7.29v1.406a1 1 0 00.834.98c.277.05.572.082.85.115.13.474.326.947.571 1.389-.18.229-.343.457-.523.686a.994.994 0 00.098 1.291l.997.997a.994.994 0 001.291.098c.23-.163.458-.343.687-.523.441.245.899.442 1.39.589.032.294.08.572.113.85.066.473.49.833.981.833h1.406a1 1 0 00.98-.834c.05-.277.082-.572.115-.85.474-.13.947-.326 1.389-.571.229.18.457.343.686.523a.994.994 0 001.291-.098l.997-.997a.994.994 0 00.098-1.291 19.095 19.095 0 00-.523-.687c.245-.441.442-.899.589-1.39.277-.032.572-.08.85-.113a.987.987 0 00.833-.981V7.305a1 1 0 00-.834-.98zM8.492 11.57a3.571 3.571 0 01-3.563-3.563 3.571 3.571 0 013.563-3.563 3.571 3.571 0 013.563 3.563 3.571 3.571 0 01-3.563 3.563z' })
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Advanced')
+                        )
+                    )
+                )
+            )
+        ),
+        Array.isArray(children) && Children.map(children, function (child, index) {
+            if (!child.key) {
+                throw new Error('props.key not found in <InspectorTab />, you must use `key` prop');
+                return;
+            }
+            return cloneElement(child, {
+                index: index,
+                isActive: child.key === currentTab
+            });
+        })
+    );
+};
+
+InspectorTabs.defaultProps = {
+    defaultTab: null,
+    tabs: ['layout', 'style', 'advance']
+};
+
+exports.default = InspectorTabs;
+
+/***/ }),
+/* 378 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var Fragment = wp.element.Fragment;
+
+
+var InspectorTab = function InspectorTab(props) {
+    var children = props.children,
+        isActive = props.isActive,
+        key = props.key;
+
+    return React.createElement(
+        'div',
+        {
+            style: {
+                display: isActive ? 'block' : 'none'
+            },
+            className: 'qubely-inspector-tab'
+        },
+        Array.isArray(children) ? children.map(function (item) {
+            return item;
+        }) : children
+    );
+};
+
+exports.default = InspectorTab;
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _propTypes = __webpack_require__(18);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var Tooltip = wp.components.Tooltip;
+
+var Tabs = function (_Component) {
+    _inherits(Tabs, _Component);
+
+    function Tabs(props) {
+        _classCallCheck(this, Tabs);
+
+        var _this = _possibleConstructorReturn(this, (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, props));
+
+        _this.state = {
+            activeTab: _this.props.children[0].props.tabTitle
+        };
+        return _this;
+    }
+
+    _createClass(Tabs, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var TEMPTAG = Fragment;
+            var tabs = this.props.children,
+                activeTab = this.state.activeTab,
+                _props = this.props,
+                label = _props.label,
+                panelGroup = _props.panelGroup;
+
+
+            var className = (0, _classnames2.default)('qubely-field', 'qubely-field-tabs', { 'panel-group': panelGroup }, { 'qubely-has-label': typeof label !== 'undefined' });
+
+            if (panelGroup) {
+                TEMPTAG = 'Div';
+            }
+            return React.createElement(
+                'div',
+                { className: className },
+                React.createElement(
+                    'div',
+                    { className: 'qubely-field-tab-header' },
+                    label && React.createElement(
+                        'label',
+                        null,
+                        label
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-field-tab-menus' },
+                        tabs.map(function (tab) {
+                            return React.createElement(
+                                Tooltip,
+                                { text: __(tab.props.tabTitle) },
+                                React.createElement(
+                                    TEMPTAG,
+                                    panelGroup && { className: 'tab-menu-wrapper' },
+                                    panelGroup && React.createElement(
+                                        'svg',
+                                        { width: '21', height: '18', viewBox: '0 0 21 18', xmlns: 'http://www.w3.org/2000/svg' },
+                                        React.createElement(
+                                            'g',
+                                            { transform: 'translate(-29 -4) translate(29 4)', fill: 'none' },
+                                            React.createElement('path', { d: 'M1 .708v15.851', className: 'qubely-svg-stroke', 'stroke-linecap': 'square' }),
+                                            React.createElement('rect', { className: 'qubely-svg-fill', x: '5', y: '5', width: '16', height: '7', rx: '1' })
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'button',
+                                        {
+                                            onClick: function onClick() {
+                                                return _this2.setState({ activeTab: tab.props.tabTitle });
+                                            },
+                                            className: 'qubely-tab-menu ' + (tab.props.tabTitle === activeTab ? 'active' : '')
+                                        },
+                                        tab.props.tabTitle
+                                    )
+                                )
+                            );
+                        })
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'qubely-field-tab-items' },
+                    tabs.map(function (tab) {
+                        return tab.props.tabTitle === activeTab ? tab : '';
+                    })
+                )
+            );
+        }
+    }]);
+
+    return Tabs;
+}(Component);
+
+exports.default = Tabs;
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+
+var Tab = function (_Component) {
+    _inherits(Tab, _Component);
+
+    function Tab() {
+        _classCallCheck(this, Tab);
+
+        return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).apply(this, arguments));
+    }
+
+    _createClass(Tab, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                children = _props.children,
+                onTabChange = _props.onTabChange;
+
+            onTabChange && onTabChange();
+            return React.createElement(
+                Fragment,
+                null,
+                " ",
+                Array.isArray(children) ? children.map(function (item) {
+                    return item;
+                }) : children,
+                " "
+            );
+        }
+    }]);
+
+    return Tab;
+}(Component);
+
+exports.default = Tab;
 
 /***/ })
 /******/ ]);
