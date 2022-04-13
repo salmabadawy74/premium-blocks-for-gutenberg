@@ -2211,11 +2211,13 @@ a.premium-dheading-block__link:hover {
   line-height: 2.5em;
   flex: 2 1 0%;
   text-align: center;
+  border: none;
+  background-color: white;
 }
 .premium-person__socialIcon__trashicon:hover{
-  background: #f44336;
-  color: #ffffff;
-  cursor: pointer;
+    background:#dcdcde;
+    /* color: #ffffff; */
+    cursor: pointer;
 }
 .premium-person__socialIcon__link{
   margin-top: 10px;
