@@ -63194,40 +63194,85 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: 0
     },
-    titleColor: {
-        type: "string",
-        default: "#6ec1e4"
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "#6ec1e4",
+            shinyColor: '#fff',
+            blurColor: "#000",
+            titleLetter: 0,
+            titleLine: 0,
+            titleStyle: 'normal',
+            titleUpper: false,
+            titleWeight: 600,
+            titlefontSize: '',
+            titlefontSizeType: "px",
+            titlefontSizeMobile: '',
+            titlefontSizeTablet: '',
+            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleborderType: "none",
+            titleborderRadius: 0,
+            titleborderColor: '#6ec1e4'
+        }]
     },
-    titleLetter: {
+    titleBorderTop: {
         type: "number",
-        default: 0
+        default: "0"
     },
-    titleStyle: {
-        type: "string",
-        default: "normal"
+    titleBorderRight: {
+        type: "number",
+        default: "0"
     },
-    titleUpper: {
+    titleBorderBottom: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderLeft: {
+        type: "number",
+        default: 3
+    },
+    titleBorderUpdated: {
         type: "boolean",
         default: false
     },
-    titleWeight: {
+    titleBorderWidth: {
         type: "number",
-        default: 600
+        default: "1"
     },
-    titlefontSize: {
-        type: "number"
+    // titleColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
+    // titleLetter: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // titleStyle: {
+    //     type: "string",
+    //     default: "normal"
+    // },
+    // titleUpper: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // titleWeight: {
+    //     type: "number",
+    //     default: 600
+    // },
+    // titlefontSize: {
+    //     type: "number",
 
-    },
-    titlefontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    titlefontSizeMobile: {
-        type: "number"
-    },
-    titlefontSizeTablet: {
-        type: "number"
-    },
+    // },
+    // titlefontSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // titlefontSizeMobile: {
+    //     type: "number"
+    // },
+    // titlefontSizeTablet: {
+    //     type: "number"
+    // },
     titleshadowColor: {
         type: "string"
     },
@@ -63247,33 +63292,33 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "#6ec1e4"
     },
-    titleborderType: {
-        type: "string",
-        default: "none"
-    },
-    titleBorderTop: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderRight: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderBottom: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderLeft: {
-        type: "number",
-        default: "0"
-    },
-    titleborderRadius: {
-        type: "number",
-        default: 1
-    },
-    titleborderColor: {
-        type: "string"
-    },
+    // titleborderType: {
+    //     type: "string",
+    //     default: "none"
+    // },
+    // titleBorderTop: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleBorderRight: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleBorderBottom: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleBorderLeft: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleborderRadius: {
+    //     type: "number",
+    //     default: 1
+    // },
+    // titleborderColor: {
+    //     type: "string"
+    // },
     BGColor: {
         type: "string",
         default: "#54595f"
@@ -63649,12 +63694,6 @@ var titleAttrs = (_titleAttrs = {
 }), _defineProperty(_titleAttrs, "titleTag", {
     type: "string",
     default: "h2"
-}), _defineProperty(_titleAttrs, "shinyColor", {
-    type: "string",
-    default: '#fff'
-}), _defineProperty(_titleAttrs, "blurColor", {
-    type: "string",
-    default: "#000"
 }), _defineProperty(_titleAttrs, "blurShadow", {
     type: "number",
     default: "120"
@@ -63821,6 +63860,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _premiumTypo = __webpack_require__(9);
@@ -63838,6 +63879,10 @@ var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 var _reactFonticonpicker = __webpack_require__(63);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
+
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
 var _premiumResponsiveTabs = __webpack_require__(6);
 
@@ -63917,6 +63962,7 @@ var edit = function (_Component) {
             $style.setAttribute("id", "premium-style-title-" + this.props.clientId);
             document.head.appendChild($style);
             this.handleStyle = this.handleStyle.bind(this);
+            this.getPreviewSize = this.getPreviewSize.bind(this);
         }
     }, {
         key: "componentDidUpdate",
@@ -63927,6 +63973,22 @@ var edit = function (_Component) {
             }
             clearTimeout(istitleUpdated);
             istitleUpdated = setTimeout(this.handleStyle, 400);
+        }
+    }, {
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
         }
     }, {
         key: "handleStyle",
@@ -64010,6 +64072,13 @@ var edit = function (_Component) {
                 stripeHeight = attributes.stripeHeight,
                 stripeTopSpacing = attributes.stripeTopSpacing,
                 stripeBottomSpacing = attributes.stripeBottomSpacing,
+                titleStyles = attributes.titleStyles,
+                titleBorderTop = attributes.titleBorderTop,
+                titleBorderRight = attributes.titleBorderRight,
+                titleBorderBottom = attributes.titleBorderBottom,
+                titleBorderLeft = attributes.titleBorderLeft,
+                titleBorderUpdated = attributes.titleBorderUpdated,
+                titleBorderWidth = attributes.titleBorderWidth,
                 titleColor = attributes.titleColor,
                 titleWeight = attributes.titleWeight,
                 titleLetter = attributes.titleLetter,
@@ -64026,10 +64095,6 @@ var edit = function (_Component) {
                 stripeColor = attributes.stripeColor,
                 titleborderType = attributes.titleborderType,
                 titleborderRadius = attributes.titleborderRadius,
-                titleBorderLeft = attributes.titleBorderLeft,
-                titleBorderTop = attributes.titleBorderTop,
-                titleBorderRight = attributes.titleBorderRight,
-                titleBorderBottom = attributes.titleBorderBottom,
                 titleborderColor = attributes.titleborderColor,
                 BGColor = attributes.BGColor,
                 lineColor = attributes.lineColor,
@@ -64249,6 +64314,20 @@ var edit = function (_Component) {
                 label: 'Luminosity', value: 'luminosity'
             }];
 
+            var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titlefontSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
+
+            var saveTitleStyles = function saveTitleStyles(value) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
+
             var onResetClickTitle = function onResetClickTitle() {
                 setAttributes({
                     titleWeight: 600,
@@ -64284,9 +64363,10 @@ var edit = function (_Component) {
                 return React.createElement(RichText, {
                     tagName: titleTag.toLowerCase(),
                     className: "premium-title-style9-letter",
-
-                    value: letter
-
+                    value: letter,
+                    style: {
+                        color: titleStyles[0].titleColor
+                    }
                 });
             });
 
@@ -64630,190 +64710,88 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: titleColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", 'premium-block-for-gutenberg'),
+                        colorValue: titleStyles[0].titleColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveTitleStyles({
                                 titleColor: newValue
                             });
-                        },
-                        allowReset: true
-                    }),
-                    style === "style8" && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Shiny Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: shinyColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ shinyColor: newValue });
-                            }
-                        })
-                    ),
-                    style === "style9" && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Blur Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: blurColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ blurColor: newValue });
-                            }
-                        })
-                    ),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
-                        fontSizeType: { value: titlefontSizeType, label: __("titlefontSizeType") },
-                        fontSize: { value: titlefontSize, label: __("titlefontSize") },
-                        fontSizeMobile: { value: titlefontSizeMobile, label: __("titlefontSizeMobile") },
-                        fontSizeTablet: { value: titlefontSizeTablet, label: __("titlefontSizeTablet") },
-                        weight: titleWeight,
-                        style: titleStyle,
-                        spacing: titleLetter,
-                        upper: titleUpper,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ titleWeight: newWeight || 600 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ titleStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ titleLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ titleUpper: check });
-                        },
-                        onResetClick: function onResetClick() {
-                            return onResetClickTitle([titleWeight, titlefontSizeType, titlefontSize, titlefontSizeMobile, titlefontSizeTablet, titleStyle, titleLetter, titleUpper], [600, "px", "30", "30", "30", "normal", "0", false]);
                         }
                     }),
-                    style === 'style2' && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: BGColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    BGColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style3' && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Background Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: BGColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    BGColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style5' && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Line Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: lineColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    lineColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style6' && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Line Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: lineColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    lineColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        }),
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Triangle Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: triangleColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    triangleColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    style === 'style7' ? React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Stripe Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: stripeColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    stripeColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ) : style != 'style3' && style !== "style8" && style !== "style9" && React.createElement(_premiumBorder2.default, {
-                        borderType: titleborderType,
+                    style === "style8" && React.createElement(_ColorComponent2.default, {
+                        label: __("Shiny Color", 'premium-block-for-gutenberg'),
+                        colorValue: titleStyles[0].shinyColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveTitleStyles({
+                                shinyColor: newValue
+                            });
+                        }
+                    }),
+                    style === "style9" && React.createElement(_ColorComponent2.default, {
+                        label: __("Blur Color", 'premium-block-for-gutenberg'),
+                        colorValue: titleStyles[0].blurColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveTitleStyles({
+                                blurColor: newValue
+                            });
+                        }
+                    }),
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+                        setAttributes: saveTitleStyles,
+                        fontSizeType: { value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") },
+                        fontSize: titleStyles[0].titlefontSize,
+                        fontSizeMobile: titleStyles[0].titlefontSizeMobile,
+                        fontSizeTablet: titleStyles[0].titlefontSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveTitleStyles({ titlefontSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveTitleStyles({ titlefontSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveTitleStyles({ titlefontSizeMobile: newSize });
+                        },
+                        weight: titleStyles[0].titleWeight,
+                        style: titleStyles[0].titleStyle,
+                        spacing: titleStyles[0].titleLetter,
+                        upper: titleStyles[0].titleUpper,
+                        line: titleStyles[0].titleLine,
+                        fontFamily: titleStyles[0].titleFontFamily,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveTitleStyles({ titleWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return saveTitleStyles({ titleStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return saveTitleStyles({ titleLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return saveTitleStyles({ titleUpper: check });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveTitleStyles({ titleLine: newValue });
+                        },
+                        onChangeFamily: function onChangeFamily(fontFamily) {
+                            return saveTitleStyles({ titleFontFamily: fontFamily });
+                        }
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        borderType: titleStyles[0].titleborderType,
+                        borderWidth: titleBorderWidth,
                         top: titleBorderTop,
                         right: titleBorderRight,
                         bottom: titleBorderBottom,
                         left: titleBorderLeft,
-                        borderColor: titleborderColor,
-                        borderRadius: titleborderRadius,
+                        borderColor: titleStyles[0].titleborderColor,
+                        borderRadius: titleStyles[0].titleborderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ titleborderType: newType });
+                            return saveTitleStyles({ titleborderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref) {
                             var top = _ref.top,
@@ -64821,6 +64799,7 @@ var edit = function (_Component) {
                                 bottom = _ref.bottom,
                                 left = _ref.left;
                             return setAttributes({
+                                titleBorderUpdated: true,
                                 titleBorderTop: top,
                                 titleBorderRight: right,
                                 titleBorderBottom: bottom,
@@ -64828,193 +64807,12 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ titleborderColor: colorValue.hex });
+                            return saveTitleStyles({ titleborderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ titleborderRadius: newrRadius });
+                            return saveTitleStyles({ titleborderRadius: newrRadius });
                         }
-                    }),
-                    style === "style9" && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(RangeControl, {
-                            label: __("Blur Shadow Value (px)"),
-                            min: 10,
-                            max: 500,
-                            step: 10,
-                            value: blurShadow,
-                            initialPosition: 120,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ blurShadow: newValue });
-                            }
-                        })
-                    ),
-                    (style === "style8" || style === "style9") && React.createElement(RangeControl, {
-                        label: __("Animation Delay"),
-                        value: animateDelay,
-                        min: 1,
-                        max: 30,
-                        step: 0.5,
-                        initialPosition: 2,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ animateDelay: newValue });
-                        }
-                    }),
-                    style === "style8" && React.createElement(RangeControl, {
-                        label: __("Animation Duration"),
-                        value: animateduration,
-                        step: 0.5,
-                        initialPosition: 1,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ animateduration: newValue });
-                        }
-                    }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        showUnits: true,
-                        selectedUnit: titleMarginType,
-                        marginTop: titleMarginT,
-                        marginRight: titleMarginR,
-                        marginBottom: titleMarginB,
-                        marginLeft: titleMarginL,
-                        marginTopTablet: titleMarginTTablet,
-                        marginRightTablet: titleMarginRTablet,
-                        marginBottomTablet: titleMarginBTablet,
-                        marginLeftTablet: titleMarginLTablet,
-                        marginTopMobile: titleMarginTMobile,
-                        marginRightMobile: titleMarginRMobile,
-                        marginBottomMobile: titleMarginBMobile,
-                        marginLeftMobile: titleMarginLMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginRTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginLTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginLMobile: newValue });
-                            }
-                        },
-
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return setAttributes({ titleMarginType: newvalue });
-                        }
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL,
-                        paddingTopTablet: titlePaddingTTablet,
-                        paddingRightTablet: titlePaddingRTablet,
-                        paddingBottomTablet: titlePaddingBTablet,
-                        paddingLeftTablet: titlePaddingLTablet,
-                        paddingTopMobile: titlePaddingTMobile,
-                        paddingRightMobile: titlePaddingRMobile,
-                        paddingBottomMobile: titlePaddingBMobile,
-                        paddingLeftMobile: titlePaddingLMobile,
-
-                        showUnits: true,
-                        selectedUnit: titlePaddingType,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ titlePaddingType: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingLMobile: newValue });
-                            }
-                        }
-                    }),
-                    style !== "style9" && React.createElement(ToggleControl, {
-                        label: __('Stroke'),
-                        checked: stroke,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ stroke: newValue });
-                        }
-                    }),
-                    stroke && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __('Stroke Color')
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: strokeColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ strokeColor: newValue });
-                            },
-                            allowReset: true
-                        }),
-                        React.createElement(RangeControl, {
-                            label: __('Stroke Full Width'),
-                            value: strokeFull,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ strokeFull: newValue });
-                            },
-                            min: 0,
-                            max: 100,
-                            step: 1
-                        })
-                    )
+                    })
                 ),
                 iconValue && React.createElement(
                     PanelBody,
@@ -65288,6 +65086,13 @@ var edit = function (_Component) {
                     className: "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile, style: {
                         textAlign: align
                     } },
+                React.createElement("style", {
+                    dangerouslySetInnerHTML: {
+                        __html: ["#premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {", "--base-color: " + titleStyles[0].titleColor + ";", "--shiny-color: " + titleStyles[0].shinyColor + ";", "}", "#premium-title-" + block_id + " .premium-title-header {", "--shadow-color: " + titleStyles[0].blurColor + ";", "color: " + titleStyles[0].titleColor + ";", "}", "#premium-title-" + block_id + " .premium-title .style1 .premium-title-header{", "border-style: " + titleStyles[0].titleborderType + " !important;", "border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + ";", "border-radius: " + (titleStyles[0].titleborderRadius || 0 + "px") + ";", "border-color: " + titleStyles[0].titleborderColor + ";",
+                        // `border-left: ${titleBorderLeft >= "1" ? `${titleBorderLeft}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor}` : ""};`,
+                        "}", "#premium-title-" + block_id + " .premium-title .style2{", "border-style: " + titleStyles[0].titleborderType + " !important;", "border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + ";", "border-radius: " + (titleStyles[0].titleborderRadius || 0 + "px") + ";", "border-color: " + titleStyles[0].titleborderColor + ";", "border-bottom: " + (titleBorderBottom >= "1" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";", "}", "#premium-title-" + block_id + " .premium-title .style4{", "border-style: " + titleStyles[0].titleborderType + " !important;", "border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + ";", "border-radius: " + (titleStyles[0].titleborderRadius || 0 + "px") + ";", "border-color: " + titleStyles[0].titleborderColor + ";", "border-bottom: " + (titleBorderBottom >= "1" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";", "}", "#premium-title-" + block_id + " .premium-title .style5{", "border-style: " + titleStyles[0].titleborderType + " !important;", "border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + ";", "border-radius: " + (titleStyles[0].titleborderRadius || 0 + "px") + ";", "border-color: " + titleStyles[0].titleborderColor + ";", "border-bottom: " + (titleBorderBottom >= "1" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";", "}", "#premium-title-" + block_id + " .premium-title .style6{", "border-style: " + titleStyles[0].titleborderType + " !important;", "border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + ";", "border-radius: " + (titleStyles[0].titleborderRadius || 0 + "px") + ";", "border-color: " + titleStyles[0].titleborderColor + ";", "border-bottom: " + (titleBorderBottom >= "1" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";", "}"].join("\n")
+                    }
+                }),
                 React.createElement(
                     "div",
                     { className: "premium-title  " + (backgroundText ? 'premium-title-bg-text' : ""), style: {
@@ -65340,8 +65145,17 @@ var edit = function (_Component) {
                                     React.createElement(RichText, {
                                         tagName: titleTag.toLowerCase(),
                                         className: "premium-title-text-title",
-                                        value: title
-
+                                        value: title,
+                                        style: {
+                                            color: titleStyles[0].titleColor,
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                            fontFamily: titleStyles[0].titleFontFamily
+                                        }
                                     })
                                 )
                             ) : style === "style9" ? React.createElement(
@@ -65395,8 +65209,17 @@ var edit = function (_Component) {
                                     onChange: function onChange(newValue) {
                                         return setAttributes({ title: newValue });
                                     },
-                                    value: title
-
+                                    value: title,
+                                    style: {
+                                        color: titleStyles[0].titleColor,
+                                        fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                        lineHeight: titleStyles[0].titleLine + "px",
+                                        fontStyle: titleStyles[0].titleStyle,
+                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                        fontFamily: titleStyles[0].titleFontFamily
+                                    }
                                 })
                             ),
                             link && url !== ' ' && React.createElement("a", { rel: "noopener noreferrer", target: "_self", href: "javascript:void(0)" })

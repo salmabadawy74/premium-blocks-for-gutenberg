@@ -125,40 +125,85 @@ const titleAttrs = {
         type: "number",
         default: 0
     },
-    titleColor: {
-        type: "string",
-        default: "#6ec1e4"
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "#6ec1e4",
+            shinyColor: '#fff',
+            blurColor: "#000",
+            titleLetter: 0,
+            titleLine: 0,
+            titleStyle: 'normal',
+            titleUpper: false,
+            titleWeight: 600,
+            titlefontSize: '',
+            titlefontSizeType: "px",
+            titlefontSizeMobile: '',
+            titlefontSizeTablet: '',
+            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleborderType: "none",
+            titleborderRadius: 0,
+            titleborderColor: '#6ec1e4',
+        }]
     },
-    titleLetter: {
+    titleBorderTop: {
         type: "number",
-        default: 0
+        default: "0"
     },
-    titleStyle: {
-        type: "string",
-        default: "normal"
+    titleBorderRight: {
+        type: "number",
+        default: "0"
     },
-    titleUpper: {
+    titleBorderBottom: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderLeft: {
+        type: "number",
+        default: 3
+    },
+    titleBorderUpdated: {
         type: "boolean",
         default: false
     },
-    titleWeight: {
+    titleBorderWidth: {
         type: "number",
-        default: 600
+        default: "1"
     },
-    titlefontSize: {
-        type: "number",
+    // titleColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
+    // titleLetter: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // titleStyle: {
+    //     type: "string",
+    //     default: "normal"
+    // },
+    // titleUpper: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // titleWeight: {
+    //     type: "number",
+    //     default: 600
+    // },
+    // titlefontSize: {
+    //     type: "number",
 
-    },
-    titlefontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    titlefontSizeMobile: {
-        type: "number"
-    },
-    titlefontSizeTablet: {
-        type: "number"
-    },
+    // },
+    // titlefontSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // titlefontSizeMobile: {
+    //     type: "number"
+    // },
+    // titlefontSizeTablet: {
+    //     type: "number"
+    // },
     titleshadowColor: {
         type: "string"
     },
@@ -178,33 +223,33 @@ const titleAttrs = {
         type: "string",
         default: "#6ec1e4"
     },
-    titleborderType: {
-        type: "string",
-        default: "none"
-    },
-    titleBorderTop: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderRight: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderBottom: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderLeft: {
-        type: "number",
-        default: "0"
-    },
-    titleborderRadius: {
-        type: "number",
-        default: 1
-    },
-    titleborderColor: {
-        type: "string"
-    },
+    // titleborderType: {
+    //     type: "string",
+    //     default: "none"
+    // },
+    // titleBorderTop: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleBorderRight: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleBorderBottom: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleBorderLeft: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleborderRadius: {
+    //     type: "number",
+    //     default: 1
+    // },
+    // titleborderColor: {
+    //     type: "string"
+    // },
     BGColor: {
         type: "string",
         default: "#54595f"
@@ -585,14 +630,14 @@ const titleAttrs = {
         type: "string",
         default: "h2"
     },
-    shinyColor: {
-        type: "string",
-        default: '#fff'
-    },
-    blurColor: {
-        type: "string",
-        default: "#000"
-    },
+    // shinyColor: {
+    //     type: "string",
+    //     default: '#fff'
+    // },
+    // blurColor: {
+    //     type: "string",
+    //     default: "#000"
+    // },
     blurShadow: {
         type: "number",
         default: "120"

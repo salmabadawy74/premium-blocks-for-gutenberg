@@ -3,6 +3,7 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 // import PremiumRangeResponsive from "../../components/premium-range-responsive";
 // import PremiumTextShadow from "../../components/premium-text-shadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
@@ -52,6 +53,7 @@ class edit extends Component {
         $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
         document.head.appendChild($style)
         this.handleStyle = this.handleStyle.bind(this);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
     componentDidUpdate() {
@@ -61,6 +63,21 @@ class edit extends Component {
         }
         clearTimeout(istitleUpdated);
         istitleUpdated = setTimeout(this.handleStyle, 400);
+    }
+
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     handleStyle() {
@@ -138,6 +155,13 @@ class edit extends Component {
             stripeHeight,
             stripeTopSpacing,
             stripeBottomSpacing,
+            titleStyles,
+            titleBorderTop,
+            titleBorderRight,
+            titleBorderBottom,
+            titleBorderLeft,
+            titleBorderUpdated,
+            titleBorderWidth,
             titleColor,
             titleWeight,
             titleLetter,
@@ -154,10 +178,10 @@ class edit extends Component {
             stripeColor,
             titleborderType,
             titleborderRadius,
-            titleBorderLeft,
-            titleBorderTop,
-            titleBorderRight,
-            titleBorderBottom,
+            // titleBorderLeft,
+            // titleBorderTop,
+            // titleBorderRight,
+            // titleBorderBottom,
             titleborderColor,
             BGColor,
             lineColor,
@@ -415,6 +439,21 @@ class edit extends Component {
                 },
             ];
 
+        const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titlefontSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
+
+
+        const saveTitleStyles = (value) => {
+            const newUpdate = titleStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                titleStyles: newUpdate,
+            });
+        }
+
         const onResetClickTitle = () => {
             setAttributes({
                 titleWeight: 600,
@@ -451,9 +490,10 @@ class edit extends Component {
                 <RichText
                     tagName={titleTag.toLowerCase()}
                     className={`premium-title-style9-letter`}
-
                     value={letter}
-
+                    style={{
+                        color: titleStyles[0].titleColor
+                    }}
                 />
             )
         });
@@ -704,35 +744,96 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <p>{__("Color")}</p>
-                        <ColorPalette
-                            value={titleColor}
-                            onChange={newValue =>
-                                setAttributes({
+                        <AdvancedPopColorControl
+                            label={__("Color", 'premium-block-for-gutenberg')}
+                            colorValue={titleStyles[0].titleColor}
+                            colorDefault={''}
+                            onColorChange={newValue =>
+                                saveTitleStyles({
                                     titleColor: newValue
                                 })
                             }
-                            allowReset={true}
                         />
                         {style === "style8" &&
-                            <Fragment>
-                                <p>{__("Shiny Color")}</p>
-                                <ColorPalette
-                                    value={shinyColor}
-                                    onChange={newValue => setAttributes({ shinyColor: newValue })}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Shiny Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleStyles[0].shinyColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTitleStyles({
+                                        shinyColor: newValue
+                                    })
+                                }
+                            />
                         }
                         {style === "style9" &&
-                            < Fragment >
-                                <p>{__("Blur Color")}</p>
-                                <ColorPalette
-                                    value={blurColor}
-                                    onChange={newValue => setAttributes({ blurColor: newValue })}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Blur Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleStyles[0].blurColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTitleStyles({
+                                        blurColor: newValue
+                                    })
+                                }
+                            />
                         }
                         <PremiumTypo
+                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                            setAttributes={saveTitleStyles}
+                            fontSizeType={{ value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") }}
+                            fontSize={titleStyles[0].titlefontSize}
+                            fontSizeMobile={titleStyles[0].titlefontSizeMobile}
+                            fontSizeTablet={titleStyles[0].titlefontSizeTablet}
+                            onChangeSize={newSize => saveTitleStyles({ titlefontSize: newSize })}
+                            onChangeTabletSize={newSize => saveTitleStyles({ titlefontSizeTablet: newSize })}
+                            onChangeMobileSize={newSize => saveTitleStyles({ titlefontSizeMobile: newSize })}
+                            weight={titleStyles[0].titleWeight}
+                            style={titleStyles[0].titleStyle}
+                            spacing={titleStyles[0].titleLetter}
+                            upper={titleStyles[0].titleUpper}
+                            line={titleStyles[0].titleLine}
+                            fontFamily={titleStyles[0].titleFontFamily}
+                            onChangeWeight={newWeight =>
+                                saveTitleStyles({ titleWeight: newWeight || 500 })
+                            }
+                            onChangeStyle={newStyle =>
+                                saveTitleStyles({ titleStyle: newStyle })
+                            }
+                            onChangeSpacing={newValue =>
+                                saveTitleStyles({ titleLetter: newValue })
+                            }
+                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
+                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
+                            onChangeFamily={(fontFamily) => saveTitleStyles({ titleFontFamily: fontFamily })}
+                        />
+                        <PremiumBorder
+                            borderType={titleStyles[0].titleborderType}
+                            borderWidth={titleBorderWidth}
+                            top={titleBorderTop}
+                            right={titleBorderRight}
+                            bottom={titleBorderBottom}
+                            left={titleBorderLeft}
+                            borderColor={titleStyles[0].titleborderColor}
+                            borderRadius={titleStyles[0].titleborderRadius}
+                            onChangeType={newType => saveTitleStyles({ titleborderType: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    titleBorderUpdated: true,
+                                    titleBorderTop: top,
+                                    titleBorderRight: right,
+                                    titleBorderBottom: bottom,
+                                    titleBorderLeft: left,
+                                })
+                            }
+                            onChangeColor={colorValue =>
+                                saveTitleStyles({ titleborderColor: colorValue })
+                            }
+                            onChangeRadius={newrRadius =>
+                                saveTitleStyles({ titleborderRadius: newrRadius })
+                            }
+                        />
+                        {/* <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                             setAttributes={setAttributes}
                             fontSizeType={{ value: titlefontSizeType, label: __("titlefontSizeType") }}
@@ -859,7 +960,7 @@ class edit extends Component {
                                     setAttributes({ titleborderRadius: newrRadius })
                                 }
                             />
-                        }
+                        } */}
                         {/* <PremiumTextShadow
                             color={titleshadowColor}
                             blur={titleshadowBlur}
@@ -877,7 +978,7 @@ class edit extends Component {
                             }
                             onResetClick={onResetClickTitleTextShadow}
                         /> */}
-                        {style === "style9" && <Fragment>
+                        {/* {style === "style9" && <Fragment>
                             <RangeControl
                                 label={__("Blur Shadow Value (px)")}
                                 min={10}
@@ -1061,7 +1162,7 @@ class edit extends Component {
                                     step={1}
                                 />
                             </Fragment>
-                        }
+                        } */}
                     </PanelBody>
                     {
                         iconValue && <PanelBody
@@ -1365,6 +1466,65 @@ class edit extends Component {
                 className={`premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
                     textAlign: align,
                 }} >
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: [
+                            `#premium-title-${block_id} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {`,
+                            `--base-color: ${titleStyles[0].titleColor};`,
+                            `--shiny-color: ${titleStyles[0].shinyColor};`,
+                            "}",
+                            `#premium-title-${block_id} .premium-title-header {`,
+                            `--shadow-color: ${titleStyles[0].blurColor};`,
+                            `color: ${titleStyles[0].titleColor};`,
+                            "}",
+                            `#premium-title-${block_id} .premium-title .style1 .premium-title-header{`,
+                            `border-style: ${titleStyles[0].titleborderType} !important;`,
+                            `border-width: ${titleBorderUpdated
+                                ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                : titleBorderWidth + "px"};`,
+                            `border-radius: ${titleStyles[0].titleborderRadius || 0 + "px"};`,
+                            `border-color: ${titleStyles[0].titleborderColor};`,
+                            // `border-left: ${titleBorderLeft >= "1" ? `${titleBorderLeft}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor}` : ""};`,
+                            "}",
+                            `#premium-title-${block_id} .premium-title .style2{`,
+                            `border-style: ${titleStyles[0].titleborderType} !important;`,
+                            `border-width: ${titleBorderUpdated
+                                ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                : titleBorderWidth + "px"};`,
+                            `border-radius: ${titleStyles[0].titleborderRadius || 0 + "px"};`,
+                            `border-color: ${titleStyles[0].titleborderColor};`,
+                            `border-bottom: ${titleBorderBottom >= "1" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};`,
+                            "}",
+                            `#premium-title-${block_id} .premium-title .style4{`,
+                            `border-style: ${titleStyles[0].titleborderType} !important;`,
+                            `border-width: ${titleBorderUpdated
+                                ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                : titleBorderWidth + "px"};`,
+                            `border-radius: ${titleStyles[0].titleborderRadius || 0 + "px"};`,
+                            `border-color: ${titleStyles[0].titleborderColor};`,
+                            `border-bottom: ${titleBorderBottom >= "1" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};`,
+                            "}",
+                            `#premium-title-${block_id} .premium-title .style5{`,
+                            `border-style: ${titleStyles[0].titleborderType} !important;`,
+                            `border-width: ${titleBorderUpdated
+                                ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                : titleBorderWidth + "px"};`,
+                            `border-radius: ${titleStyles[0].titleborderRadius || 0 + "px"};`,
+                            `border-color: ${titleStyles[0].titleborderColor};`,
+                            `border-bottom: ${titleBorderBottom >= "1" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};`,
+                            "}",
+                            `#premium-title-${block_id} .premium-title .style6{`,
+                            `border-style: ${titleStyles[0].titleborderType} !important;`,
+                            `border-width: ${titleBorderUpdated
+                                ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                : titleBorderWidth + "px"};`,
+                            `border-radius: ${titleStyles[0].titleborderRadius || 0 + "px"};`,
+                            `border-color: ${titleStyles[0].titleborderColor};`,
+                            `border-bottom: ${titleBorderBottom >= "1" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};`,
+                            "}",
+                        ].join("\n")
+                    }}
+                />
 
                 <div className={`premium-title  ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{
                     textAlign: align,
@@ -1410,7 +1570,16 @@ class edit extends Component {
                                         tagName={titleTag.toLowerCase()}
                                         className={`premium-title-text-title`}
                                         value={title}
-
+                                        style={{
+                                            color: titleStyles[0].titleColor,
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                            fontFamily: titleStyles[0].titleFontFamily,
+                                        }}
                                     />
                                 </div>
                             </Fragment>
@@ -1462,7 +1631,16 @@ class edit extends Component {
                                             className={`premium-title-text-title`}
                                             onChange={(newValue) => setAttributes({ title: newValue })}
                                             value={title}
-
+                                            style={{
+                                                color: titleStyles[0].titleColor,
+                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                fontFamily: titleStyles[0].titleFontFamily,
+                                            }}
                                         />
                                     </Fragment>
                             }
