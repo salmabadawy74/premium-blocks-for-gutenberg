@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
-import PremiumTextShadow from "../../components/premium-text-shadow";
+import PremiumShadow from "../../components/PremiumShadow";
 import DefaultImage from "../../components/default-image";
 import PremiumFilters from "../../components/premium-filters";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -866,7 +866,9 @@ class edit extends Component {
                                 }
                             />
                         </div>
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={false}
                             color={nameStyles[0].nameshadowColor}
                             blur={nameStyles[0].nameshadowBlur}
                             horizontal={nameStyles[0].nameshadowHorizontal}
@@ -926,7 +928,9 @@ class edit extends Component {
                                 }
                             />
                         </div>
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={false}
                             color={titleStyles[0].titleshadowColor}
                             blur={titleStyles[0].titleshadowBlur}
                             horizontal={titleStyles[0].titleshadowHorizontal}
@@ -987,7 +991,9 @@ class edit extends Component {
                                 }
                             />
                         </div>
-                        <PremiumTextShadow
+                        <PremiumShadow
+                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={false}
                             color={descStyles[0].descshadowColor}
                             blur={descStyles[0].descshadowBlur}
                             horizontal={descStyles[0].descshadowHorizontal}
