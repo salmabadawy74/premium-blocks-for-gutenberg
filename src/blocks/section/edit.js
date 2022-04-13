@@ -6,7 +6,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
-
+import Shape from '../../components/premium-shape'
 import { videoBackground, gradientBackground } from '../../components/HelperFunction';
 
 const { __ } = wp.i18n;
@@ -87,7 +87,8 @@ const edit = props => {
         paddingTMobile,
         paddingRMobile,
         paddingLMobile,
-        paddingBMobile
+        paddingBMobile,
+        shapeTop
     } = props.attributes;
 
     const WIDTH = [
@@ -126,6 +127,7 @@ const edit = props => {
     ];
 
 
+
     const mainClasses = classnames(className, "premium-container");
 
     const saveContainerStyle = (value) => {
@@ -160,6 +162,7 @@ const edit = props => {
     const containerMarginRight = getPreviewSize(props.deviceType, marginRight, marginRTablet, marginRMobile);
     const containerMarginBottom = getPreviewSize(props.deviceType, marginBottom, marginBTablet, marginBMobile);
     const containerMarginLeft = getPreviewSize(props.deviceType, marginLeft, marginLTablet, marginLMobile);
+
 
     return [
         isSelected && (
@@ -440,6 +443,10 @@ const edit = props => {
                             }
                         }
                     />
+                </PanelBody>
+
+                <PanelBody initialOpen={false} title={__('Shape Divider')}>
+                    <Shape shapeType="top" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
                 </PanelBody>
                 <PremiumResponsiveTabs
                     Desktop={hideDesktop}

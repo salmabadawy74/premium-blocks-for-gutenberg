@@ -62,6 +62,7 @@ export default function PremiumBackgroundControl({
             {'solid' === backgroundType && (
                 <div className="Premium-inner-sub-section">
 
+
                     <PremiumBackground
                         imageID={backgroundImageID}
                         imageURL={backgroundImageURL}
@@ -92,6 +93,7 @@ export default function PremiumBackgroundControl({
                         }
                         onChangeFixed={check => saveContainerStyle({ fixed: check })}
                     />
+
                 </div>
             )}
             {'gradient' === backgroundType && (

@@ -128,6 +128,23 @@ class PBG_Blocks_Helper {
 
 	}
 
+    /**
+	 * Load SvgShapes
+	 *
+	 * @since 1.0.0
+	 */
+	public function getSvgShapes() {
+		$shape_path = PREMIUM_BLOCKS_PATH . 'src/components/shape';
+		$shapes     = glob($shape_path . '/*.svg' ,GLOB_BRACE );
+		$shapeArray = array();
+		if ( count( $shapes ) ) {
+			foreach ( $shapes as $shape ) {
+				$shapeArray[ str_replace( array( '.svg', $shape_path . '/' ), '', $shape ) ] = file_get_contents( $shape );
+			}
+		}
+		return $shapeArray;
+	}
+
 	/**
 	 * Fix File Of type JSON
 	 */
@@ -195,6 +212,7 @@ class PBG_Blocks_Helper {
 				'activeBlocks'      => self::$blocks,
 				'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
+                'shapes'             => $this->getSvgShapes(),
 			)
 		);
 

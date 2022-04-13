@@ -173,6 +173,17 @@ const attributes = {
     },
     paddingBMobile: {
         type: "number"
+    },
+    shapeTop: {
+        type: 'object',
+        default: {
+            openShape: 0,
+            color: '#006fbf',
+            shapeType: 'top',
+            width: { unit: '%' },
+            height: { unit: 'px' },
+        },
+        style: [{ selector: '{{QUBELY}} .qubely-shape-divider.qubely-top-shape' }]
     }
 }
 export default attributes

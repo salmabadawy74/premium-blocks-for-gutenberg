@@ -7,6 +7,7 @@ const {
     ToggleControl,
     Tooltip,
     Dashicon,
+    PanelBody
 } = wp.components;
 
 const { MediaUpload } = wp.blockEditor;
@@ -163,6 +164,7 @@ export default function PremiumBackground(props) {
                             <div
                                 onClick={open}
                                 className={"premium-placeholder-image"}
+                                style={{ margin: `10px 0px` }}
                             >
                                 <Dashicon icon="insert" />
                                 <span>{__("Insert Background ", 'premium-blocks-for-gutenberg')}</span>
@@ -172,7 +174,12 @@ export default function PremiumBackground(props) {
                 )}
             />
             {imageURL && (
-                <Fragment>
+                <PanelBody
+                    title={__("Background Options", 'premium-blocks-for-gutenberg')}
+                    className="premium-panel-body"
+                    initialOpen={false}
+                    className={`Premium-background__panel`}
+                >
                     <SelectControl
                         label={__("Position", 'premium-blocks-for-gutenberg')}
                         options={POSITION}
@@ -196,7 +203,7 @@ export default function PremiumBackground(props) {
                         checked={fixed}
                         onChange={onChangeFixed}
                     />
-                </Fragment>
+                </PanelBody>
             )}
         </Fragment>
     );
