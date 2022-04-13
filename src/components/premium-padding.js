@@ -142,4 +142,3 @@ class PremiumPadding extends Component {
     }
 }
 export default PremiumPadding;
-
