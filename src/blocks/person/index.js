@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/person", {
-    title: __("person"),
+    title: __("Team Member"),
     icon: <PbgIcon icon="button" />,
     category: "premium-blocks",
     attributes: attributes,
