@@ -11,12 +11,13 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/person", {
     title: __("Team Member"),
-    icon: <PbgIcon icon="button" />,
+    icon: <PbgIcon icon="" />,
     category: "premium-blocks",
     attributes: attributes,
     supports: {
         inserter: person
     },
+    example: {},
     edit: edit,
     save: save
 });
