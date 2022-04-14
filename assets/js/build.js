@@ -63068,7 +63068,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 registerBlockType("premium/person", {
-    title: __("person"),
+    title: __("Team Member"),
     icon: React.createElement(_icons2.default, { icon: "button" }),
     category: "premium-blocks",
     attributes: _attributes2.default,
