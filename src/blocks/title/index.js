@@ -141,9 +141,19 @@ const titleAttrs = {
             titlefontSizeMobile: '',
             titlefontSizeTablet: '',
             titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
-            titleborderType: "none",
+            titleborderType: "solid",
             titleborderRadius: 0,
             titleborderColor: '#6ec1e4',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginType: 'px',
+            titlePaddingType: 'px',
+            BGColor: '#54595f',
+            lineColor: "#6ec1e4",
+            triangleColor: "#6ec1e4",
+            stripeColor: "#6ec1e4"
         }]
     },
     titleBorderTop: {
@@ -156,7 +166,7 @@ const titleAttrs = {
     },
     titleBorderBottom: {
         type: "number",
-        default: "0"
+        default: "3"
     },
     titleBorderLeft: {
         type: "number",
@@ -168,7 +178,7 @@ const titleAttrs = {
     },
     titleBorderWidth: {
         type: "number",
-        default: "1"
+        default: "0"
     },
     // titleColor: {
     //     type: "string",
@@ -204,25 +214,25 @@ const titleAttrs = {
     // titlefontSizeTablet: {
     //     type: "number"
     // },
-    titleshadowColor: {
-        type: "string"
-    },
-    titleshadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleshadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleshadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    stripeColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
+    // titleshadowColor: {
+    //     type: "string"
+    // },
+    // titleshadowBlur: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleshadowHorizontal: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // titleshadowVertical: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // stripeColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
     // titleborderType: {
     //     type: "string",
     //     default: "none"
@@ -250,18 +260,18 @@ const titleAttrs = {
     // titleborderColor: {
     //     type: "string"
     // },
-    BGColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    lineColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    triangleColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
+    // BGColor: {
+    //     type: "string",
+    //     default: "#54595f"
+    // },
+    // lineColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
+    // triangleColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
     stripeAlign: {
         type: "string",
         default: "center"
@@ -376,10 +386,10 @@ const titleAttrs = {
         type: "number",
         default: "0"
     },
-    titleMarginType: {
-        type: "string",
-        default: "px"
-    },
+    // titleMarginType: {
+    //     type: "string",
+    //     default: "px"
+    // },
 
     titlePaddingT: {
         type: "number",
@@ -430,10 +440,10 @@ const titleAttrs = {
         default: "0"
     },
 
-    titlePaddingType: {
-        type: "string",
-        default: "px"
-    },
+    // titlePaddingType: {
+    //     type: "string",
+    //     default: "px"
+    // },
 
     iconBGColor: {
         type: "string"
