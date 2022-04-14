@@ -159,29 +159,29 @@ function getColors(context, isSubMenu) {
 
 	const colors = {};
 
-	if (isSubMenu && !!customOverlayTextColor) {
-		colors.customTextColor = customOverlayTextColor;
-	} else if (isSubMenu && !!overlayTextColor) {
-		colors.textColor = overlayTextColor;
-	} else if (!!customTextColor) {
-		colors.customTextColor = customTextColor;
-	} else if (!!textColor) {
-		colors.textColor = textColor;
-	} else if (!!style?.color?.text) {
-		colors.customTextColor = style.color.text;
-	}
+	// if (isSubMenu && !!customOverlayTextColor) {
+	// 	colors.customTextColor = customOverlayTextColor;
+	// } else if (isSubMenu && !!overlayTextColor) {
+	// 	colors.textColor = overlayTextColor;
+	// } else if (!!customTextColor) {
+	// 	colors.customTextColor = customTextColor;
+	// } else if (!!textColor) {
+	// 	colors.textColor = textColor;
+	// } else if (!!style?.color?.text) {
+	// 	colors.customTextColor = style.color.text;
+	// }
 
-	if (isSubMenu && !!customOverlayBackgroundColor) {
-		colors.customBackgroundColor = customOverlayBackgroundColor;
-	} else if (isSubMenu && !!overlayBackgroundColor) {
-		colors.backgroundColor = overlayBackgroundColor;
-	} else if (!!customBackgroundColor) {
-		colors.customBackgroundColor = customBackgroundColor;
-	} else if (!!backgroundColor) {
-		colors.backgroundColor = backgroundColor;
-	} else if (!!style?.color?.background) {
-		colors.customTextColor = style.color.background;
-	}
+	// if (isSubMenu && !!customOverlayBackgroundColor) {
+	// 	colors.customBackgroundColor = customOverlayBackgroundColor;
+	// } else if (isSubMenu && !!overlayBackgroundColor) {
+	// 	colors.backgroundColor = overlayBackgroundColor;
+	// } else if (!!customBackgroundColor) {
+	// 	colors.customBackgroundColor = customBackgroundColor;
+	// } else if (!!backgroundColor) {
+	// 	colors.backgroundColor = backgroundColor;
+	// } else if (!!style?.color?.background) {
+	// 	colors.customTextColor = style.color.background;
+	// }
 
 	return colors;
 }
@@ -337,8 +337,9 @@ export default function NavigationLinkEdit({
 		rel,
 		title,
 		kind,
+		makeHeading
 	} = attributes;
-
+	const { megaMenu } = context;
 	const link = {
 		url,
 		opensInNewTab,
@@ -551,12 +552,7 @@ export default function NavigationLinkEdit({
 		};
 	}
 
-	const {
-		textColor,
-		customTextColor,
-		backgroundColor,
-		customBackgroundColor,
-	} = getColors(context, !isTopLevelLink);
+	const colors = getColors(context, !isTopLevelLink);
 	// console.log(context);
 	function onKeyDown(event) {
 		if (
@@ -573,18 +569,9 @@ export default function NavigationLinkEdit({
 			'is-editing': isSelected || isParentOfSelectedBlock,
 			'is-dragging-within': isDraggingWithin,
 			'has-link': !!url,
-			'has-child': hasDescendants,
-			'has-text-color': !!textColor || !!customTextColor,
-			[getColorClassName('color', textColor)]: !!textColor,
-			'has-background': !!backgroundColor || customBackgroundColor,
-			[getColorClassName(
-				'background-color',
-				backgroundColor
-			)]: !!backgroundColor,
+			'has-child': hasDescendants
 		}),
 		style: {
-			color: !textColor && customTextColor,
-			backgroundColor: !backgroundColor && customBackgroundColor,
 		},
 		onKeyDown,
 	});
@@ -642,7 +629,16 @@ export default function NavigationLinkEdit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title={__('Link settings 2')}>
+				<PanelBody title={__('Link settings')}>
+					{megaMenu && (
+						<>
+							{isTopLevelLink && <ToggleControl
+								label={__("Make This Item As Column Heading", 'premium-blocks-for-gutenberg')}
+								checked={makeHeading}
+								onChange={check => setAttributes({ makeHeading: check })}
+							/>}
+						</>
+					)}
 					<TextareaControl
 						value={description || ''}
 						onChange={(descriptionValue) => {

@@ -108,7 +108,7 @@ export default function NavigationInnerBlocks({
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			className: 'wp-block-navigation__container',
+			className: 'premium-navigation__container',
 		},
 		{
 			value: blocks,

@@ -302,7 +302,7 @@ export default function NavigationSubmenuEdit({
 		url,
 		opensInNewTab,
 	};
-	const { showSubmenuIcon, openSubmenusOnClick } = context;
+	const { showSubmenuIcon, openSubmenusOnClick, submenuColors, menuColors } = context;
 	const { saveEntityRecord } = useDispatch(coreStore);
 	const { contentSize, wideSize } = useSetting('layout');
 	const {
@@ -598,29 +598,34 @@ export default function NavigationSubmenuEdit({
 						checked={megaMenu}
 						onChange={check => setAttributes({ megaMenu: check })}
 					/>
-					{megaMenu && <SelectControl
-						label={__("Direction", 'premium-blocks-for-gutenberg')}
-						options={[
-							{
-								value: "content",
-								label: __("Content", 'premium-blocks-for-gutenberg')
-							},
-							{
-								value: "full",
-								label: __("Wide", 'premium-blocks-for-gutenberg')
-							}
-						]}
-						value={megaMenuWidth}
-						onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
-					/>}
-					<RadioGroup label="Width" onChange={(value) => setAttributes({ megaMenuColumns: value })} checked={megaMenuColumns}>
-						<Radio value="1">1</Radio>
-						<Radio value="2">2</Radio>
-						<Radio value="3">3</Radio>
-						<Radio value="4">4</Radio>
-						<Radio value="5">5</Radio>
-						<Radio value="6">6</Radio>
-					</RadioGroup>
+					{megaMenu && (
+						<>
+							<SelectControl
+								label={__("Direction", 'premium-blocks-for-gutenberg')}
+								options={[
+									{
+										value: "content",
+										label: __("Content", 'premium-blocks-for-gutenberg')
+									},
+									{
+										value: "full",
+										label: __("Wide", 'premium-blocks-for-gutenberg')
+									}
+								]}
+								value={megaMenuWidth}
+								onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
+							/>
+							<RadioGroup label="Width" onChange={(value) => setAttributes({ megaMenuColumns: value })} checked={megaMenuColumns}>
+								<Radio value="1">1</Radio>
+								<Radio value="2">2</Radio>
+								<Radio value="3">3</Radio>
+								<Radio value="4">4</Radio>
+								<Radio value="5">5</Radio>
+								<Radio value="6">6</Radio>
+							</RadioGroup>
+						</>
+					)}
+
 				</PanelBody>
 				<PanelBody title={__('Link settings 2')}>
 					<TextareaControl

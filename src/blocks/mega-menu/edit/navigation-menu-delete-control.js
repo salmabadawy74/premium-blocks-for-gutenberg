@@ -22,7 +22,7 @@ export default function NavigationMenuDeleteControl({ onDelete }) {
 	return (
 		<>
 			<Button
-				className="wp-block-navigation-delete-menu-button"
+				className="premium-navigation-delete-menu-button"
 				variant="secondary"
 				isDestructive
 				onClick={() => {

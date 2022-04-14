@@ -38,6 +38,9 @@
         },
         "isTopLevelLink": {
             "type": "boolean"
+        },
+        "makeHeading": {
+            "type": "boolean"
         }
     },
     "usesContext": [

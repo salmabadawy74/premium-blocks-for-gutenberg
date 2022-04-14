@@ -12,15 +12,11 @@ import { useEffect } from '@wordpress/element';
  */
 import useNavigationEntities from '../../use-navigation-entities';
 import PlaceholderPreview from './placeholder-preview';
-import NavigationMenuSelector from '../navigation-menu-selector';
 
 export default function NavigationPlaceholder({
 	isSelected,
-	currentMenuId,
-	clientId,
 	canUserCreateNavigationMenu = false,
 	isResolvingCanUserCreateNavigationMenu,
-	onFinish,
 	onCreateEmpty,
 }) {
 	const { isResolvingMenus, hasResolvedMenus } = useNavigationEntities();
@@ -44,7 +40,7 @@ export default function NavigationPlaceholder({
 
 	return (
 		<>
-			<Placeholder className="wp-block-navigation-placeholder">
+			<Placeholder className="premium-navigation-placeholder">
 				{
 					// The <PlaceholderPreview> component is displayed conditionally via CSS depending on
 					// whether the block is selected or not. This is achieved via CSS to avoid
@@ -53,31 +49,19 @@ export default function NavigationPlaceholder({
 				<PlaceholderPreview isVisible={!isSelected} />
 				<div
 					aria-hidden={!isSelected ? true : undefined}
-					className="wp-block-navigation-placeholder__controls"
+					className="premium-navigation-placeholder__controls"
 				>
-					<div className="wp-block-navigation-placeholder__actions">
-						<div className="wp-block-navigation-placeholder__actions__indicator">
+					<div className="premium-navigation-placeholder__actions">
+						<div className="premium-navigation-placeholder__actions__indicator">
 							<Icon icon={navigation} /> {__('Navigation')}
 						</div>
 						{isResolvingActions && <Spinner />}
-
-						{/* <NavigationMenuSelector
-							currentMenuId={currentMenuId}
-							clientId={clientId}
-							onSelect={onFinish}
-							toggleProps={{
-								variant: 'tertiary',
-								iconPosition: 'right',
-								className:
-									'wp-block-navigation-placeholder__actions__dropdown',
-							}}
-						/> */}
 						{canUserCreateNavigationMenu && (
 							<Button
 								variant="tertiary"
 								onClick={onCreateEmpty}
 							>
-								{__('Start empty')}
+								{__('Start Menu')}
 							</Button>
 						)}
 					</div>

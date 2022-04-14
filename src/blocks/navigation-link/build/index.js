@@ -422,8 +422,6 @@ function getSuggestionsQuery(type, kind) {
 
 
 function getColors(context, isSubMenu) {
-  var _style$color, _style$color2;
-
   const {
     textColor,
     customTextColor,
@@ -435,31 +433,28 @@ function getColors(context, isSubMenu) {
     customOverlayBackgroundColor,
     style
   } = context;
-  const colors = {};
-
-  if (isSubMenu && !!customOverlayTextColor) {
-    colors.customTextColor = customOverlayTextColor;
-  } else if (isSubMenu && !!overlayTextColor) {
-    colors.textColor = overlayTextColor;
-  } else if (!!customTextColor) {
-    colors.customTextColor = customTextColor;
-  } else if (!!textColor) {
-    colors.textColor = textColor;
-  } else if (!!(style !== null && style !== void 0 && (_style$color = style.color) !== null && _style$color !== void 0 && _style$color.text)) {
-    colors.customTextColor = style.color.text;
-  }
-
-  if (isSubMenu && !!customOverlayBackgroundColor) {
-    colors.customBackgroundColor = customOverlayBackgroundColor;
-  } else if (isSubMenu && !!overlayBackgroundColor) {
-    colors.backgroundColor = overlayBackgroundColor;
-  } else if (!!customBackgroundColor) {
-    colors.customBackgroundColor = customBackgroundColor;
-  } else if (!!backgroundColor) {
-    colors.backgroundColor = backgroundColor;
-  } else if (!!(style !== null && style !== void 0 && (_style$color2 = style.color) !== null && _style$color2 !== void 0 && _style$color2.background)) {
-    colors.customTextColor = style.color.background;
-  }
+  const colors = {}; // if (isSubMenu && !!customOverlayTextColor) {
+  // 	colors.customTextColor = customOverlayTextColor;
+  // } else if (isSubMenu && !!overlayTextColor) {
+  // 	colors.textColor = overlayTextColor;
+  // } else if (!!customTextColor) {
+  // 	colors.customTextColor = customTextColor;
+  // } else if (!!textColor) {
+  // 	colors.textColor = textColor;
+  // } else if (!!style?.color?.text) {
+  // 	colors.customTextColor = style.color.text;
+  // }
+  // if (isSubMenu && !!customOverlayBackgroundColor) {
+  // 	colors.customBackgroundColor = customOverlayBackgroundColor;
+  // } else if (isSubMenu && !!overlayBackgroundColor) {
+  // 	colors.backgroundColor = overlayBackgroundColor;
+  // } else if (!!customBackgroundColor) {
+  // 	colors.customBackgroundColor = customBackgroundColor;
+  // } else if (!!backgroundColor) {
+  // 	colors.backgroundColor = backgroundColor;
+  // } else if (!!style?.color?.background) {
+  // 	colors.customTextColor = style.color.background;
+  // }
 
   return colors;
 }
@@ -608,8 +603,12 @@ function NavigationLinkEdit(_ref2) {
     description,
     rel,
     title,
-    kind
+    kind,
+    makeHeading
   } = attributes;
+  const {
+    megaMenu
+  } = context;
   const link = {
     url,
     opensInNewTab,
@@ -791,12 +790,7 @@ function NavigationLinkEdit(_ref2) {
     };
   }
 
-  const {
-    textColor,
-    customTextColor,
-    backgroundColor,
-    customBackgroundColor
-  } = getColors(context, !isTopLevelLink); // console.log(context);
+  const colors = getColors(context, !isTopLevelLink); // console.log(context);
 
   function onKeyDown(event) {
     if (_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_6__.isKeyboardEvent.primary(event, 'k') || !url && event.keyCode === _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_6__.ENTER) {
@@ -810,16 +804,9 @@ function NavigationLinkEdit(_ref2) {
       'is-editing': isSelected || isParentOfSelectedBlock,
       'is-dragging-within': isDraggingWithin,
       'has-link': !!url,
-      'has-child': hasDescendants,
-      'has-text-color': !!textColor || !!customTextColor,
-      [(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.getColorClassName)('color', textColor)]: !!textColor,
-      'has-background': !!backgroundColor || customBackgroundColor,
-      [(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.getColorClassName)('background-color', backgroundColor)]: !!backgroundColor
+      'has-child': hasDescendants
     }),
-    style: {
-      color: !textColor && customTextColor,
-      backgroundColor: !backgroundColor && customBackgroundColor
-    },
+    style: {},
     onKeyDown
   });
 
@@ -870,8 +857,14 @@ function NavigationLinkEdit(_ref2) {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Add submenu'),
     onClick: transformToSubmenu
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link settings 2')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextareaControl, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link settings')
+  }, megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, isTopLevelLink && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)("Make This Item As Column Heading", 'premium-blocks-for-gutenberg'),
+    checked: makeHeading,
+    onChange: check => setAttributes({
+      makeHeading: check
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextareaControl, {
     value: description || '',
     onChange: descriptionValue => {
       setAttributes({
@@ -1627,7 +1620,7 @@ module.exports = window["wp"]["url"];
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"kemet/navigation-link","title":"Custom Link","category":"design","parent":["kemet/mega-menu"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"}},"usesContext":["textColor","customTextColor","backgroundColor","customBackgroundColor","overlayTextColor","customOverlayTextColor","overlayBackgroundColor","customOverlayBackgroundColor","fontSize","customFontSize","showSubmenuIcon","style","megaMenu"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"kemet/navigation-link","title":"Custom Link","category":"design","parent":["kemet/mega-menu"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"},"makeHeading":{"type":"boolean"}},"usesContext":["textColor","customTextColor","backgroundColor","customBackgroundColor","overlayTextColor","customOverlayTextColor","overlayBackgroundColor","customOverlayBackgroundColor","fontSize","customFontSize","showSubmenuIcon","style","megaMenu"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

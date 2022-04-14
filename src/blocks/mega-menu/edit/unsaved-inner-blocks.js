@@ -119,10 +119,10 @@ export default function UnsavedInnerBlocks({
 	]);
 
 	return (
-		<div className="wp-block-navigation__unsaved-changes">
+		<div className="premium-navigation__unsaved-changes">
 			<Disabled
 				className={classnames(
-					'wp-block-navigation__unsaved-changes-overlay',
+					'premium-navigation__unsaved-changes-overlay',
 					{
 						'is-saving': hasSelection,
 					}

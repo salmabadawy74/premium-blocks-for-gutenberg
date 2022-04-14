@@ -434,7 +434,9 @@ function NavigationSubmenuEdit(_ref) {
   };
   const {
     showSubmenuIcon,
-    openSubmenusOnClick
+    openSubmenusOnClick,
+    submenuColors,
+    menuColors
   } = context;
   const {
     saveEntityRecord
@@ -678,7 +680,7 @@ function NavigationSubmenuEdit(_ref) {
     onChange: check => setAttributes({
       megaMenu: check
     })
-  }), megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+  }), megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Direction", 'premium-blocks-for-gutenberg'),
     options: [{
       value: "content",
@@ -709,7 +711,7 @@ function NavigationSubmenuEdit(_ref) {
     value: "5"
   }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalRadio, {
     value: "6"
-  }, "6"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+  }, "6")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Link settings 2')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     value: description || '',

@@ -11,6 +11,42 @@
         "ref": {
             "type": "number"
         },
+        "menuColors": {
+            "type": "object",
+            "default": {
+                "link": "",
+                "linkHover": "",
+                "background": ""
+            }
+        },
+        "submenuColors": {
+            "type": "object",
+            "default": {
+                "link": "",
+                "linkHover": "",
+                "background": ""
+            }
+        },
+        "spacing": {
+            "type": "object",
+            "default": {
+                "padding": null,
+                "margin": null
+            }
+        },
+        "typography": {
+            "type": "object",
+            "default": {
+                "size": null,
+                "weight": 400,
+                "family": "Default",
+                "letterSpacing": "",
+                "textTransform": "",
+                "textDecoration": "",
+                "lineHeight": "",
+                "style": ""
+            }
+        },
         "textColor": {
             "type": "string"
         },
@@ -52,6 +88,8 @@
         "customBackgroundColor": "customBackgroundColor",
         "showSubmenuIcon": "showSubmenuIcon",
         "openSubmenusOnClick": "openSubmenusOnClick",
+        "menuColors": "menuColors",
+        "submenuColors": "submenuColors",
         "style": "style",
         "orientation": "orientation"
     },

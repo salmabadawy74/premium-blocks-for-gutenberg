@@ -16,7 +16,6 @@ import {
 } from '@wordpress/element';
 import {
 	InspectorControls,
-	BlockControls,
 	useBlockProps,
 	__experimentalUseNoRecursiveRenders as useNoRecursiveRenders,
 	store as blockEditorStore,
@@ -32,9 +31,9 @@ import { useDispatch, useSelect, useRegistry } from '@wordpress/data';
 import {
 	PanelBody,
 	ToggleControl,
-	ToolbarGroup,
 	Button,
 	Spinner,
+	TabPanel
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { speak } from '@wordpress/a11y';
@@ -42,21 +41,18 @@ import { speak } from '@wordpress/a11y';
 /**
  * Internal dependencies
  */
-import useListViewModal from './use-list-view-modal';
+import AdvancedPopColorControl from '../../../components/Color Control/ColorComponent';
+import PremiumResponsivePadding from '../../../components/Premium-Responsive-Padding';
+import PremiumResponsiveMargin from '../../../components/Premium-Responsive-Margin';
+import PremiumTypo from "../../../components/premium-typo"
 import useNavigationMenu from '../use-navigation-menu';
 import useNavigationEntities from '../use-navigation-entities';
 import Placeholder from './placeholder';
 import NavigationInnerBlocks from './inner-blocks';
-import NavigationMenuSelector from './navigation-menu-selector';
 import NavigationMenuNameControl from './navigation-menu-name-control';
 import UnsavedInnerBlocks from './unsaved-inner-blocks';
 import NavigationMenuDeleteControl from './navigation-menu-delete-control';
 import useNavigationNotice from './use-navigation-notice';
-import useConvertClassicToBlockMenu, {
-	CLASSIC_MENU_CONVERSION_ERROR,
-	CLASSIC_MENU_CONVERSION_PENDING,
-	CLASSIC_MENU_CONVERSION_SUCCESS,
-} from './use-convert-classic-menu-to-block-menu';
 import useCreateNavigationMenu, {
 	CREATE_NAVIGATION_MENU_ERROR,
 	CREATE_NAVIGATION_MENU_PENDING,
@@ -99,15 +95,12 @@ function Navigation({
 	isSelected,
 	className,
 	backgroundColor,
-	setBackgroundColor,
 	textColor,
-	setTextColor,
 	context: { navigationArea },
 
 	// These props are used by the navigation editor to override specific
 	// navigation block settings.
 	hasSubmenuIndicatorSetting = true,
-	hasColorSettings = true,
 	customPlaceholder: CustomPlaceholder = null,
 }) {
 	const {
@@ -118,7 +111,10 @@ function Navigation({
 			orientation = 'horizontal',
 			flexWrap = 'wrap',
 		} = {},
-		hasIcon,
+		menuColors,
+		submenuColors,
+		spacing,
+		typography
 	} = attributes;
 
 	let areaMenu,
@@ -156,7 +152,7 @@ function Navigation({
 		showNavigationMenuCreateNotice,
 		hideNavigationMenuCreateNotice,
 	] = useNavigationNotice({
-		name: 'block-library/kemet/mega-menu/create',
+		name: 'block-library/core/navigation/create',
 	});
 
 	const {
@@ -250,7 +246,6 @@ function Navigation({
 		isNavigationMenuResolved,
 		isNavigationMenuMissing,
 		navigationMenus,
-		navigationMenu,
 		canUserUpdateNavigationMenu,
 		hasResolvedCanUserUpdateNavigationMenu,
 		canUserDeleteNavigationMenu,
@@ -261,21 +256,6 @@ function Navigation({
 	} = useNavigationMenu(ref);
 
 	const navRef = useRef();
-	const isDraftNavigationMenu = navigationMenu?.status === 'draft';
-
-	const { listViewToolbarButton, listViewModal } = useListViewModal(
-		clientId
-	);
-
-	const {
-		convert,
-		status: classicMenuConversionStatus,
-		error: classicMenuConversionError,
-		value: classicMenuConversionResult,
-	} = useConvertClassicToBlockMenu(clientId);
-
-	const isConvertingClassicMenu =
-		classicMenuConversionStatus === CLASSIC_MENU_CONVERSION_PENDING;
 
 	// The standard HTML5 tag for the block wrapper.
 	const TagName = 'nav';
@@ -289,7 +269,6 @@ function Navigation({
 	const isPlaceholder =
 		!ref &&
 		!isCreatingNavigationMenu &&
-		!isConvertingClassicMenu &&
 		(!hasUncontrolledInnerBlocks || isWithinUnassignedArea);
 
 	const isEntityAvailable =
@@ -303,8 +282,37 @@ function Navigation({
 	// - the Navigation Post isn't available (hasn't resolved) yet.
 	const isLoading =
 		isCreatingNavigationMenu ||
-		isConvertingClassicMenu ||
-		!!(ref && !isEntityAvailable && !isConvertingClassicMenu);
+		!!(ref && !isEntityAvailable);
+
+	const defaultSpacingValue = {
+		desktop: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		},
+		tablet: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		},
+		mobile: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		}
+	};
+	const defaultSize = {
+		desktop: "",
+		tablet: "",
+		mobile: "",
+		unit: "px"
+	};
+	let margin = spacing.margin ? spacing.margin : defaultSpacingValue;
+	let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+	const fontSize = typography.size ? typography.size : defaultSize;
 
 	const blockProps = useBlockProps({
 		ref: navRef,
@@ -315,20 +323,25 @@ function Navigation({
 			'items-justified-center': justifyContent === 'center',
 			'is-vertical': orientation === 'vertical',
 			'no-wrap': flexWrap === 'nowrap',
-			'has-text-color': !!textColor.color || !!textColor?.class,
-			[getColorClassName(
-				'color',
-				textColor?.slug
-			)]: !!textColor?.slug,
-			'has-background': !!backgroundColor.color || backgroundColor.class,
-			[getColorClassName(
-				'background-color',
-				backgroundColor?.slug
-			)]: !!backgroundColor?.slug,
 		}),
 		style: {
-			color: !textColor?.slug && textColor?.color,
-			backgroundColor: !backgroundColor?.slug && backgroundColor?.color,
+			color: menuColors?.link,
+			backgroundColor: menuColors?.background,
+			marginTop: `${margin.desktop.top}px`,
+			marginRight: `${margin.desktop.right}px`,
+			marginBottom: `${margin.desktop.bottom}px`,
+			marginLeft: `${margin.desktop.left}px`,
+			paddingTop: `${padding.desktop.top}px`,
+			paddingRight: `${padding.desktop.right}px`,
+			paddingBottom: `${padding.desktop.bottom}px`,
+			paddingLeft: `${padding.desktop.left}px`,
+			fontSize: `${fontSize.desktop}${fontSize.unit}`,
+			fontFamily: typography.family,
+			fontWeight: typography.weight,
+			letterSpacing: typography.letterSpacing,
+			textDecoration: typography.textDecoration,
+			textTransform: typography.textTransform,
+			lineHeight: `${typography.lineHeight}px`
 		},
 	});
 
@@ -339,41 +352,6 @@ function Navigation({
 	const [detectedBackgroundColor, setDetectedBackgroundColor] = useState();
 	const [detectedColor, setDetectedColor] = useState();
 
-	const [
-		showClassicMenuConversionErrorNotice,
-		hideClassicMenuConversionErrorNotice,
-	] = useNavigationNotice({
-		name: 'block-library/kemet/mega-menu/classic-menu-conversion/error',
-	});
-
-	function handleUpdateMenu(menuId) {
-		setRef(menuId);
-		selectBlock(clientId);
-	}
-
-	useEffect(() => {
-		if (classicMenuConversionStatus === CLASSIC_MENU_CONVERSION_PENDING) {
-			speak(__('Classic menu importing.'));
-		}
-
-		if (
-			classicMenuConversionStatus === CLASSIC_MENU_CONVERSION_SUCCESS &&
-			classicMenuConversionResult
-		) {
-			handleUpdateMenu(classicMenuConversionResult?.id);
-			hideClassicMenuConversionErrorNotice();
-			speak(__('Classic menu imported successfully.'));
-		}
-
-		if (classicMenuConversionStatus === CLASSIC_MENU_CONVERSION_ERROR) {
-			showClassicMenuConversionErrorNotice(classicMenuConversionError);
-			speak(__('Classic menu import failed.'));
-		}
-	}, [
-		classicMenuConversionStatus,
-		classicMenuConversionResult,
-		classicMenuConversionError,
-	]);
 
 	// Spacer block needs orientation from context. This is a patch until
 	// https://github.com/WordPress/gutenberg/issues/36197 is addressed.
@@ -404,7 +382,7 @@ function Navigation({
 	});
 
 	const [showCantEditNotice, hideCantEditNotice] = useNavigationNotice({
-		name: 'block-library/kemet/mega-menu/permissions/update',
+		name: 'block-library/core/navigation/permissions/update',
 		message: __(
 			'You do not have permission to edit this Menu. Any changes made will not be saved.'
 		),
@@ -412,7 +390,7 @@ function Navigation({
 
 	const [showCantCreateNotice, hideCantCreateNotice] = useNavigationNotice(
 		{
-			name: 'block-library/kemet/mega-menu/permissions/create',
+			name: 'block-library/core/navigation/permissions/create',
 			message: __(
 				'You do not have permission to create Navigation Menus.'
 			),
@@ -450,25 +428,6 @@ function Navigation({
 		hasResolvedCanUserCreateNavigationMenu,
 		ref,
 	]);
-
-	const handleSelectNavigation = useCallback(
-		(navPostOrClassicMenu) => {
-			if (!navPostOrClassicMenu) {
-				return;
-			}
-
-			const isClassicMenu = navPostOrClassicMenu.hasOwnProperty(
-				'auto_add'
-			);
-
-			if (isClassicMenu) {
-				convert(navPostOrClassicMenu.id, navPostOrClassicMenu.name);
-			} else {
-				handleUpdateMenu(navPostOrClassicMenu.id);
-			}
-		},
-		[convert, handleUpdateMenu]
-	);
 
 	const resetToEmptyBlock = useCallback(() => {
 		registry.batch(() => {
@@ -555,101 +514,298 @@ function Navigation({
 					isResolvingCanUserCreateNavigationMenu={
 						isResolvingCanUserCreateNavigationMenu
 					}
-					onFinish={handleSelectNavigation}
 					onCreateEmpty={() => createNavigationMenu('', [])}
 				/>
 			</TagName>
 		);
 	}
 
+	const setMenuColor = (color, value) => {
+		const newColors = { ...menuColors };
+		newColors[color] = value;
+		setAttributes({ menuColors: newColors });
+	}
+
+	const setSubmenuColor = (color, value) => {
+		const newColors = { ...menuColors };
+		newColors[color] = value;
+		setAttributes({ submenuColors: newColors });
+	}
+
+	const onChangeMargin = (side, value, device) => {
+		const newMargin = { ...margin };
+		newMargin[device][side] = value;
+		setAttributes({ spacing: { ...spacing, margin: newMargin } });
+	}
+
+	const onChangePadding = (side, value, device) => {
+		const newPadding = { ...padding };
+		newPadding[device][side] = value;
+		setAttributes({ spacing: { ...spacing, padding: newPadding } });
+	}
+
+	const onChangeFontSize = (value, device) => {
+		const newSize = { ...fontSize };
+		newSize[device] = value;
+		setAttributes({ typography: { ...typography, size: newSize } });
+	}
+
+	const onChangeFont = (value, attr) => {
+		setAttributes({ typography: { ...typography, [attr]: value } });
+	}
+
 	return (
 		<EntityProvider kind="postType" type="wp_navigation" id={ref}>
 			<RecursionProvider>
-				<BlockControls>
-					{!isDraftNavigationMenu && isEntityAvailable && (
-						<ToolbarGroup className="wp-block-navigation__toolbar-menu-selector">
-							<NavigationMenuSelector
-								currentMenuId={ref}
-								clientId={clientId}
-								onSelect={handleSelectNavigation}
-								onCreateNew={resetToEmptyBlock}
-								/* translators: %s: The name of a menu. */
-								actionLabel={__("Switch to '%s'")}
-								showManageActions
-							/>
-						</ToolbarGroup>
-					)}
-					<ToolbarGroup>{listViewToolbarButton}</ToolbarGroup>
-				</BlockControls>
-				{listViewModal}
 				<InspectorControls>
-					{hasSubmenuIndicatorSetting && (
-						<PanelBody title={__('Display')}>
-							{hasSubmenus && (
-								<>
-									<h3>{__('Submenus')}</h3>
-									<ToggleControl
-										checked={openSubmenusOnClick}
-										onChange={(value) => {
-											setAttributes({
-												openSubmenusOnClick: value,
-												...(value && {
-													showSubmenuIcon: true,
-												}), // Make sure arrows are shown when we toggle this on.
-											});
-										}}
-										label={__('Open on click')}
-									/>
-
-									<ToggleControl
-										checked={showSubmenuIcon}
-										onChange={(value) => {
-											setAttributes({
-												showSubmenuIcon: value,
-											});
-										}}
-										disabled={
-											attributes.openSubmenusOnClick
-										}
-										label={__('Show arrow')}
-									/>
-								</>
-							)}
-						</PanelBody>
-					)}
-					<PanelBody title={__('Mega Menu Settings')}>
-
-					</PanelBody>
-					{hasColorSettings && (
-						<PanelColorSettings
-							__experimentalHasMultipleOrigins
-							__experimentalIsRenderedInSidebar
-							title={__('Color')}
-							initialOpen={false}
-							colorSettings={[
+					<PanelBody title={__('Menu Colors')}>
+						<TabPanel
+							className="premium-color-tabpanel"
+							activeClass="active-tab"
+							tabs={[
 								{
-									value: textColor.color,
-									onChange: setTextColor,
-									label: __('Text'),
+									name: "normal",
+									title: "Normal",
+									className: "premium-tab",
 								},
 								{
-									value: backgroundColor.color,
-									onChange: setBackgroundColor,
-									label: __('Background'),
-								}
+									name: "hover",
+									title: "Hover",
+									className: "premium-tab",
+								},
 							]}
 						>
-							{enableContrastChecking && (
-								<>
-									<ContrastChecker
-										backgroundColor={
-											detectedBackgroundColor
+							{(tab) => {
+								if ("normal" === tab.name) {
+									return (
+										<Fragment>
+											<AdvancedPopColorControl
+												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+												colorValue={menuColors.link}
+												onColorChange={newValue => setMenuColor('link', newValue)}
+												colorDefault={''}
+											/>
+											<AdvancedPopColorControl
+												label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+												colorValue={menuColors.background}
+												onColorChange={newValue => setMenuColor('background', newValue)}
+												colorDefault={''}
+											/>
+										</Fragment>
+									);
+								}
+								if ("hover" === tab.name) {
+									return (
+										<Fragment>
+											<AdvancedPopColorControl
+												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+												colorValue={menuColors.linkHover}
+												onColorChange={newValue => setMenuColor('linkHover', newValue)}
+												colorDefault={''}
+											/>
+										</Fragment>
+									);
+								}
+							}}
+						</TabPanel>
+					</PanelBody>
+					<PanelBody
+						title={__('Spacing', 'premium-blocks-for-gutenberg')}
+						initialOpen={false}
+					>
+						<PremiumResponsiveMargin
+							directions={["all"]}
+							marginTop={margin.desktop.top}
+							marginRight={margin.desktop.right}
+							marginBottom={margin.desktop.bottom}
+							marginLeft={margin.desktop.left}
+							marginTopTablet={margin.tablet.top}
+							marginRightTablet={margin.tablet.right}
+							marginBottomTablet={margin.tablet.bottom}
+							marginLeftTablet={margin.tablet.left}
+							marginTopMobile={margin.mobile.top}
+							marginRightMobile={margin.mobile.right}
+							marginBottomMobile={margin.mobile.bottom}
+							marginLeftMobile={margin.mobile.left}
+							onChangeMarginTop={
+								(device, newValue) => {
+									onChangeMargin('top', newValue, device);
+								}
+							}
+							onChangeMarginRight={
+								(device, newValue) => {
+									onChangeMargin('right', newValue, device);
+								}
+							}
+							onChangeMarginBottom={
+								(device, newValue) => {
+									onChangeMargin('bottom', newValue, device);
+								}
+							}
+							onChangeMarginLeft={
+								(device, newValue) => {
+									onChangeMargin('left', newValue, device);
+								}
+							}
+						/>
+						<PremiumResponsivePadding
+							directions={["all"]}
+							marginTop={padding.desktop.top}
+							paddingRight={padding.desktop.right}
+							paddingBottom={padding.desktop.bottom}
+							paddingLeft={padding.desktop.left}
+							paddingTopTablet={padding.tablet.top}
+							paddingRightTablet={padding.tablet.right}
+							paddingBottomTablet={padding.tablet.bottom}
+							paddingLeftTablet={padding.tablet.left}
+							paddingTopMobile={padding.mobile.top}
+							paddingRightMobile={padding.mobile.right}
+							paddingBottomMobile={padding.mobile.bottom}
+							paddingLeftMobile={padding.mobile.left}
+							onChangePaddingTop={
+								(device, newValue) => {
+									onChangePadding('top', newValue, device);
+								}
+							}
+							onChangePaddingRight={
+								(device, newValue) => {
+									onChangePadding('right', newValue, device);
+								}
+							}
+							onChangePaddingBottom={
+								(device, newValue) => {
+									onChangePadding('bottom', newValue, device);
+								}
+							}
+							onChangePaddingLeft={
+								(device, newValue) => {
+									onChangePadding('left', newValue, device);
+								}
+							}
+						/>
+					</PanelBody>
+					<PanelBody
+						title={__("Typography", 'premium-blocks-for-gutenberg')}
+						className="premium-panel-body"
+						initialOpen={false}
+					>
+						<PremiumTypo
+							components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+							setAttributes={value => onChangeFontSize(value.SizeUnit, 'unit')}
+							fontSizeType={{
+								value: fontSize.unit,
+								label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
+							}}
+							fontSize={fontSize.desktop}
+							fontSizeMobile={fontSize.mobile}
+							fontSizeTablet={fontSize.tablet}
+							onChangeSize={newSize => onChangeFontSize(newSize, 'desktop')}
+							onChangeTabletSize={newSize => onChangeFontSize(newSize, 'tablet')}
+							onChangeMobileSize={newSize => onChangeFontSize(newSize, 'mobile')}
+							fontFamily={typography.family}
+							weight={typography.weight}
+							onChangeWeight={newWeight =>
+								onChangeFont(newWeight, 'weight')
+							}
+							onChangeFamily={(fontFamily) => onChangeFont(fontFamily, 'family')}
+							line={typography.lineHeight}
+							onChangeLine={(lineHeight) => onChangeFont(lineHeight, 'lineHeight')}
+							style={typography.style}
+							onChangeStyle={(newStyle) => onChangeFont(newStyle, 'style')}
+							spacing={typography.letterSpacing}
+							onChangeSpacing={(letterSpacing) => onChangeFont(letterSpacing, 'letterSpacing')}
+							textTransform={typography.textTransform}
+							onChangeTextTransform={(textTransform) => onChangeFont(textTransform, 'textTransform')}
+							textDecoration={typography.textDecoration}
+							onChangeTextDecoration={(textDecoration) => onChangeFont(textDecoration, 'textDecoration')}
+						/>
+					</PanelBody>
+					{hasSubmenus && hasSubmenuIndicatorSetting && (
+						<>
+							<PanelBody title={__('Submenu Colors')}>
+								<TabPanel
+									className="premium-color-tabpanel"
+									activeClass="active-tab"
+									tabs={[
+										{
+											name: "normal",
+											title: "Normal",
+											className: "premium-tab",
+										},
+										{
+											name: "hover",
+											title: "Hover",
+											className: "premium-tab",
+										},
+									]}
+								>
+									{(tab) => {
+										if ("normal" === tab.name) {
+											return (
+												<Fragment>
+													<AdvancedPopColorControl
+														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={submenuColors.link}
+														onColorChange={newValue => setSubmenuColor('link', newValue)}
+														colorDefault={''}
+													/>
+													<AdvancedPopColorControl
+														label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={submenuColors.background}
+														onColorChange={newValue => setSubmenuColor('background', newValue)}
+														colorDefault={''}
+													/>
+												</Fragment>
+											);
 										}
-										textColor={detectedColor}
-									/>
-								</>
-							)}
-						</PanelColorSettings>
+										if ("hover" === tab.name) {
+											return (
+												<Fragment>
+													<AdvancedPopColorControl
+														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={submenuColors.linkHover}
+														onColorChange={newValue => setSubmenuColor('linkHover', newValue)}
+														colorDefault={''}
+													/>
+												</Fragment>
+											);
+										}
+									}}
+								</TabPanel>
+							</PanelBody>
+							<PanelBody title={__('Display')}>
+								{(
+									<>
+										<h3>{__('Submenus')}</h3>
+										<ToggleControl
+											checked={openSubmenusOnClick}
+											onChange={(value) => {
+												setAttributes({
+													openSubmenusOnClick: value,
+													...(value && {
+														showSubmenuIcon: true,
+													}), // Make sure arrows are shown when we toggle this on.
+												});
+											}}
+											label={__('Open on click')}
+										/>
+
+										<ToggleControl
+											checked={showSubmenuIcon}
+											onChange={(value) => {
+												setAttributes({
+													showSubmenuIcon: value,
+												});
+											}}
+											disabled={
+												attributes.openSubmenusOnClick
+											}
+											label={__('Show arrow')}
+										/>
+									</>
+								)}
+							</PanelBody>
+						</>
 					)}
 				</InspectorControls>
 				{isEntityAvailable && (
@@ -669,12 +825,23 @@ function Navigation({
 
 				{isLoading && (
 					<TagName {...blockProps}>
-						<Spinner className="wp-block-navigation__loading-indicator" />
+						<Spinner className="premium-navigation__loading-indicator" />
 					</TagName>
 				)}
 
 				{!isLoading && (
 					<TagName {...blockProps}>
+						<style
+							dangerouslySetInnerHTML={{
+								__html: [
+									`#${blockProps.id} a{`,
+									`color: ${menuColors?.link};`,
+									`#${blockProps.id} a:hover {`,
+									`color: ${menuColors.linkHover};`,
+									"}"
+								].join("\n")
+							}}
+						/>
 						{isEntityAvailable && (
 							<NavigationInnerBlocks
 								clientId={clientId}
