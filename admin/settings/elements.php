@@ -321,7 +321,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 											<span class="slider round"></span>
 										</label>
 									</td>
-                                    <th><?php echo __( 'Premium Person', 'premium-gutenberg' ); ?></th>
+                                    <th><?php echo __( 'Premium Team Members', 'premium-gutenberg' ); ?></th>
 									<td>
 										<label class="switch">
 											<input type="checkbox" id="person" name="person" <?php checked( 1, $this->pbg_get_settings['person'], true ); ?>>
