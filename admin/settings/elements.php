@@ -17,7 +17,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'image-separator', 'modal', 'bulletList' , 'person' );
+		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'image-separator', 'modal', 'bulletList', 'person' );
 
 		private $pbg_default;
 
@@ -296,7 +296,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 								</tr>
 
 								
-                                <th><?php echo __( 'Premium Image Separator', 'premium-gutenberg' ); ?></th>
+								<th><?php echo __( 'Premium Image Separator', 'premium-gutenberg' ); ?></th>
 									<td>
 										<label class="switch">
 											<input type="checkbox" id="image-separator" name="image-separator" <?php checked( 1, $this->pbg_get_settings['image-separator'], true ); ?>>
@@ -314,14 +314,14 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 								</tr>
 
 								<tr>
-								    <th><?php echo __( 'Premium Bullet List', 'premium-gutenberg' ); ?></th>
+									<th><?php echo __( 'Premium Bullet List', 'premium-gutenberg' ); ?></th>
 									<td>
 										<label class="switch">
 											<input type="checkbox" id="bulletList" name="bulletList" <?php checked( 1, $this->pbg_get_settings['bulletList'], true ); ?>>
 											<span class="slider round"></span>
 										</label>
 									</td>
-                                    <th><?php echo __( 'Premium Team Members', 'premium-gutenberg' ); ?></th>
+									<th><?php echo __( 'Premium Team Members', 'premium-gutenberg' ); ?></th>
 									<td>
 										<label class="switch">
 											<input type="checkbox" id="person" name="person" <?php checked( 1, $this->pbg_get_settings['person'], true ); ?>>
@@ -395,7 +395,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 				'modal'           => intval( $settings['modal'] ? 1 : 0 ),
 				'bulletList'      => intval( $settings['bulletList'] ? 1 : 0 ),
 				'image-separator' => intval( $settings['image-separator'] ? 1 : 0 ),
-                'person'       => intval( $settings['person'] ? 1 : 0 ),
+				'person'          => intval( $settings['person'] ? 1 : 0 ),
 			);
 
 			update_option( 'pbg_settings', $this->pbg_settings );
