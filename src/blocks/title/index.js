@@ -279,30 +279,66 @@ const titleAttrs = {
         type: "string",
         default: "center"
     },
-    iconColor: {
+    iconStyles: {
+        type: "array",
+        default: [{
+            iconColor: "#6ec1e4",
+            containerBack: '',
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center',
+            iconSize: '20',
+            iconSizeTablet: '20',
+            iconSizeMobile: '20',
+            iconSizeType: "px",
+            iconborderType: "none",
+            iconborderRadius: 0,
+            iconborderColor: '#6ec1e4',
+            iconPaddingType: 'px',
+            iconMarginType: 'px',
+            iconshadowColor: '',
+            iconshadowBlur: '0',
+            iconshadowHorizontal: '0',
+            iconshadowVertical: '0',
+        }]
+    },
+    backgroundType: {
         type: "string",
-        default: "#6ec1e4"
+        default: ""
     },
-    iconSize: {
-        type: "number",
-        default: 40
-    },
-    iconSizeType: {
-        type: "string",
-        default: "px"
-    },
-    iconSizeMobile: {
-        type: "number",
-        default: 30
-    },
-    iconSizeTablet: {
-        type: "number",
-        default: 30
-    },
-    iconborderType: {
-        type: "string",
-        default: "none"
-    },
+    // iconColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
+    // iconSize: {
+    //     type: "number",
+    //     default: 40
+    // },
+    // iconSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // iconSizeMobile: {
+    //     type: "number",
+    //     default: 30
+    // },
+    // iconSizeTablet: {
+    //     type: "number",
+    //     default: 30
+    // },
+    // iconborderType: {
+    //     type: "string",
+    //     default: "none"
+    // },
     iconBorderTop: {
         type: "number",
         default: "1"
@@ -319,28 +355,36 @@ const titleAttrs = {
         type: "number",
         default: "1"
     },
-    iconborderRadius: {
+    iconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    iconBorderWidth: {
         type: "number",
-        default: 0
+        default: "1"
     },
-    iconborderColor: {
-        type: "string"
-    },
-    iconshadowColor: {
-        type: "string"
-    },
-    iconshadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    iconshadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    iconshadowVertical: {
-        type: "number",
-        default: "0"
-    },
+    // iconborderRadius: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // iconborderColor: {
+    //     type: "string"
+    // },
+    // iconshadowColor: {
+    //     type: "string"
+    // },
+    // iconshadowBlur: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // iconshadowHorizontal: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // iconshadowVertical: {
+    //     type: "number",
+    //     default: "0"
+    // },
     titleMarginT: {
         type: "number",
         default: "0"
@@ -500,62 +544,62 @@ const titleAttrs = {
         default: "0"
     },
 
-    iconPaddingType: {
-        type: "string",
-        default: "px"
-    },
-    iconSpacingT: {
+    // iconPaddingType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    iconMarginT: {
         type: "number",
         default: "10"
     },
-    iconSpacingR: {
+    iconMarginR: {
         type: "number",
         default: "10"
     },
-    iconSpacingB: {
+    iconMarginB: {
         type: "number",
         default: "10"
     },
-    iconSpacingL: {
+    iconMarginL: {
         type: "number",
         default: "10"
     },
-    iconSpacingTTablet: {
+    iconMarginTTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingRTablet: {
+    iconMarginRTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingBTablet: {
+    iconMarginBTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingLTablet: {
+    iconMarginLTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingTMobile: {
+    iconMarginTMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingRMobile: {
+    iconMarginRMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingBMobile: {
+    iconMarginBMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingLMobile: {
+    iconMarginLMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingType: {
-        type: "string",
-        default: "px"
-    },
+    // iconMarginType: {
+    //     type: "string",
+    //     default: "px"
+    // },
     hideDesktop: {
         type: 'boolean',
         default: false
