@@ -63322,30 +63322,66 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "center"
     },
-    iconColor: {
+    iconStyles: {
+        type: "array",
+        default: [{
+            iconColor: "#6ec1e4",
+            containerBack: '',
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center',
+            iconSize: '20',
+            iconSizeTablet: '20',
+            iconSizeMobile: '20',
+            iconSizeType: "px",
+            iconborderType: "none",
+            iconborderRadius: 0,
+            iconborderColor: '#6ec1e4',
+            iconPaddingType: 'px',
+            iconMarginType: 'px',
+            iconshadowColor: '',
+            iconshadowBlur: '0',
+            iconshadowHorizontal: '0',
+            iconshadowVertical: '0'
+        }]
+    },
+    backgroundType: {
         type: "string",
-        default: "#6ec1e4"
+        default: ""
     },
-    iconSize: {
-        type: "number",
-        default: 40
-    },
-    iconSizeType: {
-        type: "string",
-        default: "px"
-    },
-    iconSizeMobile: {
-        type: "number",
-        default: 30
-    },
-    iconSizeTablet: {
-        type: "number",
-        default: 30
-    },
-    iconborderType: {
-        type: "string",
-        default: "none"
-    },
+    // iconColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
+    // iconSize: {
+    //     type: "number",
+    //     default: 40
+    // },
+    // iconSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // iconSizeMobile: {
+    //     type: "number",
+    //     default: 30
+    // },
+    // iconSizeTablet: {
+    //     type: "number",
+    //     default: 30
+    // },
+    // iconborderType: {
+    //     type: "string",
+    //     default: "none"
+    // },
     iconBorderTop: {
         type: "number",
         default: "1"
@@ -63362,28 +63398,36 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "1"
     },
-    iconborderRadius: {
+    iconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    iconBorderWidth: {
         type: "number",
-        default: 0
+        default: "1"
     },
-    iconborderColor: {
-        type: "string"
-    },
-    iconshadowColor: {
-        type: "string"
-    },
-    iconshadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    iconshadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    iconshadowVertical: {
-        type: "number",
-        default: "0"
-    },
+    // iconborderRadius: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // iconborderColor: {
+    //     type: "string"
+    // },
+    // iconshadowColor: {
+    //     type: "string"
+    // },
+    // iconshadowBlur: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // iconshadowHorizontal: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // iconshadowVertical: {
+    //     type: "number",
+    //     default: "0"
+    // },
     titleMarginT: {
         type: "number",
         default: "0"
@@ -63543,62 +63587,62 @@ var titleAttrs = (_titleAttrs = {
         default: "0"
     },
 
-    iconPaddingType: {
-        type: "string",
-        default: "px"
-    },
-    iconSpacingT: {
+    // iconPaddingType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    iconMarginT: {
         type: "number",
         default: "10"
     },
-    iconSpacingR: {
+    iconMarginR: {
         type: "number",
         default: "10"
     },
-    iconSpacingB: {
+    iconMarginB: {
         type: "number",
         default: "10"
     },
-    iconSpacingL: {
+    iconMarginL: {
         type: "number",
         default: "10"
     },
-    iconSpacingTTablet: {
+    iconMarginTTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingRTablet: {
+    iconMarginRTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingBTablet: {
+    iconMarginBTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingLTablet: {
+    iconMarginLTablet: {
         type: "number",
         default: "10"
     },
-    iconSpacingTMobile: {
+    iconMarginTMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingRMobile: {
+    iconMarginRMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingBMobile: {
+    iconMarginBMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingLMobile: {
+    iconMarginLMobile: {
         type: "number",
         default: "10"
     },
-    iconSpacingType: {
-        type: "string",
-        default: "px"
-    },
+    // iconMarginType: {
+    //     type: "string",
+    //     default: "px"
+    // },
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -63874,6 +63918,10 @@ var _responsiveRangeControl = __webpack_require__(27);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
+var _PremiumBackgroundControl = __webpack_require__(28);
+
+var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
+
 var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
@@ -64066,6 +64114,10 @@ var edit = function (_Component) {
                 titleBorderLeft = attributes.titleBorderLeft,
                 titleBorderUpdated = attributes.titleBorderUpdated,
                 titleBorderWidth = attributes.titleBorderWidth,
+                iconStyles = attributes.iconStyles,
+                backgroundType = attributes.backgroundType,
+                iconBorderWidth = attributes.iconBorderWidth,
+                iconBorderUpdated = attributes.iconBorderUpdated,
                 titleColor = attributes.titleColor,
                 titleWeight = attributes.titleWeight,
                 titleLetter = attributes.titleLetter,
@@ -64146,19 +64198,19 @@ var edit = function (_Component) {
                 iconPaddingLMobile = attributes.iconPaddingLMobile,
                 iconPaddingBMobile = attributes.iconPaddingBMobile,
                 iconPaddingType = attributes.iconPaddingType,
-                iconSpacingT = attributes.iconSpacingT,
-                iconSpacingR = attributes.iconSpacingR,
-                iconSpacingB = attributes.iconSpacingB,
-                iconSpacingL = attributes.iconSpacingL,
-                iconSpacingTTablet = attributes.iconSpacingTTablet,
-                iconSpacingRTablet = attributes.iconSpacingRTablet,
-                iconSpacingBTablet = attributes.iconSpacingBTablet,
-                iconSpacingLTablet = attributes.iconSpacingLTablet,
-                iconSpacingTMobile = attributes.iconSpacingTMobile,
-                iconSpacingRMobile = attributes.iconSpacingRMobile,
-                iconSpacingBMobile = attributes.iconSpacingBMobile,
-                iconSpacingLMobile = attributes.iconSpacingLMobile,
-                iconSpacingType = attributes.iconSpacingType,
+                iconMarginT = attributes.iconMarginT,
+                iconMarginR = attributes.iconMarginR,
+                iconMarginB = attributes.iconMarginB,
+                iconMarginL = attributes.iconMarginL,
+                iconMarginTTablet = attributes.iconMarginTTablet,
+                iconMarginRTablet = attributes.iconMarginRTablet,
+                iconMarginBTablet = attributes.iconMarginBTablet,
+                iconMarginLTablet = attributes.iconMarginLTablet,
+                iconMarginTMobile = attributes.iconMarginTMobile,
+                iconMarginRMobile = attributes.iconMarginRMobile,
+                iconMarginBMobile = attributes.iconMarginBMobile,
+                iconMarginLMobile = attributes.iconMarginLMobile,
+                iconMarginType = attributes.iconMarginType,
                 backgroundText = attributes.backgroundText,
                 BackText = attributes.BackText,
                 textWidth = attributes.textWidth,
@@ -64301,12 +64353,6 @@ var edit = function (_Component) {
                 label: 'Luminosity', value: 'luminosity'
             }];
 
-            var renderCss = React.createElement(
-                "style",
-                null,
-                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                "
-            );
-
             var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titlefontSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
             var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titleMarginT, titleMarginTTablet, titleMarginTMobile);
             var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titleMarginR, titleMarginRTablet, titleMarginRMobile);
@@ -64316,6 +64362,37 @@ var edit = function (_Component) {
             var TitlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
             var TitlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
             var TitlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePaddingL, titlePaddingLTablet, titlePaddingLMobile);
+            var IconSize = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconSize, iconStyles[0].iconSizeTablet, iconStyles[0].iconSizeMobile);
+            var IconMarginTop = this.getPreviewSize(this.props.deviceType, iconMarginT, iconMarginTTablet, iconMarginTMobile);
+            var IconMarginRight = this.getPreviewSize(this.props.deviceType, iconMarginR, iconMarginRTablet, iconMarginRMobile);
+            var IconMarginBottom = this.getPreviewSize(this.props.deviceType, iconMarginB, iconMarginBTablet, iconMarginBMobile);
+            var IconMarginLeft = this.getPreviewSize(this.props.deviceType, iconMarginL, iconMarginLTablet, iconMarginLMobile);
+            var IconPaddingTop = this.getPreviewSize(this.props.deviceType, iconPaddingT, iconPaddingTTablet, iconPaddingTMobile);
+            var IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPaddingR, iconPaddingRTablet, iconPaddingRMobile);
+            var IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPaddingB, iconPaddingBTablet, iconPaddingBMobile);
+            var IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPaddingL, iconPaddingLTablet, iconPaddingLMobile);
+
+            var btnGrad = void 0,
+                btnGrad2 = void 0,
+                btnbg = void 0;
+
+            if (undefined !== backgroundType && 'gradient' === backgroundType) {
+                btnGrad = 'transparent' === iconStyles[0].containerBack || undefined === iconStyles[0].containerBack ? 'rgba(255,255,255,0)' : iconStyles[0].containerBack;
+                btnGrad2 = undefined !== iconStyles[0].gradientColorTwo && undefined !== iconStyles[0].gradientColorTwo && '' !== iconStyles[0].gradientColorTwo ? iconStyles[0].gradientColorTwo : '#777';
+                if ('radial' === iconStyles[0].gradientType) {
+                    btnbg = "radial-gradient(at " + iconStyles[0].gradientPosition + ", " + btnGrad + " " + iconStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + iconStyles[0].gradientLocationTwo + "%)";
+                } else if ('radial' !== iconStyles[0].gradientType) {
+                    btnbg = "linear-gradient(" + iconStyles[0].gradientAngle + "deg, " + btnGrad + " " + iconStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + iconStyles[0].gradientLocationTwo + "%)";
+                }
+            } else {
+                btnbg = iconStyles[0].backgroundImageURL ? "url('" + iconStyles[0].backgroundImageURL + "')" : '';
+            }
+
+            var renderCss = React.createElement(
+                "style",
+                null,
+                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-icon {\n                        color: " + iconStyles[0].iconColor + " !important;\n                        background-color: " + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + " !important;\n                        background-image: " + btnbg + " !important;\n                        background-repeat: " + iconStyles[0].backgroundRepeat + " !important;\n                        background-position: " + iconStyles[0].backgroundPosition + " !important;\n                        background-size: " + iconStyles[0].backgroundSize + " !important;\n                        background-attachment: " + (iconStyles[0].fixed ? "fixed" : "unset") + " !important;\n                        font-size: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        border-style: " + iconStyles[0].iconborderType + " !important;\n                        border-width: " + (iconBorderUpdated ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : iconBorderWidth + "px") + " !important;\n                        border-radius: " + (iconStyles[0].iconborderRadius || 0) + "px !important;\n                        border-color: " + iconStyles[0].iconborderColor + " !important;\n                        padding-top: " + IconPaddingTop + iconStyles[0].iconPaddingType + " !important;\n                        padding-right: " + IconPaddingRight + iconStyles[0].iconPaddingType + " !important;\n                        padding-bottom: " + IconPaddingBottom + iconStyles[0].iconPaddingType + " !important;\n                        padding-left: " + IconPaddingLeft + iconStyles[0].iconPaddingType + " !important;\n                        margin-top: " + IconMarginTop + iconStyles[0].iconMarginType + " !important;\n                        margin-right: " + IconMarginRight + iconStyles[0].iconMarginType + " !important;\n                        margin-bottom: " + IconMarginBottom + iconStyles[0].iconMarginType + " !important;\n                        margin-left: " + IconMarginLeft + iconStyles[0].iconMarginType + " !important;\n                        text-shadow: " + iconStyles[0].iconshadowHorizontal + "px " + iconStyles[0].iconshadowVertical + "px " + iconStyles[0].iconshadowBlur + "px " + iconStyles[0].iconshadowColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-lottie-animation svg {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header img {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                "
+            );
 
             var saveTitleStyles = function saveTitleStyles(value) {
                 var newUpdate = titleStyles.map(function (item, index) {
@@ -64326,6 +64403,18 @@ var edit = function (_Component) {
                 });
                 setAttributes({
                     titleStyles: newUpdate
+                });
+            };
+
+            var saveIconStyles = function saveIconStyles(value) {
+                var newUpdate = iconStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    iconStyles: newUpdate
                 });
             };
 
@@ -64881,7 +64970,7 @@ var edit = function (_Component) {
                         horizontal: titleStyles[0].titleshadowHorizontal,
                         vertical: titleStyles[0].titleshadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyles({ titleshadowColor: newColor.hex });
+                            return saveTitleStyles({ titleshadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
                             return saveTitleStyles({ titleshadowBlur: newBlur });
@@ -65047,48 +65136,81 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    iconType === 'icon' && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            __("Color")
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: iconColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    iconColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Background Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: iconBGColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                iconBGColor: newValue
+                    iconType === 'icon' && React.createElement(_ColorComponent2.default, {
+                        label: __("Color", 'premium-block-for-gutenberg'),
+                        colorValue: iconStyles[0].iconColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveIconStyles({
+                                iconColor: newValue
                             });
+                        }
+                    })
+                    // <Fragment>
+                    //     <p>{__("Color")}</p>
+                    //     <ColorPalette
+                    //         value={iconColor}
+                    //         onChange={newValue =>
+                    //             setAttributes({
+                    //                 iconColor: newValue
+                    //             })
+                    //         }
+                    //         allowReset={true}
+                    //     />
+                    // </Fragment>
+                    ,
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Size", 'premium-block-for-gutenberg'),
+                        value: iconStyles[0].iconSize,
+                        tabletValue: iconStyles[0].iconSizeTablet,
+                        mobileValue: iconStyles[0].iconSizeMobile,
+                        onChange: function onChange(value) {
+                            return saveIconStyles({ iconSize: value });
                         },
-                        allowReset: true
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveIconStyles({ iconSizeTablet: value });
+                        },
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveIconStyles({ iconSizeMobile: value });
+                        },
+                        onChangeUnit: function onChangeUnit(key) {
+                            return saveIconStyles({ iconSizeType: key });
+                        },
+                        unit: iconStyles[0].iconSizeType,
+                        showUnit: true,
+                        defaultValue: 20,
+                        min: 1,
+                        max: 100
+                    }),
+                    React.createElement(_PremiumBackgroundControl2.default, {
+                        setAttributes: setAttributes,
+                        saveContainerStyle: saveIconStyles,
+                        backgroundType: backgroundType,
+                        backgroundColor: iconStyles[0].containerBack,
+                        backgroundImageID: iconStyles[0].backgroundImageID,
+                        backgroundImageURL: iconStyles[0].backgroundImageURL,
+                        backgroundPosition: iconStyles[0].backgroundPosition,
+                        backgroundRepeat: iconStyles[0].backgroundRepeat,
+                        backgroundSize: iconStyles[0].backgroundSize,
+                        fixed: iconStyles[0].fixed,
+                        gradientLocationOne: iconStyles[0].gradientLocationOne,
+                        gradientColorTwo: iconStyles[0].gradientColorTwo,
+                        gradientLocationTwo: iconStyles[0].gradientLocationTwo,
+                        gradientAngle: iconStyles[0].gradientAngle,
+                        gradientPosition: iconStyles[0].gradientPosition,
+                        gradientType: iconStyles[0].gradientType
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: iconborderType,
+                        borderType: iconStyles[0].iconborderType,
+                        borderWidth: iconBorderWidth,
                         top: iconBorderTop,
                         right: iconBorderRight,
                         bottom: iconBorderBottom,
                         left: iconBorderLeft,
-                        borderColor: iconborderColor,
-                        borderRadius: iconborderRadius,
+                        borderColor: iconStyles[0].iconborderColor,
+                        borderRadius: iconStyles[0].iconborderRadius,
                         onChangeType: function onChangeType(newType) {
-                            return setAttributes({ iconborderType: newType });
+                            return saveIconStyles({ iconborderType: newType });
                         },
                         onChangeWidth: function onChangeWidth(_ref2) {
                             var top = _ref2.top,
@@ -65096,6 +65218,7 @@ var edit = function (_Component) {
                                 bottom = _ref2.bottom,
                                 left = _ref2.left;
                             return setAttributes({
+                                iconBorderUpdated: true,
                                 iconBorderTop: top,
                                 iconBorderRight: right,
                                 iconBorderBottom: bottom,
@@ -65103,11 +65226,68 @@ var edit = function (_Component) {
                             });
                         },
                         onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ iconborderColor: colorValue.hex });
+                            return saveIconStyles({ iconborderColor: colorValue });
                         },
                         onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ iconborderRadius: newrRadius });
+                            return saveIconStyles({ iconborderRadius: newrRadius });
                         }
+                    }),
+                    React.createElement(_PremiumResponsiveMargin2.default, {
+                        directions: ["all"],
+                        marginTop: iconMarginT,
+                        marginRight: iconMarginR,
+                        marginBottom: iconMarginB,
+                        marginLeft: iconMarginL,
+                        marginTopTablet: iconMarginTTablet,
+                        marginRightTablet: iconMarginRTablet,
+                        marginBottomTablet: iconMarginBTablet,
+                        marginLeftTablet: iconMarginLTablet,
+                        marginTopMobile: iconMarginTMobile,
+                        marginRightMobile: iconMarginRMobile,
+                        marginBottomMobile: iconMarginBMobile,
+                        marginLeftMobile: iconMarginLMobile,
+                        showUnits: true,
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                            return saveIconStyles({ iconMarginType: newvalue });
+                        },
+                        selectedUnit: iconStyles[0].iconMarginType,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ iconMarginTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconMarginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconMarginRTablet: newValue });
+                            } else {
+                                setAttributes({ iconMarginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ iconMarginBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ iconMarginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ iconMarginLTablet: newValue });
+                            } else {
+                                setAttributes({ iconMarginLMobile: newValue });
+                            }
+                        }
+
                     }),
                     React.createElement(_PremiumResponsivePadding2.default, {
                         paddingTop: iconPaddingT,
@@ -65123,9 +65303,9 @@ var edit = function (_Component) {
                         paddingBottomMobile: iconPaddingBMobile,
                         paddingLeftMobile: iconPaddingLMobile,
                         showUnits: true,
-                        selectedUnit: iconPaddingType,
+                        selectedUnit: iconStyles[0].iconPaddingType,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return setAttributes({ iconPaddingType: newvalue });
+                            return saveIconStyles({ iconPaddingType: newvalue });
                         },
                         onChangePaddingTop: function onChangePaddingTop(device, newValue) {
                             if (device === "desktop") {
@@ -65164,62 +65344,24 @@ var edit = function (_Component) {
                             }
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        showUnits: true,
-                        selectedUnit: iconSpacingType,
-                        marginTop: iconSpacingT,
-                        marginRight: iconSpacingR,
-                        marginBottom: iconSpacingB,
-                        marginLeft: iconSpacingL,
-                        marginTopTablet: iconSpacingTTablet,
-                        marginRightTablet: iconSpacingRTablet,
-                        marginBottomTablet: iconSpacingBTablet,
-                        marginLeftTablet: iconSpacingLTablet,
-                        marginTopMobile: iconSpacingTMobile,
-                        marginRightMobile: iconSpacingRMobile,
-                        marginBottomMobile: iconSpacingBMobile,
-                        marginLeftMobile: iconSpacingLMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingTTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingTMobile: newValue });
-                            }
+                    iconType === 'icon' && React.createElement(_PremiumShadow2.default, {
+                        label: __("Icon Shadow", 'premium-blocks-for-gutenberg'),
+                        color: iconStyles[0].iconshadowColor,
+                        blur: iconStyles[0].iconshadowBlur,
+                        horizontal: iconStyles[0].iconshadowHorizontal,
+                        vertical: iconStyles[0].iconshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveIconStyles({ iconshadowColor: newColor });
                         },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingRTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingRMobile: newValue });
-                            }
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveIconStyles({ iconshadowBlur: newBlur });
                         },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingBTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingBMobile: newValue });
-                            }
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveIconStyles({ iconshadowHorizontal: newValue });
                         },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconSpacingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconSpacingLTablet: newValue });
-                            } else {
-                                setAttributes({ iconSpacingLMobile: newValue });
-                            }
-                        },
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return setAttributes({ iconSpacingType: newvalue });
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveIconStyles({ iconshadowVertical: newValue });
                         }
-
                     })
                 ),
                 backgroundText && React.createElement(
