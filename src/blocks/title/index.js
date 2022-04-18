@@ -279,6 +279,26 @@ const titleAttrs = {
         type: "string",
         default: "center"
     },
+    textStyles: {
+        type: "array",
+        default: [{
+            textBackColor: "#6ec1e4",
+            textBackfontSizeType: 'px',
+            textBackLetter: 0,
+            textBackLine: 0,
+            textBackStyle: 'normal',
+            textBackUpper: false,
+            textBackWeight: 600,
+            textBackfontSize: '',
+            textBackfontSizeMobile: '',
+            textBackfontSizeTablet: '',
+            textBackFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            textBackshadowColor: '',
+            textBackshadowBlur: '0',
+            textBackshadowHorizontal: '0',
+            textBackshadowVertical: '0',
+        }]
+    },
     iconStyles: {
         type: "array",
         default: [{
@@ -633,42 +653,42 @@ const titleAttrs = {
         type: 'boolean',
         default: false
     },
-    textBackColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    textBackfontSize: {
-        type: "number"
-    },
-    textBackfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    textBackWeight: {
-        type: "number"
-    },
-    textBackStyle: {
-        type: "string"
-    },
-    textBackUpper: {
-        type: "boolean",
-        default: false
-    },
-    textBackLetter: {
-        type: "number"
-    },
-    textBackshadowHorizontal: {
-        type: "number"
-    },
-    textBackshadowVertical: {
-        type: "number"
-    },
-    textBackshadowBlur: {
-        type: "number"
-    },
-    textBackshadowColor: {
-        type: "number"
-    },
+    // textBackColor: {
+    //     type: "string",
+    //     default: "#6ec1e4"
+    // },
+    // textBackfontSize: {
+    //     type: "number"
+    // },
+    // textBackfontSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // textBackWeight: {
+    //     type: "number"
+    // },
+    // textBackStyle: {
+    //     type: "string"
+    // },
+    // textBackUpper: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // textBackLetter: {
+    //     type: "number"
+    // },
+    // textBackshadowHorizontal: {
+    //     type: "number"
+    // },
+    // textBackshadowVertical: {
+    //     type: "number"
+    // },
+    // textBackshadowBlur: {
+    //     type: "number"
+    // },
+    // textBackshadowColor: {
+    //     type: "number"
+    // },
     blend: {
         type: "string"
     },
