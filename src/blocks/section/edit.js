@@ -92,7 +92,8 @@ const edit = props => {
         paddingRMobile,
         paddingLMobile,
         paddingBMobile,
-        shapeTop
+        shapeTop,
+        shapeBottom
     } = props.attributes;
 
     const WIDTH = [
@@ -105,6 +106,7 @@ const edit = props => {
             label: __("Full Width", 'premium-blocks-for-gutenberg')
         }
     ];
+
     const HEIGHT = [
         {
             value: "fit",
@@ -115,6 +117,7 @@ const edit = props => {
             label: __("Min Height", 'premium-blocks-for-gutenberg')
         }
     ];
+
     const VPOSITION = [
         {
             value: "top",
@@ -129,8 +132,6 @@ const edit = props => {
             label: __("Bottom", 'premium-blocks-for-gutenberg')
         }
     ];
-
-
 
     const mainClasses = classnames(className, "premium-container");
 
@@ -461,7 +462,7 @@ const edit = props => {
                                     <Shape shapeType="top" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
                                 </Tab>
                                 <Tab tabTitle={__('Bottom Shape')}>
-                                    <Shape shapeType="bottom" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
+                                    <Shape shapeType="bottom" value={shapeBottom} responsive onChange={val => setAttributes({ shapeBottom: val })} />
                                 </Tab>
                             </Tabs>
                         </PanelBody>

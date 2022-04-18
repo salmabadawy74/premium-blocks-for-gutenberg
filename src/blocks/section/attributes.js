@@ -184,6 +184,17 @@ const attributes = {
             height: { unit: 'px' },
         },
         style: [{ selector: '{{QUBELY}} .qubely-shape-divider.qubely-top-shape' }]
+    },
+    shapeBottom: {
+        type: 'object',
+        default: {
+            openShape: 0,
+            color: '#006fbf',
+            shapeType: 'bottom',
+            width: { unit: '%' },
+            height: { unit: 'px' },
+        },
+        style: [{ selector: '{{QUBELY}} .qubely-shape-divider.qubely-top-shape' }]
     }
 }
 export default attributes

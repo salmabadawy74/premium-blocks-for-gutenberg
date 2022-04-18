@@ -19,6 +19,10 @@ module.exports = {
                         "es2015", "react", "stage-0"
                     ]
                 }
+            },
+            {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             }
         ]
     },
