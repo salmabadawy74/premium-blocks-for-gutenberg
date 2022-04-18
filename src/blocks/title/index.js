@@ -153,7 +153,10 @@ const titleAttrs = {
             BGColor: '#54595f',
             lineColor: "#6ec1e4",
             triangleColor: "#6ec1e4",
-            stripeColor: "#6ec1e4"
+            stripeColor: "#6ec1e4",
+            blurShadow: '120',
+            animateDelay: '2',
+            animateduration: '1',
         }]
     },
     titleBorderTop: {
@@ -648,18 +651,18 @@ const titleAttrs = {
     //     type: "string",
     //     default: "#000"
     // },
-    blurShadow: {
-        type: "number",
-        default: "120"
-    },
-    animateDelay: {
-        type: "number",
-        default: "11"
-    },
-    animateduration: {
-        type: "number",
-        default: "1"
-    },
+    // blurShadow: {
+    //     type: "number",
+    //     default: "120"
+    // },
+    // animateDelay: {
+    //     type: "number",
+    //     default: "11"
+    // },
+    // animateduration: {
+    //     type: "number",
+    //     default: "1"
+    // },
 
 
 };

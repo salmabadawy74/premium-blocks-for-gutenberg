@@ -7,6 +7,8 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 // import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumShadow from "../../components/PremiumShadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
 import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
@@ -81,13 +83,13 @@ class edit extends Component {
     }
 
     handleStyle() {
-        const { animateDelay, animateduration } = this.props.attributes;
+        const { titleStyles } = this.props.attributes;
         let titleContainers = document.querySelectorAll(".premium-title-container");
         titleContainers.forEach(function (titleContainer) {
             if (titleContainer.classList.contains("style8")) {
                 let titleElement = titleContainer.querySelector(".premium-title-text-title"),
-                    holdTime = animateDelay * 1000,
-                    duration = animateduration * 1000;
+                    holdTime = titleStyles[0].animateDelay * 1000,
+                    duration = titleStyles[0].animateduration * 1000;
 
                 function shinyEffect() {
                     titleElement.setAttribute('data-animation', 'shiny');
@@ -105,7 +107,7 @@ class edit extends Component {
             if (titleContainer.classList.contains("style9")) {
                 let style9 = document.querySelectorAll('.premium-title-style9__wrap');
                 style9.forEach(function (style) {
-                    let holdTime = animateDelay * 1000;
+                    let holdTime = titleStyles[0].animateDelay * 1000;
                     style.setAttribute("data-animation-blur", "process");
                     style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
                         index += 1;
@@ -445,9 +447,11 @@ class edit extends Component {
                     #premium-title-${block_id} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {
                         --base-color: ${titleStyles[0].titleColor} !important;
                         --shiny-color: ${titleStyles[0].shinyColor} !important;
+                        --animation-speed: ${titleStyles[0].animateduration}s !important;
                     }
                     #premium-title-${block_id} .premium-title-header {
                         --shadow-color: ${titleStyles[0].blurColor} !important;
+                        --shadow-value: ${titleStyles[0].blurShadow}px !important;
                         color: ${titleStyles[0].titleColor} !important;
                     }
                     #premium-title-${block_id} .premium-title .style1 .premium-title-header {
@@ -892,35 +896,7 @@ class edit extends Component {
                             onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
                             onChangeFamily={(fontFamily) => saveTitleStyles({ titleFontFamily: fontFamily })}
                         />
-                        {style != 'style3' && style !== "style7" && style !== "style8" && style !== "style9" &&
-                            <PremiumBorder
-                                borderType={titleStyles[0].titleborderType}
-                                borderWidth={titleBorderWidth}
-                                top={titleBorderTop}
-                                right={titleBorderRight}
-                                bottom={titleBorderBottom}
-                                left={titleBorderLeft}
-                                borderColor={titleStyles[0].titleborderColor}
-                                borderRadius={titleStyles[0].titleborderRadius}
-                                onChangeType={newType => saveTitleStyles({ titleborderType: newType })}
-                                onChangeWidth={({ top, right, bottom, left }) =>
-                                    setAttributes({
-                                        titleBorderUpdated: true,
-                                        titleBorderTop: top,
-                                        titleBorderRight: right,
-                                        titleBorderBottom: bottom,
-                                        titleBorderLeft: left,
-                                    })
-                                }
-                                onChangeColor={colorValue =>
-                                    saveTitleStyles({ titleborderColor: colorValue })
-                                }
-                                onChangeRadius={newrRadius =>
-                                    saveTitleStyles({ titleborderRadius: newrRadius })
-                                }
-                            />
-                        }
-                        {style === 'style2' && style === 'style3' &&
+                        {style === 'style2' &&
                             <AdvancedPopColorControl
                                 label={__("Background Color", 'premium-block-for-gutenberg')}
                                 colorValue={titleStyles[0].BGColor}
@@ -932,7 +908,31 @@ class edit extends Component {
                                 }
                             />
                         }
-                        {style === 'style5' && style === 'style6' &&
+                        {style === 'style3' &&
+                            <AdvancedPopColorControl
+                                label={__("Background Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleStyles[0].BGColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTitleStyles({
+                                        BGColor: newValue
+                                    })
+                                }
+                            />
+                        }
+                        {style === 'style5' &&
+                            <AdvancedPopColorControl
+                                label={__("Line Color", 'premium-block-for-gutenberg')}
+                                colorValue={titleStyles[0].lineColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTitleStyles({
+                                        lineColor: newValue
+                                    })
+                                }
+                            />
+                        }
+                        {style === 'style6' &&
                             <AdvancedPopColorControl
                                 label={__("Line Color", 'premium-block-for-gutenberg')}
                                 colorValue={titleStyles[0].lineColor}
@@ -968,6 +968,34 @@ class edit extends Component {
                                 }
                             />
                         }
+                        {style != 'style3' && style !== "style7" && style !== "style8" && style !== "style9" &&
+                            <PremiumBorder
+                                borderType={titleStyles[0].titleborderType}
+                                borderWidth={titleBorderWidth}
+                                top={titleBorderTop}
+                                right={titleBorderRight}
+                                bottom={titleBorderBottom}
+                                left={titleBorderLeft}
+                                borderColor={titleStyles[0].titleborderColor}
+                                borderRadius={titleStyles[0].titleborderRadius}
+                                onChangeType={newType => saveTitleStyles({ titleborderType: newType })}
+                                onChangeWidth={({ top, right, bottom, left }) =>
+                                    setAttributes({
+                                        titleBorderUpdated: true,
+                                        titleBorderTop: top,
+                                        titleBorderRight: right,
+                                        titleBorderBottom: bottom,
+                                        titleBorderLeft: left,
+                                    })
+                                }
+                                onChangeColor={colorValue =>
+                                    saveTitleStyles({ titleborderColor: colorValue })
+                                }
+                                onChangeRadius={newrRadius =>
+                                    saveTitleStyles({ titleborderRadius: newrRadius })
+                                }
+                            />
+                        }
                         <PremiumShadow
                             label={__("Shadow", 'premium-blocks-for-gutenberg')}
                             color={titleStyles[0].titleshadowColor}
@@ -985,6 +1013,40 @@ class edit extends Component {
                                 saveTitleStyles({ titleshadowVertical: newValue })
                             }
                         />
+                        {style === "style9" &&
+                            <ResponsiveSingleRangeControl
+                                label={__("Blur Shadow Value (px)", 'premium-block-for-gutenberg')}
+                                value={titleStyles[0].blurShadow}
+                                onChange={(value) => saveTitleStyles({ blurShadow: value })}
+                                showUnit={false}
+                                defaultValue={120}
+                                min={10}
+                                max={500}
+                                step={10}
+                            />
+                        }
+                        {(style === "style8" || style === "style9") &&
+                            <ResponsiveSingleRangeControl
+                                label={__("Animation Delay", 'premium-block-for-gutenberg')}
+                                value={titleStyles[0].animateDelay}
+                                onChange={(value) => saveTitleStyles({ animateDelay: value })}
+                                showUnit={false}
+                                defaultValue={2}
+                                min={1}
+                                max={30}
+                                step={0.5}
+                            />
+                        }
+                        {style === "style8" &&
+                            <ResponsiveSingleRangeControl
+                                label={__("Animation Duration", 'premium-block-for-gutenberg')}
+                                value={titleStyles[0].animateduration}
+                                onChange={(value) => saveTitleStyles({ animateduration: value })}
+                                showUnit={false}
+                                defaultValue={1}
+                                step={0.5}
+                            />
+                        }
                         <PremiumResponsiveMargin
                             directions={["all"]}
                             marginTop={titleMarginT}
@@ -1109,314 +1171,7 @@ class edit extends Component {
                                 }
                             }
                         />
-                        {/* <PremiumTypo
-                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
-                            setAttributes={setAttributes}
-                            fontSizeType={{ value: titlefontSizeType, label: __("titlefontSizeType") }}
-                            fontSize={{ value: titlefontSize, label: __("titlefontSize") }}
-                            fontSizeMobile={{ value: titlefontSizeMobile, label: __("titlefontSizeMobile") }}
-                            fontSizeTablet={{ value: titlefontSizeTablet, label: __("titlefontSizeTablet") }}
-                            weight={titleWeight}
-                            style={titleStyle}
-                            spacing={titleLetter}
-                            upper={titleUpper}
-                            onChangeWeight={newWeight =>
-                                setAttributes({ titleWeight: newWeight || 600 })
-                            }
-                            onChangeStyle={newStyle =>
-                                setAttributes({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                setAttributes({ titleLetter: newValue })
-                            }
-                            onChangeUpper={check => setAttributes({ titleUpper: check })}
-                            onResetClick={() => onResetClickTitle([titleWeight, titlefontSizeType, titlefontSize, titlefontSizeMobile, titlefontSizeTablet,
-                                titleStyle, titleLetter, titleUpper], [
-                                600, "px", "30", "30", "30", "normal", "0", false
-                            ])}
-                        />
-                        {style === 'style2' && <Fragment>
-                            <p>{__("Background Color")}</p>
-                            <ColorPalette
-                                value={BGColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        BGColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
-                        }
-                        {style === 'style3' && <Fragment>
-                            <p>{__("Background Color")}</p>
-                            <ColorPalette
-                                value={BGColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        BGColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
-                        }
-                        {style === 'style5' && <Fragment>
-                            <p>{__("Line Color")}</p>
-                            <ColorPalette
-                                value={lineColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        lineColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
-                        }
-                        {style === 'style6' && <Fragment>
-                            <p>{__("Line Color")}</p>
-                            <ColorPalette
-                                value={lineColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        lineColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                            <p>{__("Triangle Color")}</p>
-                            <ColorPalette
-                                value={triangleColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        triangleColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
-                        }
-                        {style === 'style7' ? <Fragment>
-                            <p>{__("Stripe Color")}</p>
-                            <ColorPalette
-                                value={stripeColor}
-                                onChange={newValue =>
-                                    setAttributes({
-                                        stripeColor: newValue
-                                    })
-                                }
-                                allowReset={true}
-                            />
-                        </Fragment>
-                            : style != 'style3' && style !== "style8" && style !== "style9" &&
-                            <PremiumBorder
-                                borderType={titleborderType}
-                                top={titleBorderTop}
-                                right={titleBorderRight}
-                                bottom={titleBorderBottom}
-                                left={titleBorderLeft}
-                                borderColor={titleborderColor}
-                                borderRadius={titleborderRadius}
-                                onChangeType={(newType) =>
-                                    setAttributes({ titleborderType: newType })
-                                }
-                                onChangeWidth={({ top, right, bottom, left }) =>
-                                    setAttributes({
-                                        titleBorderTop: top,
-                                        titleBorderRight: right,
-                                        titleBorderBottom: bottom,
-                                        titleBorderLeft: left,
-                                    })
-                                }
-                                onChangeColor={(colorValue) =>
-                                    setAttributes({ titleborderColor: colorValue.hex })
-                                }
-                                onChangeRadius={(newrRadius) =>
-                                    setAttributes({ titleborderRadius: newrRadius })
-                                }
-                            />
-                        } */}
-                        {/* <PremiumTextShadow
-                            color={titleshadowColor}
-                            blur={titleshadowBlur}
-                            horizontal={titleshadowHorizontal}
-                            vertical={titleshadowVertical}
-                            onChangeColor={newColor =>
-                                setAttributes({ titleshadowColor: newColor.hex })
-                            }
-                            onChangeBlur={newBlur => setAttributes({ titleshadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                setAttributes({ titleshadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                setAttributes({ titleshadowVertical: newValue })
-                            }
-                            onResetClick={onResetClickTitleTextShadow}
-                        /> */}
-                        {/* {style === "style9" && <Fragment>
-                            <RangeControl
-                                label={__("Blur Shadow Value (px)")}
-                                min={10}
-                                max={500}
-                                step={10}
-                                value={blurShadow}
-                                initialPosition={120}
-                                onChange={(newValue) => setAttributes({ blurShadow: newValue })}
-                            />
-                        </Fragment>}
-                        {(style === "style8" || style === "style9") &&
-                            <RangeControl
-                                label={__("Animation Delay")}
-                                value={animateDelay}
-                                min={1}
-                                max={30}
-                                step={0.5}
-                                initialPosition={2}
-                                onChange={(newValue) => setAttributes({ animateDelay: newValue })}
-                            />}
-                        {style === "style8" && <RangeControl
-                            label={__("Animation Duration")}
-                            value={animateduration}
-                            step={0.5}
-                            initialPosition={1}
-                            onChange={(newValue) => setAttributes({ animateduration: newValue })}
-                        />}
-
-                        <PremiumResponsiveMargin
-                            directions={["all"]}
-                            showUnits={true}
-                            selectedUnit={titleMarginType}
-                            marginTop={titleMarginT}
-                            marginRight={titleMarginR}
-                            marginBottom={titleMarginB}
-                            marginLeft={titleMarginL}
-                            marginTopTablet={titleMarginTTablet}
-                            marginRightTablet={titleMarginRTablet}
-                            marginBottomTablet={titleMarginBTablet}
-                            marginLeftTablet={titleMarginLTablet}
-                            marginTopMobile={titleMarginTMobile}
-                            marginRightMobile={titleMarginRMobile}
-                            marginBottomMobile={titleMarginBMobile}
-                            marginLeftMobile={titleMarginLMobile}
-                            onChangeMarginTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginTTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginTMobile: newValue })
-                                    }
-
-                                }
-                            }
-                            onChangeMarginRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginRTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginRMobile: newValue })
-                                    }
-
-                                }
-                            }
-                            onChangeMarginBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginBTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginBMobile: newValue })
-                                    }
-
-                                }
-                            }
-                            onChangeMarginLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginLTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginLMobile: newValue })
-                                    }
-
-                                }
-                            }
-
-                            onChangeMarSizeUnit={(newvalue) => setAttributes({ titleMarginType: newvalue })}
-                        />
-                        <PremiumResponsivePadding
-                            paddingTop={titlePaddingT}
-                            paddingRight={titlePaddingR}
-                            paddingBottom={titlePaddingB}
-                            paddingLeft={titlePaddingL}
-                            paddingTopTablet={titlePaddingTTablet}
-                            paddingRightTablet={titlePaddingRTablet}
-                            paddingBottomTablet={titlePaddingBTablet}
-                            paddingLeftTablet={titlePaddingLTablet}
-                            paddingTopMobile={titlePaddingTMobile}
-                            paddingRightMobile={titlePaddingRMobile}
-                            paddingBottomMobile={titlePaddingBMobile}
-                            paddingLeftMobile={titlePaddingLMobile}
-
-                            showUnits={true}
-                            selectedUnit={titlePaddingType}
-                            onChangePadSizeUnit={newvalue =>
-                                setAttributes({ titlePaddingType: newvalue })
-                            }
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingTMobile: newValue })
-                                    }
-
-                                }
-
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
-                        {style !== "style9" && <ToggleControl
+                        {/* {style !== "style9" && <ToggleControl
                             label={__('Stroke')}
                             checked={stroke}
                             onChange={(newValue) => setAttributes({ stroke: newValue })}
@@ -1438,7 +1193,7 @@ class edit extends Component {
                                     step={1}
                                 />
                             </Fragment>
-                        } */}
+                        }  */}
                     </PanelBody>
                     {
                         iconValue && <PanelBody
@@ -1747,9 +1502,9 @@ class edit extends Component {
                 <div className={`premium-title  ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{
                     textAlign: align,
                 }} data-backgroundText={BackText}>
-                    <div className={`premium-title-container ${style} ${style}-${align}`} data-shiny-delay={animateDelay} data-shiny-dur={animateduration}>
+                    <div className={`premium-title-container ${style} ${style}-${align}`} data-shiny-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
 
-                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-shiny-delay={animateDelay} data-shiny-dur={animateduration}>
+                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-shiny-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
 
                             {style === 'style7' ? <Fragment>
                                 {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
@@ -1784,30 +1539,33 @@ class edit extends Component {
                                         <span className={`premium-title-style7-stripe-span`}></span>
                                     </span>
                                     }
-                                    <RichText
-                                        tagName={titleTag.toLowerCase()}
-                                        className={`premium-title-text-title`}
-                                        value={title}
-                                        style={{
-                                            color: titleStyles[0].titleColor,
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                            fontWeight: titleStyles[0].titleWeight,
-                                            letterSpacing: titleStyles[0].titleLetter + "px",
-                                            lineHeight: titleStyles[0].titleLine + "px",
-                                            fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                            fontFamily: titleStyles[0].titleFontFamily,
-                                            textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                            marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                            paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                            paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                            paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                            paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                        }}
-                                    />
+                                    <span>
+                                        <RichText
+                                            tagName={titleTag.toLowerCase()}
+                                            className={`premium-title-text-title`}
+                                            value={title}
+                                            style={{
+                                                color: titleStyles[0].titleColor,
+                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                fontFamily: titleStyles[0].titleFontFamily,
+                                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                                minHeight: '15px'
+                                            }}
+                                        />
+                                    </span>
                                 </div>
                             </Fragment>
                                 : style === "style9" ? <Fragment>
@@ -1835,50 +1593,53 @@ class edit extends Component {
                                     </span>
 
                                 </Fragment> : <Fragment>
-                                    {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
-                                    }
-                                    {
-                                        iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
-                                    }
-                                    {
-                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
-                                            options={{
-                                                loop: loop,
-                                                path: lottieURl,
-                                                rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid'
-                                                }
-                                            }}
-                                            direction={reverse}
-                                        />
-                                        </div>
-                                    }
-                                    <RichText
-                                        tagName={titleTag.toLowerCase()}
-                                        className={`premium-title-text-title`}
-                                        onChange={(newValue) => setAttributes({ title: newValue })}
-                                        value={title}
-                                        style={{
-                                            color: titleStyles[0].titleColor,
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                            fontWeight: titleStyles[0].titleWeight,
-                                            letterSpacing: titleStyles[0].titleLetter + "px",
-                                            lineHeight: titleStyles[0].titleLine + "px",
-                                            fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                            fontFamily: titleStyles[0].titleFontFamily,
-                                            textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                            marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                            paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                            paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                            paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                            paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                        }}
-                                    />
-                                </Fragment>
+                                        {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
+                                                options={{
+                                                    loop: loop,
+                                                    path: lottieURl,
+                                                    rendererSettings: {
+                                                        preserveAspectRatio: 'xMidYMid'
+                                                    }
+                                                }}
+                                                direction={reverse}
+                                            />
+                                            </div>
+                                        }
+                                        <span>
+                                            <RichText
+                                                tagName={titleTag.toLowerCase()}
+                                                className={`premium-title-text-title`}
+                                                onChange={(newValue) => setAttributes({ title: newValue })}
+                                                value={title}
+                                                style={{
+                                                    color: titleStyles[0].titleColor,
+                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                                    lineHeight: titleStyles[0].titleLine + "px",
+                                                    fontStyle: titleStyles[0].titleStyle,
+                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                    fontFamily: titleStyles[0].titleFontFamily,
+                                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                                    marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                                    marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                                    marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                                    marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                                    paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                                    paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                                    paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                                    paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                                    minHeight: '15px'
+                                                }}
+                                            />
+                                        </span>
+                                    </Fragment>
                             }
                             {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
                         </div>
