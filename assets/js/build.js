@@ -63322,6 +63322,26 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "center"
     },
+    textStyles: {
+        type: "array",
+        default: [{
+            textBackColor: "#6ec1e4",
+            textBackfontSizeType: 'px',
+            textBackLetter: 0,
+            textBackLine: 0,
+            textBackStyle: 'normal',
+            textBackUpper: false,
+            textBackWeight: 600,
+            textBackfontSize: '',
+            textBackfontSizeMobile: '',
+            textBackfontSizeTablet: '',
+            textBackFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            textBackshadowColor: '',
+            textBackshadowBlur: '0',
+            textBackshadowHorizontal: '0',
+            textBackshadowVertical: '0'
+        }]
+    },
     iconStyles: {
         type: "array",
         default: [{
@@ -63675,42 +63695,6 @@ var titleAttrs = (_titleAttrs = {
     target: {
         type: 'boolean',
         default: false
-    },
-    textBackColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    textBackfontSize: {
-        type: "number"
-    },
-    textBackfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    textBackWeight: {
-        type: "number"
-    },
-    textBackStyle: {
-        type: "string"
-    },
-    textBackUpper: {
-        type: "boolean",
-        default: false
-    },
-    textBackLetter: {
-        type: "number"
-    },
-    textBackshadowHorizontal: {
-        type: "number"
-    },
-    textBackshadowVertical: {
-        type: "number"
-    },
-    textBackshadowBlur: {
-        type: "number"
-    },
-    textBackshadowColor: {
-        type: "number"
     }
 }, _defineProperty(_titleAttrs, "blend", {
     type: "string"
@@ -64118,6 +64102,7 @@ var edit = function (_Component) {
                 backgroundType = attributes.backgroundType,
                 iconBorderWidth = attributes.iconBorderWidth,
                 iconBorderUpdated = attributes.iconBorderUpdated,
+                textStyles = attributes.textStyles,
                 titleColor = attributes.titleColor,
                 titleWeight = attributes.titleWeight,
                 titleLetter = attributes.titleLetter,
@@ -64371,6 +64356,7 @@ var edit = function (_Component) {
             var IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPaddingR, iconPaddingRTablet, iconPaddingRMobile);
             var IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPaddingB, iconPaddingBTablet, iconPaddingBMobile);
             var IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPaddingL, iconPaddingLTablet, iconPaddingLMobile);
+            var TextSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textBackfontSize, textStyles[0].textBackfontSizeTablet, textStyles[0].textBackfontSizeMobile);
 
             var btnGrad = void 0,
                 btnGrad2 = void 0,
@@ -64391,7 +64377,7 @@ var edit = function (_Component) {
             var renderCss = React.createElement(
                 "style",
                 null,
-                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-icon {\n                        color: " + iconStyles[0].iconColor + " !important;\n                        background-color: " + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + " !important;\n                        background-image: " + btnbg + " !important;\n                        background-repeat: " + iconStyles[0].backgroundRepeat + " !important;\n                        background-position: " + iconStyles[0].backgroundPosition + " !important;\n                        background-size: " + iconStyles[0].backgroundSize + " !important;\n                        background-attachment: " + (iconStyles[0].fixed ? "fixed" : "unset") + " !important;\n                        font-size: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        border-style: " + iconStyles[0].iconborderType + " !important;\n                        border-width: " + (iconBorderUpdated ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : iconBorderWidth + "px") + " !important;\n                        border-radius: " + (iconStyles[0].iconborderRadius || 0) + "px !important;\n                        border-color: " + iconStyles[0].iconborderColor + " !important;\n                        padding-top: " + IconPaddingTop + iconStyles[0].iconPaddingType + " !important;\n                        padding-right: " + IconPaddingRight + iconStyles[0].iconPaddingType + " !important;\n                        padding-bottom: " + IconPaddingBottom + iconStyles[0].iconPaddingType + " !important;\n                        padding-left: " + IconPaddingLeft + iconStyles[0].iconPaddingType + " !important;\n                        margin-top: " + IconMarginTop + iconStyles[0].iconMarginType + " !important;\n                        margin-right: " + IconMarginRight + iconStyles[0].iconMarginType + " !important;\n                        margin-bottom: " + IconMarginBottom + iconStyles[0].iconMarginType + " !important;\n                        margin-left: " + IconMarginLeft + iconStyles[0].iconMarginType + " !important;\n                        text-shadow: " + iconStyles[0].iconshadowHorizontal + "px " + iconStyles[0].iconshadowVertical + "px " + iconStyles[0].iconshadowBlur + "px " + iconStyles[0].iconshadowColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-lottie-animation svg {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header img {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                "
+                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-icon {\n                        color: " + iconStyles[0].iconColor + " !important;\n                        background-color: " + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + " !important;\n                        background-image: " + btnbg + " !important;\n                        background-repeat: " + iconStyles[0].backgroundRepeat + " !important;\n                        background-position: " + iconStyles[0].backgroundPosition + " !important;\n                        background-size: " + iconStyles[0].backgroundSize + " !important;\n                        background-attachment: " + (iconStyles[0].fixed ? "fixed" : "unset") + " !important;\n                        font-size: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        border-style: " + iconStyles[0].iconborderType + " !important;\n                        border-width: " + (iconBorderUpdated ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : iconBorderWidth + "px") + " !important;\n                        border-radius: " + (iconStyles[0].iconborderRadius || 0) + "px !important;\n                        border-color: " + iconStyles[0].iconborderColor + " !important;\n                        padding-top: " + IconPaddingTop + iconStyles[0].iconPaddingType + " !important;\n                        padding-right: " + IconPaddingRight + iconStyles[0].iconPaddingType + " !important;\n                        padding-bottom: " + IconPaddingBottom + iconStyles[0].iconPaddingType + " !important;\n                        padding-left: " + IconPaddingLeft + iconStyles[0].iconPaddingType + " !important;\n                        margin-top: " + IconMarginTop + iconStyles[0].iconMarginType + " !important;\n                        margin-right: " + IconMarginRight + iconStyles[0].iconMarginType + " !important;\n                        margin-bottom: " + IconMarginBottom + iconStyles[0].iconMarginType + " !important;\n                        margin-left: " + IconMarginLeft + iconStyles[0].iconMarginType + " !important;\n                        text-shadow: " + iconStyles[0].iconshadowHorizontal + "px " + iconStyles[0].iconshadowVertical + "px " + iconStyles[0].iconshadowBlur + "px " + iconStyles[0].iconshadowColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-lottie-animation svg {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header img {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-bg-text:before {\n                        color: " + textStyles[0].textBackColor + " !important;\n                        font-size: " + TextSize + textStyles[0].textBackfontSizeType + " !important;\n                        font-weight: " + textStyles[0].textBackWeight + " !important;\n                        letter-spacing: " + textStyles[0].textBackLetter + "px !important;\n                        line-height: " + textStyles[0].textBackLine + "px !important;\n                        font-style: " + textStyles[0].textBackStyle + " !important;\n                        text-transform: " + (textStyles[0].textBackUpper ? "uppercase" : "none") + " !important;\n                        font-family: " + textStyles[0].textBackFontFamily + " !important;\n                        text-shadow: " + textStyles[0].textBackshadowHorizontal + "px " + textStyles[0].textBackshadowVertical + "px " + textStyles[0].textBackshadowBlur + "px " + textStyles[0].textBackshadowColor + " !important;\n                        mix-blend-mode: " + blend + " !important;\n                        z-index: " + zIndex + " !important;\n                    }\n                "
             );
 
             var saveTitleStyles = function saveTitleStyles(value) {
@@ -64415,6 +64401,18 @@ var edit = function (_Component) {
                 });
                 setAttributes({
                     iconStyles: newUpdate
+                });
+            };
+
+            var saveTextStyles = function saveTextStyles(value) {
+                var newUpdate = textStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    textStyles: newUpdate
                 });
             };
 
@@ -65371,47 +65369,74 @@ var edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            null,
-                            " ",
-                            __('Color')
-                        ),
-                        React.createElement(ColorPalette, {
-                            value: textBackColor,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({
-                                    textBackColor: newValue
-                                });
-                            },
-                            allowReset: true
-                        })
-                    ),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", 'premium-block-for-gutenberg'),
+                        colorValue: textStyles[0].textBackColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveTextStyles({
+                                textBackColor: newValue
+                            });
+                        }
+                    }),
                     React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
-                        fontSizeType: { value: textBackfontSizeType, label: __("textBackfontSizeType") },
-                        fontSize: { value: textBackfontSize, label: __("textBackfontSize") },
-                        fontSizeMobile: { value: textBackfontSizeMobile, label: __("textBackfontSizeMobile") },
-                        fontSizeTablet: { value: textBackfontSizeTablet, label: __("textBackfontSizeTablet") },
-                        weight: textBackWeight,
-                        style: textBackStyle,
-                        spacing: textBackLetter,
-                        upper: textBackUpper,
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+                        setAttributes: saveTextStyles,
+                        fontSizeType: { value: textStyles[0].textBackfontSizeType, label: __("textBackfontSizeType") },
+                        fontSize: textStyles[0].textBackfontSize,
+                        fontSizeMobile: textStyles[0].textBackfontSizeMobile,
+                        fontSizeTablet: textStyles[0].textBackfontSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveTextStyles({ textBackfontSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveTextStyles({ textBackfontSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveTextStyles({ textBackfontSizeMobile: newSize });
+                        },
+                        weight: textStyles[0].textBackWeight,
+                        style: textStyles[0].textBackStyle,
+                        spacing: textStyles[0].textBackLetter,
+                        upper: textStyles[0].textBackUpper,
+                        line: textStyles[0].textBackLine,
+                        fontFamily: textStyles[0].textBackFontFamily,
                         onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ textBackWeight: newWeight || 600 });
+                            return saveTextStyles({ textBackWeight: newWeight || 500 });
                         },
                         onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ textBackStyle: newStyle });
+                            return saveTextStyles({ textBackStyle: newStyle });
                         },
                         onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ textBackLetter: newValue });
+                            return saveTextStyles({ textBackLetter: newValue });
                         },
                         onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ textBackUpper: check });
+                            return saveTextStyles({ textBackUpper: check });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveTextStyles({ textBackLine: newValue });
+                        },
+                        onChangeFamily: function onChangeFamily(fontFamily) {
+                            return saveTextStyles({ textBackFontFamily: fontFamily });
+                        }
+                    }),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                        color: textStyles[0].textBackshadowColor,
+                        blur: textStyles[0].textBackshadowBlur,
+                        horizontal: textStyles[0].textBackshadowHorizontal,
+                        vertical: textStyles[0].textBackshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveTextStyles({ textBackshadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveTextStyles({ textBackshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveTextStyles({ textBackshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveTextStyles({ textBackshadowVertical: newValue });
                         }
                     }),
                     React.createElement("hr", null),

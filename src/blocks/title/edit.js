@@ -169,6 +169,7 @@ class edit extends Component {
             backgroundType,
             iconBorderWidth,
             iconBorderUpdated,
+            textStyles,
             titleColor,
             titleWeight,
             titleLetter,
@@ -464,6 +465,7 @@ class edit extends Component {
         const IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPaddingR, iconPaddingRTablet, iconPaddingRMobile);
         const IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPaddingB, iconPaddingBTablet, iconPaddingBMobile);
         const IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPaddingL, iconPaddingLTablet, iconPaddingLMobile);
+        const TextSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textBackfontSize, textStyles[0].textBackfontSizeTablet, textStyles[0].textBackfontSizeMobile);
 
         let btnGrad, btnGrad2, btnbg;
 
@@ -588,6 +590,19 @@ class edit extends Component {
                         width: ${IconSize}${iconStyles[0].iconSizeType} !important;
                         height: ${IconSize}${iconStyles[0].iconSizeType} !important;
                     }
+                    #premium-title-${block_id} .premium-title-bg-text:before {
+                        color: ${textStyles[0].textBackColor} !important;
+                        font-size: ${TextSize}${textStyles[0].textBackfontSizeType} !important;
+                        font-weight: ${textStyles[0].textBackWeight} !important;
+                        letter-spacing: ${textStyles[0].textBackLetter}px !important;
+                        line-height: ${textStyles[0].textBackLine}px !important;
+                        font-style: ${textStyles[0].textBackStyle} !important;
+                        text-transform: ${textStyles[0].textBackUpper ? "uppercase" : "none"} !important;
+                        font-family: ${textStyles[0].textBackFontFamily} !important;
+                        text-shadow: ${textStyles[0].textBackshadowHorizontal}px ${textStyles[0].textBackshadowVertical}px ${textStyles[0].textBackshadowBlur}px ${textStyles[0].textBackshadowColor} !important;
+                        mix-blend-mode: ${blend} !important;
+                        z-index: ${zIndex} !important;
+                    }
                 `}
             </style>
         );
@@ -613,6 +628,18 @@ class edit extends Component {
             });
             setAttributes({
                 iconStyles: newUpdate,
+            });
+        }
+
+        const saveTextStyles = (value) => {
+            const newUpdate = textStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                textStyles: newUpdate,
             });
         }
 
@@ -1502,151 +1529,6 @@ class edit extends Component {
                                     }
                                 />
                             }
-                            {/* {iconType === 'icon' && <PremiumTextShadow
-                                color={iconshadowColor}
-                                blur={iconshadowBlur}
-                                horizontal={iconshadowHorizontal}
-                                vertical={iconshadowVertical}
-                                onChangeColor={newColor =>
-                                    setAttributes({ iconshadowColor: newColor.hex })
-                                }
-                                onChangeBlur={newBlur => setAttributes({ iconshadowBlur: newBlur })}
-                                onChangehHorizontal={newValue =>
-                                    setAttributes({ iconshadowHorizontal: newValue })
-                                }
-                                onChangeVertical={newValue =>
-                                    setAttributes({ iconshadowVertical: newValue })
-                                }
-                                onResetClick={onResetClickIconTextShadow}
-                            />
-                            } */}
-                            {/* <PremiumResponsivePadding
-                                paddingTop={iconPaddingT}
-                                paddingRight={iconPaddingR}
-                                paddingBottom={iconPaddingB}
-                                paddingLeft={iconPaddingL}
-                                paddingTopTablet={iconPaddingTTablet}
-                                paddingRightTablet={iconPaddingRTablet}
-                                paddingBottomTablet={iconPaddingBTablet}
-                                paddingLeftTablet={iconPaddingLTablet}
-                                paddingTopMobile={iconPaddingTMobile}
-                                paddingRightMobile={iconPaddingRMobile}
-                                paddingBottomMobile={iconPaddingBMobile}
-                                paddingLeftMobile={iconPaddingLMobile}
-                                showUnits={true}
-                                selectedUnit={iconPaddingType}
-                                onChangePadSizeUnit={newvalue =>
-                                    setAttributes({ iconPaddingType: newvalue })
-                                }
-                                onChangePaddingTop={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingT: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingTTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingTMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangePaddingRight={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingR: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingRTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingRMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangePaddingBottom={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingB: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingBTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingBMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangePaddingLeft={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingL: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingLTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingLMobile: newValue })
-                                        }
-                                    }
-                                }
-                            />
-
-                            <PremiumResponsiveMargin
-                                directions={["all"]}
-                                showUnits={true}
-                                selectedUnit={iconMarginType}
-                                marginTop={iconMarginT}
-                                marginRight={iconMarginR}
-                                marginBottom={iconMarginB}
-                                marginLeft={iconMarginL}
-                                marginTopTablet={iconMarginTTablet}
-                                marginRightTablet={iconMarginRTablet}
-                                marginBottomTablet={iconMarginBTablet}
-                                marginLeftTablet={iconMarginLTablet}
-                                marginTopMobile={iconMarginTMobile}
-                                marginRightMobile={iconMarginRMobile}
-                                marginBottomMobile={iconMarginBMobile}
-                                marginLeftMobile={iconMarginLMobile}
-                                onChangeMarginTop={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginT: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginTTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginTMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginRight={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginR: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginRTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginRMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginBottom={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginB: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginBTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginBMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginLeft={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginL: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginLTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginLMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarSizeUnit={(newvalue) => setAttributes({ iconMarginType: newvalue })}
-
-                            /> */}
                         </PanelBody>
                     }
                     {
@@ -1656,57 +1538,62 @@ class edit extends Component {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <Fragment>
-                                <p> {__('Color')}</p>
-                                <ColorPalette
-                                    value={textBackColor}
-                                    onChange={newValue =>
-                                        setAttributes({
-                                            textBackColor: newValue
-                                        })
-                                    }
-                                    allowReset={true}
-                                />
-                            </Fragment>
+                            <AdvancedPopColorControl
+                                label={__("Color", 'premium-block-for-gutenberg')}
+                                colorValue={textStyles[0].textBackColor}
+                                colorDefault={''}
+                                onColorChange={newValue =>
+                                    saveTextStyles({
+                                        textBackColor: newValue
+                                    })
+                                }
+                            />
                             <PremiumTypo
-                                components={["responsiveSize", "weight", "style", "upper", "spacing"]}
-                                setAttributes={setAttributes}
-                                fontSizeType={{ value: textBackfontSizeType, label: __("textBackfontSizeType") }}
-                                fontSize={{ value: textBackfontSize, label: __("textBackfontSize") }}
-                                fontSizeMobile={{ value: textBackfontSizeMobile, label: __("textBackfontSizeMobile") }}
-                                fontSizeTablet={{ value: textBackfontSizeTablet, label: __("textBackfontSizeTablet") }}
-                                weight={textBackWeight}
-                                style={textBackStyle}
-                                spacing={textBackLetter}
-                                upper={textBackUpper}
+                                components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                setAttributes={saveTextStyles}
+                                fontSizeType={{ value: textStyles[0].textBackfontSizeType, label: __("textBackfontSizeType") }}
+                                fontSize={textStyles[0].textBackfontSize}
+                                fontSizeMobile={textStyles[0].textBackfontSizeMobile}
+                                fontSizeTablet={textStyles[0].textBackfontSizeTablet}
+                                onChangeSize={newSize => saveTextStyles({ textBackfontSize: newSize })}
+                                onChangeTabletSize={newSize => saveTextStyles({ textBackfontSizeTablet: newSize })}
+                                onChangeMobileSize={newSize => saveTextStyles({ textBackfontSizeMobile: newSize })}
+                                weight={textStyles[0].textBackWeight}
+                                style={textStyles[0].textBackStyle}
+                                spacing={textStyles[0].textBackLetter}
+                                upper={textStyles[0].textBackUpper}
+                                line={textStyles[0].textBackLine}
+                                fontFamily={textStyles[0].textBackFontFamily}
                                 onChangeWeight={newWeight =>
-                                    setAttributes({ textBackWeight: newWeight || 600 })
+                                    saveTextStyles({ textBackWeight: newWeight || 500 })
                                 }
                                 onChangeStyle={newStyle =>
-                                    setAttributes({ textBackStyle: newStyle })
+                                    saveTextStyles({ textBackStyle: newStyle })
                                 }
                                 onChangeSpacing={newValue =>
-                                    setAttributes({ textBackLetter: newValue })
+                                    saveTextStyles({ textBackLetter: newValue })
                                 }
-                                onChangeUpper={check => setAttributes({ textBackUpper: check })}
+                                onChangeUpper={check => saveTextStyles({ textBackUpper: check })}
+                                onChangeLine={newValue => saveTextStyles({ textBackLine: newValue })}
+                                onChangeFamily={(fontFamily) => saveTextStyles({ textBackFontFamily: fontFamily })}
                             />
-                            {/* <PremiumTextShadow
-                                color={textBackshadowColor}
-                                blur={textBackshadowBlur}
-                                horizontal={textBackshadowHorizontal}
-                                vertical={textBackshadowVertical}
+                            <PremiumShadow
+                                label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                color={textStyles[0].textBackshadowColor}
+                                blur={textStyles[0].textBackshadowBlur}
+                                horizontal={textStyles[0].textBackshadowHorizontal}
+                                vertical={textStyles[0].textBackshadowVertical}
                                 onChangeColor={newColor =>
-                                    setAttributes({ textBackshadowColor: newColor.hex })
+                                    saveTextStyles({ textBackshadowColor: newColor })
                                 }
-                                onChangeBlur={newBlur => setAttributes({ textBackshadowBlur: newBlur })}
+                                onChangeBlur={newBlur => saveTextStyles({ textBackshadowBlur: newBlur })}
                                 onChangehHorizontal={newValue =>
-                                    setAttributes({ textBackshadowHorizontal: newValue })
+                                    saveTextStyles({ textBackshadowHorizontal: newValue })
                                 }
                                 onChangeVertical={newValue =>
-                                    setAttributes({ textBackshadowVertical: newValue })
+                                    saveTextStyles({ textBackshadowVertical: newValue })
                                 }
-
-                            /> */}
+                            />
                             <hr />
 
                             <SelectControl
