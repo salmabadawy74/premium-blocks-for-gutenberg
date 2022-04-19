@@ -1,10 +1,8 @@
-// import styling from "./styling"
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-// import PremiumRangeResponsive from "../../components/premium-range-responsive";
 import PremiumShadow from "../../components/PremiumShadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
@@ -14,7 +12,6 @@ import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
 import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
 import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
-import PremiumSizeUnits from '../../components/premium-size-units';
 
 const { __ } = wp.i18n
 
@@ -25,14 +22,12 @@ const {
 
 const {
     InspectorControls,
-    ColorPalette,
     RichText
 } = wp.editor
 
 const {
     PanelBody,
     SelectControl,
-    RangeControl,
     TextControl,
     Toolbar,
     ToggleControl
@@ -60,10 +55,6 @@ class edit extends Component {
     }
 
     componentDidUpdate() {
-        let element = document.getElementById("premium-style-title-" + this.props.clientId)
-        if (null != element && "undefined" != typeof element) {
-            // element.innerHTML = styling(this.props)
-        }
         clearTimeout(istitleUpdated);
         istitleUpdated = setTimeout(this.handleStyle, 400);
     }
@@ -156,10 +147,6 @@ class edit extends Component {
             stripePosition,
             stripeStyles,
             strokeStyles,
-            stripeWidth,
-            stripeHeight,
-            stripeTopSpacing,
-            stripeBottomSpacing,
             titleStyles,
             titleBorderTop,
             titleBorderRight,
@@ -172,47 +159,11 @@ class edit extends Component {
             iconBorderWidth,
             iconBorderUpdated,
             textStyles,
-            titleColor,
-            titleWeight,
-            titleLetter,
-            titleUpper,
-            titleStyle,
-            titlefontSize,
-            titlefontSizeMobile,
-            titlefontSizeTablet,
-            titlefontSizeType,
-            titleshadowBlur,
-            titleshadowColor,
-            titleshadowHorizontal,
-            titleshadowVertical,
-            stripeColor,
-            titleborderType,
-            titleborderRadius,
-            // titleBorderLeft,
-            // titleBorderTop,
-            // titleBorderRight,
-            // titleBorderBottom,
-            titleborderColor,
-            BGColor,
-            lineColor,
-            triangleColor,
             stripeAlign,
-            iconColor,
-            iconSize,
-            iconSizeType,
-            iconSizeTablet,
-            iconSizeMobile,
-            iconborderType,
-            iconborderRadius,
             iconBorderTop,
             iconBorderRight,
             iconBorderBottom,
             iconBorderLeft,
-            iconborderColor,
-            iconshadowBlur,
-            iconshadowColor,
-            iconshadowHorizontal,
-            iconshadowVertical,
             titleMarginT,
             titleMarginR,
             titleMarginB,
@@ -225,7 +176,6 @@ class edit extends Component {
             titleMarginRMobile,
             titleMarginBMobile,
             titleMarginLMobile,
-            titleMarginType,
             titlePaddingT,
             titlePaddingR,
             titlePaddingB,
@@ -238,11 +188,6 @@ class edit extends Component {
             titlePaddingRMobile,
             titlePaddingBMobile,
             titlePaddingLMobile,
-            titlePaddingType,
-            stroke,
-            strokeColor,
-            strokeFull,
-            iconBGColor,
             iconPaddingT,
             iconPaddingR,
             iconPaddingL,
@@ -255,7 +200,6 @@ class edit extends Component {
             iconPaddingRMobile,
             iconPaddingLMobile,
             iconPaddingBMobile,
-            iconPaddingType,
             iconMarginT,
             iconMarginR,
             iconMarginB,
@@ -268,38 +212,14 @@ class edit extends Component {
             iconMarginRMobile,
             iconMarginBMobile,
             iconMarginLMobile,
-            iconMarginType,
             backgroundText,
             BackText,
             textWidth,
-            horizontalText,
-            verticalText,
-            rotateText,
-            textBackColor,
-            textBackfontSizeType,
-            textBackfontSize,
-            textBackfontSizeMobile,
-            textBackfontSizeTablet,
-            textBackWeight,
-            textBackStyle,
-            textBackLetter,
-            textBackUpper,
-            textBackshadowColor,
-            textBackshadowBlur,
-            textBackshadowHorizontal,
-            horizontalU,
-            verticalU,
-            textBackshadowVertical,
             blend,
             zIndex,
             hideDesktop,
             hideTablet,
             hideMobile,
-            shinyColor,
-            blurColor,
-            blurShadow,
-            animateduration,
-            animateDelay
         } = attributes
 
         const STYLE = [{
@@ -688,37 +608,6 @@ class edit extends Component {
             });
             setAttributes({
                 strokeStyles: newUpdate,
-            });
-        }
-
-        const onResetClickTitle = () => {
-            setAttributes({
-                titleWeight: 600,
-                titlefontSizeType: "px",
-                titlefontSize: "30",
-                titlefontSizeMobile: "30",
-                titlefontSizeTablet: "30",
-                titleStyle: "normal",
-                titleLetter: "0",
-                titleUpper: false
-            });
-        }
-
-        const onResetClickTitleTextShadow = () => {
-            setAttributes({
-                titleshadowColor: "",
-                titleshadowBlur: "0",
-                titleshadowHorizontal: "0",
-                titleshadowVertical: "0",
-            });
-        }
-
-        const onResetClickIconTextShadow = () => {
-            setAttributes({
-                iconshadowColor: "",
-                iconshadowBlur: "0",
-                iconshadowHorizontal: "0",
-                iconshadowVertical: "0",
             });
         }
 
@@ -1396,18 +1285,6 @@ class edit extends Component {
                                         })
                                     }
                                 />
-                                // <Fragment>
-                                //     <p>{__("Color")}</p>
-                                //     <ColorPalette
-                                //         value={iconColor}
-                                //         onChange={newValue =>
-                                //             setAttributes({
-                                //                 iconColor: newValue
-                                //             })
-                                //         }
-                                //         allowReset={true}
-                                //     />
-                                // </Fragment>
                             }
                             <ResponsiveRangeControl
                                 label={__("Size", 'premium-block-for-gutenberg')}
@@ -1719,12 +1596,14 @@ class edit extends Component {
                                 onChange={newSelect => setAttributes({ blend: newSelect })}
                                 options={BLEND}
                             />
-                            <RangeControl
-                                label={__("z-index")}
+                            <ResponsiveSingleRangeControl
+                                label={__("z-index", 'premium-block-for-gutenberg')}
                                 value={zIndex}
+                                onChange={(value) => setAttributes({ zIndex: value })}
+                                showUnit={false}
+                                defaultValue={0}
                                 min={0}
                                 max={100}
-                                onChange={value => setAttributes({ zIndex: value })}
                             />
                         </PanelBody>
                     }
@@ -1752,136 +1631,154 @@ class edit extends Component {
 
                         <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-shiny-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
 
-                            {style === 'style7' ? <Fragment>
-                                {iconPosition != 'top' && iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
-                                    <span className={`premium-title-style7-stripe-span`}></span>
-                                </span>
-                                }
-                                {!iconValue && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
-                                    <span className={`premium-title-style7-stripe-span`}></span>
-                                </span>
-                                }
-                                <div className={`premium-title-style7-inner-title`}>
-                                    {
-                                        iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
-                                    }
-                                    {
-                                        iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
-                                    }
-                                    {
-                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
-                                            options={{
-                                                loop: loop,
-                                                path: lottieURl,
-                                                rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid'
-                                                }
-                                            }}
-                                            direction={reverse}
-                                        />
+                            {
+                                style === 'style7' ?
+                                    <Fragment>
+                                        {
+                                            iconPosition != 'top' && iconValue &&
+                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                                <span className={`premium-title-style7-stripe-span`}></span>
+                                            </span>
+                                        }
+                                        {
+                                            !iconValue &&
+                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                                <span className={`premium-title-style7-stripe-span`}></span>
+                                            </span>
+                                        }
+                                        <div className={`premium-title-style7-inner-title`}>
+                                            {
+                                                iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'lottie' && lottieURl &&
+                                                <div className=" premium-title-icon premium-lottie-animation">
+                                                    <Lottie
+                                                        options={{
+                                                            loop: loop,
+                                                            path: lottieURl,
+                                                            rendererSettings: {
+                                                                preserveAspectRatio: 'xMidYMid'
+                                                            }
+                                                        }}
+                                                        direction={reverse}
+                                                    />
+                                                </div>
+                                            }
+                                            {
+                                                iconValue && iconPosition === 'top' &&
+                                                <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                                    <span className={`premium-title-style7-stripe-span`}></span>
+                                                </span>
+                                            }
+                                            <RichText
+                                                tagName={titleTag.toLowerCase()}
+                                                className={`premium-title-text-title`}
+                                                value={title}
+                                                style={{
+                                                    color: titleStyles[0].titleColor,
+                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                                    lineHeight: titleStyles[0].titleLine + "px",
+                                                    fontStyle: titleStyles[0].titleStyle,
+                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                    fontFamily: titleStyles[0].titleFontFamily,
+                                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                                    marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                                    marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                                    marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                                    marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                                    paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                                    paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                                    paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                                    paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                                    minHeight: '15px'
+                                                }}
+                                            />
                                         </div>
-                                    }
-                                    {iconValue && iconPosition === 'top' && <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
-                                        <span className={`premium-title-style7-stripe-span`}></span>
-                                    </span>
-                                    }
-                                    <RichText
-                                        tagName={titleTag.toLowerCase()}
-                                        className={`premium-title-text-title`}
-                                        value={title}
-                                        style={{
-                                            color: titleStyles[0].titleColor,
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                            fontWeight: titleStyles[0].titleWeight,
-                                            letterSpacing: titleStyles[0].titleLetter + "px",
-                                            lineHeight: titleStyles[0].titleLine + "px",
-                                            fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                            fontFamily: titleStyles[0].titleFontFamily,
-                                            textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                            marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                            paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                            paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                            paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                            paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                            minHeight: '15px'
-                                        }}
-                                    />
-                                </div>
-                            </Fragment>
-                                : style === "style9" ? <Fragment>
-                                    {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
-                                    }
-                                    {
-                                        iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
-                                    }
-                                    {
-                                        iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
-                                            options={{
-                                                loop: loop,
-                                                path: lottieURl,
-                                                rendererSettings: {
-                                                    preserveAspectRatio: 'xMidYMid'
-                                                }
-                                            }}
-                                            direction={reverse}
-                                        />
-                                        </div>
-                                    }
-
-                                    <span className={`premium-letters-container`}>
-                                        {styleContainer}
-                                    </span>
-
-                                </Fragment> : <Fragment>
-                                        {iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                    </Fragment>
+                                    : style === "style9" ? <Fragment>
+                                        {
+                                            iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
                                         }
                                         {
                                             iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
                                         }
                                         {
-                                            iconValue && iconType == 'lottie' && lottieURl && <div className=" premium-title-icon premium-lottie-animation"> <Lottie
-                                                options={{
-                                                    loop: loop,
-                                                    path: lottieURl,
-                                                    rendererSettings: {
-                                                        preserveAspectRatio: 'xMidYMid'
-                                                    }
-                                                }}
-                                                direction={reverse}
-                                            />
+                                            iconValue && iconType == 'lottie' && lottieURl &&
+                                            <div className=" premium-title-icon premium-lottie-animation">
+                                                <Lottie
+                                                    options={{
+                                                        loop: loop,
+                                                        path: lottieURl,
+                                                        rendererSettings: {
+                                                            preserveAspectRatio: 'xMidYMid'
+                                                        }
+                                                    }}
+                                                    direction={reverse}
+                                                />
                                             </div>
                                         }
-                                        <RichText
-                                            tagName={titleTag.toLowerCase()}
-                                            className={`premium-title-text-title`}
-                                            onChange={(newValue) => setAttributes({ title: newValue })}
-                                            value={title}
-                                            style={{
-                                                color: titleStyles[0].titleColor,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                fontFamily: titleStyles[0].titleFontFamily,
-                                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                minHeight: '15px'
-                                            }}
-                                        />
-                                    </Fragment>
+
+                                        <span className={`premium-letters-container`}>
+                                            {styleContainer}
+                                        </span>
+
+                                    </Fragment> : <Fragment>
+                                            {
+                                                iconValue && iconType == 'icon' &&
+                                                <i className={`premium-title-icon ${icon}`} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'image' &&
+                                                < img className={`premium-title-icon`} src={imageURL} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'lottie' && lottieURl &&
+                                                <div className=" premium-title-icon premium-lottie-animation">
+                                                    <Lottie
+                                                        options={{
+                                                            loop: loop,
+                                                            path: lottieURl,
+                                                            rendererSettings: {
+                                                                preserveAspectRatio: 'xMidYMid'
+                                                            }
+                                                        }}
+                                                        direction={reverse}
+                                                    />
+                                                </div>
+                                            }
+                                            <RichText
+                                                tagName={titleTag.toLowerCase()}
+                                                className={`premium-title-text-title`}
+                                                onChange={(newValue) => setAttributes({ title: newValue })}
+                                                value={title}
+                                                style={{
+                                                    color: titleStyles[0].titleColor,
+                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                                    lineHeight: titleStyles[0].titleLine + "px",
+                                                    fontStyle: titleStyles[0].titleStyle,
+                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                    fontFamily: titleStyles[0].titleFontFamily,
+                                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                                    marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                                    marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                                    marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                                    marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                                    paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                                    paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                                    paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                                    paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                                    minHeight: '15px'
+                                                }}
+                                            />
+                                        </Fragment>
                             }
                             {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
                         </div>

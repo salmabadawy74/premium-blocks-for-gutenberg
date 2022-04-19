@@ -63106,18 +63106,6 @@ var titleAttrs = (_titleAttrs = {
         type: "boolean",
         default: false
     },
-    // stroke: {
-    //     type: 'boolean',
-    //     default: false
-    // },
-    // strokeColor: {
-    //     type: "value",
-
-    // },
-    // strokeFull: {
-    //     type: "number",
-    //     default: 0
-    // },
     backgroundText: {
         type: "boolean",
         default: false
@@ -63129,17 +63117,6 @@ var titleAttrs = (_titleAttrs = {
     textWidth: {
         type: "number"
     },
-    // horizontalText: {
-    //     type: "number",
-    //     default: '0'
-    // },
-    // verticalText: {
-    //     type: "number",
-    //     default: '0'
-    // },
-    // rotateText: {
-    //     type: "number",
-    // },
     url: {
         type: "string",
         default: "#"
@@ -63152,22 +63129,6 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "top"
     },
-    // stripeWidth: {
-    //     type: "number",
-    //     default: 120
-    // },
-    // stripeHeight: {
-    //     type: "number",
-    //     default: 5
-    // },
-    // stripeTopSpacing: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // stripeBottomSpacing: {
-    //     type: "number",
-    //     default: 0
-    // },
     titleStyles: {
         type: "array",
         default: [{
@@ -63226,98 +63187,6 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "0"
     },
-    // titleColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // titleLetter: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // titleStyle: {
-    //     type: "string",
-    //     default: "normal"
-    // },
-    // titleUpper: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // titleWeight: {
-    //     type: "number",
-    //     default: 600
-    // },
-    // titlefontSize: {
-    //     type: "number",
-
-    // },
-    // titlefontSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // titlefontSizeMobile: {
-    //     type: "number"
-    // },
-    // titlefontSizeTablet: {
-    //     type: "number"
-    // },
-    // titleshadowColor: {
-    //     type: "string"
-    // },
-    // titleshadowBlur: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleshadowHorizontal: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleshadowVertical: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // stripeColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // titleborderType: {
-    //     type: "string",
-    //     default: "none"
-    // },
-    // titleBorderTop: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleBorderRight: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleBorderBottom: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleBorderLeft: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleborderRadius: {
-    //     type: "number",
-    //     default: 1
-    // },
-    // titleborderColor: {
-    //     type: "string"
-    // },
-    // BGColor: {
-    //     type: "string",
-    //     default: "#54595f"
-    // },
-    // lineColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // triangleColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
     stripeAlign: {
         type: "string",
         default: "center"
@@ -63420,30 +63289,6 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: ""
     },
-    // iconColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // iconSize: {
-    //     type: "number",
-    //     default: 40
-    // },
-    // iconSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // iconSizeMobile: {
-    //     type: "number",
-    //     default: 30
-    // },
-    // iconSizeTablet: {
-    //     type: "number",
-    //     default: 30
-    // },
-    // iconborderType: {
-    //     type: "string",
-    //     default: "none"
-    // },
     iconBorderTop: {
         type: "number",
         default: "1"
@@ -63468,28 +63313,6 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "1"
     },
-    // iconborderRadius: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // iconborderColor: {
-    //     type: "string"
-    // },
-    // iconshadowColor: {
-    //     type: "string"
-    // },
-    // iconshadowBlur: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // iconshadowHorizontal: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // iconshadowVertical: {
-    //     type: "number",
-    //     default: "0"
-    // },
     titleMarginT: {
         type: "number",
         default: "0"
@@ -63538,11 +63361,6 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "0"
     },
-    // titleMarginType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-
     titlePaddingT: {
         type: "number",
         default: "0"
@@ -63591,12 +63409,6 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "0"
     },
-
-    // titlePaddingType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-
     iconBGColor: {
         type: "string"
     },
@@ -63648,11 +63460,6 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "0"
     },
-
-    // iconPaddingType: {
-    //     type: "string",
-    //     default: "px"
-    // },
     iconMarginT: {
         type: "number",
         default: "10"
@@ -63701,10 +63508,6 @@ var titleAttrs = (_titleAttrs = {
         type: "number",
         default: "10"
     },
-    // iconMarginType: {
-    //     type: "string",
-    //     default: "px"
-    // },
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -63962,20 +63765,13 @@ var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumSizeUnits = __webpack_require__(20);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // import styling from "./styling"
-
-// import PremiumRangeResponsive from "../../components/premium-range-responsive";
-
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
@@ -63983,12 +63779,10 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
-    ColorPalette = _wp$editor.ColorPalette,
     RichText = _wp$editor.RichText;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
     TextControl = _wp$components.TextControl,
     Toolbar = _wp$components.Toolbar,
     ToggleControl = _wp$components.ToggleControl;
@@ -64024,10 +63818,6 @@ var edit = function (_Component) {
     }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
-            var element = document.getElementById("premium-style-title-" + this.props.clientId);
-            if (null != element && "undefined" != typeof element) {
-                // element.innerHTML = styling(this.props)
-            }
             clearTimeout(istitleUpdated);
             istitleUpdated = setTimeout(this.handleStyle, 400);
         }
@@ -64125,10 +63915,6 @@ var edit = function (_Component) {
                 stripePosition = attributes.stripePosition,
                 stripeStyles = attributes.stripeStyles,
                 strokeStyles = attributes.strokeStyles,
-                stripeWidth = attributes.stripeWidth,
-                stripeHeight = attributes.stripeHeight,
-                stripeTopSpacing = attributes.stripeTopSpacing,
-                stripeBottomSpacing = attributes.stripeBottomSpacing,
                 titleStyles = attributes.titleStyles,
                 titleBorderTop = attributes.titleBorderTop,
                 titleBorderRight = attributes.titleBorderRight,
@@ -64141,43 +63927,11 @@ var edit = function (_Component) {
                 iconBorderWidth = attributes.iconBorderWidth,
                 iconBorderUpdated = attributes.iconBorderUpdated,
                 textStyles = attributes.textStyles,
-                titleColor = attributes.titleColor,
-                titleWeight = attributes.titleWeight,
-                titleLetter = attributes.titleLetter,
-                titleUpper = attributes.titleUpper,
-                titleStyle = attributes.titleStyle,
-                titlefontSize = attributes.titlefontSize,
-                titlefontSizeMobile = attributes.titlefontSizeMobile,
-                titlefontSizeTablet = attributes.titlefontSizeTablet,
-                titlefontSizeType = attributes.titlefontSizeType,
-                titleshadowBlur = attributes.titleshadowBlur,
-                titleshadowColor = attributes.titleshadowColor,
-                titleshadowHorizontal = attributes.titleshadowHorizontal,
-                titleshadowVertical = attributes.titleshadowVertical,
-                stripeColor = attributes.stripeColor,
-                titleborderType = attributes.titleborderType,
-                titleborderRadius = attributes.titleborderRadius,
-                titleborderColor = attributes.titleborderColor,
-                BGColor = attributes.BGColor,
-                lineColor = attributes.lineColor,
-                triangleColor = attributes.triangleColor,
                 stripeAlign = attributes.stripeAlign,
-                iconColor = attributes.iconColor,
-                iconSize = attributes.iconSize,
-                iconSizeType = attributes.iconSizeType,
-                iconSizeTablet = attributes.iconSizeTablet,
-                iconSizeMobile = attributes.iconSizeMobile,
-                iconborderType = attributes.iconborderType,
-                iconborderRadius = attributes.iconborderRadius,
                 iconBorderTop = attributes.iconBorderTop,
                 iconBorderRight = attributes.iconBorderRight,
                 iconBorderBottom = attributes.iconBorderBottom,
                 iconBorderLeft = attributes.iconBorderLeft,
-                iconborderColor = attributes.iconborderColor,
-                iconshadowBlur = attributes.iconshadowBlur,
-                iconshadowColor = attributes.iconshadowColor,
-                iconshadowHorizontal = attributes.iconshadowHorizontal,
-                iconshadowVertical = attributes.iconshadowVertical,
                 titleMarginT = attributes.titleMarginT,
                 titleMarginR = attributes.titleMarginR,
                 titleMarginB = attributes.titleMarginB,
@@ -64190,7 +63944,6 @@ var edit = function (_Component) {
                 titleMarginRMobile = attributes.titleMarginRMobile,
                 titleMarginBMobile = attributes.titleMarginBMobile,
                 titleMarginLMobile = attributes.titleMarginLMobile,
-                titleMarginType = attributes.titleMarginType,
                 titlePaddingT = attributes.titlePaddingT,
                 titlePaddingR = attributes.titlePaddingR,
                 titlePaddingB = attributes.titlePaddingB,
@@ -64203,11 +63956,6 @@ var edit = function (_Component) {
                 titlePaddingRMobile = attributes.titlePaddingRMobile,
                 titlePaddingBMobile = attributes.titlePaddingBMobile,
                 titlePaddingLMobile = attributes.titlePaddingLMobile,
-                titlePaddingType = attributes.titlePaddingType,
-                stroke = attributes.stroke,
-                strokeColor = attributes.strokeColor,
-                strokeFull = attributes.strokeFull,
-                iconBGColor = attributes.iconBGColor,
                 iconPaddingT = attributes.iconPaddingT,
                 iconPaddingR = attributes.iconPaddingR,
                 iconPaddingL = attributes.iconPaddingL,
@@ -64220,7 +63968,6 @@ var edit = function (_Component) {
                 iconPaddingRMobile = attributes.iconPaddingRMobile,
                 iconPaddingLMobile = attributes.iconPaddingLMobile,
                 iconPaddingBMobile = attributes.iconPaddingBMobile,
-                iconPaddingType = attributes.iconPaddingType,
                 iconMarginT = attributes.iconMarginT,
                 iconMarginR = attributes.iconMarginR,
                 iconMarginB = attributes.iconMarginB,
@@ -64233,38 +63980,14 @@ var edit = function (_Component) {
                 iconMarginRMobile = attributes.iconMarginRMobile,
                 iconMarginBMobile = attributes.iconMarginBMobile,
                 iconMarginLMobile = attributes.iconMarginLMobile,
-                iconMarginType = attributes.iconMarginType,
                 backgroundText = attributes.backgroundText,
                 BackText = attributes.BackText,
                 textWidth = attributes.textWidth,
-                horizontalText = attributes.horizontalText,
-                verticalText = attributes.verticalText,
-                rotateText = attributes.rotateText,
-                textBackColor = attributes.textBackColor,
-                textBackfontSizeType = attributes.textBackfontSizeType,
-                textBackfontSize = attributes.textBackfontSize,
-                textBackfontSizeMobile = attributes.textBackfontSizeMobile,
-                textBackfontSizeTablet = attributes.textBackfontSizeTablet,
-                textBackWeight = attributes.textBackWeight,
-                textBackStyle = attributes.textBackStyle,
-                textBackLetter = attributes.textBackLetter,
-                textBackUpper = attributes.textBackUpper,
-                textBackshadowColor = attributes.textBackshadowColor,
-                textBackshadowBlur = attributes.textBackshadowBlur,
-                textBackshadowHorizontal = attributes.textBackshadowHorizontal,
-                horizontalU = attributes.horizontalU,
-                verticalU = attributes.verticalU,
-                textBackshadowVertical = attributes.textBackshadowVertical,
                 blend = attributes.blend,
                 zIndex = attributes.zIndex,
                 hideDesktop = attributes.hideDesktop,
                 hideTablet = attributes.hideTablet,
-                hideMobile = attributes.hideMobile,
-                shinyColor = attributes.shinyColor,
-                blurColor = attributes.blurColor,
-                blurShadow = attributes.blurShadow,
-                animateduration = attributes.animateduration,
-                animateDelay = attributes.animateDelay;
+                hideMobile = attributes.hideMobile;
 
 
             var STYLE = [{
@@ -64483,37 +64206,6 @@ var edit = function (_Component) {
                 });
                 setAttributes({
                     strokeStyles: newUpdate
-                });
-            };
-
-            var onResetClickTitle = function onResetClickTitle() {
-                setAttributes({
-                    titleWeight: 600,
-                    titlefontSizeType: "px",
-                    titlefontSize: "30",
-                    titlefontSizeMobile: "30",
-                    titlefontSizeTablet: "30",
-                    titleStyle: "normal",
-                    titleLetter: "0",
-                    titleUpper: false
-                });
-            };
-
-            var onResetClickTitleTextShadow = function onResetClickTitleTextShadow() {
-                setAttributes({
-                    titleshadowColor: "",
-                    titleshadowBlur: "0",
-                    titleshadowHorizontal: "0",
-                    titleshadowVertical: "0"
-                });
-            };
-
-            var onResetClickIconTextShadow = function onResetClickIconTextShadow() {
-                setAttributes({
-                    iconshadowColor: "",
-                    iconshadowBlur: "0",
-                    iconshadowHorizontal: "0",
-                    iconshadowVertical: "0"
                 });
             };
 
@@ -65295,20 +64987,7 @@ var edit = function (_Component) {
                                 iconColor: newValue
                             });
                         }
-                    })
-                    // <Fragment>
-                    //     <p>{__("Color")}</p>
-                    //     <ColorPalette
-                    //         value={iconColor}
-                    //         onChange={newValue =>
-                    //             setAttributes({
-                    //                 iconColor: newValue
-                    //             })
-                    //         }
-                    //         allowReset={true}
-                    //     />
-                    // </Fragment>
-                    ,
+                    }),
                     React.createElement(_responsiveRangeControl2.default, {
                         label: __("Size", 'premium-block-for-gutenberg'),
                         value: iconStyles[0].iconSize,
@@ -65641,14 +65320,16 @@ var edit = function (_Component) {
                         },
                         options: BLEND
                     }),
-                    React.createElement(RangeControl, {
-                        label: __("z-index"),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("z-index", 'premium-block-for-gutenberg'),
                         value: zIndex,
-                        min: 0,
-                        max: 100,
                         onChange: function onChange(value) {
                             return setAttributes({ zIndex: value });
-                        }
+                        },
+                        showUnit: false,
+                        defaultValue: 0,
+                        min: 0,
+                        max: 100
                     })
                 ),
                 React.createElement(_premiumResponsiveTabs2.default, {
@@ -65704,7 +65385,6 @@ var edit = function (_Component) {
                                     iconValue && iconType == 'lottie' && lottieURl && React.createElement(
                                         "div",
                                         { className: " premium-title-icon premium-lottie-animation" },
-                                        " ",
                                         React.createElement(_reactLottieWithSegments2.default, {
                                             options: {
                                                 loop: loop,
@@ -65755,7 +65435,6 @@ var edit = function (_Component) {
                                 iconValue && iconType == 'lottie' && lottieURl && React.createElement(
                                     "div",
                                     { className: " premium-title-icon premium-lottie-animation" },
-                                    " ",
                                     React.createElement(_reactLottieWithSegments2.default, {
                                         options: {
                                             loop: loop,
@@ -65780,7 +65459,6 @@ var edit = function (_Component) {
                                 iconValue && iconType == 'lottie' && lottieURl && React.createElement(
                                     "div",
                                     { className: " premium-title-icon premium-lottie-animation" },
-                                    " ",
                                     React.createElement(_reactLottieWithSegments2.default, {
                                         options: {
                                             loop: loop,
