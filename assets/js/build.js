@@ -63094,32 +63094,34 @@ function save(props) {
         title = attributes.title,
         iconValue = attributes.iconValue,
         iconType = attributes.iconType,
+        icon = attributes.icon,
+        lottieURl = attributes.lottieURl,
         loop = attributes.loop,
         reversedir = attributes.reversedir,
-        lottieURl = attributes.lottieURl,
-        target = attributes.target,
-        icon = attributes.icon,
         iconPosition = attributes.iconPosition,
         imageURL = attributes.imageURL,
         link = attributes.link,
         url = attributes.url,
+        target = attributes.target,
         iconAlign = attributes.iconAlign,
         stripePosition = attributes.stripePosition,
+        titleStyles = attributes.titleStyles,
         stripeAlign = attributes.stripeAlign,
         backgroundText = attributes.backgroundText,
         BackText = attributes.BackText,
         hideDesktop = attributes.hideDesktop,
         hideTablet = attributes.hideTablet,
-        hideMobile = attributes.hideMobile,
-        animateDelay = attributes.animateDelay,
-        animateduration = attributes.animateduration;
+        hideMobile = attributes.hideMobile;
 
 
     var styleContainer = title.split("").map(function (letter) {
         return React.createElement(RichText.Content, {
             tagName: titleTag.toLowerCase(),
             className: "premium-title-style9-letter",
-            value: letter
+            value: letter,
+            style: {
+                color: titleStyles[0].titleColor
+            }
         });
     });
 
@@ -63138,12 +63140,10 @@ function save(props) {
                 }, "data-backgroundText": BackText },
             React.createElement(
                 "div",
-                { className: " premium-title-container " + style + " " + style + "-" + align, "data-shiny-delay": animateDelay, "data-shiny-dur": animateduration },
+                { className: " premium-title-container " + style + " " + style + "-" + align, "data-blur-delay": titleStyles[0].animateDelay, "data-shiny-dur": titleStyles[0].animateduration },
                 React.createElement(
                     "div",
-                    { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : ""), "data-blur-delay": animateDelay
-
-                    },
+                    { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : ""), "data-blur-delay": titleStyles[0].animateDelay, "data-shiny-dur": titleStyles[0].animateduration },
                     style === 'style7' ? React.createElement(
                         Fragment,
                         null,
@@ -63171,7 +63171,27 @@ function save(props) {
                             React.createElement(RichText.Content, {
                                 tagName: titleTag.toLowerCase(),
                                 className: "premium-title-text-title",
-                                value: title
+                                value: title,
+                                style: {
+                                    color: titleStyles[0].titleColor,
+                                    // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    lineHeight: titleStyles[0].titleLine + "px",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontFamily: titleStyles[0].titleFontFamily,
+                                    textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                    // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                    // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                    // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                    // marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                    // paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                    // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                    // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                    // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                    minHeight: '15px'
+                                }
                             })
                         )
                     ) : style === "style9" ? React.createElement(
@@ -63182,7 +63202,20 @@ function save(props) {
                         iconValue && iconType == 'lottie' && React.createElement("div", { className: "premium-title-icon premium-lottie-animation", "data-lottie-loop": loop, "data-lottie-url": "" + lottieURl, "data-lottie-reverse": reversedir }),
                         React.createElement(
                             "span",
-                            { className: "premium-letters-container" },
+                            {
+                                className: "premium-letters-container",
+                                style: {
+                                    color: titleStyles[0].titleColor
+                                    // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                    // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                    // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                    // marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                    // paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                    // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                    // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                    // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                }
+                            },
                             styleContainer
                         )
                     ) : React.createElement(
@@ -63194,7 +63227,27 @@ function save(props) {
                         React.createElement(RichText.Content, {
                             tagName: titleTag.toLowerCase(),
                             className: "premium-title-text-title",
-                            value: title
+                            value: title,
+                            style: {
+                                color: titleStyles[0].titleColor,
+                                // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                fontWeight: titleStyles[0].titleWeight,
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                lineHeight: titleStyles[0].titleLine + "px",
+                                fontStyle: titleStyles[0].titleStyle,
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontFamily: titleStyles[0].titleFontFamily,
+                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                // marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                // paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                minHeight: '15px'
+                            }
                         })
                     ),
                     link && React.createElement("a", { rel: "noopener noreferrer", target: target ? "_blank" : "_self", href: "" + url })
@@ -63284,6 +63337,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -65034,7 +65088,17 @@ var edit = function (_Component) {
     return edit;
 }(Component);
 
-exports.default = edit;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    };
+})(edit);
 
 /***/ }),
 /* 387 */
