@@ -64808,21 +64808,21 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_PremiumShadow2.default, {
                         label: __("Shadow", 'premium-blocks-for-gutenberg'),
-                        color: titleStyles[0].titleshadowColor,
-                        blur: titleStyles[0].titleshadowBlur,
-                        horizontal: titleStyles[0].titleshadowHorizontal,
-                        vertical: titleStyles[0].titleshadowVertical,
+                        color: titleStyles[0].titleShadowColor,
+                        blur: titleStyles[0].titleShadowBlur,
+                        horizontal: titleStyles[0].titleShadowHorizontal,
+                        vertical: titleStyles[0].titleShadowVertical,
                         onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyles({ titleshadowColor: newColor });
+                            return saveTitleStyles({ titleShadowColor: newColor });
                         },
                         onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveTitleStyles({ titleshadowBlur: newBlur });
+                            return saveTitleStyles({ titleShadowBlur: newBlur });
                         },
                         onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveTitleStyles({ titleshadowHorizontal: newValue });
+                            return saveTitleStyles({ titleShadowHorizontal: newValue });
                         },
                         onChangeVertical: function onChangeVertical(newValue) {
-                            return saveTitleStyles({ titleshadowVertical: newValue });
+                            return saveTitleStyles({ titleShadowVertical: newValue });
                         }
                     }),
                     style === "style9" && React.createElement(_singleRangeControl2.default, {
