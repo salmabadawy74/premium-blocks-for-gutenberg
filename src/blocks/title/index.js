@@ -63,18 +63,6 @@ const titleAttrs = {
         type: "boolean",
         default: false
     },
-    // stroke: {
-    //     type: 'boolean',
-    //     default: false
-    // },
-    // strokeColor: {
-    //     type: "value",
-
-    // },
-    // strokeFull: {
-    //     type: "number",
-    //     default: 0
-    // },
     backgroundText: {
         type: "boolean",
         default: false
@@ -86,17 +74,6 @@ const titleAttrs = {
     textWidth: {
         type: "number",
     },
-    // horizontalText: {
-    //     type: "number",
-    //     default: '0'
-    // },
-    // verticalText: {
-    //     type: "number",
-    //     default: '0'
-    // },
-    // rotateText: {
-    //     type: "number",
-    // },
     url: {
         type: "string",
         default: "#"
@@ -109,22 +86,6 @@ const titleAttrs = {
         type: "string",
         default: "top"
     },
-    // stripeWidth: {
-    //     type: "number",
-    //     default: 120
-    // },
-    // stripeHeight: {
-    //     type: "number",
-    //     default: 5
-    // },
-    // stripeTopSpacing: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // stripeBottomSpacing: {
-    //     type: "number",
-    //     default: 0
-    // },
     titleStyles: {
         type: "array",
         default: [{
@@ -183,98 +144,6 @@ const titleAttrs = {
         type: "number",
         default: "0"
     },
-    // titleColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // titleLetter: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // titleStyle: {
-    //     type: "string",
-    //     default: "normal"
-    // },
-    // titleUpper: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // titleWeight: {
-    //     type: "number",
-    //     default: 600
-    // },
-    // titlefontSize: {
-    //     type: "number",
-
-    // },
-    // titlefontSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // titlefontSizeMobile: {
-    //     type: "number"
-    // },
-    // titlefontSizeTablet: {
-    //     type: "number"
-    // },
-    // titleshadowColor: {
-    //     type: "string"
-    // },
-    // titleshadowBlur: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleshadowHorizontal: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleshadowVertical: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // stripeColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // titleborderType: {
-    //     type: "string",
-    //     default: "none"
-    // },
-    // titleBorderTop: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleBorderRight: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleBorderBottom: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleBorderLeft: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // titleborderRadius: {
-    //     type: "number",
-    //     default: 1
-    // },
-    // titleborderColor: {
-    //     type: "string"
-    // },
-    // BGColor: {
-    //     type: "string",
-    //     default: "#54595f"
-    // },
-    // lineColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // triangleColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
     stripeAlign: {
         type: "string",
         default: "center"
@@ -377,30 +246,6 @@ const titleAttrs = {
         type: "string",
         default: ""
     },
-    // iconColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // iconSize: {
-    //     type: "number",
-    //     default: 40
-    // },
-    // iconSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // iconSizeMobile: {
-    //     type: "number",
-    //     default: 30
-    // },
-    // iconSizeTablet: {
-    //     type: "number",
-    //     default: 30
-    // },
-    // iconborderType: {
-    //     type: "string",
-    //     default: "none"
-    // },
     iconBorderTop: {
         type: "number",
         default: "1"
@@ -425,28 +270,6 @@ const titleAttrs = {
         type: "number",
         default: "1"
     },
-    // iconborderRadius: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // iconborderColor: {
-    //     type: "string"
-    // },
-    // iconshadowColor: {
-    //     type: "string"
-    // },
-    // iconshadowBlur: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // iconshadowHorizontal: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // iconshadowVertical: {
-    //     type: "number",
-    //     default: "0"
-    // },
     titleMarginT: {
         type: "number",
         default: "0"
@@ -495,11 +318,6 @@ const titleAttrs = {
         type: "number",
         default: "0"
     },
-    // titleMarginType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-
     titlePaddingT: {
         type: "number",
         default: "0"
@@ -548,12 +366,6 @@ const titleAttrs = {
         type: "number",
         default: "0"
     },
-
-    // titlePaddingType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-
     iconBGColor: {
         type: "string"
     },
@@ -605,11 +417,6 @@ const titleAttrs = {
         type: "number",
         default: "0"
     },
-
-    // iconPaddingType: {
-    //     type: "string",
-    //     default: "px"
-    // },
     iconMarginT: {
         type: "number",
         default: "10"
@@ -658,10 +465,6 @@ const titleAttrs = {
         type: "number",
         default: "10"
     },
-    // iconMarginType: {
-    //     type: "string",
-    //     default: "px"
-    // },
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -695,82 +498,16 @@ const titleAttrs = {
         type: 'boolean',
         default: false
     },
-    // textBackColor: {
-    //     type: "string",
-    //     default: "#6ec1e4"
-    // },
-    // textBackfontSize: {
-    //     type: "number"
-    // },
-    // textBackfontSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // textBackWeight: {
-    //     type: "number"
-    // },
-    // textBackStyle: {
-    //     type: "string"
-    // },
-    // textBackUpper: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // textBackLetter: {
-    //     type: "number"
-    // },
-    // textBackshadowHorizontal: {
-    //     type: "number"
-    // },
-    // textBackshadowVertical: {
-    //     type: "number"
-    // },
-    // textBackshadowBlur: {
-    //     type: "number"
-    // },
-    // textBackshadowColor: {
-    //     type: "number"
-    // },
     blend: {
         type: "string"
     },
     zIndex: {
         type: "number"
     },
-    // horizontalU: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // verticalU: {
-    //     type: "string",
-    //     default: "px"
-    // },
     titleTag: {
         type: "string",
         default: "h2"
     },
-    // shinyColor: {
-    //     type: "string",
-    //     default: '#fff'
-    // },
-    // blurColor: {
-    //     type: "string",
-    //     default: "#000"
-    // },
-    // blurShadow: {
-    //     type: "number",
-    //     default: "120"
-    // },
-    // animateDelay: {
-    //     type: "number",
-    //     default: "11"
-    // },
-    // animateduration: {
-    //     type: "number",
-    //     default: "1"
-    // },
-
-
 };
 
 registerBlockType("premium/title", {
