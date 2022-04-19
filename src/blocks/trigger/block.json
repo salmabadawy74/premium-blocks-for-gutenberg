@@ -11,10 +11,23 @@
 		"html": false
 	},
 	"editorScript": "file:./build/block.js",
+	"script": "gpb-trigger-block-script",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css",
+	"style": "file:./build/style-block.css",
 	"attributes": {
 		"text": {
+			"type": "string"
+		},
+		"block_id": {
+			"type": "string"
+		},
+		"triggerLabel": {
+			"type": "string"
+		},
+		"iconSize": {
+			"type": "number"
+		},
+		"iconAlignment": {
 			"type": "string"
 		}
 	}

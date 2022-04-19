@@ -4,9 +4,75 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+ .premium-modal-trigger-container {
+	.trigger-label {
+		background-color: #21759b;
+		color: #fff;
+		padding: 2px;
+	}
+}
+ 
+.gpb-trigger-wrap {
+    .gpb-popup-overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		position: absolute;
+		z-index: 9998;
+    }
+}
+.has-icon-align-center {
+	text-align: center;
+}
+.has-icon-align-right {
+	text-align: right;
+}
+.has-icon-align-left {
+	text-align: left;
+}
+.gpb-popup-content {
+	// opacity: 1;
+    // visibility: visible;
+    // z-index: 100000;
+    // transition: opacity 0.25s ease-out;
 
- .wp-block-create-block-pnj-text {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+	z-index: 10000;
+	display: flex;
+	overflow-x: hidden;
+	overflow-y: auto;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	opacity: 0;
+	background: #fff;
+	box-shadow: 0 0 2rem 0 rgb(0 0 0 / 10%);
+	//transition: transform .3s cubic-bezier(.77,.2,.05,1),opacity .4s cubic-bezier(.77,.2,.05,1),visibility .4s cubic-bezier(.77,.2,.05,1);
+	visibility: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+   // transition: opacity .25s ease-in,left 0s .25s,right 0s .25s;
+   transition: 1s;
+	right: 0;
+   // transform: translateX(100%);
+}
+.active .gpb-popup-content {
+	right: 0;
+    left: auto;
+	visibility: visible;
+    opacity: 1;
+    //transform: translateX(0%);
+	max-width: 35%;
+	max-width: 35%;
+	// transition: opacity 0.25s ease-out;
+	// transition: all ease-in-out 1s;
+}
+.admin-bar .gpb-popup-content {
+	margin-top: 32px;
 }
