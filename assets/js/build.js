@@ -163,7 +163,7 @@ var banner = _PremiumBlocksSetting.banner,
     lottie = _PremiumBlocksSetting.lottie,
     modal = _PremiumBlocksSetting.modal,
     bulletList = _PremiumBlocksSetting.bulletList,
-    title = _PremiumBlocksSetting.title;
+    heading = _PremiumBlocksSetting.heading;
 
 //Plugin Config Keys
 
@@ -183,7 +183,7 @@ exports.fancyText = fancyText;
 exports.lottie = lottie;
 exports.modal = modal;
 exports.bulletList = bulletList;
-exports.title = title;
+exports.heading = heading;
 var _FontAwesomeConfig = FontAwesomeConfig;
 var FontAwesomeEnabled = _FontAwesomeConfig.FontAwesomeEnabled;
 exports.FontAwesomeEnabled = FontAwesomeEnabled;
@@ -10147,7 +10147,7 @@ __webpack_require__(372);
 
 __webpack_require__(376);
 
-__webpack_require__(381);
+__webpack_require__(384);
 
 /***/ }),
 /* 128 */
@@ -63027,7 +63027,10 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 381 */
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63037,11 +63040,11 @@ var _titleAttrs;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(382);
+var _save = __webpack_require__(385);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(383);
+var _edit = __webpack_require__(386);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -63550,20 +63553,20 @@ var titleAttrs = (_titleAttrs = {
     default: "h2"
 }), _titleAttrs);
 
-registerBlockType("premium/title", {
-    title: __("Title"),
-    icon: React.createElement(_icons2.default, { icon: "title" }),
+registerBlockType("premium/heading", {
+    title: __("Heading"),
+    icon: React.createElement(_icons2.default, { icon: "heading" }),
     category: "premium-blocks",
     attributes: titleAttrs,
     supports: {
-        inserter: _settings.title
+        inserter: _settings.heading
     },
     edit: _edit2.default,
     save: _save2.default
 });
 
 /***/ }),
-/* 382 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63695,7 +63698,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 383 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
