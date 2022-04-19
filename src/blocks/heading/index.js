@@ -1,5 +1,5 @@
 import {
-    title
+    heading
 } from "../../../assets/js/settings";
 
 import save from "./save";
@@ -510,13 +510,13 @@ const titleAttrs = {
     },
 };
 
-registerBlockType("premium/title", {
-    title: __("Title"),
-    icon: < PbgIcon icon="title" />,
+registerBlockType("premium/heading", {
+    title: __("Heading"),
+    icon: < PbgIcon icon="heading" />,
     category: "premium-blocks",
     attributes: titleAttrs,
     supports: {
-        inserter: title
+        inserter: heading
     },
     edit: edit,
     save: save
