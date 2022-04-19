@@ -1104,19 +1104,19 @@ class edit extends Component {
                         }
                         <PremiumShadow
                             label={__("Shadow", 'premium-blocks-for-gutenberg')}
-                            color={titleStyles[0].titleshadowColor}
-                            blur={titleStyles[0].titleshadowBlur}
-                            horizontal={titleStyles[0].titleshadowHorizontal}
-                            vertical={titleStyles[0].titleshadowVertical}
+                            color={titleStyles[0].titleShadowColor}
+                            blur={titleStyles[0].titleShadowBlur}
+                            horizontal={titleStyles[0].titleShadowHorizontal}
+                            vertical={titleStyles[0].titleShadowVertical}
                             onChangeColor={newColor =>
-                                saveTitleStyles({ titleshadowColor: newColor })
+                                saveTitleStyles({ titleShadowColor: newColor })
                             }
-                            onChangeBlur={newBlur => saveTitleStyles({ titleshadowBlur: newBlur })}
+                            onChangeBlur={newBlur => saveTitleStyles({ titleShadowBlur: newBlur })}
                             onChangehHorizontal={newValue =>
-                                saveTitleStyles({ titleshadowHorizontal: newValue })
+                                saveTitleStyles({ titleShadowHorizontal: newValue })
                             }
                             onChangeVertical={newValue =>
-                                saveTitleStyles({ titleshadowVertical: newValue })
+                                saveTitleStyles({ titleShadowVertical: newValue })
                             }
                         />
                         {style === "style9" &&
