@@ -15,6 +15,8 @@ import PremiumResponsivePadding from "../../components/Premium-Responsive-Paddin
 
 const { __ } = wp.i18n
 
+const { withSelect } = wp.data
+
 const {
     Component,
     Fragment,
@@ -1812,5 +1814,11 @@ class edit extends Component {
         ]
     }
 }
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-export default edit
+    return {
+        deviceType: deviceType
+    }
+})(edit)
