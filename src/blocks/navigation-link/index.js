@@ -95,7 +95,7 @@ registerBlockType(name, {
 // importing this file includes side effects. This is whitelisted in block-library/package.json under sideEffects
 addFilter(
 	'blocks.registerBlockType',
-	'kemet/navigation-link',
+	'premium/navigation-link',
 	enhanceNavigationLinkVariations
 );
 

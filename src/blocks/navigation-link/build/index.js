@@ -407,58 +407,6 @@ function getSuggestionsQuery(type, kind) {
   }
 }
 /**
- * Determine the colors for a menu.
- *
- * Order of priority is:
- * 1: Overlay custom colors (if submenu)
- * 2: Overlay theme colors (if submenu)
- * 3: Custom colors
- * 4: Theme colors
- * 5: Global styles
- *
- * @param {Object}  context
- * @param {boolean} isSubMenu
- */
-
-
-function getColors(context, isSubMenu) {
-  const {
-    textColor,
-    customTextColor,
-    backgroundColor,
-    customBackgroundColor,
-    overlayTextColor,
-    customOverlayTextColor,
-    overlayBackgroundColor,
-    customOverlayBackgroundColor,
-    style
-  } = context;
-  const colors = {}; // if (isSubMenu && !!customOverlayTextColor) {
-  // 	colors.customTextColor = customOverlayTextColor;
-  // } else if (isSubMenu && !!overlayTextColor) {
-  // 	colors.textColor = overlayTextColor;
-  // } else if (!!customTextColor) {
-  // 	colors.customTextColor = customTextColor;
-  // } else if (!!textColor) {
-  // 	colors.textColor = textColor;
-  // } else if (!!style?.color?.text) {
-  // 	colors.customTextColor = style.color.text;
-  // }
-  // if (isSubMenu && !!customOverlayBackgroundColor) {
-  // 	colors.customBackgroundColor = customOverlayBackgroundColor;
-  // } else if (isSubMenu && !!overlayBackgroundColor) {
-  // 	colors.backgroundColor = overlayBackgroundColor;
-  // } else if (!!customBackgroundColor) {
-  // 	colors.customBackgroundColor = customBackgroundColor;
-  // } else if (!!backgroundColor) {
-  // 	colors.backgroundColor = backgroundColor;
-  // } else if (!!style?.color?.background) {
-  // 	colors.customTextColor = style.color.background;
-  // }
-
-  return colors;
-}
-/**
  * @typedef {'post-type'|'custom'|'taxonomy'|'post-type-archive'} WPNavigationLinkKind
  */
 
@@ -607,7 +555,8 @@ function NavigationLinkEdit(_ref2) {
     makeHeading
   } = attributes;
   const {
-    megaMenu
+    megaMenu,
+    overlayMenu
   } = context;
   const link = {
     url,
@@ -657,8 +606,8 @@ function NavigationLinkEdit(_ref2) {
     const descendants = getClientIdsOfDescendants([clientId]).length;
     return {
       innerBlocks: getBlocks(clientId),
-      isAtMaxNesting: getBlockParentsByBlockName(clientId, [_block_json__WEBPACK_IMPORTED_MODULE_12__.name, 'kemet/navigation-submenu']).length >= MAX_NESTING,
-      isTopLevelLink: getBlockName(getBlockRootClientId(clientId)) === 'kemet/mega-menu',
+      isAtMaxNesting: getBlockParentsByBlockName(clientId, [_block_json__WEBPACK_IMPORTED_MODULE_12__.name, 'premium/navigation-submenu']).length >= MAX_NESTING,
+      isTopLevelLink: getBlockName(getBlockRootClientId(clientId)) === 'premium/navigation',
       isParentOfSelectedBlock: hasSelectedInnerBlock(clientId, true),
       isImmediateParentOfSelectedBlock: hasSelectedInnerBlock(clientId, false),
       hasDescendants: !!descendants,
@@ -685,7 +634,7 @@ function NavigationLinkEdit(_ref2) {
    */
 
   function transformToSubmenu() {
-    const newSubmenu = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.createBlock)('kemet/navigation-submenu', attributes, innerBlocks);
+    const newSubmenu = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.createBlock)('premium/navigation-submenu', attributes, innerBlocks);
     replaceBlock(clientId, newSubmenu);
   }
 
@@ -788,9 +737,8 @@ function NavigationLinkEdit(_ref2) {
       url: page.link,
       kind: 'post-type'
     };
-  }
+  } // console.log(context);
 
-  const colors = getColors(context, !isTopLevelLink); // console.log(context);
 
   function onKeyDown(event) {
     if (_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_6__.isKeyboardEvent.primary(event, 'k') || !url && event.keyCode === _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_6__.ENTER) {
@@ -804,7 +752,8 @@ function NavigationLinkEdit(_ref2) {
       'is-editing': isSelected || isParentOfSelectedBlock,
       'is-dragging-within': isDraggingWithin,
       'has-link': !!url,
-      'has-child': hasDescendants
+      'has-child': hasDescendants,
+      'heading-item': makeHeading && overlayMenu !== 'always'
     }),
     style: {},
     onKeyDown
@@ -858,7 +807,7 @@ function NavigationLinkEdit(_ref2) {
     onClick: transformToSubmenu
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link settings')
-  }, megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, isTopLevelLink && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+  }, megaMenu && overlayMenu !== 'always' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)("Make This Item As Column Heading", 'premium-blocks-for-gutenberg'),
     checked: makeHeading,
     onChange: check => setAttributes({
@@ -908,7 +857,7 @@ function NavigationLinkEdit(_ref2) {
     }),
     onMerge: mergeBlocks,
     onReplace: onReplace,
-    __unstableOnSplitAtEnd: () => insertBlocksAfter((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.createBlock)('kemet/navigation-link')),
+    __unstableOnSplitAtEnd: () => insertBlocksAfter((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.createBlock)('premium/navigation-link')),
     "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Navigation link text'),
     placeholder: itemLabelPlaceholder,
     withoutInteractiveFormatting: true,
@@ -1088,7 +1037,7 @@ function getIcon(variationName) {
 }
 
 function enhanceNavigationLinkVariations(settings, name) {
-  if (name !== 'kemet/navigation-link') {
+  if (name !== 'premium/navigation-link') {
     return settings;
   } // Fallback handling may be deleted after supported WP ranges understand the `variations`
   // property when passed to register_block_type in index.php.
@@ -1256,7 +1205,7 @@ const {
   transforms: _transforms__WEBPACK_IMPORTED_MODULE_9__["default"]
 }); // importing this file includes side effects. This is whitelisted in block-library/package.json under sideEffects
 
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.addFilter)('blocks.registerBlockType', 'kemet/navigation-link', _hooks__WEBPACK_IMPORTED_MODULE_8__.enhanceNavigationLinkVariations);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.addFilter)('blocks.registerBlockType', 'premium/navigation-link', _hooks__WEBPACK_IMPORTED_MODULE_8__.enhanceNavigationLinkVariations);
 
 /***/ }),
 
@@ -1306,37 +1255,37 @@ const transforms = {
     type: 'block',
     blocks: ['core/site-logo'],
     transform: () => {
-      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('kemet/navigation-link');
+      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('premium/navigation-link');
     }
   }, {
     type: 'block',
     blocks: ['core/spacer'],
     transform: () => {
-      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('kemet/navigation-link');
+      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('premium/navigation-link');
     }
   }, {
     type: 'block',
     blocks: ['core/home-link'],
     transform: () => {
-      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('kemet/navigation-link');
+      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('premium/navigation-link');
     }
   }, {
     type: 'block',
     blocks: ['core/social-links'],
     transform: () => {
-      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('kemet/navigation-link');
+      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('premium/navigation-link');
     }
   }, {
     type: 'block',
     blocks: ['core/search'],
     transform: () => {
-      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('kemet/navigation-link');
+      return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('premium/navigation-link');
     }
   }],
   to: [{
     type: 'block',
-    blocks: ['kemet/navigation-submenu'],
-    transform: (attributes, innerBlocks) => (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('kemet/navigation-submenu', attributes, innerBlocks)
+    blocks: ['premium/navigation-submenu'],
+    transform: (attributes, innerBlocks) => (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('premium/navigation-submenu', attributes, innerBlocks)
   }, {
     type: 'block',
     blocks: ['core/spacer'],
@@ -1620,7 +1569,7 @@ module.exports = window["wp"]["url"];
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"kemet/navigation-link","title":"Custom Link","category":"design","parent":["kemet/mega-menu"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"},"makeHeading":{"type":"boolean"}},"usesContext":["textColor","customTextColor","backgroundColor","customBackgroundColor","overlayTextColor","customOverlayTextColor","overlayBackgroundColor","customOverlayBackgroundColor","fontSize","customFontSize","showSubmenuIcon","style","megaMenu"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-link","title":"Custom Link","category":"design","parent":["premium/navigation"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"},"makeHeading":{"type":"boolean"}},"usesContext":["showSubmenuIcon","style","megaMenu","overlayMenu"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

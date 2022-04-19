@@ -9,45 +9,45 @@ const transforms = {
 			type: 'block',
 			blocks: ['core/site-logo'],
 			transform: () => {
-				return createBlock('kemet/navigation-link');
+				return createBlock('premium/navigation-link');
 			},
 		},
 		{
 			type: 'block',
 			blocks: ['core/spacer'],
 			transform: () => {
-				return createBlock('kemet/navigation-link');
+				return createBlock('premium/navigation-link');
 			},
 		},
 		{
 			type: 'block',
 			blocks: ['core/home-link'],
 			transform: () => {
-				return createBlock('kemet/navigation-link');
+				return createBlock('premium/navigation-link');
 			},
 		},
 		{
 			type: 'block',
 			blocks: ['core/social-links'],
 			transform: () => {
-				return createBlock('kemet/navigation-link');
+				return createBlock('premium/navigation-link');
 			},
 		},
 		{
 			type: 'block',
 			blocks: ['core/search'],
 			transform: () => {
-				return createBlock('kemet/navigation-link');
+				return createBlock('premium/navigation-link');
 			},
 		},
 	],
 	to: [
 		{
 			type: 'block',
-			blocks: ['kemet/navigation-submenu'],
+			blocks: ['premium/navigation-submenu'],
 			transform: (attributes, innerBlocks) =>
 				createBlock(
-					'kemet/navigation-submenu',
+					'premium/navigation-submenu',
 					attributes,
 					innerBlocks
 				),

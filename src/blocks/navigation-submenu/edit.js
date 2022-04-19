@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { escape, pull } from 'lodash';
+import { escape, pull, size } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -31,7 +31,6 @@ import {
 	__experimentalLinkControl as LinkControl,
 	useBlockProps,
 	store as blockEditorStore,
-	getColorClassName,
 	useSetting
 } from '@wordpress/block-editor';
 import { isURL, prependHTTP, safeDecodeURI } from '@wordpress/url';
@@ -51,14 +50,15 @@ import { createBlock } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
-import RadioComponent from '../../components/radio-control';
 import { ItemSubmenuIcon } from './icons';
 import { name } from './block.json';
+import MegaMenuLayout from './MegaMenuLayout'
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 
-const ALLOWED_BLOCKS = ['kemet/navigation-link', 'kemet/navigation-submenu'];
+const ALLOWED_BLOCKS = ['premium/navigation-link', 'premium/navigation-submenu'];
 
 const DEFAULT_BLOCK = {
-	name: 'kemet/navigation-link',
+	name: 'premium/navigation-link',
 };
 
 const MAX_NESTING = 5;
@@ -145,61 +145,6 @@ function getSuggestionsQuery(type, kind) {
 }
 
 /**
- * Determine the colors for a menu.
- *
- * Order of priority is:
- * 1: Overlay custom colors (if submenu)
- * 2: Overlay theme colors (if submenu)
- * 3: Custom colors
- * 4: Theme colors
- * 5: Global styles
- *
- * @param {Object}  context
- * @param {boolean} isSubMenu
- */
-function getColors(context, isSubMenu) {
-	const {
-		textColor,
-		customTextColor,
-		backgroundColor,
-		customBackgroundColor,
-		overlayTextColor,
-		customOverlayTextColor,
-		overlayBackgroundColor,
-		customOverlayBackgroundColor,
-		style,
-	} = context;
-
-	const colors = {};
-
-	if (isSubMenu && !!customOverlayTextColor) {
-		colors.customTextColor = customOverlayTextColor;
-	} else if (isSubMenu && !!overlayTextColor) {
-		colors.textColor = overlayTextColor;
-	} else if (!!customTextColor) {
-		colors.customTextColor = customTextColor;
-	} else if (!!textColor) {
-		colors.textColor = textColor;
-	} else if (!!style?.color?.text) {
-		colors.customTextColor = style.color.text;
-	}
-
-	if (isSubMenu && !!customOverlayBackgroundColor) {
-		colors.customBackgroundColor = customOverlayBackgroundColor;
-	} else if (isSubMenu && !!overlayBackgroundColor) {
-		colors.backgroundColor = overlayBackgroundColor;
-	} else if (!!customBackgroundColor) {
-		colors.customBackgroundColor = customBackgroundColor;
-	} else if (!!backgroundColor) {
-		colors.backgroundColor = backgroundColor;
-	} else if (!!style?.color?.background) {
-		colors.customTextColor = style.color.background;
-	}
-
-	return colors;
-}
-
-/**
  * @typedef {'post-type'|'custom'|'taxonomy'|'post-type-archive'} WPNavigationLinkKind
  */
 
@@ -276,6 +221,57 @@ export const updateNavigationLinkBlockAttributes = (
 	});
 };
 
+const getColors = (menuColors, submenuColors) => {
+	const colors = { ...menuColors };
+	if (submenuColors.link) {
+		colors.link = submenuColors.link;
+	}
+	if (submenuColors.linkHover) {
+		colors.linkHover = submenuColors.linkHover;
+	}
+	if (submenuColors.background) {
+		colors.background = submenuColors.background;
+	}
+
+	return colors;
+}
+
+const getTypography = (menuTypography, submenuTypography) => {
+	const typography = { ...menuTypography };
+	if (submenuTypography.size) {
+		typography.size = submenuTypography.size;
+	}
+	if (submenuTypography.weight) {
+		typography.weight = submenuTypography.weight;
+	}
+
+	if (submenuTypography.family) {
+		typography.family = submenuTypography.family;
+	}
+
+	if (submenuTypography.letterSpacing) {
+		typography.letterSpacing = submenuTypography.letterSpacing;
+	}
+
+	if (submenuTypography.textTransform) {
+		typography.textTransform = submenuTypography.textTransform;
+	}
+
+	if (submenuTypography.textDecoration) {
+		typography.textDecoration = submenuTypography.textDecoration;
+	}
+
+	if (submenuTypography.lineHeight) {
+		typography.lineHeight = submenuTypography.lineHeight;
+	}
+
+	if (submenuTypography.style) {
+		typography.style = submenuTypography.style;
+	}
+
+	return typography;
+}
+
 export default function NavigationSubmenuEdit({
 	attributes,
 	isSelected,
@@ -296,15 +292,41 @@ export default function NavigationSubmenuEdit({
 		kind,
 		megaMenu,
 		megaMenuWidth,
-		megaMenuColumns
+		megaMenuColumns,
+		megaMenuLayout,
+		spacing
 	} = attributes;
 	const link = {
 		url,
 		opensInNewTab,
 	};
-	const { showSubmenuIcon, openSubmenusOnClick, submenuColors, menuColors } = context;
+	const { showSubmenuIcon, openSubmenusOnClick, submenuColors, menuColors, submenuWidth, menuTypography,
+		submenuTypography: typography, overlayMenu } = context;
 	const { saveEntityRecord } = useDispatch(coreStore);
-	const { contentSize, wideSize } = useSetting('layout');
+	const { contentSize } = useSetting('layout');
+	const defaultSpacingValue = {
+		desktop: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		},
+		tablet: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		},
+		mobile: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		}
+	};
+	let columnPadding = spacing.columnPadding ? spacing.columnPadding : defaultSpacingValue;
+	let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+
 	const {
 		__unstableMarkNextChangeAsNotPersistent,
 		replaceBlock,
@@ -353,7 +375,7 @@ export default function NavigationSubmenuEdit({
 				const singleBlock = getBlock(selectedBlockDescendants[0]);
 
 				_onlyDescendantIsEmptyLink =
-					singleBlock?.name === 'kemet/navigation-link' &&
+					singleBlock?.name === 'premium/navigation-link' &&
 					!singleBlock?.attributes?.label;
 			}
 
@@ -473,19 +495,22 @@ export default function NavigationSubmenuEdit({
 		};
 	}
 
-	const {
-		textColor,
-		customTextColor,
-		backgroundColor,
-		customBackgroundColor,
-	} = getColors(context, !isTopLevelItem);
-
 	function onKeyDown(event) {
 		if (isKeyboardEvent.primary(event, 'k')) {
 			setIsLinkOpen(true);
 		}
 	}
 
+	const defaultSize = {
+		desktop: "",
+		tablet: "",
+		mobile: "",
+		unit: "px"
+	};
+
+	const { link: linkColor, linkHover: linkHoverColor, background: backgroundColor } = getColors(menuColors, submenuColors);
+	const { size: fontSizeValue = defaultSize, family, weight, letterSpacing, textTransform, textDecoration, lineHeight, style: fontStyle } = getTypography(menuTypography, typography);
+	const fontSize = fontSizeValue ? fontSizeValue : defaultSize;
 	const blockProps = useBlockProps({
 		ref: listItemRef,
 		className: classnames('premium-navigation-item', {
@@ -493,51 +518,40 @@ export default function NavigationSubmenuEdit({
 			'is-dragging-within': isDraggingWithin,
 			'has-link': !!url,
 			'has-child': hasDescendants,
-			'has-text-color': !!textColor || !!customTextColor,
-			[getColorClassName('color', textColor)]: !!textColor,
-			'has-background': !!backgroundColor || customBackgroundColor,
-			[getColorClassName(
-				'background-color',
-				backgroundColor
-			)]: !!backgroundColor,
 			'open-on-click': openSubmenusOnClick,
+			'premiun-mega-menu': megaMenu && overlayMenu !== 'always',
 		}),
-		style: {
-			color: !textColor && customTextColor,
-			backgroundColor: !backgroundColor && customBackgroundColor,
-		},
 		onKeyDown,
 	});
 
-	// Always use overlay colors for submenus.
-	const innerBlocksColors = getColors(context, true);
-
 	if (isAtMaxNesting) {
-		pull(ALLOWED_BLOCKS, 'kemet/navigation-submenu');
+		pull(ALLOWED_BLOCKS, 'premium/navigation-submenu');
 	}
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			className: classnames('premium-navigation__submenu-container', {
-				'is-parent-of-selected-block': isParentOfSelectedBlock,
-				'has-text-color': !!(
-					innerBlocksColors.textColor ||
-					innerBlocksColors.customTextColor
-				),
-				[`has-${innerBlocksColors.textColor}-color`]: !!innerBlocksColors.textColor,
-				'has-background': !!(
-					innerBlocksColors.backgroundColor ||
-					innerBlocksColors.customBackgroundColor
-				),
-				[`has-${innerBlocksColors.backgroundColor}-background-color`]: !!innerBlocksColors.backgroundColor,
+			className: classnames('premium-navigation__submenu-container', megaMenu && overlayMenu !== 'always' ? `col-${megaMenuColumns}` : '', megaMenu && overlayMenu !== 'always' ? `layout-${megaMenuLayout}` : '', {
+				'is-parent-of-selected-block': isParentOfSelectedBlock
 			}),
 			style: {
-				color: innerBlocksColors.customTextColor,
-				backgroundColor: innerBlocksColors.customBackgroundColor,
+				color: linkColor,
+				backgroundColor: backgroundColor,
+				fontSize: `${fontSize.desktop}${fontSize.unit}`,
+				fontFamily: family,
+				fontWeight: weight,
+				letterSpacing: letterSpacing,
+				textDecoration: textDecoration,
+				textTransform: textTransform,
+				lineHeight: `${lineHeight}px`,
+				fontStyle: fontStyle,
+				paddingTop: megaMenu ? `${padding.desktop.top}px` : '',
+				paddingRight: megaMenu ? `${padding.desktop.right}px` : '',
+				paddingBottom: megaMenu ? `${padding.desktop.bottom}px` : '',
+				paddingLeft: megaMenu ? `${padding.desktop.left}px` : '',
 			},
 		},
 		{
-			allowedBlocks: ALLOWED_BLOCKS,
+			allowedBlocks: megaMenu ? 'all' : ALLOWED_BLOCKS,
 			__experimentalDefaultBlock: DEFAULT_BLOCK,
 			__experimentalDirectInsert: true,
 
@@ -560,12 +574,50 @@ export default function NavigationSubmenuEdit({
 	const ParentElement = openSubmenusOnClick ? 'button' : 'a';
 
 	function transformToLink() {
-		const newLinkBlock = createBlock('kemet/navigation-link', attributes);
+		const newLinkBlock = createBlock('premium/navigation-link', attributes);
 		replaceBlock(clientId, newLinkBlock);
 	}
 
 	const canConvertToLink =
 		!selectedBlockHasDescendants || onlyDescendantIsEmptyLink;
+
+	const getOffSet = (el) => {
+		var rect = el.getBoundingClientRect();
+
+		return {
+			top: rect.top + window.pageYOffset,
+			left: rect.left + window.pageXOffset,
+		};
+	};
+
+	const onChangePadding = (side, value, device) => {
+		const newPadding = { ...padding };
+		newPadding[device][side] = value;
+		setAttributes({ spacing: { ...spacing, padding: newPadding } });
+	}
+
+	const onChangeItemPadding = (side, value, device) => {
+		const newPadding = { ...columnPadding };
+		newPadding[device][side] = value;
+		setAttributes({ spacing: { ...spacing, columnPadding: newPadding } });
+	}
+
+	useEffect(() => {
+		const submenuElement = ref.current.parentElement.parentElement.querySelector('.premium-navigation__submenu-container');
+		if (megaMenu && overlayMenu !== 'always') {
+			const bodyWidth = document.body.clientWidth - (document.body.querySelector('.interface-interface-skeleton__sidebar') ? document.body.querySelector('.interface-interface-skeleton__sidebar').clientWidth : 0);
+			submenuElement.style.left = `0`;
+			const megaMenuContainer = submenuElement.parentElement.parentElement;
+			const megaMenuContainerWidth = megaMenuWidth === 'content' ? contentSize : megaMenuWidth === 'full' ? 'calc(100vw)' : `${megaMenuContainer.clientWidth}px`;
+			submenuElement.style.width = megaMenuContainerWidth;
+			let left = megaMenuWidth === 'content' ? (bodyWidth - submenuElement.clientWidth) / 2 - getOffSet(submenuElement).left : `-${getOffSet(submenuElement).left}`;
+			left = megaMenuWidth === 'menu-container' ? `-${ref.current.parentElement.parentElement.offsetLeft}` : left;
+			submenuElement.style.left = `${megaMenuWidth === 'content' ? left - 9 : left}px`;
+		} else {
+			submenuElement.style.left = `0`;
+			submenuElement.style.width = submenuWidth ? `${submenuWidth}px` : `auto`;
+		}
+	}, [isSelected, megaMenu, megaMenuWidth, submenuWidth, overlayMenu])
 
 	return (
 		<Fragment>
@@ -593,15 +645,15 @@ export default function NavigationSubmenuEdit({
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody title={__('Mega Menu Settings')}>
-					<ToggleControl
+					{overlayMenu !== 'always' && <ToggleControl
 						label={__("Enable Mega Menu", 'premium-blocks-for-gutenberg')}
 						checked={megaMenu}
 						onChange={check => setAttributes({ megaMenu: check })}
-					/>
-					{megaMenu && (
+					/>}
+					{megaMenu && overlayMenu !== 'always' && (
 						<>
 							<SelectControl
-								label={__("Direction", 'premium-blocks-for-gutenberg')}
+								label={__("Mega Menu Width", 'premium-blocks-for-gutenberg')}
 								options={[
 									{
 										value: "content",
@@ -609,25 +661,117 @@ export default function NavigationSubmenuEdit({
 									},
 									{
 										value: "full",
-										label: __("Wide", 'premium-blocks-for-gutenberg')
+										label: __("Full", 'premium-blocks-for-gutenberg')
+									},
+									{
+										value: "menu-container",
+										label: __("Menu Container", 'premium-blocks-for-gutenberg')
 									}
 								]}
 								value={megaMenuWidth}
 								onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
 							/>
-							<RadioGroup label="Width" onChange={(value) => setAttributes({ megaMenuColumns: value })} checked={megaMenuColumns}>
-								<Radio value="1">1</Radio>
-								<Radio value="2">2</Radio>
-								<Radio value="3">3</Radio>
-								<Radio value="4">4</Radio>
-								<Radio value="5">5</Radio>
-								<Radio value="6">6</Radio>
-							</RadioGroup>
+							<div>
+								<label>{__('Mega Menu Columns', 'premium-blocks-for-gutenberg')}</label>
+								<RadioGroup label="Width" onChange={(value) => setAttributes({ megaMenuColumns: value })} checked={megaMenuColumns}>
+									<Radio value="1">1</Radio>
+									<Radio value="2">2</Radio>
+									<Radio value="3">3</Radio>
+									<Radio value="4">4</Radio>
+									<Radio value="5">5</Radio>
+									<Radio value="6">6</Radio>
+								</RadioGroup>
+							</div>
+							<MegaMenuLayout label={__('Layout', 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ megaMenuLayout: value })} value={megaMenuLayout} megaMenuColumns={megaMenuColumns} />
 						</>
 					)}
 
 				</PanelBody>
-				<PanelBody title={__('Link settings 2')}>
+				{megaMenu && (
+					<>
+						<PanelBody
+							title={__('Spacing', 'premium-blocks-for-gutenberg')}
+							initialOpen={false}
+						>
+							<PremiumResponsivePadding
+								directions={["all"]}
+								paddingTop={padding.desktop.top}
+								paddingRight={padding.desktop.right}
+								paddingBottom={padding.desktop.bottom}
+								paddingLeft={padding.desktop.left}
+								paddingTopTablet={padding.tablet.top}
+								paddingRightTablet={padding.tablet.right}
+								paddingBottomTablet={padding.tablet.bottom}
+								paddingLeftTablet={padding.tablet.left}
+								paddingTopMobile={padding.mobile.top}
+								paddingRightMobile={padding.mobile.right}
+								paddingBottomMobile={padding.mobile.bottom}
+								paddingLeftMobile={padding.mobile.left}
+								onChangePaddingTop={
+									(device, newValue) => {
+										onChangePadding('top', newValue, device);
+									}
+								}
+								onChangePaddingRight={
+									(device, newValue) => {
+										onChangePadding('right', newValue, device);
+									}
+								}
+								onChangePaddingBottom={
+									(device, newValue) => {
+										onChangePadding('bottom', newValue, device);
+									}
+								}
+								onChangePaddingLeft={
+									(device, newValue) => {
+										onChangePadding('left', newValue, device);
+									}
+								}
+							/>
+						</PanelBody>
+						<PanelBody
+							title={__('Mega Menu Columns Spacing', 'premium-blocks-for-gutenberg')}
+							initialOpen={false}
+						>
+							<PremiumResponsivePadding
+								directions={["all"]}
+								paddingTop={columnPadding.desktop.top}
+								paddingRight={columnPadding.desktop.right}
+								paddingBottom={columnPadding.desktop.bottom}
+								paddingLeft={columnPadding.desktop.left}
+								paddingTopTablet={columnPadding.tablet.top}
+								paddingRightTablet={columnPadding.tablet.right}
+								paddingBottomTablet={columnPadding.tablet.bottom}
+								paddingLeftTablet={columnPadding.tablet.left}
+								paddingTopMobile={columnPadding.mobile.top}
+								paddingRightMobile={columnPadding.mobile.right}
+								paddingBottomMobile={columnPadding.mobile.bottom}
+								paddingLeftMobile={columnPadding.mobile.left}
+								onChangePaddingTop={
+									(device, newValue) => {
+										onChangeItemPadding('top', newValue, device);
+									}
+								}
+								onChangePaddingRight={
+									(device, newValue) => {
+										onChangeItemPadding('right', newValue, device);
+									}
+								}
+								onChangePaddingBottom={
+									(device, newValue) => {
+										onChangeItemPadding('bottom', newValue, device);
+									}
+								}
+								onChangePaddingLeft={
+									(device, newValue) => {
+										onChangeItemPadding('left', newValue, device);
+									}
+								}
+							/>
+						</PanelBody>
+					</>
+				)}
+				<PanelBody title={__('Link settings')}>
 					<TextareaControl
 						value={description || ''}
 						onChange={(descriptionValue) => {
@@ -659,6 +803,24 @@ export default function NavigationSubmenuEdit({
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>
+				<style
+					dangerouslySetInnerHTML={{
+						__html: [
+							`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`,
+							`padding-top: ${columnPadding.desktop.top}px;`,
+							`padding-right: ${columnPadding.desktop.right}px;`,
+							`padding-bottom: ${columnPadding.desktop.bottom}px;`,
+							`padding-left: ${columnPadding.desktop.left}px;`,
+							`}`,
+							`#${blockProps.id} .premium-navigation__submenu-container a{`,
+							`--pbg-links-color: ${linkColor};`,
+							`}`,
+							`#${blockProps.id} .premium-navigation__submenu-container a:hover {`,
+							`--pbg-links-hover-color: ${linkHoverColor};`,
+							"}"
+						].join("\n")
+					}}
+				/>
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}
 				<ParentElement className="premium-navigation-item__content">
 					{ /* eslint-enable */}
@@ -739,12 +901,12 @@ export default function NavigationSubmenuEdit({
 							/>
 						</Popover>
 					)}
+					{(showSubmenuIcon || openSubmenusOnClick) && (
+						<span className="premium-navigation__submenu-icon">
+							<ItemSubmenuIcon />
+						</span>
+					)}
 				</ParentElement>
-				{(showSubmenuIcon || openSubmenusOnClick) && (
-					<span className="premium-navigation__submenu-icon">
-						<ItemSubmenuIcon />
-					</span>
-				)}
 				<div {...innerBlocksProps} />
 			</div>
 		</Fragment>

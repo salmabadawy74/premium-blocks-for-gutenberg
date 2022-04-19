@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Renders the `kemet/navigation-link` block.
+ * Renders the `premium/navigation-link` block.
  *
  * @param array    $attributes The block attributes.
  * @param string   $content    The saved content.
@@ -9,8 +9,9 @@
  *
  * @return string Returns the post content with the legacy widget added.
  */
-function render_block_kemet_navigation_link( $attributes, $content, $block ) {
+function render_block_premium_navigation_link( $attributes, $content, $block ) {
 	$navigation_link_has_id = isset( $attributes['id'] ) && is_numeric( $attributes['id'] );
+	$make_heading           = isset( $attributes['makeHeading'] ) && $attributes['makeHeading'];
 	$is_post_type           = isset( $attributes['kind'] ) && 'post-type' === $attributes['kind'];
 	$is_post_type           = $is_post_type || isset( $attributes['type'] ) && ( 'post' === $attributes['type'] || 'page' === $attributes['type'] );
 
@@ -27,23 +28,13 @@ function render_block_kemet_navigation_link( $attributes, $content, $block ) {
 		return '';
 	}
 
-	$colors          = block_core_navigation_link_build_css_colors( $block->context, $attributes );
-	$font_sizes      = block_core_navigation_link_build_css_font_sizes( $block->context );
-	$classes         = array_merge(
-		$colors['css_classes'],
-		$font_sizes['css_classes']
-	);
-	$style_attribute = ( $colors['inline_styles'] . $font_sizes['inline_styles'] );
-
-	$css_classes = trim( implode( ' ', $classes ) );
 	$has_submenu = count( $block->inner_blocks ) > 0;
 	$is_active   = ! empty( $attributes['id'] ) && ( get_the_ID() === $attributes['id'] );
 
 	$wrapper_attributes = get_block_wrapper_attributes(
 		array(
-			'class' => $css_classes . ' premium-navigation-item' . ( $has_submenu ? ' has-child' : '' ) .
-				( $is_active ? ' current-menu-item' : '' ),
-			'style' => $style_attribute,
+			'class' => 'premium-navigation-item' . ( $has_submenu ? ' has-child' : '' ) .
+				( $is_active ? ' current-menu-item' : '' ) . ( $make_heading && ( isset( $block->context['megaMenu'] ) && $block->context['megaMenu'] ) ? ' heading-item' : '' ),
 		)
 	);
 	$html               = '<li ' . $wrapper_attributes . '>' .
@@ -115,7 +106,7 @@ function render_block_kemet_navigation_link( $attributes, $content, $block ) {
  * @uses render_block_core_navigation()
  * @throws WP_Error An WP_Error exception parsing the block definition.
  */
-function register_block_kemet_navigation_link() {
+function register_block_premium_navigation_link() {
 	$post_types = get_post_types( array( 'show_in_nav_menus' => true ), 'objects' );
 	$taxonomies = get_taxonomies( array( 'show_in_nav_menus' => true ), 'objects' );
 
@@ -150,9 +141,9 @@ function register_block_kemet_navigation_link() {
 	register_block_type_from_metadata(
 		PREMIUM_BLOCKS_PATH . 'src/blocks/navigation-link',
 		array(
-			'render_callback' => 'render_block_kemet_navigation_link',
+			'render_callback' => 'render_block_premium_navigation_link',
 			'variations'      => array_merge( $built_ins, $variations ),
 		)
 	);
 }
-add_action( 'init', 'register_block_kemet_navigation_link' );
+add_action( 'init', 'register_block_premium_navigation_link' );

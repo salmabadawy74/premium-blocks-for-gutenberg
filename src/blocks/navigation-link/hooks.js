@@ -30,7 +30,7 @@ function getIcon(variationName) {
 }
 
 export function enhanceNavigationLinkVariations(settings, name) {
-	if (name !== 'kemet/navigation-link') {
+	if (name !== 'premium/navigation-link') {
 		return settings;
 	}
 

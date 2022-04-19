@@ -92,10 +92,9 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/notices.php';
 			}
 
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/mega-menu/index.php';
+			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation/index.php';
 			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation-link/index.php';
 			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation-submenu/index.php';
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/page-list/index.php';
 			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php';
 			// require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-frontend.php';
 		}

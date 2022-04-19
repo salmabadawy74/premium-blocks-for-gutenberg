@@ -18,6 +18,7 @@ import {
 	ToolbarButton,
 	Tooltip,
 	ToolbarGroup,
+	ToggleControl,
 } from '@wordpress/components';
 import { displayShortcut, isKeyboardEvent, ENTER } from '@wordpress/keycodes';
 import { __, sprintf } from '@wordpress/i18n';
@@ -29,7 +30,6 @@ import {
 	__experimentalLinkControl as LinkControl,
 	useBlockProps,
 	store as blockEditorStore,
-	getColorClassName,
 } from '@wordpress/block-editor';
 import { isURL, prependHTTP, safeDecodeURI } from '@wordpress/url';
 import {
@@ -129,61 +129,6 @@ function getSuggestionsQuery(type, kind) {
 			}
 			return {};
 	}
-}
-
-/**
- * Determine the colors for a menu.
- *
- * Order of priority is:
- * 1: Overlay custom colors (if submenu)
- * 2: Overlay theme colors (if submenu)
- * 3: Custom colors
- * 4: Theme colors
- * 5: Global styles
- *
- * @param {Object}  context
- * @param {boolean} isSubMenu
- */
-function getColors(context, isSubMenu) {
-	const {
-		textColor,
-		customTextColor,
-		backgroundColor,
-		customBackgroundColor,
-		overlayTextColor,
-		customOverlayTextColor,
-		overlayBackgroundColor,
-		customOverlayBackgroundColor,
-		style,
-	} = context;
-
-	const colors = {};
-
-	// if (isSubMenu && !!customOverlayTextColor) {
-	// 	colors.customTextColor = customOverlayTextColor;
-	// } else if (isSubMenu && !!overlayTextColor) {
-	// 	colors.textColor = overlayTextColor;
-	// } else if (!!customTextColor) {
-	// 	colors.customTextColor = customTextColor;
-	// } else if (!!textColor) {
-	// 	colors.textColor = textColor;
-	// } else if (!!style?.color?.text) {
-	// 	colors.customTextColor = style.color.text;
-	// }
-
-	// if (isSubMenu && !!customOverlayBackgroundColor) {
-	// 	colors.customBackgroundColor = customOverlayBackgroundColor;
-	// } else if (isSubMenu && !!overlayBackgroundColor) {
-	// 	colors.backgroundColor = overlayBackgroundColor;
-	// } else if (!!customBackgroundColor) {
-	// 	colors.customBackgroundColor = customBackgroundColor;
-	// } else if (!!backgroundColor) {
-	// 	colors.backgroundColor = backgroundColor;
-	// } else if (!!style?.color?.background) {
-	// 	colors.customTextColor = style.color.background;
-	// }
-
-	return colors;
 }
 
 /**
@@ -339,7 +284,8 @@ export default function NavigationLinkEdit({
 		kind,
 		makeHeading
 	} = attributes;
-	const { megaMenu } = context;
+	const { megaMenu, overlayMenu } = context;
+
 	const link = {
 		url,
 		opensInNewTab,
@@ -390,11 +336,11 @@ export default function NavigationLinkEdit({
 				isAtMaxNesting:
 					getBlockParentsByBlockName(clientId, [
 						name,
-						'kemet/navigation-submenu',
+						'premium/navigation-submenu',
 					]).length >= MAX_NESTING,
 				isTopLevelLink:
 					getBlockName(getBlockRootClientId(clientId)) ===
-					'kemet/mega-menu',
+					'premium/navigation',
 				isParentOfSelectedBlock: hasSelectedInnerBlock(
 					clientId,
 					true
@@ -439,7 +385,7 @@ export default function NavigationLinkEdit({
 	 */
 	function transformToSubmenu() {
 		const newSubmenu = createBlock(
-			'kemet/navigation-submenu',
+			'premium/navigation-submenu',
 			attributes,
 			innerBlocks
 		);
@@ -552,7 +498,6 @@ export default function NavigationLinkEdit({
 		};
 	}
 
-	const colors = getColors(context, !isTopLevelLink);
 	// console.log(context);
 	function onKeyDown(event) {
 		if (
@@ -569,7 +514,8 @@ export default function NavigationLinkEdit({
 			'is-editing': isSelected || isParentOfSelectedBlock,
 			'is-dragging-within': isDraggingWithin,
 			'has-link': !!url,
-			'has-child': hasDescendants
+			'has-child': hasDescendants,
+			'heading-item': makeHeading && overlayMenu !== 'always',
 		}),
 		style: {
 		},
@@ -630,9 +576,9 @@ export default function NavigationLinkEdit({
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody title={__('Link settings')}>
-					{megaMenu && (
+					{megaMenu && overlayMenu !== 'always' && (
 						<>
-							{isTopLevelLink && <ToggleControl
+							{<ToggleControl
 								label={__("Make This Item As Column Heading", 'premium-blocks-for-gutenberg')}
 								checked={makeHeading}
 								onChange={check => setAttributes({ makeHeading: check })}
@@ -695,7 +641,7 @@ export default function NavigationLinkEdit({
 							onReplace={onReplace}
 							__unstableOnSplitAtEnd={() =>
 								insertBlocksAfter(
-									createBlock('kemet/navigation-link')
+									createBlock('premium/navigation-link')
 								)
 							}
 							aria-label={__('Navigation link text')}

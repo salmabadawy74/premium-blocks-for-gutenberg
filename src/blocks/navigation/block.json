@@ -1,0 +1,141 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "premium/navigation",
+    "title": "Premium Navigation",
+    "category": "premium-blocks",
+    "description": "A collection of blocks that allow visitors to get around your site.",
+    "keywords": ["menu", "navigation", "links"],
+    "textdomain": "default",
+    "attributes": {
+        "ref": {
+            "type": "number"
+        },
+        "overlayMenu": {
+            "type": "string",
+            "default": "mobile"
+        },
+        "hasIcon": {
+            "type": "boolean",
+            "default": true
+        },
+        "overlayColors": {
+            "type": "object",
+            "default": {
+                "link": "",
+                "linkHover": "",
+                "background": "",
+                "icon": "",
+                "iconHover": ""
+            }
+        },
+        "menuColors": {
+            "type": "object",
+            "default": {
+                "link": "",
+                "linkHover": "",
+                "background": ""
+            }
+        },
+        "submenuColors": {
+            "type": "object",
+            "default": {
+                "link": "",
+                "linkHover": "",
+                "background": ""
+            }
+        },
+        "spacing": {
+            "type": "object",
+            "default": {
+                "padding": null,
+                "margin": null,
+                "itemPadding": null
+            }
+        },
+        "typography": {
+            "type": "object",
+            "default": {
+                "size": null,
+                "weight": 400,
+                "family": "Default",
+                "letterSpacing": "",
+                "textTransform": "",
+                "textDecoration": "",
+                "lineHeight": "",
+                "style": ""
+            }
+        },
+        "submenuTypography": {
+            "type": "object",
+            "default": {
+                "size": null,
+                "weight": 400,
+                "family": "Default",
+                "letterSpacing": "",
+                "textTransform": "",
+                "textDecoration": "",
+                "lineHeight": "",
+                "style": ""
+            }
+        },
+        "showSubmenuIcon": {
+            "type": "boolean",
+            "default": true
+        },
+        "openSubmenusOnClick": {
+            "type": "boolean",
+            "default": false
+        },
+        "__unstableLocation": {
+            "type": "string"
+        },
+        "menuStyle": {
+            "type": "string"
+        },
+        "dropdownReveal": {
+            "type": "string"
+        },
+        "submenuWidth": {
+            "type": "number"
+        },
+        "submenuShadow": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "usesContext": ["navigationArea"],
+    "providesContext": {
+        "textColor": "textColor",
+        "customTextColor": "customTextColor",
+        "backgroundColor": "backgroundColor",
+        "customBackgroundColor": "customBackgroundColor",
+        "showSubmenuIcon": "showSubmenuIcon",
+        "openSubmenusOnClick": "openSubmenusOnClick",
+        "menuColors": "menuColors",
+        "submenuColors": "submenuColors",
+        "style": "style",
+        "orientation": "orientation",
+        "submenuWidth": "submenuWidth",
+        "dropdownReveal": "dropdownReveal",
+        "submenuTypography": "submenuTypography",
+        "menuTypography": "typography",
+        "overlayMenu": "overlayMenu"
+    },
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true,
+        "html": false,
+        "inserter": true,
+        "__experimentalLayout": {
+            "allowSwitching": false,
+            "allowInheriting": false,
+            "default": {
+                "type": "flex"
+            }
+        }
+    },
+    "editorScript": "file:./build/index.js",
+    "editorStyle": "file:./build/index.css",
+    "style": "file:./build/style-index.css"
+}

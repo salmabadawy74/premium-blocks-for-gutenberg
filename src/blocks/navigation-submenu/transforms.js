@@ -7,10 +7,10 @@ const transforms = {
 	to: [
 		{
 			type: 'block',
-			blocks: ['kemet/navigation-link'],
+			blocks: ['premium/navigation-link'],
 			isMatch: (attributes, block) => block?.innerBlocks?.length === 0,
 			transform: (attributes) =>
-				createBlock('kemet/navigation-link', attributes),
+				createBlock('premium/navigation-link', attributes),
 		},
 		{
 			type: 'block',

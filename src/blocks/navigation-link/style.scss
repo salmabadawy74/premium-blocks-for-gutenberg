@@ -2,10 +2,18 @@
 // Contains styles only that are unique to the manually inserted menu item.
 // Styles in the Navigation block itself target both custom menu items, and
 // those from the Page List block.
-.premium-navigation {
+.wp-block-premium-navigation {
     // This wraps just the innermost text for custom menu items.
     .premium-navigation-item__label {
         word-break: normal;
         overflow-wrap: break-word;
+    }
+    &:not(.is-responsive) {
+        .wp-block-premium-navigation-link {
+            &.heading-item {
+                font-weight: 700;
+                font-size: 1.1em;
+            }
+        }
     }
 }

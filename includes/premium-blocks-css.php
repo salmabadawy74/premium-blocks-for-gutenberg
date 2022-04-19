@@ -332,7 +332,7 @@ class Premium_Blocks_css {
 	}
 
 	public function render_color( $color, $opacity = null ) {
-		if ( empty( $color ) ) {
+		if ( empty( $color ) || 'px' === $color || 'Default' === $color ) {
 			return false;
 		}
 		return $color;

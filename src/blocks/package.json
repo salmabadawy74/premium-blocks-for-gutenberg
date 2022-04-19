@@ -9,18 +9,21 @@
         "@wordpress/icons": "^8.1.0",
         "@wordpress/scripts": "^21.0.2",
         "classnames": "^2.3.1",
+        "i": "^0.3.7",
+        "micromodal": "^0.4.10",
+        "npm": "^8.7.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     },
     "scripts": {
-        "start:mega:menu": "wp-scripts start mega-menu/index.js --output-path=mega-menu/build",
-        "build:mega:menu": "wp-scripts build mega-menu/index.js --output-path=mega-menu/build",
+        "start:navigation": "wp-scripts start navigation/index.js --output-path=navigation/build",
+        "build:navigation": "wp-scripts build navigation/index.js --output-path=navigation/build",
+        "start:navigation:view:build": "wp-scripts build navigation/view.js --output-path=navigation/view",
         "start:navigation:link": "wp-scripts start navigation-link/index.js --output-path=navigation-link/build",
         "build:navigation:link": "wp-scripts build navigation-link/index.js --output-path=navigation-link/build",
-        "start:page:list": "wp-scripts start page-list/index.js --output-path=page-list/build",
-        "build:page:list": "wp-scripts build page-list/index.js --output-path=page-list/build",
         "start:navigation:submenu": "wp-scripts start navigation-submenu/index.js --output-path=navigation-submenu/build",
-        "build:navigation:submenu": "wp-scripts build navigation-submenu/index.js --output-path=navigation-submenu/build"
+        "build:navigation:submenu": "wp-scripts build navigation-submenu/index.js --output-path=navigation-submenu/build",
+        "build:navigation:submenu:view:build": "wp-scripts build navigation-submenu/view.js --output-path=navigation-submenu/view"
     },
     "devDependencies": {
         "@wordpress/base-styles": "^4.3.0"
