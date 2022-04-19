@@ -63105,10 +63105,30 @@ function save(props) {
         target = attributes.target,
         iconAlign = attributes.iconAlign,
         stripePosition = attributes.stripePosition,
+        stripeStyles = attributes.stripeStyles,
+        strokeStyles = attributes.strokeStyles,
         titleStyles = attributes.titleStyles,
+        titleBorderTop = attributes.titleBorderTop,
+        titleBorderRight = attributes.titleBorderRight,
+        titleBorderBottom = attributes.titleBorderBottom,
+        titleBorderLeft = attributes.titleBorderLeft,
+        titleBorderUpdated = attributes.titleBorderUpdated,
+        titleBorderWidth = attributes.titleBorderWidth,
+        iconStyles = attributes.iconStyles,
+        backgroundType = attributes.backgroundType,
+        iconBorderWidth = attributes.iconBorderWidth,
+        iconBorderUpdated = attributes.iconBorderUpdated,
+        textStyles = attributes.textStyles,
         stripeAlign = attributes.stripeAlign,
+        iconBorderTop = attributes.iconBorderTop,
+        iconBorderRight = attributes.iconBorderRight,
+        iconBorderBottom = attributes.iconBorderBottom,
+        iconBorderLeft = attributes.iconBorderLeft,
         backgroundText = attributes.backgroundText,
         BackText = attributes.BackText,
+        textWidth = attributes.textWidth,
+        blend = attributes.blend,
+        zIndex = attributes.zIndex,
         hideDesktop = attributes.hideDesktop,
         hideTablet = attributes.hideTablet,
         hideMobile = attributes.hideMobile;
@@ -63117,7 +63137,7 @@ function save(props) {
     var styleContainer = title.split("").map(function (letter) {
         return React.createElement(RichText.Content, {
             tagName: titleTag.toLowerCase(),
-            className: "premium-title-style9-letter",
+            className: 'premium-title-style9-letter',
             value: letter,
             style: {
                 color: titleStyles[0].titleColor
@@ -63125,52 +63145,75 @@ function save(props) {
         });
     });
 
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === iconStyles[0].containerBack || undefined === iconStyles[0].containerBack ? 'rgba(255,255,255,0)' : iconStyles[0].containerBack;
+        btnGrad2 = undefined !== iconStyles[0].gradientColorTwo && undefined !== iconStyles[0].gradientColorTwo && '' !== iconStyles[0].gradientColorTwo ? iconStyles[0].gradientColorTwo : '#777';
+        if ('radial' === iconStyles[0].gradientType) {
+            btnbg = 'radial-gradient(at ' + iconStyles[0].gradientPosition + ', ' + btnGrad + ' ' + iconStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + iconStyles[0].gradientLocationTwo + '%)';
+        } else if ('radial' !== iconStyles[0].gradientType) {
+            btnbg = 'linear-gradient(' + iconStyles[0].gradientAngle + 'deg, ' + btnGrad + ' ' + iconStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + iconStyles[0].gradientLocationTwo + '%)';
+        }
+    } else {
+        btnbg = iconStyles[0].backgroundImageURL ? 'url(\'' + iconStyles[0].backgroundImageURL + '\')' : '';
+    }
+
+    var renderCss = React.createElement(
+        'style',
+        null,
+        '\n                    #premium-title-' + block_id + ' .premium-title-style8__wrap .premium-title-text-title[data-animation=\'shiny\'] {\n                        --base-color: ' + titleStyles[0].titleColor + ' !important;\n                        --shiny-color: ' + titleStyles[0].shinyColor + ' !important;\n                        --animation-speed: ' + titleStyles[0].animateduration + 's !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-header {\n                        --shadow-color: ' + titleStyles[0].blurColor + ' !important;\n                        --shadow-value: ' + titleStyles[0].blurShadow + 'px !important;\n                        color: ' + titleStyles[0].titleColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title .style1 .premium-title-header {\n                        border-style: ' + titleStyles[0].titleborderType + ' !important;\n                        border-width: ' + (titleBorderUpdated ? titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px' : titleBorderWidth + "px") + ' !important;\n                        border-radius: ' + (titleStyles[0].titleborderRadius || 0) + 'px !important;\n                        border-color: ' + titleStyles[0].titleborderColor + ' !important;\n                        border-left: ' + (titleBorderLeft >= "1" ? titleBorderLeft + 'px ' + titleStyles[0].titleborderType + ' ' + titleStyles[0].titleborderColor : "") + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title .style2{\n                        border-style: ' + titleStyles[0].titleborderType + ' !important;\n                        border-width: ' + (titleBorderUpdated ? titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px' : titleBorderWidth + "px") + '!important;\n                        border-radius: ' + (titleStyles[0].titleborderRadius || 0) + 'px !important;\n                        border-color: ' + titleStyles[0].titleborderColor + '!important;\n                        border-bottom: ' + (titleBorderBottom >= "0" ? titleBorderBottom + 'px ' + titleStyles[0].titleborderType + ' ' + titleStyles[0].titleborderColor + ' !important' : "") + ';\n                    }\n                    #premium-title-' + block_id + ' .premium-title .style4{\n                        border-style: ' + titleStyles[0].titleborderType + ' !important;\n                        border-width: ' + (titleBorderUpdated ? titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px' : titleBorderWidth + "px") + ' !important;\n                        border-radius: ' + (titleStyles[0].titleborderRadius || 0) + 'px !important;\n                        border-color: ' + titleStyles[0].titleborderColor + ' !important;\n                        border-bottom: ' + (titleBorderBottom >= "0" ? titleBorderBottom + 'px ' + titleStyles[0].titleborderType + ' ' + titleStyles[0].titleborderColor + ' !important' : "") + ';\n                    }\n                    #premium-title-' + block_id + ' .premium-title .style5{\n                        border-style: ' + titleStyles[0].titleborderType + ' !important;\n                        border-width: ' + (titleBorderUpdated ? titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px' : titleBorderWidth + "px") + ' !important;\n                        border-radius: ' + (titleStyles[0].titleborderRadius || 0) + 'px !important;\n                        border-color: ' + titleStyles[0].titleborderColor + ' !important;\n                        border-bottom: ' + (titleBorderBottom >= "0" ? titleBorderBottom + 'px ' + titleStyles[0].titleborderType + ' ' + titleStyles[0].titleborderColor + ' !important' : "") + ';\n                    }\n                    #premium-title-' + block_id + ' .premium-title .style6{\n                        border-style: ' + titleStyles[0].titleborderType + ' !important;\n                        border-width: ' + (titleBorderUpdated ? titleBorderTop + 'px ' + titleBorderRight + 'px ' + titleBorderBottom + 'px ' + titleBorderLeft + 'px' : titleBorderWidth + "px") + ' !important;\n                        border-radius: ' + (titleStyles[0].titleborderRadius || 0) + 'px !important;\n                        border-color: ' + titleStyles[0].titleborderColor + ' !important;\n                        border-bottom: ' + (titleBorderBottom >= "0" ? titleBorderBottom + 'px ' + titleStyles[0].titleborderType + ' ' + titleStyles[0].titleborderColor + ' !important' : "") + ';\n                    }\n                    #premium-title-' + block_id + ' .premium-title-style2__wrap {\n                        background-color: ' + titleStyles[0].BGColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-style3__wrap {\n                        background-color: ' + titleStyles[0].BGColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-style5__wrap {\n                        border-bottom: 2px solid ' + titleStyles[0].lineColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-style6__wrap {\n                        border-bottom: 2px solid ' + titleStyles[0].lineColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-style6__wrap:before {\n                        border-bottom-color: ' + titleStyles[0].triangleColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-icon {\n                        color: ' + iconStyles[0].iconColor + ' !important;\n                        background-color: ' + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + ' !important;\n                        background-image: ' + btnbg + ' !important;\n                        background-repeat: ' + iconStyles[0].backgroundRepeat + ' !important;\n                        background-position: ' + iconStyles[0].backgroundPosition + ' !important;\n                        background-size: ' + iconStyles[0].backgroundSize + ' !important;\n                        background-attachment: ' + (iconStyles[0].fixed ? "fixed" : "unset") + ' !important;\n                        border-style: ' + iconStyles[0].iconborderType + ' !important;\n                        border-width: ' + (iconBorderUpdated ? iconBorderTop + 'px ' + iconBorderRight + 'px ' + iconBorderBottom + 'px ' + iconBorderLeft + 'px' : iconBorderWidth + "px") + ' !important;\n                        border-radius: ' + (iconStyles[0].iconborderRadius || 0) + 'px !important;\n                        border-color: ' + iconStyles[0].iconborderColor + ' !important;\n                        text-shadow: ' + iconStyles[0].iconshadowHorizontal + 'px ' + iconStyles[0].iconshadowVertical + 'px ' + iconStyles[0].iconshadowBlur + 'px ' + iconStyles[0].iconshadowColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-bg-text:before {\n                        content: ' + BackText + ';\n                        width: ' + textWidth + ';\n                        color: ' + textStyles[0].textBackColor + ' !important;\n                        font-weight: ' + textStyles[0].textBackWeight + ' !important;\n                        letter-spacing: ' + textStyles[0].textBackLetter + 'px !important;\n                        line-height: ' + textStyles[0].textBackLine + 'px !important;\n                        font-style: ' + textStyles[0].textBackStyle + ' !important;\n                        text-transform: ' + (textStyles[0].textBackUpper ? "uppercase" : "none") + ' !important;\n                        font-family: ' + textStyles[0].textBackFontFamily + ' !important;\n                        text-shadow: ' + textStyles[0].textBackshadowHorizontal + 'px ' + textStyles[0].textBackshadowVertical + 'px ' + textStyles[0].textBackshadowBlur + 'px ' + textStyles[0].textBackshadowColor + ' !important;\n                        mix-blend-mode: ' + blend + ' !important;\n                        z-index: ' + zIndex + ' !important;\n                        -webkit-text-stroke-color: ' + strokeStyles[0].strokeColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-style7-stripe-span {\n                        background-color: ' + titleStyles[0].stripeColor + ' !important;\n                    }\n                    #premium-title-' + block_id + ' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter {\n                        font-weight: ' + titleStyles[0].titleWeight + ' !important;\n                        letter-spacing: ' + titleStyles[0].titleLetter + 'px !important;\n                        line-height: ' + titleStyles[0].titleLine + 'px !important;\n                        font-style: ' + titleStyles[0].titleStyle + ' !important;\n                        text-transform: ' + (titleStyles[0].titleUpper ? "uppercase" : "none") + ' !important;\n                        font-family: ' + titleStyles[0].titleFontFamily + ' !important;\n                        text-shadow: ' + titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor + ' !important;\n                    }\n                '
+    );
+
     return React.createElement(
-        "div",
+        'div',
         {
-            id: "premium-title-" + block_id,
-            className: "premium-block-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+            id: 'premium-title-' + block_id,
+            className: 'premium-block-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
             style: {
                 textAlign: align
             } },
+        renderCss,
         React.createElement(
-            "div",
-            { className: "premium-title   " + (backgroundText ? 'premium-title-bg-text' : ""), style: {
+            'div',
+            { className: 'premium-title   ' + (backgroundText ? 'premium-title-bg-text' : ""), style: {
                     textAlign: align
-                }, "data-backgroundText": BackText },
+                }, 'data-backgroundText': BackText },
             React.createElement(
-                "div",
-                { className: " premium-title-container " + style + " " + style + "-" + align, "data-blur-delay": titleStyles[0].animateDelay, "data-shiny-dur": titleStyles[0].animateduration },
+                'div',
+                { className: 'premium-title-container ' + style + ' ' + style + '-' + align, 'data-blur-delay': titleStyles[0].animateDelay, 'data-shiny-dur': titleStyles[0].animateduration },
                 React.createElement(
-                    "div",
-                    { className: "premium-title-header premium-title-" + style + "__wrap " + align + " " + (iconValue ? iconPosition : "") + " " + (iconPosition == 'top' ? "premium-title-" + iconAlign : ""), "data-blur-delay": titleStyles[0].animateDelay, "data-shiny-dur": titleStyles[0].animateduration },
+                    'div',
+                    { className: 'premium-title-header premium-title-' + style + '__wrap ' + align + ' ' + (iconValue ? iconPosition : "") + ' ' + (iconPosition == 'top' ? 'premium-title-' + iconAlign : ""), 'data-blur-delay': titleStyles[0].animateDelay, 'data-shiny-dur': titleStyles[0].animateduration },
                     style === 'style7' ? React.createElement(
                         Fragment,
                         null,
                         iconPosition != 'top' && iconValue && React.createElement(
-                            "span",
-                            { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                            React.createElement("span", { className: "premium-title-style7-stripe-span" })
+                            'span',
+                            { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
+                            React.createElement('span', { className: 'premium-title-style7-stripe-span' })
                         ),
                         !iconValue && React.createElement(
-                            "span",
-                            { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                            React.createElement("span", { className: "premium-title-style7-stripe-span" })
+                            'span',
+                            { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
+                            React.createElement('span', { className: 'premium-title-style7-stripe-span' })
                         ),
                         React.createElement(
-                            "div",
-                            { className: "premium-title-style7-inner-title" },
-                            iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
-                            iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                            iconValue && iconType == 'lottie' && React.createElement("div", { className: "premium-title-icon premium-lottie-animation", "data-lottie-loop": loop, "data-lottie-url": "" + lottieURl, "data-lottie-reverse": reversedir }),
+                            'div',
+                            { className: 'premium-title-style7-inner-title' },
+                            iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
+                            iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
+                            iconValue && iconType == 'lottie' && React.createElement('div', { className: 'premium-title-icon premium-lottie-animation', 'data-lottie-loop': loop, 'data-lottie-url': '' + lottieURl, 'data-lottie-reverse': reversedir }),
                             iconPosition === 'top' && React.createElement(
-                                "span",
-                                { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                React.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                'span',
+                                { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
+                                React.createElement('span', { className: 'premium-title-style7-stripe-span' })
                             ),
                             React.createElement(RichText.Content, {
                                 tagName: titleTag.toLowerCase(),
-                                className: "premium-title-text-title",
+                                className: 'premium-title-text-title',
                                 value: title,
                                 style: {
                                     color: titleStyles[0].titleColor,
@@ -63181,7 +63224,7 @@ function save(props) {
                                     fontStyle: titleStyles[0].titleStyle,
                                     textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                     fontFamily: titleStyles[0].titleFontFamily,
-                                    textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                    textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
                                     // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
                                     // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
                                     // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
@@ -63197,13 +63240,13 @@ function save(props) {
                     ) : style === "style9" ? React.createElement(
                         Fragment,
                         null,
-                        iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
-                        iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                        iconValue && iconType == 'lottie' && React.createElement("div", { className: "premium-title-icon premium-lottie-animation", "data-lottie-loop": loop, "data-lottie-url": "" + lottieURl, "data-lottie-reverse": reversedir }),
+                        iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
+                        iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
+                        iconValue && iconType == 'lottie' && React.createElement('div', { className: 'premium-title-icon premium-lottie-animation', 'data-lottie-loop': loop, 'data-lottie-url': '' + lottieURl, 'data-lottie-reverse': reversedir }),
                         React.createElement(
-                            "span",
+                            'span',
                             {
-                                className: "premium-letters-container",
+                                className: 'premium-letters-container',
                                 style: {
                                     color: titleStyles[0].titleColor
                                     // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
@@ -63221,12 +63264,12 @@ function save(props) {
                     ) : React.createElement(
                         Fragment,
                         null,
-                        iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
-                        iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                        iconValue && iconType == 'lottie' && React.createElement("div", { className: "premium-title-icon premium-lottie-animation", "data-lottie-loop": loop, "data-lottie-url": "" + lottieURl, "data-lottie-reverse": reversedir }),
+                        iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
+                        iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
+                        iconValue && iconType == 'lottie' && React.createElement('div', { className: 'premium-title-icon premium-lottie-animation', 'data-lottie-loop': loop, 'data-lottie-url': '' + lottieURl, 'data-lottie-reverse': reversedir }),
                         React.createElement(RichText.Content, {
                             tagName: titleTag.toLowerCase(),
-                            className: "premium-title-text-title",
+                            className: 'premium-title-text-title',
                             value: title,
                             style: {
                                 color: titleStyles[0].titleColor,
@@ -63237,7 +63280,7 @@ function save(props) {
                                 fontStyle: titleStyles[0].titleStyle,
                                 textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                 fontFamily: titleStyles[0].titleFontFamily,
-                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
                                 // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
                                 // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
                                 // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
@@ -63250,7 +63293,7 @@ function save(props) {
                             }
                         })
                     ),
-                    link && React.createElement("a", { rel: "noopener noreferrer", target: target ? "_blank" : "_self", href: "" + url })
+                    link && React.createElement('a', { rel: 'noopener noreferrer', target: target ? "_blank" : "_self", href: '' + url })
                 )
             )
         )
