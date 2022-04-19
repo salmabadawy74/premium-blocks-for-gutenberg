@@ -4122,12 +4122,12 @@ animation-fast {
 }
 .premium-title-style1__wrap {
     border-left: 3px solid #6ec1e4 !important;
-    -js-display: inline-flex;
+    /* -js-display: inline-flex; */
     display: -webkit-inline-box;
-    display: -webkit-inline-flex;
+    /* display: -webkit-inline-flex; */
     display: -moz-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
+    /* display: -ms-inline-flexbox;
+    display: inline-flex; */
 }
 .premium-title-icon{
     margin-right: 10px;

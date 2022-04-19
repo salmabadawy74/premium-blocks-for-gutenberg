@@ -154,6 +154,8 @@ class edit extends Component {
             target,
             iconAlign,
             stripePosition,
+            stripeStyles,
+            strokeStyles,
             stripeWidth,
             stripeHeight,
             stripeTopSpacing,
@@ -466,6 +468,14 @@ class edit extends Component {
         const IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPaddingB, iconPaddingBTablet, iconPaddingBMobile);
         const IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPaddingL, iconPaddingLTablet, iconPaddingLMobile);
         const TextSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textBackfontSize, textStyles[0].textBackfontSizeTablet, textStyles[0].textBackfontSizeMobile);
+        const StripeWidth = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeWidth, stripeStyles[0].stripeWidthTablet, stripeStyles[0].stripeWidthMobile);
+        const StripeHeight = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeHeight, stripeStyles[0].stripeHeightTablet, stripeStyles[0].stripeHeightMobile);
+        const StripeMarginTop = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeTopSpacing, stripeStyles[0].stripeTopSpacingTablet, stripeStyles[0].stripeTopSpacingMobile);
+        const StripeMarginBottom = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeBottomSpacing, stripeStyles[0].stripeBottomSpacingTablet, stripeStyles[0].stripeBottomSpacingMobile);
+        const TextVertical = this.getPreviewSize(this.props.deviceType, textStyles[0].verticalText, textStyles[0].verticalTextTablet, textStyles[0].verticalTextMobile);
+        const TextHorizontal = this.getPreviewSize(this.props.deviceType, textStyles[0].horizontalText, textStyles[0].horizontalTextTablet, textStyles[0].horizontalTextMobile);
+        const TextRotate = this.getPreviewSize(this.props.deviceType, textStyles[0].rotateText, textStyles[0].rotateTextTablet, textStyles[0].rotateTextMobile);
+        const StrokeFull = this.getPreviewSize(this.props.deviceType, strokeStyles[0].strokeFull, strokeStyles[0].strokeFullTablet, strokeStyles[0].strokeFullMobile);
 
         let btnGrad, btnGrad2, btnbg;
 
@@ -591,6 +601,7 @@ class edit extends Component {
                         height: ${IconSize}${iconStyles[0].iconSizeType} !important;
                     }
                     #premium-title-${block_id} .premium-title-bg-text:before {
+                        content: ${BackText};
                         color: ${textStyles[0].textBackColor} !important;
                         font-size: ${TextSize}${textStyles[0].textBackfontSizeType} !important;
                         font-weight: ${textStyles[0].textBackWeight} !important;
@@ -602,10 +613,35 @@ class edit extends Component {
                         text-shadow: ${textStyles[0].textBackshadowHorizontal}px ${textStyles[0].textBackshadowVertical}px ${textStyles[0].textBackshadowBlur}px ${textStyles[0].textBackshadowColor} !important;
                         mix-blend-mode: ${blend} !important;
                         z-index: ${zIndex} !important;
+                        top: ${TextVertical}${textStyles[0].verticalTextType} !important;
+                        left: ${TextHorizontal}${textStyles[0].horizontalTextType} !important;
+                        transform: rotate(${TextRotate}deg) !important;
+                        -webkit-text-stroke-color: ${strokeStyles[0].strokeColor} !important;
+                        -webkit-text-stroke-width: ${StrokeFull}px !important;
+                    }
+                    #premium-title-${block_id} .premium-title-style7-stripe-span {
+                        width: ${StripeWidth}${stripeStyles[0].stripeWidthType} !important;
+                        height: ${StripeHeight}${stripeStyles[0].stripeHeightType} !important;
+                    }
+                    #premium-title-${block_id} .premium-title-style7-stripe__wrap {
+                        margin-top: ${StripeMarginTop}${stripeStyles[0].stripeTopSpacingType} !important;
+                        margin-bottom: ${StripeMarginBottom}${stripeStyles[0].stripeBottomSpacingType} !important;
                     }
                 `}
             </style>
         );
+
+        const saveStripeStyles = (value) => {
+            const newUpdate = stripeStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                stripeStyles: newUpdate,
+            });
+        }
 
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -640,6 +676,18 @@ class edit extends Component {
             });
             setAttributes({
                 textStyles: newUpdate,
+            });
+        }
+
+        const saveStrokeStyles = (value) => {
+            const newUpdate = strokeStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                strokeStyles: newUpdate,
             });
         }
 
@@ -798,33 +846,73 @@ class edit extends Component {
                                 onChange={newSelect => setAttributes({ stripePosition: newSelect })}
                                 options={STRIPEPOSITION}
                             />
-                            <RangeControl
-                                label={__("Stripe Width")}
-                                value={stripeWidth}
-                                min="1"
-                                max="100"
-                                onChange={value => setAttributes({ stripeWidth: value })}
+                            <ResponsiveRangeControl
+                                label={__("Stripe Width", 'premium-block-for-gutenberg')}
+                                value={stripeStyles[0].stripeWidth}
+                                tabletValue={stripeStyles[0].stripeWidthTablet}
+                                mobileValue={stripeStyles[0].stripeWidthMobile}
+                                onChange={(value) => saveStripeStyles({ stripeWidth: value })}
+                                onChangeTablet={(value) => saveStripeStyles({ stripeWidthTablet: value })}
+                                onChangeMobile={(value) => saveStripeStyles({ stripeWidthMobile: value })}
+                                onChangeUnit={(key) =>
+                                    saveStripeStyles({ stripeWidthType: key })
+                                }
+                                unit={stripeStyles[0].stripeWidthType}
+                                showUnit={true}
+                                defaultValue={120}
+                                min={1}
+                                max={100}
                             />
-                            <RangeControl
-                                label={__("Stripe Height")}
-                                value={stripeHeight}
-                                min="1"
-                                max="100"
-                                onChange={value => setAttributes({ stripeHeight: value })}
+                            <ResponsiveRangeControl
+                                label={__("Stripe Height", 'premium-block-for-gutenberg')}
+                                value={stripeStyles[0].stripeHeight}
+                                tabletValue={stripeStyles[0].stripeHeightTablet}
+                                mobileValue={stripeStyles[0].stripeHeightMobile}
+                                onChange={(value) => saveStripeStyles({ stripeHeight: value })}
+                                onChangeTablet={(value) => saveStripeStyles({ stripeHeightTablet: value })}
+                                onChangeMobile={(value) => saveStripeStyles({ stripeHeightMobile: value })}
+                                onChangeUnit={(key) =>
+                                    saveStripeStyles({ stripeHeightType: key })
+                                }
+                                unit={stripeStyles[0].stripeHeightType}
+                                showUnit={true}
+                                defaultValue={5}
+                                min={1}
+                                max={100}
                             />
-                            <RangeControl
-                                label={__("Stripe Top Spacing")}
-                                value={stripeTopSpacing}
-                                min="1"
-                                max="100"
-                                onChange={value => setAttributes({ stripeTopSpacing: value })}
+                            <ResponsiveRangeControl
+                                label={__("Stripe Top Spacing", 'premium-block-for-gutenberg')}
+                                value={stripeStyles[0].stripeTopSpacing}
+                                tabletValue={stripeStyles[0].stripeTopSpacingTablet}
+                                mobileValue={stripeStyles[0].stripeTopSpacingMobile}
+                                onChange={(value) => saveStripeStyles({ stripeTopSpacing: value })}
+                                onChangeTablet={(value) => saveStripeStyles({ stripeTopSpacingTablet: value })}
+                                onChangeMobile={(value) => saveStripeStyles({ stripeTopSpacingMobile: value })}
+                                onChangeUnit={(key) =>
+                                    saveStripeStyles({ stripeTopSpacingType: key })
+                                }
+                                unit={stripeStyles[0].stripeTopSpacingType}
+                                showUnit={true}
+                                defaultValue={0}
+                                min={1}
+                                max={100}
                             />
-                            <RangeControl
-                                label={__("Stripe Bottom Spacing")}
-                                value={stripeBottomSpacing}
-                                min="1"
-                                max="100"
-                                onChange={value => setAttributes({ stripeBottomSpacing: value })}
+                            <ResponsiveRangeControl
+                                label={__("Stripe Bottom Spacing", 'premium-block-for-gutenberg')}
+                                value={stripeStyles[0].stripeBottomSpacing}
+                                tabletValue={stripeStyles[0].stripeBottomSpacingTablet}
+                                mobileValue={stripeStyles[0].stripeBottomSpacingMobile}
+                                onChange={(value) => saveStripeStyles({ stripeBottomSpacing: value })}
+                                onChangeTablet={(value) => saveStripeStyles({ stripeBottomSpacingTablet: value })}
+                                onChangeMobile={(value) => saveStripeStyles({ stripeBottomSpacingMobile: value })}
+                                onChangeUnit={(key) =>
+                                    saveStripeStyles({ stripeBottomSpacingType: key })
+                                }
+                                unit={stripeStyles[0].stripeBottomSpacingType}
+                                showUnit={true}
+                                defaultValue={0}
+                                min={1}
+                                max={100}
                             />
                             <p>{__("Stripe Alignment")}</p>
                             <Toolbar
@@ -894,39 +982,58 @@ class edit extends Component {
                                             label: "Full Width", value: '100%'
                                         }]}
                                 />
-                                <PremiumSizeUnits
-                                    activeUnit={horizontalU}
-                                    onChangeSizeUnit={newValue => setAttributes({ horizontalU: newValue })}
-                                />
-                                <RangeControl
-                                    label={__('Horizontal Offset')}
-                                    value={horizontalText}
-                                    onChange={(newValue) => setAttributes({ horizontalText: newValue })}
+                                <ResponsiveRangeControl
+                                    label={__("Horizontal Offset", 'premium-block-for-gutenberg')}
+                                    value={textStyles[0].horizontalText}
+                                    tabletValue={textStyles[0].horizontalTextTablet}
+                                    mobileValue={textStyles[0].horizontalTextMobile}
+                                    onChange={(value) => saveTextStyles({ horizontalText: value })}
+                                    onChangeTablet={(value) => saveTextStyles({ horizontalTextTablet: value })}
+                                    onChangeMobile={(value) => saveTextStyles({ horizontalTextMobile: value })}
+                                    onChangeUnit={(key) =>
+                                        saveTextStyles({ horizontalTextType: key })
+                                    }
+                                    unit={textStyles[0].horizontalTextType}
+                                    showUnit={true}
+                                    defaultValue={0}
                                     min={-500}
                                     max={500}
                                     step={1}
                                 />
-                                <PremiumSizeUnits
-                                    activeUnit={verticalU}
-                                    onChangeSizeUnit={newValue => setAttributes({ verticalU: newValue })}
-                                />
-                                <RangeControl
-                                    label={__('Vertical Offset')}
-                                    value={verticalText}
-                                    onChange={(newValue) => setAttributes({ verticalText: newValue })}
+                                <ResponsiveRangeControl
+                                    label={__("Vertical Offset", 'premium-block-for-gutenberg')}
+                                    value={textStyles[0].verticalText}
+                                    tabletValue={textStyles[0].verticalTextTablet}
+                                    mobileValue={textStyles[0].verticalTextMobile}
+                                    onChange={(value) => saveTextStyles({ verticalText: value })}
+                                    onChangeTablet={(value) => saveTextStyles({ verticalTextTablet: value })}
+                                    onChangeMobile={(value) => saveTextStyles({ verticalTextMobile: value })}
+                                    onChangeUnit={(key) =>
+                                        saveTextStyles({ verticalTextType: key })
+                                    }
+                                    unit={textStyles[0].verticalTextType}
+                                    showUnit={true}
+                                    defaultValue={0}
                                     min={-500}
                                     max={500}
                                     step={1}
                                 />
-                                <RangeControl
-                                    label={__('Rotate (degrees)')}
-                                    value={rotateText}
-                                    onChange={(newValue) => setAttributes({ rotateText: newValue })}
+                                <ResponsiveRangeControl
+                                    label={__("Rotate (degrees)", 'premium-block-for-gutenberg')}
+                                    value={textStyles[0].rotateText}
+                                    tabletValue={textStyles[0].rotateTextTablet}
+                                    mobileValue={textStyles[0].rotateTextMobile}
+                                    onChange={(value) => saveTextStyles({ rotateText: value })}
+                                    onChangeTablet={(value) => saveTextStyles({ rotateTextTablet: value })}
+                                    onChangeMobile={(value) => saveTextStyles({ rotateTextMobile: value })}
+                                    showUnit={false}
+                                    defaultValue={0}
                                     min={0}
                                     max={360}
                                     step={1}
                                 />
-                            </Fragment>}
+                            </Fragment>
+                        }
                     </PanelBody>
                     <PanelBody
                         title={__("Title Style")}
@@ -1271,29 +1378,6 @@ class edit extends Component {
                                 }
                             }
                         />
-                        {/* {style !== "style9" && <ToggleControl
-                            label={__('Stroke')}
-                            checked={stroke}
-                            onChange={(newValue) => setAttributes({ stroke: newValue })}
-                        />}
-                        {
-                            stroke && <Fragment>
-                                <p>{__('Stroke Color')}</p>
-                                <ColorPalette
-                                    value={strokeColor}
-                                    onChange={(newValue) => setAttributes({ strokeColor: newValue })}
-                                    allowReset={true}
-                                />
-                                <RangeControl
-                                    label={__('Stroke Full Width')}
-                                    value={strokeFull}
-                                    onChange={(newValue) => setAttributes({ strokeFull: newValue })}
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                />
-                            </Fragment>
-                        }  */}
                     </PanelBody>
                     {
                         iconValue && <PanelBody
@@ -1594,6 +1678,39 @@ class edit extends Component {
                                     saveTextStyles({ textBackshadowVertical: newValue })
                                 }
                             />
+                            <ToggleControl
+                                label={__('Stroke')}
+                                checked={strokeStyles[0].stroke}
+                                onChange={(newValue) => saveStrokeStyles({ stroke: newValue })}
+                            />
+                            {
+                                strokeStyles[0].stroke && <Fragment>
+                                    <AdvancedPopColorControl
+                                        label={__("Stroke Color", 'premium-block-for-gutenberg')}
+                                        colorValue={strokeStyles[0].strokeColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveStrokeStyles({
+                                                strokeColor: newValue
+                                            })
+                                        }
+                                    />
+                                    <ResponsiveRangeControl
+                                        label={__("Stroke Full Width", 'premium-block-for-gutenberg')}
+                                        value={strokeStyles[0].strokeFull}
+                                        tabletValue={strokeStyles[0].strokeFullTablet}
+                                        mobileValue={strokeStyles[0].strokeFullMobile}
+                                        onChange={(value) => saveStrokeStyles({ strokeFull: value })}
+                                        onChangeTablet={(value) => saveStrokeStyles({ strokeFullTablet: value })}
+                                        onChangeMobile={(value) => saveStrokeStyles({ strokeFullMobile: value })}
+                                        showUnit={false}
+                                        defaultValue={20}
+                                        min={0}
+                                        max={100}
+                                        step={1}
+                                    />
+                                </Fragment>
+                            }
                             <hr />
 
                             <SelectControl
@@ -1668,33 +1785,31 @@ class edit extends Component {
                                         <span className={`premium-title-style7-stripe-span`}></span>
                                     </span>
                                     }
-                                    <span>
-                                        <RichText
-                                            tagName={titleTag.toLowerCase()}
-                                            className={`premium-title-text-title`}
-                                            value={title}
-                                            style={{
-                                                color: titleStyles[0].titleColor,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                fontFamily: titleStyles[0].titleFontFamily,
-                                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                minHeight: '15px'
-                                            }}
-                                        />
-                                    </span>
+                                    <RichText
+                                        tagName={titleTag.toLowerCase()}
+                                        className={`premium-title-text-title`}
+                                        value={title}
+                                        style={{
+                                            color: titleStyles[0].titleColor,
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                            fontFamily: titleStyles[0].titleFontFamily,
+                                            textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                            marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                            marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                            marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                            marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                            paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                            paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                            paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                            paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                            minHeight: '15px'
+                                        }}
+                                    />
                                 </div>
                             </Fragment>
                                 : style === "style9" ? <Fragment>
@@ -1740,34 +1855,32 @@ class edit extends Component {
                                             />
                                             </div>
                                         }
-                                        <span>
-                                            <RichText
-                                                tagName={titleTag.toLowerCase()}
-                                                className={`premium-title-text-title`}
-                                                onChange={(newValue) => setAttributes({ title: newValue })}
-                                                value={title}
-                                                style={{
-                                                    color: titleStyles[0].titleColor,
-                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                    fontWeight: titleStyles[0].titleWeight,
-                                                    letterSpacing: titleStyles[0].titleLetter + "px",
-                                                    lineHeight: titleStyles[0].titleLine + "px",
-                                                    fontStyle: titleStyles[0].titleStyle,
-                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                    fontFamily: titleStyles[0].titleFontFamily,
-                                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                                    marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                    marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                    marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                    marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                    paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                    paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                    paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                    paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                    minHeight: '15px'
-                                                }}
-                                            />
-                                        </span>
+                                        <RichText
+                                            tagName={titleTag.toLowerCase()}
+                                            className={`premium-title-text-title`}
+                                            onChange={(newValue) => setAttributes({ title: newValue })}
+                                            value={title}
+                                            style={{
+                                                color: titleStyles[0].titleColor,
+                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                fontFamily: titleStyles[0].titleFontFamily,
+                                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                                minHeight: '15px'
+                                            }}
+                                        />
                                     </Fragment>
                             }
                             {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}

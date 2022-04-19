@@ -201,6 +201,90 @@ exports.JsonUploadEnabled = JsonUploadEnabled;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.default = undefined;
+
+var _premiumSizeUnits = __webpack_require__(20);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+var _rangeControl = __webpack_require__(130);
+
+var _rangeControl2 = _interopRequireDefault(_rangeControl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+function ResponsiveSingleRangeControl(_ref) {
+    var _ref$device = _ref.device,
+        device = _ref$device === undefined ? 'device' : _ref$device,
+        _onChange = _ref.onChange,
+        value = _ref.value,
+        _ref$step = _ref.step,
+        step = _ref$step === undefined ? 1 : _ref$step,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? 100 : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? 0 : _ref$min,
+        _ref$unit = _ref.unit,
+        unit = _ref$unit === undefined ? '' : _ref$unit,
+        onChangeUnit = _ref.onChangeUnit,
+        _ref$showUnit = _ref.showUnit,
+        showUnit = _ref$showUnit === undefined ? false : _ref$showUnit,
+        _ref$units = _ref.units,
+        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
+        _ref$className = _ref.className,
+        className = _ref$className === undefined ? '' : _ref$className,
+        label = _ref.label,
+        defaultValue = _ref.defaultValue;
+
+    return [_onChange && React.createElement(
+        'div',
+        { className: 'premium-blocks-range-control' },
+        label && React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                label && React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    label
+                )
+            ),
+            showUnit && React.createElement(_premiumSizeUnits2.default, {
+                units: units,
+                activeUnit: unit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangeUnit(newValue);
+                }
+            })
+        ),
+        React.createElement(_rangeControl2.default, {
+            value: undefined !== value ? value : '',
+            onChange: function onChange(size) {
+                return _onChange(size);
+            },
+            min: min,
+            max: max,
+            step: step,
+            defaultValue: defaultValue
+        })
+    )];
+}
+exports.default = ResponsiveSingleRangeControl;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -455,90 +539,6 @@ exports.default = withSelect(function (select, ownProps) {
 })(AdvancedColorControl);
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = undefined;
-
-var _premiumSizeUnits = __webpack_require__(20);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
-var _rangeControl = __webpack_require__(130);
-
-var _rangeControl2 = _interopRequireDefault(_rangeControl);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-function ResponsiveSingleRangeControl(_ref) {
-    var _ref$device = _ref.device,
-        device = _ref$device === undefined ? 'device' : _ref$device,
-        _onChange = _ref.onChange,
-        value = _ref.value,
-        _ref$step = _ref.step,
-        step = _ref$step === undefined ? 1 : _ref$step,
-        _ref$max = _ref.max,
-        max = _ref$max === undefined ? 100 : _ref$max,
-        _ref$min = _ref.min,
-        min = _ref$min === undefined ? 0 : _ref$min,
-        _ref$unit = _ref.unit,
-        unit = _ref$unit === undefined ? '' : _ref$unit,
-        onChangeUnit = _ref.onChangeUnit,
-        _ref$showUnit = _ref.showUnit,
-        showUnit = _ref$showUnit === undefined ? false : _ref$showUnit,
-        _ref$units = _ref.units,
-        units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
-        _ref$className = _ref.className,
-        className = _ref$className === undefined ? '' : _ref$className,
-        label = _ref.label,
-        defaultValue = _ref.defaultValue;
-
-    return [_onChange && React.createElement(
-        'div',
-        { className: 'premium-blocks-range-control' },
-        label && React.createElement(
-            'header',
-            null,
-            React.createElement(
-                'div',
-                { className: 'premium-slider-title-wrap' },
-                label && React.createElement(
-                    'span',
-                    { className: 'customize-control-title premium-control-title' },
-                    label
-                )
-            ),
-            showUnit && React.createElement(_premiumSizeUnits2.default, {
-                units: units,
-                activeUnit: unit,
-                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                    return onChangeUnit(newValue);
-                }
-            })
-        ),
-        React.createElement(_rangeControl2.default, {
-            value: undefined !== value ? value : '',
-            onChange: function onChange(size) {
-                return _onChange(size);
-            },
-            min: min,
-            max: max,
-            step: step,
-            defaultValue: defaultValue
-        })
-    )];
-}
-exports.default = ResponsiveSingleRangeControl;
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -598,11 +598,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumShadow;
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -734,11 +734,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = __webpack_require__(8);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -1104,11 +1104,11 @@ var _premiumFonts = __webpack_require__(218);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _responsiveRangeControl = __webpack_require__(27);
+var _responsiveRangeControl = __webpack_require__(21);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
@@ -2376,275 +2376,6 @@ function PremiumSizeUnits(props) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _webfontloader = __webpack_require__(100);
-
-var _webfontloader2 = _interopRequireDefault(_webfontloader);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-if (googlefonts === undefined) {
-    var googlefonts = [];
-}
-var Component = wp.element.Component;
-
-var statuses = {
-    inactive: "inactive",
-    active: "active",
-    loading: "loading"
-};
-
-var noop = function noop() {};
-
-var WebfontLoader = function (_Component) {
-    _inherits(WebfontLoader, _Component);
-
-    function WebfontLoader(props) {
-        _classCallCheck(this, WebfontLoader);
-
-        var _this = _possibleConstructorReturn(this, (WebfontLoader.__proto__ || Object.getPrototypeOf(WebfontLoader)).call(this, props));
-
-        _this.state = {
-            status: undefined
-        };
-
-        _this.handleLoading = function () {
-            _this.setState({ status: statuses.loading });
-        };
-
-        _this.addFont = function (font) {
-            if (!googlefonts.includes(font)) {
-                googlefonts.push(font);
-            }
-        };
-
-        _this.handleActive = function () {
-            _this.setState({ status: statuses.active });
-        };
-
-        _this.handleInactive = function () {
-            _this.setState({ status: statuses.inactive });
-        };
-
-        _this.loadFonts = function () {
-            if (!googlefonts.includes(_this.props.config.google.families[0])) {
-                _webfontloader2.default.load(_extends({}, _this.props.config, {
-                    loading: _this.handleLoading,
-                    active: _this.handleActive,
-                    inactive: _this.handleInactive
-                }));
-                _this.addFont(_this.props.config.google.families[0]);
-            }
-        };
-        return _this;
-    }
-
-    _createClass(WebfontLoader, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            this.loadFonts();
-        }
-    }, {
-        key: "componentDidUpdate",
-        value: function componentDidUpdate(prevProps, prevState) {
-            var _props = this.props,
-                onStatus = _props.onStatus,
-                config = _props.config;
-
-
-            if (prevState.status !== this.state.status) {
-                onStatus(this.state.status);
-            }
-            if (prevProps.config !== config) {
-                this.loadFonts();
-            }
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var children = this.props.children;
-
-            return children || null;
-        }
-    }]);
-
-    return WebfontLoader;
-}(Component);
-
-WebfontLoader.defaultProps = {
-    onStatus: noop
-};
-
-exports.default = WebfontLoader;
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var global = __webpack_require__(19);
-var core = __webpack_require__(13);
-var ctx = __webpack_require__(115);
-var hide = __webpack_require__(32);
-var has = __webpack_require__(25);
-var PROTOTYPE = 'prototype';
-
-var $export = function $export(type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && has(exports, key)) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? function (C) {
-      var F = function F(a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0:
-              return new C();
-            case 1:
-              return new C(a);
-            case 2:
-              return new C(a, b);
-          }return new C(a, b, c);
-        }return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-      // make static versions for prototype methods
-    }(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export.F = 1; // forced
-$export.G = 2; // global
-$export.S = 4; // static
-$export.P = 8; // proto
-$export.B = 16; // bind
-$export.W = 32; // wrap
-$export.U = 64; // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var anObject = __webpack_require__(41);
-var IE8_DOM_DEFINE = __webpack_require__(116);
-var toPrimitive = __webpack_require__(68);
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(24) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) {/* empty */}
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(34)(function () {
-  return Object.defineProperty({}, 'a', { get: function get() {
-      return 7;
-    } }).a != 7;
-});
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsNative = __webpack_require__(140),
-    getValue = __webpack_require__(143);
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-module.exports = getNative;
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.default = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -2653,7 +2384,7 @@ var _premiumSizeUnits = __webpack_require__(20);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
@@ -2812,7 +2543,128 @@ function ResponsiveRangeControl(_ref) {
 exports.default = ResponsiveRangeControl;
 
 /***/ }),
-/* 28 */
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _webfontloader = __webpack_require__(100);
+
+var _webfontloader2 = _interopRequireDefault(_webfontloader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+if (googlefonts === undefined) {
+    var googlefonts = [];
+}
+var Component = wp.element.Component;
+
+var statuses = {
+    inactive: "inactive",
+    active: "active",
+    loading: "loading"
+};
+
+var noop = function noop() {};
+
+var WebfontLoader = function (_Component) {
+    _inherits(WebfontLoader, _Component);
+
+    function WebfontLoader(props) {
+        _classCallCheck(this, WebfontLoader);
+
+        var _this = _possibleConstructorReturn(this, (WebfontLoader.__proto__ || Object.getPrototypeOf(WebfontLoader)).call(this, props));
+
+        _this.state = {
+            status: undefined
+        };
+
+        _this.handleLoading = function () {
+            _this.setState({ status: statuses.loading });
+        };
+
+        _this.addFont = function (font) {
+            if (!googlefonts.includes(font)) {
+                googlefonts.push(font);
+            }
+        };
+
+        _this.handleActive = function () {
+            _this.setState({ status: statuses.active });
+        };
+
+        _this.handleInactive = function () {
+            _this.setState({ status: statuses.inactive });
+        };
+
+        _this.loadFonts = function () {
+            if (!googlefonts.includes(_this.props.config.google.families[0])) {
+                _webfontloader2.default.load(_extends({}, _this.props.config, {
+                    loading: _this.handleLoading,
+                    active: _this.handleActive,
+                    inactive: _this.handleInactive
+                }));
+                _this.addFont(_this.props.config.google.families[0]);
+            }
+        };
+        return _this;
+    }
+
+    _createClass(WebfontLoader, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.loadFonts();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate(prevProps, prevState) {
+            var _props = this.props,
+                onStatus = _props.onStatus,
+                config = _props.config;
+
+
+            if (prevState.status !== this.state.status) {
+                onStatus(this.state.status);
+            }
+            if (prevProps.config !== config) {
+                this.loadFonts();
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var children = this.props.children;
+
+            return children || null;
+        }
+    }]);
+
+    return WebfontLoader;
+}(Component);
+
+WebfontLoader.defaultProps = {
+    onStatus: noop
+};
+
+exports.default = WebfontLoader;
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2837,11 +2689,11 @@ var _map = __webpack_require__(90);
 
 var _map2 = _interopRequireDefault(_map);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
@@ -3049,6 +2901,154 @@ function PremiumBackgroundControl(_ref) {
         )
     );
 }
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var global = __webpack_require__(19);
+var core = __webpack_require__(13);
+var ctx = __webpack_require__(115);
+var hide = __webpack_require__(32);
+var has = __webpack_require__(27);
+var PROTOTYPE = 'prototype';
+
+var $export = function $export(type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var IS_WRAP = type & $export.W;
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE];
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
+  var key, own, out;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    if (own && has(exports, key)) continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    // bind timers to global for call from export context
+    : IS_BIND && own ? ctx(out, global)
+    // wrap global constructors for prevent change them in library
+    : IS_WRAP && target[key] == out ? function (C) {
+      var F = function F(a, b, c) {
+        if (this instanceof C) {
+          switch (arguments.length) {
+            case 0:
+              return new C();
+            case 1:
+              return new C(a);
+            case 2:
+              return new C(a, b);
+          }return new C(a, b, c);
+        }return C.apply(this, arguments);
+      };
+      F[PROTOTYPE] = C[PROTOTYPE];
+      return F;
+      // make static versions for prototype methods
+    }(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+    if (IS_PROTO) {
+      (exports.virtual || (exports.virtual = {}))[key] = out;
+      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
+    }
+  }
+};
+// type bitmap
+$export.F = 1; // forced
+$export.G = 2; // global
+$export.S = 4; // static
+$export.P = 8; // proto
+$export.B = 16; // bind
+$export.W = 32; // wrap
+$export.U = 64; // safe
+$export.R = 128; // real proto method for `library`
+module.exports = $export;
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var anObject = __webpack_require__(41);
+var IE8_DOM_DEFINE = __webpack_require__(116);
+var toPrimitive = __webpack_require__(68);
+var dP = Object.defineProperty;
+
+exports.f = __webpack_require__(26) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
+  } catch (e) {/* empty */}
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__(34)(function () {
+  return Object.defineProperty({}, 'a', { get: function get() {
+      return 7;
+    } }).a != 7;
+});
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsNative = __webpack_require__(140),
+    getValue = __webpack_require__(143);
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+module.exports = getNative;
 
 /***/ }),
 /* 29 */
@@ -3838,9 +3838,9 @@ exports.default = PremiumResponsiveMargin;
 "use strict";
 
 
-var dP = __webpack_require__(23);
+var dP = __webpack_require__(25);
 var createDesc = __webpack_require__(50);
-module.exports = __webpack_require__(24) ? function (object, key, value) {
+module.exports = __webpack_require__(26) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -3992,7 +3992,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumFilters;
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
@@ -4136,7 +4136,7 @@ module.exports = _Symbol;
 "use strict";
 
 
-var getNative = __webpack_require__(26);
+var getNative = __webpack_require__(28);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -4606,7 +4606,7 @@ module.exports = isObject;
 "use strict";
 
 
-var getNative = __webpack_require__(26),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -5473,8 +5473,8 @@ module.exports = Object.create || function create(O, Properties) {
 "use strict";
 
 
-var def = __webpack_require__(23).f;
-var has = __webpack_require__(25);
+var def = __webpack_require__(25).f;
+var has = __webpack_require__(27);
 var TAG = __webpack_require__(36)('toStringTag');
 
 module.exports = function (it, tag, stat) {
@@ -5501,7 +5501,7 @@ var global = __webpack_require__(19);
 var core = __webpack_require__(13);
 var LIBRARY = __webpack_require__(52);
 var wksExt = __webpack_require__(79);
-var defineProperty = __webpack_require__(23).f;
+var defineProperty = __webpack_require__(25).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -6585,7 +6585,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBackground;
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -9839,7 +9839,7 @@ module.exports = function (fn, that, length) {
 "use strict";
 
 
-module.exports = !__webpack_require__(24) && !__webpack_require__(34)(function () {
+module.exports = !__webpack_require__(26) && !__webpack_require__(34)(function () {
   return Object.defineProperty(__webpack_require__(117)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
@@ -9867,7 +9867,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var has = __webpack_require__(25);
+var has = __webpack_require__(27);
 var toIObject = __webpack_require__(35);
 var arrayIndexOf = __webpack_require__(320)(false);
 var IE_PROTO = __webpack_require__(71)('IE_PROTO');
@@ -9922,7 +9922,7 @@ module.exports = function (it) {
 
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(25);
+var has = __webpack_require__(27);
 var toObject = __webpack_require__(75);
 var IE_PROTO = __webpack_require__(71)('IE_PROTO');
 var ObjectProto = Object.prototype;
@@ -9978,7 +9978,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 
 var LIBRARY = __webpack_require__(52);
-var $export = __webpack_require__(22);
+var $export = __webpack_require__(24);
 var redefine = __webpack_require__(124);
 var hide = __webpack_require__(32);
 var Iterators = __webpack_require__(76);
@@ -10093,11 +10093,11 @@ var pIE = __webpack_require__(54);
 var createDesc = __webpack_require__(50);
 var toIObject = __webpack_require__(35);
 var toPrimitive = __webpack_require__(68);
-var has = __webpack_require__(25);
+var has = __webpack_require__(27);
 var IE8_DOM_DEFINE = __webpack_require__(116);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(24) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(26) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -10233,7 +10233,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -10241,7 +10241,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
@@ -13464,7 +13464,7 @@ module.exports = getTag;
 "use strict";
 
 
-var getNative = __webpack_require__(26),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -13479,7 +13479,7 @@ module.exports = DataView;
 "use strict";
 
 
-var getNative = __webpack_require__(26),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -13494,7 +13494,7 @@ module.exports = Promise;
 "use strict";
 
 
-var getNative = __webpack_require__(26),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -13509,7 +13509,7 @@ module.exports = Set;
 "use strict";
 
 
-var getNative = __webpack_require__(26),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -16799,11 +16799,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -19586,15 +19586,15 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(21);
+var _fontLoader = __webpack_require__(22);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -21582,15 +21582,15 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(28);
+var _PremiumBackgroundControl = __webpack_require__(23);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -21602,7 +21602,7 @@ var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _fontLoader = __webpack_require__(21);
+var _fontLoader = __webpack_require__(22);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -24736,19 +24736,19 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(28);
+var _PremiumBackgroundControl = __webpack_require__(23);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _fontLoader = __webpack_require__(21);
+var _fontLoader = __webpack_require__(22);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -27639,7 +27639,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumBackgroundControl = __webpack_require__(28);
+var _PremiumBackgroundControl = __webpack_require__(23);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -27647,11 +27647,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -32192,11 +32192,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -32212,7 +32212,7 @@ var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _fontLoader = __webpack_require__(21);
+var _fontLoader = __webpack_require__(22);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -36834,11 +36834,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -38018,11 +38018,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -42898,11 +42898,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(28);
+var _PremiumBackgroundControl = __webpack_require__(23);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -44572,15 +44572,15 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(28);
+var _PremiumBackgroundControl = __webpack_require__(23);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -44588,7 +44588,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(27);
+var _responsiveRangeControl = __webpack_require__(21);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -47231,15 +47231,15 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(21);
+var _fontLoader = __webpack_require__(22);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -50072,7 +50072,7 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -53268,11 +53268,11 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -53280,7 +53280,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(27);
+var _responsiveRangeControl = __webpack_require__(21);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -54070,7 +54070,7 @@ module.exports = __webpack_require__(13).Object.assign;
 
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(22);
+var $export = __webpack_require__(24);
 
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(319) });
 
@@ -54238,7 +54238,7 @@ __webpack_require__(326)('getPrototypeOf', function () {
 
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(22);
+var $export = __webpack_require__(24);
 var core = __webpack_require__(13);
 var fails = __webpack_require__(34);
 module.exports = function (KEY, exec) {
@@ -54329,9 +54329,9 @@ module.exports = function defineProperty(it, key, desc) {
 "use strict";
 
 
-var $export = __webpack_require__(22);
+var $export = __webpack_require__(24);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(24), 'Object', { defineProperty: __webpack_require__(23).f });
+$export($export.S + $export.F * !__webpack_require__(26), 'Object', { defineProperty: __webpack_require__(25).f });
 
 /***/ }),
 /* 332 */
@@ -54454,11 +54454,11 @@ module.exports = function (Constructor, NAME, next) {
 "use strict";
 
 
-var dP = __webpack_require__(23);
+var dP = __webpack_require__(25);
 var anObject = __webpack_require__(41);
 var getKeys = __webpack_require__(51);
 
-module.exports = __webpack_require__(24) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(26) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -54596,9 +54596,9 @@ module.exports = __webpack_require__(13).Symbol;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var global = __webpack_require__(19);
-var has = __webpack_require__(25);
-var DESCRIPTORS = __webpack_require__(24);
-var $export = __webpack_require__(22);
+var has = __webpack_require__(27);
+var DESCRIPTORS = __webpack_require__(26);
+var $export = __webpack_require__(24);
 var redefine = __webpack_require__(124);
 var META = __webpack_require__(347).KEY;
 var $fails = __webpack_require__(34);
@@ -54618,7 +54618,7 @@ var createDesc = __webpack_require__(50);
 var _create = __webpack_require__(77);
 var gOPNExt = __webpack_require__(350);
 var $GOPD = __webpack_require__(126);
-var $DP = __webpack_require__(23);
+var $DP = __webpack_require__(25);
 var $keys = __webpack_require__(51);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
@@ -54846,8 +54846,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var META = __webpack_require__(53)('meta');
 var isObject = __webpack_require__(33);
-var has = __webpack_require__(25);
-var setDesc = __webpack_require__(23).f;
+var has = __webpack_require__(27);
+var setDesc = __webpack_require__(25).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
@@ -55057,7 +55057,7 @@ module.exports = __webpack_require__(13).Object.setPrototypeOf;
 
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(22);
+var $export = __webpack_require__(24);
 $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(358).set });
 
 /***/ }),
@@ -55123,7 +55123,7 @@ module.exports = function create(P, D) {
 "use strict";
 
 
-var $export = __webpack_require__(22);
+var $export = __webpack_require__(24);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(77) });
 
@@ -56493,7 +56493,7 @@ var _inspector = __webpack_require__(369);
 
 var _inspector2 = _interopRequireDefault(_inspector);
 
-var _fontLoader = __webpack_require__(21);
+var _fontLoader = __webpack_require__(22);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -57072,7 +57072,7 @@ var _premiumIconsList = __webpack_require__(30);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -57084,7 +57084,7 @@ var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
@@ -57108,11 +57108,11 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _responsiveRangeControl = __webpack_require__(27);
+var _responsiveRangeControl = __webpack_require__(21);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(28);
+var _PremiumBackgroundControl = __webpack_require__(23);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -59634,11 +59634,11 @@ var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _responsiveRangeControl = __webpack_require__(27);
+var _responsiveRangeControl = __webpack_require__(21);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -60822,7 +60822,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -60838,7 +60838,7 @@ var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _responsiveRangeControl = __webpack_require__(27);
+var _responsiveRangeControl = __webpack_require__(21);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -60852,7 +60852,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _fontLoader = __webpack_require__(21);
+var _fontLoader = __webpack_require__(22);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -63106,18 +63106,18 @@ var titleAttrs = (_titleAttrs = {
         type: "boolean",
         default: false
     },
-    stroke: {
-        type: 'boolean',
-        default: false
-    },
-    strokeColor: {
-        type: "value"
+    // stroke: {
+    //     type: 'boolean',
+    //     default: false
+    // },
+    // strokeColor: {
+    //     type: "value",
 
-    },
-    strokeFull: {
-        type: "number",
-        default: 0
-    },
+    // },
+    // strokeFull: {
+    //     type: "number",
+    //     default: 0
+    // },
     backgroundText: {
         type: "boolean",
         default: false
@@ -63129,17 +63129,17 @@ var titleAttrs = (_titleAttrs = {
     textWidth: {
         type: "number"
     },
-    horizontalText: {
-        type: "number",
-        default: '0'
-    },
-    verticalText: {
-        type: "number",
-        default: '0'
-    },
-    rotateText: {
-        type: "number"
-    },
+    // horizontalText: {
+    //     type: "number",
+    //     default: '0'
+    // },
+    // verticalText: {
+    //     type: "number",
+    //     default: '0'
+    // },
+    // rotateText: {
+    //     type: "number",
+    // },
     url: {
         type: "string",
         default: "#"
@@ -63152,22 +63152,22 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "top"
     },
-    stripeWidth: {
-        type: "number",
-        default: 120
-    },
-    stripeHeight: {
-        type: "number",
-        default: 5
-    },
-    stripeTopSpacing: {
-        type: "number",
-        default: 0
-    },
-    stripeBottomSpacing: {
-        type: "number",
-        default: 0
-    },
+    // stripeWidth: {
+    //     type: "number",
+    //     default: 120
+    // },
+    // stripeHeight: {
+    //     type: "number",
+    //     default: 5
+    // },
+    // stripeTopSpacing: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // stripeBottomSpacing: {
+    //     type: "number",
+    //     default: 0
+    // },
     titleStyles: {
         type: "array",
         default: [{
@@ -63322,6 +63322,27 @@ var titleAttrs = (_titleAttrs = {
         type: "string",
         default: "center"
     },
+    stripeStyles: {
+        type: "array",
+        default: [{
+            stripeWidth: 120,
+            stripeWidthTablet: 120,
+            stripeWidthMobile: 120,
+            stripeWidthType: "px",
+            stripeHeight: 5,
+            stripeHeightTablet: 5,
+            stripeHeightMobile: 5,
+            stripeHeightType: "px",
+            stripeTopSpacing: 0,
+            stripeTopSpacingTablet: 0,
+            stripeTopSpacingMobile: 0,
+            stripeTopSpacingType: "px",
+            stripeBottomSpacing: 0,
+            stripeBottomSpacingTablet: 0,
+            stripeBottomSpacingMobile: 0,
+            stripeBottomSpacingType: "px"
+        }]
+    },
     textStyles: {
         type: "array",
         default: [{
@@ -63339,13 +63360,28 @@ var titleAttrs = (_titleAttrs = {
             textBackshadowColor: '',
             textBackshadowBlur: '0',
             textBackshadowHorizontal: '0',
-            textBackshadowVertical: '0'
+            textBackshadowVertical: '0',
+            horizontalText: 0,
+            horizontalTextTablet: 0,
+            horizontalTextMobile: 0,
+            horizontalTextType: "px",
+            verticalText: 0,
+            verticalTextTablet: 0,
+            verticalTextMobile: 0,
+            verticalTextType: "px",
+            rotateText: 0,
+            rotateTextTablet: 0,
+            rotateTextMobile: 0
         }]
     },
     iconStyles: {
         type: "array",
         default: [{
             iconColor: "#6ec1e4",
+            iconSize: "40",
+            iconSizeTablet: "40",
+            iconSizeMobile: "40",
+            iconSizeType: "px",
             containerBack: '',
             backgroundImageID: '',
             backgroundImageURL: '',
@@ -63359,10 +63395,6 @@ var titleAttrs = (_titleAttrs = {
             gradientType: 'linear',
             gradientAngle: '180',
             gradientPosition: 'center center',
-            iconSize: '20',
-            iconSizeTablet: '20',
-            iconSizeMobile: '20',
-            iconSizeType: "px",
             iconborderType: "none",
             iconborderRadius: 0,
             iconborderColor: '#6ec1e4',
@@ -63372,6 +63404,16 @@ var titleAttrs = (_titleAttrs = {
             iconshadowBlur: '0',
             iconshadowHorizontal: '0',
             iconshadowVertical: '0'
+        }]
+    },
+    strokeStyles: {
+        type: "array",
+        default: [{
+            stroke: false,
+            strokeColor: "",
+            strokeFull: 0,
+            strokeFullTablet: 0,
+            strokeFullMobile: 0
         }]
     },
     backgroundType: {
@@ -63700,12 +63742,6 @@ var titleAttrs = (_titleAttrs = {
     type: "string"
 }), _defineProperty(_titleAttrs, "zIndex", {
     type: "number"
-}), _defineProperty(_titleAttrs, "horizontalU", {
-    type: "string",
-    default: "px"
-}), _defineProperty(_titleAttrs, "verticalU", {
-    type: "string",
-    default: "px"
 }), _defineProperty(_titleAttrs, "titleTag", {
     type: "string",
     default: "h2"
@@ -63886,7 +63922,7 @@ var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _ColorComponent = __webpack_require__(2);
+var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
@@ -63898,15 +63934,15 @@ var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _responsiveRangeControl = __webpack_require__(27);
+var _responsiveRangeControl = __webpack_require__(21);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(28);
+var _PremiumBackgroundControl = __webpack_require__(23);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _singleRangeControl = __webpack_require__(3);
+var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
@@ -64087,6 +64123,8 @@ var edit = function (_Component) {
                 target = attributes.target,
                 iconAlign = attributes.iconAlign,
                 stripePosition = attributes.stripePosition,
+                stripeStyles = attributes.stripeStyles,
+                strokeStyles = attributes.strokeStyles,
                 stripeWidth = attributes.stripeWidth,
                 stripeHeight = attributes.stripeHeight,
                 stripeTopSpacing = attributes.stripeTopSpacing,
@@ -64357,6 +64395,14 @@ var edit = function (_Component) {
             var IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPaddingB, iconPaddingBTablet, iconPaddingBMobile);
             var IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPaddingL, iconPaddingLTablet, iconPaddingLMobile);
             var TextSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textBackfontSize, textStyles[0].textBackfontSizeTablet, textStyles[0].textBackfontSizeMobile);
+            var StripeWidth = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeWidth, stripeStyles[0].stripeWidthTablet, stripeStyles[0].stripeWidthMobile);
+            var StripeHeight = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeHeight, stripeStyles[0].stripeHeightTablet, stripeStyles[0].stripeHeightMobile);
+            var StripeMarginTop = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeTopSpacing, stripeStyles[0].stripeTopSpacingTablet, stripeStyles[0].stripeTopSpacingMobile);
+            var StripeMarginBottom = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeBottomSpacing, stripeStyles[0].stripeBottomSpacingTablet, stripeStyles[0].stripeBottomSpacingMobile);
+            var TextVertical = this.getPreviewSize(this.props.deviceType, textStyles[0].verticalText, textStyles[0].verticalTextTablet, textStyles[0].verticalTextMobile);
+            var TextHorizontal = this.getPreviewSize(this.props.deviceType, textStyles[0].horizontalText, textStyles[0].horizontalTextTablet, textStyles[0].horizontalTextMobile);
+            var TextRotate = this.getPreviewSize(this.props.deviceType, textStyles[0].rotateText, textStyles[0].rotateTextTablet, textStyles[0].rotateTextMobile);
+            var StrokeFull = this.getPreviewSize(this.props.deviceType, strokeStyles[0].strokeFull, strokeStyles[0].strokeFullTablet, strokeStyles[0].strokeFullMobile);
 
             var btnGrad = void 0,
                 btnGrad2 = void 0,
@@ -64377,8 +64423,20 @@ var edit = function (_Component) {
             var renderCss = React.createElement(
                 "style",
                 null,
-                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-icon {\n                        color: " + iconStyles[0].iconColor + " !important;\n                        background-color: " + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + " !important;\n                        background-image: " + btnbg + " !important;\n                        background-repeat: " + iconStyles[0].backgroundRepeat + " !important;\n                        background-position: " + iconStyles[0].backgroundPosition + " !important;\n                        background-size: " + iconStyles[0].backgroundSize + " !important;\n                        background-attachment: " + (iconStyles[0].fixed ? "fixed" : "unset") + " !important;\n                        font-size: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        border-style: " + iconStyles[0].iconborderType + " !important;\n                        border-width: " + (iconBorderUpdated ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : iconBorderWidth + "px") + " !important;\n                        border-radius: " + (iconStyles[0].iconborderRadius || 0) + "px !important;\n                        border-color: " + iconStyles[0].iconborderColor + " !important;\n                        padding-top: " + IconPaddingTop + iconStyles[0].iconPaddingType + " !important;\n                        padding-right: " + IconPaddingRight + iconStyles[0].iconPaddingType + " !important;\n                        padding-bottom: " + IconPaddingBottom + iconStyles[0].iconPaddingType + " !important;\n                        padding-left: " + IconPaddingLeft + iconStyles[0].iconPaddingType + " !important;\n                        margin-top: " + IconMarginTop + iconStyles[0].iconMarginType + " !important;\n                        margin-right: " + IconMarginRight + iconStyles[0].iconMarginType + " !important;\n                        margin-bottom: " + IconMarginBottom + iconStyles[0].iconMarginType + " !important;\n                        margin-left: " + IconMarginLeft + iconStyles[0].iconMarginType + " !important;\n                        text-shadow: " + iconStyles[0].iconshadowHorizontal + "px " + iconStyles[0].iconshadowVertical + "px " + iconStyles[0].iconshadowBlur + "px " + iconStyles[0].iconshadowColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-lottie-animation svg {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header img {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-bg-text:before {\n                        color: " + textStyles[0].textBackColor + " !important;\n                        font-size: " + TextSize + textStyles[0].textBackfontSizeType + " !important;\n                        font-weight: " + textStyles[0].textBackWeight + " !important;\n                        letter-spacing: " + textStyles[0].textBackLetter + "px !important;\n                        line-height: " + textStyles[0].textBackLine + "px !important;\n                        font-style: " + textStyles[0].textBackStyle + " !important;\n                        text-transform: " + (textStyles[0].textBackUpper ? "uppercase" : "none") + " !important;\n                        font-family: " + textStyles[0].textBackFontFamily + " !important;\n                        text-shadow: " + textStyles[0].textBackshadowHorizontal + "px " + textStyles[0].textBackshadowVertical + "px " + textStyles[0].textBackshadowBlur + "px " + textStyles[0].textBackshadowColor + " !important;\n                        mix-blend-mode: " + blend + " !important;\n                        z-index: " + zIndex + " !important;\n                    }\n                "
+                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-icon {\n                        color: " + iconStyles[0].iconColor + " !important;\n                        background-color: " + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + " !important;\n                        background-image: " + btnbg + " !important;\n                        background-repeat: " + iconStyles[0].backgroundRepeat + " !important;\n                        background-position: " + iconStyles[0].backgroundPosition + " !important;\n                        background-size: " + iconStyles[0].backgroundSize + " !important;\n                        background-attachment: " + (iconStyles[0].fixed ? "fixed" : "unset") + " !important;\n                        font-size: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        border-style: " + iconStyles[0].iconborderType + " !important;\n                        border-width: " + (iconBorderUpdated ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : iconBorderWidth + "px") + " !important;\n                        border-radius: " + (iconStyles[0].iconborderRadius || 0) + "px !important;\n                        border-color: " + iconStyles[0].iconborderColor + " !important;\n                        padding-top: " + IconPaddingTop + iconStyles[0].iconPaddingType + " !important;\n                        padding-right: " + IconPaddingRight + iconStyles[0].iconPaddingType + " !important;\n                        padding-bottom: " + IconPaddingBottom + iconStyles[0].iconPaddingType + " !important;\n                        padding-left: " + IconPaddingLeft + iconStyles[0].iconPaddingType + " !important;\n                        margin-top: " + IconMarginTop + iconStyles[0].iconMarginType + " !important;\n                        margin-right: " + IconMarginRight + iconStyles[0].iconMarginType + " !important;\n                        margin-bottom: " + IconMarginBottom + iconStyles[0].iconMarginType + " !important;\n                        margin-left: " + IconMarginLeft + iconStyles[0].iconMarginType + " !important;\n                        text-shadow: " + iconStyles[0].iconshadowHorizontal + "px " + iconStyles[0].iconshadowVertical + "px " + iconStyles[0].iconshadowBlur + "px " + iconStyles[0].iconshadowColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-lottie-animation svg {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header img {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-bg-text:before {\n                        content: " + BackText + ";\n                        color: " + textStyles[0].textBackColor + " !important;\n                        font-size: " + TextSize + textStyles[0].textBackfontSizeType + " !important;\n                        font-weight: " + textStyles[0].textBackWeight + " !important;\n                        letter-spacing: " + textStyles[0].textBackLetter + "px !important;\n                        line-height: " + textStyles[0].textBackLine + "px !important;\n                        font-style: " + textStyles[0].textBackStyle + " !important;\n                        text-transform: " + (textStyles[0].textBackUpper ? "uppercase" : "none") + " !important;\n                        font-family: " + textStyles[0].textBackFontFamily + " !important;\n                        text-shadow: " + textStyles[0].textBackshadowHorizontal + "px " + textStyles[0].textBackshadowVertical + "px " + textStyles[0].textBackshadowBlur + "px " + textStyles[0].textBackshadowColor + " !important;\n                        mix-blend-mode: " + blend + " !important;\n                        z-index: " + zIndex + " !important;\n                        top: " + TextVertical + textStyles[0].verticalTextType + " !important;\n                        left: " + TextHorizontal + textStyles[0].horizontalTextType + " !important;\n                        transform: rotate(" + TextRotate + "deg) !important;\n                        -webkit-text-stroke-color: " + strokeStyles[0].strokeColor + " !important;\n                        -webkit-text-stroke-width: " + StrokeFull + "px !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        width: " + StripeWidth + stripeStyles[0].stripeWidthType + " !important;\n                        height: " + StripeHeight + stripeStyles[0].stripeHeightType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe__wrap {\n                        margin-top: " + StripeMarginTop + stripeStyles[0].stripeTopSpacingType + " !important;\n                        margin-bottom: " + StripeMarginBottom + stripeStyles[0].stripeBottomSpacingType + " !important;\n                    }\n                "
             );
+
+            var saveStripeStyles = function saveStripeStyles(value) {
+                var newUpdate = stripeStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    stripeStyles: newUpdate
+                });
+            };
 
             var saveTitleStyles = function saveTitleStyles(value) {
                 var newUpdate = titleStyles.map(function (item, index) {
@@ -64413,6 +64471,18 @@ var edit = function (_Component) {
                 });
                 setAttributes({
                     textStyles: newUpdate
+                });
+            };
+
+            var saveStrokeStyles = function saveStrokeStyles(value) {
+                var newUpdate = strokeStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    strokeStyles: newUpdate
                 });
             };
 
@@ -64609,41 +64679,97 @@ var edit = function (_Component) {
                             },
                             options: STRIPEPOSITION
                         }),
-                        React.createElement(RangeControl, {
-                            label: __("Stripe Width"),
-                            value: stripeWidth,
-                            min: "1",
-                            max: "100",
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Stripe Width", 'premium-block-for-gutenberg'),
+                            value: stripeStyles[0].stripeWidth,
+                            tabletValue: stripeStyles[0].stripeWidthTablet,
+                            mobileValue: stripeStyles[0].stripeWidthMobile,
                             onChange: function onChange(value) {
-                                return setAttributes({ stripeWidth: value });
-                            }
+                                return saveStripeStyles({ stripeWidth: value });
+                            },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveStripeStyles({ stripeWidthTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveStripeStyles({ stripeWidthMobile: value });
+                            },
+                            onChangeUnit: function onChangeUnit(key) {
+                                return saveStripeStyles({ stripeWidthType: key });
+                            },
+                            unit: stripeStyles[0].stripeWidthType,
+                            showUnit: true,
+                            defaultValue: 120,
+                            min: 1,
+                            max: 100
                         }),
-                        React.createElement(RangeControl, {
-                            label: __("Stripe Height"),
-                            value: stripeHeight,
-                            min: "1",
-                            max: "100",
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Stripe Height", 'premium-block-for-gutenberg'),
+                            value: stripeStyles[0].stripeHeight,
+                            tabletValue: stripeStyles[0].stripeHeightTablet,
+                            mobileValue: stripeStyles[0].stripeHeightMobile,
                             onChange: function onChange(value) {
-                                return setAttributes({ stripeHeight: value });
-                            }
+                                return saveStripeStyles({ stripeHeight: value });
+                            },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveStripeStyles({ stripeHeightTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveStripeStyles({ stripeHeightMobile: value });
+                            },
+                            onChangeUnit: function onChangeUnit(key) {
+                                return saveStripeStyles({ stripeHeightType: key });
+                            },
+                            unit: stripeStyles[0].stripeHeightType,
+                            showUnit: true,
+                            defaultValue: 5,
+                            min: 1,
+                            max: 100
                         }),
-                        React.createElement(RangeControl, {
-                            label: __("Stripe Top Spacing"),
-                            value: stripeTopSpacing,
-                            min: "1",
-                            max: "100",
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Stripe Top Spacing", 'premium-block-for-gutenberg'),
+                            value: stripeStyles[0].stripeTopSpacing,
+                            tabletValue: stripeStyles[0].stripeTopSpacingTablet,
+                            mobileValue: stripeStyles[0].stripeTopSpacingMobile,
                             onChange: function onChange(value) {
-                                return setAttributes({ stripeTopSpacing: value });
-                            }
+                                return saveStripeStyles({ stripeTopSpacing: value });
+                            },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveStripeStyles({ stripeTopSpacingTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveStripeStyles({ stripeTopSpacingMobile: value });
+                            },
+                            onChangeUnit: function onChangeUnit(key) {
+                                return saveStripeStyles({ stripeTopSpacingType: key });
+                            },
+                            unit: stripeStyles[0].stripeTopSpacingType,
+                            showUnit: true,
+                            defaultValue: 0,
+                            min: 1,
+                            max: 100
                         }),
-                        React.createElement(RangeControl, {
-                            label: __("Stripe Bottom Spacing"),
-                            value: stripeBottomSpacing,
-                            min: "1",
-                            max: "100",
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Stripe Bottom Spacing", 'premium-block-for-gutenberg'),
+                            value: stripeStyles[0].stripeBottomSpacing,
+                            tabletValue: stripeStyles[0].stripeBottomSpacingTablet,
+                            mobileValue: stripeStyles[0].stripeBottomSpacingMobile,
                             onChange: function onChange(value) {
-                                return setAttributes({ stripeBottomSpacing: value });
-                            }
+                                return saveStripeStyles({ stripeBottomSpacing: value });
+                            },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveStripeStyles({ stripeBottomSpacingTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveStripeStyles({ stripeBottomSpacingMobile: value });
+                            },
+                            onChangeUnit: function onChangeUnit(key) {
+                                return saveStripeStyles({ stripeBottomSpacingType: key });
+                            },
+                            unit: stripeStyles[0].stripeBottomSpacingType,
+                            showUnit: true,
+                            defaultValue: 0,
+                            min: 1,
+                            max: 100
                         }),
                         React.createElement(
                             "p",
@@ -64747,44 +64873,70 @@ var edit = function (_Component) {
                                 label: "Full Width", value: '100%'
                             }]
                         }),
-                        React.createElement(_premiumSizeUnits2.default, {
-                            activeUnit: horizontalU,
-                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                                return setAttributes({ horizontalU: newValue });
-                            }
-                        }),
-                        React.createElement(RangeControl, {
-                            label: __('Horizontal Offset'),
-                            value: horizontalText,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ horizontalText: newValue });
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Horizontal Offset", 'premium-block-for-gutenberg'),
+                            value: textStyles[0].horizontalText,
+                            tabletValue: textStyles[0].horizontalTextTablet,
+                            mobileValue: textStyles[0].horizontalTextMobile,
+                            onChange: function onChange(value) {
+                                return saveTextStyles({ horizontalText: value });
                             },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveTextStyles({ horizontalTextTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveTextStyles({ horizontalTextMobile: value });
+                            },
+                            onChangeUnit: function onChangeUnit(key) {
+                                return saveTextStyles({ horizontalTextType: key });
+                            },
+                            unit: textStyles[0].horizontalTextType,
+                            showUnit: true,
+                            defaultValue: 0,
                             min: -500,
                             max: 500,
                             step: 1
                         }),
-                        React.createElement(_premiumSizeUnits2.default, {
-                            activeUnit: verticalU,
-                            onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                                return setAttributes({ verticalU: newValue });
-                            }
-                        }),
-                        React.createElement(RangeControl, {
-                            label: __('Vertical Offset'),
-                            value: verticalText,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ verticalText: newValue });
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Vertical Offset", 'premium-block-for-gutenberg'),
+                            value: textStyles[0].verticalText,
+                            tabletValue: textStyles[0].verticalTextTablet,
+                            mobileValue: textStyles[0].verticalTextMobile,
+                            onChange: function onChange(value) {
+                                return saveTextStyles({ verticalText: value });
                             },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveTextStyles({ verticalTextTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveTextStyles({ verticalTextMobile: value });
+                            },
+                            onChangeUnit: function onChangeUnit(key) {
+                                return saveTextStyles({ verticalTextType: key });
+                            },
+                            unit: textStyles[0].verticalTextType,
+                            showUnit: true,
+                            defaultValue: 0,
                             min: -500,
                             max: 500,
                             step: 1
                         }),
-                        React.createElement(RangeControl, {
-                            label: __('Rotate (degrees)'),
-                            value: rotateText,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ rotateText: newValue });
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Rotate (degrees)", 'premium-block-for-gutenberg'),
+                            value: textStyles[0].rotateText,
+                            tabletValue: textStyles[0].rotateTextTablet,
+                            mobileValue: textStyles[0].rotateTextMobile,
+                            onChange: function onChange(value) {
+                                return saveTextStyles({ rotateText: value });
                             },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveTextStyles({ rotateTextTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveTextStyles({ rotateTextMobile: value });
+                            },
+                            showUnit: false,
+                            defaultValue: 0,
                             min: 0,
                             max: 360,
                             step: 1
@@ -65439,6 +65591,47 @@ var edit = function (_Component) {
                             return saveTextStyles({ textBackshadowVertical: newValue });
                         }
                     }),
+                    React.createElement(ToggleControl, {
+                        label: __('Stroke'),
+                        checked: strokeStyles[0].stroke,
+                        onChange: function onChange(newValue) {
+                            return saveStrokeStyles({ stroke: newValue });
+                        }
+                    }),
+                    strokeStyles[0].stroke && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Stroke Color", 'premium-block-for-gutenberg'),
+                            colorValue: strokeStyles[0].strokeColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveStrokeStyles({
+                                    strokeColor: newValue
+                                });
+                            }
+                        }),
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Stroke Full Width", 'premium-block-for-gutenberg'),
+                            value: strokeStyles[0].strokeFull,
+                            tabletValue: strokeStyles[0].strokeFullTablet,
+                            mobileValue: strokeStyles[0].strokeFullMobile,
+                            onChange: function onChange(value) {
+                                return saveStrokeStyles({ strokeFull: value });
+                            },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveStrokeStyles({ strokeFullTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveStrokeStyles({ strokeFullMobile: value });
+                            },
+                            showUnit: false,
+                            defaultValue: 20,
+                            min: 0,
+                            max: 100,
+                            step: 1
+                        })
+                    ),
                     React.createElement("hr", null),
                     React.createElement(SelectControl, {
                         label: __("Blend Mode "),
@@ -65528,35 +65721,31 @@ var edit = function (_Component) {
                                         { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
                                         React.createElement("span", { className: "premium-title-style7-stripe-span" })
                                     ),
-                                    React.createElement(
-                                        "span",
-                                        null,
-                                        React.createElement(RichText, {
-                                            tagName: titleTag.toLowerCase(),
-                                            className: "premium-title-text-title",
-                                            value: title,
-                                            style: {
-                                                color: titleStyles[0].titleColor,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                fontFamily: titleStyles[0].titleFontFamily,
-                                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
-                                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                minHeight: '15px'
-                                            }
-                                        })
-                                    )
+                                    React.createElement(RichText, {
+                                        tagName: titleTag.toLowerCase(),
+                                        className: "premium-title-text-title",
+                                        value: title,
+                                        style: {
+                                            color: titleStyles[0].titleColor,
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                            fontFamily: titleStyles[0].titleFontFamily,
+                                            textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                            marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                            marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                            marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                            marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                            paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                            paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                            paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                            paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                            minHeight: '15px'
+                                        }
+                                    })
                                 )
                             ) : style === "style9" ? React.createElement(
                                 Fragment,
@@ -65603,38 +65792,34 @@ var edit = function (_Component) {
                                         direction: reverse
                                     })
                                 ),
-                                React.createElement(
-                                    "span",
-                                    null,
-                                    React.createElement(RichText, {
-                                        tagName: titleTag.toLowerCase(),
-                                        className: "premium-title-text-title",
-                                        onChange: function onChange(newValue) {
-                                            return setAttributes({ title: newValue });
-                                        },
-                                        value: title,
-                                        style: {
-                                            color: titleStyles[0].titleColor,
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                            fontWeight: titleStyles[0].titleWeight,
-                                            letterSpacing: titleStyles[0].titleLetter + "px",
-                                            lineHeight: titleStyles[0].titleLine + "px",
-                                            fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                            fontFamily: titleStyles[0].titleFontFamily,
-                                            textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
-                                            marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                            paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                            paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                            paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                            paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                            minHeight: '15px'
-                                        }
-                                    })
-                                )
+                                React.createElement(RichText, {
+                                    tagName: titleTag.toLowerCase(),
+                                    className: "premium-title-text-title",
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ title: newValue });
+                                    },
+                                    value: title,
+                                    style: {
+                                        color: titleStyles[0].titleColor,
+                                        fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                        lineHeight: titleStyles[0].titleLine + "px",
+                                        fontStyle: titleStyles[0].titleStyle,
+                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                        fontFamily: titleStyles[0].titleFontFamily,
+                                        textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                        marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                        marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                        marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                        marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                        paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                        paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                        paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                        paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                        minHeight: '15px'
+                                    }
+                                })
                             ),
                             link && url !== ' ' && React.createElement("a", { rel: "noopener noreferrer", target: "_self", href: "javascript:void(0)" })
                         )

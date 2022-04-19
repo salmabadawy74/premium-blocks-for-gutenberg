@@ -63,18 +63,18 @@ const titleAttrs = {
         type: "boolean",
         default: false
     },
-    stroke: {
-        type: 'boolean',
-        default: false
-    },
-    strokeColor: {
-        type: "value",
+    // stroke: {
+    //     type: 'boolean',
+    //     default: false
+    // },
+    // strokeColor: {
+    //     type: "value",
 
-    },
-    strokeFull: {
-        type: "number",
-        default: 0
-    },
+    // },
+    // strokeFull: {
+    //     type: "number",
+    //     default: 0
+    // },
     backgroundText: {
         type: "boolean",
         default: false
@@ -86,17 +86,17 @@ const titleAttrs = {
     textWidth: {
         type: "number",
     },
-    horizontalText: {
-        type: "number",
-        default: '0'
-    },
-    verticalText: {
-        type: "number",
-        default: '0'
-    },
-    rotateText: {
-        type: "number",
-    },
+    // horizontalText: {
+    //     type: "number",
+    //     default: '0'
+    // },
+    // verticalText: {
+    //     type: "number",
+    //     default: '0'
+    // },
+    // rotateText: {
+    //     type: "number",
+    // },
     url: {
         type: "string",
         default: "#"
@@ -109,22 +109,22 @@ const titleAttrs = {
         type: "string",
         default: "top"
     },
-    stripeWidth: {
-        type: "number",
-        default: 120
-    },
-    stripeHeight: {
-        type: "number",
-        default: 5
-    },
-    stripeTopSpacing: {
-        type: "number",
-        default: 0
-    },
-    stripeBottomSpacing: {
-        type: "number",
-        default: 0
-    },
+    // stripeWidth: {
+    //     type: "number",
+    //     default: 120
+    // },
+    // stripeHeight: {
+    //     type: "number",
+    //     default: 5
+    // },
+    // stripeTopSpacing: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // stripeBottomSpacing: {
+    //     type: "number",
+    //     default: 0
+    // },
     titleStyles: {
         type: "array",
         default: [{
@@ -279,6 +279,27 @@ const titleAttrs = {
         type: "string",
         default: "center"
     },
+    stripeStyles: {
+        type: "array",
+        default: [{
+            stripeWidth: 120,
+            stripeWidthTablet: 120,
+            stripeWidthMobile: 120,
+            stripeWidthType: "px",
+            stripeHeight: 5,
+            stripeHeightTablet: 5,
+            stripeHeightMobile: 5,
+            stripeHeightType: "px",
+            stripeTopSpacing: 0,
+            stripeTopSpacingTablet: 0,
+            stripeTopSpacingMobile: 0,
+            stripeTopSpacingType: "px",
+            stripeBottomSpacing: 0,
+            stripeBottomSpacingTablet: 0,
+            stripeBottomSpacingMobile: 0,
+            stripeBottomSpacingType: "px"
+        }]
+    },
     textStyles: {
         type: "array",
         default: [{
@@ -297,12 +318,27 @@ const titleAttrs = {
             textBackshadowBlur: '0',
             textBackshadowHorizontal: '0',
             textBackshadowVertical: '0',
+            horizontalText: 0,
+            horizontalTextTablet: 0,
+            horizontalTextMobile: 0,
+            horizontalTextType: "px",
+            verticalText: 0,
+            verticalTextTablet: 0,
+            verticalTextMobile: 0,
+            verticalTextType: "px",
+            rotateText: 0,
+            rotateTextTablet: 0,
+            rotateTextMobile: 0
         }]
     },
     iconStyles: {
         type: "array",
         default: [{
             iconColor: "#6ec1e4",
+            iconSize: "40",
+            iconSizeTablet: "40",
+            iconSizeMobile: "40",
+            iconSizeType: "px",
             containerBack: '',
             backgroundImageID: '',
             backgroundImageURL: '',
@@ -316,10 +352,6 @@ const titleAttrs = {
             gradientType: 'linear',
             gradientAngle: '180',
             gradientPosition: 'center center',
-            iconSize: '20',
-            iconSizeTablet: '20',
-            iconSizeMobile: '20',
-            iconSizeType: "px",
             iconborderType: "none",
             iconborderRadius: 0,
             iconborderColor: '#6ec1e4',
@@ -329,6 +361,16 @@ const titleAttrs = {
             iconshadowBlur: '0',
             iconshadowHorizontal: '0',
             iconshadowVertical: '0',
+        }]
+    },
+    strokeStyles: {
+        type: "array",
+        default: [{
+            stroke: false,
+            strokeColor: "",
+            strokeFull: 0,
+            strokeFullTablet: 0,
+            strokeFullMobile: 0
         }]
     },
     backgroundType: {
@@ -695,14 +737,14 @@ const titleAttrs = {
     zIndex: {
         type: "number"
     },
-    horizontalU: {
-        type: "string",
-        default: "px"
-    },
-    verticalU: {
-        type: "string",
-        default: "px"
-    },
+    // horizontalU: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // verticalU: {
+    //     type: "string",
+    //     default: "px"
+    // },
     titleTag: {
         type: "string",
         default: "h2"
