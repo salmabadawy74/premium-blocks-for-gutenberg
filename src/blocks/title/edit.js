@@ -100,6 +100,7 @@ class edit extends Component {
                 let style9 = document.querySelectorAll('.premium-title-style9__wrap');
                 style9.forEach(function (style) {
                     let holdTime = titleStyles[0].animateDelay * 1000;
+
                     style.setAttribute("data-animation-blur", "process");
                     style.querySelectorAll(".premium-title-style9-letter").forEach(function (letter, index) {
                         index += 1;
@@ -484,9 +485,6 @@ class edit extends Component {
                     #premium-title-${block_id} .premium-title-style6__wrap:before {
                         border-bottom-color: ${titleStyles[0].triangleColor} !important;
                     }
-                    #premium-title-${block_id} .premium-title-style7-stripe-span {
-                        background-color: ${titleStyles[0].stripeColor} !important;
-                    }
                     #premium-title-${block_id} .premium-title-icon {
                         color: ${iconStyles[0].iconColor} !important;
                         background-color: ${backgroundType === "solid" ? iconStyles[0].containerBack : "transparent"} !important;
@@ -522,6 +520,7 @@ class edit extends Component {
                     }
                     #premium-title-${block_id} .premium-title-bg-text:before {
                         content: ${BackText};
+                        width: ${textWidth};
                         color: ${textStyles[0].textBackColor} !important;
                         font-size: ${TextSize}${textStyles[0].textBackfontSizeType} !important;
                         font-weight: ${textStyles[0].textBackWeight} !important;
@@ -542,10 +541,21 @@ class edit extends Component {
                     #premium-title-${block_id} .premium-title-style7-stripe-span {
                         width: ${StripeWidth}${stripeStyles[0].stripeWidthType} !important;
                         height: ${StripeHeight}${stripeStyles[0].stripeHeightType} !important;
+                        background-color: ${titleStyles[0].stripeColor} !important;
                     }
                     #premium-title-${block_id} .premium-title-style7-stripe__wrap {
                         margin-top: ${StripeMarginTop}${stripeStyles[0].stripeTopSpacingType} !important;
                         margin-bottom: ${StripeMarginBottom}${stripeStyles[0].stripeBottomSpacingType} !important;
+                    }
+                    #premium-title-${block_id} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter {
+                        font-size: ${TitleSize}${titleStyles[0].titlefontSizeType} !important;
+                        font-weight: ${titleStyles[0].titleWeight} !important;
+                        letter-spacing: ${titleStyles[0].titleLetter}px !important;
+                        line-height: ${titleStyles[0].titleLine}px !important;
+                        font-style: ${titleStyles[0].titleStyle} !important;
+                        text-transform: ${titleStyles[0].titleUpper ? "uppercase" : "none"} !important;
+                        font-family: ${titleStyles[0].titleFontFamily} !important;
+                        text-shadow: ${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor} !important;
                     }
                 `}
             </style>
@@ -1627,9 +1637,9 @@ class edit extends Component {
                 <div className={`premium-title  ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{
                     textAlign: align,
                 }} data-backgroundText={BackText}>
-                    <div className={`premium-title-container ${style} ${style}-${align}`} data-shiny-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
+                    <div className={`premium-title-container ${style} ${style}-${align}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
 
-                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-shiny-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
+                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
 
                             {
                                 style === 'style7' ?
@@ -1724,7 +1734,20 @@ class edit extends Component {
                                             </div>
                                         }
 
-                                        <span className={`premium-letters-container`}>
+                                        <span
+                                            className={`premium-letters-container`}
+                                            style={{
+                                                color: titleStyles[0].titleColor,
+                                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                            }}
+                                        >
                                             {styleContainer}
                                         </span>
 
