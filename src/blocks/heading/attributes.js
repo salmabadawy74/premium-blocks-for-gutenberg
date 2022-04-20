@@ -256,52 +256,40 @@ const attributes = {
         default: "1"
     },
     titleMarginT: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginR: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginB: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginL: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginTTablet: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginRTablet: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginBTablet: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginLTablet: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginTMobile: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginRMobile: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginBMobile: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titleMarginLMobile: {
-        type: "number",
-        default: "0"
+        type: "number"
     },
     titlePaddingT: {
         type: "number",
