@@ -14,6 +14,7 @@ import {
 } from '@wordpress/element';
 import { PanelBody, TextControl, Button, Popover } from '@wordpress/components';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -59,6 +60,11 @@ const defaultSize = {
     mobile: "",
     unit: "px"
 };
+const onChangeIconSize = (value, device) => {
+    const newSize = { ...iconSize };
+    newSize[device] = value;
+    setAttributes({ iconSize : newSize });
+}
     return (
         <Fragment>
             
@@ -74,12 +80,17 @@ const defaultSize = {
                     />
                     <ResponsiveSingleRangeControl
                         label={__("Icon Size", 'premium-blocks-for-gutenberg')}
-                        value={iconSize}
-                        onChange={newValue => setAttributes({ iconSize: newValue })}
-                        showUnit={false}
+                        value={attributes.iconSize}
+                        onChange={(value) => setAttributes({ iconSize: value })}
                         defaultValue={40}
-                        max={200}
+                        max={100}
                     />
+                </PanelBody>
+                <PanelBody
+                    title={__('Canvas Area', 'premium-blocks-for-gutenberg')}
+                    initialOpen={true}
+                >
+
                 </PanelBody>
             </InspectorControls>  
             <BlockControls group="block">
@@ -88,14 +99,15 @@ const defaultSize = {
                     onChange={( newAlignment ) => {
                         setAttributes({ iconAlignment: newAlignment });
                     }}
+                    
                 />
             </BlockControls>          
-            <div id={`premium-trigger-${block_id}`} { ...useBlockProps({
-                // className: classnames(
-                //     ``
-                // ),
+            <div { ...useBlockProps({
+                className: classnames(
+                    ``
+                ),
                 style: {
-                    iconSize: `${iconSize}${`px`}`,
+                    //iconSize: `${iconSize.desktop}${iconSize.unit}`
                 }
             }) }>
             <div className={`premium-trigger-container`}>
@@ -107,11 +119,11 @@ const defaultSize = {
                         <span
                             className={`trigger-label`}
                             onChange={ onChangeText }
-                            value={ triggerLabel }
+                            value={triggerLabel}
                             placeholder={ __( 'Menu', 'premium-blocks-for-gutenberg' ) }
-                            allowedFormats={ [] }
-                        />}
-                        <svg height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                           // allowedFormats={ [] }
+                        >{triggerLabel}</span>}
+                        <svg style={{fontSize: `${iconSize}px`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
 					<path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path></svg>
@@ -119,12 +131,6 @@ const defaultSize = {
                     </a>
                 </div>
 				{isEditing && (
-                    // <div className="premium-popup__modal_wrap" role="dialog">
-                    //     <div role="presentation" className="premium-popup__modal_wrap_overlay" style={{ background: 'black' }} onClick={() => setEditing(true)} >
-                    //     </div>
-                    //         <button className='close-button'>X</button>
-					// 		<InnerBlocks />
-                    //     </div>
                     <div className="gpb-trigger-wrap" role="dialog">
                         <div role="presentation" className="gpb-popup-overlay" onClick={() => setEditing(false)}></div>
                         <div className="gpb-popup-content gpb-desktop-popup-content">

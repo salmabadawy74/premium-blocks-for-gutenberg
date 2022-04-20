@@ -4,13 +4,6 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
- .premium-trigger-container {
-	.trigger-label {
-		background-color: #21759b;
-		color: #fff;
-		padding: 2px;
-	}
-}
 .gpb-trigger-wrap {
 	position: fixed;
 	top: 0;
@@ -72,4 +65,37 @@
 	margin-right: 281px;
 	margin-top: 61px;
   }
+}
+.toggle-button {
+	padding: 10px;
+    cursor: pointer;
+	display: inline-flex;
+	path {
+		width: 18px;
+		-webkit-transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+		transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+		-webkit-transform-origin: 10% 57%;
+		-ms-transform-origin: 10% 57%;
+		transform-origin: 10% 57%;
+	}
+	path:nth-child(1) {
+		-webkit-transform-origin: 50% 33%;
+		-ms-transform-origin: 50% 33%;
+		transform-origin: 50% 33%;
+	}
+	&.toggled {
+		path:nth-child(1) {
+			transform: rotate(45deg);
+			width: 18px;
+			height: 6.15px;
+		}
+		path:nth-child(2) {
+			opacity: 0;
+		}
+		path:nth-child(3) {
+			transform: rotate(-45deg);
+			width: 18px;
+			height: 6.15px;
+		}
+	}
 }

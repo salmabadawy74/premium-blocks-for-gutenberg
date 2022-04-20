@@ -28,7 +28,8 @@
 			"type": "number"
 		},
 		"iconAlignment": {
-			"type": "string"
+			"type": "string",
+			"default": "left"
 		}
 	}
 
