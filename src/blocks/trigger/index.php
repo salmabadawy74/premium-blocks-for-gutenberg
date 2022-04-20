@@ -15,7 +15,7 @@ add_action( 'init', 'register_block_pbg_trigger' );
 function trigger_enqueue() {
 	wp_register_script(
 		'gpb-trigger-block-script',
-			PREMIUM_BLOCKS_URL . 'assets/js/trigger.js',
+			PREMIUM_BLOCKS_URL . 'src/blocks/trigger/trigger.js',
 			array( 'jquery' ),
 			PREMIUM_BLOCKS_VERSION,
 			true
