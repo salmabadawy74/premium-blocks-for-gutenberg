@@ -70,6 +70,10 @@
 	padding: 10px;
     cursor: pointer;
 	display: inline-flex;
+	align-items: center;
+	.trigger-label {
+		margin-right: 10px;
+	}
 	path {
 		width: 18px;
 		-webkit-transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);

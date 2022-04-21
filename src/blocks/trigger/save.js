@@ -11,7 +11,7 @@
      useBlockProps
  } from '@wordpress/block-editor';
  export default function Save({attributes}) {
-    const { block_id, iconAlignment, triggerLabel } = attributes;
+    const { block_id, iconAlignment, triggerLabel, iconSize } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
          className: ``,
@@ -24,6 +24,7 @@
                     {
                         <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`}>
                             <a className={`toggle-button header-toggle-button`} 
+                               // style={{backgroundColor: triggerColors.iconbgColor}}
                                 onClick={ () => setEditing( true ) }
                             >
                             {triggerLabel &&

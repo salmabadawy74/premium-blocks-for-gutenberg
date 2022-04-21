@@ -12,10 +12,10 @@ import {
     button,
     Modal 
 } from '@wordpress/element';
-import { PanelBody, TextControl, Button, Popover } from '@wordpress/components';
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import { PanelBody, TextControl, Button, Popover, TabPanel } from '@wordpress/components';
+import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-
+import PremiumBorder from "../../components/premium-border";
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -36,21 +36,14 @@ import './editor.scss';
  
 
 export default function Edit(props) {
-// const trigger = () => {
-//         return (
-//             <a href="javascript:void(0)" className="bod-block-popup-trigger type_image">
-                
-//             </a>
-//         );
-// }
 
 const [ isEditing, setEditing ] = useState(false);
-const { isSelected, attributes, setAttributes, clientId, block_id, className } = props;
+const { isSelected, attributes, setAttributes, clientId, className } = props;
 
 useEffect(() => {
     setAttributes({ block_id: props.clientId })
 }, [])
-const { triggerLabel, iconAlignment, iconSize } = attributes;
+const { triggerLabel, iconAlignment, iconSize, block_id, triggerStyles } = attributes;
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
@@ -65,6 +58,12 @@ const onChangeIconSize = (value, device) => {
     newSize[device] = value;
     setAttributes({ iconSize : newSize });
 }
+
+const setTriggerStyles = (color, value) => {
+    const newColors = { ...triggerStyles };
+    newColors[color] = value;
+    setAttributes({ triggerStyles: newColors });
+}
     return (
         <Fragment>
             
@@ -78,12 +77,97 @@ const onChangeIconSize = (value, device) => {
                         value={attributes.triggerLabel}
                         onChange={(val) => setAttributes({ triggerLabel: val })}
                     />
-                    <ResponsiveSingleRangeControl
-                        label={__("Icon Size", 'premium-blocks-for-gutenberg')}
+
+                    <ResponsiveRangeControl
+                        label={__('Icon Size', 'premium-blocks-for-gutenberg')}
                         value={attributes.iconSize}
                         onChange={(value) => setAttributes({ iconSize: value })}
-                        defaultValue={40}
+                        tabletValue={attributes.iconSizeTablet}
+                        onChangeTablet={(value) => setAttributes({ iconSizeTablet: value })}
+                        mobileValue={attributes.iconSizeMobile}
+                        onChangeMobile={(value) => setAttributes({ iconSizeMobile: value })}
+                        min={0}
                         max={100}
+                        step={1}
+                        showUnit={true}
+                        units={['px']}
+                        defaultValue={20}
+                    />
+                    <TabPanel
+                        className="premium-color-tabpanel"
+                        activeClass="active-tab"
+                        tabs={[
+                            {
+                                name: "normal",
+                                title: "Normal",
+                                className: "premium-tab",
+                            },
+                            {
+                                name: "hover",
+                                title: "Hover",
+                                className: "premium-tab",
+                            },
+                        ]}
+                    >
+                        {(tab) => {
+                            let tabout;
+                            if ("normal" === tab.name) {
+                                tabout = (
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Icon Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.iconColor}
+                                            colorDefault={''}
+                                            onColorChange={(newValue) => setTriggerStyles('iconColor', newValue )}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Background Icon Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.iconbgColor}
+                                            colorDefault={''} 
+                                            onColorChange={newValue => setTriggerStyles('iconbgColor', newValue )}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Label Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.labelColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue => setTriggerStyles('labelColor', newValue )}
+                                        />
+                                        
+                                    </Fragment>
+                                );
+                            }
+                            if ("hover" === tab.name) {
+                                tabout = (
+                                    <Fragment>
+                                      <AdvancedPopColorControl
+                                            label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.iconHoverColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue => setTriggerStyles('iconHoverColor', newValue )}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Background Icon Hover Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.iconbgHoverColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue => setTriggerStyles('iconbgHoverColor', newValue )}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.labelHoverColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue )}
+                                        />
+                                    </Fragment>
+                                );
+                            }
+                            return (
+                                <div>
+                                    {tabout}
+                                </div>
+                            );
+                        }}
+                    </TabPanel>
+                    <PremiumBorder
                     />
                 </PanelBody>
                 <PanelBody
@@ -101,7 +185,22 @@ const onChangeIconSize = (value, device) => {
                     }}
                     
                 />
-            </BlockControls>          
+            </BlockControls> 
+            <style>
+            {`
+            #block-${block_id} .toggle-button:hover {
+                background-color:${triggerStyles.iconbgHoverColor} !important;
+            }
+            #block-${block_id} .toggle-button:hover svg {
+                fill:${triggerStyles.iconHoverColor} !important;
+            }
+            #block-${block_id} .toggle-button:hover .trigger-label {
+                color:${triggerStyles.labelHoverColor} !important;
+            }
+
+
+        `}
+        </style>         
             <div { ...useBlockProps({
                 className: classnames(
                     ``
@@ -114,6 +213,7 @@ const onChangeIconSize = (value, device) => {
             <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`}>
                     <a className={`toggle-button header-toggle-button`} 
                         onClick={ () => setEditing( true ) }
+                        style={{backgroundColor: triggerStyles.iconbgColor }}
                     >
                         {triggerLabel &&
                         <span
@@ -121,9 +221,10 @@ const onChangeIconSize = (value, device) => {
                             onChange={ onChangeText }
                             value={triggerLabel}
                             placeholder={ __( 'Menu', 'premium-blocks-for-gutenberg' ) }
+                            style={{color: triggerStyles.labelColor }}
                            // allowedFormats={ [] }
                         >{triggerLabel}</span>}
-                        <svg style={{fontSize: `${iconSize}px`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <svg style={{fontSize: `${iconSize}px`, fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
 					<path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path></svg>

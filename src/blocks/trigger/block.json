@@ -30,7 +30,16 @@
 		"iconAlignment": {
 			"type": "string",
 			"default": "left"
-		}
+		},
+		"triggerStyles": {
+            "type": "object",
+            "default": {
+                "iconColor": "",
+                "iconbgColor": "",
+                "iconHoverColor": "",
+                "iconbgHoverColor": ""
+            }
+        }
 	}
 
 }
