@@ -60,6 +60,38 @@
                 "padding": null,
                 "columnPadding": null
             }
+        },
+        "megaMenuBackground": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "containerBack": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "",
+                "backgroundRepeat": "no-repeat",
+                "backgroundSize": "cover",
+                "fixed": "",
+                "gradientLocationOne": "",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "",
+                "gradientAngle": "",
+                "gradientPosition": "",
+                "gradientType": ""
+            }
+        },
+        "linkCustomIcon": {
+            "type": "string"
+        },
+        "badgeText": {
+            "type": "string"
+        },
+        "badgeColors": {
+            "type": "object",
+            "default": {
+                "text": "",
+                "background": ""
+            }
         }
     },
     "providesContext": {

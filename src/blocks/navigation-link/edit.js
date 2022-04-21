@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import { escape } from 'lodash';
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 
 /**
  * WordPress dependencies
@@ -46,6 +47,8 @@ import { store as coreStore } from '@wordpress/core-data';
 /**
  * Internal dependencies
  */
+import iconsList from "../../components/premium-icons-list";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import { name } from './block.json';
 
 const MAX_NESTING = 5;
@@ -282,7 +285,10 @@ export default function NavigationLinkEdit({
 		rel,
 		title,
 		kind,
-		makeHeading
+		makeHeading,
+		linkCustomIcon,
+		badgeText,
+		badgeColors
 	} = attributes;
 	const { megaMenu, overlayMenu } = context;
 
@@ -553,6 +559,12 @@ export default function NavigationLinkEdit({
 			missingText = __('Add link');
 	}
 
+	const setBadgeColor = (color, value) => {
+		const newColors = { ...badgeColors };
+		newColors[color] = value;
+		setAttributes({ badgeColors: newColors });
+	}
+
 	return (
 		<Fragment>
 			<BlockControls>
@@ -575,6 +587,20 @@ export default function NavigationLinkEdit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
+				<PanelBody title={__('Link Badge Colors')}>
+					<AdvancedPopColorControl
+						label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
+						colorValue={badgeColors.text}
+						onColorChange={newValue => setBadgeColor('text', newValue)}
+						colorDefault={''}
+					/>
+					<AdvancedPopColorControl
+						label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+						colorValue={badgeColors.background}
+						onColorChange={newValue => setBadgeColor('background', newValue)}
+						colorDefault={''}
+					/>
+				</PanelBody>
 				<PanelBody title={__('Link settings')}>
 					{megaMenu && overlayMenu !== 'always' && (
 						<>
@@ -585,6 +611,23 @@ export default function NavigationLinkEdit({
 							/>}
 						</>
 					)}
+					<FontIconPicker
+						icons={iconsList}
+						onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
+						value={linkCustomIcon}
+						isMulti={false}
+						appendTo="body"
+						noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
+					/>
+					<TextControl
+						value={badgeText || ''}
+						onChange={(badgeTextValue) => {
+							setAttributes({
+								badgeText: badgeTextValue,
+							});
+						}}
+						label={__('Link Badge Text')}
+					/>
 					<TextareaControl
 						value={description || ''}
 						onChange={(descriptionValue) => {
@@ -617,6 +660,7 @@ export default function NavigationLinkEdit({
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}
 				<a className={classes}>
 					{ /* eslint-enable */}
+					{linkCustomIcon && <span className={`pbg-navigation-link-icon ${linkCustomIcon}`}></span>}
 					{!url ? (
 						<div className="premium-navigation-link__placeholder-text">
 							<Tooltip
@@ -722,6 +766,7 @@ export default function NavigationLinkEdit({
 							/>
 						</Popover>
 					)}
+					{badgeText ? <span style={{ color: badgeColors.text, backgroundColor: badgeColors.background }} className='pbg-navigation-link-label'>{badgeText}</span> : ''}
 				</a>
 			</div>
 		</Fragment>

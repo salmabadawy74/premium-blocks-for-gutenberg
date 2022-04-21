@@ -41,6 +41,19 @@
         },
         "makeHeading": {
             "type": "boolean"
+        },
+        "linkCustomIcon": {
+            "type": "string"
+        },
+        "badgeText": {
+            "type": "string"
+        },
+        "badgeColors": {
+            "type": "object",
+            "default": {
+                "text": "",
+                "background": ""
+            }
         }
     },
     "usesContext": ["showSubmenuIcon", "style", "megaMenu", "overlayMenu"],

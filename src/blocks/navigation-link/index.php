@@ -13,7 +13,16 @@ function render_block_premium_navigation_link( $attributes, $content, $block ) {
 	$navigation_link_has_id = isset( $attributes['id'] ) && is_numeric( $attributes['id'] );
 	$make_heading           = isset( $attributes['makeHeading'] ) && $attributes['makeHeading'];
 	$is_post_type           = isset( $attributes['kind'] ) && 'post-type' === $attributes['kind'];
+	$navigation_link_icon   = isset( $attributes['linkCustomIcon'] ) ? $attributes['linkCustomIcon'] : '';
+	$navigation_link_badge  = isset( $attributes['badgeText'] ) ? $attributes['badgeText'] : '';
+	$badge_colors           = isset( $attributes['badgeColors'] ) ? $attributes['badgeColors'] : '';
 	$is_post_type           = $is_post_type || isset( $attributes['type'] ) && ( 'post' === $attributes['type'] || 'page' === $attributes['type'] );
+
+	$badge_style = '';
+	if ( $badge_colors ) {
+		$badge_style .= $badge_colors['text'] ? 'color: ' . $badge_colors['text'] . ';' : '';
+		$badge_style .= $badge_colors['background'] ? 'background-color: ' . $badge_colors['background'] . ';' : '';
+	}
 
 	// Don't render the block's subtree if it is a draft or if the ID does not exist.
 	if ( $is_post_type && $navigation_link_has_id ) {
@@ -66,15 +75,24 @@ function render_block_premium_navigation_link( $attributes, $content, $block ) {
 	// End appending HTML attributes to anchor tag.
 
 	// Start anchor tag content.
-	$html .= '>' .
-		// Wrap title with span to isolate it from submenu icon.
-		'<span class="premium-navigation-item__label">';
+	$html .= '>';
+
+	if ( $navigation_link_icon ) {
+		$html .= '<span class="pbg-navigation-link-icon ' . esc_attr( $navigation_link_icon ) . '"></span>';
+	}
+	// Wrap title with span to isolate it from submenu icon.
+	$html .= '<span class="premium-navigation-item__label">';
 
 	if ( isset( $attributes['label'] ) ) {
 		$html .= wp_kses_post( $attributes['label'] );
 	}
 
 	$html .= '</span>';
+
+	if ( $navigation_link_badge ) {
+		$html .= '<span class="pbg-navigation-link-label" ' . ( $badge_style ? 'style="' . esc_attr( $badge_style ) . '"' : '' ) . '>' . esc_html( $navigation_link_badge ) . '</span>';
+	}
+
 	$html .= '</a>';
 	// End anchor tag content.
 

@@ -1,7 +1,7 @@
 import React from 'react'
 const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
-import { FontAwesomeEnabled } from "../../assets/js/settings";
-
+// import { FontAwesomeEnabled } from "../../assets/js/settings";
+const FontAwesomeEnabled = false;
 import PremiumBackground from './premium-background'
 import map from 'lodash/map';
 const { __ } = wp.i18n;

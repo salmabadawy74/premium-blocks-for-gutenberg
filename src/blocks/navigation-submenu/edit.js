@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import { escape, pull, size } from 'lodash';
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 
 /**
  * WordPress dependencies
@@ -54,6 +55,9 @@ import { ItemSubmenuIcon } from './icons';
 import { name } from './block.json';
 import MegaMenuLayout from './MegaMenuLayout'
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import PremiumBackgroundControl from "../../components/Premium-Background-Control"
+import iconsList from "../../components/premium-icons-list";
+import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 
 const ALLOWED_BLOCKS = ['premium/navigation-link', 'premium/navigation-submenu'];
 
@@ -294,7 +298,11 @@ export default function NavigationSubmenuEdit({
 		megaMenuWidth,
 		megaMenuColumns,
 		megaMenuLayout,
-		spacing
+		spacing,
+		megaMenuBackground,
+		linkCustomIcon,
+		badgeText,
+		badgeColors
 	} = attributes;
 	const link = {
 		url,
@@ -528,6 +536,20 @@ export default function NavigationSubmenuEdit({
 		pull(ALLOWED_BLOCKS, 'premium/navigation-submenu');
 	}
 
+	let containerGrad, containerGrad2, containerbg;
+
+	if (undefined !== megaMenuBackground.backgroundType && 'gradient' === megaMenuBackground.backgroundType) {
+		containerGrad = ('transparent' === megaMenuBackground.containerBack || undefined === megaMenuBackground.containerBack ? 'rgba(255,255,255,0)' : megaMenuBackground.containerBack);
+		containerGrad2 = (undefined !== megaMenuBackground.gradientColorTwo && undefined !== megaMenuBackground.gradientColorTwo && '' !== megaMenuBackground.gradientColorTwo ? megaMenuBackground.gradientColorTwo : '#777');
+		if ('radial' === megaMenuBackground.gradientType) {
+			containerbg = `radial-gradient(at ${megaMenuBackground.gradientPosition}, ${containerGrad} ${megaMenuBackground.gradientLocationOne}%, ${containerGrad2} ${megaMenuBackground.gradientLocationTwo}%)`;
+		} else if ('radial' !== megaMenuBackground.gradientType) {
+			containerbg = `linear-gradient(${megaMenuBackground.gradientAngle}deg, ${containerGrad} ${megaMenuBackground.gradientLocationOne}%, ${containerGrad2} ${megaMenuBackground.gradientLocationTwo}%)`;
+		}
+	} else {
+		containerbg = megaMenuBackground.backgroundImageURL ? `url('${megaMenuBackground.backgroundImageURL}')` : ''
+	}
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			className: classnames('premium-navigation__submenu-container', megaMenu && overlayMenu !== 'always' ? `col-${megaMenuColumns}` : '', megaMenu && overlayMenu !== 'always' ? `layout-${megaMenuLayout}` : '', {
@@ -548,6 +570,12 @@ export default function NavigationSubmenuEdit({
 				paddingRight: megaMenu ? `${padding.desktop.right}px` : '',
 				paddingBottom: megaMenu ? `${padding.desktop.bottom}px` : '',
 				paddingLeft: megaMenu ? `${padding.desktop.left}px` : '',
+				backgroundColor: megaMenu && megaMenuBackground.backgroundType === "solid" ? megaMenuBackground.containerBack : "",
+				backgroundImage: megaMenu ? containerbg : '',
+				backgroundRepeat: megaMenu ? megaMenuBackground.backgroundRepeat : '',
+				backgroundPosition: megaMenu ? megaMenuBackground.backgroundPosition : '',
+				backgroundSize: megaMenu ? megaMenuBackground.backgroundSize : '',
+				backgroundAttachment: megaMenu && megaMenuBackground.fixed ? "fixed" : "unset",
 			},
 		},
 		{
@@ -619,6 +647,17 @@ export default function NavigationSubmenuEdit({
 		}
 	}, [isSelected, megaMenu, megaMenuWidth, submenuWidth, overlayMenu])
 
+	const setBackgroundAttr = (attr) => {
+		const newBackground = { ...megaMenuBackground, ...attr };
+		setAttributes({ megaMenuBackground: newBackground });
+	}
+
+	const setBadgeColor = (color, value) => {
+		const newColors = { ...badgeColors };
+		newColors[color] = value;
+		setAttributes({ badgeColors: newColors });
+	}
+
 	return (
 		<Fragment>
 			<BlockControls>
@@ -683,6 +722,24 @@ export default function NavigationSubmenuEdit({
 								</RadioGroup>
 							</div>
 							<MegaMenuLayout label={__('Layout', 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ megaMenuLayout: value })} value={megaMenuLayout} megaMenuColumns={megaMenuColumns} />
+							<PremiumBackgroundControl
+								setAttributes={setBackgroundAttr}
+								saveContainerStyle={setBackgroundAttr}
+								backgroundType={megaMenuBackground.backgroundType}
+								backgroundColor={megaMenuBackground.backgroundColor}
+								backgroundImageID={megaMenuBackground.backgroundImageID}
+								backgroundImageURL={megaMenuBackground.backgroundImageURL}
+								backgroundPosition={megaMenuBackground.backgroundPosition}
+								backgroundRepeat={megaMenuBackground.backgroundRepeat}
+								backgroundSize={megaMenuBackground.backgroundSize}
+								fixed={megaMenuBackground.fixed}
+								gradientLocationOne={megaMenuBackground.gradientLocationOne}
+								gradientColorTwo={megaMenuBackground.gradientColorTwo}
+								gradientLocationTwo={megaMenuBackground.gradientLocationTwo}
+								gradientAngle={megaMenuBackground.gradientAngle}
+								gradientPosition={megaMenuBackground.gradientPosition}
+								gradientType={megaMenuBackground.gradientType}
+							/>
 						</>
 					)}
 
@@ -771,7 +828,38 @@ export default function NavigationSubmenuEdit({
 						</PanelBody>
 					</>
 				)}
+				<PanelBody title={__('Link Badge Colors')}>
+					<AdvancedPopColorControl
+						label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
+						colorValue={badgeColors.text}
+						onColorChange={newValue => setBadgeColor('text', newValue)}
+						colorDefault={''}
+					/>
+					<AdvancedPopColorControl
+						label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+						colorValue={badgeColors.background}
+						onColorChange={newValue => setBadgeColor('background', newValue)}
+						colorDefault={''}
+					/>
+				</PanelBody>
 				<PanelBody title={__('Link settings')}>
+					<FontIconPicker
+						icons={iconsList}
+						onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
+						value={linkCustomIcon}
+						isMulti={false}
+						appendTo="body"
+						noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
+					/>
+					<TextControl
+						value={badgeText || ''}
+						onChange={(badgeTextValue) => {
+							setAttributes({
+								badgeText: badgeTextValue,
+							});
+						}}
+						label={__('Link Badge Text')}
+					/>
 					<TextareaControl
 						value={description || ''}
 						onChange={(descriptionValue) => {
@@ -824,6 +912,7 @@ export default function NavigationSubmenuEdit({
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}
 				<ParentElement className="premium-navigation-item__content">
 					{ /* eslint-enable */}
+					{linkCustomIcon && <span className={`pbg-navigation-link-icon ${linkCustomIcon}`}></span>}
 					{
 						<RichText
 							ref={ref}
@@ -901,6 +990,7 @@ export default function NavigationSubmenuEdit({
 							/>
 						</Popover>
 					)}
+					{badgeText ? <span style={{ color: badgeColors.text, backgroundColor: badgeColors.background }} className='pbg-navigation-link-label'>{badgeText}</span> : ''}
 					{(showSubmenuIcon || openSubmenusOnClick) && (
 						<span className="premium-navigation__submenu-icon">
 							<ItemSubmenuIcon />

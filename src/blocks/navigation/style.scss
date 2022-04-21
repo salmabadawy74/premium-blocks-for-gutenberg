@@ -20,7 +20,7 @@ $navigation-icon-size: 24px;
 
 .wp-block-premium-navigation {
     position: relative;
-
+    line-height: 4;
     &.submenu-box-shadow {
         > div:not(.premium-navigation__responsive-container.is-menu-open),
         .premium-navigation__container {
@@ -376,6 +376,25 @@ $navigation-icon-size: 24px;
         align-items: center;
         position: relative;
 
+        .pbg-navigation-link-icon {
+            vertical-align: middle;
+            margin-right: 5px;
+            font-size: 15px;
+            width: 15px;
+            height: 15px;
+        }
+        .pbg-navigation-link-label {
+            font-size: 0.7em;
+            margin-left: 10px;
+            line-height: normal;
+            padding: 3px 6px;
+            border-radius: 2px;
+            color: var(--pbg-navigation-link-badge-color, "#ffffff");
+            background-color: var(
+                --pbg-navigation-link-badge-bg-color,
+                var(--wp--preset--color--primary)
+            );
+        }
         .premium-navigation__submenu-container:empty {
             display: none;
         }

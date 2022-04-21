@@ -8,6 +8,9 @@
   grid-template-columns: var(--gridTemplateColummns, 1fr);
   box-sizing: border-box;
 }
+.wp-block-premium-navigation > div:not(.premium-navigation__responsive-container.is-menu-open) .premiun-mega-menu .premium-navigation__submenu-container .premium-navigation-item {
+  background: transparent;
+}
 .wp-block-premium-navigation > div:not(.premium-navigation__responsive-container.is-menu-open) .premiun-mega-menu .premium-navigation__submenu-container.col-1 {
   --gridTemplateColummns: minmax(0, 1fr);
 }
@@ -76,6 +79,7 @@
 }
 .wp-block-premium-navigation > div:not(.premium-navigation__responsive-container.is-menu-open) .premiun-mega-menu .premium-navigation__submenu-container .wp-block-premium-navigation-submenu {
   display: block;
+  background: transparent;
 }
 .wp-block-premium-navigation > div:not(.premium-navigation__responsive-container.is-menu-open) .premiun-mega-menu .premium-navigation__submenu-container .wp-block-premium-navigation-submenu .premium-navigation__submenu-container {
   position: static !important;
