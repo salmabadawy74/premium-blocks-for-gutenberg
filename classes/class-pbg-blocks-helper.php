@@ -4285,7 +4285,7 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-			
+
 			wp_enqueue_script(
 				'pbg-heading',
 				PREMIUM_BLOCKS_URL . 'assets/js/heading.js',
@@ -4329,8 +4329,7 @@ class PBG_Blocks_Helper {
 				)
 			);
 		}
-echo $attr['iconStyles'][0]['iconSize'];
-echo $attr['iconStyles'][0]['iconSizeType'];
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );

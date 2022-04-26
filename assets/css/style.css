@@ -4330,14 +4330,16 @@ animation-fast {
     justify-content: flex-end !important;
 }
 .premium-title .premium-lottie-animation {
-    width: 40px;
-    height: 40px;
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
     display: flex; 
+}
+.premium-title .premium-lottie-animation svg {
+    width: 40px;
+    height: 40px;
 }
 .premium-title-text-title{
     padding: 0px;
