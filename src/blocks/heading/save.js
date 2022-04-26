@@ -238,7 +238,13 @@ export default function save(props) {
                                         }
                                         {
                                             iconValue && iconType == 'lottie' &&
-                                            <div className="premium-title-icon premium-lottie-animation" data-lottie-loop={loop} data-lottie-url={`${lottieURl}`} data-lottie-reverse={reversedir}>
+                                            <div
+                                                className="premium-title-icon premium-lottie-animation"
+                                                data-loop={loop}
+                                                data-lottieurl={`${lottieURl}`}
+                                                data-reverse={reversedir}
+                                                data-trigger={"none"}
+                                            >
 
                                             </div>
                                         }
@@ -285,7 +291,13 @@ export default function save(props) {
                                     }
                                     {
                                         iconValue && iconType == 'lottie' &&
-                                        <div className="premium-title-icon premium-lottie-animation" data-lottie-loop={loop} data-lottie-url={`${lottieURl}`} data-lottie-reverse={reversedir}>
+                                        <div
+                                            className="premium-title-icon premium-lottie-animation"
+                                            data-loop={loop}
+                                            data-lottieurl={`${lottieURl}`}
+                                            data-reverse={reversedir}
+                                            data-trigger={"none"}
+                                        >
 
                                         </div>
                                     }
@@ -315,7 +327,13 @@ export default function save(props) {
                                         }
                                         {
                                             iconValue && iconType == 'lottie' &&
-                                            <div className="premium-title-icon premium-lottie-animation" data-lottie-loop={loop} data-lottie-url={`${lottieURl}`} data-lottie-reverse={reversedir}>
+                                            <div
+                                                className="premium-title-icon premium-lottie-animation"
+                                                data-loop={loop}
+                                                data-lottieurl={`${lottieURl}`}
+                                                data-reverse={reversedir}
+                                                data-trigger={"none"}
+                                            >
 
                                             </div>
                                         }
@@ -341,7 +359,8 @@ export default function save(props) {
                                                 // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
                                                 // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
                                                 // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                minHeight: '15px'
+                                                minHeight: '15px',
+                                                margin: 'revert'
                                             }}
                                         />
                                     </Fragment>

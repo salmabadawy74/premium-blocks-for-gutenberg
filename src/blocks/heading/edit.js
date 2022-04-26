@@ -1708,7 +1708,7 @@ class edit extends Component {
                                                     paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
                                                     paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
                                                     paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                    minHeight: '15px'
+                                                    // minHeight: '15px'
                                                 }}
                                             />
                                         </div>
@@ -1800,7 +1800,7 @@ class edit extends Component {
                                                     paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
                                                     paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
                                                     paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                    minHeight: '15px'
+                                                    // minHeight: '15px'
                                                 }}
                                             />
                                         </Fragment>
