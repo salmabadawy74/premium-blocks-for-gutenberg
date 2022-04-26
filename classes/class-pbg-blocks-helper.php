@@ -4442,10 +4442,10 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['iconStyles'][0]['iconSize'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//lottie
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 				$css->add_property( 'width', $css->render_color( $attr['iconStyles'][0]['iconSize'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 				$css->add_property( 'height', $css->render_color( $attr['iconStyles'][0]['iconSize'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//img
@@ -4640,10 +4640,10 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['iconStyles'][0]['iconSizeTablet'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//lottie
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 				$css->add_property( 'width', $css->render_color( $attr['iconStyles'][0]['iconSizeTablet'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 				$css->add_property( 'height', $css->render_color( $attr['iconStyles'][0]['iconSizeTablet'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//img
@@ -4841,10 +4841,10 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['iconStyles'][0]['iconSizeMobile'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//lottie
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 				$css->add_property( 'width', $css->render_color( $attr['iconStyles'][0]['iconSizeMobile'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 				$css->add_property( 'height', $css->render_color( $attr['iconStyles'][0]['iconSizeMobile'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//img
