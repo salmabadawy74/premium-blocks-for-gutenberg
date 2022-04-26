@@ -4104,6 +4104,10 @@ animation-fast {
 .premium-title-bg-text::before {
     position: absolute;
     content: attr(data-backgroundText);
+    width: auto;
+    transform: rotate(0deg);
+    top: 0;
+    left: 0;
 }
   
 .premium-title .premium-title-header:not(.premium-title-style7__wrap) {
@@ -4132,6 +4136,7 @@ animation-fast {
 .premium-title-icon{
     margin-right: 10px;
     font-style: normal !important;
+    font-size: 40px !important;
 }
 .premium-title .before{
     flex-direction: row;
@@ -4324,6 +4329,8 @@ animation-fast {
     justify-content: flex-end !important;
 }
 .premium-title .premium-lottie-animation {
+    width: 40px;
+    height: 40px;
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -4331,7 +4338,10 @@ animation-fast {
     display: -ms-flexbox;
     display: flex; 
 }
-
+.premium-title-text-title{
+    padding: 0px;
+    margin: 0px;
+}
 .premium-title-style8__wrap .premium-title-text-title[data-animation="shiny"] {
     -webkit-background-size: 125px 125px !important;
     background-size: 125px !important;

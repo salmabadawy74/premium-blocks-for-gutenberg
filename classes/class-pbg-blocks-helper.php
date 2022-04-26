@@ -4279,6 +4279,14 @@ class PBG_Blocks_Helper {
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
+				'pbg-lottie',
+				PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+			
+			wp_enqueue_script(
 				'pbg-heading',
 				PREMIUM_BLOCKS_URL . 'assets/js/heading.js',
 				array( 'jquery' ),
@@ -4321,7 +4329,8 @@ class PBG_Blocks_Helper {
 				)
 			);
 		}
-
+echo $attr['iconStyles'][0]['iconSize'];
+echo $attr['iconStyles'][0]['iconSizeType'];
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -4434,10 +4443,10 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['iconStyles'][0]['iconSize'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//lottie
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
 				$css->add_property( 'width', $css->render_color( $attr['iconStyles'][0]['iconSize'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
 				$css->add_property( 'height', $css->render_color( $attr['iconStyles'][0]['iconSize'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//img
@@ -4516,7 +4525,7 @@ class PBG_Blocks_Helper {
 			}
 			if ( isset( $attr['textStyles'][0]['rotateText'] ) ) {
 				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title-bg-text:before');
-				// $css->add_property( 'transform', 'rotate(' . $attr['textStyles'][0]['rotateText'] . 'deg) !important' ) );
+				$css->add_property( 'transform', 'rotate(' . $css->render_color( $attr['textStyles'][0]['rotateText'] . 'deg)'  . '!important' ) );
 			}
 			if ( isset( $attr['strokeStyles'][0]['strokeFull'] ) ) {
 				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title-bg-text:before');
@@ -4632,10 +4641,10 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['iconStyles'][0]['iconSizeTablet'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//lottie
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
 				$css->add_property( 'width', $css->render_color( $attr['iconStyles'][0]['iconSizeTablet'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
 				$css->add_property( 'height', $css->render_color( $attr['iconStyles'][0]['iconSizeTablet'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//img
@@ -4714,7 +4723,7 @@ class PBG_Blocks_Helper {
 			}
 			if ( isset( $attr['textStyles'][0]['rotateTextTablet'] ) ) {
 				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title-bg-text:before');
-				// $css->add_property( 'transform', 'rotate(' . $attr['textStyles'][0]['rotateTextTablet'] . 'deg) !important' ) );
+				$css->add_property( 'transform', 'rotate(' . $css->render_color( $attr['textStyles'][0]['rotateTextTablet'] . 'deg)'  . '!important' ) );
 			}
 			if ( isset( $attr['strokeStyles'][0]['strokeFullTablet'] ) ) {
 				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title-bg-text:before');
@@ -4833,10 +4842,10 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['iconStyles'][0]['iconSizeMobile'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//lottie
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
 				$css->add_property( 'width', $css->render_color( $attr['iconStyles'][0]['iconSizeMobile'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' );
 				$css->add_property( 'height', $css->render_color( $attr['iconStyles'][0]['iconSizeMobile'] . (isset($attr['iconStyles'][0]['iconSizeType'])? $attr['iconStyles'][0]['iconSizeType'] :'px')  . '!important' ) );
 
 				//img
@@ -4915,7 +4924,7 @@ class PBG_Blocks_Helper {
 			}
 			if ( isset( $attr['textStyles'][0]['rotateTextMobile'] ) ) {
 				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title-bg-text:before');
-				// $css->add_property( 'transform', 'rotate(' . $attr['textStyles'][0]['rotateTextMobile'] . 'deg) !important' ) );
+				$css->add_property( 'transform', 'rotate(' . $css->render_color( $attr['textStyles'][0]['rotateTextMobile'] . 'deg)'  . '!important' ) );
 			}
 			if ( isset( $attr['strokeStyles'][0]['strokeFullMobile'] ) ) {
 				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title-bg-text:before');
