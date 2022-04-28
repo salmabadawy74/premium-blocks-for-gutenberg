@@ -4145,6 +4145,9 @@ animation-fast {
     flex-direction: row-reverse;
     display: inline-flex;
 }
+.style3 .after {
+    display: flex;
+}
 .premium-title .top {
     flex-direction: column;
 }
