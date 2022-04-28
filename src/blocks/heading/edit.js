@@ -553,7 +553,7 @@ class edit extends Component {
                         font-size: ${TitleSize}${titleStyles[0].titlefontSizeType} !important;
                         font-weight: ${titleStyles[0].titleWeight} !important;
                         letter-spacing: ${titleStyles[0].titleLetter}px !important;
-                        line-height: ${titleStyles[0].titleLine}px !important;
+                        line-height: ${titleStyles[0].titleLine ? titleStyles[0].titleLine : ''}px !important;
                         font-style: ${titleStyles[0].titleStyle} !important;
                         text-transform: ${titleStyles[0].titleUpper ? "uppercase" : "none"} !important;
                         font-family: ${titleStyles[0].titleFontFamily} !important;
@@ -1640,10 +1640,32 @@ class edit extends Component {
                     textAlign: align,
                 }} data-backgroundText={BackText}>
                     <div className={`premium-title-container ${style} ${style}-${align}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
-
-                        <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
-
+                        {React.createElement(titleTag,
                             {
+                                className: `premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`,
+                                'data-blur-delay': `${titleStyles[0].animateDelay}`,
+                                'data-shiny-dur': `${titleStyles[0].animateduration}`,
+                                style: {
+                                    color: titleStyles[0].titleColor,
+                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    lineHeight: (titleStyles[0].titleLine ? titleStyles[0].titleLine : "") + "px",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontFamily: titleStyles[0].titleFontFamily,
+                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                    marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                    marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                    marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                    marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                    paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                    paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                    paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                    paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                }
+                            },
+                            [
                                 style === 'style7' ?
                                     <Fragment>
                                         {
@@ -1691,24 +1713,7 @@ class edit extends Component {
                                                 className={`premium-title-text-title`}
                                                 value={title}
                                                 style={{
-                                                    color: titleStyles[0].titleColor,
-                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                    fontWeight: titleStyles[0].titleWeight,
-                                                    letterSpacing: titleStyles[0].titleLetter + "px",
-                                                    lineHeight: titleStyles[0].titleLine + "px",
-                                                    fontStyle: titleStyles[0].titleStyle,
-                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                    fontFamily: titleStyles[0].titleFontFamily,
-                                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                                    marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                    marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                    marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                    marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                    paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                    paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                    paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                    paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                    // minHeight: '15px'
+                                                    minHeight: '15px'
                                                 }}
                                             />
                                         </div>
@@ -1754,68 +1759,41 @@ class edit extends Component {
                                         </span>
 
                                     </Fragment> : <Fragment>
-                                        {
-                                            iconValue && iconType == 'icon' &&
-                                            <i className={`premium-title-icon ${icon}`} />
-                                        }
-                                        {
-                                            iconValue && iconType == 'image' &&
-                                            < img className={`premium-title-icon`} src={imageURL} />
-                                        }
-                                        {
-                                            iconValue && iconType == 'lottie' && lottieURl &&
-                                            <div className=" premium-title-icon premium-lottie-animation">
-                                                <Lottie
-                                                    options={{
-                                                        loop: loop,
-                                                        path: lottieURl,
-                                                        rendererSettings: {
-                                                            preserveAspectRatio: 'xMidYMid'
-                                                        }
-                                                    }}
-                                                    direction={reverse}
-                                                />
-                                            </div>
-                                        }
-
-                                        {React.createElement(titleTag,
                                             {
-                                                className: `premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`,
-                                                'data-blur-delay': `${titleStyles[0].animateDelay}`,
-                                                'data-shiny-dur': `${titleStyles[0].animateduration}`
-                                            },
-                                            [
-                                                <RichText
-                                                    tagName='span'
-                                                    className={`premium-title-text-title`}
-                                                    onChange={(newValue) => setAttributes({ title: newValue })}
-                                                    value={title}
-                                                    style={{
-                                                        color: titleStyles[0].titleColor,
-                                                        fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                        fontWeight: titleStyles[0].titleWeight,
-                                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                                        lineHeight: titleStyles[0].titleLine + "px",
-                                                        fontStyle: titleStyles[0].titleStyle,
-                                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                        fontFamily: titleStyles[0].titleFontFamily,
-                                                        textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                                        marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                        marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                        marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                        marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                        paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                        paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                        paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                        paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                        // minHeight: '15px'
-                                                    }}
-                                                />])}
-                                    </Fragment>
-                            }
-                            {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
-                        </div>
-
+                                                iconValue && iconType == 'icon' &&
+                                                <i className={`premium-title-icon ${icon}`} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'image' &&
+                                                < img className={`premium-title-icon`} src={imageURL} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'lottie' && lottieURl &&
+                                                <div className=" premium-title-icon premium-lottie-animation">
+                                                    <Lottie
+                                                        options={{
+                                                            loop: loop,
+                                                            path: lottieURl,
+                                                            rendererSettings: {
+                                                                preserveAspectRatio: 'xMidYMid'
+                                                            }
+                                                        }}
+                                                        direction={reverse}
+                                                    />
+                                                </div>
+                                            }
+                                            <RichText
+                                                tagName='span'
+                                                className={`premium-title-text-title`}
+                                                onChange={(newValue) => setAttributes({ title: newValue })}
+                                                value={title}
+                                                style={{
+                                                    minHeight: '15px'
+                                                }}
+                                            />
+                                        </Fragment>
+                                // {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
+                            ])}
                     </div>
                 </div>
             </div >

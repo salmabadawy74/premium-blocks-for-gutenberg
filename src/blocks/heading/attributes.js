@@ -344,63 +344,63 @@ const attributes = {
     },
     iconPaddingT: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingR: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingB: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingL: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingTTablet: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingRTablet: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingBTablet: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingLTablet: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingTMobile: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingRMobile: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingBMobile: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconPaddingLMobile: {
         type: "number",
-        default: "0"
+        default: ""
     },
     iconMarginT: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginR: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginB: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginL: {
         type: "number",
@@ -408,15 +408,15 @@ const attributes = {
     },
     iconMarginTTablet: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginRTablet: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginBTablet: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginLTablet: {
         type: "number",
@@ -424,15 +424,15 @@ const attributes = {
     },
     iconMarginTMobile: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginRMobile: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginBMobile: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginLMobile: {
         type: "number",

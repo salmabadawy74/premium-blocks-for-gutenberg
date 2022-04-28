@@ -191,7 +191,7 @@ export default function save(props) {
                     #premium-title-${block_id} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter {
                         font-weight: ${titleStyles[0].titleWeight} !important;
                         letter-spacing: ${titleStyles[0].titleLetter}px !important;
-                        line-height: ${titleStyles[0].titleLine}px !important;
+                        line-height: ${titleStyles[0].titleLine ? titleStyles[0].titleLine : ''}px !important;
                         font-style: ${titleStyles[0].titleStyle} !important;
                         text-transform: ${titleStyles[0].titleUpper ? "uppercase" : "none"} !important;
                         font-family: ${titleStyles[0].titleFontFamily} !important;
@@ -213,8 +213,24 @@ export default function save(props) {
                 textAlign: align,
             }} data-backgroundText={BackText}>
                 <div className={`premium-title-container ${style} ${style}-${align}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
-                    <div className={`premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
+                    {React.createElement(titleTag,
                         {
+                            className: `premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`,
+                            'data-blur-delay': `${titleStyles[0].animateDelay}`,
+                            'data-shiny-dur': `${titleStyles[0].animateduration}`,
+                            style: {
+                                color: titleStyles[0].titleColor,
+                                // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                fontWeight: titleStyles[0].titleWeight,
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                lineHeight: (titleStyles[0].titleLine ? titleStyles[0].titleLine : "") + "px",
+                                fontStyle: titleStyles[0].titleStyle,
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontFamily: titleStyles[0].titleFontFamily,
+                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                            }
+                        },
+                        [
                             style === 'style7' ?
                                 <Fragment>
                                     {
@@ -338,35 +354,17 @@ export default function save(props) {
                                             </div>
                                         }
                                         <RichText.Content
-                                            tagName={titleTag.toLowerCase()}
+                                            tagName='span'
                                             className={`premium-title-text-title`}
                                             value={title}
                                             style={{
-                                                color: titleStyles[0].titleColor,
-                                                // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                fontFamily: titleStyles[0].titleFontFamily,
-                                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                                // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                // marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                // paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
                                                 minHeight: '15px',
                                                 margin: 'revert'
                                             }}
                                         />
                                     </Fragment>
-                        }
-                        {link && <a rel="noopener noreferrer" target={target ? "_blank" : "_self"} href={`${url}`}></a>}
-                    </div>
+                            // {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
+                        ])}
                 </div>
             </div>
         </div >
