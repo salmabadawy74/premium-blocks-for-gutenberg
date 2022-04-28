@@ -4134,7 +4134,7 @@ animation-fast {
     display: inline-flex; */
 }
 .premium-title-icon{
-    margin-right: 10px;
+    margin-left: 10px;
     font-style: normal !important;
     font-size: 40px !important;
 }
@@ -4343,7 +4343,7 @@ animation-fast {
 }
 .premium-title-text-title{
     padding: 0px;
-    margin: 0px;
+    /* margin: 0px; */
 }
 .premium-title-style8__wrap .premium-title-text-title[data-animation="shiny"] {
     -webkit-background-size: 125px 125px !important;
