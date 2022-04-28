@@ -4133,8 +4133,13 @@ animation-fast {
     /* display: -ms-inline-flexbox;
     display: inline-flex; */
 }
-.premium-title-icon{
+.before .premium-title-icon{
+    margin-right: 10px;
+}
+.after .premium-title-icon{
     margin-left: 10px;
+}
+.premium-title-icon{
     font-style: normal !important;
     font-size: 40px !important;
 }
@@ -4242,9 +4247,13 @@ animation-fast {
     display: -webkit-box;
     display: -moz-box;
     display: flex;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .premium-title-style7-stripe-span{
     background-color: #6ec1e4;
+    width: 120px;
+    height: 5px;
 }
 .premium-title-style7-inner-title{
     -js-display: flex;
@@ -4258,6 +4267,9 @@ animation-fast {
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+}
+.premium-title-style7-inner-title .premium-title-text-title {
+    margin: 0;
 }
 .after .premium-title-style7-inner-title{
     flex-direction: row-reverse;

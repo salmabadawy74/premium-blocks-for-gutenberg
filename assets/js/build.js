@@ -63133,7 +63133,7 @@ function save(props) {
 
     var styleContainer = title.split("").map(function (letter) {
         return React.createElement(RichText.Content, {
-            tagName: titleTag.toLowerCase(),
+            tagName: 'span',
             className: 'premium-title-style9-letter',
             value: letter,
             style: {
@@ -63227,19 +63227,19 @@ function save(props) {
                             React.createElement('span', { className: 'premium-title-style7-stripe-span' })
                         ),
                         React.createElement(RichText.Content, {
-                            tagName: titleTag.toLowerCase(),
+                            tagName: 'span',
                             className: 'premium-title-text-title',
                             value: title,
                             style: {
-                                color: titleStyles[0].titleColor,
+                                color: titleStyles[0].titleColor
                                 // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                fontWeight: titleStyles[0].titleWeight,
-                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                lineHeight: titleStyles[0].titleLine + "px",
-                                fontStyle: titleStyles[0].titleStyle,
-                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                fontFamily: titleStyles[0].titleFontFamily,
-                                textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
+                                // fontWeight: titleStyles[0].titleWeight,
+                                // letterSpacing: titleStyles[0].titleLetter + "px",
+                                // lineHeight: titleStyles[0].titleLine + "px",
+                                // fontStyle: titleStyles[0].titleStyle,
+                                // textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                // fontFamily: titleStyles[0].titleFontFamily,
+                                // textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
                                 // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
                                 // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
                                 // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
@@ -63248,7 +63248,7 @@ function save(props) {
                                 // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
                                 // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
                                 // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                minHeight: '15px'
+                                // minHeight: '15px'
                             }
                         })
                     )
@@ -63830,7 +63830,7 @@ var edit = function (_Component) {
 
             var styleContainer = title.split("").map(function (letter) {
                 return React.createElement(RichText, {
-                    tagName: titleTag.toLowerCase(),
+                    tagName: "span",
                     className: "premium-title-style9-letter",
                     value: letter,
                     style: {
@@ -65041,7 +65041,7 @@ var edit = function (_Component) {
                                     React.createElement("span", { className: "premium-title-style7-stripe-span" })
                                 ),
                                 React.createElement(RichText, {
-                                    tagName: titleTag.toLowerCase(),
+                                    tagName: "span",
                                     className: "premium-title-text-title",
                                     value: title,
                                     style: {
@@ -65562,7 +65562,7 @@ var attributes = (_attributes = {
     },
     iconMarginL: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginTTablet: {
         type: "number",
@@ -65578,7 +65578,7 @@ var attributes = (_attributes = {
     },
     iconMarginLTablet: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginTMobile: {
         type: "number",
@@ -65594,7 +65594,7 @@ var attributes = (_attributes = {
     },
     iconMarginLMobile: {
         type: "number",
-        default: "10"
+        default: ""
     },
     hideDesktop: {
         type: 'boolean',

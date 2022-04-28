@@ -626,7 +626,7 @@ class edit extends Component {
         const styleContainer = title.split("").map(letter => {
             return (
                 <RichText
-                    tagName={titleTag.toLowerCase()}
+                    tagName='span'
                     className={`premium-title-style9-letter`}
                     value={letter}
                     style={{
@@ -1709,7 +1709,7 @@ class edit extends Component {
                                                 </span>
                                             }
                                             <RichText
-                                                tagName={titleTag.toLowerCase()}
+                                                tagName='span'
                                                 className={`premium-title-text-title`}
                                                 value={title}
                                                 style={{

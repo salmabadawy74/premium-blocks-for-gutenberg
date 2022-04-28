@@ -404,7 +404,7 @@ const attributes = {
     },
     iconMarginL: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginTTablet: {
         type: "number",
@@ -420,7 +420,7 @@ const attributes = {
     },
     iconMarginLTablet: {
         type: "number",
-        default: "10"
+        default: ""
     },
     iconMarginTMobile: {
         type: "number",
@@ -436,7 +436,7 @@ const attributes = {
     },
     iconMarginLMobile: {
         type: "number",
-        default: "10"
+        default: ""
     },
     hideDesktop: {
         type: 'boolean',
