@@ -229,14 +229,14 @@ function render_block_premium_navigation_submenu( $attributes, $content, $block 
 
 		$html .= $label;
 
-		if ( $navigation_link_badge ) {
-			$html .= '<span class="pbg-navigation-link-label" ' . ( $badge_style ? 'style="' . esc_attr( $badge_style ) . '"' : '' ) . '>' . esc_html( $navigation_link_badge ) . '</span>';
-		}
-
 		if ( $show_submenu_indicators ) {
 			// The submenu icon is rendered in a button here
 			// so that there's a clickable element to open the submenu.
 			$html .= '<button aria-label="' . esc_attr( $aria_label ) . '" class="premium-navigation__submenu-icon premium-navigation-submenu__toggle" aria-expanded="false">' . block_core_navigation_submenu_render_submenu_icon() . '</button>';
+		}
+
+		if ( $navigation_link_badge ) {
+			$html .= '<span class="pbg-navigation-link-label" ' . ( $badge_style ? 'style="' . esc_attr( $badge_style ) . '"' : '' ) . '>' . esc_html( $navigation_link_badge ) . '</span>';
 		}
 
 		$html .= '</a>';
@@ -257,11 +257,11 @@ function render_block_premium_navigation_submenu( $attributes, $content, $block 
 
 		$html .= '</span>';
 
+		$html .= '<span class="premium-navigation__submenu-icon">' . block_core_navigation_submenu_render_submenu_icon() . '</span>';
+
 		if ( $navigation_link_badge ) {
 			$html .= '<span class="pbg-navigation-link-label" ' . ( $badge_style ? 'style="' . esc_attr( $badge_style ) . '"' : '' ) . '>' . esc_html( $navigation_link_badge ) . '</span>';
 		}
-
-		$html .= '<span class="premium-navigation__submenu-icon">' . block_core_navigation_submenu_render_submenu_icon() . '</span>';
 
 		$html .= '</button>';
 

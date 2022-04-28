@@ -43,6 +43,7 @@ import { speak } from '@wordpress/a11y';
 import AdvancedPopColorControl from '../../../components/Color Control/ColorComponent';
 import PremiumResponsivePadding from '../../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../../components/Premium-Responsive-Margin';
+import PremiumBorder from "../../../components/premium-border"
 import PremiumTypo from "../../../components/premium-typo"
 import useNavigationMenu from '../use-navigation-menu';
 import useNavigationEntities from '../use-navigation-entities';
@@ -62,41 +63,12 @@ import useCreateNavigationMenu, {
 
 const EMPTY_ARRAY = [];
 
-function getComputedStyle(node) {
-	return node.ownerDocument.defaultView.getComputedStyle(node);
-}
-
-function detectColors(colorsDetectionElement, setColor, setBackground) {
-	if (!colorsDetectionElement) {
-		return;
-	}
-	setColor(getComputedStyle(colorsDetectionElement).color);
-
-	let backgroundColorNode = colorsDetectionElement;
-	let backgroundColor = getComputedStyle(backgroundColorNode)
-		.backgroundColor;
-	while (
-		backgroundColor === 'rgba(0, 0, 0, 0)' &&
-		backgroundColorNode.parentNode &&
-		backgroundColorNode.parentNode.nodeType ===
-		backgroundColorNode.parentNode.ELEMENT_NODE
-	) {
-		backgroundColorNode = backgroundColorNode.parentNode;
-		backgroundColor = getComputedStyle(backgroundColorNode)
-			.backgroundColor;
-	}
-
-	setBackground(backgroundColor);
-}
-
 function Navigation({
 	attributes,
 	setAttributes,
 	clientId,
 	isSelected,
 	className,
-	backgroundColor,
-	textColor,
 	context: { navigationArea },
 
 	// These props are used by the navigation editor to override specific
@@ -123,7 +95,13 @@ function Navigation({
 		dropdownReveal,
 		submenuShadow,
 		submenuTypography,
-		overlayColors
+		overlayColors,
+		mobileBreakPoint,
+		menuBorder,
+		submenuBorder,
+		overlayMenuBorder,
+		overlayMenuWidth,
+		overlayMenuStyle
 	} = attributes;
 
 	let areaMenu,
@@ -333,7 +311,7 @@ function Navigation({
 
 	const blockProps = useBlockProps({
 		ref: navRef,
-		className: classnames(dropdownReveal && overlayMenu !== 'always' ? `submenu-${dropdownReveal}` : '', menuStyle && overlayMenu !== 'always' ? `effect-${menuStyle}` : '', className, {
+		className: classnames(dropdownReveal && overlayMenu !== 'always' ? `submenu-${dropdownReveal}` : '', menuStyle && overlayMenu !== 'always' ? `effect-${menuStyle}` : '', className, overlayMenu !== 'never' && overlayMenuStyle === 'slide' ? 'overlay-menu-slide' : '', {
 			'items-justified-right': justifyContent === 'right',
 			'items-justified-space-between': justifyContent === 'space-between',
 			'items-justified-left': justifyContent === 'left',
@@ -359,7 +337,14 @@ function Navigation({
 			letterSpacing: typography.letterSpacing,
 			textDecoration: typography.textDecoration,
 			textTransform: typography.textTransform,
-			lineHeight: `${typography.lineHeight}px`
+			lineHeight: `${typography.lineHeight}px`,
+			borderStyle: menuBorder.type,
+			borderTopWidth: menuBorder.top,
+			borderRightWidth: menuBorder.right,
+			borderBottomWidth: menuBorder.bottom,
+			borderLeftWidth: menuBorder.left,
+			borderRadius: menuBorder.radius,
+			borderColor: menuBorder.color
 		},
 	});
 
@@ -574,6 +559,66 @@ function Navigation({
 	const onChangeSubmenuFont = (value, attr) => {
 		setAttributes({ submenuTypography: { ...submenuTypography, [attr]: value } });
 	}
+	const getSecondPart = (str) => {
+		return str.split(':')[1];
+	}
+
+	const menuBorderChange = (value) => {
+		const newBorder = { ...menuBorder };
+		setAttributes({ menuBorder: { ...newBorder, ...value } })
+	};
+
+	const submenuBorderChange = (value) => {
+		const newBorder = { ...submenuBorder };
+		setAttributes({ submenuBorder: { ...newBorder, ...value } })
+	};
+
+	const overlayMenuBorderChange = (value) => {
+		const newBorder = { ...overlayMenuBorder };
+		setAttributes({ overlayMenuBorder: { ...newBorder, ...value } })
+	};
+
+	let styleArry = [
+		`#${blockProps.id}.overlay-menu-slide .premium-navigation__responsive-container{`,
+		`--overlay-menu-width: ${overlayMenuWidth}px;`,
+		`}`,
+		`#${blockProps.id} > div.is-menu-open .wp-block-premium-navigation-submenu .premium-navigation__submenu-container{`,
+		`border: none !important;`,
+		`}`,
+		`#${blockProps.id} .premium-navigation-item__content{`,
+		`--pbg-links-color: ${menuColors?.link};`,
+		`--pbg-links-hover-color: ${menuColors?.linkHover};`,
+		`}`,
+		`#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`,
+		`padding-top: ${itemPadding.desktop.top}px;`,
+		`padding-right: ${itemPadding.desktop.right}px;`,
+		`padding-bottom: ${itemPadding.desktop.bottom}px;`,
+		`padding-left: ${itemPadding.desktop.left}px;`,
+		`}`,
+		`#${blockProps.id} .premium-navigation__responsive-container-open {`,
+		`color: ${overlayColors.icon};`,
+		"}",
+		`#${blockProps.id} .premium-navigation__responsive-container-open:hover {`,
+		`color: ${overlayColors.iconHover};`,
+		"}",
+		`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open {`,
+		`background-color: ${overlayColors.background};`,
+		"}",
+		`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content{`,
+		`--pbg-links-color: ${overlayColors.link};`,
+		"}",
+		`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content:hover{`,
+		`--pbg-links-hover-color: ${overlayColors.linkHover};`,
+		"}",
+	];
+	styleArry = styleArry.filter(styleLine => {
+		const notAllowed = ['px;', 'undefined;', ';'];
+		const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
+		if (!notAllowed.includes(style)) {
+			return style;
+		}
+	}).join('\n')
+
 
 	return (
 		<EntityProvider kind="postType" type="wp_navigation" id={ref}>
@@ -634,7 +679,48 @@ function Navigation({
 										value="always"
 										label={__('Always')}
 									/>
+									<ToggleGroupControlOption
+										value="custom"
+										label={__('Custom')}
+									/>
 								</ToggleGroupControl>
+								{overlayMenu === 'custom' && <RangeControl
+									label={__('Width', 'premium-blocks-for-gutenberg')}
+									value={mobileBreakPoint}
+									onChange={(size) => setAttributes({ mobileBreakPoint: size })}
+									min={200}
+									max={3000}
+								/>}
+								{overlayMenu !== 'never' && (
+									<>
+										<h3>{__('Overlay Menu Style')}</h3>
+										<ToggleGroupControl
+											label={__('Overlay menu styles')}
+											value={overlayMenuStyle}
+											onChange={(value) =>
+												setAttributes({ overlayMenuStyle: value })
+											}
+											isBlock
+											hideLabelFromVision
+										>
+											<ToggleGroupControlOption
+												value="full"
+												label={__('Full Width')}
+											/>
+											<ToggleGroupControlOption
+												value="slide"
+												label={__('Slide')}
+											/>
+										</ToggleGroupControl>
+									</>
+								)}
+								{overlayMenu !== 'never' && overlayMenuStyle === 'slide' && <RangeControl
+									label={__('Overlay Menu Width', 'premium-blocks-for-gutenberg')}
+									value={overlayMenuWidth}
+									onChange={(size) => setAttributes({ overlayMenuWidth: size })}
+									min={300}
+									max={2000}
+								/>}
 								{hasSubmenus && hasSubmenuIndicatorSetting && (
 									<>
 										<h3>{__('Submenus')}</h3>
@@ -681,7 +767,7 @@ function Navigation({
 							</select>
 						</div>
 					</PanelBody>
-					<PanelBody title={__('Menu Colors')}>
+					<PanelBody title={__('Menu Styles')}>
 						<TabPanel
 							className="premium-color-tabpanel"
 							activeClass="active-tab"
@@ -731,6 +817,21 @@ function Navigation({
 								}
 							}}
 						</TabPanel>
+						<PremiumBorder
+							borderType={menuBorder.type}
+							top={menuBorder.top}
+							right={menuBorder.right}
+							bottom={menuBorder.bottom}
+							left={menuBorder.left}
+							borderColor={menuBorder.color}
+							borderRadius={menuBorder.radius}
+							onChangeType={(newType) => menuBorderChange({ type: newType })}
+							onChangeWidth={({ top, right, bottom, left }) => {
+								menuBorderChange({ top, right, bottom, left });
+							}}
+							onChangeColor={(colorValue) => menuBorderChange({ color: colorValue })}
+							onChangeRadius={(newrRadius) => menuBorderChange({ radius: newrRadius })}
+						/>
 					</PanelBody>
 					<PanelBody title={__('Overlay Menu Colors')}>
 						<TabPanel
@@ -794,6 +895,21 @@ function Navigation({
 								}
 							}}
 						</TabPanel>
+						<PremiumBorder
+							borderType={overlayMenuBorder.type}
+							top={overlayMenuBorder.top}
+							right={overlayMenuBorder.right}
+							bottom={overlayMenuBorder.bottom}
+							left={overlayMenuBorder.left}
+							borderColor={overlayMenuBorder.color}
+							borderRadius={overlayMenuBorder.radius}
+							onChangeType={(newType) => overlayMenuBorderChange({ type: newType })}
+							onChangeWidth={({ top, right, bottom, left }) => {
+								overlayMenuBorderChange({ top, right, bottom, left });
+							}}
+							onChangeColor={(colorValue) => overlayMenuBorderChange({ color: colorValue })}
+							onChangeRadius={(newrRadius) => overlayMenuBorderChange({ radius: newrRadius })}
+						/>
 					</PanelBody>
 					<PanelBody
 						title={__('Spacing', 'premium-blocks-for-gutenberg')}
@@ -1007,7 +1123,7 @@ function Navigation({
 									onChange={check => setAttributes({ submenuShadow: check })}
 								/>
 							</PanelBody>
-							<PanelBody title={__('Submenu Colors')}>
+							<PanelBody title={__('Submenu Styles')}>
 								<TabPanel
 									className="premium-color-tabpanel"
 									activeClass="active-tab"
@@ -1057,6 +1173,21 @@ function Navigation({
 										}
 									}}
 								</TabPanel>
+								<PremiumBorder
+									borderType={submenuBorder.type}
+									top={submenuBorder.top}
+									right={submenuBorder.right}
+									bottom={submenuBorder.bottom}
+									left={submenuBorder.left}
+									borderColor={submenuBorder.color}
+									borderRadius={submenuBorder.radius}
+									onChangeType={(newType) => submenuBorderChange({ type: newType })}
+									onChangeWidth={({ top, right, bottom, left }) => {
+										submenuBorderChange({ top, right, bottom, left });
+									}}
+									onChangeColor={(colorValue) => submenuBorderChange({ color: colorValue })}
+									onChangeRadius={(newrRadius) => submenuBorderChange({ radius: newrRadius })}
+								/>
 							</PanelBody>
 
 						</>
@@ -1087,37 +1218,7 @@ function Navigation({
 					<TagName {...blockProps}>
 						<style
 							dangerouslySetInnerHTML={{
-								__html: [
-									`#${blockProps.id} .premium-navigation-item__content{`,
-									`--pbg-links-color: ${menuColors?.link};`,
-									`--pbg-links-hover-color: ${menuColors?.linkHover};`,
-									`color: var(--pbg-links-color);`,
-									`}`,
-									`#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`,
-									`padding-top: ${itemPadding.desktop.top}px;`,
-									`padding-right: ${itemPadding.desktop.right}px;`,
-									`padding-bottom: ${itemPadding.desktop.bottom}px;`,
-									`padding-left: ${itemPadding.desktop.left}px;`,
-									`}`,
-									`#${blockProps.id} .premium-navigation-item__content:hover {`,
-									`color: var(--pbg-links-hover-color);`,
-									"}",
-									`#${blockProps.id} .premium-navigation__responsive-container-open {`,
-									`color: ${overlayColors.icon};`,
-									"}",
-									`#${blockProps.id} .premium-navigation__responsive-container-open:hover {`,
-									`color: ${overlayColors.iconHover};`,
-									"}",
-									`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open {`,
-									`background-color: ${overlayColors.background};`,
-									"}",
-									`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content{`,
-									`--pbg-links-color: ${overlayColors.link};`,
-									"}",
-									`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content:hover{`,
-									`--pbg-links-hover-color: ${overlayColors.linkHover};`,
-									"}",
-								].join("\n")
+								__html: styleArry
 							}}
 						/>
 						<ResponsiveWrapper
@@ -1128,6 +1229,15 @@ function Navigation({
 							isOpen={isResponsiveMenuOpen}
 							isResponsive={isResponsive}
 							isHiddenByDefault={'always' === overlayMenu}
+							styles={{
+								borderStyle: overlayMenuBorder.type,
+								borderTopWidth: overlayMenuBorder.top,
+								borderRightWidth: overlayMenuBorder.right,
+								borderBottomWidth: overlayMenuBorder.bottom,
+								borderLeftWidth: overlayMenuBorder.left,
+								borderRadius: overlayMenuBorder.radius,
+								borderColor: overlayMenuBorder.color
+							}}
 						>
 							{isEntityAvailable && (
 								<NavigationInnerBlocks

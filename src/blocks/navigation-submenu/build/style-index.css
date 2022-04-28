@@ -81,6 +81,9 @@
   display: block;
   background: transparent;
 }
+.wp-block-premium-navigation > div:not(.premium-navigation__responsive-container.is-menu-open) .premiun-mega-menu .premium-navigation__submenu-container .wp-block-premium-navigation-submenu .block-list-appender {
+  width: auto;
+}
 .wp-block-premium-navigation > div:not(.premium-navigation__responsive-container.is-menu-open) .premiun-mega-menu .premium-navigation__submenu-container .wp-block-premium-navigation-submenu .premium-navigation__submenu-container {
   position: static !important;
   visibility: visible !important;
@@ -90,6 +93,7 @@
   display: block !important;
   height: auto !important;
   border: 0;
+  background: transparent;
 }
 .wp-block-premium-navigation > div:not(.premium-navigation__responsive-container.is-menu-open) .premiun-mega-menu .premium-navigation__submenu-container .wp-block-premium-navigation-submenu .premium-navigation__submenu-icon {
   display: none;

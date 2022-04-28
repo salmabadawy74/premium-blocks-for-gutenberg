@@ -45,6 +45,42 @@
                 "background": ""
             }
         },
+        "menuBorder": {
+            "type": "object",
+            "default": {
+                "type": "",
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": "",
+                "color": "",
+                "radius": ""
+            }
+        },
+        "overlayMenuBorder": {
+            "type": "object",
+            "default": {
+                "type": "",
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": "",
+                "color": "",
+                "radius": ""
+            }
+        },
+        "submenuBorder": {
+            "type": "object",
+            "default": {
+                "type": "",
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": "",
+                "color": "",
+                "radius": ""
+            }
+        },
         "spacing": {
             "type": "object",
             "default": {
@@ -102,6 +138,17 @@
         "submenuShadow": {
             "type": "boolean",
             "default": false
+        },
+        "mobileBreakPoint": {
+            "type": "number"
+        },
+        "overlayMenuStyle": {
+            "type": "string",
+            "default": "full"
+        },
+        "overlayMenuWidth": {
+            "type": "number",
+            "default": 600
         }
     },
     "usesContext": ["navigationArea"],
@@ -120,7 +167,8 @@
         "dropdownReveal": "dropdownReveal",
         "submenuTypography": "submenuTypography",
         "menuTypography": "typography",
-        "overlayMenu": "overlayMenu"
+        "overlayMenu": "overlayMenu",
+        "submenuBorder": "submenuBorder"
     },
     "supports": {
         "align": ["wide", "full"],

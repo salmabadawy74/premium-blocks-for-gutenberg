@@ -13,6 +13,10 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
+	if ( isset( $attributes['overlayMenuWidth'] ) ) {
+		$css->set_selector( '#' . $unique_id . '.overlay-menu-slide .premium-navigation__responsive-container' );
+		$css->add_property( '--overlay-menu-width', $css->render_color( $attributes['overlayMenuWidth'] . 'px' ) );
+	}
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
 		$block_helpers->add_gfont(
@@ -31,6 +35,45 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$css->add_property( 'line-height', $css->render_color( $typography['lineHeight'] . 'px' ) );
 		$css->add_property( 'text-transform', $css->render_color( $typography['textTransform'] ) );
 		$css->add_property( 'text-decoration', $css->render_color( $typography['textDecoration'] ) );
+	}
+
+	if ( isset( $attributes['menuBorder'] ) ) {
+		$menu_border = $attributes['menuBorder'];
+
+		$css->set_selector( '#' . $unique_id );
+		$css->add_property( 'border-style', $css->render_color( $menu_border['type'] ) );
+		$css->add_property( 'border-top-width', $css->render_color( $menu_border['top'] . 'px' ) );
+		$css->add_property( 'border-right-width', $css->render_color( $menu_border['right'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', $css->render_color( $menu_border['bottom'] . 'px' ) );
+		$css->add_property( 'border-left-width', $css->render_color( $menu_border['left'] . 'px' ) );
+		$css->add_property( 'border-color', $css->render_color( $menu_border['color'] ) );
+		$css->add_property( 'border-radius', $css->render_color( $menu_border['radius'] . 'px' ) );
+	}
+
+	if ( isset( $attributes['submenuBorder'] ) ) {
+		$submenu_border = $attributes['submenuBorder'];
+
+		$css->set_selector( '#' . $unique_id . ' > div:not(.is-menu-open) .wp-block-premium-navigation-submenu .premium-navigation__submenu-container' );
+		$css->add_property( 'border-style', $css->render_color( $submenu_border['type'] ) );
+		$css->add_property( 'border-top-width', $css->render_color( $submenu_border['top'] . 'px' ) );
+		$css->add_property( 'border-right-width', $css->render_color( $submenu_border['right'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', $css->render_color( $submenu_border['bottom'] . 'px' ) );
+		$css->add_property( 'border-left-width', $css->render_color( $submenu_border['left'] . 'px' ) );
+		$css->add_property( 'border-color', $css->render_color( $submenu_border['color'] ) );
+		$css->add_property( 'border-radius', $css->render_color( $submenu_border['radius'] . 'px' ) );
+	}
+
+	if ( isset( $attributes['overlayMenuBorder'] ) ) {
+		$overlay_menu_border = $attributes['overlayMenuBorder'];
+
+		$css->set_selector( '#' . $unique_id . ' > div.is-menu-open' );
+		$css->add_property( 'border-style', $css->render_color( $overlay_menu_border['type'] ) );
+		$css->add_property( 'border-top-width', $css->render_color( $overlay_menu_border['top'] . 'px' ) );
+		$css->add_property( 'border-right-width', $css->render_color( $overlay_menu_border['right'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', $css->render_color( $overlay_menu_border['bottom'] . 'px' ) );
+		$css->add_property( 'border-left-width', $css->render_color( $overlay_menu_border['left'] . 'px' ) );
+		$css->add_property( 'border-color', $css->render_color( $overlay_menu_border['color'] ) );
+		$css->add_property( 'border-radius', $css->render_color( $overlay_menu_border['radius'] . 'px' ) );
 	}
 
 	if ( isset( $attributes['submenuTypography'] ) ) {
@@ -55,6 +98,7 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 
 	if ( isset( $attributes['menuColors'] ) ) {
 		$menu_colors = $attributes['menuColors'];
+
 		$css->set_selector( '#' . $unique_id . ' .premium-navigation-item__content' );
 		$css->add_property( '--pbg-links-color', $css->render_color( $menu_colors['link'] ) );
 		$css->set_selector( '#' . $unique_id );
@@ -234,6 +278,9 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 	 */
 	$has_old_responsive_attribute = ! empty( $attributes['isResponsive'] ) && $attributes['isResponsive'];
 	$is_responsive_menu           = isset( $attributes['overlayMenu'] ) && 'never' !== $attributes['overlayMenu'] || $has_old_responsive_attribute;
+	$break_point                  = isset( $attributes['mobileBreakPoint'] ) ? $attributes['mobileBreakPoint'] : '600';
+	$break_point                  = isset( $attributes['overlayMenu'] ) && 'custom' === $attributes['overlayMenu'] ? $break_point : '600';
+	$overlay_menu_style           = isset( $attributes['overlayMenuStyle'] ) && $is_responsive_menu ? $attributes['overlayMenuStyle'] : '';
 
 	wp_enqueue_script(
 		'premium-navigation-view',
@@ -241,6 +288,15 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 		array(),
 		PREMIUM_BLOCKS_VERSION,
 		true
+	);
+
+	wp_localize_script(
+		'premium-navigation-view',
+		'PBGNav',
+		array(
+			'overlayMenu'      => isset( $attributes['overlayMenu'] ) ? $attributes['overlayMenu'] : '',
+			'mobileBreakPoint' => isset( $attributes['mobileBreakPoint'] ) ? $attributes['mobileBreakPoint'] : '',
+		)
 	);
 
 	$inner_blocks = $block->inner_blocks;
@@ -334,6 +390,10 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 		$styles_classes .= ' submenu-' . $attributes['dropdownReveal'];
 	}
 
+	if ( $overlay_menu_style ) {
+		$styles_classes .= ' overlay-menu-' . $overlay_menu_style;
+	}
+
 	$classes = array_merge(
 		$is_responsive_menu ? array( 'is-responsive' ) : array(),
 		$layout_class ? array( $layout_class ) : array(),
@@ -370,9 +430,10 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 
 	$wrapper_attributes = get_block_wrapper_attributes(
 		array(
-			'class' => implode( ' ', $classes ),
-			'style' => $block_styles,
-			'id'    => $id,
+			'class'            => implode( ' ', $classes ),
+			'style'            => $block_styles,
+			'id'               => $id,
+			'data-break-point' => $break_point,
 		)
 	);
 

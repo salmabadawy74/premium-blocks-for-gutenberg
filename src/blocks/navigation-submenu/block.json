@@ -106,7 +106,8 @@
         "submenuWidth",
         "submenuTypography",
         "menuTypography",
-        "overlayMenu"
+        "overlayMenu",
+        "submenuBorder"
     ],
     "supports": {
         "reusable": false,

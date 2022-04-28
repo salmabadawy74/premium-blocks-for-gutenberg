@@ -75,9 +75,13 @@
                 &.layout-last-row {
                     --gridTemplateColummns: 1fr 1fr;
                 }
+
                 .wp-block-premium-navigation-submenu {
                     display: block;
                     background: transparent;
+                    .block-list-appender {
+                        width: auto;
+                    }
                     .premium-navigation__submenu-container {
                         position: static !important;
                         visibility: visible !important;
@@ -87,6 +91,7 @@
                         display: block !important;
                         height: auto !important;
                         border: 0;
+                        background: transparent;
                     }
                     .premium-navigation__submenu-icon {
                         display: none;

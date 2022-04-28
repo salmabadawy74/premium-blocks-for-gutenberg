@@ -309,7 +309,7 @@ export default function NavigationSubmenuEdit({
 		opensInNewTab,
 	};
 	const { showSubmenuIcon, openSubmenusOnClick, submenuColors, menuColors, submenuWidth, menuTypography,
-		submenuTypography: typography, overlayMenu } = context;
+		submenuTypography: typography, overlayMenu, submenuBorder } = context;
 	const { saveEntityRecord } = useDispatch(coreStore);
 	const { contentSize } = useSetting('layout');
 	const defaultSpacingValue = {
@@ -576,10 +576,17 @@ export default function NavigationSubmenuEdit({
 				backgroundPosition: megaMenu ? megaMenuBackground.backgroundPosition : '',
 				backgroundSize: megaMenu ? megaMenuBackground.backgroundSize : '',
 				backgroundAttachment: megaMenu && megaMenuBackground.fixed ? "fixed" : "unset",
+				borderStyle: submenuBorder.type,
+				borderTopWidth: submenuBorder.top,
+				borderRightWidth: submenuBorder.right,
+				borderBottomWidth: submenuBorder.bottom,
+				borderLeftWidth: submenuBorder.left,
+				borderRadius: submenuBorder.radius,
+				borderColor: submenuBorder.color
 			},
 		},
 		{
-			allowedBlocks: megaMenu ? 'all' : ALLOWED_BLOCKS,
+			allowedBlocks: megaMenu ? true : ALLOWED_BLOCKS,
 			__experimentalDefaultBlock: DEFAULT_BLOCK,
 			__experimentalDirectInsert: true,
 
@@ -658,6 +665,32 @@ export default function NavigationSubmenuEdit({
 		setAttributes({ badgeColors: newColors });
 	}
 
+	const getSecondPart = (str) => {
+		return str.split(':')[1];
+	}
+
+	let styleArry = [
+		`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`,
+		`padding-top: ${columnPadding.desktop.top}px;`,
+		`padding-right: ${columnPadding.desktop.right}px;`,
+		`padding-bottom: ${columnPadding.desktop.bottom}px;`,
+		`padding-left: ${columnPadding.desktop.left}px;`,
+		`}`,
+		`#${blockProps.id} .premium-navigation__submenu-container a{`,
+		`--pbg-links-color: ${linkColor};`,
+		`}`,
+		`#${blockProps.id} .premium-navigation__submenu-container a:hover {`,
+		`--pbg-links-hover-color: ${linkHoverColor};`,
+		"}"
+	];
+	styleArry = styleArry.filter(styleLine => {
+		const notAllowed = ['px;', 'undefined;', ';'];
+		const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
+		if (!notAllowed.includes(style)) {
+			return style;
+		}
+	}).join('\n')
+
 	return (
 		<Fragment>
 			<BlockControls>
@@ -683,8 +716,8 @@ export default function NavigationSubmenuEdit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title={__('Mega Menu Settings')}>
-					{overlayMenu !== 'always' && <ToggleControl
+				{isTopLevelItem && <PanelBody title={__('Mega Menu Settings')}>
+					{<ToggleControl
 						label={__("Enable Mega Menu", 'premium-blocks-for-gutenberg')}
 						checked={megaMenu}
 						onChange={check => setAttributes({ megaMenu: check })}
@@ -743,7 +776,7 @@ export default function NavigationSubmenuEdit({
 						</>
 					)}
 
-				</PanelBody>
+				</PanelBody>}
 				{megaMenu && (
 					<>
 						<PanelBody
@@ -893,20 +926,7 @@ export default function NavigationSubmenuEdit({
 			<div {...blockProps}>
 				<style
 					dangerouslySetInnerHTML={{
-						__html: [
-							`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`,
-							`padding-top: ${columnPadding.desktop.top}px;`,
-							`padding-right: ${columnPadding.desktop.right}px;`,
-							`padding-bottom: ${columnPadding.desktop.bottom}px;`,
-							`padding-left: ${columnPadding.desktop.left}px;`,
-							`}`,
-							`#${blockProps.id} .premium-navigation__submenu-container a{`,
-							`--pbg-links-color: ${linkColor};`,
-							`}`,
-							`#${blockProps.id} .premium-navigation__submenu-container a:hover {`,
-							`--pbg-links-hover-color: ${linkHoverColor};`,
-							"}"
-						].join("\n")
+						__html: styleArry
 					}}
 				/>
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}
@@ -990,12 +1010,12 @@ export default function NavigationSubmenuEdit({
 							/>
 						</Popover>
 					)}
-					{badgeText ? <span style={{ color: badgeColors.text, backgroundColor: badgeColors.background }} className='pbg-navigation-link-label'>{badgeText}</span> : ''}
 					{(showSubmenuIcon || openSubmenusOnClick) && (
 						<span className="premium-navigation__submenu-icon">
 							<ItemSubmenuIcon />
 						</span>
 					)}
+					{badgeText ? <span style={{ color: badgeColors.text, backgroundColor: badgeColors.background }} className='pbg-navigation-link-label'>{badgeText}</span> : ''}
 				</ParentElement>
 				<div {...innerBlocksProps} />
 			</div>

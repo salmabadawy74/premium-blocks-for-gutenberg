@@ -146,7 +146,7 @@
   right: 0;
   width: 0%;
   color: transparent;
-  background: var(--pbg-links-hover-color);
+  background: var(--pbg-links-hover-color, var(--wp--preset--color--primary));
   height: 1px;
 }
 .wp-block-premium-navigation.effect-underline-fill > div:not(.premium-navigation__responsive-container.is-menu-open) > .premium-navigation-item:hover > .premium-navigation-item__content,
@@ -188,7 +188,7 @@
 }
 .wp-block-premium-navigation.effect-textcolor-fill > div:not(.premium-navigation__responsive-container.is-menu-open) > .premium-navigation-item > .premium-navigation-item__content,
 .wp-block-premium-navigation.effect-textcolor-fill > div:not(.premium-navigation__responsive-container.is-menu-open) .premium-navigation__container > .premium-navigation-item > .premium-navigation-item__content {
-  background: linear-gradient(var(--pbg-links-hover-color), var(--pbg-links-hover-color)) left no-repeat, var(--pbg-links-color);
+  background: linear-gradient(var(--pbg-links-hover-color, var(--wp--preset--color--primary)), var(--pbg-links-hover-color, var(--wp--preset--color--primary))) left no-repeat, var(--pbg-links-color);
   background-size: 0% 100%;
   background-clip: text;
   color: transparent;
@@ -214,7 +214,7 @@
   position: absolute;
   width: 45px;
   height: 2px;
-  background: var(--pbg-links-hover-color);
+  background: var(--pbg-links-hover-color, var(--wp--preset--color--primary));
   content: "";
   opacity: 0.2;
   transition: all 0.3s;
@@ -617,6 +617,22 @@ button.premium-navigation-item__content {
 /**
  * Mobile menu.
  */
+.overlay-menu-slide .premium-navigation__responsive-container {
+  display: flex;
+  width: var(--overlay-menu-width, 600px);
+  transform: translateX(calc(var(--overlay-menu-width, 600px) * -1));
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.overlay-menu-slide .premium-navigation__responsive-container.is-menu-open {
+  opacity: 1;
+  transform: translateX(0);
+}
+.overlay-menu-slide .premium-navigation__responsive-container.pbg-break-point {
+  --overlay-menu-width: 100% !important;
+  box-sizing: border-box;
+}
+
 .premium-navigation__responsive-container {
   display: none;
   position: fixed;
@@ -700,20 +716,18 @@ button.premium-navigation-item__content {
   right: auto;
   left: auto;
 }
-@media (min-width: 600px) {
-  .premium-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
-    display: block;
-    width: 100%;
-    position: relative;
-    z-index: auto;
-    background-color: inherit;
-  }
-  .premium-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) .premium-navigation__responsive-container-close {
-    display: none;
-  }
-  .premium-navigation__responsive-container.is-menu-open .premium-navigation__submenu-container.premium-navigation__submenu-container.premium-navigation__submenu-container.premium-navigation__submenu-container {
-    left: 0;
-  }
+.premium-navigation__responsive-container:not(.pbg-break-point):not(.hidden-by-default):not(.is-menu-open) {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: auto;
+  background-color: inherit;
+}
+.premium-navigation__responsive-container:not(.pbg-break-point):not(.hidden-by-default):not(.is-menu-open) .premium-navigation__responsive-container-close {
+  display: none;
+}
+.premium-navigation__responsive-container:not(.pbg-break-point).is-menu-open .premium-navigation__submenu-container.premium-navigation__submenu-container.premium-navigation__submenu-container.premium-navigation__submenu-container {
+  left: 0;
 }
 
 .wp-block-premium-navigation:not(.has-background) .premium-navigation__responsive-container.is-menu-open {
@@ -748,10 +762,8 @@ button.premium-navigation-item__content {
 .premium-navigation__responsive-container-open {
   display: flex;
 }
-@media (min-width: 600px) {
-  .premium-navigation__responsive-container-open:not(.always-shown) {
-    display: none;
-  }
+.premium-navigation__responsive-container-open:not(.always-shown):not(.show) {
+  display: none;
 }
 
 .premium-navigation__responsive-container-close {
@@ -795,7 +807,7 @@ html.has-modal-open {
   100% {
     width: 100%;
     height: 100%;
-    background: var(--pbg-links-hover-color);
+    background: var(--pbg-links-hover-color, var(--wp--preset--color--primary));
   }
 }
 @keyframes fill {
@@ -810,7 +822,7 @@ html.has-modal-open {
   100% {
     width: 100%;
     height: 100%;
-    background: var(--pbg-links-hover-color);
+    background: var(--pbg-links-hover-color, var(--wp--preset--color--primary));
   }
 }
 

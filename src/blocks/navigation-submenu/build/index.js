@@ -8059,7 +8059,8 @@ function NavigationSubmenuEdit(_ref) {
     submenuWidth,
     menuTypography,
     submenuTypography: typography,
-    overlayMenu
+    overlayMenu,
+    submenuBorder
   } = context;
   const {
     saveEntityRecord
@@ -8317,10 +8318,17 @@ function NavigationSubmenuEdit(_ref) {
       backgroundRepeat: megaMenu ? megaMenuBackground.backgroundRepeat : '',
       backgroundPosition: megaMenu ? megaMenuBackground.backgroundPosition : '',
       backgroundSize: megaMenu ? megaMenuBackground.backgroundSize : '',
-      backgroundAttachment: megaMenu && megaMenuBackground.fixed ? "fixed" : "unset"
+      backgroundAttachment: megaMenu && megaMenuBackground.fixed ? "fixed" : "unset",
+      borderStyle: submenuBorder.type,
+      borderTopWidth: submenuBorder.top,
+      borderRightWidth: submenuBorder.right,
+      borderBottomWidth: submenuBorder.bottom,
+      borderLeftWidth: submenuBorder.left,
+      borderRadius: submenuBorder.radius,
+      borderColor: submenuBorder.color
     }
   }, {
-    allowedBlocks: megaMenu ? 'all' : ALLOWED_BLOCKS,
+    allowedBlocks: megaMenu ? true : ALLOWED_BLOCKS,
     __experimentalDefaultBlock: DEFAULT_BLOCK,
     __experimentalDirectInsert: true,
     // Ensure block toolbar is not too far removed from item
@@ -8405,6 +8413,19 @@ function NavigationSubmenuEdit(_ref) {
     });
   };
 
+  const getSecondPart = str => {
+    return str.split(':')[1];
+  };
+
+  let styleArry = [`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`, `padding-top: ${columnPadding.desktop.top}px;`, `padding-right: ${columnPadding.desktop.right}px;`, `padding-bottom: ${columnPadding.desktop.bottom}px;`, `padding-left: ${columnPadding.desktop.left}px;`, `}`, `#${blockProps.id} .premium-navigation__submenu-container a{`, `--pbg-links-color: ${linkColor};`, `}`, `#${blockProps.id} .premium-navigation__submenu-container a:hover {`, `--pbg-links-hover-color: ${linkHoverColor};`, "}"];
+  styleArry = styleArry.filter(styleLine => {
+    const notAllowed = ['px;', 'undefined;', ';'];
+    const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
+
+    if (!notAllowed.includes(style)) {
+      return style;
+    }
+  }).join('\n');
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToolbarGroup, null, !openSubmenusOnClick && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToolbarButton, {
     name: "link",
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"],
@@ -8418,9 +8439,9 @@ function NavigationSubmenuEdit(_ref) {
     onClick: transformToLink,
     className: "premium-navigation__submenu__revert",
     isDisabled: !canConvertToLink
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InspectorControls, null, isTopLevelItem && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Mega Menu Settings')
-  }, overlayMenu !== 'always' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)("Enable Mega Menu", 'premium-blocks-for-gutenberg'),
     checked: megaMenu,
     onChange: check => setAttributes({
@@ -8602,7 +8623,7 @@ function NavigationSubmenuEdit(_ref) {
     autoComplete: "off"
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
-      __html: [`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`, `padding-top: ${columnPadding.desktop.top}px;`, `padding-right: ${columnPadding.desktop.right}px;`, `padding-bottom: ${columnPadding.desktop.bottom}px;`, `padding-left: ${columnPadding.desktop.left}px;`, `}`, `#${blockProps.id} .premium-navigation__submenu-container a{`, `--pbg-links-color: ${linkColor};`, `}`, `#${blockProps.id} .premium-navigation__submenu-container a:hover {`, `--pbg-links-hover-color: ${linkHoverColor};`, "}"].join("\n")
+      __html: styleArry
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ParentElement, {
     className: "premium-navigation-item__content"
@@ -8662,15 +8683,15 @@ function NavigationSubmenuEdit(_ref) {
       });
       (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_12__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link removed.'), 'assertive');
     }
-  })), badgeText ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  })), (showSubmenuIcon || openSubmenusOnClick) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "premium-navigation__submenu-icon"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_14__.ItemSubmenuIcon, null)), badgeText ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: {
       color: badgeColors.text,
       backgroundColor: badgeColors.background
     },
     className: "pbg-navigation-link-label"
-  }, badgeText) : '', (showSubmenuIcon || openSubmenusOnClick) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "premium-navigation__submenu-icon"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_14__.ItemSubmenuIcon, null))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
+  }, badgeText) : ''), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
 }
 
 /***/ }),
@@ -10615,7 +10636,7 @@ var r={grad:.9,turn:360,rad:360/(2*Math.PI)},t=function(r){return"string"==typeo
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Submenu","category":"design","parent":["premium/navigation"],"description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","containerBack":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":"","gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"linkCustomIcon":{"type":"string"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Submenu","category":"design","parent":["premium/navigation"],"description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","containerBack":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":"","gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"linkCustomIcon":{"type":"string"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu","submenuBorder"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

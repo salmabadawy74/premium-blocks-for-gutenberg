@@ -8,10 +8,11 @@ function navigationToggleModal(modal) {
     const dialogContainer = modal.querySelector(
         `.premium-navigation__responsive-dialog`
     );
-
+    const parentBlock = dialogContainer.parentElement.parentElement.parentElement;
     const isHidden = 'true' === modal.getAttribute('aria-hidden');
+    const isSlide = parentBlock.classList.contains('overlay-menu-slide');
 
-    modal.classList.toggle('has-modal-open', !isHidden);
+    modal.classList.toggle('has-modal-open', !isHidden && !isSlide);
     dialogContainer.toggleAttribute('aria-modal', !isHidden);
 
     if (isHidden) {
@@ -24,7 +25,9 @@ function navigationToggleModal(modal) {
 
     // Add a class to indicate the modal is open.
     const htmlElement = document.documentElement;
-    htmlElement.classList.toggle('has-modal-open');
+    if (!isSlide) {
+        htmlElement.classList.toggle('has-modal-open');
+    }
 }
 
 // Open on click functionality.
@@ -62,13 +65,39 @@ function toggleSubmenuOnClick(event) {
     }
 }
 
+function mobileMenuBreakPoint() {
+    const navigations = document.querySelectorAll('.wp-block-premium-navigation');
+
+    navigations.forEach(function (nav) {
+        if (nav.classList.contains('is-responsive')) {
+            const breakPoint = nav.dataset.breakPoint;
+            const menuContainer = nav.querySelector('.premium-navigation__responsive-container');
+            const menuButton = nav.querySelector('.premium-navigation__responsive-container-open');
+
+            if (window.matchMedia(`(max-width: ${breakPoint}px)`).matches) {
+                menuContainer.classList.add('pbg-break-point');
+                menuButton.classList.add('show');
+            } else {
+                menuContainer.classList.remove('pbg-break-point');
+                menuButton.classList.remove('show');
+            }
+        }
+    });
+
+}
+
+window.addEventListener("resize", mobileMenuBreakPoint, false);
+
 // Necessary for some themes such as TT1 Blocks, where
 // scripts could be loaded before the body.
 window.addEventListener('load', () => {
+
+    mobileMenuBreakPoint();
+
     MicroModal.init({
         onShow: navigationToggleModal,
         onClose: navigationToggleModal,
-        openClass: 'is-menu-open',
+        openClass: 'is-menu-open'
     });
 
     const submenuButtons = document.querySelectorAll(
