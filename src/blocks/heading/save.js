@@ -57,7 +57,7 @@ export default function save(props) {
     const styleContainer = title.split("").map(letter => {
         return (
             <RichText.Content
-                tagName={titleTag.toLowerCase()}
+                tagName='span'
                 className={`premium-title-style9-letter`}
                 value={letter}
                 style={{
@@ -272,19 +272,19 @@ export default function save(props) {
                                             </span>
                                         }
                                         <RichText.Content
-                                            tagName={titleTag.toLowerCase()}
+                                            tagName='span'
                                             className={`premium-title-text-title`}
                                             value={title}
                                             style={{
                                                 color: titleStyles[0].titleColor,
                                                 // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                fontFamily: titleStyles[0].titleFontFamily,
-                                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                                // fontWeight: titleStyles[0].titleWeight,
+                                                // letterSpacing: titleStyles[0].titleLetter + "px",
+                                                // lineHeight: titleStyles[0].titleLine + "px",
+                                                // fontStyle: titleStyles[0].titleStyle,
+                                                // textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                // fontFamily: titleStyles[0].titleFontFamily,
+                                                // textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
                                                 // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
                                                 // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
                                                 // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
@@ -293,7 +293,7 @@ export default function save(props) {
                                                 // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
                                                 // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
                                                 // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                                minHeight: '15px'
+                                                // minHeight: '15px'
                                             }}
                                         />
                                     </div>

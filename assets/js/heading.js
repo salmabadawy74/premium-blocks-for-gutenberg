@@ -1,8 +1,6 @@
 jQuery(document).ready(function ($) {
     const $title = $(".premium-title");
-    var $lottieIcons = $('.premium-lottie-animation');
-    var $titleContainer = $(".premium-title-container"),
-        $titleElement = $titleContainer.find('.premium-title-text-title');
+    var $titleContainer = $(".premium-title-container");
 
     const addFontToHead = fontFamily => {
         const head = document.head;
@@ -46,56 +44,38 @@ jQuery(document).ready(function ($) {
     }
 
     if ($titleContainer.hasClass('style8')) {
-        var holdTime = $titleContainer.attr('data-shiny-delay') * 1000,
-            duration = $titleContainer.attr('data-shiny-dur') * 1000;
-        function shinyEffect() {
-            $titleElement.get(0).setAttribute('data-animation', 'shiny');
-            setTimeout(function () {
-                $titleElement.removeAttr('data-animation')
-            }, duration);
-        }
+        var $style8 = $(".style8");
 
-        (function repeat() {
-            shinyEffect();
-            setTimeout(repeat, holdTime);
-        })();
+        $style8.map((index, style) => {
+            let $style = $(style)
+            var holdTime = $style[0].dataset.blurDelay * 1000,
+                duration = $style[0].dataset.shinyDur * 1000;
+
+            function shinyEffect() {
+
+                $style8.each(function () {
+                    var elm = $(this);
+
+                    let $newTitle = elm.find('.premium-title-text-title');
+
+                    $newTitle.each(function () {
+                        var $newelm = $(this);
+
+                        $($newelm.get(0)).attr('data-animation', 'shiny');
+                        setTimeout(function () {
+                            $newelm.removeAttr('data-animation')
+                        }, duration);
+                    })
+                })
+            }
+
+            (function repeat() {
+                shinyEffect();
+                setTimeout(repeat, holdTime);
+            })();
+        })
     }
 
-    // $lottieIcons.each(function (index, item) {
-    //     var $item = $(item);
-    //     instance = new premiumLottieAnimations($item);
-    //     instance.init();
-    // });
-
-
-    // window.premiumLottieAnimations = function ($elem) {
-    //     var self = this,
-    //         $lottie = null;
-    //     if ($elem.hasClass("premium-lottie-animation")) {
-    //         $lottie = $elem;
-    //     } else {
-    //         $lottie = $elem.find(".premium-lottie-animation");
-    //     }
-
-    // self.init = function () {
-    //     var loop = $lottie.data("loop"),
-    //         reverse = $lottie.data("reverse"),
-    //         trigger = $lottie.data("trigger"),
-    //         renderer = $lottie.data("render");
-
-    //     var animItem = lottie.loadAnimation({
-    //         container: $lottie,
-    //         renderer: renderer || 'svg',
-    //         loop: loop ? true : false,
-    //         path: $lottie.data("lottieurl"),
-    //         autoplay: trigger === "none" ? true : false,
-    //     });
-
-    //     if (reverse) {
-    //         animItem.setDirection(-1);
-    //     }
-    // }
-    // }
     $title.map((index, title) => {
         let $title = $(title),
             titleFont = $title.find(".premium-title-text-title").css("font-family")
