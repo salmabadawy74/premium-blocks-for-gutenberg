@@ -63187,7 +63187,6 @@ function save(props) {
                     'data-shiny-dur': '' + titleStyles[0].animateduration,
                     style: {
                         color: titleStyles[0].titleColor,
-                        // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
                         fontWeight: titleStyles[0].titleWeight,
                         letterSpacing: titleStyles[0].titleLetter + "px",
                         lineHeight: (titleStyles[0].titleLine ? titleStyles[0].titleLine : "") + "px",
@@ -63196,22 +63195,51 @@ function save(props) {
                         fontFamily: titleStyles[0].titleFontFamily,
                         textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor
                     }
-                }, [style === 'style7' ? React.createElement(
+                }, [React.createElement(
                     Fragment,
                     null,
-                    iconPosition != 'top' && iconValue && React.createElement(
-                        'span',
-                        { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
-                        React.createElement('span', { className: 'premium-title-style7-stripe-span' })
-                    ),
-                    !iconValue && React.createElement(
-                        'span',
-                        { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
-                        React.createElement('span', { className: 'premium-title-style7-stripe-span' })
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'premium-title-style7-inner-title' },
+                    style === 'style7' ? React.createElement(
+                        Fragment,
+                        null,
+                        iconPosition != 'top' && iconValue && React.createElement(
+                            'span',
+                            { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
+                            React.createElement('span', { className: 'premium-title-style7-stripe-span' })
+                        ),
+                        !iconValue && React.createElement(
+                            'span',
+                            { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
+                            React.createElement('span', { className: 'premium-title-style7-stripe-span' })
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'premium-title-style7-inner-title' },
+                            iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
+                            iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
+                            iconValue && iconType == 'lottie' && React.createElement('div', {
+                                className: 'premium-title-icon premium-lottie-animation',
+                                'data-loop': loop,
+                                'data-lottieurl': '' + lottieURl,
+                                'data-reverse': reversedir,
+                                'data-trigger': "none"
+                            }),
+                            iconPosition === 'top' && React.createElement(
+                                'span',
+                                { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
+                                React.createElement('span', { className: 'premium-title-style7-stripe-span' })
+                            ),
+                            React.createElement(RichText.Content, {
+                                tagName: 'span',
+                                className: 'premium-title-text-title',
+                                value: title,
+                                style: {
+                                    color: titleStyles[0].titleColor
+                                }
+                            })
+                        )
+                    ) : style === "style9" ? React.createElement(
+                        Fragment,
+                        null,
                         iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
                         iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
                         iconValue && iconType == 'lottie' && React.createElement('div', {
@@ -63221,91 +63249,40 @@ function save(props) {
                             'data-reverse': reversedir,
                             'data-trigger': "none"
                         }),
-                        iconPosition === 'top' && React.createElement(
+                        React.createElement(
                             'span',
-                            { className: 'premium-title-style7-stripe__wrap premium-stripe-' + stripePosition + ' premium-stripe-' + stripeAlign },
-                            React.createElement('span', { className: 'premium-title-style7-stripe-span' })
-                        ),
+                            {
+                                className: 'premium-letters-container',
+                                style: {
+                                    color: titleStyles[0].titleColor
+                                }
+                            },
+                            styleContainer
+                        )
+                    ) : React.createElement(
+                        Fragment,
+                        null,
+                        iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
+                        iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
+                        iconValue && iconType == 'lottie' && React.createElement('div', {
+                            className: 'premium-title-icon premium-lottie-animation',
+                            'data-loop': loop,
+                            'data-lottieurl': '' + lottieURl,
+                            'data-reverse': reversedir,
+                            'data-trigger': "none"
+                        }),
                         React.createElement(RichText.Content, {
                             tagName: 'span',
                             className: 'premium-title-text-title',
                             value: title,
                             style: {
-                                color: titleStyles[0].titleColor
-                                // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                // fontWeight: titleStyles[0].titleWeight,
-                                // letterSpacing: titleStyles[0].titleLetter + "px",
-                                // lineHeight: titleStyles[0].titleLine + "px",
-                                // fontStyle: titleStyles[0].titleStyle,
-                                // textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                // fontFamily: titleStyles[0].titleFontFamily,
-                                // textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                // marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                // paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                                // minHeight: '15px'
+                                minHeight: '15px',
+                                margin: 'revert'
                             }
                         })
-                    )
-                ) : style === "style9" ? React.createElement(
-                    Fragment,
-                    null,
-                    iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
-                    iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
-                    iconValue && iconType == 'lottie' && React.createElement('div', {
-                        className: 'premium-title-icon premium-lottie-animation',
-                        'data-loop': loop,
-                        'data-lottieurl': '' + lottieURl,
-                        'data-reverse': reversedir,
-                        'data-trigger': "none"
-                    }),
-                    React.createElement(
-                        'span',
-                        {
-                            className: 'premium-letters-container',
-                            style: {
-                                color: titleStyles[0].titleColor
-                                // marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                // marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                // marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                // marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                // paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                // paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                // paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                // paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
-                            }
-                        },
-                        styleContainer
-                    )
-                ) : React.createElement(
-                    Fragment,
-                    null,
-                    iconValue && iconType == 'icon' && React.createElement('i', { className: 'premium-title-icon ' + icon }),
-                    iconValue && iconType == 'image' && React.createElement('img', { className: 'premium-title-icon', src: imageURL }),
-                    iconValue && iconType == 'lottie' && React.createElement('div', {
-                        className: 'premium-title-icon premium-lottie-animation',
-                        'data-loop': loop,
-                        'data-lottieurl': '' + lottieURl,
-                        'data-reverse': reversedir,
-                        'data-trigger': "none"
-                    }),
-                    React.createElement(RichText.Content, {
-                        tagName: 'span',
-                        className: 'premium-title-text-title',
-                        value: title,
-                        style: {
-                            minHeight: '15px',
-                            margin: 'revert'
-                        }
-                    })
-                )
-                // {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
-                ])
+                    ),
+                    link && url !== ' ' && React.createElement('a', { rel: 'noopener noreferrer', target: "_self", href: '' + url })
+                )])
             )
         )
     );
@@ -65003,22 +64980,58 @@ var edit = function (_Component) {
                                 paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
                                 paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType
                             }
-                        }, [style === 'style7' ? React.createElement(
+                        }, [React.createElement(
                             Fragment,
                             null,
-                            iconPosition != 'top' && iconValue && React.createElement(
-                                "span",
-                                { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                React.createElement("span", { className: "premium-title-style7-stripe-span" })
-                            ),
-                            !iconValue && React.createElement(
-                                "span",
-                                { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                React.createElement("span", { className: "premium-title-style7-stripe-span" })
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "premium-title-style7-inner-title" },
+                            style === 'style7' ? React.createElement(
+                                Fragment,
+                                null,
+                                iconPosition != 'top' && iconValue && React.createElement(
+                                    "span",
+                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                                    React.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                ),
+                                !iconValue && React.createElement(
+                                    "span",
+                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                                    React.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { className: "premium-title-style7-inner-title" },
+                                    iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
+                                    iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
+                                    iconValue && iconType == 'lottie' && lottieURl && React.createElement(
+                                        "div",
+                                        { className: " premium-title-icon premium-lottie-animation" },
+                                        React.createElement(_reactLottieWithSegments2.default, {
+                                            options: {
+                                                loop: loop,
+                                                path: lottieURl,
+                                                rendererSettings: {
+                                                    preserveAspectRatio: 'xMidYMid'
+                                                }
+                                            },
+                                            direction: reverse
+                                        })
+                                    ),
+                                    iconValue && iconPosition === 'top' && React.createElement(
+                                        "span",
+                                        { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
+                                        React.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                    ),
+                                    React.createElement(RichText, {
+                                        tagName: "span",
+                                        className: "premium-title-text-title",
+                                        value: title,
+                                        style: {
+                                            minHeight: '15px'
+                                        }
+                                    })
+                                )
+                            ) : style === "style9" ? React.createElement(
+                                Fragment,
+                                null,
                                 iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
                                 iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
                                 iconValue && iconType == 'lottie' && lottieURl && React.createElement(
@@ -65035,90 +65048,57 @@ var edit = function (_Component) {
                                         direction: reverse
                                     })
                                 ),
-                                iconValue && iconPosition === 'top' && React.createElement(
+                                React.createElement(
                                     "span",
-                                    { className: "premium-title-style7-stripe__wrap premium-stripe-" + stripePosition + " premium-stripe-" + stripeAlign },
-                                    React.createElement("span", { className: "premium-title-style7-stripe-span" })
+                                    {
+                                        className: "premium-letters-container",
+                                        style: {
+                                            color: titleStyles[0].titleColor,
+                                            marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
+                                            marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
+                                            marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
+                                            marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
+                                            paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
+                                            paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
+                                            paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
+                                            paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType
+                                        }
+                                    },
+                                    styleContainer
+                                )
+                            ) : React.createElement(
+                                Fragment,
+                                null,
+                                iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
+                                iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
+                                iconValue && iconType == 'lottie' && lottieURl && React.createElement(
+                                    "div",
+                                    { className: " premium-title-icon premium-lottie-animation" },
+                                    React.createElement(_reactLottieWithSegments2.default, {
+                                        options: {
+                                            loop: loop,
+                                            path: lottieURl,
+                                            rendererSettings: {
+                                                preserveAspectRatio: 'xMidYMid'
+                                            }
+                                        },
+                                        direction: reverse
+                                    })
                                 ),
                                 React.createElement(RichText, {
                                     tagName: "span",
                                     className: "premium-title-text-title",
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ title: newValue });
+                                    },
                                     value: title,
                                     style: {
                                         minHeight: '15px'
                                     }
                                 })
-                            )
-                        ) : style === "style9" ? React.createElement(
-                            Fragment,
-                            null,
-                            iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
-                            iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                            iconValue && iconType == 'lottie' && lottieURl && React.createElement(
-                                "div",
-                                { className: " premium-title-icon premium-lottie-animation" },
-                                React.createElement(_reactLottieWithSegments2.default, {
-                                    options: {
-                                        loop: loop,
-                                        path: lottieURl,
-                                        rendererSettings: {
-                                            preserveAspectRatio: 'xMidYMid'
-                                        }
-                                    },
-                                    direction: reverse
-                                })
                             ),
-                            React.createElement(
-                                "span",
-                                {
-                                    className: "premium-letters-container",
-                                    style: {
-                                        color: titleStyles[0].titleColor,
-                                        marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                        marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                        marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                        marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                        paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                        paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                        paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                        paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType
-                                    }
-                                },
-                                styleContainer
-                            )
-                        ) : React.createElement(
-                            Fragment,
-                            null,
-                            iconValue && iconType == 'icon' && React.createElement("i", { className: "premium-title-icon " + icon }),
-                            iconValue && iconType == 'image' && React.createElement("img", { className: "premium-title-icon", src: imageURL }),
-                            iconValue && iconType == 'lottie' && lottieURl && React.createElement(
-                                "div",
-                                { className: " premium-title-icon premium-lottie-animation" },
-                                React.createElement(_reactLottieWithSegments2.default, {
-                                    options: {
-                                        loop: loop,
-                                        path: lottieURl,
-                                        rendererSettings: {
-                                            preserveAspectRatio: 'xMidYMid'
-                                        }
-                                    },
-                                    direction: reverse
-                                })
-                            ),
-                            React.createElement(RichText, {
-                                tagName: "span",
-                                className: "premium-title-text-title",
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({ title: newValue });
-                                },
-                                value: title,
-                                style: {
-                                    minHeight: '15px'
-                                }
-                            })
-                        )
-                        // {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
-                        ])
+                            link && url !== ' ' && React.createElement("a", { rel: "noopener noreferrer", target: "_self", href: "" + url })
+                        )])
                     )
                 )
             )];

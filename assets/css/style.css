@@ -4332,6 +4332,9 @@ animation-fast {
     width: auto !important;
     height: auto !important;
 }
+.premium-title-header a{
+    outline: white !important;
+}
 .premium-title .style4 .left,
 .premium-title .style3 .left {
     justify-content: flex-start !important;

@@ -1665,8 +1665,8 @@ class edit extends Component {
                                     paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
                                 }
                             },
-                            [
-                                style === 'style7' ?
+                            [<Fragment>
+                                {style === 'style7' ?
                                     <Fragment>
                                         {
                                             iconPosition != 'top' && iconValue &&
@@ -1792,7 +1792,9 @@ class edit extends Component {
                                                 }}
                                             />
                                         </Fragment>
-                                // {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href="javascript:void(0)" ></a>}
+                                }
+                                {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href={`${url}`} ></a>}
+                            </Fragment>
                             ])}
                     </div>
                 </div>

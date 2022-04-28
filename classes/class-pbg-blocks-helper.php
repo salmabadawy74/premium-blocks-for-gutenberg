@@ -4339,100 +4339,43 @@ class PBG_Blocks_Helper {
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titlefontSize'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSize'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
-
-				//style7
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSize'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
-
-				//style9
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' . ' > .premium-title-style9-letter' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSize'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
 			}
 		}
 
 		if ( isset( $attr['titlePaddingT'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-top',( $attr['titlePaddingT'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-top',( $attr['titlePaddingT'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-top',( $attr['titlePaddingT'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		
-		}
+			}
 		if ( isset( $attr['titlePaddingR'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-right', ( $attr['titlePaddingR'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-right', ( $attr['titlePaddingR'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-right', ( $attr['titlePaddingR'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titlePaddingB'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header');
 			$css->add_property( 'padding-bottom', ( $attr['titlePaddingB'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-bottom', ( $attr['titlePaddingB'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-bottom', ( $attr['titlePaddingB'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titlePaddingL'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-left', ( $attr['titlePaddingL'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-left', ( $attr['titlePaddingL'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-left', ( $attr['titlePaddingL'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginT'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-top', ( $attr['titleMarginT'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-top', ( $attr['titleMarginT'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-top', ( $attr['titleMarginT'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginR'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-right', ( $attr['titleMarginR'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-right', ( $attr['titleMarginR'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-right', ( $attr['titleMarginR'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginB'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-bottom', ( $attr['titleMarginB'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-bottom', ( $attr['titleMarginB'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-bottom', ( $attr['titleMarginB'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginL'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-left', ( $attr['titleMarginL'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-left', ( $attr['titleMarginL'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-left', ( $attr['titleMarginL'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 
 		// Style for icon.
 		if ( isset( $attr['iconStyles'] ) ) {
@@ -4537,100 +4480,43 @@ class PBG_Blocks_Helper {
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titlefontSizeTablet'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSizeTablet'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
-
-				//style7
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSizeTablet'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
-
-				//style9
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' . ' > .premium-title-style9-letter' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSizeTablet'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
 			}
 		}
 
 		if ( isset( $attr['titlePaddingTTablet'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-top',( $attr['titlePaddingTTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-top',( $attr['titlePaddingTTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-top',( $attr['titlePaddingTTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		
-		}
+			}
 		if ( isset( $attr['titlePaddingRTablet'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-right', ( $attr['titlePaddingRTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-right', ( $attr['titlePaddingRTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-right', ( $attr['titlePaddingRTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titlePaddingBTablet'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-bottom', ( $attr['titlePaddingBTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-bottom', ( $attr['titlePaddingBTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-bottom', ( $attr['titlePaddingBTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titlePaddingLTablet'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-left', ( $attr['titlePaddingLTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-left', ( $attr['titlePaddingLTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-left', ( $attr['titlePaddingLTablet'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginTTablet'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-top', ( $attr['titleMarginTTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-top', ( $attr['titleMarginTTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-top', ( $attr['titleMarginTTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginRTablet'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-right', ( $attr['titleMarginRTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-right', ( $attr['titleMarginRTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-right', ( $attr['titleMarginRTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginBTablet'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header');
 			$css->add_property( 'margin-bottom', ( $attr['titleMarginBTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-bottom', ( $attr['titleMarginBTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-bottom', ( $attr['titleMarginBTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginLTablet'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-left', ( $attr['titleMarginLTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-left', ( $attr['titleMarginLTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-left', ( $attr['titleMarginLTablet'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 
 		// Style for icon.
 		if ( isset( $attr['iconStyles'] ) ) {
@@ -4738,100 +4624,43 @@ class PBG_Blocks_Helper {
 		// Style for title.
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titlefontSizeMobile'] ) && isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ) {
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSizeMobile'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
-
-				//style7
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSizeMobile'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
-
-				//style9
-				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' . ' > .premium-title-style9-letter' );
+				$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titlefontSizeMobile'] . (isset($attr['titleStyles'][0]['titlefontSizeType'])? $attr['titleStyles'][0]['titlefontSizeType'] :'px')  . '!important' ) );
 			}
 		}
 
 		if ( isset( $attr['titlePaddingTMobile'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-top',( $attr['titlePaddingTMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-top',( $attr['titlePaddingTMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-top',( $attr['titlePaddingTMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		
-		}
+			}
 		if ( isset( $attr['titlePaddingRMobile'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-right', ( $attr['titlePaddingRMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-right', ( $attr['titlePaddingRMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-right', ( $attr['titlePaddingRMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titlePaddingBMobile'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-bottom', ( $attr['titlePaddingBMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-bottom', ( $attr['titlePaddingBMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-bottom', ( $attr['titlePaddingBMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titlePaddingLMobile'] ) && isset( $attr['titleStyles'][0]['titlePaddingType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-left', ( $attr['titlePaddingLMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'padding-left', ( $attr['titlePaddingLMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'padding-left', ( $attr['titlePaddingLMobile'] . (isset($attr['titleStyles'][0]['titlePaddingType'])? $attr['titleStyles'][0]['titlePaddingType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginTMobile'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-top', ( $attr['titleMarginTMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-top', ( $attr['titleMarginTMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-top', ( $attr['titleMarginTMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginRMobile'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-right', ( $attr['titleMarginRMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-right', ( $attr['titleMarginRMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-right', ( $attr['titleMarginRMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginBMobile'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-bottom', ( $attr['titleMarginBMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-bottom', ( $attr['titleMarginBMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-bottom', ( $attr['titleMarginBMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 		if ( isset( $attr['titleMarginLMobile'] ) && isset( $attr['titleStyles'][0]['titleMarginType'] ) ) {
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title' );
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-left', ( $attr['titleMarginLMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style7
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-inner-title' . ' > .premium-title-text-title' );
-			$css->add_property( 'margin-left', ( $attr['titleMarginLMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-			//style9
-			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title'  .  '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-letters-container' );
-			$css->add_property( 'margin-left', ( $attr['titleMarginLMobile'] . (isset($attr['titleStyles'][0]['titleMarginType'])? $attr['titleStyles'][0]['titleMarginType'] :'px')  . '!important' ) );
-		}
+			}
 
 		// Style for icon.
 		if ( isset( $attr['iconStyles'] ) ) {
