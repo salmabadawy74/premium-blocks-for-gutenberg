@@ -33,8 +33,8 @@ class Shape extends Component {
         }
 
         return (
-            <ul className="qubely-shape-picker-options">
-                {shapes.map(item => <li className={`qubely-shape-picker-option`} onClick={() => this.setSettings('style', item)} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[item] }} style={value.style == item ? { fill: value.color } : {}} />)}
+            <ul className="premium-shape-picker-options">
+                {shapes.map(item => <li className={`premium-shape-picker-option`} onClick={() => this.setSettings('style', item)} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[item] }} style={value.style == item ? { fill: value.color } : {}} />)}
             </ul>
         )
     }
@@ -45,21 +45,21 @@ class Shape extends Component {
         const { showShapeOptions } = this.state;
 
         return (
-            <div className="qubely-field-shape qubely-field">
-                <div className="qubely-field-child">
-                    <div className="qubely-field qubely-shape-picker-wrapper">
+            <div className="premium-field-shape premium-field">
+                <div className="premium-field-child">
+                    <div className="premium-field premium-shape-picker-wrapper">
                         <Dropdown
-                            className={`qubely-field-child qubely-shape-picker ${value.style ? 'has-value' : ''}`}
-                            contentClassName="qubely-shape-picker-content"
+                            className={`premium-field-child premium-shape-picker ${value.style ? 'has-value' : ''}`}
+                            contentClassName="premium-shape-picker-content"
                             position="bottom center"
                             renderToggle={({ isOpen, onToggle }) =>
                                 <div className="shape-divider-options">
                                     <button isPrimary onClick={onToggle} aria-expanded={isOpen} >
                                         {
                                             value.style ?
-                                                <div className="qubely-field-shape-value" dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[value.style] }} />
+                                                <div className="premium-field-shape-value" dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[value.style] }} />
                                                 :
-                                                <div className="qubely-field-shape-placeholder">
+                                                <div className="premium-field-shape-placeholder">
                                                     <span>Select Shape</span>
                                                 </div>
                                         }
@@ -71,8 +71,8 @@ class Shape extends Component {
                         {
                             value.style &&
                             <Tooltip text={__('Clear', 'premium-blocks-for-gutenberg')}>
-                                <div className="qubely-ml-10">
-                                    <span className="qubely-shape-clear" onClick={() => this.setSettings('style', '')} role="button"><i className="fas fa-undo" /></span>
+                                <div className="premium-ml-10">
+                                    <span className="premium-shape-clear" onClick={() => this.setSettings('style', '')} role="button"><i className="fas fa-undo" /></span>
                                 </div>
                             </Tooltip>
                         }
@@ -115,7 +115,7 @@ class Shape extends Component {
                                 onChange={val => this.setSettings('height', val)}
                             />
                             <ToggleControl
-                                value={value.flipShapeDivider}
+                                checked={value.flipShapeDivider}
                                 label={__('Flip Divider', 'premium-blocks-for-gutenberg')}
                                 onChange={newValue => this.setSettings('flipShapeDivider', newValue)}
                             />

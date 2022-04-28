@@ -7,7 +7,7 @@ const InspectorTab = props => {
             style={{
                 display: isActive ? 'block' : 'none'
             }}
-            className='qubely-inspector-tab'
+            className='premium-inspector-tab'
         >
             {Array.isArray(children) ? children.map(item => item) : children}
         </div>

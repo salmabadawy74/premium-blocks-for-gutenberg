@@ -9,15 +9,14 @@ export default function PremiumSizeUnits(props) {
     return (
         <ul className="premium-slider-units">
             {sizeUnits.map((unit, index) => (
-                <li
-                    className={
-                        "single-unit " +
-                        (unit === activeUnit &&
-                            "active")
-                    }
+                <li className={
+                    "single-unit " +
+                    (unit === activeUnit &&
+                        "active")
+                }
                     onClick={() => onChangeSizeUnit(unit)}
                 >
-                    <span className={`unit-text`}> {unit}</span>
+                    <span className={`unit-text`}>{unit}</span>
                 </li>
             ))}
         </ul>

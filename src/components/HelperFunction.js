@@ -49,3 +49,10 @@ export const gradientBackground = (backgroundType, containerBack, gradientColorT
     }
     return btnbg;
 }
+export const animationAttr = (data) => {
+    if (typeof data !== 'undefined' && typeof data.name !== 'undefined' && data.openAnimation) {
+        return { 'data-premiumanimation': JSON.stringify(data) }
+    } else {
+        return {}
+    }
+}

@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-
+import { animationAttr } from '../../components/HelperFunction'
 const { InnerBlocks } = wp.blockEditor;
 
 const save = props => {
@@ -25,11 +25,12 @@ const save = props => {
         borderRight,
         borderBottom,
         borderLeft,
-        backgroundType
+        backgroundType,
+        animation
     } = props.attributes;
 
 
-    const mainClasses = classnames(className, 'premium-container');
+    const mainClasses = classnames(className, 'premium-container', `premium-blocks-${props.clientId}`);
 
     let btnGrad, btnGrad2, btnbg;
     if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -51,7 +52,7 @@ const save = props => {
                 textAlign: horAlign,
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                backgroundColor: containerStyles[0].containerBack,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
@@ -65,6 +66,7 @@ const save = props => {
                 backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
             }}
+            {...animationAttr(animation)}
         >
             <div
                 className={`premium-container__content_wrap premium-container__${vPos}`}

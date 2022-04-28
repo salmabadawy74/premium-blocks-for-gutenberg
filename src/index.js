@@ -14,4 +14,4 @@ import "./blocks/fancy-text"
 import "./blocks/lottie";
 import "./blocks/Modal"
 import "./blocks/image-separator"
-import "./blocks/animation-tab/index.js"
+// import "./blocks/animation-tab/index.js"

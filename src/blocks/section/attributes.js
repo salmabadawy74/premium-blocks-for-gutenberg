@@ -26,7 +26,8 @@ const attributes = {
         type: "number"
     },
     minHeightUnit: {
-        type: "string"
+        type: "string",
+        default: 'px'
     },
     vPos: {
         type: "string",
@@ -72,13 +73,15 @@ const attributes = {
         type: "number"
     },
     paddingTop: {
-        type: "number"
+        type: "number",
+        default: '100'
     },
     paddingRight: {
         type: "number"
     },
     paddingBottom: {
-        type: "number"
+        type: "number",
+        default: '100'
     },
     paddingLeft: {
         type: "number"
@@ -183,7 +186,7 @@ const attributes = {
             width: { unit: '%' },
             height: { unit: 'px' },
         },
-        style: [{ selector: '{{QUBELY}} .qubely-shape-divider.qubely-top-shape' }]
+        style: [{ selector: '{{QUBELY}} .premium-shape-divider.premium-top-shape' }]
     },
     shapeBottom: {
         type: 'object',
@@ -194,7 +197,12 @@ const attributes = {
             width: { unit: '%' },
             height: { unit: 'px' },
         },
-        style: [{ selector: '{{QUBELY}} .qubely-shape-divider.qubely-top-shape' }]
-    }
+        style: [{ selector: '{{QUBELY}} .premium-shape-divider.premium-top-shape' }]
+    },
+    animation: {
+        type: 'object',
+        default: {}
+    },
+
 }
 export default attributes

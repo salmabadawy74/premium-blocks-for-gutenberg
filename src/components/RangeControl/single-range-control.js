@@ -26,10 +26,8 @@ export default function ResponsiveSingleRangeControl({
                         {label && (
                             <span className="customize-control-title premium-control-title">{label}</span>
                         )}
-
                     </div>
                     {showUnit && (
-
                         <PremiumSizeUnits
                             units={units}
                             activeUnit={unit}
@@ -37,7 +35,6 @@ export default function ResponsiveSingleRangeControl({
                                 onChangeUnit(newValue)
                             }
                         />
-
                     )}
                 </header>}
                 <PremiumRange

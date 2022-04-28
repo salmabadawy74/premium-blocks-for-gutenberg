@@ -11,12 +11,10 @@ import { videoBackground, gradientBackground } from '../../components/HelperFunc
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import Tabs from '../../components/Tabs'
-import Tab from '../../components/Tab'
-
+import Tab from '../../components/Tab';
+import Animation from '../../components/Animation'
 const { __ } = wp.i18n;
-
-const { PanelBody, ToggleControl, SelectControl, Button, ButtonGroup } = wp.components;
-
+const { PanelBody, ToggleControl, SelectControl, TextControl } = wp.components;
 const { Fragment } = wp.element;
 const { withSelect } = wp.data
 
@@ -25,7 +23,8 @@ const {
     BlockControls,
     AlignmentToolbar,
     InnerBlocks,
-    InspectorControls
+    InspectorControls,
+    InspectorAdvancedControls
 } = wp.blockEditor;
 
 const CONTENT = [
@@ -45,7 +44,9 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     }
     return desktopSize;
 }
+
 const edit = props => {
+
     const { isSelected, className, setAttributes } = props;
 
     const {
@@ -93,7 +94,11 @@ const edit = props => {
         paddingLMobile,
         paddingBMobile,
         shapeTop,
-        shapeBottom
+        shapeBottom,
+        animation,
+        rowId,
+        globalZindex,
+        overflow
     } = props.attributes;
 
     const WIDTH = [
@@ -109,8 +114,12 @@ const edit = props => {
 
     const HEIGHT = [
         {
+            value: 'default',
+            label: __("Default", 'premium-blocks-for-gutenberg')
+        },
+        {
             value: "fit",
-            label: __("Fit to Screen", 'premium-blocks-for-gutenberg')
+            label: __("100% Full Screen", 'premium-blocks-for-gutenberg')
         },
         {
             value: "min",
@@ -133,7 +142,7 @@ const edit = props => {
         }
     ];
 
-    const mainClasses = classnames(className, "premium-container");
+    const mainClasses = classnames(className, "premium-container", `premium-blocks-${props.clientId}`);
 
     const saveContainerStyle = (value) => {
         const newUpdate = containerStyles.map((item, index) => {
@@ -158,7 +167,6 @@ const edit = props => {
     } else {
         btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
     }
-
     const containerPaddingTop = getPreviewSize(props.deviceType, paddingTop, paddingTTablet, paddingTMobile);
     const containerPaddingRight = getPreviewSize(props.deviceType, paddingRight, paddingRTablet, paddingRMobile);
     const containerPaddingBottom = getPreviewSize(props.deviceType, paddingBottom, paddingBTablet, paddingBMobile);
@@ -167,7 +175,6 @@ const edit = props => {
     const containerMarginRight = getPreviewSize(props.deviceType, marginRight, marginRTablet, marginRMobile);
     const containerMarginBottom = getPreviewSize(props.deviceType, marginBottom, marginBTablet, marginBMobile);
     const containerMarginLeft = getPreviewSize(props.deviceType, marginLeft, marginLTablet, marginLMobile);
-
 
     return [
         isSelected && (
@@ -178,10 +185,10 @@ const edit = props => {
                 />
             </BlockControls>
         ),
-        isSelected && (
+        isSelected && [
             <InspectorControls key="inspector">
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
-                    <InspectorTab key={'layout'}>
+                    <InspectorTab key={'style'}>
                         <PanelBody
                             title={__("Border", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
@@ -231,12 +238,137 @@ const edit = props => {
                             />
                         </PanelBody>
                         <PanelBody
+                            title={__("Background", 'premium-blocks-for-gutenberg')}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumBackgroundControl
+                                setAttributes={setAttributes}
+                                saveContainerStyle={saveContainerStyle}
+                                backgroundType={backgroundType}
+                                backgroundColor={containerStyles[0].containerBack}
+                                backgroundImageID={containerStyles[0].backgroundImageID}
+                                backgroundImageURL={containerStyles[0].backgroundImageURL}
+                                backgroundPosition={containerStyles[0].backgroundPosition}
+                                backgroundRepeat={containerStyles[0].backgroundRepeat}
+                                backgroundSize={containerStyles[0].backgroundSize}
+                                fixed={containerStyles[0].fixed}
+                                gradientLocationOne={containerStyles[0].gradientLocationOne}
+                                gradientColorTwo={containerStyles[0].gradientColorTwo}
+                                gradientLocationTwo={containerStyles[0].gradientLocationTwo}
+                                gradientAngle={containerStyles[0].gradientAngle}
+                                gradientPosition={containerStyles[0].gradientPosition}
+                                gradientType={containerStyles[0].gradientType}
+                                videoSource={containerStyles[0].videoSource}
+                                bgExternalVideo={containerStyles[0].bgExternalVideo}
+                                videoURL={containerStyles[0].videoURL}
+                                videoID={containerStyles[0].videoID}
+                                bgVideoFallbackID={containerStyles[0].bgVideoFallbackID}
+                                bgVideoFallbackURL={containerStyles[0].bgVideoFallbackURL}
+                            />
+                        </PanelBody>
+                        <PanelBody initialOpen={false} title={__('Shape Divider')}>
+                            <Tabs>
+                                <Tab tabTitle={__('Top Shape')}>
+                                    <Shape shapeType="top" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
+                                </Tab>
+                                <Tab tabTitle={__('Bottom Shape')}>
+                                    <Shape shapeType="bottom" value={shapeBottom} responsive onChange={val => setAttributes({ shapeBottom: val })} />
+                                </Tab>
+                            </Tabs>
+                        </PanelBody>
+
+
+                    </InspectorTab>
+                    <InspectorTab key={'layout'}>
+                        <PanelBody
+                            title={__("General Settings", 'premium-blocks-for-gutenberg')}
+                            className={`premium-panel-body premium-stretch-section`}
+                            initialOpen={true}
+                        >
+
+
+                            <SelectControl
+                                label={__("Container", 'premium-blocks-for-gutenberg')}
+                                options={WIDTH}
+                                value={innerWidthType}
+                                onChange={newValue => setAttributes({ innerWidthType: newValue })}
+                            />
+
+                            {"boxed" === innerWidthType && (
+                                <ResponsiveSingleRangeControl
+                                    label={__("Container Width", 'premium-blocks-for-gutenberg')}
+                                    value={innerWidth}
+                                    min="1"
+                                    max="1600"
+                                    onChange={newValue => setAttributes({ innerWidth: newValue })}
+                                    defaultValue={0}
+                                    showUnit={false}
+                                />
+                            )}
+                            <SelectControl
+                                label={__("Height", 'premium-blocks-for-gutenberg')}
+                                options={HEIGHT}
+                                value={height}
+                                onChange={newValue => setAttributes({ height: newValue })}
+                            />
+                            {"min" === height && (
+                                <Fragment>
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Min Height", 'premium-blocks-for-gutenberg')}
+                                        value={minHeight}
+                                        min="1"
+                                        max="800"
+                                        onChange={newValue => setAttributes({ minHeight: newValue })}
+                                        units={["px", "vh", "vw"]}
+                                        defaultValue={0}
+                                        onChangeUnit={newValue => setAttributes({ minHeightUnit: newValue })}
+                                        showUnit={true}
+                                        unit={minHeightUnit}
+                                    />
+                                </Fragment>
+                            )}
+                            <SelectControl
+                                label={__("Content Position", 'premium-blocks-for-gutenberg')}
+                                help={__(
+                                    "If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'
+                                )}
+                                options={VPOSITION}
+                                value={vPos}
+                                onChange={newValue => setAttributes({ vPos: newValue })}
+                            />
+                            <SelectControl
+                                label={__("Overflow", 'premium-blocks-for-gutenberg')}
+                                options={[
+                                    {
+                                        value: 'default',
+                                        label: __("Default", 'premium-blocks-for-gutenberg')
+                                    },
+                                    {
+                                        value: 'hidden',
+                                        label: __('Hidden', 'premium-blocks-for-gutenberg')
+                                    }
+                                ]}
+                                value={overflow}
+                                onChange={newValue => setAttributes({ overflow: newValue })}
+                            />
+                            <ToggleControl
+                                label={__("Stretch Section", 'premium-blocks-for-gutenberg')}
+                                checked={stretchSection}
+                                onChange={check => setAttributes({ stretchSection: check })}
+                                help={__("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')}
+                            />
+                        </PanelBody>
+
+                    </InspectorTab>
+                    <InspectorTab key={'advance'}>
+                        <PanelBody
                             title={__("Spacings", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <PremiumResponsiveMargin
-                                directions={["all"]}
+                                directions={["top", 'bottom']}
                                 marginTop={marginTop}
                                 marginRight={marginRight}
                                 marginBottom={marginBottom}
@@ -359,132 +491,42 @@ const edit = props => {
                                 }
                             />
                         </PanelBody>
-                    </InspectorTab>
-                    <InspectorTab key={'style'}>
-                        <PanelBody
-                            title={__("General Settings", 'premium-blocks-for-gutenberg')}
-                            className={`premium-panel-body premium-stretch-section`}
-                            initialOpen={true}
-                        >
-                            <ToggleControl
-                                label={__("Stretch Section", 'premium-blocks-for-gutenberg')}
-                                checked={stretchSection}
-                                onChange={check => setAttributes({ stretchSection: check })}
-                                help={__("This option stretches the section to the full width of the page using JS. You will need to reload the page after you enable this option for the first time.", 'premium-blocks-for-gutenberg')}
-                            />
-                            {stretchSection && (
-                                <SelectControl
-                                    label={__("Content Width", 'premium-blocks-for-gutenberg')}
-                                    options={WIDTH}
-                                    value={innerWidthType}
-                                    onChange={newValue => setAttributes({ innerWidthType: newValue })}
-                                />
-                            )}
-                            {"boxed" === innerWidthType && stretchSection && (
-                                <ResponsiveSingleRangeControl
-                                    label={__("Max Width", 'premium-blocks-for-gutenberg')}
-                                    value={innerWidth}
-                                    min="1"
-                                    max="1600"
-                                    onChange={newValue => setAttributes({ innerWidth: newValue })}
-                                    defaultValue={0}
-                                    showUnit={false}
-                                />
-                            )}
-                            <SelectControl
-                                label={__("Height", 'premium-blocks-for-gutenberg')}
-                                options={HEIGHT}
-                                value={height}
-                                onChange={newValue => setAttributes({ height: newValue })}
-                            />
-                            {"min" === height && (
-                                <Fragment>
-                                    <ResponsiveSingleRangeControl
-                                        label={__("Min Height", 'premium-blocks-for-gutenberg')}
-                                        value={minHeight}
-                                        min="1"
-                                        max="800"
-                                        onChange={newValue => setAttributes({ minHeight: newValue })}
-                                        units={["px", "vh", "vw"]}
-                                        defaultValue={0}
-                                        onChangeUnit={newValue => setAttributes({ minHeightUnit: newValue })}
-                                        showUnit={true}
-                                        unit={minHeightUnit}
-                                    />
-                                </Fragment>
-                            )}
-                            <SelectControl
-                                label={__("Content Position", 'premium-blocks-for-gutenberg')}
-                                help={__(
-                                    "If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'
-                                )}
-                                options={VPOSITION}
-                                value={vPos}
-                                onChange={newValue => setAttributes({ vPos: newValue })}
-                            />
+                        <PanelBody title={__('Animation')} initialOpen={false}>
+                            <Animation
+                                uniqueId={props.clientId}
+                                label={__('Animation')}
+                                value={animation}
+                                onChange={(value) => setAttributes({ animation: value })} />
                         </PanelBody>
-                        <PanelBody
-                            title={__("Background", 'premium-blocks-for-gutenberg')}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <PremiumBackgroundControl
-                                setAttributes={setAttributes}
-                                saveContainerStyle={saveContainerStyle}
-                                backgroundType={backgroundType}
-                                backgroundColor={containerStyles[0].containerBack}
-                                backgroundImageID={containerStyles[0].backgroundImageID}
-                                backgroundImageURL={containerStyles[0].backgroundImageURL}
-                                backgroundPosition={containerStyles[0].backgroundPosition}
-                                backgroundRepeat={containerStyles[0].backgroundRepeat}
-                                backgroundSize={containerStyles[0].backgroundSize}
-                                fixed={containerStyles[0].fixed}
-                                gradientLocationOne={containerStyles[0].gradientLocationOne}
-                                gradientColorTwo={containerStyles[0].gradientColorTwo}
-                                gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                                gradientAngle={containerStyles[0].gradientAngle}
-                                gradientPosition={containerStyles[0].gradientPosition}
-                                gradientType={containerStyles[0].gradientType}
-                                videoSource={containerStyles[0].videoSource}
-                                bgExternalVideo={containerStyles[0].bgExternalVideo}
-                                videoURL={containerStyles[0].videoURL}
-                                videoID={containerStyles[0].videoID}
-                                bgVideoFallbackID={containerStyles[0].bgVideoFallbackID}
-                                bgVideoFallbackURL={containerStyles[0].bgVideoFallbackURL}
+                        <InspectorAdvancedControls>
+                            <TextControl label={__('CSS ID')} value={rowId} onChange={val => setAttributes({ rowId: val })} />
+                            <ResponsiveSingleRangeControl
+                                label={__('Z-Index')}
+                                min={1}
+                                max={10000}
+                                value={globalZindex}
+                                onChange={value => setAttributes({ globalZindex: value })}
                             />
-                        </PanelBody>
-
-                    </InspectorTab>
-                    <InspectorTab key={'advance'}>
-                        <PanelBody initialOpen={false} title={__('Shape Divider')}>
-                            <Tabs>
-                                <Tab tabTitle={__('Top Shape')}>
-                                    <Shape shapeType="top" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
-                                </Tab>
-                                <Tab tabTitle={__('Bottom Shape')}>
-                                    <Shape shapeType="bottom" value={shapeBottom} responsive onChange={val => setAttributes({ shapeBottom: val })} />
-                                </Tab>
-                            </Tabs>
-                        </PanelBody>
-                        <PremiumResponsiveTabs
-                            Desktop={hideDesktop}
-                            Tablet={hideTablet}
-                            Mobile={hideMobile}
-                            onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                            onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                            onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
-                        />
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                            />
+                        </InspectorAdvancedControls>
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-        ),
+
+        ],
         <div
             className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{
                 textAlign: horAlign,
-                minHeight:
-                    "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                minHeight: "fit" === height ? "100vh" : `${minHeight}${minHeightUnit}`,
+                backgroundColor: containerStyles[0].containerBack,
                 borderStyle: containerStyles[0].borderType,
                 borderWidth: isUpdated
                     ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
@@ -507,8 +549,13 @@ const edit = props => {
                 boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
             }}
         >
+            {(Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style) &&
+                <div className="premium-shape-divider premium-top-shape" dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeTop.style] }} />
+            }
             {videoBackground(backgroundType, containerStyles[0].videoSource, containerStyles[0].videoURL, containerStyles[0].bgExternalVideo)}
-
+            {(Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style) &&
+                <div className="premium-shape-divider premium-bottom-shape" dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeBottom.style] }} />
+            }
             <div
                 className={`premium-container__content_wrap premium-container__${vPos}`}
                 style={{
@@ -524,6 +571,7 @@ const edit = props => {
                 <div className={`premium-container__content_inner`}>
                     <InnerBlocks template={CONTENT} />
                 </div>
+
             </div>
         </div>
     ];
