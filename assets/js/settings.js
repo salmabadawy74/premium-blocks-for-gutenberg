@@ -19,7 +19,8 @@ export const {
     lottie,
     modal,
     bulletList,
-    person
+    person,
+    heading
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
