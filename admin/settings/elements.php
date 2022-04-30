@@ -17,7 +17,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'image-separator', 'modal', 'bulletList', 'person' );
+		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'image-separator', 'modal', 'bulletList', 'person', 'heading' );
 
 		private $pbg_default;
 
@@ -329,6 +329,17 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 										</label>
 									</td>
 								</tr>
+
+								<tr>
+									<th><?php echo __( 'Premium Heading', 'premium-gutenberg' ); ?></th>
+									<td>
+										<label class="switch">
+											<input type="checkbox" id="heading" name="heading" <?php checked( 1, $this->pbg_get_settings['heading'], true ); ?>>
+											<span class="slider round"></span>
+										</label>
+									</td>
+								</tr>
+
 							</tbody>
 						</table>
 						<input type="submit" value="Save Settings" class="button pb-btn pb-save-button">
@@ -396,6 +407,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 				'bulletList'      => intval( $settings['bulletList'] ? 1 : 0 ),
 				'image-separator' => intval( $settings['image-separator'] ? 1 : 0 ),
 				'person'          => intval( $settings['person'] ? 1 : 0 ),
+				'heading'         => intval( $settings['heading'] ? 1 : 0 ),
 			);
 
 			update_option( 'pbg_settings', $this->pbg_settings );
