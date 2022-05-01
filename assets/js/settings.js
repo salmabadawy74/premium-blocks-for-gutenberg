@@ -20,7 +20,8 @@ export const {
     modal,
     bulletList,
     person,
-    heading
+    heading,
+    contentSwitcher
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys
