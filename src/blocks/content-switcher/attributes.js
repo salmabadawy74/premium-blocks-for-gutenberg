@@ -27,6 +27,10 @@ const attributes = {
         type: "string",
         default: "inline"
     },
+    labelTag: {
+        type: "string",
+        default: "h3"
+    },
     firstContent: {
         type: "string",
         default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."

@@ -4902,7 +4902,7 @@ animation-fast {
 /*******************************************************/
 .premium-content-switcher {
     border-color: #000;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 10px 20px;
 }
 .premium-content-switcher-toggle-switch{
