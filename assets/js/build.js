@@ -68524,7 +68524,8 @@ var _wp$components = wp.components,
     RangeControl = _wp$components.RangeControl,
     Toolbar = _wp$components.Toolbar,
     TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl;
+    ToggleControl = _wp$components.ToggleControl,
+    TextareaControl = _wp$components.TextareaControl;
 
 var edit = function (_Component) {
     _inherits(edit, _Component);
@@ -68868,6 +68869,68 @@ var edit = function (_Component) {
                         onChange: function onChange(newEffect) {
                             return setAttributes({ slide: newEffect });
                         }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Content 1"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(TextareaControl, {
+                        label: __("Content", 'premium-block-for-gutenberg'),
+                        value: firstContent,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ firstContent: newEffect });
+                        }
+                    }),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Alignment")
+                    ),
+                    React.createElement(Toolbar, {
+                        controls: ALIGNS.map(function (contentAlign) {
+                            return {
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === firstcontentlign,
+                                onClick: function onClick() {
+                                    return setAttributes({ firstcontentlign: contentAlign });
+                                }
+                            };
+                        })
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Content 2"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(TextareaControl, {
+                        label: __("Content", 'premium-block-for-gutenberg'),
+                        value: secondContent,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ secondContent: newEffect });
+                        }
+                    }),
+                    React.createElement(
+                        "p",
+                        null,
+                        __("Alignment")
+                    ),
+                    React.createElement(Toolbar, {
+                        controls: ALIGNS.map(function (contentAlign) {
+                            return {
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === secondcontentlign,
+                                onClick: function onClick() {
+                                    return setAttributes({ secondcontentlign: contentAlign });
+                                }
+                            };
+                        })
                     })
                 ),
                 React.createElement(

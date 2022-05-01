@@ -32,6 +32,7 @@ const {
     Toolbar,
     TextControl,
     ToggleControl,
+    TextareaControl
 } = wp.components
 
 class edit extends Component {
@@ -374,6 +375,44 @@ class edit extends Component {
                                 onChange={newEffect => setAttributes({ slide: newEffect })}
                             />
                         }
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Content 1")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <TextareaControl
+                            label={__("Content", 'premium-block-for-gutenberg')}
+                            value={firstContent}
+                            onChange={newEffect => setAttributes({ firstContent: newEffect })}
+                        />
+                        <p>{__("Alignment")}</p>
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === firstcontentlign,
+                                onClick: () => setAttributes({ firstcontentlign: contentAlign })
+                            }))}
+                        />
+                    </PanelBody>
+                    <PanelBody
+                        title={__("Content 2")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <TextareaControl
+                            label={__("Content", 'premium-block-for-gutenberg')}
+                            value={secondContent}
+                            onChange={newEffect => setAttributes({ secondContent: newEffect })}
+                        />
+                        <p>{__("Alignment")}</p>
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === secondcontentlign,
+                                onClick: () => setAttributes({ secondcontentlign: contentAlign })
+                            }))}
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Switcher Style")}
