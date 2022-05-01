@@ -2,6 +2,8 @@ import classnames from "classnames"
 // import styling from "./styling"
 // import ResponsiveRangeControl from "../../components/premium-range-responsive";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import PremiumTypo from "../../components/premium-typo";
 // import PremiumTextShadow from "../../components/premium-text-shadow";
 // import PremiumResponsivePadding from "../../components/premium-padding-responsive";
@@ -52,11 +54,14 @@ class edit extends Component {
         document.head.appendChild($style)
         this.props.setAttributes({ switchCheck: false })
         setTimeout(this.initToggleBox, 10);
+        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
+
     componentDidUpdate() {
         clearTimeout(isBoxUpdated);
         isBoxUpdated = setTimeout(this.initToggleBox, 10);
     }
+
     initToggleBox() {
         const { block_id, switchCheck } = this.props.attributes;
         if (!block_id) return null;
@@ -88,10 +93,26 @@ class edit extends Component {
             , 10);
     }
 
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
+    }
+
     render() {
         const { attributes, setAttributes, isSelected } = this.props
 
         const {
+            block_id,
             align,
             className,
             showLabel,
@@ -104,6 +125,9 @@ class edit extends Component {
             switchCheck,
             firstcontentlign,
             secondcontentlign,
+            switcherStyles,
+            backgroundTypeState1,
+            backgroundTypeState2,
             switchSize,
             switchSizeTablet,
             switchSizeType,
@@ -287,6 +311,35 @@ class edit extends Component {
             // element.innerHTML = styling(this.props)
         }
 
+        const SwitcherSize = this.getPreviewSize(this.props.deviceType, switcherStyles[0].switchSize, switcherStyles[0].switchSizeTablet, switcherStyles[0].switchSizeMobile);
+        const SwitcherBorderRadius = this.getPreviewSize(this.props.deviceType, switcherStyles[0].switchRadius, switcherStyles[0].switchRadiusTablet, switcherStyles[0].switchRadiusMobile);
+        const ContainerBorderRadius = this.getPreviewSize(this.props.deviceType, switcherStyles[0].containerRadius, switcherStyles[0].containerRadiusTablet, switcherStyles[0].containerRadiusMobile);
+
+        const renderCss = (
+            <style>
+                {`
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
+                        border-radius: ${ContainerBorderRadius}${switcherStyles[0].containerRadiusType} !important;
+                    }
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
+                        border-radius: ${SwitcherBorderRadius}${switcherStyles[0].switchRadiusType} !important;
+                    }
+                `}
+            </style>
+        );
+
+        const saveSwitcherStyles = (value) => {
+            const newUpdate = switcherStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                switcherStyles: newUpdate,
+            });
+        }
+
         const mainClasses = classnames(className, "premium-content-switcher");
         return [
             isSelected && (
@@ -345,22 +398,6 @@ class edit extends Component {
                                 onClick: () => setAttributes({ align: contentAlign })
                             }))}
                         />
-                        {/* <p>{__("First Content Alignment")}</p>
-                        <Toolbar
-                            controls={ALIGNS.map(contentAlign => ({
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === firstcontentlign,
-                                onClick: () => setAttributes({ firstcontentlign: contentAlign })
-                            }))}
-                        />
-                        <p>{__("Second Content Alignment")}</p>
-                        <Toolbar
-                            controls={ALIGNS.map(contentAlign => ({
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === secondcontentlign,
-                                onClick: () => setAttributes({ secondcontentlign: contentAlign })
-                            }))}
-                        /> */}
                         <SelectControl
                             label={__("Effect")}
                             options={EFFECTS}
@@ -420,6 +457,91 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <ResponsiveRangeControl
+                            label={__("Size", 'premium-block-for-gutenberg')}
+                            value={switcherStyles[0].switchSize}
+                            tabletValue={switcherStyles[0].switchSizeTablet}
+                            mobileValue={switcherStyles[0].switchSizeMobile}
+                            onChange={(value) => saveSwitcherStyles({ switchSize: value })}
+                            onChangeTablet={(value) => saveSwitcherStyles({ switchSizeTablet: value })}
+                            onChangeMobile={(value) => saveSwitcherStyles({ switchSizeMobile: value })}
+                            showUnit={false}
+                            defaultValue={15}
+                            min={1}
+                            max={40}
+                        />
+                        <ResponsiveRangeControl
+                            label={__("Controller Border Radius", 'premium-block-for-gutenberg')}
+                            value={switcherStyles[0].containerRadius}
+                            tabletValue={switcherStyles[0].containerRadiusTablet}
+                            mobileValue={switcherStyles[0].containerRadiusMobile}
+                            onChange={(value) => saveSwitcherStyles({ containerRadius: value })}
+                            onChangeTablet={(value) => saveSwitcherStyles({ containerRadiusTablet: value })}
+                            onChangeMobile={(value) => saveSwitcherStyles({ containerRadiusMobile: value })}
+                            onChangeUnit={(key) =>
+                                saveSwitcherStyles({ containerRadiusType: key })
+                            }
+                            unit={switcherStyles[0].containerRadiusType}
+                            showUnit={true}
+                            defaultValue={50}
+                            min={1}
+                            max={100}
+                        />
+                        <ResponsiveRangeControl
+                            label={__("Switcher Border Radius", 'premium-block-for-gutenberg')}
+                            value={switcherStyles[0].switchRadius}
+                            tabletValue={switcherStyles[0].switchRadiusTablet}
+                            mobileValue={switcherStyles[0].switchRadiusMobile}
+                            onChange={(value) => saveSwitcherStyles({ switchRadius: value })}
+                            onChangeTablet={(value) => saveSwitcherStyles({ switchRadiusTablet: value })}
+                            onChangeMobile={(value) => saveSwitcherStyles({ switchRadiusMobile: value })}
+                            onChangeUnit={(key) =>
+                                saveSwitcherStyles({ switchRadiusType: key })
+                            }
+                            unit={switcherStyles[0].switchRadiusType}
+                            showUnit={true}
+                            defaultValue={1.5}
+                            min={1}
+                            max={100}
+                        />
+                        <h3>{__("Controller State 1 Color")}</h3>
+                        <PremiumBackgroundControl
+                            setAttributes={setAttributes}
+                            saveContainerStyle={saveSwitcherStyles}
+                            backgroundType={backgroundTypeState1}
+                            backgroundColor={switcherStyles[0].containerBackState1}
+                            backgroundImageID={switcherStyles[0].backgroundImageIDState1}
+                            backgroundImageURL={switcherStyles[0].backgroundImageURLState1}
+                            backgroundPosition={switcherStyles[0].backgroundPositionState1}
+                            backgroundRepeat={switcherStyles[0].backgroundRepeatState1}
+                            backgroundSize={switcherStyles[0].backgroundSizeState1}
+                            fixed={switcherStyles[0].fixedState1}
+                            gradientLocationOne={switcherStyles[0].gradientLocationOneState1}
+                            gradientColorTwo={switcherStyles[0].gradientColorTwoState1}
+                            gradientLocationTwo={switcherStyles[0].gradientLocationTwoState1}
+                            gradientAngle={switcherStyles[0].gradientAngleState1}
+                            gradientPosition={switcherStyles[0].gradientPositionState1}
+                            gradientType={switcherStyles[0].gradientTypeState1}
+                        />
+                        <h3>{__("Controller State 2 Color")}</h3>
+                        <PremiumBackgroundControl
+                            setAttributes={setAttributes}
+                            saveContainerStyle={saveSwitcherStyles}
+                            backgroundType={backgroundTypeState2}
+                            backgroundColor={switcherStyles[0].containerBackState2}
+                            backgroundImageID={switcherStyles[0].backgroundImageIDState2}
+                            backgroundImageURL={switcherStyles[0].backgroundImageURLState2}
+                            backgroundPosition={switcherStyles[0].backgroundPositionState2}
+                            backgroundRepeat={switcherStyles[0].backgroundRepeatState2}
+                            backgroundSize={switcherStyles[0].backgroundSizeState2}
+                            fixed={switcherStyles[0].fixedState2}
+                            gradientLocationOne={switcherStyles[0].gradientLocationOneState2}
+                            gradientColorTwo={switcherStyles[0].gradientColorTwoState2}
+                            gradientLocationTwo={switcherStyles[0].gradientLocationTwoState2}
+                            gradientAngle={switcherStyles[0].gradientAngleState2}
+                            gradientPosition={switcherStyles[0].gradientPositionState2}
+                            gradientType={switcherStyles[0].gradientTypeState2}
+                        />
+                        {/* <ResponsiveRangeControl
                             setAttributes={setAttributes}
                             rangeType={{ value: switchSizeType, label: __("switchSizeType") }}
                             range={{ value: switchSize, label: __("switchSize") }}
@@ -471,7 +593,7 @@ class edit extends Component {
                             onChange={newValue => setAttributes({ switchRadius: newValue })}
                             initialPosition={50}
                             allowReset={true}
-                        />
+                        /> */}
                     </PanelBody>
                     {showLabel && (<PanelBody
                         title={__("Labels Style")}
@@ -752,12 +874,17 @@ class edit extends Component {
                     </PanelBody>
                 </InspectorControls>
             ),
-            <div className={classnames(
-                className,
-                `premium-block-${this.props.clientId}`
-            )} style={{
-                textAlign: align,
-            }}>
+            renderCss,
+            <div
+                id={`premium-content-switcher-${block_id}`}
+                className={classnames(
+                    className,
+                    `premium-block-${this.props.clientId}`
+                )}
+                style={{
+                    textAlign: align,
+                }}
+            >
                 <div className={`premium-content-switcher`}
                     style={{
                         textAlign: align,
@@ -785,7 +912,12 @@ class edit extends Component {
                             />
                         </div>
                         )}
-                        <div className="premium-content-switcher-toggle-switch">
+                        <div
+                            className="premium-content-switcher-toggle-switch"
+                            style={{
+                                fontSize: SwitcherSize + 'px',
+                            }}
+                        >
                             <label className={`premium-content-switcher-toggle-switch-label`}>
                                 <input type="checkbox" className={`premium-content-switcher-toggle-switch-input ${this.props.clientId}`} />
                                 <span className="premium-content-switcher-toggle-switch-slider round"

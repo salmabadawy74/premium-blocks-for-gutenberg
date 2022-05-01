@@ -68468,6 +68468,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _classnames = __webpack_require__(0);
@@ -68477,6 +68479,14 @@ var _classnames2 = _interopRequireDefault(_classnames);
 var _responsiveRangeControl = __webpack_require__(19);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
+var _singleRangeControl = __webpack_require__(2);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+var _PremiumBackgroundControl = __webpack_require__(22);
+
+var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
 var _premiumTypo = __webpack_require__(7);
 
@@ -68551,6 +68561,7 @@ var edit = function (_Component) {
             document.head.appendChild($style);
             this.props.setAttributes({ switchCheck: false });
             setTimeout(this.initToggleBox, 10);
+            this.getPreviewSize = this.getPreviewSize.bind(this);
         }
     }, {
         key: "componentDidUpdate",
@@ -68593,13 +68604,30 @@ var edit = function (_Component) {
             }), 10);
         }
     }, {
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
         key: "render",
         value: function render() {
             var _props = this.props,
                 attributes = _props.attributes,
                 setAttributes = _props.setAttributes,
                 isSelected = _props.isSelected;
-            var align = attributes.align,
+            var block_id = attributes.block_id,
+                align = attributes.align,
                 className = attributes.className,
                 showLabel = attributes.showLabel,
                 firstLabel = attributes.firstLabel,
@@ -68611,6 +68639,9 @@ var edit = function (_Component) {
                 switchCheck = attributes.switchCheck,
                 firstcontentlign = attributes.firstcontentlign,
                 secondcontentlign = attributes.secondcontentlign,
+                switcherStyles = attributes.switcherStyles,
+                backgroundTypeState1 = attributes.backgroundTypeState1,
+                backgroundTypeState2 = attributes.backgroundTypeState2,
                 switchSize = attributes.switchSize,
                 switchSizeTablet = attributes.switchSizeTablet,
                 switchSizeType = attributes.switchSizeType,
@@ -68777,6 +68808,28 @@ var edit = function (_Component) {
                 // element.innerHTML = styling(this.props)
             }
 
+            var SwitcherSize = this.getPreviewSize(this.props.deviceType, switcherStyles[0].switchSize, switcherStyles[0].switchSizeTablet, switcherStyles[0].switchSizeMobile);
+            var SwitcherBorderRadius = this.getPreviewSize(this.props.deviceType, switcherStyles[0].switchRadius, switcherStyles[0].switchRadiusTablet, switcherStyles[0].switchRadiusMobile);
+            var ContainerBorderRadius = this.getPreviewSize(this.props.deviceType, switcherStyles[0].containerRadius, switcherStyles[0].containerRadiusTablet, switcherStyles[0].containerRadiusMobile);
+
+            var renderCss = React.createElement(
+                "style",
+                null,
+                "\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-switch-slider:before {\n                        border-radius: " + ContainerBorderRadius + switcherStyles[0].containerRadiusType + " !important;\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-switch-slider {\n                        border-radius: " + SwitcherBorderRadius + switcherStyles[0].switchRadiusType + " !important;\n                    }\n                "
+            );
+
+            var saveSwitcherStyles = function saveSwitcherStyles(value) {
+                var newUpdate = switcherStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    switcherStyles: newUpdate
+                });
+            };
+
             var mainClasses = (0, _classnames2.default)(className, "premium-content-switcher");
             return [isSelected && React.createElement(
                 BlockControls,
@@ -68941,71 +68994,115 @@ var edit = function (_Component) {
                         initialOpen: false
                     },
                     React.createElement(_responsiveRangeControl2.default, {
-                        setAttributes: setAttributes,
-                        rangeType: { value: switchSizeType, label: __("switchSizeType") },
-                        range: { value: switchSize, label: __("switchSize") },
-                        rangeMobile: { value: switchSizeMobile, label: __("switchSizeMobile") },
-                        rangeTablet: { value: switchSizeTablet, label: __("switchSizeTablet") },
-                        rangeLabel: __("Size")
+                        label: __("Size", 'premium-block-for-gutenberg'),
+                        value: switcherStyles[0].switchSize,
+                        tabletValue: switcherStyles[0].switchSizeTablet,
+                        mobileValue: switcherStyles[0].switchSizeMobile,
+                        onChange: function onChange(value) {
+                            return saveSwitcherStyles({ switchSize: value });
+                        },
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveSwitcherStyles({ switchSizeTablet: value });
+                        },
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveSwitcherStyles({ switchSizeMobile: value });
+                        },
+                        showUnit: false,
+                        defaultValue: 15,
+                        min: 1,
+                        max: 40
                     }),
                     React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Controller Border Radius", 'premium-block-for-gutenberg'),
+                        value: switcherStyles[0].containerRadius,
+                        tabletValue: switcherStyles[0].containerRadiusTablet,
+                        mobileValue: switcherStyles[0].containerRadiusMobile,
+                        onChange: function onChange(value) {
+                            return saveSwitcherStyles({ containerRadius: value });
+                        },
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveSwitcherStyles({ containerRadiusTablet: value });
+                        },
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveSwitcherStyles({ containerRadiusMobile: value });
+                        },
+                        onChangeUnit: function onChangeUnit(key) {
+                            return saveSwitcherStyles({ containerRadiusType: key });
+                        },
+                        unit: switcherStyles[0].containerRadiusType,
+                        showUnit: true,
+                        defaultValue: 50,
+                        min: 1,
+                        max: 100
+                    }),
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Switcher Border Radius", 'premium-block-for-gutenberg'),
+                        value: switcherStyles[0].switchRadius,
+                        tabletValue: switcherStyles[0].switchRadiusTablet,
+                        mobileValue: switcherStyles[0].switchRadiusMobile,
+                        onChange: function onChange(value) {
+                            return saveSwitcherStyles({ switchRadius: value });
+                        },
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveSwitcherStyles({ switchRadiusTablet: value });
+                        },
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveSwitcherStyles({ switchRadiusMobile: value });
+                        },
+                        onChangeUnit: function onChangeUnit(key) {
+                            return saveSwitcherStyles({ switchRadiusType: key });
+                        },
+                        unit: switcherStyles[0].switchRadiusType,
+                        showUnit: true,
+                        defaultValue: 1.5,
+                        min: 1,
+                        max: 100
+                    }),
+                    React.createElement(
+                        "h3",
+                        null,
+                        __("Controller State 1 Color")
+                    ),
+                    React.createElement(_PremiumBackgroundControl2.default, {
                         setAttributes: setAttributes,
-                        rangeType: { value: bottomSpacingType, label: __("bottomSpacingType") },
-                        range: { value: bottomSpacing, label: __("bottomSpacing") },
-                        rangeMobile: { value: bottomSpacingMobile, label: __("bottomSpacingMobile") },
-                        rangeTablet: { value: bottomSpacingTablet, label: __("bottomSpacingTablet") },
-                        rangeLabel: __("Bottom Spacing")
+                        saveContainerStyle: saveSwitcherStyles,
+                        backgroundType: backgroundTypeState1,
+                        backgroundColor: switcherStyles[0].containerBackState1,
+                        backgroundImageID: switcherStyles[0].backgroundImageIDState1,
+                        backgroundImageURL: switcherStyles[0].backgroundImageURLState1,
+                        backgroundPosition: switcherStyles[0].backgroundPositionState1,
+                        backgroundRepeat: switcherStyles[0].backgroundRepeatState1,
+                        backgroundSize: switcherStyles[0].backgroundSizeState1,
+                        fixed: switcherStyles[0].fixedState1,
+                        gradientLocationOne: switcherStyles[0].gradientLocationOneState1,
+                        gradientColorTwo: switcherStyles[0].gradientColorTwoState1,
+                        gradientLocationTwo: switcherStyles[0].gradientLocationTwoState1,
+                        gradientAngle: switcherStyles[0].gradientAngleState1,
+                        gradientPosition: switcherStyles[0].gradientPositionState1,
+                        gradientType: switcherStyles[0].gradientTypeState1
                     }),
                     React.createElement(
-                        "p",
+                        "h3",
                         null,
-                        __("First State Color")
+                        __("Controller State 2 Color")
                     ),
-                    React.createElement(ColorPalette, {
-                        value: firstStateColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                firstStateColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Second State Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: secondStateColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                secondStateColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Background Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: switcherBGColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                switcherBGColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    React.createElement(RangeControl, {
-                        label: __("Border Radius"),
-                        value: switchRadius,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ switchRadius: newValue });
-                        },
-                        initialPosition: 50,
-                        allowReset: true
+                    React.createElement(_PremiumBackgroundControl2.default, {
+                        setAttributes: setAttributes,
+                        saveContainerStyle: saveSwitcherStyles,
+                        backgroundType: backgroundTypeState2,
+                        backgroundColor: switcherStyles[0].containerBackState2,
+                        backgroundImageID: switcherStyles[0].backgroundImageIDState2,
+                        backgroundImageURL: switcherStyles[0].backgroundImageURLState2,
+                        backgroundPosition: switcherStyles[0].backgroundPositionState2,
+                        backgroundRepeat: switcherStyles[0].backgroundRepeatState2,
+                        backgroundSize: switcherStyles[0].backgroundSizeState2,
+                        fixed: switcherStyles[0].fixedState2,
+                        gradientLocationOne: switcherStyles[0].gradientLocationOneState2,
+                        gradientColorTwo: switcherStyles[0].gradientColorTwoState2,
+                        gradientLocationTwo: switcherStyles[0].gradientLocationTwoState2,
+                        gradientAngle: switcherStyles[0].gradientAngleState2,
+                        gradientPosition: switcherStyles[0].gradientPositionState2,
+                        gradientType: switcherStyles[0].gradientTypeState2
                     })
                 ),
                 showLabel && React.createElement(
@@ -69322,11 +69419,15 @@ var edit = function (_Component) {
                         }
                     })
                 )
-            ), React.createElement(
+            ), renderCss, React.createElement(
                 "div",
-                { className: (0, _classnames2.default)(className, "premium-block-" + this.props.clientId), style: {
+                {
+                    id: "premium-content-switcher-" + block_id,
+                    className: (0, _classnames2.default)(className, "premium-block-" + this.props.clientId),
+                    style: {
                         textAlign: align
-                    } },
+                    }
+                },
                 React.createElement(
                     "div",
                     { className: "premium-content-switcher",
@@ -69363,7 +69464,12 @@ var edit = function (_Component) {
                         ),
                         React.createElement(
                             "div",
-                            { className: "premium-content-switcher-toggle-switch" },
+                            {
+                                className: "premium-content-switcher-toggle-switch",
+                                style: {
+                                    fontSize: SwitcherSize + 'px'
+                                }
+                            },
                             React.createElement(
                                 "label",
                                 { className: "premium-content-switcher-toggle-switch-label" },
@@ -69533,22 +69639,72 @@ var attributes = {
         type: "string",
         default: "center"
     },
-    switchSizeType: {
+    switcherStyles: {
+        type: "array",
+        default: [{
+            switchSize: 15,
+            switchSizeMobile: 15,
+            switchSizeTablet: 15,
+            switchRadiusType: 'em',
+            switchRadius: 1.5,
+            switchRadiusMobile: 1.5,
+            switchRadiusTablet: 1.5,
+            containerRadiusType: '%',
+            containerRadius: 50,
+            containerRadiusMobile: 50,
+            containerRadiusTablet: 50,
+            containerBackState1: '',
+            backgroundImageIDState1: '',
+            backgroundImageURLState1: '',
+            backgroundRepeatState1: 'no-reapet',
+            backgroundPositionState1: 'top center',
+            backgroundSizeState1: 'auto',
+            fixedState1: false,
+            gradientLocationOneState1: '0',
+            gradientColorTwoState1: '',
+            gradientLocationTwoState1: '100',
+            gradientTypeState1: 'linear',
+            gradientAngleState1: '180',
+            gradientPositionState1: 'center center',
+            containerBackState2: '',
+            backgroundImageIDState2: '',
+            backgroundImageURLState2: '',
+            backgroundRepeatState2: 'no-reapet',
+            backgroundPositionState2: 'top center',
+            backgroundSizeState2: 'auto',
+            fixedState2: false,
+            gradientLocationOneState2: '0',
+            gradientColorTwoState2: '',
+            gradientLocationTwoState2: '100',
+            gradientTypeState2: 'linear',
+            gradientAngleState2: '180',
+            gradientPositionState2: 'center center'
+        }]
+    },
+    backgroundTypeState1: {
         type: "string",
-        default: "px"
+        default: ""
     },
-    switchSize: {
-        type: "number",
-        default: 15
+    backgroundTypeState2: {
+        type: "string",
+        default: ""
     },
-    switchSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    switchSizeTablet: {
-        type: "number",
-        default: 15
-    },
+    // switchSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // switchSize: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // switchSizeMobile: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // switchSizeTablet: {
+    //     type: "number",
+    //     default: 15
+    // },
     bottomSpacingType: {
         type: "string",
         default: "px"
@@ -69577,14 +69733,14 @@ var attributes = {
         type: "string",
         default: "#f2f2f2"
     },
-    switchRadius: {
-        type: "number",
-        default: 50
-    },
-    switchRadiusType: {
-        type: "string",
-        default: "px"
-    },
+    // switchRadius: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // switchRadiusType: {
+    //     type: "string",
+    //     default: "px"
+    // },
     labelSpacingType: {
         type: "string",
         default: "px"

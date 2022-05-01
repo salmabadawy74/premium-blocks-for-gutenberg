@@ -51,22 +51,74 @@ const attributes = {
         type: "string",
         default: "center"
     },
-    switchSizeType: {
+    switcherStyles: {
+        type: "array",
+        default: [
+            {
+                switchSize: 15,
+                switchSizeMobile: 15,
+                switchSizeTablet: 15,
+                switchRadiusType: 'em',
+                switchRadius: 1.5,
+                switchRadiusMobile: 1.5,
+                switchRadiusTablet: 1.5,
+                containerRadiusType: '%',
+                containerRadius: 50,
+                containerRadiusMobile: 50,
+                containerRadiusTablet: 50,
+                containerBackState1: '',
+                backgroundImageIDState1: '',
+                backgroundImageURLState1: '',
+                backgroundRepeatState1: 'no-reapet',
+                backgroundPositionState1: 'top center',
+                backgroundSizeState1: 'auto',
+                fixedState1: false,
+                gradientLocationOneState1: '0',
+                gradientColorTwoState1: '',
+                gradientLocationTwoState1: '100',
+                gradientTypeState1: 'linear',
+                gradientAngleState1: '180',
+                gradientPositionState1: 'center center',
+                containerBackState2: '',
+                backgroundImageIDState2: '',
+                backgroundImageURLState2: '',
+                backgroundRepeatState2: 'no-reapet',
+                backgroundPositionState2: 'top center',
+                backgroundSizeState2: 'auto',
+                fixedState2: false,
+                gradientLocationOneState2: '0',
+                gradientColorTwoState2: '',
+                gradientLocationTwoState2: '100',
+                gradientTypeState2: 'linear',
+                gradientAngleState2: '180',
+                gradientPositionState2: 'center center',
+            }
+        ]
+    },
+    backgroundTypeState1: {
         type: "string",
-        default: "px"
+        default: ""
     },
-    switchSize: {
-        type: "number",
-        default: 15
+    backgroundTypeState2: {
+        type: "string",
+        default: ""
     },
-    switchSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    switchSizeTablet: {
-        type: "number",
-        default: 15
-    },
+    // switchSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // switchSize: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // switchSizeMobile: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // switchSizeTablet: {
+    //     type: "number",
+    //     default: 15
+    // },
     bottomSpacingType: {
         type: "string",
         default: "px"
@@ -95,14 +147,14 @@ const attributes = {
         type: "string",
         default: "#f2f2f2"
     },
-    switchRadius: {
-        type: "number",
-        default: 50
-    },
-    switchRadiusType: {
-        type: "string",
-        default: "px"
-    },
+    // switchRadius: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // switchRadiusType: {
+    //     type: "string",
+    //     default: "px"
+    // },
     labelSpacingType: {
         type: "string",
         default: "px"
