@@ -97,6 +97,7 @@ class edit extends Component {
             firstLabel,
             secondLabel,
             display,
+            labelTag,
             firstContent,
             secondContent,
             switchCheck,
@@ -253,6 +254,32 @@ class edit extends Component {
             }
         ]
 
+        const TAGS = [
+            {
+                value: "h1",
+                label: "H1"
+            }, {
+                value: "h2",
+                label: "H2"
+            },
+            {
+                value: "h3",
+                label: "H3"
+            },
+            {
+                value: "h4",
+                label: "H4"
+            },
+            {
+                value: "h5",
+                label: "H5"
+            },
+            {
+                value: "h6",
+                label: "H6"
+            }
+        ];
+
         var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId)
 
         if (null != element && "undefined" != typeof element) {
@@ -274,7 +301,7 @@ class edit extends Component {
             isSelected && (
                 <InspectorControls>
                     <PanelBody
-                        title={__("General Settings")}
+                        title={__("Switcher")}
                         className="premium-panel-body"
                         initialOpen={false}
                     >
@@ -296,6 +323,12 @@ class edit extends Component {
                                     onChange={value => setAttributes({ secondLabel: value })}
                                 />
                                 <SelectControl
+                                    label={__("HTML Tag")}
+                                    options={TAGS}
+                                    value={labelTag}
+                                    onChange={(newValue) => setAttributes({ labelTag: newValue })}
+                                />
+                                <SelectControl
                                     label={__("Display")}
                                     options={DISPLAY}
                                     value={display}
@@ -303,7 +336,15 @@ class edit extends Component {
                                 />
                             </Fragment>
                         )}
-                        <p>{__("First Content Alignment")}</p>
+                        <p>{__("Alignment")}</p>
+                        <Toolbar
+                            controls={ALIGNS.map(contentAlign => ({
+                                icon: "editor-align" + contentAlign,
+                                isActive: contentAlign === align,
+                                onClick: () => setAttributes({ align: contentAlign })
+                            }))}
+                        />
+                        {/* <p>{__("First Content Alignment")}</p>
                         <Toolbar
                             controls={ALIGNS.map(contentAlign => ({
                                 icon: "editor-align" + contentAlign,
@@ -318,7 +359,7 @@ class edit extends Component {
                                 isActive: contentAlign === secondcontentlign,
                                 onClick: () => setAttributes({ secondcontentlign: contentAlign })
                             }))}
-                        />
+                        /> */}
                         <SelectControl
                             label={__("Effect")}
                             options={EFFECTS}
@@ -685,12 +726,15 @@ class edit extends Component {
                     <div className={`premium-content-switcher-toggle-${display}`}
                         style={{
                             textAlign: align,
-                            justifyContent: align == "right" ? "flex-end" : align,
-                            alignItems: align
+                            justifyContent: align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
+                            alignItems: display == "inline" ? "center" : align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
                         }}>
                         {showLabel && (<div className="premium-content-switcher-first-label">
-                            <h3
+                            <RichText
+                                tagName={labelTag.toLowerCase()}
                                 className={`premium-content-switcher-${display}-editing`}
+                                onChange={(newValue) => setAttributes({ firstLabel: newValue })}
+                                value={firstLabel}
                                 style={{
                                     color: firstLabelColor,
                                     letterSpacing: firstLabelLetter + "px",
@@ -699,7 +743,7 @@ class edit extends Component {
                                     fontWeight: firstLabelWeight,
                                     textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
                                 }}
-                            >{firstLabel}</h3>
+                            />
                         </div>
                         )}
                         <div className="premium-content-switcher-toggle-switch">
@@ -712,8 +756,11 @@ class edit extends Component {
                             </label>
                         </div>
                         {showLabel && (<div className="premium-content-switcher-second-label">
-                            <h3
+                            <RichText
+                                tagName={labelTag.toLowerCase()}
                                 className={`premium-content-switcher-${display}-editing`}
+                                onChange={(newValue) => setAttributes({ secondLabel: newValue })}
+                                value={secondLabel}
                                 style={{
                                     color: secondLabelColor,
                                     letterSpacing: secondLabelLetter + "px",
@@ -721,7 +768,8 @@ class edit extends Component {
                                     fontStyle: secondLabelStyle,
                                     fontWeight: secondLabelWeight,
                                     textShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor}`,
-                                }}>{secondLabel}</h3>
+                                }}
+                            />
                         </div>
                         )}
                     </div>

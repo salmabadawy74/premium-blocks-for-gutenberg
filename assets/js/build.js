@@ -68604,6 +68604,7 @@ var edit = function (_Component) {
                 firstLabel = attributes.firstLabel,
                 secondLabel = attributes.secondLabel,
                 display = attributes.display,
+                labelTag = attributes.labelTag,
                 firstContent = attributes.firstContent,
                 secondContent = attributes.secondContent,
                 switchCheck = attributes.switchCheck,
@@ -68749,6 +68750,26 @@ var edit = function (_Component) {
                 value: "right"
             }];
 
+            var TAGS = [{
+                value: "h1",
+                label: "H1"
+            }, {
+                value: "h2",
+                label: "H2"
+            }, {
+                value: "h3",
+                label: "H3"
+            }, {
+                value: "h4",
+                label: "H4"
+            }, {
+                value: "h5",
+                label: "H5"
+            }, {
+                value: "h6",
+                label: "H6"
+            }];
+
             var element = document.getElementById("premium-style-content-switcher-" + this.props.clientId);
 
             if (null != element && "undefined" != typeof element) {
@@ -68771,7 +68792,7 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("General Settings"),
+                        title: __("Switcher"),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
@@ -68800,6 +68821,14 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(SelectControl, {
+                            label: __("HTML Tag"),
+                            options: TAGS,
+                            value: labelTag,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ labelTag: newValue });
+                            }
+                        }),
+                        React.createElement(SelectControl, {
                             label: __("Display"),
                             options: DISPLAY,
                             value: display,
@@ -68811,31 +68840,15 @@ var edit = function (_Component) {
                     React.createElement(
                         "p",
                         null,
-                        __("First Content Alignment")
+                        __("Alignment")
                     ),
                     React.createElement(Toolbar, {
                         controls: ALIGNS.map(function (contentAlign) {
                             return {
                                 icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === firstcontentlign,
+                                isActive: contentAlign === align,
                                 onClick: function onClick() {
-                                    return setAttributes({ firstcontentlign: contentAlign });
-                                }
-                            };
-                        })
-                    }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Second Content Alignment")
-                    ),
-                    React.createElement(Toolbar, {
-                        controls: ALIGNS.map(function (contentAlign) {
-                            return {
-                                icon: "editor-align" + contentAlign,
-                                isActive: contentAlign === secondcontentlign,
-                                onClick: function onClick() {
-                                    return setAttributes({ secondcontentlign: contentAlign });
+                                    return setAttributes({ align: contentAlign });
                                 }
                             };
                         })
@@ -69262,27 +69275,28 @@ var edit = function (_Component) {
                         { className: "premium-content-switcher-toggle-" + display,
                             style: {
                                 textAlign: align,
-                                justifyContent: align == "right" ? "flex-end" : align,
-                                alignItems: align
+                                justifyContent: align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
+                                alignItems: display == "inline" ? "center" : align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align
                             } },
                         showLabel && React.createElement(
                             "div",
                             { className: "premium-content-switcher-first-label" },
-                            React.createElement(
-                                "h3",
-                                {
-                                    className: "premium-content-switcher-" + display + "-editing",
-                                    style: {
-                                        color: firstLabelColor,
-                                        letterSpacing: firstLabelLetter + "px",
-                                        textTransform: firstLabelUpper ? "uppercase" : "none",
-                                        fontStyle: firstLabelStyle,
-                                        fontWeight: firstLabelWeight,
-                                        textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
-                                    }
+                            React.createElement(RichText, {
+                                tagName: labelTag.toLowerCase(),
+                                className: "premium-content-switcher-" + display + "-editing",
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ firstLabel: newValue });
                                 },
-                                firstLabel
-                            )
+                                value: firstLabel,
+                                style: {
+                                    color: firstLabelColor,
+                                    letterSpacing: firstLabelLetter + "px",
+                                    textTransform: firstLabelUpper ? "uppercase" : "none",
+                                    fontStyle: firstLabelStyle,
+                                    fontWeight: firstLabelWeight,
+                                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                                }
+                            })
                         ),
                         React.createElement(
                             "div",
@@ -69300,20 +69314,22 @@ var edit = function (_Component) {
                         showLabel && React.createElement(
                             "div",
                             { className: "premium-content-switcher-second-label" },
-                            React.createElement(
-                                "h3",
-                                {
-                                    className: "premium-content-switcher-" + display + "-editing",
-                                    style: {
-                                        color: secondLabelColor,
-                                        letterSpacing: secondLabelLetter + "px",
-                                        textTransform: secondLabelUpper ? "uppercase" : "none",
-                                        fontStyle: secondLabelStyle,
-                                        fontWeight: secondLabelWeight,
-                                        textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
-                                    } },
-                                secondLabel
-                            )
+                            React.createElement(RichText, {
+                                tagName: labelTag.toLowerCase(),
+                                className: "premium-content-switcher-" + display + "-editing",
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ secondLabel: newValue });
+                                },
+                                value: secondLabel,
+                                style: {
+                                    color: secondLabelColor,
+                                    letterSpacing: secondLabelLetter + "px",
+                                    textTransform: secondLabelUpper ? "uppercase" : "none",
+                                    fontStyle: secondLabelStyle,
+                                    fontWeight: secondLabelWeight,
+                                    textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                                }
+                            })
                         )
                     ),
                     React.createElement(
@@ -69429,6 +69445,10 @@ var attributes = {
     display: {
         type: "string",
         default: "inline"
+    },
+    labelTag: {
+        type: "string",
+        default: "h3"
     },
     firstContent: {
         type: "string",
