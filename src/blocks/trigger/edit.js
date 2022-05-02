@@ -16,6 +16,7 @@ import { PanelBody, TextControl, Button, Popover, TabPanel } from '@wordpress/co
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border";
+import RadioComponent from '../../components/radio-control';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -43,7 +44,7 @@ const { isSelected, attributes, setAttributes, clientId, className } = props;
 useEffect(() => {
     setAttributes({ block_id: props.clientId })
 }, [])
-const { triggerLabel, iconAlignment, iconSize, block_id, triggerStyles } = attributes;
+const { triggerLabel, iconAlignment, iconSize, block_id, triggerStyles, canvasStyles } = attributes;
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
@@ -93,6 +94,12 @@ const setTriggerStyles = (color, value) => {
                         units={['px']}
                         defaultValue={20}
                     />
+                    <RadioComponent
+                        choices={["right", "left"]}
+                        value={triggerStyles.labelPosition}
+                        onChange={newValue => setTriggerStyles('labelPosition', newValue )}
+                        label={__("Label Position", 'premium-blocks-for-gutenberg')}
+                    />
                     <TabPanel
                         className="premium-color-tabpanel"
                         activeClass="active-tab"
@@ -122,9 +129,9 @@ const setTriggerStyles = (color, value) => {
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Background Icon Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.iconbgColor}
+                                            colorValue={triggerStyles.iconBgColor}
                                             colorDefault={''} 
-                                            onColorChange={newValue => setTriggerStyles('iconbgColor', newValue )}
+                                            onColorChange={newValue => setTriggerStyles('iconBgColor', newValue )}
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Label Color", 'premium-blocks-for-gutenberg')}
@@ -147,9 +154,9 @@ const setTriggerStyles = (color, value) => {
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Background Icon Hover Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.iconbgHoverColor}
+                                            colorValue={triggerStyles.iconBgHoverColor}
                                             colorDefault={''}
-                                            onColorChange={newValue => setTriggerStyles('iconbgHoverColor', newValue )}
+                                            onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue )}
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
@@ -167,13 +174,25 @@ const setTriggerStyles = (color, value) => {
                             );
                         }}
                     </TabPanel>
-                    <PremiumBorder
+                    
+                    <RadioComponent
+                        choices={["simple", "outline", "solid"]}
+                        value={triggerStyles.style}
+                        onChange={newValue => setTriggerStyles('style', newValue )}
+                        label={__("Icon Style", 'premium-blocks-for-gutenberg')}
                     />
+                    
                 </PanelBody>
                 <PanelBody
                     title={__('Canvas Area', 'premium-blocks-for-gutenberg')}
                     initialOpen={true}
                 >
+                    <AdvancedPopColorControl
+                        label={__("Background Canvas Area", 'premium-blocks-for-gutenberg')}
+                        colorValue={canvasStyles.canvasBgColor}
+                        colorDefault={''}
+                        onColorChange={newValue => setTriggerStyles('canvasBgColor', newValue )}
+                    />
 
                 </PanelBody>
             </InspectorControls>  
@@ -189,7 +208,7 @@ const setTriggerStyles = (color, value) => {
             <style>
             {`
             #block-${block_id} .toggle-button:hover {
-                background-color:${triggerStyles.iconbgHoverColor} !important;
+                background-color:${triggerStyles.iconBgHoverColor} !important;
             }
             #block-${block_id} .toggle-button:hover svg {
                 fill:${triggerStyles.iconHoverColor} !important;
@@ -206,14 +225,28 @@ const setTriggerStyles = (color, value) => {
                     ``
                 ),
                 style: {
-                    //iconSize: `${iconSize.desktop}${iconSize.unit}`
+                    // marginTop: `${margin.desktop.top}px`,
+                    // marginRight: `${margin.desktop.right}px`,
+                    // marginBottom: `${margin.desktop.bottom}px`,
+                    // marginLeft: `${margin.desktop.left}px`,
+                    // paddingTop: `${padding.desktop.top}px`,
+                    // paddingRight: `${padding.desktop.right}px`,
+                    // paddingBottom: `${padding.desktop.bottom}px`,
+                    // paddingLeft: `${padding.desktop.left}px`,
+                    backgroundColor: triggerStyles.iconBgColor,
+                    borderStyle: triggerStyles.borderType,
+                    borderTopWidth: triggerStyles.triggerBorderTop,
                 }
             }) }>
             <div className={`premium-trigger-container`}>
-            <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`}>
-                    <a className={`toggle-button header-toggle-button`} 
+            <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
+                    <a className={`toggle-button`} 
+                    data-style={triggerStyles.style}
+                    data-label={triggerStyles.labelPosition}
                         onClick={ () => setEditing( true ) }
-                        style={{backgroundColor: triggerStyles.iconbgColor }}
+                        style={{
+
+                        }}
                     >
                         {triggerLabel &&
                         <span
@@ -224,7 +257,7 @@ const setTriggerStyles = (color, value) => {
                             style={{color: triggerStyles.labelColor }}
                            // allowedFormats={ [] }
                         >{triggerLabel}</span>}
-                        <svg style={{fontSize: `${iconSize}px`, fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <svg style={{fontSize: `${iconSize}px`, fill:`${triggerStyles.iconColor}`, backgroundColor:`${triggerStyles.iconBgColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
 					<path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path></svg>

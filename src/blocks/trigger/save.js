@@ -11,26 +11,28 @@
      useBlockProps
  } from '@wordpress/block-editor';
  export default function Save({attributes}) {
-    const { block_id, iconAlignment, triggerLabel, iconSize } = attributes;
+    const { block_id, iconAlignment, triggerLabel, triggerStyles, iconSize } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
          className: ``,
      });
+
     // const [ isEditing, setEditing ] = useState( false );
 
      return (
          <div { ...blockProps }>
 
                     {
-                        <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`}>
-                            <a className={`toggle-button header-toggle-button`} 
-                               // style={{backgroundColor: triggerColors.iconbgColor}}
+                        <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
+                            <a className={`toggle-button`}
+                                data-style={triggerStyles.style} 
+                                style={{backgroundColor: triggerStyles.iconBgColor}}
                                 onClick={ () => setEditing( true ) }
                             >
                             {triggerLabel &&
-                                <span className='trigger-label' style={{ padding: '0 .4em' }}>{triggerLabel}</span>
+                                <span className='trigger-label'>{triggerLabel}</span>
                             }
-                                <svg height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <svg style={{fontSize: `${iconSize}px` , fill:`${triggerStyles.iconColor}`, backgroundColor:`${triggerStyles.iconBgColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
                                     <path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
                                     <path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>

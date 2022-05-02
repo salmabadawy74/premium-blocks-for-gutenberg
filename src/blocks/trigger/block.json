@@ -35,9 +35,18 @@
             "type": "object",
             "default": {
                 "iconColor": "",
-                "iconbgColor": "",
+                "iconBgColor": "",
                 "iconHoverColor": "",
-                "iconbgHoverColor": ""
+				"labelHoverColor": "",
+                "iconHoverBgColor": "",
+				"labelPosition": "left",
+				"style": "outline"
+            }
+        },
+		"canvasStyles": {
+            "type": "object",
+            "default": {
+                "canvasBgColor": ""
             }
         }
 	}
