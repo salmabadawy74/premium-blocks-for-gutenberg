@@ -11,7 +11,7 @@
      useBlockProps
  } from '@wordpress/block-editor';
  export default function Save({attributes}) {
-    const { block_id, iconAlignment, triggerLabel, triggerStyles, iconSize } = attributes;
+    const { block_id, iconAlignment, triggerLabel, triggerStyles, canvasStyles, iconSize } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
          className: ``,
@@ -40,7 +40,12 @@
                             </a>
                         </div>
                             }
-                    <div className="gpb-trigger-wrap" style={{ display: "none" }} role="dialog">
+                    <div className="gpb-trigger-wrap" role="dialog" data-layout={canvasStyles.layout} 
+                    style={ {
+                        display: "none",
+                        width: canvasStyles.width + 'px'
+                    }}    
+                    >
                         <div role="presentation" className="gpb-popup-overlay"></div>
                         <div className="gpb-popup-content gpb-desktop-popup-content">
                             <div className="gpb-popup-header">

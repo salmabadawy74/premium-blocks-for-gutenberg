@@ -46,7 +46,16 @@
 		"canvasStyles": {
             "type": "object",
             "default": {
-                "canvasBgColor": ""
+				"overlayBgColor": "",
+                "canvasBgColor": "",
+				"layout": "right",
+				"width": ""
+            }
+        },
+		"spacing": {
+            "type": "object",
+            "default": {
+                "padding": null
             }
         }
 	}
