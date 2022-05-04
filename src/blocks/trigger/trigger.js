@@ -5,7 +5,7 @@ jQuery(function ($) {
         let $modal = $(modal);
         const triggers = $modal.find('.toggle-button');
         const wrapClass = $modal.find('.gpb-popup-content')
-        const closes = wrapClass.find('button.toggle-button-close');
+        const closes = wrapClass.find('.toggle-button-close');
         const overlays = $modal.find('.gpb-popup-overlay')
         function ShowModal() {
             $modal.addClass("active");

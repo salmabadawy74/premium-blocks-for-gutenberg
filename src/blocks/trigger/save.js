@@ -11,12 +11,37 @@
      useBlockProps
  } from '@wordpress/block-editor';
  export default function Save({attributes}) {
-    const { block_id, iconAlignment, triggerLabel, triggerStyles, canvasStyles, iconSize } = attributes;
+    const { block_id, iconAlignment, triggerLabel, triggerStyles, canvasStyles, spacing, iconSize, triggerBorderTop, triggerBorderRight, triggerBorderLeft, triggerBorderBottom } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
          className: ``,
      });
-
+     const defaultSpacingValue = {
+        desktop: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        },
+        tablet: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        },
+        mobile: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        }
+    };
+     let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+     const onChangePadding = (side, value, device) => {
+         const newPadding = { ...padding };
+         newPadding[device][side] = value;
+         setAttributes({ spacing: { ...spacing, padding: newPadding } });
+     }
     // const [ isEditing, setEditing ] = useState( false );
 
      return (
@@ -34,6 +59,18 @@
             }
             #premium-trigger-${block_id} .toggle-button[data-style="solid"] {
                 background-color: ${triggerStyles.iconBgColor} ;
+            }
+            #premium-trigger-${block_id} .toggle-button[data-style="outline"] {
+                border-style: ${triggerStyles.borderType} !important;
+                border-top-width: ${triggerBorderTop}px !important;
+                border-right-width: ${triggerBorderRight}px !important;
+                border-bottom-width: ${triggerBorderBottom}px !important;
+                border-left-width: ${triggerBorderLeft}px !important;
+                border-color: ${triggerStyles.borderColor} !important;
+                border-radius: ${triggerStyles.borderRadius}px !important;
+            }
+            #premium-trigger-${block_id} .toggle-button[data-style="outline"]:hover {
+                border-color: ${triggerStyles.borderHoverColor} !important;
             }
 
 
@@ -61,14 +98,23 @@
                     <div className="gpb-trigger-wrap" role="dialog" data-layout={canvasStyles.layout} 
                     style={ {
                         display: "none",
-                        width: canvasStyles.width + 'px'
+                        width: canvasStyles.width + 'px',
+                        
                     }}    
                     >
-                        <div role="presentation" className="gpb-popup-overlay"></div>
-                        <div className="gpb-popup-content gpb-desktop-popup-content">
+                        <div role="presentation" className="gpb-popup-overlay" style={{backgroundColor: `${canvasStyles.overlayBgColor}`,}}></div>
+                        <div className="gpb-popup-content gpb-desktop-popup-content"
+                        style={{
+                            paddingTop: `${padding.desktop.top}px`,
+                            paddingRight: `${padding.desktop.right}px`,
+                            paddingBottom: `${padding.desktop.bottom}px`,
+                            paddingLeft: `${padding.desktop.left}px`,
+                            backgroundColor: `${canvasStyles.canvasBgColor}`,
+                        }}>
                             <div className="gpb-popup-header">
-                            <a id="gpb-toggle-button-close">
-                                    <span className="gpb-close-icon" onClick={() => setEditing(false)}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" version="1.1">
+
+                            <a id="gpb-toggle-button-close" className="toggle-button-close">
+                                    <span className="gpb-close-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" version="1.1">
                                     <path d="M 23.648438 21.964844 C 24.070312 22.4375 24.046875 23.15625 23.601562 23.601562 C 23.15625 24.046875 22.4375 24.070312 21.964844 23.648438 L 12 13.683594 L 2.035156 23.648438 C 1.5625 24.070312 0.84375 24.046875 0.398438 23.601562 C -0.046875 23.15625 -0.0703125 22.4375 0.351562 21.964844 L 10.316406 12 L 0.351562 2.035156 C 0.0195312 1.742188 -0.121094 1.289062 -0.015625 0.855469 C 0.0898438 0.425781 0.425781 0.0898438 0.855469 -0.015625 C 1.289062 -0.121094 1.742188 0.0195312 2.035156 0.351562 L 12 10.316406 L 21.964844 0.351562 C 22.4375 -0.0703125 23.15625 -0.046875 23.601562 0.398438 C 24.046875 0.84375 24.070312 1.5625 23.648438 2.035156 L 13.683594 12 Z M 23.648438 21.964844 "></path>
                                     </svg></span>
                                 </a>
@@ -80,15 +126,6 @@
                             
                         </div>
                     </div>	
-                    {/* {//isEditing && (
-                    <div className="premium-popup__modal_wrap" role="dialog">
-                        <div role="presentation" className="premium-popup__modal_wrap_overlay" style={{ background: 'black' }} onClick={() => setEditing(true)} >
-                        </div>
-                            <button className='close-button'>☓</button>
-							<InnerBlocks.Content />
-                        </div>
-              //  )
-            } */}
          </div>
      );
 }

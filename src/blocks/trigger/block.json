@@ -40,7 +40,11 @@
 				"labelHoverColor": "",
                 "iconHoverBgColor": "",
 				"labelPosition": "left",
-				"style": "simple"
+				"style": "simple",
+				"borderType": "",
+				"borderColor": "",
+				"borderHoverColor": "",
+				"borderRadius": ""
             }
         },
 		"canvasStyles": {

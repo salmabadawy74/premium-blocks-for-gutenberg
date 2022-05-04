@@ -220,7 +220,7 @@ const onChangePadding = (side, value, device) => {
                     }
                     
                     {triggerStyles.style === 'outline' && 
-
+                    <fragment>
                     <PremiumBorder
                         borderType={triggerStyles.borderType}
                         top={triggerBorderTop}
@@ -229,7 +229,7 @@ const onChangePadding = (side, value, device) => {
                         left={triggerBorderLeft}
                         borderColor={triggerStyles.borderColor}
                         borderRadius={triggerStyles.borderRadius}
-                        onChangeType={(newType) => saveTriggerStyles({ borderType: newType })}
+                        onChangeType={(newType) => setTriggerStyles( 'borderType' , newType )}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
                                 triggerBorderTop: top,
@@ -238,9 +238,17 @@ const onChangePadding = (side, value, device) => {
                                 triggerBorderLeft: left,
                             })
                         }
-                        onChangeColor={(colorValue) => saveTriggerStyles({ borderColor: colorValue })}
-                        onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadius: newRadius })}
-                    />}
+                        onChangeColor={(colorValue) => setTriggerStyles( 'borderColor' , colorValue )}
+                        onChangeRadius={(newRadius) => setTriggerStyles( 'borderRadius' , newRadius )}
+                    />
+                    <AdvancedPopColorControl
+                            label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
+                            colorValue={triggerStyles.borderHoverColor}
+                            colorDefault={''}
+                            onColorChange={newValue => setTriggerStyles('borderHoverColor', newValue )}
+                        />
+                        </fragment>
+                    }
                                   
                     
                 </PanelBody>
@@ -335,6 +343,18 @@ const onChangePadding = (side, value, device) => {
             #block-${block_id} .toggle-button[data-style="solid"] {
                 background-color: ${triggerStyles.iconBgColor} ;
             }
+            #block-${block_id} .toggle-button[data-style="outline"] {
+                border-style: ${triggerStyles.borderType} !important;
+                border-top-width: ${triggerBorderTop}px !important;
+                border-right-width: ${triggerBorderRight}px !important;
+                border-bottom-width: ${triggerBorderBottom}px !important;
+                border-left-width: ${triggerBorderLeft}px !important;
+                border-color: ${triggerStyles.borderColor} !important;
+                border-radius: ${triggerStyles.borderRadius}px !important;
+            }
+            #block-${block_id} .toggle-button[data-style="outline"]:hover {
+                border-color: ${triggerStyles.borderHoverColor} !important;
+            }
 
 
         `}
@@ -382,17 +402,17 @@ const onChangePadding = (side, value, device) => {
                     </a>
                 </div>
 				{isEditing && (
-                    <div className="gpb-trigger-wrap" role="dialog" data-layout={canvasStyles.layout}
-                    style={{
+                    <div className="gpb-trigger-wrap" role="dialog" data-layout={canvasStyles.layout} >
+                        <div role="presentation" className="gpb-popup-overlay" onClick={() => setEditing(false)} style={{
                         backgroundColor: `${canvasStyles.overlayBgColor}`,
-                    }}>
-                        <div role="presentation" className="gpb-popup-overlay" onClick={() => setEditing(false)}></div>
+                    }}></div>
                         <div className="gpb-popup-content gpb-desktop-popup-content"
                         style={{
                             paddingTop: `${padding.desktop.top}px`,
                             paddingRight: `${padding.desktop.right}px`,
                             paddingBottom: `${padding.desktop.bottom}px`,
                             paddingLeft: `${padding.desktop.left}px`,
+                            backgroundColor: `${canvasStyles.canvasBgColor}`,
                         }}
                         >
                         <div className="gpb-popup-header">
