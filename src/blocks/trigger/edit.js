@@ -46,7 +46,7 @@ const { isSelected, attributes, setAttributes, clientId, className } = props;
 useEffect(() => {
     setAttributes({ block_id: props.clientId })
 }, [])
-const { triggerLabel, iconAlignment, iconSize, block_id, triggerStyles, canvasStyles, spacing } = attributes;
+const { triggerLabel, iconAlignment, iconSize, block_id, triggerStyles, canvasStyles, spacing, triggerBorderTop, triggerBorderRight, triggerBorderBottom, triggerBorderLeft } = attributes;
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
@@ -161,18 +161,11 @@ const onChangePadding = (side, value, device) => {
                                             onColorChange={(newValue) => setTriggerStyles('iconColor', newValue )}
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Background Icon Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.iconBgColor}
-                                            colorDefault={''} 
-                                            onColorChange={newValue => setTriggerStyles('iconBgColor', newValue )}
-                                        />
-                                        <AdvancedPopColorControl
                                             label={__("Label Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={triggerStyles.labelColor}
                                             colorDefault={''}
                                             onColorChange={newValue => setTriggerStyles('labelColor', newValue )}
-                                        />
-                                        
+                                        /> 
                                     </Fragment>
                                 );
                             }
@@ -184,12 +177,6 @@ const onChangePadding = (side, value, device) => {
                                             colorValue={triggerStyles.iconHoverColor}
                                             colorDefault={''}
                                             onColorChange={newValue => setTriggerStyles('iconHoverColor', newValue )}
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Background Icon Hover Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.iconBgHoverColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue )}
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
@@ -214,6 +201,47 @@ const onChangePadding = (side, value, device) => {
                         onChange={newValue => setTriggerStyles('style', newValue )}
                         label={__("Icon Style", 'premium-blocks-for-gutenberg')}
                     />
+
+                    {triggerStyles.style === 'solid' && 
+                    <fragment>
+                        <AdvancedPopColorControl
+                        label={__("Background Icon Color", 'premium-blocks-for-gutenberg')}
+                        colorValue={triggerStyles.iconBgColor}
+                        colorDefault={''} 
+                        onColorChange={newValue => setTriggerStyles('iconBgColor', newValue )}
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Background Icon Hover Color", 'premium-blocks-for-gutenberg')}
+                            colorValue={triggerStyles.iconBgHoverColor}
+                            colorDefault={''}
+                            onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue )}
+                        />
+                    </fragment>
+                    }
+                    
+                    {triggerStyles.style === 'outline' && 
+
+                    <PremiumBorder
+                        borderType={triggerStyles.borderType}
+                        top={triggerBorderTop}
+                        right={triggerBorderRight}
+                        bottom={triggerBorderBottom}
+                        left={triggerBorderLeft}
+                        borderColor={triggerStyles.borderColor}
+                        borderRadius={triggerStyles.borderRadius}
+                        onChangeType={(newType) => saveTriggerStyles({ borderType: newType })}
+                        onChangeWidth={({ top, right, bottom, left }) =>
+                            setAttributes({
+                                triggerBorderTop: top,
+                                triggerBorderRight: right,
+                                triggerBorderBottom: bottom,
+                                triggerBorderLeft: left,
+                            })
+                        }
+                        onChangeColor={(colorValue) => saveTriggerStyles({ borderColor: colorValue })}
+                        onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadius: newRadius })}
+                    />}
+                                  
                     
                 </PanelBody>
                 <PanelBody
@@ -304,6 +332,9 @@ const onChangePadding = (side, value, device) => {
             #block-${block_id} .toggle-button:hover .trigger-label {
                 color:${triggerStyles.labelHoverColor} !important;
             }
+            #block-${block_id} .toggle-button[data-style="solid"] {
+                background-color: ${triggerStyles.iconBgColor} ;
+            }
 
 
         `}
@@ -321,21 +352,19 @@ const onChangePadding = (side, value, device) => {
                     // paddingRight: `${padding.desktop.right}px`,
                     // paddingBottom: `${padding.desktop.bottom}px`,
                     // paddingLeft: `${padding.desktop.left}px`,
-                    backgroundColor: triggerStyles.iconBgColor,
-                    borderStyle: triggerStyles.borderType,
-                    borderTopWidth: triggerStyles.triggerBorderTop,
+                    //backgroundColor: triggerStyles.iconBgColor,
+                    //borderStyle: triggerStyles.borderType,
+                    //borderTopWidth: triggerStyles.triggerBorderTop,
                 }
             }) }>
             <div className={`premium-trigger-container`}>
-            <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
+            <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`}>
                     <a className={`toggle-button ${isEditing ? "toggled" : ""}`} 
                     data-style={triggerStyles.style}
+                    data-label={triggerStyles.labelPosition}
                         onClick={ () => setEditing( true )
                         }
-                        style={{
-
-                        }}
-                    >
+                        >
                         {triggerLabel &&
                         <span
                             className={`trigger-label`}
@@ -345,7 +374,7 @@ const onChangePadding = (side, value, device) => {
                             style={{color: triggerStyles.labelColor }}
                            // allowedFormats={ [] }
                         >{triggerLabel}</span>}
-                        <svg style={{fontSize: `${iconSize}px`, fill:`${triggerStyles.iconColor}`, backgroundColor:`${triggerStyles.iconBgColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <svg style={{fontSize: `${iconSize}px`, fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
 					<path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path></svg>

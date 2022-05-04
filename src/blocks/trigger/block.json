@@ -40,7 +40,7 @@
 				"labelHoverColor": "",
                 "iconHoverBgColor": "",
 				"labelPosition": "left",
-				"style": "outline"
+				"style": "simple"
             }
         },
 		"canvasStyles": {
@@ -57,7 +57,19 @@
             "default": {
                 "padding": null
             }
-        }
+        },
+		"triggerBorderTop": {
+			"type": "number"
+		},
+		"triggerBorderRight": {
+			"type": "number"
+		},
+		"triggerBorderBottom": {
+			"type": "number"
+		},
+		"triggerBorderLeft": {
+			"type": "number"
+		}
 	}
 
 }

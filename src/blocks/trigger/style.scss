@@ -67,7 +67,6 @@
   }
 }
 .toggle-button {
-	padding: 10px;
     cursor: pointer;
 	display: inline-flex;
 	align-items: center;
@@ -102,6 +101,19 @@
 			height: 6.15px;
 		}
 	}
+}
+.toggle-button[data-label="right"] {
+	flex-direction: row-reverse;
+	.trigger-label {
+		margin-right: 0px;
+		margin-left: 10px;
+	}
+}
+.toggle-button[data-style="outline"] {
+	padding: 10px;
+}
+.toggle-button[data-style="solid"] {
+	padding: 10px;
 }
 @media (max-width: 767px) {
 	.wp-block-premium-trigger {

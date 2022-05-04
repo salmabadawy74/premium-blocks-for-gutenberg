@@ -11,15 +11,15 @@ function get_trigger_css_style( $attributes, $unique_id ) {
 	$unique_id = $attributes['block_id'];
 
 	if ( isset( $attributes['triggerStyles'] ) ) {
-		$triggerStyle = $attributes['triggerStyles'];
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'fill', $css->render_color( $triggerStyle['iconColor'] ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button:hover svg' );
-		$css->add_property( 'fill', $css->render_color( $triggerStyle['iconHoverColor'] ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button' );
-		$css->add_property( 'background-color', $css->render_color( $triggerStyle['iconBgColor'] ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button:hover' );
-		$css->add_property( 'background-color', $css->render_color( $triggerStyle['iconBgHoverColor'] ) );
+		// $triggerStyle = $attributes['triggerStyles'];
+		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
+		// $css->add_property( 'fill', $css->render_color( $triggerStyle['iconColor'] ) );
+		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button:hover svg' );
+		// $css->add_property( 'fill', $css->render_color( $triggerStyle['iconHoverColor'] ) );
+		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button' );
+		// $css->add_property( 'background-color', $css->render_color( $triggerStyle['iconBgColor'] ) );
+		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button:hover' );
+		// $css->add_property( 'background-color', $css->render_color( $triggerStyle['iconBgHoverColor'] ) );
 	}
 
 	return $css->css_output();
