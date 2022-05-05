@@ -156,8 +156,14 @@ class PBG_Breadcrumb_Trail {
 				++$item_position;
 				// Check if the item is linked.
 				preg_match( '/(<a.*?>)(.*?)(<\/a>)/i', $item, $matches );
+				// Separator.
+				if ( $item_count === $item_position ) {
+					$sep = '';
+				} else {
+					$sep = $separator;
+				}
 				// Wrap the item text with appropriate itemprop.
-				$item = ! empty( $matches ) ? sprintf( '%s<span itemprop="name">%s</span>%s', $matches[1], $matches[2], $matches[3] ) : sprintf( '<span itemprop="name">%s</span>', $item );
+				$item = ! empty( $matches ) ? sprintf( '%s<span itemprop="name">%s</span>%s%s', $matches[1], $matches[2], $sep, $matches[3] ) : sprintf( '<span itemprop="name">%s</span>', $item );
 				// Wrap the item with its itemprop.
 				$item = ! empty( $matches )
 					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemtype="https://schema.org/Thing" itemprop=$2item$2>', $item )
@@ -171,16 +177,10 @@ class PBG_Breadcrumb_Trail {
 				}
 				// Create list item attributes.
 				$attributes = 'itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="' . $item_class . '"';
-				// Separator.
-				if ( $item_count === $item_position ) {
-					$sep = '';
-				} else {
-					$sep = $separator;
-				}
 				// Build the meta position HTML.
 				$meta = sprintf( '<meta itemprop="position" content="%s" />', absint( $item_position ) );
 				// Build the list item.
-				$breadcrumb .= sprintf( '<li %s>%s%s%s</li>', $attributes, $item, $sep, $meta );
+				$breadcrumb .= sprintf( '<li %s>%s%s</li>', $attributes, $item, $meta );
 			}
 			// Close the unordered list.
 			$breadcrumb .= sprintf( '</%s>', tag_escape( $this->args['list_tag'] ) );

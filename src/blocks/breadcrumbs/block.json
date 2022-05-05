@@ -11,6 +11,10 @@
         "textAlign": {
             "type": "string"
         },
+        "breadcrumbsStyle": {
+            "type": "string",
+            "default": "normal"
+        },
         "prefix": {
             "type": "string"
         },
@@ -28,14 +32,17 @@
                 "text": "",
                 "background": "",
                 "link": "",
-                "linkHover": ""
+                "linkHover": "",
+                "separator": "",
+                "item": ""
             }
         },
         "spacing": {
             "type": "object",
             "default": {
                 "padding": null,
-                "margin": null
+                "margin": null,
+                "itemPadding": null
             }
         },
         "typography": {

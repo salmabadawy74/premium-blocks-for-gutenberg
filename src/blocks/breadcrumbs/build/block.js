@@ -4541,7 +4541,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "../../node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_2__);
@@ -4655,10 +4655,12 @@ function Edit(_ref) {
     textAlign,
     colors,
     spacing,
-    typography
+    typography,
+    breadcrumbsStyle
   } = attributes;
   let margin = spacing.margin ? spacing.margin : defaultSpacingValue;
   let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+  let itemPadding = spacing.itemPadding ? spacing.itemPadding : defaultSpacingValue;
   const fontSize = typography.size ? typography.size : defaultSize;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
@@ -4706,6 +4708,13 @@ function Edit(_ref) {
     key: 'icon',
     name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Icon', 'premium-blocks-for-gutenberg')
   }];
+  const StylesSelectOptions = [{
+    key: 'normal',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Normal', 'premium-blocks-for-gutenberg')
+  }, {
+    key: 'advanced',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Advanced', 'premium-blocks-for-gutenberg')
+  }];
 
   const setColor = (color, value) => {
     const newColors = { ...colors
@@ -4738,6 +4747,17 @@ function Edit(_ref) {
     });
   };
 
+  const onChangeItemPadding = (side, value, device) => {
+    const newPadding = { ...itemPadding
+    };
+    newPadding[device][side] = value;
+    setAttributes({
+      spacing: { ...spacing,
+        itemPadding: newPadding
+      }
+    });
+  };
+
   const onChangeFontSize = (value, device) => {
     const newSize = { ...fontSize
     };
@@ -4757,6 +4777,19 @@ function Edit(_ref) {
     });
   };
 
+  const getSecondPart = str => {
+    return str.split(':')[1];
+  };
+
+  let styleArry = [`#${blockProps.id} a {`, `color: ${colors.link};`, `font-family: ${typography.family};`, `font-weight: ${typography.weight};`, `font-size: ${fontSize.desktop}${fontSize.unit};`, `text-decoration: ${typography.textDecoration};`, `font-style: ${typography.style || 'normal'};`, "}", `#${blockProps.id} a:hover {`, `color: ${colors.linkHover};`, "}", `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item {`, `display: inline-flex;`, `overflow: hidden;`, `position: relative;`, `padding-right: 30px;`, `align-items: center;`, `--item-bg-color: ${colors.item};`, `--separator-color: ${colors.separator};`, `}`, `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > * {`, `line-height: 26px;`, `}`, `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item:last-child > * {`, `line-height: 36px;`, `}`, `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > *{`, `background-color: var(--item-bg-color, hsla(34,85%,35%,1));`, `padding-top: ${itemPadding.desktop.top};`, `padding-right: ${itemPadding.desktop.right};`, `padding-bottom: ${itemPadding.desktop.bottom};`, `padding-left: ${itemPadding.desktop.left};`, `}`, `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item::before {`, `content: " ";`, `display: inline-block;`, `width: auto;`, `height: auto;`, `border-top: 50px solid transparent;`, `border-bottom: 50px solid transparent;`, `border-left: 30px solid var(--separator-color, #a5630cbf);`, `z-index: 1;`, `position: absolute;`, `left: calc(100% - 30px);`, `}`];
+  styleArry = styleArry.filter(styleLine => {
+    const notAllowed = ['px;', 'undefined;', ';'];
+    const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
+
+    if (!notAllowed.includes(style)) {
+      return style;
+    }
+  }).join('\n');
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
     group: "block"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentControl, {
@@ -4768,23 +4801,46 @@ function Edit(_ref) {
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
-      __html: [`#${blockProps.id} a {`, `color: ${colors.link};`, `font-family: ${typography.family};`, `font-weight: ${typography.weight};`, `font-size: ${fontSize.desktop}${fontSize.unit};`, `text-decoration: ${typography.textDecoration};`, `font-style: ${typography.style || 'normal'};`, "}", `#${blockProps.id} a:hover {`, `color: ${colors.linkHover};`, "}"].join("\n")
+      __html: styleArry
     }
-  }), prefix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `pbg-breadcrumbs pbg-breadcrumbs-${breadcrumbsStyle}`,
+    style: {
+      display: breadcrumbsStyle === 'normal' ? 'flex' : ''
+    }
+  }, prefix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "prefix",
     style: {
       padding: '0 .4em'
     }
-  }, prefix), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, prefix), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-breadcrumbs-item"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#home-pseudo-link",
     onClick: event => event.preventDefault()
-  }, homeItemType), separator, (type === 'post' || type === 'single') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, homeItemType, separator)), (type === 'post' || type === 'single') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-breadcrumbs-item"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#category-pseudo-link",
     onClick: event => event.preventDefault()
-  }, categoryName), separator), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Post Title'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+  }, categoryName, separator))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-breadcrumbs-item"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Post Title'))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('General Settings', 'premium-blocks-for-gutenberg'),
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.CustomSelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Breadcrumbs Styles', 'premium-blocks-for-gutenberg'),
+    options: StylesSelectOptions,
+    onChange: _ref2 => {
+      let {
+        selectedItem
+      } = _ref2;
+      return setAttributes({
+        breadcrumbsStyle: selectedItem.key
+      });
+    },
+    value: StylesSelectOptions.find(option => option.key === attributes.breadcrumbsStyle)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg'),
     value: attributes.prefix,
     onChange: val => setAttributes({
@@ -4799,10 +4855,10 @@ function Edit(_ref) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.CustomSelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Home Item', 'premium-blocks-for-gutenberg'),
     options: selectOptions,
-    onChange: _ref2 => {
+    onChange: _ref3 => {
       let {
         selectedItem
-      } = _ref2;
+      } = _ref3;
       return setAttributes({
         homeItemType: selectedItem.key
       });
@@ -4840,7 +4896,17 @@ function Edit(_ref) {
         colorValue: colors.link,
         onColorChange: newValue => setColor('link', newValue),
         colorDefault: ''
-      }));
+      }), breadcrumbsStyle === 'advanced' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)(`Separator Color`, 'premium-blocks-for-gutenberg'),
+        colorValue: colors.separator,
+        onColorChange: newValue => setColor('separator', newValue),
+        colorDefault: ''
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)(`Item Background Color`, 'premium-blocks-for-gutenberg'),
+        colorValue: colors.item,
+        onColorChange: newValue => setColor('item', newValue),
+        colorDefault: ''
+      })));
     }
 
     if ("hover" === tab.name) {
@@ -4906,6 +4972,35 @@ function Edit(_ref) {
     onChangePaddingLeft: (device, newValue) => {
       onChangePadding('left', newValue, device);
     }
+  })), breadcrumbsStyle === 'advanced' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Item Spacing', 'premium-blocks-for-gutenberg'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    directions: ["all"],
+    marginTop: itemPadding.desktop.top,
+    paddingRight: itemPadding.desktop.right,
+    paddingBottom: itemPadding.desktop.bottom,
+    paddingLeft: itemPadding.desktop.left,
+    paddingTopTablet: itemPadding.tablet.top,
+    paddingRightTablet: itemPadding.tablet.right,
+    paddingBottomTablet: itemPadding.tablet.bottom,
+    paddingLeftTablet: itemPadding.tablet.left,
+    paddingTopMobile: itemPadding.mobile.top,
+    paddingRightMobile: itemPadding.mobile.right,
+    paddingBottomMobile: itemPadding.mobile.bottom,
+    paddingLeftMobile: itemPadding.mobile.left,
+    onChangePaddingTop: (device, newValue) => {
+      onChangeItemPadding('top', newValue, device);
+    },
+    onChangePaddingRight: (device, newValue) => {
+      onChangeItemPadding('right', newValue, device);
+    },
+    onChangePaddingBottom: (device, newValue) => {
+      onChangeItemPadding('bottom', newValue, device);
+    },
+    onChangePaddingLeft: (device, newValue) => {
+      onChangeItemPadding('left', newValue, device);
+    }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Typography", 'premium-blocks-for-gutenberg'),
     className: "premium-panel-body",
@@ -4939,14 +5034,14 @@ function Edit(_ref) {
     onChangeTextDecoration: textDecoration => onChangeFont(textDecoration, 'textDecoration')
   }))));
 }
-function usePostTerms(_ref3) {
+function usePostTerms(_ref4) {
   var _term$visibility2;
 
   let {
     postId,
     postType,
     term
-  } = _ref3;
+  } = _ref4;
   const {
     rest_base: restBase,
     slug
@@ -12219,6 +12314,73 @@ const FontsList = _ref3 => {
 
 /***/ }),
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
 /***/ "./breadcrumbs/style.scss":
 /*!********************************!*\
   !*** ./breadcrumbs/style.scss ***!
@@ -12347,7 +12509,7 @@ var r={grad:.9,turn:360,rad:360/(2*Math.PI)},t=function(r){return"string"==typeo
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"name":"premium/breadcrumbs","title":"Breadcrumbs","icon":"universal-access-alt","category":"premium-blocks","editorScript":"file:./build/block.js","style":"file:./build/style-block.css","usesContext":["postId","postType","queryId"],"attributes":{"textAlign":{"type":"string"},"prefix":{"type":"string"},"divider":{"type":"string","default":"»"},"homeItemType":{"type":"string","default":"text"},"colors":{"type":"object","default":{"text":"","background":"","link":"","linkHover":""}},"spacing":{"type":"object","default":{"padding":null,"margin":null}},"typography":{"type":"object","default":{"size":null,"weight":400,"family":"Default","letterSpacing":"","textTransform":"","textDecoration":"","lineHeight":"","style":""}}},"supports":{"align":["wide","full"],"html":false}}');
+module.exports = JSON.parse('{"apiVersion":2,"name":"premium/breadcrumbs","title":"Breadcrumbs","icon":"universal-access-alt","category":"premium-blocks","editorScript":"file:./build/block.js","style":"file:./build/style-block.css","usesContext":["postId","postType","queryId"],"attributes":{"textAlign":{"type":"string"},"breadcrumbsStyle":{"type":"string","default":"normal"},"prefix":{"type":"string"},"divider":{"type":"string","default":"»"},"homeItemType":{"type":"string","default":"text"},"colors":{"type":"object","default":{"text":"","background":"","link":"","linkHover":"","separator":"","item":""}},"spacing":{"type":"object","default":{"padding":null,"margin":null,"itemPadding":null}},"typography":{"type":"object","default":{"size":null,"weight":400,"family":"Default","letterSpacing":"","textTransform":"","textDecoration":"","lineHeight":"","style":""}}},"supports":{"align":["wide","full"],"html":false}}');
 
 /***/ })
 

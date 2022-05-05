@@ -83,9 +83,11 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         unit: "px"
     };
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
-    const { textAlign, colors, spacing, typography } = attributes;
+    const { textAlign, colors, spacing, typography, breadcrumbsStyle } = attributes;
     let margin = spacing.margin ? spacing.margin : defaultSpacingValue;
     let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+    let itemPadding = spacing.itemPadding ? spacing.itemPadding : defaultSpacingValue;
+
     const fontSize = typography.size ? typography.size : defaultSize;
     const blockProps = useBlockProps({
         className: classnames({
@@ -127,6 +129,16 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
             name: __('Icon', 'premium-blocks-for-gutenberg'),
         },
     ];
+    const StylesSelectOptions = [
+        {
+            key: 'normal',
+            name: __('Normal', 'premium-blocks-for-gutenberg'),
+        },
+        {
+            key: 'advanced',
+            name: __('Advanced', 'premium-blocks-for-gutenberg'),
+        },
+    ];
     const setColor = (color, value) => {
         const newColors = { ...colors };
         newColors[color] = value;
@@ -145,6 +157,12 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         setAttributes({ spacing: { ...spacing, padding: newPadding } });
     }
 
+    const onChangeItemPadding = (side, value, device) => {
+        const newPadding = { ...itemPadding };
+        newPadding[device][side] = value;
+        setAttributes({ spacing: { ...spacing, itemPadding: newPadding } });
+    }
+
     const onChangeFontSize = (value, device) => {
         const newSize = { ...fontSize };
         newSize[device] = value;
@@ -154,6 +172,66 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
     const onChangeFont = (value, attr) => {
         setAttributes({ typography: { ...typography, [attr]: value } });
     }
+
+    const getSecondPart = (str) => {
+        return str.split(':')[1];
+    }
+
+    let styleArry = [
+        `#${blockProps.id} a {`,
+        `color: ${colors.link};`,
+        `font-family: ${typography.family};`,
+        `font-weight: ${typography.weight};`,
+        `font-size: ${fontSize.desktop}${fontSize.unit};`,
+        `text-decoration: ${typography.textDecoration};`,
+        `font-style: ${typography.style || 'normal'};`,
+        "}",
+        `#${blockProps.id} a:hover {`,
+        `color: ${colors.linkHover};`,
+        "}",
+        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item {`,
+        `display: inline-flex;`,
+        `overflow: hidden;`,
+        `position: relative;`,
+        `padding-right: 30px;`,
+        `align-items: center;`,
+        `--item-bg-color: ${colors.item};`,
+        `--separator-color: ${colors.separator};`,
+        `}`,
+        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > * {`,
+        `line-height: 26px;`,
+        `}`,
+        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item:last-child > * {`,
+        `line-height: 36px;`,
+        `}`,
+        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > *{`,
+        `background-color: var(--item-bg-color, hsla(34,85%,35%,1));`,
+        `padding-top: ${itemPadding.desktop.top};`,
+        `padding-right: ${itemPadding.desktop.right};`,
+        `padding-bottom: ${itemPadding.desktop.bottom};`,
+        `padding-left: ${itemPadding.desktop.left};`,
+        `}`,
+        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item::before {`,
+        `content: " ";`,
+        `display: inline-block;`,
+        `width: auto;`,
+        `height: auto;`,
+        `border-top: 50px solid transparent;`,
+        `border-bottom: 50px solid transparent;`,
+        `border-left: 30px solid var(--separator-color, #a5630cbf);`,
+        `z-index: 1;`,
+        `position: absolute;`,
+        `left: calc(100% - 30px);`,
+        `}`,
+    ];
+
+    styleArry = styleArry.filter(styleLine => {
+        const notAllowed = ['px;', 'undefined;', ';'];
+        const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
+        if (!notAllowed.includes(style)) {
+            return style;
+        }
+    }).join('\n')
 
     return (
         <>
@@ -168,45 +246,47 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
             <div {...blockProps}>
                 <style
                     dangerouslySetInnerHTML={{
-                        __html: [
-                            `#${blockProps.id} a {`,
-                            `color: ${colors.link};`,
-                            `font-family: ${typography.family};`,
-                            `font-weight: ${typography.weight};`,
-                            `font-size: ${fontSize.desktop}${fontSize.unit};`,
-                            `text-decoration: ${typography.textDecoration};`,
-                            `font-style: ${typography.style || 'normal'};`,
-                            "}",
-                            `#${blockProps.id} a:hover {`,
-                            `color: ${colors.linkHover};`,
-                            "}"
-                        ].join("\n")
+                        __html: styleArry
                     }}
                 />
-                {prefix && <span className='prefix' style={{ padding: '0 .4em' }}>{prefix}</span>}
-                <a
-                    href="#home-pseudo-link"
-                    onClick={(event) => event.preventDefault()}
-                >
-                    {homeItemType}
-                </a>
-                {separator}
-                {(type === 'post' || type === 'single') && <>
-                    <a
-                        href="#category-pseudo-link"
-                        onClick={(event) => event.preventDefault()}
-                    >
-                        {categoryName}
-                    </a>
-                    {separator}
-                </>}
-                <span>{fullTitle || __('Post Title')}</span>
+                <div className={`pbg-breadcrumbs pbg-breadcrumbs-${breadcrumbsStyle}`} style={{ display: breadcrumbsStyle === 'normal' ? 'flex' : '' }}>
+                    {prefix && <span className='prefix' style={{ padding: '0 .4em' }}>{prefix}</span>}
+                    <div className='pbg-breadcrumbs-item'>
+                        <a
+                            href="#home-pseudo-link"
+                            onClick={(event) => event.preventDefault()}
+                        >
+                            {homeItemType}
+                            {separator}
+                        </a>
+                    </div>
+                    {(type === 'post' || type === 'single') && <>
+                        <div className='pbg-breadcrumbs-item'>
+                            <a
+                                href="#category-pseudo-link"
+                                onClick={(event) => event.preventDefault()}
+                            >
+                                {categoryName}
+                                {separator}
+                            </a>
+                        </div>
+                    </>}
+                    <div className='pbg-breadcrumbs-item'>
+                        <span>{fullTitle || __('Post Title')}</span>
+                    </div>
+                </div>
             </div>
             <InspectorControls>
                 <PanelBody
                     title={__('General Settings', 'premium-blocks-for-gutenberg')}
                     initialOpen={true}
                 >
+                    <CustomSelectControl
+                        label={__('Breadcrumbs Styles', 'premium-blocks-for-gutenberg')}
+                        options={StylesSelectOptions}
+                        onChange={({ selectedItem }) => setAttributes({ breadcrumbsStyle: selectedItem.key })}
+                        value={StylesSelectOptions.find((option) => option.key === attributes.breadcrumbsStyle)}
+                    />
                     <TextControl
                         label={__('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg')}
                         value={attributes.prefix}
@@ -266,6 +346,22 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                                             onColorChange={newValue => setColor('link', newValue)}
                                             colorDefault={''}
                                         />
+                                        {breadcrumbsStyle === 'advanced' && (
+                                            <>
+                                                <AdvancedPopColorControl
+                                                    label={__(`Separator Color`, 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.separator}
+                                                    onColorChange={newValue => setColor('separator', newValue)}
+                                                    colorDefault={''}
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__(`Item Background Color`, 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.item}
+                                                    onColorChange={newValue => setColor('item', newValue)}
+                                                    colorDefault={''}
+                                                />
+                                            </>
+                                        )}
                                     </Fragment>
                                 );
                             }
@@ -359,6 +455,48 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                         }
                     />
                 </PanelBody>
+                {breadcrumbsStyle === 'advanced' && (
+                    <PanelBody
+                        title={__('Item Spacing', 'premium-blocks-for-gutenberg')}
+                        initialOpen={false}
+                    >
+                        <PremiumResponsivePadding
+                            directions={["all"]}
+                            marginTop={itemPadding.desktop.top}
+                            paddingRight={itemPadding.desktop.right}
+                            paddingBottom={itemPadding.desktop.bottom}
+                            paddingLeft={itemPadding.desktop.left}
+                            paddingTopTablet={itemPadding.tablet.top}
+                            paddingRightTablet={itemPadding.tablet.right}
+                            paddingBottomTablet={itemPadding.tablet.bottom}
+                            paddingLeftTablet={itemPadding.tablet.left}
+                            paddingTopMobile={itemPadding.mobile.top}
+                            paddingRightMobile={itemPadding.mobile.right}
+                            paddingBottomMobile={itemPadding.mobile.bottom}
+                            paddingLeftMobile={itemPadding.mobile.left}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    onChangeItemPadding('top', newValue, device);
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    onChangeItemPadding('right', newValue, device);
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    onChangeItemPadding('bottom', newValue, device);
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    onChangeItemPadding('left', newValue, device);
+                                }
+                            }
+                        />
+                    </PanelBody>
+                )}
                 <PanelBody
                     title={__("Typography", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"
