@@ -77,8 +77,9 @@
         `}
         </style>  
 
-                    {
-                        <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
+                    
+                        <div className={`premium-trigger-container`}>
+                        <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
                             <a className={`toggle-button`}
                                 data-style={triggerStyles.style} 
                                 data-label={triggerStyles.labelPosition}
@@ -94,10 +95,10 @@
                                 </svg>
                             </a>
                         </div>
-                            }
-                    <div className="gpb-trigger-wrap" role="dialog" data-layout={canvasStyles.layout} 
+                            
+                    <div className="gpb-trigger-canvas-container" data-layout={canvasStyles.layout} 
                     style={ {
-                        display: "none",
+                        //display: "none",
                         width: canvasStyles.width + 'px',
                         
                     }}    
@@ -114,9 +115,7 @@
                             <div className="gpb-popup-header">
 
                             <a id="gpb-toggle-button-close" className="toggle-button-close">
-                                    <span className="gpb-close-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" version="1.1">
-                                    <path d="M 23.648438 21.964844 C 24.070312 22.4375 24.046875 23.15625 23.601562 23.601562 C 23.15625 24.046875 22.4375 24.070312 21.964844 23.648438 L 12 13.683594 L 2.035156 23.648438 C 1.5625 24.070312 0.84375 24.046875 0.398438 23.601562 C -0.046875 23.15625 -0.0703125 22.4375 0.351562 21.964844 L 10.316406 12 L 0.351562 2.035156 C 0.0195312 1.742188 -0.121094 1.289062 -0.015625 0.855469 C 0.0898438 0.425781 0.425781 0.0898438 0.855469 -0.015625 C 1.289062 -0.121094 1.742188 0.0195312 2.035156 0.351562 L 12 10.316406 L 21.964844 0.351562 C 22.4375 -0.0703125 23.15625 -0.046875 23.601562 0.398438 C 24.046875 0.84375 24.070312 1.5625 23.648438 2.035156 L 13.683594 12 Z M 23.648438 21.964844 "></path>
-                                    </svg></span>
+                                    <span className="gpb-close-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></span>
                                 </a>
                             
                                 <div className="gpb-popup-body-content">
@@ -126,6 +125,7 @@
                             
                         </div>
                     </div>	
-         </div>
+                    </div></div>
+                   
      );
 }

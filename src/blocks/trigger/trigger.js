@@ -9,12 +9,10 @@ jQuery(function ($) {
         const overlays = $modal.find('.gpb-popup-overlay')
         function ShowModal() {
             $modal.addClass("active");
-            $modal.find(".gpb-trigger-wrap").css("display", "flex");
             $modal.find(".toggle-button").addClass("toggled");
         }
         function hideModal() {
             $modal.removeClass("active");
-            $modal.find(".gpb-trigger-wrap").css("display", "none"); 
             $modal.find(".toggle-button").removeClass("toggled");
         }
         closes.map((index, close) => {

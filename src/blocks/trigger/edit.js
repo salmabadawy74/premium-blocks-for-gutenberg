@@ -12,7 +12,7 @@ import {
     button,
     Modal 
 } from '@wordpress/element';
-import { PanelBody, TextControl, Button, Popover, TabPanel } from '@wordpress/components';
+import { PanelBody, TextControl, Button, Popover, TabPanel, ToggleControl, SelectControl } from '@wordpress/components';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border";
@@ -46,7 +46,7 @@ const { isSelected, attributes, setAttributes, clientId, className } = props;
 useEffect(() => {
     setAttributes({ block_id: props.clientId })
 }, [])
-const { triggerLabel, iconAlignment, iconSize, block_id, triggerStyles, canvasStyles, spacing, triggerBorderTop, triggerBorderRight, triggerBorderBottom, triggerBorderLeft } = attributes;
+const { triggerLabel, iconAlignment, iconSize, displayFloat, block_id, triggerStyles, canvasStyles, spacing, triggerBorderTop, triggerBorderRight, triggerBorderBottom, triggerBorderLeft, hOffset, vOffset } = attributes;
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
@@ -76,11 +76,6 @@ const defaultSpacingValue = {
         left: ''
     }
 };
-const onChangeIconSize = (value, device) => {
-    const newSize = { ...iconSize };
-    newSize[device] = value;
-    setAttributes({ iconSize : newSize });
-}
 
 const setTriggerStyles = (color, value) => {
     const newColors = { ...triggerStyles };
@@ -205,13 +200,13 @@ const onChangePadding = (side, value, device) => {
                     {triggerStyles.style === 'solid' && 
                     <fragment>
                         <AdvancedPopColorControl
-                        label={__("Background Icon Color", 'premium-blocks-for-gutenberg')}
+                        label={__("Background Color", 'premium-blocks-for-gutenberg')}
                         colorValue={triggerStyles.iconBgColor}
                         colorDefault={''} 
                         onColorChange={newValue => setTriggerStyles('iconBgColor', newValue )}
                         />
                         <AdvancedPopColorControl
-                            label={__("Background Icon Hover Color", 'premium-blocks-for-gutenberg')}
+                            label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
                             colorValue={triggerStyles.iconBgHoverColor}
                             colorDefault={''}
                             onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue )}
@@ -245,16 +240,67 @@ const onChangePadding = (side, value, device) => {
                             label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
                             colorValue={triggerStyles.borderHoverColor}
                             colorDefault={''}
-                            onColorChange={newValue => setTriggerStyles('borderHoverColor', newValue )}
+                            onColorChange={(newValue) => setTriggerStyles( 'borderHoverColor' , newValue )}
                         />
                         </fragment>
                     }
+                    <ToggleControl
+                    label={__("Float", 'premium-blocks-for-gutenberg')}
+                    checked={displayFloat}
+                    onChange={newValue => setAttributes({ displayFloat: newValue })}
+                    />
+
+                    {attributes.displayFloat && (
+                        <fragment>
+                        <SelectControl
+                        label={__('Position', 'premium-blocks-for-gutenberg')}
+                        options={[
+                            { label: __("Top Right", "premium-blocks-for-gutenberg"), value: 'topright' },
+                            { label: __("Top Left", "premium-blocks-for-gutenberg"), value: 'topleft' },
+                            { label: __('Bottom Right', 'premium-blocks-for-gutenberg'), value: 'bottomright' },
+                            { label: __('Bottom Left', 'premium-blocks-for-gutenberg'), value: 'bottomleft' }
+                        ]}
+                        value={triggerStyles.floatPosition}
+                        onChange={newValue => setTriggerStyles('floatPosition', newValue )}
+                        />
+                        <ResponsiveRangeControl
+                            label={__('Vertical Offset', 'premium-blocks-for-gutenberg')}
+                            value={attributes.vOffset}
+                            onChange={(value) => setAttributes({ vOffset: value })}
+                            tabletValue={attributes.vOffsetTablet}
+                            onChangeTablet={(value) => setAttributes({ vOffsetTablet: value })}
+                            mobileValue={attributes.vOffsetMobile}
+                            onChangeMobile={(value) => setAttributes({ vOffsetMobile: value })}
+                            min={0}
+                            max={100}
+                            step={1}
+                            showUnit={true}
+                            units={['px']}
+                            defaultValue={10}
+                        />
+                        <ResponsiveRangeControl
+                            label={__('Horizontal Offset', 'premium-blocks-for-gutenberg')}
+                            value={attributes.hOffset}
+                            onChange={(value) => setAttributes({ hOffset: value })}
+                            tabletValue={attributes.hOffsetTablet}
+                            onChangeTablet={(value) => setAttributes({ hOffsetTablet: value })}
+                            mobileValue={attributes.hOffsetMobile}
+                            onChangeMobile={(value) => setAttributes({ hOffsetMobile: value })}
+                            min={0}
+                            max={100}
+                            step={1}
+                            showUnit={true}
+                            units={['px']}
+                            defaultValue={10}
+                        />
+                        </fragment>
+                    )}
                                   
                     
                 </PanelBody>
                 <PanelBody
                     title={__('Canvas Area Settings', 'premium-blocks-for-gutenberg')}
-                    initialOpen={true}
+                    initialOpen={false}
                 >
                     <AdvancedPopColorControl
                         label={__("Background Canvas Area", 'premium-blocks-for-gutenberg')}
@@ -274,13 +320,15 @@ const onChangePadding = (side, value, device) => {
                         onChange={newValue => setCanvasStyles('layout', newValue )}
                         label={__("Layout style", 'premium-blocks-for-gutenberg')}
                     />
-                    <ResponsiveSingleRangeControl
+                    {(triggerStyles.layout === 'right' || triggerStyles.layout === 'left' ) && 
+                    (<ResponsiveSingleRangeControl
                             label={__("Canvas Width", 'premium-blocks-for-gutenberg')}
                             value={canvasStyles.width}
                             onChange={newValue => setCanvasStyles({ width: newValue === undefined ? 500 : newValue })}
                             defaultValue={500}
                             showUnit={false}
-                    />
+                    />)
+                }
                     <PremiumResponsivePadding
                         directions={["all"]}
                         marginTop={padding.desktop.top}
@@ -363,22 +411,9 @@ const onChangePadding = (side, value, device) => {
                 className: classnames(
                     `${isEditing ? "active" : ""}`
                 ),
-                style: {
-                    // marginTop: `${margin.desktop.top}px`,
-                    // marginRight: `${margin.desktop.right}px`,
-                    // marginBottom: `${margin.desktop.bottom}px`,
-                    // marginLeft: `${margin.desktop.left}px`,
-                    // paddingTop: `${padding.desktop.top}px`,
-                    // paddingRight: `${padding.desktop.right}px`,
-                    // paddingBottom: `${padding.desktop.bottom}px`,
-                    // paddingLeft: `${padding.desktop.left}px`,
-                    //backgroundColor: triggerStyles.iconBgColor,
-                    //borderStyle: triggerStyles.borderType,
-                    //borderTopWidth: triggerStyles.triggerBorderTop,
-                }
             }) }>
             <div className={`premium-trigger-container`}>
-            <div className={`gpb-trigger-container has-icon-align-${ iconAlignment }`}>
+            <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`}>
                     <a className={`toggle-button ${isEditing ? "toggled" : ""}`} 
                     data-style={triggerStyles.style}
                     data-label={triggerStyles.labelPosition}
@@ -392,7 +427,6 @@ const onChangePadding = (side, value, device) => {
                             value={triggerLabel}
                             placeholder={ __( 'Menu', 'premium-blocks-for-gutenberg' ) }
                             style={{color: triggerStyles.labelColor }}
-                           // allowedFormats={ [] }
                         >{triggerLabel}</span>}
                         <svg style={{fontSize: `${iconSize}px`, fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
 					<path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
@@ -402,7 +436,7 @@ const onChangePadding = (side, value, device) => {
                     </a>
                 </div>
 				{isEditing && (
-                    <div className="gpb-trigger-wrap" role="dialog" data-layout={canvasStyles.layout} >
+                    <div className="gpb-trigger-canvas-container" role="dialog" data-layout={canvasStyles.layout} >
                         <div role="presentation" className="gpb-popup-overlay" onClick={() => setEditing(false)} style={{
                         backgroundColor: `${canvasStyles.overlayBgColor}`,
                     }}></div>
@@ -416,10 +450,8 @@ const onChangePadding = (side, value, device) => {
                         }}
                         >
                         <div className="gpb-popup-header">
-                                <a id="gpb-toggle-button-close">
-                                    <span className="gpb-close-icon" onClick={() => setEditing(false)}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" version="1.1">
-                                    <path d="M 23.648438 21.964844 C 24.070312 22.4375 24.046875 23.15625 23.601562 23.601562 C 23.15625 24.046875 22.4375 24.070312 21.964844 23.648438 L 12 13.683594 L 2.035156 23.648438 C 1.5625 24.070312 0.84375 24.046875 0.398438 23.601562 C -0.046875 23.15625 -0.0703125 22.4375 0.351562 21.964844 L 10.316406 12 L 0.351562 2.035156 C 0.0195312 1.742188 -0.121094 1.289062 -0.015625 0.855469 C 0.0898438 0.425781 0.425781 0.0898438 0.855469 -0.015625 C 1.289062 -0.121094 1.742188 0.0195312 2.035156 0.351562 L 12 10.316406 L 21.964844 0.351562 C 22.4375 -0.0703125 23.15625 -0.046875 23.601562 0.398438 C 24.046875 0.84375 24.070312 1.5625 23.648438 2.035156 L 13.683594 12 Z M 23.648438 21.964844 "></path>
-                                    </svg></span>
+                                <a id="gpb-toggle-button-close" className="toggle-button-close">
+                                    <span className="gpb-close-icon" onClick={() => setEditing(false)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg></span>
                                 </a>
                                 <div className="gpb-popup-body-content">
                                 <InnerBlocks />

@@ -31,27 +31,34 @@
 			"type": "string",
 			"default": "left"
 		},
+		"hOffset": {
+			"type": "number"	
+		},
+		"vOffset": {
+			"type": "number"	
+		},
 		"triggerStyles": {
             "type": "object",
             "default": {
                 "iconColor": "",
-                "iconBgColor": "",
+                "iconBgColor": "#e8e8e8",
                 "iconHoverColor": "",
 				"labelHoverColor": "",
                 "iconHoverBgColor": "",
 				"labelPosition": "left",
 				"style": "simple",
-				"borderType": "",
-				"borderColor": "",
+				"borderType": "solid",
+				"borderColor": "#e8e8e8",
 				"borderHoverColor": "",
-				"borderRadius": ""
+				"borderRadius": "",
+				"floatPosition": ""
             }
         },
 		"canvasStyles": {
             "type": "object",
             "default": {
 				"overlayBgColor": "",
-                "canvasBgColor": "",
+                "canvasBgColor": "#fff",
 				"layout": "right",
 				"width": ""
             }
@@ -63,16 +70,20 @@
             }
         },
 		"triggerBorderTop": {
-			"type": "number"
+			"type": "number",
+			"default": 1
 		},
 		"triggerBorderRight": {
-			"type": "number"
+			"type": "number",
+			"default": 1
 		},
 		"triggerBorderBottom": {
-			"type": "number"
+			"type": "number",
+			"default": 1
 		},
 		"triggerBorderLeft": {
-			"type": "number"
+			"type": "number",
+			"default": 1
 		}
 	}
 
