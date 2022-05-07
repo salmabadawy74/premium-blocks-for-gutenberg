@@ -79,29 +79,49 @@ const attributes = {
                 gradientTypeState1: 'linear',
                 gradientAngleState1: '180',
                 gradientPositionState1: 'center center',
-                containerBackState2: '',
-                backgroundImageIDState2: '',
-                backgroundImageURLState2: '',
-                backgroundRepeatState2: 'no-reapet',
-                backgroundPositionState2: 'top center',
-                backgroundSizeState2: 'auto',
-                fixedState2: false,
-                gradientLocationOneState2: '0',
-                gradientColorTwoState2: '',
-                gradientLocationTwoState2: '100',
-                gradientTypeState2: 'linear',
-                gradientAngleState2: '180',
-                gradientPositionState2: 'center center',
+                // containerBackState2: '',
+                // backgroundImageIDState2: '',
+                // backgroundImageURLState2: '',
+                // backgroundRepeatState2: 'no-reapet',
+                // backgroundPositionState2: 'top center',
+                // backgroundSizeState2: 'auto',
+                // fixedState2: false,
+                // gradientLocationOneState2: '0',
+                // gradientColorTwoState2: '',
+                // gradientLocationTwoState2: '100',
+                // gradientTypeState2: 'linear',
+                // gradientAngleState2: '180',
+                // gradientPositionState2: 'center center',
+                containerShadowColor: '',
+                containerShadowBlur: '',
+                containerShadowHorizontal: '',
+                containerShadowVertical: '',
+                containerShadowPosition: 'inset',
+                switchShadowColor: '',
+                switchShadowBlur: '',
+                switchShadowHorizontal: '',
+                switchShadowVertical: '',
+                switchShadowPosition: 'inset',
             }
         ]
     },
-    backgroundTypeState1: {
+    backgroundType: {
         type: "string",
         default: ""
     },
     backgroundTypeState2: {
         type: "string",
         default: ""
+    },
+    labelStyles: {
+        type: "array",
+        default: [
+            {
+                labelSpacing: 15,
+                labelSpacingMobile: 15,
+                labelSpacingTablet: 15,
+            }
+        ]
     },
     // switchSizeType: {
     //     type: "string",
@@ -155,22 +175,22 @@ const attributes = {
     //     type: "string",
     //     default: "px"
     // },
-    labelSpacingType: {
-        type: "string",
-        default: "px"
-    },
-    labelSpacing: {
-        type: "number",
-        default: 15
-    },
-    labelSpacingMobile: {
-        type: "number",
-        default: 15
-    },
-    labelSpacingTablet: {
-        type: "number",
-        default: 15
-    },
+    // labelSpacingType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // labelSpacing: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // labelSpacingMobile: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // labelSpacingTablet: {
+    //     type: "number",
+    //     default: 15
+    // },
     firstLabelColor: {
         type: "string",
         default: "#54595f"

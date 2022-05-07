@@ -5,12 +5,15 @@ import ResponsiveRangeControl from "../../components/RangeControl/responsive-ran
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import PremiumTypo from "../../components/premium-typo";
+import PremiumShadow from "../../components/PremiumShadow";
 // import PremiumTextShadow from "../../components/premium-text-shadow";
 // import PremiumResponsivePadding from "../../components/premium-padding-responsive";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumBorder from "../../components/premium-border";
 
 const { __ } = wp.i18n
+
+const { withSelect } = wp.data
 
 let isBoxUpdated = null;
 
@@ -126,7 +129,7 @@ class edit extends Component {
             firstcontentlign,
             secondcontentlign,
             switcherStyles,
-            backgroundTypeState1,
+            backgroundType,
             backgroundTypeState2,
             switchSize,
             switchSizeTablet,
@@ -315,14 +318,36 @@ class edit extends Component {
         const SwitcherBorderRadius = this.getPreviewSize(this.props.deviceType, switcherStyles[0].switchRadius, switcherStyles[0].switchRadiusTablet, switcherStyles[0].switchRadiusMobile);
         const ContainerBorderRadius = this.getPreviewSize(this.props.deviceType, switcherStyles[0].containerRadius, switcherStyles[0].containerRadiusTablet, switcherStyles[0].containerRadiusMobile);
 
+        let btnGradState1, btnGrad2State1, btnbgState1;
+
+        if (undefined !== backgroundType && 'gradient' === backgroundType) {
+            btnGradState1 = ('transparent' === switcherStyles[0].containerBackState1 || undefined === switcherStyles[0].containerBackState1 ? 'rgba(255,255,255,0)' : switcherStyles[0].containerBackState1);
+            btnGrad2State1 = (undefined !== switcherStyles[0].gradientColorTwoState1 && undefined !== switcherStyles[0].gradientColorTwoState1 && '' !== switcherStyles[0].gradientColorTwoState1 ? switcherStyles[0].gradientColorTwoState1 : '#777');
+            if ('radial' === switcherStyles[0].gradientTypeState1) {
+                btnbgState1 = `radial-gradient(at ${switcherStyles[0].gradientPositionState1}, ${btnGradState1} ${switcherStyles[0].gradientLocationOneState1}%, ${btnGrad2State1} ${switcherStyles[0].gradientLocationTwoState1}%)`;
+            } else if ('radial' !== switcherStyles[0].gradientTypeState1) {
+                btnbgState1 = `linear-gradient(${switcherStyles[0].gradientAngleState1}deg, ${btnGradState1} ${switcherStyles[0].gradientLocationOneState1}%, ${btnGrad2State1} ${switcherStyles[0].gradientLocationTwoState1}%)`;
+            }
+        } else {
+            btnbgState1 = switcherStyles[0].backgroundImageURLState1 ? `url('${switcherStyles[0].backgroundImageURLState1}')` : ''
+        }
+
         const renderCss = (
             <style>
                 {`
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
                         border-radius: ${ContainerBorderRadius}${switcherStyles[0].containerRadiusType} !important;
+                        background-color: ${backgroundType === "solid" ? switcherStyles[0].containerBackState1 : "#6ec1e4"} !important;
+                        background-image: ${btnbgState1} !important;
+                        background-repeat: ${switcherStyles[0].backgroundRepeatState1} !important;
+                        background-position: ${switcherStyles[0].backgroundPositionState1} !important;
+                        background-size: ${switcherStyles[0].backgroundSizeState1} !important;
+                        background-attachment: ${switcherStyles[0].fixedState1 ? "fixed" : "unset"} !important;
+                        box-shadow: ${switcherStyles[0].containerShadowHorizontal}px ${switcherStyles[0].containerShadowVertical}px ${switcherStyles[0].containerShadowBlur}px ${switcherStyles[0].containerShadowColor} ${switcherStyles[0].containerShadowPosition};
                     }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
                         border-radius: ${SwitcherBorderRadius}${switcherStyles[0].switchRadiusType} !important;
+                        box-shadow: ${switcherStyles[0].switchShadowHorizontal}px ${switcherStyles[0].switchShadowVertical}px ${switcherStyles[0].switchShadowBlur}px ${switcherStyles[0].switchShadowColor} ${switcherStyles[0].switchShadowPosition};
                     }
                 `}
             </style>
@@ -337,6 +362,18 @@ class edit extends Component {
             });
             setAttributes({
                 switcherStyles: newUpdate,
+            });
+        }
+
+        const saveLabelStyles = (value) => {
+            const newUpdate = labelStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                labelStyles: newUpdate,
             });
         }
 
@@ -503,11 +540,11 @@ class edit extends Component {
                             min={1}
                             max={100}
                         />
-                        <h3>{__("Controller State 1 Color")}</h3>
+                        {/* <h3>{__("Controller State 1 Color")}</h3> */}
                         <PremiumBackgroundControl
                             setAttributes={setAttributes}
                             saveContainerStyle={saveSwitcherStyles}
-                            backgroundType={backgroundTypeState1}
+                            backgroundType={backgroundType}
                             backgroundColor={switcherStyles[0].containerBackState1}
                             backgroundImageID={switcherStyles[0].backgroundImageIDState1}
                             backgroundImageURL={switcherStyles[0].backgroundImageURLState1}
@@ -522,8 +559,8 @@ class edit extends Component {
                             gradientPosition={switcherStyles[0].gradientPositionState1}
                             gradientType={switcherStyles[0].gradientTypeState1}
                         />
-                        <h3>{__("Controller State 2 Color")}</h3>
-                        <PremiumBackgroundControl
+                        {/* <h3>{__("Controller State 2 Color")}</h3> */}
+                        {/* <PremiumBackgroundControl
                             setAttributes={setAttributes}
                             saveContainerStyle={saveSwitcherStyles}
                             backgroundType={backgroundTypeState2}
@@ -540,60 +577,51 @@ class edit extends Component {
                             gradientAngle={switcherStyles[0].gradientAngleState2}
                             gradientPosition={switcherStyles[0].gradientPositionState2}
                             gradientType={switcherStyles[0].gradientTypeState2}
-                        />
-                        {/* <ResponsiveRangeControl
-                            setAttributes={setAttributes}
-                            rangeType={{ value: switchSizeType, label: __("switchSizeType") }}
-                            range={{ value: switchSize, label: __("switchSize") }}
-                            rangeMobile={{ value: switchSizeMobile, label: __("switchSizeMobile") }}
-                            rangeTablet={{ value: switchSizeTablet, label: __("switchSizeTablet") }}
-                            rangeLabel={__("Size")}
-                        />
-                        <ResponsiveRangeControl
-                            setAttributes={setAttributes}
-                            rangeType={{ value: bottomSpacingType, label: __("bottomSpacingType") }}
-                            range={{ value: bottomSpacing, label: __("bottomSpacing") }}
-                            rangeMobile={{ value: bottomSpacingMobile, label: __("bottomSpacingMobile") }}
-                            rangeTablet={{ value: bottomSpacingTablet, label: __("bottomSpacingTablet") }}
-                            rangeLabel={__("Bottom Spacing")}
-                        />
-                        <p>{__("First State Color")}</p>
-                        <ColorPalette
-                            value={firstStateColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    firstStateColor: newValue
-                                })
-                            }
-                            allowReset={true}
-                        />
-                        <p>{__("Second State Color")}</p>
-                        <ColorPalette
-                            value={secondStateColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    secondStateColor: newValue
-                                })
-                            }
-                            allowReset={true}
-                        />
-                        <p>{__("Background Color")}</p>
-                        <ColorPalette
-                            value={switcherBGColor}
-                            onChange={newValue =>
-                                setAttributes({
-                                    switcherBGColor: newValue
-                                })
-                            }
-                            allowReset={true}
-                        />
-                        <RangeControl
-                            label={__("Border Radius")}
-                            value={switchRadius}
-                            onChange={newValue => setAttributes({ switchRadius: newValue })}
-                            initialPosition={50}
-                            allowReset={true}
                         /> */}
+                        <PremiumShadow
+                            label={__("Controller Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
+                            color={switcherStyles[0].containerShadowColor}
+                            blur={switcherStyles[0].containerShadowBlur}
+                            horizontal={switcherStyles[0].containerShadowHorizontal}
+                            vertical={switcherStyles[0].containerShadowVertical}
+                            position={switcherStyles[0].containerShadowPosition}
+                            onChangeColor={newColor =>
+                                saveSwitcherStyles({ containerShadowColor: newColor })
+                            }
+                            onChangeBlur={newBlur => saveSwitcherStyles({ containerShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                                saveSwitcherStyles({ containerShadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                                saveSwitcherStyles({ containerShadowVertical: newValue })
+                            }
+                            onChangePosition={newValue =>
+                                saveSwitcherStyles({ containerShadowPosition: newValue })
+                            }
+                        />
+                        <PremiumShadow
+                            label={__("Switcher Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
+                            color={switcherStyles[0].switchShadowColor}
+                            blur={switcherStyles[0].switchShadowBlur}
+                            horizontal={switcherStyles[0].switchShadowHorizontal}
+                            vertical={switcherStyles[0].switchShadowVertical}
+                            position={switcherStyles[0].switchShadowPosition}
+                            onChangeColor={newColor =>
+                                saveSwitcherStyles({ switchShadowColor: newColor })
+                            }
+                            onChangeBlur={newBlur => saveSwitcherStyles({ switchShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                                saveSwitcherStyles({ switchShadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                                saveSwitcherStyles({ switchShadowVertical: newValue })
+                            }
+                            onChangePosition={newValue =>
+                                saveSwitcherStyles({ switchShadowPosition: newValue })
+                            }
+                        />
                     </PanelBody>
                     {showLabel && (<PanelBody
                         title={__("Labels Style")}
@@ -601,13 +629,26 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <ResponsiveRangeControl
+                            label={__("Spacing", 'premium-block-for-gutenberg')}
+                            value={labelStyles[0].labelSpacing}
+                            tabletValue={labelStyles[0].labelSpacingTablet}
+                            mobileValue={labelStyles[0].labelSpacingMobile}
+                            onChange={(value) => saveLabelStyles({ labelSpacing: value })}
+                            onChangeTablet={(value) => saveLabelStyles({ labelSpacingTablet: value })}
+                            onChangeMobile={(value) => saveLabelStyles({ labelSpacingMobile: value })}
+                            showUnit={false}
+                            defaultValue={15}
+                            min={1}
+                            max={100}
+                        />
+                        {/* <ResponsiveRangeControl
                             setAttributes={setAttributes}
                             rangeType={{ value: labelSpacingType, label: __("labelSpacingType") }}
                             range={{ value: labelSpacing, label: __("labelSpacing") }}
                             rangeMobile={{ value: labelSpacingMobile, label: __("labelSpacingMobile") }}
                             rangeTablet={{ value: labelSpacingTablet, label: __("labelSpacingTablet") }}
                             rangeLabel={__("Spacing")}
-                        />
+                        /> */}
                         {/* <PremiumTextShadow
                             color={shadowColor}
                             blur={shadowBlur}
@@ -624,7 +665,7 @@ class edit extends Component {
                                 setAttributes({ shadowVertical: newValue })
                             }
                         /> */}
-                        <hr />
+                        {/* <hr />
                         <h2 className="premium-content-switcher-labels-style">{__("First Label")}</h2>
                         <p>{__("First Label Color")}</p>
                         <ColorPalette
@@ -691,7 +732,7 @@ class edit extends Component {
                                 setAttributes({ secondLabelLetter: newValue })
                             }
                             onChangeUpper={check => setAttributes({ secondLabelUpper: check })}
-                        />
+                        /> */}
                     </PanelBody>
                     )}
                     <PanelBody
@@ -1006,4 +1047,11 @@ class edit extends Component {
     }
 }
 
-export default edit
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(edit)
