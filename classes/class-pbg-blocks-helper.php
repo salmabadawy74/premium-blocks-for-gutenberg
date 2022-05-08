@@ -368,7 +368,6 @@ class PBG_Blocks_Helper {
 			);
 		}
 		if ( $is_newsletter_enabled ) {
-
 			wp_enqueue_script(
 				'pbg-newsletter-js',
 				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',

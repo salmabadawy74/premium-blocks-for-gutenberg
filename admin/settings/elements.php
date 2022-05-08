@@ -17,7 +17,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie' ,'newsletter');
+		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'newsletter','lottie' );
 
 		private $pbg_default;
 

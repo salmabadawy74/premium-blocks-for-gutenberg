@@ -334,7 +334,6 @@ export class edit extends Component {
             });
         }
 
-        console.log(this.state)
         return [
             isSelected && (
                 <InspectorControls key="inspector">
