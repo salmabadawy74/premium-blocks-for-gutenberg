@@ -315,14 +315,21 @@ const attributes = {
         type: "number",
         default: "0"
     },
+    contentStyles: {
+        type: "array",
+        default: [
+            {
+                contentHeight: 100,
+                contentHeightType: "px",
+                contentHeightMobile: 100,
+                contentHeightTablet: 100,
+            }
+        ]
+    },
     firstContentStyles: {
         type: "array",
         default: [
             {
-                firstContentHeight: 100,
-                firstContentHeightType: "px",
-                firstContentHeightMobile: 100,
-                firstContentHeightTablet: 100,
                 firstContentColor: "#54595f",
                 firstContentLetter: 0,
                 firstContentLine: 0,
@@ -412,53 +419,115 @@ const attributes = {
     firstContentMarginLMobile: {
         type: "number"
     },
-    firstContentPaddingT: {
+    contentPaddingT: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingR: {
+    contentPaddingR: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingB: {
+    contentPaddingB: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingL: {
+    contentPaddingL: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingTTablet: {
+    contentPaddingTTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingRTablet: {
+    contentPaddingRTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingBTablet: {
+    contentPaddingBTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingLTablet: {
+    contentPaddingLTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingTMobile: {
+    contentPaddingTMobile: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingRMobile: {
+    contentPaddingRMobile: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingBMobile: {
+    contentPaddingBMobile: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingLMobile: {
+    contentPaddingLMobile: {
         type: "number",
         default: "0"
+    },
+    secondContentStyles: {
+        type: "array",
+        default: [
+            {
+                secondContentColor: "#54595f",
+                secondContentLetter: 0,
+                secondContentLine: 0,
+                secondContentStyle: 'normal',
+                secondContentUpper: false,
+                secondContentWeight: "",
+                secondContentfontSize: "",
+                secondContentfontSizeType: "px",
+                secondContentfontSizeMobile: "",
+                secondContentfontSizeTablet: "",
+                secondContentFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+                secondContentShadowColor: '',
+                secondContentShadowBlur: '0',
+                secondContentShadowHorizontal: '0',
+                secondContentShadowVertical: '0',
+                secondContentBGColor: '',
+                secondContentborderType: "none",
+                secondContentborderRadius: 0,
+                secondContentborderColor: '',
+                secondContentBoxShadowColor: '',
+                secondContentBoxShadowBlur: '',
+                secondContentBoxShadowHorizontal: '',
+                secondContentBoxShadowVertical: '',
+                secondContentBoxShadowPosition: 'inset',
+                secondContentPaddingType: 'px',
+            }
+        ]
+    },
+    secondContentBorderTop: {
+        type: "number",
+        default: "1"
+    },
+    secondContentBorderRight: {
+        type: "number",
+        default: "1"
+    },
+    secondContentBorderBottom: {
+        type: "number",
+        default: "1"
+    },
+    secondContentBorderLeft: {
+        type: "number",
+        default: '1'
+    },
+    secondContentBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    secondContentBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    secondContentStyles: {
+        type: "array",
+        default: [
+            {}
+        ]
     },
     // switchSizeType: {
     //     type: "string",
@@ -476,22 +545,22 @@ const attributes = {
     //     type: "number",
     //     default: 15
     // },
-    bottomSpacingType: {
-        type: "string",
-        default: "px"
-    },
-    bottomSpacing: {
-        type: "number",
-        default: 1
-    },
-    bottomSpacingMobile: {
-        type: "number",
-        default: 1
-    },
-    bottomSpacingTablet: {
-        type: "number",
-        default: 1
-    },
+    // bottomSpacingType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // bottomSpacing: {
+    //     type: "number",
+    //     default: 1
+    // },
+    // bottomSpacingMobile: {
+    //     type: "number",
+    //     default: 1
+    // },
+    // bottomSpacingTablet: {
+    //     type: "number",
+    //     default: 1
+    // },
     firstStateColor: {
         type: "string",
         default: "#6ec1e4"
@@ -609,19 +678,19 @@ const attributes = {
     //     type: "number",
     //     default: "0"
     // },
-    // firstContentHeight: {
+    // contentHeight: {
     //     type: "number",
     //     default: 50
     // },
-    // firstContentHeightType: {
+    // contentHeightType: {
     //     type: "string",
     //     default: "px"
     // },
-    // firstContentHeightMobile: {
+    // contentHeightMobile: {
     //     type: "number",
     //     default: 50
     // },
-    // firstContentHeightTablet: {
+    // contentHeightTablet: {
     //     type: "number",
     //     default: 50
     // },
@@ -632,29 +701,29 @@ const attributes = {
     // firstContentBGColor: {
     //     type: "string"
     // },
-    secondContentHeightType: {
-        type: "string",
-        default: "px"
-    },
-    secondContentHeight: {
-        type: "number",
-        default: 50
-    },
-    secondContentHeightMobile: {
-        type: "number",
-        default: 50
-    },
-    secondContentHeightTablet: {
-        type: "number",
-        default: 50
-    },
-    secondContentColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondContentBGColor: {
-        type: "string"
-    },
+    // secondContentHeightType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // secondContentHeight: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // secondContentHeightMobile: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // secondContentHeightTablet: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // secondContentColor: {
+    //     type: "string",
+    //     default: "#54595f"
+    // },
+    // secondContentBGColor: {
+    //     type: "string"
+    // },
     // firstpaddingTop: {
     //     type: "number",
     //     default: 0
@@ -719,70 +788,70 @@ const attributes = {
     //     type: "number",
     //     default: 0
     // },
-    secondpaddingTop: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingTopType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingTopMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingTopTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRight: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRightType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingRightMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRightTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottom: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottomType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingBottomMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottomTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeft: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeftType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingLeftMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeftTablet: {
-        type: "number",
-        default: 0
-    },
+    // secondpaddingTop: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingTopType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // secondpaddingTopMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingTopTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingRight: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingRightType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // secondpaddingRightMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingRightTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingBottom: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingBottomType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // secondpaddingBottomMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingBottomTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingLeft: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingLeftType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // secondpaddingLeftMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondpaddingLeftTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
     effect: {
         type: "string",
         default: "fade"
@@ -836,50 +905,50 @@ const attributes = {
     // firstContentborderColor: {
     //     type: "string"
     // },
-    secondContentLetter: {
-        type: "number"
-    },
-    secondContentStyle: {
-        type: "string"
-    },
-    secondContentUpper: {
-        type: "boolean",
-        default: false
-    },
-    secondContentWeight: {
-        type: "number",
-        default: 500
-    },
-    secondContentfontSize: {
-        type: "number",
-        default: 15
-    },
-    secondContentfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    secondContentfontSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    secondContentfontSizeTablet: {
-        type: "number",
-        default: 15
-    },
-    secondContentborderType: {
-        type: "string",
-        default: "none"
-    },
-    secondContentborderWidth: {
-        type: "number",
-        default: "1"
-    },
-    secondContentborderRadius: {
-        type: "number",
-        default: 0
-    },
-    secondContentborderColor: {
-        type: "string"
-    },
+    // secondContentLetter: {
+    //     type: "number"
+    // },
+    // secondContentStyle: {
+    //     type: "string"
+    // },
+    // secondContentUpper: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // secondContentWeight: {
+    //     type: "number",
+    //     default: 500
+    // },
+    // secondContentfontSize: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // secondContentfontSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // secondContentfontSizeMobile: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // secondContentfontSizeTablet: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // secondContentborderType: {
+    //     type: "string",
+    //     default: "none"
+    // },
+    // secondContentborderWidth: {
+    //     type: "number",
+    //     default: "1"
+    // },
+    // secondContentborderRadius: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // secondContentborderColor: {
+    //     type: "string"
+    // },
 }
 export default attributes
