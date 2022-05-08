@@ -63243,7 +63243,7 @@ var attributes = {
         type: 'array',
         default: [{
             showLabel: true,
-            label: __('Email'),
+            label: __('Email', 'premium-blocks-for-gutenberg'),
             placeholder: '',
             required: true,
             inputColumnWidth: '100',
