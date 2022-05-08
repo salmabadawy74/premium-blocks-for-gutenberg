@@ -523,11 +523,159 @@ const attributes = {
         type: "number",
         default: "1"
     },
-    secondContentStyles: {
+    containerStyles: {
         type: "array",
         default: [
-            {}
+            {
+                containerBack: '',
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
+                backgroundSize: 'auto',
+                fixed: false,
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center',
+                containerborderType: "none",
+                containerborderRadius: 0,
+                containerborderColor: '',
+                containerBoxShadowColor: '',
+                containerBoxShadowBlur: '',
+                containerBoxShadowHorizontal: '',
+                containerBoxShadowVertical: '',
+                containerBoxShadowPosition: 'inset',
+                containerPaddingType: 'px',
+                containerMarginType: 'px',
+            }
         ]
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
+    containerBorderTop: {
+        type: "number",
+        default: "1"
+    },
+    containerBorderRight: {
+        type: "number",
+        default: "1"
+    },
+    containerBorderBottom: {
+        type: "number",
+        default: "1"
+    },
+    containerBorderLeft: {
+        type: "number",
+        default: "1"
+    },
+    containerBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    containerBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    containerPaddingT: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingR: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingB: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingL: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingTTablet: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingRTablet: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingBTablet: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingLTablet: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingTMobile: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingRMobile: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingBMobile: {
+        type: "number",
+        default: ""
+    },
+    containerPaddingLMobile: {
+        type: "number",
+        default: ""
+    },
+    containerMarginT: {
+        type: "number",
+        default: ""
+    },
+    containerMarginR: {
+        type: "number",
+        default: ""
+    },
+    containerMarginB: {
+        type: "number",
+        default: ""
+    },
+    containerMarginL: {
+        type: "number",
+        default: ""
+    },
+    containerMarginTTablet: {
+        type: "number",
+        default: ""
+    },
+    containerMarginRTablet: {
+        type: "number",
+        default: ""
+    },
+    containerMarginBTablet: {
+        type: "number",
+        default: ""
+    },
+    containerMarginLTablet: {
+        type: "number",
+        default: ""
+    },
+    containerMarginTMobile: {
+        type: "number",
+        default: ""
+    },
+    containerMarginRMobile: {
+        type: "number",
+        default: ""
+    },
+    containerMarginBMobile: {
+        type: "number",
+        default: ""
+    },
+    containerMarginLMobile: {
+        type: "number",
+        default: ""
     },
     // switchSizeType: {
     //     type: "string",
