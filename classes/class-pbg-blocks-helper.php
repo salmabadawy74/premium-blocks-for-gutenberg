@@ -489,6 +489,14 @@ class PBG_Blocks_Helper {
 
 			)
 		);
+        register_block_type(
+            'premium/newsletter',
+            array(
+                'render_callback' => array( $this,'get_newsletter_css'),
+                'editor_style' =>'premium-blocks-editor-css',
+                'editor_script'   =>'pbg-blocks-js'
+            )
+        );
 
 	}
 
@@ -5146,6 +5154,111 @@ class PBG_Blocks_Helper {
 				$css->add_property( '-webkit-text-stroke-width', $css->render_color( $attr['strokeStyles'][0]['strokeFullMobile'] . 'px' . '!important' ) );
 			}
 		}
+
+		$css->stop_media_query();
+		return $css->css_output();
+	}
+
+    /**
+	 * Get Newsletter Block Content & Style
+	 *
+	 * @access public
+	 *
+	 * @param string $attributes option For attribute.
+	 * @param string $contnet for content of Block.
+	 */
+
+    public function get_newsletter_css($attributes, $content){
+        	if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+		}
+		if ( $this->it_is_not_amp() ) {
+        	wp_enqueue_script(
+				'pbg-newsletter-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/newsletter.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+
+			wp_enqueue_script(
+				'pbg-form-js',
+				PREMIUM_BLOCKS_URL . 'assets/js/mailchimp.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+			wp_localize_script(
+				'pbg-newsletter-js',
+				'premium_blocks_form_params',
+				array(
+					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+					'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+					'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+					'required'      => __( 'is required', 'premium-blocks' ),
+					'mismatch'      => __( 'does not match', 'premium-blocks' ),
+					'validation'    => __( 'is not valid', 'premium-blocks' ),
+					'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+					'item'          => __( 'Item', 'premium-blocks' ),
+				)
+			);
+				wp_localize_script(
+					'pbg-form-js',
+					'settings',
+					array(
+						'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+						'error_message' => __( 'Please fix the errors to proceed', 'premium-blocks' ),
+						'nonce'         => wp_create_nonce( 'pa-newsletter-block-nonce' ),
+						'required'      => __( 'is required', 'premium-blocks' ),
+						'mismatch'      => __( 'does not match', 'premium-blocks' ),
+						'validation'    => __( 'is not valid', 'premium-blocks' ),
+						'duplicate'     => __( 'requires a unique entry and this value has already been used', 'premium-blocks' ),
+						'item'          => __( 'Item', 'premium-blocks' ),
+					)
+				);
+            }
+        $style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'heading', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_newsletter_css_style( $attributes, $unique_id );
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'heading', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
+    }
+
+    	/**
+	 * Get Heading Block CSS
+	 *
+	 * Return Frontend CSS for Heading Block.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For  block ID.
+	 */
+	public function get_newsletter_css_style( $attr, $unique_id ) {
+		
+
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		$css->start_media_query( $media_query['tablet'] );
+
+		$css->stop_media_query();
+
+		$css->start_media_query( $media_query['mobile'] );
 
 		$css->stop_media_query();
 		return $css->css_output();
