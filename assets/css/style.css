@@ -5036,7 +5036,8 @@ animation-fast {
 .premium-content-switcher-two-content{
     position: relative;
     margin: 0 !important;
-    overflow: hidden;
+    padding: 0 !important;
+    /* overflow: hidden; */
     list-style-type: none !important;
 }
 .premium-content-switcher-two-content li{

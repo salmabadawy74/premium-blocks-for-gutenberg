@@ -315,6 +315,151 @@ const attributes = {
         type: "number",
         default: "0"
     },
+    firstContentStyles: {
+        type: "array",
+        default: [
+            {
+                firstContentHeight: 100,
+                firstContentHeightType: "px",
+                firstContentHeightMobile: 100,
+                firstContentHeightTablet: 100,
+                firstContentColor: "#54595f",
+                firstContentLetter: 0,
+                firstContentLine: 0,
+                firstContentStyle: 'normal',
+                firstContentUpper: false,
+                firstContentWeight: "",
+                firstContentfontSize: "",
+                firstContentfontSizeType: "px",
+                firstContentfontSizeMobile: "",
+                firstContentfontSizeTablet: "",
+                firstContentFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+                firstContentShadowColor: '',
+                firstContentShadowBlur: '0',
+                firstContentShadowHorizontal: '0',
+                firstContentShadowVertical: '0',
+                firstContentBGColor: '',
+                firstContentborderType: "none",
+                firstContentborderRadius: 0,
+                firstContentborderColor: '',
+                firstContentBoxShadowColor: '',
+                firstContentBoxShadowBlur: '',
+                firstContentBoxShadowHorizontal: '',
+                firstContentBoxShadowVertical: '',
+                firstContentBoxShadowPosition: 'inset',
+                firstContentPaddingType: 'px',
+                firstContentMarginType: 'px'
+            }
+        ]
+    },
+    firstContentBorderTop: {
+        type: "number",
+        default: "1"
+    },
+    firstContentBorderRight: {
+        type: "number",
+        default: "1"
+    },
+    firstContentBorderBottom: {
+        type: "number",
+        default: "1"
+    },
+    firstContentBorderLeft: {
+        type: "number",
+        default: '1'
+    },
+    firstContentBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    firstContentBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    firstContentMarginT: {
+        type: "number"
+    },
+    firstContentMarginR: {
+        type: "number"
+    },
+    firstContentMarginB: {
+        type: "number"
+    },
+    firstContentMarginL: {
+        type: "number"
+    },
+    firstContentMarginTTablet: {
+        type: "number"
+    },
+    firstContentMarginRTablet: {
+        type: "number"
+    },
+    firstContentMarginBTablet: {
+        type: "number"
+    },
+    firstContentMarginLTablet: {
+        type: "number"
+    },
+    firstContentMarginTMobile: {
+        type: "number"
+    },
+    firstContentMarginRMobile: {
+        type: "number"
+    },
+    firstContentMarginBMobile: {
+        type: "number"
+    },
+    firstContentMarginLMobile: {
+        type: "number"
+    },
+    firstContentPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstContentPaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
     // switchSizeType: {
     //     type: "string",
     //     default: "px"
@@ -416,77 +561,77 @@ const attributes = {
     //     type: "number",
     //     default: 20
     // },
-    secondLabelColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondLabelLetter: {
-        type: "number"
-    },
-    secondLabelStyle: {
-        type: "string"
-    },
-    secondLabelUpper: {
-        type: "boolean",
-        default: false
-    },
-    secondLabelWeight: {
-        type: "number"
-    },
-    secondLabelfontSize: {
-        type: "number",
-        default: 20
-    },
-    secondLabelfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    secondLabelfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    secondLabelfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    firstContentHeight: {
-        type: "number",
-        default: 50
-    },
-    firstContentHeightType: {
-        type: "string",
-        default: "px"
-    },
-    firstContentHeightMobile: {
-        type: "number",
-        default: 50
-    },
-    firstContentHeightTablet: {
-        type: "number",
-        default: 50
-    },
-    firstContentColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstContentBGColor: {
-        type: "string"
-    },
+    // secondLabelColor: {
+    //     type: "string",
+    //     default: "#54595f"
+    // },
+    // secondLabelLetter: {
+    //     type: "number"
+    // },
+    // secondLabelStyle: {
+    //     type: "string"
+    // },
+    // secondLabelUpper: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // secondLabelWeight: {
+    //     type: "number"
+    // },
+    // secondLabelfontSize: {
+    //     type: "number",
+    //     default: 20
+    // },
+    // secondLabelfontSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // secondLabelfontSizeMobile: {
+    //     type: "number",
+    //     default: 20
+    // },
+    // secondLabelfontSizeTablet: {
+    //     type: "number",
+    //     default: 20
+    // },
+    // shadowColor: {
+    //     type: "string"
+    // },
+    // shadowBlur: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // shadowHorizontal: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // shadowVertical: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // firstContentHeight: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // firstContentHeightType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // firstContentHeightMobile: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // firstContentHeightTablet: {
+    //     type: "number",
+    //     default: 50
+    // },
+    // firstContentColor: {
+    //     type: "string",
+    //     default: "#54595f"
+    // },
+    // firstContentBGColor: {
+    //     type: "string"
+    // },
     secondContentHeightType: {
         type: "string",
         default: "px"
@@ -510,70 +655,70 @@ const attributes = {
     secondContentBGColor: {
         type: "string"
     },
-    firstpaddingTop: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingTopType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingTopMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingTopTablet: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingRight: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingRightType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingRightMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingRightTablet: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingBottom: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingBottomType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingBottomMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingBottomTablet: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingLeft: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingLeftType: {
-        type: "string",
-        default: "px"
-    },
-    firstpaddingLeftMobile: {
-        type: "number",
-        default: 0
-    },
-    firstpaddingLeftTablet: {
-        type: "number",
-        default: 0
-    },
+    // firstpaddingTop: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingTopType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // firstpaddingTopMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingTopTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingRight: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingRightType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // firstpaddingRightMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingRightTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingBottom: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingBottomType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // firstpaddingBottomMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingBottomTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingLeft: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingLeftType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // firstpaddingLeftMobile: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstpaddingLeftTablet: {
+    //     type: "number",
+    //     default: 0
+    // },
     secondpaddingTop: {
         type: "number",
         default: 0
@@ -646,51 +791,51 @@ const attributes = {
         type: "string",
         default: "top"
     },
-    firstContentLetter: {
-        type: "number"
-    },
-    firstContentStyle: {
-        type: "string"
-    },
-    firstContentUpper: {
-        type: "boolean",
-        default: false
-    },
-    firstContentWeight: {
-        type: "number",
-        default: 500
-    },
-    firstContentfontSize: {
-        type: "number",
-        default: 15
-    },
-    firstContentfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    firstContentfontSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    firstContentfontSizeTablet: {
-        type: "number",
-        default: 15
-    },
-    firstContentborderType: {
-        type: "string",
-        default: "none"
-    },
-    firstContentborderWidth: {
-        type: "number",
-        default: "1"
-    },
-    firstContentborderRadius: {
-        type: "number",
-        default: 0
-    },
-    firstContentborderColor: {
-        type: "string"
-    },
+    // firstContentLetter: {
+    //     type: "number"
+    // },
+    // firstContentStyle: {
+    //     type: "string"
+    // },
+    // firstContentUpper: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // firstContentWeight: {
+    //     type: "number",
+    //     default: 500
+    // },
+    // firstContentfontSize: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // firstContentfontSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // firstContentfontSizeMobile: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // firstContentfontSizeTablet: {
+    //     type: "number",
+    //     default: 15
+    // },
+    // firstContentborderType: {
+    //     type: "string",
+    //     default: "none"
+    // },
+    // firstContentborderWidth: {
+    //     type: "number",
+    //     default: "1"
+    // },
+    // firstContentborderRadius: {
+    //     type: "number",
+    //     default: 0
+    // },
+    // firstContentborderColor: {
+    //     type: "string"
+    // },
     secondContentLetter: {
         type: "number"
     },
