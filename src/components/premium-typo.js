@@ -252,8 +252,7 @@ export default class PremiumTypo extends Component {
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveRangeControl
                                                                 label={__("Font Size", 'premium-blocks-for-gutenberg')}
-                                                                value={this.props.fontSize}
-                                                                onChange={value => { this.setState({ ...this.state.size, Desktop: value }), onChangeSize(value) }}
+                                                                value={this.props.fontSize} onChange={value => { onChangeSize(value) }}
                                                                 tabletValue={this.props.fontSizeTablet}
                                                                 onChangeTablet={value => { onChangeTabletSize(value) }}
                                                                 mobileValue={this.props.fontSizeMobile}
