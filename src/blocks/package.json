@@ -1,0 +1,25 @@
+{
+    "name": "blocks",
+    "version": "1.0.0",
+    "description": "",
+    "main": "icons.js",
+    "dependencies": {
+        "@wordpress/icons": "^8.4.0",
+        "@wordpress/scripts": "^22.3.0",
+        "classnames": "^2.3.1",
+        "lodash": "^4.17.21",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "webfontloader": "^1.6.28"
+    },
+    "devDependencies": {
+        "@wordpress/base-styles": "^4.3.0"
+    },
+    "scripts": {
+        "start:search": "wp-scripts start search/index.js --output-path=search/build",
+        "build:search": "wp-scripts build search/index.js --output-path=search/build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

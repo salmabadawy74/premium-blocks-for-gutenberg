@@ -1,0 +1,190 @@
+@import "node_modules/@wordpress/base-styles/colors";
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/mixins";
+@import "node_modules/@wordpress/base-styles/breakpoints";
+@import "node_modules/@wordpress/base-styles/animations";
+@import "node_modules/@wordpress/base-styles/z-index";
+@import "node_modules/@wordpress/base-styles/default-custom-properties";
+
+$grid-unit: 8px;
+$grid-unit-05: 0.5 * $grid-unit;
+$grid-unit-10: 1 * $grid-unit;
+$grid-unit-20: 2 * $grid-unit;
+$default-regular-font: serif;
+$button-fallback-bg: #595959;
+$editor-font-size: 16px;
+$gray-80: #2c3338;
+
+.wp-block-premium-search__button {
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+    padding: 0.375em 0.625em;
+    color: #32373c;
+    margin-left: 0.625em;
+    word-break: normal;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+
+    &.has-icon {
+        line-height: 0;
+    }
+
+    svg {
+        min-width: 1.5em;
+        min-height: 1.5em;
+        fill: currentColor;
+    }
+}
+
+.wp-block-premium-search__inside-wrapper {
+    display: flex;
+    flex: auto;
+    flex-wrap: nowrap;
+    max-width: 100%;
+}
+
+.wp-block-premium-search__label {
+    width: 100%;
+}
+
+.wp-block-premium-search__input {
+    padding: 8px;
+    flex-grow: 1;
+    min-width: 3em;
+    border: 1px solid #949494;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+}
+
+.wp-block-premium-search.wp-block-premium-search__button-only {
+    .wp-block-premium-search__button {
+        margin-left: 0;
+    }
+}
+
+.wp-block-premium-search.wp-block-premium-search__button-inside
+    .wp-block-premium-search__inside-wrapper {
+    padding: 4px;
+    border: 1px solid #949494;
+
+    .wp-block-premium-search__input {
+        border-radius: 0;
+        border: none !important;
+        padding: 0 0 0 0.25em;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .wp-block-premium-search__button {
+        padding: 0.125em 0.5em;
+    }
+}
+
+.wp-block-premium-search.aligncenter .wp-block-premium-search__inside-wrapper {
+    margin: auto;
+}
+
+// Native Style
+.searchBlockContainer {
+    flex: 1;
+    flex-direction: column;
+}
+
+.searchBarContainer {
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.searchInputContainer {
+    flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.border {
+    border: 1px solid #dcdcde;
+    border-radius: $grid-unit-05;
+    padding: $grid-unit-05;
+}
+
+.borderDark {
+    border: 1px solid $gray-80;
+}
+
+.buttonContainer {
+    background: $button-fallback-bg;
+    padding: $grid-unit-10;
+    border: 1px solid $button-fallback-bg;
+    margin-left: $grid-unit-05;
+    border-radius: $grid-unit-05;
+    align-content: center;
+    align-items: center;
+}
+
+.buttonContainerWide {
+    margin-left: 0;
+    margin-top: $grid-unit-05;
+}
+
+.icon {
+    fill: $white;
+    background-color: transparent;
+}
+
+.richTextLabel {
+    background-color: transparent;
+    margin-top: $grid-unit-10;
+    margin-bottom: $grid-unit-10;
+    font-size: $editor-font-size;
+    font-weight: 400;
+    font-family: $default-regular-font;
+    width: 100%;
+}
+
+.richTextButton {
+    color: #fff;
+    font-size: $editor-font-size;
+    font-weight: 400;
+    background-color: transparent;
+    font-family: $default-regular-font;
+    padding-left: $grid-unit-10;
+    padding-right: $grid-unit-10;
+    margin: 0;
+    text-align: center;
+    min-height: 24px;
+}
+
+.richTextButtonCursor {
+    color: #ddd;
+}
+
+.plainTextInput {
+    min-height: 42px;
+    padding: $grid-unit-05;
+    padding-left: $grid-unit-10;
+    font-family: $default-regular-font;
+    color: #1d2327;
+}
+
+.plainTextInputDark {
+    color: #c3c4c7;
+}
+
+.plainTextPlaceholder {
+    color: #87a6bc;
+}
+
+.plainTextPlaceholderDark {
+    color: #646970;
+}
+
+.widthMargin {
+    margin: $grid-unit-20;
+    padding: $grid-unit-05;
+}
