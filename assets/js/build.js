@@ -68542,7 +68542,8 @@ var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl,
-    TextareaControl = _wp$components.TextareaControl;
+    TextareaControl = _wp$components.TextareaControl,
+    TabPanel = _wp$components.TabPanel;
 
 var edit = function (_Component) {
     _inherits(edit, _Component);
@@ -68685,6 +68686,7 @@ var edit = function (_Component) {
                 secondLabelPaddingRMobile = attributes.secondLabelPaddingRMobile,
                 secondLabelPaddingBMobile = attributes.secondLabelPaddingBMobile,
                 secondLabelPaddingLMobile = attributes.secondLabelPaddingLMobile,
+                contentStyles = attributes.contentStyles,
                 firstContentStyles = attributes.firstContentStyles,
                 firstContentBorderTop = attributes.firstContentBorderTop,
                 firstContentBorderRight = attributes.firstContentBorderRight,
@@ -68704,18 +68706,25 @@ var edit = function (_Component) {
                 firstContentMarginRMobile = attributes.firstContentMarginRMobile,
                 firstContentMarginBMobile = attributes.firstContentMarginBMobile,
                 firstContentMarginLMobile = attributes.firstContentMarginLMobile,
-                firstContentPaddingT = attributes.firstContentPaddingT,
+                contentPaddingT = attributes.contentPaddingT,
                 firstContentPaddingR = attributes.firstContentPaddingR,
-                firstContentPaddingB = attributes.firstContentPaddingB,
-                firstContentPaddingL = attributes.firstContentPaddingL,
-                firstContentPaddingTTablet = attributes.firstContentPaddingTTablet,
-                firstContentPaddingRTablet = attributes.firstContentPaddingRTablet,
-                firstContentPaddingBTablet = attributes.firstContentPaddingBTablet,
+                contentPaddingB = attributes.contentPaddingB,
+                contentPaddingL = attributes.contentPaddingL,
+                contentPaddingTTablet = attributes.contentPaddingTTablet,
+                contentPaddingRTablet = attributes.contentPaddingRTablet,
+                contentPaddingBTablet = attributes.contentPaddingBTablet,
                 firstContentPaddingLTablet = attributes.firstContentPaddingLTablet,
-                firstContentPaddingTMobile = attributes.firstContentPaddingTMobile,
-                firstContentPaddingRMobile = attributes.firstContentPaddingRMobile,
-                firstContentPaddingBMobile = attributes.firstContentPaddingBMobile,
-                firstContentPaddingLMobile = attributes.firstContentPaddingLMobile,
+                contentPaddingTMobile = attributes.contentPaddingTMobile,
+                contentPaddingRMobile = attributes.contentPaddingRMobile,
+                contentPaddingBMobile = attributes.contentPaddingBMobile,
+                contentPaddingLMobile = attributes.contentPaddingLMobile,
+                secondContentStyles = attributes.secondContentStyles,
+                secondContentBorderTop = attributes.secondContentBorderTop,
+                secondContentBorderRight = attributes.secondContentBorderRight,
+                secondContentBorderBottom = attributes.secondContentBorderBottom,
+                secondContentBorderLeft = attributes.secondContentBorderLeft,
+                secondContentBorderUpdated = attributes.secondContentBorderUpdated,
+                secondContentBorderWidth = attributes.secondContentBorderWidth,
                 backgroundTypeState2 = attributes.backgroundTypeState2,
                 switchSize = attributes.switchSize,
                 switchSizeTablet = attributes.switchSizeTablet,
@@ -68755,10 +68764,10 @@ var edit = function (_Component) {
                 shadowBlur = attributes.shadowBlur,
                 shadowHorizontal = attributes.shadowHorizontal,
                 shadowVertical = attributes.shadowVertical,
-                firstContentHeight = attributes.firstContentHeight,
-                firstContentHeightTablet = attributes.firstContentHeightTablet,
-                firstContentHeightType = attributes.firstContentHeightType,
-                firstContentHeightMobile = attributes.firstContentHeightMobile,
+                contentHeight = attributes.contentHeight,
+                contentHeightTablet = attributes.contentHeightTablet,
+                contentHeightType = attributes.contentHeightType,
+                contentHeightMobile = attributes.contentHeightMobile,
                 firstContentColor = attributes.firstContentColor,
                 firstContentBGColor = attributes.firstContentBGColor,
                 secondContentHeight = attributes.secondContentHeight,
@@ -68897,16 +68906,17 @@ var edit = function (_Component) {
             var SecondLabelPaddingRight = this.getPreviewSize(this.props.deviceType, secondLabelPaddingR, secondLabelPaddingRTablet, secondLabelPaddingRMobile);
             var SecondLabelPaddingBottom = this.getPreviewSize(this.props.deviceType, secondLabelPaddingB, secondLabelPaddingBTablet, secondLabelPaddingBMobile);
             var SecondLabelPaddingLeft = this.getPreviewSize(this.props.deviceType, secondLabelPaddingL, secondLabelPaddingLTablet, secondLabelPaddingLMobile);
-            var FirstContentHeight = this.getPreviewSize(this.props.deviceType, firstContentStyles[0].firstContentHeight, firstContentStyles[0].firstContentHeightTablet, firstContentStyles[0].firstContentHeightMobile);
+            var ContentHeight = this.getPreviewSize(this.props.deviceType, contentStyles[0].contentHeight, contentStyles[0].contentHeightTablet, contentStyles[0].contentHeightMobile);
             var FirstContentSize = this.getPreviewSize(this.props.deviceType, firstContentStyles[0].firstContentfontSize, firstContentStyles[0].firstContentfontSizeTablet, firstContentStyles[0].firstContentfontSizeMobile);
             var FirstContentMarginTop = this.getPreviewSize(this.props.deviceType, firstContentMarginT, firstContentMarginTTablet, firstContentMarginTMobile);
             var FirstContentMarginRight = this.getPreviewSize(this.props.deviceType, firstContentMarginR, firstContentMarginRTablet, firstContentMarginRMobile);
             var FirstContentMarginBottom = this.getPreviewSize(this.props.deviceType, firstContentMarginB, firstContentMarginBTablet, firstContentMarginBMobile);
             var FirstContentMarginLeft = this.getPreviewSize(this.props.deviceType, firstContentMarginL, firstContentMarginLTablet, firstContentMarginLMobile);
-            var FirstContentPaddingTop = this.getPreviewSize(this.props.deviceType, firstContentPaddingT, firstContentPaddingTTablet, firstContentPaddingTMobile);
-            var FirstContentPaddingRight = this.getPreviewSize(this.props.deviceType, firstContentPaddingR, firstContentPaddingRTablet, firstContentPaddingRMobile);
-            var FirstContentPaddingBottom = this.getPreviewSize(this.props.deviceType, firstContentPaddingB, firstContentPaddingBTablet, firstContentPaddingBMobile);
-            var FirstContentPaddingLeft = this.getPreviewSize(this.props.deviceType, firstContentPaddingL, firstContentPaddingLTablet, firstContentPaddingLMobile);
+            var ContentPaddingTop = this.getPreviewSize(this.props.deviceType, contentPaddingT, contentPaddingTTablet, contentPaddingTMobile);
+            var ContentPaddingRight = this.getPreviewSize(this.props.deviceType, firstContentPaddingR, contentPaddingRTablet, contentPaddingRMobile);
+            var ContentPaddingBottom = this.getPreviewSize(this.props.deviceType, contentPaddingB, contentPaddingBTablet, contentPaddingBMobile);
+            var ContentPaddingLeft = this.getPreviewSize(this.props.deviceType, contentPaddingL, firstContentPaddingLTablet, contentPaddingLMobile);
+            var SecondContentSize = this.getPreviewSize(this.props.deviceType, secondContentStyles[0].secondContentfontSize, secondContentStyles[0].secondContentfontSizeTablet, secondContentStyles[0].secondContentfontSizeMobile);
 
             var btnGradState1 = void 0,
                 btnGrad2State1 = void 0,
@@ -68954,6 +68964,18 @@ var edit = function (_Component) {
                 });
             };
 
+            var saveContentStyles = function saveContentStyles(value) {
+                var newUpdate = contentStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    contentStyles: newUpdate
+                });
+            };
+
             var saveFirstContentStyles = function saveFirstContentStyles(value) {
                 var newUpdate = firstContentStyles.map(function (item, index) {
                     if (0 === index) {
@@ -68963,6 +68985,18 @@ var edit = function (_Component) {
                 });
                 setAttributes({
                     firstContentStyles: newUpdate
+                });
+            };
+
+            var saveSecondContentStyles = function saveSecondContentStyles(value) {
+                var newUpdate = secondContentStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    secondContentStyles: newUpdate
                 });
             };
 
@@ -69664,169 +69698,342 @@ var edit = function (_Component) {
                 React.createElement(
                     PanelBody,
                     {
-                        title: __("First Content Style"),
+                        title: __("Content Style"),
                         className: "premium-panel-body",
                         initialOpen: false
                     },
                     React.createElement(_responsiveRangeControl2.default, {
                         label: __("Height", 'premium-block-for-gutenberg'),
-                        value: firstContentStyles[0].firstContentHeight,
-                        tabletValue: firstContentStyles[0].firstContentHeightTablet,
-                        mobileValue: firstContentStyles[0].firstContentHeightMobile,
+                        value: contentStyles[0].contentHeight,
+                        tabletValue: contentStyles[0].contentHeightTablet,
+                        mobileValue: contentStyles[0].contentHeightMobile,
                         onChange: function onChange(value) {
-                            return saveFirstContentStyles({ firstContentHeight: value });
+                            return saveContentStyles({ contentHeight: value });
                         },
                         onChangeTablet: function onChangeTablet(value) {
-                            return saveFirstContentStyles({ firstContentHeightTablet: value });
+                            return saveContentStyles({ contentHeightTablet: value });
                         },
                         onChangeMobile: function onChangeMobile(value) {
-                            return saveFirstContentStyles({ firstContentHeightMobile: value });
+                            return saveContentStyles({ contentHeightMobile: value });
                         },
                         onChangeUnit: function onChangeUnit(key) {
-                            return saveFirstContentStyles({ firstContentHeightType: key });
+                            return saveContentStyles({ contentHeightType: key });
                         },
-                        unit: firstContentStyles[0].firstContentHeightType,
+                        unit: contentStyles[0].contentHeightType,
                         showUnit: true,
                         defaultValue: 100,
                         min: 1,
                         max: 1000
                     }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-block-for-gutenberg'),
-                        colorValue: firstContentStyles[0].firstContentColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveFirstContentStyles({
-                                firstContentColor: newValue
-                            });
+                    React.createElement(
+                        TabPanel,
+                        {
+                            className: "premium-color-tabpanel",
+                            activeClass: "active-tab",
+                            tabs: [{
+                                name: "first",
+                                title: "First Content",
+                                className: "premium-tab"
+                            }, {
+                                name: "second",
+                                title: "Second Content",
+                                className: "premium-tab"
+                            }]
+                        },
+                        function (tab) {
+                            var tabout = void 0;
+                            if ("first" === tab.name) {
+                                tabout = React.createElement(
+                                    Fragment,
+                                    null,
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                                        colorValue: firstContentStyles[0].firstContentColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
+                                            return saveFirstContentStyles({
+                                                firstContentColor: newValue
+                                            });
+                                        }
+                                    }),
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                                        colorValue: firstContentStyles[0].firstContentBGColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
+                                            return saveFirstContentStyles({
+                                                firstContentBGColor: newValue
+                                            });
+                                        }
+                                    }),
+                                    React.createElement(_premiumTypo2.default, {
+                                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+                                        setAttributes: saveFirstContentStyles,
+                                        fontSizeType: { value: firstContentStyles[0].firstContentfontSizeType, label: __("firstContentfontSizeType") },
+                                        fontSize: firstContentStyles[0].firstContentfontSize,
+                                        fontSizeMobile: firstContentStyles[0].firstContentfontSizeMobile,
+                                        fontSizeTablet: firstContentStyles[0].firstContentfontSizeTablet,
+                                        onChangeSize: function onChangeSize(newSize) {
+                                            return saveFirstContentStyles({ firstContentfontSize: newSize });
+                                        },
+                                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                            return saveFirstContentStyles({ firstContentfontSizeTablet: newSize });
+                                        },
+                                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                            return saveFirstContentStyles({ firstContentfontSizeMobile: newSize });
+                                        },
+                                        weight: firstContentStyles[0].firstContentWeight,
+                                        style: firstContentStyles[0].firstContentStyle,
+                                        spacing: firstContentStyles[0].firstContentLetter,
+                                        upper: firstContentStyles[0].firstContentUpper,
+                                        line: firstContentStyles[0].firstContentLine,
+                                        fontFamily: firstContentStyles[0].firstContentFontFamily,
+                                        onChangeWeight: function onChangeWeight(newWeight) {
+                                            return saveFirstContentStyles({ firstContentWeight: newWeight || 500 });
+                                        },
+                                        onChangeStyle: function onChangeStyle(newStyle) {
+                                            return saveFirstContentStyles({ firstContentStyle: newStyle });
+                                        },
+                                        onChangeSpacing: function onChangeSpacing(newValue) {
+                                            return saveFirstContentStyles({ firstContentLetter: newValue });
+                                        },
+                                        onChangeUpper: function onChangeUpper(check) {
+                                            return saveFirstContentStyles({ firstContentUpper: check });
+                                        },
+                                        onChangeLine: function onChangeLine(newValue) {
+                                            return saveFirstContentStyles({ firstContentLine: newValue });
+                                        },
+                                        onChangeFamily: function onChangeFamily(fontFamily) {
+                                            return saveFirstContentStyles({ firstContentFontFamily: fontFamily });
+                                        }
+                                    }),
+                                    React.createElement(_PremiumShadow2.default, {
+                                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                                        color: firstContentStyles[0].firstContentShadowColor,
+                                        blur: firstContentStyles[0].firstContentShadowBlur,
+                                        horizontal: firstContentStyles[0].firstContentShadowHorizontal,
+                                        vertical: firstContentStyles[0].firstContentShadowVertical,
+                                        onChangeColor: function onChangeColor(newColor) {
+                                            return saveFirstContentStyles({ firstContentShadowColor: newColor });
+                                        },
+                                        onChangeBlur: function onChangeBlur(newBlur) {
+                                            return saveFirstContentStyles({ firstContentShadowBlur: newBlur });
+                                        },
+                                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                            return saveFirstContentStyles({ firstContentShadowHorizontal: newValue });
+                                        },
+                                        onChangeVertical: function onChangeVertical(newValue) {
+                                            return saveFirstContentStyles({ firstContentShadowVertical: newValue });
+                                        }
+                                    }),
+                                    React.createElement(_premiumBorder2.default, {
+                                        borderType: firstContentStyles[0].firstContentborderType,
+                                        borderWidth: firstContentBorderWidth,
+                                        top: firstContentBorderTop,
+                                        right: firstContentBorderRight,
+                                        bottom: firstContentBorderBottom,
+                                        left: firstContentBorderLeft,
+                                        borderColor: firstContentStyles[0].firstContentborderColor,
+                                        borderRadius: firstContentStyles[0].firstContentborderRadius,
+                                        onChangeType: function onChangeType(newType) {
+                                            return saveFirstContentStyles({ firstContentborderType: newType });
+                                        },
+                                        onChangeWidth: function onChangeWidth(_ref3) {
+                                            var top = _ref3.top,
+                                                right = _ref3.right,
+                                                bottom = _ref3.bottom,
+                                                left = _ref3.left;
+                                            return setAttributes({
+                                                firstContentBorderUpdated: true,
+                                                firstContentBorderTop: top,
+                                                firstContentBorderRight: right,
+                                                firstContentBorderBottom: bottom,
+                                                firstContentBorderLeft: left
+                                            });
+                                        },
+                                        onChangeColor: function onChangeColor(colorValue) {
+                                            return saveFirstContentStyles({ firstContentborderColor: colorValue });
+                                        },
+                                        onChangeRadius: function onChangeRadius(newrRadius) {
+                                            return saveFirstContentStyles({ firstContentborderRadius: newrRadius });
+                                        }
+                                    }),
+                                    React.createElement(_PremiumShadow2.default, {
+                                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
+                                        boxShadow: true,
+                                        color: firstContentStyles[0].firstContentBoxShadowColor,
+                                        blur: firstContentStyles[0].firstContentBoxShadowBlur,
+                                        horizontal: firstContentStyles[0].firstContentBoxShadowHorizontal,
+                                        vertical: firstContentStyles[0].firstContentBoxShadowVertical,
+                                        position: firstContentStyles[0].firstContentBoxShadowPosition,
+                                        onChangeColor: function onChangeColor(newColor) {
+                                            return saveFirstContentStyles({ firstContentBoxShadowColor: newColor });
+                                        },
+                                        onChangeBlur: function onChangeBlur(newBlur) {
+                                            return saveFirstContentStyles({ firstContentBoxShadowBlur: newBlur });
+                                        },
+                                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                            return saveFirstContentStyles({ firstContentBoxShadowHorizontal: newValue });
+                                        },
+                                        onChangeVertical: function onChangeVertical(newValue) {
+                                            return saveFirstContentStyles({ firstContentBoxShadowVertical: newValue });
+                                        },
+                                        onChangePosition: function onChangePosition(newValue) {
+                                            return saveFirstContentStyles({ firstContentBoxShadowPosition: newValue });
+                                        }
+                                    })
+                                );
+                            }
+                            if ("second" === tab.name) {
+                                tabout = React.createElement(
+                                    Fragment,
+                                    null,
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Text Color", 'premium-block-for-gutenberg'),
+                                        colorValue: secondContentStyles[0].secondContentColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
+                                            return saveSecondContentStyles({
+                                                secondContentColor: newValue
+                                            });
+                                        }
+                                    }),
+                                    React.createElement(_ColorComponent2.default, {
+                                        label: __("Background Color", 'premium-block-for-gutenberg'),
+                                        colorValue: secondContentStyles[0].secondContentBGColor,
+                                        colorDefault: '',
+                                        onColorChange: function onColorChange(newValue) {
+                                            return saveSecondContentStyles({
+                                                secondContentBGColor: newValue
+                                            });
+                                        }
+                                    }),
+                                    React.createElement(_premiumTypo2.default, {
+                                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+                                        setAttributes: saveSecondContentStyles,
+                                        fontSizeType: { value: secondContentStyles[0].secondContentfontSizeType, label: __("secondContentfontSizeType") },
+                                        fontSize: secondContentStyles[0].secondContentfontSize,
+                                        fontSizeMobile: secondContentStyles[0].secondContentfontSizeMobile,
+                                        fontSizeTablet: secondContentStyles[0].secondContentfontSizeTablet,
+                                        onChangeSize: function onChangeSize(newSize) {
+                                            return saveSecondContentStyles({ secondContentfontSize: newSize });
+                                        },
+                                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                            return saveSecondContentStyles({ secondContentfontSizeTablet: newSize });
+                                        },
+                                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                            return saveSecondContentStyles({ secondContentfontSizeMobile: newSize });
+                                        },
+                                        weight: secondContentStyles[0].secondContentWeight,
+                                        style: secondContentStyles[0].secondContentStyle,
+                                        spacing: secondContentStyles[0].secondContentLetter,
+                                        upper: secondContentStyles[0].secondContentUpper,
+                                        line: secondContentStyles[0].secondContentLine,
+                                        fontFamily: secondContentStyles[0].secondContentFontFamily,
+                                        onChangeWeight: function onChangeWeight(newWeight) {
+                                            return saveSecondContentStyles({ secondContentWeight: newWeight || 500 });
+                                        },
+                                        onChangeStyle: function onChangeStyle(newStyle) {
+                                            return saveSecondContentStyles({ secondContentStyle: newStyle });
+                                        },
+                                        onChangeSpacing: function onChangeSpacing(newValue) {
+                                            return saveSecondContentStyles({ secondContentLetter: newValue });
+                                        },
+                                        onChangeUpper: function onChangeUpper(check) {
+                                            return saveSecondContentStyles({ secondContentUpper: check });
+                                        },
+                                        onChangeLine: function onChangeLine(newValue) {
+                                            return saveSecondContentStyles({ secondContentLine: newValue });
+                                        },
+                                        onChangeFamily: function onChangeFamily(fontFamily) {
+                                            return saveSecondContentStyles({ secondContentFontFamily: fontFamily });
+                                        }
+                                    }),
+                                    React.createElement(_PremiumShadow2.default, {
+                                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                                        color: secondContentStyles[0].secondContentShadowColor,
+                                        blur: secondContentStyles[0].secondContentShadowBlur,
+                                        horizontal: secondContentStyles[0].secondContentShadowHorizontal,
+                                        vertical: secondContentStyles[0].secondContentShadowVertical,
+                                        onChangeColor: function onChangeColor(newColor) {
+                                            return saveSecondContentStyles({ secondContentShadowColor: newColor });
+                                        },
+                                        onChangeBlur: function onChangeBlur(newBlur) {
+                                            return saveSecondContentStyles({ secondContentShadowBlur: newBlur });
+                                        },
+                                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                            return saveSecondContentStyles({ secondContentShadowHorizontal: newValue });
+                                        },
+                                        onChangeVertical: function onChangeVertical(newValue) {
+                                            return saveSecondContentStyles({ secondContentShadowVertical: newValue });
+                                        }
+                                    }),
+                                    React.createElement(_premiumBorder2.default, {
+                                        borderType: secondContentStyles[0].secondContentborderType,
+                                        borderWidth: secondContentBorderWidth,
+                                        top: secondContentBorderTop,
+                                        right: secondContentBorderRight,
+                                        bottom: secondContentBorderBottom,
+                                        left: secondContentBorderLeft,
+                                        borderColor: secondContentStyles[0].secondContentborderColor,
+                                        borderRadius: secondContentStyles[0].secondContentborderRadius,
+                                        onChangeType: function onChangeType(newType) {
+                                            return saveSecondContentStyles({ secondContentborderType: newType });
+                                        },
+                                        onChangeWidth: function onChangeWidth(_ref4) {
+                                            var top = _ref4.top,
+                                                right = _ref4.right,
+                                                bottom = _ref4.bottom,
+                                                left = _ref4.left;
+                                            return setAttributes({
+                                                secondContentBorderUpdated: true,
+                                                secondContentBorderTop: top,
+                                                secondContentBorderRight: right,
+                                                secondContentBorderBottom: bottom,
+                                                secondContentBorderLeft: left
+                                            });
+                                        },
+                                        onChangeColor: function onChangeColor(colorValue) {
+                                            return saveSecondContentStyles({ secondContentborderColor: colorValue });
+                                        },
+                                        onChangeRadius: function onChangeRadius(newrRadius) {
+                                            return saveSecondContentStyles({ secondContentborderRadius: newrRadius });
+                                        }
+                                    }),
+                                    React.createElement(_PremiumShadow2.default, {
+                                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
+                                        boxShadow: true,
+                                        color: secondContentStyles[0].secondContentBoxShadowColor,
+                                        blur: secondContentStyles[0].secondContentBoxShadowBlur,
+                                        horizontal: secondContentStyles[0].secondContentBoxShadowHorizontal,
+                                        vertical: secondContentStyles[0].secondContentBoxShadowVertical,
+                                        position: secondContentStyles[0].secondContentBoxShadowPosition,
+                                        onChangeColor: function onChangeColor(newColor) {
+                                            return saveSecondContentStyles({ secondContentBoxShadowColor: newColor });
+                                        },
+                                        onChangeBlur: function onChangeBlur(newBlur) {
+                                            return saveSecondContentStyles({ secondContentBoxShadowBlur: newBlur });
+                                        },
+                                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                            return saveSecondContentStyles({ secondContentBoxShadowHorizontal: newValue });
+                                        },
+                                        onChangeVertical: function onChangeVertical(newValue) {
+                                            return saveSecondContentStyles({ secondContentBoxShadowVertical: newValue });
+                                        },
+                                        onChangePosition: function onChangePosition(newValue) {
+                                            return saveSecondContentStyles({ secondContentBoxShadowPosition: newValue });
+                                        }
+                                    })
+                                );
+                            }
+                            return React.createElement(
+                                "div",
+                                null,
+                                tabout
+                            );
                         }
-                    }),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-                        setAttributes: saveFirstContentStyles,
-                        fontSizeType: { value: firstContentStyles[0].firstContentfontSizeType, label: __("firstContentfontSizeType") },
-                        fontSize: firstContentStyles[0].firstContentfontSize,
-                        fontSizeMobile: firstContentStyles[0].firstContentfontSizeMobile,
-                        fontSizeTablet: firstContentStyles[0].firstContentfontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveFirstContentStyles({ firstContentfontSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveFirstContentStyles({ firstContentfontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveFirstContentStyles({ firstContentfontSizeMobile: newSize });
-                        },
-                        weight: firstContentStyles[0].firstContentWeight,
-                        style: firstContentStyles[0].firstContentStyle,
-                        spacing: firstContentStyles[0].firstContentLetter,
-                        upper: firstContentStyles[0].firstContentUpper,
-                        line: firstContentStyles[0].firstContentLine,
-                        fontFamily: firstContentStyles[0].firstContentFontFamily,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveFirstContentStyles({ firstContentWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveFirstContentStyles({ firstContentStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveFirstContentStyles({ firstContentLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveFirstContentStyles({ firstContentUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveFirstContentStyles({ firstContentLine: newValue });
-                        },
-                        onChangeFamily: function onChangeFamily(fontFamily) {
-                            return saveFirstContentStyles({ firstContentFontFamily: fontFamily });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        color: firstContentStyles[0].firstContentShadowColor,
-                        blur: firstContentStyles[0].firstContentShadowBlur,
-                        horizontal: firstContentStyles[0].firstContentShadowHorizontal,
-                        vertical: firstContentStyles[0].firstContentShadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveFirstContentStyles({ firstContentShadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveFirstContentStyles({ firstContentShadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveFirstContentStyles({ firstContentShadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveFirstContentStyles({ firstContentShadowVertical: newValue });
-                        }
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
-                        colorValue: firstContentStyles[0].firstContentBGColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveFirstContentStyles({
-                                firstContentBGColor: newValue
-                            });
-                        }
-                    }),
-                    React.createElement(_premiumBorder2.default, {
-                        borderType: firstContentStyles[0].firstContentborderType,
-                        borderWidth: firstContentBorderWidth,
-                        top: firstContentBorderTop,
-                        right: firstContentBorderRight,
-                        bottom: firstContentBorderBottom,
-                        left: firstContentBorderLeft,
-                        borderColor: firstContentStyles[0].firstContentborderColor,
-                        borderRadius: firstContentStyles[0].firstContentborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveFirstContentStyles({ firstContentborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref3) {
-                            var top = _ref3.top,
-                                right = _ref3.right,
-                                bottom = _ref3.bottom,
-                                left = _ref3.left;
-                            return setAttributes({
-                                firstContentBorderUpdated: true,
-                                firstContentBorderTop: top,
-                                firstContentBorderRight: right,
-                                firstContentBorderBottom: bottom,
-                                firstContentBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveFirstContentStyles({ firstContentborderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveFirstContentStyles({ firstContentborderRadius: newrRadius });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: true,
-                        color: firstContentStyles[0].firstContentBoxShadowColor,
-                        blur: firstContentStyles[0].firstContentBoxShadowBlur,
-                        horizontal: firstContentStyles[0].firstContentBoxShadowHorizontal,
-                        vertical: firstContentStyles[0].firstContentBoxShadowVertical,
-                        position: firstContentStyles[0].firstContentBoxShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveFirstContentStyles({ firstContentBoxShadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveFirstContentStyles({ firstContentBoxShadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveFirstContentStyles({ firstContentBoxShadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveFirstContentStyles({ firstContentBoxShadowVertical: newValue });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return saveFirstContentStyles({ firstContentBoxShadowPosition: newValue });
-                        }
-                    }),
+                    ),
+                    React.createElement("hr", null),
                     React.createElement(_PremiumResponsiveMargin2.default, {
                         directions: ["all"],
                         marginTop: firstContentMarginT,
@@ -69885,18 +70092,18 @@ var edit = function (_Component) {
 
                     }),
                     React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: firstContentPaddingT,
+                        paddingTop: contentPaddingT,
                         paddingRight: firstContentPaddingR,
-                        paddingBottom: firstContentPaddingB,
-                        paddingLeft: firstContentPaddingL,
-                        paddingTopTablet: firstContentPaddingTTablet,
-                        paddingRightTablet: firstContentPaddingRTablet,
-                        paddingBottomTablet: firstContentPaddingBTablet,
+                        paddingBottom: contentPaddingB,
+                        paddingLeft: contentPaddingL,
+                        paddingTopTablet: contentPaddingTTablet,
+                        paddingRightTablet: contentPaddingRTablet,
+                        paddingBottomTablet: contentPaddingBTablet,
                         paddingLeftTablet: firstContentPaddingLTablet,
-                        paddingTopMobile: firstContentPaddingTMobile,
-                        paddingRightMobile: firstContentPaddingRMobile,
-                        paddingBottomMobile: firstContentPaddingBMobile,
-                        paddingLeftMobile: firstContentPaddingLMobile,
+                        paddingTopMobile: contentPaddingTMobile,
+                        paddingRightMobile: contentPaddingRMobile,
+                        paddingBottomMobile: contentPaddingBMobile,
+                        paddingLeftMobile: contentPaddingLMobile,
                         showUnits: true,
                         selectedUnit: firstContentStyles[0].firstContentPaddingType,
                         onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
@@ -69904,144 +70111,39 @@ var edit = function (_Component) {
                         },
                         onChangePaddingTop: function onChangePaddingTop(device, newValue) {
                             if (device === "desktop") {
-                                setAttributes({ firstContentPaddingT: newValue });
+                                setAttributes({ contentPaddingT: newValue });
                             } else if (device === "tablet") {
-                                setAttributes({ firstContentPaddingTTablet: newValue });
+                                setAttributes({ contentPaddingTTablet: newValue });
                             } else {
-                                setAttributes({ firstContentPaddingTMobile: newValue });
+                                setAttributes({ contentPaddingTMobile: newValue });
                             }
                         },
                         onChangePaddingRight: function onChangePaddingRight(device, newValue) {
                             if (device === "desktop") {
                                 setAttributes({ firstContentPaddingR: newValue });
                             } else if (device === "tablet") {
-                                setAttributes({ firstContentPaddingRTablet: newValue });
+                                setAttributes({ contentPaddingRTablet: newValue });
                             } else {
-                                setAttributes({ firstContentPaddingRMobile: newValue });
+                                setAttributes({ contentPaddingRMobile: newValue });
                             }
                         },
                         onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
                             if (device === "desktop") {
-                                setAttributes({ firstContentPaddingB: newValue });
+                                setAttributes({ contentPaddingB: newValue });
                             } else if (device === "tablet") {
-                                setAttributes({ firstContentPaddingBTablet: newValue });
+                                setAttributes({ contentPaddingBTablet: newValue });
                             } else {
-                                setAttributes({ firstContentPaddingBMobile: newValue });
+                                setAttributes({ contentPaddingBMobile: newValue });
                             }
                         },
                         onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
                             if (device === "desktop") {
-                                setAttributes({ firstContentPaddingL: newValue });
+                                setAttributes({ contentPaddingL: newValue });
                             } else if (device === "tablet") {
                                 setAttributes({ firstContentPaddingLTablet: newValue });
                             } else {
-                                setAttributes({ firstContentPaddingLMobile: newValue });
+                                setAttributes({ contentPaddingLMobile: newValue });
                             }
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Second Content Style"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_responsiveRangeControl2.default, {
-                        setAttributes: setAttributes,
-                        rangeType: { value: secondContentHeightType, label: __("secondContentHeightType") },
-                        range: { value: secondContentHeight, label: __("secondContentHeight") },
-                        rangeMobile: { value: secondContentHeightMobile, label: __("secondContentHeightMobile") },
-                        rangeTablet: { value: secondContentHeightTablet, label: __("secondContentHeightTablet") },
-                        rangeLabel: __("Height")
-                    }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Text Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: secondContentColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                secondContentColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    React.createElement(
-                        "p",
-                        null,
-                        __("Background Color")
-                    ),
-                    React.createElement(ColorPalette, {
-                        value: secondContentBGColor,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({
-                                secondContentBGColor: newValue
-                            });
-                        },
-                        allowReset: true
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        setAttributes: setAttributes,
-                        paddingTopType: { value: secondpaddingTopType, label: __("secondpaddingTopType") },
-                        paddingTop: { value: secondpaddingTop, label: __("secondpaddingTop") },
-                        paddingTopMobile: { value: secondpaddingTopMobile, label: __("secondpaddingTopMobile") },
-                        paddingTopTablet: { value: secondpaddingTopTablet, label: __("secondpaddingTopTablet") },
-                        paddingBottomType: { value: secondpaddingBottomType, label: __("secondpaddingBottomType") },
-                        paddingBottom: { value: secondpaddingBottom, label: __("secondpaddingBottom") },
-                        paddingBottomMobile: { value: secondpaddingBottomMobile, label: __("secondpaddingBottomMobile") },
-                        paddingBottomTablet: { value: secondpaddingBottomTablet, label: __("secondpaddingBottomTablet") },
-                        paddingRightType: { value: secondpaddingRightType, label: __("secondpaddingRightType") },
-                        paddingRight: { value: secondpaddingRight, label: __("secondpaddingRight") },
-                        paddingRightMobile: { value: secondpaddingRightMobile, label: __("secondpaddingRightMobile") },
-                        paddingRightTablet: { value: secondpaddingRightTablet, label: __("secondpaddingRightTablet") },
-                        paddingLeftType: { value: secondpaddingLeftType, label: __("secondpaddingLeftType") },
-                        paddingLeft: { value: secondpaddingLeft, label: __("secondpaddingLeft") },
-                        paddingLeftMobile: { value: secondpaddingLeftMobile, label: __("secondpaddingLeftMobile") },
-                        paddingLeftTablet: { value: secondpaddingLeftTablet, label: __("secondpaddingLeftTablet") }
-                    }),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                        setAttributes: setAttributes,
-                        fontSizeType: { value: secondContentfontSizeType, label: __("secondContentfontSizeType") },
-                        fontSize: { value: secondContentfontSize, label: __("secondContentfontSize") },
-                        fontSizeMobile: { value: secondContentfontSizeMobile, label: __("secondContentfontSizeMobile") },
-                        fontSizeTablet: { value: secondContentfontSizeTablet, label: __("secondContentfontSizeTablet") },
-                        weight: secondContentWeight,
-                        style: secondContentStyle,
-                        spacing: secondContentLetter,
-                        upper: secondContentUpper,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return setAttributes({ secondContentWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return setAttributes({ secondContentStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return setAttributes({ secondContentLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return setAttributes({ secondContentUpper: check });
-                        }
-                    }),
-                    React.createElement(_premiumBorder2.default, {
-                        borderType: secondContentborderType,
-                        borderWidth: secondContentborderWidth,
-                        borderColor: secondContentborderColor,
-                        borderRadius: secondContentborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return setAttributes({ secondContentborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(newWidth) {
-                            return setAttributes({ secondContentborderWidth: newWidth });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return setAttributes({ secondContentborderColor: colorValue.hex });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return setAttributes({ secondContentborderRadius: newrRadius });
                         }
                     })
                 )
@@ -70174,11 +70276,11 @@ var edit = function (_Component) {
                                         borderWidth: firstContentBorderUpdated ? firstContentBorderTop + "px " + firstContentBorderRight + "px " + firstContentBorderBottom + "px " + firstContentBorderLeft + "px" : firstContentBorderWidth + "px",
                                         borderRadius: firstContentStyles[0].firstContentborderRadius + "px",
                                         borderColor: firstContentStyles[0].firstContentborderColor,
-                                        minHeight: FirstContentHeight + firstContentStyles[0].firstContentHeightType,
-                                        paddingTop: FirstContentPaddingTop + firstContentStyles[0].firstContentPaddingType,
-                                        paddingBottom: FirstContentPaddingBottom + firstContentStyles[0].firstContentPaddingType,
-                                        paddingLeft: FirstContentPaddingLeft + firstContentStyles[0].firstContentPaddingType,
-                                        paddingRight: FirstContentPaddingRight + firstContentStyles[0].firstContentPaddingType,
+                                        minHeight: ContentHeight + contentStyles[0].contentHeightType,
+                                        paddingTop: ContentPaddingTop + firstContentStyles[0].firstContentPaddingType,
+                                        paddingBottom: ContentPaddingBottom + firstContentStyles[0].firstContentPaddingType,
+                                        paddingLeft: ContentPaddingLeft + firstContentStyles[0].firstContentPaddingType,
+                                        paddingRight: ContentPaddingRight + firstContentStyles[0].firstContentPaddingType,
                                         boxShadow: firstContentStyles[0].firstContentBoxShadowHorizontal + "px " + firstContentStyles[0].firstContentBoxShadowVertical + "px " + firstContentStyles[0].firstContentBoxShadowBlur + "px " + firstContentStyles[0].firstContentBoxShadowColor + " " + firstContentStyles[0].firstContentBoxShadowPosition
                                     } },
                                 React.createElement(RichText, {
@@ -70207,11 +70309,17 @@ var edit = function (_Component) {
                                 "li",
                                 { className: "premium-content-switcher-is-hidden premium-content-switcher-second-list " + this.props.clientId,
                                     style: {
-                                        background: secondContentBGColor,
-                                        borderStyle: secondContentborderType,
-                                        borderWidth: secondContentborderWidth + "px",
-                                        borderRadius: secondContentborderRadius || 0 + "px",
-                                        borderColor: secondContentborderColor
+                                        background: secondContentStyles[0].secondContentBGColor,
+                                        borderStyle: secondContentStyles[0].secondContentborderType,
+                                        borderWidth: secondContentBorderUpdated ? secondContentBorderTop + "px " + secondContentBorderRight + "px " + secondContentBorderBottom + "px " + secondContentBorderLeft + "px" : secondContentBorderWidth + "px",
+                                        borderRadius: secondContentStyles[0].secondContentborderRadius + "px",
+                                        borderColor: secondContentStyles[0].secondContentborderColor,
+                                        minHeight: ContentHeight + contentStyles[0].contentHeightType,
+                                        paddingTop: ContentPaddingTop + secondContentStyles[0].secondContentPaddingType,
+                                        paddingBottom: ContentPaddingBottom + secondContentStyles[0].secondContentPaddingType,
+                                        paddingLeft: ContentPaddingLeft + secondContentStyles[0].secondContentPaddingType,
+                                        paddingRight: ContentPaddingRight + secondContentStyles[0].secondContentPaddingType,
+                                        boxShadow: secondContentStyles[0].secondContentBoxShadowHorizontal + "px " + secondContentStyles[0].secondContentBoxShadowVertical + "px " + secondContentStyles[0].secondContentBoxShadowBlur + "px " + secondContentStyles[0].secondContentBoxShadowColor + " " + secondContentStyles[0].secondContentBoxShadowPosition
                                     } },
                                 React.createElement(RichText, {
                                     tagName: "div",
@@ -70223,11 +70331,15 @@ var edit = function (_Component) {
                                     style: {
                                         textAlign: secondcontentlign,
                                         justifyContent: secondcontentlign,
-                                        color: secondContentColor
-                                        // letterSpacing: secondContentLetter + "px",
-                                        // textTransform: secondContentUpper ? "uppercase" : "none",
-                                        // fontStyle: secondContentStyle,
-                                        // fontWeight: secondContentWeight,
+                                        color: secondContentStyles[0].secondContentColor,
+                                        fontSize: SecondContentSize + secondContentStyles[0].secondContentfontSizeType,
+                                        letterSpacing: secondContentStyles[0].secondContentLetter + "px",
+                                        textTransform: secondContentStyles[0].secondContentUpper ? "uppercase" : "none",
+                                        fontStyle: secondContentStyles[0].secondContentStyle,
+                                        fontWeight: secondContentStyles[0].secondContentWeight,
+                                        lineHeight: (secondContentStyles[0].secondContentLine ? secondContentStyles[0].secondContentLine : "") + "px",
+                                        fontFamily: secondContentStyles[0].secondContentFontFamily,
+                                        textShadow: secondContentStyles[0].secondContentShadowHorizontal + "px " + secondContentStyles[0].secondContentShadowVertical + "px " + secondContentStyles[0].secondContentShadowBlur + "px " + secondContentStyles[0].secondContentShadowColor
                                     }
                                 })
                             )
@@ -70263,9 +70375,14 @@ exports.default = withSelect(function (select, props) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _attributes;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var __ = wp.i18n.__;
 
-var attributes = {
+var attributes = (_attributes = {
     block_id: {
         type: "string"
     },
@@ -70577,13 +70694,18 @@ var attributes = {
         type: "number",
         default: "0"
     },
+    contentStyles: {
+        type: "array",
+        default: [{
+            contentHeight: 100,
+            contentHeightType: "px",
+            contentHeightMobile: 100,
+            contentHeightTablet: 100
+        }]
+    },
     firstContentStyles: {
         type: "array",
         default: [{
-            firstContentHeight: 100,
-            firstContentHeightType: "px",
-            firstContentHeightMobile: 100,
-            firstContentHeightTablet: 100,
             firstContentColor: "#54595f",
             firstContentLetter: 0,
             firstContentLine: 0,
@@ -70672,476 +70794,127 @@ var attributes = {
     firstContentMarginLMobile: {
         type: "number"
     },
-    firstContentPaddingT: {
+    contentPaddingT: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingR: {
+    contentPaddingR: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingB: {
+    contentPaddingB: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingL: {
+    contentPaddingL: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingTTablet: {
+    contentPaddingTTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingRTablet: {
+    contentPaddingRTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingBTablet: {
+    contentPaddingBTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingLTablet: {
+    contentPaddingLTablet: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingTMobile: {
+    contentPaddingTMobile: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingRMobile: {
+    contentPaddingRMobile: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingBMobile: {
+    contentPaddingBMobile: {
         type: "number",
         default: "0"
     },
-    firstContentPaddingLMobile: {
+    contentPaddingLMobile: {
         type: "number",
         default: "0"
     },
-    // switchSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // switchSize: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // switchSizeMobile: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // switchSizeTablet: {
-    //     type: "number",
-    //     default: 15
-    // },
-    bottomSpacingType: {
-        type: "string",
-        default: "px"
+    secondContentStyles: {
+        type: "array",
+        default: [{
+            secondContentColor: "#54595f",
+            secondContentLetter: 0,
+            secondContentLine: 0,
+            secondContentStyle: 'normal',
+            secondContentUpper: false,
+            secondContentWeight: "",
+            secondContentfontSize: "",
+            secondContentfontSizeType: "px",
+            secondContentfontSizeMobile: "",
+            secondContentfontSizeTablet: "",
+            secondContentFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            secondContentShadowColor: '',
+            secondContentShadowBlur: '0',
+            secondContentShadowHorizontal: '0',
+            secondContentShadowVertical: '0',
+            secondContentBGColor: '',
+            secondContentborderType: "none",
+            secondContentborderRadius: 0,
+            secondContentborderColor: '',
+            secondContentBoxShadowColor: '',
+            secondContentBoxShadowBlur: '',
+            secondContentBoxShadowHorizontal: '',
+            secondContentBoxShadowVertical: '',
+            secondContentBoxShadowPosition: 'inset',
+            secondContentPaddingType: 'px'
+        }]
     },
-    bottomSpacing: {
-        type: "number",
-        default: 1
-    },
-    bottomSpacingMobile: {
-        type: "number",
-        default: 1
-    },
-    bottomSpacingTablet: {
-        type: "number",
-        default: 1
-    },
-    firstStateColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    secondStateColor: {
-        type: "string",
-        default: "#6ec1e4"
-    },
-    switcherBGColor: {
-        type: "string",
-        default: "#f2f2f2"
-    },
-    // switchRadius: {
-    //     type: "number",
-    //     default: 50
-    // },
-    // switchRadiusType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // labelSpacingType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // labelSpacing: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // labelSpacingMobile: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // labelSpacingTablet: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // firstLabelColor: {
-    //     type: "string",
-    //     default: "#54595f"
-    // },
-    // firstLabelLetter: {
-    //     type: "number"
-    // },
-    // firstLabelStyle: {
-    //     type: "string"
-    // },
-    // firstLabelUpper: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // firstLabelWeight: {
-    //     type: "number"
-    // },
-    // firstLabelfontSize: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // firstLabelfontSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // firstLabelfontSizeMobile: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // firstLabelfontSizeTablet: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // secondLabelColor: {
-    //     type: "string",
-    //     default: "#54595f"
-    // },
-    // secondLabelLetter: {
-    //     type: "number"
-    // },
-    // secondLabelStyle: {
-    //     type: "string"
-    // },
-    // secondLabelUpper: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // secondLabelWeight: {
-    //     type: "number"
-    // },
-    // secondLabelfontSize: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // secondLabelfontSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // secondLabelfontSizeMobile: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // secondLabelfontSizeTablet: {
-    //     type: "number",
-    //     default: 20
-    // },
-    // shadowColor: {
-    //     type: "string"
-    // },
-    // shadowBlur: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // shadowHorizontal: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // shadowVertical: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // firstContentHeight: {
-    //     type: "number",
-    //     default: 50
-    // },
-    // firstContentHeightType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // firstContentHeightMobile: {
-    //     type: "number",
-    //     default: 50
-    // },
-    // firstContentHeightTablet: {
-    //     type: "number",
-    //     default: 50
-    // },
-    // firstContentColor: {
-    //     type: "string",
-    //     default: "#54595f"
-    // },
-    // firstContentBGColor: {
-    //     type: "string"
-    // },
-    secondContentHeightType: {
-        type: "string",
-        default: "px"
-    },
-    secondContentHeight: {
-        type: "number",
-        default: 50
-    },
-    secondContentHeightMobile: {
-        type: "number",
-        default: 50
-    },
-    secondContentHeightTablet: {
-        type: "number",
-        default: 50
-    },
-    secondContentColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    secondContentBGColor: {
-        type: "string"
-    },
-    // firstpaddingTop: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingTopType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // firstpaddingTopMobile: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingTopTablet: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingRight: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingRightType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // firstpaddingRightMobile: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingRightTablet: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingBottom: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingBottomType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // firstpaddingBottomMobile: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingBottomTablet: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingLeft: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingLeftType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // firstpaddingLeftMobile: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstpaddingLeftTablet: {
-    //     type: "number",
-    //     default: 0
-    // },
-    secondpaddingTop: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingTopType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingTopMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingTopTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRight: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRightType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingRightMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingRightTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottom: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottomType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingBottomMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingBottomTablet: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeft: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeftType: {
-        type: "string",
-        default: "px"
-    },
-    secondpaddingLeftMobile: {
-        type: "number",
-        default: 0
-    },
-    secondpaddingLeftTablet: {
-        type: "number",
-        default: 0
-    },
-    effect: {
-        type: "string",
-        default: "fade"
-    },
-    slide: {
-        type: "string",
-        default: "top"
-    },
-    // firstContentLetter: {
-    //     type: "number"
-    // },
-    // firstContentStyle: {
-    //     type: "string"
-    // },
-    // firstContentUpper: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // firstContentWeight: {
-    //     type: "number",
-    //     default: 500
-    // },
-    // firstContentfontSize: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // firstContentfontSizeType: {
-    //     type: "string",
-    //     default: "px"
-    // },
-    // firstContentfontSizeMobile: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // firstContentfontSizeTablet: {
-    //     type: "number",
-    //     default: 15
-    // },
-    // firstContentborderType: {
-    //     type: "string",
-    //     default: "none"
-    // },
-    // firstContentborderWidth: {
-    //     type: "number",
-    //     default: "1"
-    // },
-    // firstContentborderRadius: {
-    //     type: "number",
-    //     default: 0
-    // },
-    // firstContentborderColor: {
-    //     type: "string"
-    // },
-    secondContentLetter: {
-        type: "number"
-    },
-    secondContentStyle: {
-        type: "string"
-    },
-    secondContentUpper: {
-        type: "boolean",
-        default: false
-    },
-    secondContentWeight: {
-        type: "number",
-        default: 500
-    },
-    secondContentfontSize: {
-        type: "number",
-        default: 15
-    },
-    secondContentfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    secondContentfontSizeMobile: {
-        type: "number",
-        default: 15
-    },
-    secondContentfontSizeTablet: {
-        type: "number",
-        default: 15
-    },
-    secondContentborderType: {
-        type: "string",
-        default: "none"
-    },
-    secondContentborderWidth: {
+    secondContentBorderTop: {
         type: "number",
         default: "1"
     },
-    secondContentborderRadius: {
+    secondContentBorderRight: {
         type: "number",
-        default: 0
+        default: "1"
     },
-    secondContentborderColor: {
-        type: "string"
+    secondContentBorderBottom: {
+        type: "number",
+        default: "1"
+    },
+    secondContentBorderLeft: {
+        type: "number",
+        default: '1'
+    },
+    secondContentBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    secondContentBorderWidth: {
+        type: "number",
+        default: "1"
     }
-};
+}, _defineProperty(_attributes, "secondContentStyles", {
+    type: "array",
+    default: [{}]
+}), _defineProperty(_attributes, "firstStateColor", {
+    type: "string",
+    default: "#6ec1e4"
+}), _defineProperty(_attributes, "secondStateColor", {
+    type: "string",
+    default: "#6ec1e4"
+}), _defineProperty(_attributes, "switcherBGColor", {
+    type: "string",
+    default: "#f2f2f2"
+}), _defineProperty(_attributes, "effect", {
+    type: "string",
+    default: "fade"
+}), _defineProperty(_attributes, "slide", {
+    type: "string",
+    default: "top"
+}), _attributes);
 exports.default = attributes;
 
 /***/ })
