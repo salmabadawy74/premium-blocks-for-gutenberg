@@ -68648,7 +68648,6 @@ var edit = function (_Component) {
                 firstcontentlign = attributes.firstcontentlign,
                 secondcontentlign = attributes.secondcontentlign,
                 switcherStyles = attributes.switcherStyles,
-                backgroundType = attributes.backgroundType,
                 labelStyles = attributes.labelStyles,
                 firstLabelBorderTop = attributes.firstLabelBorderTop,
                 firstLabelBorderRight = attributes.firstLabelBorderRight,
@@ -68707,13 +68706,13 @@ var edit = function (_Component) {
                 firstContentMarginBMobile = attributes.firstContentMarginBMobile,
                 firstContentMarginLMobile = attributes.firstContentMarginLMobile,
                 contentPaddingT = attributes.contentPaddingT,
-                firstContentPaddingR = attributes.firstContentPaddingR,
+                contentPaddingR = attributes.contentPaddingR,
                 contentPaddingB = attributes.contentPaddingB,
                 contentPaddingL = attributes.contentPaddingL,
                 contentPaddingTTablet = attributes.contentPaddingTTablet,
                 contentPaddingRTablet = attributes.contentPaddingRTablet,
                 contentPaddingBTablet = attributes.contentPaddingBTablet,
-                firstContentPaddingLTablet = attributes.firstContentPaddingLTablet,
+                contentPaddingLTablet = attributes.contentPaddingLTablet,
                 contentPaddingTMobile = attributes.contentPaddingTMobile,
                 contentPaddingRMobile = attributes.contentPaddingRMobile,
                 contentPaddingBMobile = attributes.contentPaddingBMobile,
@@ -68725,6 +68724,38 @@ var edit = function (_Component) {
                 secondContentBorderLeft = attributes.secondContentBorderLeft,
                 secondContentBorderUpdated = attributes.secondContentBorderUpdated,
                 secondContentBorderWidth = attributes.secondContentBorderWidth,
+                containerStyles = attributes.containerStyles,
+                backgroundType = attributes.backgroundType,
+                containerBorderTop = attributes.containerBorderTop,
+                containerBorderRight = attributes.containerBorderRight,
+                containerBorderBottom = attributes.containerBorderBottom,
+                containerBorderLeft = attributes.containerBorderLeft,
+                containerBorderUpdated = attributes.containerBorderUpdated,
+                containerBorderWidth = attributes.containerBorderWidth,
+                containerPaddingT = attributes.containerPaddingT,
+                containerPaddingR = attributes.containerPaddingR,
+                containerPaddingB = attributes.containerPaddingB,
+                containerPaddingL = attributes.containerPaddingL,
+                containerPaddingTTablet = attributes.containerPaddingTTablet,
+                containerPaddingRTablet = attributes.containerPaddingRTablet,
+                containerPaddingBTablet = attributes.containerPaddingBTablet,
+                containerPaddingLTablet = attributes.containerPaddingLTablet,
+                containerPaddingTMobile = attributes.containerPaddingTMobile,
+                containerPaddingRMobile = attributes.containerPaddingRMobile,
+                containerPaddingBMobile = attributes.containerPaddingBMobile,
+                containerPaddingLMobile = attributes.containerPaddingLMobile,
+                containerMarginT = attributes.containerMarginT,
+                containerMarginR = attributes.containerMarginR,
+                containerMarginB = attributes.containerMarginB,
+                containerMarginL = attributes.containerMarginL,
+                containerMarginTTablet = attributes.containerMarginTTablet,
+                containerMarginRTablet = attributes.containerMarginRTablet,
+                containerMarginBTablet = attributes.containerMarginBTablet,
+                containerMarginLTablet = attributes.containerMarginLTablet,
+                containerMarginTMobile = attributes.containerMarginTMobile,
+                containerMarginRMobile = attributes.containerMarginRMobile,
+                containerMarginBMobile = attributes.containerMarginBMobile,
+                containerMarginLMobile = attributes.containerMarginLMobile,
                 backgroundTypeState2 = attributes.backgroundTypeState2,
                 switchSize = attributes.switchSize,
                 switchSizeTablet = attributes.switchSizeTablet,
@@ -68913,10 +68944,18 @@ var edit = function (_Component) {
             var FirstContentMarginBottom = this.getPreviewSize(this.props.deviceType, firstContentMarginB, firstContentMarginBTablet, firstContentMarginBMobile);
             var FirstContentMarginLeft = this.getPreviewSize(this.props.deviceType, firstContentMarginL, firstContentMarginLTablet, firstContentMarginLMobile);
             var ContentPaddingTop = this.getPreviewSize(this.props.deviceType, contentPaddingT, contentPaddingTTablet, contentPaddingTMobile);
-            var ContentPaddingRight = this.getPreviewSize(this.props.deviceType, firstContentPaddingR, contentPaddingRTablet, contentPaddingRMobile);
+            var ContentPaddingRight = this.getPreviewSize(this.props.deviceType, contentPaddingR, contentPaddingRTablet, contentPaddingRMobile);
             var ContentPaddingBottom = this.getPreviewSize(this.props.deviceType, contentPaddingB, contentPaddingBTablet, contentPaddingBMobile);
-            var ContentPaddingLeft = this.getPreviewSize(this.props.deviceType, contentPaddingL, firstContentPaddingLTablet, contentPaddingLMobile);
+            var ContentPaddingLeft = this.getPreviewSize(this.props.deviceType, contentPaddingL, contentPaddingLTablet, contentPaddingLMobile);
             var SecondContentSize = this.getPreviewSize(this.props.deviceType, secondContentStyles[0].secondContentfontSize, secondContentStyles[0].secondContentfontSizeTablet, secondContentStyles[0].secondContentfontSizeMobile);
+            var ContainerMarginTop = this.getPreviewSize(this.props.deviceType, containerMarginT, containerMarginTTablet, containerMarginTMobile);
+            var ContainerMarginRight = this.getPreviewSize(this.props.deviceType, containerMarginR, containerMarginRTablet, containerMarginRMobile);
+            var ContainerMarginBottom = this.getPreviewSize(this.props.deviceType, containerMarginB, containerMarginBTablet, containerMarginBMobile);
+            var ContainerMarginLeft = this.getPreviewSize(this.props.deviceType, containerMarginL, containerMarginLTablet, containerMarginLMobile);
+            var ContainerPaddingTop = this.getPreviewSize(this.props.deviceType, containerPaddingT, containerPaddingTTablet, containerPaddingTMobile);
+            var ContainerPaddingRight = this.getPreviewSize(this.props.deviceType, containerPaddingR, containerPaddingRTablet, containerPaddingRMobile);
+            var ContainerPaddingBottom = this.getPreviewSize(this.props.deviceType, containerPaddingB, containerPaddingBTablet, containerPaddingBMobile);
+            var ContainerPaddingLeft = this.getPreviewSize(this.props.deviceType, containerPaddingL, containerPaddingLTablet, containerPaddingLMobile);
 
             var btnGradState1 = void 0,
                 btnGrad2State1 = void 0,
@@ -68934,10 +68973,26 @@ var edit = function (_Component) {
                 btnbgState1 = switcherStyles[0].backgroundImageURLState1 ? "url('" + switcherStyles[0].backgroundImageURLState1 + "')" : '';
             }
 
+            var btnGrad = void 0,
+                btnGrad2 = void 0,
+                btnbg = void 0;
+
+            if (undefined !== backgroundType && 'gradient' === backgroundType) {
+                btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+                btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+                if ('radial' === containerStyles[0].gradientType) {
+                    btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                } else if ('radial' !== containerStyles[0].gradientType) {
+                    btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+                }
+            } else {
+                btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+            }
+
             var renderCss = React.createElement(
                 "style",
                 null,
-                "\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-switch-slider:before {\n                        border-radius: " + ContainerBorderRadius + switcherStyles[0].containerRadiusType + " !important;\n                        background-color: " + (backgroundType === "solid" ? switcherStyles[0].containerBackState1 : "#6ec1e4") + " !important;\n                        background-image: " + btnbgState1 + " !important;\n                        background-repeat: " + switcherStyles[0].backgroundRepeatState1 + " !important;\n                        background-position: " + switcherStyles[0].backgroundPositionState1 + " !important;\n                        background-size: " + switcherStyles[0].backgroundSizeState1 + " !important;\n                        background-attachment: " + (switcherStyles[0].fixedState1 ? "fixed" : "unset") + " !important;\n                        box-shadow: " + switcherStyles[0].containerShadowHorizontal + "px " + switcherStyles[0].containerShadowVertical + "px " + switcherStyles[0].containerShadowBlur + "px " + switcherStyles[0].containerShadowColor + " " + switcherStyles[0].containerShadowPosition + ";\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-switch-slider {\n                        border-radius: " + SwitcherBorderRadius + switcherStyles[0].switchRadiusType + " !important;\n                        box-shadow: " + switcherStyles[0].switchShadowHorizontal + "px " + switcherStyles[0].switchShadowVertical + "px " + switcherStyles[0].switchShadowBlur + "px " + switcherStyles[0].switchShadowColor + " " + switcherStyles[0].switchShadowPosition + ";\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {\n                        margin-right: " + LabelSpacing + "px !important;\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {\n                        margin-left: " + LabelSpacing + "px !important;\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-block .premium-content-switcher-first-label {\n                        margin-bottom: " + LabelSpacing + "px !important;\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-block .premium-content-switcher-second-label {\n                        margin-top: " + LabelSpacing + "px !important;\n                    }\n                "
+                "\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-switch-slider:before {\n                        border-radius: " + ContainerBorderRadius + switcherStyles[0].containerRadiusType + " !important;\n                        // background-color: " + (backgroundType === "solid" ? switcherStyles[0].containerBackState1 : "#6ec1e4") + " !important;\n                        // background-image: " + btnbgState1 + " !important;\n                        // background-repeat: " + switcherStyles[0].backgroundRepeatState1 + " !important;\n                        // background-position: " + switcherStyles[0].backgroundPositionState1 + " !important;\n                        // background-size: " + switcherStyles[0].backgroundSizeState1 + " !important;\n                        // background-attachment: " + (switcherStyles[0].fixedState1 ? "fixed" : "unset") + " !important;\n                        box-shadow: " + switcherStyles[0].containerShadowHorizontal + "px " + switcherStyles[0].containerShadowVertical + "px " + switcherStyles[0].containerShadowBlur + "px " + switcherStyles[0].containerShadowColor + " " + switcherStyles[0].containerShadowPosition + ";\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-switch-slider {\n                        border-radius: " + SwitcherBorderRadius + switcherStyles[0].switchRadiusType + " !important;\n                        box-shadow: " + switcherStyles[0].switchShadowHorizontal + "px " + switcherStyles[0].switchShadowVertical + "px " + switcherStyles[0].switchShadowBlur + "px " + switcherStyles[0].switchShadowColor + " " + switcherStyles[0].switchShadowPosition + ";\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {\n                        margin-right: " + LabelSpacing + "px !important;\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {\n                        margin-left: " + LabelSpacing + "px !important;\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-block .premium-content-switcher-first-label {\n                        margin-bottom: " + LabelSpacing + "px !important;\n                    }\n                    #premium-content-switcher-" + block_id + " .premium-content-switcher-toggle-block .premium-content-switcher-second-label {\n                        margin-top: " + LabelSpacing + "px !important;\n                    }\n                "
             );
 
             var saveSwitcherStyles = function saveSwitcherStyles(value) {
@@ -68997,6 +69052,18 @@ var edit = function (_Component) {
                 });
                 setAttributes({
                     secondContentStyles: newUpdate
+                });
+            };
+
+            var saveContainerStyles = function saveContainerStyles(value) {
+                var newUpdate = containerStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    containerStyles: newUpdate
                 });
             };
 
@@ -70093,13 +70160,13 @@ var edit = function (_Component) {
                     }),
                     React.createElement(_PremiumResponsivePadding2.default, {
                         paddingTop: contentPaddingT,
-                        paddingRight: firstContentPaddingR,
+                        paddingRight: contentPaddingR,
                         paddingBottom: contentPaddingB,
                         paddingLeft: contentPaddingL,
                         paddingTopTablet: contentPaddingTTablet,
                         paddingRightTablet: contentPaddingRTablet,
                         paddingBottomTablet: contentPaddingBTablet,
-                        paddingLeftTablet: firstContentPaddingLTablet,
+                        paddingLeftTablet: contentPaddingLTablet,
                         paddingTopMobile: contentPaddingTMobile,
                         paddingRightMobile: contentPaddingRMobile,
                         paddingBottomMobile: contentPaddingBMobile,
@@ -70120,7 +70187,7 @@ var edit = function (_Component) {
                         },
                         onChangePaddingRight: function onChangePaddingRight(device, newValue) {
                             if (device === "desktop") {
-                                setAttributes({ firstContentPaddingR: newValue });
+                                setAttributes({ contentPaddingR: newValue });
                             } else if (device === "tablet") {
                                 setAttributes({ contentPaddingRTablet: newValue });
                             } else {
@@ -70140,9 +70207,203 @@ var edit = function (_Component) {
                             if (device === "desktop") {
                                 setAttributes({ contentPaddingL: newValue });
                             } else if (device === "tablet") {
-                                setAttributes({ firstContentPaddingLTablet: newValue });
+                                setAttributes({ contentPaddingLTablet: newValue });
                             } else {
                                 setAttributes({ contentPaddingLMobile: newValue });
+                            }
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Container Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_PremiumBackgroundControl2.default, {
+                        setAttributes: setAttributes,
+                        saveContainerStyle: saveContainerStyles,
+                        backgroundType: backgroundType,
+                        backgroundColor: containerStyles[0].containerBack,
+                        backgroundImageID: containerStyles[0].backgroundImageID,
+                        backgroundImageURL: containerStyles[0].backgroundImageURL,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        fixed: containerStyles[0].fixed,
+                        gradientLocationOne: containerStyles[0].gradientLocationOne,
+                        gradientColorTwo: containerStyles[0].gradientColorTwo,
+                        gradientLocationTwo: containerStyles[0].gradientLocationTwo,
+                        gradientAngle: containerStyles[0].gradientAngle,
+                        gradientPosition: containerStyles[0].gradientPosition,
+                        gradientType: containerStyles[0].gradientType
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        borderType: containerStyles[0].containerborderType,
+                        borderWidth: containerBorderWidth,
+                        top: containerBorderTop,
+                        right: containerBorderRight,
+                        bottom: containerBorderBottom,
+                        left: containerBorderLeft,
+                        borderColor: containerStyles[0].containerborderColor,
+                        borderRadius: containerStyles[0].containerborderRadius,
+                        onChangeType: function onChangeType(newType) {
+                            return saveContainerStyles({ containerborderType: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref5) {
+                            var top = _ref5.top,
+                                right = _ref5.right,
+                                bottom = _ref5.bottom,
+                                left = _ref5.left;
+                            return setAttributes({
+                                containerBorderUpdated: true,
+                                containerBorderTop: top,
+                                containerBorderRight: right,
+                                containerBorderBottom: bottom,
+                                containerBorderLeft: left
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return saveContainerStyles({ containerborderColor: colorValue });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return saveContainerStyles({ containerborderRadius: newrRadius });
+                        }
+                    }),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
+                        boxShadow: true,
+                        color: containerStyles[0].containerBoxShadowColor,
+                        blur: containerStyles[0].containerBoxShadowBlur,
+                        horizontal: containerStyles[0].containerBoxShadowHorizontal,
+                        vertical: containerStyles[0].containerBoxShadowVertical,
+                        position: containerStyles[0].containerBoxShadowPosition,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveContainerStyles({ containerBoxShadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveContainerStyles({ containerBoxShadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveContainerStyles({ containerBoxShadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveContainerStyles({ containerBoxShadowVertical: newValue });
+                        },
+                        onChangePosition: function onChangePosition(newValue) {
+                            return saveContainerStyles({ containerBoxShadowPosition: newValue });
+                        }
+                    }),
+                    React.createElement(_PremiumResponsiveMargin2.default, {
+                        directions: ["all"],
+                        marginTop: containerMarginT,
+                        marginRight: containerMarginR,
+                        marginBottom: containerMarginB,
+                        marginLeft: containerMarginL,
+                        marginTopTablet: containerMarginTTablet,
+                        marginRightTablet: containerMarginRTablet,
+                        marginBottomTablet: containerMarginBTablet,
+                        marginLeftTablet: containerMarginLTablet,
+                        marginTopMobile: containerMarginTMobile,
+                        marginRightMobile: containerMarginRMobile,
+                        marginBottomMobile: containerMarginBMobile,
+                        marginLeftMobile: containerMarginLMobile,
+                        showUnits: true,
+                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
+                            return saveContainerStyles({ iconMarginType: newvalue });
+                        },
+                        selectedUnit: containerStyles[0].iconMarginType,
+                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerMarginT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerMarginTTablet: newValue });
+                            } else {
+                                setAttributes({ containerMarginTMobile: newValue });
+                            }
+                        },
+                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerMarginR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerMarginRTablet: newValue });
+                            } else {
+                                setAttributes({ containerMarginRMobile: newValue });
+                            }
+                        },
+                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerMarginB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerMarginBTablet: newValue });
+                            } else {
+                                setAttributes({ containerMarginBMobile: newValue });
+                            }
+                        },
+                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerMarginL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerMarginLTablet: newValue });
+                            } else {
+                                setAttributes({ containerMarginLMobile: newValue });
+                            }
+                        }
+
+                    }),
+                    React.createElement(_PremiumResponsivePadding2.default, {
+                        paddingTop: containerPaddingT,
+                        paddingRight: containerPaddingR,
+                        paddingBottom: containerPaddingB,
+                        paddingLeft: containerPaddingL,
+                        paddingTopTablet: containerPaddingTTablet,
+                        paddingRightTablet: containerPaddingRTablet,
+                        paddingBottomTablet: containerPaddingBTablet,
+                        paddingLeftTablet: containerPaddingLTablet,
+                        paddingTopMobile: containerPaddingTMobile,
+                        paddingRightMobile: containerPaddingRMobile,
+                        paddingBottomMobile: containerPaddingBMobile,
+                        paddingLeftMobile: containerPaddingLMobile,
+                        showUnits: true,
+                        selectedUnit: containerStyles[0].iconPaddingType,
+                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
+                            return saveContainerStyles({ iconPaddingType: newvalue });
+                        },
+                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerPaddingT: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerPaddingTTablet: newValue });
+                            } else {
+                                setAttributes({ containerPaddingTMobile: newValue });
+                            }
+                        },
+                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerPaddingR: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerPaddingRTablet: newValue });
+                            } else {
+                                setAttributes({ containerPaddingRMobile: newValue });
+                            }
+                        },
+                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerPaddingB: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerPaddingBTablet: newValue });
+                            } else {
+                                setAttributes({ containerPaddingBMobile: newValue });
+                            }
+                        },
+                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
+                            if (device === "desktop") {
+                                setAttributes({ containerPaddingL: newValue });
+                            } else if (device === "tablet") {
+                                setAttributes({ containerPaddingLTablet: newValue });
+                            } else {
+                                setAttributes({ containerPaddingLMobile: newValue });
                             }
                         }
                     })
@@ -70160,7 +70421,26 @@ var edit = function (_Component) {
                     "div",
                     { className: "premium-content-switcher",
                         style: {
-                            textAlign: align
+                            textAlign: align,
+                            backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                            boxShadow: containerStyles[0].containerBoxShadowHorizontal + "px " + containerStyles[0].containerBoxShadowVertical + "px " + containerStyles[0].containerBoxShadowBlur + "px " + containerStyles[0].containerBoxShadowColor + " " + containerStyles[0].containerBoxShadowPosition,
+                            backgroundImage: btnbg,
+                            backgroundRepeat: containerStyles[0].backgroundRepeat,
+                            backgroundPosition: containerStyles[0].backgroundPosition,
+                            backgroundSize: containerStyles[0].backgroundSize,
+                            backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                            borderStyle: containerStyles[0].containerborderType,
+                            borderWidth: containerBorderUpdated ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerBorderWidth + "px",
+                            borderRadius: containerStyles[0].containerborderRadius + "px",
+                            borderColor: containerStyles[0].containerborderColor,
+                            paddingTop: ContainerPaddingTop + containerStyles[0].containerPaddingType,
+                            paddingRight: ContainerPaddingRight + containerStyles[0].containerPaddingType,
+                            paddingBottom: ContainerPaddingBottom + containerStyles[0].containerPaddingType,
+                            paddingLeft: ContainerPaddingLeft + containerStyles[0].containerPaddingType,
+                            marginTop: ContainerMarginTop + containerStyles[0].containerMarginType,
+                            marginBottom: ContainerMarginBottom + containerStyles[0].containerMarginType,
+                            marginLeft: ContainerMarginLeft + containerStyles[0].containerMarginType,
+                            marginRight: ContainerMarginRight + containerStyles[0].containerMarginType
                         } },
                     React.createElement(
                         "div",
@@ -70895,10 +71175,128 @@ var attributes = (_attributes = {
     secondContentBorderWidth: {
         type: "number",
         default: "1"
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            containerBack: '',
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center',
+            containerborderType: "none",
+            containerborderRadius: 0,
+            containerborderColor: '',
+            containerBoxShadowColor: '',
+            containerBoxShadowBlur: '',
+            containerBoxShadowHorizontal: '',
+            containerBoxShadowVertical: '',
+            containerBoxShadowPosition: 'inset',
+            containerPaddingType: 'px',
+            containerMarginType: 'px'
+        }]
     }
-}, _defineProperty(_attributes, "secondContentStyles", {
-    type: "array",
-    default: [{}]
+}, _defineProperty(_attributes, "backgroundType", {
+    type: "string",
+    default: ""
+}), _defineProperty(_attributes, "containerBorderTop", {
+    type: "number",
+    default: "1"
+}), _defineProperty(_attributes, "containerBorderRight", {
+    type: "number",
+    default: "1"
+}), _defineProperty(_attributes, "containerBorderBottom", {
+    type: "number",
+    default: "1"
+}), _defineProperty(_attributes, "containerBorderLeft", {
+    type: "number",
+    default: "1"
+}), _defineProperty(_attributes, "containerBorderUpdated", {
+    type: "boolean",
+    default: false
+}), _defineProperty(_attributes, "containerBorderWidth", {
+    type: "number",
+    default: "1"
+}), _defineProperty(_attributes, "containerPaddingT", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingR", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingB", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingL", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingTTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingRTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingBTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingLTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingTMobile", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingRMobile", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingBMobile", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerPaddingLMobile", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginT", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginR", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginB", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginL", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginTTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginRTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginBTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginLTablet", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginTMobile", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginRMobile", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginBMobile", {
+    type: "number",
+    default: ""
+}), _defineProperty(_attributes, "containerMarginLMobile", {
+    type: "number",
+    default: ""
 }), _defineProperty(_attributes, "firstStateColor", {
     type: "string",
     default: "#6ec1e4"

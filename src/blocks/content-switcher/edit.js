@@ -128,7 +128,7 @@ class edit extends Component {
             firstcontentlign,
             secondcontentlign,
             switcherStyles,
-            backgroundType,
+            // backgroundType,
             labelStyles,
             firstLabelBorderTop,
             firstLabelBorderRight,
@@ -187,13 +187,13 @@ class edit extends Component {
             firstContentMarginBMobile,
             firstContentMarginLMobile,
             contentPaddingT,
-            firstContentPaddingR,
+            contentPaddingR,
             contentPaddingB,
             contentPaddingL,
             contentPaddingTTablet,
             contentPaddingRTablet,
             contentPaddingBTablet,
-            firstContentPaddingLTablet,
+            contentPaddingLTablet,
             contentPaddingTMobile,
             contentPaddingRMobile,
             contentPaddingBMobile,
@@ -205,6 +205,38 @@ class edit extends Component {
             secondContentBorderLeft,
             secondContentBorderUpdated,
             secondContentBorderWidth,
+            containerStyles,
+            backgroundType,
+            containerBorderTop,
+            containerBorderRight,
+            containerBorderBottom,
+            containerBorderLeft,
+            containerBorderUpdated,
+            containerBorderWidth,
+            containerPaddingT,
+            containerPaddingR,
+            containerPaddingB,
+            containerPaddingL,
+            containerPaddingTTablet,
+            containerPaddingRTablet,
+            containerPaddingBTablet,
+            containerPaddingLTablet,
+            containerPaddingTMobile,
+            containerPaddingRMobile,
+            containerPaddingBMobile,
+            containerPaddingLMobile,
+            containerMarginT,
+            containerMarginR,
+            containerMarginB,
+            containerMarginL,
+            containerMarginTTablet,
+            containerMarginRTablet,
+            containerMarginBTablet,
+            containerMarginLTablet,
+            containerMarginTMobile,
+            containerMarginRMobile,
+            containerMarginBMobile,
+            containerMarginLMobile,
             backgroundTypeState2,
             switchSize,
             switchSizeTablet,
@@ -410,10 +442,18 @@ class edit extends Component {
         const FirstContentMarginBottom = this.getPreviewSize(this.props.deviceType, firstContentMarginB, firstContentMarginBTablet, firstContentMarginBMobile);
         const FirstContentMarginLeft = this.getPreviewSize(this.props.deviceType, firstContentMarginL, firstContentMarginLTablet, firstContentMarginLMobile);
         const ContentPaddingTop = this.getPreviewSize(this.props.deviceType, contentPaddingT, contentPaddingTTablet, contentPaddingTMobile);
-        const ContentPaddingRight = this.getPreviewSize(this.props.deviceType, firstContentPaddingR, contentPaddingRTablet, contentPaddingRMobile);
+        const ContentPaddingRight = this.getPreviewSize(this.props.deviceType, contentPaddingR, contentPaddingRTablet, contentPaddingRMobile);
         const ContentPaddingBottom = this.getPreviewSize(this.props.deviceType, contentPaddingB, contentPaddingBTablet, contentPaddingBMobile);
-        const ContentPaddingLeft = this.getPreviewSize(this.props.deviceType, contentPaddingL, firstContentPaddingLTablet, contentPaddingLMobile);
+        const ContentPaddingLeft = this.getPreviewSize(this.props.deviceType, contentPaddingL, contentPaddingLTablet, contentPaddingLMobile);
         const SecondContentSize = this.getPreviewSize(this.props.deviceType, secondContentStyles[0].secondContentfontSize, secondContentStyles[0].secondContentfontSizeTablet, secondContentStyles[0].secondContentfontSizeMobile);
+        const ContainerMarginTop = this.getPreviewSize(this.props.deviceType, containerMarginT, containerMarginTTablet, containerMarginTMobile);
+        const ContainerMarginRight = this.getPreviewSize(this.props.deviceType, containerMarginR, containerMarginRTablet, containerMarginRMobile);
+        const ContainerMarginBottom = this.getPreviewSize(this.props.deviceType, containerMarginB, containerMarginBTablet, containerMarginBMobile);
+        const ContainerMarginLeft = this.getPreviewSize(this.props.deviceType, containerMarginL, containerMarginLTablet, containerMarginLMobile);
+        const ContainerPaddingTop = this.getPreviewSize(this.props.deviceType, containerPaddingT, containerPaddingTTablet, containerPaddingTMobile);
+        const ContainerPaddingRight = this.getPreviewSize(this.props.deviceType, containerPaddingR, containerPaddingRTablet, containerPaddingRMobile);
+        const ContainerPaddingBottom = this.getPreviewSize(this.props.deviceType, containerPaddingB, containerPaddingBTablet, containerPaddingBMobile);
+        const ContainerPaddingLeft = this.getPreviewSize(this.props.deviceType, containerPaddingL, containerPaddingLTablet, containerPaddingLMobile);
 
         let btnGradState1, btnGrad2State1, btnbgState1;
 
@@ -429,17 +469,31 @@ class edit extends Component {
             btnbgState1 = switcherStyles[0].backgroundImageURLState1 ? `url('${switcherStyles[0].backgroundImageURLState1}')` : ''
         }
 
+        let btnGrad, btnGrad2, btnbg;
+
+        if (undefined !== backgroundType && 'gradient' === backgroundType) {
+            btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+            btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+            if ('radial' === containerStyles[0].gradientType) {
+                btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+            } else if ('radial' !== containerStyles[0].gradientType) {
+                btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+            }
+        } else {
+            btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+        }
+
         const renderCss = (
             <style>
                 {`
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
                         border-radius: ${ContainerBorderRadius}${switcherStyles[0].containerRadiusType} !important;
-                        background-color: ${backgroundType === "solid" ? switcherStyles[0].containerBackState1 : "#6ec1e4"} !important;
-                        background-image: ${btnbgState1} !important;
-                        background-repeat: ${switcherStyles[0].backgroundRepeatState1} !important;
-                        background-position: ${switcherStyles[0].backgroundPositionState1} !important;
-                        background-size: ${switcherStyles[0].backgroundSizeState1} !important;
-                        background-attachment: ${switcherStyles[0].fixedState1 ? "fixed" : "unset"} !important;
+                        // background-color: ${backgroundType === "solid" ? switcherStyles[0].containerBackState1 : "#6ec1e4"} !important;
+                        // background-image: ${btnbgState1} !important;
+                        // background-repeat: ${switcherStyles[0].backgroundRepeatState1} !important;
+                        // background-position: ${switcherStyles[0].backgroundPositionState1} !important;
+                        // background-size: ${switcherStyles[0].backgroundSizeState1} !important;
+                        // background-attachment: ${switcherStyles[0].fixedState1 ? "fixed" : "unset"} !important;
                         box-shadow: ${switcherStyles[0].containerShadowHorizontal}px ${switcherStyles[0].containerShadowVertical}px ${switcherStyles[0].containerShadowBlur}px ${switcherStyles[0].containerShadowColor} ${switcherStyles[0].containerShadowPosition};
                     }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
@@ -519,6 +573,18 @@ class edit extends Component {
             });
             setAttributes({
                 secondContentStyles: newUpdate,
+            });
+        }
+
+        const saveContainerStyles = (value) => {
+            const newUpdate = containerStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                containerStyles: newUpdate,
             });
         }
 
@@ -1474,13 +1540,13 @@ class edit extends Component {
                         />
                         <PremiumResponsivePadding
                             paddingTop={contentPaddingT}
-                            paddingRight={firstContentPaddingR}
+                            paddingRight={contentPaddingR}
                             paddingBottom={contentPaddingB}
                             paddingLeft={contentPaddingL}
                             paddingTopTablet={contentPaddingTTablet}
                             paddingRightTablet={contentPaddingRTablet}
                             paddingBottomTablet={contentPaddingBTablet}
-                            paddingLeftTablet={firstContentPaddingLTablet}
+                            paddingLeftTablet={contentPaddingLTablet}
                             paddingTopMobile={contentPaddingTMobile}
                             paddingRightMobile={contentPaddingRMobile}
                             paddingBottomMobile={contentPaddingBMobile}
@@ -1502,7 +1568,7 @@ class edit extends Component {
                             onChangePaddingRight={
                                 (device, newValue) => {
                                     if (device === "desktop") {
-                                        setAttributes({ firstContentPaddingR: newValue })
+                                        setAttributes({ contentPaddingR: newValue })
                                     } else if (device === "tablet") {
                                         setAttributes({ contentPaddingRTablet: newValue })
                                     } else {
@@ -1526,9 +1592,206 @@ class edit extends Component {
                                     if (device === "desktop") {
                                         setAttributes({ contentPaddingL: newValue })
                                     } else if (device === "tablet") {
-                                        setAttributes({ firstContentPaddingLTablet: newValue })
+                                        setAttributes({ contentPaddingLTablet: newValue })
                                     } else {
                                         setAttributes({ contentPaddingLMobile: newValue })
+                                    }
+                                }
+                            }
+                        />
+                    </PanelBody>
+
+                    <PanelBody
+                        title={__("Container Style")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <PremiumBackgroundControl
+                            setAttributes={setAttributes}
+                            saveContainerStyle={saveContainerStyles}
+                            backgroundType={backgroundType}
+                            backgroundColor={containerStyles[0].containerBack}
+                            backgroundImageID={containerStyles[0].backgroundImageID}
+                            backgroundImageURL={containerStyles[0].backgroundImageURL}
+                            backgroundPosition={containerStyles[0].backgroundPosition}
+                            backgroundRepeat={containerStyles[0].backgroundRepeat}
+                            backgroundSize={containerStyles[0].backgroundSize}
+                            fixed={containerStyles[0].fixed}
+                            gradientLocationOne={containerStyles[0].gradientLocationOne}
+                            gradientColorTwo={containerStyles[0].gradientColorTwo}
+                            gradientLocationTwo={containerStyles[0].gradientLocationTwo}
+                            gradientAngle={containerStyles[0].gradientAngle}
+                            gradientPosition={containerStyles[0].gradientPosition}
+                            gradientType={containerStyles[0].gradientType}
+                        />
+                        <PremiumBorder
+                            borderType={containerStyles[0].containerborderType}
+                            borderWidth={containerBorderWidth}
+                            top={containerBorderTop}
+                            right={containerBorderRight}
+                            bottom={containerBorderBottom}
+                            left={containerBorderLeft}
+                            borderColor={containerStyles[0].containerborderColor}
+                            borderRadius={containerStyles[0].containerborderRadius}
+                            onChangeType={newType => saveContainerStyles({ containerborderType: newType })}
+                            onChangeWidth={({ top, right, bottom, left }) =>
+                                setAttributes({
+                                    containerBorderUpdated: true,
+                                    containerBorderTop: top,
+                                    containerBorderRight: right,
+                                    containerBorderBottom: bottom,
+                                    containerBorderLeft: left,
+                                })
+                            }
+                            onChangeColor={colorValue =>
+                                saveContainerStyles({ containerborderColor: colorValue })
+                            }
+                            onChangeRadius={newrRadius =>
+                                saveContainerStyles({ containerborderRadius: newrRadius })
+                            }
+                        />
+                        <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                            boxShadow={true}
+                            color={containerStyles[0].containerBoxShadowColor}
+                            blur={containerStyles[0].containerBoxShadowBlur}
+                            horizontal={containerStyles[0].containerBoxShadowHorizontal}
+                            vertical={containerStyles[0].containerBoxShadowVertical}
+                            position={containerStyles[0].containerBoxShadowPosition}
+                            onChangeColor={newColor =>
+                                saveContainerStyles({ containerBoxShadowColor: newColor })
+                            }
+                            onChangeBlur={newBlur => saveContainerStyles({ containerBoxShadowBlur: newBlur })}
+                            onChangehHorizontal={newValue =>
+                                saveContainerStyles({ containerBoxShadowHorizontal: newValue })
+                            }
+                            onChangeVertical={newValue =>
+                                saveContainerStyles({ containerBoxShadowVertical: newValue })
+                            }
+                            onChangePosition={newValue =>
+                                saveContainerStyles({ containerBoxShadowPosition: newValue })
+                            }
+                        />
+                        <PremiumResponsiveMargin
+                            directions={["all"]}
+                            marginTop={containerMarginT}
+                            marginRight={containerMarginR}
+                            marginBottom={containerMarginB}
+                            marginLeft={containerMarginL}
+                            marginTopTablet={containerMarginTTablet}
+                            marginRightTablet={containerMarginRTablet}
+                            marginBottomTablet={containerMarginBTablet}
+                            marginLeftTablet={containerMarginLTablet}
+                            marginTopMobile={containerMarginTMobile}
+                            marginRightMobile={containerMarginRMobile}
+                            marginBottomMobile={containerMarginBMobile}
+                            marginLeftMobile={containerMarginLMobile}
+                            showUnits={true}
+                            onChangeMarSizeUnit={newvalue => saveContainerStyles({ iconMarginType: newvalue })}
+                            selectedUnit={containerStyles[0].iconMarginType}
+                            onChangeMarginTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerMarginT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerMarginTTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerMarginTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerMarginR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerMarginRTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerMarginRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerMarginB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerMarginBTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerMarginBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangeMarginLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerMarginL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerMarginLTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerMarginLMobile: newValue })
+                                    }
+                                }
+                            }
+
+                        />
+                        <PremiumResponsivePadding
+                            paddingTop={containerPaddingT}
+                            paddingRight={containerPaddingR}
+                            paddingBottom={containerPaddingB}
+                            paddingLeft={containerPaddingL}
+                            paddingTopTablet={containerPaddingTTablet}
+                            paddingRightTablet={containerPaddingRTablet}
+                            paddingBottomTablet={containerPaddingBTablet}
+                            paddingLeftTablet={containerPaddingLTablet}
+                            paddingTopMobile={containerPaddingTMobile}
+                            paddingRightMobile={containerPaddingRMobile}
+                            paddingBottomMobile={containerPaddingBMobile}
+                            paddingLeftMobile={containerPaddingLMobile}
+                            showUnits={true}
+                            selectedUnit={containerStyles[0].iconPaddingType}
+                            onChangePadSizeUnit={newvalue => saveContainerStyles({ iconPaddingType: newvalue })}
+                            onChangePaddingTop={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerPaddingT: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerPaddingTTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerPaddingTMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingRight={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerPaddingR: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerPaddingRTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerPaddingRMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingBottom={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerPaddingB: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerPaddingBTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerPaddingBMobile: newValue })
+                                    }
+                                }
+                            }
+                            onChangePaddingLeft={
+                                (device, newValue) => {
+                                    if (device === "desktop") {
+                                        setAttributes({ containerPaddingL: newValue })
+                                    } else if (device === "tablet") {
+                                        setAttributes({ containerPaddingLTablet: newValue })
+                                    } else {
+                                        setAttributes({ containerPaddingLMobile: newValue })
                                     }
                                 }
                             }
@@ -1550,6 +1813,27 @@ class edit extends Component {
                 <div className={`premium-content-switcher`}
                     style={{
                         textAlign: align,
+                        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                        boxShadow: `${containerStyles[0].containerBoxShadowHorizontal}px ${containerStyles[0].containerBoxShadowVertical}px ${containerStyles[0].containerBoxShadowBlur}px ${containerStyles[0].containerBoxShadowColor} ${containerStyles[0].containerBoxShadowPosition}`,
+                        backgroundImage: btnbg,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                        borderStyle: containerStyles[0].containerborderType,
+                        borderWidth: containerBorderUpdated
+                            ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
+                            : containerBorderWidth + "px",
+                        borderRadius: containerStyles[0].containerborderRadius + "px",
+                        borderColor: containerStyles[0].containerborderColor,
+                        paddingTop: ContainerPaddingTop + containerStyles[0].containerPaddingType,
+                        paddingRight: ContainerPaddingRight + containerStyles[0].containerPaddingType,
+                        paddingBottom: ContainerPaddingBottom + containerStyles[0].containerPaddingType,
+                        paddingLeft: ContainerPaddingLeft + containerStyles[0].containerPaddingType,
+                        marginTop: ContainerMarginTop + containerStyles[0].containerMarginType,
+                        marginBottom: ContainerMarginBottom + containerStyles[0].containerMarginType,
+                        marginLeft: ContainerMarginLeft + containerStyles[0].containerMarginType,
+                        marginRight: ContainerMarginRight + containerStyles[0].containerMarginType,
                     }}>
                     <div className={`premium-content-switcher-toggle-${display}`}
                         style={{
