@@ -120,8 +120,200 @@ const attributes = {
                 labelSpacing: 15,
                 labelSpacingMobile: 15,
                 labelSpacingTablet: 15,
+                firstLabelColor: "rgb(84, 89, 95)",
+                firstLabelLetter: 0,
+                firstLabelLine: 0,
+                firstLabelStyle: 'normal',
+                firstLabelUpper: false,
+                firstLabelWeight: "",
+                firstLabelfontSize: 23,
+                firstLabelfontSizeType: "px",
+                firstLabelfontSizeMobile: 23,
+                firstLabelfontSizeTablet: 23,
+                firstLabelFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+                firstLabelShadowColor: '',
+                firstLabelShadowBlur: '0',
+                firstLabelShadowHorizontal: '0',
+                firstLabelShadowVertical: '0',
+                firstLabelborderType: "none",
+                firstLabelborderRadius: 0,
+                firstLabelborderColor: '',
+                firstLabelBoxShadowColor: '',
+                firstLabelBoxShadowBlur: '',
+                firstLabelBoxShadowHorizontal: '',
+                firstLabelBoxShadowVertical: '',
+                firstLabelBoxShadowPosition: 'inset',
+                firstLabelPaddingType: 'px',
+                secondLabelColor: "rgb(84, 89, 95)",
+                secondLabelLetter: 0,
+                secondLabelLine: 0,
+                secondLabelStyle: 'normal',
+                secondLabelUpper: false,
+                secondLabelWeight: "",
+                secondLabelfontSize: 23,
+                secondLabelfontSizeType: "px",
+                secondLabelfontSizeMobile: 23,
+                secondLabelfontSizeTablet: 23,
+                secondLabelFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+                secondLabelShadowColor: '',
+                secondLabelShadowBlur: '0',
+                secondLabelShadowHorizontal: '0',
+                secondLabelShadowVertical: '0',
+                secondLabelborderType: "none",
+                secondLabelborderRadius: 0,
+                secondLabelborderColor: '',
+                secondLabelBoxShadowColor: '',
+                secondLabelBoxShadowBlur: '',
+                secondLabelBoxShadowHorizontal: '',
+                secondLabelBoxShadowVertical: '',
+                secondLabelBoxShadowPosition: 'inset',
+                secondLabelPaddingType: 'px'
             }
         ]
+    },
+    firstLabelBorderTop: {
+        type: "number",
+        default: "1"
+    },
+    firstLabelBorderRight: {
+        type: "number",
+        default: "1"
+    },
+    firstLabelBorderBottom: {
+        type: "number",
+        default: "1"
+    },
+    firstLabelBorderLeft: {
+        type: "number",
+        default: '1'
+    },
+    firstLabelBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    firstLabelBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    firstLabelPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    firstLabelPaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelBorderTop: {
+        type: "number",
+        default: "1"
+    },
+    secondLabelBorderRight: {
+        type: "number",
+        default: "1"
+    },
+    secondLabelBorderBottom: {
+        type: "number",
+        default: "1"
+    },
+    secondLabelBorderLeft: {
+        type: "number",
+        default: '1'
+    },
+    secondLabelBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    secondLabelBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    secondLabelPaddingT: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingR: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingB: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingL: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    secondLabelPaddingLMobile: {
+        type: "number",
+        default: "0"
     },
     // switchSizeType: {
     //     type: "string",
@@ -191,39 +383,39 @@ const attributes = {
     //     type: "number",
     //     default: 15
     // },
-    firstLabelColor: {
-        type: "string",
-        default: "#54595f"
-    },
-    firstLabelLetter: {
-        type: "number"
-    },
-    firstLabelStyle: {
-        type: "string"
-    },
-    firstLabelUpper: {
-        type: "boolean",
-        default: false
-    },
-    firstLabelWeight: {
-        type: "number"
-    },
-    firstLabelfontSize: {
-        type: "number",
-        default: 20
-    },
-    firstLabelfontSizeType: {
-        type: "string",
-        default: "px"
-    },
-    firstLabelfontSizeMobile: {
-        type: "number",
-        default: 20
-    },
-    firstLabelfontSizeTablet: {
-        type: "number",
-        default: 20
-    },
+    // firstLabelColor: {
+    //     type: "string",
+    //     default: "#54595f"
+    // },
+    // firstLabelLetter: {
+    //     type: "number"
+    // },
+    // firstLabelStyle: {
+    //     type: "string"
+    // },
+    // firstLabelUpper: {
+    //     type: "boolean",
+    //     default: false
+    // },
+    // firstLabelWeight: {
+    //     type: "number"
+    // },
+    // firstLabelfontSize: {
+    //     type: "number",
+    //     default: 20
+    // },
+    // firstLabelfontSizeType: {
+    //     type: "string",
+    //     default: "px"
+    // },
+    // firstLabelfontSizeMobile: {
+    //     type: "number",
+    //     default: 20
+    // },
+    // firstLabelfontSizeTablet: {
+    //     type: "number",
+    //     default: 20
+    // },
     secondLabelColor: {
         type: "string",
         default: "#54595f"
