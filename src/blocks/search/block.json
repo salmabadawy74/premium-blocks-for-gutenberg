@@ -12,6 +12,18 @@
             "type": "string",
             "__experimentalRole": "content"
         },
+        "border": {
+            "type": "object",
+            "default": {
+                "type": "",
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": "",
+                "color": "",
+                "radius": ""
+            }
+        },
         "colors": {
             "type": "object",
             "default": {
@@ -19,6 +31,8 @@
                 "text": "",
                 "btnBackground": "",
                 "btnText": "",
+                "btnHoverBackground": "",
+                "btnHoverText": "",
                 "label": ""
             }
         },
@@ -69,6 +83,39 @@
         "buttonUseIcon": {
             "type": "boolean",
             "default": false
+        },
+        "typography": {
+            "type": "object",
+            "default": {
+                "size": null,
+                "weight": 400,
+                "family": "Default",
+                "letterSpacing": "",
+                "textTransform": "",
+                "textDecoration": "",
+                "lineHeight": "",
+                "style": ""
+            }
+        },
+        "buttonTypography": {
+            "type": "object",
+            "default": {
+                "size": null,
+                "weight": 400,
+                "family": "Default",
+                "letterSpacing": "",
+                "textTransform": "",
+                "textDecoration": "",
+                "lineHeight": "",
+                "style": ""
+            }
+        },
+        "spacing": {
+            "type": "object",
+            "default": {
+                "padding": null,
+                "buttonPadding": null
+            }
         }
     },
     "supports": {

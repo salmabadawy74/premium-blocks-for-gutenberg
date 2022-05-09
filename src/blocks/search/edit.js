@@ -28,8 +28,7 @@ import {
 	BaseControl,
 	__experimentalUseCustomUnits as useCustomUnits,
 	__experimentalUnitControl as UnitControl,
-	__experimentalRadio as Radio,
-	__experimentalRadioGroup as RadioGroup,
+	TabPanel,
 	SelectControl,
 } from '@wordpress/components';
 import { useInstanceId } from '@wordpress/compose';
@@ -55,6 +54,8 @@ import {
 	MIN_WIDTH_UNIT,
 } from './utils.js';
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import PremiumBorder from "../../components/premium-border"
+import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 
 export default function SearchEdit({
 	className,
@@ -77,6 +78,10 @@ export default function SearchEdit({
 		formStyle,
 		colors,
 		postion,
+		border,
+		spacing,
+		typography,
+		buttonTypography,
 		floatPostion,
 		floatValues
 	} = attributes;
@@ -119,9 +124,42 @@ export default function SearchEdit({
 		defaultValues: { '%': PC_WIDTH_DEFAULT, px: PX_WIDTH_DEFAULT },
 	});
 
+	const defaultSpacingValue = {
+		desktop: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		},
+		tablet: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		},
+		mobile: {
+			top: '',
+			right: '',
+			bottom: '',
+			left: ''
+		}
+	};
+	const defaultSize = {
+		desktop: "",
+		tablet: "",
+		mobile: "",
+		unit: "px"
+	};
+
+	let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+	const fontSize = typography.size ? typography.size : defaultSize;
+	let buttonPadding = spacing.buttonPadding ? spacing.buttonPadding : defaultSpacingValue;
+	const buttonFontSize = buttonTypography.size ? buttonTypography.size : defaultSize;
+
 	const getBlockClassNames = () => {
 		return classnames(
 			className,
+			formStyle === 'button' ? 'wp-block-premium-search-button-style' : undefined,
 			isButtonPositionInside
 				? 'wp-block-premium-search__button-inside'
 				: undefined,
@@ -205,17 +243,46 @@ export default function SearchEdit({
 		setAttributes({ colors: newColors });
 	}
 
+	const borderChange = (value) => {
+		const newBorder = { ...border };
+		setAttributes({ border: { ...newBorder, ...value } })
+	};
+
+	const onChangePadding = (side, value, device) => {
+		const newPadding = { ...padding };
+		newPadding[device][side] = value;
+		setAttributes({ spacing: { ...spacing, padding: newPadding } });
+	}
+
+	const onChangeButtonPadding = (side, value, device) => {
+		const newPadding = { ...buttonPadding };
+		newPadding[device][side] = value;
+		setAttributes({ spacing: { ...spacing, buttonPadding: newPadding } });
+	}
+
 	const renderTextField = () => {
 		// If the input is inside the wrapper, the wrapper gets the border color styles/classes, not the input control.
 		const textFieldClasses = classnames(
 			'wp-block-premium-search__input',
 			isButtonPositionInside ? undefined : ''
 		);
+		const textFieldStyles = {
+			color: colors.text,
+			backgroundColor: colors.background,
+			borderStyle: border.type,
+			borderTopWidth: border.top,
+			borderRightWidth: border.right,
+			borderBottomWidth: border.bottom,
+			borderLeftWidth: border.left,
+			borderRadius: border.radius,
+			borderColor: border.color
+		};
 
 		return (
 			<input
 				type="search"
 				className={textFieldClasses}
+				style={textFieldStyles}
 				aria-label={__('Optional placeholder text')}
 				// We hide the placeholder field's placeholder when there is a value. This
 				// stops screen readers from reading the placeholder field's placeholder
@@ -238,6 +305,10 @@ export default function SearchEdit({
 			isButtonPositionInside ? undefined : '',
 			buttonUseIcon ? 'has-icon' : undefined
 		);
+		const butttonStyles = {
+			color: colors.btnText,
+			backgroundColor: colors.btnBackground
+		};
 
 		return (
 			<>
@@ -245,6 +316,7 @@ export default function SearchEdit({
 					<button
 						type="button"
 						className={buttonClasses}
+						style={butttonStyles}
 						aria-label={
 							buttonText
 								? stripHTML(buttonText)
@@ -259,6 +331,7 @@ export default function SearchEdit({
 					<RichText
 						className={buttonClasses}
 						aria-label={__('Button text')}
+						style={butttonStyles}
 						placeholder={__('Add button text…')}
 						withoutInteractiveFormatting
 						value={buttonText}
@@ -341,6 +414,23 @@ export default function SearchEdit({
 							onChange={style => setAttributes({ postion: style })}
 						/>
 					)}
+					{formStyle === 'default' && (
+						<PremiumBorder
+							borderType={border.type}
+							top={border.top}
+							right={border.right}
+							bottom={border.bottom}
+							left={border.left}
+							borderColor={border.color}
+							borderRadius={border.radius}
+							onChangeType={(newType) => borderChange({ type: newType })}
+							onChangeWidth={({ top, right, bottom, left }) => {
+								borderChange({ top, right, bottom, left });
+							}}
+							onChangeColor={(colorValue) => borderChange({ color: colorValue })}
+							onChangeRadius={(newrRadius) => borderChange({ radius: newrRadius })}
+						/>
+					)}
 					<BaseControl
 						label={__('Width')}
 						id={unitControlInputId}
@@ -402,61 +492,209 @@ export default function SearchEdit({
 						</ButtonGroup>
 					</BaseControl>
 				</PanelBody>
+				<PanelBody
+					title={__('Input Spacing', 'premium-blocks-for-gutenberg')}
+					initialOpen={false}
+				>
+					<PremiumResponsivePadding
+						directions={["all"]}
+						paddingTop={padding.desktop.top}
+						paddingRight={padding.desktop.right}
+						paddingBottom={padding.desktop.bottom}
+						paddingLeft={padding.desktop.left}
+						paddingTopTablet={padding.tablet.top}
+						paddingRightTablet={padding.tablet.right}
+						paddingBottomTablet={padding.tablet.bottom}
+						paddingLeftTablet={padding.tablet.left}
+						paddingTopMobile={padding.mobile.top}
+						paddingRightMobile={padding.mobile.right}
+						paddingBottomMobile={padding.mobile.bottom}
+						paddingLeftMobile={padding.mobile.left}
+						onChangePaddingTop={
+							(device, newValue) => {
+								onChangePadding('top', newValue, device);
+							}
+						}
+						onChangePaddingRight={
+							(device, newValue) => {
+								onChangePadding('right', newValue, device);
+							}
+						}
+						onChangePaddingBottom={
+							(device, newValue) => {
+								onChangePadding('bottom', newValue, device);
+							}
+						}
+						onChangePaddingLeft={
+							(device, newValue) => {
+								onChangePadding('left', newValue, device);
+							}
+						}
+					/>
+				</PanelBody>
+				<PanelBody
+					title={__('Button Spacing', 'premium-blocks-for-gutenberg')}
+					initialOpen={false}
+				>
+					<PremiumResponsivePadding
+						directions={["all"]}
+						paddingTop={buttonPadding.desktop.top}
+						paddingRight={buttonPadding.desktop.right}
+						paddingBottom={buttonPadding.desktop.bottom}
+						paddingLeft={buttonPadding.desktop.left}
+						paddingTopTablet={buttonPadding.tablet.top}
+						paddingRightTablet={buttonPadding.tablet.right}
+						paddingBottomTablet={buttonPadding.tablet.bottom}
+						paddingLeftTablet={buttonPadding.tablet.left}
+						paddingTopMobile={buttonPadding.mobile.top}
+						paddingRightMobile={buttonPadding.mobile.right}
+						paddingBottomMobile={buttonPadding.mobile.bottom}
+						paddingLeftMobile={buttonPadding.mobile.left}
+						onChangePaddingTop={
+							(device, newValue) => {
+								onChangeButtonPadding('top', newValue, device);
+							}
+						}
+						onChangePaddingRight={
+							(device, newValue) => {
+								onChangeButtonPadding('right', newValue, device);
+							}
+						}
+						onChangePaddingBottom={
+							(device, newValue) => {
+								onChangeButtonPadding('bottom', newValue, device);
+							}
+						}
+						onChangePaddingLeft={
+							(device, newValue) => {
+								onChangeButtonPadding('left', newValue, device);
+							}
+						}
+					/>
+				</PanelBody>
 				<PanelBody title={__('Colors')}>
-					{formStyle === 'default' && (
-						<>
-							<AdvancedPopColorControl
-								label={__(`Form Text Color`, 'premium-blocks-for-gutenberg')}
-								colorValue={colors.text}
-								onColorChange={newValue => setColor('text', newValue)}
-								colorDefault={''}
-							/>
-							<AdvancedPopColorControl
-								label={__(`Form Background Color`, 'premium-blocks-for-gutenberg')}
-								colorValue={colors.background}
-								onColorChange={newValue => setColor('background', newValue)}
-								colorDefault={''}
-							/>
-						</>
-					)}
-					<AdvancedPopColorControl
-						label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
-						colorValue={colors.btnText}
-						onColorChange={newValue => setColor('btnText', newValue)}
-						colorDefault={''}
-					/>
-					<AdvancedPopColorControl
-						label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
-						colorValue={colors.btnBackground}
-						onColorChange={newValue => setColor('btnBackground', newValue)}
-						colorDefault={''}
-					/>
-					<AdvancedPopColorControl
-						label={__(`Label Color`, 'premium-blocks-for-gutenberg')}
-						colorValue={colors.label}
-						onColorChange={newValue => setColor('label', newValue)}
-						colorDefault={''}
-					/>
+					<TabPanel
+						className="premium-color-tabpanel"
+						activeClass="active-tab"
+						tabs={[
+							{
+								name: "normal",
+								title: "Normal",
+								className: "premium-tab",
+							},
+							{
+								name: "hover",
+								title: "Hover",
+								className: "premium-tab",
+							},
+						]}
+					>
+						{(tab) => {
+							if ("normal" === tab.name) {
+								return (
+									<Fragment>
+										{formStyle === 'default' && (
+											<>
+												<AdvancedPopColorControl
+													label={__(`Form Text Color`, 'premium-blocks-for-gutenberg')}
+													colorValue={colors.text}
+													onColorChange={newValue => setColor('text', newValue)}
+													colorDefault={''}
+												/>
+												<AdvancedPopColorControl
+													label={__(`Form Background Color`, 'premium-blocks-for-gutenberg')}
+													colorValue={colors.background}
+													onColorChange={newValue => setColor('background', newValue)}
+													colorDefault={''}
+												/>
+											</>
+										)}
+										<AdvancedPopColorControl
+											label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
+											colorValue={colors.btnText}
+											onColorChange={newValue => setColor('btnText', newValue)}
+											colorDefault={''}
+										/>
+										<AdvancedPopColorControl
+											label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
+											colorValue={colors.btnBackground}
+											onColorChange={newValue => setColor('btnBackground', newValue)}
+											colorDefault={''}
+										/>
+										<AdvancedPopColorControl
+											label={__(`Label Color`, 'premium-blocks-for-gutenberg')}
+											colorValue={colors.label}
+											onColorChange={newValue => setColor('label', newValue)}
+											colorDefault={''}
+										/>
+									</Fragment>
+								);
+							}
+							if ("hover" === tab.name) {
+								return (
+									<Fragment>
+										<AdvancedPopColorControl
+											label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
+											colorValue={colors.btnHoverText}
+											onColorChange={newValue => setColor('btnHoverText', newValue)}
+											colorDefault={''}
+										/>
+										<AdvancedPopColorControl
+											label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
+											colorValue={colors.btnHoverBackground}
+											onColorChange={newValue => setColor('btnHoverBackground', newValue)}
+											colorDefault={''}
+										/>
+									</Fragment>
+								);
+							}
+						}}
+					</TabPanel>
+
 				</PanelBody>
 			</InspectorControls>
 		</>
 	);
 
-	const getWrapperStyles = () => {
-
-	};
-
 	const blockProps = useBlockProps({
 		className: getBlockClassNames(),
 	});
 
+	const labelStyles = {
+		color: colors.label
+	};
+
+	const getSecondPart = (str) => {
+		return str.split(':')[1];
+	}
+
+	let styleArry = [
+		`#${blockProps.id} .wp-block-premium-search__button:hover{`,
+		`color: ${colors.btnHoverText}!important;`,
+		`background-color: ${colors.btnHoverBackground}!important;`,
+		`}`,
+	];
+	styleArry = styleArry.filter(styleLine => {
+		const notAllowed = ['px;', 'undefined;', ';', '!important;'];
+		const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
+		if (!notAllowed.includes(style)) {
+			return style;
+		}
+	}).join('\n')
+
 	return (
 		<div {...blockProps}>
+			<style
+				dangerouslySetInnerHTML={{
+					__html: styleArry
+				}}
+			/>
 			{controls}
 
 			{showLabel && (
 				<RichText
 					className="wp-block-premium-search__label"
+					style={labelStyles}
 					aria-label={__('Label text')}
 					placeholder={__('Add label…')}
 					withoutInteractiveFormatting

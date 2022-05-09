@@ -92,6 +92,10 @@
   }
 }
 
+.wp-block-premium-search-button-style .wp-block-premium-search__button {
+  margin-left: 0;
+}
+
 .wp-block-premium-search__button {
   background: #f7f7f7;
   border: 1px solid #ccc;

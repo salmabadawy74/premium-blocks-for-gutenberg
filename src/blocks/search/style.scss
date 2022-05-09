@@ -15,6 +15,12 @@ $button-fallback-bg: #595959;
 $editor-font-size: 16px;
 $gray-80: #2c3338;
 
+.wp-block-premium-search-button-style {
+    .wp-block-premium-search__button {
+        margin-left: 0;
+    }
+}
+
 .wp-block-premium-search__button {
     background: #f7f7f7;
     border: 1px solid #ccc;
