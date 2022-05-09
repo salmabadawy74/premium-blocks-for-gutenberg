@@ -1,0 +1,24 @@
+{
+  "name": "extra-blocks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wordpress/block-editor": "^8.5.1",
+    "@wordpress/blocks": "^11.5.0",
+    "@wordpress/components": "^19.8.0",
+    "@wordpress/element": "^4.4.0",
+    "@wordpress/i18n": "^4.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "start:content-switcher": "wp-scripts start content-switcher/block.js --output-path=content-switcher/build",
+    "build:content-switcher": "wp-scripts build content-switcher/block.js --output-path=content-switcher/build"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^22.4.0"
+  }
+}
