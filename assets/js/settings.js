@@ -21,7 +21,7 @@ export const {
     bulletList,
     person,
     heading,
-    contentSwitcher
+    // contentSwitcher
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

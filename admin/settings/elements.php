@@ -17,7 +17,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 
 		protected $slug = 'premium-gutenberg';
 
-		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'image-separator', 'modal', 'bulletList', 'person', 'heading', 'contentSwitcher' );
+		public static $pbg_blocks = array( 'dualHeading', 'banner', 'pricingTable', 'maps', 'testimonial', 'countUp', 'icon', 'button', 'container', 'accordion', 'iconBox', 'videoBox', 'fancyText', 'lottie', 'image-separator', 'modal', 'bulletList', 'person', 'heading' );
 
 		private $pbg_default;
 
@@ -338,13 +338,7 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 											<span class="slider round"></span>
 										</label>
 									</td>
-									<th><?php echo __( 'Premium Content Switcher', 'premium-gutenberg' ); ?></th>
-									<td>
-										<label class="switch">
-											<input type="checkbox" id="contentSwitcher" name="contentSwitcher" <?php checked( 1, $this->pbg_get_settings['contentSwitcher'], true ); ?>>
-											<span class="slider round"></span>
-										</label>
-									</td>
+									
 								</tr>
 
 							</tbody>
@@ -415,7 +409,6 @@ if ( ! class_exists( 'Premium_Guten_Blocks' ) ) {
 				'image-separator' => intval( $settings['image-separator'] ? 1 : 0 ),
 				'person'          => intval( $settings['person'] ? 1 : 0 ),
 				'heading'         => intval( $settings['heading'] ? 1 : 0 ),
-				'contentSwitcher' => intval( $settings['contentSwitcher'] ? 1 : 0 ),
 			);
 
 			update_option( 'pbg_settings', $this->pbg_settings );

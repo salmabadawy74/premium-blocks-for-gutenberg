@@ -1,9 +1,11 @@
 import classnames from "classnames"
 
-const {
+// const {
+//     RichText
+// } = wp.editor
+import {
     RichText
-} = wp.editor
-
+} from '@wordpress/block-editor';
 export default function save(props) {
 
     const { attributes, className } = props
