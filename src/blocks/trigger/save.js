@@ -11,7 +11,22 @@
      useBlockProps
  } from '@wordpress/block-editor';
  export default function Save({attributes}) {
-    const { block_id, iconAlignment, triggerLabel, triggerStyles, canvasStyles, spacing, iconSize, triggerBorderTop, triggerBorderRight, triggerBorderLeft, triggerBorderBottom } = attributes;
+    const { block_id, 
+        iconAlignment,
+        triggerLabel,
+        triggerStyles, 
+        canvasStyles, 
+        spacing, 
+        iconSize, 
+        triggerBorderTop, 
+        triggerBorderRight, 
+        triggerBorderLeft, 
+        triggerBorderBottom,
+        displayFloat, 
+        floatPosition,
+        hOffset,
+        vOffset
+     } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
          className: ``,
@@ -72,15 +87,27 @@
             #premium-trigger-${block_id} .toggle-button[data-style="outline"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
-
-
+            #premium-trigger-${block_id} .float-position-topright {
+                top: ${attributes.vOffset}px;
+                right: ${attributes.hOffset}px;
+            }
+            #premium-trigger-${block_id} .float-position-topleft {
+                top: ${attributes.vOffset}px;
+                left: ${attributes.hOffset}px;
+            }
+            #premium-trigger-${block_id} .float-position-bottomright {
+                bottom: ${attributes.vOffset}px;
+                right: ${attributes.hOffset}px;
+            }
+            #premium-trigger-${block_id} .float-position-bottomleft {
+                bottom: ${attributes.vOffset}px;
+                left: ${attributes.hOffset}px;
+            }
         `}
         </style>  
-
-                    
                         <div className={`premium-trigger-container`}>
                         <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
-                            <a className={`toggle-button`}
+                            <a className={`toggle-button ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`} 
                                 data-style={triggerStyles.style} 
                                 data-label={triggerStyles.labelPosition}
                                 onClick={ () => setEditing( true ) }

@@ -46,7 +46,21 @@ const { isSelected, attributes, setAttributes, clientId, className } = props;
 useEffect(() => {
     setAttributes({ block_id: props.clientId })
 }, [])
-const { triggerLabel, iconAlignment, iconSize, displayFloat, block_id, triggerStyles, canvasStyles, spacing, triggerBorderTop, triggerBorderRight, triggerBorderBottom, triggerBorderLeft, hOffset, vOffset } = attributes;
+const { triggerLabel, 
+    iconAlignment, 
+    iconSize, 
+    displayFloat, 
+    floatPosition, 
+    block_id, 
+    triggerStyles, 
+    canvasStyles, 
+    spacing, 
+    triggerBorderTop,
+     triggerBorderRight, 
+     triggerBorderBottom, 
+     triggerBorderLeft, 
+     hOffset, 
+     vOffset } = attributes;
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
@@ -254,14 +268,16 @@ const onChangePadding = (side, value, device) => {
                         <fragment>
                         <SelectControl
                         label={__('Position', 'premium-blocks-for-gutenberg')}
+                        value={floatPosition}
+                        onChange={newValue => setAttributes({floatPosition: newValue })}
                         options={[
-                            { label: __("Top Right", "premium-blocks-for-gutenberg"), value: 'topright' },
-                            { label: __("Top Left", "premium-blocks-for-gutenberg"), value: 'topleft' },
-                            { label: __('Bottom Right', 'premium-blocks-for-gutenberg'), value: 'bottomright' },
-                            { label: __('Bottom Left', 'premium-blocks-for-gutenberg'), value: 'bottomleft' }
+                            { label: __("Top Right", "premium-blocks-for-gutenberg"), value: "topright" },
+                            { label: __("Top Left", "premium-blocks-for-gutenberg"), value: "topleft" },
+                            { label: __("Bottom Right", "premium-blocks-for-gutenberg"), value: "bottomright" },
+                            { label: __("Bottom Left", "premium-blocks-for-gutenberg"), value: "bottomleft" }
                         ]}
-                        value={triggerStyles.floatPosition}
-                        onChange={newValue => setTriggerStyles('floatPosition', newValue )}
+                        
+                        
                         />
                         <ResponsiveRangeControl
                             label={__('Vertical Offset', 'premium-blocks-for-gutenberg')}
@@ -403,6 +419,22 @@ const onChangePadding = (side, value, device) => {
             #block-${block_id} .toggle-button[data-style="outline"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
+            #block-${block_id} .float-position-topright {
+                top: ${attributes.vOffset}px;
+                right: ${attributes.hOffset}px;
+            }
+            #block-${block_id} .float-position-topleft {
+                top: ${attributes.vOffset}px;
+                left: ${attributes.hOffset}px;
+            }
+            #block-${block_id} .float-position-bottomright {
+                bottom: ${attributes.vOffset}px;
+                right: ${attributes.hOffset}px;
+            }
+            #block-${block_id} .float-position-bottomleft {
+                bottom: ${attributes.vOffset}px;
+                left: ${attributes.hOffset}px;
+            }
 
 
         `}
@@ -414,7 +446,7 @@ const onChangePadding = (side, value, device) => {
             }) }>
             <div className={`premium-trigger-container`}>
             <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`}>
-                    <a className={`toggle-button ${isEditing ? "toggled" : ""}`} 
+                    <a className={`toggle-button ${isEditing ? "toggled" : ""} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`} 
                     data-style={triggerStyles.style}
                     data-label={triggerStyles.labelPosition}
                         onClick={ () => setEditing( true )

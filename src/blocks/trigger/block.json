@@ -32,10 +32,16 @@
 			"default": "left"
 		},
 		"hOffset": {
-			"type": "number"	
+			"type": "number",
+			"default": "10"	
 		},
 		"vOffset": {
-			"type": "number"	
+			"type": "number",
+			"default": "10"
+		},
+		"floatPosition": {
+			"type": "string",
+			"default": "topright"
 		},
 		"triggerStyles": {
             "type": "object",
@@ -50,8 +56,7 @@
 				"borderType": "solid",
 				"borderColor": "#e8e8e8",
 				"borderHoverColor": "",
-				"borderRadius": "",
-				"floatPosition": ""
+				"borderRadius": ""
             }
         },
 		"canvasStyles": {
