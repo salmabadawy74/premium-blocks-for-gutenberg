@@ -331,11 +331,13 @@ const onChangePadding = (side, value, device) => {
                         onColorChange={newValue => setCanvasStyles('overlayBgColor', newValue )}
                     />
                     <RadioComponent
-                        choices={["right", "left", "full"]}
+                        choices={["right", "left", "full", "bottom"]}
                         value={canvasStyles.layout}
                         onChange={newValue => setCanvasStyles('layout', newValue )}
                         label={__("Layout style", 'premium-blocks-for-gutenberg')}
                     />
+                    {(canvasStyles.layout === 'bottom' && isEditing) ? document.body.classList.add("pusheddown") : document.body.classList.remove("pusheddown") }
+                    
                     {(triggerStyles.layout === 'right' || triggerStyles.layout === 'left' ) && 
                     (<ResponsiveSingleRangeControl
                             label={__("Canvas Width", 'premium-blocks-for-gutenberg')}
