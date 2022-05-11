@@ -2035,7 +2035,8 @@ import {
     useEffect,
     useState,
     button,
-    Modal
+    Modal,
+    useRef
 } from '@wordpress/element';
 import {
     PanelBody,
@@ -2074,7 +2075,65 @@ export default function Edit(props) {
 
     useEffect(() => {
         setAttributes({ block_id: props.clientId })
+        // Assigning id in the attribute.
+        // setAttributes({ block_id: this.props.clientId })
+        setAttributes({ classMigrate: true })
+        //         // Pushing Style tag for this block css.
+        const $style = document.createElement("style")
+        $style.setAttribute("id", "premium-style-content-switcher-" + props.clientId)
+        document.head.appendChild($style)
+        setAttributes({ switchCheck: false })
+        setTimeout(initToggleBox, 10);
+        // getPreviewSize = getPreviewSize.bind(this);
     }, [])
+    const inputEl = useRef(null);
+
+    const initToggleBox = () => {
+        const { block_id, switchCheck } = props.attributes;
+        if (!block_id) return null;
+        // const inputRef = useRef();
+        let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-input ${block_id}`);
+        console.log(toggleBox, block_id, inputEl.current)
+        setTimeout(
+            inputEl.current.addEventListener("click", () => {
+                setAttributes({ switchCheck: !switchCheck })
+                console.log(switchCheck);
+
+                if (!switchCheck) {
+                    let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+                    switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                    switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+                    let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+                    switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                    switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+                }
+                else {
+                    let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+                    switchToggle[0].classList.remove("premium-content-switcher-is-visible");
+                    switchToggle[0].classList.add("premium-content-switcher-is-hidden");
+
+                    let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+                    switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
+                    switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+                }
+            })
+            , 10);
+    }
+
+    const getPreviewSize = (device, desktopSize, tabletSize, mobileSize) => {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
+    }
 
     const {
         block_id,
@@ -2199,115 +2258,8 @@ export default function Edit(props) {
         containerMarginRMobile,
         containerMarginBMobile,
         containerMarginLMobile,
-        backgroundTypeState2,
-        switchSize,
-        switchSizeTablet,
-        switchSizeType,
-        switchSizeMobile,
-        bottomSpacing,
-        bottomSpacingTablet,
-        bottomSpacingMobile,
-        bottomSpacingType,
-        secondStateColor,
-        firstStateColor,
-        switcherBGColor,
-        switchRadius,
-        labelSpacing,
-        labelSpacingTablet,
-        labelSpacingMobile,
-        labelSpacingType,
-        firstLabelColor,
-        firstLabelWeight,
-        firstLabelLetter,
-        firstLabelUpper,
-        firstLabelStyle,
-        firstLabelfontSize,
-        firstLabelfontSizeMobile,
-        firstLabelfontSizeTablet,
-        firstLabelfontSizeType,
-        secondLabelColor,
-        secondLabelWeight,
-        secondLabelLetter,
-        secondLabelUpper,
-        secondLabelStyle,
-        secondLabelfontSize,
-        secondLabelfontSizeMobile,
-        secondLabelfontSizeTablet,
-        secondLabelfontSizeType,
-        shadowColor,
-        shadowBlur,
-        shadowHorizontal,
-        shadowVertical,
-        contentHeight,
-        contentHeightTablet,
-        contentHeightType,
-        contentHeightMobile,
-        firstContentColor,
-        firstContentBGColor,
-        secondContentHeight,
-        secondContentHeightTablet,
-        secondContentHeightType,
-        secondContentHeightMobile,
-        secondContentColor,
-        secondContentBGColor,
-        firstpaddingTop,
-        firstpaddingTopMobile,
-        firstpaddingTopTablet,
-        firstpaddingTopType,
-        firstpaddingLeft,
-        firstpaddingLeftMobile,
-        firstpaddingLeftTablet,
-        firstpaddingLeftType,
-        firstpaddingRight,
-        firstpaddingRightMobile,
-        firstpaddingRightTablet,
-        firstpaddingRightType,
-        firstpaddingBottom,
-        firstpaddingBottomMobile,
-        firstpaddingBottomTablet,
-        firstpaddingBottomType,
-        secondpaddingTop,
-        secondpaddingTopMobile,
-        secondpaddingTopTablet,
-        secondpaddingTopType,
-        secondpaddingLeft,
-        secondpaddingLeftMobile,
-        secondpaddingLeftTablet,
-        secondpaddingLeftType,
-        secondpaddingRight,
-        secondpaddingRightMobile,
-        secondpaddingRightTablet,
-        secondpaddingRightType,
-        secondpaddingBottom,
-        secondpaddingBottomMobile,
-        secondpaddingBottomTablet,
-        secondpaddingBottomType,
         effect,
-        slide,
-        firstContentfontSize,
-        firstContentfontSizeMobile,
-        firstContentfontSizeTablet,
-        firstContentfontSizeType,
-        firstContentWeight,
-        firstContentLetter,
-        firstContentUpper,
-        firstContentStyle,
-        firstContentborderType,
-        firstContentborderWidth,
-        firstContentborderColor,
-        firstContentborderRadius,
-        secondContentfontSize,
-        secondContentfontSizeType,
-        secondContentfontSizeMobile,
-        secondContentfontSizeTablet,
-        secondContentLetter,
-        secondContentStyle,
-        secondContentWeight,
-        secondContentUpper,
-        secondContentborderType,
-        secondContentborderWidth,
-        secondContentborderColor,
-        secondContentborderRadius
+        slide
     } = attributes
 
     const DISPLAY = [
@@ -2403,6 +2355,90 @@ export default function Edit(props) {
             left: ''
         }
     };
+
+    let btnGrad, btnGrad2, btnbg;
+
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = ('transparent' === containerStyles.containerBack || undefined === containerStyles.containerBack ? 'rgba(255,255,255,0)' : containerStyles.containerBack);
+        btnGrad2 = (undefined !== containerStyles.gradientColorTwo && undefined !== containerStyles.gradientColorTwo && '' !== containerStyles.gradientColorTwo ? containerStyles.gradientColorTwo : '#777');
+        if ('radial' === containerStyles.gradientType) {
+            btnbg = `radial-gradient(at ${containerStyles.gradientPosition}, ${btnGrad} ${containerStyles.gradientLocationOne}%, ${btnGrad2} ${containerStyles.gradientLocationTwo}%)`;
+        } else if ('radial' !== containerStyles.gradientType) {
+            btnbg = `linear-gradient(${containerStyles.gradientAngle}deg, ${btnGrad} ${containerStyles.gradientLocationOne}%, ${btnGrad2} ${containerStyles.gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbg = containerStyles.backgroundImageURL ? `url('${containerStyles.backgroundImageURL}')` : ''
+    }
+
+    const SwitcherSize = getPreviewSize(props.deviceType, switcherStyles.switchSize, switcherStyles.switchSizeTablet, switcherStyles.switchSizeMobile);
+    const SwitcherBorderRadius = getPreviewSize(props.deviceType, switcherStyles.switchRadius, switcherStyles.switchRadiusTablet, switcherStyles.switchRadiusMobile);
+    const ContainerBorderRadius = getPreviewSize(props.deviceType, switcherStyles.containerRadius, switcherStyles.containerRadiusTablet, switcherStyles.containerRadiusMobile);
+    const LabelSpacing = getPreviewSize(props.deviceType, labelStyles.labelSpacing, labelStyles.labelSpacingTablet, labelStyles.labelSpacingMobile);
+    const FirstLabelSize = getPreviewSize(props.deviceType, labelStyles.firstLabelfontSize, labelStyles.firstLabelfontSizeTablet, labelStyles.firstLabelfontSizeMobile);
+    const FirstLabelPaddingTop = getPreviewSize(props.deviceType, firstLabelPaddingT, firstLabelPaddingTTablet, firstLabelPaddingTMobile);
+    const FirstLabelPaddingRight = getPreviewSize(props.deviceType, firstLabelPaddingR, firstLabelPaddingRTablet, firstLabelPaddingRMobile);
+    const FirstLabelPaddingBottom = getPreviewSize(props.deviceType, firstLabelPaddingB, firstLabelPaddingBTablet, firstLabelPaddingBMobile);
+    const FirstLabelPaddingLeft = getPreviewSize(props.deviceType, firstLabelPaddingL, firstLabelPaddingLTablet, firstLabelPaddingLMobile);
+    const SecondLabelSize = getPreviewSize(props.deviceType, labelStyles.secondLabelfontSize, labelStyles.secondLabelfontSizeTablet, labelStyles.secondLabelfontSizeMobile);
+    const SecondLabelPaddingTop = getPreviewSize(props.deviceType, secondLabelPaddingT, secondLabelPaddingTTablet, secondLabelPaddingTMobile);
+    const SecondLabelPaddingRight = getPreviewSize(props.deviceType, secondLabelPaddingR, secondLabelPaddingRTablet, secondLabelPaddingRMobile);
+    const SecondLabelPaddingBottom = getPreviewSize(props.deviceType, secondLabelPaddingB, secondLabelPaddingBTablet, secondLabelPaddingBMobile);
+    const SecondLabelPaddingLeft = getPreviewSize(props.deviceType, secondLabelPaddingL, secondLabelPaddingLTablet, secondLabelPaddingLMobile);
+    const ContentHeight = getPreviewSize(props.deviceType, contentStyles.contentHeight, contentStyles.contentHeightTablet, contentStyles.contentHeightMobile);
+    const FirstContentSize = getPreviewSize(props.deviceType, firstContentStyles.firstContentfontSize, firstContentStyles.firstContentfontSizeTablet, firstContentStyles.firstContentfontSizeMobile);
+    const FirstContentMarginTop = getPreviewSize(props.deviceType, firstContentMarginT, firstContentMarginTTablet, firstContentMarginTMobile);
+    const FirstContentMarginRight = getPreviewSize(props.deviceType, firstContentMarginR, firstContentMarginRTablet, firstContentMarginRMobile);
+    const FirstContentMarginBottom = getPreviewSize(props.deviceType, firstContentMarginB, firstContentMarginBTablet, firstContentMarginBMobile);
+    const FirstContentMarginLeft = getPreviewSize(props.deviceType, firstContentMarginL, firstContentMarginLTablet, firstContentMarginLMobile);
+    const ContentPaddingTop = getPreviewSize(props.deviceType, contentPaddingT, contentPaddingTTablet, contentPaddingTMobile);
+    const ContentPaddingRight = getPreviewSize(props.deviceType, contentPaddingR, contentPaddingRTablet, contentPaddingRMobile);
+    const ContentPaddingBottom = getPreviewSize(props.deviceType, contentPaddingB, contentPaddingBTablet, contentPaddingBMobile);
+    const ContentPaddingLeft = getPreviewSize(props.deviceType, contentPaddingL, contentPaddingLTablet, contentPaddingLMobile);
+    const SecondContentSize = getPreviewSize(props.deviceType, secondContentStyles.secondContentfontSize, secondContentStyles.secondContentfontSizeTablet, secondContentStyles.secondContentfontSizeMobile);
+    const ContainerMarginTop = getPreviewSize(props.deviceType, containerMarginT, containerMarginTTablet, containerMarginTMobile);
+    const ContainerMarginRight = getPreviewSize(props.deviceType, containerMarginR, containerMarginRTablet, containerMarginRMobile);
+    const ContainerMarginBottom = getPreviewSize(props.deviceType, containerMarginB, containerMarginBTablet, containerMarginBMobile);
+    const ContainerMarginLeft = getPreviewSize(props.deviceType, containerMarginL, containerMarginLTablet, containerMarginLMobile);
+    const ContainerPaddingTop = getPreviewSize(props.deviceType, containerPaddingT, containerPaddingTTablet, containerPaddingTMobile);
+    const ContainerPaddingRight = getPreviewSize(props.deviceType, containerPaddingR, containerPaddingRTablet, containerPaddingRMobile);
+    const ContainerPaddingBottom = getPreviewSize(props.deviceType, containerPaddingB, containerPaddingBTablet, containerPaddingBMobile);
+    const ContainerPaddingLeft = getPreviewSize(props.deviceType, containerPaddingL, containerPaddingLTablet, containerPaddingLMobile);
+
+    const saveSwitcherStyles = (color, value) => {
+        const newColors = { ...switcherStyles };
+        newColors[color] = value;
+        setAttributes({ switcherStyles: newColors });
+    }
+
+    const saveLabelStyles = (color, value) => {
+        const newColors = { ...labelStyles };
+        newColors[color] = value;
+        setAttributes({ labelStyles: newColors });
+    }
+
+    const saveContentStyles = (color, value) => {
+        const newColors = { ...contentStyles };
+        newColors[color] = value;
+        setAttributes({ contentStyles: newColors });
+    }
+
+    const saveFirstContentStyles = (color, value) => {
+        const newColors = { ...firstContentStyles };
+        newColors[color] = value;
+        setAttributes({ firstContentStyles: newColors });
+    }
+
+    const saveSecondContentStyles = (color, value) => {
+        const newColors = { ...secondContentStyles };
+        newColors[color] = value;
+        setAttributes({ secondContentStyles: newColors });
+    }
+
+    const saveContainerStyles = (color, value) => {
+        const newColors = { ...containerStyles };
+        newColors[color] = value;
+        setAttributes({ containerStyles: newColors });
+    }
 
     return (
         <Fragment>
@@ -2511,9 +2547,9 @@ export default function Edit(props) {
                 >
                     <ResponsiveRangeControl
                         label={__("Size", 'premium-block-for-gutenberg')}
-                        value={switcherStyles[0].switchSize}
-                        tabletValue={switcherStyles[0].switchSizeTablet}
-                        mobileValue={switcherStyles[0].switchSizeMobile}
+                        value={switcherStyles.switchSize}
+                        tabletValue={switcherStyles.switchSizeTablet}
+                        mobileValue={switcherStyles.switchSizeMobile}
                         onChange={(value) => saveSwitcherStyles({ switchSize: value })}
                         onChangeTablet={(value) => saveSwitcherStyles({ switchSizeTablet: value })}
                         onChangeMobile={(value) => saveSwitcherStyles({ switchSizeMobile: value })}
@@ -2524,16 +2560,16 @@ export default function Edit(props) {
                     />
                     <ResponsiveRangeControl
                         label={__("Controller Border Radius", 'premium-block-for-gutenberg')}
-                        value={switcherStyles[0].containerRadius}
-                        tabletValue={switcherStyles[0].containerRadiusTablet}
-                        mobileValue={switcherStyles[0].containerRadiusMobile}
+                        value={switcherStyles.containerRadius}
+                        tabletValue={switcherStyles.containerRadiusTablet}
+                        mobileValue={switcherStyles.containerRadiusMobile}
                         onChange={(value) => saveSwitcherStyles({ containerRadius: value })}
                         onChangeTablet={(value) => saveSwitcherStyles({ containerRadiusTablet: value })}
                         onChangeMobile={(value) => saveSwitcherStyles({ containerRadiusMobile: value })}
                         onChangeUnit={(key) =>
                             saveSwitcherStyles({ containerRadiusType: key })
                         }
-                        unit={switcherStyles[0].containerRadiusType}
+                        unit={switcherStyles.containerRadiusType}
                         showUnit={true}
                         defaultValue={50}
                         min={1}
@@ -2541,16 +2577,16 @@ export default function Edit(props) {
                     />
                     <ResponsiveRangeControl
                         label={__("Switcher Border Radius", 'premium-block-for-gutenberg')}
-                        value={switcherStyles[0].switchRadius}
-                        tabletValue={switcherStyles[0].switchRadiusTablet}
-                        mobileValue={switcherStyles[0].switchRadiusMobile}
+                        value={switcherStyles.switchRadius}
+                        tabletValue={switcherStyles.switchRadiusTablet}
+                        mobileValue={switcherStyles.switchRadiusMobile}
                         onChange={(value) => saveSwitcherStyles({ switchRadius: value })}
                         onChangeTablet={(value) => saveSwitcherStyles({ switchRadiusTablet: value })}
                         onChangeMobile={(value) => saveSwitcherStyles({ switchRadiusMobile: value })}
                         onChangeUnit={(key) =>
                             saveSwitcherStyles({ switchRadiusType: key })
                         }
-                        unit={switcherStyles[0].switchRadiusType}
+                        unit={switcherStyles.switchRadiusType}
                         showUnit={true}
                         defaultValue={1.5}
                         min={1}
@@ -2597,11 +2633,11 @@ export default function Edit(props) {
                     <PremiumShadow
                         label={__("Controller Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
-                        color={switcherStyles[0].containerShadowColor}
-                        blur={switcherStyles[0].containerShadowBlur}
-                        horizontal={switcherStyles[0].containerShadowHorizontal}
-                        vertical={switcherStyles[0].containerShadowVertical}
-                        position={switcherStyles[0].containerShadowPosition}
+                        color={switcherStyles.containerShadowColor}
+                        blur={switcherStyles.containerShadowBlur}
+                        horizontal={switcherStyles.containerShadowHorizontal}
+                        vertical={switcherStyles.containerShadowVertical}
+                        position={switcherStyles.containerShadowPosition}
                         onChangeColor={newColor =>
                             saveSwitcherStyles({ containerShadowColor: newColor })
                         }
@@ -2619,11 +2655,11 @@ export default function Edit(props) {
                     <PremiumShadow
                         label={__("Switcher Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
-                        color={switcherStyles[0].switchShadowColor}
-                        blur={switcherStyles[0].switchShadowBlur}
-                        horizontal={switcherStyles[0].switchShadowHorizontal}
-                        vertical={switcherStyles[0].switchShadowVertical}
-                        position={switcherStyles[0].switchShadowPosition}
+                        color={switcherStyles.switchShadowColor}
+                        blur={switcherStyles.switchShadowBlur}
+                        horizontal={switcherStyles.switchShadowHorizontal}
+                        vertical={switcherStyles.switchShadowVertical}
+                        position={switcherStyles.switchShadowPosition}
                         onChangeColor={newColor =>
                             saveSwitcherStyles({ switchShadowColor: newColor })
                         }
@@ -2646,9 +2682,9 @@ export default function Edit(props) {
                 >
                     <ResponsiveRangeControl
                         label={__("Spacing", 'premium-block-for-gutenberg')}
-                        value={labelStyles[0].labelSpacing}
-                        tabletValue={labelStyles[0].labelSpacingTablet}
-                        mobileValue={labelStyles[0].labelSpacingMobile}
+                        value={labelStyles.labelSpacing}
+                        tabletValue={labelStyles.labelSpacingTablet}
+                        mobileValue={labelStyles.labelSpacingMobile}
                         onChange={(value) => saveLabelStyles({ labelSpacing: value })}
                         onChangeTablet={(value) => saveLabelStyles({ labelSpacingTablet: value })}
                         onChangeMobile={(value) => saveLabelStyles({ labelSpacingMobile: value })}
@@ -2660,7 +2696,7 @@ export default function Edit(props) {
                     <h2 className="premium-content-switcher-labels-style">{__("First Label")}</h2>
                     <AdvancedPopColorControl
                         label={__("Text Color", 'premium-block-for-gutenberg')}
-                        colorValue={labelStyles[0].firstLabelColor}
+                        colorValue={labelStyles.firstLabelColor}
                         colorDefault={''}
                         onColorChange={newValue =>
                             saveLabelStyles({
@@ -2671,19 +2707,19 @@ export default function Edit(props) {
                     <PremiumTypo
                         components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                         setAttributes={saveLabelStyles}
-                        fontSizeType={{ value: labelStyles[0].firstLabelfontSizeType, label: __("firstLabelfontSizeType") }}
-                        fontSize={labelStyles[0].firstLabelfontSize}
-                        fontSizeMobile={labelStyles[0].firstLabelfontSizeMobile}
-                        fontSizeTablet={labelStyles[0].firstLabelfontSizeTablet}
+                        fontSizeType={{ value: labelStyles.firstLabelfontSizeType, label: __("firstLabelfontSizeType") }}
+                        fontSize={labelStyles.firstLabelfontSize}
+                        fontSizeMobile={labelStyles.firstLabelfontSizeMobile}
+                        fontSizeTablet={labelStyles.firstLabelfontSizeTablet}
                         onChangeSize={newSize => saveLabelStyles({ firstLabelfontSize: newSize })}
                         onChangeTabletSize={newSize => saveLabelStyles({ firstLabelfontSizeTablet: newSize })}
                         onChangeMobileSize={newSize => saveLabelStyles({ firstLabelfontSizeMobile: newSize })}
-                        weight={labelStyles[0].firstLabelWeight}
-                        style={labelStyles[0].firstLabelStyle}
-                        spacing={labelStyles[0].firstLabelLetter}
-                        upper={labelStyles[0].firstLabelUpper}
-                        line={labelStyles[0].firstLabelLine}
-                        fontFamily={labelStyles[0].firstLabelFontFamily}
+                        weight={labelStyles.firstLabelWeight}
+                        style={labelStyles.firstLabelStyle}
+                        spacing={labelStyles.firstLabelLetter}
+                        upper={labelStyles.firstLabelUpper}
+                        line={labelStyles.firstLabelLine}
+                        fontFamily={labelStyles.firstLabelFontFamily}
                         onChangeWeight={newWeight =>
                             saveLabelStyles({ firstLabelWeight: newWeight || 500 })
                         }
@@ -2699,10 +2735,10 @@ export default function Edit(props) {
                     />
                     <PremiumShadow
                         label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                        color={labelStyles[0].firstLabelShadowColor}
-                        blur={labelStyles[0].firstLabelShadowBlur}
-                        horizontal={labelStyles[0].firstLabelShadowHorizontal}
-                        vertical={labelStyles[0].firstLabelShadowVertical}
+                        color={labelStyles.firstLabelShadowColor}
+                        blur={labelStyles.firstLabelShadowBlur}
+                        horizontal={labelStyles.firstLabelShadowHorizontal}
+                        vertical={labelStyles.firstLabelShadowVertical}
                         onChangeColor={newColor =>
                             saveLabelStyles({ firstLabelShadowColor: newColor })
                         }
@@ -2715,14 +2751,14 @@ export default function Edit(props) {
                         }
                     />
                     <PremiumBorder
-                        borderType={labelStyles[0].firstLabelborderType}
+                        borderType={labelStyles.firstLabelborderType}
                         borderWidth={firstLabelBorderWidth}
                         top={firstLabelBorderTop}
                         right={firstLabelBorderRight}
                         bottom={firstLabelBorderBottom}
                         left={firstLabelBorderLeft}
-                        borderColor={labelStyles[0].firstLabelborderColor}
-                        borderRadius={labelStyles[0].firstLabelborderRadius}
+                        borderColor={labelStyles.firstLabelborderColor}
+                        borderRadius={labelStyles.firstLabelborderRadius}
                         onChangeType={newType => saveLabelStyles({ firstLabelborderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
@@ -2743,11 +2779,11 @@ export default function Edit(props) {
                     <PremiumShadow
                         label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
-                        color={labelStyles[0].firstLabelBoxShadowColor}
-                        blur={labelStyles[0].firstLabelBoxShadowBlur}
-                        horizontal={labelStyles[0].firstLabelBoxShadowHorizontal}
-                        vertical={labelStyles[0].firstLabelBoxShadowVertical}
-                        position={labelStyles[0].firstLabelBoxShadowPosition}
+                        color={labelStyles.firstLabelBoxShadowColor}
+                        blur={labelStyles.firstLabelBoxShadowBlur}
+                        horizontal={labelStyles.firstLabelBoxShadowHorizontal}
+                        vertical={labelStyles.firstLabelBoxShadowVertical}
+                        position={labelStyles.firstLabelBoxShadowPosition}
                         onChangeColor={newColor =>
                             saveLabelStyles({ firstLabelBoxShadowColor: newColor })
                         }
@@ -2776,7 +2812,7 @@ export default function Edit(props) {
                         paddingBottomMobile={firstLabelPaddingBMobile}
                         paddingLeftMobile={firstLabelPaddingLMobile}
                         showUnits={true}
-                        selectedUnit={labelStyles[0].firstLabelPaddingType}
+                        selectedUnit={labelStyles.firstLabelPaddingType}
                         onChangePadSizeUnit={newvalue => saveLabelStyles({ firstLabelPaddingType: newvalue })}
                         onChangePaddingTop={
                             (device, newValue) => {
@@ -2827,7 +2863,7 @@ export default function Edit(props) {
                     <h2 className="premium-content-switcher-labels-style">{__("Second Label")}</h2>
                     <AdvancedPopColorControl
                         label={__("Text Color", 'premium-block-for-gutenberg')}
-                        colorValue={labelStyles[0].secondLabelColor}
+                        colorValue={labelStyles.secondLabelColor}
                         colorDefault={''}
                         onColorChange={newValue =>
                             saveLabelStyles({
@@ -2838,19 +2874,19 @@ export default function Edit(props) {
                     <PremiumTypo
                         components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                         setAttributes={saveLabelStyles}
-                        fontSizeType={{ value: labelStyles[0].secondLabelfontSizeType, label: __("secondLabelfontSizeType") }}
-                        fontSize={labelStyles[0].secondLabelfontSize}
-                        fontSizeMobile={labelStyles[0].secondLabelfontSizeMobile}
-                        fontSizeTablet={labelStyles[0].secondLabelfontSizeTablet}
+                        fontSizeType={{ value: labelStyles.secondLabelfontSizeType, label: __("secondLabelfontSizeType") }}
+                        fontSize={labelStyles.secondLabelfontSize}
+                        fontSizeMobile={labelStyles.secondLabelfontSizeMobile}
+                        fontSizeTablet={labelStyles.secondLabelfontSizeTablet}
                         onChangeSize={newSize => saveLabelStyles({ secondLabelfontSize: newSize })}
                         onChangeTabletSize={newSize => saveLabelStyles({ secondLabelfontSizeTablet: newSize })}
                         onChangeMobileSize={newSize => saveLabelStyles({ secondLabelfontSizeMobile: newSize })}
-                        weight={labelStyles[0].secondLabelWeight}
-                        style={labelStyles[0].secondLabelStyle}
-                        spacing={labelStyles[0].secondLabelLetter}
-                        upper={labelStyles[0].secondLabelUpper}
-                        line={labelStyles[0].secondLabelLine}
-                        fontFamily={labelStyles[0].secondLabelFontFamily}
+                        weight={labelStyles.secondLabelWeight}
+                        style={labelStyles.secondLabelStyle}
+                        spacing={labelStyles.secondLabelLetter}
+                        upper={labelStyles.secondLabelUpper}
+                        line={labelStyles.secondLabelLine}
+                        fontFamily={labelStyles.secondLabelFontFamily}
                         onChangeWeight={newWeight =>
                             saveLabelStyles({ secondLabelWeight: newWeight || 500 })
                         }
@@ -2866,10 +2902,10 @@ export default function Edit(props) {
                     />
                     <PremiumShadow
                         label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                        color={labelStyles[0].secondLabelShadowColor}
-                        blur={labelStyles[0].secondLabelShadowBlur}
-                        horizontal={labelStyles[0].secondLabelShadowHorizontal}
-                        vertical={labelStyles[0].secondLabelShadowVertical}
+                        color={labelStyles.secondLabelShadowColor}
+                        blur={labelStyles.secondLabelShadowBlur}
+                        horizontal={labelStyles.secondLabelShadowHorizontal}
+                        vertical={labelStyles.secondLabelShadowVertical}
                         onChangeColor={newColor =>
                             saveLabelStyles({ secondLabelShadowColor: newColor })
                         }
@@ -2882,14 +2918,14 @@ export default function Edit(props) {
                         }
                     />
                     <PremiumBorder
-                        borderType={labelStyles[0].secondLabelborderType}
+                        borderType={labelStyles.secondLabelborderType}
                         borderWidth={secondLabelBorderWidth}
                         top={secondLabelBorderTop}
                         right={secondLabelBorderRight}
                         bottom={secondLabelBorderBottom}
                         left={secondLabelBorderLeft}
-                        borderColor={labelStyles[0].secondLabelborderColor}
-                        borderRadius={labelStyles[0].secondLabelborderRadius}
+                        borderColor={labelStyles.secondLabelborderColor}
+                        borderRadius={labelStyles.secondLabelborderRadius}
                         onChangeType={newType => saveLabelStyles({ secondLabelborderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
@@ -2910,11 +2946,11 @@ export default function Edit(props) {
                     <PremiumShadow
                         label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
-                        color={labelStyles[0].secondLabelBoxShadowColor}
-                        blur={labelStyles[0].secondLabelBoxShadowBlur}
-                        horizontal={labelStyles[0].secondLabelBoxShadowHorizontal}
-                        vertical={labelStyles[0].secondLabelBoxShadowVertical}
-                        position={labelStyles[0].secondLabelBoxShadowPosition}
+                        color={labelStyles.secondLabelBoxShadowColor}
+                        blur={labelStyles.secondLabelBoxShadowBlur}
+                        horizontal={labelStyles.secondLabelBoxShadowHorizontal}
+                        vertical={labelStyles.secondLabelBoxShadowVertical}
+                        position={labelStyles.secondLabelBoxShadowPosition}
                         onChangeColor={newColor =>
                             saveLabelStyles({ secondLabelBoxShadowColor: newColor })
                         }
@@ -2943,7 +2979,7 @@ export default function Edit(props) {
                         paddingBottomMobile={secondLabelPaddingBMobile}
                         paddingLeftMobile={secondLabelPaddingLMobile}
                         showUnits={true}
-                        selectedUnit={labelStyles[0].secondLabelPaddingType}
+                        selectedUnit={labelStyles.secondLabelPaddingType}
                         onChangePadSizeUnit={newvalue => saveLabelStyles({ secondLabelPaddingType: newvalue })}
                         onChangePaddingTop={
                             (device, newValue) => {
@@ -2999,16 +3035,16 @@ export default function Edit(props) {
                 >
                     <ResponsiveRangeControl
                         label={__("Height", 'premium-block-for-gutenberg')}
-                        value={contentStyles[0].contentHeight}
-                        tabletValue={contentStyles[0].contentHeightTablet}
-                        mobileValue={contentStyles[0].contentHeightMobile}
+                        value={contentStyles.contentHeight}
+                        tabletValue={contentStyles.contentHeightTablet}
+                        mobileValue={contentStyles.contentHeightMobile}
                         onChange={(value) => saveContentStyles({ contentHeight: value })}
                         onChangeTablet={(value) => saveContentStyles({ contentHeightTablet: value })}
                         onChangeMobile={(value) => saveContentStyles({ contentHeightMobile: value })}
                         onChangeUnit={(key) =>
                             saveContentStyles({ contentHeightType: key })
                         }
-                        unit={contentStyles[0].contentHeightType}
+                        unit={contentStyles.contentHeightType}
                         showUnit={true}
                         defaultValue={100}
                         min={1}
@@ -3037,7 +3073,7 @@ export default function Edit(props) {
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={firstContentStyles[0].firstContentColor}
+                                            colorValue={firstContentStyles.firstContentColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
                                                 saveFirstContentStyles({
@@ -3047,7 +3083,7 @@ export default function Edit(props) {
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={firstContentStyles[0].firstContentBGColor}
+                                            colorValue={firstContentStyles.firstContentBGColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
                                                 saveFirstContentStyles({
@@ -3058,19 +3094,19 @@ export default function Edit(props) {
                                         <PremiumTypo
                                             components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                                             setAttributes={saveFirstContentStyles}
-                                            fontSizeType={{ value: firstContentStyles[0].firstContentfontSizeType, label: __("firstContentfontSizeType") }}
-                                            fontSize={firstContentStyles[0].firstContentfontSize}
-                                            fontSizeMobile={firstContentStyles[0].firstContentfontSizeMobile}
-                                            fontSizeTablet={firstContentStyles[0].firstContentfontSizeTablet}
+                                            fontSizeType={{ value: firstContentStyles.firstContentfontSizeType, label: __("firstContentfontSizeType") }}
+                                            fontSize={firstContentStyles.firstContentfontSize}
+                                            fontSizeMobile={firstContentStyles.firstContentfontSizeMobile}
+                                            fontSizeTablet={firstContentStyles.firstContentfontSizeTablet}
                                             onChangeSize={newSize => saveFirstContentStyles({ firstContentfontSize: newSize })}
                                             onChangeTabletSize={newSize => saveFirstContentStyles({ firstContentfontSizeTablet: newSize })}
                                             onChangeMobileSize={newSize => saveFirstContentStyles({ firstContentfontSizeMobile: newSize })}
-                                            weight={firstContentStyles[0].firstContentWeight}
-                                            style={firstContentStyles[0].firstContentStyle}
-                                            spacing={firstContentStyles[0].firstContentLetter}
-                                            upper={firstContentStyles[0].firstContentUpper}
-                                            line={firstContentStyles[0].firstContentLine}
-                                            fontFamily={firstContentStyles[0].firstContentFontFamily}
+                                            weight={firstContentStyles.firstContentWeight}
+                                            style={firstContentStyles.firstContentStyle}
+                                            spacing={firstContentStyles.firstContentLetter}
+                                            upper={firstContentStyles.firstContentUpper}
+                                            line={firstContentStyles.firstContentLine}
+                                            fontFamily={firstContentStyles.firstContentFontFamily}
                                             onChangeWeight={newWeight =>
                                                 saveFirstContentStyles({ firstContentWeight: newWeight || 500 })
                                             }
@@ -3086,10 +3122,10 @@ export default function Edit(props) {
                                         />
                                         <PremiumShadow
                                             label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                            color={firstContentStyles[0].firstContentShadowColor}
-                                            blur={firstContentStyles[0].firstContentShadowBlur}
-                                            horizontal={firstContentStyles[0].firstContentShadowHorizontal}
-                                            vertical={firstContentStyles[0].firstContentShadowVertical}
+                                            color={firstContentStyles.firstContentShadowColor}
+                                            blur={firstContentStyles.firstContentShadowBlur}
+                                            horizontal={firstContentStyles.firstContentShadowHorizontal}
+                                            vertical={firstContentStyles.firstContentShadowVertical}
                                             onChangeColor={newColor =>
                                                 saveFirstContentStyles({ firstContentShadowColor: newColor })
                                             }
@@ -3102,14 +3138,14 @@ export default function Edit(props) {
                                             }
                                         />
                                         <PremiumBorder
-                                            borderType={firstContentStyles[0].firstContentborderType}
+                                            borderType={firstContentStyles.firstContentborderType}
                                             borderWidth={firstContentBorderWidth}
                                             top={firstContentBorderTop}
                                             right={firstContentBorderRight}
                                             bottom={firstContentBorderBottom}
                                             left={firstContentBorderLeft}
-                                            borderColor={firstContentStyles[0].firstContentborderColor}
-                                            borderRadius={firstContentStyles[0].firstContentborderRadius}
+                                            borderColor={firstContentStyles.firstContentborderColor}
+                                            borderRadius={firstContentStyles.firstContentborderRadius}
                                             onChangeType={newType => saveFirstContentStyles({ firstContentborderType: newType })}
                                             onChangeWidth={({ top, right, bottom, left }) =>
                                                 setAttributes({
@@ -3130,11 +3166,11 @@ export default function Edit(props) {
                                         <PremiumShadow
                                             label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                                             boxShadow={true}
-                                            color={firstContentStyles[0].firstContentBoxShadowColor}
-                                            blur={firstContentStyles[0].firstContentBoxShadowBlur}
-                                            horizontal={firstContentStyles[0].firstContentBoxShadowHorizontal}
-                                            vertical={firstContentStyles[0].firstContentBoxShadowVertical}
-                                            position={firstContentStyles[0].firstContentBoxShadowPosition}
+                                            color={firstContentStyles.firstContentBoxShadowColor}
+                                            blur={firstContentStyles.firstContentBoxShadowBlur}
+                                            horizontal={firstContentStyles.firstContentBoxShadowHorizontal}
+                                            vertical={firstContentStyles.firstContentBoxShadowVertical}
+                                            position={firstContentStyles.firstContentBoxShadowPosition}
                                             onChangeColor={newColor =>
                                                 saveFirstContentStyles({ firstContentBoxShadowColor: newColor })
                                             }
@@ -3157,7 +3193,7 @@ export default function Edit(props) {
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={secondContentStyles[0].secondContentColor}
+                                            colorValue={secondContentStyles.secondContentColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
                                                 saveSecondContentStyles({
@@ -3167,7 +3203,7 @@ export default function Edit(props) {
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={secondContentStyles[0].secondContentBGColor}
+                                            colorValue={secondContentStyles.secondContentBGColor}
                                             colorDefault={''}
                                             onColorChange={newValue =>
                                                 saveSecondContentStyles({
@@ -3178,19 +3214,19 @@ export default function Edit(props) {
                                         <PremiumTypo
                                             components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                                             setAttributes={saveSecondContentStyles}
-                                            fontSizeType={{ value: secondContentStyles[0].secondContentfontSizeType, label: __("secondContentfontSizeType") }}
-                                            fontSize={secondContentStyles[0].secondContentfontSize}
-                                            fontSizeMobile={secondContentStyles[0].secondContentfontSizeMobile}
-                                            fontSizeTablet={secondContentStyles[0].secondContentfontSizeTablet}
+                                            fontSizeType={{ value: secondContentStyles.secondContentfontSizeType, label: __("secondContentfontSizeType") }}
+                                            fontSize={secondContentStyles.secondContentfontSize}
+                                            fontSizeMobile={secondContentStyles.secondContentfontSizeMobile}
+                                            fontSizeTablet={secondContentStyles.secondContentfontSizeTablet}
                                             onChangeSize={newSize => saveSecondContentStyles({ secondContentfontSize: newSize })}
                                             onChangeTabletSize={newSize => saveSecondContentStyles({ secondContentfontSizeTablet: newSize })}
                                             onChangeMobileSize={newSize => saveSecondContentStyles({ secondContentfontSizeMobile: newSize })}
-                                            weight={secondContentStyles[0].secondContentWeight}
-                                            style={secondContentStyles[0].secondContentStyle}
-                                            spacing={secondContentStyles[0].secondContentLetter}
-                                            upper={secondContentStyles[0].secondContentUpper}
-                                            line={secondContentStyles[0].secondContentLine}
-                                            fontFamily={secondContentStyles[0].secondContentFontFamily}
+                                            weight={secondContentStyles.secondContentWeight}
+                                            style={secondContentStyles.secondContentStyle}
+                                            spacing={secondContentStyles.secondContentLetter}
+                                            upper={secondContentStyles.secondContentUpper}
+                                            line={secondContentStyles.secondContentLine}
+                                            fontFamily={secondContentStyles.secondContentFontFamily}
                                             onChangeWeight={newWeight =>
                                                 saveSecondContentStyles({ secondContentWeight: newWeight || 500 })
                                             }
@@ -3206,10 +3242,10 @@ export default function Edit(props) {
                                         />
                                         <PremiumShadow
                                             label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                            color={secondContentStyles[0].secondContentShadowColor}
-                                            blur={secondContentStyles[0].secondContentShadowBlur}
-                                            horizontal={secondContentStyles[0].secondContentShadowHorizontal}
-                                            vertical={secondContentStyles[0].secondContentShadowVertical}
+                                            color={secondContentStyles.secondContentShadowColor}
+                                            blur={secondContentStyles.secondContentShadowBlur}
+                                            horizontal={secondContentStyles.secondContentShadowHorizontal}
+                                            vertical={secondContentStyles.secondContentShadowVertical}
                                             onChangeColor={newColor =>
                                                 saveSecondContentStyles({ secondContentShadowColor: newColor })
                                             }
@@ -3222,14 +3258,14 @@ export default function Edit(props) {
                                             }
                                         />
                                         <PremiumBorder
-                                            borderType={secondContentStyles[0].secondContentborderType}
+                                            borderType={secondContentStyles.secondContentborderType}
                                             borderWidth={secondContentBorderWidth}
                                             top={secondContentBorderTop}
                                             right={secondContentBorderRight}
                                             bottom={secondContentBorderBottom}
                                             left={secondContentBorderLeft}
-                                            borderColor={secondContentStyles[0].secondContentborderColor}
-                                            borderRadius={secondContentStyles[0].secondContentborderRadius}
+                                            borderColor={secondContentStyles.secondContentborderColor}
+                                            borderRadius={secondContentStyles.secondContentborderRadius}
                                             onChangeType={newType => saveSecondContentStyles({ secondContentborderType: newType })}
                                             onChangeWidth={({ top, right, bottom, left }) =>
                                                 setAttributes({
@@ -3250,11 +3286,11 @@ export default function Edit(props) {
                                         <PremiumShadow
                                             label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                                             boxShadow={true}
-                                            color={secondContentStyles[0].secondContentBoxShadowColor}
-                                            blur={secondContentStyles[0].secondContentBoxShadowBlur}
-                                            horizontal={secondContentStyles[0].secondContentBoxShadowHorizontal}
-                                            vertical={secondContentStyles[0].secondContentBoxShadowVertical}
-                                            position={secondContentStyles[0].secondContentBoxShadowPosition}
+                                            color={secondContentStyles.secondContentBoxShadowColor}
+                                            blur={secondContentStyles.secondContentBoxShadowBlur}
+                                            horizontal={secondContentStyles.secondContentBoxShadowHorizontal}
+                                            vertical={secondContentStyles.secondContentBoxShadowVertical}
+                                            position={secondContentStyles.secondContentBoxShadowPosition}
                                             onChangeColor={newColor =>
                                                 saveSecondContentStyles({ secondContentBoxShadowColor: newColor })
                                             }
@@ -3296,7 +3332,7 @@ export default function Edit(props) {
                         marginLeftMobile={firstContentMarginLMobile}
                         showUnits={true}
                         onChangeMarSizeUnit={newvalue => saveFirstContentStyles({ firstContentMarginType: newvalue })}
-                        selectedUnit={firstContentStyles[0].firstContentMarginType}
+                        selectedUnit={firstContentStyles.firstContentMarginType}
                         onChangeMarginTop={
                             (device, newValue) => {
                                 if (device === "desktop") {
@@ -3357,7 +3393,7 @@ export default function Edit(props) {
                         paddingBottomMobile={contentPaddingBMobile}
                         paddingLeftMobile={contentPaddingLMobile}
                         showUnits={true}
-                        selectedUnit={firstContentStyles[0].firstContentPaddingType}
+                        selectedUnit={firstContentStyles.firstContentPaddingType}
                         onChangePadSizeUnit={newvalue => saveFirstContentStyles({ firstContentPaddingType: newvalue })}
                         onChangePaddingTop={
                             (device, newValue) => {
@@ -3430,14 +3466,14 @@ export default function Edit(props) {
                         gradientType={containerStyles[0].gradientType}
                     /> */}
                     <PremiumBorder
-                        borderType={containerStyles[0].containerborderType}
+                        borderType={containerStyles.containerborderType}
                         borderWidth={containerBorderWidth}
                         top={containerBorderTop}
                         right={containerBorderRight}
                         bottom={containerBorderBottom}
                         left={containerBorderLeft}
-                        borderColor={containerStyles[0].containerborderColor}
-                        borderRadius={containerStyles[0].containerborderRadius}
+                        borderColor={containerStyles.containerborderColor}
+                        borderRadius={containerStyles.containerborderRadius}
                         onChangeType={newType => saveContainerStyles({ containerborderType: newType })}
                         onChangeWidth={({ top, right, bottom, left }) =>
                             setAttributes({
@@ -3458,11 +3494,11 @@ export default function Edit(props) {
                     <PremiumShadow
                         label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
-                        color={containerStyles[0].containerBoxShadowColor}
-                        blur={containerStyles[0].containerBoxShadowBlur}
-                        horizontal={containerStyles[0].containerBoxShadowHorizontal}
-                        vertical={containerStyles[0].containerBoxShadowVertical}
-                        position={containerStyles[0].containerBoxShadowPosition}
+                        color={containerStyles.containerBoxShadowColor}
+                        blur={containerStyles.containerBoxShadowBlur}
+                        horizontal={containerStyles.containerBoxShadowHorizontal}
+                        vertical={containerStyles.containerBoxShadowVertical}
+                        position={containerStyles.containerBoxShadowPosition}
                         onChangeColor={newColor =>
                             saveContainerStyles({ containerBoxShadowColor: newColor })
                         }
@@ -3493,7 +3529,7 @@ export default function Edit(props) {
                         marginLeftMobile={containerMarginLMobile}
                         showUnits={true}
                         onChangeMarSizeUnit={newvalue => saveContainerStyles({ iconMarginType: newvalue })}
-                        selectedUnit={containerStyles[0].iconMarginType}
+                        selectedUnit={containerStyles.iconMarginType}
                         onChangeMarginTop={
                             (device, newValue) => {
                                 if (device === "desktop") {
@@ -3554,7 +3590,7 @@ export default function Edit(props) {
                         paddingBottomMobile={containerPaddingBMobile}
                         paddingLeftMobile={containerPaddingLMobile}
                         showUnits={true}
-                        selectedUnit={containerStyles[0].iconPaddingType}
+                        selectedUnit={containerStyles.iconPaddingType}
                         onChangePadSizeUnit={newvalue => saveContainerStyles({ iconPaddingType: newvalue })}
                         onChangePaddingTop={
                             (device, newValue) => {
@@ -3603,6 +3639,254 @@ export default function Edit(props) {
                     />
                 </PanelBody>
             </InspectorControls>
+            <BlockControls group="block">
+                <AlignmentToolbar
+                    value={align}
+                    onChange={(newAlignment) => {
+                        setAttributes({ align: newAlignment });
+                    }}
+
+                />
+
+            </BlockControls>
+
+            <style>
+                {`
+                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
+                         border-radius: ${ContainerBorderRadius}${switcherStyles.containerRadiusType} !important;
+                         box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
+                     }
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
+                        border-radius: ${SwitcherBorderRadius}${switcherStyles.switchRadiusType} !important;
+                         box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
+                     }
+                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
+                         margin-right: ${LabelSpacing}px !important;
+                    }
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
+                        margin-left: ${LabelSpacing}px !important;
+                    }
+                   #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
+                         margin-bottom: ${LabelSpacing}px !important;
+                     }
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
+                        margin-top: ${LabelSpacing}px !important;
+                    }
+                 `}
+            </style>
+            <div
+                //  { ...useBlockProps({
+                //     className: classnames(
+                //         `${isEditing ? "active" : ""}`
+                //     ),
+                // }) }
+                id={`premium-content-switcher-${block_id}`}
+                className={classnames(
+                    className,
+                    `premium-block-${props.clientId}`
+                )}
+                style={{
+                    textAlign: align,
+                }}
+            >
+                <div className={`premium-content-switcher`}
+                    style={{
+                        textAlign: align,
+                        backgroundColor: backgroundType === "solid" ? containerStyles.containerBack : "transparent",
+                        boxShadow: `${containerStyles.containerBoxShadowHorizontal}px ${containerStyles.containerBoxShadowVertical}px ${containerStyles.containerBoxShadowBlur}px ${containerStyles.containerBoxShadowColor} ${containerStyles.containerBoxShadowPosition}`,
+                        backgroundImage: btnbg,
+                        backgroundRepeat: containerStyles.backgroundRepeat,
+                        backgroundPosition: containerStyles.backgroundPosition,
+                        backgroundSize: containerStyles.backgroundSize,
+                        backgroundAttachment: containerStyles.fixed ? "fixed" : "unset",
+                        borderStyle: containerStyles.containerborderType,
+                        borderWidth: containerBorderUpdated
+                            ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
+                            : containerBorderWidth + "px",
+                        borderRadius: containerStyles.containerborderRadius + "px",
+                        borderColor: containerStyles.containerborderColor,
+                        paddingTop: ContainerPaddingTop + containerStyles.containerPaddingType,
+                        paddingRight: ContainerPaddingRight + containerStyles.containerPaddingType,
+                        paddingBottom: ContainerPaddingBottom + containerStyles.containerPaddingType,
+                        paddingLeft: ContainerPaddingLeft + containerStyles.containerPaddingType,
+                        marginTop: ContainerMarginTop + containerStyles.containerMarginType,
+                        marginBottom: ContainerMarginBottom + containerStyles.containerMarginType,
+                        marginLeft: ContainerMarginLeft + containerStyles.containerMarginType,
+                        marginRight: ContainerMarginRight + containerStyles.containerMarginType,
+                    }}>
+                    <div className={`premium-content-switcher-toggle-${display}`}
+                        style={{
+                            textAlign: align,
+                            justifyContent: align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
+                            alignItems: display == "inline" ? "center" : align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
+                        }}>
+                        {showLabel && (<div className="premium-content-switcher-first-label">
+                            <RichText
+                                tagName={labelTag.toLowerCase()}
+                                className={`premium-content-switcher-${display}-editing`}
+                                onChange={(newValue) => setAttributes({ firstLabel: newValue })}
+                                value={firstLabel}
+                                style={{
+                                    color: labelStyles.firstLabelColor,
+                                    fontSize: FirstLabelSize + labelStyles.firstLabelfontSizeType,
+                                    letterSpacing: labelStyles.firstLabelLetter + "px",
+                                    textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
+                                    fontStyle: labelStyles.firstLabelStyle,
+                                    fontWeight: labelStyles.firstLabelWeight,
+                                    lineHeight: (labelStyles.firstLabelLine ? labelStyles.firstLabelLine : "") + "px",
+                                    fontFamily: labelStyles.firstLabelFontFamily,
+                                    borderStyle: labelStyles.firstLabelborderType,
+                                    borderWidth: firstLabelBorderUpdated
+                                        ? `${firstLabelBorderTop}px ${firstLabelBorderRight}px ${firstLabelBorderBottom}px ${firstLabelBorderLeft}px`
+                                        : firstLabelBorderWidth + "px",
+                                    borderRadius: labelStyles.firstLabelborderRadius + "px",
+                                    borderColor: labelStyles.firstLabelborderColor,
+                                    paddingTop: FirstLabelPaddingTop + labelStyles.firstLabelPaddingType,
+                                    paddingBottom: FirstLabelPaddingBottom + labelStyles.firstLabelPaddingType,
+                                    paddingLeft: FirstLabelPaddingLeft + labelStyles.firstLabelPaddingType,
+                                    paddingRight: FirstLabelPaddingRight + labelStyles.firstLabelPaddingType,
+                                    textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
+                                    boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`,
+                                }}
+                            />
+                        </div>
+                        )}
+                        <div
+                            className="premium-content-switcher-toggle-switch"
+                            style={{
+                                fontSize: SwitcherSize + 'px',
+                            }}
+                        >
+                            <label className={`premium-content-switcher-toggle-switch-label`}>
+                                <input ref={inputEl} type="checkbox" className={`premium-content-switcher-toggle-switch-input ${props.clientId}`} />
+                                <span className="premium-content-switcher-toggle-switch-slider round"
+                                    style={{
+                                        // borderRadius: switchRadius + "px"
+                                    }}></span>
+                            </label>
+                        </div>
+                        {showLabel && (<div className="premium-content-switcher-second-label">
+                            <RichText
+                                tagName={labelTag.toLowerCase()}
+                                className={`premium-content-switcher-${display}-editing`}
+                                onChange={(newValue) => setAttributes({ secondLabel: newValue })}
+                                value={secondLabel}
+                                style={{
+                                    color: labelStyles.secondLabelColor,
+                                    fontSize: SecondLabelSize + labelStyles.secondLabelfontSizeType,
+                                    letterSpacing: labelStyles.secondLabelLetter + "px",
+                                    textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
+                                    fontStyle: labelStyles.secondLabelStyle,
+                                    fontWeight: labelStyles.secondLabelWeight,
+                                    lineHeight: (labelStyles.secondLabelLine ? labelStyles.secondLabelLine : "") + "px",
+                                    fontFamily: labelStyles.secondLabelFontFamily,
+                                    borderStyle: labelStyles.secondLabelborderType,
+                                    borderWidth: secondLabelBorderUpdated
+                                        ? `${secondLabelBorderTop}px ${secondLabelBorderRight}px ${secondLabelBorderBottom}px ${secondLabelBorderLeft}px`
+                                        : secondLabelBorderWidth + "px",
+                                    borderRadius: labelStyles.secondLabelborderRadius + "px",
+                                    borderColor: labelStyles.secondLabelborderColor,
+                                    paddingTop: SecondLabelPaddingTop + labelStyles.secondLabelPaddingType,
+                                    paddingBottom: SecondLabelPaddingBottom + labelStyles.secondLabelPaddingType,
+                                    paddingLeft: SecondLabelPaddingLeft + labelStyles.secondLabelPaddingType,
+                                    paddingRight: SecondLabelPaddingRight + labelStyles.secondLabelPaddingType,
+                                    textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
+                                    boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`,
+                                }}
+                            />
+                        </div>
+                        )}
+                    </div>
+                    <div
+                        className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}
+                        style={{
+                            marginTop: FirstContentMarginTop + firstContentStyles.firstContentMarginType,
+                            marginBottom: FirstContentMarginBottom + firstContentStyles.firstContentMarginType,
+                            marginLeft: FirstContentMarginLeft + firstContentStyles.firstContentMarginType,
+                            marginRight: FirstContentMarginRight + firstContentStyles.firstContentMarginType,
+                        }}
+                    >
+                        <ul className="premium-content-switcher-two-content">
+                            <li className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${props.clientId}`}
+                                style={{
+                                    background: firstContentStyles.firstContentBGColor,
+                                    borderStyle: firstContentStyles.firstContentborderType,
+                                    borderWidth: firstContentBorderUpdated
+                                        ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px`
+                                        : firstContentBorderWidth + "px",
+                                    borderRadius: firstContentStyles.firstContentborderRadius + "px",
+                                    borderColor: firstContentStyles.firstContentborderColor,
+                                    minHeight: ContentHeight + contentStyles.contentHeightType,
+                                    paddingTop: ContentPaddingTop + firstContentStyles.firstContentPaddingType,
+                                    paddingBottom: ContentPaddingBottom + firstContentStyles.firstContentPaddingType,
+                                    paddingLeft: ContentPaddingLeft + firstContentStyles.firstContentPaddingType,
+                                    paddingRight: ContentPaddingRight + firstContentStyles.firstContentPaddingType,
+                                    boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`,
+                                }}>
+                                <RichText
+                                    tagName="div"
+                                    className={`premium-content-switcher-first-content`}
+                                    value={firstContent}
+                                    onChange={value => {
+                                        setAttributes({ firstContent: value })
+                                    }}
+                                    style={{
+                                        textAlign: firstcontentlign,
+                                        justifyContent: firstcontentlign,
+                                        color: firstContentStyles.firstContentColor,
+                                        fontSize: FirstContentSize + firstContentStyles.firstContentfontSizeType,
+                                        letterSpacing: firstContentStyles.firstContentLetter + "px",
+                                        textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
+                                        fontStyle: firstContentStyles.firstContentStyle,
+                                        fontWeight: firstContentStyles.firstContentWeight,
+                                        lineHeight: (firstContentStyles.firstContentLine ? firstContentStyles.firstContentLine : "") + "px",
+                                        fontFamily: firstContentStyles.firstContentFontFamily,
+                                        textShadow: `${firstContentStyles.firstContentShadowHorizontal}px ${firstContentStyles.firstContentShadowVertical}px ${firstContentStyles.firstContentShadowBlur}px ${firstContentStyles.firstContentShadowColor}`,
+                                    }}
+                                />
+                            </li>
+                            <li className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${props.clientId}`}
+                                style={{
+                                    background: secondContentStyles.secondContentBGColor,
+                                    borderStyle: secondContentStyles.secondContentborderType,
+                                    borderWidth: secondContentBorderUpdated
+                                        ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px`
+                                        : secondContentBorderWidth + "px",
+                                    borderRadius: secondContentStyles.secondContentborderRadius + "px",
+                                    borderColor: secondContentStyles.secondContentborderColor,
+                                    minHeight: ContentHeight + contentStyles.contentHeightType,
+                                    paddingTop: ContentPaddingTop + secondContentStyles.secondContentPaddingType,
+                                    paddingBottom: ContentPaddingBottom + secondContentStyles.secondContentPaddingType,
+                                    paddingLeft: ContentPaddingLeft + secondContentStyles.secondContentPaddingType,
+                                    paddingRight: ContentPaddingRight + secondContentStyles.secondContentPaddingType,
+                                    boxShadow: `${secondContentStyles.secondContentBoxShadowHorizontal}px ${secondContentStyles.secondContentBoxShadowVertical}px ${secondContentStyles.secondContentBoxShadowBlur}px ${secondContentStyles.secondContentBoxShadowColor} ${secondContentStyles.secondContentBoxShadowPosition}`,
+                                }}>
+                                <RichText
+                                    tagName="div"
+                                    className={`premium-content-switcher-second-content`}
+                                    value={secondContent}
+                                    onChange={value => {
+                                        setAttributes({ secondContent: value })
+                                    }}
+                                    style={{
+                                        textAlign: secondcontentlign,
+                                        justifyContent: secondcontentlign,
+                                        color: secondContentStyles.secondContentColor,
+                                        fontSize: SecondContentSize + secondContentStyles.secondContentfontSizeType,
+                                        letterSpacing: secondContentStyles.secondContentLetter + "px",
+                                        textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
+                                        fontStyle: secondContentStyles.secondContentStyle,
+                                        fontWeight: secondContentStyles.secondContentWeight,
+                                        lineHeight: (secondContentStyles.secondContentLine ? secondContentStyles.secondContentLine : "") + "px",
+                                        fontFamily: secondContentStyles.secondContentFontFamily,
+                                        textShadow: `${secondContentStyles.secondContentShadowHorizontal}px ${secondContentStyles.secondContentShadowVertical}px ${secondContentStyles.secondContentShadowBlur}px ${secondContentStyles.secondContentShadowColor}`,
+                                    }}
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </Fragment>
     )
 }

@@ -74,16 +74,16 @@ function register_block_pbg_content_switcher() {
             'render_callback' => 'render_block_pbg_content_switcher',
             )
         );
-        wp_localize_script(
-			'pbg-blocks-js',
-			'PremiumBlocksSettings',
-			array(
-				'ajaxurl'           => esc_url( admin_url( 'admin-ajax.php' ) ),
-				'nonce'             => wp_create_nonce( 'pa-blog-block-nonce' ),
-				'settingPath'       => admin_url( 'admin.php?page=premium-gutenberg-maps' ),
-				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg'
-			)
-		);
+        // wp_localize_script(
+		// 	'pbg-blocks-js',
+		// 	'PremiumBlocksSettings',
+		// 	array(
+		// 		'ajaxurl'           => esc_url( admin_url( 'admin-ajax.php' ) ),
+		// 		'nonce'             => wp_create_nonce( 'pa-blog-block-nonce' ),
+		// 		'settingPath'       => admin_url( 'admin.php?page=premium-gutenberg-maps' ),
+		// 		'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg'
+		// 	)
+		// );
 }
 add_action( 'init', 'register_block_pbg_content_switcher' );
 
