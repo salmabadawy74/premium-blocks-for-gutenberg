@@ -1318,7 +1318,10 @@ class edit extends Component {
                             <PremiumBackgroundControl
                                 setAttributes={setAttributes}
                                 saveContainerStyle={saveIconStyles}
-                                backgroundType={backgroundType}
+                                backgroundType={{
+                                    label: 'backgroundType',
+                                    value: backgroundType
+                                }}
                                 backgroundColor={iconStyles[0].containerBack}
                                 backgroundImageID={iconStyles[0].backgroundImageID}
                                 backgroundImageURL={iconStyles[0].backgroundImageURL}
@@ -1759,39 +1762,39 @@ class edit extends Component {
                                         </span>
 
                                     </Fragment> : <Fragment>
-                                            {
-                                                iconValue && iconType == 'icon' &&
-                                                <i className={`premium-title-icon ${icon}`} />
-                                            }
-                                            {
-                                                iconValue && iconType == 'image' &&
-                                                < img className={`premium-title-icon`} src={imageURL} />
-                                            }
-                                            {
-                                                iconValue && iconType == 'lottie' && lottieURl &&
-                                                <div className=" premium-title-icon premium-lottie-animation">
-                                                    <Lottie
-                                                        options={{
-                                                            loop: loop,
-                                                            path: lottieURl,
-                                                            rendererSettings: {
-                                                                preserveAspectRatio: 'xMidYMid'
-                                                            }
-                                                        }}
-                                                        direction={reverse}
-                                                    />
-                                                </div>
-                                            }
-                                            <RichText
-                                                tagName='span'
-                                                className={`premium-title-text-title`}
-                                                onChange={(newValue) => setAttributes({ title: newValue })}
-                                                value={title}
-                                                style={{
-                                                    minHeight: '15px'
-                                                }}
-                                            />
-                                        </Fragment>
+                                        {
+                                            iconValue && iconType == 'icon' &&
+                                            <i className={`premium-title-icon ${icon}`} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'image' &&
+                                            < img className={`premium-title-icon`} src={imageURL} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'lottie' && lottieURl &&
+                                            <div className=" premium-title-icon premium-lottie-animation">
+                                                <Lottie
+                                                    options={{
+                                                        loop: loop,
+                                                        path: lottieURl,
+                                                        rendererSettings: {
+                                                            preserveAspectRatio: 'xMidYMid'
+                                                        }
+                                                    }}
+                                                    direction={reverse}
+                                                />
+                                            </div>
+                                        }
+                                        <RichText
+                                            tagName='span'
+                                            className={`premium-title-text-title`}
+                                            onChange={(newValue) => setAttributes({ title: newValue })}
+                                            value={title}
+                                            style={{
+                                                minHeight: '15px'
+                                            }}
+                                        />
+                                    </Fragment>
                                 }
                                 {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href={`${url}`} ></a>}
                             </Fragment>

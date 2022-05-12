@@ -515,7 +515,7 @@ class edit extends Component {
                                 blur={titleStyles[0].titleShadowBlur}
                                 horizontal={titleStyles[0].titleShadowHorizontal}
                                 vertical={titleStyles[0].titleShadowVertical}
-                                onChangeColor={newColor => saveTitleStyle({ titleShadowColor: newColor || "transparent" })}
+                                onChangeColor={newColor => saveTitleStyle({ titleShadowColor: newColor })}
                                 onChangeBlur={newBlur => saveTitleStyle({ titleShadowBlur: newBlur || 0 })}
                                 onChangehHorizontal={newValue => saveTitleStyle({ titleShadowHorizontal: newValue || 0 })}
                                 onChangeVertical={newValue => saveTitleStyle({ titleShadowVertical: newValue || 0 })}
@@ -692,7 +692,7 @@ class edit extends Component {
                                 horizontal={btnStyles[0].btnShadowHorizontal}
                                 vertical={btnStyles[0].btnShadowVertical}
                                 position={btnStyles[0].btnShadowPosition}
-                                onChangeColor={newColor => saveButtonStyle({ btnShadowColor: newColor || "transparent" })}
+                                onChangeColor={newColor => saveButtonStyle({ btnShadowColor: newColor })}
                                 onChangeBlur={newBlur => saveButtonStyle({ btnShadowBlur: newBlur || 0 })}
                                 onChangehHorizontal={newValue => saveButtonStyle({ btnShadowHorizontal: newValue || 0 })}
                                 onChangeVertical={newValue => saveButtonStyle({ btnShadowVertical: newValue || 0 })}
@@ -797,7 +797,7 @@ class edit extends Component {
                             horizontal={containerStyles[0].shadowHorizontal}
                             vertical={containerStyles[0].shadowVertical}
                             position={containerStyles[0].shadowPosition}
-                            onChangeColor={newColor => saveContainerStyle({ shadowColor: newColor || "transparent" })}
+                            onChangeColor={newColor => saveContainerStyle({ shadowColor: newColor })}
                             onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur || 0 })}
                             onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue || 0 })}
                             onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue || 0 })}
@@ -972,7 +972,7 @@ class edit extends Component {
                                                         label={__("Icon Color", 'premium-blocks-for-gutenberg')}
                                                         colorValue={iconColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue => setAttributes({ iconColor: newValue || "transparent", })}
+                                                        onColorChange={newValue => setAttributes({ iconColor: newValue })}
                                                     />
                                                     <AdvancedPopColorControl
                                                         label={__(`Icon Background Color`)}
@@ -987,7 +987,7 @@ class edit extends Component {
                                                     label={__("Title Color", 'premium-blocks-for-gutenberg')}
                                                     colorValue={titleStyles[0].titleColor}
                                                     colorDefault={''}
-                                                    onColorChange={newValue => saveTitleStyle({ titleColor: newValue || "transparent", })}
+                                                    onColorChange={newValue => saveTitleStyle({ titleColor: newValue })}
                                                 />
                                             )}
                                             {descChecked && (
@@ -995,7 +995,7 @@ class edit extends Component {
                                                     label={__("Description Color", 'premium-blocks-for-gutenberg')}
                                                     colorValue={descStyles[0].descColor}
                                                     colorDefault={''}
-                                                    onColorChange={newValue => saveDescriptionStyle({ descColor: newValue || "transparent", })}
+                                                    onColorChange={newValue => saveDescriptionStyle({ descColor: newValue })}
                                                 />
                                             )}
                                             {btnChecked && (
@@ -1047,7 +1047,9 @@ class edit extends Component {
                                                 label={__('Button Border Hover Color', 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnHoverBorder}
                                                 colorDefault={''}
-                                                onColorChange={newValue => setAttributes({ btnHoverBorder: newValue || "transparent", })}
+                                                onColorChange={newValue => setAttributes({
+                                                    btnHoverBorder: newValue
+                                                })}
                                             />
                                         </Fragment>
                                     );

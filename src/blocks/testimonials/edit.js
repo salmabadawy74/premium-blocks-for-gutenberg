@@ -432,7 +432,7 @@ class edit extends Component {
                         <PremiumBackgroundControl
                             setAttributes={setAttributes}
                             saveContainerStyle={saveContainerStyle}
-                            backgroundType={backgroundType}
+                            backgroundType={{ label: 'backgroundType', value: backgroundType }}
                             backgroundColor={containerStyles[0].containerBack}
                             backgroundImageID={containerStyles[0].backgroundImageID}
                             backgroundImageURL={containerStyles[0].backgroundImageURL}
