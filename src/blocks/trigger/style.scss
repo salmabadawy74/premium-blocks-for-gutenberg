@@ -190,21 +190,6 @@
 	}
  }
 
-
-
-
-
-@media (min-width: 782px) {
-.is-sidebar-opened {
-	.gpb-trigger-canvas-container[data-layout="right"] {
-		.gpb-popup-content {
-			margin-right: 281px;
-			margin-top: 61px;
-		}
-	}
-}
-}
-
 @media (max-width: 767px) {
 	.wp-block-premium-trigger {
 		.gpb-popup-content {
@@ -224,3 +209,21 @@
 		margin-top: 32px;
 	}
 }
+.is-sidebar-opened {
+    .float-position-topright,
+    .float-position-bottomright {
+        margin-right: 281px;
+    }
+}
+@media (min-width: 782px) {
+    .is-sidebar-opened {
+        .gpb-trigger-canvas-container[data-layout="right"] {
+            .gpb-popup-content {
+                margin-right: 281px;
+                margin-top: 61px;
+            }
+        }
+        
+    }
+}
+

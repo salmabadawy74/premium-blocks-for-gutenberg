@@ -8,11 +8,9 @@ import { useBlockProps,
 import {
     Fragment,
     useEffect,
-    useState,
-    button,
-    Modal 
+    useState
 } from '@wordpress/element';
-import { PanelBody, TextControl, Button, Popover, TabPanel, ToggleControl, SelectControl } from '@wordpress/components';
+import { PanelBody, TextControl, TabPanel, ToggleControl, SelectControl } from '@wordpress/components';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border";
@@ -41,14 +39,13 @@ import './editor.scss';
 export default function Edit(props) {
 
 const [ isEditing, setEditing ] = useState(false);
-const { isSelected, attributes, setAttributes, clientId, className } = props;
+const {  attributes, setAttributes } = props;
 
 useEffect(() => {
     setAttributes({ block_id: props.clientId })
 }, [])
 const { triggerLabel, 
     iconAlignment, 
-    iconSize, 
     displayFloat, 
     floatPosition, 
     block_id, 
@@ -91,6 +88,7 @@ const defaultSpacingValue = {
     }
 };
 
+
 const setTriggerStyles = (color, value) => {
     const newColors = { ...triggerStyles };
     newColors[color] = value;
@@ -107,6 +105,22 @@ const onChangePadding = (side, value, device) => {
     newPadding[device][side] = value;
     setAttributes({ spacing: { ...spacing, padding: newPadding } });
 }
+
+function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+    if (device === 'Mobile') {
+        if (undefined !== mobileSize && '' !== mobileSize) {
+            return mobileSize;
+        } else if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    } else if (device === 'Tablet') {
+        if (undefined !== tabletSize && '' !== tabletSize) {
+            return tabletSize;
+        }
+    }
+    return desktopSize;
+}
+const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize, triggerStyles.iconSizeTablet, triggerStyles.iconSizeMobile);
     return (
         <Fragment>
             
@@ -123,12 +137,12 @@ const onChangePadding = (side, value, device) => {
 
                     <ResponsiveRangeControl
                         label={__('Icon Size', 'premium-blocks-for-gutenberg')}
-                        value={attributes.iconSize}
-                        onChange={(value) => setAttributes({ iconSize: value })}
-                        tabletValue={attributes.iconSizeTablet}
-                        onChangeTablet={(value) => setAttributes({ iconSizeTablet: value })}
-                        mobileValue={attributes.iconSizeMobile}
-                        onChangeMobile={(value) => setAttributes({ iconSizeMobile: value })}
+                        value={triggerStyles.iconSize}
+                        onChange={nvalue => setTriggerStyles('iconSize', nvalue )}
+                        tabletValue={triggerStyles.iconSizeTablet}
+                        onChangeTablet={nvalue => setTriggerStyles('iconSizeTablet', nvalue )}
+                        mobileValue={triggerStyles.iconSizeMobile}
+                        onChangeMobile={nvalue => setTriggerStyles('iconSizeMobile', nvalue )}
                         min={0}
                         max={100}
                         step={1}
@@ -261,7 +275,7 @@ const onChangePadding = (side, value, device) => {
                     <ToggleControl
                     label={__("Float", 'premium-blocks-for-gutenberg')}
                     checked={displayFloat}
-                    onChange={newValue => setAttributes({ displayFloat: newValue })}
+                    onChange={value => setAttributes({ displayFloat: value })}
                     />
 
                     {attributes.displayFloat && (
@@ -288,7 +302,7 @@ const onChangePadding = (side, value, device) => {
                             mobileValue={attributes.vOffsetMobile}
                             onChangeMobile={(value) => setAttributes({ vOffsetMobile: value })}
                             min={0}
-                            max={100}
+                            max={200}
                             step={1}
                             showUnit={true}
                             units={['px']}
@@ -303,7 +317,7 @@ const onChangePadding = (side, value, device) => {
                             mobileValue={attributes.hOffsetMobile}
                             onChangeMobile={(value) => setAttributes({ hOffsetMobile: value })}
                             min={0}
-                            max={100}
+                            max={200}
                             step={1}
                             showUnit={true}
                             units={['px']}
@@ -331,25 +345,28 @@ const onChangePadding = (side, value, device) => {
                         onColorChange={newValue => setCanvasStyles('overlayBgColor', newValue )}
                     />
                     <RadioComponent
-                        choices={["right", "left", "full", "bottom"]}
+                        choices={["right", "left", "full"]}
                         value={canvasStyles.layout}
                         onChange={newValue => setCanvasStyles('layout', newValue )}
                         label={__("Layout style", 'premium-blocks-for-gutenberg')}
                     />
-                    {(canvasStyles.layout === 'bottom' && isEditing) ? document.body.classList.add("pusheddown") : document.body.classList.remove("pusheddown") }
                     
-                    {(triggerStyles.layout === 'right' || triggerStyles.layout === 'left' ) && 
+                    {(canvasStyles.layout === 'right' || canvasStyles.layout === 'left' ) && 
                     (<ResponsiveSingleRangeControl
-                            label={__("Canvas Width", 'premium-blocks-for-gutenberg')}
-                            value={canvasStyles.width}
-                            onChange={newValue => setCanvasStyles({ width: newValue === undefined ? 500 : newValue })}
-                            defaultValue={500}
-                            showUnit={false}
+                        label={__("Canvas Width", 'premium-blocks-for-gutenberg')}
+                        value={canvasStyles.width}
+                        onChange={newValue => setCanvasStyles('width', newValue )}
+                        min={0}
+                        max={700}
+                        step={1}
+                        showUnit={true}
+                        units={['px']}
+                        defaultValue={500}
                     />)
                 }
                     <PremiumResponsivePadding
                         directions={["all"]}
-                        marginTop={padding.desktop.top}
+                        paddingTop={padding.desktop.top}
                         paddingRight={padding.desktop.right}
                         paddingBottom={padding.desktop.bottom}
                         paddingLeft={padding.desktop.left}
@@ -438,9 +455,9 @@ const onChangePadding = (side, value, device) => {
                 left: ${attributes.hOffset}px;
             }
 
-
         `}
-        </style>         
+        </style>  
+               
             <div { ...useBlockProps({
                 className: classnames(
                     `${isEditing ? "active" : ""}`
@@ -462,7 +479,7 @@ const onChangePadding = (side, value, device) => {
                             placeholder={ __( 'Menu', 'premium-blocks-for-gutenberg' ) }
                             style={{color: triggerStyles.labelColor }}
                         >{triggerLabel}</span>}
-                        <svg style={{fontSize: `${iconSize}px`, fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <svg style={{fontSize: triggerIconSize + 'px', fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
 					<path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path></svg>
@@ -481,6 +498,7 @@ const onChangePadding = (side, value, device) => {
                             paddingBottom: `${padding.desktop.bottom}px`,
                             paddingLeft: `${padding.desktop.left}px`,
                             backgroundColor: `${canvasStyles.canvasBgColor}`,
+                            width: `${canvasStyles.width}px`,
                         }}
                         >
                         <div className="gpb-popup-header">

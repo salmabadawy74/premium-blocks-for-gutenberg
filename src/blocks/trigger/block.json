@@ -24,8 +24,9 @@
 		"triggerLabel": {
 			"type": "string"
 		},
-		"iconSize": {
-			"type": "number"
+		"displayFloat": {
+			"type": "boolean",
+			"default": false
 		},
 		"iconAlignment": {
 			"type": "string",
@@ -46,6 +47,9 @@
 		"triggerStyles": {
             "type": "object",
             "default": {
+				"iconSize": "",
+				"iconSizeTablet": "",
+				"iconSizeMobile": "",
                 "iconColor": "",
                 "iconBgColor": "#e8e8e8",
                 "iconHoverColor": "",

@@ -17,12 +17,11 @@
         triggerStyles, 
         canvasStyles, 
         spacing, 
-        iconSize, 
         triggerBorderTop, 
         triggerBorderRight, 
         triggerBorderLeft, 
         triggerBorderBottom,
-        displayFloat, 
+        displayFloat,
         floatPosition,
         hOffset,
         vOffset
@@ -88,34 +87,34 @@
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
             #premium-trigger-${block_id} .float-position-topright {
-                top: ${attributes.vOffset}px;
-                right: ${attributes.hOffset}px;
+                top: ${vOffset}px;
+                right: ${hOffset}px;
             }
             #premium-trigger-${block_id} .float-position-topleft {
-                top: ${attributes.vOffset}px;
-                left: ${attributes.hOffset}px;
+                top: ${vOffset}px;
+                left: ${hOffset}px;
             }
             #premium-trigger-${block_id} .float-position-bottomright {
-                bottom: ${attributes.vOffset}px;
-                right: ${attributes.hOffset}px;
+                bottom: ${vOffset}px;
+                right: ${hOffset}px;
             }
             #premium-trigger-${block_id} .float-position-bottomleft {
-                bottom: ${attributes.vOffset}px;
-                left: ${attributes.hOffset}px;
+                bottom: ${vOffset}px;
+                left: ${hOffset}px;
             }
         `}
         </style>  
                         <div className={`premium-trigger-container`}>
                         <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
-                            <a className={`toggle-button ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`} 
+                            <a className={`toggle-button ${displayFloat ? `float-position-${floatPosition}` : ""}`} 
                                 data-style={triggerStyles.style} 
                                 data-label={triggerStyles.labelPosition}
                                 onClick={ () => setEditing( true ) }
                             >
                             {triggerLabel &&
-                                <span className='trigger-label'>{triggerLabel}</span>
+                                <span className='trigger-label' style={{color: triggerStyles.labelColor }}>{triggerLabel}</span>
                             }
-                                <svg style={{fontSize: `${iconSize}px` , fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <svg style={{fontSize: `${triggerStyles.iconSize}px` , fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
                                     <path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
                                     <path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
