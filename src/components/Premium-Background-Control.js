@@ -1,6 +1,6 @@
 import React from 'react'
 const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
-import { FontAwesomeEnabled } from "../../assets/js/settings";
+// import { FontAwesomeEnabled } from "../../assets/js/settings";
 
 import PremiumBackground from './premium-background'
 import map from 'lodash/map';
@@ -39,7 +39,7 @@ export default function PremiumBackgroundControl({
                                 isPrimary={backgroundType === key}
                                 onClick={() => setAttributes({ backgroundType: key })}
                             >
-                                {1 == FontAwesomeEnabled ? <i className={icon}></i> : tooltip}
+                                {1 == PremiumOptionsSettings.FontAwesomeEnabled ? <i className={icon}></i> : tooltip}
                             </Button>
                         </Tooltip>
                     ))}
