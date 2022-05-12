@@ -29,6 +29,7 @@ function PremiumSpacing(props) {
         }
     }
     const [link, setLink] = useState(false)
+
     const [cached, setCached] = useState(cachedValue ? cachedValue : defaultValue)
     const onLinkClickHandler = () => {
         let linkValue = topValue.value;
@@ -179,6 +180,10 @@ function PremiumSpacing(props) {
                 break;
         }
     };
+    const onChange = (type, newValue) => {
+
+
+    }
     return (
         <div className={`premium-spacing-responsive`}>
             {props.label && <header className="premium-control-label-container">
@@ -201,7 +206,7 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChangeTopValue(e)}
+                                onChange={(e) => onChange("top", e)}
                                 value={topValue.value}
                                 min={0}
                             />
@@ -211,7 +216,7 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChangeRightValue(e)}
+                                onChange={(e) => onChange("right", e)}
                                 value={rightValue.value}
                                 min={0}
                             />
@@ -221,7 +226,7 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChangeBottomValue(e)}
+                                onChange={(e) => onChange('bottom', e)}
                                 value={bottomValue.value}
                                 min={0}
                             />
@@ -231,7 +236,7 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChangeLeftValue(e)}
+                                onChange={(e) => onChange('left', e)}
                                 value={leftValue.value}
                                 min={0}
                             />

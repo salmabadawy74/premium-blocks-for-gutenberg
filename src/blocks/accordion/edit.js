@@ -114,6 +114,7 @@ class PremiumAccordion extends Component {
             descPaddingRMobile,
             descPaddingBMobile,
             descPaddingLMobile,
+            titlePadding
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -413,55 +414,55 @@ class PremiumAccordion extends Component {
                         />
                         <SpacingControl
                             label={__('Padding', 'premium-blocks-for-gutenberg')}
-                            valueTop={{
-                                value: titlePaddingT,
-                                label: 'titlePaddingT',
-                            }}
-                            valueRight={{
-                                value: titlePaddingR,
-                                label: 'titlePaddingR',
-                            }}
-                            valueBottom={{
-                                value: titlePaddingB,
-                                label: 'titlePaddingB',
-                            }}
-                            valueLeft={{
-                                value: titlePaddingL,
-                                label: 'titlePaddingL',
-                            }}
-                            valueTopTablet={{
-                                value: titlePaddingTTablet,
-                                label: 'titlePaddingTTablet',
-                            }}
-                            valueRightTablet={{
-                                value: titlePaddingRTablet,
-                                label: 'titlePaddingRTablet',
-                            }}
-                            valueBottomTablet={{
-                                value: titlePaddingBTablet,
-                                label: 'titlePaddingBTablet',
-                            }}
-                            valueLeftTablet={{
-                                value: titlePaddingLTablet,
-                                label: 'titlePaddingLTablet',
-                            }}
-                            valueTopMobile={{
-                                value: titlePaddingTMobile,
-                                label: 'titlePaddingTMobile',
-                            }}
-                            valueRightMobile={{
-                                value: titlePaddingRMobile,
-                                label: 'titlePaddingRMobile',
-                            }}
-                            valueBottomMobile={{
-                                value: titlePaddingBMobile,
-                                label: 'titlePaddingBMobile',
-                            }}
-                            valueLeftMobile={{
-                                value: titlePaddingLMobile,
-                                label: 'titlePaddingLMobile',
-                            }}
-
+                            // valueTop={{
+                            //     value: titlePaddingT,
+                            //     label: 'titlePaddingT',
+                            // }}
+                            // valueRight={{
+                            //     value: titlePaddingR,
+                            //     label: 'titlePaddingR',
+                            // }}
+                            // valueBottom={{
+                            //     value: titlePaddingB,
+                            //     label: 'titlePaddingB',
+                            // }}
+                            // valueLeft={{
+                            //     value: titlePaddingL,
+                            //     label: 'titlePaddingL',
+                            // }}
+                            // valueTopTablet={{
+                            //     value: titlePaddingTTablet,
+                            //     label: 'titlePaddingTTablet',
+                            // }}
+                            // valueRightTablet={{
+                            //     value: titlePaddingRTablet,
+                            //     label: 'titlePaddingRTablet',
+                            // }}
+                            // valueBottomTablet={{
+                            //     value: titlePaddingBTablet,
+                            //     label: 'titlePaddingBTablet',
+                            // }}
+                            // valueLeftTablet={{
+                            //     value: titlePaddingLTablet,
+                            //     label: 'titlePaddingLTablet',
+                            // }}
+                            // valueTopMobile={{
+                            //     value: titlePaddingTMobile,
+                            //     label: 'titlePaddingTMobile',
+                            // }}
+                            // valueRightMobile={{
+                            //     value: titlePaddingRMobile,
+                            //     label: 'titlePaddingRMobile',
+                            // }}
+                            // valueBottomMobile={{
+                            //     value: titlePaddingBMobile,
+                            //     label: 'titlePaddingBMobile',
+                            // }}
+                            // valueLeftMobile={{
+                            //     value: titlePaddingLMobile,
+                            //     label: 'titlePaddingLMobile',
+                            // }}
+                            value={titlePadding}
                             setAttributes={setAttributes}
                             showUnits={false}
                         />

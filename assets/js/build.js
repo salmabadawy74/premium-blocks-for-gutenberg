@@ -7998,6 +7998,7 @@ function PremiumSpacing(props) {
                 break;
         }
     };
+    var _onChange = function _onChange(type, newValue) {};
     return _react2.default.createElement(
         'div',
         { className: 'premium-spacing-responsive' },
@@ -8032,7 +8033,7 @@ function PremiumSpacing(props) {
                             className: 'premium-spacing-input',
                             type: 'number',
                             onChange: function onChange(e) {
-                                return onChangeTopValue(e);
+                                return _onChange("top", e);
                             },
                             value: topValue.value,
                             min: 0
@@ -8050,7 +8051,7 @@ function PremiumSpacing(props) {
                             className: 'premium-spacing-input',
                             type: 'number',
                             onChange: function onChange(e) {
-                                return onChangeRightValue(e);
+                                return _onChange("right", e);
                             },
                             value: rightValue.value,
                             min: 0
@@ -8068,7 +8069,7 @@ function PremiumSpacing(props) {
                             className: 'premium-spacing-input',
                             type: 'number',
                             onChange: function onChange(e) {
-                                return onChangeBottomValue(e);
+                                return _onChange('bottom', e);
                             },
                             value: bottomValue.value,
                             min: 0
@@ -8086,7 +8087,7 @@ function PremiumSpacing(props) {
                             className: 'premium-spacing-input',
                             type: 'number',
                             onChange: function onChange(e) {
-                                return onChangeLeftValue(e);
+                                return _onChange('left', e);
                             },
                             value: leftValue.value,
                             min: 0
@@ -10645,7 +10646,8 @@ var PremiumAccordion = function (_Component) {
                 descPaddingTMobile = _props$attributes.descPaddingTMobile,
                 descPaddingRMobile = _props$attributes.descPaddingRMobile,
                 descPaddingBMobile = _props$attributes.descPaddingBMobile,
-                descPaddingLMobile = _props$attributes.descPaddingLMobile;
+                descPaddingLMobile = _props$attributes.descPaddingLMobile,
+                titlePadding = _props$attributes.titlePadding;
 
 
             var DIRECTION = [{
@@ -10962,56 +10964,56 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumResponsiveSpacing2.default, {
-                        label: __('Padding', 'premium-blocks-for-gutenberg'),
-                        valueTop: {
-                            value: titlePaddingT,
-                            label: 'titlePaddingT'
-                        },
-                        valueRight: {
-                            value: titlePaddingR,
-                            label: 'titlePaddingR'
-                        },
-                        valueBottom: {
-                            value: titlePaddingB,
-                            label: 'titlePaddingB'
-                        },
-                        valueLeft: {
-                            value: titlePaddingL,
-                            label: 'titlePaddingL'
-                        },
-                        valueTopTablet: {
-                            value: titlePaddingTTablet,
-                            label: 'titlePaddingTTablet'
-                        },
-                        valueRightTablet: {
-                            value: titlePaddingRTablet,
-                            label: 'titlePaddingRTablet'
-                        },
-                        valueBottomTablet: {
-                            value: titlePaddingBTablet,
-                            label: 'titlePaddingBTablet'
-                        },
-                        valueLeftTablet: {
-                            value: titlePaddingLTablet,
-                            label: 'titlePaddingLTablet'
-                        },
-                        valueTopMobile: {
-                            value: titlePaddingTMobile,
-                            label: 'titlePaddingTMobile'
-                        },
-                        valueRightMobile: {
-                            value: titlePaddingRMobile,
-                            label: 'titlePaddingRMobile'
-                        },
-                        valueBottomMobile: {
-                            value: titlePaddingBMobile,
-                            label: 'titlePaddingBMobile'
-                        },
-                        valueLeftMobile: {
-                            value: titlePaddingLMobile,
-                            label: 'titlePaddingLMobile'
-                        },
-
+                        label: __('Padding', 'premium-blocks-for-gutenberg')
+                        // valueTop={{
+                        //     value: titlePaddingT,
+                        //     label: 'titlePaddingT',
+                        // }}
+                        // valueRight={{
+                        //     value: titlePaddingR,
+                        //     label: 'titlePaddingR',
+                        // }}
+                        // valueBottom={{
+                        //     value: titlePaddingB,
+                        //     label: 'titlePaddingB',
+                        // }}
+                        // valueLeft={{
+                        //     value: titlePaddingL,
+                        //     label: 'titlePaddingL',
+                        // }}
+                        // valueTopTablet={{
+                        //     value: titlePaddingTTablet,
+                        //     label: 'titlePaddingTTablet',
+                        // }}
+                        // valueRightTablet={{
+                        //     value: titlePaddingRTablet,
+                        //     label: 'titlePaddingRTablet',
+                        // }}
+                        // valueBottomTablet={{
+                        //     value: titlePaddingBTablet,
+                        //     label: 'titlePaddingBTablet',
+                        // }}
+                        // valueLeftTablet={{
+                        //     value: titlePaddingLTablet,
+                        //     label: 'titlePaddingLTablet',
+                        // }}
+                        // valueTopMobile={{
+                        //     value: titlePaddingTMobile,
+                        //     label: 'titlePaddingTMobile',
+                        // }}
+                        // valueRightMobile={{
+                        //     value: titlePaddingRMobile,
+                        //     label: 'titlePaddingRMobile',
+                        // }}
+                        // valueBottomMobile={{
+                        //     value: titlePaddingBMobile,
+                        //     label: 'titlePaddingBMobile',
+                        // }}
+                        // valueLeftMobile={{
+                        //     value: titlePaddingLMobile,
+                        //     label: 'titlePaddingLMobile',
+                        // }}
+                        , value: titlePadding,
                         setAttributes: setAttributes,
                         showUnits: false
                     })
@@ -16121,8 +16123,12 @@ var attributes = {
     descPaddingLMobile: {
         type: "number"
     },
-    titlePadding: {
-        type: "object"
+    titleBorder: {
+        type: "object",
+        default: {
+            "showUnits": false
+
+        }
 
     }
 };
