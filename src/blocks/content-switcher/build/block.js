@@ -6569,6 +6569,9 @@ function Edit(props) {
     clientId,
     className
   } = props;
+  const inputSwitch = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const inputFirstContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const inputSecondContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setAttributes({
       block_id: props.clientId
@@ -6587,7 +6590,6 @@ function Edit(props) {
     });
     setTimeout(initToggleBox, 10); // getPreviewSize = getPreviewSize.bind(this);
   }, []);
-  const inputEl = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
 
   const initToggleBox = () => {
     const {
@@ -6595,29 +6597,40 @@ function Edit(props) {
       switchCheck
     } = props.attributes;
     if (!block_id) return null; // const inputRef = useRef();
+    // let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-input ${block_id}`);
 
-    let toggleBox = document.getElementsByClassName(`premium-content-switcher-toggle-switch-input ${block_id}`);
-    console.log(toggleBox, block_id, inputEl.current);
-    setTimeout(inputEl.current.addEventListener("click", () => {
-      setAttributes({
-        switchCheck: !switchCheck
-      });
+    console.log(block_id, inputSwitch, inputFirstContent.current, inputSecondContent.current);
+    setTimeout(inputSwitch.current.addEventListener("click", () => {
       console.log(switchCheck);
 
-      if (!switchCheck) {
-        let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
-        switchToggle[0].classList.remove("premium-content-switcher-is-visible");
-        switchToggle[0].classList.add("premium-content-switcher-is-hidden");
-        let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
-        switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
-        switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+      if (attributes.switchCheck) {
+        console.log("false");
+        setAttributes({
+          switchCheck: false
+        });
       } else {
-        let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
-        switchToggle[0].classList.remove("premium-content-switcher-is-visible");
-        switchToggle[0].classList.add("premium-content-switcher-is-hidden");
-        let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
-        switchTogglesecond[0].classList.remove("premium-content-switcher-is-hidden");
-        switchTogglesecond[0].classList.add("premium-content-switcher-is-visible");
+        console.log("true");
+        setAttributes({
+          switchCheck: true
+        });
+      }
+
+      console.log(attributes.switchCheck);
+
+      if (!switchCheck) {
+        // let switchToggle = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+        inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
+        inputFirstContent.current.classList.add("premium-content-switcher-is-hidden"); // let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+
+        inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
+        inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
+      } else {
+        // let switchToggle = document.getElementsByClassName(`premium-content-switcher-second-list ${block_id}`);
+        inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
+        inputSecondContent.current.classList.add("premium-content-switcher-is-hidden"); // let switchTogglesecond = document.getElementsByClassName(`premium-content-switcher-first-list ${block_id}`);
+
+        inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
+        inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
       }
     }), 10);
   };
@@ -7043,15 +7056,9 @@ function Edit(props) {
     value: switcherStyles.switchSize,
     tabletValue: switcherStyles.switchSizeTablet,
     mobileValue: switcherStyles.switchSizeMobile,
-    onChange: value => saveSwitcherStyles({
-      switchSize: value
-    }),
-    onChangeTablet: value => saveSwitcherStyles({
-      switchSizeTablet: value
-    }),
-    onChangeMobile: value => saveSwitcherStyles({
-      switchSizeMobile: value
-    }),
+    onChange: value => saveSwitcherStyles('switchSize', value),
+    onChangeTablet: value => saveSwitcherStyles('switchSizeTablet', value),
+    onChangeMobile: value => saveSwitcherStyles('switchSizeMobile', value),
     showUnit: false,
     defaultValue: 15,
     min: 1,
@@ -7061,18 +7068,10 @@ function Edit(props) {
     value: switcherStyles.containerRadius,
     tabletValue: switcherStyles.containerRadiusTablet,
     mobileValue: switcherStyles.containerRadiusMobile,
-    onChange: value => saveSwitcherStyles({
-      containerRadius: value
-    }),
-    onChangeTablet: value => saveSwitcherStyles({
-      containerRadiusTablet: value
-    }),
-    onChangeMobile: value => saveSwitcherStyles({
-      containerRadiusMobile: value
-    }),
-    onChangeUnit: key => saveSwitcherStyles({
-      containerRadiusType: key
-    }),
+    onChange: value => saveSwitcherStyles('containerRadius', value),
+    onChangeTablet: value => saveSwitcherStyles('containerRadiusTablet', value),
+    onChangeMobile: value => saveSwitcherStyles('containerRadiusMobile', value),
+    onChangeUnit: key => saveSwitcherStyles('containerRadiusType', key),
     unit: switcherStyles.containerRadiusType,
     showUnit: true,
     defaultValue: 50,
@@ -7083,18 +7082,10 @@ function Edit(props) {
     value: switcherStyles.switchRadius,
     tabletValue: switcherStyles.switchRadiusTablet,
     mobileValue: switcherStyles.switchRadiusMobile,
-    onChange: value => saveSwitcherStyles({
-      switchRadius: value
-    }),
-    onChangeTablet: value => saveSwitcherStyles({
-      switchRadiusTablet: value
-    }),
-    onChangeMobile: value => saveSwitcherStyles({
-      switchRadiusMobile: value
-    }),
-    onChangeUnit: key => saveSwitcherStyles({
-      switchRadiusType: key
-    }),
+    onChange: value => saveSwitcherStyles('switchRadius', value),
+    onChangeTablet: value => saveSwitcherStyles('switchRadiusTablet', value),
+    onChangeMobile: value => saveSwitcherStyles('switchRadiusMobile', value),
+    onChangeUnit: key => saveSwitcherStyles('switchRadiusType', key),
     unit: switcherStyles.switchRadiusType,
     showUnit: true,
     defaultValue: 1.5,
@@ -7108,21 +7099,11 @@ function Edit(props) {
     horizontal: switcherStyles.containerShadowHorizontal,
     vertical: switcherStyles.containerShadowVertical,
     position: switcherStyles.containerShadowPosition,
-    onChangeColor: newColor => saveSwitcherStyles({
-      containerShadowColor: newColor
-    }),
-    onChangeBlur: newBlur => saveSwitcherStyles({
-      containerShadowBlur: newBlur
-    }),
-    onChangehHorizontal: newValue => saveSwitcherStyles({
-      containerShadowHorizontal: newValue
-    }),
-    onChangeVertical: newValue => saveSwitcherStyles({
-      containerShadowVertical: newValue
-    }),
-    onChangePosition: newValue => saveSwitcherStyles({
-      containerShadowPosition: newValue
-    })
+    onChangeColor: newColor => saveSwitcherStyles('containerShadowColor', newColor),
+    onChangeBlur: newBlur => saveSwitcherStyles('containerShadowBlur', newBlur),
+    onChangehHorizontal: newValue => saveSwitcherStyles('containerShadowHorizontal', newValue),
+    onChangeVertical: newValue => saveSwitcherStyles('containerShadowVertical', newValue),
+    onChangePosition: newValue => saveSwitcherStyles('containerShadowPosition', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Switcher Shadow", 'premium-blocks-for-gutenberg'),
     boxShadow: true,
@@ -7131,21 +7112,11 @@ function Edit(props) {
     horizontal: switcherStyles.switchShadowHorizontal,
     vertical: switcherStyles.switchShadowVertical,
     position: switcherStyles.switchShadowPosition,
-    onChangeColor: newColor => saveSwitcherStyles({
-      switchShadowColor: newColor
-    }),
-    onChangeBlur: newBlur => saveSwitcherStyles({
-      switchShadowBlur: newBlur
-    }),
-    onChangehHorizontal: newValue => saveSwitcherStyles({
-      switchShadowHorizontal: newValue
-    }),
-    onChangeVertical: newValue => saveSwitcherStyles({
-      switchShadowVertical: newValue
-    }),
-    onChangePosition: newValue => saveSwitcherStyles({
-      switchShadowPosition: newValue
-    })
+    onChangeColor: newColor => saveSwitcherStyles('switchShadowColor', newColor),
+    onChangeBlur: newBlur => saveSwitcherStyles('switchShadowBlur', newBlur),
+    onChangehHorizontal: newValue => saveSwitcherStyles('switchShadowHorizontal', newValue),
+    onChangeVertical: newValue => saveSwitcherStyles('switchShadowVertical', newValue),
+    onChangePosition: newValue => saveSwitcherStyles('switchShadowPosition', newValue)
   })), showLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Labels Style"),
     className: "premium-panel-body",
@@ -7155,15 +7126,9 @@ function Edit(props) {
     value: labelStyles.labelSpacing,
     tabletValue: labelStyles.labelSpacingTablet,
     mobileValue: labelStyles.labelSpacingMobile,
-    onChange: value => saveLabelStyles({
-      labelSpacing: value
-    }),
-    onChangeTablet: value => saveLabelStyles({
-      labelSpacingTablet: value
-    }),
-    onChangeMobile: value => saveLabelStyles({
-      labelSpacingMobile: value
-    }),
+    onChange: value => saveLabelStyles('labelSpacing', value),
+    onChangeTablet: value => saveLabelStyles('labelSpacingTablet', value),
+    onChangeMobile: value => saveLabelStyles('labelSpacingMobile', value),
     showUnit: false,
     defaultValue: 15,
     min: 1,
@@ -7174,9 +7139,7 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Color", 'premium-block-for-gutenberg'),
     colorValue: labelStyles.firstLabelColor,
     colorDefault: '',
-    onColorChange: newValue => saveLabelStyles({
-      firstLabelColor: newValue
-    })
+    onColorChange: newValue => saveLabelStyles('firstLabelColor', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_7__["default"], {
     components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
     setAttributes: saveLabelStyles,
@@ -7187,57 +7150,31 @@ function Edit(props) {
     fontSize: labelStyles.firstLabelfontSize,
     fontSizeMobile: labelStyles.firstLabelfontSizeMobile,
     fontSizeTablet: labelStyles.firstLabelfontSizeTablet,
-    onChangeSize: newSize => saveLabelStyles({
-      firstLabelfontSize: newSize
-    }),
-    onChangeTabletSize: newSize => saveLabelStyles({
-      firstLabelfontSizeTablet: newSize
-    }),
-    onChangeMobileSize: newSize => saveLabelStyles({
-      firstLabelfontSizeMobile: newSize
-    }),
+    onChangeSize: newSize => saveLabelStyles('firstLabelfontSize', newSize),
+    onChangeTabletSize: newSize => saveLabelStyles('firstLabelfontSizeTablet', newSize),
+    onChangeMobileSize: newSize => saveLabelStyles('firstLabelfontSizeMobile', newSize),
     weight: labelStyles.firstLabelWeight,
     style: labelStyles.firstLabelStyle,
     spacing: labelStyles.firstLabelLetter,
     upper: labelStyles.firstLabelUpper,
     line: labelStyles.firstLabelLine,
     fontFamily: labelStyles.firstLabelFontFamily,
-    onChangeWeight: newWeight => saveLabelStyles({
-      firstLabelWeight: newWeight || 500
-    }),
-    onChangeStyle: newStyle => saveLabelStyles({
-      firstLabelStyle: newStyle
-    }),
-    onChangeSpacing: newValue => saveLabelStyles({
-      firstLabelLetter: newValue
-    }),
-    onChangeUpper: check => saveLabelStyles({
-      firstLabelUpper: check
-    }),
-    onChangeLine: newValue => saveLabelStyles({
-      firstLabelLine: newValue
-    }),
-    onChangeFamily: fontFamily => saveLabelStyles({
-      firstLabelFontFamily: fontFamily
-    })
+    onChangeWeight: newWeight => saveLabelStyles('firstLabelWeight', newWeight || 500),
+    onChangeStyle: newStyle => saveLabelStyles('firstLabelStyle', newStyle),
+    onChangeSpacing: newValue => saveLabelStyles('firstLabelLetter', newValue),
+    onChangeUpper: check => saveLabelStyles('firstLabelUpper', check),
+    onChangeLine: newValue => saveLabelStyles('firstLabelLine', newValue),
+    onChangeFamily: fontFamily => saveLabelStyles('firstLabelFontFamily', fontFamily)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
     color: labelStyles.firstLabelShadowColor,
     blur: labelStyles.firstLabelShadowBlur,
     horizontal: labelStyles.firstLabelShadowHorizontal,
     vertical: labelStyles.firstLabelShadowVertical,
-    onChangeColor: newColor => saveLabelStyles({
-      firstLabelShadowColor: newColor
-    }),
-    onChangeBlur: newBlur => saveLabelStyles({
-      firstLabelShadowBlur: newBlur
-    }),
-    onChangehHorizontal: newValue => saveLabelStyles({
-      firstLabelShadowHorizontal: newValue
-    }),
-    onChangeVertical: newValue => saveLabelStyles({
-      firstLabelShadowVertical: newValue
-    })
+    onChangeColor: newColor => saveLabelStyles('firstLabelShadowColor', newColor),
+    onChangeBlur: newBlur => saveLabelStyles('firstLabelShadowBlur', newBlur),
+    onChangehHorizontal: newValue => saveLabelStyles('firstLabelShadowHorizontal', newValue),
+    onChangeVertical: newValue => saveLabelStyles('firstLabelShadowVertical', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
     borderType: labelStyles.firstLabelborderType,
     borderWidth: firstLabelBorderWidth,
@@ -7247,9 +7184,7 @@ function Edit(props) {
     left: firstLabelBorderLeft,
     borderColor: labelStyles.firstLabelborderColor,
     borderRadius: labelStyles.firstLabelborderRadius,
-    onChangeType: newType => saveLabelStyles({
-      firstLabelborderType: newType
-    }),
+    onChangeType: newType => saveLabelStyles('firstLabelborderType', newType),
     onChangeWidth: _ref => {
       let {
         top,
@@ -7265,12 +7200,8 @@ function Edit(props) {
         firstLabelBorderLeft: left
       });
     },
-    onChangeColor: colorValue => saveLabelStyles({
-      firstLabelborderColor: colorValue
-    }),
-    onChangeRadius: newrRadius => saveLabelStyles({
-      firstLabelborderRadius: newrRadius
-    })
+    onChangeColor: colorValue => saveLabelStyles('firstLabelborderColor', colorValue),
+    onChangeRadius: newrRadius => saveLabelStyles('firstLabelborderRadius', newrRadius)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
     boxShadow: true,
@@ -7279,21 +7210,11 @@ function Edit(props) {
     horizontal: labelStyles.firstLabelBoxShadowHorizontal,
     vertical: labelStyles.firstLabelBoxShadowVertical,
     position: labelStyles.firstLabelBoxShadowPosition,
-    onChangeColor: newColor => saveLabelStyles({
-      firstLabelBoxShadowColor: newColor
-    }),
-    onChangeBlur: newBlur => saveLabelStyles({
-      firstLabelBoxShadowBlur: newBlur
-    }),
-    onChangehHorizontal: newValue => saveLabelStyles({
-      firstLabelBoxShadowHorizontal: newValue
-    }),
-    onChangeVertical: newValue => saveLabelStyles({
-      firstLabelBoxShadowVertical: newValue
-    }),
-    onChangePosition: newValue => saveLabelStyles({
-      firstLabelBoxShadowPosition: newValue
-    })
+    onChangeColor: newColor => saveLabelStyles('firstLabelBoxShadowColor', newColor),
+    onChangeBlur: newBlur => saveLabelStyles('firstLabelBoxShadowBlur', newBlur),
+    onChangehHorizontal: newValue => saveLabelStyles('firstLabelBoxShadowHorizontal', newValue),
+    onChangeVertical: newValue => saveLabelStyles('firstLabelBoxShadowVertical', newValue),
+    onChangePosition: newValue => saveLabelStyles('firstLabelBoxShadowPosition', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_9__["default"], {
     paddingTop: firstLabelPaddingT,
     paddingRight: firstLabelPaddingR,
@@ -7309,9 +7230,7 @@ function Edit(props) {
     paddingLeftMobile: firstLabelPaddingLMobile,
     showUnits: true,
     selectedUnit: labelStyles.firstLabelPaddingType,
-    onChangePadSizeUnit: newvalue => saveLabelStyles({
-      firstLabelPaddingType: newvalue
-    }),
+    onChangePadSizeUnit: newvalue => saveLabelStyles('firstLabelPaddingType', newvalue),
     onChangePaddingTop: (device, newValue) => {
       if (device === "desktop") {
         setAttributes({
@@ -7378,9 +7297,7 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Color", 'premium-block-for-gutenberg'),
     colorValue: labelStyles.secondLabelColor,
     colorDefault: '',
-    onColorChange: newValue => saveLabelStyles({
-      secondLabelColor: newValue
-    })
+    onColorChange: newValue => saveLabelStyles('secondLabelColor', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_7__["default"], {
     components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
     setAttributes: saveLabelStyles,
@@ -7391,57 +7308,31 @@ function Edit(props) {
     fontSize: labelStyles.secondLabelfontSize,
     fontSizeMobile: labelStyles.secondLabelfontSizeMobile,
     fontSizeTablet: labelStyles.secondLabelfontSizeTablet,
-    onChangeSize: newSize => saveLabelStyles({
-      secondLabelfontSize: newSize
-    }),
-    onChangeTabletSize: newSize => saveLabelStyles({
-      secondLabelfontSizeTablet: newSize
-    }),
-    onChangeMobileSize: newSize => saveLabelStyles({
-      secondLabelfontSizeMobile: newSize
-    }),
+    onChangeSize: newSize => saveLabelStyles('secondLabelfontSize', newSize),
+    onChangeTabletSize: newSize => saveLabelStyles('secondLabelfontSizeTablet', newSize),
+    onChangeMobileSize: newSize => saveLabelStyles('secondLabelfontSizeMobile', newSize),
     weight: labelStyles.secondLabelWeight,
     style: labelStyles.secondLabelStyle,
     spacing: labelStyles.secondLabelLetter,
     upper: labelStyles.secondLabelUpper,
     line: labelStyles.secondLabelLine,
     fontFamily: labelStyles.secondLabelFontFamily,
-    onChangeWeight: newWeight => saveLabelStyles({
-      secondLabelWeight: newWeight || 500
-    }),
-    onChangeStyle: newStyle => saveLabelStyles({
-      secondLabelStyle: newStyle
-    }),
-    onChangeSpacing: newValue => saveLabelStyles({
-      secondLabelLetter: newValue
-    }),
-    onChangeUpper: check => saveLabelStyles({
-      secondLabelUpper: check
-    }),
-    onChangeLine: newValue => saveLabelStyles({
-      secondLabelLine: newValue
-    }),
-    onChangeFamily: fontFamily => saveLabelStyles({
-      secondLabelFontFamily: fontFamily
-    })
+    onChangeWeight: newWeight => saveLabelStyles('secondLabelWeight', newWeight || 500),
+    onChangeStyle: newStyle => saveLabelStyles('secondLabelStyle', newStyle),
+    onChangeSpacing: newValue => saveLabelStyles('secondLabelLetter', newValue),
+    onChangeUpper: check => saveLabelStyles('secondLabelUpper', check),
+    onChangeLine: newValue => saveLabelStyles('secondLabelLine', newValue),
+    onChangeFamily: fontFamily => saveLabelStyles('secondLabelFontFamily', fontFamily)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
     color: labelStyles.secondLabelShadowColor,
     blur: labelStyles.secondLabelShadowBlur,
     horizontal: labelStyles.secondLabelShadowHorizontal,
     vertical: labelStyles.secondLabelShadowVertical,
-    onChangeColor: newColor => saveLabelStyles({
-      secondLabelShadowColor: newColor
-    }),
-    onChangeBlur: newBlur => saveLabelStyles({
-      secondLabelShadowBlur: newBlur
-    }),
-    onChangehHorizontal: newValue => saveLabelStyles({
-      secondLabelShadowHorizontal: newValue
-    }),
-    onChangeVertical: newValue => saveLabelStyles({
-      secondLabelShadowVertical: newValue
-    })
+    onChangeColor: newColor => saveLabelStyles('secondLabelShadowColor', newColor),
+    onChangeBlur: newBlur => saveLabelStyles('secondLabelShadowBlur', newBlur),
+    onChangehHorizontal: newValue => saveLabelStyles('secondLabelShadowHorizontal', newValue),
+    onChangeVertical: newValue => saveLabelStyles('secondLabelShadowVertical', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
     borderType: labelStyles.secondLabelborderType,
     borderWidth: secondLabelBorderWidth,
@@ -7451,9 +7342,7 @@ function Edit(props) {
     left: secondLabelBorderLeft,
     borderColor: labelStyles.secondLabelborderColor,
     borderRadius: labelStyles.secondLabelborderRadius,
-    onChangeType: newType => saveLabelStyles({
-      secondLabelborderType: newType
-    }),
+    onChangeType: newType => saveLabelStyles('secondLabelborderType', newType),
     onChangeWidth: _ref2 => {
       let {
         top,
@@ -7469,12 +7358,8 @@ function Edit(props) {
         secondLabelBorderLeft: left
       });
     },
-    onChangeColor: colorValue => saveLabelStyles({
-      secondLabelborderColor: colorValue
-    }),
-    onChangeRadius: newrRadius => saveLabelStyles({
-      secondLabelborderRadius: newrRadius
-    })
+    onChangeColor: colorValue => saveLabelStyles('secondLabelborderColor', colorValue),
+    onChangeRadius: newrRadius => saveLabelStyles('secondLabelborderRadius', newrRadius)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
     boxShadow: true,
@@ -7483,21 +7368,11 @@ function Edit(props) {
     horizontal: labelStyles.secondLabelBoxShadowHorizontal,
     vertical: labelStyles.secondLabelBoxShadowVertical,
     position: labelStyles.secondLabelBoxShadowPosition,
-    onChangeColor: newColor => saveLabelStyles({
-      secondLabelBoxShadowColor: newColor
-    }),
-    onChangeBlur: newBlur => saveLabelStyles({
-      secondLabelBoxShadowBlur: newBlur
-    }),
-    onChangehHorizontal: newValue => saveLabelStyles({
-      secondLabelBoxShadowHorizontal: newValue
-    }),
-    onChangeVertical: newValue => saveLabelStyles({
-      secondLabelBoxShadowVertical: newValue
-    }),
-    onChangePosition: newValue => saveLabelStyles({
-      secondLabelBoxShadowPosition: newValue
-    })
+    onChangeColor: newColor => saveLabelStyles('secondLabelBoxShadowColor', newColor),
+    onChangeBlur: newBlur => saveLabelStyles('secondLabelBoxShadowBlur', newBlur),
+    onChangehHorizontal: newValue => saveLabelStyles('secondLabelBoxShadowHorizontal', newValue),
+    onChangeVertical: newValue => saveLabelStyles('secondLabelBoxShadowVertical', newValue),
+    onChangePosition: newValue => saveLabelStyles('secondLabelBoxShadowPosition', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_9__["default"], {
     paddingTop: secondLabelPaddingT,
     paddingRight: secondLabelPaddingR,
@@ -7513,9 +7388,7 @@ function Edit(props) {
     paddingLeftMobile: secondLabelPaddingLMobile,
     showUnits: true,
     selectedUnit: labelStyles.secondLabelPaddingType,
-    onChangePadSizeUnit: newvalue => saveLabelStyles({
-      secondLabelPaddingType: newvalue
-    }),
+    onChangePadSizeUnit: newvalue => saveLabelStyles('secondLabelPaddingType', newvalue),
     onChangePaddingTop: (device, newValue) => {
       if (device === "desktop") {
         setAttributes({
@@ -7585,18 +7458,10 @@ function Edit(props) {
     value: contentStyles.contentHeight,
     tabletValue: contentStyles.contentHeightTablet,
     mobileValue: contentStyles.contentHeightMobile,
-    onChange: value => saveContentStyles({
-      contentHeight: value
-    }),
-    onChangeTablet: value => saveContentStyles({
-      contentHeightTablet: value
-    }),
-    onChangeMobile: value => saveContentStyles({
-      contentHeightMobile: value
-    }),
-    onChangeUnit: key => saveContentStyles({
-      contentHeightType: key
-    }),
+    onChange: value => saveContentStyles('contentHeight', value),
+    onChangeTablet: value => saveContentStyles('contentHeightTablet', value),
+    onChangeMobile: value => saveContentStyles('contentHeightMobile', value),
+    onChangeUnit: key => saveContentStyles('contentHeightType', key),
     unit: contentStyles.contentHeightType,
     showUnit: true,
     defaultValue: 100,
@@ -7622,16 +7487,12 @@ function Edit(props) {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Color", 'premium-block-for-gutenberg'),
         colorValue: firstContentStyles.firstContentColor,
         colorDefault: '',
-        onColorChange: newValue => saveFirstContentStyles({
-          firstContentColor: newValue
-        })
+        onColorChange: newValue => saveFirstContentStyles('firstContentColor', newValue)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Background Color", 'premium-block-for-gutenberg'),
         colorValue: firstContentStyles.firstContentBGColor,
         colorDefault: '',
-        onColorChange: newValue => saveFirstContentStyles({
-          firstContentBGColor: newValue
-        })
+        onColorChange: newValue => saveFirstContentStyles('firstContentBGColor', newValue)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_7__["default"], {
         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
         setAttributes: saveFirstContentStyles,
@@ -7642,57 +7503,31 @@ function Edit(props) {
         fontSize: firstContentStyles.firstContentfontSize,
         fontSizeMobile: firstContentStyles.firstContentfontSizeMobile,
         fontSizeTablet: firstContentStyles.firstContentfontSizeTablet,
-        onChangeSize: newSize => saveFirstContentStyles({
-          firstContentfontSize: newSize
-        }),
-        onChangeTabletSize: newSize => saveFirstContentStyles({
-          firstContentfontSizeTablet: newSize
-        }),
-        onChangeMobileSize: newSize => saveFirstContentStyles({
-          firstContentfontSizeMobile: newSize
-        }),
+        onChangeSize: newSize => saveFirstContentStyles('firstContentfontSize', newSize),
+        onChangeTabletSize: newSize => saveFirstContentStyles('firstContentfontSizeTablet', newSize),
+        onChangeMobileSize: newSize => saveFirstContentStyles('firstContentfontSizeMobile', newSize),
         weight: firstContentStyles.firstContentWeight,
         style: firstContentStyles.firstContentStyle,
         spacing: firstContentStyles.firstContentLetter,
         upper: firstContentStyles.firstContentUpper,
         line: firstContentStyles.firstContentLine,
         fontFamily: firstContentStyles.firstContentFontFamily,
-        onChangeWeight: newWeight => saveFirstContentStyles({
-          firstContentWeight: newWeight || 500
-        }),
-        onChangeStyle: newStyle => saveFirstContentStyles({
-          firstContentStyle: newStyle
-        }),
-        onChangeSpacing: newValue => saveFirstContentStyles({
-          firstContentLetter: newValue
-        }),
-        onChangeUpper: check => saveFirstContentStyles({
-          firstContentUpper: check
-        }),
-        onChangeLine: newValue => saveFirstContentStyles({
-          firstContentLine: newValue
-        }),
-        onChangeFamily: fontFamily => saveFirstContentStyles({
-          firstContentFontFamily: fontFamily
-        })
+        onChangeWeight: newWeight => saveFirstContentStyles('firstContentWeight', newWeight || 500),
+        onChangeStyle: newStyle => saveFirstContentStyles('firstContentStyle', newStyle),
+        onChangeSpacing: newValue => saveFirstContentStyles('firstContentLetter', newValue),
+        onChangeUpper: check => saveFirstContentStyles('firstContentUpper', check),
+        onChangeLine: newValue => saveFirstContentStyles('firstContentLine', newValue),
+        onChangeFamily: fontFamily => saveFirstContentStyles('firstContentFontFamily', fontFamily)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
         color: firstContentStyles.firstContentShadowColor,
         blur: firstContentStyles.firstContentShadowBlur,
         horizontal: firstContentStyles.firstContentShadowHorizontal,
         vertical: firstContentStyles.firstContentShadowVertical,
-        onChangeColor: newColor => saveFirstContentStyles({
-          firstContentShadowColor: newColor
-        }),
-        onChangeBlur: newBlur => saveFirstContentStyles({
-          firstContentShadowBlur: newBlur
-        }),
-        onChangehHorizontal: newValue => saveFirstContentStyles({
-          firstContentShadowHorizontal: newValue
-        }),
-        onChangeVertical: newValue => saveFirstContentStyles({
-          firstContentShadowVertical: newValue
-        })
+        onChangeColor: newColor => saveFirstContentStyles('firstContentShadowColor', newColor),
+        onChangeBlur: newBlur => saveFirstContentStyles('firstContentShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveFirstContentStyles('firstContentShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveFirstContentStyles('firstContentShadowVertical', newValue)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
         borderType: firstContentStyles.firstContentborderType,
         borderWidth: firstContentBorderWidth,
@@ -7702,9 +7537,7 @@ function Edit(props) {
         left: firstContentBorderLeft,
         borderColor: firstContentStyles.firstContentborderColor,
         borderRadius: firstContentStyles.firstContentborderRadius,
-        onChangeType: newType => saveFirstContentStyles({
-          firstContentborderType: newType
-        }),
+        onChangeType: newType => saveFirstContentStyles('firstContentborderType', newType),
         onChangeWidth: _ref3 => {
           let {
             top,
@@ -7720,12 +7553,8 @@ function Edit(props) {
             firstContentBorderLeft: left
           });
         },
-        onChangeColor: colorValue => saveFirstContentStyles({
-          firstContentborderColor: colorValue
-        }),
-        onChangeRadius: newrRadius => saveFirstContentStyles({
-          firstContentborderRadius: newrRadius
-        })
+        onChangeColor: colorValue => saveFirstContentStyles('firstContentborderColor', colorValue),
+        onChangeRadius: newrRadius => saveFirstContentStyles('firstContentborderRadius', newrRadius)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
         boxShadow: true,
@@ -7734,21 +7563,11 @@ function Edit(props) {
         horizontal: firstContentStyles.firstContentBoxShadowHorizontal,
         vertical: firstContentStyles.firstContentBoxShadowVertical,
         position: firstContentStyles.firstContentBoxShadowPosition,
-        onChangeColor: newColor => saveFirstContentStyles({
-          firstContentBoxShadowColor: newColor
-        }),
-        onChangeBlur: newBlur => saveFirstContentStyles({
-          firstContentBoxShadowBlur: newBlur
-        }),
-        onChangehHorizontal: newValue => saveFirstContentStyles({
-          firstContentBoxShadowHorizontal: newValue
-        }),
-        onChangeVertical: newValue => saveFirstContentStyles({
-          firstContentBoxShadowVertical: newValue
-        }),
-        onChangePosition: newValue => saveFirstContentStyles({
-          firstContentBoxShadowPosition: newValue
-        })
+        onChangeColor: newColor => saveFirstContentStyles('firstContentBoxShadowColor', newColor),
+        onChangeBlur: newBlur => saveFirstContentStyles('firstContentBoxShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveFirstContentStyles('firstContentBoxShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveFirstContentStyles('firstContentBoxShadowVertical', newValue),
+        onChangePosition: newValue => saveFirstContentStyles('firstContentBoxShadowPosition', newValue)
       }));
     }
 
@@ -7757,16 +7576,12 @@ function Edit(props) {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Color", 'premium-block-for-gutenberg'),
         colorValue: secondContentStyles.secondContentColor,
         colorDefault: '',
-        onColorChange: newValue => saveSecondContentStyles({
-          secondContentColor: newValue
-        })
+        onColorChange: newValue => saveSecondContentStyles('secondContentColor', newValue)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Background Color", 'premium-block-for-gutenberg'),
         colorValue: secondContentStyles.secondContentBGColor,
         colorDefault: '',
-        onColorChange: newValue => saveSecondContentStyles({
-          secondContentBGColor: newValue
-        })
+        onColorChange: newValue => saveSecondContentStyles('secondContentBGColor', newValue)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_7__["default"], {
         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
         setAttributes: saveSecondContentStyles,
@@ -7777,57 +7592,31 @@ function Edit(props) {
         fontSize: secondContentStyles.secondContentfontSize,
         fontSizeMobile: secondContentStyles.secondContentfontSizeMobile,
         fontSizeTablet: secondContentStyles.secondContentfontSizeTablet,
-        onChangeSize: newSize => saveSecondContentStyles({
-          secondContentfontSize: newSize
-        }),
-        onChangeTabletSize: newSize => saveSecondContentStyles({
-          secondContentfontSizeTablet: newSize
-        }),
-        onChangeMobileSize: newSize => saveSecondContentStyles({
-          secondContentfontSizeMobile: newSize
-        }),
+        onChangeSize: newSize => saveSecondContentStyles('secondContentfontSize', newSize),
+        onChangeTabletSize: newSize => saveSecondContentStyles('secondContentfontSizeTablet', newSize),
+        onChangeMobileSize: newSize => saveSecondContentStyles('secondContentfontSizeMobile', newSize),
         weight: secondContentStyles.secondContentWeight,
         style: secondContentStyles.secondContentStyle,
         spacing: secondContentStyles.secondContentLetter,
         upper: secondContentStyles.secondContentUpper,
         line: secondContentStyles.secondContentLine,
         fontFamily: secondContentStyles.secondContentFontFamily,
-        onChangeWeight: newWeight => saveSecondContentStyles({
-          secondContentWeight: newWeight || 500
-        }),
-        onChangeStyle: newStyle => saveSecondContentStyles({
-          secondContentStyle: newStyle
-        }),
-        onChangeSpacing: newValue => saveSecondContentStyles({
-          secondContentLetter: newValue
-        }),
-        onChangeUpper: check => saveSecondContentStyles({
-          secondContentUpper: check
-        }),
-        onChangeLine: newValue => saveSecondContentStyles({
-          secondContentLine: newValue
-        }),
-        onChangeFamily: fontFamily => saveSecondContentStyles({
-          secondContentFontFamily: fontFamily
-        })
+        onChangeWeight: newWeight => saveSecondContentStyles('secondContentWeight', newWeight || 500),
+        onChangeStyle: newStyle => saveSecondContentStyles('secondContentStyle', newStyle),
+        onChangeSpacing: newValue => saveSecondContentStyles('secondContentLetter', newValue),
+        onChangeUpper: check => saveSecondContentStyles('secondContentUpper', check),
+        onChangeLine: newValue => saveSecondContentStyles('secondContentLine', newValue),
+        onChangeFamily: fontFamily => saveSecondContentStyles('secondContentFontFamily', fontFamily)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
         color: secondContentStyles.secondContentShadowColor,
         blur: secondContentStyles.secondContentShadowBlur,
         horizontal: secondContentStyles.secondContentShadowHorizontal,
         vertical: secondContentStyles.secondContentShadowVertical,
-        onChangeColor: newColor => saveSecondContentStyles({
-          secondContentShadowColor: newColor
-        }),
-        onChangeBlur: newBlur => saveSecondContentStyles({
-          secondContentShadowBlur: newBlur
-        }),
-        onChangehHorizontal: newValue => saveSecondContentStyles({
-          secondContentShadowHorizontal: newValue
-        }),
-        onChangeVertical: newValue => saveSecondContentStyles({
-          secondContentShadowVertical: newValue
-        })
+        onChangeColor: newColor => saveSecondContentStyles('secondContentShadowColor', newColor),
+        onChangeBlur: newBlur => saveSecondContentStyles('secondContentShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveSecondContentStyles('secondContentShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveSecondContentStyles('secondContentShadowVertical', newValue)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
         borderType: secondContentStyles.secondContentborderType,
         borderWidth: secondContentBorderWidth,
@@ -7837,9 +7626,7 @@ function Edit(props) {
         left: secondContentBorderLeft,
         borderColor: secondContentStyles.secondContentborderColor,
         borderRadius: secondContentStyles.secondContentborderRadius,
-        onChangeType: newType => saveSecondContentStyles({
-          secondContentborderType: newType
-        }),
+        onChangeType: newType => saveSecondContentStyles('secondContentborderType', newType),
         onChangeWidth: _ref4 => {
           let {
             top,
@@ -7855,12 +7642,8 @@ function Edit(props) {
             secondContentBorderLeft: left
           });
         },
-        onChangeColor: colorValue => saveSecondContentStyles({
-          secondContentborderColor: colorValue
-        }),
-        onChangeRadius: newrRadius => saveSecondContentStyles({
-          secondContentborderRadius: newrRadius
-        })
+        onChangeColor: colorValue => saveSecondContentStyles('secondContentborderColor', colorValue),
+        onChangeRadius: newrRadius => saveSecondContentStyles('secondContentborderRadius', newrRadius)
       }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
         boxShadow: true,
@@ -7869,21 +7652,11 @@ function Edit(props) {
         horizontal: secondContentStyles.secondContentBoxShadowHorizontal,
         vertical: secondContentStyles.secondContentBoxShadowVertical,
         position: secondContentStyles.secondContentBoxShadowPosition,
-        onChangeColor: newColor => saveSecondContentStyles({
-          secondContentBoxShadowColor: newColor
-        }),
-        onChangeBlur: newBlur => saveSecondContentStyles({
-          secondContentBoxShadowBlur: newBlur
-        }),
-        onChangehHorizontal: newValue => saveSecondContentStyles({
-          secondContentBoxShadowHorizontal: newValue
-        }),
-        onChangeVertical: newValue => saveSecondContentStyles({
-          secondContentBoxShadowVertical: newValue
-        }),
-        onChangePosition: newValue => saveSecondContentStyles({
-          secondContentBoxShadowPosition: newValue
-        })
+        onChangeColor: newColor => saveSecondContentStyles('secondContentBoxShadowColor', newColor),
+        onChangeBlur: newBlur => saveSecondContentStyles('secondContentBoxShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveSecondContentStyles('secondContentBoxShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveSecondContentStyles('secondContentBoxShadowVertical', newValue),
+        onChangePosition: newValue => saveSecondContentStyles('secondContentBoxShadowPosition', newValue)
       }));
     }
 
@@ -7903,9 +7676,7 @@ function Edit(props) {
     marginBottomMobile: firstContentMarginBMobile,
     marginLeftMobile: firstContentMarginLMobile,
     showUnits: true,
-    onChangeMarSizeUnit: newvalue => saveFirstContentStyles({
-      firstContentMarginType: newvalue
-    }),
+    onChangeMarSizeUnit: newvalue => saveFirstContentStyles('firstContentMarginType', newvalue),
     selectedUnit: firstContentStyles.firstContentMarginType,
     onChangeMarginTop: (device, newValue) => {
       if (device === "desktop") {
@@ -7982,9 +7753,7 @@ function Edit(props) {
     paddingLeftMobile: contentPaddingLMobile,
     showUnits: true,
     selectedUnit: firstContentStyles.firstContentPaddingType,
-    onChangePadSizeUnit: newvalue => saveFirstContentStyles({
-      firstContentPaddingType: newvalue
-    }),
+    onChangePadSizeUnit: newvalue => saveFirstContentStyles('firstContentPaddingType', newvalue),
     onChangePaddingTop: (device, newValue) => {
       if (device === "desktop") {
         setAttributes({
@@ -8058,9 +7827,7 @@ function Edit(props) {
     left: containerBorderLeft,
     borderColor: containerStyles.containerborderColor,
     borderRadius: containerStyles.containerborderRadius,
-    onChangeType: newType => saveContainerStyles({
-      containerborderType: newType
-    }),
+    onChangeType: newType => saveContainerStyles('containerborderType', newType),
     onChangeWidth: _ref5 => {
       let {
         top,
@@ -8076,12 +7843,8 @@ function Edit(props) {
         containerBorderLeft: left
       });
     },
-    onChangeColor: colorValue => saveContainerStyles({
-      containerborderColor: colorValue
-    }),
-    onChangeRadius: newrRadius => saveContainerStyles({
-      containerborderRadius: newrRadius
-    })
+    onChangeColor: colorValue => saveContainerStyles('containerborderColor', colorValue),
+    onChangeRadius: newrRadius => saveContainerStyles('containerborderRadius', newrRadius)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
     boxShadow: true,
@@ -8090,21 +7853,11 @@ function Edit(props) {
     horizontal: containerStyles.containerBoxShadowHorizontal,
     vertical: containerStyles.containerBoxShadowVertical,
     position: containerStyles.containerBoxShadowPosition,
-    onChangeColor: newColor => saveContainerStyles({
-      containerBoxShadowColor: newColor
-    }),
-    onChangeBlur: newBlur => saveContainerStyles({
-      containerBoxShadowBlur: newBlur
-    }),
-    onChangehHorizontal: newValue => saveContainerStyles({
-      containerBoxShadowHorizontal: newValue
-    }),
-    onChangeVertical: newValue => saveContainerStyles({
-      containerBoxShadowVertical: newValue
-    }),
-    onChangePosition: newValue => saveContainerStyles({
-      containerBoxShadowPosition: newValue
-    })
+    onChangeColor: newColor => saveContainerStyles('containerBoxShadowColor', newColor),
+    onChangeBlur: newBlur => saveContainerStyles('containerBoxShadowBlur', newBlur),
+    onChangehHorizontal: newValue => saveContainerStyles('containerBoxShadowHorizontal', newValue),
+    onChangeVertical: newValue => saveContainerStyles('containerBoxShadowVertical', newValue),
+    onChangePosition: newValue => saveContainerStyles('containerBoxShadowPosition', newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Margin__WEBPACK_IMPORTED_MODULE_10__["default"], {
     directions: ["all"],
     marginTop: containerMarginT,
@@ -8120,9 +7873,7 @@ function Edit(props) {
     marginBottomMobile: containerMarginBMobile,
     marginLeftMobile: containerMarginLMobile,
     showUnits: true,
-    onChangeMarSizeUnit: newvalue => saveContainerStyles({
-      iconMarginType: newvalue
-    }),
+    onChangeMarSizeUnit: newvalue => saveContainerStyles('iconMarginType', newvalue),
     selectedUnit: containerStyles.iconMarginType,
     onChangeMarginTop: (device, newValue) => {
       if (device === "desktop") {
@@ -8199,9 +7950,7 @@ function Edit(props) {
     paddingLeftMobile: containerPaddingLMobile,
     showUnits: true,
     selectedUnit: containerStyles.iconPaddingType,
-    onChangePadSizeUnit: newvalue => saveContainerStyles({
-      iconPaddingType: newvalue
-    }),
+    onChangePadSizeUnit: newvalue => saveContainerStyles('iconPaddingType', newvalue),
     onChangePaddingTop: (device, newValue) => {
       if (device === "desktop") {
         setAttributes({
@@ -8371,7 +8120,7 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     className: `premium-content-switcher-toggle-switch-label`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    ref: inputEl,
+    ref: inputSwitch,
     type: "checkbox",
     className: `premium-content-switcher-toggle-switch-input ${props.clientId}`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -8418,6 +8167,7 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "premium-content-switcher-two-content"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    ref: inputFirstContent,
     className: `premium-content-switcher-is-visible premium-content-switcher-first-list ${props.clientId}`,
     style: {
       background: firstContentStyles.firstContentBGColor,
@@ -8455,6 +8205,7 @@ function Edit(props) {
       textShadow: `${firstContentStyles.firstContentShadowHorizontal}px ${firstContentStyles.firstContentShadowVertical}px ${firstContentStyles.firstContentShadowBlur}px ${firstContentStyles.firstContentShadowColor}`
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    ref: inputSecondContent,
     className: `premium-content-switcher-is-hidden premium-content-switcher-second-list ${props.clientId}`,
     style: {
       background: secondContentStyles.secondContentBGColor,
