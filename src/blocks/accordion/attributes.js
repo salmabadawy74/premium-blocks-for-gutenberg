@@ -129,7 +129,7 @@ const attributes = {
     },
     titleBorderUpdated: {
         type: "boolean",
-        default: false
+        default: true
     },
     titlePaddingT: {
         type: "number"
@@ -149,7 +149,7 @@ const attributes = {
     },
     descBorderUpdated: {
         type: "boolean",
-        default: false
+        default: true
     },
     descBorderTop: {
         type: "number"
@@ -224,5 +224,9 @@ const attributes = {
     descPaddingLMobile: {
         type: "number"
     },
+    titlePadding: {
+        type: "object",
+
+    }
 }
 export default attributes;

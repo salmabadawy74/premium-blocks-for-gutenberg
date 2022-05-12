@@ -10,7 +10,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
-import RadioComponent from '../../components/radio-control'
+import RadioComponent from '../../components/radio-control';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import WebfontLoader from "../../components/typography/fontLoader"
 
@@ -643,22 +643,26 @@ class edit extends Component {
                         <PremiumBorder
                             borderType={containerStyles[0].borderType}
                             borderWidth={containerStyles[0].borderWidth}
-                            top={borderTop}
-                            right={borderRight}
-                            bottom={borderBottom}
-                            left={borderLeft}
+                            valueTop={{
+                                value: borderTop,
+                                label: 'borderTop',
+                            }}
+                            valueRight={{
+                                value: borderRight,
+                                label: 'borderRight',
+                            }}
+                            valueBottom={{
+                                value: borderBottom,
+                                label: 'borderBottom',
+                            }}
+                            valueLeft={{
+                                value: borderLeft,
+                                label: 'borderLeft',
+                            }}
+                            setAttributes={setAttributes}
                             borderColor={containerStyles[0].borderColor}
                             borderRadius={containerStyles[0].borderRadius}
                             onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    borderCount: true,
-                                    borderTop: top,
-                                    borderRight: right,
-                                    borderBottom: bottom,
-                                    borderLeft: left,
-                                })
-                            }
                             onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
                             onChangeRadius={(newRadius) => saveContainerStyle({ borderRadius: newRadius })}
                         />

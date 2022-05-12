@@ -1,6 +1,5 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -11,6 +10,7 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const { PanelBody, SelectControl } = wp.components;
 const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
+import SpacingControl from '../../components/premium-responsive-spacing'
 
 let isAccUpdated = null;
 
@@ -203,7 +203,6 @@ class PremiumAccordion extends Component {
         const descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPaddingB, descPaddingBTablet, descPaddingBMobile);
         const descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPaddingL, descPaddingLTablet, descPaddingLMobile);
 
-
         const mainClasses = classnames(className, "premium-accordion");
 
         const accordionItems = repeaterItems.map((item, index) => {
@@ -378,22 +377,26 @@ class PremiumAccordion extends Component {
                         <PremiumBorder
                             borderType={titleStyles[0].titleBorder}
                             borderWidth={titleBorderWidth}
-                            top={titleBorderTop}
-                            right={titleBorderRight}
-                            bottom={titleBorderBottom}
-                            left={titleBorderLeft}
+                            valueTop={{
+                                value: titleBorderTop,
+                                label: 'titleBorderTop',
+                            }}
+                            valueRight={{
+                                value: titleBorderRight,
+                                label: 'titleBorderRight',
+                            }}
+                            valueBottom={{
+                                value: titleBorderBottom,
+                                label: 'titleBorderBottom',
+                            }}
+                            valueLeft={{
+                                value: titleBorderLeft,
+                                label: 'titleBorderLeft',
+                            }}
+                            setAttributes={setAttributes}
                             borderColor={titleStyles[0].titleBorderColor}
                             borderRadius={titleStyles[0].titleBorderRadius}
                             onChangeType={(newType) => saveTitleStyles({ titleBorder: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    titleBorderUpdated: true,
-                                    titleBorderTop: top,
-                                    titleBorderRight: right,
-                                    titleBorderBottom: bottom,
-                                    titleBorderLeft: left,
-                                })
-                            }
                             onChangeColor={(colorValue) => saveTitleStyles({ titleBorderColor: colorValue })}
                             onChangeRadius={(newrRadius) => saveTitleStyles({ titleBorderRadius: newrRadius })}
                         />
@@ -408,64 +411,61 @@ class PremiumAccordion extends Component {
                             onChangehHorizontal={newValue => saveTitleStyles({ titleShadowHorizontal: newValue })}
                             onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
                         />
-                        <PremiumResponsivePadding
-                            paddingTop={titlePaddingT}
-                            paddingRight={titlePaddingR}
-                            paddingBottom={titlePaddingB}
-                            paddingLeft={titlePaddingL}
-                            paddingTopTablet={titlePaddingTTablet}
-                            paddingRightTablet={titlePaddingRTablet}
-                            paddingBottomTablet={titlePaddingBTablet}
-                            paddingLeftTablet={titlePaddingLTablet}
-                            paddingTopMobile={titlePaddingTMobile}
-                            paddingRightMobile={titlePaddingRMobile}
-                            paddingBottomMobile={titlePaddingBMobile}
-                            paddingLeftMobile={titlePaddingLMobile}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingLMobile: newValue })
-                                    }
-                                }
-                            }
+                        <SpacingControl
+                            label={__('Padding', 'premium-blocks-for-gutenberg')}
+                            valueTop={{
+                                value: titlePaddingT,
+                                label: 'titlePaddingT',
+                            }}
+                            valueRight={{
+                                value: titlePaddingR,
+                                label: 'titlePaddingR',
+                            }}
+                            valueBottom={{
+                                value: titlePaddingB,
+                                label: 'titlePaddingB',
+                            }}
+                            valueLeft={{
+                                value: titlePaddingL,
+                                label: 'titlePaddingL',
+                            }}
+                            valueTopTablet={{
+                                value: titlePaddingTTablet,
+                                label: 'titlePaddingTTablet',
+                            }}
+                            valueRightTablet={{
+                                value: titlePaddingRTablet,
+                                label: 'titlePaddingRTablet',
+                            }}
+                            valueBottomTablet={{
+                                value: titlePaddingBTablet,
+                                label: 'titlePaddingBTablet',
+                            }}
+                            valueLeftTablet={{
+                                value: titlePaddingLTablet,
+                                label: 'titlePaddingLTablet',
+                            }}
+                            valueTopMobile={{
+                                value: titlePaddingTMobile,
+                                label: 'titlePaddingTMobile',
+                            }}
+                            valueRightMobile={{
+                                value: titlePaddingRMobile,
+                                label: 'titlePaddingRMobile',
+                            }}
+                            valueBottomMobile={{
+                                value: titlePaddingBMobile,
+                                label: 'titlePaddingBMobile',
+                            }}
+                            valueLeftMobile={{
+                                value: titlePaddingLMobile,
+                                label: 'titlePaddingLMobile',
+                            }}
+
+                            setAttributes={setAttributes}
+                            showUnits={false}
                         />
+
                     </PanelBody>
                     <PanelBody
                         title={__("Arrow", 'premium-blocks-for-gutenberg')}
@@ -573,22 +573,32 @@ class PremiumAccordion extends Component {
                         <PremiumBorder
                             borderType={descStyles[0].descBorder}
                             borderWidth={descBorderWidth}
-                            top={descBorderTop}
-                            right={descBorderRight}
-                            bottom={descBorderBottom}
-                            left={descBorderLeft}
+                            // top={descBorderTop}
+                            // right={descBorderRight}
+                            // bottom={descBorderBottom}
+                            // left={descBorderLeft}
+                            valueTop={{
+                                value: descBorderTop,
+                                label: 'descBorderTop',
+                            }}
+                            valueRight={{
+                                value: descBorderRight,
+                                label: 'descBorderRight',
+                            }}
+                            valueBottom={{
+                                value: descBorderBottom,
+                                label: 'descBorderBottom',
+                            }}
+                            valueLeft={{
+                                value: descBorderLeft,
+                                label: 'descBorderLeft',
+                            }}
+                            setAttributes={setAttributes}
+
                             borderColor={descStyles[0].descBorderColor}
                             borderRadius={descStyles[0].descBorderRadius}
                             onChangeType={(newType) => SaveDescStyles({ descBorder: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    descBorderUpdated: true,
-                                    descBorderTop: top,
-                                    descBorderRight: right,
-                                    descBorderBottom: bottom,
-                                    descBorderLeft: left,
-                                })
-                            }
+
                             onChangeColor={(colorValue) => SaveDescStyles({ descBorderColor: colorValue })}
                             onChangeRadius={(newrRadius) => SaveDescStyles({ descBorderRadius: newrRadius })}
                         />
@@ -605,64 +615,60 @@ class PremiumAccordion extends Component {
                                 onChangeVertical={newValue => setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue })}
                             />
                         )}
-                        <PremiumResponsivePadding
-                            paddingT={descPaddingT}
-                            paddingR={descPaddingR}
-                            paddingB={descPaddingB}
-                            paddingL={descPaddingL}
-                            paddingTTablet={descPaddingTTablet}
-                            paddingRTablet={descPaddingRTablet}
-                            paddingBTablet={descPaddingBTablet}
-                            paddingLTablet={descPaddingLTablet}
-                            paddingTMobile={descPaddingTMobile}
-                            paddingRMobile={descPaddingRMobile}
-                            paddingBMobile={descPaddingBMobile}
-                            paddingLMobile={descPaddingLMobile}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingLMobile: newValue })
-                                    }
-                                }
-                            }
+                        <SpacingControl
+                            label={__('Padding', 'premium-blocks-for-gutenberg')}
+                            valueTop={{
+                                value: descPaddingT,
+                                label: 'descPaddingT',
+                            }}
+                            valueRight={{
+                                value: descPaddingR,
+                                label: 'descPaddingR',
+                            }}
+                            valueBottom={{
+                                value: descPaddingB,
+                                label: 'descPaddingB',
+                            }}
+                            valueLeft={{
+                                value: descPaddingL,
+                                label: 'descPaddingL',
+                            }}
+                            valueTopTablet={{
+                                value: descPaddingTTablet,
+                                label: 'descPaddingTTablet',
+                            }}
+                            valueRightTablet={{
+                                value: descPaddingRTablet,
+                                label: 'descPaddingRTablet',
+                            }}
+                            valueBottomTablet={{
+                                value: descPaddingBTablet,
+                                label: 'descPaddingBTablet',
+                            }}
+                            valueLeftTablet={{
+                                value: descPaddingLTablet,
+                                label: 'descPaddingLTablet',
+                            }}
+                            valueTopMobile={{
+                                value: descPaddingTMobile,
+                                label: 'descPaddingTMobile',
+                            }}
+                            valueRightMobile={{
+                                value: descPaddingRMobile,
+                                label: 'descPaddingRMobile',
+                            }}
+                            valueBottomMobile={{
+                                value: descPaddingBMobile,
+                                label: 'descPaddingBMobile',
+                            }}
+                            valueLeftMobile={{
+                                value: descPaddingLMobile,
+                                label: 'descPaddingLMobile',
+                            }}
+                            setAttributes={setAttributes}
+                            showUnits={false}
                         />
+
                     </PanelBody>
                 </InspectorControls >
             ),

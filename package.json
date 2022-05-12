@@ -39,6 +39,7 @@
         "grunt-wp-readme-to-markdown": "^2.0.1",
         "node-sass": "^4.14.1",
         "webpack": "^3.12.0"
+
     },
     "dependencies": {
         "@fonticonpicker/react-fonticonpicker": "^1.2.0",

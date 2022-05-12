@@ -5,7 +5,7 @@ const attributes = {
     },
     borderCount: {
         type: "boolean",
-        default: false
+        default: true
     },
     increment: {
         type: "string",

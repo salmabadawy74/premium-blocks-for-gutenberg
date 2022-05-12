@@ -2,7 +2,7 @@ const { __ } = wp.i18n;
 const attributes = {
     borderButton: {
         type: "boolean",
-        default: false,
+        default: true,
     },
     btnText: {
         type: "string",

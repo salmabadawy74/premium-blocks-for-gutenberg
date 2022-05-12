@@ -14,7 +14,6 @@ class AdvancedColorControl extends Component {
         this.state = {
             isVisible: false,
             colors: [],
-            classSat: 'one',
             currentColor: '',
             defaultColor: '',
         };
@@ -37,7 +36,6 @@ class AdvancedColorControl extends Component {
             } else {
                 this.setState({ currentColor: (undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue) });
             }
-            this.setState({ classSat: 'one' });
             this.setState({ isVisible: true });
         };
 
@@ -49,15 +47,12 @@ class AdvancedColorControl extends Component {
 
         const normalizeColor = (color) => {
             const parsedColor = colord(color)
-
             if (!parsedColor.parsed) {
                 return color
             }
-
             if (parsedColor.rgba.a === 1) {
                 return parsedColor.toHex()
             }
-
             return parsedColor.toRgbString()
         }
 
@@ -83,14 +78,8 @@ class AdvancedColorControl extends Component {
                                                         style={{ backgroundColor: color }}
                                                         onClick={() => {
                                                             this.props.onColorChange(color);
-                                                            if (this.props.onColorClassChange) {
-                                                                this.props.onColorClassChange(slug);
-                                                            }
-                                                            if ('three' === this.state.classSat) {
-                                                                this.setState({ classSat: 'two' });
-                                                            } else {
-                                                                this.setState({ classSat: 'three' });
-                                                            }
+
+
                                                         }}
                                                     >
                                                         <div className={`premium-tooltip-top`}>
@@ -106,7 +95,7 @@ class AdvancedColorControl extends Component {
                                 <div className={isNew
                                     ? 'premium-gutenberg-color-picker-new'
                                     : 'premium-gutenberg-color-picker'}>
-                                    {this.state.classSat === 'one' && !this.props.disableCustomColors && (
+                                    {!this.props.disableCustomColors && (
                                         <ColorPicker
                                             color={(undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue)}
                                             onChangeComplete={(color) => {
@@ -114,13 +103,11 @@ class AdvancedColorControl extends Component {
                                                 if (color.rgb) {
                                                     this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
                                                 }
-                                                if (this.props.onColorClassChange) {
-                                                    this.props.onColorClassChange('');
-                                                }
+
                                             }}
                                         />
                                     )}
-                                    {!this.props.disableCustomColors && this.state.classSat !== 'one' && (
+                                    {!this.props.disableCustomColors && (
                                         <ColorPicker
                                             color={(undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor)}
                                             onChangeComplete={(color) => {
@@ -129,9 +116,7 @@ class AdvancedColorControl extends Component {
 
                                                     this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
                                                 }
-                                                if (this.props.onColorClassChange) {
-                                                    this.props.onColorClassChange('');
-                                                }
+
                                             }}
                                         />
                                     )}
@@ -173,9 +158,7 @@ class AdvancedColorControl extends Component {
                             onClick={() => {
                                 this.setState({ currentColor: this.props.colorDefault });
                                 this.props.onColorChange(undefined);
-                                if (this.props.onColorClassChange) {
-                                    this.props.onColorClassChange('');
-                                }
+
                             }}>
                         </button>
                     </div>}

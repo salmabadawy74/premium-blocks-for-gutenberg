@@ -401,22 +401,27 @@ export class edit extends Component {
                         <PremiumBorder
                             borderType={btnStyles[0].borderType}
                             borderWidth={borderWidth}
-                            top={borderTop}
-                            right={borderRight}
-                            bottom={borderBottom}
-                            left={borderLeft}
+                            valueTop={{
+                                value: borderTop,
+                                label: 'borderTop',
+                            }}
+                            valueRight={{
+                                value: borderRight,
+                                label: 'borderRight',
+                            }}
+                            valueBottom={{
+                                value: borderBottom,
+                                label: 'borderBottom',
+                            }}
+                            valueLeft={{
+                                value: borderLeft,
+                                label: 'borderLeft',
+                            }}
+                            setAttributes={setAttributes}
                             borderColor={btnStyles[0].borderColor}
                             borderRadius={btnStyles[0].borderRadius}
                             onChangeType={(newType) => saveBtnStyles({ borderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    borderButton: true,
-                                    borderTop: top,
-                                    borderRight: right,
-                                    borderBottom: bottom,
-                                    borderLeft: left,
-                                })
-                            }
+
                             onChangeColor={(colorValue) =>
                                 saveBtnStyles({ borderColor: colorValue })
                             }

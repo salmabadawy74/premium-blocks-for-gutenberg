@@ -1,18 +1,8 @@
 const { __ } = wp.i18n;
-
 const { Fragment } = wp.element;
-
-const {
-    SelectControl,
-    ToggleControl,
-    Tooltip,
-    Dashicon,
-} = wp.components;
-
+const { SelectControl, ToggleControl, Tooltip, Dashicon } = wp.components;
 const { MediaUpload } = wp.blockEditor;
-import AdvancedPopColorControl from './Color Control/ColorComponent'
-
-
+import AdvancedPopColorControl from './Color Control/ColorComponent';
 export default function PremiumBackground(props) {
     const {
         type,
