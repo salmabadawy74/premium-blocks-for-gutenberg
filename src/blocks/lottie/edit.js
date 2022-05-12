@@ -121,6 +121,7 @@ class edit extends Component {
 
     render() {
         const { attributes, setAttributes, className } = this.props;
+        console.log(PremiumOptionsSettings.FontAwesomeEnabled)
         const {
             lottieId,
             block_id,

@@ -10130,6 +10130,8 @@ exports.f = __webpack_require__(27) ? gOPD : function getOwnPropertyDescriptor(O
 "use strict";
 
 
+var _settings = __webpack_require__(1);
+
 __webpack_require__(129);
 
 __webpack_require__(222);
@@ -10167,6 +10169,11 @@ __webpack_require__(375);
 __webpack_require__(380);
 
 __webpack_require__(391);
+
+window.PremiumOptionsSettings = {
+    FontAwesomeEnabled: _settings.FontAwesomeEnabled,
+    JsonUploadEnabled: _settings.JsonUploadEnabled
+};
 
 /***/ }),
 /* 129 */
@@ -53434,6 +53441,8 @@ var edit = function (_Component) {
                 attributes = _props2.attributes,
                 setAttributes = _props2.setAttributes,
                 className = _props2.className;
+
+            console.log(PremiumOptionsSettings.FontAwesomeEnabled);
             var lottieId = attributes.lottieId,
                 block_id = attributes.block_id,
                 lottieURl = attributes.lottieURl,
