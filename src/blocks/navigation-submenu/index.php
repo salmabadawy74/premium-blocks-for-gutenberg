@@ -117,8 +117,6 @@ function render_block_premium_navigation_submenu( $attributes, $content, $block 
 
 	$mega_menu              = isset( $attributes['megaMenu'] ) ? $attributes['megaMenu'] : false;
 	$mega_menu_width        = isset( $attributes['megaMenuWidth'] ) ? $attributes['megaMenuWidth'] : 'content';
-	$mega_menu_columns      = isset( $attributes['megaMenuColumns'] ) ? $attributes['megaMenuColumns'] : '2';
-	$mega_menu_layout       = isset( $attributes['megaMenuLayout'] ) ? $attributes['megaMenuLayout'] : 'equal';
 	$navigation_link_has_id = isset( $attributes['id'] ) && is_numeric( $attributes['id'] );
 	$is_post_type           = isset( $attributes['kind'] ) && 'post-type' === $attributes['kind'];
 	$is_post_type           = $is_post_type || isset( $attributes['type'] ) && ( 'post' === $attributes['type'] || 'page' === $attributes['type'] );
@@ -274,7 +272,7 @@ function render_block_premium_navigation_submenu( $attributes, $content, $block 
 		}
 
 		$html .= sprintf(
-			'<ul class="premium-navigation__submenu-container' . ( $mega_menu ? ' layout-' . esc_attr( $mega_menu_layout ) : '' ) . ( $mega_menu ? ' col-' . esc_attr( $mega_menu_columns ) : '' ) . '">%s</ul>',
+			'<ul class="premium-navigation__submenu-container">%s</ul>',
 			$inner_blocks_html
 		);
 	}

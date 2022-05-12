@@ -6338,10 +6338,10 @@ function UnsavedInnerBlocks(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CREATE_NAVIGATION_MENU_SUCCESS": function() { return /* binding */ CREATE_NAVIGATION_MENU_SUCCESS; },
 /* harmony export */   "CREATE_NAVIGATION_MENU_ERROR": function() { return /* binding */ CREATE_NAVIGATION_MENU_ERROR; },
-/* harmony export */   "CREATE_NAVIGATION_MENU_PENDING": function() { return /* binding */ CREATE_NAVIGATION_MENU_PENDING; },
 /* harmony export */   "CREATE_NAVIGATION_MENU_IDLE": function() { return /* binding */ CREATE_NAVIGATION_MENU_IDLE; },
+/* harmony export */   "CREATE_NAVIGATION_MENU_PENDING": function() { return /* binding */ CREATE_NAVIGATION_MENU_PENDING; },
+/* harmony export */   "CREATE_NAVIGATION_MENU_SUCCESS": function() { return /* binding */ CREATE_NAVIGATION_MENU_SUCCESS; },
 /* harmony export */   "default": function() { return /* binding */ useCreateNavigationMenu; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");

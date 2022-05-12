@@ -8279,8 +8279,16 @@ function NavigationLinkEdit(_ref2) {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Add submenu'),
     onClick: transformToSubmenu
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_9__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Link Badge Colors')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Link Badge')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
+    value: badgeText || '',
+    onChange: badgeTextValue => {
+      setAttributes({
+        badgeText: badgeTextValue
+      });
+    },
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Link Badge Text')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_14__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)(`Text Color`, 'premium-blocks-for-gutenberg'),
     colorValue: badgeColors.text,
     onColorChange: newValue => setBadgeColor('text', newValue),
@@ -8307,14 +8315,6 @@ function NavigationLinkEdit(_ref2) {
     isMulti: false,
     appendTo: "body",
     noSelectedPlaceholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)("Select Icon", 'premium-blocks-for-gutenberg')
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
-    value: badgeText || '',
-    onChange: badgeTextValue => {
-      setAttributes({
-        badgeText: badgeTextValue
-      });
-    },
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Link Badge Text')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextareaControl, {
     value: description || '',
     onChange: descriptionValue => {

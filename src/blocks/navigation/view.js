@@ -30,6 +30,36 @@ function navigationToggleModal(modal) {
     }
 }
 
+function mobileSubmenuToggle() {
+    const navigations = document.querySelectorAll('.wp-block-premium-navigation');
+
+    navigations.forEach(function (nav) {
+        if (nav.classList.contains('is-responsive')) {
+            const menuContainer = nav.querySelector('.premium-navigation__responsive-container');
+
+            if (menuContainer.classList.contains('pbg-break-point')) {
+                const submenuItems = menuContainer.querySelectorAll('.wp-block-premium-navigation-submenu');
+
+                if (submenuItems.length) {
+                    submenuItems.forEach(function (submenuItem) {
+                        submenuItem.addEventListener('click', function (e) {
+                            if (!e.target.classList.contains('premium-navigation-item__content')) {
+                                e.preventDefault();
+                            }
+                            const submenuContainer = submenuItem.querySelector('.premium-navigation__submenu-container');
+                            if (submenuContainer.classList.contains('visible')) {
+                                submenuContainer.classList.remove('visible');
+                            } else {
+                                submenuContainer.classList.add('visible');
+                            }
+                        })
+                    });
+                }
+            }
+        }
+    });
+}
+
 // Open on click functionality.
 function closeSubmenus(element) {
     element
@@ -87,13 +117,14 @@ function mobileMenuBreakPoint() {
 }
 
 window.addEventListener("resize", mobileMenuBreakPoint, false);
+window.addEventListener("resize", mobileSubmenuToggle, false);
 
 // Necessary for some themes such as TT1 Blocks, where
 // scripts could be loaded before the body.
 window.addEventListener('load', () => {
 
     mobileMenuBreakPoint();
-
+    mobileSubmenuToggle();
     MicroModal.init({
         onShow: navigationToggleModal,
         onClose: navigationToggleModal,

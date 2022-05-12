@@ -917,14 +917,11 @@ button.premium-navigation-item__content {
                 justify-content: flex-start;
             }
 
-            .premium-navigation__submenu-icon {
-                display: none;
-            }
-
             // Always expand/unfold submenus inside the modal.
             .has-child .submenu-container,
             .has-child .premium-navigation__submenu-container {
                 // Unset CSS that hides dropdown menus.
+                display: none;
                 opacity: 1;
                 visibility: visible;
                 height: auto;
@@ -937,6 +934,9 @@ button.premium-navigation-item__content {
                 border: none;
                 padding-left: 2rem;
                 padding-right: 2rem;
+                &.visible {
+                    display: block;
+                }
             }
 
             // Space unfolded items using gap and padding for submenus.

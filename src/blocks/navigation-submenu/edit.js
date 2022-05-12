@@ -53,7 +53,6 @@ import { createBlock } from '@wordpress/blocks';
  */
 import { ItemSubmenuIcon } from './icons';
 import { name } from './block.json';
-import MegaMenuLayout from './MegaMenuLayout'
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import iconsList from "../../components/premium-icons-list";
@@ -296,8 +295,6 @@ export default function NavigationSubmenuEdit({
 		kind,
 		megaMenu,
 		megaMenuWidth,
-		megaMenuColumns,
-		megaMenuLayout,
 		spacing,
 		megaMenuBackground,
 		linkCustomIcon,
@@ -552,7 +549,7 @@ export default function NavigationSubmenuEdit({
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			className: classnames('premium-navigation__submenu-container', megaMenu && overlayMenu !== 'always' ? `col-${megaMenuColumns}` : '', megaMenu && overlayMenu !== 'always' ? `layout-${megaMenuLayout}` : '', {
+			className: classnames('premium-navigation__submenu-container', {
 				'is-parent-of-selected-block': isParentOfSelectedBlock
 			}),
 			style: {
@@ -586,7 +583,7 @@ export default function NavigationSubmenuEdit({
 			},
 		},
 		{
-			allowedBlocks: megaMenu ? true : ALLOWED_BLOCKS,
+			allowedBlocks: megaMenu ? 'all' : ALLOWED_BLOCKS,
 			__experimentalDefaultBlock: DEFAULT_BLOCK,
 			__experimentalDirectInsert: true,
 
@@ -743,18 +740,6 @@ export default function NavigationSubmenuEdit({
 								value={megaMenuWidth}
 								onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
 							/>
-							<div>
-								<label>{__('Mega Menu Columns', 'premium-blocks-for-gutenberg')}</label>
-								<RadioGroup label="Width" onChange={(value) => setAttributes({ megaMenuColumns: value })} checked={megaMenuColumns}>
-									<Radio value="1">1</Radio>
-									<Radio value="2">2</Radio>
-									<Radio value="3">3</Radio>
-									<Radio value="4">4</Radio>
-									<Radio value="5">5</Radio>
-									<Radio value="6">6</Radio>
-								</RadioGroup>
-							</div>
-							<MegaMenuLayout label={__('Layout', 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ megaMenuLayout: value })} value={megaMenuLayout} megaMenuColumns={megaMenuColumns} />
 							<PremiumBackgroundControl
 								setAttributes={setBackgroundAttr}
 								saveContainerStyle={setBackgroundAttr}
@@ -861,7 +846,16 @@ export default function NavigationSubmenuEdit({
 						</PanelBody>
 					</>
 				)}
-				<PanelBody title={__('Link Badge Colors')}>
+				<PanelBody title={__('Link Badge')}>
+					<TextControl
+						value={badgeText || ''}
+						onChange={(badgeTextValue) => {
+							setAttributes({
+								badgeText: badgeTextValue,
+							});
+						}}
+						label={__('Link Badge Text')}
+					/>
 					<AdvancedPopColorControl
 						label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
 						colorValue={badgeColors.text}
@@ -883,15 +877,6 @@ export default function NavigationSubmenuEdit({
 						isMulti={false}
 						appendTo="body"
 						noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
-					/>
-					<TextControl
-						value={badgeText || ''}
-						onChange={(badgeTextValue) => {
-							setAttributes({
-								badgeText: badgeTextValue,
-							});
-						}}
-						label={__('Link Badge Text')}
 					/>
 					<TextareaControl
 						value={description || ''}

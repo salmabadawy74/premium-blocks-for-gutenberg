@@ -587,7 +587,16 @@ export default function NavigationLinkEdit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title={__('Link Badge Colors')}>
+				<PanelBody title={__('Link Badge')}>
+					<TextControl
+						value={badgeText || ''}
+						onChange={(badgeTextValue) => {
+							setAttributes({
+								badgeText: badgeTextValue,
+							});
+						}}
+						label={__('Link Badge Text')}
+					/>
 					<AdvancedPopColorControl
 						label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
 						colorValue={badgeColors.text}
@@ -618,15 +627,6 @@ export default function NavigationLinkEdit({
 						isMulti={false}
 						appendTo="body"
 						noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
-					/>
-					<TextControl
-						value={badgeText || ''}
-						onChange={(badgeTextValue) => {
-							setAttributes({
-								badgeText: badgeTextValue,
-							});
-						}}
-						label={__('Link Badge Text')}
 					/>
 					<TextareaControl
 						value={description || ''}
