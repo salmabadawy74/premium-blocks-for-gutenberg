@@ -53441,8 +53441,6 @@ var edit = function (_Component) {
                 attributes = _props2.attributes,
                 setAttributes = _props2.setAttributes,
                 className = _props2.className;
-
-            console.log(PremiumOptionsSettings.FontAwesomeEnabled);
             var lottieId = attributes.lottieId,
                 block_id = attributes.block_id,
                 lottieURl = attributes.lottieURl,
