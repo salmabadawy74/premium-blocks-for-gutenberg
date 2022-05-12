@@ -2637,8 +2637,6 @@ var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _settings = __webpack_require__(1);
-
 var _premiumBackground = __webpack_require__(104);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
@@ -2662,6 +2660,8 @@ var _wp$components = wp.components,
     Button = _wp$components.Button,
     ButtonGroup = _wp$components.ButtonGroup,
     Tooltip = _wp$components.Tooltip;
+// import { FontAwesomeEnabled } from "../../assets/js/settings";
+
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
 function PremiumBackgroundControl(_ref) {
@@ -2719,7 +2719,7 @@ function PremiumBackgroundControl(_ref) {
                                     return setAttributes({ backgroundType: key });
                                 }
                             },
-                            1 == _settings.FontAwesomeEnabled ? _react2.default.createElement('i', { className: icon }) : tooltip
+                            1 == PremiumOptionsSettings.FontAwesomeEnabled ? _react2.default.createElement('i', { className: icon }) : tooltip
                         )
                     );
                 })
@@ -10213,6 +10213,8 @@ module.exports = _Symbol;
 "use strict";
 
 
+var _settings = __webpack_require__(1);
+
 __webpack_require__(130);
 
 __webpack_require__(224);
@@ -10250,6 +10252,10 @@ __webpack_require__(377);
 __webpack_require__(382);
 
 __webpack_require__(403);
+
+window.PremiumOptionsSettings = {
+    FontAwesomeEnabled: _settings.FontAwesomeEnabled
+};
 
 /***/ }),
 /* 130 */

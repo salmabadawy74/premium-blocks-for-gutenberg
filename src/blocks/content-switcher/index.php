@@ -8,19 +8,58 @@
 function get_content_switcher_css_style( $attributes, $unique_id ) {
 	$block_helpers          = new PBG_Blocks_Helper();
 	$css                    = new Premium_Blocks_css();
+	$media_query            = array();
+	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 	$unique_id = $attributes['block_id'];
 
-	// if ( isset( $attributes['triggerStyles'] ) ) {
-		// $triggerStyle = $attributes['triggerStyles'];
-		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
-		// $css->add_property( 'fill', $css->render_color( $triggerStyle['iconColor'] ) );
-		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button:hover svg' );
-		// $css->add_property( 'fill', $css->render_color( $triggerStyle['iconHoverColor'] ) );
-		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button' );
-		// $css->add_property( 'background-color', $css->render_color( $triggerStyle['iconBgColor'] ) );
-		// $css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button:hover' );
-		// $css->add_property( 'background-color', $css->render_color( $triggerStyle['iconBgHoverColor'] ) );
-	// }
+	if ( isset( $attributes['labelStyles'] ) ) {
+		$labelStyles = $attributes['labelStyles'];
+		$block_helpers->add_gfont(
+			array(
+				'fontFamily'  => ( isset( $labelStyles['firstLabelFontFamily'] ) ? $labelStyles['firstLabelFontFamily'] : '' ),
+				'fontVariant' => ( isset( $labelStyles['firstLabelWeight'] ) ? $labelStyles[0]['firstLabelWeight'] : '' ),
+				'fontFamily'  => ( isset( $labelStyles['secondLabelFontFamily'] ) ? $labelStyles['secondLabelFontFamily'] : '' ),
+				'fontVariant' => ( isset( $labelStyles['secondLabelWeight'] ) ? $labelStyles[0]['secondLabelWeight'] : '' ),
+			)
+		);
+	}
+
+
+	if ( isset( $attributes['containerPaddingT'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' );
+		$css->add_property( 'padding-top', ( $attributes['containerPaddingT'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingR'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' );
+		$css->add_property( 'padding-right', ( $attributes['containerPaddingR'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingB'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'padding-bottom', ( $attributes['containerPaddingB'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingL'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'padding-left', ( $attributes['containerPaddingL'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginT'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-top', ( $attributes['containerMarginT'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginR'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-right', ( $attributes['containerMarginR'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginB'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-bottom', ( $attributes['containerMarginB'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginL'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-left', ( $attributes['containerMarginL'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	
 
 	return $css->css_output();
 }

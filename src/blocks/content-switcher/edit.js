@@ -24,7 +24,7 @@ import {
 } from '@wordpress/components';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 // import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-// import PremiumBackgroundControl from "../../components/Premium-Background-Control"
+import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
@@ -336,7 +336,7 @@ export default function Edit(props) {
     } else {
         btnbg = containerStyles.backgroundImageURL ? `url('${containerStyles.backgroundImageURL}')` : ''
     }
-
+    console.log(btnbg)
     const SwitcherSize = getPreviewSize(props.deviceType, switcherStyles.switchSize, switcherStyles.switchSizeTablet, switcherStyles.switchSizeMobile);
     const SwitcherBorderRadius = getPreviewSize(props.deviceType, switcherStyles.switchRadius, switcherStyles.switchRadiusTablet, switcherStyles.switchRadiusMobile);
     const ContainerBorderRadius = getPreviewSize(props.deviceType, switcherStyles.containerRadius, switcherStyles.containerRadiusTablet, switcherStyles.containerRadiusMobile);
@@ -1422,24 +1422,24 @@ export default function Edit(props) {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    {/* <PremiumBackgroundControl
+                    <PremiumBackgroundControl
                         setAttributes={setAttributes}
                         saveContainerStyle={saveContainerStyles}
                         backgroundType={backgroundType}
-                        backgroundColor={containerStyles[0].containerBack}
-                        backgroundImageID={containerStyles[0].backgroundImageID}
-                        backgroundImageURL={containerStyles[0].backgroundImageURL}
-                        backgroundPosition={containerStyles[0].backgroundPosition}
-                        backgroundRepeat={containerStyles[0].backgroundRepeat}
-                        backgroundSize={containerStyles[0].backgroundSize}
-                        fixed={containerStyles[0].fixed}
-                        gradientLocationOne={containerStyles[0].gradientLocationOne}
-                        gradientColorTwo={containerStyles[0].gradientColorTwo}
-                        gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                        gradientAngle={containerStyles[0].gradientAngle}
-                        gradientPosition={containerStyles[0].gradientPosition}
-                        gradientType={containerStyles[0].gradientType}
-                    /> */}
+                        backgroundColor={containerStyles.containerBack}
+                        backgroundImageID={containerStyles.backgroundImageID}
+                        backgroundImageURL={containerStyles.backgroundImageURL}
+                        backgroundPosition={containerStyles.backgroundPosition}
+                        backgroundRepeat={containerStyles.backgroundRepeat}
+                        backgroundSize={containerStyles.backgroundSize}
+                        fixed={containerStyles.fixed}
+                        gradientLocationOne={containerStyles.gradientLocationOne}
+                        gradientColorTwo={containerStyles.gradientColorTwo}
+                        gradientLocationTwo={containerStyles.gradientLocationTwo}
+                        gradientAngle={containerStyles.gradientAngle}
+                        gradientPosition={containerStyles.gradientPosition}
+                        gradientType={containerStyles.gradientType}
+                    />
                     <PremiumBorder
                         borderType={containerStyles.containerborderType}
                         borderWidth={containerBorderWidth}
