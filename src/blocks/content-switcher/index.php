@@ -216,6 +216,394 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'padding-left', ( $attributes['contentPaddingL'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
 	}
 
+	$css->start_media_query( $media_query['tablet'] );
+
+	//Container styles
+	if ( isset( $attributes['containerPaddingTTablet'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' );
+		$css->add_property( 'padding-top', ( $attributes['containerPaddingTTablet'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingRTablet'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' );
+		$css->add_property( 'padding-right', ( $attributes['containerPaddingRTablet'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingBTablet'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'padding-bottom', ( $attributes['containerPaddingBTablet'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingLTablet'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'padding-left', ( $attributes['containerPaddingLTablet'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginTTablet'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-top', ( $attributes['containerMarginTTablet'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginRTablet'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-right', ( $attributes['containerMarginRTablet'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginBTablet'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-bottom', ( $attributes['containerMarginBTablet'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginLTablet'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-left', ( $attributes['containerMarginLTablet'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+
+	//First Label styles
+	if ( isset( $attributes['labelStyles'] ) ) {
+		if ( isset( $attributes['labelStyles']['firstLabelfontSizeTablet'] ) && isset( $attributes['labelStyles']['firstLabelfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['labelStyles']['firstLabelfontSizeTablet'] . ( isset( $attributes['labelStyles']['firstLabelfontSizeType'] ) ? $attributes['labelStyles']['firstLabelfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['firstLabelPaddingTTablet'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-top', ( $attributes['firstLabelPaddingTTablet'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstLabelPaddingRTablet'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-right', ( $attributes['firstLabelPaddingRTablet'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstLabelPaddingBTablet'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-bottom', ( $attributes['firstLabelPaddingBTablet'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstLabelPaddingLTablet'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-left', ( $attributes['firstLabelPaddingLTablet'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingTablet'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-first-label' );
+		$css->add_property( 'margin-right', ( $attributes['labelStyles']['labelSpacingTablet'] . 'px !important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingTablet'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-first-label' );
+		$css->add_property( 'margin-bottom', ( $attributes['labelStyles']['labelSpacingTablet'] . 'px !important' ) );
+	}
+
+	//Second Label styles
+	if ( isset( $attributes['labelStyles'] ) ) {
+		if ( isset( $attributes['labelStyles']['secondLabelfontSizeTablet'] ) && isset( $attributes['labelStyles']['secondLabelfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['labelStyles']['secondLabelfontSizeTablet'] . ( isset( $attributes['labelStyles']['secondLabelfontSizeType'] ) ? $attributes['labelStyles']['secondLabelfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['secondLabelPaddingTTablet'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-top', ( $attributes['secondLabelPaddingTTablet'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['secondLabelPaddingRTablet'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-right', ( $attributes['secondLabelPaddingRTablet'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['secondLabelPaddingBTablet'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-bottom', ( $attributes['secondLabelPaddingBTablet'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['secondLabelPaddingLTablet'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-left', ( $attributes['secondLabelPaddingLTablet'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingTablet'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-second-label');
+		$css->add_property( 'margin-left', ( $attributes['labelStyles']['labelSpacingTablet'] . 'px !important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingTablet'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
+		$css->add_property( 'margin-top', ( $attributes['labelStyles']['labelSpacingTablet'] . 'px !important' ) );
+	}
+
+	//Switch styles
+	if ( isset( $attributes['switcherStyles'] ) ) {
+		if ( isset( $attributes['switcherStyles']['switchSizeTablet'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch');
+			$css->add_property( 'font-size', $css->render_color( $attributes['switcherStyles']['switchSizeTablet'] . 'px !important' ) );
+		}
+	}
+	if ( isset( $attributes['switcherStyles']['switchRadiusTablet'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch' . ' > .premium-content-switcher-toggle-switch-label' . ' > .premium-content-switcher-toggle-switch-slider');
+		$css->add_property( 'border-radius', $css->render_color( $attributes['switcherStyles']['switchRadiusTablet'] . ( isset( $attributes['switcherStyles']['switchRadiusType'] ) ? $attributes['switcherStyles']['switchRadiusType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['switcherStyles']['containerRadiusTablet'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch' . ' > .premium-content-switcher-toggle-switch-label' . ' > .premium-content-switcher-toggle-switch-slider::before');
+		$css->add_property( 'border-radius', $css->render_color( $attributes['switcherStyles']['containerRadiusTablet'] . ( isset( $attributes['switcherStyles']['containerRadiusType'] ) ? $attributes['switcherStyles']['containerRadiusType'] : 'px' ) . '!important' ) );
+	}
+
+	//Content styles
+	if ( isset( $attributes['firstContentMarginTTablet'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-top', ( $attributes['firstContentMarginTTablet'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstContentMarginRTablet'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-right', ( $attributes['firstContentMarginRTablet'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstContentMarginBTablet'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-bottom', ( $attributes['firstContentMarginBTablet'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstContentMarginLTablet'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-left', ( $attributes['firstContentMarginLTablet'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	//First Content styles
+	if ( isset( $attributes['contentStyles'] ) ) {
+		if ( isset( $attributes['contentStyles']['contentHeightTablet'] ) && isset( $attributes['contentStyles']['contentHeightType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+			$css->add_property( 'min-height', $css->render_color( $attributes['contentStyles']['contentHeightTablet'] . ( isset( $attributes['contentStyles']['contentHeightType'] ) ? $attributes['contentStyles']['contentHeightType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['firstContentStyles'] ) ) {
+		if ( isset( $attributes['firstContentStyles']['firstContentfontSizeTablet'] ) && isset( $attributes['firstContentStyles']['firstContentfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' . ' > .premium-content-switcher-first-content' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['firstContentStyles']['firstContentfontSizeTablet'] . ( isset( $attributes['firstContentStyles']['firstContentfontSizeType'] ) ? $attributes['firstContentStyles']['firstContentfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['contentPaddingTTablet'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-top', ( $attributes['contentPaddingTTablet'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingRTablet'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-right', ( $attributes['contentPaddingRTablet'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingBTablet'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-bottom', ( $attributes['contentPaddingBTablet'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingLTablet'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-left', ( $attributes['contentPaddingLTablet'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	//Second Content styles
+	if ( isset( $attributes['contentStyles'] ) ) {
+		if ( isset( $attributes['contentStyles']['contentHeightTablet'] ) && isset( $attributes['contentStyles']['contentHeightType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+			$css->add_property( 'min-height', $css->render_color( $attributes['contentStyles']['contentHeightTablet'] . ( isset( $attributes['contentStyles']['contentHeightType'] ) ? $attributes['contentStyles']['contentHeightType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['secondContentStyles'] ) ) {
+		if ( isset( $attributes['secondContentStyles']['secondContentfontSizeTablet'] ) && isset( $attributes['secondContentStyles']['secondContentfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' . ' > .premium-content-switcher-second-content' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['secondContentStyles']['secondContentfontSizeTablet'] . ( isset( $attributes['secondContentStyles']['secondContentfontSizeType'] ) ? $attributes['secondContentStyles']['secondContentfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['contentPaddingTTablet'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-top', ( $attributes['contentPaddingTTablet'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingRTablet'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-right', ( $attributes['contentPaddingRTablet'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingBTablet'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-bottom', ( $attributes['contentPaddingBTablet'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingLTablet'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-left', ( $attributes['contentPaddingLTablet'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+
+	$css->stop_media_query();
+
+	$css->start_media_query( $media_query['mobile'] );
+
+	//Container styles
+	if ( isset( $attributes['containerPaddingTMobile'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' );
+		$css->add_property( 'padding-top', ( $attributes['containerPaddingTMobile'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingRMobile'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' );
+		$css->add_property( 'padding-right', ( $attributes['containerPaddingRMobile'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingBMobile'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'padding-bottom', ( $attributes['containerPaddingBMobile'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerPaddingLMobile'] ) && isset( $attributes['containerStyles']['containerPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'padding-left', ( $attributes['containerPaddingLMobile'] . ( isset( $attributes['containerStyles']['containerPaddingType'] ) ? $attributes['containerStyles']['containerPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginTMobile'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-top', ( $attributes['containerMarginTMobile'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginRMobile'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-right', ( $attributes['containerMarginRMobile'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginBMobile'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-bottom', ( $attributes['containerMarginBMobile'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['containerMarginLMobile'] ) && isset( $attributes['containerStyles']['containerMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
+		$css->add_property( 'margin-left', ( $attributes['containerMarginLMobile'] . ( isset( $attributes['containerStyles']['containerMarginType'] ) ? $attributes['containerStyles']['containerMarginType'] : 'px' ) . '!important' ) );
+	}
+
+	//First Label styles
+	if ( isset( $attributes['labelStyles'] ) ) {
+		if ( isset( $attributes['labelStyles']['firstLabelfontSizeMobile'] ) && isset( $attributes['labelStyles']['firstLabelfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['labelStyles']['firstLabelfontSizeMobile'] . ( isset( $attributes['labelStyles']['firstLabelfontSizeType'] ) ? $attributes['labelStyles']['firstLabelfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['firstLabelPaddingTMobile'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-top', ( $attributes['firstLabelPaddingTMobile'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstLabelPaddingRMobile'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-right', ( $attributes['firstLabelPaddingRMobile'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstLabelPaddingBMobile'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-bottom', ( $attributes['firstLabelPaddingBMobile'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstLabelPaddingLMobile'] ) && isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-left', ( $attributes['firstLabelPaddingLMobile'] . ( isset( $attributes['labelStyles']['firstLabelPaddingType'] ) ? $attributes['labelStyles']['firstLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingMobile'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-first-label' );
+		$css->add_property( 'margin-right', ( $attributes['labelStyles']['labelSpacingMobile'] . 'px !important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingMobile'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-first-label' );
+		$css->add_property( 'margin-bottom', ( $attributes['labelStyles']['labelSpacingMobile'] . 'px !important' ) );
+	}
+
+	//Second Label styles
+	if ( isset( $attributes['labelStyles'] ) ) {
+		if ( isset( $attributes['labelStyles']['secondLabelfontSizeMobile'] ) && isset( $attributes['labelStyles']['secondLabelfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['labelStyles']['secondLabelfontSizeMobile'] . ( isset( $attributes['labelStyles']['secondLabelfontSizeType'] ) ? $attributes['labelStyles']['secondLabelfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['secondLabelPaddingTMobile'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-top', ( $attributes['secondLabelPaddingTMobile'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['secondLabelPaddingRMobile'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-right', ( $attributes['secondLabelPaddingRMobile'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['secondLabelPaddingBMobile'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-bottom', ( $attributes['secondLabelPaddingBMobile'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['secondLabelPaddingLMobile'] ) && isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'padding-left', ( $attributes['secondLabelPaddingLMobile'] . ( isset( $attributes['labelStyles']['secondLabelPaddingType'] ) ? $attributes['labelStyles']['secondLabelPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingMobile'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-second-label');
+		$css->add_property( 'margin-left', ( $attributes['labelStyles']['labelSpacingMobile'] . 'px !important' ) );
+	}
+	if ( isset( $attributes['labelStyles']['labelSpacingMobile'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
+		$css->add_property( 'margin-top', ( $attributes['labelStyles']['labelSpacingMobile'] . 'px !important' ) );
+	}
+
+	//Switch styles
+	if ( isset( $attributes['switcherStyles'] ) ) {
+		if ( isset( $attributes['switcherStyles']['switchSizeMobile'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch');
+			$css->add_property( 'font-size', $css->render_color( $attributes['switcherStyles']['switchSizeMobile'] . 'px !important' ) );
+		}
+	}
+	if ( isset( $attributes['switcherStyles']['switchRadiusMobile'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch' . ' > .premium-content-switcher-toggle-switch-label' . ' > .premium-content-switcher-toggle-switch-slider');
+		$css->add_property( 'border-radius', $css->render_color( $attributes['switcherStyles']['switchRadiusMobile'] . ( isset( $attributes['switcherStyles']['switchRadiusType'] ) ? $attributes['switcherStyles']['switchRadiusType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['switcherStyles']['containerRadiusMobile'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch' . ' > .premium-content-switcher-toggle-switch-label' . ' > .premium-content-switcher-toggle-switch-slider::before');
+		$css->add_property( 'border-radius', $css->render_color( $attributes['switcherStyles']['containerRadiusMobile'] . ( isset( $attributes['switcherStyles']['containerRadiusType'] ) ? $attributes['switcherStyles']['containerRadiusType'] : 'px' ) . '!important' ) );
+	}
+
+	//Content styles
+	if ( isset( $attributes['firstContentMarginTMobile'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-top', ( $attributes['firstContentMarginTMobile'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstContentMarginRMobile'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-right', ( $attributes['firstContentMarginRMobile'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstContentMarginBMobile'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-bottom', ( $attributes['firstContentMarginBMobile'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['firstContentMarginLMobile'] ) && isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list');
+		$css->add_property( 'margin-left', ( $attributes['firstContentMarginLMobile'] . ( isset( $attributes['firstContentStyles']['firstContentMarginType'] ) ? $attributes['firstContentStyles']['firstContentMarginType'] : 'px' ) . '!important' ) );
+	}
+	//First Content styles
+	if ( isset( $attributes['contentStyles'] ) ) {
+		if ( isset( $attributes['contentStyles']['contentHeightMobile'] ) && isset( $attributes['contentStyles']['contentHeightType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+			$css->add_property( 'min-height', $css->render_color( $attributes['contentStyles']['contentHeightMobile'] . ( isset( $attributes['contentStyles']['contentHeightType'] ) ? $attributes['contentStyles']['contentHeightType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['firstContentStyles'] ) ) {
+		if ( isset( $attributes['firstContentStyles']['firstContentfontSizeMobile'] ) && isset( $attributes['firstContentStyles']['firstContentfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' . ' > .premium-content-switcher-first-content' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['firstContentStyles']['firstContentfontSizeMobile'] . ( isset( $attributes['firstContentStyles']['firstContentfontSizeType'] ) ? $attributes['firstContentStyles']['firstContentfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['contentPaddingTMobile'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-top', ( $attributes['contentPaddingTMobile'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingRMobile'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-right', ( $attributes['contentPaddingRMobile'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingBMobile'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-bottom', ( $attributes['contentPaddingBMobile'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingLMobile'] ) && isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
+		$css->add_property( 'padding-left', ( $attributes['contentPaddingLMobile'] . ( isset( $attributes['firstContentStyles']['firstContentPaddingType'] ) ? $attributes['firstContentStyles']['firstContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	//Second Content styles
+	if ( isset( $attributes['contentStyles'] ) ) {
+		if ( isset( $attributes['contentStyles']['contentHeightMobile'] ) && isset( $attributes['contentStyles']['contentHeightType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+			$css->add_property( 'min-height', $css->render_color( $attributes['contentStyles']['contentHeightMobile'] . ( isset( $attributes['contentStyles']['contentHeightType'] ) ? $attributes['contentStyles']['contentHeightType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['secondContentStyles'] ) ) {
+		if ( isset( $attributes['secondContentStyles']['secondContentfontSizeMobile'] ) && isset( $attributes['secondContentStyles']['secondContentfontSizeType'] ) ) {
+			$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' . ' > .premium-content-switcher-second-content' );
+			$css->add_property( 'font-size', $css->render_color( $attributes['secondContentStyles']['secondContentfontSizeMobile'] . ( isset( $attributes['secondContentStyles']['secondContentfontSizeType'] ) ? $attributes['secondContentStyles']['secondContentfontSizeType'] : 'px' ) . '!important' ) );
+		}
+	}
+	if ( isset( $attributes['contentPaddingTMobile'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-top', ( $attributes['contentPaddingTMobile'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingRMobile'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-right', ( $attributes['contentPaddingRMobile'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingBMobile'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-bottom', ( $attributes['contentPaddingBMobile'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attributes['contentPaddingLMobile'] ) && isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ) {
+		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
+		$css->add_property( 'padding-left', ( $attributes['contentPaddingLMobile'] . ( isset( $attributes['secondContentStyles']['secondContentPaddingType'] ) ? $attributes['secondContentStyles']['secondContentPaddingType'] : 'px' ) . '!important' ) );
+	}
+
+	$css->stop_media_query();
+
 	return $css->css_output();
 }
 function should_render_inline( $name, $unique_id ) {
