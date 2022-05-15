@@ -224,12 +224,16 @@ const attributes = {
     descPaddingLMobile: {
         type: "number"
     },
-    titleBorder: {
+    titlePadding: {
         type: "object",
         default: {
             "showUnits": false,
 
         }
+
+    },
+    titleBorder: {
+        type: "object",
 
     }
 }

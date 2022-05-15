@@ -114,7 +114,8 @@ class PremiumAccordion extends Component {
             descPaddingRMobile,
             descPaddingBMobile,
             descPaddingLMobile,
-            titlePadding
+            titlePadding,
+            titleBorder
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -194,7 +195,6 @@ class PremiumAccordion extends Component {
                 return item;
             });
         };
-
         const titlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePaddingT, titlePaddingTTablet, titlePaddingTMobile);
         const titlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
         const titlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
@@ -376,31 +376,8 @@ class PremiumAccordion extends Component {
                             onColorChange={value => saveTitleStyles({ titleBack: value })}
                         />
                         <PremiumBorder
-                            borderType={titleStyles[0].titleBorder}
-                            borderWidth={titleBorderWidth}
-                            valueTop={{
-                                value: titleBorderTop,
-                                label: 'titleBorderTop',
-                            }}
-                            valueRight={{
-                                value: titleBorderRight,
-                                label: 'titleBorderRight',
-                            }}
-                            valueBottom={{
-                                value: titleBorderBottom,
-                                label: 'titleBorderBottom',
-                            }}
-                            valueLeft={{
-                                value: titleBorderLeft,
-                                label: 'titleBorderLeft',
-                            }}
-                            setAttributes={setAttributes}
-                            borderColor={titleStyles[0].titleBorderColor}
-                            borderRadius={titleStyles[0].titleBorderRadius}
-                            onChangeType={(newType) => saveTitleStyles({ titleBorder: newType })}
-                            onChangeColor={(colorValue) => saveTitleStyles({ titleBorderColor: colorValue })}
-                            onChangeRadius={(newrRadius) => saveTitleStyles({ titleBorderRadius: newrRadius })}
-                        />
+                            value={titleBorder}
+                            onChange={(value) => setAttributes({ titleBorder: value })} />
                         <PremiumShadow
                             label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                             color={titleStyles[0].titleShadowColor}
@@ -414,57 +391,11 @@ class PremiumAccordion extends Component {
                         />
                         <SpacingControl
                             label={__('Padding', 'premium-blocks-for-gutenberg')}
-                            // valueTop={{
-                            //     value: titlePaddingT,
-                            //     label: 'titlePaddingT',
-                            // }}
-                            // valueRight={{
-                            //     value: titlePaddingR,
-                            //     label: 'titlePaddingR',
-                            // }}
-                            // valueBottom={{
-                            //     value: titlePaddingB,
-                            //     label: 'titlePaddingB',
-                            // }}
-                            // valueLeft={{
-                            //     value: titlePaddingL,
-                            //     label: 'titlePaddingL',
-                            // }}
-                            // valueTopTablet={{
-                            //     value: titlePaddingTTablet,
-                            //     label: 'titlePaddingTTablet',
-                            // }}
-                            // valueRightTablet={{
-                            //     value: titlePaddingRTablet,
-                            //     label: 'titlePaddingRTablet',
-                            // }}
-                            // valueBottomTablet={{
-                            //     value: titlePaddingBTablet,
-                            //     label: 'titlePaddingBTablet',
-                            // }}
-                            // valueLeftTablet={{
-                            //     value: titlePaddingLTablet,
-                            //     label: 'titlePaddingLTablet',
-                            // }}
-                            // valueTopMobile={{
-                            //     value: titlePaddingTMobile,
-                            //     label: 'titlePaddingTMobile',
-                            // }}
-                            // valueRightMobile={{
-                            //     value: titlePaddingRMobile,
-                            //     label: 'titlePaddingRMobile',
-                            // }}
-                            // valueBottomMobile={{
-                            //     value: titlePaddingBMobile,
-                            //     label: 'titlePaddingBMobile',
-                            // }}
-                            // valueLeftMobile={{
-                            //     value: titlePaddingLMobile,
-                            //     label: 'titlePaddingLMobile',
-                            // }}
                             value={titlePadding}
-                            setAttributes={setAttributes}
+                            onChange={(value) => setAttributes({ titlePadding: value })}
                             showUnits={false}
+                            responsive={true}
+
                         />
 
                     </PanelBody>
@@ -574,10 +505,6 @@ class PremiumAccordion extends Component {
                         <PremiumBorder
                             borderType={descStyles[0].descBorder}
                             borderWidth={descBorderWidth}
-                            // top={descBorderTop}
-                            // right={descBorderRight}
-                            // bottom={descBorderBottom}
-                            // left={descBorderLeft}
                             valueTop={{
                                 value: descBorderTop,
                                 label: 'descBorderTop',
@@ -616,7 +543,7 @@ class PremiumAccordion extends Component {
                                 onChangeVertical={newValue => setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue })}
                             />
                         )}
-                        <SpacingControl
+                        {/* <SpacingControl
                             label={__('Padding', 'premium-blocks-for-gutenberg')}
                             valueTop={{
                                 value: descPaddingT,
@@ -668,7 +595,7 @@ class PremiumAccordion extends Component {
                             }}
                             setAttributes={setAttributes}
                             showUnits={false}
-                        />
+                        /> */}
 
                     </PanelBody>
                 </InspectorControls >

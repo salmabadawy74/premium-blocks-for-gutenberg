@@ -1,35 +1,41 @@
 import { Component } from "react";
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
 const { SelectControl } = wp.components;
 import AdvancedColorControl from './Color Control/ColorComponent'
-import PremiumSpacing from './premium-spacing';
+import SpacingControl from './premium-responsive-spacing'
+const { Fragment, useState } = wp.element;
+
 
 export default class PremiumBorder extends Component {
 
     constructor(props) {
         super(props);
-
-
-
+        let value = this.props.value
+        let defaultValues = {
+            'borderType': 'none',
+            'borderColor': '',
+            'borderWidth': {
+                'top': '',
+                'right': '',
+                'bottom': '',
+                'left': ''
+            },
+            'borderRadius': ''
+        }
+        let actualValue = value ? { ...defaultValues, ...value } : defaultValues
+        this.state = {
+            borderValue: actualValue,
+        }
     }
 
 
     render() {
         const {
-            borderType,
-            borderColor,
-            borderRadius,
-            valueTop,
-            valueRight,
-            valueBottom,
-            valueLeft,
-            setAttributes,
-            onChangeType = () => { },
-            onChangeColor = () => { },
-            onChangeRadius = () => { },
+
+            onChange
         } = this.props;
+        const { borderColor, borderType, borderWidth, borderRadius } = this.state.borderValue
 
         const BORDER = [
             {
@@ -58,13 +64,15 @@ export default class PremiumBorder extends Component {
             },
         ];
 
-        const defaultValues = {
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-        }
 
+        const onChangeBorder = (item, value) => {
+            const inialState = { ...this.state.borderValue }
+
+            inialState[item] = value;
+            onChange(inialState)
+            this.setState({ borderValue: inialState })
+
+        }
         return (
             <div className="premium-control-toggle">
                 <Fragment>
@@ -72,91 +80,18 @@ export default class PremiumBorder extends Component {
                         label={__("Border Type", 'premium-blocks-for-gutneberg')}
                         options={BORDER}
                         value={borderType}
-                        onChange={onChangeType}
+                        onChange={(value) => onChangeBorder('borderType', value)}
                     />
                     {"none" != borderType && (
-                        <PremiumSpacing
+                        <SpacingControl
                             label={__("Border Width ")}
-                            topValue={valueTop}
-                            rightValue={valueRight}
-                            bottomValue={valueBottom}
-                            leftValue={valueLeft}
-                            setAttributes={setAttributes}
+                            value={borderWidth}
+                            responsive={false}
                             showUnits={false}
-                            device={"desktop"}
+                            onChange={(value) => onChangeBorder('borderWidth', { ...value })}
 
                         />
-                        // <div className={`premium-spacing-responsive`}>
-                        //     <header className="premium-control-label-container">
-                        //         <div className={`premium-control-label`}>
-                        //             <strong>{__("Border Width ")}</strong>
-                        //         </div>
-                        //     </header>
-                        //     <div className={`premium-spacing-responsive-outer-wrapper`}>
-                        //         <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
-                        //             <ul className={`premium-spacing-wrapper`}>
-                        //                 <li className={`premium-spacing-input-item`}>
-                        //                     <input
-                        //                         className={`premium-spacing-input`}
-                        //                         type="number"
-                        //                         name="top"
-                        //                         value={top}
-                        //                         onChange={this.onChangeInput}
-                        //                     />
-                        //                     <span className={`premium-spacing-title`}>{__(`Top`, 'premium-blocks-for-gutenberg')}</span>
-                        //                 </li>
-                        //                 <li className={`premium-spacing-input-item`}>
-                        //                     <input
-                        //                         className={`premium-spacing-input`}
-                        //                         type="number"
-                        //                         name="right"
-                        //                         value={right}
-                        //                         onChange={this.onChangeInput}
-                        //                     />
-                        //                     <span className={`premium-spacing-title`}>{__(`Right`, 'premium-blocks-for-gutenberg')}</span>
-                        //                 </li>
-                        //                 <li className={`premium-spacing-input-item`}>
-                        //                     <input
-                        //                         className={`premium-spacing-input`}
-                        //                         type="number"
-                        //                         name="bottom"
-                        //                         value={bottom}
-                        //                         onChange={this.onChangeInput}
-                        //                     />
-                        //                     <span className={`premium-spacing-title`}>{__(`Bottom`, 'premium-blocks-for-gutenberg')}</span>
-                        //                 </li>
-                        //                 <li className={`premium-spacing-input-item`}>
-                        //                     <input
-                        //                         className={`premium-spacing-input`}
-                        //                         type="number"
-                        //                         name="left"
-                        //                         value={left}
-                        //                         onChange={this.onChangeInput}
-                        //                     />
-                        //                     <span className={`premium-spacing-title`}>{__(`Right`, 'premium-blocks-for-gutenberg')}</span>
-                        //                 </li>
-                        //                 <li>
-                        //                     <button
-                        //                         className={`linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"}`}
-                        //                         onClick={this.onButtonClick}
-                        //                     />
-                        //                 </li>
-                        //             </ul>
-                        //         </div>
-                        //         <div className="premium-spacing-btn-reset-wrap">
-                        //             <button
-                        //                 className="premium-reset-btn "
-                        //                 disabled={JSON.stringify(this.state) === JSON.stringify(this.defaultValue)}
-                        //                 onClick={(e) => {
-                        //                     e.preventDefault();
-                        //                     this.setState({ ...defaultValues })
-                        //                     this.props.onChangeWidth({ ...defaultValues });
 
-                        //                 }}
-                        //             ></button>
-                        //         </div>
-                        //     </div>
-                        // </div>
                     )}
                     {"none" != borderType && (
                         <Fragment>
@@ -164,7 +99,7 @@ export default class PremiumBorder extends Component {
                                 label={__("Border Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={borderColor}
                                 colorDefault={''}
-                                onColorChange={onChangeColor}
+                                onColorChange={(value) => onChangeBorder('borderColor', value)}
                             />
                         </Fragment>
                     )}
@@ -173,7 +108,7 @@ export default class PremiumBorder extends Component {
                         label={__("Border Radius", 'premium-blocks-for-gutenberg')}
                         value={borderRadius}
                         defaultValue={0}
-                        onChange={onChangeRadius}
+                        onChange={(value) => onChangeBorder('borderRadius', value)}
                         showUnit={false}
                     />
                 </Fragment>

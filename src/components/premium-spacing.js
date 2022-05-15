@@ -5,7 +5,7 @@ const { __ } = wp.i18n;
 
 function PremiumSpacing(props) {
 
-    const { showUnits, topValue, rightValue, bottomValue, leftValue, setAttributes, cachedValue, device } = props;
+    const { showUnits, setAttributes, value, device, attribute, responsive } = props;
     let defaultValue = {
         valueTop: {
             value: 0,
@@ -30,75 +30,81 @@ function PremiumSpacing(props) {
     }
     const [link, setLink] = useState(false)
 
-    const [cached, setCached] = useState(cachedValue ? cachedValue : defaultValue)
-    const onLinkClickHandler = () => {
-        let linkValue = topValue.value;
-        changeLinkedValues(linkValue);
-    };
+    // const [cached, setCached] = useState(cachedValue ? cachedValue : defaultValue)
+    // const onLinkClickHandler = () => {
+    //     let linkValue = topValue.value;
+    //     changeLinkedValues(linkValue);
+    // };
 
-    const onChangeTopValue = (event, value = '') => {
-        let newValue = value;
-        if ('' === value && '' !== event) {
-            newValue =
-                event.target.value === ''
-                    ? ''
-                    : Number(event.target.value);
-        }
-        if (link) {
-            changeLinkedValues(newValue);
-        }
-        setAttributes({ [topValue.label]: newValue });
+    // const onChangeTopValue = (event, value = '') => {
+    //     let newValue = value;
+    //     if ('' === value && '' !== event) {
+    //         newValue =
+    //             event.target.value === ''
+    //                 ? ''
+    //                 : Number(event.target.value);
+    //     }
+    //     if (link) {
+    //         changeLinkedValues(newValue);
+    //     }
+    //     setAttributes({ [topValue.label]: newValue });
+    // }
+
+    // const onChangeRightValue = (event, value = '') => {
+    //     let newValue = value;
+    //     if ('' === value && '' !== event) {
+    //         newValue =
+    //             event.target.value === ''
+    //                 ? ''
+    //                 : Number(event.target.value);
+    //     }
+    //     if (link) {
+    //         changeLinkedValues(newValue);
+    //     }
+    //     setAttributes({ [rightValue.label]: newValue });
+    // };
+
+    // const onChangeBottomValue = (event, value = '') => {
+    //     let newValue = value;
+    //     if ('' === value && '' !== event) {
+    //         newValue =
+    //             event.target.value === ''
+    //                 ? ''
+    //                 : Number(event.target.value);
+    //     }
+    //     if (link) {
+    //         changeLinkedValues(newValue);
+    //     }
+    //     setAttributes({ [bottomValue.label]: newValue });
+    // };
+
+    // const changeLinkedValues = (newValue) => {
+    //     setAttributes({ [topValue.label]: newValue });
+    //     setAttributes({ [rightValue.label]: newValue });
+    //     setAttributes({ [bottomValue.label]: newValue });
+    //     setAttributes({ [leftValue.label]: newValue });
+    // };
+
+
+    // const onChangeLeftValue = (event, value = '') => {
+    //     let newValue = value;
+    //     if ('' === value && '' !== event) {
+    //         newValue =
+    //             event.target.value === ''
+    //                 ? ''
+    //                 : Number(event.target.value);
+    //     }
+    //     if (link) {
+    //         changeLinkedValues(newValue);
+    //     }
+    //     setAttributes({ [leftValue.label]: newValue });
+    // };
+
+    const onChangeValue = (side, v) => {
+        const newPadding = { ...value };
+        responsive ? newPadding[device][side] = v : newPadding[side] = v
+        setAttributes({ attribute: newPadding });
     }
-
-    const onChangeRightValue = (event, value = '') => {
-        let newValue = value;
-        if ('' === value && '' !== event) {
-            newValue =
-                event.target.value === ''
-                    ? ''
-                    : Number(event.target.value);
-        }
-        if (link) {
-            changeLinkedValues(newValue);
-        }
-        setAttributes({ [rightValue.label]: newValue });
-    };
-
-    const onChangeBottomValue = (event, value = '') => {
-        let newValue = value;
-        if ('' === value && '' !== event) {
-            newValue =
-                event.target.value === ''
-                    ? ''
-                    : Number(event.target.value);
-        }
-        if (link) {
-            changeLinkedValues(newValue);
-        }
-        setAttributes({ [bottomValue.label]: newValue });
-    };
-
-    const changeLinkedValues = (newValue) => {
-        setAttributes({ [topValue.label]: newValue });
-        setAttributes({ [rightValue.label]: newValue });
-        setAttributes({ [bottomValue.label]: newValue });
-        setAttributes({ [leftValue.label]: newValue });
-    };
-
-
-    const onChangeLeftValue = (event, value = '') => {
-        let newValue = value;
-        if ('' === value && '' !== event) {
-            newValue =
-                event.target.value === ''
-                    ? ''
-                    : Number(event.target.value);
-        }
-        if (link) {
-            changeLinkedValues(newValue);
-        }
-        setAttributes({ [leftValue.label]: newValue });
-    };
 
     let linkHtml = '';
 
@@ -123,67 +129,67 @@ function PremiumSpacing(props) {
             ></span>
         );
     }
-    const resetValues = () => {
-        const cachedValueUpdate = { ...cached };
-        setCached(cachedValueUpdate);
+    // const resetValues = () => {
+    //     const cachedValueUpdate = { ...cached };
+    //     setCached(cachedValueUpdate);
 
-        switch (device) {
-            case 'desktop':
-                onChangeTopValue('', cached.valueTop.value);
-                onChangeRightValue(
-                    '',
+    //     switch (device) {
+    //         case 'desktop':
+    //             onChangeTopValue('', cached.valueTop.value);
+    //             onChangeRightValue(
+    //                 '',
 
-                    cached.valueRight.value
-                );
-                onChangeBottomValue(
-                    '',
-                    cached.valueBottom.value
-                );
-                onChangeLeftValue('', cached.valueLeft.value);
-                break;
-            case 'tablet':
-                onChangeTopValue(
-                    '',
-                    cached.valueTopTablet.value
-                );
-                onChangeRightValue(
-                    '',
-                    'tablet',
-                    cached.valueRightTablet.value
-                );
-                onChangeBottomValue(
-                    '',
-                    cached.valueBottomTablet.value
-                );
-                onChangeLeftValue(
-                    '',
-                    cached.valueLeftTablet.value
-                );
-                break;
-            case 'mobile':
-                onChangeTopValue(
-                    '',
-                    cached.valueTopMobile.value
-                );
-                onChangeRightValue(
-                    '',
-                    cached.valueRightMobile.value
-                );
-                onChangeBottomValue(
-                    '',
-                    cached.valueBottomMobile.value
-                );
-                onChangeLeftValue(
-                    '',
-                    cached.valueLeftMobile.value
-                );
-                break;
-        }
-    };
-    const onChange = (type, newValue) => {
+    //                 cached.valueRight.value
+    //             );
+    //             onChangeBottomValue(
+    //                 '',
+    //                 cached.valueBottom.value
+    //             );
+    //             onChangeLeftValue('', cached.valueLeft.value);
+    //             break;
+    //         case 'tablet':
+    //             onChangeTopValue(
+    //                 '',
+    //                 cached.valueTopTablet.value
+    //             );
+    //             onChangeRightValue(
+    //                 '',
+    //                 'tablet',
+    //                 cached.valueRightTablet.value
+    //             );
+    //             onChangeBottomValue(
+    //                 '',
+    //                 cached.valueBottomTablet.value
+    //             );
+    //             onChangeLeftValue(
+    //                 '',
+    //                 cached.valueLeftTablet.value
+    //             );
+    //             break;
+    //         case 'mobile':
+    //             onChangeTopValue(
+    //                 '',
+    //                 cached.valueTopMobile.value
+    //             );
+    //             onChangeRightValue(
+    //                 '',
+    //                 cached.valueRightMobile.value
+    //             );
+    //             onChangeBottomValue(
+    //                 '',
+    //                 cached.valueBottomMobile.value
+    //             );
+    //             onChangeLeftValue(
+    //                 '',
+    //                 cached.valueLeftMobile.value
+    //             );
+    //             break;
+    //     }
+    // };
+    // const onChange = (type, newValue) => {
 
 
-    }
+    // }
     return (
         <div className={`premium-spacing-responsive`}>
             {props.label && <header className="premium-control-label-container">
@@ -206,8 +212,8 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChange("top", e)}
-                                value={topValue.value}
+                                onChange={(e) => onChangeValue("top", e.target.value)}
+                                value={value[device]['top']}
                                 min={0}
                             />
                             <span className={`premium-spacing-title`}>{__(`Top`)}</span>
@@ -216,8 +222,8 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChange("right", e)}
-                                value={rightValue.value}
+                                onChange={(e) => onChangeValue("right", e.target.value)}
+                                value={value[device]['right']}
                                 min={0}
                             />
                             <span className={`premium-spacing-title`}>{__(`Right`)}</span>
@@ -226,8 +232,8 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChange('bottom', e)}
-                                value={bottomValue.value}
+                                onChange={(e) => onChangeValue('bottom', e.target.value)}
+                                value={value[device]['bottom']}
                                 min={0}
                             />
                             <span className={`premium-spacing-title`}>{__(`Bottom`)}</span>
@@ -236,8 +242,8 @@ function PremiumSpacing(props) {
                             <input
                                 className={`premium-spacing-input`}
                                 type="number"
-                                onChange={(e) => onChange('left', e)}
-                                value={leftValue.value}
+                                onChange={(e) => onChangeValue('left', e.target.value)}
+                                value={value[device]['left']}
                                 min={0}
                             />
                             <span className={`premium-spacing-title`}>{__(`Left`)}</span>
