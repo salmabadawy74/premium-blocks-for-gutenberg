@@ -1,5 +1,4 @@
-import { FontAwesomeEnabled } from "../assets/js/settings";
-import { JsonUploadEnabled } from "../assets/js/settings";
+import { FontAwesomeEnabled, JsonUploadEnabled } from "../assets/js/settings";
 
 import "./blocks/accordion";
 import "./blocks/banner";
