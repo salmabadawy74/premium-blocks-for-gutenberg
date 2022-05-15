@@ -4590,7 +4590,6 @@ function Edit(props) {
     clientId,
     className
   } = props;
-  const inputSwitch = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   const inputFirstContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   const inputSecondContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   const [mounted, setMounted] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
@@ -4605,7 +4604,19 @@ function Edit(props) {
     const $style = document.createElement("style");
     $style.setAttribute("id", "premium-style-content-switcher-" + props.clientId);
     document.head.appendChild($style);
-    setTimeout(initToggleBox, 10);
+  }, []);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (!mounted) {
+      inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
+      inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
+      inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
+      inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
+    } else {
+      inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
+      inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
+      inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
+      inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
+    }
   }, [mounted]);
 
   const initToggleBox = () => {
@@ -4613,21 +4624,7 @@ function Edit(props) {
       block_id
     } = props.attributes;
     if (!block_id) return null;
-    setTimeout(inputSwitch.current.addEventListener("click", () => {
-      setMounted(!mounted);
-
-      if (mounted) {
-        inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
-        inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
-        inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
-        inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
-      } else {
-        inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
-        inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
-        inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
-        inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
-      }
-    }), 10);
+    setMounted(!mounted);
   };
 
   const getPreviewSize = (device, desktopSize, tabletSize, mobileSize) => {
@@ -6130,7 +6127,7 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
     className: `premium-content-switcher-toggle-switch-label`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
-    ref: inputSwitch,
+    onClick: () => initToggleBox(),
     type: "checkbox",
     className: `premium-content-switcher-toggle-switch-input ${props.clientId}`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
