@@ -4584,10 +4584,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function Edit(props) {
   const {
-    isSelected,
     attributes,
     setAttributes,
-    clientId,
     className
   } = props;
   const inputFirstContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
@@ -4815,32 +4813,6 @@ function Edit(props) {
     value: "h6",
     label: "H6"
   }];
-  const defaultSize = {
-    desktop: "",
-    tablet: "",
-    mobile: "",
-    unit: "px"
-  };
-  const defaultSpacingValue = {
-    desktop: {
-      top: '',
-      right: '',
-      bottom: '',
-      left: ''
-    },
-    tablet: {
-      top: '',
-      right: '',
-      bottom: '',
-      left: ''
-    },
-    mobile: {
-      top: '',
-      right: '',
-      bottom: '',
-      left: ''
-    }
-  };
   let btnGrad, btnGrad2, btnbg;
 
   if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -4856,7 +4828,6 @@ function Edit(props) {
     btnbg = containerStyles.backgroundImageURL ? `url('${containerStyles.backgroundImageURL}')` : '';
   }
 
-  console.log(btnbg);
   const SwitcherSize = getPreviewSize(props.deviceType, switcherStyles.switchSize, switcherStyles.switchSizeTablet, switcherStyles.switchSizeMobile);
   const SwitcherBorderRadius = getPreviewSize(props.deviceType, switcherStyles.switchRadius, switcherStyles.switchRadiusTablet, switcherStyles.switchRadiusMobile);
   const ContainerBorderRadius = getPreviewSize(props.deviceType, switcherStyles.containerRadius, switcherStyles.containerRadiusTablet, switcherStyles.containerRadiusMobile);
@@ -6051,11 +6022,7 @@ function Edit(props) {
                  `), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useBlockProps)({
     className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, `premium-block-${props.clientId}`)
   }), {
-    id: `premium-content-switcher-${block_id}` // className={classnames(
-    //     className,
-    //     `premium-block-${props.clientId}`
-    // )}
-    ,
+    id: `premium-content-switcher-${block_id}`,
     style: {
       textAlign: align
     }
@@ -6131,9 +6098,7 @@ function Edit(props) {
     type: "checkbox",
     className: `premium-content-switcher-toggle-switch-input ${props.clientId}`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "premium-content-switcher-toggle-switch-slider round",
-    style: {// borderRadius: switchRadius + "px"
-    }
+    className: "premium-content-switcher-toggle-switch-slider round"
   }))), showLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-content-switcher-second-label"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.RichText, {
@@ -6303,8 +6268,8 @@ function save(props) {
     secondContent,
     firstcontentlign,
     secondcontentlign,
-    switcherStyles,
     // backgroundType,
+    switcherStyles,
     labelStyles,
     firstLabelBorderTop,
     firstLabelBorderRight,
@@ -6312,37 +6277,12 @@ function save(props) {
     firstLabelBorderLeft,
     firstLabelBorderUpdated,
     firstLabelBorderWidth,
-    firstLabelPaddingT,
-    firstLabelPaddingR,
-    firstLabelPaddingB,
-    firstLabelPaddingL,
-    firstLabelPaddingTTablet,
-    firstLabelPaddingRTablet,
-    firstLabelPaddingBTablet,
-    firstLabelPaddingLTablet,
-    firstLabelPaddingTMobile,
-    firstLabelPaddingRMobile,
-    firstLabelPaddingBMobile,
-    firstLabelPaddingLMobile,
     secondLabelBorderTop,
     secondLabelBorderRight,
     secondLabelBorderBottom,
     secondLabelBorderLeft,
     secondLabelBorderUpdated,
     secondLabelBorderWidth,
-    secondLabelPaddingT,
-    secondLabelPaddingR,
-    secondLabelPaddingB,
-    secondLabelPaddingL,
-    secondLabelPaddingTTablet,
-    secondLabelPaddingRTablet,
-    secondLabelPaddingBTablet,
-    secondLabelPaddingLTablet,
-    secondLabelPaddingTMobile,
-    secondLabelPaddingRMobile,
-    secondLabelPaddingBMobile,
-    secondLabelPaddingLMobile,
-    contentStyles,
     firstContentStyles,
     firstContentBorderTop,
     firstContentBorderRight,
@@ -6350,30 +6290,6 @@ function save(props) {
     firstContentBorderLeft,
     firstContentBorderUpdated,
     firstContentBorderWidth,
-    firstContentMarginT,
-    firstContentMarginR,
-    firstContentMarginB,
-    firstContentMarginL,
-    firstContentMarginTTablet,
-    firstContentMarginRTablet,
-    firstContentMarginBTablet,
-    firstContentMarginLTablet,
-    firstContentMarginTMobile,
-    firstContentMarginRMobile,
-    firstContentMarginBMobile,
-    firstContentMarginLMobile,
-    contentPaddingT,
-    contentPaddingR,
-    contentPaddingB,
-    contentPaddingL,
-    contentPaddingTTablet,
-    contentPaddingRTablet,
-    contentPaddingBTablet,
-    contentPaddingLTablet,
-    contentPaddingTMobile,
-    contentPaddingRMobile,
-    contentPaddingBMobile,
-    contentPaddingLMobile,
     secondContentStyles,
     secondContentBorderTop,
     secondContentBorderRight,
@@ -6389,30 +6305,6 @@ function save(props) {
     containerBorderLeft,
     containerBorderUpdated,
     containerBorderWidth,
-    containerPaddingT,
-    containerPaddingR,
-    containerPaddingB,
-    containerPaddingL,
-    containerPaddingTTablet,
-    containerPaddingRTablet,
-    containerPaddingBTablet,
-    containerPaddingLTablet,
-    containerPaddingTMobile,
-    containerPaddingRMobile,
-    containerPaddingBMobile,
-    containerPaddingLMobile,
-    containerMarginT,
-    containerMarginR,
-    containerMarginB,
-    containerMarginL,
-    containerMarginTTablet,
-    containerMarginRTablet,
-    containerMarginBTablet,
-    containerMarginLTablet,
-    containerMarginTMobile,
-    containerMarginRMobile,
-    containerMarginBMobile,
-    containerMarginLMobile,
     effect,
     slide
   } = attributes;
@@ -6423,7 +6315,14 @@ function save(props) {
     style: {
       textAlign: align
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, `
+                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
+                         box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
+                     }
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
+                         box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
+                     }
+                 `), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher`,
     style: {
       textAlign: align,
@@ -6437,15 +6336,7 @@ function save(props) {
       borderStyle: containerStyles.containerborderType,
       borderWidth: containerBorderUpdated ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px` : containerBorderWidth + "px",
       borderRadius: containerStyles.containerborderRadius + "px",
-      borderColor: containerStyles.containerborderColor // paddingTop: ContainerPaddingTop + containerStyles.containerPaddingType,
-      // paddingRight: ContainerPaddingRight + containerStyles.containerPaddingType,
-      // paddingBottom: ContainerPaddingBottom + containerStyles.containerPaddingType,
-      // paddingLeft: ContainerPaddingLeft + containerStyles.containerPaddingType,
-      // marginTop: ContainerMarginTop + containerStyles.containerMarginType,
-      // marginBottom: ContainerMarginBottom + containerStyles.containerMarginType,
-      // marginLeft: ContainerMarginLeft + containerStyles.containerMarginType,
-      // marginRight: ContainerMarginRight + containerStyles.containerMarginType,
-
+      borderColor: containerStyles.containerborderColor
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher-toggle-${display}`,
@@ -6465,7 +6356,6 @@ function save(props) {
     value: firstLabel,
     style: {
       color: labelStyles.firstLabelColor,
-      // fontSize: FirstLabelSize + labelStyles.firstLabelfontSizeType,
       letterSpacing: labelStyles.firstLabelLetter + "px",
       textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
       fontStyle: labelStyles.firstLabelStyle,
@@ -6476,26 +6366,18 @@ function save(props) {
       borderWidth: firstLabelBorderUpdated ? `${firstLabelBorderTop}px ${firstLabelBorderRight}px ${firstLabelBorderBottom}px ${firstLabelBorderLeft}px` : firstLabelBorderWidth + "px",
       borderRadius: labelStyles.firstLabelborderRadius + "px",
       borderColor: labelStyles.firstLabelborderColor,
-      // paddingTop: FirstLabelPaddingTop + labelStyles.firstLabelPaddingType,
-      // paddingBottom: FirstLabelPaddingBottom + labelStyles.firstLabelPaddingType,
-      // paddingLeft: FirstLabelPaddingLeft + labelStyles.firstLabelPaddingType,
-      // paddingRight: FirstLabelPaddingRight + labelStyles.firstLabelPaddingType,
       textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
       boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-content-switcher-toggle-switch",
-    style: {// fontSize: SwitcherSize + 'px',
-    }
+    className: "premium-content-switcher-toggle-switch"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
     className: `premium-content-switcher-toggle-switch-label`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: "checkbox",
     className: `premium-content-switcher-toggle-switch-input ${block_id}`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "premium-content-switcher-toggle-switch-slider round",
-    style: {// borderRadius: switchRadius + "px"
-    }
+    className: "premium-content-switcher-toggle-switch-slider round"
   }))), showLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-content-switcher-second-label"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
@@ -6507,7 +6389,6 @@ function save(props) {
     value: secondLabel,
     style: {
       color: labelStyles.secondLabelColor,
-      // fontSize: SecondLabelSize + labelStyles.secondLabelfontSizeType,
       letterSpacing: labelStyles.secondLabelLetter + "px",
       textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
       fontStyle: labelStyles.secondLabelStyle,
@@ -6518,20 +6399,11 @@ function save(props) {
       borderWidth: secondLabelBorderUpdated ? `${secondLabelBorderTop}px ${secondLabelBorderRight}px ${secondLabelBorderBottom}px ${secondLabelBorderLeft}px` : secondLabelBorderWidth + "px",
       borderRadius: labelStyles.secondLabelborderRadius + "px",
       borderColor: labelStyles.secondLabelborderColor,
-      // paddingTop: SecondLabelPaddingTop + labelStyles.secondLabelPaddingType,
-      // paddingBottom: SecondLabelPaddingBottom + labelStyles.secondLabelPaddingType,
-      // paddingLeft: SecondLabelPaddingLeft + labelStyles.secondLabelPaddingType,
-      // paddingRight: SecondLabelPaddingRight + labelStyles.secondLabelPaddingType,
       textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
       boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`
     }
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`,
-    style: {// marginTop: FirstContentMarginTop + firstContentStyles.firstContentMarginType,
-      // marginBottom: FirstContentMarginBottom + firstContentStyles.firstContentMarginType,
-      // marginLeft: FirstContentMarginLeft + firstContentStyles.firstContentMarginType,
-      // marginRight: FirstContentMarginRight + firstContentStyles.firstContentMarginType,
-    }
+    className: `premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
     className: "premium-content-switcher-two-content"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
@@ -6542,11 +6414,6 @@ function save(props) {
       borderWidth: firstContentBorderUpdated ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px` : firstContentBorderWidth + "px",
       borderRadius: firstContentStyles.firstContentborderRadius + "px",
       borderColor: firstContentStyles.firstContentborderColor,
-      // minHeight: ContentHeight + contentStyles.contentHeightType,
-      // paddingTop: ContentPaddingTop + firstContentStyles.firstContentPaddingType,
-      // paddingBottom: ContentPaddingBottom + firstContentStyles.firstContentPaddingType,
-      // paddingLeft: ContentPaddingLeft + firstContentStyles.firstContentPaddingType,
-      // paddingRight: ContentPaddingRight + firstContentStyles.firstContentPaddingType,
       boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
@@ -6562,7 +6429,6 @@ function save(props) {
       textAlign: firstcontentlign,
       justifyContent: firstcontentlign,
       color: firstContentStyles.firstContentColor,
-      // fontSize: FirstContentSize + firstContentStyles.firstContentfontSizeType,
       letterSpacing: firstContentStyles.firstContentLetter + "px",
       textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
       fontStyle: firstContentStyles.firstContentStyle,
@@ -6579,11 +6445,6 @@ function save(props) {
       borderWidth: secondContentBorderUpdated ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px` : secondContentBorderWidth + "px",
       borderRadius: secondContentStyles.secondContentborderRadius + "px",
       borderColor: secondContentStyles.secondContentborderColor,
-      // minHeight: ContentHeight + contentStyles.contentHeightType,
-      // paddingTop: ContentPaddingTop + secondContentStyles.secondContentPaddingType,
-      // paddingBottom: ContentPaddingBottom + secondContentStyles.secondContentPaddingType,
-      // paddingLeft: ContentPaddingLeft + secondContentStyles.secondContentPaddingType,
-      // paddingRight: ContentPaddingRight + secondContentStyles.secondContentPaddingType,
       boxShadow: `${secondContentStyles.secondContentBoxShadowHorizontal}px ${secondContentStyles.secondContentBoxShadowVertical}px ${secondContentStyles.secondContentBoxShadowBlur}px ${secondContentStyles.secondContentBoxShadowColor} ${secondContentStyles.secondContentBoxShadowPosition}`
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
@@ -6599,7 +6460,6 @@ function save(props) {
       textAlign: secondcontentlign,
       justifyContent: secondcontentlign,
       color: secondContentStyles.secondContentColor,
-      // fontSize: SecondContentSize + secondContentStyles.secondContentfontSizeType,
       letterSpacing: secondContentStyles.secondContentLetter + "px",
       textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
       fontStyle: secondContentStyles.secondContentStyle,

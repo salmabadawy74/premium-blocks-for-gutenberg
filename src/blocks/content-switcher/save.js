@@ -20,8 +20,8 @@ export default function save(props) {
         secondContent,
         firstcontentlign,
         secondcontentlign,
-        switcherStyles,
         // backgroundType,
+        switcherStyles,
         labelStyles,
         firstLabelBorderTop,
         firstLabelBorderRight,
@@ -29,37 +29,12 @@ export default function save(props) {
         firstLabelBorderLeft,
         firstLabelBorderUpdated,
         firstLabelBorderWidth,
-        firstLabelPaddingT,
-        firstLabelPaddingR,
-        firstLabelPaddingB,
-        firstLabelPaddingL,
-        firstLabelPaddingTTablet,
-        firstLabelPaddingRTablet,
-        firstLabelPaddingBTablet,
-        firstLabelPaddingLTablet,
-        firstLabelPaddingTMobile,
-        firstLabelPaddingRMobile,
-        firstLabelPaddingBMobile,
-        firstLabelPaddingLMobile,
         secondLabelBorderTop,
         secondLabelBorderRight,
         secondLabelBorderBottom,
         secondLabelBorderLeft,
         secondLabelBorderUpdated,
         secondLabelBorderWidth,
-        secondLabelPaddingT,
-        secondLabelPaddingR,
-        secondLabelPaddingB,
-        secondLabelPaddingL,
-        secondLabelPaddingTTablet,
-        secondLabelPaddingRTablet,
-        secondLabelPaddingBTablet,
-        secondLabelPaddingLTablet,
-        secondLabelPaddingTMobile,
-        secondLabelPaddingRMobile,
-        secondLabelPaddingBMobile,
-        secondLabelPaddingLMobile,
-        contentStyles,
         firstContentStyles,
         firstContentBorderTop,
         firstContentBorderRight,
@@ -67,30 +42,6 @@ export default function save(props) {
         firstContentBorderLeft,
         firstContentBorderUpdated,
         firstContentBorderWidth,
-        firstContentMarginT,
-        firstContentMarginR,
-        firstContentMarginB,
-        firstContentMarginL,
-        firstContentMarginTTablet,
-        firstContentMarginRTablet,
-        firstContentMarginBTablet,
-        firstContentMarginLTablet,
-        firstContentMarginTMobile,
-        firstContentMarginRMobile,
-        firstContentMarginBMobile,
-        firstContentMarginLMobile,
-        contentPaddingT,
-        contentPaddingR,
-        contentPaddingB,
-        contentPaddingL,
-        contentPaddingTTablet,
-        contentPaddingRTablet,
-        contentPaddingBTablet,
-        contentPaddingLTablet,
-        contentPaddingTMobile,
-        contentPaddingRMobile,
-        contentPaddingBMobile,
-        contentPaddingLMobile,
         secondContentStyles,
         secondContentBorderTop,
         secondContentBorderRight,
@@ -106,30 +57,6 @@ export default function save(props) {
         containerBorderLeft,
         containerBorderUpdated,
         containerBorderWidth,
-        containerPaddingT,
-        containerPaddingR,
-        containerPaddingB,
-        containerPaddingL,
-        containerPaddingTTablet,
-        containerPaddingRTablet,
-        containerPaddingBTablet,
-        containerPaddingLTablet,
-        containerPaddingTMobile,
-        containerPaddingRMobile,
-        containerPaddingBMobile,
-        containerPaddingLMobile,
-        containerMarginT,
-        containerMarginR,
-        containerMarginB,
-        containerMarginL,
-        containerMarginTTablet,
-        containerMarginRTablet,
-        containerMarginBTablet,
-        containerMarginLTablet,
-        containerMarginTMobile,
-        containerMarginRMobile,
-        containerMarginBMobile,
-        containerMarginLMobile,
         effect,
         slide
     } = attributes
@@ -148,30 +75,17 @@ export default function save(props) {
             }}
         >
 
-            {/* <style>
+            <style>
                 {`
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
-                        //  border-radius: ${ContainerBorderRadius}${switcherStyles.containerRadiusType} !important;
                          box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
-                        // border-radius: ${SwitcherBorderRadius}${switcherStyles.switchRadiusType} !important;
                          box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
                      }
-                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
-                         margin-right: ${LabelSpacing}px !important;
-                    }
-                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
-                        margin-left: ${LabelSpacing}px !important;
-                    }
-                   #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
-                         margin-bottom: ${LabelSpacing}px !important;
-                     }
-                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
-                        margin-top: ${LabelSpacing}px !important;
-                    }
                  `}
-            </style> */}
+            </style>
+
             <div className={`premium-content-switcher`}
                 style={{
                     textAlign: align,
@@ -187,15 +101,7 @@ export default function save(props) {
                         ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
                         : containerBorderWidth + "px",
                     borderRadius: containerStyles.containerborderRadius + "px",
-                    borderColor: containerStyles.containerborderColor,
-                    // paddingTop: ContainerPaddingTop + containerStyles.containerPaddingType,
-                    // paddingRight: ContainerPaddingRight + containerStyles.containerPaddingType,
-                    // paddingBottom: ContainerPaddingBottom + containerStyles.containerPaddingType,
-                    // paddingLeft: ContainerPaddingLeft + containerStyles.containerPaddingType,
-                    // marginTop: ContainerMarginTop + containerStyles.containerMarginType,
-                    // marginBottom: ContainerMarginBottom + containerStyles.containerMarginType,
-                    // marginLeft: ContainerMarginLeft + containerStyles.containerMarginType,
-                    // marginRight: ContainerMarginRight + containerStyles.containerMarginType,
+                    borderColor: containerStyles.containerborderColor
                 }}>
                 <div className={`premium-content-switcher-toggle-${display}`}
                     style={{
@@ -211,7 +117,6 @@ export default function save(props) {
                             value={firstLabel}
                             style={{
                                 color: labelStyles.firstLabelColor,
-                                // fontSize: FirstLabelSize + labelStyles.firstLabelfontSizeType,
                                 letterSpacing: labelStyles.firstLabelLetter + "px",
                                 textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
                                 fontStyle: labelStyles.firstLabelStyle,
@@ -224,10 +129,6 @@ export default function save(props) {
                                     : firstLabelBorderWidth + "px",
                                 borderRadius: labelStyles.firstLabelborderRadius + "px",
                                 borderColor: labelStyles.firstLabelborderColor,
-                                // paddingTop: FirstLabelPaddingTop + labelStyles.firstLabelPaddingType,
-                                // paddingBottom: FirstLabelPaddingBottom + labelStyles.firstLabelPaddingType,
-                                // paddingLeft: FirstLabelPaddingLeft + labelStyles.firstLabelPaddingType,
-                                // paddingRight: FirstLabelPaddingRight + labelStyles.firstLabelPaddingType,
                                 textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
                                 boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`,
                             }}
@@ -236,16 +137,10 @@ export default function save(props) {
                     )}
                     <div
                         className="premium-content-switcher-toggle-switch"
-                        style={{
-                            // fontSize: SwitcherSize + 'px',
-                        }}
                     >
                         <label className={`premium-content-switcher-toggle-switch-label`}>
                             <input type="checkbox" className={`premium-content-switcher-toggle-switch-input ${block_id}`} />
-                            <span className="premium-content-switcher-toggle-switch-slider round"
-                                style={{
-                                    // borderRadius: switchRadius + "px"
-                                }}></span>
+                            <span className="premium-content-switcher-toggle-switch-slider round"></span>
                         </label>
                     </div>
                     {showLabel && (<div className="premium-content-switcher-second-label">
@@ -256,7 +151,6 @@ export default function save(props) {
                             value={secondLabel}
                             style={{
                                 color: labelStyles.secondLabelColor,
-                                // fontSize: SecondLabelSize + labelStyles.secondLabelfontSizeType,
                                 letterSpacing: labelStyles.secondLabelLetter + "px",
                                 textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
                                 fontStyle: labelStyles.secondLabelStyle,
@@ -269,10 +163,6 @@ export default function save(props) {
                                     : secondLabelBorderWidth + "px",
                                 borderRadius: labelStyles.secondLabelborderRadius + "px",
                                 borderColor: labelStyles.secondLabelborderColor,
-                                // paddingTop: SecondLabelPaddingTop + labelStyles.secondLabelPaddingType,
-                                // paddingBottom: SecondLabelPaddingBottom + labelStyles.secondLabelPaddingType,
-                                // paddingLeft: SecondLabelPaddingLeft + labelStyles.secondLabelPaddingType,
-                                // paddingRight: SecondLabelPaddingRight + labelStyles.secondLabelPaddingType,
                                 textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
                                 boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`,
                             }}
@@ -282,12 +172,6 @@ export default function save(props) {
                 </div>
                 <div
                     className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}
-                    style={{
-                        // marginTop: FirstContentMarginTop + firstContentStyles.firstContentMarginType,
-                        // marginBottom: FirstContentMarginBottom + firstContentStyles.firstContentMarginType,
-                        // marginLeft: FirstContentMarginLeft + firstContentStyles.firstContentMarginType,
-                        // marginRight: FirstContentMarginRight + firstContentStyles.firstContentMarginType,
-                    }}
                 >
                     <ul className="premium-content-switcher-two-content">
                         <li className={`premium-content-switcher-first-list premium-content-switcher-is-visible ${block_id}`}
@@ -299,11 +183,6 @@ export default function save(props) {
                                     : firstContentBorderWidth + "px",
                                 borderRadius: firstContentStyles.firstContentborderRadius + "px",
                                 borderColor: firstContentStyles.firstContentborderColor,
-                                // minHeight: ContentHeight + contentStyles.contentHeightType,
-                                // paddingTop: ContentPaddingTop + firstContentStyles.firstContentPaddingType,
-                                // paddingBottom: ContentPaddingBottom + firstContentStyles.firstContentPaddingType,
-                                // paddingLeft: ContentPaddingLeft + firstContentStyles.firstContentPaddingType,
-                                // paddingRight: ContentPaddingRight + firstContentStyles.firstContentPaddingType,
                                 boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`,
                             }}>
                             <RichText.Content
@@ -317,7 +196,6 @@ export default function save(props) {
                                     textAlign: firstcontentlign,
                                     justifyContent: firstcontentlign,
                                     color: firstContentStyles.firstContentColor,
-                                    // fontSize: FirstContentSize + firstContentStyles.firstContentfontSizeType,
                                     letterSpacing: firstContentStyles.firstContentLetter + "px",
                                     textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
                                     fontStyle: firstContentStyles.firstContentStyle,
@@ -337,11 +215,6 @@ export default function save(props) {
                                     : secondContentBorderWidth + "px",
                                 borderRadius: secondContentStyles.secondContentborderRadius + "px",
                                 borderColor: secondContentStyles.secondContentborderColor,
-                                // minHeight: ContentHeight + contentStyles.contentHeightType,
-                                // paddingTop: ContentPaddingTop + secondContentStyles.secondContentPaddingType,
-                                // paddingBottom: ContentPaddingBottom + secondContentStyles.secondContentPaddingType,
-                                // paddingLeft: ContentPaddingLeft + secondContentStyles.secondContentPaddingType,
-                                // paddingRight: ContentPaddingRight + secondContentStyles.secondContentPaddingType,
                                 boxShadow: `${secondContentStyles.secondContentBoxShadowHorizontal}px ${secondContentStyles.secondContentBoxShadowVertical}px ${secondContentStyles.secondContentBoxShadowBlur}px ${secondContentStyles.secondContentBoxShadowColor} ${secondContentStyles.secondContentBoxShadowPosition}`,
                             }}>
                             <RichText.Content
@@ -355,7 +228,6 @@ export default function save(props) {
                                     textAlign: secondcontentlign,
                                     justifyContent: secondcontentlign,
                                     color: secondContentStyles.secondContentColor,
-                                    // fontSize: SecondContentSize + secondContentStyles.secondContentfontSizeType,
                                     letterSpacing: secondContentStyles.secondContentLetter + "px",
                                     textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
                                     fontStyle: secondContentStyles.secondContentStyle,
