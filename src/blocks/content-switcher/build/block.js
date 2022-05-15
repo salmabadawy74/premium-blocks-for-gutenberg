@@ -5103,322 +5103,342 @@ function Edit(props) {
     defaultValue: 15,
     min: 1,
     max: 100
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
-    className: "premium-content-switcher-labels-style"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("First Label")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-    colorValue: labelStyles.firstLabelColor,
-    colorDefault: '',
-    onColorChange: newValue => saveLabelStyles('firstLabelColor', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-    setAttributes: saveLabelStyles,
-    fontSizeType: {
-      value: labelStyles.firstLabelfontSizeType,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("firstLabelfontSizeType")
-    },
-    fontSize: labelStyles.firstLabelfontSize,
-    fontSizeMobile: labelStyles.firstLabelfontSizeMobile,
-    fontSizeTablet: labelStyles.firstLabelfontSizeTablet,
-    onChangeSize: newSize => saveLabelStyles('firstLabelfontSize', newSize),
-    onChangeTabletSize: newSize => saveLabelStyles('firstLabelfontSizeTablet', newSize),
-    onChangeMobileSize: newSize => saveLabelStyles('firstLabelfontSizeMobile', newSize),
-    weight: labelStyles.firstLabelWeight,
-    style: labelStyles.firstLabelStyle,
-    spacing: labelStyles.firstLabelLetter,
-    upper: labelStyles.firstLabelUpper,
-    line: labelStyles.firstLabelLine,
-    fontFamily: labelStyles.firstLabelFontFamily,
-    onChangeWeight: newWeight => saveLabelStyles('firstLabelWeight', newWeight || 500),
-    onChangeStyle: newStyle => saveLabelStyles('firstLabelStyle', newStyle),
-    onChangeSpacing: newValue => saveLabelStyles('firstLabelLetter', newValue),
-    onChangeUpper: check => saveLabelStyles('firstLabelUpper', check),
-    onChangeLine: newValue => saveLabelStyles('firstLabelLine', newValue),
-    onChangeFamily: fontFamily => saveLabelStyles('firstLabelFontFamily', fontFamily)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
-    color: labelStyles.firstLabelShadowColor,
-    blur: labelStyles.firstLabelShadowBlur,
-    horizontal: labelStyles.firstLabelShadowHorizontal,
-    vertical: labelStyles.firstLabelShadowVertical,
-    onChangeColor: newColor => saveLabelStyles('firstLabelShadowColor', newColor),
-    onChangeBlur: newBlur => saveLabelStyles('firstLabelShadowBlur', newBlur),
-    onChangehHorizontal: newValue => saveLabelStyles('firstLabelShadowHorizontal', newValue),
-    onChangeVertical: newValue => saveLabelStyles('firstLabelShadowVertical', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    borderType: labelStyles.firstLabelborderType,
-    borderWidth: firstLabelBorderWidth,
-    top: firstLabelBorderTop,
-    right: firstLabelBorderRight,
-    bottom: firstLabelBorderBottom,
-    left: firstLabelBorderLeft,
-    borderColor: labelStyles.firstLabelborderColor,
-    borderRadius: labelStyles.firstLabelborderRadius,
-    onChangeType: newType => saveLabelStyles('firstLabelborderType', newType),
-    onChangeWidth: _ref => {
-      let {
-        top,
-        right,
-        bottom,
-        left
-      } = _ref;
-      return setAttributes({
-        firstLabelBorderUpdated: true,
-        firstLabelBorderTop: top,
-        firstLabelBorderRight: right,
-        firstLabelBorderBottom: bottom,
-        firstLabelBorderLeft: left
-      });
-    },
-    onChangeColor: colorValue => saveLabelStyles('firstLabelborderColor', colorValue),
-    onChangeRadius: newrRadius => saveLabelStyles('firstLabelborderRadius', newrRadius)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
-    boxShadow: true,
-    color: labelStyles.firstLabelBoxShadowColor,
-    blur: labelStyles.firstLabelBoxShadowBlur,
-    horizontal: labelStyles.firstLabelBoxShadowHorizontal,
-    vertical: labelStyles.firstLabelBoxShadowVertical,
-    position: labelStyles.firstLabelBoxShadowPosition,
-    onChangeColor: newColor => saveLabelStyles('firstLabelBoxShadowColor', newColor),
-    onChangeBlur: newBlur => saveLabelStyles('firstLabelBoxShadowBlur', newBlur),
-    onChangehHorizontal: newValue => saveLabelStyles('firstLabelBoxShadowHorizontal', newValue),
-    onChangeVertical: newValue => saveLabelStyles('firstLabelBoxShadowVertical', newValue),
-    onChangePosition: newValue => saveLabelStyles('firstLabelBoxShadowPosition', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    paddingTop: firstLabelPaddingT,
-    paddingRight: firstLabelPaddingR,
-    paddingBottom: firstLabelPaddingB,
-    paddingLeft: firstLabelPaddingL,
-    paddingTopTablet: firstLabelPaddingTTablet,
-    paddingRightTablet: firstLabelPaddingRTablet,
-    paddingBottomTablet: firstLabelPaddingBTablet,
-    paddingLeftTablet: firstLabelPaddingLTablet,
-    paddingTopMobile: firstLabelPaddingTMobile,
-    paddingRightMobile: firstLabelPaddingRMobile,
-    paddingBottomMobile: firstLabelPaddingBMobile,
-    paddingLeftMobile: firstLabelPaddingLMobile,
-    showUnits: true,
-    selectedUnit: labelStyles.firstLabelPaddingType,
-    onChangePadSizeUnit: newvalue => saveLabelStyles('firstLabelPaddingType', newvalue),
-    onChangePaddingTop: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          firstLabelPaddingT: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          firstLabelPaddingTTablet: newValue
-        });
-      } else {
-        setAttributes({
-          firstLabelPaddingTMobile: newValue
-        });
-      }
-    },
-    onChangePaddingRight: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          firstLabelPaddingR: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          firstLabelPaddingRTablet: newValue
-        });
-      } else {
-        setAttributes({
-          firstLabelPaddingRMobile: newValue
-        });
-      }
-    },
-    onChangePaddingBottom: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          firstLabelPaddingB: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          firstLabelPaddingBTablet: newValue
-        });
-      } else {
-        setAttributes({
-          firstLabelPaddingBMobile: newValue
-        });
-      }
-    },
-    onChangePaddingLeft: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          firstLabelPaddingL: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          firstLabelPaddingLTablet: newValue
-        });
-      } else {
-        setAttributes({
-          firstLabelPaddingLMobile: newValue
-        });
-      }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TabPanel, {
+    className: "premium-color-tabpanel",
+    activeClass: "active-tab",
+    tabs: [{
+      name: "firstLabel",
+      title: "First Label",
+      className: "premium-tab"
+    }, {
+      name: "secondLabel",
+      title: "Second Label",
+      className: "premium-tab"
+    }]
+  }, tab => {
+    let tabout;
+
+    if ("firstLabel" === tab.name) {
+      tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
+        colorValue: labelStyles.firstLabelColor,
+        colorDefault: '',
+        onColorChange: newValue => saveLabelStyles('firstLabelColor', newValue)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+        setAttributes: saveLabelStyles,
+        fontSizeType: {
+          value: labelStyles.firstLabelfontSizeType,
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("firstLabelfontSizeType")
+        },
+        fontSize: labelStyles.firstLabelfontSize,
+        fontSizeMobile: labelStyles.firstLabelfontSizeMobile,
+        fontSizeTablet: labelStyles.firstLabelfontSizeTablet,
+        onChangeSize: newSize => saveLabelStyles('firstLabelfontSize', newSize),
+        onChangeTabletSize: newSize => saveLabelStyles('firstLabelfontSizeTablet', newSize),
+        onChangeMobileSize: newSize => saveLabelStyles('firstLabelfontSizeMobile', newSize),
+        weight: labelStyles.firstLabelWeight,
+        style: labelStyles.firstLabelStyle,
+        spacing: labelStyles.firstLabelLetter,
+        upper: labelStyles.firstLabelUpper,
+        line: labelStyles.firstLabelLine,
+        fontFamily: labelStyles.firstLabelFontFamily,
+        onChangeWeight: newWeight => saveLabelStyles('firstLabelWeight', newWeight || 500),
+        onChangeStyle: newStyle => saveLabelStyles('firstLabelStyle', newStyle),
+        onChangeSpacing: newValue => saveLabelStyles('firstLabelLetter', newValue),
+        onChangeUpper: check => saveLabelStyles('firstLabelUpper', check),
+        onChangeLine: newValue => saveLabelStyles('firstLabelLine', newValue),
+        onChangeFamily: fontFamily => saveLabelStyles('firstLabelFontFamily', fontFamily)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
+        color: labelStyles.firstLabelShadowColor,
+        blur: labelStyles.firstLabelShadowBlur,
+        horizontal: labelStyles.firstLabelShadowHorizontal,
+        vertical: labelStyles.firstLabelShadowVertical,
+        onChangeColor: newColor => saveLabelStyles('firstLabelShadowColor', newColor),
+        onChangeBlur: newBlur => saveLabelStyles('firstLabelShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveLabelStyles('firstLabelShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveLabelStyles('firstLabelShadowVertical', newValue)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        borderType: labelStyles.firstLabelborderType,
+        borderWidth: firstLabelBorderWidth,
+        top: firstLabelBorderTop,
+        right: firstLabelBorderRight,
+        bottom: firstLabelBorderBottom,
+        left: firstLabelBorderLeft,
+        borderColor: labelStyles.firstLabelborderColor,
+        borderRadius: labelStyles.firstLabelborderRadius,
+        onChangeType: newType => saveLabelStyles('firstLabelborderType', newType),
+        onChangeWidth: _ref => {
+          let {
+            top,
+            right,
+            bottom,
+            left
+          } = _ref;
+          return setAttributes({
+            firstLabelBorderUpdated: true,
+            firstLabelBorderTop: top,
+            firstLabelBorderRight: right,
+            firstLabelBorderBottom: bottom,
+            firstLabelBorderLeft: left
+          });
+        },
+        onChangeColor: colorValue => saveLabelStyles('firstLabelborderColor', colorValue),
+        onChangeRadius: newrRadius => saveLabelStyles('firstLabelborderRadius', newrRadius)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
+        boxShadow: true,
+        color: labelStyles.firstLabelBoxShadowColor,
+        blur: labelStyles.firstLabelBoxShadowBlur,
+        horizontal: labelStyles.firstLabelBoxShadowHorizontal,
+        vertical: labelStyles.firstLabelBoxShadowVertical,
+        position: labelStyles.firstLabelBoxShadowPosition,
+        onChangeColor: newColor => saveLabelStyles('firstLabelBoxShadowColor', newColor),
+        onChangeBlur: newBlur => saveLabelStyles('firstLabelBoxShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveLabelStyles('firstLabelBoxShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveLabelStyles('firstLabelBoxShadowVertical', newValue),
+        onChangePosition: newValue => saveLabelStyles('firstLabelBoxShadowPosition', newValue)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        paddingTop: firstLabelPaddingT,
+        paddingRight: firstLabelPaddingR,
+        paddingBottom: firstLabelPaddingB,
+        paddingLeft: firstLabelPaddingL,
+        paddingTopTablet: firstLabelPaddingTTablet,
+        paddingRightTablet: firstLabelPaddingRTablet,
+        paddingBottomTablet: firstLabelPaddingBTablet,
+        paddingLeftTablet: firstLabelPaddingLTablet,
+        paddingTopMobile: firstLabelPaddingTMobile,
+        paddingRightMobile: firstLabelPaddingRMobile,
+        paddingBottomMobile: firstLabelPaddingBMobile,
+        paddingLeftMobile: firstLabelPaddingLMobile,
+        showUnits: true,
+        selectedUnit: labelStyles.firstLabelPaddingType,
+        onChangePadSizeUnit: newvalue => saveLabelStyles('firstLabelPaddingType', newvalue),
+        onChangePaddingTop: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              firstLabelPaddingT: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              firstLabelPaddingTTablet: newValue
+            });
+          } else {
+            setAttributes({
+              firstLabelPaddingTMobile: newValue
+            });
+          }
+        },
+        onChangePaddingRight: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              firstLabelPaddingR: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              firstLabelPaddingRTablet: newValue
+            });
+          } else {
+            setAttributes({
+              firstLabelPaddingRMobile: newValue
+            });
+          }
+        },
+        onChangePaddingBottom: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              firstLabelPaddingB: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              firstLabelPaddingBTablet: newValue
+            });
+          } else {
+            setAttributes({
+              firstLabelPaddingBMobile: newValue
+            });
+          }
+        },
+        onChangePaddingLeft: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              firstLabelPaddingL: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              firstLabelPaddingLTablet: newValue
+            });
+          } else {
+            setAttributes({
+              firstLabelPaddingLMobile: newValue
+            });
+          }
+        }
+      }));
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
-    className: "premium-content-switcher-labels-style"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Second Label")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-    colorValue: labelStyles.secondLabelColor,
-    colorDefault: '',
-    onColorChange: newValue => saveLabelStyles('secondLabelColor', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-    setAttributes: saveLabelStyles,
-    fontSizeType: {
-      value: labelStyles.secondLabelfontSizeType,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("secondLabelfontSizeType")
-    },
-    fontSize: labelStyles.secondLabelfontSize,
-    fontSizeMobile: labelStyles.secondLabelfontSizeMobile,
-    fontSizeTablet: labelStyles.secondLabelfontSizeTablet,
-    onChangeSize: newSize => saveLabelStyles('secondLabelfontSize', newSize),
-    onChangeTabletSize: newSize => saveLabelStyles('secondLabelfontSizeTablet', newSize),
-    onChangeMobileSize: newSize => saveLabelStyles('secondLabelfontSizeMobile', newSize),
-    weight: labelStyles.secondLabelWeight,
-    style: labelStyles.secondLabelStyle,
-    spacing: labelStyles.secondLabelLetter,
-    upper: labelStyles.secondLabelUpper,
-    line: labelStyles.secondLabelLine,
-    fontFamily: labelStyles.secondLabelFontFamily,
-    onChangeWeight: newWeight => saveLabelStyles('secondLabelWeight', newWeight || 500),
-    onChangeStyle: newStyle => saveLabelStyles('secondLabelStyle', newStyle),
-    onChangeSpacing: newValue => saveLabelStyles('secondLabelLetter', newValue),
-    onChangeUpper: check => saveLabelStyles('secondLabelUpper', check),
-    onChangeLine: newValue => saveLabelStyles('secondLabelLine', newValue),
-    onChangeFamily: fontFamily => saveLabelStyles('secondLabelFontFamily', fontFamily)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
-    color: labelStyles.secondLabelShadowColor,
-    blur: labelStyles.secondLabelShadowBlur,
-    horizontal: labelStyles.secondLabelShadowHorizontal,
-    vertical: labelStyles.secondLabelShadowVertical,
-    onChangeColor: newColor => saveLabelStyles('secondLabelShadowColor', newColor),
-    onChangeBlur: newBlur => saveLabelStyles('secondLabelShadowBlur', newBlur),
-    onChangehHorizontal: newValue => saveLabelStyles('secondLabelShadowHorizontal', newValue),
-    onChangeVertical: newValue => saveLabelStyles('secondLabelShadowVertical', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    borderType: labelStyles.secondLabelborderType,
-    borderWidth: secondLabelBorderWidth,
-    top: secondLabelBorderTop,
-    right: secondLabelBorderRight,
-    bottom: secondLabelBorderBottom,
-    left: secondLabelBorderLeft,
-    borderColor: labelStyles.secondLabelborderColor,
-    borderRadius: labelStyles.secondLabelborderRadius,
-    onChangeType: newType => saveLabelStyles('secondLabelborderType', newType),
-    onChangeWidth: _ref2 => {
-      let {
-        top,
-        right,
-        bottom,
-        left
-      } = _ref2;
-      return setAttributes({
-        secondLabelBorderUpdated: true,
-        secondLabelBorderTop: top,
-        secondLabelBorderRight: right,
-        secondLabelBorderBottom: bottom,
-        secondLabelBorderLeft: left
-      });
-    },
-    onChangeColor: colorValue => saveLabelStyles('secondLabelborderColor', colorValue),
-    onChangeRadius: newrRadius => saveLabelStyles('secondLabelborderRadius', newrRadius)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
-    boxShadow: true,
-    color: labelStyles.secondLabelBoxShadowColor,
-    blur: labelStyles.secondLabelBoxShadowBlur,
-    horizontal: labelStyles.secondLabelBoxShadowHorizontal,
-    vertical: labelStyles.secondLabelBoxShadowVertical,
-    position: labelStyles.secondLabelBoxShadowPosition,
-    onChangeColor: newColor => saveLabelStyles('secondLabelBoxShadowColor', newColor),
-    onChangeBlur: newBlur => saveLabelStyles('secondLabelBoxShadowBlur', newBlur),
-    onChangehHorizontal: newValue => saveLabelStyles('secondLabelBoxShadowHorizontal', newValue),
-    onChangeVertical: newValue => saveLabelStyles('secondLabelBoxShadowVertical', newValue),
-    onChangePosition: newValue => saveLabelStyles('secondLabelBoxShadowPosition', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    paddingTop: secondLabelPaddingT,
-    paddingRight: secondLabelPaddingR,
-    paddingBottom: secondLabelPaddingB,
-    paddingLeft: secondLabelPaddingL,
-    paddingTopTablet: secondLabelPaddingTTablet,
-    paddingRightTablet: secondLabelPaddingRTablet,
-    paddingBottomTablet: secondLabelPaddingBTablet,
-    paddingLeftTablet: secondLabelPaddingLTablet,
-    paddingTopMobile: secondLabelPaddingTMobile,
-    paddingRightMobile: secondLabelPaddingRMobile,
-    paddingBottomMobile: secondLabelPaddingBMobile,
-    paddingLeftMobile: secondLabelPaddingLMobile,
-    showUnits: true,
-    selectedUnit: labelStyles.secondLabelPaddingType,
-    onChangePadSizeUnit: newvalue => saveLabelStyles('secondLabelPaddingType', newvalue),
-    onChangePaddingTop: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          secondLabelPaddingT: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          secondLabelPaddingTTablet: newValue
-        });
-      } else {
-        setAttributes({
-          secondLabelPaddingTMobile: newValue
-        });
-      }
-    },
-    onChangePaddingRight: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          secondLabelPaddingR: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          secondLabelPaddingRTablet: newValue
-        });
-      } else {
-        setAttributes({
-          secondLabelPaddingRMobile: newValue
-        });
-      }
-    },
-    onChangePaddingBottom: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          secondLabelPaddingB: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          secondLabelPaddingBTablet: newValue
-        });
-      } else {
-        setAttributes({
-          secondLabelPaddingBMobile: newValue
-        });
-      }
-    },
-    onChangePaddingLeft: (device, newValue) => {
-      if (device === "desktop") {
-        setAttributes({
-          secondLabelPaddingL: newValue
-        });
-      } else if (device === "tablet") {
-        setAttributes({
-          secondLabelPaddingLTablet: newValue
-        });
-      } else {
-        setAttributes({
-          secondLabelPaddingLMobile: newValue
-        });
-      }
+
+    if ("secondLabel" === tab.name) {
+      tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
+        colorValue: labelStyles.secondLabelColor,
+        colorDefault: '',
+        onColorChange: newValue => saveLabelStyles('secondLabelColor', newValue)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+        setAttributes: saveLabelStyles,
+        fontSizeType: {
+          value: labelStyles.secondLabelfontSizeType,
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("secondLabelfontSizeType")
+        },
+        fontSize: labelStyles.secondLabelfontSize,
+        fontSizeMobile: labelStyles.secondLabelfontSizeMobile,
+        fontSizeTablet: labelStyles.secondLabelfontSizeTablet,
+        onChangeSize: newSize => saveLabelStyles('secondLabelfontSize', newSize),
+        onChangeTabletSize: newSize => saveLabelStyles('secondLabelfontSizeTablet', newSize),
+        onChangeMobileSize: newSize => saveLabelStyles('secondLabelfontSizeMobile', newSize),
+        weight: labelStyles.secondLabelWeight,
+        style: labelStyles.secondLabelStyle,
+        spacing: labelStyles.secondLabelLetter,
+        upper: labelStyles.secondLabelUpper,
+        line: labelStyles.secondLabelLine,
+        fontFamily: labelStyles.secondLabelFontFamily,
+        onChangeWeight: newWeight => saveLabelStyles('secondLabelWeight', newWeight || 500),
+        onChangeStyle: newStyle => saveLabelStyles('secondLabelStyle', newStyle),
+        onChangeSpacing: newValue => saveLabelStyles('secondLabelLetter', newValue),
+        onChangeUpper: check => saveLabelStyles('secondLabelUpper', check),
+        onChangeLine: newValue => saveLabelStyles('secondLabelLine', newValue),
+        onChangeFamily: fontFamily => saveLabelStyles('secondLabelFontFamily', fontFamily)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
+        color: labelStyles.secondLabelShadowColor,
+        blur: labelStyles.secondLabelShadowBlur,
+        horizontal: labelStyles.secondLabelShadowHorizontal,
+        vertical: labelStyles.secondLabelShadowVertical,
+        onChangeColor: newColor => saveLabelStyles('secondLabelShadowColor', newColor),
+        onChangeBlur: newBlur => saveLabelStyles('secondLabelShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveLabelStyles('secondLabelShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveLabelStyles('secondLabelShadowVertical', newValue)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        borderType: labelStyles.secondLabelborderType,
+        borderWidth: secondLabelBorderWidth,
+        top: secondLabelBorderTop,
+        right: secondLabelBorderRight,
+        bottom: secondLabelBorderBottom,
+        left: secondLabelBorderLeft,
+        borderColor: labelStyles.secondLabelborderColor,
+        borderRadius: labelStyles.secondLabelborderRadius,
+        onChangeType: newType => saveLabelStyles('secondLabelborderType', newType),
+        onChangeWidth: _ref2 => {
+          let {
+            top,
+            right,
+            bottom,
+            left
+          } = _ref2;
+          return setAttributes({
+            secondLabelBorderUpdated: true,
+            secondLabelBorderTop: top,
+            secondLabelBorderRight: right,
+            secondLabelBorderBottom: bottom,
+            secondLabelBorderLeft: left
+          });
+        },
+        onChangeColor: colorValue => saveLabelStyles('secondLabelborderColor', colorValue),
+        onChangeRadius: newrRadius => saveLabelStyles('secondLabelborderRadius', newrRadius)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
+        boxShadow: true,
+        color: labelStyles.secondLabelBoxShadowColor,
+        blur: labelStyles.secondLabelBoxShadowBlur,
+        horizontal: labelStyles.secondLabelBoxShadowHorizontal,
+        vertical: labelStyles.secondLabelBoxShadowVertical,
+        position: labelStyles.secondLabelBoxShadowPosition,
+        onChangeColor: newColor => saveLabelStyles('secondLabelBoxShadowColor', newColor),
+        onChangeBlur: newBlur => saveLabelStyles('secondLabelBoxShadowBlur', newBlur),
+        onChangehHorizontal: newValue => saveLabelStyles('secondLabelBoxShadowHorizontal', newValue),
+        onChangeVertical: newValue => saveLabelStyles('secondLabelBoxShadowVertical', newValue),
+        onChangePosition: newValue => saveLabelStyles('secondLabelBoxShadowPosition', newValue)
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        paddingTop: secondLabelPaddingT,
+        paddingRight: secondLabelPaddingR,
+        paddingBottom: secondLabelPaddingB,
+        paddingLeft: secondLabelPaddingL,
+        paddingTopTablet: secondLabelPaddingTTablet,
+        paddingRightTablet: secondLabelPaddingRTablet,
+        paddingBottomTablet: secondLabelPaddingBTablet,
+        paddingLeftTablet: secondLabelPaddingLTablet,
+        paddingTopMobile: secondLabelPaddingTMobile,
+        paddingRightMobile: secondLabelPaddingRMobile,
+        paddingBottomMobile: secondLabelPaddingBMobile,
+        paddingLeftMobile: secondLabelPaddingLMobile,
+        showUnits: true,
+        selectedUnit: labelStyles.secondLabelPaddingType,
+        onChangePadSizeUnit: newvalue => saveLabelStyles('secondLabelPaddingType', newvalue),
+        onChangePaddingTop: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              secondLabelPaddingT: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              secondLabelPaddingTTablet: newValue
+            });
+          } else {
+            setAttributes({
+              secondLabelPaddingTMobile: newValue
+            });
+          }
+        },
+        onChangePaddingRight: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              secondLabelPaddingR: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              secondLabelPaddingRTablet: newValue
+            });
+          } else {
+            setAttributes({
+              secondLabelPaddingRMobile: newValue
+            });
+          }
+        },
+        onChangePaddingBottom: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              secondLabelPaddingB: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              secondLabelPaddingBTablet: newValue
+            });
+          } else {
+            setAttributes({
+              secondLabelPaddingBMobile: newValue
+            });
+          }
+        },
+        onChangePaddingLeft: (device, newValue) => {
+          if (device === "desktop") {
+            setAttributes({
+              secondLabelPaddingL: newValue
+            });
+          } else if (device === "tablet") {
+            setAttributes({
+              secondLabelPaddingLTablet: newValue
+            });
+          } else {
+            setAttributes({
+              secondLabelPaddingLMobile: newValue
+            });
+          }
+        }
+      }));
     }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, tabout);
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content Style"),
     className: "premium-panel-body",
