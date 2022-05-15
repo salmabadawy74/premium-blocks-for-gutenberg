@@ -6538,7 +6538,7 @@ function save(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
     className: "premium-content-switcher-two-content"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
-    className: `premium-content-switcher-is-visible premium-content-switcher-first-list ${block_id}`,
+    className: `premium-content-switcher-first-list premium-content-switcher-is-visible ${block_id}`,
     style: {
       background: firstContentStyles.firstContentBGColor,
       borderStyle: firstContentStyles.firstContentborderType,
@@ -6575,7 +6575,7 @@ function save(props) {
       textShadow: `${firstContentStyles.firstContentShadowHorizontal}px ${firstContentStyles.firstContentShadowVertical}px ${firstContentStyles.firstContentShadowBlur}px ${firstContentStyles.firstContentShadowColor}`
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
-    className: `premium-content-switcher-is-hidden premium-content-switcher-second-list ${block_id}`,
+    className: `premium-content-switcher-second-list premium-content-switcher-is-hidden ${block_id}`,
     style: {
       background: secondContentStyles.secondContentBGColor,
       borderStyle: secondContentStyles.secondContentborderType,

@@ -290,7 +290,7 @@ export default function save(props) {
                     }}
                 >
                     <ul className="premium-content-switcher-two-content">
-                        <li className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${block_id}`}
+                        <li className={`premium-content-switcher-first-list premium-content-switcher-is-visible ${block_id}`}
                             style={{
                                 background: firstContentStyles.firstContentBGColor,
                                 borderStyle: firstContentStyles.firstContentborderType,
@@ -328,7 +328,7 @@ export default function save(props) {
                                 }}
                             />
                         </li>
-                        <li className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${block_id}`}
+                        <li className={`premium-content-switcher-second-list premium-content-switcher-is-hidden ${block_id}`}
                             style={{
                                 background: secondContentStyles.secondContentBGColor,
                                 borderStyle: secondContentStyles.secondContentborderType,
