@@ -1659,6 +1659,7 @@ function Edit(props) {
                                 onChange={(newValue) => setAttributes({ firstLabel: newValue })}
                                 value={firstLabel}
                                 style={{
+                                    margin: 0,
                                     color: labelStyles.firstLabelColor,
                                     fontSize: FirstLabelSize + labelStyles.firstLabelfontSizeType,
                                     letterSpacing: labelStyles.firstLabelLetter + "px",
@@ -1701,6 +1702,7 @@ function Edit(props) {
                                 onChange={(newValue) => setAttributes({ secondLabel: newValue })}
                                 value={secondLabel}
                                 style={{
+                                    margin: 0,
                                     color: labelStyles.secondLabelColor,
                                     fontSize: SecondLabelSize + labelStyles.secondLabelfontSizeType,
                                     letterSpacing: labelStyles.secondLabelLetter + "px",

@@ -116,6 +116,7 @@ export default function save(props) {
                             onChange={(newValue) => setAttributes({ firstLabel: newValue })}
                             value={firstLabel}
                             style={{
+                                margin: 0,
                                 color: labelStyles.firstLabelColor,
                                 letterSpacing: labelStyles.firstLabelLetter + "px",
                                 textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
@@ -150,6 +151,7 @@ export default function save(props) {
                             onChange={(newValue) => setAttributes({ secondLabel: newValue })}
                             value={secondLabel}
                             style={{
+                                margin: 0,
                                 color: labelStyles.secondLabelColor,
                                 letterSpacing: labelStyles.secondLabelLetter + "px",
                                 textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",

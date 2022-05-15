@@ -6067,6 +6067,7 @@ function Edit(props) {
     }),
     value: firstLabel,
     style: {
+      margin: 0,
       color: labelStyles.firstLabelColor,
       fontSize: FirstLabelSize + labelStyles.firstLabelfontSizeType,
       letterSpacing: labelStyles.firstLabelLetter + "px",
@@ -6109,6 +6110,7 @@ function Edit(props) {
     }),
     value: secondLabel,
     style: {
+      margin: 0,
       color: labelStyles.secondLabelColor,
       fontSize: SecondLabelSize + labelStyles.secondLabelfontSizeType,
       letterSpacing: labelStyles.secondLabelLetter + "px",
@@ -6355,6 +6357,7 @@ function save(props) {
     }),
     value: firstLabel,
     style: {
+      margin: 0,
       color: labelStyles.firstLabelColor,
       letterSpacing: labelStyles.firstLabelLetter + "px",
       textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
@@ -6388,6 +6391,7 @@ function save(props) {
     }),
     value: secondLabel,
     style: {
+      margin: 0,
       color: labelStyles.secondLabelColor,
       letterSpacing: labelStyles.secondLabelLetter + "px",
       textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",

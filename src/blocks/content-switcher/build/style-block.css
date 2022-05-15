@@ -3,7 +3,6 @@
   \****************************************************************************************************************************************************************************************************************************************************/
 .premium-content-switcher {
   border-color: #000;
-  overflow: hidden;
   padding: 10px 20px;
 }
 .premium-content-switcher .premium-content-switcher-toggle-switch {
@@ -94,7 +93,6 @@
   position: relative;
   margin: 0 !important;
   padding: 0 !important;
-  /* overflow: hidden; */
   list-style-type: none !important;
 }
 .premium-content-switcher .premium-content-switcher-two-content li {
