@@ -1,5 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import classnames from "classnames";
+import { withSelect } from '@wordpress/data'
 import {
     BlockControls,
     AlignmentToolbar,
@@ -43,7 +44,7 @@ import PremiumBorder from "../../components/premium-border";
 
 
 
-export default function Edit(props) {
+function Edit(props) {
 
     const { isSelected, attributes, setAttributes, clientId, className } = props;
     const inputSwitch = useRef(null);
@@ -1865,3 +1866,11 @@ export default function Edit(props) {
         </Fragment>
     )
 }
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(Edit)
