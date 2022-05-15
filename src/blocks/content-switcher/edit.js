@@ -47,7 +47,7 @@ import PremiumBorder from "../../components/premium-border";
 function Edit(props) {
 
     const { isSelected, attributes, setAttributes, clientId, className } = props;
-    const inputSwitch = useRef(null);
+
     const inputFirstContent = useRef(null);
     const inputSecondContent = useRef(null);
     const [mounted, setMounted] = useState(true);
@@ -59,34 +59,30 @@ function Edit(props) {
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-content-switcher-" + props.clientId)
         document.head.appendChild($style)
-        setTimeout(initToggleBox, 10);
+    }, [])
+
+    useEffect(() => {
+        if (!mounted) {
+            inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
+            inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
+
+            inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
+            inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
+        }
+        else {
+            inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
+            inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
+
+            inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
+            inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
+        }
     }, [mounted])
 
     const initToggleBox = () => {
         const { block_id } = props.attributes;
         if (!block_id) return null;
 
-        setTimeout(
-            inputSwitch.current.addEventListener("click", () => {
-
-                setMounted(!mounted)
-
-                if (mounted) {
-                    inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
-                    inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
-
-                    inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
-                    inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
-                }
-                else {
-                    inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
-                    inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
-
-                    inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
-                    inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
-                }
-            })
-            , 10);
+        setMounted(!mounted)
     }
 
     const getPreviewSize = (device, desktopSize, tabletSize, mobileSize) => {
@@ -1734,7 +1730,7 @@ function Edit(props) {
                             }}
                         >
                             <label className={`premium-content-switcher-toggle-switch-label`}>
-                                <input ref={inputSwitch} type="checkbox" className={`premium-content-switcher-toggle-switch-input ${props.clientId}`} />
+                                <input onClick={() => initToggleBox()} type="checkbox" className={`premium-content-switcher-toggle-switch-input ${props.clientId}`} />
                                 <span className="premium-content-switcher-toggle-switch-slider round"
                                     style={{
                                         // borderRadius: switchRadius + "px"
