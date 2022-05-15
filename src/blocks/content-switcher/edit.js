@@ -46,7 +46,7 @@ import PremiumBorder from "../../components/premium-border";
 
 function Edit(props) {
 
-    const { isSelected, attributes, setAttributes, clientId, className } = props;
+    const { attributes, setAttributes, className } = props;
 
     const inputFirstContent = useRef(null);
     const inputSecondContent = useRef(null);
@@ -293,33 +293,6 @@ function Edit(props) {
         }
     ];
 
-    const defaultSize = {
-        desktop: "",
-        tablet: "",
-        mobile: "",
-        unit: "px"
-    };
-    const defaultSpacingValue = {
-        desktop: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        },
-        tablet: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        },
-        mobile: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        }
-    };
-
     let btnGrad, btnGrad2, btnbg;
 
     if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -333,7 +306,7 @@ function Edit(props) {
     } else {
         btnbg = containerStyles.backgroundImageURL ? `url('${containerStyles.backgroundImageURL}')` : ''
     }
-    console.log(btnbg)
+
     const SwitcherSize = getPreviewSize(props.deviceType, switcherStyles.switchSize, switcherStyles.switchSizeTablet, switcherStyles.switchSizeMobile);
     const SwitcherBorderRadius = getPreviewSize(props.deviceType, switcherStyles.switchRadius, switcherStyles.switchRadiusTablet, switcherStyles.switchRadiusMobile);
     const ContainerBorderRadius = getPreviewSize(props.deviceType, switcherStyles.containerRadius, switcherStyles.containerRadiusTablet, switcherStyles.containerRadiusMobile);
@@ -1611,15 +1584,6 @@ function Edit(props) {
                     />
                 </PanelBody>
             </InspectorControls>
-            {/* <BlockControls>
-                <AlignmentToolbar
-                    value={align}
-                    onChange={(newAlignment) => {
-                        setAttributes({ align: newAlignment });
-                    }}
-
-                />
-            </BlockControls> */}
 
             <style>
                 {`
@@ -1653,10 +1617,6 @@ function Edit(props) {
                     ),
                 })}
                 id={`premium-content-switcher-${block_id}`}
-                // className={classnames(
-                //     className,
-                //     `premium-block-${props.clientId}`
-                // )}
                 style={{
                     textAlign: align,
                 }}
@@ -1731,10 +1691,7 @@ function Edit(props) {
                         >
                             <label className={`premium-content-switcher-toggle-switch-label`}>
                                 <input onClick={() => initToggleBox()} type="checkbox" className={`premium-content-switcher-toggle-switch-input ${props.clientId}`} />
-                                <span className="premium-content-switcher-toggle-switch-slider round"
-                                    style={{
-                                        // borderRadius: switchRadius + "px"
-                                    }}></span>
+                                <span className="premium-content-switcher-toggle-switch-slider round"></span>
                             </label>
                         </div>
                         {showLabel && (<div className="premium-content-switcher-second-label">
