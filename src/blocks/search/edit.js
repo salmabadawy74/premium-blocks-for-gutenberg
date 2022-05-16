@@ -16,7 +16,7 @@ import {
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import {
 	ToolbarDropdownMenu,
 	ToolbarGroup,
@@ -30,11 +30,17 @@ import {
 	__experimentalUnitControl as UnitControl,
 	TabPanel,
 	SelectControl,
+	RangeControl,
+	ToggleControl,
 } from '@wordpress/components';
 import { useInstanceId } from '@wordpress/compose';
 import { Icon, search } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
+import { store as coreStore, useEntityRecords, useEntityProp } from '@wordpress/core-data';
+// , __experimentalFetchLinkSuggestions as fetchLinkSuggestions, useEntityProp
+
+import fetchLinkSuggestions from './fetchLinkSuggestions';
 
 /**
  * Internal dependencies
@@ -47,16 +53,12 @@ import {
 	buttonWithIcon,
 	toggleLabel,
 } from './icons';
-import {
-	PC_WIDTH_DEFAULT,
-	PX_WIDTH_DEFAULT,
-	MIN_WIDTH,
-	MIN_WIDTH_UNIT,
-} from './utils.js';
+import Modal from './Modal';
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border"
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
-
+import PremiumTypo from "../../components/premium-typo"
+const MIN_WIDTH = 220;
 export default function SearchEdit({
 	className,
 	attributes,
@@ -69,23 +71,23 @@ export default function SearchEdit({
 		label,
 		showLabel,
 		placeholder,
-		width,
-		widthUnit,
 		align,
 		buttonText,
 		buttonPosition,
 		buttonUseIcon,
 		formStyle,
 		colors,
-		postion,
+		position,
 		border,
 		spacing,
 		typography,
 		buttonTypography,
-		floatPostion,
-		floatValues
+		floatPosition,
+		floatValues,
+		ajaxSearch
 	} = attributes;
-
+	const [isVisibility, setIsVisibility] = useState(false);
+	const [posts, setPosts] = useState([]);
 	const insertedInNavigationBlock = useSelect(
 		(select) => {
 			const { getBlockParentsByBlockName, wasBlockJustInserted } = select(
@@ -112,17 +114,10 @@ export default function SearchEdit({
 		});
 	}, [insertedInNavigationBlock]);
 
-	const unitControlInstanceId = useInstanceId(UnitControl);
-	const unitControlInputId = `wp-block-premium-search__width-${unitControlInstanceId}`;
 	const isButtonPositionInside = 'button-inside' === buttonPosition;
 	const isButtonPositionOutside = 'button-outside' === buttonPosition;
 	const hasNoButton = 'no-button' === buttonPosition;
 	const hasOnlyButton = 'button-only' === buttonPosition;
-
-	const units = useCustomUnits({
-		availableUnits: ['%', 'px'],
-		defaultValues: { '%': PC_WIDTH_DEFAULT, px: PX_WIDTH_DEFAULT },
-	});
 
 	const defaultSpacingValue = {
 		desktop: {
@@ -260,29 +255,84 @@ export default function SearchEdit({
 		setAttributes({ spacing: { ...spacing, buttonPadding: newPadding } });
 	}
 
+	const onChangePositionSide = (value) => {
+		const newFloatValues = { ...floatValues };
+		setAttributes({ floatValues: { ...newFloatValues, ...value } });
+	}
+
+	const onChangeFontSize = (value, device) => {
+		const newSize = { ...fontSize };
+		newSize[device] = value;
+		setAttributes({ typography: { ...typography, size: newSize } });
+	}
+
+	const onChangeFont = (value, attr) => {
+		setAttributes({ typography: { ...typography, [attr]: value } });
+	}
+
+	const onChangeButtonFontSize = (value, device) => {
+		const newSize = { ...buttonFontSize };
+		newSize[device] = value;
+		setAttributes({ buttonTypography: { ...buttonTypography, size: newSize } });
+	}
+
+	const onChangeButtonFont = (value, attr) => {
+		setAttributes({ buttonTypography: { ...buttonTypography, [attr]: value } });
+	}
+
+	const getPostsByName = async (name) => {
+		const data = await fetchLinkSuggestions(name, { type: 'post', perPage: 6 });
+		if (data.length) {
+			setPosts(data);
+		}
+	}
+
+	const inputChangeHandler = (e) => {
+		if (!ajaxSearch) {
+			return;
+		}
+		const value = e.target.value;
+		getPostsByName(value);
+	};
+
+	const textFieldStyles = {
+		color: colors.text,
+		backgroundColor: colors.background,
+		borderStyle: border.type,
+		borderTopWidth: border.top,
+		borderRightWidth: border.right,
+		borderBottomWidth: border.bottom,
+		borderLeftWidth: border.left,
+		borderRadius: border.radius,
+		borderColor: border.color,
+		paddingTop: `${padding.desktop.top}px`,
+		paddingRight: `${padding.desktop.right}px`,
+		paddingBottom: `${padding.desktop.bottom}px`,
+		paddingLeft: `${padding.desktop.left}px`,
+	};
+
+	const textTypoStyles = {
+		fontSize: `${fontSize.desktop}${fontSize.unit}`,
+		fontFamily: typography.family,
+		fontWeight: typography.weight,
+		letterSpacing: typography.letterSpacing,
+		textDecoration: typography.textDecoration,
+		textTransform: typography.textTransform,
+		lineHeight: `${typography.lineHeight}px`,
+	};
+
 	const renderTextField = () => {
 		// If the input is inside the wrapper, the wrapper gets the border color styles/classes, not the input control.
 		const textFieldClasses = classnames(
 			'wp-block-premium-search__input',
 			isButtonPositionInside ? undefined : ''
 		);
-		const textFieldStyles = {
-			color: colors.text,
-			backgroundColor: colors.background,
-			borderStyle: border.type,
-			borderTopWidth: border.top,
-			borderRightWidth: border.right,
-			borderBottomWidth: border.bottom,
-			borderLeftWidth: border.left,
-			borderRadius: border.radius,
-			borderColor: border.color
-		};
-
+		const styles = isButtonPositionInside ? { ...textTypoStyles, backgroundColor: 'transparent' } : { ...textFieldStyles, ...textTypoStyles };
 		return (
 			<input
 				type="search"
 				className={textFieldClasses}
-				style={textFieldStyles}
+				style={styles}
 				aria-label={__('Optional placeholder text')}
 				// We hide the placeholder field's placeholder when there is a value. This
 				// stops screen readers from reading the placeholder field's placeholder
@@ -291,8 +341,10 @@ export default function SearchEdit({
 					placeholder ? undefined : __('Optional placeholder…')
 				}
 				value={placeholder}
-				onChange={(event) =>
+				onChange={(event) => {
+					inputChangeHandler(event);
 					setAttributes({ placeholder: event.target.value })
+				}
 				}
 			/>
 		);
@@ -307,8 +359,26 @@ export default function SearchEdit({
 		);
 		const butttonStyles = {
 			color: colors.btnText,
-			backgroundColor: colors.btnBackground
+			backgroundColor: colors.btnBackground,
+			paddingTop: `${buttonPadding.desktop.top}px`,
+			paddingRight: `${buttonPadding.desktop.right}px`,
+			paddingBottom: `${buttonPadding.desktop.bottom}px`,
+			paddingLeft: `${buttonPadding.desktop.left}px`,
+			fontSize: `${buttonFontSize.desktop}${buttonFontSize.unit}`,
+			fontFamily: buttonTypography.family,
+			fontWeight: buttonTypography.weight,
+			letterSpacing: buttonTypography.letterSpacing,
+			textDecoration: buttonTypography.textDecoration,
+			textTransform: buttonTypography.textTransform,
+			lineHeight: `${buttonTypography.lineHeight}px`,
 		};
+
+		const onClickHandler = () => {
+			if (formStyle === 'default') {
+				return
+			}
+			setIsVisibility(true);
+		}
 
 		return (
 			<>
@@ -322,6 +392,7 @@ export default function SearchEdit({
 								? stripHTML(buttonText)
 								: __('Search')
 						}
+						onClick={onClickHandler}
 					>
 						<Icon icon={search} />
 					</button>
@@ -338,6 +409,7 @@ export default function SearchEdit({
 						onChange={(html) =>
 							setAttributes({ buttonText: html })
 						}
+						onClick={onClickHandler}
 					/>
 				)}
 			</>
@@ -358,11 +430,11 @@ export default function SearchEdit({
 						}}
 						className={showLabel ? 'is-pressed' : undefined}
 					/>
-					<ToolbarDropdownMenu
+					{formStyle === 'default' && <ToolbarDropdownMenu
 						icon={getButtonPositionIcon()}
 						label={__('Change button position')}
 						controls={buttonPositionControls}
-					/>
+					/>}
 					{!hasNoButton && (
 						<ToolbarButton
 							title={__('Use button with icon')}
@@ -382,6 +454,15 @@ export default function SearchEdit({
 
 			<InspectorControls>
 				<PanelBody title={__('Display Settings')}>
+					<ToggleControl
+						checked={ajaxSearch}
+						onChange={(value) => {
+							setAttributes({
+								ajaxSearch: value,
+							});
+						}}
+						label={__('Enable Ajax Search')}
+					/>
 					<SelectControl
 						label={__("From Style", 'premium-blocks-for-gutenberg')}
 						options={[
@@ -395,7 +476,12 @@ export default function SearchEdit({
 							}
 						]}
 						value={formStyle}
-						onChange={style => setAttributes({ formStyle: style })}
+						onChange={style => {
+							setAttributes({
+								buttonPosition: 'button-outside',
+								formStyle: style
+							});
+						}}
 					/>
 					{formStyle === 'button' && (
 						<SelectControl
@@ -410,9 +496,64 @@ export default function SearchEdit({
 									label: __("Float", 'premium-blocks-for-gutenberg')
 								}
 							]}
-							value={postion}
-							onChange={style => setAttributes({ postion: style })}
+							value={position}
+							onChange={style => setAttributes({ position: style })}
 						/>
+					)}
+					{formStyle === 'button' && position === 'float' && (
+						<>
+							<SelectControl
+								label={__("Float Position", 'premium-blocks-for-gutenberg')}
+								options={[
+									{
+										value: "top-right",
+										label: __("Top Right", 'premium-blocks-for-gutenberg')
+									},
+									{
+										value: "top-left",
+										label: __("Top Left", 'premium-blocks-for-gutenberg')
+									},
+									{
+										value: "bottom-right",
+										label: __("Bottom Right", 'premium-blocks-for-gutenberg')
+									},
+									{
+										value: "bottom-left",
+										label: __("Bottom Left", 'premium-blocks-for-gutenberg')
+									},
+								]}
+								value={floatPosition}
+								onChange={style => setAttributes({ floatPosition: style })}
+							/>
+							{floatPosition.includes('top') && <RangeControl
+								label={__('Top', 'premium-blocks-for-gutenberg')}
+								value={floatValues.top}
+								onChange={(size) => onChangePositionSide({ top: size })}
+								min={0}
+								max={1000}
+							/>}
+							{floatPosition.includes('bottom') && <RangeControl
+								label={__('Bottom', 'premium-blocks-for-gutenberg')}
+								value={floatValues.bottom}
+								onChange={(size) => onChangePositionSide({ bottom: size })}
+								min={0}
+								max={1000}
+							/>}
+							{floatPosition.includes('right') && <RangeControl
+								label={__('Right', 'premium-blocks-for-gutenberg')}
+								value={floatValues.right}
+								onChange={(size) => onChangePositionSide({ right: size })}
+								min={0}
+								max={1000}
+							/>}
+							{floatPosition.includes('left') && <RangeControl
+								label={__('Left', 'premium-blocks-for-gutenberg')}
+								value={floatValues.left}
+								onChange={(size) => onChangePositionSide({ left: size })}
+								min={0}
+								max={1000}
+							/>}
+						</>
 					)}
 					{formStyle === 'default' && (
 						<PremiumBorder
@@ -431,107 +572,125 @@ export default function SearchEdit({
 							onChangeRadius={(newrRadius) => borderChange({ radius: newrRadius })}
 						/>
 					)}
-					<BaseControl
-						label={__('Width')}
-						id={unitControlInputId}
+				</PanelBody>
+				{formStyle === 'default' && (
+					<PanelBody
+						title={__("Input Typography", 'premium-blocks-for-gutenberg')}
+						className="premium-panel-body"
+						initialOpen={false}
 					>
-						<UnitControl
-							id={unitControlInputId}
-							min={`${MIN_WIDTH}${MIN_WIDTH_UNIT}`}
-							onChange={(newWidth) => {
-								const filteredWidth =
-									widthUnit === '%' &&
-										parseInt(newWidth, 10) > 100
-										? 100
-										: newWidth;
-
-								setAttributes({
-									width: parseInt(filteredWidth, 10),
-								});
+						<PremiumTypo
+							components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+							setAttributes={value => onChangeFontSize(value.SizeUnit, 'unit')}
+							fontSizeType={{
+								value: fontSize.unit,
+								label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
 							}}
-							onUnitChange={(newUnit) => {
-								setAttributes({
-									width:
-										'%' === newUnit
-											? PC_WIDTH_DEFAULT
-											: PX_WIDTH_DEFAULT,
-									widthUnit: newUnit,
-								});
-							}}
-							style={{ maxWidth: 80 }}
-							value={`${width}${widthUnit}`}
-							units={units}
+							fontSize={fontSize.desktop}
+							fontSizeMobile={fontSize.mobile}
+							fontSizeTablet={fontSize.tablet}
+							onChangeSize={newSize => onChangeFontSize(newSize, 'desktop')}
+							onChangeTabletSize={newSize => onChangeFontSize(newSize, 'tablet')}
+							onChangeMobileSize={newSize => onChangeFontSize(newSize, 'mobile')}
+							fontFamily={typography.family}
+							weight={typography.weight}
+							onChangeWeight={newWeight =>
+								onChangeFont(newWeight, 'weight')
+							}
+							onChangeFamily={(fontFamily) => onChangeFont(fontFamily, 'family')}
+							line={typography.lineHeight}
+							onChangeLine={(lineHeight) => onChangeFont(lineHeight, 'lineHeight')}
+							style={typography.style}
+							onChangeStyle={(newStyle) => onChangeFont(newStyle, 'style')}
+							spacing={typography.letterSpacing}
+							onChangeSpacing={(letterSpacing) => onChangeFont(letterSpacing, 'letterSpacing')}
+							textTransform={typography.textTransform}
+							onChangeTextTransform={(textTransform) => onChangeFont(textTransform, 'textTransform')}
+							textDecoration={typography.textDecoration}
+							onChangeTextDecoration={(textDecoration) => onChangeFont(textDecoration, 'textDecoration')}
 						/>
-
-						<ButtonGroup
-							className="wp-block-premium-search__components-button-group"
-							aria-label={__('Percentage Width')}
-						>
-							{[25, 50, 75, 100].map((widthValue) => {
-								return (
-									<Button
-										key={widthValue}
-										isSmall
-										variant={
-											`${widthValue}%` ===
-												`${width}${widthUnit}`
-												? 'primary'
-												: undefined
-										}
-										onClick={() =>
-											setAttributes({
-												width: widthValue,
-												widthUnit: '%',
-											})
-										}
-									>
-										{widthValue}%
-									</Button>
-								);
-							})}
-						</ButtonGroup>
-					</BaseControl>
-				</PanelBody>
-				<PanelBody
-					title={__('Input Spacing', 'premium-blocks-for-gutenberg')}
-					initialOpen={false}
-				>
-					<PremiumResponsivePadding
-						directions={["all"]}
-						paddingTop={padding.desktop.top}
-						paddingRight={padding.desktop.right}
-						paddingBottom={padding.desktop.bottom}
-						paddingLeft={padding.desktop.left}
-						paddingTopTablet={padding.tablet.top}
-						paddingRightTablet={padding.tablet.right}
-						paddingBottomTablet={padding.tablet.bottom}
-						paddingLeftTablet={padding.tablet.left}
-						paddingTopMobile={padding.mobile.top}
-						paddingRightMobile={padding.mobile.right}
-						paddingBottomMobile={padding.mobile.bottom}
-						paddingLeftMobile={padding.mobile.left}
-						onChangePaddingTop={
-							(device, newValue) => {
-								onChangePadding('top', newValue, device);
+					</PanelBody>
+				)}
+				{!buttonWithIcon && (
+					<PanelBody
+						title={__("Button Typography", 'premium-blocks-for-gutenberg')}
+						className="premium-panel-body"
+						initialOpen={false}
+					>
+						<PremiumTypo
+							components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+							setAttributes={value => onChangeButtonFontSize(value.SizeUnit, 'unit')}
+							fontSizeType={{
+								value: buttonFontSize.unit,
+								label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
+							}}
+							fontSize={buttonFontSize.desktop}
+							fontSizeMobile={buttonFontSize.mobile}
+							fontSizeTablet={buttonFontSize.tablet}
+							onChangeSize={newSize => onChangeButtonFontSize(newSize, 'desktop')}
+							onChangeTabletSize={newSize => onChangeButtonFontSize(newSize, 'tablet')}
+							onChangeMobileSize={newSize => onChangeButtonFontSize(newSize, 'mobile')}
+							fontFamily={buttonTypography.family}
+							weight={buttonTypography.weight}
+							onChangeWeight={newWeight =>
+								onChangeButtonFont(newWeight, 'weight')
 							}
-						}
-						onChangePaddingRight={
-							(device, newValue) => {
-								onChangePadding('right', newValue, device);
+							onChangeFamily={(fontFamily) => onChangeButtonFont(fontFamily, 'family')}
+							line={buttonTypography.lineHeight}
+							onChangeLine={(lineHeight) => onChangeButtonFont(lineHeight, 'lineHeight')}
+							style={buttonTypography.style}
+							onChangeStyle={(newStyle) => onChangeButtonFont(newStyle, 'style')}
+							spacing={buttonTypography.letterSpacing}
+							onChangeSpacing={(letterSpacing) => onChangeButtonFont(letterSpacing, 'letterSpacing')}
+							textTransform={buttonTypography.textTransform}
+							onChangeTextTransform={(textTransform) => onChangeButtonFont(textTransform, 'textTransform')}
+							textDecoration={buttonTypography.textDecoration}
+							onChangeTextDecoration={(textDecoration) => onChangeButtonFont(textDecoration, 'textDecoration')}
+						/>
+					</PanelBody>
+				)}
+				{formStyle === 'default' && (
+					<PanelBody
+						title={__('Input Spacing', 'premium-blocks-for-gutenberg')}
+						initialOpen={false}
+					>
+						<PremiumResponsivePadding
+							directions={["all"]}
+							paddingTop={padding.desktop.top}
+							paddingRight={padding.desktop.right}
+							paddingBottom={padding.desktop.bottom}
+							paddingLeft={padding.desktop.left}
+							paddingTopTablet={padding.tablet.top}
+							paddingRightTablet={padding.tablet.right}
+							paddingBottomTablet={padding.tablet.bottom}
+							paddingLeftTablet={padding.tablet.left}
+							paddingTopMobile={padding.mobile.top}
+							paddingRightMobile={padding.mobile.right}
+							paddingBottomMobile={padding.mobile.bottom}
+							paddingLeftMobile={padding.mobile.left}
+							onChangePaddingTop={
+								(device, newValue) => {
+									onChangePadding('top', newValue, device);
+								}
 							}
-						}
-						onChangePaddingBottom={
-							(device, newValue) => {
-								onChangePadding('bottom', newValue, device);
+							onChangePaddingRight={
+								(device, newValue) => {
+									onChangePadding('right', newValue, device);
+								}
 							}
-						}
-						onChangePaddingLeft={
-							(device, newValue) => {
-								onChangePadding('left', newValue, device);
+							onChangePaddingBottom={
+								(device, newValue) => {
+									onChangePadding('bottom', newValue, device);
+								}
 							}
-						}
-					/>
-				</PanelBody>
+							onChangePaddingLeft={
+								(device, newValue) => {
+									onChangePadding('left', newValue, device);
+								}
+							}
+						/>
+					</PanelBody>
+				)}
 				<PanelBody
 					title={__('Button Spacing', 'premium-blocks-for-gutenberg')}
 					initialOpen={false}
@@ -593,8 +752,32 @@ export default function SearchEdit({
 							if ("normal" === tab.name) {
 								return (
 									<Fragment>
+										{ajaxSearch && (
+											<AdvancedPopColorControl
+												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+												colorValue={colors.link}
+												onColorChange={newValue => setColor('link', newValue)}
+												colorDefault={''}
+											/>
+										)}
+										{formStyle === 'button' && (
+											<AdvancedPopColorControl
+												label={__(`Modal Background Color`, 'premium-blocks-for-gutenberg')}
+												colorValue={colors.modal}
+												onColorChange={newValue => setColor('modal', newValue)}
+												colorDefault={''}
+											/>
+										)}
 										{formStyle === 'default' && (
 											<>
+												{ajaxSearch && (
+													<AdvancedPopColorControl
+														label={__(`Dropdown Background Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={colors.dropdown}
+														onColorChange={newValue => setColor('dropdown', newValue)}
+														colorDefault={''}
+													/>
+												)}
 												<AdvancedPopColorControl
 													label={__(`Form Text Color`, 'premium-blocks-for-gutenberg')}
 													colorValue={colors.text}
@@ -621,18 +804,26 @@ export default function SearchEdit({
 											onColorChange={newValue => setColor('btnBackground', newValue)}
 											colorDefault={''}
 										/>
-										<AdvancedPopColorControl
+										{showLabel && <AdvancedPopColorControl
 											label={__(`Label Color`, 'premium-blocks-for-gutenberg')}
 											colorValue={colors.label}
 											onColorChange={newValue => setColor('label', newValue)}
 											colorDefault={''}
-										/>
+										/>}
 									</Fragment>
 								);
 							}
 							if ("hover" === tab.name) {
 								return (
 									<Fragment>
+										{ajaxSearch && (
+											<AdvancedPopColorControl
+												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+												colorValue={colors.linkHover}
+												onColorChange={newValue => setColor('linkHover', newValue)}
+												colorDefault={''}
+											/>
+										)}
 										<AdvancedPopColorControl
 											label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
 											colorValue={colors.btnHoverText}
@@ -658,6 +849,13 @@ export default function SearchEdit({
 
 	const blockProps = useBlockProps({
 		className: getBlockClassNames(),
+		style: {
+			position: position === 'float' && formStyle === 'button' && !isVisibility ? 'fixed' : '',
+			top: position === 'float' && floatPosition.includes('top') ? floatValues.top : '',
+			right: position === 'float' && floatPosition.includes('right') ? floatValues.right : '',
+			bottom: position === 'float' && floatPosition.includes('bottom') ? floatValues.bottom : '',
+			left: position === 'float' && floatPosition.includes('left') ? floatValues.left : '',
+		}
 	});
 
 	const labelStyles = {
@@ -669,6 +867,12 @@ export default function SearchEdit({
 	}
 
 	let styleArry = [
+		`#${blockProps.id}{`,
+		`--pbg-dropdown-bg-color: ${colors.dropdown};`,
+		`--pbg-link-color: ${colors.link}!important;`,
+		`--pbg-link-hover-color: ${colors.linkHover}!important;`,
+		`--pbg-modal-bg-color: ${colors.modal};`,
+		`}`,
 		`#${blockProps.id} .wp-block-premium-search__button:hover{`,
 		`color: ${colors.btnHoverText}!important;`,
 		`background-color: ${colors.btnHoverBackground}!important;`,
@@ -705,26 +909,17 @@ export default function SearchEdit({
 
 			{formStyle === 'default' && (
 				<ResizableBox
-					size={{
-						width: `${width}${widthUnit}`,
-					}}
 					className={classnames(
 						'wp-block-premium-search__inside-wrapper',
 						isButtonPositionInside ? '' : undefined
 					)}
+					style={isButtonPositionInside ? textFieldStyles : {}}
 					minWidth={MIN_WIDTH}
 					enable={getResizableSides()}
 					onResizeStart={(event, direction, elt) => {
-						setAttributes({
-							width: parseInt(elt.offsetWidth, 10),
-							widthUnit: 'px',
-						});
 						toggleSelection(false);
 					}}
 					onResizeStop={(event, direction, elt, delta) => {
-						setAttributes({
-							width: parseInt(width + delta.width, 10),
-						});
 						toggleSelection(true);
 					}}
 					showHandle={isSelected}
@@ -738,9 +933,118 @@ export default function SearchEdit({
 
 					{hasOnlyButton && renderButton()}
 					{hasNoButton && renderTextField()}
+					{ajaxSearch && posts.length > 0 && (
+						<div className='pbg-search-dropdown'>
+							{posts.map(post => {
+								return <a href={post.url} className='pbg-search-item'>
+									{post._embedded['wp:featuredmedia'] && (
+										<img
+											{...{
+												src: (
+													(
+														post._embedded['wp:featuredmedia'][0]
+															.media_details || {
+															sizes: {},
+														}
+													).sizes || {}
+												).thumbnail
+													? (
+														post._embedded['wp:featuredmedia'][0]
+															.media_details || {
+															sizes: [],
+														}
+													).sizes.thumbnail.source_url
+													: values(
+														(
+															post._embedded['wp:featuredmedia'][0]
+																.media_details || {
+																sizes: [],
+															}
+														).sizes || {}
+													).reduce(
+														(currentSmallest, current) =>
+															current.width <
+																currentSmallest.width
+																? current
+																: currentSmallest,
+														{
+															width: 9999999999,
+														}
+													).source_url ||
+													post._embedded['wp:featuredmedia'][0].source_url,
+											}}
+										/>
+									)}
+									<span>{post.title}</span>
+								</a>
+							})}
+						</div>
+					)}
 				</ResizableBox>
 			)}
 			{formStyle !== 'default' && renderButton()}
+			{formStyle === 'button' && (
+				<Modal isOpen={isVisibility} setIsOpen={setIsVisibility}>
+					<div className='pbg-advanced-search-form'>
+						<div>
+							<input type='search' placeholder={__("Search")} onChange={(e) => inputChangeHandler(e)} />
+							<div className='pbg-advanced-search-icon'>
+								<Icon icon={search} />
+							</div>
+						</div>
+						{ajaxSearch && posts.length > 0 && (
+							<div className='pbg-search-results'>
+								{posts.map(post => {
+									return <a href={post.url} className='pbg-search-item'>
+										{post._embedded['wp:featuredmedia'] && (
+											<div className='pbg-image-container'>
+												<img
+													{...{
+														src: (
+															(
+																post._embedded['wp:featuredmedia'][0]
+																	.media_details || {
+																	sizes: {},
+																}
+															).sizes || {}
+														).thumbnail
+															? (
+																post._embedded['wp:featuredmedia'][0]
+																	.media_details || {
+																	sizes: [],
+																}
+															).sizes.thumbnail.source_url
+															: values(
+																(
+																	post._embedded['wp:featuredmedia'][0]
+																		.media_details || {
+																		sizes: [],
+																	}
+																).sizes || {}
+															).reduce(
+																(currentSmallest, current) =>
+																	current.width <
+																		currentSmallest.width
+																		? current
+																		: currentSmallest,
+																{
+																	width: 9999999999,
+																}
+															).source_url ||
+															post._embedded['wp:featuredmedia'][0].source_url,
+													}}
+												/>
+												<div class="pbg-ratio"></div>
+											</div>
+										)}
+										<span>{post.title}</span>
+									</a>
+								})}
+							</div>
+						)}
+					</div>
+				</Modal>
+			)}
 		</div>
 	);
 }

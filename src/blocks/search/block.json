@@ -33,24 +33,28 @@
                 "btnText": "",
                 "btnHoverBackground": "",
                 "btnHoverText": "",
-                "label": ""
+                "label": "",
+                "modal": "",
+                "dropdown": "",
+                "link": "",
+                "linkHover": ""
             }
         },
-        "postion": {
+        "position": {
             "type": "string",
             "default": "static"
         },
-        "floatPostion": {
+        "floatPosition": {
             "type": "string",
             "default": "top-right"
         },
         "floatValues": {
             "type": "object",
             "default": {
-                "top": "",
-                "right": "",
-                "bottom": "",
-                "left": ""
+                "top": 10,
+                "right": 10,
+                "bottom": 10,
+                "left": 10
             }
         },
         "formStyle": {
@@ -61,16 +65,14 @@
             "type": "boolean",
             "default": true
         },
+        "ajaxSearch": {
+            "type": "boolean",
+            "default": true
+        },
         "placeholder": {
             "type": "string",
             "default": "",
             "__experimentalRole": "content"
-        },
-        "width": {
-            "type": "number"
-        },
-        "widthUnit": {
-            "type": "string"
         },
         "buttonText": {
             "type": "string",

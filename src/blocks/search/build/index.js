@@ -4460,6 +4460,34 @@ module.exports = toString;
 
 /***/ }),
 
+/***/ "../../node_modules/webfontloader/webfontloader.js":
+/*!*********************************************************!*\
+  !*** ../../node_modules/webfontloader/webfontloader.js ***!
+  \*********************************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;/* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */(function(){function aa(a,b,c){return a.call.apply(a.bind,arguments)}function ba(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}}function p(a,b,c){p=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?aa:ba;return p.apply(null,arguments)}var q=Date.now||function(){return+new Date};function ca(a,b){this.a=a;this.o=b||a;this.c=this.o.document}var da=!!window.FontFace;function t(a,b,c,d){b=a.c.createElement(b);if(c)for(var e in c)c.hasOwnProperty(e)&&("style"==e?b.style.cssText=c[e]:b.setAttribute(e,c[e]));d&&b.appendChild(a.c.createTextNode(d));return b}function u(a,b,c){a=a.c.getElementsByTagName(b)[0];a||(a=document.documentElement);a.insertBefore(c,a.lastChild)}function v(a){a.parentNode&&a.parentNode.removeChild(a)}
+function w(a,b,c){b=b||[];c=c||[];for(var d=a.className.split(/\s+/),e=0;e<b.length;e+=1){for(var f=!1,g=0;g<d.length;g+=1)if(b[e]===d[g]){f=!0;break}f||d.push(b[e])}b=[];for(e=0;e<d.length;e+=1){f=!1;for(g=0;g<c.length;g+=1)if(d[e]===c[g]){f=!0;break}f||b.push(d[e])}a.className=b.join(" ").replace(/\s+/g," ").replace(/^\s+|\s+$/,"")}function y(a,b){for(var c=a.className.split(/\s+/),d=0,e=c.length;d<e;d++)if(c[d]==b)return!0;return!1}
+function ea(a){return a.o.location.hostname||a.a.location.hostname}function z(a,b,c){function d(){m&&e&&f&&(m(g),m=null)}b=t(a,"link",{rel:"stylesheet",href:b,media:"all"});var e=!1,f=!0,g=null,m=c||null;da?(b.onload=function(){e=!0;d()},b.onerror=function(){e=!0;g=Error("Stylesheet failed to load");d()}):setTimeout(function(){e=!0;d()},0);u(a,"head",b)}
+function A(a,b,c,d){var e=a.c.getElementsByTagName("head")[0];if(e){var f=t(a,"script",{src:b}),g=!1;f.onload=f.onreadystatechange=function(){g||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState||(g=!0,c&&c(null),f.onload=f.onreadystatechange=null,"HEAD"==f.parentNode.tagName&&e.removeChild(f))};e.appendChild(f);setTimeout(function(){g||(g=!0,c&&c(Error("Script load timeout")))},d||5E3);return f}return null};function B(){this.a=0;this.c=null}function C(a){a.a++;return function(){a.a--;D(a)}}function E(a,b){a.c=b;D(a)}function D(a){0==a.a&&a.c&&(a.c(),a.c=null)};function F(a){this.a=a||"-"}F.prototype.c=function(a){for(var b=[],c=0;c<arguments.length;c++)b.push(arguments[c].replace(/[\W_]+/g,"").toLowerCase());return b.join(this.a)};function G(a,b){this.c=a;this.f=4;this.a="n";var c=(b||"n4").match(/^([nio])([1-9])$/i);c&&(this.a=c[1],this.f=parseInt(c[2],10))}function fa(a){return H(a)+" "+(a.f+"00")+" 300px "+I(a.c)}function I(a){var b=[];a=a.split(/,\s*/);for(var c=0;c<a.length;c++){var d=a[c].replace(/['"]/g,"");-1!=d.indexOf(" ")||/^\d/.test(d)?b.push("'"+d+"'"):b.push(d)}return b.join(",")}function J(a){return a.a+a.f}function H(a){var b="normal";"o"===a.a?b="oblique":"i"===a.a&&(b="italic");return b}
+function ga(a){var b=4,c="n",d=null;a&&((d=a.match(/(normal|oblique|italic)/i))&&d[1]&&(c=d[1].substr(0,1).toLowerCase()),(d=a.match(/([1-9]00|normal|bold)/i))&&d[1]&&(/bold/i.test(d[1])?b=7:/[1-9]00/.test(d[1])&&(b=parseInt(d[1].substr(0,1),10))));return c+b};function ha(a,b){this.c=a;this.f=a.o.document.documentElement;this.h=b;this.a=new F("-");this.j=!1!==b.events;this.g=!1!==b.classes}function ia(a){a.g&&w(a.f,[a.a.c("wf","loading")]);K(a,"loading")}function L(a){if(a.g){var b=y(a.f,a.a.c("wf","active")),c=[],d=[a.a.c("wf","loading")];b||c.push(a.a.c("wf","inactive"));w(a.f,c,d)}K(a,"inactive")}function K(a,b,c){if(a.j&&a.h[b])if(c)a.h[b](c.c,J(c));else a.h[b]()};function ja(){this.c={}}function ka(a,b,c){var d=[],e;for(e in b)if(b.hasOwnProperty(e)){var f=a.c[e];f&&d.push(f(b[e],c))}return d};function M(a,b){this.c=a;this.f=b;this.a=t(this.c,"span",{"aria-hidden":"true"},this.f)}function N(a){u(a.c,"body",a.a)}function O(a){return"display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:"+I(a.c)+";"+("font-style:"+H(a)+";font-weight:"+(a.f+"00")+";")};function P(a,b,c,d,e,f){this.g=a;this.j=b;this.a=d;this.c=c;this.f=e||3E3;this.h=f||void 0}P.prototype.start=function(){var a=this.c.o.document,b=this,c=q(),d=new Promise(function(d,e){function f(){q()-c>=b.f?e():a.fonts.load(fa(b.a),b.h).then(function(a){1<=a.length?d():setTimeout(f,25)},function(){e()})}f()}),e=null,f=new Promise(function(a,d){e=setTimeout(d,b.f)});Promise.race([f,d]).then(function(){e&&(clearTimeout(e),e=null);b.g(b.a)},function(){b.j(b.a)})};function Q(a,b,c,d,e,f,g){this.v=a;this.B=b;this.c=c;this.a=d;this.s=g||"BESbswy";this.f={};this.w=e||3E3;this.u=f||null;this.m=this.j=this.h=this.g=null;this.g=new M(this.c,this.s);this.h=new M(this.c,this.s);this.j=new M(this.c,this.s);this.m=new M(this.c,this.s);a=new G(this.a.c+",serif",J(this.a));a=O(a);this.g.a.style.cssText=a;a=new G(this.a.c+",sans-serif",J(this.a));a=O(a);this.h.a.style.cssText=a;a=new G("serif",J(this.a));a=O(a);this.j.a.style.cssText=a;a=new G("sans-serif",J(this.a));a=
+O(a);this.m.a.style.cssText=a;N(this.g);N(this.h);N(this.j);N(this.m)}var R={D:"serif",C:"sans-serif"},S=null;function T(){if(null===S){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);S=!!a&&(536>parseInt(a[1],10)||536===parseInt(a[1],10)&&11>=parseInt(a[2],10))}return S}Q.prototype.start=function(){this.f.serif=this.j.a.offsetWidth;this.f["sans-serif"]=this.m.a.offsetWidth;this.A=q();U(this)};
+function la(a,b,c){for(var d in R)if(R.hasOwnProperty(d)&&b===a.f[R[d]]&&c===a.f[R[d]])return!0;return!1}function U(a){var b=a.g.a.offsetWidth,c=a.h.a.offsetWidth,d;(d=b===a.f.serif&&c===a.f["sans-serif"])||(d=T()&&la(a,b,c));d?q()-a.A>=a.w?T()&&la(a,b,c)&&(null===a.u||a.u.hasOwnProperty(a.a.c))?V(a,a.v):V(a,a.B):ma(a):V(a,a.v)}function ma(a){setTimeout(p(function(){U(this)},a),50)}function V(a,b){setTimeout(p(function(){v(this.g.a);v(this.h.a);v(this.j.a);v(this.m.a);b(this.a)},a),0)};function W(a,b,c){this.c=a;this.a=b;this.f=0;this.m=this.j=!1;this.s=c}var X=null;W.prototype.g=function(a){var b=this.a;b.g&&w(b.f,[b.a.c("wf",a.c,J(a).toString(),"active")],[b.a.c("wf",a.c,J(a).toString(),"loading"),b.a.c("wf",a.c,J(a).toString(),"inactive")]);K(b,"fontactive",a);this.m=!0;na(this)};
+W.prototype.h=function(a){var b=this.a;if(b.g){var c=y(b.f,b.a.c("wf",a.c,J(a).toString(),"active")),d=[],e=[b.a.c("wf",a.c,J(a).toString(),"loading")];c||d.push(b.a.c("wf",a.c,J(a).toString(),"inactive"));w(b.f,d,e)}K(b,"fontinactive",a);na(this)};function na(a){0==--a.f&&a.j&&(a.m?(a=a.a,a.g&&w(a.f,[a.a.c("wf","active")],[a.a.c("wf","loading"),a.a.c("wf","inactive")]),K(a,"active")):L(a.a))};function oa(a){this.j=a;this.a=new ja;this.h=0;this.f=this.g=!0}oa.prototype.load=function(a){this.c=new ca(this.j,a.context||this.j);this.g=!1!==a.events;this.f=!1!==a.classes;pa(this,new ha(this.c,a),a)};
+function qa(a,b,c,d,e){var f=0==--a.h;(a.f||a.g)&&setTimeout(function(){var a=e||null,m=d||null||{};if(0===c.length&&f)L(b.a);else{b.f+=c.length;f&&(b.j=f);var h,l=[];for(h=0;h<c.length;h++){var k=c[h],n=m[k.c],r=b.a,x=k;r.g&&w(r.f,[r.a.c("wf",x.c,J(x).toString(),"loading")]);K(r,"fontloading",x);r=null;if(null===X)if(window.FontFace){var x=/Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent),xa=/OS X.*Version\/10\..*Safari/.exec(window.navigator.userAgent)&&/Apple/.exec(window.navigator.vendor);
+X=x?42<parseInt(x[1],10):xa?!1:!0}else X=!1;X?r=new P(p(b.g,b),p(b.h,b),b.c,k,b.s,n):r=new Q(p(b.g,b),p(b.h,b),b.c,k,b.s,a,n);l.push(r)}for(h=0;h<l.length;h++)l[h].start()}},0)}function pa(a,b,c){var d=[],e=c.timeout;ia(b);var d=ka(a.a,c,a.c),f=new W(a.c,b,e);a.h=d.length;b=0;for(c=d.length;b<c;b++)d[b].load(function(b,d,c){qa(a,f,b,d,c)})};function ra(a,b){this.c=a;this.a=b}
+ra.prototype.load=function(a){function b(){if(f["__mti_fntLst"+d]){var c=f["__mti_fntLst"+d](),e=[],h;if(c)for(var l=0;l<c.length;l++){var k=c[l].fontfamily;void 0!=c[l].fontStyle&&void 0!=c[l].fontWeight?(h=c[l].fontStyle+c[l].fontWeight,e.push(new G(k,h))):e.push(new G(k))}a(e)}else setTimeout(function(){b()},50)}var c=this,d=c.a.projectId,e=c.a.version;if(d){var f=c.c.o;A(this.c,(c.a.api||"https://fast.fonts.net/jsapi")+"/"+d+".js"+(e?"?v="+e:""),function(e){e?a([]):(f["__MonotypeConfiguration__"+
+d]=function(){return c.a},b())}).id="__MonotypeAPIScript__"+d}else a([])};function sa(a,b){this.c=a;this.a=b}sa.prototype.load=function(a){var b,c,d=this.a.urls||[],e=this.a.families||[],f=this.a.testStrings||{},g=new B;b=0;for(c=d.length;b<c;b++)z(this.c,d[b],C(g));var m=[];b=0;for(c=e.length;b<c;b++)if(d=e[b].split(":"),d[1])for(var h=d[1].split(","),l=0;l<h.length;l+=1)m.push(new G(d[0],h[l]));else m.push(new G(d[0]));E(g,function(){a(m,f)})};function ta(a,b){a?this.c=a:this.c=ua;this.a=[];this.f=[];this.g=b||""}var ua="https://fonts.googleapis.com/css";function va(a,b){for(var c=b.length,d=0;d<c;d++){var e=b[d].split(":");3==e.length&&a.f.push(e.pop());var f="";2==e.length&&""!=e[1]&&(f=":");a.a.push(e.join(f))}}
+function wa(a){if(0==a.a.length)throw Error("No fonts to load!");if(-1!=a.c.indexOf("kit="))return a.c;for(var b=a.a.length,c=[],d=0;d<b;d++)c.push(a.a[d].replace(/ /g,"+"));b=a.c+"?family="+c.join("%7C");0<a.f.length&&(b+="&subset="+a.f.join(","));0<a.g.length&&(b+="&text="+encodeURIComponent(a.g));return b};function ya(a){this.f=a;this.a=[];this.c={}}
+var za={latin:"BESbswy","latin-ext":"\u00e7\u00f6\u00fc\u011f\u015f",cyrillic:"\u0439\u044f\u0416",greek:"\u03b1\u03b2\u03a3",khmer:"\u1780\u1781\u1782",Hanuman:"\u1780\u1781\u1782"},Aa={thin:"1",extralight:"2","extra-light":"2",ultralight:"2","ultra-light":"2",light:"3",regular:"4",book:"4",medium:"5","semi-bold":"6",semibold:"6","demi-bold":"6",demibold:"6",bold:"7","extra-bold":"8",extrabold:"8","ultra-bold":"8",ultrabold:"8",black:"9",heavy:"9",l:"3",r:"4",b:"7"},Ba={i:"i",italic:"i",n:"n",normal:"n"},
+Ca=/^(thin|(?:(?:extra|ultra)-?)?light|regular|book|medium|(?:(?:semi|demi|extra|ultra)-?)?bold|black|heavy|l|r|b|[1-9]00)?(n|i|normal|italic)?$/;
+function Da(a){for(var b=a.f.length,c=0;c<b;c++){var d=a.f[c].split(":"),e=d[0].replace(/\+/g," "),f=["n4"];if(2<=d.length){var g;var m=d[1];g=[];if(m)for(var m=m.split(","),h=m.length,l=0;l<h;l++){var k;k=m[l];if(k.match(/^[\w-]+$/)){var n=Ca.exec(k.toLowerCase());if(null==n)k="";else{k=n[2];k=null==k||""==k?"n":Ba[k];n=n[1];if(null==n||""==n)n="4";else var r=Aa[n],n=r?r:isNaN(n)?"4":n.substr(0,1);k=[k,n].join("")}}else k="";k&&g.push(k)}0<g.length&&(f=g);3==d.length&&(d=d[2],g=[],d=d?d.split(","):
+g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d))}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new G(e,f[d]))}};function Ea(a,b){this.c=a;this.a=b}var Fa={Arimo:!0,Cousine:!0,Tinos:!0};Ea.prototype.load=function(a){var b=new B,c=this.c,d=new ta(this.a.api,this.a.text),e=this.a.families;va(d,e);var f=new ya(e);Da(f);z(c,wa(d),C(b));E(b,function(){a(f.a,f.c,Fa)})};function Ga(a,b){this.c=a;this.a=b}Ga.prototype.load=function(a){var b=this.a.id,c=this.c.o;b?A(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],m=b[f+1],h=0;h<m.length;h++)e.push(new G(g,m[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0})}catch(l){}a(e)}},2E3):a([])};function Ha(a,b){this.c=a;this.f=b;this.a=[]}Ha.prototype.load=function(a){var b=this.f.id,c=this.c.o,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,m=c.fonts.length;g<m;++g){var h=c.fonts[g];d.a.push(new G(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)))}a(d.a)},A(this.c,(this.f.api||"https://f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([])})):a([])};var Y=new oa(window);Y.a.c.custom=function(a,b){return new sa(b,a)};Y.a.c.fontdeck=function(a,b){return new Ha(b,a)};Y.a.c.monotype=function(a,b){return new ra(b,a)};Y.a.c.typekit=function(a,b){return new Ga(b,a)};Y.a.c.google=function(a,b){return new Ea(b,a)};var Z={load:p(Y.load,Y)}; true?!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(){return Z}).call(exports, __webpack_require__, exports, module),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):0;}());
+
+
+/***/ }),
+
 /***/ "./node_modules/@wordpress/icons/build-module/icon/index.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@wordpress/icons/build-module/icon/index.js ***!
@@ -4533,6 +4561,47 @@ const search = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)
 
 /***/ }),
 
+/***/ "./search/Modal.js":
+/*!*************************!*\
+  !*** ./search/Modal.js ***!
+  \*************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const Modal = props => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `pbg-search-modal${props.isOpen ? ' open' : ''}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-modal-actions"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    onClick: () => props.setIsOpen(false)
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    width: "24",
+    height: "24",
+    role: "img",
+    "aria-hidden": "true",
+    focusable: "false"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-modal-content"
+  }, props.children));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Modal);
+
+/***/ }),
+
 /***/ "./search/edit.js":
 /*!************************!*\
   !*** ./search/edit.js ***!
@@ -4556,17 +4625,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/search.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/search.js");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _wordpress_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/dom */ "@wordpress/dom");
 /* harmony import */ var _wordpress_dom__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./icons */ "./search/icons.js");
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils.js */ "./search/utils.js");
-/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "../components/Color Control/ColorComponent.js");
-/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/premium-border */ "../components/premium-border.js");
-/* harmony import */ var _components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Premium-Responsive-Padding */ "../components/Premium-Responsive-Padding.js");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _fetchLinkSuggestions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./fetchLinkSuggestions */ "./search/fetchLinkSuggestions.js");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./icons */ "./search/icons.js");
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Modal */ "./search/Modal.js");
+/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "../components/Color Control/ColorComponent.js");
+/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-border */ "../components/premium-border.js");
+/* harmony import */ var _components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/Premium-Responsive-Padding */ "../components/Premium-Responsive-Padding.js");
+/* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/premium-typo */ "../components/premium-typo.js");
 
 
 /**
@@ -4585,6 +4658,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // , __experimentalFetchLinkSuggestions as fetchLinkSuggestions, useEntityProp
+
+
 /**
  * Internal dependencies
  */
@@ -4594,6 +4670,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+const MIN_WIDTH = 220;
 function SearchEdit(_ref) {
   let {
     className,
@@ -4607,22 +4685,23 @@ function SearchEdit(_ref) {
     label,
     showLabel,
     placeholder,
-    width,
-    widthUnit,
     align,
     buttonText,
     buttonPosition,
     buttonUseIcon,
     formStyle,
     colors,
-    postion,
+    position,
     border,
     spacing,
     typography,
     buttonTypography,
-    floatPostion,
-    floatValues
+    floatPosition,
+    floatValues,
+    ajaxSearch
   } = attributes;
+  const [isVisibility, setIsVisibility] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [posts, setPosts] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const insertedInNavigationBlock = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
     var _getBlockParentsByBlo;
 
@@ -4646,19 +4725,10 @@ function SearchEdit(_ref) {
       buttonPosition: 'button-inside'
     });
   }, [insertedInNavigationBlock]);
-  const unitControlInstanceId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.useInstanceId)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalUnitControl);
-  const unitControlInputId = `wp-block-premium-search__width-${unitControlInstanceId}`;
   const isButtonPositionInside = 'button-inside' === buttonPosition;
   const isButtonPositionOutside = 'button-outside' === buttonPosition;
   const hasNoButton = 'no-button' === buttonPosition;
   const hasOnlyButton = 'button-only' === buttonPosition;
-  const units = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalUseCustomUnits)({
-    availableUnits: ['%', 'px'],
-    defaultValues: {
-      '%': _utils_js__WEBPACK_IMPORTED_MODULE_9__.PC_WIDTH_DEFAULT,
-      px: _utils_js__WEBPACK_IMPORTED_MODULE_9__.PX_WIDTH_DEFAULT
-    }
-  });
   const defaultSpacingValue = {
     desktop: {
       top: '',
@@ -4698,7 +4768,7 @@ function SearchEdit(_ref) {
     role: 'menuitemradio',
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Button outside'),
     isActive: buttonPosition === 'button-outside',
-    icon: _icons__WEBPACK_IMPORTED_MODULE_8__.buttonOutside,
+    icon: _icons__WEBPACK_IMPORTED_MODULE_10__.buttonOutside,
     onClick: () => {
       setAttributes({
         buttonPosition: 'button-outside'
@@ -4708,7 +4778,7 @@ function SearchEdit(_ref) {
     role: 'menuitemradio',
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Button inside'),
     isActive: buttonPosition === 'button-inside',
-    icon: _icons__WEBPACK_IMPORTED_MODULE_8__.buttonInside,
+    icon: _icons__WEBPACK_IMPORTED_MODULE_10__.buttonInside,
     onClick: () => {
       setAttributes({
         buttonPosition: 'button-inside'
@@ -4718,7 +4788,7 @@ function SearchEdit(_ref) {
     role: 'menuitemradio',
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('No button'),
     isActive: buttonPosition === 'no-button',
-    icon: _icons__WEBPACK_IMPORTED_MODULE_8__.noButton,
+    icon: _icons__WEBPACK_IMPORTED_MODULE_10__.noButton,
     onClick: () => {
       setAttributes({
         buttonPosition: 'no-button'
@@ -4729,16 +4799,16 @@ function SearchEdit(_ref) {
   const getButtonPositionIcon = () => {
     switch (buttonPosition) {
       case 'button-inside':
-        return _icons__WEBPACK_IMPORTED_MODULE_8__.buttonInside;
+        return _icons__WEBPACK_IMPORTED_MODULE_10__.buttonInside;
 
       case 'button-outside':
-        return _icons__WEBPACK_IMPORTED_MODULE_8__.buttonOutside;
+        return _icons__WEBPACK_IMPORTED_MODULE_10__.buttonOutside;
 
       case 'no-button':
-        return _icons__WEBPACK_IMPORTED_MODULE_8__.noButton;
+        return _icons__WEBPACK_IMPORTED_MODULE_10__.noButton;
 
       case 'button-only':
-        return _icons__WEBPACK_IMPORTED_MODULE_8__.buttonOnly;
+        return _icons__WEBPACK_IMPORTED_MODULE_10__.buttonOnly;
     }
   };
 
@@ -4794,33 +4864,123 @@ function SearchEdit(_ref) {
     });
   };
 
+  const onChangePositionSide = value => {
+    const newFloatValues = { ...floatValues
+    };
+    setAttributes({
+      floatValues: { ...newFloatValues,
+        ...value
+      }
+    });
+  };
+
+  const onChangeFontSize = (value, device) => {
+    const newSize = { ...fontSize
+    };
+    newSize[device] = value;
+    setAttributes({
+      typography: { ...typography,
+        size: newSize
+      }
+    });
+  };
+
+  const onChangeFont = (value, attr) => {
+    setAttributes({
+      typography: { ...typography,
+        [attr]: value
+      }
+    });
+  };
+
+  const onChangeButtonFontSize = (value, device) => {
+    const newSize = { ...buttonFontSize
+    };
+    newSize[device] = value;
+    setAttributes({
+      buttonTypography: { ...buttonTypography,
+        size: newSize
+      }
+    });
+  };
+
+  const onChangeButtonFont = (value, attr) => {
+    setAttributes({
+      buttonTypography: { ...buttonTypography,
+        [attr]: value
+      }
+    });
+  };
+
+  const getPostsByName = async name => {
+    const data = await (0,_fetchLinkSuggestions__WEBPACK_IMPORTED_MODULE_9__["default"])(name, {
+      type: 'post',
+      perPage: 6
+    });
+
+    if (data.length) {
+      setPosts(data);
+    }
+  };
+
+  const inputChangeHandler = e => {
+    if (!ajaxSearch) {
+      return;
+    }
+
+    const value = e.target.value;
+    getPostsByName(value);
+  };
+
+  const textFieldStyles = {
+    color: colors.text,
+    backgroundColor: colors.background,
+    borderStyle: border.type,
+    borderTopWidth: border.top,
+    borderRightWidth: border.right,
+    borderBottomWidth: border.bottom,
+    borderLeftWidth: border.left,
+    borderRadius: border.radius,
+    borderColor: border.color,
+    paddingTop: `${padding.desktop.top}px`,
+    paddingRight: `${padding.desktop.right}px`,
+    paddingBottom: `${padding.desktop.bottom}px`,
+    paddingLeft: `${padding.desktop.left}px`
+  };
+  const textTypoStyles = {
+    fontSize: `${fontSize.desktop}${fontSize.unit}`,
+    fontFamily: typography.family,
+    fontWeight: typography.weight,
+    letterSpacing: typography.letterSpacing,
+    textDecoration: typography.textDecoration,
+    textTransform: typography.textTransform,
+    lineHeight: `${typography.lineHeight}px`
+  };
+
   const renderTextField = () => {
     // If the input is inside the wrapper, the wrapper gets the border color styles/classes, not the input control.
     const textFieldClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-premium-search__input', isButtonPositionInside ? undefined : '');
-    const textFieldStyles = {
-      color: colors.text,
-      backgroundColor: colors.background,
-      borderStyle: border.type,
-      borderTopWidth: border.top,
-      borderRightWidth: border.right,
-      borderBottomWidth: border.bottom,
-      borderLeftWidth: border.left,
-      borderRadius: border.radius,
-      borderColor: border.color
+    const styles = isButtonPositionInside ? { ...textTypoStyles,
+      backgroundColor: 'transparent'
+    } : { ...textFieldStyles,
+      ...textTypoStyles
     };
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
       type: "search",
       className: textFieldClasses,
-      style: textFieldStyles,
+      style: styles,
       "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Optional placeholder text') // We hide the placeholder field's placeholder when there is a value. This
       // stops screen readers from reading the placeholder field's placeholder
       // which is confusing.
       ,
       placeholder: placeholder ? undefined : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Optional placeholder…'),
       value: placeholder,
-      onChange: event => setAttributes({
-        placeholder: event.target.value
-      })
+      onChange: event => {
+        inputChangeHandler(event);
+        setAttributes({
+          placeholder: event.target.value
+        });
+      }
     });
   };
 
@@ -4829,15 +4989,36 @@ function SearchEdit(_ref) {
     const buttonClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-premium-search__button', isButtonPositionInside ? undefined : '', buttonUseIcon ? 'has-icon' : undefined);
     const butttonStyles = {
       color: colors.btnText,
-      backgroundColor: colors.btnBackground
+      backgroundColor: colors.btnBackground,
+      paddingTop: `${buttonPadding.desktop.top}px`,
+      paddingRight: `${buttonPadding.desktop.right}px`,
+      paddingBottom: `${buttonPadding.desktop.bottom}px`,
+      paddingLeft: `${buttonPadding.desktop.left}px`,
+      fontSize: `${buttonFontSize.desktop}${buttonFontSize.unit}`,
+      fontFamily: buttonTypography.family,
+      fontWeight: buttonTypography.weight,
+      letterSpacing: buttonTypography.letterSpacing,
+      textDecoration: buttonTypography.textDecoration,
+      textTransform: buttonTypography.textTransform,
+      lineHeight: `${buttonTypography.lineHeight}px`
     };
+
+    const onClickHandler = () => {
+      if (formStyle === 'default') {
+        return;
+      }
+
+      setIsVisibility(true);
+    };
+
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, buttonUseIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       type: "button",
       className: buttonClasses,
       style: butttonStyles,
-      "aria-label": buttonText ? (0,_wordpress_dom__WEBPACK_IMPORTED_MODULE_7__.__unstableStripHTML)(buttonText) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Search')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_13__["default"], {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__["default"]
+      "aria-label": buttonText ? (0,_wordpress_dom__WEBPACK_IMPORTED_MODULE_7__.__unstableStripHTML)(buttonText) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Search'),
+      onClick: onClickHandler
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__["default"]
     })), !buttonUseIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
       className: buttonClasses,
       "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Button text'),
@@ -4847,26 +5028,27 @@ function SearchEdit(_ref) {
       value: buttonText,
       onChange: html => setAttributes({
         buttonText: html
-      })
+      }),
+      onClick: onClickHandler
     }));
   };
 
   const controls = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Toggle search label'),
-    icon: _icons__WEBPACK_IMPORTED_MODULE_8__.toggleLabel,
+    icon: _icons__WEBPACK_IMPORTED_MODULE_10__.toggleLabel,
     onClick: () => {
       setAttributes({
         showLabel: !showLabel
       });
     },
     className: showLabel ? 'is-pressed' : undefined
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarDropdownMenu, {
+  }), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarDropdownMenu, {
     icon: getButtonPositionIcon(),
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Change button position'),
     controls: buttonPositionControls
   }), !hasNoButton && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Use button with icon'),
-    icon: _icons__WEBPACK_IMPORTED_MODULE_8__.buttonWithIcon,
+    icon: _icons__WEBPACK_IMPORTED_MODULE_10__.buttonWithIcon,
     onClick: () => {
       setAttributes({
         buttonUseIcon: !buttonUseIcon
@@ -4875,7 +5057,15 @@ function SearchEdit(_ref) {
     className: buttonUseIcon ? 'is-pressed' : undefined
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Display Settings')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
+    checked: ajaxSearch,
+    onChange: value => {
+      setAttributes({
+        ajaxSearch: value
+      });
+    },
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Enable Ajax Search')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("From Style", 'premium-blocks-for-gutenberg'),
     options: [{
       value: "default",
@@ -4885,9 +5075,12 @@ function SearchEdit(_ref) {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Button", 'premium-blocks-for-gutenberg')
     }],
     value: formStyle,
-    onChange: style => setAttributes({
-      formStyle: style
-    })
+    onChange: style => {
+      setAttributes({
+        buttonPosition: 'button-outside',
+        formStyle: style
+      });
+    }
   }), formStyle === 'button' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Button Position", 'premium-blocks-for-gutenberg'),
     options: [{
@@ -4897,11 +5090,62 @@ function SearchEdit(_ref) {
       value: "float",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Float", 'premium-blocks-for-gutenberg')
     }],
-    value: postion,
+    value: position,
     onChange: style => setAttributes({
-      postion: style
+      position: style
     })
-  }), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }), formStyle === 'button' && position === 'float' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Float Position", 'premium-blocks-for-gutenberg'),
+    options: [{
+      value: "top-right",
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Top Right", 'premium-blocks-for-gutenberg')
+    }, {
+      value: "top-left",
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Top Left", 'premium-blocks-for-gutenberg')
+    }, {
+      value: "bottom-right",
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Bottom Right", 'premium-blocks-for-gutenberg')
+    }, {
+      value: "bottom-left",
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Bottom Left", 'premium-blocks-for-gutenberg')
+    }],
+    value: floatPosition,
+    onChange: style => setAttributes({
+      floatPosition: style
+    })
+  }), floatPosition.includes('top') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Top', 'premium-blocks-for-gutenberg'),
+    value: floatValues.top,
+    onChange: size => onChangePositionSide({
+      top: size
+    }),
+    min: 0,
+    max: 1000
+  }), floatPosition.includes('bottom') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Bottom', 'premium-blocks-for-gutenberg'),
+    value: floatValues.bottom,
+    onChange: size => onChangePositionSide({
+      bottom: size
+    }),
+    min: 0,
+    max: 1000
+  }), floatPosition.includes('right') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Right', 'premium-blocks-for-gutenberg'),
+    value: floatValues.right,
+    onChange: size => onChangePositionSide({
+      right: size
+    }),
+    min: 0,
+    max: 1000
+  }), floatPosition.includes('left') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Left', 'premium-blocks-for-gutenberg'),
+    value: floatValues.left,
+    onChange: size => onChangePositionSide({
+      left: size
+    }),
+    min: 0,
+    max: 1000
+  })), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_13__["default"], {
     borderType: border.type,
     top: border.top,
     right: border.right,
@@ -4932,46 +5176,72 @@ function SearchEdit(_ref) {
     onChangeRadius: newrRadius => borderChange({
       radius: newrRadius
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.BaseControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Width'),
-    id: unitControlInputId
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalUnitControl, {
-    id: unitControlInputId,
-    min: `${_utils_js__WEBPACK_IMPORTED_MODULE_9__.MIN_WIDTH}${_utils_js__WEBPACK_IMPORTED_MODULE_9__.MIN_WIDTH_UNIT}`,
-    onChange: newWidth => {
-      const filteredWidth = widthUnit === '%' && parseInt(newWidth, 10) > 100 ? 100 : newWidth;
-      setAttributes({
-        width: parseInt(filteredWidth, 10)
-      });
+  })), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Input Typography", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
+    setAttributes: value => onChangeFontSize(value.SizeUnit, 'unit'),
+    fontSizeType: {
+      value: fontSize.unit,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("SizeUnit", 'premium-blocks-for-gutenberg')
     },
-    onUnitChange: newUnit => {
-      setAttributes({
-        width: '%' === newUnit ? _utils_js__WEBPACK_IMPORTED_MODULE_9__.PC_WIDTH_DEFAULT : _utils_js__WEBPACK_IMPORTED_MODULE_9__.PX_WIDTH_DEFAULT,
-        widthUnit: newUnit
-      });
+    fontSize: fontSize.desktop,
+    fontSizeMobile: fontSize.mobile,
+    fontSizeTablet: fontSize.tablet,
+    onChangeSize: newSize => onChangeFontSize(newSize, 'desktop'),
+    onChangeTabletSize: newSize => onChangeFontSize(newSize, 'tablet'),
+    onChangeMobileSize: newSize => onChangeFontSize(newSize, 'mobile'),
+    fontFamily: typography.family,
+    weight: typography.weight,
+    onChangeWeight: newWeight => onChangeFont(newWeight, 'weight'),
+    onChangeFamily: fontFamily => onChangeFont(fontFamily, 'family'),
+    line: typography.lineHeight,
+    onChangeLine: lineHeight => onChangeFont(lineHeight, 'lineHeight'),
+    style: typography.style,
+    onChangeStyle: newStyle => onChangeFont(newStyle, 'style'),
+    spacing: typography.letterSpacing,
+    onChangeSpacing: letterSpacing => onChangeFont(letterSpacing, 'letterSpacing'),
+    textTransform: typography.textTransform,
+    onChangeTextTransform: textTransform => onChangeFont(textTransform, 'textTransform'),
+    textDecoration: typography.textDecoration,
+    onChangeTextDecoration: textDecoration => onChangeFont(textDecoration, 'textDecoration')
+  })), !_icons__WEBPACK_IMPORTED_MODULE_10__.buttonWithIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Button Typography", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
+    setAttributes: value => onChangeButtonFontSize(value.SizeUnit, 'unit'),
+    fontSizeType: {
+      value: buttonFontSize.unit,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("SizeUnit", 'premium-blocks-for-gutenberg')
     },
-    style: {
-      maxWidth: 80
-    },
-    value: `${width}${widthUnit}`,
-    units: units
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ButtonGroup, {
-    className: "wp-block-premium-search__components-button-group",
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Percentage Width')
-  }, [25, 50, 75, 100].map(widthValue => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
-      key: widthValue,
-      isSmall: true,
-      variant: `${widthValue}%` === `${width}${widthUnit}` ? 0 : undefined,
-      onClick: () => setAttributes({
-        width: widthValue,
-        widthUnit: '%'
-      })
-    }, widthValue, "%");
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    fontSize: buttonFontSize.desktop,
+    fontSizeMobile: buttonFontSize.mobile,
+    fontSizeTablet: buttonFontSize.tablet,
+    onChangeSize: newSize => onChangeButtonFontSize(newSize, 'desktop'),
+    onChangeTabletSize: newSize => onChangeButtonFontSize(newSize, 'tablet'),
+    onChangeMobileSize: newSize => onChangeButtonFontSize(newSize, 'mobile'),
+    fontFamily: buttonTypography.family,
+    weight: buttonTypography.weight,
+    onChangeWeight: newWeight => onChangeButtonFont(newWeight, 'weight'),
+    onChangeFamily: fontFamily => onChangeButtonFont(fontFamily, 'family'),
+    line: buttonTypography.lineHeight,
+    onChangeLine: lineHeight => onChangeButtonFont(lineHeight, 'lineHeight'),
+    style: buttonTypography.style,
+    onChangeStyle: newStyle => onChangeButtonFont(newStyle, 'style'),
+    spacing: buttonTypography.letterSpacing,
+    onChangeSpacing: letterSpacing => onChangeButtonFont(letterSpacing, 'letterSpacing'),
+    textTransform: buttonTypography.textTransform,
+    onChangeTextTransform: textTransform => onChangeButtonFont(textTransform, 'textTransform'),
+    textDecoration: buttonTypography.textDecoration,
+    onChangeTextDecoration: textDecoration => onChangeButtonFont(textDecoration, 'textDecoration')
+  })), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Input Spacing', 'premium-blocks-for-gutenberg'),
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_14__["default"], {
     directions: ["all"],
     paddingTop: padding.desktop.top,
     paddingRight: padding.desktop.right,
@@ -5000,7 +5270,7 @@ function SearchEdit(_ref) {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Button Spacing', 'premium-blocks-for-gutenberg'),
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_14__["default"], {
     directions: ["all"],
     paddingTop: buttonPadding.desktop.top,
     paddingRight: buttonPadding.desktop.right,
@@ -5042,27 +5312,42 @@ function SearchEdit(_ref) {
     }]
   }, tab => {
     if ("normal" === tab.name) {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, ajaxSearch && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Links Color`, 'premium-blocks-for-gutenberg'),
+        colorValue: colors.link,
+        onColorChange: newValue => setColor('link', newValue),
+        colorDefault: ''
+      }), formStyle === 'button' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Modal Background Color`, 'premium-blocks-for-gutenberg'),
+        colorValue: colors.modal,
+        onColorChange: newValue => setColor('modal', newValue),
+        colorDefault: ''
+      }), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, ajaxSearch && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Dropdown Background Color`, 'premium-blocks-for-gutenberg'),
+        colorValue: colors.dropdown,
+        onColorChange: newValue => setColor('dropdown', newValue),
+        colorDefault: ''
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Form Text Color`, 'premium-blocks-for-gutenberg'),
         colorValue: colors.text,
         onColorChange: newValue => setColor('text', newValue),
         colorDefault: ''
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Form Background Color`, 'premium-blocks-for-gutenberg'),
         colorValue: colors.background,
         onColorChange: newValue => setColor('background', newValue),
         colorDefault: ''
-      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Button Text Color`, 'premium-blocks-for-gutenberg'),
         colorValue: colors.btnText,
         onColorChange: newValue => setColor('btnText', newValue),
         colorDefault: ''
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Button Background Color`, 'premium-blocks-for-gutenberg'),
         colorValue: colors.btnBackground,
         onColorChange: newValue => setColor('btnBackground', newValue),
         colorDefault: ''
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }), showLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Label Color`, 'premium-blocks-for-gutenberg'),
         colorValue: colors.label,
         onColorChange: newValue => setColor('label', newValue),
@@ -5071,12 +5356,17 @@ function SearchEdit(_ref) {
     }
 
     if ("hover" === tab.name) {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, ajaxSearch && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Links Color`, 'premium-blocks-for-gutenberg'),
+        colorValue: colors.linkHover,
+        onColorChange: newValue => setColor('linkHover', newValue),
+        colorDefault: ''
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Button Text Color`, 'premium-blocks-for-gutenberg'),
         colorValue: colors.btnHoverText,
         onColorChange: newValue => setColor('btnHoverText', newValue),
         colorDefault: ''
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)(`Button Background Color`, 'premium-blocks-for-gutenberg'),
         colorValue: colors.btnHoverBackground,
         onColorChange: newValue => setColor('btnHoverBackground', newValue),
@@ -5085,7 +5375,14 @@ function SearchEdit(_ref) {
     }
   }))));
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-    className: getBlockClassNames()
+    className: getBlockClassNames(),
+    style: {
+      position: position === 'float' && formStyle === 'button' && !isVisibility ? 'fixed' : '',
+      top: position === 'float' && floatPosition.includes('top') ? floatValues.top : '',
+      right: position === 'float' && floatPosition.includes('right') ? floatValues.right : '',
+      bottom: position === 'float' && floatPosition.includes('bottom') ? floatValues.bottom : '',
+      left: position === 'float' && floatPosition.includes('left') ? floatValues.left : ''
+    }
   });
   const labelStyles = {
     color: colors.label
@@ -5095,7 +5392,7 @@ function SearchEdit(_ref) {
     return str.split(':')[1];
   };
 
-  let styleArry = [`#${blockProps.id} .wp-block-premium-search__button:hover{`, `color: ${colors.btnHoverText}!important;`, `background-color: ${colors.btnHoverBackground}!important;`, `}`];
+  let styleArry = [`#${blockProps.id}{`, `--pbg-dropdown-bg-color: ${colors.dropdown};`, `--pbg-link-color: ${colors.link}!important;`, `--pbg-link-hover-color: ${colors.linkHover}!important;`, `--pbg-modal-bg-color: ${colors.modal};`, `}`, `#${blockProps.id} .wp-block-premium-search__button:hover{`, `color: ${colors.btnHoverText}!important;`, `background-color: ${colors.btnHoverBackground}!important;`, `}`];
   styleArry = styleArry.filter(styleLine => {
     const notAllowed = ['px;', 'undefined;', ';', '!important;'];
     const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
@@ -5119,28 +5416,305 @@ function SearchEdit(_ref) {
       label: html
     })
   }), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ResizableBox, {
-    size: {
-      width: `${width}${widthUnit}`
-    },
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-premium-search__inside-wrapper', isButtonPositionInside ? '' : undefined),
-    minWidth: _utils_js__WEBPACK_IMPORTED_MODULE_9__.MIN_WIDTH,
+    style: isButtonPositionInside ? textFieldStyles : {},
+    minWidth: MIN_WIDTH,
     enable: getResizableSides(),
     onResizeStart: (event, direction, elt) => {
-      setAttributes({
-        width: parseInt(elt.offsetWidth, 10),
-        widthUnit: 'px'
-      });
       toggleSelection(false);
     },
     onResizeStop: (event, direction, elt, delta) => {
-      setAttributes({
-        width: parseInt(width + delta.width, 10)
-      });
       toggleSelection(true);
     },
     showHandle: isSelected
-  }, (isButtonPositionInside || isButtonPositionOutside) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, renderTextField(), renderButton()), hasOnlyButton && renderButton(), hasNoButton && renderTextField()), formStyle !== 'default' && renderButton());
+  }, (isButtonPositionInside || isButtonPositionOutside) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, renderTextField(), renderButton()), hasOnlyButton && renderButton(), hasNoButton && renderTextField(), ajaxSearch && posts.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-search-dropdown"
+  }, posts.map(post => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: post.url,
+      className: "pbg-search-item"
+    }, post._embedded['wp:featuredmedia'] && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: ((post._embedded['wp:featuredmedia'][0].media_details || {
+        sizes: {}
+      }).sizes || {}).thumbnail ? (post._embedded['wp:featuredmedia'][0].media_details || {
+        sizes: []
+      }).sizes.thumbnail.source_url : values((post._embedded['wp:featuredmedia'][0].media_details || {
+        sizes: []
+      }).sizes || {}).reduce((currentSmallest, current) => current.width < currentSmallest.width ? current : currentSmallest, {
+        width: 9999999999
+      }).source_url || post._embedded['wp:featuredmedia'][0].source_url
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, post.title));
+  }))), formStyle !== 'default' && renderButton(), formStyle === 'button' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Modal__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    isOpen: isVisibility,
+    setIsOpen: setIsVisibility
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-advanced-search-form"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "search",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Search"),
+    onChange: e => inputChangeHandler(e)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-advanced-search-icon"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__["default"]
+  }))), ajaxSearch && posts.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-search-results"
+  }, posts.map(post => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: post.url,
+      className: "pbg-search-item"
+    }, post._embedded['wp:featuredmedia'] && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "pbg-image-container"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: ((post._embedded['wp:featuredmedia'][0].media_details || {
+        sizes: {}
+      }).sizes || {}).thumbnail ? (post._embedded['wp:featuredmedia'][0].media_details || {
+        sizes: []
+      }).sizes.thumbnail.source_url : values((post._embedded['wp:featuredmedia'][0].media_details || {
+        sizes: []
+      }).sizes || {}).reduce((currentSmallest, current) => current.width < currentSmallest.width ? current : currentSmallest, {
+        width: 9999999999
+      }).source_url || post._embedded['wp:featuredmedia'][0].source_url
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "pbg-ratio"
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, post.title));
+  })))));
 }
+
+/***/ }),
+
+/***/ "./search/fetchLinkSuggestions.js":
+/*!****************************************!*\
+  !*** ./search/fetchLinkSuggestions.js ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_html_entities__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/html-entities */ "@wordpress/html-entities");
+/* harmony import */ var _wordpress_html_entities__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_html_entities__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+/**
+ * Filters the search by type
+ *
+ * @typedef { 'attachment' | 'post' | 'term' | 'post-format' } WPLinkSearchType
+ */
+
+/**
+ * A link with an id may be of kind post-type or taxonomy
+ *
+ * @typedef { 'post-type' | 'taxonomy' } WPKind
+ */
+
+/**
+ * @typedef WPLinkSearchOptions
+ *
+ * @property {boolean}          [isInitialSuggestions] Displays initial search suggestions, when true.
+ * @property {WPLinkSearchType} [type]                 Filters by search type.
+ * @property {string}           [subtype]              Slug of the post-type or taxonomy.
+ * @property {number}           [page]                 Which page of results to return.
+ * @property {number}           [perPage]              Search results per page.
+ */
+
+/**
+ * @typedef WPLinkSearchResult
+ *
+ * @property {number} id     Post or term id.
+ * @property {string} url    Link url.
+ * @property {string} title  Title of the link.
+ * @property {string} type   The taxonomy or post type slug or type URL.
+ * @property {WPKind} [kind] Link kind of post-type or taxonomy
+ */
+
+/**
+ * @typedef WPLinkSearchResultAugments
+ *
+ * @property {{kind: WPKind}} [meta]    Contains kind information.
+ * @property {WPKind}         [subtype] Optional subtype if it exists.
+ */
+
+/**
+ * @typedef {WPLinkSearchResult & WPLinkSearchResultAugments} WPLinkSearchResultAugmented
+ */
+
+/**
+ * @typedef WPEditorSettings
+ *
+ * @property {boolean} [ disablePostFormats ] Disables post formats, when true.
+ */
+
+/**
+ * Fetches link suggestions from the API.
+ *
+ * @async
+ * @param {string}              search
+ * @param {WPLinkSearchOptions} [searchOptions]
+ * @param {WPEditorSettings}    [settings]
+ *
+ * @example
+ * ```js
+ * import { __experimentalFetchLinkSuggestions as fetchLinkSuggestions } from '@wordpress/core-data';
+ *
+ * //...
+ *
+ * export function initialize( id, settings ) {
+ *
+ * settings.__experimentalFetchLinkSuggestions = (
+ *     search,
+ *     searchOptions
+ * ) => fetchLinkSuggestions( search, searchOptions, settings );
+ * ```
+ * @return {Promise< WPLinkSearchResult[] >} List of search suggestions
+ */
+
+const fetchLinkSuggestions = async function (search) {
+  let searchOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  let settings = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  const {
+    isInitialSuggestions = false,
+    type = undefined,
+    subtype = undefined,
+    page = undefined,
+    perPage = isInitialSuggestions ? 3 : 20
+  } = searchOptions;
+  const {
+    disablePostFormats = false
+  } = settings;
+  /** @type {Promise<WPLinkSearchResult>[]} */
+
+  const queries = [];
+
+  if (!type || type === 'post') {
+    queries.push(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_1__.addQueryArgs)('/wp/v2/posts', {
+        search,
+        page,
+        per_page: perPage,
+        type: 'post',
+        subtype,
+        _embed: true
+      })
+    }).then(results => {
+      return results.map(result => {
+        return { ...result,
+          url: result.link,
+          title: result.title.rendered,
+          _embedded: result._embedded,
+          meta: {
+            kind: 'post-type',
+            subtype
+          }
+        };
+      });
+    }).catch(() => []) // Fail by returning no results.
+    );
+  }
+
+  if (!type || type === 'term') {
+    queries.push(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_1__.addQueryArgs)('/wp/v2/search', {
+        search,
+        page,
+        per_page: perPage,
+        type: 'term',
+        subtype
+      })
+    }).then(results => {
+      return results.map(result => {
+        return { ...result,
+          meta: {
+            kind: 'taxonomy',
+            subtype
+          }
+        };
+      });
+    }).catch(() => []) // Fail by returning no results.
+    );
+  }
+
+  if (!disablePostFormats && (!type || type === 'post-format')) {
+    queries.push(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_1__.addQueryArgs)('/wp/v2/search', {
+        search,
+        page,
+        per_page: perPage,
+        type: 'post-format',
+        subtype
+      })
+    }).then(results => {
+      return results.map(result => {
+        return { ...result,
+          meta: {
+            kind: 'taxonomy',
+            subtype
+          }
+        };
+      });
+    }).catch(() => []) // Fail by returning no results.
+    );
+  }
+
+  if (!type || type === 'attachment') {
+    queries.push(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_1__.addQueryArgs)('/wp/v2/media', {
+        search,
+        per_page: perPage
+      })
+    }).then(results => {
+      return results.map(result => {
+        return { ...result,
+          meta: {
+            kind: 'media'
+          }
+        };
+      });
+    }).catch(() => []) // Fail by returning no results.
+    );
+  }
+
+  return Promise.all(queries).then(results => {
+    return results.reduce((
+    /** @type {WPLinkSearchResult[]} */
+    accumulator, current) => accumulator.concat(current), // Flatten list.
+    []).filter(
+    /**
+     * @param {{ id: number }} result
+     */
+    result => {
+      return !!result.id;
+    }).slice(0, perPage).map((
+    /** @type {WPLinkSearchResultAugmented} */
+    result) => {
+      var _result$meta;
+
+      const isMedia = result.type === 'attachment';
+      return {
+        id: result.id,
+        // @ts-ignore fix when we make this a TS file
+        url: isMedia ? result.source_url : result.url,
+        title: (0,_wordpress_html_entities__WEBPACK_IMPORTED_MODULE_2__.decodeEntities)(isMedia ? // @ts-ignore fix when we make this a TS file
+        result.title.rendered : result.title || '') || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('(no title)'),
+        type: result.subtype || result.type,
+        kind: result === null || result === void 0 ? void 0 : (_result$meta = result.meta) === null || _result$meta === void 0 ? void 0 : _result$meta.kind,
+        _embedded: result === null || result === void 0 ? void 0 : result._embedded
+      };
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (fetchLinkSuggestions);
 
 /***/ }),
 
@@ -5323,42 +5897,6 @@ const {
    */
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
-
-/***/ }),
-
-/***/ "./search/utils.js":
-/*!*************************!*\
-  !*** ./search/utils.js ***!
-  \*************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MIN_WIDTH": function() { return /* binding */ MIN_WIDTH; },
-/* harmony export */   "MIN_WIDTH_UNIT": function() { return /* binding */ MIN_WIDTH_UNIT; },
-/* harmony export */   "PC_WIDTH_DEFAULT": function() { return /* binding */ PC_WIDTH_DEFAULT; },
-/* harmony export */   "PX_WIDTH_DEFAULT": function() { return /* binding */ PX_WIDTH_DEFAULT; },
-/* harmony export */   "isPercentageUnit": function() { return /* binding */ isPercentageUnit; }
-/* harmony export */ });
-/**
- * Constants
- */
-const PC_WIDTH_DEFAULT = 50;
-const PX_WIDTH_DEFAULT = 350;
-const MIN_WIDTH = 220;
-const MIN_WIDTH_UNIT = 'px';
-/**
- * Returns a boolean whether passed unit is percentage
- *
- * @param {string} unit Block width unit.
- *
- * @return {boolean} 	Whether unit is '%'.
- */
-
-function isPercentageUnit(unit) {
-  return unit === '%';
-}
 
 /***/ }),
 
@@ -5893,6 +6431,156 @@ function PremiumRange(_ref) {
 
 /***/ }),
 
+/***/ "../components/RangeControl/responsive-range-control.js":
+/*!**************************************************************!*\
+  !*** ../components/RangeControl/responsive-range-control.js ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ ResponsiveRangeControl; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _premium_size_units__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../premium-size-units */ "../components/premium-size-units.js");
+/* harmony import */ var _single_range_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./single-range-control */ "../components/RangeControl/single-range-control.js");
+
+const {
+  useSelect,
+  useDispatch
+} = wp.data;
+const {
+  useState
+} = wp.element;
+const {
+  __
+} = wp.i18n;
+
+
+function ResponsiveRangeControl(_ref) {
+  let {
+    label,
+    onChange,
+    onChangeTablet,
+    onChangeMobile,
+    mobileValue,
+    tabletValue,
+    value,
+    step = 1,
+    max = 100,
+    min = 0,
+    unit = '',
+    onChangeUnit,
+    showUnit = false,
+    units = ['px', 'em', 'rem'],
+    defaultValue
+  } = _ref;
+  const [deviceType, setDeviceType] = useState('Desktop');
+
+  let customSetPreviewDeviceType = device => {
+    setDeviceType(device);
+  };
+
+  if (wp.data.select('core/edit-post')) {
+    const theDevice = useSelect(select => {
+      const {
+        __experimentalGetPreviewDeviceType = null
+      } = select('core/edit-post');
+      return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+    }, []);
+
+    if (theDevice !== deviceType) {
+      setDeviceType(theDevice);
+    }
+
+    const {
+      __experimentalSetPreviewDeviceType = null
+    } = useDispatch('core/edit-post');
+
+    customSetPreviewDeviceType = device => {
+      __experimentalSetPreviewDeviceType(device);
+
+      setDeviceType(device);
+    };
+  }
+
+  const devices = ['Desktop', 'Tablet', 'Mobile'];
+  const output = {};
+  output.Mobile = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    device: 'mobile',
+    value: undefined !== mobileValue ? mobileValue : '',
+    onChange: size => onChangeMobile(size),
+    min: min,
+    max: max,
+    step: unit === "em" ? .1 : 1,
+    unit: unit,
+    onChangeUnit: onChangeUnit,
+    showUnit: false,
+    units: units,
+    defaultValue: defaultValue
+  });
+  output.Tablet = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    device: 'tablet',
+    value: undefined !== tabletValue ? tabletValue : '',
+    onChange: size => onChangeTablet(size),
+    min: min,
+    max: max,
+    step: unit === "em" ? .1 : 1,
+    unit: unit,
+    onChangeUnit: onChangeUnit,
+    showUnit: false,
+    units: units,
+    defaultValue: defaultValue
+  });
+  output.Desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    device: 'desktop',
+    value: undefined !== value ? value : '',
+    onChange: size => onChange(size),
+    min: min,
+    max: max,
+    step: unit === "em" ? .1 : 1,
+    unit: unit,
+    onChangeUnit: onChangeUnit,
+    showUnit: false,
+    units: units,
+    defaultValue: defaultValue
+  });
+  return [onChange && onChangeTablet && onChangeMobile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-blocks-range-control`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-slider-title-wrap`
+  }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "customize-control-title premium-control-title"
+  }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "premium-responsive-control-btns premium-responsive-slider-btns"
+  }, devices.map((device, key) => {
+    const activeClass = device === deviceType ? ' active' : '';
+    const icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      key: key,
+      className: `${device}${activeClass}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      type: "button",
+      className: `preview-${device}${activeClass}`,
+      "data-device": device
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      class: `dashicons dashicons-${icon}`,
+      onClick: () => {
+        const nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+        customSetPreviewDeviceType(nextDevice);
+      }
+    })));
+  }))), showUnit && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_size_units__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    units: units,
+    activeUnit: unit,
+    onChangeSizeUnit: newValue => onChangeUnit(newValue)
+  })), output[deviceType] ? output[deviceType] : output.Desktop)];
+}
+
+/***/ }),
+
 /***/ "../components/RangeControl/single-range-control.js":
 /*!**********************************************************!*\
   !*** ../components/RangeControl/single-range-control.js ***!
@@ -6193,6 +6881,5350 @@ class PremiumBorder extends react__WEBPACK_IMPORTED_MODULE_1__.Component {
 
 /***/ }),
 
+/***/ "../components/premium-fonts.js":
+/*!**************************************!*\
+  !*** ../components/premium-fonts.js ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Google Fonts for the FontFamily component.
+ */
+const fonts = {};
+fonts["ABeeZee"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Abel"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Abhaya Libre"] = {
+  "v": ["regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "sinhala", "latin"],
+  "weight": ["400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Abril Fatface"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Aclonica"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Acme"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Actor"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Adamina"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Advent Pro"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "greek", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Aguafina Script"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Akronim"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Aladin"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Aldrich"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Alef"] = {
+  "v": ["regular", "700"],
+  "subset": ["hebrew", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Alegreya"] = {
+  "v": ["regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["400", "500", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Alegreya SC"] = {
+  "v": ["regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["400", "500", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Alegreya Sans"] = {
+  "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Alegreya Sans SC"] = {
+  "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Alex Brush"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Alfa Slab One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Alice"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Alike"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Alike Angular"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Allan"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Allerta"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Allerta Stencil"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Allura"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Almendra"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Almendra Display"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Almendra SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Amarante"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Amaranth"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Amatic SC"] = {
+  "v": ["regular", "700"],
+  "subset": ["cyrillic", "latin-ext", "hebrew", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Amethysta"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Amiko"] = {
+  "v": ["regular", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Amiri"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "arabic", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Amita"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Anaheim"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Andada"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Andika"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Angkor"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Annie Use Your Telescope"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Anonymous Pro"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "latin-ext", "greek", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Antic"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Antic Didone"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Antic Slab"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Anton"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Arapey"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Arbutus"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Arbutus Slab"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Architects Daughter"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Archivo"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Archivo Black"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Archivo Narrow"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Aref Ruqaa"] = {
+  "v": ["regular", "700"],
+  "subset": ["arabic", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Arima Madurai"] = {
+  "v": ["100", "200", "300", "regular", "500", "700", "800", "900"],
+  "subset": ["latin-ext", "tamil", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Arimo"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Arizonia"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Armata"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Arsenal"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Artifika"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Arvo"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Arya"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Asap"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Asap Condensed"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Asar"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Asset"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Assistant"] = {
+  "v": ["200", "300", "regular", "600", "700", "800"],
+  "subset": ["hebrew", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Astloch"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Asul"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Athiti"] = {
+  "v": ["200", "300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Atma"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "bengali", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Atomic Age"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Aubrey"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Audiowide"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Autour One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Average"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Average Sans"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Averia Gruesa Libre"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Averia Libre"] = {
+  "v": ["300", "300italic", "regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Averia Sans Libre"] = {
+  "v": ["300", "300italic", "regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Averia Serif Libre"] = {
+  "v": ["300", "300italic", "regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Bad Script"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bahiana"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "devanagari", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Bhai"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "gujarati", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Bhaijaan"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "arabic", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Bhaina"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "oriya", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Chettan"] = {
+  "v": ["regular"],
+  "subset": ["malayalam", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Da"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "bengali", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Paaji"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "gurmukhi", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Tamma"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin", "kannada"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Tammudu"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "telugu", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Baloo Thambi"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "tamil", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Balthazar"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bangers"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Barlow"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Barlow Condensed"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Barlow Semi Condensed"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Barrio"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Basic"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Battambang"] = {
+  "v": ["regular", "700"],
+  "subset": ["khmer"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Baumans"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bayon"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Belgrano"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bellefair"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "hebrew", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Belleza"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["BenchNine"] = {
+  "v": ["300", "regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Bentham"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Berkshire Swash"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bevan"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bigelow Rules"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bigshot One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bilbo"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bilbo Swash Caps"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["BioRhyme"] = {
+  "v": ["200", "300", "regular", "700", "800"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["200", "300", "400", "700", "800"],
+  "i": ["normal"]
+};
+fonts["BioRhyme Expanded"] = {
+  "v": ["200", "300", "regular", "700", "800"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["200", "300", "400", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Biryani"] = {
+  "v": ["200", "300", "regular", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Bitter"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Black And White Picture"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Black Han Sans"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Black Ops One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bokor"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bonbon"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Boogaloo"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bowlby One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bowlby One SC"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Brawler"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bree Serif"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bubblegum Sans"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bubbler One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Buda"] = {
+  "v": ["300"],
+  "subset": ["latin"],
+  "weight": ["300"],
+  "i": []
+};
+fonts["Buenard"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Bungee"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bungee Hairline"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bungee Inline"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bungee Outline"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Bungee Shade"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Butcherman"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Butterfly Kids"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cabin"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Cabin Condensed"] = {
+  "v": ["regular", "500", "600", "700"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Cabin Sketch"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Caesar Dressing"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cagliostro"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cairo"] = {
+  "v": ["200", "300", "regular", "600", "700", "900"],
+  "subset": ["latin-ext", "arabic", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Calligraffitti"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cambay"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Cambo"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Candal"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cantarell"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Cantata One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cantora One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Capriola"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cardo"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["greek-ext", "latin-ext", "greek", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Carme"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Carrois Gothic"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Carrois Gothic SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Carter One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Catamaran"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "tamil", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Caudex"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["greek-ext", "latin-ext", "greek", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Caveat"] = {
+  "v": ["regular", "700"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Caveat Brush"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cedarville Cursive"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ceviche One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Changa"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "arabic", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Changa One"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Chango"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Chathura"] = {
+  "v": ["100", "300", "regular", "700", "800"],
+  "subset": ["telugu", "latin"],
+  "weight": ["100", "300", "400", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Chau Philomene One"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Chela One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Chelsea Market"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Chenla"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cherry Cream Soda"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cherry Swash"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Chewy"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Chicle"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Chivo"] = {
+  "v": ["300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Chonburi"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cinzel"] = {
+  "v": ["regular", "700", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Cinzel Decorative"] = {
+  "v": ["regular", "700", "900"],
+  "subset": ["latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Clicker Script"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Coda"] = {
+  "v": ["regular", "800"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "800"],
+  "i": ["normal"]
+};
+fonts["Coda Caption"] = {
+  "v": ["800"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["800"],
+  "i": []
+};
+fonts["Codystar"] = {
+  "v": ["300", "regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400"],
+  "i": ["normal"]
+};
+fonts["Coiny"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "tamil", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Combo"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Comfortaa"] = {
+  "v": ["300", "regular", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Coming Soon"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Concert One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Condiment"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Content"] = {
+  "v": ["regular", "700"],
+  "subset": ["khmer"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Contrail One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Convergence"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cookie"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Copse"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Corben"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Cormorant"] = {
+  "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Cormorant Garamond"] = {
+  "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Cormorant Infant"] = {
+  "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Cormorant SC"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Cormorant Unicase"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Cormorant Upright"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Courgette"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cousine"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Coustard"] = {
+  "v": ["regular", "900"],
+  "subset": ["latin"],
+  "weight": ["400", "900"],
+  "i": ["normal"]
+};
+fonts["Covered By Your Grace"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Crafty Girls"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Creepster"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Crete Round"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Crimson Text"] = {
+  "v": ["regular", "italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Croissant One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Crushed"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cuprum"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Cute Font"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cutive"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Cutive Mono"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Damion"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Dancing Script"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Dangrek"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["David Libre"] = {
+  "v": ["regular", "500", "700"],
+  "subset": ["latin-ext", "hebrew", "vietnamese", "latin"],
+  "weight": ["400", "500", "700"],
+  "i": ["normal"]
+};
+fonts["Dawning of a New Day"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Days One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Dekko"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Delius"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Delius Swash Caps"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Delius Unicase"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Della Respira"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Denk One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Devonshire"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Dhurjati"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Didact Gothic"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Diplomata"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Diplomata SC"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Do Hyeon"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Dokdo"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Domine"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Donegal One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Doppio One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Dorsa"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Dosis"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Dr Sugiyama"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Duru Sans"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Dynalight"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["EB Garamond"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700", "800"],
+  "i": ["normal", "italic"]
+};
+fonts["Eagle Lake"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["East Sea Dokdo"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Eater"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Economica"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Eczar"] = {
+  "v": ["regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["El Messiri"] = {
+  "v": ["regular", "500", "600", "700"],
+  "subset": ["cyrillic", "arabic", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Electrolize"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Elsie"] = {
+  "v": ["regular", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "900"],
+  "i": ["normal"]
+};
+fonts["Elsie Swash Caps"] = {
+  "v": ["regular", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "900"],
+  "i": ["normal"]
+};
+fonts["Emblema One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Emilys Candy"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Encode Sans"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Encode Sans Condensed"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Encode Sans Expanded"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Encode Sans Semi Condensed"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Encode Sans Semi Expanded"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Engagement"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Englebert"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Enriqueta"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Erica One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Esteban"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Euphoria Script"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ewert"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Exo"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Exo 2"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Expletus Sans"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Fanwood Text"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Farsan"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "gujarati", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fascinate"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fascinate Inline"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Faster One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fasthand"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fauna One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Faustina"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Federant"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Federo"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Felipa"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fenix"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Finger Paint"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fira Mono"] = {
+  "v": ["regular", "500", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"],
+  "weight": ["400", "500", "700"],
+  "i": ["normal"]
+};
+fonts["Fira Sans"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Fira Sans Condensed"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Fira Sans Extra Condensed"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Fjalla One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fjord One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Flamenco"] = {
+  "v": ["300", "regular"],
+  "subset": ["latin"],
+  "weight": ["300", "400"],
+  "i": ["normal"]
+};
+fonts["Flavors"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fondamento"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Fontdiner Swanky"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Forum"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Francois One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Frank Ruhl Libre"] = {
+  "v": ["300", "regular", "500", "700", "900"],
+  "subset": ["latin-ext", "hebrew", "latin"],
+  "weight": ["300", "400", "500", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Freckle Face"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fredericka the Great"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fredoka One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Freehand"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fresca"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Frijole"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fruktur"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Fugaz One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["GFS Didot"] = {
+  "v": ["regular"],
+  "subset": ["greek"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["GFS Neohellenic"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["greek"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Gabriela"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gaegu"] = {
+  "v": ["300", "regular", "700"],
+  "subset": ["korean", "latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Gafata"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Galada"] = {
+  "v": ["regular"],
+  "subset": ["bengali", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Galdeano"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Galindo"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gamja Flower"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gentium Basic"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Gentium Book Basic"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Geo"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Geostar"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Geostar Fill"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Germania One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gidugu"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gilda Display"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Give You Glory"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Glass Antiqua"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Glegoo"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Gloria Hallelujah"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Goblin One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gochi Hand"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gorditas"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Gothic A1"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["korean", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Goudy Bookletter 1911"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Graduate"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Grand Hotel"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gravitas One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Great Vibes"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Griffy"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gruppo"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gudea"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Gugi"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Gurajada"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Habibi"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Halant"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Hammersmith One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Hanalei"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Hanalei Fill"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Handlee"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Hanuman"] = {
+  "v": ["regular", "700"],
+  "subset": ["khmer"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Happy Monkey"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Harmattan"] = {
+  "v": ["regular"],
+  "subset": ["arabic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Headland One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Heebo"] = {
+  "v": ["100", "300", "regular", "500", "700", "800", "900"],
+  "subset": ["hebrew", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Henny Penny"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Herr Von Muellerhoff"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Hi Melody"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Hind"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Hind Guntur"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "telugu", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Hind Madurai"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "tamil", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Hind Siliguri"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "bengali", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Hind Vadodara"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "gujarati", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Holtwood One SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Homemade Apple"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Homenaje"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["IBM Plex Mono"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["IBM Plex Sans"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["IBM Plex Sans Condensed"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["IBM Plex Serif"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["IM Fell DW Pica"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["IM Fell DW Pica SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["IM Fell Double Pica"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["IM Fell Double Pica SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["IM Fell English"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["IM Fell English SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["IM Fell French Canon"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["IM Fell French Canon SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["IM Fell Great Primer"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["IM Fell Great Primer SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Iceberg"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Iceland"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Imprima"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Inconsolata"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Inder"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Indie Flower"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Inika"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Inknut Antiqua"] = {
+  "v": ["300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Irish Grover"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Istok Web"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Italiana"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Italianno"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Itim"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jacques Francois"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jacques Francois Shadow"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jaldi"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Jim Nightshade"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jockey One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jolly Lodger"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jomhuria"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "arabic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Josefin Sans"] = {
+  "v": ["100", "100italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Josefin Slab"] = {
+  "v": ["100", "100italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["100", "300", "400", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Joti One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jua"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Judson"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Julee"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Julius Sans One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Junge"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Jura"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Just Another Hand"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Just Me Again Down Here"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kadwa"] = {
+  "v": ["regular", "700"],
+  "subset": ["devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Kalam"] = {
+  "v": ["300", "regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Kameron"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Kanit"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Kantumruy"] = {
+  "v": ["300", "regular", "700"],
+  "subset": ["khmer"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Karla"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Karma"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Katibeh"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "arabic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kaushan Script"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kavivanar"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "tamil", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kavoon"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kdam Thmor"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Keania One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kelly Slab"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kenia"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Khand"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Khmer"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Khula"] = {
+  "v": ["300", "regular", "600", "700", "800"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Kirang Haerang"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kite One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Knewave"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kosugi"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "japanese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kosugi Maru"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "japanese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kotta One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Koulen"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kranky"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kreon"] = {
+  "v": ["300", "regular", "700"],
+  "subset": ["latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Kristi"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Krona One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kumar One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "gujarati", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kumar One Outline"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "gujarati", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Kurale"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "devanagari", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["La Belle Aurore"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Laila"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Lakki Reddy"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lalezar"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "arabic", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lancelot"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lateef"] = {
+  "v": ["regular"],
+  "subset": ["arabic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lato"] = {
+  "v": ["100", "100italic", "300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "300", "400", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["League Script"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Leckerli One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ledger"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lekton"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Lemon"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lemonada"] = {
+  "v": ["300", "regular", "600", "700"],
+  "subset": ["latin-ext", "arabic", "vietnamese", "latin"],
+  "weight": ["300", "400", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Libre Barcode 128"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Libre Barcode 128 Text"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Libre Barcode 39"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Libre Barcode 39 Extended"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Libre Barcode 39 Extended Text"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Libre Barcode 39 Text"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Libre Baskerville"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Libre Franklin"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Life Savers"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Lilita One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lily Script One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Limelight"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Linden Hill"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Lobster"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lobster Two"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Londrina Outline"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Londrina Shadow"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Londrina Sketch"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Londrina Solid"] = {
+  "v": ["100", "300", "regular", "900"],
+  "subset": ["latin"],
+  "weight": ["100", "300", "400", "900"],
+  "i": ["normal"]
+};
+fonts["Lora"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Love Ya Like A Sister"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Loved by the King"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lovers Quarrel"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Luckiest Guy"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Lusitana"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Lustria"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["M PLUS 1p"] = {
+  "v": ["100", "300", "regular", "500", "700", "800", "900"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "japanese", "latin-ext", "hebrew", "greek", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["M PLUS Rounded 1c"] = {
+  "v": ["100", "300", "regular", "500", "700", "800", "900"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "japanese", "latin-ext", "hebrew", "greek", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Macondo"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Macondo Swash Caps"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mada"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "900"],
+  "subset": ["arabic", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Magra"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Maiden Orange"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Maitree"] = {
+  "v": ["200", "300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Mako"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mallanna"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mandali"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Manuale"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Marcellus"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Marcellus SC"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Marck Script"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Margarine"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Markazi Text"] = {
+  "v": ["regular", "500", "600", "700"],
+  "subset": ["latin-ext", "arabic", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Marko One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Marmelad"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Martel"] = {
+  "v": ["200", "300", "regular", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Martel Sans"] = {
+  "v": ["200", "300", "regular", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Marvel"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Mate"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Mate SC"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Maven Pro"] = {
+  "v": ["regular", "500", "700", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "700", "900"],
+  "i": ["normal"]
+};
+fonts["McLaren"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Meddon"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["MedievalSharp"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Medula One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Meera Inimai"] = {
+  "v": ["regular"],
+  "subset": ["tamil", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Megrim"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Meie Script"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Merienda"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Merienda One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Merriweather"] = {
+  "v": ["300", "300italic", "regular", "italic", "700", "700italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Merriweather Sans"] = {
+  "v": ["300", "300italic", "regular", "italic", "700", "700italic", "800", "800italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "700", "800"],
+  "i": ["normal", "italic"]
+};
+fonts["Metal"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Metal Mania"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Metamorphous"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Metrophobic"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Michroma"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Milonga"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Miltonian"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Miltonian Tattoo"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mina"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "bengali", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Miniver"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Miriam Libre"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "hebrew", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Mirza"] = {
+  "v": ["regular", "500", "600", "700"],
+  "subset": ["latin-ext", "arabic", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Miss Fajardose"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mitr"] = {
+  "v": ["200", "300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Modak"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Modern Antiqua"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mogra"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "gujarati", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Molengo"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Molle"] = {
+  "v": ["italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": [],
+  "i": ["italic"]
+};
+fonts["Monda"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Monofett"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Monoton"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Monsieur La Doulaise"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Montaga"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Montez"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Montserrat"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Montserrat Alternates"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Montserrat Subrayada"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Moul"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Moulpali"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mountains of Christmas"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Mouse Memoirs"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mr Bedfort"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mr Dafoe"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mr De Haviland"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mrs Saint Delafield"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mrs Sheppards"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Mukta"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Mukta Mahee"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "gurmukhi", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Mukta Malar"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "tamil", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Mukta Vaani"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "gujarati", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Muli"] = {
+  "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Mystery Quest"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["NTR"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nanum Brush Script"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nanum Gothic"] = {
+  "v": ["regular", "700", "800"],
+  "subset": ["korean", "latin"],
+  "weight": ["400", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Nanum Gothic Coding"] = {
+  "v": ["regular", "700"],
+  "subset": ["korean", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Nanum Myeongjo"] = {
+  "v": ["regular", "700", "800"],
+  "subset": ["korean", "latin"],
+  "weight": ["400", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Nanum Pen Script"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Neucha"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Neuton"] = {
+  "v": ["200", "300", "regular", "italic", "700", "800"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["200", "300", "400", "700", "800"],
+  "i": ["normal", "italic"]
+};
+fonts["New Rocker"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["News Cycle"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Niconne"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nixie One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nobile"] = {
+  "v": ["regular", "italic", "500", "500italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "500", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Nokora"] = {
+  "v": ["regular", "700"],
+  "subset": ["khmer"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Norican"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nosifer"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nothing You Could Do"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Noticia Text"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Noto Sans"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "devanagari", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Noto Sans JP"] = {
+  "v": ["100", "300", "regular", "500", "700", "900"],
+  "subset": ["japanese", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Noto Sans KR"] = {
+  "v": ["100", "300", "regular", "500", "700", "900"],
+  "subset": ["korean", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Noto Serif"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Noto Serif JP"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "900"],
+  "subset": ["japanese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Noto Serif KR"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "900"],
+  "subset": ["korean", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Nova Cut"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nova Flat"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nova Mono"] = {
+  "v": ["regular"],
+  "subset": ["greek", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nova Oval"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nova Round"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nova Script"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nova Slim"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nova Square"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Numans"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Nunito"] = {
+  "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Nunito Sans"] = {
+  "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Odor Mean Chey"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Offside"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Old Standard TT"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Oldenburg"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Oleo Script"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Oleo Script Swash Caps"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Open Sans"] = {
+  "v": ["300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["300", "400", "600", "700", "800"],
+  "i": ["normal", "italic"]
+};
+fonts["Open Sans Condensed"] = {
+  "v": ["300", "300italic", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["300", "700"],
+  "i": []
+};
+fonts["Oranienbaum"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Orbitron"] = {
+  "v": ["regular", "500", "700", "900"],
+  "subset": ["latin"],
+  "weight": ["400", "500", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Oregano"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Orienta"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Original Surfer"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Oswald"] = {
+  "v": ["200", "300", "regular", "500", "600", "700"],
+  "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Over the Rainbow"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Overlock"] = {
+  "v": ["regular", "italic", "700", "700italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Overlock SC"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Overpass"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Overpass Mono"] = {
+  "v": ["300", "regular", "600", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Ovo"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Oxygen"] = {
+  "v": ["300", "regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Oxygen Mono"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["PT Mono"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["PT Sans"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["PT Sans Caption"] = {
+  "v": ["regular", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["PT Sans Narrow"] = {
+  "v": ["regular", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["PT Serif"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["PT Serif Caption"] = {
+  "v": ["regular", "italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Pacifico"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Padauk"] = {
+  "v": ["regular", "700"],
+  "subset": ["myanmar", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Palanquin"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Palanquin Dark"] = {
+  "v": ["regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Pangolin"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Paprika"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Parisienne"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Passero One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Passion One"] = {
+  "v": ["regular", "700", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Pathway Gothic One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Patrick Hand"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Patrick Hand SC"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Pattaya"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Patua One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Pavanam"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "tamil", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Paytone One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Peddana"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Peralta"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Permanent Marker"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Petit Formal Script"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Petrona"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Philosopher"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Piedra"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Pinyon Script"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Pirata One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Plaster"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Play"] = {
+  "v": ["regular", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Playball"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Playfair Display"] = {
+  "v": ["regular", "italic", "700", "700italic", "900", "900italic"],
+  "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Playfair Display SC"] = {
+  "v": ["regular", "italic", "700", "700italic", "900", "900italic"],
+  "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Podkova"] = {
+  "v": ["regular", "500", "600", "700", "800"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Poiret One"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Poller One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Poly"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Pompiere"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Pontano Sans"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Poor Story"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Poppins"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Port Lligat Sans"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Port Lligat Slab"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Pragati Narrow"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Prata"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Preahvihear"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Press Start 2P"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Pridi"] = {
+  "v": ["200", "300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Princess Sofia"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Prociono"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Prompt"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Prosto One"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Proza Libre"] = {
+  "v": ["regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "500", "600", "700", "800"],
+  "i": ["normal", "italic"]
+};
+fonts["Puritan"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Purple Purse"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Quando"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Quantico"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Quattrocento"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Quattrocento Sans"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Questrial"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Quicksand"] = {
+  "v": ["300", "regular", "500", "700"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["300", "400", "500", "700"],
+  "i": ["normal"]
+};
+fonts["Quintessential"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Qwigley"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Racing Sans One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Radley"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Rajdhani"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Rakkas"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "arabic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Raleway"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Raleway Dots"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ramabhadra"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ramaraja"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rambla"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Rammetto One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ranchers"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rancho"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ranga"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Rasa"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "gujarati", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Rationale"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ravi Prakash"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Redressed"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Reem Kufi"] = {
+  "v": ["regular"],
+  "subset": ["arabic", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Reenie Beanie"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Revalia"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rhodium Libre"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ribeye"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ribeye Marrow"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Righteous"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Risque"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Roboto"] = {
+  "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Roboto Condensed"] = {
+  "v": ["300", "300italic", "regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["300", "400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Roboto Mono"] = {
+  "v": ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "500", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Roboto Slab"] = {
+  "v": ["100", "300", "regular", "700"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["100", "300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Rochester"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rock Salt"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rokkitt"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Romanesco"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ropa Sans"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Rosario"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Rosarivo"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Rouge Script"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rozha One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rubik"] = {
+  "v": ["300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "900", "900italic"],
+  "subset": ["cyrillic", "latin-ext", "hebrew", "latin"],
+  "weight": ["300", "400", "500", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Rubik Mono One"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ruda"] = {
+  "v": ["regular", "700", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Rufina"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Ruge Boogie"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ruluko"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rum Raisin"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ruslan Display"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Russo One"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ruthie"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Rye"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sacramento"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sahitya"] = {
+  "v": ["regular", "700"],
+  "subset": ["devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Sail"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Saira"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Saira Condensed"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Saira Extra Condensed"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Saira Semi Condensed"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Salsa"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sanchez"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Sancreek"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sansita"] = {
+  "v": ["regular", "italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Sarala"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Sarina"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sarpanch"] = {
+  "v": ["regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Satisfy"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sawarabi Gothic"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "japanese", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sawarabi Mincho"] = {
+  "v": ["regular"],
+  "subset": ["japanese", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Scada"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Scheherazade"] = {
+  "v": ["regular", "700"],
+  "subset": ["arabic", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Schoolbell"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Scope One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Seaweed Script"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Secular One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "hebrew", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sedgwick Ave"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sedgwick Ave Display"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sevillana"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Seymour One"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Shadows Into Light"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Shadows Into Light Two"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Shanti"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Share"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Share Tech"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Share Tech Mono"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Shojumaru"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Short Stack"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Shrikhand"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "gujarati", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Siemreap"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sigmar One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Signika"] = {
+  "v": ["300", "regular", "600", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Signika Negative"] = {
+  "v": ["300", "regular", "600", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Simonetta"] = {
+  "v": ["regular", "italic", "900", "900italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Sintony"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Sirin Stencil"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Six Caps"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Skranji"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Slabo 13px"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Slabo 27px"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Slackey"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Smokum"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Smythe"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sniglet"] = {
+  "v": ["regular", "800"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "800"],
+  "i": ["normal"]
+};
+fonts["Snippet"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Snowburst One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sofadi One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sofia"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Song Myung"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sonsie One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sorts Mill Goudy"] = {
+  "v": ["regular", "italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal", "italic"]
+};
+fonts["Source Code Pro"] = {
+  "v": ["200", "300", "regular", "500", "600", "700", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Source Sans Pro"] = {
+  "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Source Serif Pro"] = {
+  "v": ["regular", "600", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Space Mono"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Special Elite"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Spectral"] = {
+  "v": ["200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"],
+  "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal", "italic"]
+};
+fonts["Spectral SC"] = {
+  "v": ["200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic"],
+  "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "500", "600", "700", "800"],
+  "i": ["normal", "italic"]
+};
+fonts["Spicy Rice"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Spinnaker"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Spirax"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Squada One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sree Krushnadevaraya"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sriracha"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Stalemate"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Stalinist One"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Stardos Stencil"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Stint Ultra Condensed"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Stint Ultra Expanded"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Stoke"] = {
+  "v": ["300", "regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400"],
+  "i": ["normal"]
+};
+fonts["Strait"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Stylish"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sue Ellen Francisco"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Suez One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "hebrew", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sumana"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Sunflower"] = {
+  "v": ["300", "500", "700"],
+  "subset": ["korean", "latin"],
+  "weight": ["300", "500", "700"],
+  "i": []
+};
+fonts["Sunshiney"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Supermercado One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Sura"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Suranna"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Suravaram"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Suwannaphum"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Swanky and Moo Moo"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Syncopate"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Tajawal"] = {
+  "v": ["200", "300", "regular", "500", "700", "800", "900"],
+  "subset": ["arabic", "latin"],
+  "weight": ["200", "300", "400", "500", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Tangerine"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Taprom"] = {
+  "v": ["regular"],
+  "subset": ["khmer"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Tauri"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Taviraj"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Teko"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Telex"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Tenali Ramakrishna"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Tenor Sans"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Text Me One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["The Girl Next Door"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Tienne"] = {
+  "v": ["regular", "700", "900"],
+  "subset": ["latin"],
+  "weight": ["400", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Tillana"] = {
+  "v": ["regular", "500", "600", "700", "800"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "500", "600", "700", "800"],
+  "i": ["normal"]
+};
+fonts["Timmana"] = {
+  "v": ["regular"],
+  "subset": ["telugu", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Tinos"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "hebrew", "greek", "vietnamese", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Titan One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Titillium Web"] = {
+  "v": ["200", "200italic", "300", "300italic", "regular", "italic", "600", "600italic", "700", "700italic", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["200", "300", "400", "600", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Trade Winds"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Trirong"] = {
+  "v": ["100", "100italic", "200", "200italic", "300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic", "800", "800italic", "900", "900italic"],
+  "subset": ["latin-ext", "thai", "vietnamese", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Trocchi"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Trochut"] = {
+  "v": ["regular", "italic", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Trykker"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Tulpen One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ubuntu"] = {
+  "v": ["300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"],
+  "weight": ["300", "400", "500", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Ubuntu Condensed"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Ubuntu Mono"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Ultra"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Uncial Antiqua"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Underdog"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Unica One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["UnifrakturCook"] = {
+  "v": ["700"],
+  "subset": ["latin"],
+  "weight": ["700"],
+  "i": []
+};
+fonts["UnifrakturMaguntia"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Unkempt"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+fonts["Unlock"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Unna"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["VT323"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Vampiro One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Varela"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Varela Round"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "hebrew", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Vast Shadow"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Vesper Libre"] = {
+  "v": ["regular", "500", "700", "900"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400", "500", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Vibur"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Vidaloka"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Viga"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Voces"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Volkhov"] = {
+  "v": ["regular", "italic", "700", "700italic"],
+  "subset": ["latin"],
+  "weight": ["400", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Vollkorn"] = {
+  "v": ["regular", "italic", "600", "600italic", "700", "700italic", "900", "900italic"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "greek", "vietnamese", "latin"],
+  "weight": ["400", "600", "700", "900"],
+  "i": ["normal", "italic"]
+};
+fonts["Vollkorn SC"] = {
+  "v": ["regular", "600", "700", "900"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400", "600", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Voltaire"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Waiting for the Sunrise"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Wallpoet"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Walter Turncoat"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Warnes"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Wellfleet"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Wendy One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Wire One"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Work Sans"] = {
+  "v": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  "i": ["normal"]
+};
+fonts["Yanone Kaffeesatz"] = {
+  "v": ["200", "300", "regular", "700"],
+  "subset": ["cyrillic", "latin-ext", "vietnamese", "latin"],
+  "weight": ["200", "300", "400", "700"],
+  "i": ["normal"]
+};
+fonts["Yantramanav"] = {
+  "v": ["100", "300", "regular", "500", "700", "900"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["100", "300", "400", "500", "700", "900"],
+  "i": ["normal"]
+};
+fonts["Yatra One"] = {
+  "v": ["regular"],
+  "subset": ["latin-ext", "devanagari", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Yellowtail"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Yeon Sung"] = {
+  "v": ["regular"],
+  "subset": ["korean", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Yeseva One"] = {
+  "v": ["regular"],
+  "subset": ["cyrillic", "cyrillic-ext", "latin-ext", "vietnamese", "latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Yesteryear"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Yrsa"] = {
+  "v": ["300", "regular", "500", "600", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal"]
+};
+fonts["Zeyada"] = {
+  "v": ["regular"],
+  "subset": ["latin"],
+  "weight": ["400"],
+  "i": ["normal"]
+};
+fonts["Zilla Slab"] = {
+  "v": ["300", "300italic", "regular", "italic", "500", "500italic", "600", "600italic", "700", "700italic"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["300", "400", "500", "600", "700"],
+  "i": ["normal", "italic"]
+};
+fonts["Zilla Slab Highlight"] = {
+  "v": ["regular", "700"],
+  "subset": ["latin-ext", "latin"],
+  "weight": ["400", "700"],
+  "i": ["normal"]
+};
+/* harmony default export */ __webpack_exports__["default"] = (fonts);
+
+/***/ }),
+
 /***/ "../components/premium-padding.js":
 /*!****************************************!*\
   !*** ../components/premium-padding.js ***!
@@ -6415,6 +12447,576 @@ function PremiumSizeUnits(props) {
 
 /***/ }),
 
+/***/ "../components/premium-typo.js":
+/*!*************************************!*\
+  !*** ../components/premium-typo.js ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ PremiumTypo; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _premium_fonts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./premium-fonts */ "../components/premium-fonts.js");
+/* harmony import */ var _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RangeControl/responsive-range-control */ "../components/RangeControl/responsive-range-control.js");
+/* harmony import */ var _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RangeControl/single-range-control */ "../components/RangeControl/single-range-control.js");
+/* harmony import */ var _typography_fontList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typography/fontList */ "../components/typography/fontList.js");
+
+
+
+
+
+const {
+  __
+} = wp.i18n;
+const {
+  Component
+} = wp.element;
+const {
+  SelectControl,
+  Popover
+} = wp.components;
+
+function fuzzysearch(needle, haystack) {
+  var hlen = haystack.length;
+  var nlen = needle.length;
+
+  if (nlen > hlen) {
+    return false;
+  }
+
+  if (nlen === hlen) {
+    return needle === haystack;
+  }
+
+  outer: for (var i = 0, j = 0; i < nlen; i++) {
+    var nch = needle.charCodeAt(i);
+
+    while (j < hlen) {
+      if (haystack.charCodeAt(j++) === nch) {
+        continue outer;
+      }
+    }
+
+    return false;
+  }
+
+  return true;
+}
+
+class PremiumTypo extends Component {
+  constructor(props) {
+    super(props);
+    let responsiveSize;
+
+    if (this.props.components.includes("responsiveSize")) {
+      responsiveSize = {
+        Desktop: this.props.fontSize || '',
+        Tablet: this.props.fontSizeTablet || '',
+        Mobile: this.props.fontSizeMobile || ''
+      };
+    }
+
+    this.state = {
+      fontFamily: this.props.fontFamily || 'Default',
+      line: this.props.line,
+      weight: this.props.weight || '400',
+      size: this.props.components.includes("responsiveSize") ? responsiveSize : this.props.size,
+      textTransform: this.props.textTransform,
+      textDecoration: this.props.textDecoration,
+      sizeUnit: this.props.sizeUnit || 'px',
+      isVisible: false,
+      currentView: '',
+      search: "",
+      showUnit: this.props.showUnit || false,
+      spacing: this.props.spacing,
+      style: this.props.style,
+      device: 'Desktop'
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    let previewDevice = wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
+
+    if (this.state.device !== previewDevice) {
+      this.setState({
+        device: previewDevice
+      });
+    }
+  }
+
+  render() {
+    const {
+      components,
+      setAttributes,
+      onChangeTextTransform = () => {},
+      onChangeTextDecoration = () => {},
+      onChangeFamily = () => {},
+      onChangeSize = () => {},
+      onChangeTabletSize = () => {},
+      onChangeMobileSize = () => {},
+      onChangeWeight = () => {},
+      onChangeStyle = () => {},
+      onChangeSpacing = () => {},
+      onChangeLine = () => {},
+      onResetClick = () => {}
+    } = this.props;
+    const {
+      fontFamily,
+      line,
+      weight,
+      size,
+      textTransform,
+      textDecoration,
+      sizeUnit,
+      isVisible,
+      currentView,
+      search,
+      showUnit,
+      spacing,
+      style,
+      device
+    } = this.state;
+    const STYLE = [{
+      value: "normal",
+      label: __("Normal", 'premium-blocks-for-gutenberg')
+    }, {
+      value: "italic",
+      label: __("Italic", 'premium-blocks-for-gutenberg')
+    }, {
+      value: "oblique",
+      label: __("Oblique", 'premium-blocks-for-gutenberg')
+    }];
+    const fonts = [{
+      value: "Default",
+      label: __("Default", 'premium-blocks-for-gutenberg'),
+      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      google: false
+    }, {
+      value: "Arial",
+      label: "Arial",
+      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      google: false
+    }, {
+      value: "Helvetica",
+      label: "Helvetica",
+      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      google: false
+    }, {
+      value: "Times New Roman",
+      label: "Times New Roman",
+      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      google: false
+    }, {
+      value: "Georgia",
+      label: "Georgia",
+      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      google: false
+    }];
+    let fontWeight = "";
+    Object.keys(_premium_fonts__WEBPACK_IMPORTED_MODULE_1__["default"]).map((k, v) => {
+      fonts.push({
+        value: k,
+        label: k,
+        weight: _premium_fonts__WEBPACK_IMPORTED_MODULE_1__["default"][k].weight,
+        google: true
+      });
+
+      if (k === fontFamily) {
+        fontWeight = _premium_fonts__WEBPACK_IMPORTED_MODULE_1__["default"][k].weight;
+      }
+    });
+
+    if (fontWeight === "") {
+      fontWeight = fonts[0].weight;
+    }
+
+    const toggleVisible = v => {
+      this.setState({
+        isVisible: true,
+        currentView: v
+      });
+    };
+
+    const toggleClose = () => {
+      if (this.state.isVisible === true) {
+        this.setState({
+          isVisible: false,
+          currentView: ''
+        });
+      }
+    };
+
+    const renderVariations = fonts.map((item, index) => {
+      if (item.value == fontFamily) {
+        return (item.weight || []).map((weights, i) => {
+          return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+            key: i,
+            className: `${weights == weight ? 'active' : ''}`,
+            onClick: () => {
+              this.setState({
+                weight: weights
+              }), onChangeWeight(weights);
+            }
+          }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+            className: "premium-variation-name"
+          }, weights));
+        });
+      }
+    });
+    const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()));
+    const fontSize = components.includes("responsiveSize") ? size[device] : size;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-control-toggle premium-typography"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "customize-control-title premium-control-title"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, __('Typography', 'premium-blocks-for-gutenberg')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-typography-wrapper"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-typohraphy-value"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-typography-title-container"
+    }, components.includes('family') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "premium-font",
+      onClick: () => {
+        toggleVisible("fonts");
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fontFamily), isVisible && currentView == 'fonts' && components.includes('family') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Popover, {
+      className: "premium-typography-option premium-font-family__modal",
+      onClose: toggleClose
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-option-modal "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-typography-container"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        top: '0px',
+        right: '0px',
+        left: `0px`
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: "premium-typography-top premium-switch-panel premium-static"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "premium-font"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      value: search,
+      autoFocus: true,
+      onKeyUp: e => {
+        if (e.keyCode == 13) {
+          if (linearFonts.length > 0) {
+            onChangeFamily(linearFonts[0]);
+            this.setState({
+              search: ''
+            });
+          }
+        }
+      },
+      onClick: e => e.stopPropagation(),
+      onChange: _ref => {
+        let {
+          target: {
+            value
+          }
+        } = _ref;
+        return this.setState({
+          search: value
+        });
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      width: "8",
+      height: "8",
+      viewBox: "0 0 15 15"
+    }, currentView === 'search' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      d: "M8.9,7.5l4.6-4.6c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L7.5,6.1L2.9,1.5c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l4.6,4.6l-4.6,4.6c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0l4.6-4.6l4.6,4.6c0.4,0.4,1,0.4,1.4,0c0.4-0.4,0.4-1,0-1.4L8.9,7.5z"
+    }), currentView !== 'search' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      d: "M14.6,14.6c-0.6,0.6-1.4,0.6-2,0l-2.5-2.5c-1,0.7-2.2,1-3.5,1C2.9,13.1,0,10.2,0,6.6S2.9,0,6.6,0c3.6,0,6.6,2.9,6.6,6.6c0,1.3-0.4,2.5-1,3.5l2.5,2.5C15.1,13.1,15.1,14,14.6,14.6z M6.6,1.9C4,1.9,1.9,4,1.9,6.6s2.1,4.7,4.7,4.7c2.6,0,4.7-2.1,4.7-4.7C11.3,4,9.2,1.9,6.6,1.9z"
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_typography_fontList__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      linearFontsList: linearFonts,
+      value: fontFamily,
+      onPickFamily: value => {
+        this.setState({
+          fontFamily: value
+        }), onChangeFamily(value);
+      }
+    })))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "premium-size",
+      onClick: () => {
+        toggleVisible("options");
+      }
+    }, fontSize, sizeUnit, isVisible && currentView == 'options' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Popover, {
+      className: "premium-typography-option",
+      onClose: toggleClose
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: " "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-typography-container"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: "premium-typography-options",
+      style: {
+        width: `100%`
+      }
+    }, components.includes("size") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "customize-control-premium-slider"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      label: __("Font Size (PX)", 'premium-blocks-for-gutenberg'),
+      value: size,
+      min: "10",
+      max: "80",
+      defaultValue: 20,
+      onChange: value => {
+        this.setState({
+          size: value
+        }), onChangeSize(value);
+      },
+      showUnit: false
+    })), components.includes("responsiveSize") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "customize-control-premium-slider"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      label: __("Font Size", 'premium-blocks-for-gutenberg'),
+      value: this.props.fontSize,
+      onChange: value => {
+        this.setState({ ...this.state.size,
+          Desktop: value
+        }), onChangeSize(value);
+      },
+      tabletValue: this.props.fontSizeTablet,
+      onChangeTablet: value => {
+        onChangeTabletSize(value);
+      },
+      mobileValue: this.props.fontSizeMobile,
+      onChangeMobile: value => {
+        onChangeMobileSize(value);
+      },
+      onChangeUnit: key => setAttributes({
+        [this.props.fontSizeType.label]: key
+      }),
+      unit: this.props.fontSizeType.value,
+      showUnit: true,
+      defaultValue: 20,
+      units: ["px", "em"]
+    })), components.includes("line") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "customize-control-premium-slider"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      label: __("Line Height (PX)", 'premium-blocks-for-gutenberg'),
+      value: line,
+      onChange: value => {
+        this.setState({
+          line: value
+        }), onChangeLine(value);
+      },
+      defaultValue: 1,
+      showUnit: false,
+      min: 0,
+      max: 200
+    })), components.includes("spacing") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "customize-control-premium-slider"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      label: __("Letter Spacing (PX)", 'premium-blocks-for-gutenberg'),
+      value: spacing,
+      onChange: value => {
+        this.setState({
+          spacing: value
+        }), onChangeSpacing(value);
+      },
+      defaultValue: '',
+      showUnit: false,
+      step: 0.1,
+      min: -5,
+      max: 15
+    })), components.includes("style") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "customize-control-premium-slider"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+      label: __("Style", 'premium-blocks-for-gutenberg'),
+      options: STYLE,
+      value: style,
+      onChange: value => {
+        this.setState({
+          style: value
+        }), onChangeStyle(value);
+      },
+      onResetClick: onResetClick
+    })), components.includes("Upper") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "premium-typography-variant"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: "premium-text-transform"
+    }, ['capitalize', 'uppercase'].map(variant => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      key: variant,
+      onClick: () => {
+        this.setState({
+          textTransform: variant
+        }), onChangeTextTransform(variant);
+      },
+      className: `${textTransform == variant ? 'active' : ''}`,
+      "data-variant": variant
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: "premium-tooltip-top"
+    }, variant))))), components.includes("Decoration") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: "premium-typography-variant"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: "premium-text-decoration"
+    }, ['line-through', 'underline'].map(variant => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      key: variant,
+      onClick: () => {
+        this.setState({
+          textDecoration: variant
+        }), onChangeTextDecoration(variant);
+      },
+      className: `${textDecoration == variant ? 'active' : ''}`,
+      "data-variant": variant
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: "premium-tooltip-top"
+    }, variant)))))))))), components.includes("weight") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "premium-weight",
+      onClick: () => {
+        toggleVisible("variations");
+      }
+    }, weight, isVisible && currentView == 'variations' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Popover, {
+      className: "premium-typography-option",
+      onClose: toggleClose
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-typography-option-modal "
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-typography-container"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: "premium-typography-variations"
+    }, renderVariations)))))))));
+  }
+
+}
+
+/***/ }),
+
+/***/ "../components/typography/fontList.js":
+/*!********************************************!*\
+  !*** ../components/typography/fontList.js ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "../../node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! webfontloader */ "../../node_modules/webfontloader/webfontloader.js");
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_2__);
+
+const {
+  useEffect,
+  useRef,
+  useState
+} = wp.element;
+
+
+const {
+  __
+} = wp.i18n;
+let loadedFonts = [];
+
+const loadGoogleFonts = font_families => {
+  if (font_families.length === 0) return;
+  loadedFonts = [...loadedFonts, ...font_families.map(_ref => {
+    let {
+      family
+    } = _ref;
+    return family;
+  })];
+
+  if (font_families.length > 0) {
+    webfontloader__WEBPACK_IMPORTED_MODULE_2___default().load({ ...(font_families.length > 0 ? {
+        google: {
+          families: font_families
+        }
+      } : {}),
+      classes: false,
+      text: 'abcdefghijklmnopqrstuvwxyz'
+    });
+  }
+};
+
+const SingleFont = _ref2 => {
+  let {
+    family,
+    onPickFamily,
+    value
+  } = _ref2;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: () => onPickFamily(family.value),
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-typography-single-font', {
+      active: family.value === value
+    }),
+    key: family[0]
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "premium-font-name"
+  }, family.label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    style: {
+      fontFamily: family.value
+    },
+    className: "premium-font-preview"
+  }, "Simply dummy text"));
+};
+
+const FontsList = _ref3 => {
+  let {
+    value,
+    onPickFamily,
+    linearFontsList
+  } = _ref3;
+  const listRef = useRef(null);
+  const [scrollTimer, setScrollTimer] = useState(null);
+  useEffect(() => {
+    if (value.family && listRef.current) {
+      listRef.current.querySelector('.active').scrollIntoView();
+    }
+  }, []);
+  let systemFonts = linearFontsList.filter(family => family.google === false);
+  let googleFonts = linearFontsList.filter(family => family.google === true);
+
+  const onScroll = () => {
+    scrollTimer && clearTimeout(scrollTimer);
+    setScrollTimer(setTimeout(() => {
+      if (!listRef.current) {
+        return;
+      }
+
+      let overscanStartIndex = Math.ceil(listRef.current.scrollTop / 85);
+      const perPage = 25;
+      const startingPage = Math.ceil((overscanStartIndex + 1) / perPage);
+      const pageItems = [...Array(perPage)].map((_, i) => (startingPage - 1) * perPage + i).map(index => googleFonts[index].value).filter(s => !!s);
+      loadGoogleFonts(pageItems);
+    }, 10));
+  };
+
+  useEffect(() => {
+    onScroll();
+  }, [linearFontsList]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    ref: listRef,
+    className: "premium-typography-fonts",
+    onScroll: onScroll,
+    style: {
+      width: `100%`
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, systemFonts.map(family => SingleFont({
+    family,
+    onPickFamily,
+    value
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-fonts-source`
+  }, __('Google  Fonts', "kemet")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, googleFonts.map(family => SingleFont({
+    family,
+    onPickFamily,
+    value
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (FontsList);
+
+/***/ }),
+
 /***/ "./node_modules/classnames/index.js":
 /*!******************************************!*\
   !*** ./node_modules/classnames/index.js ***!
@@ -6519,6 +13121,17 @@ module.exports = window["React"];
 
 /***/ }),
 
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["apiFetch"];
+
+/***/ }),
+
 /***/ "@wordpress/block-editor":
 /*!*************************************!*\
   !*** external ["wp","blockEditor"] ***!
@@ -6563,6 +13176,17 @@ module.exports = window["wp"]["compose"];
 
 /***/ }),
 
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["coreData"];
+
+/***/ }),
+
 /***/ "@wordpress/data":
 /*!******************************!*\
   !*** external ["wp","data"] ***!
@@ -6596,6 +13220,17 @@ module.exports = window["wp"]["element"];
 
 /***/ }),
 
+/***/ "@wordpress/html-entities":
+/*!**************************************!*\
+  !*** external ["wp","htmlEntities"] ***!
+  \**************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["htmlEntities"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -6615,6 +13250,17 @@ module.exports = window["wp"]["i18n"];
 
 "use strict";
 module.exports = window["wp"]["primitives"];
+
+/***/ }),
+
+/***/ "@wordpress/url":
+/*!*****************************!*\
+  !*** external ["wp","url"] ***!
+  \*****************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["url"];
 
 /***/ }),
 
@@ -6645,7 +13291,7 @@ var r={grad:.9,turn:360,rad:360/(2*Math.PI)},t=function(r){return"string"==typeo
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/search","title":"Search","category":"premium-blocks","description":"Help visitors find your content.","keywords":["find"],"textdomain":"default","attributes":{"label":{"type":"string","__experimentalRole":"content"},"border":{"type":"object","default":{"type":"","top":"","right":"","bottom":"","left":"","color":"","radius":""}},"colors":{"type":"object","default":{"background":"","text":"","btnBackground":"","btnText":"","btnHoverBackground":"","btnHoverText":"","label":""}},"postion":{"type":"string","default":"static"},"floatPostion":{"type":"string","default":"top-right"},"floatValues":{"type":"object","default":{"top":"","right":"","bottom":"","left":""}},"formStyle":{"type":"string","default":"default"},"showLabel":{"type":"boolean","default":true},"placeholder":{"type":"string","default":"","__experimentalRole":"content"},"width":{"type":"number"},"widthUnit":{"type":"string"},"buttonText":{"type":"string","__experimentalRole":"content"},"buttonPosition":{"type":"string","default":"button-outside"},"buttonUseIcon":{"type":"boolean","default":false},"typography":{"type":"object","default":{"size":null,"weight":400,"family":"Default","letterSpacing":"","textTransform":"","textDecoration":"","lineHeight":"","style":""}},"buttonTypography":{"type":"object","default":{"size":null,"weight":400,"family":"Default","letterSpacing":"","textTransform":"","textDecoration":"","lineHeight":"","style":""}},"spacing":{"type":"object","default":{"padding":null,"buttonPadding":null}}},"supports":{"align":["left","center","right"],"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/search","title":"Search","category":"premium-blocks","description":"Help visitors find your content.","keywords":["find"],"textdomain":"default","attributes":{"label":{"type":"string","__experimentalRole":"content"},"border":{"type":"object","default":{"type":"","top":"","right":"","bottom":"","left":"","color":"","radius":""}},"colors":{"type":"object","default":{"background":"","text":"","btnBackground":"","btnText":"","btnHoverBackground":"","btnHoverText":"","label":"","modal":"","dropdown":"","link":"","linkHover":""}},"position":{"type":"string","default":"static"},"floatPosition":{"type":"string","default":"top-right"},"floatValues":{"type":"object","default":{"top":10,"right":10,"bottom":10,"left":10}},"formStyle":{"type":"string","default":"default"},"showLabel":{"type":"boolean","default":true},"ajaxSearch":{"type":"boolean","default":true},"placeholder":{"type":"string","default":"","__experimentalRole":"content"},"buttonText":{"type":"string","__experimentalRole":"content"},"buttonPosition":{"type":"string","default":"button-outside"},"buttonUseIcon":{"type":"boolean","default":false},"typography":{"type":"object","default":{"size":null,"weight":400,"family":"Default","letterSpacing":"","textTransform":"","textDecoration":"","lineHeight":"","style":""}},"buttonTypography":{"type":"object","default":{"size":null,"weight":400,"family":"Default","letterSpacing":"","textTransform":"","textDecoration":"","lineHeight":"","style":""}},"spacing":{"type":"object","default":{"padding":null,"buttonPadding":null}}},"supports":{"align":["left","center","right"],"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

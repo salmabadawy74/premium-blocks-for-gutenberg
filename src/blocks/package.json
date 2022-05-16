@@ -4,9 +4,15 @@
     "description": "",
     "main": "icons.js",
     "dependencies": {
+        "@wordpress/api-fetch": "^6.5.0",
+        "@wordpress/core-data": "^4.6.0",
+        "@wordpress/html-entities": "^3.8.0",
+        "@wordpress/i18n": "^4.8.0",
         "@wordpress/icons": "^8.4.0",
         "@wordpress/scripts": "^22.3.0",
+        "@wordpress/url": "^3.9.0",
         "classnames": "^2.3.1",
+        "dom-chef": "^5.1.0",
         "lodash": "^4.17.21",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
@@ -17,6 +23,8 @@
     },
     "scripts": {
         "start:search": "wp-scripts start search/index.js --output-path=search/build",
+        "start:search:view": "wp-scripts start search/view.js --output-path=search/view",
+        "start:search:view:build": "wp-scripts build search/view.js --output-path=search/view",
         "build:search": "wp-scripts build search/index.js --output-path=search/build"
     },
     "keywords": [],
