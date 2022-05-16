@@ -131,18 +131,6 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    titlePaddingT: {
-        type: "number"
-    },
-    titlePaddingR: {
-        type: "number"
-    },
-    titlePaddingB: {
-        type: "number"
-    },
-    titlePaddingL: {
-        type: "number"
-    },
     descBorderWidth: {
         type: "number",
         default: "1"
@@ -163,66 +151,53 @@ const attributes = {
     descBorderLeft: {
         type: "number"
     },
-    descPaddingT: {
-        type: "number"
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    descPaddingR: {
-        type: "number"
-    },
-    descPaddingB: {
-        type: "number"
-    },
-    descPaddingL: {
-        type: "number",
-        default: 10
-    },
-    titlePaddingTTablet: {
-        type: "number"
-    },
-    titlePaddingRTablet: {
-        type: "number"
-    },
-    titlePaddingBTablet: {
-        type: "number"
-    },
-    titlePaddingLTablet: {
-        type: "number"
-    },
-    titlePaddingTMobile: {
-        type: "number"
-    },
-    titlePaddingRMobile: {
-        type: "number"
-    },
-    titlePaddingBMobile: {
-        type: "number"
-    },
-    titlePaddingLMobile: {
-        type: "number"
-    },
-    descPaddingTTablet: {
-        type: "number"
-    },
-    descPaddingRTablet: {
-        type: "number"
-    },
-    descPaddingBTablet: {
-        type: "number"
-    },
-    descPaddingLTablet: {
-        type: "number"
-    },
-    descPaddingTMobile: {
-        type: "number"
-    },
-    descPaddingRMobile: {
-        type: "number"
-    },
-    descPaddingBMobile: {
-        type: "number"
-    },
-    descPaddingLMobile: {
-        type: "number"
-    },
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    }
 }
 export default attributes;

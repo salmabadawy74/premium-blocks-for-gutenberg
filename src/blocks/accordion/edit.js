@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
@@ -84,36 +85,14 @@ class PremiumAccordion extends Component {
             titleBorderBottom,
             titleBorderLeft,
             titleBorderUpdated,
-            titlePaddingT,
-            titlePaddingR,
-            titlePaddingB,
-            titlePaddingL,
+            titlePadding,
+            descPadding,
             descBorderWidth,
             descBorderUpdated,
             descBorderTop,
             descBorderRight,
             descBorderBottom,
             descBorderLeft,
-            descPaddingT,
-            descPaddingR,
-            descPaddingB,
-            descPaddingL,
-            titlePaddingTTablet,
-            titlePaddingRTablet,
-            titlePaddingBTablet,
-            titlePaddingLTablet,
-            titlePaddingTMobile,
-            titlePaddingRMobile,
-            titlePaddingBMobile,
-            titlePaddingLMobile,
-            descPaddingTTablet,
-            descPaddingRTablet,
-            descPaddingBTablet,
-            descPaddingLTablet,
-            descPaddingTMobile,
-            descPaddingRMobile,
-            descPaddingBMobile,
-            descPaddingLMobile,
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -194,15 +173,16 @@ class PremiumAccordion extends Component {
             });
         };
 
-        const titlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePaddingT, titlePaddingTTablet, titlePaddingTMobile);
-        const titlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
-        const titlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
-        const titlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePaddingL, titlePaddingLTablet, titlePaddingLMobile);
-        const descPaddingTop = this.getPreviewSize(this.props.deviceType, descPaddingT, descPaddingTTablet, descPaddingTMobile);
-        const descPaddingRight = this.getPreviewSize(this.props.deviceType, descPaddingR, descPaddingRTablet, descPaddingRMobile);
-        const descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPaddingB, descPaddingBTablet, descPaddingBMobile);
-        const descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPaddingL, descPaddingLTablet, descPaddingLMobile);
+        const titlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.top, titlePadding.Tablet.top, titlePadding.Mobile.top);
+        const titlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.right, titlePadding.Tablet.right, titlePadding.Mobile.right);
+        const titlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.bottom, titlePadding.Tablet.bottom, titlePadding.Mobile.bottom);
+        const titlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.left, titlePadding.Tablet.left, titlePadding.Mobile.left);
+        const descPaddingTop = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.top, descPadding.Tablet.top, descPadding.Mobile.top);
+        const descPaddingRight = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.right, descPadding.Tablet.right, descPadding.Mobile.right);
+        const descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.bottom, descPadding.Tablet.bottom, descPadding.Mobile.bottom);
+        const descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.left, descPadding.Tablet.left, descPadding.Mobile.left);
 
+        console.log(titlePadding);
 
         const mainClasses = classnames(className, "premium-accordion");
 
@@ -222,10 +202,10 @@ class PremiumAccordion extends Component {
                                 : titleBorderWidth + "px",
                             borderRadius: titleStyles[0].titleBorderRadius + "px",
                             borderColor: titleStyles[0].titleBorderColor,
-                            paddingTop: titlePaddingTop,
-                            paddingRight: titlePaddingRight,
-                            paddingBottom: titlePaddingBottom,
-                            paddingLeft: titlePaddingLeft
+                            paddingTop: `${titlePaddingTop}${titlePadding.unit}`,
+                            paddingRight: `${titlePaddingRight}${titlePadding.unit}`,
+                            paddingBottom: `${titlePaddingBottom}${titlePadding.unit}`,
+                            paddingLeft: `${titlePaddingLeft}${titlePadding.unit}`
                         }}
                     >
                         <div className={`premium-accordion__title`}>
@@ -286,10 +266,10 @@ class PremiumAccordion extends Component {
                                 : descBorderWidth + "px",
                             borderRadius: descStyles[0].descBorderRadius + "px",
                             borderColor: descStyles[0].descBorderColor,
-                            paddingTop: descPaddingTop,
-                            paddingRight: descPaddingRight,
-                            paddingBottom: descPaddingBottom,
-                            paddingLeft: descPaddingLeft
+                            paddingTop: `${descPaddingTop}${descPadding.unit}`,
+                            paddingRight: `${descPaddingRight}${descPadding.unit}`,
+                            paddingBottom: `${descPaddingBottom}${descPadding.unit}`,
+                            paddingLeft: `${descPaddingLeft}${descPadding.unit}`
                         }}
                     >
                         {"text" === contentType && (
@@ -408,64 +388,7 @@ class PremiumAccordion extends Component {
                             onChangehHorizontal={newValue => saveTitleStyles({ titleShadowHorizontal: newValue })}
                             onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
                         />
-                        <PremiumResponsivePadding
-                            paddingTop={titlePaddingT}
-                            paddingRight={titlePaddingR}
-                            paddingBottom={titlePaddingB}
-                            paddingLeft={titlePaddingL}
-                            paddingTopTablet={titlePaddingTTablet}
-                            paddingRightTablet={titlePaddingRTablet}
-                            paddingBottomTablet={titlePaddingBTablet}
-                            paddingLeftTablet={titlePaddingLTablet}
-                            paddingTopMobile={titlePaddingTMobile}
-                            paddingRightMobile={titlePaddingRMobile}
-                            paddingBottomMobile={titlePaddingBMobile}
-                            paddingLeftMobile={titlePaddingLMobile}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
+                        <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ titlePadding: value })} />
                     </PanelBody>
                     <PanelBody
                         title={__("Arrow", 'premium-blocks-for-gutenberg')}
@@ -605,64 +528,7 @@ class PremiumAccordion extends Component {
                                 onChangeVertical={newValue => setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue })}
                             />
                         )}
-                        <PremiumResponsivePadding
-                            paddingT={descPaddingT}
-                            paddingR={descPaddingR}
-                            paddingB={descPaddingB}
-                            paddingL={descPaddingL}
-                            paddingTTablet={descPaddingTTablet}
-                            paddingRTablet={descPaddingRTablet}
-                            paddingBTablet={descPaddingBTablet}
-                            paddingLTablet={descPaddingLTablet}
-                            paddingTMobile={descPaddingTMobile}
-                            paddingRMobile={descPaddingRMobile}
-                            paddingBMobile={descPaddingBMobile}
-                            paddingLMobile={descPaddingLMobile}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
+                        <SpacingComponent value={descPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ descPadding: value })} />
                     </PanelBody>
                 </InspectorControls >
             ),
