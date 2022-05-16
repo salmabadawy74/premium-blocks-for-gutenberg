@@ -181,9 +181,6 @@ class PremiumAccordion extends Component {
         const descPaddingRight = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.right, descPadding.Tablet.right, descPadding.Mobile.right);
         const descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.bottom, descPadding.Tablet.bottom, descPadding.Mobile.bottom);
         const descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.left, descPadding.Tablet.left, descPadding.Mobile.left);
-
-        // console.log(titlePadding);
-
         const mainClasses = classnames(className, "premium-accordion");
 
         const accordionItems = repeaterItems.map((item, index) => {

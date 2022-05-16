@@ -10548,9 +10548,6 @@ var PremiumAccordion = function (_Component) {
             var descPaddingRight = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.right, descPadding.Tablet.right, descPadding.Mobile.right);
             var descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.bottom, descPadding.Tablet.bottom, descPadding.Mobile.bottom);
             var descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.left, descPadding.Tablet.left, descPadding.Mobile.left);
-
-            // console.log(titlePadding);
-
             var mainClasses = (0, _classnames2.default)(className, "premium-accordion");
 
             var accordionItems = repeaterItems.map(function (item, index) {
@@ -15785,11 +15782,8 @@ var save = function save(props) {
         descBorderTop = _props$attributes.descBorderTop,
         descBorderRight = _props$attributes.descBorderRight,
         descBorderBottom = _props$attributes.descBorderBottom,
-        descBorderLeft = _props$attributes.descBorderLeft,
-        titlePadding = _props$attributes.titlePadding;
+        descBorderLeft = _props$attributes.descBorderLeft;
 
-
-    console.log(titlePadding);
     var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
 
     var accordionItems = repeaterItems.map(function (item, index) {
