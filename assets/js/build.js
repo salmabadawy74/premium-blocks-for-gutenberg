@@ -16941,22 +16941,21 @@ var deprecated = [{
 }, {
     attributes: Object.assign(attributes, newAttributes),
     migrate: function migrate(attributes) {
-        console.log(attributes.titlePaddingT);
         var newAttributes = {
             titlePadding: {
-                "desktop": {
+                "Desktop": {
                     top: attributes.titlePaddingT,
                     right: attributes.titlePaddingR,
                     bottom: attributes.titlePaddingB,
                     left: attributes.titlePaddingL
                 },
-                "tablet": {
+                "Tablet": {
                     top: attributes.titlePaddingTTablet,
                     right: attributes.titlePaddingRTablet,
                     bottom: attributes.titlePaddingBTablet,
                     left: attributes.titlePaddingLTablet
                 },
-                "mobile": {
+                "Mobile": {
                     top: attributes.titlePaddingTMobile,
                     right: attributes.titlePaddingRMobile,
                     bottom: attributes.titlePaddingBMobile,
@@ -16964,19 +16963,19 @@ var deprecated = [{
                 }
             },
             descPadding: {
-                "desktop": {
+                "Desktop": {
                     top: attributes.descPaddingT,
                     right: attributes.descPaddingR,
                     bottom: attributes.descPaddingB,
                     left: attributes.descPaddingL
                 },
-                "tablet": {
+                "Tablet": {
                     top: attributes.descPaddingTTablet,
                     right: attributes.descPaddingRTablet,
                     bottom: attributes.descPaddingBTablet,
                     left: attributes.descPaddingLTablet
                 },
-                "mobile": {
+                "Mobile": {
                     top: attributes.descPaddingTMobile,
                     right: attributes.descPaddingRMobile,
                     bottom: attributes.descPaddingBMobile,
