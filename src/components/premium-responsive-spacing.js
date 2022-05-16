@@ -80,6 +80,7 @@ const SpacingComponent = (props) => {
                     value={inputValue}
                     onChange={({ target: { value } }) => onSpacingChange(Number(value), side)}
                     data-id={side}
+                    disabled={inputValue === "disabled" ? true : false}
                 />
 
                 <span className={`premium-spacing-title`}>
@@ -94,10 +95,7 @@ const SpacingComponent = (props) => {
                 </span>
             </li>)
         })
-
-
         let linkHtml = '';
-
         if (link) {
             linkHtml = (
                 <li className={`premium-spacing-input-item`}>

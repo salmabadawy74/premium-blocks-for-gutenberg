@@ -7892,7 +7892,8 @@ var SpacingComponent = function SpacingComponent(props) {
                         var value = _ref.target.value;
                         return onSpacingChange(Number(value), side);
                     },
-                    "data-id": side
+                    "data-id": side,
+                    disabled: inputValue === "disabled" ? true : false
                 }),
                 React.createElement(
                     "span",
@@ -7906,9 +7907,7 @@ var SpacingComponent = function SpacingComponent(props) {
                 )
             );
         });
-
         var linkHtml = '';
-
         if (link) {
             linkHtml = React.createElement(
                 "li",
