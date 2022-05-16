@@ -6,7 +6,7 @@ import save from "./save";
 import edit from "./edit";
 import PbgIcon from "../icons";
 import attributes from "./attributes";
-
+import deprecated from './deprecated';
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
@@ -19,6 +19,7 @@ registerBlockType("premium/heading", {
     supports: {
         inserter: heading
     },
+    deprecated,
     edit: edit,
     save: save
 });

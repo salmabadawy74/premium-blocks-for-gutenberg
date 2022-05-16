@@ -10,6 +10,7 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
+import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
 import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 
@@ -167,54 +168,10 @@ class edit extends Component {
             iconBorderRight,
             iconBorderBottom,
             iconBorderLeft,
-            titleMarginT,
-            titleMarginR,
-            titleMarginB,
-            titleMarginL,
-            titleMarginTTablet,
-            titleMarginRTablet,
-            titleMarginBTablet,
-            titleMarginLTablet,
-            titleMarginTMobile,
-            titleMarginRMobile,
-            titleMarginBMobile,
-            titleMarginLMobile,
-            titlePaddingT,
-            titlePaddingR,
-            titlePaddingB,
-            titlePaddingL,
-            titlePaddingTTablet,
-            titlePaddingRTablet,
-            titlePaddingBTablet,
-            titlePaddingLTablet,
-            titlePaddingTMobile,
-            titlePaddingRMobile,
-            titlePaddingBMobile,
-            titlePaddingLMobile,
-            iconPaddingT,
-            iconPaddingR,
-            iconPaddingL,
-            iconPaddingB,
-            iconPaddingTTablet,
-            iconPaddingRTablet,
-            iconPaddingLTablet,
-            iconPaddingBTablet,
-            iconPaddingTMobile,
-            iconPaddingRMobile,
-            iconPaddingLMobile,
-            iconPaddingBMobile,
-            iconMarginT,
-            iconMarginR,
-            iconMarginB,
-            iconMarginL,
-            iconMarginTTablet,
-            iconMarginRTablet,
-            iconMarginBTablet,
-            iconMarginLTablet,
-            iconMarginTMobile,
-            iconMarginRMobile,
-            iconMarginBMobile,
-            iconMarginLMobile,
+            titleMargin,
+            titlePadding,
+            iconPadding,
+            iconMargin,
             backgroundText,
             BackText,
             textWidth,
@@ -373,23 +330,23 @@ class edit extends Component {
             ];
 
         const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titlefontSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-        const TitleMarginTop = this.getPreviewSize(this.props.deviceType, titleMarginT, titleMarginTTablet, titleMarginTMobile);
-        const TitleMarginRight = this.getPreviewSize(this.props.deviceType, titleMarginR, titleMarginRTablet, titleMarginRMobile);
-        const TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMarginB, titleMarginBTablet, titleMarginBMobile);
-        const TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titleMarginL, titleMarginLTablet, titleMarginLMobile);
-        const TitlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePaddingT, titlePaddingTTablet, titlePaddingTMobile);
-        const TitlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
-        const TitlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
-        const TitlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePaddingL, titlePaddingLTablet, titlePaddingLMobile);
+        const TitleMarginTop = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.top, titleMargin.Tablet.top, titleMargin.Mobile.top);
+        const TitleMarginRight = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.right, titleMargin.Tablet.right, titleMargin.Mobile.right);
+        const TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.bottom, titleMargin.Tablet.bottom, titleMargin.Mobile.bottom);
+        const TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.left, titleMargin.Tablet.left, titleMargin.Mobile.left);
+        const TitlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.top, titlePadding.Tablet.top, titlePadding.Mobile.top);
+        const TitlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.right, titlePadding.Tablet.right, titlePadding.Mobile.right);
+        const TitlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.bottom, titlePadding.Tablet.bottom, titlePadding.Mobile.bottom);
+        const TitlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.left, titlePadding.Tablet.left, titlePadding.Mobile.left);
         const IconSize = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconSize, iconStyles[0].iconSizeTablet, iconStyles[0].iconSizeMobile);
-        const IconMarginTop = this.getPreviewSize(this.props.deviceType, iconMarginT, iconMarginTTablet, iconMarginTMobile);
-        const IconMarginRight = this.getPreviewSize(this.props.deviceType, iconMarginR, iconMarginRTablet, iconMarginRMobile);
-        const IconMarginBottom = this.getPreviewSize(this.props.deviceType, iconMarginB, iconMarginBTablet, iconMarginBMobile);
-        const IconMarginLeft = this.getPreviewSize(this.props.deviceType, iconMarginL, iconMarginLTablet, iconMarginLMobile);
-        const IconPaddingTop = this.getPreviewSize(this.props.deviceType, iconPaddingT, iconPaddingTTablet, iconPaddingTMobile);
-        const IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPaddingR, iconPaddingRTablet, iconPaddingRMobile);
-        const IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPaddingB, iconPaddingBTablet, iconPaddingBMobile);
-        const IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPaddingL, iconPaddingLTablet, iconPaddingLMobile);
+        const IconMarginTop = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.top, iconMargin.Tablet.top, iconMargin.Mobile.top);
+        const IconMarginRight = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.right, iconMargin.Tablet.right, iconMargin.Mobile.right);
+        const IconMarginBottom = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.bottom, iconMargin.Tablet.bottom, iconMargin.Mobile.bottom);
+        const IconMarginLeft = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.left, iconMargin.Tablet.left, iconMargin.Mobile.left);
+        const IconPaddingTop = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.top, iconPadding.Tablet.top, iconPadding.Mobile.top);
+        const IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.right, iconPadding.Tablet.right, iconPadding.Mobile.right);
+        const IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.bottom, iconPadding.Tablet.bottom, iconPadding.Mobile.bottom);
+        const IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.left, iconPadding.Tablet.left, iconPadding.Mobile.left);
         const TextSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textBackfontSize, textStyles[0].textBackfontSizeTablet, textStyles[0].textBackfontSizeMobile);
         const StripeWidth = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeWidth, stripeStyles[0].stripeWidthTablet, stripeStyles[0].stripeWidthMobile);
         const StripeHeight = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeHeight, stripeStyles[0].stripeHeightTablet, stripeStyles[0].stripeHeightMobile);
@@ -1155,130 +1112,8 @@ class edit extends Component {
                                 step={0.5}
                             />
                         }
-                        <PremiumResponsiveMargin
-                            directions={["all"]}
-                            marginTop={titleMarginT}
-                            marginRight={titleMarginR}
-                            marginBottom={titleMarginB}
-                            marginLeft={titleMarginL}
-                            marginTopTablet={titleMarginTTablet}
-                            marginRightTablet={titleMarginRTablet}
-                            marginBottomTablet={titleMarginBTablet}
-                            marginLeftTablet={titleMarginLTablet}
-                            marginTopMobile={titleMarginTMobile}
-                            marginRightMobile={titleMarginRMobile}
-                            marginBottomMobile={titleMarginBMobile}
-                            marginLeftMobile={titleMarginLMobile}
-                            showUnits={true}
-                            onChangeMarSizeUnit={newvalue => saveTitleStyles({ titleMarginType: newvalue })}
-                            selectedUnit={titleStyles[0].titleMarginType}
-                            onChangeMarginTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginTTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginRTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginBTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titleMarginL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titleMarginLTablet: newValue })
-                                    } else {
-                                        setAttributes({ titleMarginLMobile: newValue })
-                                    }
-                                }
-                            }
-
-                        />
-                        <PremiumResponsivePadding
-                            paddingTop={titlePaddingT}
-                            paddingRight={titlePaddingR}
-                            paddingBottom={titlePaddingB}
-                            paddingLeft={titlePaddingL}
-                            paddingTopTablet={titlePaddingTTablet}
-                            paddingRightTablet={titlePaddingRTablet}
-                            paddingBottomTablet={titlePaddingBTablet}
-                            paddingLeftTablet={titlePaddingLTablet}
-                            paddingTopMobile={titlePaddingTMobile}
-                            paddingRightMobile={titlePaddingRMobile}
-                            paddingBottomMobile={titlePaddingBMobile}
-                            paddingLeftMobile={titlePaddingLMobile}
-                            showUnits={true}
-                            selectedUnit={titleStyles[0].titlePaddingType}
-                            onChangePadSizeUnit={newvalue => saveTitleStyles({ titlePaddingType: newvalue })}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlePaddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlePaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlePaddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
+                        <SpacingComponent value={titleMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ titleMargin: value })} />
+                        <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ titlePadding: value })} />
                     </PanelBody>
                     {
                         iconValue && <PanelBody
@@ -1359,130 +1194,8 @@ class edit extends Component {
                                     saveIconStyles({ iconborderRadius: newrRadius })
                                 }
                             />
-                            <PremiumResponsiveMargin
-                                directions={["all"]}
-                                marginTop={iconMarginT}
-                                marginRight={iconMarginR}
-                                marginBottom={iconMarginB}
-                                marginLeft={iconMarginL}
-                                marginTopTablet={iconMarginTTablet}
-                                marginRightTablet={iconMarginRTablet}
-                                marginBottomTablet={iconMarginBTablet}
-                                marginLeftTablet={iconMarginLTablet}
-                                marginTopMobile={iconMarginTMobile}
-                                marginRightMobile={iconMarginRMobile}
-                                marginBottomMobile={iconMarginBMobile}
-                                marginLeftMobile={iconMarginLMobile}
-                                showUnits={true}
-                                onChangeMarSizeUnit={newvalue => saveIconStyles({ iconMarginType: newvalue })}
-                                selectedUnit={iconStyles[0].iconMarginType}
-                                onChangeMarginTop={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginT: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginTTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginTMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginRight={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginR: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginRTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginRMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginBottom={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginB: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginBTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginBMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginLeft={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconMarginL: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconMarginLTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconMarginLMobile: newValue })
-                                        }
-                                    }
-                                }
-
-                            />
-                            <PremiumResponsivePadding
-                                paddingTop={iconPaddingT}
-                                paddingRight={iconPaddingR}
-                                paddingBottom={iconPaddingB}
-                                paddingLeft={iconPaddingL}
-                                paddingTopTablet={iconPaddingTTablet}
-                                paddingRightTablet={iconPaddingRTablet}
-                                paddingBottomTablet={iconPaddingBTablet}
-                                paddingLeftTablet={iconPaddingLTablet}
-                                paddingTopMobile={iconPaddingTMobile}
-                                paddingRightMobile={iconPaddingRMobile}
-                                paddingBottomMobile={iconPaddingBMobile}
-                                paddingLeftMobile={iconPaddingLMobile}
-                                showUnits={true}
-                                selectedUnit={iconStyles[0].iconPaddingType}
-                                onChangePadSizeUnit={newvalue => saveIconStyles({ iconPaddingType: newvalue })}
-                                onChangePaddingTop={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingT: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingTTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingTMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangePaddingRight={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingR: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingRTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingRMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangePaddingBottom={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingB: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingBTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingBMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangePaddingLeft={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ iconPaddingL: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ iconPaddingLTablet: newValue })
-                                        } else {
-                                            setAttributes({ iconPaddingLMobile: newValue })
-                                        }
-                                    }
-                                }
-                            />
+                            <SpacingComponent value={iconMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ iconMargin: value })} />
+                            <SpacingComponent value={iconPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ iconPadding: value })} />
                             {iconType === 'icon' &&
                                 <PremiumShadow
                                     label={__("Icon Shadow", 'premium-blocks-for-gutenberg')}
@@ -1759,39 +1472,39 @@ class edit extends Component {
                                         </span>
 
                                     </Fragment> : <Fragment>
-                                            {
-                                                iconValue && iconType == 'icon' &&
-                                                <i className={`premium-title-icon ${icon}`} />
-                                            }
-                                            {
-                                                iconValue && iconType == 'image' &&
-                                                < img className={`premium-title-icon`} src={imageURL} />
-                                            }
-                                            {
-                                                iconValue && iconType == 'lottie' && lottieURl &&
-                                                <div className=" premium-title-icon premium-lottie-animation">
-                                                    <Lottie
-                                                        options={{
-                                                            loop: loop,
-                                                            path: lottieURl,
-                                                            rendererSettings: {
-                                                                preserveAspectRatio: 'xMidYMid'
-                                                            }
-                                                        }}
-                                                        direction={reverse}
-                                                    />
-                                                </div>
-                                            }
-                                            <RichText
-                                                tagName='span'
-                                                className={`premium-title-text-title`}
-                                                onChange={(newValue) => setAttributes({ title: newValue })}
-                                                value={title}
-                                                style={{
-                                                    minHeight: '15px'
-                                                }}
-                                            />
-                                        </Fragment>
+                                        {
+                                            iconValue && iconType == 'icon' &&
+                                            <i className={`premium-title-icon ${icon}`} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'image' &&
+                                            < img className={`premium-title-icon`} src={imageURL} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'lottie' && lottieURl &&
+                                            <div className=" premium-title-icon premium-lottie-animation">
+                                                <Lottie
+                                                    options={{
+                                                        loop: loop,
+                                                        path: lottieURl,
+                                                        rendererSettings: {
+                                                            preserveAspectRatio: 'xMidYMid'
+                                                        }
+                                                    }}
+                                                    direction={reverse}
+                                                />
+                                            </div>
+                                        }
+                                        <RichText
+                                            tagName='span'
+                                            className={`premium-title-text-title`}
+                                            onChange={(newValue) => setAttributes({ title: newValue })}
+                                            value={title}
+                                            style={{
+                                                minHeight: '15px'
+                                            }}
+                                        />
+                                    </Fragment>
                                 }
                                 {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href={`${url}`} ></a>}
                             </Fragment>

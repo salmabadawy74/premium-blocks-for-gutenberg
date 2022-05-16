@@ -241,6 +241,9 @@ const newAttributes = {
 const deprecated = [
     {
         attributes: Object.assign(attributes, newAttributes),
+        isEligible() {
+            return true;
+        },
         migrate: (attributes) => {
             let newAttributes = {
                 titlePadding: {

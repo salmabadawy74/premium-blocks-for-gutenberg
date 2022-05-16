@@ -181,22 +181,6 @@ const attributes = {
         type: 'number',
         default: '0'
     },
-    paddingT: {
-        type: 'number',
-        default: '0'
-    },
-    paddingR: {
-        type: 'number',
-        default: '0'
-    },
-    paddingB: {
-        type: 'number',
-        default: '0'
-    },
-    paddingL: {
-        type: 'number',
-        default: '0'
-    },
     suffixStyles: {
         type: 'array',
         default: [
@@ -229,30 +213,30 @@ const attributes = {
             }
         ]
     },
-    paddingTTablet: {
-        type: 'number',
-    },
-    paddingRTablet: {
-        type: 'number',
-    },
-    paddingBTablet: {
-        type: 'number',
-    },
-    paddingLTablet: {
-        type: 'number',
-    },
-    paddingTMobile: {
-        type: 'number',
-    },
-    paddingRMobile: {
-        type: 'number',
-    },
-    paddingBMobile: {
-        type: 'number',
-    },
-    paddingLMobile: {
-        type: 'number',
-    },
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    }
 }
 
 export default attributes

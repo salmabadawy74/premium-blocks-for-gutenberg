@@ -16356,6 +16356,10 @@ var newAttributes = {
 
 var deprecated = [{
     attributes: Object.assign(attributes, newAttributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
     migrate: function migrate(attributes) {
         var newAttributes = {
             titlePadding: {
@@ -17203,9 +17207,9 @@ var _premiumFilters = __webpack_require__(31);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _premiumResponsiveSpacing = __webpack_require__(219);
 
-var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
 var _premiumMediaUpload = __webpack_require__(13);
 
@@ -17338,18 +17342,7 @@ var edit = exports.edit = function (_Component) {
                 borderRight = _props$attributes.borderRight,
                 borderBottom = _props$attributes.borderBottom,
                 borderLeft = _props$attributes.borderLeft,
-                paddingT = _props$attributes.paddingT,
-                paddingR = _props$attributes.paddingR,
-                paddingB = _props$attributes.paddingB,
-                paddingL = _props$attributes.paddingL,
-                paddingTTablet = _props$attributes.paddingTTablet,
-                paddingRTablet = _props$attributes.paddingRTablet,
-                paddingBTablet = _props$attributes.paddingBTablet,
-                paddingLTablet = _props$attributes.paddingLTablet,
-                paddingTMobile = _props$attributes.paddingTMobile,
-                paddingRMobile = _props$attributes.paddingRMobile,
-                paddingBMobile = _props$attributes.paddingBMobile,
-                paddingLMobile = _props$attributes.paddingLMobile;
+                padding = _props$attributes.padding;
 
 
             var ALIGNS = [{
@@ -17455,10 +17448,10 @@ var edit = exports.edit = function (_Component) {
                 setAttributes({ containerStyles: newUpdate });
             };
 
-            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
-            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
-            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
-            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, padding.Desktop.top, padding.Tablet.top, padding.Mobile.top);
+            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, padding.Desktop.right, padding.Tablet.right, padding.Mobile.right);
+            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, padding.Desktop.bottom, padding.Tablet.bottom, padding.Mobile.bottom);
+            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, padding.Desktop.left, padding.Tablet.left, padding.Mobile.left);
 
             return [isSelected && React.createElement(
                 BlockControls,
@@ -17833,61 +17826,9 @@ var edit = exports.edit = function (_Component) {
                             return containerStyle({ containerShadowPosition: newValue });
                         }
                     }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        paddingTopTablet: paddingTTablet,
-                        paddingRightTablet: paddingRTablet,
-                        paddingBottomTablet: paddingBTablet,
-                        paddingLeftTablet: paddingLTablet,
-                        paddingTopMobile: paddingTMobile,
-                        paddingRightMobile: paddingRMobile,
-                        paddingBottomMobile: paddingBMobile,
-                        paddingLeftMobile: paddingLMobile,
-                        selectedUnit: containerStyles[0].paddingU,
-                        showUnits: true,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return containerStyle({ paddingU: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingTTablet: newValue });
-                            } else {
-                                setAttributes({ paddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingRTablet: newValue });
-                            } else {
-                                setAttributes({ paddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingBTablet: newValue });
-                            } else {
-                                setAttributes({ paddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingLTablet: newValue });
-                            } else {
-                                setAttributes({ paddingLMobile: newValue });
-                            }
-                        }
-                    })
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: padding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ padding: value });
+                        } })
                 ),
                 React.createElement(_premiumResponsiveTabs2.default, {
                     Desktop: hideDesktop,
@@ -18501,7 +18442,207 @@ var attributes = {
     }
 };
 
+var newAttributes = {
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    }
+};
+
 var deprecatedContent = [{
+    attributes: Object.assign(attributes, newAttributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            padding: {
+                "Desktop": {
+                    top: attributes.paddingT,
+                    right: attributes.paddingR,
+                    bottom: attributes.paddingB,
+                    left: attributes.paddingL
+                },
+                "Tablet": {
+                    top: attributes.paddingTTablet,
+                    right: attributes.paddingRTablet,
+                    bottom: attributes.paddingBTablet,
+                    left: attributes.paddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.paddingTMobile,
+                    right: attributes.paddingRMobile,
+                    bottom: attributes.paddingBMobile,
+                    left: attributes.paddingLMobile
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            borderBanner = _props$attributes.borderBanner,
+            imageURL = _props$attributes.imageURL,
+            titleStyles = _props$attributes.titleStyles,
+            descStyles = _props$attributes.descStyles,
+            containerStyles = _props$attributes.containerStyles,
+            title = _props$attributes.title,
+            titleTag = _props$attributes.titleTag,
+            desc = _props$attributes.desc,
+            contentAlign = _props$attributes.contentAlign,
+            effect = _props$attributes.effect,
+            hoverEffect = _props$attributes.hoverEffect,
+            height = _props$attributes.height,
+            minHeight = _props$attributes.minHeight,
+            verAlign = _props$attributes.verAlign,
+            hovered = _props$attributes.hovered,
+            responsive = _props$attributes.responsive,
+            background = _props$attributes.background,
+            opacity = _props$attributes.opacity,
+            urlCheck = _props$attributes.urlCheck,
+            target = _props$attributes.target,
+            url = _props$attributes.url,
+            sepColor = _props$attributes.sepColor,
+            blur = _props$attributes.blur,
+            bright = _props$attributes.bright,
+            contrast = _props$attributes.contrast,
+            saturation = _props$attributes.saturation,
+            hue = _props$attributes.hue,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile,
+            borderWidth = _props$attributes.borderWidth,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
+
+        return imageURL && React.createElement(
+            "div",
+            {
+                id: "premium-banner-" + block_id,
+                className: mainClasses + " premium-banner__responsive_" + responsive + " " + hideDesktop + " " + hideTablet + " " + hideMobile + " premium-banner-" + block_id
+            },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
+                }
+            }),
+            React.createElement(
+                "div",
+                {
+                    className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
+                    style: {
+                        boxShadow: containerStyles[0].containerShadowHorizontal + "px " + containerStyles[0].containerShadowVertical + "px " + containerStyles[0].containerShadowBlur + "px " + containerStyles[0].containerShadowColor + " " + containerStyles[0].containerShadowPosition,
+                        borderStyle: containerStyles[0].borderType,
+                        borderWidth: borderBanner ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                        borderRadius: containerStyles[0].borderRadius + "px",
+                        borderColor: containerStyles[0].borderColor
+                    }
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__img_wrap premium-banner__" + height,
+                        style: {
+                            minHeight: minHeight,
+                            alignItems: verAlign
+                        }
+                    },
+                    React.createElement("img", {
+                        className: "premium-banner__img",
+                        alt: "Banner Image",
+                        src: imageURL,
+                        style: {
+                            filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                        }
+                    })
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__content",
+                        style: {
+                            background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__title_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-banner__title",
+                            value: title,
+                            style: {
+                                color: titleStyles[0].titleColor,
+                                fontWeight: titleStyles[0].titleWeight,
+                                lineHeight: titleStyles[0].titleLine + "px",
+                                textShadow: titleStyles[0].shadowHorizontal + "px " + titleStyles[0].shadowVertical + "px " + titleStyles[0].shadowBlur + "px " + titleStyles[0].shadowColor
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__desc_wrap",
+                            style: {
+                                textAlign: contentAlign
+                            }
+                        },
+                        React.createElement(RichText.Content, {
+                            tagName: "p",
+                            className: "premium-banner__desc",
+                            value: desc,
+                            style: {
+                                color: descStyles[0].descColor,
+                                fontWeight: descStyles[0].descWeight,
+                                lineHeight: descStyles[0].descLine + "px",
+                                textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor
+                            }
+                        })
+                    )
+                ),
+                urlCheck && "" !== url && React.createElement("a", {
+                    className: "premium-banner__link",
+                    href: url,
+                    target: target && "_blank",
+                    rel: "noopener"
+                })
+            )
+        );
+    }
+}, {
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -18555,68 +18696,68 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            block_id = _props$attributes.block_id,
-            borderBanner = _props$attributes.borderBanner,
-            imageURL = _props$attributes.imageURL,
-            title = _props$attributes.title,
-            titleTag = _props$attributes.titleTag,
-            desc = _props$attributes.desc,
-            contentAlign = _props$attributes.contentAlign,
-            effect = _props$attributes.effect,
-            hoverEffect = _props$attributes.hoverEffect,
-            height = _props$attributes.height,
-            minHeight = _props$attributes.minHeight,
-            verAlign = _props$attributes.verAlign,
-            hovered = _props$attributes.hovered,
-            responsive = _props$attributes.responsive,
-            background = _props$attributes.background,
-            opacity = _props$attributes.opacity,
-            borderType = _props$attributes.borderType,
-            borderWidth = _props$attributes.borderWidth,
-            borderTop = _props$attributes.borderTop,
-            borderRight = _props$attributes.borderRight,
-            borderBottom = _props$attributes.borderBottom,
-            borderLeft = _props$attributes.borderLeft,
-            borderRadius = _props$attributes.borderRadius,
-            borderColor = _props$attributes.borderColor,
-            titleColor = _props$attributes.titleColor,
-            titleBack = _props$attributes.titleBack,
-            titleWeight = _props$attributes.titleWeight,
-            titleLine = _props$attributes.titleLine,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            descColor = _props$attributes.descColor,
-            descLine = _props$attributes.descLine,
-            descWeight = _props$attributes.descWeight,
-            descShadowBlur = _props$attributes.descShadowBlur,
-            descShadowColor = _props$attributes.descShadowColor,
-            descShadowHorizontal = _props$attributes.descShadowHorizontal,
-            descShadowVertical = _props$attributes.descShadowVertical,
-            urlCheck = _props$attributes.urlCheck,
-            url = _props$attributes.url,
-            target = _props$attributes.target,
-            sepColor = _props$attributes.sepColor,
-            blur = _props$attributes.blur,
-            bright = _props$attributes.bright,
-            contrast = _props$attributes.contrast,
-            saturation = _props$attributes.saturation,
-            hue = _props$attributes.hue,
-            containerShadowBlur = _props$attributes.containerShadowBlur,
-            containerShadowColor = _props$attributes.containerShadowColor,
-            containerShadowHorizontal = _props$attributes.containerShadowHorizontal,
-            containerShadowVertical = _props$attributes.containerShadowVertical,
-            containerShadowPosition = _props$attributes.containerShadowPosition,
-            paddingB = _props$attributes.paddingB,
-            paddingT = _props$attributes.paddingT,
-            paddingR = _props$attributes.paddingR,
-            paddingL = _props$attributes.paddingL,
-            paddingU = _props$attributes.paddingU,
-            hideDesktop = _props$attributes.hideDesktop,
-            hideTablet = _props$attributes.hideTablet,
-            hideMobile = _props$attributes.hideMobile;
+        var _props$attributes2 = props.attributes,
+            block_id = _props$attributes2.block_id,
+            borderBanner = _props$attributes2.borderBanner,
+            imageURL = _props$attributes2.imageURL,
+            title = _props$attributes2.title,
+            titleTag = _props$attributes2.titleTag,
+            desc = _props$attributes2.desc,
+            contentAlign = _props$attributes2.contentAlign,
+            effect = _props$attributes2.effect,
+            hoverEffect = _props$attributes2.hoverEffect,
+            height = _props$attributes2.height,
+            minHeight = _props$attributes2.minHeight,
+            verAlign = _props$attributes2.verAlign,
+            hovered = _props$attributes2.hovered,
+            responsive = _props$attributes2.responsive,
+            background = _props$attributes2.background,
+            opacity = _props$attributes2.opacity,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderTop = _props$attributes2.borderTop,
+            borderRight = _props$attributes2.borderRight,
+            borderBottom = _props$attributes2.borderBottom,
+            borderLeft = _props$attributes2.borderLeft,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            titleColor = _props$attributes2.titleColor,
+            titleBack = _props$attributes2.titleBack,
+            titleWeight = _props$attributes2.titleWeight,
+            titleLine = _props$attributes2.titleLine,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            descColor = _props$attributes2.descColor,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descShadowBlur = _props$attributes2.descShadowBlur,
+            descShadowColor = _props$attributes2.descShadowColor,
+            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
+            descShadowVertical = _props$attributes2.descShadowVertical,
+            urlCheck = _props$attributes2.urlCheck,
+            url = _props$attributes2.url,
+            target = _props$attributes2.target,
+            sepColor = _props$attributes2.sepColor,
+            blur = _props$attributes2.blur,
+            bright = _props$attributes2.bright,
+            contrast = _props$attributes2.contrast,
+            saturation = _props$attributes2.saturation,
+            hue = _props$attributes2.hue,
+            containerShadowBlur = _props$attributes2.containerShadowBlur,
+            containerShadowColor = _props$attributes2.containerShadowColor,
+            containerShadowHorizontal = _props$attributes2.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes2.containerShadowVertical,
+            containerShadowPosition = _props$attributes2.containerShadowPosition,
+            paddingB = _props$attributes2.paddingB,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile;
 
 
         return React.createElement(
@@ -18747,62 +18888,62 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            imageURL = _props$attributes2.imageURL,
-            title = _props$attributes2.title,
-            titleTag = _props$attributes2.titleTag,
-            desc = _props$attributes2.desc,
-            contentAlign = _props$attributes2.contentAlign,
-            effect = _props$attributes2.effect,
-            hoverEffect = _props$attributes2.hoverEffect,
-            height = _props$attributes2.height,
-            minHeight = _props$attributes2.minHeight,
-            verAlign = _props$attributes2.verAlign,
-            hovered = _props$attributes2.hovered,
-            responsive = _props$attributes2.responsive,
-            background = _props$attributes2.background,
-            opacity = _props$attributes2.opacity,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            titleColor = _props$attributes2.titleColor,
-            titleBack = _props$attributes2.titleBack,
-            titleSize = _props$attributes2.titleSize,
-            titleWeight = _props$attributes2.titleWeight,
-            titleLine = _props$attributes2.titleLine,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            descColor = _props$attributes2.descColor,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descShadowBlur = _props$attributes2.descShadowBlur,
-            descShadowColor = _props$attributes2.descShadowColor,
-            descShadowHorizontal = _props$attributes2.descShadowHorizontal,
-            descShadowVertical = _props$attributes2.descShadowVertical,
-            urlCheck = _props$attributes2.urlCheck,
-            url = _props$attributes2.url,
-            target = _props$attributes2.target,
-            sepColor = _props$attributes2.sepColor,
-            blur = _props$attributes2.blur,
-            bright = _props$attributes2.bright,
-            contrast = _props$attributes2.contrast,
-            saturation = _props$attributes2.saturation,
-            hue = _props$attributes2.hue,
-            containerShadowBlur = _props$attributes2.containerShadowBlur,
-            containerShadowColor = _props$attributes2.containerShadowColor,
-            containerShadowHorizontal = _props$attributes2.containerShadowHorizontal,
-            containerShadowVertical = _props$attributes2.containerShadowVertical,
-            containerShadowPosition = _props$attributes2.containerShadowPosition,
-            paddingB = _props$attributes2.paddingB,
-            paddingT = _props$attributes2.paddingT,
-            paddingR = _props$attributes2.paddingR,
-            paddingL = _props$attributes2.paddingL,
-            paddingU = _props$attributes2.paddingU;
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            imageURL = _props$attributes3.imageURL,
+            title = _props$attributes3.title,
+            titleTag = _props$attributes3.titleTag,
+            desc = _props$attributes3.desc,
+            contentAlign = _props$attributes3.contentAlign,
+            effect = _props$attributes3.effect,
+            hoverEffect = _props$attributes3.hoverEffect,
+            height = _props$attributes3.height,
+            minHeight = _props$attributes3.minHeight,
+            verAlign = _props$attributes3.verAlign,
+            hovered = _props$attributes3.hovered,
+            responsive = _props$attributes3.responsive,
+            background = _props$attributes3.background,
+            opacity = _props$attributes3.opacity,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            titleColor = _props$attributes3.titleColor,
+            titleBack = _props$attributes3.titleBack,
+            titleSize = _props$attributes3.titleSize,
+            titleWeight = _props$attributes3.titleWeight,
+            titleLine = _props$attributes3.titleLine,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            descColor = _props$attributes3.descColor,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descWeight = _props$attributes3.descWeight,
+            descShadowBlur = _props$attributes3.descShadowBlur,
+            descShadowColor = _props$attributes3.descShadowColor,
+            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
+            descShadowVertical = _props$attributes3.descShadowVertical,
+            urlCheck = _props$attributes3.urlCheck,
+            url = _props$attributes3.url,
+            target = _props$attributes3.target,
+            sepColor = _props$attributes3.sepColor,
+            blur = _props$attributes3.blur,
+            bright = _props$attributes3.bright,
+            contrast = _props$attributes3.contrast,
+            saturation = _props$attributes3.saturation,
+            hue = _props$attributes3.hue,
+            containerShadowBlur = _props$attributes3.containerShadowBlur,
+            containerShadowColor = _props$attributes3.containerShadowColor,
+            containerShadowHorizontal = _props$attributes3.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes3.containerShadowVertical,
+            containerShadowPosition = _props$attributes3.containerShadowPosition,
+            paddingB = _props$attributes3.paddingB,
+            paddingT = _props$attributes3.paddingT,
+            paddingR = _props$attributes3.paddingR,
+            paddingL = _props$attributes3.paddingL,
+            paddingU = _props$attributes3.paddingU;
 
 
         return React.createElement(
@@ -18924,57 +19065,57 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            imageURL = _props$attributes3.imageURL,
-            title = _props$attributes3.title,
-            titleTag = _props$attributes3.titleTag,
-            desc = _props$attributes3.desc,
-            contentAlign = _props$attributes3.contentAlign,
-            effect = _props$attributes3.effect,
-            hoverEffect = _props$attributes3.hoverEffect,
-            height = _props$attributes3.height,
-            minHeight = _props$attributes3.minHeight,
-            verAlign = _props$attributes3.verAlign,
-            hovered = _props$attributes3.hovered,
-            responsive = _props$attributes3.responsive,
-            background = _props$attributes3.background,
-            opacity = _props$attributes3.opacity,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            titleColor = _props$attributes3.titleColor,
-            titleBack = _props$attributes3.titleBack,
-            titleSize = _props$attributes3.titleSize,
-            titleWeight = _props$attributes3.titleWeight,
-            titleLine = _props$attributes3.titleLine,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            descColor = _props$attributes3.descColor,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descShadowBlur = _props$attributes3.descShadowBlur,
-            descShadowColor = _props$attributes3.descShadowColor,
-            descShadowHorizontal = _props$attributes3.descShadowHorizontal,
-            descShadowVertical = _props$attributes3.descShadowVertical,
-            urlCheck = _props$attributes3.urlCheck,
-            url = _props$attributes3.url,
-            target = _props$attributes3.target,
-            sepColor = _props$attributes3.sepColor,
-            blur = _props$attributes3.blur,
-            bright = _props$attributes3.bright,
-            contrast = _props$attributes3.contrast,
-            saturation = _props$attributes3.saturation,
-            hue = _props$attributes3.hue,
-            containerShadowBlur = _props$attributes3.containerShadowBlur,
-            containerShadowColor = _props$attributes3.containerShadowColor,
-            containerShadowHorizontal = _props$attributes3.containerShadowHorizontal,
-            containerShadowVertical = _props$attributes3.containerShadowVertical,
-            containerShadowPosition = _props$attributes3.containerShadowPosition;
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            imageURL = _props$attributes4.imageURL,
+            title = _props$attributes4.title,
+            titleTag = _props$attributes4.titleTag,
+            desc = _props$attributes4.desc,
+            contentAlign = _props$attributes4.contentAlign,
+            effect = _props$attributes4.effect,
+            hoverEffect = _props$attributes4.hoverEffect,
+            height = _props$attributes4.height,
+            minHeight = _props$attributes4.minHeight,
+            verAlign = _props$attributes4.verAlign,
+            hovered = _props$attributes4.hovered,
+            responsive = _props$attributes4.responsive,
+            background = _props$attributes4.background,
+            opacity = _props$attributes4.opacity,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            titleColor = _props$attributes4.titleColor,
+            titleBack = _props$attributes4.titleBack,
+            titleSize = _props$attributes4.titleSize,
+            titleWeight = _props$attributes4.titleWeight,
+            titleLine = _props$attributes4.titleLine,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            descColor = _props$attributes4.descColor,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descWeight = _props$attributes4.descWeight,
+            descShadowBlur = _props$attributes4.descShadowBlur,
+            descShadowColor = _props$attributes4.descShadowColor,
+            descShadowHorizontal = _props$attributes4.descShadowHorizontal,
+            descShadowVertical = _props$attributes4.descShadowVertical,
+            urlCheck = _props$attributes4.urlCheck,
+            url = _props$attributes4.url,
+            target = _props$attributes4.target,
+            sepColor = _props$attributes4.sepColor,
+            blur = _props$attributes4.blur,
+            bright = _props$attributes4.bright,
+            contrast = _props$attributes4.contrast,
+            saturation = _props$attributes4.saturation,
+            hue = _props$attributes4.hue,
+            containerShadowBlur = _props$attributes4.containerShadowBlur,
+            containerShadowColor = _props$attributes4.containerShadowColor,
+            containerShadowHorizontal = _props$attributes4.containerShadowHorizontal,
+            containerShadowVertical = _props$attributes4.containerShadowVertical,
+            containerShadowPosition = _props$attributes4.containerShadowPosition;
 
         return React.createElement(
             "div",
@@ -19091,52 +19232,52 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            imageURL = _props$attributes4.imageURL,
-            title = _props$attributes4.title,
-            titleTag = _props$attributes4.titleTag,
-            desc = _props$attributes4.desc,
-            contentAlign = _props$attributes4.contentAlign,
-            effect = _props$attributes4.effect,
-            hoverEffect = _props$attributes4.hoverEffect,
-            height = _props$attributes4.height,
-            minHeight = _props$attributes4.minHeight,
-            verAlign = _props$attributes4.verAlign,
-            hovered = _props$attributes4.hovered,
-            responsive = _props$attributes4.responsive,
-            background = _props$attributes4.background,
-            opacity = _props$attributes4.opacity,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            titleColor = _props$attributes4.titleColor,
-            titleBack = _props$attributes4.titleBack,
-            titleSize = _props$attributes4.titleSize,
-            titleWeight = _props$attributes4.titleWeight,
-            titleLine = _props$attributes4.titleLine,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            descColor = _props$attributes4.descColor,
-            descSize = _props$attributes4.descSize,
-            descLine = _props$attributes4.descLine,
-            descWeight = _props$attributes4.descWeight,
-            descShadowBlur = _props$attributes4.descShadowBlur,
-            descShadowColor = _props$attributes4.descShadowColor,
-            descShadowHorizontal = _props$attributes4.descShadowHorizontal,
-            descShadowVertical = _props$attributes4.descShadowVertical,
-            urlCheck = _props$attributes4.urlCheck,
-            url = _props$attributes4.url,
-            target = _props$attributes4.target,
-            sepColor = _props$attributes4.sepColor,
-            blur = _props$attributes4.blur,
-            bright = _props$attributes4.bright,
-            contrast = _props$attributes4.contrast,
-            saturation = _props$attributes4.saturation,
-            hue = _props$attributes4.hue;
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            imageURL = _props$attributes5.imageURL,
+            title = _props$attributes5.title,
+            titleTag = _props$attributes5.titleTag,
+            desc = _props$attributes5.desc,
+            contentAlign = _props$attributes5.contentAlign,
+            effect = _props$attributes5.effect,
+            hoverEffect = _props$attributes5.hoverEffect,
+            height = _props$attributes5.height,
+            minHeight = _props$attributes5.minHeight,
+            verAlign = _props$attributes5.verAlign,
+            hovered = _props$attributes5.hovered,
+            responsive = _props$attributes5.responsive,
+            background = _props$attributes5.background,
+            opacity = _props$attributes5.opacity,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            titleColor = _props$attributes5.titleColor,
+            titleBack = _props$attributes5.titleBack,
+            titleSize = _props$attributes5.titleSize,
+            titleWeight = _props$attributes5.titleWeight,
+            titleLine = _props$attributes5.titleLine,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            descColor = _props$attributes5.descColor,
+            descSize = _props$attributes5.descSize,
+            descLine = _props$attributes5.descLine,
+            descWeight = _props$attributes5.descWeight,
+            descShadowBlur = _props$attributes5.descShadowBlur,
+            descShadowColor = _props$attributes5.descShadowColor,
+            descShadowHorizontal = _props$attributes5.descShadowHorizontal,
+            descShadowVertical = _props$attributes5.descShadowVertical,
+            urlCheck = _props$attributes5.urlCheck,
+            url = _props$attributes5.url,
+            target = _props$attributes5.target,
+            sepColor = _props$attributes5.sepColor,
+            blur = _props$attributes5.blur,
+            bright = _props$attributes5.bright,
+            contrast = _props$attributes5.contrast,
+            saturation = _props$attributes5.saturation,
+            hue = _props$attributes5.hue;
 
         return React.createElement(
             "div",
@@ -19249,48 +19390,48 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            imageURL = _props$attributes5.imageURL,
-            title = _props$attributes5.title,
-            titleTag = _props$attributes5.titleTag,
-            desc = _props$attributes5.desc,
-            contentAlign = _props$attributes5.contentAlign,
-            effect = _props$attributes5.effect,
-            hoverEffect = _props$attributes5.hoverEffect,
-            height = _props$attributes5.height,
-            minHeight = _props$attributes5.minHeight,
-            verAlign = _props$attributes5.verAlign,
-            hovered = _props$attributes5.hovered,
-            responsive = _props$attributes5.responsive,
-            background = _props$attributes5.background,
-            opacity = _props$attributes5.opacity,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            titleColor = _props$attributes5.titleColor,
-            titleBack = _props$attributes5.titleBack,
-            titleSize = _props$attributes5.titleSize,
-            titleWeight = _props$attributes5.titleWeight,
-            titleLine = _props$attributes5.titleLine,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descWeight = _props$attributes5.descWeight,
-            descLine = _props$attributes5.descLine,
-            urlCheck = _props$attributes5.urlCheck,
-            url = _props$attributes5.url,
-            target = _props$attributes5.target,
-            sepColor = _props$attributes5.sepColor,
-            blur = _props$attributes5.blur,
-            bright = _props$attributes5.bright,
-            contrast = _props$attributes5.contrast,
-            saturation = _props$attributes5.saturation,
-            hue = _props$attributes5.hue;
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            imageURL = _props$attributes6.imageURL,
+            title = _props$attributes6.title,
+            titleTag = _props$attributes6.titleTag,
+            desc = _props$attributes6.desc,
+            contentAlign = _props$attributes6.contentAlign,
+            effect = _props$attributes6.effect,
+            hoverEffect = _props$attributes6.hoverEffect,
+            height = _props$attributes6.height,
+            minHeight = _props$attributes6.minHeight,
+            verAlign = _props$attributes6.verAlign,
+            hovered = _props$attributes6.hovered,
+            responsive = _props$attributes6.responsive,
+            background = _props$attributes6.background,
+            opacity = _props$attributes6.opacity,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            titleColor = _props$attributes6.titleColor,
+            titleBack = _props$attributes6.titleBack,
+            titleSize = _props$attributes6.titleSize,
+            titleWeight = _props$attributes6.titleWeight,
+            titleLine = _props$attributes6.titleLine,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            descColor = _props$attributes6.descColor,
+            descSize = _props$attributes6.descSize,
+            descWeight = _props$attributes6.descWeight,
+            descLine = _props$attributes6.descLine,
+            urlCheck = _props$attributes6.urlCheck,
+            url = _props$attributes6.url,
+            target = _props$attributes6.target,
+            sepColor = _props$attributes6.sepColor,
+            blur = _props$attributes6.blur,
+            bright = _props$attributes6.bright,
+            contrast = _props$attributes6.contrast,
+            saturation = _props$attributes6.saturation,
+            hue = _props$attributes6.hue;
 
         return React.createElement(
             "div",
@@ -19403,43 +19544,43 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            imageURL = _props$attributes6.imageURL,
-            title = _props$attributes6.title,
-            titleTag = _props$attributes6.titleTag,
-            desc = _props$attributes6.desc,
-            contentAlign = _props$attributes6.contentAlign,
-            effect = _props$attributes6.effect,
-            hoverEffect = _props$attributes6.hoverEffect,
-            height = _props$attributes6.height,
-            minHeight = _props$attributes6.minHeight,
-            verAlign = _props$attributes6.verAlign,
-            hovered = _props$attributes6.hovered,
-            responsive = _props$attributes6.responsive,
-            background = _props$attributes6.background,
-            opacity = _props$attributes6.opacity,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            titleColor = _props$attributes6.titleColor,
-            titleBack = _props$attributes6.titleBack,
-            titleSize = _props$attributes6.titleSize,
-            titleWeight = _props$attributes6.titleWeight,
-            titleLine = _props$attributes6.titleLine,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descWeight = _props$attributes6.descWeight,
-            descLine = _props$attributes6.descLine,
-            urlCheck = _props$attributes6.urlCheck,
-            url = _props$attributes6.url,
-            target = _props$attributes6.target,
-            sepColor = _props$attributes6.sepColor;
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            imageURL = _props$attributes7.imageURL,
+            title = _props$attributes7.title,
+            titleTag = _props$attributes7.titleTag,
+            desc = _props$attributes7.desc,
+            contentAlign = _props$attributes7.contentAlign,
+            effect = _props$attributes7.effect,
+            hoverEffect = _props$attributes7.hoverEffect,
+            height = _props$attributes7.height,
+            minHeight = _props$attributes7.minHeight,
+            verAlign = _props$attributes7.verAlign,
+            hovered = _props$attributes7.hovered,
+            responsive = _props$attributes7.responsive,
+            background = _props$attributes7.background,
+            opacity = _props$attributes7.opacity,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            titleColor = _props$attributes7.titleColor,
+            titleBack = _props$attributes7.titleBack,
+            titleSize = _props$attributes7.titleSize,
+            titleWeight = _props$attributes7.titleWeight,
+            titleLine = _props$attributes7.titleLine,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            descColor = _props$attributes7.descColor,
+            descSize = _props$attributes7.descSize,
+            descWeight = _props$attributes7.descWeight,
+            descLine = _props$attributes7.descLine,
+            urlCheck = _props$attributes7.urlCheck,
+            url = _props$attributes7.url,
+            target = _props$attributes7.target,
+            sepColor = _props$attributes7.sepColor;
 
         return React.createElement(
             "div",
@@ -19548,39 +19689,39 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            id = _props$attributes7.id,
-            imageURL = _props$attributes7.imageURL,
-            title = _props$attributes7.title,
-            titleTag = _props$attributes7.titleTag,
-            desc = _props$attributes7.desc,
-            contentAlign = _props$attributes7.contentAlign,
-            effect = _props$attributes7.effect,
-            hoverEffect = _props$attributes7.hoverEffect,
-            height = _props$attributes7.height,
-            minHeight = _props$attributes7.minHeight,
-            verAlign = _props$attributes7.verAlign,
-            hovered = _props$attributes7.hovered,
-            responsive = _props$attributes7.responsive,
-            background = _props$attributes7.background,
-            opacity = _props$attributes7.opacity,
-            borderType = _props$attributes7.borderType,
-            borderWidth = _props$attributes7.borderWidth,
-            borderRadius = _props$attributes7.borderRadius,
-            borderColor = _props$attributes7.borderColor,
-            titleColor = _props$attributes7.titleColor,
-            titleBack = _props$attributes7.titleBack,
-            titleSize = _props$attributes7.titleSize,
-            titleWeight = _props$attributes7.titleWeight,
-            titleLine = _props$attributes7.titleLine,
-            descColor = _props$attributes7.descColor,
-            descSize = _props$attributes7.descSize,
-            descWeight = _props$attributes7.descWeight,
-            descLine = _props$attributes7.descLine,
-            urlCheck = _props$attributes7.urlCheck,
-            url = _props$attributes7.url,
-            target = _props$attributes7.target,
-            sepColor = _props$attributes7.sepColor;
+        var _props$attributes8 = props.attributes,
+            id = _props$attributes8.id,
+            imageURL = _props$attributes8.imageURL,
+            title = _props$attributes8.title,
+            titleTag = _props$attributes8.titleTag,
+            desc = _props$attributes8.desc,
+            contentAlign = _props$attributes8.contentAlign,
+            effect = _props$attributes8.effect,
+            hoverEffect = _props$attributes8.hoverEffect,
+            height = _props$attributes8.height,
+            minHeight = _props$attributes8.minHeight,
+            verAlign = _props$attributes8.verAlign,
+            hovered = _props$attributes8.hovered,
+            responsive = _props$attributes8.responsive,
+            background = _props$attributes8.background,
+            opacity = _props$attributes8.opacity,
+            borderType = _props$attributes8.borderType,
+            borderWidth = _props$attributes8.borderWidth,
+            borderRadius = _props$attributes8.borderRadius,
+            borderColor = _props$attributes8.borderColor,
+            titleColor = _props$attributes8.titleColor,
+            titleBack = _props$attributes8.titleBack,
+            titleSize = _props$attributes8.titleSize,
+            titleWeight = _props$attributes8.titleWeight,
+            titleLine = _props$attributes8.titleLine,
+            descColor = _props$attributes8.descColor,
+            descSize = _props$attributes8.descSize,
+            descWeight = _props$attributes8.descWeight,
+            descLine = _props$attributes8.descLine,
+            urlCheck = _props$attributes8.urlCheck,
+            url = _props$attributes8.url,
+            target = _props$attributes8.target,
+            sepColor = _props$attributes8.sepColor;
 
         return React.createElement(
             "div",
@@ -19881,41 +20022,29 @@ var attributes = {
     borderLeft: {
         type: "number"
     },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingTTablet: {
-        type: "number"
-    },
-    paddingRTablet: {
-        type: "number"
-    },
-    paddingBTablet: {
-        type: "number"
-    },
-    paddingLTablet: {
-        type: "number"
-    },
-    paddingTMobile: {
-        type: "number"
-    },
-    paddingRMobile: {
-        type: "number"
-    },
-    paddingBMobile: {
-        type: "number"
-    },
-    paddingLMobile: {
-        type: "number"
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     }
 };
 
@@ -21885,22 +22014,6 @@ var attributes = {
         type: 'number',
         default: '0'
     },
-    paddingT: {
-        type: 'number',
-        default: '0'
-    },
-    paddingR: {
-        type: 'number',
-        default: '0'
-    },
-    paddingB: {
-        type: 'number',
-        default: '0'
-    },
-    paddingL: {
-        type: 'number',
-        default: '0'
-    },
     suffixStyles: {
         type: 'array',
         default: [{
@@ -21929,29 +22042,29 @@ var attributes = {
             prefixFamily: __('Default', 'premium-blocks-for-gutenberg')
         }]
     },
-    paddingTTablet: {
-        type: 'number'
-    },
-    paddingRTablet: {
-        type: 'number'
-    },
-    paddingBTablet: {
-        type: 'number'
-    },
-    paddingLTablet: {
-        type: 'number'
-    },
-    paddingTMobile: {
-        type: 'number'
-    },
-    paddingRMobile: {
-        type: 'number'
-    },
-    paddingBMobile: {
-        type: 'number'
-    },
-    paddingLMobile: {
-        type: 'number'
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     }
 };
 
@@ -22017,6 +22130,10 @@ var _radioControl2 = _interopRequireDefault(_radioControl);
 var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
+
+var _premiumResponsiveSpacing = __webpack_require__(219);
+
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
 var _fontLoader = __webpack_require__(22);
 
@@ -22123,19 +22240,7 @@ var edit = function (_Component) {
                 borderRight = _props$attributes.borderRight,
                 borderBottom = _props$attributes.borderBottom,
                 borderLeft = _props$attributes.borderLeft,
-                paddingT = _props$attributes.paddingT,
-                paddingR = _props$attributes.paddingR,
-                paddingB = _props$attributes.paddingB,
-                paddingL = _props$attributes.paddingL,
-                backgroundType = _props$attributes.backgroundType,
-                paddingTTablet = _props$attributes.paddingTTablet,
-                paddingRTablet = _props$attributes.paddingRTablet,
-                paddingBTablet = _props$attributes.paddingBTablet,
-                paddingLTablet = _props$attributes.paddingLTablet,
-                paddingTMobile = _props$attributes.paddingTMobile,
-                paddingRMobile = _props$attributes.paddingRMobile,
-                paddingBMobile = _props$attributes.paddingBMobile,
-                paddingLMobile = _props$attributes.paddingLMobile;
+                padding = _props$attributes.padding;
 
 
             var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
@@ -22285,10 +22390,10 @@ var edit = function (_Component) {
             var prefixFontSize = this.getPreviewSize(this.props.deviceType, prefixStyles[0].prefixSize, prefixStyles[0].prefixSizeTablet, prefixStyles[0].prefixSizeMobile);
             var suffixFontSize = this.getPreviewSize(this.props.deviceType, suffixStyles[0].suffixSize, suffixStyles[0].suffixSizeTablet, suffixStyles[0].suffixSizeMobile);
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
-            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
-            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
-            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
-            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, padding.Desktop.top, padding.Tablet.top, padding.Mobile.top);
+            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, padding.Desktop.right, padding.Tablet.right, padding.Mobile.right);
+            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, padding.Desktop.bottom, padding.Tablet.bottom, padding.Mobile.bottom);
+            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, padding.Desktop.left, padding.Tablet.left, padding.Mobile.left);
 
             return [isSelected && React.createElement(
                 InspectorControls,
@@ -22801,56 +22906,9 @@ var edit = function (_Component) {
                             return saveContainerStyle({ shadowPosition: newValue });
                         }
                     }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        paddingTopTablet: paddingTTablet,
-                        paddingRightTablet: paddingRTablet,
-                        paddingBottomTablet: paddingBTablet,
-                        paddingLeftTablet: paddingLTablet,
-                        paddingTopMobile: paddingTMobile,
-                        paddingRightMobile: paddingRMobile,
-                        paddingBottomMobile: paddingBMobile,
-                        paddingLeftMobile: paddingLMobile,
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingTTablet: newValue });
-                            } else {
-                                setAttributes({ paddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingRTablet: newValue });
-                            } else {
-                                setAttributes({ paddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingBTablet: newValue });
-                            } else {
-                                setAttributes({ paddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingLTablet: newValue });
-                            } else {
-                                setAttributes({ paddingLMobile: newValue });
-                            }
-                        }
-                    })
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: padding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ padding: value });
+                        } })
                 ),
                 React.createElement(_premiumResponsiveTabs2.default, {
                     Desktop: hideDesktop,
@@ -23276,6 +23334,10 @@ var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -23599,9 +23661,264 @@ var attributes = {
     }
 };
 
-var new_Attributes = {};
+var newAttributes = {
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    }
+};
 
 var deprecatedContent = [{
+    attributes: Object.assign(attributes, newAttributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            padding: {
+                "Desktop": {
+                    top: attributes.paddingT,
+                    right: attributes.paddingR,
+                    bottom: attributes.paddingB,
+                    left: attributes.paddingL
+                },
+                "Tablet": {
+                    top: attributes.paddingTTablet,
+                    right: attributes.paddingRTablet,
+                    bottom: attributes.paddingBTablet,
+                    left: attributes.paddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.paddingTMobile,
+                    right: attributes.paddingRMobile,
+                    bottom: attributes.paddingBMobile,
+                    left: attributes.paddingLMobile
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            borderCount = _props$attributes.borderCount,
+            increment = _props$attributes.increment,
+            time = _props$attributes.time,
+            delay = _props$attributes.delay,
+            align = _props$attributes.align,
+            flexDir = _props$attributes.flexDir,
+            prefix = _props$attributes.prefix,
+            suffix = _props$attributes.suffix,
+            icon = _props$attributes.icon,
+            iconSpacing = _props$attributes.iconSpacing,
+            imageID = _props$attributes.imageID,
+            imageURL = _props$attributes.imageURL,
+            iconType = _props$attributes.iconType,
+            iconCheck = _props$attributes.iconCheck,
+            iconSize = _props$attributes.iconSize,
+            iconColor = _props$attributes.iconColor,
+            selfAlign = _props$attributes.selfAlign,
+            titleCheck = _props$attributes.titleCheck,
+            titleTxt = _props$attributes.titleTxt,
+            faIcon = _props$attributes.faIcon,
+            counterFamily = _props$attributes.counterFamily,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile,
+            numberStyles = _props$attributes.numberStyles,
+            titleStyles = _props$attributes.titleStyles,
+            containerStyles = _props$attributes.containerStyles,
+            suffixStyles = _props$attributes.suffixStyles,
+            prefixStyles = _props$attributes.prefixStyles,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
+            paddingT = _props$attributes.paddingT,
+            paddingR = _props$attributes.paddingR,
+            paddingB = _props$attributes.paddingB,
+            paddingL = _props$attributes.paddingL,
+            backgroundType = _props$attributes.backgroundType;
+
+
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-countup');
+
+        var btnGrad = void 0,
+            btnGrad2 = void 0,
+            btnbg = void 0;
+        if (undefined !== backgroundType && 'gradient' === backgroundType) {
+            btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+            btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+            if ('radial' === containerStyles[0].gradientType) {
+                btnbg = 'radial-gradient(at ' + containerStyles[0].gradientPosition + ', ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+            } else if ('radial' !== containerStyles[0].gradientType) {
+                btnbg = 'linear-gradient(' + containerStyles[0].gradientAngle + 'deg, ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
+            }
+        } else {
+            btnbg = containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : '';
+        }
+
+        return React.createElement(
+            'div',
+            {
+                id: 'premium-countup-' + block_id,
+                className: mainClasses + '__wrap premium-countup-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+                style: {
+                    justifyContent: align,
+                    flexDirection: flexDir,
+                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                    boxShadow: containerStyles[0].shadowHorizontal + 'px ' + containerStyles[0].shadowVertical + 'px ' + containerStyles[0].shadowBlur + 'px rgba(' + containerStyles[0].shadowColor.r + ',' + containerStyles[0].shadowColor.g + ',' + containerStyles[0].shadowColor.b + ', ' + containerStyles[0].shadowColor.a + ') ' + containerStyles[0].shadowPosition,
+                    backgroundImage: btnbg,
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    borderStyle: containerStyles[0].borderType,
+                    borderWidth: borderCount ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor
+                }
+            },
+            iconCheck && React.createElement(
+                'div',
+                {
+                    className: 'premium-countup__icon_wrap',
+                    style: {
+                        marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                "icon" === icon && React.createElement('i', {
+                    className: 'premium-countup__icon ' + iconClass,
+                    style: {
+                        fontSize: iconSize + "px",
+                        color: iconColor
+                    }
+                }),
+                "img" === icon && imageURL && React.createElement('img', {
+                    src: imageURL,
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px"
+                    }
+                })
+            ),
+            React.createElement(
+                'div',
+                {
+                    className: 'premium-countup__info',
+                    style: {
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                React.createElement(
+                    'div',
+                    { className: 'premium-countup__desc' },
+                    prefix && React.createElement(
+                        'p',
+                        {
+                            className: 'premium-countup__prefix',
+                            style: {
+                                fontFamily: prefixStyles[0].prefixFamily,
+                                color: prefixStyles[0].prefixColor,
+                                fontWeight: prefixStyles[0].prefixWeight,
+                                marginRight: prefixStyles[0].prefixGap + "px"
+                            }
+                        },
+                        prefixStyles[0].prefixTxt
+                    ),
+                    React.createElement(
+                        'p',
+                        {
+                            className: 'premium-countup__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
+                            style: {
+                                fontFamily: counterFamily,
+                                color: numberStyles[0].numberColor,
+                                fontWeight: numberStyles[0].numberWeight
+                            }
+                        },
+                        increment
+                    ),
+                    suffix && React.createElement(
+                        'p',
+                        {
+                            className: 'premium-countup__suffix',
+                            style: {
+                                fontFamily: suffixStyles[0].suffixFamily,
+                                color: suffixStyles[0].suffixColor,
+                                fontWeight: suffixStyles[0].suffixWeight,
+                                marginLeft: suffixStyles[0].suffixGap + "px"
+                            }
+                        },
+                        suffixStyles[0].suffixTxt
+                    )
+                ),
+                titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
+                    'h3',
+                    {
+                        className: 'premium-countup__title',
+                        style: {
+                            fontFamily: titleStyles[0].titleFamily,
+                            marginTop: titleStyles[0].titleT + "px",
+                            marginBottom: titleStyles[0].titleB + "px",
+                            color: titleStyles[0].titleColor,
+                            letterSpacing: titleStyles[0].titleSpacing + "px",
+                            fontWeight: titleStyles[0].titleWeight,
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle
+                        }
+                    },
+                    titleTxt
+                )
+            ),
+            titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
+                'h3',
+                {
+                    className: 'premium-countup__title',
+                    style: {
+                        fontFamily: titleStyles[0].titleFamily,
+                        marginTop: titleStyles[0].titleT + "px",
+                        marginBottom: titleStyles[0].titleB + "px",
+                        color: titleStyles[0].titleColor,
+                        letterSpacing: titleStyles[0].titleSpacing + "px",
+                        fontWeight: titleStyles[0].titleWeight,
+                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyles[0].titleStyle,
+                        alignSelf: selfAlign
+                    }
+                },
+                titleTxt
+            )
+        );
+    }
+}, {
     attributes: attributes,
     migrate: function migrate(attributes) {
         var _ref;
@@ -23627,7 +23944,7 @@ var deprecatedContent = [{
                 titleColor: attributes.titleColor,
                 titleT: attributes.titleT,
                 titleB: attributes.titleB
-            }, _defineProperty(_ref, "titleColor", attributes.titleColor), _defineProperty(_ref, "titleWeight", attributes.titleWeight), _ref)],
+            }, _defineProperty(_ref, 'titleColor', attributes.titleColor), _defineProperty(_ref, 'titleWeight', attributes.titleWeight), _ref)],
             containerStyles: [{
                 containerBack: attributes.containerBack,
                 containerOpacity: attributes.containerOpacity,
@@ -23689,95 +24006,95 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            block_id = _props$attributes.block_id,
-            borderCount = _props$attributes.borderCount,
-            increment = _props$attributes.increment,
-            time = _props$attributes.time,
-            delay = _props$attributes.delay,
-            align = _props$attributes.align,
-            flexDir = _props$attributes.flexDir,
-            numberColor = _props$attributes.numberColor,
-            numberWeight = _props$attributes.numberWeight,
-            prefix = _props$attributes.prefix,
-            prefixTxt = _props$attributes.prefixTxt,
-            prefixColor = _props$attributes.prefixColor,
-            prefixWeight = _props$attributes.prefixWeight,
-            prefixGap = _props$attributes.prefixGap,
-            suffix = _props$attributes.suffix,
-            suffixTxt = _props$attributes.suffixTxt,
-            suffixColor = _props$attributes.suffixColor,
-            suffixWeight = _props$attributes.suffixWeight,
-            suffixGap = _props$attributes.suffixGap,
-            iconCheck = _props$attributes.iconCheck,
-            icon = _props$attributes.icon,
-            iconSpacing = _props$attributes.iconSpacing,
-            iconType = _props$attributes.iconType,
-            imageURL = _props$attributes.imageURL,
-            iconSize = _props$attributes.iconSize,
-            iconColor = _props$attributes.iconColor,
-            selfAlign = _props$attributes.selfAlign,
-            titleCheck = _props$attributes.titleCheck,
-            titleTxt = _props$attributes.titleTxt,
-            titleColor = _props$attributes.titleColor,
-            titleSpacing = _props$attributes.titleSpacing,
-            titleStyle = _props$attributes.titleStyle,
-            titleUpper = _props$attributes.titleUpper,
-            titleT = _props$attributes.titleT,
-            titleB = _props$attributes.titleB,
-            titleWeight = _props$attributes.titleWeight,
-            faIcon = _props$attributes.faIcon,
-            containerBack = _props$attributes.containerBack,
-            containerOpacity = _props$attributes.containerOpacity,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            shadowPosition = _props$attributes.shadowPosition,
-            backgroundImageURL = _props$attributes.backgroundImageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            borderType = _props$attributes.borderType,
-            borderColor = _props$attributes.borderColor,
-            borderRadius = _props$attributes.borderRadius,
-            borderWidth = _props$attributes.borderWidth,
-            borderTop = _props$attributes.borderTop,
-            borderRight = _props$attributes.borderRight,
-            borderBottom = _props$attributes.borderBottom,
-            borderLeft = _props$attributes.borderLeft,
-            titleFamily = _props$attributes.titleFamily,
-            counterFamily = _props$attributes.counterFamily,
-            prefixFamily = _props$attributes.prefixFamily,
-            suffixFamily = _props$attributes.suffixFamily,
-            paddingT = _props$attributes.paddingT,
-            paddingR = _props$attributes.paddingR,
-            paddingB = _props$attributes.paddingB,
-            paddingL = _props$attributes.paddingL,
-            paddingU = _props$attributes.paddingU,
-            hideDesktop = _props$attributes.hideDesktop,
-            hideTablet = _props$attributes.hideTablet,
-            hideMobile = _props$attributes.hideMobile;
+        var _props$attributes2 = props.attributes,
+            block_id = _props$attributes2.block_id,
+            borderCount = _props$attributes2.borderCount,
+            increment = _props$attributes2.increment,
+            time = _props$attributes2.time,
+            delay = _props$attributes2.delay,
+            align = _props$attributes2.align,
+            flexDir = _props$attributes2.flexDir,
+            numberColor = _props$attributes2.numberColor,
+            numberWeight = _props$attributes2.numberWeight,
+            prefix = _props$attributes2.prefix,
+            prefixTxt = _props$attributes2.prefixTxt,
+            prefixColor = _props$attributes2.prefixColor,
+            prefixWeight = _props$attributes2.prefixWeight,
+            prefixGap = _props$attributes2.prefixGap,
+            suffix = _props$attributes2.suffix,
+            suffixTxt = _props$attributes2.suffixTxt,
+            suffixColor = _props$attributes2.suffixColor,
+            suffixWeight = _props$attributes2.suffixWeight,
+            suffixGap = _props$attributes2.suffixGap,
+            iconCheck = _props$attributes2.iconCheck,
+            icon = _props$attributes2.icon,
+            iconSpacing = _props$attributes2.iconSpacing,
+            iconType = _props$attributes2.iconType,
+            imageURL = _props$attributes2.imageURL,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            selfAlign = _props$attributes2.selfAlign,
+            titleCheck = _props$attributes2.titleCheck,
+            titleTxt = _props$attributes2.titleTxt,
+            titleColor = _props$attributes2.titleColor,
+            titleSpacing = _props$attributes2.titleSpacing,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleT = _props$attributes2.titleT,
+            titleB = _props$attributes2.titleB,
+            titleWeight = _props$attributes2.titleWeight,
+            faIcon = _props$attributes2.faIcon,
+            containerBack = _props$attributes2.containerBack,
+            containerOpacity = _props$attributes2.containerOpacity,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            backgroundImageURL = _props$attributes2.backgroundImageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderColor = _props$attributes2.borderColor,
+            borderRadius = _props$attributes2.borderRadius,
+            borderWidth = _props$attributes2.borderWidth,
+            borderTop = _props$attributes2.borderTop,
+            borderRight = _props$attributes2.borderRight,
+            borderBottom = _props$attributes2.borderBottom,
+            borderLeft = _props$attributes2.borderLeft,
+            titleFamily = _props$attributes2.titleFamily,
+            counterFamily = _props$attributes2.counterFamily,
+            prefixFamily = _props$attributes2.prefixFamily,
+            suffixFamily = _props$attributes2.suffixFamily,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingB = _props$attributes2.paddingB,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile;
 
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
         return React.createElement(
-            "div",
+            'div',
             {
-                id: "premium-countup-" + block_id,
-                className: className + "__wrap premium-countup-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                id: 'premium-countup-' + block_id,
+                className: className + '__wrap premium-countup-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack ? (0, _hexToRgba2.default)(containerBack, containerOpacity) : "transparent",
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px rgba(" + shadowColor.r + "," + shadowColor.g + "," + shadowColor.b + ", " + shadowColor.a + ") " + shadowPosition,
-                    backgroundImage: "url('" + backgroundImageURL + "')",
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px rgba(' + shadowColor.r + ',' + shadowColor.g + ',' + shadowColor.b + ', ' + shadowColor.a + ') ' + shadowPosition,
+                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset",
                     borderStyle: borderType,
-                    borderWidth: borderCount ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderWidth: borderCount ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
                     paddingTop: paddingT + paddingU,
@@ -23787,23 +24104,23 @@ var deprecatedContent = [{
                 }
             },
             iconCheck && React.createElement(
-                "div",
+                'div',
                 {
-                    className: "premium-countup__icon_wrap",
+                    className: 'premium-countup__icon_wrap',
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement("i", {
-                    className: "premium-countup__icon " + iconClass,
+                "icon" === icon && React.createElement('i', {
+                    className: 'premium-countup__icon ' + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement("img", {
+                "img" === icon && imageURL && React.createElement('img', {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -23812,20 +24129,20 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                "div",
+                'div',
                 {
-                    className: "premium-countup__info",
+                    className: 'premium-countup__info',
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    "div",
-                    { className: "premium-countup__desc" },
+                    'div',
+                    { className: 'premium-countup__desc' },
                     prefix && React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: "premium-countup__prefix",
+                            className: 'premium-countup__prefix',
                             style: {
                                 fontFamily: prefixFamily,
                                 color: prefixColor,
@@ -23836,11 +24153,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: "premium-countup__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
+                            className: 'premium-countup__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
                             style: {
                                 fontFamily: counterFamily,
                                 color: numberColor,
@@ -23850,9 +24167,9 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: "premium-countup__suffix",
+                            className: 'premium-countup__suffix',
                             style: {
                                 fontFamily: suffixFamily,
                                 color: suffixColor,
@@ -23864,9 +24181,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    "h3",
+                    'h3',
                     {
-                        className: "premium-countup__title",
+                        className: 'premium-countup__title',
                         style: {
                             fontFamily: titleFamily,
                             marginTop: titleT + "px",
@@ -23882,9 +24199,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                "h3",
+                'h3',
                 {
-                    className: "premium-countup__title",
+                    className: 'premium-countup__title',
                     style: {
                         fontFamily: titleFamily,
                         marginTop: titleT + "px",
@@ -23927,219 +24244,6 @@ var deprecatedContent = [{
             hideDesktop: false,
             hideTablet: false,
             hideMobile: false
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            increment = _props$attributes2.increment,
-            time = _props$attributes2.time,
-            delay = _props$attributes2.delay,
-            align = _props$attributes2.align,
-            flexDir = _props$attributes2.flexDir,
-            numberSize = _props$attributes2.numberSize,
-            numberColor = _props$attributes2.numberColor,
-            numberWeight = _props$attributes2.numberWeight,
-            prefix = _props$attributes2.prefix,
-            prefixTxt = _props$attributes2.prefixTxt,
-            prefixSize = _props$attributes2.prefixSize,
-            prefixColor = _props$attributes2.prefixColor,
-            prefixWeight = _props$attributes2.prefixWeight,
-            prefixGap = _props$attributes2.prefixGap,
-            suffix = _props$attributes2.suffix,
-            suffixTxt = _props$attributes2.suffixTxt,
-            suffixSize = _props$attributes2.suffixSize,
-            suffixColor = _props$attributes2.suffixColor,
-            suffixWeight = _props$attributes2.suffixWeight,
-            suffixGap = _props$attributes2.suffixGap,
-            iconCheck = _props$attributes2.iconCheck,
-            icon = _props$attributes2.icon,
-            iconSpacing = _props$attributes2.iconSpacing,
-            iconType = _props$attributes2.iconType,
-            imageURL = _props$attributes2.imageURL,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            selfAlign = _props$attributes2.selfAlign,
-            titleCheck = _props$attributes2.titleCheck,
-            titleTxt = _props$attributes2.titleTxt,
-            titleColor = _props$attributes2.titleColor,
-            titleSize = _props$attributes2.titleSize,
-            titleSpacing = _props$attributes2.titleSpacing,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleT = _props$attributes2.titleT,
-            titleB = _props$attributes2.titleB,
-            titleWeight = _props$attributes2.titleWeight,
-            faIcon = _props$attributes2.faIcon,
-            containerBack = _props$attributes2.containerBack,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            backgroundImageURL = _props$attributes2.backgroundImageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderColor = _props$attributes2.borderColor,
-            borderRadius = _props$attributes2.borderRadius,
-            borderWidth = _props$attributes2.borderWidth,
-            titleFamily = _props$attributes2.titleFamily,
-            counterFamily = _props$attributes2.counterFamily,
-            prefixFamily = _props$attributes2.prefixFamily,
-            suffixFamily = _props$attributes2.suffixFamily;
-
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
-        return React.createElement(
-            "div",
-            {
-                className: className + "__wrap",
-                style: {
-                    justifyContent: align,
-                    flexDirection: flexDir,
-                    backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundImage: "url('" + backgroundImageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            },
-            iconCheck && React.createElement(
-                "div",
-                {
-                    className: "premium-countup__icon_wrap",
-                    style: {
-                        marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-                        marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
-                    }
-                },
-                "icon" === icon && React.createElement("i", {
-                    className: "premium-countup__icon " + iconClass,
-                    style: {
-                        fontSize: iconSize + "px",
-                        color: iconColor
-                    }
-                }),
-                "img" === icon && imageURL && React.createElement("img", {
-                    src: imageURL,
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px"
-                    }
-                })
-            ),
-            React.createElement(
-                "div",
-                {
-                    className: "premium-countup__info",
-                    style: {
-                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
-                    }
-                },
-                React.createElement(
-                    "div",
-                    { className: "premium-countup__desc" },
-                    prefix && React.createElement(
-                        "p",
-                        {
-                            className: "premium-countup__prefix",
-                            style: {
-                                fontSize: prefixSize + "px",
-                                fontFamily: prefixFamily,
-                                color: prefixColor,
-                                fontWeight: prefixWeight,
-                                marginRight: prefixGap + "px"
-                            }
-                        },
-                        prefixTxt
-                    ),
-                    React.createElement(
-                        "p",
-                        {
-                            className: "premium-countup__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
-                            style: {
-                                fontSize: numberSize + "px",
-                                fontFamily: counterFamily,
-                                color: numberColor,
-                                fontWeight: numberWeight
-                            }
-                        },
-                        increment
-                    ),
-                    suffix && React.createElement(
-                        "p",
-                        {
-                            className: "premium-countup__suffix",
-                            style: {
-                                fontSize: suffixSize + "px",
-                                fontFamily: suffixFamily,
-                                color: suffixColor,
-                                fontWeight: suffixWeight,
-                                marginLeft: suffixGap + "px"
-                            }
-                        },
-                        suffixTxt
-                    )
-                ),
-                titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    "h3",
-                    {
-                        className: "premium-countup__title",
-                        style: {
-                            fontSize: titleSize + "px",
-                            fontFamily: titleFamily,
-                            marginTop: titleT + "px",
-                            marginBottom: titleB + "px",
-                            color: titleColor,
-                            letterSpacing: titleSpacing + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight
-                        }
-                    },
-                    titleTxt
-                )
-            ),
-            titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                "h3",
-                {
-                    className: "premium-countup__title",
-                    style: {
-                        fontSize: titleSize + "px",
-                        fontFamily: titleFamily,
-                        marginTop: titleT + "px",
-                        marginBottom: titleB + "px",
-                        color: titleColor,
-                        letterSpacing: titleSpacing + "px",
-                        fontWeight: titleWeight,
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        alignSelf: selfAlign
-                    }
-                },
-                titleTxt
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            borderType: "",
-            borderColor: "",
-            borderRadius: "",
-            borderWidth: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -24195,46 +24299,54 @@ var deprecatedContent = [{
             backgroundRepeat = _props$attributes3.backgroundRepeat,
             backgroundPosition = _props$attributes3.backgroundPosition,
             backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderColor = _props$attributes3.borderColor,
+            borderRadius = _props$attributes3.borderRadius,
+            borderWidth = _props$attributes3.borderWidth,
             titleFamily = _props$attributes3.titleFamily,
             counterFamily = _props$attributes3.counterFamily,
             prefixFamily = _props$attributes3.prefixFamily,
             suffixFamily = _props$attributes3.suffixFamily;
 
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__wrap",
+                className: className + '__wrap',
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundImage: "url('" + backgroundImageURL + "')",
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
+                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
                 }
             },
             iconCheck && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__icon_wrap",
+                    className: 'premium-countup__icon_wrap',
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement("i", {
-                    className: className + "__icon " + iconClass,
+                "icon" === icon && React.createElement('i', {
+                    className: 'premium-countup__icon ' + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement("img", {
+                "img" === icon && imageURL && React.createElement('img', {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -24243,20 +24355,20 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__info",
+                    className: 'premium-countup__info',
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    "div",
-                    { className: className + "__desc" },
+                    'div',
+                    { className: 'premium-countup__desc' },
                     prefix && React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: className + "__prefix",
+                            className: 'premium-countup__prefix',
                             style: {
                                 fontSize: prefixSize + "px",
                                 fontFamily: prefixFamily,
@@ -24268,11 +24380,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: className + "__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
+                            className: 'premium-countup__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 fontFamily: counterFamily,
@@ -24283,9 +24395,9 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: className + "__suffix",
+                            className: 'premium-countup__suffix',
                             style: {
                                 fontSize: suffixSize + "px",
                                 fontFamily: suffixFamily,
@@ -24298,9 +24410,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    "h3",
+                    'h3',
                     {
-                        className: className + "__title",
+                        className: 'premium-countup__title',
                         style: {
                             fontSize: titleSize + "px",
                             fontFamily: titleFamily,
@@ -24317,9 +24429,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                "h3",
+                'h3',
                 {
-                    className: className + "__title",
+                    className: 'premium-countup__title',
                     style: {
                         fontSize: titleSize + "px",
                         fontFamily: titleFamily,
@@ -24341,10 +24453,10 @@ var deprecatedContent = [{
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            titleFamily: "",
-            counterFamily: "",
-            prefixFamily: "",
-            suffixFamily: ""
+            borderType: "",
+            borderColor: "",
+            borderRadius: "",
+            borderWidth: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -24399,19 +24511,23 @@ var deprecatedContent = [{
             fixed = _props$attributes4.fixed,
             backgroundRepeat = _props$attributes4.backgroundRepeat,
             backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize;
+            backgroundSize = _props$attributes4.backgroundSize,
+            titleFamily = _props$attributes4.titleFamily,
+            counterFamily = _props$attributes4.counterFamily,
+            prefixFamily = _props$attributes4.prefixFamily,
+            suffixFamily = _props$attributes4.suffixFamily;
 
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__wrap",
+                className: className + '__wrap',
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundImage: "url('" + backgroundImageURL + "')",
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
+                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
@@ -24419,23 +24535,23 @@ var deprecatedContent = [{
                 }
             },
             iconCheck && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__icon_wrap",
+                    className: className + '__icon_wrap',
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement("i", {
-                    className: className + "__icon " + iconClass,
+                "icon" === icon && React.createElement('i', {
+                    className: className + '__icon ' + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement("img", {
+                "img" === icon && imageURL && React.createElement('img', {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -24444,21 +24560,23 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__info",
+                    className: className + '__info',
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    "div",
-                    { className: className + "__desc" },
+                    'div',
+                    { className: className + '__desc' },
                     prefix && React.createElement(
-                        "p",
+                        'p',
                         {
+                            className: className + '__prefix',
                             style: {
                                 fontSize: prefixSize + "px",
+                                fontFamily: prefixFamily,
                                 color: prefixColor,
                                 fontWeight: prefixWeight,
                                 marginRight: prefixGap + "px"
@@ -24467,13 +24585,14 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: className + "__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
+                            className: className + '__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
                             style: {
                                 fontSize: numberSize + "px",
+                                fontFamily: counterFamily,
                                 color: numberColor,
                                 fontWeight: numberWeight
                             }
@@ -24481,10 +24600,12 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        "p",
+                        'p',
                         {
+                            className: className + '__suffix',
                             style: {
                                 fontSize: suffixSize + "px",
+                                fontFamily: suffixFamily,
                                 color: suffixColor,
                                 fontWeight: suffixWeight,
                                 marginLeft: suffixGap + "px"
@@ -24494,11 +24615,12 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    "h3",
+                    'h3',
                     {
-                        className: className + "__title",
+                        className: className + '__title',
                         style: {
                             fontSize: titleSize + "px",
+                            fontFamily: titleFamily,
                             marginTop: titleT + "px",
                             marginBottom: titleB + "px",
                             color: titleColor,
@@ -24512,11 +24634,12 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                "h3",
+                'h3',
                 {
-                    className: className + "__title",
+                    className: className + '__title',
                     style: {
                         fontSize: titleSize + "px",
+                        fontFamily: titleFamily,
                         marginTop: titleT + "px",
                         marginBottom: titleB + "px",
                         color: titleColor,
@@ -24535,17 +24658,10 @@ var deprecatedContent = [{
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            shadowColor: "",
-            shadowBlur: "0",
-            shadowHorizontal: "0",
-            shadowVertical: "0",
-            shadowPosition: "",
-            backgroundImageID: "",
-            backgroundImageURL: "",
-            fixed: false,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "top center",
-            backgroundSize: "auto"
+            titleFamily: "",
+            counterFamily: "",
+            prefixFamily: "",
+            suffixFamily: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -24595,38 +24711,48 @@ var deprecatedContent = [{
             shadowColor = _props$attributes5.shadowColor,
             shadowHorizontal = _props$attributes5.shadowHorizontal,
             shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition;
+            shadowPosition = _props$attributes5.shadowPosition,
+            backgroundImageURL = _props$attributes5.backgroundImageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize;
 
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__wrap",
+                className: className + '__wrap',
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
                     backgroundColor: containerBack,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
+                    backgroundImage: 'url(\'' + backgroundImageURL + '\')',
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
             iconCheck && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__icon_wrap",
+                    className: className + '__icon_wrap',
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement("i", {
-                    className: className + "__icon " + iconClass,
+                "icon" === icon && React.createElement('i', {
+                    className: className + '__icon ' + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement("img", {
+                "img" === icon && imageURL && React.createElement('img', {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -24635,18 +24761,18 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__info",
+                    className: className + '__info',
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    "div",
-                    { className: className + "__desc" },
+                    'div',
+                    { className: className + '__desc' },
                     prefix && React.createElement(
-                        "p",
+                        'p',
                         {
                             style: {
                                 fontSize: prefixSize + "px",
@@ -24658,11 +24784,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: className + "__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
+                            className: className + '__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 color: numberColor,
@@ -24672,7 +24798,7 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        "p",
+                        'p',
                         {
                             style: {
                                 fontSize: suffixSize + "px",
@@ -24685,9 +24811,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    "h3",
+                    'h3',
                     {
-                        className: className + "__title",
+                        className: className + '__title',
                         style: {
                             fontSize: titleSize + "px",
                             marginTop: titleT + "px",
@@ -24703,9 +24829,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                "h3",
+                'h3',
                 {
-                    className: className + "__title",
+                    className: className + '__title',
                     style: {
                         fontSize: titleSize + "px",
                         marginTop: titleT + "px",
@@ -24730,7 +24856,13 @@ var deprecatedContent = [{
             shadowBlur: "0",
             shadowHorizontal: "0",
             shadowVertical: "0",
-            shadowPosition: ""
+            shadowPosition: "",
+            backgroundImageID: "",
+            backgroundImageURL: "",
+            fixed: false,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto"
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -24775,37 +24907,43 @@ var deprecatedContent = [{
             titleB = _props$attributes6.titleB,
             titleWeight = _props$attributes6.titleWeight,
             faIcon = _props$attributes6.faIcon,
-            containerBack = _props$attributes6.containerBack;
+            containerBack = _props$attributes6.containerBack,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition;
 
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__wrap",
+                className: className + '__wrap',
                 style: {
                     justifyContent: align,
                     flexDirection: flexDir,
-                    backgroundColor: containerBack
+                    backgroundColor: containerBack,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition
                 }
             },
             iconCheck && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__icon_wrap",
+                    className: className + '__icon_wrap',
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement("i", {
-                    className: className + "__icon " + iconClass,
+                "icon" === icon && React.createElement('i', {
+                    className: className + '__icon ' + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement("img", {
+                "img" === icon && imageURL && React.createElement('img', {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -24814,18 +24952,18 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__info",
+                    className: className + '__info',
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    "div",
-                    { className: className + "__desc" },
+                    'div',
+                    { className: className + '__desc' },
                     prefix && React.createElement(
-                        "p",
+                        'p',
                         {
                             style: {
                                 fontSize: prefixSize + "px",
@@ -24837,11 +24975,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: className + "__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
+                            className: className + '__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 color: numberColor,
@@ -24851,7 +24989,7 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        "p",
+                        'p',
                         {
                             style: {
                                 fontSize: suffixSize + "px",
@@ -24864,9 +25002,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    "h3",
+                    'h3',
                     {
-                        className: className + "__title",
+                        className: className + '__title',
                         style: {
                             fontSize: titleSize + "px",
                             marginTop: titleT + "px",
@@ -24882,9 +25020,9 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                "h3",
+                'h3',
                 {
-                    className: className + "__title",
+                    className: className + '__title',
                     style: {
                         fontSize: titleSize + "px",
                         marginTop: titleT + "px",
@@ -24903,6 +25041,16 @@ var deprecatedContent = [{
     }
 }, {
     attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            shadowColor: "",
+            shadowBlur: "0",
+            shadowHorizontal: "0",
+            shadowVertical: "0",
+            shadowPosition: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
         var _props$attributes7 = props.attributes,
             increment = _props$attributes7.increment,
@@ -24943,36 +25091,38 @@ var deprecatedContent = [{
             titleT = _props$attributes7.titleT,
             titleB = _props$attributes7.titleB,
             titleWeight = _props$attributes7.titleWeight,
-            faIcon = _props$attributes7.faIcon;
+            faIcon = _props$attributes7.faIcon,
+            containerBack = _props$attributes7.containerBack;
 
-        var iconClass = "fa" === iconType ? "fa fa-" + faIcon : "dashicons " + faIcon;
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__wrap",
+                className: className + '__wrap',
                 style: {
                     justifyContent: align,
-                    flexDirection: flexDir
+                    flexDirection: flexDir,
+                    backgroundColor: containerBack
                 }
             },
             iconCheck && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__icon_wrap",
+                    className: className + '__icon_wrap',
                     style: {
                         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
-                "icon" === icon && React.createElement("i", {
-                    className: className + "__icon " + iconClass,
+                "icon" === icon && React.createElement('i', {
+                    className: className + '__icon ' + iconClass,
                     style: {
                         fontSize: iconSize + "px",
                         color: iconColor
                     }
                 }),
-                "img" === icon && imageURL && React.createElement("img", {
+                "img" === icon && imageURL && React.createElement('img', {
                     src: imageURL,
                     style: {
                         width: iconSize + "px",
@@ -24981,18 +25131,18 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__info",
+                    className: className + '__info',
                     style: {
                         alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
                     }
                 },
                 React.createElement(
-                    "div",
-                    { className: className + "__desc" },
+                    'div',
+                    { className: className + '__desc' },
                     prefix && React.createElement(
-                        "p",
+                        'p',
                         {
                             style: {
                                 fontSize: prefixSize + "px",
@@ -25004,11 +25154,11 @@ var deprecatedContent = [{
                         prefixTxt
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         {
-                            className: className + "__increment",
-                            "data-interval": time,
-                            "data-delay": delay,
+                            className: className + '__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
                             style: {
                                 fontSize: numberSize + "px",
                                 color: numberColor,
@@ -25018,7 +25168,7 @@ var deprecatedContent = [{
                         increment
                     ),
                     suffix && React.createElement(
-                        "p",
+                        'p',
                         {
                             style: {
                                 fontSize: suffixSize + "px",
@@ -25031,9 +25181,9 @@ var deprecatedContent = [{
                     )
                 ),
                 titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
-                    "h3",
+                    'h3',
                     {
-                        className: className + "__title",
+                        className: className + '__title',
                         style: {
                             fontSize: titleSize + "px",
                             marginTop: titleT + "px",
@@ -25049,9 +25199,176 @@ var deprecatedContent = [{
                 )
             ),
             titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
-                "h3",
+                'h3',
                 {
-                    className: className + "__title",
+                    className: className + '__title',
+                    style: {
+                        fontSize: titleSize + "px",
+                        marginTop: titleT + "px",
+                        marginBottom: titleB + "px",
+                        color: titleColor,
+                        letterSpacing: titleSpacing + "px",
+                        fontWeight: titleWeight,
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
+                        alignSelf: selfAlign
+                    }
+                },
+                titleTxt
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    save: function save(props) {
+        var _props$attributes8 = props.attributes,
+            increment = _props$attributes8.increment,
+            time = _props$attributes8.time,
+            delay = _props$attributes8.delay,
+            align = _props$attributes8.align,
+            flexDir = _props$attributes8.flexDir,
+            numberSize = _props$attributes8.numberSize,
+            numberColor = _props$attributes8.numberColor,
+            numberWeight = _props$attributes8.numberWeight,
+            prefix = _props$attributes8.prefix,
+            prefixTxt = _props$attributes8.prefixTxt,
+            prefixSize = _props$attributes8.prefixSize,
+            prefixColor = _props$attributes8.prefixColor,
+            prefixWeight = _props$attributes8.prefixWeight,
+            prefixGap = _props$attributes8.prefixGap,
+            suffix = _props$attributes8.suffix,
+            suffixTxt = _props$attributes8.suffixTxt,
+            suffixSize = _props$attributes8.suffixSize,
+            suffixColor = _props$attributes8.suffixColor,
+            suffixWeight = _props$attributes8.suffixWeight,
+            suffixGap = _props$attributes8.suffixGap,
+            iconCheck = _props$attributes8.iconCheck,
+            icon = _props$attributes8.icon,
+            iconSpacing = _props$attributes8.iconSpacing,
+            iconType = _props$attributes8.iconType,
+            imageURL = _props$attributes8.imageURL,
+            iconSize = _props$attributes8.iconSize,
+            iconColor = _props$attributes8.iconColor,
+            selfAlign = _props$attributes8.selfAlign,
+            titleCheck = _props$attributes8.titleCheck,
+            titleTxt = _props$attributes8.titleTxt,
+            titleColor = _props$attributes8.titleColor,
+            titleSize = _props$attributes8.titleSize,
+            titleSpacing = _props$attributes8.titleSpacing,
+            titleStyle = _props$attributes8.titleStyle,
+            titleUpper = _props$attributes8.titleUpper,
+            titleT = _props$attributes8.titleT,
+            titleB = _props$attributes8.titleB,
+            titleWeight = _props$attributes8.titleWeight,
+            faIcon = _props$attributes8.faIcon;
+
+        var iconClass = "fa" === iconType ? 'fa fa-' + faIcon : 'dashicons ' + faIcon;
+        return React.createElement(
+            'div',
+            {
+                className: className + '__wrap',
+                style: {
+                    justifyContent: align,
+                    flexDirection: flexDir
+                }
+            },
+            iconCheck && React.createElement(
+                'div',
+                {
+                    className: className + '__icon_wrap',
+                    style: {
+                        marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                "icon" === icon && React.createElement('i', {
+                    className: className + '__icon ' + iconClass,
+                    style: {
+                        fontSize: iconSize + "px",
+                        color: iconColor
+                    }
+                }),
+                "img" === icon && imageURL && React.createElement('img', {
+                    src: imageURL,
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px"
+                    }
+                })
+            ),
+            React.createElement(
+                'div',
+                {
+                    className: className + '__info',
+                    style: {
+                        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+                    }
+                },
+                React.createElement(
+                    'div',
+                    { className: className + '__desc' },
+                    prefix && React.createElement(
+                        'p',
+                        {
+                            style: {
+                                fontSize: prefixSize + "px",
+                                color: prefixColor,
+                                fontWeight: prefixWeight,
+                                marginRight: prefixGap + "px"
+                            }
+                        },
+                        prefixTxt
+                    ),
+                    React.createElement(
+                        'p',
+                        {
+                            className: className + '__increment',
+                            'data-interval': time,
+                            'data-delay': delay,
+                            style: {
+                                fontSize: numberSize + "px",
+                                color: numberColor,
+                                fontWeight: numberWeight
+                            }
+                        },
+                        increment
+                    ),
+                    suffix && React.createElement(
+                        'p',
+                        {
+                            style: {
+                                fontSize: suffixSize + "px",
+                                color: suffixColor,
+                                fontWeight: suffixWeight,
+                                marginLeft: suffixGap + "px"
+                            }
+                        },
+                        suffixTxt
+                    )
+                ),
+                titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && React.createElement(
+                    'h3',
+                    {
+                        className: className + '__title',
+                        style: {
+                            fontSize: titleSize + "px",
+                            marginTop: titleT + "px",
+                            marginBottom: titleB + "px",
+                            color: titleColor,
+                            letterSpacing: titleSpacing + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight
+                        }
+                    },
+                    titleTxt
+                )
+            ),
+            titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && React.createElement(
+                'h3',
+                {
+                    className: className + '__title',
                     style: {
                         fontSize: titleSize + "px",
                         marginTop: titleT + "px",
@@ -61692,27 +62009,27 @@ var edit = function (_Component) {
             var ALIGNS = ["left", "center", "right"];
 
             var BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
-            var BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.top, bulletIconmargin.tablet.top, bulletIconmargin.mobile.top);
-            var BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.right, bulletIconmargin.tablet.right, bulletIconmargin.mobile.right);
-            var BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.bottom, bulletIconmargin.tablet.bottom, bulletIconmargin.mobile.bottom);
-            var BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.left, bulletIconmargin.tablet.left, bulletIconmargin.mobile.left);
-            var BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.top, bulletIconpadding.tablet.top, bulletIconpadding.mobile.top);
-            var BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.right, bulletIconpadding.tablet.right, bulletIconpadding.mobile.right);
-            var BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.bottom, bulletIconpadding.tablet.bottom, bulletIconpadding.mobile.bottom);
-            var BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.left, bulletIconpadding.tablet.left, bulletIconpadding.mobile.left);
+            var BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.top, bulletIconmargin.Tablet.top, bulletIconmargin.Mobile.top);
+            var BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.right, bulletIconmargin.Tablet.right, bulletIconmargin.Mobile.right);
+            var BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.bottom, bulletIconmargin.Tablet.bottom, bulletIconmargin.Mobile.bottom);
+            var BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.left, bulletIconmargin.Tablet.left, bulletIconmargin.Mobile.left);
+            var BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.top, bulletIconpadding.Tablet.top, bulletIconpadding.Mobile.top);
+            var BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.right, bulletIconpadding.Tablet.right, bulletIconpadding.Mobile.right);
+            var BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.bottom, bulletIconpadding.Tablet.bottom, bulletIconpadding.Mobile.bottom);
+            var BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.left, bulletIconpadding.Tablet.left, bulletIconpadding.Mobile.left);
             var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-            var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.top, titlemargin.tablet.top, titlemargin.mobile.top);
-            var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.right, titlemargin.tablet.right, titlemargin.mobile.right);
-            var TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.bottom, titlemargin.tablet.bottom, titlemargin.mobile.bottom);
-            var TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.left, titlemargin.tablet.left, titlemargin.mobile.left);
-            var GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.top, generalmargin.tablet.top, generalmargin.mobile.top);
-            var GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.right, generalmargin.tablet.right, generalmargin.mobile.right);
-            var GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.bottom, generalmargin.tablet.bottom, generalmargin.mobile.bottom);
-            var GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.left, generalmargin.tablet.left, generalmargin.mobile.left);
-            var GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.top, generalpadding.tablet.top, generalpadding.mobile.top);
-            var GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.right, generalpadding.tablet.right, generalpadding.mobile.right);
-            var GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.bottom, generalpadding.tablet.bottom, generalpadding.mobile.bottom);
-            var GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.left, generalpadding.tablet.left, generalpadding.mobile.left);
+            var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.top, titlemargin.Tablet.top, titlemargin.Mobile.top);
+            var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.right, titlemargin.Tablet.right, titlemargin.Mobile.right);
+            var TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.bottom, titlemargin.Tablet.bottom, titlemargin.Mobile.bottom);
+            var TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.left, titlemargin.Tablet.left, titlemargin.Mobile.left);
+            var GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.top, generalmargin.Tablet.top, generalmargin.Mobile.top);
+            var GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.right, generalmargin.Tablet.right, generalmargin.Mobile.right);
+            var GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.bottom, generalmargin.Tablet.bottom, generalmargin.Mobile.bottom);
+            var GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.left, generalmargin.Tablet.left, generalmargin.Mobile.left);
+            var GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.top, generalpadding.Tablet.top, generalpadding.Mobile.top);
+            var GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.right, generalpadding.Tablet.right, generalpadding.Mobile.right);
+            var GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.bottom, generalpadding.Tablet.bottom, generalpadding.Mobile.bottom);
+            var GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.left, generalpadding.Tablet.left, generalpadding.Mobile.left);
             var DividerWidth = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerWidth, dividerStyles[0].dividerWidthTablet, dividerStyles[0].dividerWidthMobile);
             var DividerHeight = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerHeight, dividerStyles[0].dividerHeightTablet, dividerStyles[0].dividerHeightMobile);
 
@@ -66034,6 +66351,10 @@ var _attributes = __webpack_require__(407);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
+var _deprecated = __webpack_require__(409);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -66048,6 +66369,7 @@ registerBlockType("premium/heading", {
     supports: {
         inserter: _settings.heading
     },
+    deprecated: _deprecated2.default,
     edit: _edit2.default,
     save: _save2.default
 });
@@ -66334,6 +66656,10 @@ var _reactLottieWithSegments = __webpack_require__(70);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
+var _premiumResponsiveSpacing = __webpack_require__(219);
+
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
+
 var _PremiumResponsiveMargin = __webpack_require__(25);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
@@ -66511,54 +66837,10 @@ var edit = function (_Component) {
                 iconBorderRight = attributes.iconBorderRight,
                 iconBorderBottom = attributes.iconBorderBottom,
                 iconBorderLeft = attributes.iconBorderLeft,
-                titleMarginT = attributes.titleMarginT,
-                titleMarginR = attributes.titleMarginR,
-                titleMarginB = attributes.titleMarginB,
-                titleMarginL = attributes.titleMarginL,
-                titleMarginTTablet = attributes.titleMarginTTablet,
-                titleMarginRTablet = attributes.titleMarginRTablet,
-                titleMarginBTablet = attributes.titleMarginBTablet,
-                titleMarginLTablet = attributes.titleMarginLTablet,
-                titleMarginTMobile = attributes.titleMarginTMobile,
-                titleMarginRMobile = attributes.titleMarginRMobile,
-                titleMarginBMobile = attributes.titleMarginBMobile,
-                titleMarginLMobile = attributes.titleMarginLMobile,
-                titlePaddingT = attributes.titlePaddingT,
-                titlePaddingR = attributes.titlePaddingR,
-                titlePaddingB = attributes.titlePaddingB,
-                titlePaddingL = attributes.titlePaddingL,
-                titlePaddingTTablet = attributes.titlePaddingTTablet,
-                titlePaddingRTablet = attributes.titlePaddingRTablet,
-                titlePaddingBTablet = attributes.titlePaddingBTablet,
-                titlePaddingLTablet = attributes.titlePaddingLTablet,
-                titlePaddingTMobile = attributes.titlePaddingTMobile,
-                titlePaddingRMobile = attributes.titlePaddingRMobile,
-                titlePaddingBMobile = attributes.titlePaddingBMobile,
-                titlePaddingLMobile = attributes.titlePaddingLMobile,
-                iconPaddingT = attributes.iconPaddingT,
-                iconPaddingR = attributes.iconPaddingR,
-                iconPaddingL = attributes.iconPaddingL,
-                iconPaddingB = attributes.iconPaddingB,
-                iconPaddingTTablet = attributes.iconPaddingTTablet,
-                iconPaddingRTablet = attributes.iconPaddingRTablet,
-                iconPaddingLTablet = attributes.iconPaddingLTablet,
-                iconPaddingBTablet = attributes.iconPaddingBTablet,
-                iconPaddingTMobile = attributes.iconPaddingTMobile,
-                iconPaddingRMobile = attributes.iconPaddingRMobile,
-                iconPaddingLMobile = attributes.iconPaddingLMobile,
-                iconPaddingBMobile = attributes.iconPaddingBMobile,
-                iconMarginT = attributes.iconMarginT,
-                iconMarginR = attributes.iconMarginR,
-                iconMarginB = attributes.iconMarginB,
-                iconMarginL = attributes.iconMarginL,
-                iconMarginTTablet = attributes.iconMarginTTablet,
-                iconMarginRTablet = attributes.iconMarginRTablet,
-                iconMarginBTablet = attributes.iconMarginBTablet,
-                iconMarginLTablet = attributes.iconMarginLTablet,
-                iconMarginTMobile = attributes.iconMarginTMobile,
-                iconMarginRMobile = attributes.iconMarginRMobile,
-                iconMarginBMobile = attributes.iconMarginBMobile,
-                iconMarginLMobile = attributes.iconMarginLMobile,
+                titleMargin = attributes.titleMargin,
+                titlePadding = attributes.titlePadding,
+                iconPadding = attributes.iconPadding,
+                iconMargin = attributes.iconMargin,
                 backgroundText = attributes.backgroundText,
                 BackText = attributes.BackText,
                 textWidth = attributes.textWidth,
@@ -66679,23 +66961,23 @@ var edit = function (_Component) {
             }];
 
             var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titlefontSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-            var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titleMarginT, titleMarginTTablet, titleMarginTMobile);
-            var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titleMarginR, titleMarginRTablet, titleMarginRMobile);
-            var TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMarginB, titleMarginBTablet, titleMarginBMobile);
-            var TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titleMarginL, titleMarginLTablet, titleMarginLMobile);
-            var TitlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePaddingT, titlePaddingTTablet, titlePaddingTMobile);
-            var TitlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePaddingR, titlePaddingRTablet, titlePaddingRMobile);
-            var TitlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePaddingB, titlePaddingBTablet, titlePaddingBMobile);
-            var TitlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePaddingL, titlePaddingLTablet, titlePaddingLMobile);
+            var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.top, titleMargin.Tablet.top, titleMargin.Mobile.top);
+            var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.right, titleMargin.Tablet.right, titleMargin.Mobile.right);
+            var TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.bottom, titleMargin.Tablet.bottom, titleMargin.Mobile.bottom);
+            var TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.left, titleMargin.Tablet.left, titleMargin.Mobile.left);
+            var TitlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.top, titlePadding.Tablet.top, titlePadding.Mobile.top);
+            var TitlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.right, titlePadding.Tablet.right, titlePadding.Mobile.right);
+            var TitlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.bottom, titlePadding.Tablet.bottom, titlePadding.Mobile.bottom);
+            var TitlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.left, titlePadding.Tablet.left, titlePadding.Mobile.left);
             var IconSize = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconSize, iconStyles[0].iconSizeTablet, iconStyles[0].iconSizeMobile);
-            var IconMarginTop = this.getPreviewSize(this.props.deviceType, iconMarginT, iconMarginTTablet, iconMarginTMobile);
-            var IconMarginRight = this.getPreviewSize(this.props.deviceType, iconMarginR, iconMarginRTablet, iconMarginRMobile);
-            var IconMarginBottom = this.getPreviewSize(this.props.deviceType, iconMarginB, iconMarginBTablet, iconMarginBMobile);
-            var IconMarginLeft = this.getPreviewSize(this.props.deviceType, iconMarginL, iconMarginLTablet, iconMarginLMobile);
-            var IconPaddingTop = this.getPreviewSize(this.props.deviceType, iconPaddingT, iconPaddingTTablet, iconPaddingTMobile);
-            var IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPaddingR, iconPaddingRTablet, iconPaddingRMobile);
-            var IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPaddingB, iconPaddingBTablet, iconPaddingBMobile);
-            var IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPaddingL, iconPaddingLTablet, iconPaddingLMobile);
+            var IconMarginTop = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.top, iconMargin.Tablet.top, iconMargin.Mobile.top);
+            var IconMarginRight = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.right, iconMargin.Tablet.right, iconMargin.Mobile.right);
+            var IconMarginBottom = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.bottom, iconMargin.Tablet.bottom, iconMargin.Mobile.bottom);
+            var IconMarginLeft = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.left, iconMargin.Tablet.left, iconMargin.Mobile.left);
+            var IconPaddingTop = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.top, iconPadding.Tablet.top, iconPadding.Mobile.top);
+            var IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.right, iconPadding.Tablet.right, iconPadding.Mobile.right);
+            var IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.bottom, iconPadding.Tablet.bottom, iconPadding.Mobile.bottom);
+            var IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.left, iconPadding.Tablet.left, iconPadding.Mobile.left);
             var TextSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textBackfontSize, textStyles[0].textBackfontSizeTablet, textStyles[0].textBackfontSizeMobile);
             var StripeWidth = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeWidth, stripeStyles[0].stripeWidthTablet, stripeStyles[0].stripeWidthMobile);
             var StripeHeight = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeHeight, stripeStyles[0].stripeHeightTablet, stripeStyles[0].stripeHeightMobile);
@@ -67437,118 +67719,12 @@ var edit = function (_Component) {
                         defaultValue: 1,
                         step: 0.5
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        marginTop: titleMarginT,
-                        marginRight: titleMarginR,
-                        marginBottom: titleMarginB,
-                        marginLeft: titleMarginL,
-                        marginTopTablet: titleMarginTTablet,
-                        marginRightTablet: titleMarginRTablet,
-                        marginBottomTablet: titleMarginBTablet,
-                        marginLeftTablet: titleMarginLTablet,
-                        marginTopMobile: titleMarginTMobile,
-                        marginRightMobile: titleMarginRMobile,
-                        marginBottomMobile: titleMarginBMobile,
-                        marginLeftMobile: titleMarginLMobile,
-                        showUnits: true,
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return saveTitleStyles({ titleMarginType: newvalue });
-                        },
-                        selectedUnit: titleStyles[0].titleMarginType,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginRTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginLTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginLMobile: newValue });
-                            }
-                        }
-
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: titlePaddingT,
-                        paddingRight: titlePaddingR,
-                        paddingBottom: titlePaddingB,
-                        paddingLeft: titlePaddingL,
-                        paddingTopTablet: titlePaddingTTablet,
-                        paddingRightTablet: titlePaddingRTablet,
-                        paddingBottomTablet: titlePaddingBTablet,
-                        paddingLeftTablet: titlePaddingLTablet,
-                        paddingTopMobile: titlePaddingTMobile,
-                        paddingRightMobile: titlePaddingRMobile,
-                        paddingBottomMobile: titlePaddingBMobile,
-                        paddingLeftMobile: titlePaddingLMobile,
-                        showUnits: true,
-                        selectedUnit: titleStyles[0].titlePaddingType,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveTitleStyles({ titlePaddingType: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlePaddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlePaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ titlePaddingLMobile: newValue });
-                            }
-                        }
-                    })
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: titleMargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                            return setAttributes({ titleMargin: value });
+                        } }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: titlePadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ titlePadding: value });
+                        } })
                 ),
                 iconValue && React.createElement(
                     PanelBody,
@@ -67640,118 +67816,12 @@ var edit = function (_Component) {
                             return saveIconStyles({ iconborderRadius: newrRadius });
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        marginTop: iconMarginT,
-                        marginRight: iconMarginR,
-                        marginBottom: iconMarginB,
-                        marginLeft: iconMarginL,
-                        marginTopTablet: iconMarginTTablet,
-                        marginRightTablet: iconMarginRTablet,
-                        marginBottomTablet: iconMarginBTablet,
-                        marginLeftTablet: iconMarginLTablet,
-                        marginTopMobile: iconMarginTMobile,
-                        marginRightMobile: iconMarginRMobile,
-                        marginBottomMobile: iconMarginBMobile,
-                        marginLeftMobile: iconMarginLMobile,
-                        showUnits: true,
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return saveIconStyles({ iconMarginType: newvalue });
-                        },
-                        selectedUnit: iconStyles[0].iconMarginType,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ iconMarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconMarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconMarginRTablet: newValue });
-                            } else {
-                                setAttributes({ iconMarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ iconMarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconMarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconMarginLTablet: newValue });
-                            } else {
-                                setAttributes({ iconMarginLMobile: newValue });
-                            }
-                        }
-
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: iconPaddingT,
-                        paddingRight: iconPaddingR,
-                        paddingBottom: iconPaddingB,
-                        paddingLeft: iconPaddingL,
-                        paddingTopTablet: iconPaddingTTablet,
-                        paddingRightTablet: iconPaddingRTablet,
-                        paddingBottomTablet: iconPaddingBTablet,
-                        paddingLeftTablet: iconPaddingLTablet,
-                        paddingTopMobile: iconPaddingTMobile,
-                        paddingRightMobile: iconPaddingRMobile,
-                        paddingBottomMobile: iconPaddingBMobile,
-                        paddingLeftMobile: iconPaddingLMobile,
-                        showUnits: true,
-                        selectedUnit: iconStyles[0].iconPaddingType,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveIconStyles({ iconPaddingType: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ iconPaddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ iconPaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ iconPaddingLMobile: newValue });
-                            }
-                        }
-                    }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: iconMargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                            return setAttributes({ iconMargin: value });
+                        } }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: iconPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ iconPadding: value });
+                        } }),
                     iconType === 'icon' && React.createElement(_PremiumShadow2.default, {
                         label: __("Icon Shadow", 'premium-blocks-for-gutenberg'),
                         color: iconStyles[0].iconshadowColor,
@@ -69150,6 +69220,10 @@ var newAttributes = {
 
 var deprecated = [{
     attributes: Object.assign(attributes, newAttributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
     migrate: function migrate(attributes) {
         var newAttributes = {
             generalmargin: {
@@ -69250,6 +69324,942 @@ var deprecated = [{
                     right: attributes.bulletIconpaddingRMobile,
                     bottom: attributes.bulletIconpaddingBMobile,
                     left: attributes.bulletIconpaddingLMobile
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var attributes = props.attributes,
+            className = props.className;
+        var block_id = attributes.block_id,
+            layoutPos = attributes.layoutPos,
+            iconPosition = attributes.iconPosition,
+            align = attributes.align,
+            repeaterBulletList = attributes.repeaterBulletList,
+            bulletAlign = attributes.bulletAlign,
+            bulletIconStyles = attributes.bulletIconStyles,
+            bulletIconBorderUpdated = attributes.bulletIconBorderUpdated,
+            bulletIconBorderTop = attributes.bulletIconBorderTop,
+            bulletIconBorderRight = attributes.bulletIconBorderRight,
+            bulletIconBorderBottom = attributes.bulletIconBorderBottom,
+            bulletIconBorderLeft = attributes.bulletIconBorderLeft,
+            bulletIconBorderWidth = attributes.bulletIconBorderWidth,
+            titleStyles = attributes.titleStyles,
+            generalStyles = attributes.generalStyles,
+            generalBorderWidth = attributes.generalBorderWidth,
+            generalBorderTop = attributes.generalBorderTop,
+            generalBorderRight = attributes.generalBorderRight,
+            generalBorderBottom = attributes.generalBorderBottom,
+            generalBorderLeft = attributes.generalBorderLeft,
+            generalBorderUpdated = attributes.generalBorderUpdated,
+            titleFont = attributes.titleFont,
+            dividerStyles = attributes.dividerStyles,
+            divider = attributes.divider,
+            dividerStyle = attributes.dividerStyle;
+
+
+        return React.createElement(
+            "div",
+            { className: (0, _classnames2.default)(className, "premium-bullet-list-" + block_id),
+                id: "premium-bullet-list-" + block_id,
+                style: {
+                    textAlign: align
+                } },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-bullet-list-" + block_id + " .premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + generalStyles[0].generalHoverShadowHorizontal + "px " + generalStyles[0].generalHoverShadowVertical + "px " + generalStyles[0].generalHoverShadowBlur + "px " + generalStyles[0].generalHoverShadowColor + " " + generalStyles[0].generalHoverShadowPosition + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-block:not(:last-child)::after {", "border-top-style: " + dividerStyle + ";", "border-top-color: " + dividerStyles[0].dividerColor + ";", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-inline:not(:last-child)::after {", "border-left-style: " + dividerStyle + ";", "border-left-color: " + dividerStyles[0].dividerColor + ";", "}"].join("\n")
+                }
+            }),
+            React.createElement(
+                "ul",
+                { className: "premium-bullet-list-" + layoutPos + " premium-bullet-list",
+                    style: {
+                        textAlign: align,
+                        justifyContent: align == "right" ? "flex-end" : align
+                    } },
+                repeaterBulletList.map(function (icon, index) {
+
+                    var image_icon_html = "";
+                    if (icon.showBulletIcon) {
+                        if (icon.image_icon == "icon") {
+                            if (icon.icon) {
+                                image_icon_html = React.createElement(
+                                    "span",
+                                    { className: "premium-bullet-list__content-icon", key: index },
+                                    React.createElement("i", {
+                                        className: "" + icon.icon,
+                                        style: {
+                                            overflow: 'hidden',
+                                            color: bulletIconStyles[0].bulletIconColor,
+                                            backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
+                                            borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                            borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
+                                            borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                            borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
+                                        }
+                                    })
+                                );
+                            }
+                        } else {
+                            if (icon.imageURL) {
+                                image_icon_html = React.createElement("img", {
+                                    src: icon.imageURL,
+                                    key: index,
+                                    style: {
+                                        width: '20px',
+                                        height: '20px',
+                                        overflow: 'hidden',
+                                        borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                        borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
+                                        borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                        borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                        verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    var target = icon.linkTarget ? "_blank" : "_self";
+                    var link_url = icon.disableLink ? icon.link : "/";
+
+                    if (!icon.disableLink) {
+                        var _ref;
+
+                        return React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(
+                                "li",
+                                {
+                                    className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                    key: index,
+                                    style: {
+                                        textAlign: align,
+                                        overflow: 'hidden',
+                                        justifyContent: align == "right" ? "flex-end" : align,
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                    }
+                                },
+                                React.createElement(
+                                    "div",
+                                    { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
+                                            justifyContent: align == "right" ? align : align,
+                                            display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : ""
+                                        } },
+                                    React.createElement(
+                                        "span",
+                                        { className: "premium-bullet-list__icon-wrap",
+                                            style: {
+                                                overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                textAlign: bulletAlign,
+                                                justifyContent: bulletAlign,
+                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                            }
+                                        },
+                                        image_icon_html
+                                    ),
+                                    React.createElement(
+                                        "div",
+                                        { className: "premium-bullet-list__label-wrap" },
+                                        React.createElement(RichText.Content, {
+                                            tagName: "span",
+                                            value: repeaterBulletList[index].label,
+                                            className: "premium-bullet-list__label",
+                                            style: (_ref = {
+                                                fontFamily: titleFont,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                            }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref) })
+                                    )
+                                )
+                            ),
+                            divider && React.createElement("div", { className: "premium-bullet-list-divider-" + layoutPos })
+                        );
+                    } else {
+                        var _ref2;
+
+                        return React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(
+                                "li",
+                                {
+                                    className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                    key: index,
+                                    style: {
+                                        listStyleType: 'none',
+                                        overflow: 'hidden',
+                                        textAlign: align,
+                                        justifyContent: align == "right" ? "flex-end" : align,
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                    }
+                                },
+                                React.createElement(
+                                    "a",
+                                    {
+                                        href: link_url,
+                                        target: target,
+                                        rel: "noopener noreferrer"
+                                    },
+                                    React.createElement(
+                                        "div",
+                                        { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
+                                                justifyContent: align == "right" ? align : align,
+                                                display: iconPosition == "before" ? "flex" : "inline-flex",
+                                                flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : ""
+                                            } },
+                                        React.createElement(
+                                            "span",
+                                            { className: "premium-bullet-list__icon-wrap",
+                                                style: {
+                                                    overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                                    alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                    textAlign: bulletAlign,
+                                                    justifyContent: bulletAlign,
+                                                    alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                                }
+                                            },
+                                            image_icon_html
+                                        ),
+                                        React.createElement(
+                                            "div",
+                                            { className: "premium-bullet-list__label-wrap" },
+                                            React.createElement(RichText.Content, {
+                                                tagName: "span",
+                                                value: repeaterBulletList[index].label,
+                                                className: "premium-bullet-list__label",
+                                                style: (_ref2 = {
+                                                    fontFamily: titleFont,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                                    lineHeight: titleStyles[0].titleLine + "px",
+                                                    fontStyle: titleStyles[0].titleStyle,
+                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                                }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
+                                        )
+                                    )
+                                )
+                            ),
+                            divider && React.createElement("div", { className: "premium-bullet-list-divider-" + layoutPos })
+                        );
+                    }
+                })
+            )
+        );
+    }
+}];
+exports.default = deprecated;
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _attributes;
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var RichText = wp.blockEditor.RichText;
+
+
+var attributes = (_attributes = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    align: {
+        type: "string",
+        default: "left"
+    },
+    style: {
+        type: "string",
+        default: "style1"
+    },
+    title: {
+        type: "string",
+        default: "Premium Title"
+    },
+    iconValue: {
+        type: "boolean",
+        default: false
+    },
+    iconType: {
+        type: "string",
+        default: "icon"
+    },
+    icon: {
+        type: "string",
+        default: "fa fa-bars"
+    },
+    iconPosition: {
+        type: "string",
+        default: "before"
+    },
+    imageID: {
+        type: "number"
+    },
+    imageURL: {
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: ".premium-title-icon"
+    },
+    link: {
+        type: "boolean",
+        default: false
+    },
+    backgroundText: {
+        type: "boolean",
+        default: false
+    },
+    BackText: {
+        type: "string",
+        default: 'Awesome Title'
+    },
+    textWidth: {
+        type: "number"
+    },
+    url: {
+        type: "string",
+        default: "#"
+    },
+    iconAlign: {
+        type: "string",
+        default: "center"
+    },
+    stripePosition: {
+        type: "string",
+        default: "top"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "#6ec1e4",
+            shinyColor: '#fff',
+            blurColor: "#000",
+            titleLetter: 0,
+            titleLine: 0,
+            titleStyle: 'normal',
+            titleUpper: false,
+            titleWeight: 600,
+            titlefontSize: '',
+            titlefontSizeType: "px",
+            titlefontSizeMobile: '',
+            titlefontSizeTablet: '',
+            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleborderType: "solid",
+            titleborderRadius: 0,
+            titleborderColor: '#6ec1e4',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginType: 'px',
+            titlePaddingType: 'px',
+            BGColor: '#54595f',
+            lineColor: "#6ec1e4",
+            triangleColor: "#6ec1e4",
+            stripeColor: "#6ec1e4",
+            blurShadow: '120',
+            animateDelay: '2',
+            animateduration: '1'
+        }]
+    },
+    titleBorderTop: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderRight: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderBottom: {
+        type: "number",
+        default: "3"
+    },
+    titleBorderLeft: {
+        type: "number",
+        default: 3
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "0"
+    },
+    stripeAlign: {
+        type: "string",
+        default: "center"
+    },
+    stripeStyles: {
+        type: "array",
+        default: [{
+            stripeWidth: 120,
+            stripeWidthTablet: 120,
+            stripeWidthMobile: 120,
+            stripeWidthType: "px",
+            stripeHeight: 5,
+            stripeHeightTablet: 5,
+            stripeHeightMobile: 5,
+            stripeHeightType: "px",
+            stripeTopSpacing: 0,
+            stripeTopSpacingTablet: 0,
+            stripeTopSpacingMobile: 0,
+            stripeTopSpacingType: "px",
+            stripeBottomSpacing: 0,
+            stripeBottomSpacingTablet: 0,
+            stripeBottomSpacingMobile: 0,
+            stripeBottomSpacingType: "px"
+        }]
+    },
+    textStyles: {
+        type: "array",
+        default: [{
+            textBackColor: "#6ec1e4",
+            textBackfontSizeType: 'px',
+            textBackLetter: 0,
+            textBackLine: 0,
+            textBackStyle: 'normal',
+            textBackUpper: false,
+            textBackWeight: 600,
+            textBackfontSize: '',
+            textBackfontSizeMobile: '',
+            textBackfontSizeTablet: '',
+            textBackFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            textBackshadowColor: '',
+            textBackshadowBlur: '0',
+            textBackshadowHorizontal: '0',
+            textBackshadowVertical: '0',
+            horizontalText: 0,
+            horizontalTextTablet: 0,
+            horizontalTextMobile: 0,
+            horizontalTextType: "px",
+            verticalText: 0,
+            verticalTextTablet: 0,
+            verticalTextMobile: 0,
+            verticalTextType: "px",
+            rotateText: 0,
+            rotateTextTablet: 0,
+            rotateTextMobile: 0
+        }]
+    },
+    iconStyles: {
+        type: "array",
+        default: [{
+            iconColor: "#6ec1e4",
+            iconSize: "40",
+            iconSizeTablet: "40",
+            iconSizeMobile: "40",
+            iconSizeType: "px",
+            containerBack: '',
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center',
+            iconborderType: "none",
+            iconborderRadius: 0,
+            iconborderColor: '#6ec1e4',
+            iconPaddingType: 'px',
+            iconMarginType: 'px',
+            iconshadowColor: '',
+            iconshadowBlur: '0',
+            iconshadowHorizontal: '0',
+            iconshadowVertical: '0'
+        }]
+    },
+    strokeStyles: {
+        type: "array",
+        default: [{
+            stroke: false,
+            strokeColor: "",
+            strokeFull: 0,
+            strokeFullTablet: 0,
+            strokeFullMobile: 0
+        }]
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
+    iconBorderTop: {
+        type: "number",
+        default: "1"
+    },
+    iconBorderRight: {
+        type: "number",
+        default: "1"
+    },
+    iconBorderBottom: {
+        type: "number",
+        default: "1"
+    },
+    iconBorderLeft: {
+        type: "number",
+        default: "1"
+    },
+    iconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    iconBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleMarginT: {
+        type: "number"
+    },
+    titleMarginR: {
+        type: "number"
+    },
+    titleMarginB: {
+        type: "number"
+    },
+    titleMarginL: {
+        type: "number"
+    },
+    titleMarginTTablet: {
+        type: "number"
+    },
+    titleMarginRTablet: {
+        type: "number"
+    },
+    titleMarginBTablet: {
+        type: "number"
+    },
+    titleMarginLTablet: {
+        type: "number"
+    },
+    titleMarginTMobile: {
+        type: "number"
+    },
+    titleMarginRMobile: {
+        type: "number"
+    },
+    titleMarginBMobile: {
+        type: "number"
+    },
+    titleMarginLMobile: {
+        type: "number"
+    },
+    titlePaddingT: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingR: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingB: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingL: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingTTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingRTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingBTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingLTablet: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingTMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingRMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingBMobile: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingLMobile: {
+        type: "number",
+        default: "0"
+    },
+    iconBGColor: {
+        type: "string"
+    },
+    iconPaddingT: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingR: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingB: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingL: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingTTablet: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingRTablet: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingBTablet: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingLTablet: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingTMobile: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingRMobile: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingBMobile: {
+        type: "number",
+        default: ""
+    },
+    iconPaddingLMobile: {
+        type: "number",
+        default: ""
+    },
+    iconMarginT: {
+        type: "number",
+        default: ""
+    },
+    iconMarginR: {
+        type: "number",
+        default: ""
+    },
+    iconMarginB: {
+        type: "number",
+        default: ""
+    },
+    iconMarginL: {
+        type: "number",
+        default: ""
+    },
+    iconMarginTTablet: {
+        type: "number",
+        default: ""
+    },
+    iconMarginRTablet: {
+        type: "number",
+        default: ""
+    },
+    iconMarginBTablet: {
+        type: "number",
+        default: ""
+    },
+    iconMarginLTablet: {
+        type: "number",
+        default: ""
+    },
+    iconMarginTMobile: {
+        type: "number",
+        default: ""
+    },
+    iconMarginRMobile: {
+        type: "number",
+        default: ""
+    },
+    iconMarginBMobile: {
+        type: "number",
+        default: ""
+    },
+    iconMarginLMobile: {
+        type: "number",
+        default: ""
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    z_index: {
+        type: "number"
+    },
+    blend: {
+        type: 'string'
+    },
+    lottieURl: {
+        type: 'string'
+    },
+    loop: {
+        type: 'boolean',
+        default: true
+    },
+    reversedir: {
+        type: 'boolean',
+        default: false
+    },
+    target: {
+        type: 'boolean',
+        default: false
+    }
+}, _defineProperty(_attributes, "blend", {
+    type: "string"
+}), _defineProperty(_attributes, "zIndex", {
+    type: "number"
+}), _defineProperty(_attributes, "titleTag", {
+    type: "string",
+    default: "h2"
+}), _attributes);
+
+var newAttributes = {
+    titleMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    iconMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    iconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    }
+};
+
+var deprecated = [{
+    attributes: Object.assign(attributes, newAttributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleMargin: {
+                "Desktop": {
+                    top: attributes.titleMarginT,
+                    right: attributes.titleMarginR,
+                    bottom: attributes.titleMarginB,
+                    left: attributes.titleMarginL
+                },
+                "Tablet": {
+                    top: attributes.titleMarginTTablet,
+                    right: attributes.titleMarginRTablet,
+                    bottom: attributes.titleMarginBTablet,
+                    left: attributes.titleMarginLTablet
+                },
+                "Mobile": {
+                    top: attributes.titleMarginTMobile,
+                    right: attributes.titleMarginRMobile,
+                    bottom: attributes.titleMarginBMobile,
+                    left: attributes.titleMarginLMobile
+                }
+            },
+            iconMargin: {
+                "Desktop": {
+                    top: attributes.iconMarginT,
+                    right: attributes.iconMarginR,
+                    bottom: attributes.iconMarginB,
+                    left: attributes.iconMarginL
+                },
+                "Tablet": {
+                    top: attributes.iconMarginTTablet,
+                    right: attributes.iconMarginRTablet,
+                    bottom: attributes.iconMarginBTablet,
+                    left: attributes.iconMarginLTablet
+                },
+                "Mobile": {
+                    top: attributes.iconMarginTMobile,
+                    right: attributes.iconMarginRMobile,
+                    bottom: attributes.iconMarginBMobile,
+                    left: attributes.iconMarginLMobile
+                }
+            },
+            titlePadding: {
+                "Desktop": {
+                    top: attributes.titlePaddingT,
+                    right: attributes.titlePaddingR,
+                    bottom: attributes.titlePaddingB,
+                    left: attributes.titlePaddingL
+                },
+                "Tablet": {
+                    top: attributes.titlePaddingTTablet,
+                    right: attributes.titlePaddingRTablet,
+                    bottom: attributes.titlePaddingBTablet,
+                    left: attributes.titlePaddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.titlePaddingTMobile,
+                    right: attributes.titlePaddingRMobile,
+                    bottom: attributes.titlePaddingBMobile,
+                    left: attributes.titlePaddingLMobile
+                }
+            },
+            iconPadding: {
+                "Desktop": {
+                    top: attributes.iconPaddingT,
+                    right: attributes.iconPaddingR,
+                    bottom: attributes.iconPaddingB,
+                    left: attributes.iconPaddingL
+                },
+                "Tablet": {
+                    top: attributes.iconPaddingTTablet,
+                    right: attributes.iconPaddingRTablet,
+                    bottom: attributes.iconPaddingBTablet,
+                    left: attributes.iconPaddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.iconPaddingTMobile,
+                    right: attributes.iconPaddingRMobile,
+                    bottom: attributes.iconPaddingBMobile,
+                    left: attributes.iconPaddingLMobile
                 }
             }
         };
