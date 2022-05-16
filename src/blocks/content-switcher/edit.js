@@ -68,7 +68,7 @@ function Edit(props) {
             inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
             inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
 
-            content.style.overflow = 'hidden';
+            // content.style.overflow = 'hidden';
 
             inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
             inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
@@ -80,8 +80,11 @@ function Edit(props) {
             inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
             inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
 
-            content.style.overflow = 'hidden';
+            // content.style.overflow = 'hidden';
         }
+        // setTimeout(function () {
+        //     content.style.overflow = '';
+        // }, 100);
     }, [mounted])
 
     const initToggleBox = () => {
@@ -1202,7 +1205,7 @@ function Edit(props) {
                     className="premium-panel-body"
                     initialOpen={false}
                 >
-                    <PremiumBackgroundControl
+                    {/* <PremiumBackgroundControl
                         setAttributes={setAttributes}
                         saveContainerStyle={saveContainerStyles}
                         backgroundType={backgroundType}
@@ -1219,7 +1222,7 @@ function Edit(props) {
                         gradientAngle={containerStyles.gradientAngle}
                         gradientPosition={containerStyles.gradientPosition}
                         gradientType={containerStyles.gradientType}
-                    />
+                    /> */}
                     <PremiumBorder
                         borderType={containerStyles.containerborderType}
                         borderWidth={containerBorderWidth}

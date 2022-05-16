@@ -19,7 +19,7 @@ jQuery(function ($) {
                 $switchsecond
                     .removeClass("premium-content-switcher-is-hidden")
                     .addClass("premium-content-switcher-is-visible");
-                $($content).css("overflow", "hidden");
+                // $($content).css("overflow", "hidden");
             }
             else {
                 let $switch = $contentSwitcher.find(".premium-content-switcher-first-list");
@@ -31,7 +31,7 @@ jQuery(function ($) {
                 $switchsecond
                     .removeClass("premium-content-switcher-is-visible")
                     .addClass("premium-content-switcher-is-hidden");
-                $($content).css("overflow", "hidden");
+                // $($content).css("overflow", "hidden");
             }
         });
     });
