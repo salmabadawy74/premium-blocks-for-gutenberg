@@ -2,11 +2,8 @@ const { __ } = wp.i18n;
 const { useState, useEffect, Fragment } = wp.element;
 const { useSelect, useDispatch } = wp.data;
 import PremiumSizeUnits from "./premium-size-units";
-
-
 const SpacingComponent = (props) => {
     let { value, responsive, showUnits, label } = props;
-
     const [device, setDevice] = useState("Desktop");
     let defaultValue = {
         value: {
@@ -26,11 +23,7 @@ const SpacingComponent = (props) => {
 
     };
     let defaultValues = responsive ? ResDefaultParam : defaultValue.value
-
-
-    value = value
-        ? { ...defaultValues, ...value }
-        : defaultValues;
+    value = value ? { ...defaultValues, ...value } : defaultValues;
     const [state, setState] = useState(value);
     const [link, setLink] = useState(false)
 
@@ -42,13 +35,7 @@ const SpacingComponent = (props) => {
 
     const onSpacingChange = (v, choiceID) => {
         let updateState = { ...state };
-        let deviceUpdateState = responsive
-            ? {
-                ...updateState[device],
-            }
-            : {
-                ...updateState,
-            };
+        let deviceUpdateState = responsive ? { ...updateState[device] } : { ...updateState };
         if (link) {
             deviceUpdateState['top'] = v
             deviceUpdateState['right'] = v
@@ -63,20 +50,16 @@ const SpacingComponent = (props) => {
         props.onChange(updateState);
         setState(updateState);
     };
+
     const onLinkClickHandler = () => {
         let linkValue = responsive ? state[device]['top'] : state['top'];
-
         let updateState = { ...state };
-        let deviceUpdateState = responsive
-            ? { ...updateState[device] }
-            : { ...updateState };
+        let deviceUpdateState = responsive ? { ...updateState[device] } : { ...updateState };
         const choices = ['top', 'right', 'bottom', "left"];
         for (let choice in choices) {
             deviceUpdateState[choices[choice]] = linkValue;
         }
-        responsive
-            ? (updateState[device] = deviceUpdateState)
-            : (updateState = deviceUpdateState);
+        responsive ? (updateState[device] = deviceUpdateState) : (updateState = deviceUpdateState);
         props.onChange(updateState);
         setState(updateState);
     };
@@ -153,6 +136,7 @@ const SpacingComponent = (props) => {
             </ul>
         );
     };
+
     let inputHtml = null;
 
     inputHtml = <Fragment>{renderInputHtml(device, "active")}</Fragment>;
@@ -161,6 +145,7 @@ const SpacingComponent = (props) => {
     let customSetPreviewDeviceType = (device) => {
         setDevice(device.toLowerCase());
     };
+
     if (wp.data.select('core/edit-post')) {
         const theDevice = useSelect((select) => {
             const {
@@ -182,8 +167,14 @@ const SpacingComponent = (props) => {
 
         };
     }
+    const onUnitChange = (unitValue) => {
+        let updateState = { ...state };
+        updateState[`unit`] = unitKey;
+        props.onChange(updateState);
+        setState(updateState);
+    }
     return (
-        <div key={"kmt-spacing-responsive"} className="premium-spacing-responsive">
+        <div className="premium-spacing-responsive">
             <header>
                 <div className={`premium-slider-title-wrap`}>
                     <span className="customize-control-title premium-control-title">  {label}</span>
@@ -206,9 +197,7 @@ const SpacingComponent = (props) => {
                 {showUnits && (
                     <PremiumSizeUnits
                         activeUnit={selectedUnit}
-                        onChangeSizeUnit={newValue =>
-                            onChangePadSizeUnit(newValue)
-                        }
+                        onChangeSizeUnit={(unitKey) => onUnitChange(unitKey)}
                     />
                 )}
             </header>
