@@ -4,8 +4,7 @@ import iconsList from "../../components/premium-icons-list";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
@@ -281,43 +280,12 @@ class edit extends Component {
             bulletIconBorderBottom,
             bulletIconBorderLeft,
             bulletIconBorderWidth,
-            bulletIconmarginT,
-            bulletIconmarginR,
-            bulletIconmarginB,
-            bulletIconmarginL,
-            bulletIconmarginTTablet,
-            bulletIconmarginRTablet,
-            bulletIconmarginBTablet,
-            bulletIconmarginLTablet,
-            bulletIconmarginTMobile,
-            bulletIconmarginRMobile,
-            bulletIconmarginBMobile,
-            bulletIconmarginLMobile,
-            bulletIconpaddingTop,
-            bulletIconpaddingRight,
-            bulletIconpaddingBottom,
-            bulletIconpaddingLeft,
-            bulletIconpaddingTTablet,
-            bulletIconpaddingRTablet,
-            bulletIconpaddingBTablet,
-            bulletIconpaddingLTablet,
-            bulletIconpaddingTMobile,
-            bulletIconpaddingRMobile,
-            bulletIconpaddingBMobile,
-            bulletIconpaddingLMobile,
+            generalmargin,
+            bulletIconmargin,
+            titlemargin,
+            generalpadding,
+            bulletIconpadding,
             titleStyles,
-            titlemarginT,
-            titlemarginR,
-            titlemarginB,
-            titlemarginL,
-            titlemarginTTablet,
-            titlemarginRTablet,
-            titlemarginBTablet,
-            titlemarginLTablet,
-            titlemarginTMobile,
-            titlemarginRMobile,
-            titlemarginBMobile,
-            titlemarginLMobile,
             generalStyles,
             generalBorderWidth,
             generalBorderTop,
@@ -325,30 +293,6 @@ class edit extends Component {
             generalBorderBottom,
             generalBorderLeft,
             generalBorderUpdated,
-            generalmarginT,
-            generalmarginR,
-            generalmarginB,
-            generalmarginL,
-            generalmarginTTablet,
-            generalmarginRTablet,
-            generalmarginBTablet,
-            generalmarginLTablet,
-            generalmarginTMobile,
-            generalmarginRMobile,
-            generalmarginBMobile,
-            generalmarginLMobile,
-            generalpaddingTop,
-            generalpaddingRight,
-            generalpaddingBottom,
-            generalpaddingLeft,
-            generalpaddingTTablet,
-            generalpaddingRTablet,
-            generalpaddingBTablet,
-            generalpaddingLTablet,
-            generalpaddingTMobile,
-            generalpaddingRMobile,
-            generalpaddingBMobile,
-            generalpaddingLMobile,
             titleFont,
             divider,
             dividerStyle,
@@ -407,27 +351,27 @@ class edit extends Component {
         const ALIGNS = ["left", "center", "right"];
 
         const BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
-        const BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmarginT, bulletIconmarginTTablet, bulletIconmarginTMobile);
-        const BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmarginR, bulletIconmarginRTablet, bulletIconmarginRMobile);
-        const BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmarginB, bulletIconmarginBTablet, bulletIconmarginBMobile);
-        const BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmarginL, bulletIconmarginLTablet, bulletIconmarginLMobile);
-        const BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpaddingTop, bulletIconpaddingTTablet, bulletIconpaddingTMobile);
-        const BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpaddingRight, bulletIconpaddingRTablet, bulletIconpaddingRMobile);
-        const BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpaddingBottom, bulletIconpaddingBTablet, bulletIconpaddingBMobile);
-        const BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpaddingLeft, bulletIconpaddingLTablet, bulletIconpaddingLMobile);
+        const BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.top, bulletIconmargin.tablet.top, bulletIconmargin.mobile.top);
+        const BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.right, bulletIconmargin.tablet.right, bulletIconmargin.mobile.right);
+        const BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.bottom, bulletIconmargin.tablet.bottom, bulletIconmargin.mobile.bottom);
+        const BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.left, bulletIconmargin.tablet.left, bulletIconmargin.mobile.left);
+        const BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.top, bulletIconpadding.tablet.top, bulletIconpadding.mobile.top);
+        const BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.right, bulletIconpadding.tablet.right, bulletIconpadding.mobile.right);
+        const BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.bottom, bulletIconpadding.tablet.bottom, bulletIconpadding.mobile.bottom);
+        const BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.left, bulletIconpadding.tablet.left, bulletIconpadding.mobile.left);
         const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-        const TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemarginT, titlemarginTTablet, titlemarginTMobile);
-        const TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemarginR, titlemarginRTablet, titlemarginRMobile);
-        const TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemarginB, titlemarginBTablet, titlemarginBMobile);
-        const TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemarginL, titlemarginLTablet, titlemarginLMobile);
-        const GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmarginT, generalmarginTTablet, generalmarginTMobile);
-        const GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmarginR, generalmarginRTablet, generalmarginRMobile);
-        const GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmarginB, generalmarginBTablet, generalmarginBMobile);
-        const GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmarginL, generalmarginLTablet, generalmarginLMobile);
-        const GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpaddingTop, generalpaddingTTablet, generalpaddingTMobile);
-        const GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpaddingRight, generalpaddingRTablet, generalpaddingRMobile);
-        const GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpaddingBottom, generalpaddingBTablet, generalpaddingBMobile);
-        const GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpaddingLeft, generalpaddingLTablet, generalpaddingLMobile);
+        const TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.top, titlemargin.tablet.top, titlemargin.mobile.top);
+        const TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.right, titlemargin.tablet.right, titlemargin.mobile.right);
+        const TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.bottom, titlemargin.tablet.bottom, titlemargin.mobile.bottom);
+        const TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.left, titlemargin.tablet.left, titlemargin.mobile.left);
+        const GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.top, generalmargin.tablet.top, generalmargin.mobile.top);
+        const GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.right, generalmargin.tablet.right, generalmargin.mobile.right);
+        const GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.bottom, generalmargin.tablet.bottom, generalmargin.mobile.bottom);
+        const GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.left, generalmargin.tablet.left, generalmargin.mobile.left);
+        const GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.top, generalpadding.tablet.top, generalpadding.mobile.top);
+        const GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.right, generalpadding.tablet.right, generalpadding.mobile.right);
+        const GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.bottom, generalpadding.tablet.bottom, generalpadding.mobile.bottom);
+        const GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.left, generalpadding.tablet.left, generalpadding.mobile.left);
         const DividerWidth = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerWidth, dividerStyles[0].dividerWidthTablet, dividerStyles[0].dividerWidthMobile);
         const DividerHeight = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerHeight, dividerStyles[0].dividerHeightTablet, dividerStyles[0].dividerHeightMobile);
 
@@ -874,130 +818,8 @@ class edit extends Component {
                                 saveGeneralStyles({ generalborderRadius: newrRadius })
                             }
                         />
-                        <PremiumResponsiveMargin
-                            directions={["all"]}
-                            marginTop={generalmarginT}
-                            marginRight={generalmarginR}
-                            marginBottom={generalmarginB}
-                            marginLeft={generalmarginL}
-                            marginTopTablet={generalmarginTTablet}
-                            marginRightTablet={generalmarginRTablet}
-                            marginBottomTablet={generalmarginBTablet}
-                            marginLeftTablet={generalmarginLTablet}
-                            marginTopMobile={generalmarginTMobile}
-                            marginRightMobile={generalmarginRMobile}
-                            marginBottomMobile={generalmarginBMobile}
-                            marginLeftMobile={generalmarginLMobile}
-                            showUnits={true}
-                            onChangeMarSizeUnit={newvalue => saveGeneralStyles({ generalmarginType: newvalue })}
-                            selectedUnit={generalStyles[0].generalmarginType}
-                            onChangeMarginTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalmarginT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalmarginTTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalmarginTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalmarginR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalmarginRTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalmarginRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalmarginB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalmarginBTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalmarginBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalmarginL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalmarginLTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalmarginLMobile: newValue })
-                                    }
-                                }
-                            }
-
-                        />
-                        <PremiumResponsivePadding
-                            paddingTop={generalpaddingTop}
-                            paddingRight={generalpaddingRight}
-                            paddingBottom={generalpaddingBottom}
-                            paddingLeft={generalpaddingLeft}
-                            paddingTopTablet={generalpaddingTTablet}
-                            paddingRightTablet={generalpaddingRTablet}
-                            paddingBottomTablet={generalpaddingBTablet}
-                            paddingLeftTablet={generalpaddingLTablet}
-                            paddingTopMobile={generalpaddingTMobile}
-                            paddingRightMobile={generalpaddingRMobile}
-                            paddingBottomMobile={generalpaddingBMobile}
-                            paddingLeftMobile={generalpaddingLMobile}
-                            showUnits={true}
-                            selectedUnit={generalStyles[0].generalpaddingUnit}
-                            onChangePadSizeUnit={newvalue => saveGeneralStyles({ generalpaddingUnit: newvalue })}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalpaddingTop: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalpaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalpaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalpaddingRight: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalpaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalpaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalpaddingBottom: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalpaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalpaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ generalpaddingLeft: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ generalpaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ generalpaddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
+                        <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ generalmargin: value })} />
+                        <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ generalpadding: value })} />
                     </PanelBody>
                     <PanelBody
                         title={__("Bullet Style")}
@@ -1087,130 +909,8 @@ class edit extends Component {
                                 saveBulletIconStyles({ bulletIconborderRadius: newrRadius })
                             }
                         />
-                        <PremiumResponsiveMargin
-                            directions={["all"]}
-                            marginTop={bulletIconmarginT}
-                            marginRight={bulletIconmarginR}
-                            marginBottom={bulletIconmarginB}
-                            marginLeft={bulletIconmarginL}
-                            marginTopTablet={bulletIconmarginTTablet}
-                            marginRightTablet={bulletIconmarginRTablet}
-                            marginBottomTablet={bulletIconmarginBTablet}
-                            marginLeftTablet={bulletIconmarginLTablet}
-                            marginTopMobile={bulletIconmarginTMobile}
-                            marginRightMobile={bulletIconmarginRMobile}
-                            marginBottomMobile={bulletIconmarginBMobile}
-                            marginLeftMobile={bulletIconmarginLMobile}
-                            showUnits={true}
-                            onChangeMarSizeUnit={newvalue => saveBulletIconStyles({ bulletIconmarginType: newvalue })}
-                            selectedUnit={bulletIconStyles[0].bulletIconmarginType}
-                            onChangeMarginTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconmarginT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconmarginTTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconmarginTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconmarginR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconmarginRTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconmarginRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconmarginB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconmarginBTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconmarginBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconmarginL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconmarginLTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconmarginLMobile: newValue })
-                                    }
-                                }
-                            }
-
-                        />
-                        <PremiumResponsivePadding
-                            paddingTop={bulletIconpaddingTop}
-                            paddingRight={bulletIconpaddingRight}
-                            paddingBottom={bulletIconpaddingBottom}
-                            paddingLeft={bulletIconpaddingLeft}
-                            paddingTopTablet={bulletIconpaddingTTablet}
-                            paddingRightTablet={bulletIconpaddingRTablet}
-                            paddingBottomTablet={bulletIconpaddingBTablet}
-                            paddingLeftTablet={bulletIconpaddingLTablet}
-                            paddingTopMobile={bulletIconpaddingTMobile}
-                            paddingRightMobile={bulletIconpaddingRMobile}
-                            paddingBottomMobile={bulletIconpaddingBMobile}
-                            paddingLeftMobile={bulletIconpaddingLMobile}
-                            showUnits={true}
-                            selectedUnit={bulletIconStyles[0].bulletIconpaddingUnit}
-                            onChangePadSizeUnit={newvalue => saveBulletIconStyles({ bulletIconpaddingUnit: newvalue })}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconpaddingTop: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconpaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconpaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconpaddingRight: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconpaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconpaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconpaddingBottom: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconpaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconpaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ bulletIconpaddingLeft: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ bulletIconpaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ bulletIconpaddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
+                        <SpacingComponent value={bulletIconmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bulletIconmargin: value })} />
+                        <SpacingComponent value={bulletIconpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ bulletIconpadding: value })} />
                     </PanelBody>
                     <PanelBody
                         title={__("Title Style")}
@@ -1288,69 +988,7 @@ class edit extends Component {
                                 saveTitleStyles({ titleshadowVertical: newValue })
                             }
                         />
-                        <PremiumResponsiveMargin
-                            directions={["all"]}
-                            marginTop={titlemarginT}
-                            marginRight={titlemarginR}
-                            marginBottom={titlemarginB}
-                            marginLeft={titlemarginL}
-                            marginTopTablet={titlemarginTTablet}
-                            marginRightTablet={titlemarginRTablet}
-                            marginBottomTablet={titlemarginBTablet}
-                            marginLeftTablet={titlemarginLTablet}
-                            marginTopMobile={titlemarginTMobile}
-                            marginRightMobile={titlemarginRMobile}
-                            marginBottomMobile={titlemarginBMobile}
-                            marginLeftMobile={titlemarginLMobile}
-                            showUnits={true}
-                            onChangeMarSizeUnit={newvalue => saveTitleStyles({ titlemarginType: newvalue })}
-                            selectedUnit={titleStyles[0].titlemarginType}
-                            onChangeMarginTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlemarginT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlemarginTTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlemarginTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlemarginR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlemarginRTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlemarginRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlemarginB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlemarginBTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlemarginBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ titlemarginL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ titlemarginLTablet: newValue })
-                                    } else {
-                                        setAttributes({ titlemarginLMobile: newValue })
-                                    }
-                                }
-                            }
-
-                        />
+                        <SpacingComponent value={titlemargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ titlemargin: value })} />
                     </PanelBody>
                     {divider &&
                         <PanelBody

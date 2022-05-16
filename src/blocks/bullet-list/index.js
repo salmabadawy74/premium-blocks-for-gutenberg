@@ -6,6 +6,7 @@ import save from "./save";
 import edit from "./edit";
 import PbgIcon from "../icons";
 import attributes from './attributes'
+import deprecated from './deprecated';
 
 const {
     __
@@ -23,6 +24,7 @@ registerBlockType("premium/bullet-list", {
     supports: {
         inserter: bulletList
     },
+    deprecated,
     edit: edit,
     save: save
 });

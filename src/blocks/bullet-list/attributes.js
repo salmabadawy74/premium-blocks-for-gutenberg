@@ -115,78 +115,6 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    bulletIconmarginT: {
-        type: "number"
-    },
-    bulletIconmarginR: {
-        type: "number"
-    },
-    bulletIconmarginB: {
-        type: "number"
-    },
-    bulletIconmarginL: {
-        type: "number"
-    },
-    bulletIconmarginTTablet: {
-        type: "number"
-    },
-    bulletIconmarginRTablet: {
-        type: "number"
-    },
-    bulletIconmarginBTablet: {
-        type: "number"
-    },
-    bulletIconmarginLTablet: {
-        type: "number"
-    },
-    bulletIconmarginTMobile: {
-        type: "number"
-    },
-    bulletIconmarginRMobile: {
-        type: "number"
-    },
-    bulletIconmarginBMobile: {
-        type: "number"
-    },
-    bulletIconmarginLMobile: {
-        type: "number"
-    },
-    bulletIconpaddingTop: {
-        type: "number"
-    },
-    bulletIconpaddingRight: {
-        type: "number"
-    },
-    bulletIconpaddingBottom: {
-        type: "number"
-    },
-    bulletIconpaddingLeft: {
-        type: "number"
-    },
-    bulletIconpaddingTTablet: {
-        type: "number"
-    },
-    bulletIconpaddingRTablet: {
-        type: "number"
-    },
-    bulletIconpaddingBTablet: {
-        type: "number"
-    },
-    bulletIconpaddingLTablet: {
-        type: "number"
-    },
-    bulletIconpaddingTMobile: {
-        type: "number"
-    },
-    bulletIconpaddingRMobile: {
-        type: "number"
-    },
-    bulletIconpaddingBMobile: {
-        type: "number"
-    },
-    bulletIconpaddingLMobile: {
-        type: "number"
-    },
     titleStyles: {
         type: "array",
         default: [{
@@ -208,42 +136,6 @@ const attributes = {
             titleshadowVertical: 0,
             titlemarginType: 'px'
         }],
-    },
-    titlemarginT: {
-        type: "number"
-    },
-    titlemarginR: {
-        type: "number"
-    },
-    titlemarginB: {
-        type: "number"
-    },
-    titlemarginL: {
-        type: "number"
-    },
-    titlemarginTTablet: {
-        type: "number"
-    },
-    titlemarginRTablet: {
-        type: "number"
-    },
-    titlemarginBTablet: {
-        type: "number"
-    },
-    titlemarginLTablet: {
-        type: "number"
-    },
-    titlemarginTMobile: {
-        type: "number"
-    },
-    titlemarginRMobile: {
-        type: "number"
-    },
-    titlemarginBMobile: {
-        type: "number"
-    },
-    titlemarginLMobile: {
-        type: "number"
     },
     generalStyles: {
         type: "array",
@@ -287,78 +179,6 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    generalmarginT: {
-        type: "number"
-    },
-    generalmarginR: {
-        type: "number"
-    },
-    generalmarginB: {
-        type: "number"
-    },
-    generalmarginL: {
-        type: "number"
-    },
-    generalmarginTTablet: {
-        type: "number"
-    },
-    generalmarginRTablet: {
-        type: "number"
-    },
-    generalmarginBTablet: {
-        type: "number"
-    },
-    generalmarginLTablet: {
-        type: "number"
-    },
-    generalmarginTMobile: {
-        type: "number"
-    },
-    generalmarginRMobile: {
-        type: "number"
-    },
-    generalmarginBMobile: {
-        type: "number"
-    },
-    generalmarginLMobile: {
-        type: "number"
-    },
-    generalpaddingTop: {
-        type: "number"
-    },
-    generalpaddingRight: {
-        type: "number"
-    },
-    generalpaddingBottom: {
-        type: "number"
-    },
-    generalpaddingLeft: {
-        type: "number"
-    },
-    generalpaddingTTablet: {
-        type: "number"
-    },
-    generalpaddingRTablet: {
-        type: "number"
-    },
-    generalpaddingBTablet: {
-        type: "number"
-    },
-    generalpaddingLTablet: {
-        type: "number"
-    },
-    generalpaddingTMobile: {
-        type: "number"
-    },
-    generalpaddingRMobile: {
-        type: "number"
-    },
-    generalpaddingBMobile: {
-        type: "number"
-    },
-    generalpaddingLMobile: {
-        type: "number"
-    },
     classMigrate: {
         type: "boolean",
         default: false
@@ -399,6 +219,126 @@ const attributes = {
             dividerHeightType: 'px',
             dividerColor: '#ddd'
         }]
-    }
+    },
+    generalmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titlemargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    generalpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
 }
 export default attributes

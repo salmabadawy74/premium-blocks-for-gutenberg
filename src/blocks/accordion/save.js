@@ -33,8 +33,10 @@ const save = props => {
         descBorderRight,
         descBorderBottom,
         descBorderLeft,
+        titlePadding
     } = props.attributes;
 
+    console.log(titlePadding);
     const mainClasses = classnames(className, 'premium-accordion');
 
     const accordionItems = repeaterItems.map((item, index) => {

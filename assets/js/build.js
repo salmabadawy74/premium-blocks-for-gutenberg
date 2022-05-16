@@ -15785,9 +15785,11 @@ var save = function save(props) {
         descBorderTop = _props$attributes.descBorderTop,
         descBorderRight = _props$attributes.descBorderRight,
         descBorderBottom = _props$attributes.descBorderBottom,
-        descBorderLeft = _props$attributes.descBorderLeft;
+        descBorderLeft = _props$attributes.descBorderLeft,
+        titlePadding = _props$attributes.titlePadding;
 
 
+    console.log(titlePadding);
     var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
 
     var accordionItems = repeaterItems.map(function (item, index) {
@@ -16428,7 +16430,7 @@ var deprecated = [{
             descBorderBottom = _props$attributes.descBorderBottom,
             descBorderLeft = _props$attributes.descBorderLeft;
 
-        console.log(descPadding);
+
         var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
 
         var accordionItems = repeaterItems.map(function (item, index) {
@@ -60949,6 +60951,10 @@ var _attributes = __webpack_require__(382);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
+var _deprecated = __webpack_require__(408);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -60963,6 +60969,7 @@ registerBlockType("premium/bullet-list", {
     supports: {
         inserter: _settings.bulletList
     },
+    deprecated: _deprecated2.default,
     edit: _edit2.default,
     save: _save2.default
 });
@@ -61265,13 +61272,9 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumResponsiveMargin = __webpack_require__(25);
+var _premiumResponsiveSpacing = __webpack_require__(219);
 
-var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
-
-var _PremiumResponsivePadding = __webpack_require__(11);
-
-var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
 var _premiumMediaUpload = __webpack_require__(13);
 
@@ -61631,43 +61634,12 @@ var edit = function (_Component) {
                 bulletIconBorderBottom = attributes.bulletIconBorderBottom,
                 bulletIconBorderLeft = attributes.bulletIconBorderLeft,
                 bulletIconBorderWidth = attributes.bulletIconBorderWidth,
-                bulletIconmarginT = attributes.bulletIconmarginT,
-                bulletIconmarginR = attributes.bulletIconmarginR,
-                bulletIconmarginB = attributes.bulletIconmarginB,
-                bulletIconmarginL = attributes.bulletIconmarginL,
-                bulletIconmarginTTablet = attributes.bulletIconmarginTTablet,
-                bulletIconmarginRTablet = attributes.bulletIconmarginRTablet,
-                bulletIconmarginBTablet = attributes.bulletIconmarginBTablet,
-                bulletIconmarginLTablet = attributes.bulletIconmarginLTablet,
-                bulletIconmarginTMobile = attributes.bulletIconmarginTMobile,
-                bulletIconmarginRMobile = attributes.bulletIconmarginRMobile,
-                bulletIconmarginBMobile = attributes.bulletIconmarginBMobile,
-                bulletIconmarginLMobile = attributes.bulletIconmarginLMobile,
-                bulletIconpaddingTop = attributes.bulletIconpaddingTop,
-                bulletIconpaddingRight = attributes.bulletIconpaddingRight,
-                bulletIconpaddingBottom = attributes.bulletIconpaddingBottom,
-                bulletIconpaddingLeft = attributes.bulletIconpaddingLeft,
-                bulletIconpaddingTTablet = attributes.bulletIconpaddingTTablet,
-                bulletIconpaddingRTablet = attributes.bulletIconpaddingRTablet,
-                bulletIconpaddingBTablet = attributes.bulletIconpaddingBTablet,
-                bulletIconpaddingLTablet = attributes.bulletIconpaddingLTablet,
-                bulletIconpaddingTMobile = attributes.bulletIconpaddingTMobile,
-                bulletIconpaddingRMobile = attributes.bulletIconpaddingRMobile,
-                bulletIconpaddingBMobile = attributes.bulletIconpaddingBMobile,
-                bulletIconpaddingLMobile = attributes.bulletIconpaddingLMobile,
+                generalmargin = attributes.generalmargin,
+                bulletIconmargin = attributes.bulletIconmargin,
+                titlemargin = attributes.titlemargin,
+                generalpadding = attributes.generalpadding,
+                bulletIconpadding = attributes.bulletIconpadding,
                 titleStyles = attributes.titleStyles,
-                titlemarginT = attributes.titlemarginT,
-                titlemarginR = attributes.titlemarginR,
-                titlemarginB = attributes.titlemarginB,
-                titlemarginL = attributes.titlemarginL,
-                titlemarginTTablet = attributes.titlemarginTTablet,
-                titlemarginRTablet = attributes.titlemarginRTablet,
-                titlemarginBTablet = attributes.titlemarginBTablet,
-                titlemarginLTablet = attributes.titlemarginLTablet,
-                titlemarginTMobile = attributes.titlemarginTMobile,
-                titlemarginRMobile = attributes.titlemarginRMobile,
-                titlemarginBMobile = attributes.titlemarginBMobile,
-                titlemarginLMobile = attributes.titlemarginLMobile,
                 generalStyles = attributes.generalStyles,
                 generalBorderWidth = attributes.generalBorderWidth,
                 generalBorderTop = attributes.generalBorderTop,
@@ -61675,30 +61647,6 @@ var edit = function (_Component) {
                 generalBorderBottom = attributes.generalBorderBottom,
                 generalBorderLeft = attributes.generalBorderLeft,
                 generalBorderUpdated = attributes.generalBorderUpdated,
-                generalmarginT = attributes.generalmarginT,
-                generalmarginR = attributes.generalmarginR,
-                generalmarginB = attributes.generalmarginB,
-                generalmarginL = attributes.generalmarginL,
-                generalmarginTTablet = attributes.generalmarginTTablet,
-                generalmarginRTablet = attributes.generalmarginRTablet,
-                generalmarginBTablet = attributes.generalmarginBTablet,
-                generalmarginLTablet = attributes.generalmarginLTablet,
-                generalmarginTMobile = attributes.generalmarginTMobile,
-                generalmarginRMobile = attributes.generalmarginRMobile,
-                generalmarginBMobile = attributes.generalmarginBMobile,
-                generalmarginLMobile = attributes.generalmarginLMobile,
-                generalpaddingTop = attributes.generalpaddingTop,
-                generalpaddingRight = attributes.generalpaddingRight,
-                generalpaddingBottom = attributes.generalpaddingBottom,
-                generalpaddingLeft = attributes.generalpaddingLeft,
-                generalpaddingTTablet = attributes.generalpaddingTTablet,
-                generalpaddingRTablet = attributes.generalpaddingRTablet,
-                generalpaddingBTablet = attributes.generalpaddingBTablet,
-                generalpaddingLTablet = attributes.generalpaddingLTablet,
-                generalpaddingTMobile = attributes.generalpaddingTMobile,
-                generalpaddingRMobile = attributes.generalpaddingRMobile,
-                generalpaddingBMobile = attributes.generalpaddingBMobile,
-                generalpaddingLMobile = attributes.generalpaddingLMobile,
                 titleFont = attributes.titleFont,
                 divider = attributes.divider,
                 dividerStyle = attributes.dividerStyle,
@@ -61744,27 +61692,27 @@ var edit = function (_Component) {
             var ALIGNS = ["left", "center", "right"];
 
             var BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
-            var BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmarginT, bulletIconmarginTTablet, bulletIconmarginTMobile);
-            var BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmarginR, bulletIconmarginRTablet, bulletIconmarginRMobile);
-            var BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmarginB, bulletIconmarginBTablet, bulletIconmarginBMobile);
-            var BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmarginL, bulletIconmarginLTablet, bulletIconmarginLMobile);
-            var BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpaddingTop, bulletIconpaddingTTablet, bulletIconpaddingTMobile);
-            var BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpaddingRight, bulletIconpaddingRTablet, bulletIconpaddingRMobile);
-            var BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpaddingBottom, bulletIconpaddingBTablet, bulletIconpaddingBMobile);
-            var BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpaddingLeft, bulletIconpaddingLTablet, bulletIconpaddingLMobile);
+            var BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.top, bulletIconmargin.tablet.top, bulletIconmargin.mobile.top);
+            var BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.right, bulletIconmargin.tablet.right, bulletIconmargin.mobile.right);
+            var BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.bottom, bulletIconmargin.tablet.bottom, bulletIconmargin.mobile.bottom);
+            var BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmargin.desktop.left, bulletIconmargin.tablet.left, bulletIconmargin.mobile.left);
+            var BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.top, bulletIconpadding.tablet.top, bulletIconpadding.mobile.top);
+            var BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.right, bulletIconpadding.tablet.right, bulletIconpadding.mobile.right);
+            var BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.bottom, bulletIconpadding.tablet.bottom, bulletIconpadding.mobile.bottom);
+            var BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpadding.desktop.left, bulletIconpadding.tablet.left, bulletIconpadding.mobile.left);
             var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-            var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemarginT, titlemarginTTablet, titlemarginTMobile);
-            var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemarginR, titlemarginRTablet, titlemarginRMobile);
-            var TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemarginB, titlemarginBTablet, titlemarginBMobile);
-            var TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemarginL, titlemarginLTablet, titlemarginLMobile);
-            var GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmarginT, generalmarginTTablet, generalmarginTMobile);
-            var GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmarginR, generalmarginRTablet, generalmarginRMobile);
-            var GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmarginB, generalmarginBTablet, generalmarginBMobile);
-            var GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmarginL, generalmarginLTablet, generalmarginLMobile);
-            var GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpaddingTop, generalpaddingTTablet, generalpaddingTMobile);
-            var GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpaddingRight, generalpaddingRTablet, generalpaddingRMobile);
-            var GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpaddingBottom, generalpaddingBTablet, generalpaddingBMobile);
-            var GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpaddingLeft, generalpaddingLTablet, generalpaddingLMobile);
+            var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.top, titlemargin.tablet.top, titlemargin.mobile.top);
+            var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.right, titlemargin.tablet.right, titlemargin.mobile.right);
+            var TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.bottom, titlemargin.tablet.bottom, titlemargin.mobile.bottom);
+            var TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemargin.desktop.left, titlemargin.tablet.left, titlemargin.mobile.left);
+            var GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.top, generalmargin.tablet.top, generalmargin.mobile.top);
+            var GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.right, generalmargin.tablet.right, generalmargin.mobile.right);
+            var GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.bottom, generalmargin.tablet.bottom, generalmargin.mobile.bottom);
+            var GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmargin.desktop.left, generalmargin.tablet.left, generalmargin.mobile.left);
+            var GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.top, generalpadding.tablet.top, generalpadding.mobile.top);
+            var GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.right, generalpadding.tablet.right, generalpadding.mobile.right);
+            var GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.bottom, generalpadding.tablet.bottom, generalpadding.mobile.bottom);
+            var GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpadding.desktop.left, generalpadding.tablet.left, generalpadding.mobile.left);
             var DividerWidth = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerWidth, dividerStyles[0].dividerWidthTablet, dividerStyles[0].dividerWidthMobile);
             var DividerHeight = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerHeight, dividerStyles[0].dividerHeightTablet, dividerStyles[0].dividerHeightMobile);
 
@@ -62258,118 +62206,12 @@ var edit = function (_Component) {
                             return saveGeneralStyles({ generalborderRadius: newrRadius });
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        marginTop: generalmarginT,
-                        marginRight: generalmarginR,
-                        marginBottom: generalmarginB,
-                        marginLeft: generalmarginL,
-                        marginTopTablet: generalmarginTTablet,
-                        marginRightTablet: generalmarginRTablet,
-                        marginBottomTablet: generalmarginBTablet,
-                        marginLeftTablet: generalmarginLTablet,
-                        marginTopMobile: generalmarginTMobile,
-                        marginRightMobile: generalmarginRMobile,
-                        marginBottomMobile: generalmarginBMobile,
-                        marginLeftMobile: generalmarginLMobile,
-                        showUnits: true,
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return saveGeneralStyles({ generalmarginType: newvalue });
-                        },
-                        selectedUnit: generalStyles[0].generalmarginType,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalmarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalmarginTTablet: newValue });
-                            } else {
-                                setAttributes({ generalmarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalmarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalmarginRTablet: newValue });
-                            } else {
-                                setAttributes({ generalmarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalmarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalmarginBTablet: newValue });
-                            } else {
-                                setAttributes({ generalmarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalmarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalmarginLTablet: newValue });
-                            } else {
-                                setAttributes({ generalmarginLMobile: newValue });
-                            }
-                        }
-
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: generalpaddingTop,
-                        paddingRight: generalpaddingRight,
-                        paddingBottom: generalpaddingBottom,
-                        paddingLeft: generalpaddingLeft,
-                        paddingTopTablet: generalpaddingTTablet,
-                        paddingRightTablet: generalpaddingRTablet,
-                        paddingBottomTablet: generalpaddingBTablet,
-                        paddingLeftTablet: generalpaddingLTablet,
-                        paddingTopMobile: generalpaddingTMobile,
-                        paddingRightMobile: generalpaddingRMobile,
-                        paddingBottomMobile: generalpaddingBMobile,
-                        paddingLeftMobile: generalpaddingLMobile,
-                        showUnits: true,
-                        selectedUnit: generalStyles[0].generalpaddingUnit,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveGeneralStyles({ generalpaddingUnit: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalpaddingTop: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalpaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ generalpaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalpaddingRight: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalpaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ generalpaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalpaddingBottom: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalpaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ generalpaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ generalpaddingLeft: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ generalpaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ generalpaddingLMobile: newValue });
-                            }
-                        }
-                    })
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: generalmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                            return setAttributes({ generalmargin: value });
+                        } }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: generalpadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ generalpadding: value });
+                        } })
                 ),
                 React.createElement(
                     PanelBody,
@@ -62473,118 +62315,12 @@ var edit = function (_Component) {
                             return saveBulletIconStyles({ bulletIconborderRadius: newrRadius });
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        marginTop: bulletIconmarginT,
-                        marginRight: bulletIconmarginR,
-                        marginBottom: bulletIconmarginB,
-                        marginLeft: bulletIconmarginL,
-                        marginTopTablet: bulletIconmarginTTablet,
-                        marginRightTablet: bulletIconmarginRTablet,
-                        marginBottomTablet: bulletIconmarginBTablet,
-                        marginLeftTablet: bulletIconmarginLTablet,
-                        marginTopMobile: bulletIconmarginTMobile,
-                        marginRightMobile: bulletIconmarginRMobile,
-                        marginBottomMobile: bulletIconmarginBMobile,
-                        marginLeftMobile: bulletIconmarginLMobile,
-                        showUnits: true,
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return saveBulletIconStyles({ bulletIconmarginType: newvalue });
-                        },
-                        selectedUnit: bulletIconStyles[0].bulletIconmarginType,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconmarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconmarginTTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconmarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconmarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconmarginRTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconmarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconmarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconmarginBTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconmarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconmarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconmarginLTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconmarginLMobile: newValue });
-                            }
-                        }
-
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: bulletIconpaddingTop,
-                        paddingRight: bulletIconpaddingRight,
-                        paddingBottom: bulletIconpaddingBottom,
-                        paddingLeft: bulletIconpaddingLeft,
-                        paddingTopTablet: bulletIconpaddingTTablet,
-                        paddingRightTablet: bulletIconpaddingRTablet,
-                        paddingBottomTablet: bulletIconpaddingBTablet,
-                        paddingLeftTablet: bulletIconpaddingLTablet,
-                        paddingTopMobile: bulletIconpaddingTMobile,
-                        paddingRightMobile: bulletIconpaddingRMobile,
-                        paddingBottomMobile: bulletIconpaddingBMobile,
-                        paddingLeftMobile: bulletIconpaddingLMobile,
-                        showUnits: true,
-                        selectedUnit: bulletIconStyles[0].bulletIconpaddingUnit,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveBulletIconStyles({ bulletIconpaddingUnit: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconpaddingTop: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconpaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconpaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconpaddingRight: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconpaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconpaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconpaddingBottom: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconpaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconpaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ bulletIconpaddingLeft: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ bulletIconpaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ bulletIconpaddingLMobile: newValue });
-                            }
-                        }
-                    })
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: bulletIconmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                            return setAttributes({ bulletIconmargin: value });
+                        } }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: bulletIconpadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ bulletIconpadding: value });
+                        } })
                 ),
                 React.createElement(
                     PanelBody,
@@ -62682,63 +62418,9 @@ var edit = function (_Component) {
                             return saveTitleStyles({ titleshadowVertical: newValue });
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        marginTop: titlemarginT,
-                        marginRight: titlemarginR,
-                        marginBottom: titlemarginB,
-                        marginLeft: titlemarginL,
-                        marginTopTablet: titlemarginTTablet,
-                        marginRightTablet: titlemarginRTablet,
-                        marginBottomTablet: titlemarginBTablet,
-                        marginLeftTablet: titlemarginLTablet,
-                        marginTopMobile: titlemarginTMobile,
-                        marginRightMobile: titlemarginRMobile,
-                        marginBottomMobile: titlemarginBMobile,
-                        marginLeftMobile: titlemarginLMobile,
-                        showUnits: true,
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return saveTitleStyles({ titlemarginType: newvalue });
-                        },
-                        selectedUnit: titleStyles[0].titlemarginType,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlemarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlemarginTTablet: newValue });
-                            } else {
-                                setAttributes({ titlemarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlemarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlemarginRTablet: newValue });
-                            } else {
-                                setAttributes({ titlemarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlemarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlemarginBTablet: newValue });
-                            } else {
-                                setAttributes({ titlemarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titlemarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titlemarginLTablet: newValue });
-                            } else {
-                                setAttributes({ titlemarginLMobile: newValue });
-                            }
-                        }
-
-                    })
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: titlemargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                            return setAttributes({ titlemargin: value });
+                        } })
                 ),
                 divider && React.createElement(
                     PanelBody,
@@ -63177,78 +62859,6 @@ var attributes = {
         type: "boolean",
         default: false
     },
-    bulletIconmarginT: {
-        type: "number"
-    },
-    bulletIconmarginR: {
-        type: "number"
-    },
-    bulletIconmarginB: {
-        type: "number"
-    },
-    bulletIconmarginL: {
-        type: "number"
-    },
-    bulletIconmarginTTablet: {
-        type: "number"
-    },
-    bulletIconmarginRTablet: {
-        type: "number"
-    },
-    bulletIconmarginBTablet: {
-        type: "number"
-    },
-    bulletIconmarginLTablet: {
-        type: "number"
-    },
-    bulletIconmarginTMobile: {
-        type: "number"
-    },
-    bulletIconmarginRMobile: {
-        type: "number"
-    },
-    bulletIconmarginBMobile: {
-        type: "number"
-    },
-    bulletIconmarginLMobile: {
-        type: "number"
-    },
-    bulletIconpaddingTop: {
-        type: "number"
-    },
-    bulletIconpaddingRight: {
-        type: "number"
-    },
-    bulletIconpaddingBottom: {
-        type: "number"
-    },
-    bulletIconpaddingLeft: {
-        type: "number"
-    },
-    bulletIconpaddingTTablet: {
-        type: "number"
-    },
-    bulletIconpaddingRTablet: {
-        type: "number"
-    },
-    bulletIconpaddingBTablet: {
-        type: "number"
-    },
-    bulletIconpaddingLTablet: {
-        type: "number"
-    },
-    bulletIconpaddingTMobile: {
-        type: "number"
-    },
-    bulletIconpaddingRMobile: {
-        type: "number"
-    },
-    bulletIconpaddingBMobile: {
-        type: "number"
-    },
-    bulletIconpaddingLMobile: {
-        type: "number"
-    },
     titleStyles: {
         type: "array",
         default: [{
@@ -63270,42 +62880,6 @@ var attributes = {
             titleshadowVertical: 0,
             titlemarginType: 'px'
         }]
-    },
-    titlemarginT: {
-        type: "number"
-    },
-    titlemarginR: {
-        type: "number"
-    },
-    titlemarginB: {
-        type: "number"
-    },
-    titlemarginL: {
-        type: "number"
-    },
-    titlemarginTTablet: {
-        type: "number"
-    },
-    titlemarginRTablet: {
-        type: "number"
-    },
-    titlemarginBTablet: {
-        type: "number"
-    },
-    titlemarginLTablet: {
-        type: "number"
-    },
-    titlemarginTMobile: {
-        type: "number"
-    },
-    titlemarginRMobile: {
-        type: "number"
-    },
-    titlemarginBMobile: {
-        type: "number"
-    },
-    titlemarginLMobile: {
-        type: "number"
     },
     generalStyles: {
         type: "array",
@@ -63349,78 +62923,6 @@ var attributes = {
         type: "boolean",
         default: false
     },
-    generalmarginT: {
-        type: "number"
-    },
-    generalmarginR: {
-        type: "number"
-    },
-    generalmarginB: {
-        type: "number"
-    },
-    generalmarginL: {
-        type: "number"
-    },
-    generalmarginTTablet: {
-        type: "number"
-    },
-    generalmarginRTablet: {
-        type: "number"
-    },
-    generalmarginBTablet: {
-        type: "number"
-    },
-    generalmarginLTablet: {
-        type: "number"
-    },
-    generalmarginTMobile: {
-        type: "number"
-    },
-    generalmarginRMobile: {
-        type: "number"
-    },
-    generalmarginBMobile: {
-        type: "number"
-    },
-    generalmarginLMobile: {
-        type: "number"
-    },
-    generalpaddingTop: {
-        type: "number"
-    },
-    generalpaddingRight: {
-        type: "number"
-    },
-    generalpaddingBottom: {
-        type: "number"
-    },
-    generalpaddingLeft: {
-        type: "number"
-    },
-    generalpaddingTTablet: {
-        type: "number"
-    },
-    generalpaddingRTablet: {
-        type: "number"
-    },
-    generalpaddingBTablet: {
-        type: "number"
-    },
-    generalpaddingLTablet: {
-        type: "number"
-    },
-    generalpaddingTMobile: {
-        type: "number"
-    },
-    generalpaddingRMobile: {
-        type: "number"
-    },
-    generalpaddingBMobile: {
-        type: "number"
-    },
-    generalpaddingLMobile: {
-        type: "number"
-    },
     classMigrate: {
         type: "boolean",
         default: false
@@ -63461,6 +62963,126 @@ var attributes = {
             dividerHeightType: 'px',
             dividerColor: '#ddd'
         }]
+    },
+    generalmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titlemargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    generalpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     }
 };
 exports.default = attributes;
@@ -68979,6 +68601,898 @@ var attributes = (_attributes = {
     default: "h2"
 }), _attributes);
 exports.default = attributes;
+
+/***/ }),
+/* 408 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var RichText = wp.blockEditor.RichText;
+
+
+var attributes = {
+    block_id: {
+        type: "string"
+    },
+    align: {
+        type: "string",
+        default: "left"
+    },
+    repeaterBulletList: {
+        type: "array",
+        default: [{
+            id: 1,
+            label: "Title #" + 1,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            imageURL: "",
+            imageID: '',
+            icon_color: "#6EC1E4",
+            label_color: "#6EC1E4",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }, {
+            id: 2,
+            label: "Title #" + 2,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            imageURL: "",
+            imageID: '',
+            icon_color: "#6EC1E4",
+            label_color: "#6EC1E4",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }, {
+            id: 3,
+            label: "Title #" + 3,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            imageURL: "",
+            imageID: '',
+            icon_color: "#6EC1E4",
+            label_color: "#6EC1E4",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        }]
+    },
+    bulletIconStyles: {
+        type: "array",
+        default: [{
+            bulletListfontSize: 20,
+            bulletListfontSizeType: "px",
+            bulletListfontSizeMobile: 20,
+            bulletListfontSizeTablet: 20,
+            bulletIconHoverColor: '',
+            bulletIconColor: "#6EC1E4",
+            bulletIconBackgroundColor: '',
+            bulletIconHoverBackgroundColor: '',
+            bulletIconborderType: "none",
+            bulletIconborderRadius: 0,
+            bulletIconborderColor: '',
+            bulletIconpaddingUnit: 'px',
+            bulletIconmarginType: 'px'
+        }]
+    },
+    bulletIconBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    bulletIconBorderTop: {
+        type: "number"
+    },
+    bulletIconBorderRight: {
+        type: "number"
+    },
+    bulletIconBorderBottom: {
+        type: "number"
+    },
+    bulletIconBorderLeft: {
+        type: "number"
+    },
+    bulletIconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    bulletIconmarginT: {
+        type: "number"
+    },
+    bulletIconmarginR: {
+        type: "number"
+    },
+    bulletIconmarginB: {
+        type: "number"
+    },
+    bulletIconmarginL: {
+        type: "number"
+    },
+    bulletIconmarginTTablet: {
+        type: "number"
+    },
+    bulletIconmarginRTablet: {
+        type: "number"
+    },
+    bulletIconmarginBTablet: {
+        type: "number"
+    },
+    bulletIconmarginLTablet: {
+        type: "number"
+    },
+    bulletIconmarginTMobile: {
+        type: "number"
+    },
+    bulletIconmarginRMobile: {
+        type: "number"
+    },
+    bulletIconmarginBMobile: {
+        type: "number"
+    },
+    bulletIconmarginLMobile: {
+        type: "number"
+    },
+    bulletIconpaddingTop: {
+        type: "number"
+    },
+    bulletIconpaddingRight: {
+        type: "number"
+    },
+    bulletIconpaddingBottom: {
+        type: "number"
+    },
+    bulletIconpaddingLeft: {
+        type: "number"
+    },
+    bulletIconpaddingTTablet: {
+        type: "number"
+    },
+    bulletIconpaddingRTablet: {
+        type: "number"
+    },
+    bulletIconpaddingBTablet: {
+        type: "number"
+    },
+    bulletIconpaddingLTablet: {
+        type: "number"
+    },
+    bulletIconpaddingTMobile: {
+        type: "number"
+    },
+    bulletIconpaddingRMobile: {
+        type: "number"
+    },
+    bulletIconpaddingBMobile: {
+        type: "number"
+    },
+    bulletIconpaddingLMobile: {
+        type: "number"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleLetter: 0,
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleLine: 0,
+            titleSize: 20,
+            titlefontSizeType: "px",
+            titlefontSizeMobile: 20,
+            titlefontSizeTablet: 20,
+            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleColor: "#6EC1E4",
+            titleHoverColor: "",
+            titleshadowColor: '',
+            titleshadowBlur: 0,
+            titleshadowHorizontal: 0,
+            titleshadowVertical: 0,
+            titlemarginType: 'px'
+        }]
+    },
+    titlemarginT: {
+        type: "number"
+    },
+    titlemarginR: {
+        type: "number"
+    },
+    titlemarginB: {
+        type: "number"
+    },
+    titlemarginL: {
+        type: "number"
+    },
+    titlemarginTTablet: {
+        type: "number"
+    },
+    titlemarginRTablet: {
+        type: "number"
+    },
+    titlemarginBTablet: {
+        type: "number"
+    },
+    titlemarginLTablet: {
+        type: "number"
+    },
+    titlemarginTMobile: {
+        type: "number"
+    },
+    titlemarginRMobile: {
+        type: "number"
+    },
+    titlemarginBMobile: {
+        type: "number"
+    },
+    titlemarginLMobile: {
+        type: "number"
+    },
+    generalStyles: {
+        type: "array",
+        default: [{
+            generalBackgroundColor: "",
+            generalHoverBackgroundColor: '',
+            generalborderType: "none",
+            generalborderRadius: 0,
+            generalborderColor: '',
+            generalShadowColor: '',
+            generalShadowBlur: 0,
+            generalShadowHorizontal: 0,
+            generalShadowVertical: 0,
+            generalShadowPosition: '',
+            generalHoverShadowColor: '',
+            generalHoverShadowBlur: '',
+            generalHoverShadowHorizontal: '',
+            generalHoverShadowVertical: '',
+            generalHoverShadowPosition: '',
+            generalpaddingUnit: 'px',
+            generalmarginType: 'px'
+        }]
+    },
+    generalBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    generalBorderTop: {
+        type: "number"
+    },
+    generalBorderRight: {
+        type: "number"
+    },
+    generalBorderBottom: {
+        type: "number"
+    },
+    generalBorderLeft: {
+        type: "number"
+    },
+    generalBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    generalmarginT: {
+        type: "number"
+    },
+    generalmarginR: {
+        type: "number"
+    },
+    generalmarginB: {
+        type: "number"
+    },
+    generalmarginL: {
+        type: "number"
+    },
+    generalmarginTTablet: {
+        type: "number"
+    },
+    generalmarginRTablet: {
+        type: "number"
+    },
+    generalmarginBTablet: {
+        type: "number"
+    },
+    generalmarginLTablet: {
+        type: "number"
+    },
+    generalmarginTMobile: {
+        type: "number"
+    },
+    generalmarginRMobile: {
+        type: "number"
+    },
+    generalmarginBMobile: {
+        type: "number"
+    },
+    generalmarginLMobile: {
+        type: "number"
+    },
+    generalpaddingTop: {
+        type: "number"
+    },
+    generalpaddingRight: {
+        type: "number"
+    },
+    generalpaddingBottom: {
+        type: "number"
+    },
+    generalpaddingLeft: {
+        type: "number"
+    },
+    generalpaddingTTablet: {
+        type: "number"
+    },
+    generalpaddingRTablet: {
+        type: "number"
+    },
+    generalpaddingBTablet: {
+        type: "number"
+    },
+    generalpaddingLTablet: {
+        type: "number"
+    },
+    generalpaddingTMobile: {
+        type: "number"
+    },
+    generalpaddingRMobile: {
+        type: "number"
+    },
+    generalpaddingBMobile: {
+        type: "number"
+    },
+    generalpaddingLMobile: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    layoutPos: {
+        type: "string",
+        default: "block"
+    },
+    iconPosition: {
+        type: "string",
+        default: "before"
+    },
+    bulletAlign: {
+        type: "string",
+        default: "center"
+    },
+    titleFont: {
+        type: "string"
+    },
+    divider: {
+        type: "boolean",
+        default: false
+    },
+    dividerStyle: {
+        type: "string",
+        default: "solid"
+    },
+    dividerStyles: {
+        type: "array",
+        default: [{
+            dividerWidth: '0',
+            dividerWidthTablet: '0',
+            dividerWidthMobile: '0',
+            dividerWidthType: 'px',
+            dividerHeight: '0',
+            dividerHeightTablet: '0',
+            dividerHeightMobile: '0',
+            dividerHeightType: 'px',
+            dividerColor: '#ddd'
+        }]
+    }
+};
+var newAttributes = {
+    generalmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titlemargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    generalpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    }
+};
+
+var deprecated = [{
+    attributes: Object.assign(attributes, newAttributes),
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            generalmargin: {
+                "Desktop": {
+                    top: attributes.generalmarginT,
+                    right: attributes.generalmarginR,
+                    bottom: attributes.generalmarginB,
+                    left: attributes.generalmarginL
+                },
+                "Tablet": {
+                    top: attributes.generalmarginTTablet,
+                    right: attributes.generalmarginRTablet,
+                    bottom: attributes.generalmarginBTablet,
+                    left: attributes.generalmarginLTablet
+                },
+                "Mobile": {
+                    top: attributes.generalmarginTMobile,
+                    right: attributes.generalmarginRMobile,
+                    bottom: attributes.generalmarginBMobile,
+                    left: attributes.generalmarginLMobile
+                }
+            },
+            bulletIconmargin: {
+                "Desktop": {
+                    top: attributes.bulletIconmarginT,
+                    right: attributes.bulletIconmarginR,
+                    bottom: attributes.bulletIconmarginB,
+                    left: attributes.bulletIconmarginL
+                },
+                "Tablet": {
+                    top: attributes.bulletIconmarginTTablet,
+                    right: attributes.bulletIconmarginRTablet,
+                    bottom: attributes.bulletIconmarginBTablet,
+                    left: attributes.bulletIconmarginLTablet
+                },
+                "Mobile": {
+                    top: attributes.bulletIconmarginTMobile,
+                    right: attributes.bulletIconmarginRMobile,
+                    bottom: attributes.bulletIconmarginBMobile,
+                    left: attributes.bulletIconmarginLMobile
+                }
+            },
+            titlemargin: {
+                "Desktop": {
+                    top: attributes.titlemarginT,
+                    right: attributes.titlemarginR,
+                    bottom: attributes.titlemarginB,
+                    left: attributes.titlemarginL
+                },
+                "Tablet": {
+                    top: attributes.titlemarginTTablet,
+                    right: attributes.titlemarginRTablet,
+                    bottom: attributes.titlemarginBTablet,
+                    left: attributes.titlemarginLTablet
+                },
+                "Mobile": {
+                    top: attributes.titlemarginTMobile,
+                    right: attributes.titlemarginRMobile,
+                    bottom: attributes.titlemarginBMobile,
+                    left: attributes.titlemarginLMobile
+                }
+            },
+            generalpadding: {
+                "Desktop": {
+                    top: attributes.generalpaddingTop,
+                    right: attributes.generalpaddingRight,
+                    bottom: attributes.generalpaddingBottom,
+                    left: attributes.generalpaddingLeft
+                },
+                "Tablet": {
+                    top: attributes.generalpaddingTTablet,
+                    right: attributes.generalpaddingRTablet,
+                    bottom: attributes.generalpaddingBTablet,
+                    left: attributes.generalpaddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.generalpaddingTMobile,
+                    right: attributes.generalpaddingRMobile,
+                    bottom: attributes.generalpaddingBMobile,
+                    left: attributes.generalpaddingLMobile
+                }
+            },
+            bulletIconpadding: {
+                "Desktop": {
+                    top: attributes.bulletIconpaddingTop,
+                    right: attributes.bulletIconpaddingRight,
+                    bottom: attributes.bulletIconpaddingBottom,
+                    left: attributes.bulletIconpaddingLeft
+                },
+                "Tablet": {
+                    top: attributes.bulletIconpaddingTTablet,
+                    right: attributes.bulletIconpaddingRTablet,
+                    bottom: attributes.bulletIconpaddingBTablet,
+                    left: attributes.bulletIconpaddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.bulletIconpaddingTMobile,
+                    right: attributes.bulletIconpaddingRMobile,
+                    bottom: attributes.bulletIconpaddingBMobile,
+                    left: attributes.bulletIconpaddingLMobile
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var attributes = props.attributes,
+            className = props.className;
+        var block_id = attributes.block_id,
+            layoutPos = attributes.layoutPos,
+            iconPosition = attributes.iconPosition,
+            align = attributes.align,
+            repeaterBulletList = attributes.repeaterBulletList,
+            bulletAlign = attributes.bulletAlign,
+            bulletIconStyles = attributes.bulletIconStyles,
+            bulletIconBorderUpdated = attributes.bulletIconBorderUpdated,
+            bulletIconBorderTop = attributes.bulletIconBorderTop,
+            bulletIconBorderRight = attributes.bulletIconBorderRight,
+            bulletIconBorderBottom = attributes.bulletIconBorderBottom,
+            bulletIconBorderLeft = attributes.bulletIconBorderLeft,
+            bulletIconBorderWidth = attributes.bulletIconBorderWidth,
+            titleStyles = attributes.titleStyles,
+            generalStyles = attributes.generalStyles,
+            generalBorderWidth = attributes.generalBorderWidth,
+            generalBorderTop = attributes.generalBorderTop,
+            generalBorderRight = attributes.generalBorderRight,
+            generalBorderBottom = attributes.generalBorderBottom,
+            generalBorderLeft = attributes.generalBorderLeft,
+            generalBorderUpdated = attributes.generalBorderUpdated,
+            titleFont = attributes.titleFont,
+            dividerStyles = attributes.dividerStyles,
+            divider = attributes.divider,
+            dividerStyle = attributes.dividerStyle;
+
+
+        return React.createElement(
+            "div",
+            { className: (0, _classnames2.default)(className, "premium-bullet-list-" + block_id),
+                id: "premium-bullet-list-" + block_id,
+                style: {
+                    textAlign: align
+                } },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-bullet-list-" + block_id + " .premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + generalStyles[0].generalHoverShadowHorizontal + "px " + generalStyles[0].generalHoverShadowVertical + "px " + generalStyles[0].generalHoverShadowBlur + "px " + generalStyles[0].generalHoverShadowColor + " " + generalStyles[0].generalHoverShadowPosition + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-block:not(:last-child)::after {", "border-top-style: " + dividerStyle + ";", "border-top-color: " + dividerStyles[0].dividerColor + ";", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-inline:not(:last-child)::after {", "border-left-style: " + dividerStyle + ";", "border-left-color: " + dividerStyles[0].dividerColor + ";", "}"].join("\n")
+                }
+            }),
+            React.createElement(
+                "ul",
+                { className: "premium-bullet-list-" + layoutPos + " premium-bullet-list",
+                    style: {
+                        textAlign: align,
+                        justifyContent: align == "right" ? "flex-end" : align
+                    } },
+                repeaterBulletList.map(function (icon, index) {
+
+                    var image_icon_html = "";
+                    if (icon.showBulletIcon) {
+                        if (icon.image_icon == "icon") {
+                            if (icon.icon) {
+                                image_icon_html = React.createElement(
+                                    "span",
+                                    { className: "premium-bullet-list__content-icon", key: index },
+                                    React.createElement("i", {
+                                        className: "" + icon.icon,
+                                        style: {
+                                            overflow: 'hidden',
+                                            color: bulletIconStyles[0].bulletIconColor,
+                                            backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
+                                            borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                            borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
+                                            borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                            borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
+                                        }
+                                    })
+                                );
+                            }
+                        } else {
+                            if (icon.imageURL) {
+                                image_icon_html = React.createElement("img", {
+                                    src: icon.imageURL,
+                                    key: index,
+                                    style: {
+                                        width: '20px',
+                                        height: '20px',
+                                        overflow: 'hidden',
+                                        borderStyle: bulletIconStyles[0].bulletIconborderType,
+                                        borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
+                                        borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
+                                        borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                        verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    var target = icon.linkTarget ? "_blank" : "_self";
+                    var link_url = icon.disableLink ? icon.link : "/";
+
+                    if (!icon.disableLink) {
+                        var _ref;
+
+                        return React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(
+                                "li",
+                                {
+                                    className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                    key: index,
+                                    style: {
+                                        textAlign: align,
+                                        overflow: 'hidden',
+                                        justifyContent: align == "right" ? "flex-end" : align,
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                    }
+                                },
+                                React.createElement(
+                                    "div",
+                                    { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
+                                            justifyContent: align == "right" ? align : align,
+                                            display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : ""
+                                        } },
+                                    React.createElement(
+                                        "span",
+                                        { className: "premium-bullet-list__icon-wrap",
+                                            style: {
+                                                overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                                alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                textAlign: bulletAlign,
+                                                justifyContent: bulletAlign,
+                                                alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                            }
+                                        },
+                                        image_icon_html
+                                    ),
+                                    React.createElement(
+                                        "div",
+                                        { className: "premium-bullet-list__label-wrap" },
+                                        React.createElement(RichText.Content, {
+                                            tagName: "span",
+                                            value: repeaterBulletList[index].label,
+                                            className: "premium-bullet-list__label",
+                                            style: (_ref = {
+                                                fontFamily: titleFont,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                            }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref) })
+                                    )
+                                )
+                            ),
+                            divider && React.createElement("div", { className: "premium-bullet-list-divider-" + layoutPos })
+                        );
+                    } else {
+                        var _ref2;
+
+                        return React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(
+                                "li",
+                                {
+                                    className: (0, _classnames2.default)("premium-bullet-list-content" + index, "premium-bullet-list__wrapper"),
+                                    key: index,
+                                    style: {
+                                        listStyleType: 'none',
+                                        overflow: 'hidden',
+                                        textAlign: align,
+                                        justifyContent: align == "right" ? "flex-end" : align,
+                                        backgroundColor: generalStyles[0].generalBackgroundColor,
+                                        borderStyle: generalStyles[0].generalborderType,
+                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
+                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
+                                        borderColor: generalStyles[0].generalborderColor,
+                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                    }
+                                },
+                                React.createElement(
+                                    "a",
+                                    {
+                                        href: link_url,
+                                        target: target,
+                                        rel: "noopener noreferrer"
+                                    },
+                                    React.createElement(
+                                        "div",
+                                        { className: "premium-bullet-list__content-wrap premium-bullet-list__content-wrap-" + bulletAlign, style: {
+                                                justifyContent: align == "right" ? align : align,
+                                                display: iconPosition == "before" ? "flex" : "inline-flex",
+                                                flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : ""
+                                            } },
+                                        React.createElement(
+                                            "span",
+                                            { className: "premium-bullet-list__icon-wrap",
+                                                style: {
+                                                    overflow: repeaterBulletList[index].image_icon == 'image' ? "hidden" : "",
+                                                    alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                    textAlign: bulletAlign,
+                                                    justifyContent: bulletAlign,
+                                                    alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
+                                                }
+                                            },
+                                            image_icon_html
+                                        ),
+                                        React.createElement(
+                                            "div",
+                                            { className: "premium-bullet-list__label-wrap" },
+                                            React.createElement(RichText.Content, {
+                                                tagName: "span",
+                                                value: repeaterBulletList[index].label,
+                                                className: "premium-bullet-list__label",
+                                                style: (_ref2 = {
+                                                    fontFamily: titleFont,
+                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                                    lineHeight: titleStyles[0].titleLine + "px",
+                                                    fontStyle: titleStyles[0].titleStyle,
+                                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
+                                                }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
+                                        )
+                                    )
+                                )
+                            ),
+                            divider && React.createElement("div", { className: "premium-bullet-list-divider-" + layoutPos })
+                        );
+                    }
+                })
+            )
+        );
+    }
+}];
+exports.default = deprecated;
 
 /***/ })
 /******/ ]);

@@ -316,7 +316,7 @@ const deprecated = [
                 descBorderLeft,
 
             } = props.attributes;
-            console.log(descPadding);
+
             const mainClasses = classnames(className, 'premium-accordion');
 
             const accordionItems = repeaterItems.map((item, index) => {
