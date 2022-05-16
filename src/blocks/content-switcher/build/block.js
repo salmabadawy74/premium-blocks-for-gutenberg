@@ -4608,17 +4608,19 @@ function Edit(props) {
 
     if (!mounted) {
       inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
-      inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
-      content.style.overflow = 'hidden';
+      inputFirstContent.current.classList.add("premium-content-switcher-is-hidden"); // content.style.overflow = 'hidden';
+
       inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
       inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
     } else {
       inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
       inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
       inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
-      inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
-      content.style.overflow = 'hidden';
-    }
+      inputFirstContent.current.classList.add("premium-content-switcher-is-visible"); // content.style.overflow = 'hidden';
+    } // setTimeout(function () {
+    //     content.style.overflow = '';
+    // }, 100);
+
   }, [mounted]);
 
   const initToggleBox = () => {
@@ -5523,24 +5525,7 @@ function Edit(props) {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Container Style"),
     className: "premium-panel-body",
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    setAttributes: setAttributes,
-    saveContainerStyle: saveContainerStyles,
-    backgroundType: backgroundType,
-    backgroundColor: containerStyles.containerBack,
-    backgroundImageID: containerStyles.backgroundImageID,
-    backgroundImageURL: containerStyles.backgroundImageURL,
-    backgroundPosition: containerStyles.backgroundPosition,
-    backgroundRepeat: containerStyles.backgroundRepeat,
-    backgroundSize: containerStyles.backgroundSize,
-    fixed: containerStyles.fixed,
-    gradientLocationOne: containerStyles.gradientLocationOne,
-    gradientColorTwo: containerStyles.gradientColorTwo,
-    gradientLocationTwo: containerStyles.gradientLocationTwo,
-    gradientAngle: containerStyles.gradientAngle,
-    gradientPosition: containerStyles.gradientPosition,
-    gradientType: containerStyles.gradientType
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_12__["default"], {
     borderType: containerStyles.containerborderType,
     borderWidth: containerBorderWidth,
     top: containerBorderTop,
