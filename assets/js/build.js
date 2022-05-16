@@ -7980,7 +7980,7 @@ var SpacingComponent = function SpacingComponent(props) {
     }
     var onUnitChange = function onUnitChange(unitValue) {
         var updateState = _extends({}, state);
-        updateState["unit"] = unitKey;
+        updateState["unit"] = unitValue;
         props.onChange(updateState);
         setState(updateState);
     };
@@ -8021,7 +8021,7 @@ var SpacingComponent = function SpacingComponent(props) {
                 )
             ),
             showUnits && React.createElement(_premiumSizeUnits2.default, {
-                activeUnit: selectedUnit,
+                activeUnit: state["unit"],
                 onChangeSizeUnit: function onChangeSizeUnit(unitKey) {
                     return onUnitChange(unitKey);
                 }
@@ -15640,10 +15640,7 @@ var attributes = {
     },
     titlePadding: {
         type: "object",
-        default: {
-            "showUnits": false
-
-        }
+        default: {}
 
     },
     titleBorder: {

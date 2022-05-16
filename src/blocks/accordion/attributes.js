@@ -227,8 +227,6 @@ const attributes = {
     titlePadding: {
         type: "object",
         default: {
-            "showUnits": false,
-
         }
 
     },
