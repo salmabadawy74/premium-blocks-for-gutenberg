@@ -10549,7 +10549,7 @@ var PremiumAccordion = function (_Component) {
             var descPaddingBottom = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.bottom, descPadding.Tablet.bottom, descPadding.Mobile.bottom);
             var descPaddingLeft = this.getPreviewSize(this.props.deviceType, descPadding.Desktop.left, descPadding.Tablet.left, descPadding.Mobile.left);
 
-            console.log(titlePadding);
+            // console.log(titlePadding);
 
             var mainClasses = (0, _classnames2.default)(className, "premium-accordion");
 
@@ -16941,6 +16941,7 @@ var deprecated = [{
 }, {
     attributes: Object.assign(attributes, newAttributes),
     migrate: function migrate(attributes) {
+        console.log(attributes.titlePaddingT);
         var newAttributes = {
             titlePadding: {
                 "desktop": {

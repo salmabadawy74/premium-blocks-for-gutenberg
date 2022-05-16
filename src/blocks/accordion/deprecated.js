@@ -819,6 +819,7 @@ const deprecated = [
     {
         attributes: Object.assign(attributes, newAttributes),
         migrate: (attributes) => {
+            console.log(attributes.titlePaddingT);
             let newAttributes = {
                 titlePadding: {
                     "desktop": {
