@@ -32,6 +32,7 @@ import PremiumShadow from "../../components/PremiumShadow";
 import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
 import PremiumBorder from "../../components/premium-border";
+import WebfontLoader from "../../components/typography/fontLoader"
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -375,6 +376,59 @@ function Edit(props) {
         const newColors = { ...containerStyles };
         newColors[color] = value;
         setAttributes({ containerStyles: newColors });
+    }
+
+    let loadFirstLabelGoogleFonts;
+    let loadSecondLabelGoogleFonts;
+    let loadFirstContentGoogleFonts;
+    let loadSecondContentGoogleFonts;
+
+    if (labelStyles.firstLabelFontFamily !== 'Default') {
+        const firstLabelconfig = {
+            google: {
+                families: [labelStyles.firstLabelFontFamily],
+            },
+        }
+        loadFirstLabelGoogleFonts = (
+            <WebfontLoader config={firstLabelconfig}>
+            </WebfontLoader>
+        )
+    }
+
+    if (labelStyles.secondLabelFontFamily !== "Default") {
+        const secondLabelConfig = {
+            google: {
+                families: [labelStyles.secondLabelFontFamily],
+            },
+        }
+        loadSecondLabelGoogleFonts = (
+            <WebfontLoader config={secondLabelConfig}>
+            </WebfontLoader>
+        )
+    }
+
+    if (firstContentStyles.firstContentFontFamily !== "Default") {
+        const firstContentConfig = {
+            google: {
+                families: [firstContentStyles.firstContentFontFamily],
+            }
+        }
+        loadFirstContentGoogleFonts = (
+            <WebfontLoader config={firstContentConfig}>
+            </WebfontLoader>
+        )
+    }
+
+    if (secondContentStyles.secondContentFontFamily !== "Default") {
+        const secondContentConfig = {
+            google: {
+                families: [secondContentStyles.secondContentFontFamily],
+            }
+        }
+        loadSecondContentGoogleFonts = (
+            <WebfontLoader config={secondContentConfig}>
+            </WebfontLoader>
+        )
     }
 
     return (
@@ -2184,6 +2238,10 @@ function Edit(props) {
                         </ul>
                     </div>
                 </div>
+                {loadFirstLabelGoogleFonts}
+                {loadSecondLabelGoogleFonts}
+                {loadFirstContentGoogleFonts}
+                {loadSecondContentGoogleFonts}
             </div>
         </Fragment>
     )

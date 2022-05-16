@@ -19,9 +19,29 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$block_helpers->add_gfont(
 			array(
 				'fontFamily'  => ( isset( $labelStyles['firstLabelFontFamily'] ) ? $labelStyles['firstLabelFontFamily'] : '' ),
-				'fontVariant' => ( isset( $labelStyles['firstLabelWeight'] ) ? $labelStyles[0]['firstLabelWeight'] : '' ),
+				'fontVariant' => ( isset( $labelStyles['firstLabelWeight'] ) ? $labelStyles['firstLabelWeight'] : '' ),
 				'fontFamily'  => ( isset( $labelStyles['secondLabelFontFamily'] ) ? $labelStyles['secondLabelFontFamily'] : '' ),
-				'fontVariant' => ( isset( $labelStyles['secondLabelWeight'] ) ? $labelStyles[0]['secondLabelWeight'] : '' ),
+				'fontVariant' => ( isset( $labelStyles['secondLabelWeight'] ) ? $labelStyles['secondLabelWeight'] : '' ),
+			)
+		);
+	}
+
+	if ( isset( $attributes['firstContentStyles'] ) ) {
+		$firstContentStyles = $attributes['firstContentStyles'];
+		$block_helpers->add_gfont(
+			array(
+				'fontFamily'  => ( isset( $firstContentStyles['firstContentFontFamily'] ) ? $firstContentStyles['firstContentFontFamily'] : '' ),
+				'fontVariant' => ( isset( $firstContentStyles['firstContentWeight'] ) ? $firstContentStyles['firstContentWeight'] : '' )
+			)
+		);
+	}
+
+	if ( isset( $attributes['secondContentStyles'] ) ) {
+		$secondContentStyles = $attributes['secondContentStyles'];
+		$block_helpers->add_gfont(
+			array(
+				'fontFamily'  => ( isset( $secondContentStyles['secondContentFontFamily'] ) ? $secondContentStyles['secondContentFontFamily'] : '' ),
+				'fontVariant' => ( isset( $secondContentStyles['secondContentWeight'] ) ? $secondContentStyles['secondContentWeight'] : '' )
 			)
 		);
 	}
